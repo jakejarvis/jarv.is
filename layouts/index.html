@@ -1,52 +1,4 @@
-<!DOCTYPE html>
-<!--
-      ,,,        ,,,
-    ;"   ^;    ;'   ",
-   ;     s$$$$$s      ;
-    ,  ss$$$$$$$ss  ,'
-    ;$$$$$$$$$$$$$$$$
-    $$$$$$$$$$$$$$$$$$           Hello friend. :)
-   $$$$$"""$$$"""$$$$$$
-  $$$$$  p"$$$"q  $$$$$     https://jarv.is/humans.txt
-   $$$$  .$$$$$.  $$$$
-    $$$$$$$$$$$$$$$$$
-      "$$$$"*"$$$$"
-         "$$.$$"
--->
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Jake Jarvis &ndash; Web &amp; Mobile Developer in Boston, MA</title>
-    <meta name="description" content="I'm a 26-year-old web and mobile entrepreneur living in Boston, Massachusetts.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:title" content="Jake Jarvis &mdash; Web &amp; Mobile Developer in Boston, MA">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jarv.is/">
-    <meta property="og:description" content="I'm a 26-year-old web and mobile entrepreneur living in Boston, Massachusetts.">
-    <meta property="og:image" content="https://jarv.is/me.jpg">
-    <meta property="fb:admins" content="1329090853">
-    <meta property="twitter:account_id" content="229769022">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:creator" content="@jakejarvis">
-    <meta name="twitter:title" content="Jake Jarvis &mdash; Web &amp; Mobile Developer in Boston, MA">
-    <meta name="twitter:url" content="https://jarv.is/">
-    <meta name="twitter:description" content="I'm a 26-year-old web and mobile entrepreneur living in Boston, Massachusetts.">
-    <meta name="twitter:image" content="https://jarv.is/me.jpg">
-    <link rel="canonical" href="https://jarv.is/">
-    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128">
-    <link rel="icon" type="image/png" href="favicon-96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="favicon-64.png" sizes="64x64">
-    <link rel="icon" type="image/png" href="favicon-48.png" sizes="48x48">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="preload" href="fonts/open-sans-light.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css">
-    <link rel="author" href="https://plus.google.com/+JakeJarvis/posts">
-    <link rel="author" href="humans.txt">
-  </head>
-  <body>
+{{ partial "header.html" . }}
     <div id="container">
       <img id="me" src="me.jpg" alt="Jake Jarvis" title="Jake Jarvis">
       <h1>Hello! I'm Jake. <span id="wave">&#x1F44B;<!--&#x1F3FB;--></span></h1>
@@ -69,11 +21,4 @@
       <p>If any of this fits with what you're looking for, I'd love to hear from you via <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#97;&#107;&#101;&#106;&#97;&#114;&#118;&#105;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" id="email">email</a><sup><a href="https://keybase.io/jakejarvis/pgp_keys.asc?fingerprint=87fb4b6006dd1beb3ed47fabd36cb66f4002b25b" id="pgp" target="_blank" rel="noopener noreferrer nofollow">D36C B66F 4002 B25B</a></sup>, <a href="https://twitter.com/messages/compose?recipient_id=229769022" class="twitter" target="_blank" rel="noopener noreferrer nofollow">DM</a>, or <a href="sms:+1-908-444-6655" id="sms">text</a>!</p>
       <p id="copyright"><a href="https://web.archive.org/web/*/jakejarvis.com" id="wayback" target="_blank" rel="noopener noreferrer nofollow">&copy; 1999 &ndash;</a> 2018 Jake Jarvis. <span>&#x1F43C;</span> <a href="https://github.com/jakejarvis/jakejarvis.com" id="source" target="_blank" rel="noopener noreferrer nofollow">View source on GitHub.</a></p>
     </div>
-    <script>
-      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-      ga('create','UA-1563964-4','auto');
-      ga('send','pageview');
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-  </body>
-</html>
+{{ partial "footer.html" . }}

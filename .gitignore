@@ -11,5 +11,9 @@ yarn.lock
 .DS_Store
 
 *.asc
-y2k/
-scrabble/
+
+
+public/
+
+static/y2k/
+static/scrabble/
