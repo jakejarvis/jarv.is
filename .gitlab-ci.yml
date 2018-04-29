@@ -10,3 +10,9 @@ deploy:
   - rm -rf public
   - hugo
   - firebase deploy --token $FIREBASE_TOKEN
+deploy-test:
+  script:
+  - npm install --quiet firebase-tools -g
+  - rm -rf public
+  - hugo
+  - firebase list --token $FIREBASE_TOKEN
