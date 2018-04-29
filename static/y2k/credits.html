@@ -1,0 +1,101 @@
+<html>
+<head>
+	<title>Credits</title>
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+//scroller width
+var swidth=300
+
+//scroller height
+var sheight=100
+
+
+//scroller's speed;
+var sspeed=2
+
+var wholemessage=''
+
+//text: change to your own
+
+wholemessage='<div align="center"><font face=Arial size=3 color="#ffffff"><b>Webmaster:  </b> <a href="mailto:jakejarvis@msn.com">Jake J.</a><br><b><b>HTML Help:   </b><a href="mailto:fitret@hotmail.com">Eric D.</a> and <a href="mailto:stevei2071@aol.com">Steve I.</a><br><b>Checker:   </b><a href="stevei2071@aol.com">Steve I.</a><br><b>Updater:   </b><a href="mailto:jakejarvis@msn.com">Jake J.</a>
+function start(){
+if (document.all) return
+if (document.getElementById){
+document.getElementById("slider").style.visibility="show"
+ns6marquee(document.getElementById('slider'))
+}
+else if(document.layers){
+document.slider1.visibility="show"
+ns4marquee(document.slider1.document.slider2)
+}
+}
+function ns4marquee(whichlayer){
+ns4layer=eval(whichlayer)
+ns4layer.document.write(wholemessage)
+ns4layer.document.close()
+sizeup=ns4layer.document.height
+ns4layer.top-=sizeup
+ns4slide()
+}
+function ns4slide(){
+if (ns4layer.top>=sizeup*(-1)){
+ns4layer.top-=sspeed
+setTimeout("ns4slide()",100)
+}
+else{
+ns4layer.top=sheight
+ns4slide()
+}
+}
+function ns6marquee(whichdiv){
+ns6div=eval(whichdiv)
+ns6div.innerHTML=wholemessage
+ns6div.style.top=sheight
+sizeup=sheight
+ns6slide()
+}
+function ns6slide(){
+if (parseInt(ns6div.style.top)>=sizeup*(-1)){
+ns6div.style.top=parseInt(ns6div.style.top)-sspeed
+setTimeout("ns6slide()",100)
+}
+else{
+ns6div.style.top=sheight
+ns6slide()
+}
+}
+//  End -->
+</script>
+
+</head>
+
+<body bgcolor="Cornsilk" onLoad='start()' link="Red" vlink="Red">
+<center><h1>Credits</h1><br><hr><br>
+<span style="borderWidth:1; borderColor:Cornsilk; width:500; height:300;">
+<ilayer width=300 height=100 name="slider1" bgcolor="Cornsilk" visibility=hide>
+<layer name="slider2" onMouseover="sspeed=0;" onMouseout="sspeed=2">
+</layer>
+</ilayer>
+<script language="JavaScript">
+if (document.all){
+document.writeln('<marquee id="ieslider" scrollAmount=2 width=300 height=100 direction=up style="border:1 solid red;background-color:black">')
+document.writeln(wholemessage)
+ieslider.onmouseover=new Function("ieslider.scrollAmount=0")
+ieslider.onmouseout=new Function("if (document.readyState=='complete') ieslider.scrollAmount=2")
+document.write('</marquee>')
+}
+if (document.getElementById&&!document.all){
+document.write('<div style="position:relative;overflow:hidden;width:300;height:100;clip:rect(0 302 102 0); background-color:black;border:1px solid red;" onMouseover="sspeed=0;" onMouseout="sspeed=2">')
+document.write('<div id="slider" style="position:relative;width:&{swidth};">')
+document.write('</div></div>')
+}
+</script></span><br><font color="Green"><centeR><b>Webmaster:   </b><a href="mailto:jakejarvis@msn.com">Jake J.</a><br><b>HTML Help:   </b><a href="mailo:fitret@hotmail.com">Eric D.</a> and <a href=
+"mailto:stevei2071@aol.com">Steve I.</a><br><b>Checker:   </b><a href="mailto:stevei2071@aol.com">Steve I.</a><br><b>Updator:   </b><a href="mailto:jakejarvis@msn.com">Jake J.</a><br><br>Thank you for visiting this site!<br><br>Based on <a href="http://www.libertycornercomputing.com">LCC</a> and <a href="http://www.geocities.com/dantheman240">Dan's World</a></center></font>
+
+
+</body>
+</html>

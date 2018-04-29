@@ -1,0 +1,49 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Ronnie T. Moore -->
+<!-- Web Site:  The JavaScript Source -->
+<!-- Based on code by: Michael Carpenter -->
+<!-- URL:  http://www.michaelcarpenter.net -->
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+var answers = new Array(
+"Without a doubt", 
+"Yes!", 
+"Probably so", 
+"It isn't likely", 
+"it's possible",
+"Absolutely", 
+"Not a chance",
+"Ask again", 
+"No", 
+"I doubt it", 
+"No Way"
+);
+function fortune() {
+num = Math.round( (answers.length - 1) * Math.random());
+return answers[num];
+}
+//  End -->
+</script>
+<title>Fortune Teller</title>
+</head>
+<body bgcolor="Cornsilk">
+<center><h1>Fortune Teller</h1><br><hr><br>
+<center>
+<form>
+Your question:  <input type=text name=question size=40>
+<input type=button name=ask value="Ask" onClick="if (this.form.question.value!='') this.form.answer.value = fortune();"><br>
+Your fortune teller says:  <input type=text name=answer size=40>
+</form>
+</center>
+
+<p><center>
+<font face="arial, helvetica" size="-2">Free JavaScripts provided<br>
+by <a href="http://javascriptsource.com">The JavaScript Source</a></font>
+</center><p>
+</body>
+</html>

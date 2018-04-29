@@ -1,0 +1,214 @@
+<html>
+
+<head>
+
+<LINK REL=stylesheet HREF="style.css" TYPE="text/css">
+
+<SCRIPT LANGUAGE="javascript">window.open('popup.html','blah',config='height=150,width=450,toolbar=no,menubar=0,status=0')</SCRIPT>
+
+<style>
+
+.spanstyle {
+
+	position:absolute;
+
+	visibility:visible;
+
+	top:-50px;
+
+	font-size:10pt;
+
+	font-family:Verdana;
+
+      font-weight:bold;
+
+	color:RED;
+
+}
+
+</style>
+
+<script>
+
+
+
+/*
+
+Cursor Trailor Text- By Peter Gehrig (http://www.24fun.ch/)
+
+Permission given to Dynamicdrive.com to feature script in it's archive.
+
+For full source code, installation instructions, and 1000's more DHTML scripts,
+
+visit http://dynamicdrive.com
+
+*/
+
+
+
+var x,y
+
+var step=20
+
+var flag=0
+
+
+
+// Your snappy message. Important: the space at the end of the sentence!!!
+
+var message="Welcome to Jake's Site! "
+
+message=message.split("")
+
+
+
+var xpos=new Array()
+
+for (i=0;i<=message.length-1;i++) {
+
+	xpos[i]=-50
+
+}
+
+
+
+var ypos=new Array()
+
+for (i=0;i<=message.length-1;i++) {
+
+	ypos[i]=-50
+
+}
+
+
+
+function handlerMM(e){
+
+	x = (document.layers) ? e.pageX : document.body.scrollLeft+event.clientX
+
+	y = (document.layers) ? e.pageY : document.body.scrollTop+event.clientY
+
+	flag=1
+
+}
+
+
+
+function makesnake() {
+
+	if (flag==1 && document.all) {
+
+    	for (i=message.length-1; i>=1; i--) {
+
+   			xpos[i]=xpos[i-1]+step
+
+			ypos[i]=ypos[i-1]
+
+    	}
+
+		xpos[0]=x+step
+
+		ypos[0]=y
+
+	
+
+		for (i=0; i<message.length-1; i++) {
+
+    		var thisspan = eval("span"+(i)+".style")
+
+    		thisspan.posLeft=xpos[i]
+
+			thisspan.posTop=ypos[i]
+
+    	}
+
+	}
+
+	
+
+	else if (flag==1 && document.layers) {
+
+    	for (i=message.length-1; i>=1; i--) {
+
+   			xpos[i]=xpos[i-1]+step
+
+			ypos[i]=ypos[i-1]
+
+    	}
+
+		xpos[0]=x+step
+
+		ypos[0]=y
+
+	
+
+		for (i=0; i<message.length-1; i++) {
+
+    		var thisspan = eval("document.span"+i)
+
+    		thisspan.left=xpos[i]
+
+			thisspan.top=ypos[i]
+
+    	}
+
+	}
+
+		var timer=setTimeout("makesnake()",30)
+
+}
+
+
+
+</script><br><title><font color="Green">Jake's Site</font></title></head><BODY BGCOLOR="Cornsilk" onLoad="makesnake()" style="width:100%;overflow-x:hidden;overflow-y:scroll"><script>
+
+<!-- Beginning of JavaScript -
+
+
+
+for (i=0;i<=message.length-1;i++) {
+
+    document.write("<span id='span"+i+"' class='spanstyle'>")
+
+	document.write(message[i])
+
+    document.write("</span>")
+
+}
+
+
+
+if (document.layers){
+
+	document.captureEvents(Event.MOUSEMOVE);
+
+}
+
+document.onmousemove = handlerMM;
+
+
+
+// - End of JavaScript - -->
+
+</script><center><marquee><font face="Comic Sans MS">Welcome to Jake's Site! !   I update this site daily, so do me a favor and bookmark this page...</font></marquee><br><h1><font color="Green">Jake's Site</font></h1><br><hr><br>If you have been here before, you have noticed some changes.  First, this is my first page I coded in HTML!  Second is the frames,  and third is <a href="thanks.html">all the help</a> I got at <a href="http://www.libertycornercomputing.com">Liberty Corner Computing</a>!  I hope you like this new site! Oh, and please do me a favor and "<a href="tellfriend.html">Tell-a-Friend</a>"!  This site has some of my favorite <a href="games.html">games</a>, <a href="downloads.html">downloads</a>, a <a href="chatbeta.html">chatroom</a>, and more!  If you are interested about this site, please <a href="info.html">click here</a>.<br></a><br><font color="red">
+Section of the week:</font><br><marquee>Welcome to <i><a href="chatbeta.html">Chat Week</a></i>!  That means...
+Try to chat here every day and I'll try to join in! <a href="chatbeta.html">Check it out</a>!
+</marquee><font><br><hr><br>Vote for my site... <i>Please?</i><br><!-- v- PollGEAR Code by http://htmlgear.com -v -->
+
+
+
+<script language="JavaScript" src="http://htmlgear.lycos.com/poll/control.poll?u=jjarvis10&i=1&a=render">
+
+</script>
+
+<noscript>
+
+<font face='arial' size='1'> take my poll at:
+
+<A HREF="http://htmlgear.lycos.com/poll/control.poll?u=jjarvis10&i=1&a=render">Jake's Site  Poll:</A>   <img src='http://htmlgear.lycos.com/img/log/po_i_getgear.GIF' border='0'><br>htmlGEAR.com</a></font>
+
+</noscript>
+
+<!-- ^- End PollGEAR Code -^ -->
+
+<br></center><br><hr><br><center><a href="credits.html">Credits</a>  --  <a href="thanks.html">Special Thanks</a>  --  <a href="tellfriend.html">Tell-a-Friend</a>  --  <a href="chatbeta.html">Section of the Week</a><centeR></body></html>

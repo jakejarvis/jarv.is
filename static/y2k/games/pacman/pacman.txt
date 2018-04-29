@@ -1,0 +1,19 @@
+THIS SCRIPT BROUGHT TO YOU BY JAVAFILE.COM - http://www.javafile.com
+
+
+
+
+
+PASTE THIS SCRIPT INTO YOUR BODY TAG
+
+<BODY background="pacmaze1.jpg" TEXT="#ffffff">
+
+<applet code="PacManApp.class" width=526 height=427></applet></CENTER>
+
+
+
+
+
+
+
+THIS SCRIPT BROUGHT TO YOU BY JAVAFILE.COM - http://www.javafile.com
