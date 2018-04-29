@@ -4,8 +4,6 @@ title = "Jake Jarvis"
 
 disableKinds = ["taxonomy","taxonomyTerm","sitemap","RSS"]
 
-
-
 [taxonomies]
   tag = ""
   category = ""
