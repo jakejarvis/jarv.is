@@ -2,7 +2,6 @@ image: mhart/alpine-node:6.3
 before_script:
   - apk update && apk add openssl
   - wget https://github.com/gohugoio/hugo/releases/download/v0.40.1/hugo_0.40.1_Linux-64bit.tar.gz
-  - echo "004af6326a331f7e0e2ae2145a4263e36c9a15cb9dcf1d0d9dac4bbdf6d678d5  hugo_0.40.1_Linux-64bit.tar.gz" | md5sum -c
   - tar xf hugo_0.40.1_Linux-64bit.tar.gz && cp ./hugo /usr/bin
 deploy:
   stage: deploy
@@ -10,4 +9,4 @@ deploy:
   - npm install -g firebase-tools
   - rm -rf public
   - hugo
-  - firebase deploy --token $FIREBASE_DEPLOY_KEY
+  - firebase deploy --token $FIREBASE_TOKEN
