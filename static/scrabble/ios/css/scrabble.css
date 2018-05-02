@@ -1,0 +1,80 @@
+body {
+    margin-top: 80px;
+    background-color: #fff;
+    background-image: url('../img/grid-18px-masked.png');
+    background-repeat: repeat-x;
+    background-position: 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+}
+strong, a, a:hover {
+    color: #79ad36;
+    font-weight: bold;
+}
+.navbar {
+    text-align: center;
+}
+.navbar img {
+    padding: 6px;
+}
+.jumbotron {
+    position: relative;
+    text-align: center;
+}
+.jumbotron h1 {
+    margin-bottom: 9px;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.jumbotron p {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 300;
+}
+.footer {
+    margin-top: 45px;
+    padding: 35px 0 36px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 12px;
+}
+.footer p {
+    margin: 10px 0px 0px 0px;
+    color: #555;
+}
+.align-left {
+    text-align: left;
+}
+.align-center {
+    text-align: center;
+}
+.align-right {
+    text-align: right;
+}
+img.align-right {
+    float: right;
+    margin: 0px 0px 10px 10px;
+}
+.accordion {
+    background-color: #fff;
+    margin: 40px 0px;
+}
+.accordion .accordion-group {
+    margin: 20px 0px;
+}
+.accordion .accordion-toggle {
+    font-weight: bold;
+    font-size: 30px;
+    padding: 12px;
+    text-align: center;
+    line-height: 30px;
+}
+.accordion a.accordion-toggle:hover {
+    text-decoration: none;
+}
+.accordion a.accordion-toggle img {
+    margin-right: 10px;
+}

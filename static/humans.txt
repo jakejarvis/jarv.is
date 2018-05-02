@@ -29,7 +29,7 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
+    Hugo
     Fastly CDN (via Firebase Hosting)
     Google Analytics
     Let's Encrypt SSL
