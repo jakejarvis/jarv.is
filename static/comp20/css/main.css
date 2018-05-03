@@ -1,0 +1,89 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    font-size: 18px;
+    color: #333333;
+    background-color: #f3f1ea;
+    overflow-y: scroll;  /* http://css-tricks.com/snippets/css/force-vertical-scrollbar/ */
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #666666;
+}
+
+a:hover {
+    color: #333333;
+}
+
+div#header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+div#header h1 {
+    font-size: 36px;
+}
+
+div#header a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div#header a#current {
+    color: #333333;
+    border-bottom: 2px solid #000;
+}
+
+div#home, div#bio, div#resume {
+    margin-left: auto;  /* https://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers */
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+div#home {
+    width: 600px;
+    text-align: center;
+}
+
+div#home img#me {
+    width: 400px;
+    height: 400px;
+}
+
+div#bio {
+    width: 800px;
+    text-align: center;
+}
+
+div#bio span.bold {
+    color: #666666;
+    font-weight: bold;
+}
+
+div#resume {
+    width: 600px;
+    font-size: 16px;
+}
+
+div#resume h2 {
+    font-size: 22px;
+}
+
+div#resume ul.no-bullets {
+    list-style-type: none;  /* https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets */
+}
+
+div#resume ul li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+div#resume span.bold {
+    font-weight: bold;
+}
