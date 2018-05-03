@@ -1,4 +1,5 @@
 User-Agent: *
 Disallow: /y2k/
+Disallow: /comp20/
 Disallow: /scrabble/
 Disallow: /awesome/
