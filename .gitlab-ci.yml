@@ -2,8 +2,8 @@ image: node:alpine
 
 before_script:
   - apk update && apk add openssl
-  - wget https://github.com/gohugoio/hugo/releases/download/v0.40.2/hugo_0.40.2_Linux-64bit.tar.gz
-  - tar xf hugo_0.40.2_Linux-64bit.tar.gz && cp ./hugo /usr/bin
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.40.3/hugo_0.40.3_Linux-64bit.tar.gz
+  - tar xf hugo_0.40.3_Linux-64bit.tar.gz && cp ./hugo /usr/bin
   - npm install --quiet firebase-tools -g
 
 deploy:
