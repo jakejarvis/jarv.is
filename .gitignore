@@ -8,9 +8,6 @@ package-lock.json
 yarn.lock
 .npmrc
 
-.DS_Store
-
-*.asc
-
-
 public/
+
+.DS_Store

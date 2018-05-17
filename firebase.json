@@ -21,33 +21,13 @@
             "value": "nosniff"
           },
           {
-            "key": "X-XSS-Protection",
-            "value": "1; mode=block; report=https://jakejarvis.report-uri.com/r/d/xss/enforce"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "SAMEORIGIN"
-          },
-          {
-            "key": "X-DNS-Prefetch-Control",
-            "value": "off"
-          },
-          {
-            "key": "Referrer-Policy",
-            "value": "no-referrer-when-downgrade"
-          },
-          {
-            "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self' www.google-analytics.com ssl.google-analytics.com ajax.googleapis.com 'sha256-KhRmfxEAAaZsUM+7gtG8pxaii136UceZCbgie95aRd0=' 'sha256-C84Lc+r0cDvAfbbr1KHi0s1jt0nzfAWH5+bmB/2Ph8s='; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com; frame-src 'self' www.youtube.com player.vimeo.com drive.google.com www.scribd.com; connect-src 'self' jakejarvis.report-uri.com www.google-analytics.com ssl.google-analytics.com; upgrade-insecure-requests; report-uri https://jakejarvis.report-uri.com/r/d/csp/enforce;"
-          },
-          {
             "key": "Expect-CT",
             "value": "max-age=0, report-uri=https://jakejarvis.report-uri.com/r/d/ct/reportOnly"
           }
         ]
       },
       {
-        "source" : "**/",
+        "source" : "**",
         "headers": [
           {
             "key": "Cache-Control",
@@ -56,6 +36,26 @@
           {
             "key": "X-UA-Compatible",
             "value": "IE=edge"
+          },
+          {
+            "key": "X-XSS-Protection",
+            "value": "1; mode=block; report=https://jakejarvis.report-uri.com/r/d/xss/enforce"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; script-src 'self' www.google-analytics.com ssl.google-analytics.com ajax.googleapis.com 'sha256-KhRmfxEAAaZsUM+7gtG8pxaii136UceZCbgie95aRd0=' 'sha256-C84Lc+r0cDvAfbbr1KHi0s1jt0nzfAWH5+bmB/2Ph8s='; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com; frame-src 'self' www.youtube.com player.vimeo.com drive.google.com www.scribd.com; connect-src 'self' jakejarvis.report-uri.com www.google-analytics.com ssl.google-analytics.com; upgrade-insecure-requests; report-uri https://jakejarvis.report-uri.com/r/d/csp/enforce;"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "no-referrer-when-downgrade"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          },
+          {
+            "key": "X-DNS-Prefetch-Control",
+            "value": "off"
           }
         ]
       },
