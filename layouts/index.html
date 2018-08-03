@@ -1,4 +1,4 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
     <div id="container">
       <img id="me" src="{{ "me.jpg" | relURL }}" alt="Jake Jarvis" title="Jake Jarvis">
       <h1>Hello! I'm Jake. <span id="wave">&#x1F44B;<!--&#x1F3FB;--></span></h1>
@@ -19,4 +19,4 @@
       <p>If any of this fits with what you're looking for, I'd love to hear from you via <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#97;&#107;&#101;&#106;&#97;&#114;&#118;&#105;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" id="email">email</a><sup><a href="https://keybase.io/jakejarvis/pgp_keys.asc?fingerprint=87fb4b6006dd1beb3ed47fabd36cb66f4002b25b" id="pgp" target="_blank" rel="noopener noreferrer nofollow">D36C B66F 4002 B25B</a></sup>, <a href="https://twitter.com/messages/compose?recipient_id=229769022" class="twitter" target="_blank" rel="noopener noreferrer nofollow">DM</a>, or <a href="sms:+1-908-444-6655" id="sms">text</a>!</p>
       <p id="copyright"><a href="https://web.archive.org/web/*/jakejarvis.com" id="wayback" target="_blank" rel="noopener noreferrer nofollow">&copy; 1999 &ndash;</a> 2018 Jake Jarvis. <span>&#x1F43C;</span> <a href="https://github.com/jakejarvis/jakejarvis.com" id="source" target="_blank" rel="noopener noreferrer nofollow">View source on GitHub.</a></p>
     </div>
-{{ partial "footer.html" . }}
+{{ end }}
