@@ -3,14 +3,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    {{ .Hugo.Generator }}
     <title>{{ .Title }}</title>
-    <meta name="description" content="{{ .Description }}">
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:description" content="{{ .Description }}">
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:image" content="{{ "me.jpg" | absURL }}">
     <meta property="fb:admins" content="1329090853">
     <meta property="twitter:account_id" content="229769022">
@@ -18,7 +20,7 @@
     <meta name="twitter:creator" content="@jakejarvis">
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:description" content="{{ .Description }}">
+    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="twitter:image" content="{{ "me.jpg" | absURL }}">
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="icon" type="image/png" href="{{ "favicon-128.png" | relURL }}" sizes="128x128">

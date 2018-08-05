@@ -206,7 +206,7 @@ body {
   line-height: 1.5;
 }
 
-div#container {
+div#home {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
@@ -233,22 +233,22 @@ a {
   -o-transition: border-color 0.2s linear;
 }
 
-h1 {
+div#home h1 {
   margin: 0 0 20px 0;
   font-size: 150%;
   line-height: 1;
 }
 
-h2 {
+div#home h2 {
   margin: 20px 0;
   font-size: 120%;
 }
 
-p {
+div#home p {
   margin: 20px 0;
 }
 
-sup {
+div#home sup {
   vertical-align: middle;
   font-size: 50%;
 }
@@ -258,7 +258,7 @@ sup {
     font-size: 18px;
   }
 
-  img#me {
+  div#home img#me {
     width: 80px;
     height: 80px;
   }
