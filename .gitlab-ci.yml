@@ -5,9 +5,9 @@ variables:
   HUGO_SHA: '74bcca80f549a1b66ec8a5264a9308ef7056b7bd31214f56dac05ffb9dfd32b3'
 
 before_script:
-  - apk update && apk add openssl
+  - apk update && apk add openssl coreutils
   - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-  - echo "${HUGO_SHA}  ${HUGO_VERSION}.tar.gz" | sha256sum -c
+  - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
   - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
   - npm install --quiet firebase-tools -g
 
