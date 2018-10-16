@@ -9,6 +9,7 @@ before_script:
   - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
   - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
   - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
+  - npm config set unsafe-perm true
   - npm install --quiet firebase-tools -g
 
 deploy:
