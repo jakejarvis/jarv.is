@@ -339,6 +339,13 @@ a#cpp:hover {
   border-color: #865fc5;
 }
 
+a#python {
+  color: #ffd343;
+}
+a#python:hover {
+  border-color: #ffd343;
+}
+
 a#php {
   color: #8892bf;
 }
