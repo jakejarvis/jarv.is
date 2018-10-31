@@ -340,10 +340,10 @@ a#cpp:hover {
 }
 
 a#python {
-  color: #ffd343;
+  color: #f3bb12;
 }
 a#python:hover {
-  border-color: #ffd343;
+  border-color: #f3bb12;
 }
 
 a#php {
