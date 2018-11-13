@@ -1,8 +1,8 @@
 image: node:alpine
 
 variables:
-  HUGO_VERSION: '0.49.2'
-  HUGO_SHA: '74bcca80f549a1b66ec8a5264a9308ef7056b7bd31214f56dac05ffb9dfd32b3'
+  HUGO_VERSION: '0.51' # https://github.com/gohugoio/hugo/releases
+  HUGO_SHA: '96579d81ea38e7ad5bc0bb675eff2be0d86d28e284cb43aa1893f627d07d4bda' # xxx_Linux-64bit.tar.gz
 
 before_script:
   - apk update && apk add openssl coreutils
