@@ -1,0 +1,73 @@
+==================================================================
+https://keybase.io/jakejarvis
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jarv.is
+  * I am jakejarvis (https://keybase.io/jakejarvis) on keybase.
+  * I have a public key with fingerprint 87FB 4B60 06DD 1BEB 3ED4  7FAB D36C B66F 4002 B25B
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101c35f512403602f2353b2007b186f926ace0c88dcd774f31a89399cf399a949910a",
+      "fingerprint": "87fb4b6006dd1beb3ed47fabd36cb66f4002b25b",
+      "host": "keybase.io",
+      "key_id": "d36cb66f4002b25b",
+      "kid": "0101c35f512403602f2353b2007b186f926ace0c88dcd774f31a89399cf399a949910a",
+      "uid": "1b34b49ba13d00b2fc9da2037f06ba00",
+      "username": "jakejarvis"
+    },
+    "service": {
+      "hostname": "jarv.is",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1542133684,
+  "expire_in": 157680000,
+  "prev": "95d68a94c8ec1ad6d08b1cd4f2b8c3c64a59553a680ce5e7a817e3c12965918e",
+  "seqno": 81,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtkm9QVFUYxhcEXFFC0QEZUuAKhEJ07z3378Yfw1LUUAcYaYRmu+fec9nLLrvL
+7nVtUYIRgsCBoVwtRnAiSikdC4aoqZhGhMqgiAFqtCFGrDFYG2cUsgHE7jLZpz52
+Ppwz553f85znfec0hazQ6f1GLT227f5dBX6D01BX4I347CgGbZIbMxzFzGj5QBYJ
+OVWjWZEwA4YTOCECWqYJksIBg5MyCWgASRxnIcExMk8ygohwkeMkUWJZSgaEwPGA
+50VZ2wSe4nkCF7BkTFasRchhdyhWVbPlWBlSkMFxRpIIiCBAEsXKApQAI0KGkSkc
+JyFJQ01osjl9Ci0cFJwoRbFpNe1iXI73H/z/nPvwsh0BAQUpHgoEkHAckrLISwKJ
+A1bGGSjguA90IodVKEEaXSyYUbHgcClOrDwZ0+ouRUS+0fp6+ZdxuFI0IBmzO2yq
+TbRZtKJJVe1Og0+kuu0+6giCxn/0RqhYJW2ImsKFHE7FZsUMhEaKquIzJGiKJABg
+OCoZQy/bFQcyKj6CZhkO15bvHeTSLHlaYjitQZE7iERCkBgJ5yAhSpRMQk4EIkMJ
+NE/TQNB0IqIRK3AEi4BIkDxD8wSHMF9LpVYbZuAILahQpJk6lSKroB52IKw8uM4f
+BOj89LpN4bEBtQt7XwqaiPKmj1VcePTzAv19304XvGrto8oYH/owb+9MS+GOyf4v
+srIO5G+uaFsX+OTSE/XG7jqOn11durVQwsuqToKNzfs+sa1ZyM3ETJdn4oZbO87W
+fkmU5J2RX31vRbXddBW7k5OrX5wf7evtHc1Lb57S+4eUxvS+VXu6nr302sQz9c//
+lVEaN8VUGO61/0ImtnTHKDXnmjYs3AzN/ZVQrxS8C7/puvOj1L8mYVfNRLnKhEzu
+mEptRl4yxny+qrRpfUMG4/7jZkL+fFLfnN3yYP7TkZyL4882vqDsrrw0st0ePlgX
+8Iboaev8anrpUGJfS5qrZP1QQJiLr/4u+OuOLl0a2HQxOK739aqa8W93jl3/s3Bx
+nMAGwmMiz+/74efJDwNKGp9723XXMow2ZoDw+/2e4b4Tp9yrTcL02rj3y7xPp32/
+xzYQ5rldZuE6op2OLSmhnoiO4mGz4VhLpnOVJSGqsgd5r0R3XNjaE/SAEmqjW70f
+z+Uv8pbPsz3u3I9ckdb4qi2/74/YnXfr2Oi53EO3IsPiPe+YnTN6FLEn/YP55gNt
+7Q126reG8MAhNv44e22+YLDpVLbuRn30cQO+oXta0b/oVzTkfhgbcfdISXvQ/syr
+A7c7q6tH3mz8advBy1XBYGiu05R6fSVITL03kJUUVTlzNmdoW+z93iWd5fSJVuaV
+G+yZpMen6kLA+GOz69S07M1P7Zodz2nLurZS9zc=
+=xsGn
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jakejarvis
+
+==================================================================
+
