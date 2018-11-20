@@ -81,6 +81,13 @@
         }]
       },
       {
+        "source" : "**/*.asc",
+        "headers" : [{
+          "key" : "Content-Type",
+          "value" : "text/plain"
+        }]
+      },
+      {
         "source" : "404.html",
         "headers" : [{
           "key" : "Cache-Control",
