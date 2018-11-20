@@ -23,12 +23,7 @@
           {
             "key": "Expect-CT",
             "value": "max-age=0, report-uri=https://jakejarvis.report-uri.com/r/d/ct/reportOnly"
-          }
-        ]
-      },
-      {
-        "source" : "**",
-        "headers": [
+          },
           {
             "key": "Cache-Control",
             "value": "max-age=3600"
@@ -60,39 +55,57 @@
         ]
       },
       {
-        "source" : "**/*.@(jpg|jpeg|gif|png|ico)",
-        "headers" : [{
-          "key" : "Cache-Control",
-          "value" : "max-age=604800"
-        }]
+        "source": "**/*.@(jpg|jpeg|gif|png|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=604800"
+          }
+        ]
       },
       {
-        "source" : "**/*.@(css|js)",
-        "headers" : [{
-          "key" : "Cache-Control",
-          "value" : "max-age=86400"
-        }]
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=86400"
+          }
+        ]
       },
       {
-        "source" : "**/*.@(ttf|otf|woff|woff2|svg|eot)",
-        "headers" : [{
-          "key" : "Cache-Control",
-          "value" : "max-age=2628000"
-        }]
+        "source": "**/*.@(ttf|otf|woff|woff2|svg|eot)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=2628000"
+          }
+        ]
       },
       {
-        "source" : "**/*.asc",
-        "headers" : [{
-          "key" : "Content-Type",
-          "value" : "text/plain"
-        }]
+        "source": "jarvis.asc",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=2628000"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          },
+          {
+            "key": "Content-Disposition",
+            "value": "inline; filename=\"jarvis.asc\""
+          }
+        ]
       },
       {
-        "source" : "404.html",
-        "headers" : [{
-          "key" : "Cache-Control",
-          "value" : "max-age=3600"
-        }]
+        "source": "404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          }
+        ]
       }
     ]
   }
