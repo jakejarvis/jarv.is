@@ -38,7 +38,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self' www.google-analytics.com ssl.google-analytics.com ajax.googleapis.com 'sha256-KhRmfxEAAaZsUM+7gtG8pxaii136UceZCbgie95aRd0=' 'sha256-C84Lc+r0cDvAfbbr1KHi0s1jt0nzfAWH5+bmB/2Ph8s='; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com; frame-src 'self' www.youtube.com player.vimeo.com drive.google.com www.scribd.com; connect-src 'self' jarvis.report-uri.com www.google-analytics.com ssl.google-analytics.com; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce;"
+            "value": "default-src 'self'; script-src 'self' www.google-analytics.com ssl.google-analytics.com ajax.googleapis.com 'sha256-KhRmfxEAAaZsUM+7gtG8pxaii136UceZCbgie95aRd0=' 'sha256-C84Lc+r0cDvAfbbr1KHi0s1jt0nzfAWH5+bmB/2Ph8s='; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com; frame-src 'self' www.youtube.com player.vimeo.com drive.google.com www.scribd.com; connect-src 'self' jarvis.report-uri.com www.google-analytics.com ssl.google-analytics.com; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
           },
           {
             "key": "Referrer-Policy",
