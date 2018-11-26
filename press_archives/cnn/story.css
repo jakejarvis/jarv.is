@@ -1,0 +1,265 @@
+/* added for cnnmoney 1/15 */
+body {background:#EEE;margin:0px;padding:0px 0px 0px 0px !important;padding:0px 0px 0px 10px;text-align:center;}
+html>body {padding:0px;}
+#storyPage {background:#fff;margin:0px auto;text-align:left;width:994px;}
+
+/* story page */
+#storyPage {width:1064px;}
+#storyPage .storyTD			{padding-left: 15px; padding-top: 15px;padding-right: 15px;}
+#storyPage .adTD 			{width:336px; padding-top: 20px;}
+.storySponsorSmall 			{float: right;}
+#hasStoryBanner .storyTD	{padding-top:10px;}
+#hasStoryBanner .adTD		{padding-top:38px;}
+
+.NLsignup					{margin-top:10px;}
+.boxlink					{font: bold 11px Verdana;}
+.storyheadline				{font-size : 28px;font-weight : bold;padding-bottom:3px;color:#000;}
+.storysubhead				{font-size : 16px;font-weight : bold;padding-bottom:18px;}
+.storybyline				{font-family : Verdana;font-size : 11px;font-weight : bold; padding-bottom:3px;}
+.storytimestamp				{font-family : Verdana;font-size : 11px;}
+.storytext					{font-size : 13px; line-height: 17px;}
+.storytext p a				{text-decoration:underline;color:#039;}
+.storytext p a:hover		{text-decoration:none;}
+.inStoryHeading				{text-align:left;font-weight:bold;}
+.inStoryHeading a			{text-decoration:underline;color:#039;}
+.inStoryHeading a:hover		{text-decoration:none;}
+#storyLogo .img01paddingR	{margin-right:20px;margin-top:0px;}
+.captionname				{font-size : 11px;}
+
+#storyBanner {padding-bottom:15px;}
+.storyBannerheader	{font: bold 10px Verdana; color: #999; padding-left: 5px; text-transform: uppercase; vertical-align: bottom; height:28px; padding-bottom: 2px;}
+.storyBannerlink	{font: 10px Arial;padding-right:5px;padding-left:3px;}
+.storyBannertitle	{font:bold 16px Arial;padding-left:5px;text-decoration:none;}
+.storyBannerbyline	{font:bold 11px Arial;padding-left:5px;color:#000;}
+.storyCommentaryRow {background-color:#ADD6DE;vertical-align:middle;}
+.storyBannerLeft	{width:70%;height:22px;border-top:solid 1px #ebebeb;border-bottom:solid 1px #ebebeb;}
+.storyBannerRight	{width:30%;text-align:right;border:solid 1px #ebebeb;border-left:none;}
+.storyBannerLeftSP	{width:70%;height:22px;border:solid 1px #ebebeb;border-right:none;}
+.storyBannerRightSP	{width:30%;text-align:right;border:solid 1px #ebebeb;border-left:none;}
+.storyBannertitleSP	{font:bold 16px Arial;padding-left:5px;text-decoration:none;}
+.storyBannerlinkSP	{font: 10px Arial;padding-right:5px;padding-left:3px;}
+td.storyBannerBreadcrumb	{font:bold 14px Arial;border:solid 1px #ebebeb;padding:2px 4px 2px 4px;background-color:#EEE;margin-bottom:15px;}
+
+#MagOFIE {padding-top:10px;padding-bottom:10px;}
+
+#clickIncludeBox			{padding-bottom:8px;}
+#clickIncludeBox 			{padding:0px;float:right;}
+.clickability				{font-size : 10px; word-spacing: 10px; white-space: nowrap;}
+.clickability a				{word-spacing: normal;}
+
+.magIssueLink				{margin: -5px 0px 20px 0px;font-size:12px;}
+
+#emailAlertBox 				{padding-bottom:10px;}
+#emailAlertBox .boxTable	{border: 1px solid #ebebeb;}
+#emailAlertBox .headerRow	{background-color : #999;font-size: 13px;font-weight: bold;color: #fff;padding-bottom: 3px;padding : 4px 4px 4px 4px;}
+#emailAlertBox .EAkeyword	{font-size: 12px;color: #000;border-bottom: 1px solid #fff;}
+#emailAlertBox .EAsubmit	{font-size: 12px;color: #000;border-bottom: 1px solid #fff;}
+#emailAlertBox .EAsubmit div{padding:6px 3px;}
+
+#storyPage #adBannerTable	{width:100%; height : 100px; background : #fff;}
+
+#RelatedStoriesArea				{padding-bottom:15px;}
+#TopStoriesBox .topstoriesTable	{border: 1px solid #ebebeb; width:100%;border-bottom : 0px;}
+#TopStoriesBox .topstoriesTable	.contentRow {padding-left:5px;}
+#TopStoriesBox 					{padding-bottom:0px;}
+#TopStoriesBox .headerRow		{background-color : #EEE;}
+#TopStoriesBox .headerCell		{border-bottom : 1px solid #ebebeb;padding : 2px 0px 2px 4px;}
+#TopStoriesBox .storyLink		{padding:3px 5px 6px 5px;font-family: Arial, Helvetica, sans-serif; font-size: 13px;}
+#BottomBox  .topstoriesTable	{width:100%; border-bottom : 1px solid #ebebeb;}
+
+#autosTool	{padding-bottom:15px;}
+
+.adTD #TopStoriesBox .topstoriesTable	{border: none; width:100%;border-bottom : 0px;}
+.adTD #TopStoriesBox .topstoriesTable	.contentRow {padding-left:0px;}
+/* need to get rid of in-line style for this */
+.adTD #TopStoriesBox .topstoriesTable	.contentRow td{padding-left:0px;}
+.adTD #TopStoriesBox 					{padding-bottom:0px;}
+.adTD #TopStoriesBox .headerRow		{background-color : #EEE;}
+.adTD #TopStoriesBox .headerCell		{border : 1px solid #ebebeb;padding : 2px 0px 2px 4px;}
+.adTD #TopStoriesBox .storyLink		{padding:3px 5px 6px 5px;font-family: Arial, Helvetica, sans-serif; font-size: 13px;}
+.adTD #TopStoriesBox .topstoriesTable {border-bottom : none;margin-bottom:15px;}
+#magStoryIE						{width:220px; margin-left:20px;margin-bottom:15px; float:right;}
+#NestedBox #magStoryIE			{margin-left:0px;margin-bottom:15px; float:none;}
+.PermaLinksTable				{width:100%;border: 1px solid #ebebeb;}
+.PermaLinksTable .storyLink		{font-weight:bold;padding-left:5px;}
+
+
+
+/* added 9/10/07 */
+#IEContainerR 		{max-width: 220px; margin-bottom: 10px; clear: right; float: right; margin-left: 10px;}
+#IEContainerL 		{max-width: 220px; margin-bottom: 10px; clear: left; float: left; margin-right: 10px;}
+#IEContainerRinline 		{display: inline;max-width: 220px; margin-bottom: 10px; clear: right; float: right; margin-left: 10px;}
+#IEContainerLinline 		{display: inline;max-width: 220px; margin-bottom: 10px; clear: left; float: left; margin-right: 10px;}
+#IEContainerR #inStoryIE table{float:none;}
+
+#videoIEContainer {border: 1px solid #ebebeb;}
+#videoIEContainer #IEheadingContainer .linkDiv a{background: url(https://i.cdn.turner.com/money/.element/img/1.0/misc/plus_green.gif) no-repeat left; padding-left: 12px;font-size:11px;}
+#videoIEContainer td.videoImage{text-align:center;padding:0;border-bottom:1px solid #ebebeb;}
+.IErow .videoBlurb	{font-size : 11px;padding-left: 4px; padding-right: 4px; padding-top: 2px;}
+#IEheadingContainer {border-bottom:1px solid #ebebeb;background:#EEE;height:auto;}
+#IEheadingContainer .IEboxHeading {padding-top:3px;padding-left:10px;font:bold 14px arial;}
+#IEheadingContainer .linkDiv {float:right;margin-bottom:-22px;padding:4px 10px;position:relative;bottom:20px;}
+
+#sidebarIEContainer	{border: 1px solid #ebebeb;}
+#IEheadingContainer .sidebarHeadingL 	{padding-top:3px;padding-left:10px;font: bold 17px Arial;}
+#IEheadingContainer .sidebarHeadingS 	{padding-top:3px;padding-left:10px;font: bold 14px Arial;}
+#sidebarIEContainer	.sidebarContent		{margin:10px 10px 0 10px;}
+#sidebarIEContainer	.sidebarContent .element{padding-bottom:15px;}
+.sidebarContent ul{padding:0px;margin:0px;display:block;}
+.sidebarContent li {list-style: inside;}
+.sidebarContent .sidebarHeadline ul{font: bold 13px Arial;}
+
+#pollIEContainer {border: 1px solid #ebebeb; padding:6px;}
+
+/* end: added 9/10/07 */
+
+.IErow	{padding-bottom:15px;width: 220px;clear:both;}
+#sidebarWrapper		{border-bottom:1px solid #ebebeb;}
+.ieBox .box	{border: 1px solid #ebebeb; border-bottom:0px;}
+#sidebarContainer	{border: 1px solid #ebebeb; border-bottom:0px;}
+.sidebarHeadingRow	{padding:4px 8px;border-bottom:1px solid #ebebeb; background-color: #eee;}
+.sidebarHeadingRow .sidebarHeadingL 	{font: bold 17px Arial;}
+.sidebarHeadingRow .sidebarHeadingS 	{font: bold 14px Arial;}
+.sidebarBlurb		{font: normal 11px Verdana;}
+.sidebarBlurbA		{font: normal 12px Arial;}
+.sidebarBullet		{font: normal 12px Arial;padding-top:3px;padding-bottom:3px;}
+.sidebarContentTD	{padding:4px 10px;}
+.sidebarContentTD .sidebarBlurb	{margin-bottom: 10px;}
+.sidebarHeadline 	{font: bold 17px Arial;}
+.sidebarContentTD ul{padding:0px;margin:0px;display:block;}
+.sidebarContentTD li {list-style: inside;}
+.sidebarContentTD .sidebarHeadline ul{font: bold 13px Arial;}
+
+#money101IE {border: 1px solid #ebebeb; padding-bottom:6px; width: 220px;margin-bottom:15px;}
+#money101IE .relatedbox div {border-bottom: 1px solid #ebebeb; padding:2px;}
+.money101lesson {font:normal 12px Arial;}
+
+/* styles for table creator tool */
+TR.boxlabelcolor {font-family:arial;font-size:12px;}
+SPAN.boxheadline {font-size:14px;font-weight: bold; color: #DDDDDD;}
+TD.boxheader {background:#00458E;font-family:arial;font-size:12px;}
+TD.chartlabel {font-family:arial;font-size:12px;font-weight:bold;}
+TR.chartcolor1 {background:#fff;}
+TD.charttext {font-family:arial;font-size:12px;padding:3px 0px;}
+TR.chartcolor2 {background:#eee;}
+TD.timestamp {font-family:arial;font-size:12px;padding:3px 0px;}
+
+.sponsorAdTop {padding-top:5px;}
+/* end styles for table creator tool */
+
+
+/* styles for NEW table creator tool
+#sidebarTBL {width:220px;}
+.sidebarTBLtable {border:none;}
+.sidebarTBLheadline {font: bold 19px Arial;padding:3px;}
+.sidebarTBLsubhead {color:#575757;font:normal 12px Arial;padding:3px;border-bottom:solid 1px #ebebeb;}
+.sidebarTBLheader {background-color:#fff;}
+.sidebarTBLheader th {font:normal 10px Arial;color:#000;height:20px;border-bottom:1px solid #ebebeb;}
+.sidebarTBLtext {font:normal 11px Arial;padding:3px;text-align:left;}
+.sidebarTBLdata {font:normal 11px Arial;padding:3px;text-align:right;}
+.sidebarTBLnote {font:normal 10px Arial;color:#848284;text-align:right;border-bottom:1px solid #ebebeb;padding:5 0px;}
+.sidebarTBLrowcolor2 {background-color:#f5f5f5;}
+.sidebarTBLrowcolor1 {background-color:#fff;}
+.cnnIERowAltBG		 {background-color:#f5f5f5;}
+.cnnTMcontent {background-color:#f5f5f5;}
+ .cc10 {color:#575757;border-bottom:solid 1px #ebebeb;}
+ .cc11 {color:#575757;border-bottom:solid 1px #ebebeb;}
+  .cnnTMcontent td {padding:7 5px;font:normal 12px Arial;}
+ end styles for NEW table creator tool */
+
+
+/* OLD styles for table creator tool  */
+.sidebarTBLtable {border:solid 1px #999;}
+.sidebarTBLheadline {font:bold 12px Arial;padding:3px;background-color:#C5E4E6;}
+.sidebarTBLsubhead {font:normal 11px Arial;padding:3px;background-color:#eee;border-bottom:solid 1px #999;}
+.sidebarTBLheader th {font:normal 10px Arial;color:#848284;height:20px;border-bottom:1px solid #65cfcf;}
+.sidebarTBLtext {font:normal 11px Arial;padding:3px;text-align:left;}
+.sidebarTBLdata {font:normal 11px Arial;padding:3px;text-align:right;}
+.sidebarTBLnote {font:normal 11px Arial;color:#848284;text-align:left;}
+.sidebarTBLrowcolor2 {background-color:#eee;}
+.sidebarTBLrowcolor1 {background-color:#fff;}
+.cnnIERowAltBG		 {background-color:#eee;}
+/* OLD end styles for table creator tool */
+
+#B2DumbestStory .inStoryHeading		{text-align:left;color:#900;font-size : 15px;}
+#B2DumbestStory A.inStoryHeading	{text-decoration:none;color:#900;}
+#B2DumbestStory A:hover.inStoryHeading {text-decoration:underline;}
+#B2DumbestStory .storybyline{margin-bottom:15px;}
+#B2DumbestStory .magIssueLink	{margin: 15px 0px 15px 0px;}
+
+H1.topHeadline		{font:bold 28px Arial;padding-bottom:3px;margin:0px;}
+H2.topSubheadline	{font:bold 16px Arial;padding-bottom:12px;margin:0px;}
+
+/* begin: styles for pagination */
+.cnnContinuedBottom { clear: both; margin: 10px 0; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+.cnnContinuedBottom .cnnContinuedTitle { font-size: 16px; font-family: Arial, sans-serif; font-weight: bold; }
+.cnnContinuedBottom .cnnContinuedTitle A[ href ] { text-decoration: none; }
+.cnnContinuedBottom .cnnContinuedNavigation TABLE { border-collapse: collapse; }
+.cnnContinuedBottom .cnnContinuedNavigation TD.numlink { background-color: #eee; margin: 0; border: 1px solid #ebebeb; padding: 0; width: 22px; height: 21px; font-size: 9px; font-family: Verdana, sans-serif; font-weight: bold; }
+.cnnContinuedBottom .cnnContinuedNavigation TD.unlinked { background-color: inherit; }
+.cnnContinuedBottom .cnnContinuedNavigation IMG { margin: 0 10px; }
+/* end: styles for pagination */
+
+.cnnEndOfStory { margin: 20px 0px 32px 0px; }
+
+#recentGalleries .cnnHeadling {font:bold 14px arial;background:#EEE;border:1px solid #ebebeb;padding:2px 5px;margin-bottom:10px;}
+#recentGalleries .summaryBlock 	{font:normal 11px Verdana;margin-bottom:10px;}
+#recentGalleries .summaryBlock:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+#recentGalleries .summaryBlock 		{display: inline-block;}
+/* Hides from IE-mac \*/
+* html #recentGalleries .summaryBlock	{height: 1%;}
+#recentGalleries .summaryBlock			{display: block;}
+/* End hide from IE-mac */
+#recentGalleries .cnnHeadline		{font:bold 16px arial;}
+#recentGalleries .cnnMore	{font-weight:normal}
+
+#sharedElements 					{padding:0px 0px 0px 0px;font-size:11px;}
+#sharedElements .boxheading			{border:1px solid #ebebeb; background:#EEE;font:bold 15px arial;padding:2px 8px;}
+#sharedElements .boxcontent			{margin-top:10px;}
+#sharedElements .cnnHeadline		{font:bold 16px arial;}
+#sharedElements .cnnBlurbTxt		{padding-bottom:5px;}
+#sharedElements .cnnBullets		{}
+#sharedElements .summaryblock {margin-bottom:15px;clear:left;}
+html>body #sharedElements img.img01paddingL {margin-bottom:15px;}
+
+#sharedElements .moneyMainGreyBnr	{background: none no-repeat 0 0;width: auto;margin-bottom:5px;}
+#sharedElements .moneyGroupLabel	{background-color: transparent;padding:1px 4px 1px 0px;line-height:14px;text-transform: none;font-family:arial;}
+#sharedElements .moneyGroupLabel a,
+#sharedElements .moneyGroupLabel span{color: Black;font:bold 15px arial;}
+#sharedElements .moneyMainGreyBnr {border:1px solid #ebebeb; background:#EEE;font:bold 15px arial;padding:2px 8px;}
+
+.IErow .cnnTopics { line-height: 18px; }
+.IErow .cnnTopics h4{margin:0 0 5px 0;font:bold 15px arial;}
+#topicsList {width:220px;}
+#topicsList h4{margin:0 0 5px 0;font:bold 15px arial;}
+#topicsList ul{margin:0 0 15px 0;padding:0px;}
+#topicsList li{padding:0 0 5px 0px;margin-left:15px;list-style : disc;}
+#rssIcon {}
+#rssIcon .selected {}
+#rssMenuContainer {z-index:1000;position:absolute;}
+#rssMenu {background: url(balloon.png) no-repeat top;position: absolute;left: 275px;width: 362px;height:230px;	margin: 30px 4px 4px 0;	display: none;	font: normal 12px/14px Arial;}
+#rssMenu div {margin: 4px 15px;}
+#rssMenu .rssSubs{font:bold 16px arial; color:#fff;margin:47px 0 0 35px;text-align:left;}
+#rssMenu .serviceIcons {width:310px;margin:8px 10px 0 20px;border-bottom: 2px solid #f28327;text-align:center;}
+#rssMenu .serviceIcons img {margin: 5px;border: 0;}
+#rssMenu div.feedLink,#rssMenu div.instruct{margin: 4px 30px;}
+#rssMenu div.feedLink b{color:#039}
+#rssMenu .seeAll {text-align: left; margin-top: 5px;}
+#rssMenu span.close{margin-left:90px;}
+#closeRSS {font-size:11px;}
+
+/* PullQuote */
+.cnnPullQuote { margin: 10px 10px 10px 0; padding-bottom: 24px;}
+.cnnPullQuoteText { color: #666; font-size: 20.5px; line-height: 22px;}
+.cnnPullQuoteAuthor { width: 240px; margin-left: 80px; text-align: right; }
+.cnnPullQuoteCompany { }
+
+/****************** AUTOS section - styles for subnav *******************/
+	#subNavSection {padding-left:10px; height:40px; padding-top:5px; background: url(hrdots.gif) repeat-x bottom; white-space:nowrap;}
+	#subNavSection span.subNavLink, 
+	#subNavSection a.subNavLink,
+	#subNavSection div.subNavLink	{font:bold 12px Arial; text-align:center; white-space: nowrap;}
+	#subNavSection .subNavTextLinks{font:bold 12px Arial; text-align:center; vertical-align:bottom;}
+	#subNavSection td{text-align:center; padding-left:20px; padding-right:20px;}
+
+	#quigo220NF{float:right;margin:0 0 15px 15px;}

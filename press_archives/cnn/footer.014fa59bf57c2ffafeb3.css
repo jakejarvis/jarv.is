@@ -1,0 +1,288 @@
+._4c3b035b {
+    background-color: #fff;
+    color: #000;
+    padding: 20px 0;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+._05812abd {
+    position: relative;
+    height: 53px;
+}
+
+._05812abd span {
+    height: 53px;
+}
+
+._05812abd:before,
+._05812abd:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: #979797;
+    width: calc(50% - 95px);
+}
+
+._05812abd:before {
+    left: 0px;
+}
+
+._05812abd:after {
+    right: 0px;
+}
+
+._05812abd > span img {
+    height: 53px;
+}
+
+._7dc7c77c {
+    margin: 25px 0px 30px;
+}
+
+._7dc7c77c a {
+    margin: 0px 25px 15px;
+    text-decoration: none;
+    color: #313131;
+    display: block;
+    font-weight: 200;
+    font-size: 14px;
+}
+
+._7dc7c77c a:hover {
+    opacity: 0.5;
+}
+
+._7f66fb27 a {
+    margin: 0 12px;
+}
+
+.fe31535c {
+    margin: 25px auto;
+    padding: 0px 20px;
+    color: #9d9d9d;
+    font-size: 11px;
+    line-height: 1.82;
+    font-weight: 200;
+    max-width: 1000px;
+}
+
+.fe31535c a {
+    color: #313131;
+    text-decoration: none;
+}
+
+._4c3b035b #trusteLink a {
+    position: relative;
+    margin-right: 15px;
+}
+
+._4c3b035b #trusteLink a:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    background: url(adchoiceslogo_footer.png) no-repeat;
+    display: inline-block;
+    top: 2px;
+    right: -15px;
+}
+
+@media screen and (min-width: 641px) {
+    ._05812abd:before,
+    ._05812abd:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1px;
+        background: #eee;
+        width: calc(50% - 95px);
+    }
+
+    ._7dc7c77c a {
+        display: inline-block;
+    }
+
+    .fe31535c {
+        font-size: 11px;
+    }
+}
+._09a2dd12 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    -ms-flex-align: center;
+        align-items: center;
+}
+
+.d108d922 {
+    display: inline-block;
+    line-height: 100%;
+}
+
+.d108d922:hover {
+    opacity: 0.5;
+}
+.f9786d8e {
+    position: relative;
+    top: 0px;
+    display: inline-block;
+}
+
+.f234abe9,
+.f9786d8e {
+    height: 40px;
+}
+
+.a2419916 {
+    display: inline-block;
+    height: 100%;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+._55afeaf6 {
+    font-family: 'CNNSans';
+    position: relative;
+    background-color: #eee;
+}
+._55afeaf6 *,
+._55afeaf6 *:before,
+._55afeaf6 *:after {
+    box-sizing: border-box;
+}
+button {
+    /* prevent gray button tap issue on safari */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border: none;
+    background: none;
+}
+._55afeaf6 .noSelect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+._55afeaf6 .noTextFlicker {
+    /* fix for text flickering */
+    transform: translateZ(0);
+}
+@media screen and (min-width: 641px) {
+    html,
+    body {
+        background: #fff;
+    }
+
+    ._55afeaf6 {
+        background-color: white;
+    }
+}
+/* GLOBAL ANIMATION CLASSES */
+@keyframes c916eecf {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.fadeIn {
+    animation-name: c916eecf;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-fill-mode: forwards;
+}
+/* FONTS */
+@font-face {
+    font-family: 'CNNSans';
+    src: url('CNNSansDisplayW04-Thin.woff.html') format('woff'),
+        url('CNNSansDisplayW04-Thin.ttf.html') format('truetype'),
+        url('CNNSansDisplayW04-Thin.svg') format('svg');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'CNNSans';
+    src: url('CNNSansDisplayW04-Light.woff.html') format('woff'),
+        url('CNNSansDisplayW04-Light.ttf.html') format('truetype'),
+        url('CNNSansDisplayW04-Light.svg') format('svg');
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'CNNSans';
+    src: url('CNNSansW04-Regular.woff.html') format('woff'),
+        url('CNNSansW04-Regular.ttf.html') format('truetype'),
+        url('CNNSansW04-Regular.svg') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CNNSans';
+    src: url('CNNSansW04-Medium.woff.html') format('woff'),
+        url('CNNSansW04-Medium.ttf.html') format('truetype'),
+        url('CNNSansW04-Medium.svg') format('svg');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'CNNSans';
+    src: url('CNNSansW04-Bold.woff.html') format('woff'),
+        url('CNNSansW04-Bold.ttf.html') format('truetype'),
+        url('CNNSansW04-Bold.svg') format('svg');
+    font-weight: 700;
+    font-style: bold;
+}
+@font-face {
+    font-family: 'CNNSansCondensed';
+    src: url('CNNSansW04-Condensed.woff.html') format('woff'),
+        url('CNNSansW04-Condensed.ttf.html') format('truetype'),
+        url('CNNSansW04-Condensed.svg') format('svg');
+}
+@font-face {
+    font-family: 'CNNCondensed';
+    src: url('CNNSansW04-CondensedLight.eot.html');
+    src: url('CNNSansW04-CondensedLight.eot%3F.html') format('embedded-opentype'),
+        url('CNNSansW04-CondensedLight.woff.html') format('woff'),
+        url('CNNSansW04-CondensedLight.ttf.html') format('truetype'),
+        url('CNNSansW04-CondensedLight.svg') format('svg');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'CNNCondensed';
+    src: url('CNNSansW04-Condensed.eot.html');
+    src: url('CNNSansW04-Condensed.eot%3F.html') format('embedded-opentype'),
+        url('CNNSansW04-Condensed.woff.html') format('woff'),
+        url('CNNSansW04-Condensed.ttf.html') format('truetype'),
+        url('CNNSansW04-Condensed.svg') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CNNCondensed';
+    src: url('CNNSansW04-CondensedMedium.eot.html');
+    src: url('CNNSansW04-CondensedMedium.eot%3F.html') format('embedded-opentype'),
+        url('CNNSansW04-CondensedMedium.woff.html') format('woff'),
+        url('CNNSansW04-CondensedMedium.ttf.html') format('truetype'),
+        url('CNNSansW04-CondensedMedium.svg') format('svg');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'CNNCondensed';
+    src: url('CNNSansW04-CondensedBold.eot.html');
+    src: url('CNNSansW04-CondensedBold.eot%3F.html') format('embedded-opentype'),
+        url('CNNSansW04-CondensedBold.woff.html') format('woff'),
+        url('CNNSansW04-CondensedBold.ttf.html') format('truetype'),
+        url('CNNSansW04-CondensedBold.svg') format('svg');
+    font-weight: 500;
+    font-style: bold;
+}
+
+/*# sourceMappingURL=footer.014fa59bf57c2ffafeb3.css.map*/

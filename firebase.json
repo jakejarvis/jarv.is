@@ -10,7 +10,8 @@
       "**/.*",
       "**/.git/**",
       "**/node_modules/**",
-      "**/bower_components/**"
+      "**/bower_components/**",
+      "**/press_archives/**"
     ],
     "headers": [
       {

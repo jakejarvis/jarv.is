@@ -1,0 +1,21 @@
+Sitemap: https://money.cnn.com/registry/sitemaps/index.xml
+
+User-agent: *
+Disallow: /SEARCH
+Disallow: /WEB-INF
+Disallow: /cgi-bin
+Disallow: /images
+Disallow: /java
+Disallow: /portfolio
+Disallow: /pr
+Disallow: /profile
+Disallow: /quotes
+Disallow: /tq
+Disallow: /virtual
+Disallow: /.element
+Disallow: /stcejorp
+Disallow: /cnn_adspaces
+Disallow: /fn_adspaces
+Disallow: /ssi
+Disallow: /emmy
+Disallow: /test
