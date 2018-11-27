@@ -356,7 +356,7 @@ a#server:hover {
   border-color: #0098ec;
 }
 a#server span#less {
-  color: #a2d9f9;
+  color: #87cef7;
 }
 
 a#devops {
@@ -374,13 +374,13 @@ a#containerization:hover {
 }
 
 a#y2k {
-  color: #ffcd47;
+  color: #ffa900;
 }
 a#y2k:hover {
-  border-color: #ffcd47;
+  border-color: #ffa900;
 }
 a#y2k span#shh {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 span#fairy {
@@ -440,10 +440,10 @@ a#news-2:hover {
 }
 
 a#news-3 {
-  color: #ffb900;
+  color: #ffcf0c;
 }
 a#news-3:hover {
-  border-color: #ffb900;
+  border-color: #ffcf0c;
 }
 
 a#news-4 {
