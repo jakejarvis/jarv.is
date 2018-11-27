@@ -359,6 +359,13 @@ a#server span#less {
   color: #a2d9f9;
 }
 
+a#devops {
+  color: #ff6200;
+}
+a#devops:hover {
+  border-color: #ff6200;
+}
+
 a#containerization {
   color: #c48f49;
 }
