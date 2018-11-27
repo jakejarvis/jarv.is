@@ -349,13 +349,13 @@ a#infosec:hover {
   border-color: #00b81a;
 }
 
-a#serverless {
+a#server {
   color: #0098ec;
 }
-a#serverless:hover {
+a#server:hover {
   border-color: #0098ec;
 }
-a#serverless span#shh {
+a#server span#less {
   color: #a2d9f9;
 }
 
