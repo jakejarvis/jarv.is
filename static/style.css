@@ -426,10 +426,10 @@ a#instagram:hover {
 }
 
 a#news-1 {
-  color: #e23838;
+  color: #ff1b1b;
 }
 a#news-1:hover {
-  border-color: #e23838;
+  border-color: #ff1b1b;
 }
 
 a#news-2 {
@@ -440,10 +440,10 @@ a#news-2:hover {
 }
 
 a#news-3 {
-  color: #ffcf0c;
+  color: #ffc30c;
 }
 a#news-3:hover {
-  border-color: #ffcf0c;
+  border-color: #ffc30c;
 }
 
 a#news-4 {
@@ -489,17 +489,17 @@ a#pluralsight:hover {
 }
 
 a#resume {
-  color: #c30b15;
+  color: #d54b3d;
 }
 a#resume:hover {
-  border-color: #c30b15;
+  border-color: #d54b3d;
 }
 
 a#email {
-  color: #d54b3d;
+  color: #de0c0c;
 }
 a#email:hover {
-  border-color: #d54b3d;
+  border-color: #de0c0c;
 }
 
 a#pgp {
@@ -511,10 +511,10 @@ a#pgp:hover {
 }
 
 a#sms {
-  color: #93d841;
+  color: #6fcc01;
 }
 a#sms:hover {
-  border-color: #93d841;
+  border-color: #6fcc01;
 }
 
 p#copyright {
