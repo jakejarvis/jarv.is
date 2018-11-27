@@ -3,15 +3,8 @@
     "public": "public",
     "ignore": [
       "firebase.json",
-      "package.json",
-      "package-lock.json",
-      "Gruntfile.js",
-      "README.md",
       "**/.*",
-      "**/.git/**",
-      "**/node_modules/**",
-      "**/bower_components/**",
-      "**/press_archives/**"
+      "**/.git/**"
     ],
     "headers": [
       {
