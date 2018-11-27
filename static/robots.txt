@@ -1,7 +1,3 @@
 User-Agent: *
-Disallow: /stuff/
 Disallow: /y2k/
 Disallow: /comp20/
-Disallow: /scrabble/
-Disallow: /candies/
-Disallow: /awesome/
