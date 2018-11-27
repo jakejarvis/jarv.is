@@ -1,0 +1,151 @@
+var go_ossein = {};
+
+(function( $ ) {
+	'use strict';
+
+	go_ossein.init = function() {
+		go_ossein.toggle_nav();
+		go_ossein.maybe_blur_featured_image();
+		go_ossein.window_resize_events();
+		go_ossein.handle_404();
+		go_ossein.search_tweaks();
+		go_ossein.do_gdpr_message();
+	};
+
+	go_ossein.toggle_nav = function() {
+		$( '#nav-toggle' ).click(function() {
+			$( document ).find( 'body' ).toggleClass( 'nav-open' );
+		});
+	}
+	
+	go_ossein.do_gdpr_message = function() {
+		$('header .subscribe-form input').focus( function() {
+			$( 'header .subscribe-form .gdpr-message' ).show();
+		});
+		
+		$('header .subscribe-form input').blur( function() {
+			$( 'header .subscribe-form .gdpr-message' ).hide();
+		});
+	}
+
+	go_ossein.resize_actions = function( do_ads ) {
+		do_ads = typeof do_ads !== 'undefined' ? do_ads : true;
+		
+		go_ossein.maybe_blur_featured_image();
+		go_ossein.position_cta();
+		
+		if ( true === do_ads ) {
+			go_ossein.check_ads();
+		}
+	}
+
+	go_ossein.maybe_blur_featured_image = function() {
+		var featuredImage = $('.featured-image img');
+
+		if ( ! featuredImage.length ) {
+			return false;
+		}
+
+		var blurThreshold = 0.3; // image stretch 30% wider than natural width
+		var currentSrcImage = new Image();
+		currentSrcImage.src = featuredImage[0].currentSrc ? featuredImage[0].currentSrc : featuredImage[0].src;
+
+		var imagePixelation = 1.0 - currentSrcImage.width / featuredImage.width();
+
+		if ( imagePixelation >= blurThreshold
+			&& $( document ).width() > 640 ) {
+			featuredImage.addClass( 'glass' );
+		} else {
+			featuredImage.removeClass( 'glass' );
+		}
+	}
+
+	go_ossein.check_ads = function() {
+		go_ads.define_ads( go_ads.$ads, true );
+	}
+
+	go_ossein.position_cta = function() {
+		var $cta = $( 'aside.cta' );
+		var $article = $( 'article' );
+		var $entry = $( '.entry-content' );
+		var $column = $( '.column' );
+		var $topics = $( 'section.topics .articles' );
+		var $analysts = $( 'section.analysts .articles' );
+
+		// Only do this if we're in a case where the CTA is floated
+		// Which only happens when the article or .entry-content elements are floated
+		if (
+			   ( undefined === $article.css( 'float' )  || 'none' == $article.css( 'float' ) )
+			&& ( undefined === $entry.css( 'float' )    || 'none' == $entry.css( 'float' ) )
+			&& ( undefined === $column.css( 'float' )   || 'none' == $column.css( 'float' ) )
+			&& ( undefined === $topics.css( 'display' ) || 'block' == $topics.css( 'display' ) )
+			&& ( undefined === $analysts.css( 'display' ) || 'block' == $analysts.css( 'display' ) )
+		) {
+			$cta.removeAttr( 'style' );
+
+			return;
+		}
+
+		var offset   = 0;
+		var elements = 0;
+
+		var $ad = $( '#ad-a-container');
+		var $sponsored = $( 'aside.sponsored' );
+		var $registration = $( 'aside.registration' );
+		var $page_title = $( 'h1.page-title' );
+
+		if ( $page_title.length ) {
+			offset = offset + $page_title.outerHeight( true );
+		}
+
+		// If the ad is there it's 250px high though it won't have value at the time of rendering so we had code it
+		if ( $ad.length ) {
+			offset = offset + 250;
+			elements++;
+		}
+
+		if ( $sponsored.length ) {
+			offset = offset + $sponsored.outerHeight( true );
+		}
+
+		if ( $registration.length ) {
+			offset = offset + $registration.outerHeight( true );
+		}
+
+		console.log( offset );
+
+		$cta.css( 'position', 'absolute' );
+		$cta.css( 'right', '0' );
+		$cta.css( 'top', 'calc(' + offset + 'px + ' + elements + 'em)' );
+	}
+
+	go_ossein.window_resize_events = function() {
+		go_ossein.resize_actions( false );
+		$( window ).resize( $.debounce( 250, go_ossein.resize_actions ) );
+	}
+
+	go_ossein.handle_404 = function() {
+		var $404_page = $( 'body.error404' );
+
+		if ( ! $404_page.length ) {
+			return false;
+		}
+
+		$404_page.find( '#404-search' ).submit(function( event ) {
+			event.preventDefault();
+
+			go_ossein_gcse.$input.val( $( this ).find( 'input' ).val() );
+			go_ossein_gcse.$form.trigger( 'submit' );
+		});
+	}
+
+	go_ossein.search_tweaks = function() {
+		$( '#acs_filter_type_field option[value="post"]' ).text( 'Article' );
+		$( '#acs_filter_type_field option[value="go-alexa-briefing"]' ).text( 'AI Minute' );
+		$( '#acs_filter_type_field option[value="go-report"]' ).text( 'Report' );
+	}
+
+	$( function() {
+		go_ossein.init();
+	});
+})( jQuery );

@@ -1,0 +1,99 @@
+(function( $ ) {
+	'use strict';
+
+	go_ads.init = function() {
+		this.$ads = $( '.go-ad' );
+
+		go_ads.debug = true;
+
+		// Set up DFP targeting, and enable services. For all ads that have been defined, display them.
+		googletag.cmd.push( function() {
+			if ( 'object' === typeof go_ads.dfp_targeting ) {
+				$.each( go_ads.dfp_targeting, function( key, values ) {
+					googletag.pubads().setTargeting( key, values );
+					if ( go_ads.debug ) {
+						console.log( 'go-ads setTargeting', key, values );
+					}
+				});
+			}
+
+			//googletag.pubads().setForceSafeFrame(true);
+			googletag.pubads().enableSingleRequest();
+			googletag.enableServices();
+
+			if ( go_ads.debug ) {
+				console.log( 'go-ads enabling services' );
+			}//end if
+		});
+
+		// let's define some ad slots
+		//setTimeout( go_ads.define_ads, 1500, go_ads.$ads, true );
+		go_ads.define_ads( go_ads.$ads, true );
+	};
+
+	/**
+	 * defines ads
+	 */
+	go_ads.define_ads = function( $ads, do_display ) {
+		$ads.each(function() {
+			go_ads.define_slot( $( this ), do_display );
+		});
+	};
+
+	/**
+	 * defines an ad with googletag and optionally displays them
+	 */
+	go_ads.define_slot = function( $ad, do_display ) {
+		var $ad_container = $ad.find( '.ad-container' );
+		var ad_slot = $ad_container.data( 'ad-slot' ) || '';
+		var div_id = $ad_container.attr( 'id' );
+
+		// if the ad-container has a div child, it has already been enabled and displayed. bail.
+		if ( $ad_container.find( 'div' ).length ) {
+			return;
+		}//end if
+
+		if ( ! ad_slot || ! $ad.is( ':visible' ) ) {
+			return;
+		}//end if
+
+		var dfp = $ad_container.data( 'ad-dfp' );
+		var dimensions = [ $ad_container.data( 'ad-width' ), $ad_container.data( 'ad-height' ) ];
+
+		// Define the slot if the ad is visible
+		if ( $ad.is( ':visible' ) ) {
+			googletag.cmd.push( function() {
+				// Find out if the slot has already been defined
+				var slot_defined = false;
+
+				if ( 'undefined' !== typeof googletag.getSlots ) {
+					$.each( googletag.getSlots(), function( key, values ) {
+						if ( values.G === dfp ) {
+							slot_defined = true;
+						}
+					} );
+				}
+
+				// If the slot has been defined we won't do the work
+				if ( false === slot_defined ) {
+					googletag.defineSlot( dfp, dimensions, div_id ).addService( googletag.pubads() );
+					//googletag.defineSlot( dfp, dimensions, div_id ).setForceSafeFrame(true).addService( googletag.pubads() );
+					go_ads.defined_slots.push( ad_slot );
+
+					if ( go_ads.debug ) {
+						console.log( 'blargh!' );
+						console.log( 'go-ads defining slot: ' + ad_slot, dfp, dimensions, div_id );
+					}//end if
+
+					if ( do_display ) {
+						googletag.display( div_id );
+					}//end if
+				}
+			});
+		}//end if
+	};
+
+	$( function() {
+		go_ads.init();
+	});
+})( jQuery );

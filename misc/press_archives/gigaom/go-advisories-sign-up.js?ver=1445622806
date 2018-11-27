@@ -1,0 +1,90 @@
+if ( 'undefined' === typeof go_advisories_sign_up ) {
+	var go_advisories_sign_up = {};
+}//end if
+
+(function( $ ) {
+	'use strict';
+
+	// Start me up!
+	go_advisories_sign_up.init = function() {
+		// cache input
+		var $email_input = $( 'input[name="go-subscriptions[email]"]' );
+		this.$submit = $( '.subscribe button[type="submit"]' );
+
+		// our callbacks
+		$(document).on( 'submit', '.subscribe', function( e ) {
+			e.preventDefault();
+			go_advisories_sign_up.$submit.addClass('disabled');
+		});
+
+		$(document).on( 'keydown', '.subscribe input', function( e ) {
+			go_advisories_sign_up.$submit.removeClass('disabled');
+		});
+
+		$(document).on( 'change', '.subscribe select', function( e ) {
+			go_advisories_sign_up.$submit.removeClass('disabled');
+		});
+
+		$(document).on( 'click', '#go-subscriptions-signup .button', function( e ) {
+			e.preventDefault();
+			$('#go-subscriptions-signup').submit();
+		});
+
+		$(document).on( 'blur', 'input[name="go-subscriptions[email]"]', function( e ) {
+			// is the user attempting to sign up with a consumer email service's domain?
+			e.preventDefault();
+			var $email = $email_input.val();
+
+			if ( $email.length === 0 ) {
+				return;
+			}
+			if ( go_advisories_sign_up.check_for_commercial_email_domain( $email ) ) {
+				var msg = 'You can only invite team members from the same email domain as the account you are creating. ' +
+					go_advisories_sign_up.get_email_domain( $email ) +
+					' is a consumer email address. Are you sure you do not want to use your company email address?';
+				$( document.getElementById( 'email-domain-alert-msg' ) ).text( msg );
+				$( document.getElementById( 'email-domain-alert' ) ).bumpdown();
+				$( document.getElementById( 'email-domain-alert' ) ).click();
+			}
+		});
+	};//END go_advisories_sign_up.init
+
+	// extract domain from email address string
+	go_advisories_sign_up.get_email_domain = function( address ) {
+		var emailParts = address.split('@');
+		// There must be exactly 2 parts
+		return 'undefined' !== typeof emailParts[1] ? emailParts[1] : null;
+	}; //END go_advisories_sign_up.get_email_domain
+
+	// check if the user wants sign up for an advisory using a commercial email service
+	go_advisories_sign_up.check_for_commercial_email_domain = function( email ) {
+		if ( typeof email !== 'string' || email.indexOf('@') === -1 ) {
+			return false;
+		}
+
+		var domain = this.get_email_domain( email );
+		if ( ! domain ) {
+			return false;
+		}
+
+		// get list from localized data:
+		var domains = go_advisories_sign_up_settings.warn_email_domains;
+		if ( 'undefined' === typeof domains ) {
+			return false;
+		}
+
+		var found = false;
+		domains.forEach( function( item ) {
+			if ( domain === item ) {
+				found = true;
+			}
+		});
+
+		return found;
+	}; //END go_advisories_sign_up.check_for_commercial_email_domain
+
+	$( function() {
+		go_advisories_sign_up.init();
+	});
+
+})( jQuery );
