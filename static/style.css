@@ -212,7 +212,7 @@ div#home {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 10%;
+  padding: 8%;
 }
 
 img#me {
@@ -279,24 +279,6 @@ a#boston:hover {
   border-color: #008349;
 }
 
-a#y2k {
-  color: #ffcd47;
-}
-a#y2k:hover {
-  border-color: #ffcd47;
-}
-
-span#shh {
-  color: #cccccc;
-}
-
-span#fairy {
-  color: #fd5da8;
-}
-span#fairy:hover {
-  cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMiIgc3R5bGU9ImZvbnQtc2l6ZToxNnB4Ij48dGV4dCB5PSIxOCI+8J+nmjwvdGV4dD48L3N2Zz4=), default !important;
-}
-
 a#javascript {
   color: #f48024;
 }
@@ -358,6 +340,47 @@ a#ruby {
 }
 a#ruby:hover {
   border-color: #d34135;
+}
+
+a#infosec {
+  color: #00b81a;
+}
+a#infosec:hover {
+  border-color: #00b81a;
+}
+
+a#serverless {
+  color: #0098ec;
+}
+a#serverless:hover {
+  border-color: #0098ec;
+}
+a#serverless span#shh {
+  color: #a2d9f9;
+}
+
+a#containerization {
+  color: #c48f49;
+}
+a#containerization:hover {
+  border-color: #c48f49;
+}
+
+a#y2k {
+  color: #ffcd47;
+}
+a#y2k:hover {
+  border-color: #ffcd47;
+}
+a#y2k span#shh {
+  color: #cccccc;
+}
+
+span#fairy {
+  color: #fd5da8;
+}
+span#fairy:hover {
+  cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMiIgc3R5bGU9ImZvbnQtc2l6ZToxNnB4Ij48dGV4dCB5PSIxOCI+8J+nmjwvdGV4dD48L3N2Zz4=), default !important;
 }
 
 a#github {
@@ -456,27 +479,6 @@ a#pluralsight {
 }
 a#pluralsight:hover {
   border-color: #e80c87;
-}
-
-a#infosec {
-  color: #ed1c24;
-}
-a#infosec:hover {
-  border-color: #ed1c24;
-}
-
-a#serverless {
-  color: #ff9900;
-}
-a#serverless:hover {
-  border-color: #ff9900;
-}
-
-a#containerization {
-  color: #c48f49;
-}
-a#containerization:hover {
-  border-color: #c48f49;
 }
 
 a#resume {
