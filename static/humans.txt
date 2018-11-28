@@ -25,15 +25,15 @@
 # TEAM
 
     Jake Jarvis - @jakejarvis
-    jakejarvis <<at>> gmail
+    jake@jarv.is
 
 # TECHNOLOGY COLOPHON
 
     Hugo
-    Fastly CDN (via Firebase Hosting)
-    Google Analytics
+    Fastly CDN (via Google Firebase)
+    Matomo Analytics
     Let's Encrypt SSL
 
 # VIEW SOURCE
 
-    https://github.com/jakejarvis/jakejarvis.com
+    https://git.jarv.is/jake/jarv.is
