@@ -207,24 +207,6 @@ body {
   line-height: 1.5;
 }
 
-div#home {
-  display: table-cell;
-  vertical-align: middle;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 8%;
-}
-
-img#me {
-  float: right;
-  margin: 0 0 12px 12px;
-  padding: 4px;
-  border: 1px solid #dddddd;
-  width: 140px;
-  height: 140px;
-}
-
 a {
   text-decoration: none;
   border-bottom: 1px dashed transparent;
@@ -234,19 +216,38 @@ a {
   -o-transition: border-color 0.2s linear;
 }
 
+div#home {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 8%;
+}
+
+div#home img#me {
+  float: right;
+  margin: 0 0 12px 12px;
+  padding: 4px;
+  border: 1px solid #dddddd;
+  width: 140px;
+  height: 140px;
+}
+
 div#home h1 {
   margin: 0 0 20px 0;
-  font-size: 150%;
+  font-size: 1.5em;
   line-height: 1;
 }
 
 div#home h2 {
   margin: 20px 0;
-  font-size: 120%;
+  font-size: 1.2em;
 }
 
 div#home p {
   margin: 20px 0;
+  font-size: 1em;
 }
 
 div#home sup {
@@ -264,279 +265,318 @@ div#home sup {
     height: 80px;
   }
 
-  h1 {
+  div#home h1 {
     font-size: 130%;
   }
 
-  h2 {
+  div#home h2 {
     font-size: 100%;
+  }
+
+  div#home div#footer div#panda {
+    display: none;
+  }
+
+  div#home div#footer div#blog, div#home div#footer div#copyright {
+    width: 50% !important;
+    font-size: 0.75em !important;
+    line-height: 1.5em !important;
   }
 }
 
-a#boston {
+div#home a#boston {
   color: #008349;
 }
-a#boston:hover {
+div#home a#boston:hover {
   border-color: #008349;
 }
 
-a#javascript {
+div#home a#javascript {
   color: #f48024;
 }
-a#javascript:hover {
+div#home a#javascript:hover {
   border-color: #f48024;
 }
 
-a#node {
+div#home a#node {
   color: #6fbc4e;
 }
-a#node:hover {
+div#home a#node:hover {
   border-color: #6fbc4e;
 }
 
-a#react {
+div#home a#react {
   color: #61dafb;
 }
-a#react:hover {
+div#home a#react:hover {
   border-color: #61dafb;
 }
 
-a#angular {
+div#home a#angular {
   color: #c3002f;
 }
-a#angular:hover {
+div#home a#angular:hover {
   border-color: #c3002f;
 }
 
-a#java {
+div#home a#java {
   color: #ab6311;
 }
-a#java:hover {
+div#home a#java:hover {
   border-color: #ab6311;
 }
 
-a#cpp {
+div#home a#cpp {
   color: #865fc5;
 }
-a#cpp:hover {
+div#home a#cpp:hover {
   border-color: #865fc5;
 }
 
-a#python {
+div#home a#python {
   color: #f3bb12;
 }
-a#python:hover {
+div#home a#python:hover {
   border-color: #f3bb12;
 }
 
-a#php {
+div#home a#php {
   color: #8892bf;
 }
-a#php:hover {
+div#home a#php:hover {
   border-color: #8892bf;
 }
 
-a#ruby {
+div#home a#ruby {
   color: #d34135;
 }
-a#ruby:hover {
+div#home a#ruby:hover {
   border-color: #d34135;
 }
 
-a#infosec {
+div#home a#infosec {
   color: #00b81a;
 }
-a#infosec:hover {
+div#home a#infosec:hover {
   border-color: #00b81a;
 }
 
-a#server {
+div#home a#server {
   color: #0098ec;
 }
-a#server:hover {
+div#home a#server:hover {
   border-color: #0098ec;
 }
-a#server span#less {
+div#home a#server span#less {
   color: #87cef7;
 }
 
-a#devops {
+div#home a#devops {
   color: #ff6200;
 }
-a#devops:hover {
+div#home a#devops:hover {
   border-color: #ff6200;
 }
 
-a#containerization {
+div#home a#containerization {
   color: #c48f49;
 }
-a#containerization:hover {
+div#home a#containerization:hover {
   border-color: #c48f49;
 }
 
-a#y2k {
+div#home a#y2k {
   color: #ffa900;
 }
-a#y2k:hover {
+div#home a#y2k:hover {
   border-color: #ffa900;
 }
-a#y2k span#shh {
+div#home a#y2k span#shh {
   color: #aaaaaa;
 }
 
-span#fairy {
+div#home span#fairy {
   color: #fd5da8;
 }
-span#fairy:hover {
+div#home span#fairy:hover {
   cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMiIgc3R5bGU9ImZvbnQtc2l6ZToxNnB4Ij48dGV4dCB5PSIxOCI+8J+nmjwvdGV4dD48L3N2Zz4=), default !important;
 }
 
-a#github {
+div#home a#github {
   color: #7290a4;
 }
-a#github:hover {
+div#home a#github:hover {
   border-color: #7290a4;
 }
 
-a#linkedin {
+div#home a#linkedin {
   color: #0073b1;
 }
-a#linkedin:hover {
+div#home a#linkedin:hover {
   border-color: #0073b1;
 }
 
-a#facebook {
+div#home a#facebook {
   color: #4267b2;
 }
-a#facebook:hover {
+div#home a#facebook:hover {
   border-color: #4267b2;
 }
 
-a.twitter {
+div#home a.twitter {
   color: #00acee;
 }
-a.twitter:hover {
+div#home a.twitter:hover {
   border-color: #00acee;
 }
 
-a#instagram {
+div#home a#instagram {
   color: #a37754;
 }
-a#instagram:hover {
+div#home a#instagram:hover {
   border-color: #a37754;
 }
 
-a#news-1 {
+div#home a#news-1 {
   color: #ff1b1b;
 }
-a#news-1:hover {
+div#home a#news-1:hover {
   border-color: #ff1b1b;
 }
 
-a#news-2 {
+div#home a#news-2 {
   color: #f78200;
 }
-a#news-2:hover {
+div#home a#news-2:hover {
   border-color: #f78200;
 }
 
-a#news-3 {
+div#home a#news-3 {
   color: #ffc30c;
 }
-a#news-3:hover {
+div#home a#news-3:hover {
   border-color: #ffc30c;
 }
 
-a#news-4 {
+div#home a#news-4 {
   color: #5ebd3e;
 }
-a#news-4:hover {
+div#home a#news-4:hover {
   border-color: #5ebd3e;
 }
 
-a#news-5 {
+div#home a#news-5 {
   color: #009cdf;
 }
-a#news-5:hover {
+div#home a#news-5:hover {
   border-color: #009cdf;
 }
 
-a#news-6 {
+div#home a#news-6 {
   color: #3e49bb;
 }
-a#news-6:hover {
+div#home a#news-6:hover {
   border-color: #3e49bb;
 }
 
-a#news-7 {
+div#home a#news-7 {
   color: #973999;
 }
-a#news-7:hover {
+div#home a#news-7:hover {
   border-color: #973999;
 }
 
-a#udacity {
+div#home a#udacity {
   color: #02b3e4;
 }
-a#udacity:hover {
+div#home a#udacity:hover {
   border-color: #02b3e4;
 }
 
-a#pluralsight {
+div#home a#pluralsight {
   color: #e80c87;
 }
-a#pluralsight:hover {
+div#home a#pluralsight:hover {
   border-color: #e80c87;
 }
 
-a#resume {
+div#home a#resume {
   color: #d54b3d;
 }
-a#resume:hover {
+div#home a#resume:hover {
   border-color: #d54b3d;
 }
 
-a#email {
+div#home a#email {
   color: #de0c0c;
 }
-a#email:hover {
+div#home a#email:hover {
   border-color: #de0c0c;
 }
 
-a#pgp {
+div#home a#pgp {
   color: #999999;
   margin: 0 4px;
 }
-a#pgp:hover {
+div#home a#pgp:hover {
   border-color: #999999;
 }
 
-a#sms {
+div#home a#sms {
   color: #6fcc01;
 }
-a#sms:hover {
+div#home a#sms:hover {
   border-color: #6fcc01;
 }
 
-p#copyright {
-  margin: 40px 0 0 0;
-  font-size: 12px;
-  color: #999999;
+div#home div#footer {
+  margin: 0;
+  height: 40px;
 }
 
-p#copyright a {
-  color: #999999;
-}
-
-p#copyright a#source {
-  border-bottom: 1px solid #dddddd;
-}
-
-p#copyright span {
-  display: inline-block;
+div#home div#footer div {
+  float: left;
   vertical-align: middle;
+  line-height: 40px;
+}
+
+div#home div#footer div#blog {
+  width: 40%;
+  text-align: left;
+  font-size: 0.75em;
+}
+
+div#home div#footer div#blog a#wordpress {
+  color: #0087be;
+}
+div#home div#footer div#blog a#wordpress:hover {
+  border-color: #0087be;
+}
+
+div#home div#footer div#panda {
+  width: 20%;
+  text-align: center;
+  font-size: 1em;
+}
+
+div#home div#footer div#panda span {
+  text-align: center;
   width: 12px;
-  margin: 0 4px;
+}
+
+div#home div#footer div#copyright {
+  width: 40%;
+  font-size: 0.5em;
+  color: #999999;
+  text-align: right;
+}
+
+div#home div#footer div#copyright a {
+  color: #999999;
+}
+
+div#home div#footer div#copyright a#source {
+  border-bottom: 1px solid #dddddd;
 }
 
 @keyframes wave {
@@ -549,7 +589,7 @@ p#copyright span {
   100% { transform: rotate(  0.0deg); }
 }
 
-h1 span#wave {
+div#home h1 span#wave {
   display: inline-block;
   margin-left: 2px;
   animation-name: wave;
