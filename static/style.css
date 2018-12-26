@@ -367,8 +367,9 @@ div#home a#server {
 div#home a#server:hover {
   border-color: #0098ec;
 }
-div#home a#server span#less {
+div#home a#server span#serverless {
   color: #87cef7;
+  margin-left: 0.06em;
 }
 
 div#home a#devops {
