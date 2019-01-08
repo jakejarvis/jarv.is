@@ -4,8 +4,11 @@ title = "Jake Jarvis"
 
 disableHugoGeneratorInject = true
 
-disableKinds = ["taxonomy", "taxonomyTerm", "sitemap", "RSS"]
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 
 [taxonomies]
   tag = ""
   category = ""
+
+[sitemap]
+  filename = "sitemap.xml"
