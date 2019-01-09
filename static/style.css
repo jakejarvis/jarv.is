@@ -319,6 +319,13 @@ div#home a#angular:hover {
   border-color: #c3002f;
 }
 
+div#home a#vue {
+  color: #41b883;
+}
+div#home a#vue:hover {
+  border-color: #41b883;
+}
+
 div#home a#java {
   color: #ab6311;
 }
