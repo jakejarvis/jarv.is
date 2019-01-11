@@ -277,10 +277,22 @@ div#home sup {
     display: none;
   }
 
-  div#home div#footer div#blog, div#home div#footer div#copyright {
+  div#home div#footer div#blog, div#home div#footer div#info {
     width: 50% !important;
+    line-height: 20px !important;
+  }
+
+  div#home div#footer div#blog {
     font-size: 0.75em !important;
-    line-height: 1.5em !important;
+  }
+
+  div#home div#footer div#info {
+    font-size: 0.6em !important;
+  }
+
+  div#home div#footer div#info span#copyright::after {
+    content: "\A";
+    white-space: pre;
   }
 }
 
@@ -546,6 +558,7 @@ div#home div#footer div {
   float: left;
   vertical-align: middle;
   line-height: 40px;
+  height: 100%;
 }
 
 div#home div#footer div#blog {
@@ -572,18 +585,18 @@ div#home div#footer div#panda span {
   width: 12px;
 }
 
-div#home div#footer div#copyright {
+div#home div#footer div#info {
   width: 40%;
   font-size: 0.5em;
   color: #999999;
   text-align: right;
 }
 
-div#home div#footer div#copyright a {
+div#home div#footer div#info a {
   color: #999999;
 }
 
-div#home div#footer div#copyright a#source {
+div#home div#footer div#info a#source {
   border-bottom: 1px solid #dddddd;
 }
 
