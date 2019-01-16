@@ -502,20 +502,6 @@ div#home a#news-7:hover {
   border-color: #973999;
 }
 
-div#home a#udacity {
-  color: #02b3e4;
-}
-div#home a#udacity:hover {
-  border-color: #02b3e4;
-}
-
-div#home a#pluralsight {
-  color: #e80c87;
-}
-div#home a#pluralsight:hover {
-  border-color: #e80c87;
-}
-
 div#home a#resume {
   color: #d54b3d;
 }
