@@ -32,7 +32,7 @@ Author: Jean Francois Buisson
 
 <BR><BR>
 
-<A href="http://www.javafile.com/games/pacman/pacman.zip"><B>Download the Script</B></A></P>
+<A href="#"><B>Download the Script</B></A></P>
 
 </DIV>	
 		
