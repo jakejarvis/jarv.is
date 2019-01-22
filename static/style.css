@@ -204,7 +204,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 24px;
-  line-height: 1.5;
+  line-height: 1.5em;
 }
 
 a {
@@ -257,20 +257,31 @@ div#home sup {
 
 @media screen and (max-width: 800px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   div#home img#me {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
+    padding: 2px;
   }
 
   div#home h1 {
-    font-size: 130%;
+    font-size: 1.35em;
   }
 
   div#home h2 {
-    font-size: 100%;
+    font-size: 1.1em;
+    line-height: 1.4em;
+  }
+
+  div#home p {
+    font-size: 1.1em;
+    line-height: 1.5em;
+  }
+
+  div#home span#wave {
+    font-size: 16px;
   }
 
   div#home div#footer div#panda {
