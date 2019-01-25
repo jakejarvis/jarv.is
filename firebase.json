@@ -22,12 +22,16 @@
             "value": "nosniff"
           },
           {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000; includeSubDomains; preload"
+          },
+          {
             "key": "Expect-CT",
             "value": "max-age=0, report-uri=https://jarvis.report-uri.com/r/d/ct/reportOnly"
           },
           {
             "key": "Cache-Control",
-            "value": "max-age=3600"
+            "value": "max-age=86400, public"
           },
           {
             "key": "X-UA-Compatible",
@@ -39,7 +43,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self' stats.jarv.is www.google-analytics.com ssl.google-analytics.com ajax.googleapis.com 'sha256-KhRmfxEAAaZsUM+7gtG8pxaii136UceZCbgie95aRd0=' 'sha256-C84Lc+r0cDvAfbbr1KHi0s1jt0nzfAWH5+bmB/2Ph8s=' 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com; frame-src 'self' www.youtube.com player.vimeo.com drive.google.com www.scribd.com; connect-src 'self' jarvis.report-uri.com stats.jarv.is www.google-analytics.com ssl.google-analytics.com; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
+            "value": "default-src 'self'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src 'self'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
           },
           {
             "key": "Referrer-Policy",
@@ -56,20 +60,20 @@
         ]
       },
       {
-        "source": "**/*.@(css|js)",
+        "source": "**/*.@(css|js|pdf)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=86400"
+            "value": "max-age=86400, public"
           }
         ]
       },
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|ico|pdf|mov|mp4)",
+        "source": "**/*.@(jpg|jpeg|gif|png|ico|mov|mp4)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=604800"
+            "value": "max-age=2628000, public"
           }
         ]
       },
@@ -78,7 +82,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=2628000"
+            "value": "max-age=31536000, public"
           }
         ]
       },
@@ -87,7 +91,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=0"
+            "value": "max-age=0, no-cache, no-store"
           },
           {
             "key": "Content-Type",
