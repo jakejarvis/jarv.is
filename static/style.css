@@ -29,192 +29,14 @@
 }
 
 
-/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
-
-html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-}
-
-h1 {
-  font-size: 2em;
-  margin: .67em 0;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
-
-pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-a {
-  background-color: transparent;
-}
-
-abbr[title] {
-  border-bottom: 0;
-  text-decoration: underline;
-  text-decoration: underline dotted;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-img {
-  border-style: none;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-}
-
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-}
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-fieldset {
-  padding: .35em .75em .625em;
-}
-
-legend {
-  box-sizing: border-box;
-  color: inherit;
-  display: table;
-  max-width: 100%;
-  padding: 0;
-  white-space: normal;
-}
-
-progress {
-  vertical-align: baseline;
-}
-
-textarea {
-  overflow: auto;
-}
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
-}
-
-details {
-  display: block;
-}
-
-summary {
-  display: list-item;
-}
-
-template {
-  display: none;
-}
-
-[hidden] {
-  display: none;
-}
-
-
-/*! JJ CSS */
+/*! Main Styles */
 
 body {
   display: table;
   width: 100%;
   height: 100%;
-  color: #1a1a1a;
+  margin: 0;
+  color: #000000;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 24px;
@@ -222,12 +44,10 @@ body {
 }
 
 a {
+  background-color: transparent;
   text-decoration: none;
   border-bottom: 1px dashed transparent;
   transition: border-color 0.2s linear;
-  -moz-transition: border-color 0.2s linear;
-  -webkit-transition: border-color 0.2s linear;
-  -o-transition: border-color 0.2s linear;
 }
 
 div#home {
@@ -251,7 +71,7 @@ div#home img#me {
 div#home h1 {
   margin: 0 0 20px 0;
   font-size: 1.5em;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1em;
   letter-spacing: -0.01em;
 }
@@ -259,7 +79,7 @@ div#home h1 {
 div#home h2 {
   margin: 20px 0;
   font-size: 1.2em;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.4em;
   letter-spacing: -0.01em;
 }
@@ -270,9 +90,16 @@ div#home p {
 }
 
 div#home sup {
+  top: -0.5em;
+  font-size: 0.5em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
   vertical-align: middle;
-  font-size: 50%;
 }
+
+
+/*! Responsive Awesomeness */
 
 @media screen and (max-width: 800px) {
   body {
@@ -322,6 +149,9 @@ div#home sup {
     white-space: pre;
   }
 }
+
+
+/* Colorful Links */
 
 div#home a#boston {
   color: #008349;
@@ -548,11 +378,12 @@ div#home a#email:hover {
 }
 
 div#home a#pgp {
-  color: #999999;
-  margin: 0 4px;
+  color: #777777;
+  margin-left: 4px;
+  margin-right: 2px;
 }
 div#home a#pgp:hover {
-  border-color: #999999;
+  border-color: #777777;
 }
 
 div#home a#sms {
@@ -561,6 +392,9 @@ div#home a#sms {
 div#home a#sms:hover {
   border-color: #6fcc01;
 }
+
+
+/*! Footer */
 
 div#home div#footer {
   margin: 0;
@@ -612,6 +446,9 @@ div#home div#footer div#info a {
 div#home div#footer div#info a#source {
   border-bottom: 1px solid #dddddd;
 }
+
+
+/*! Fancy Waving Hand Emoji (TM) */
 
 @keyframes wave {
     0% { transform: rotate(  0.0deg); }
