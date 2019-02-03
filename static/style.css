@@ -29,7 +29,7 @@
 }
 
 
-/*! Main Styles */
+/* Main Styles */
 
 body {
   display: table;
@@ -99,7 +99,7 @@ div#home sup {
 }
 
 
-/*! Responsive Awesomeness */
+/* Responsive Awesomeness */
 
 @media screen and (max-width: 800px) {
   body {
@@ -280,10 +280,10 @@ div#home span#fairy:hover {
 }
 
 div#home a#github {
-  color: #7290a4;
+  color: #8d4eff;
 }
 div#home a#github:hover {
-  border-color: #7290a4;
+  border-color: #8d4eff;
 }
 
 div#home a#linkedin {
@@ -312,6 +312,13 @@ div#home a#instagram {
 }
 div#home a#instagram:hover {
   border-color: #a37754;
+}
+
+div#home a#mastodon {
+  color: #6d8ca7;
+}
+div#home a#mastodon:hover {
+  border-color: #6d8ca7;
 }
 
 div#home a#news-1 {
@@ -394,7 +401,7 @@ div#home a#sms:hover {
 }
 
 
-/*! Footer */
+/* Footer */
 
 div#home div#footer {
   margin: 0;
@@ -448,7 +455,7 @@ div#home div#footer div#info a#source {
 }
 
 
-/*! Fancy Waving Hand Emoji (TM) */
+/* Fancy Waving Hand Emoji (TM) */
 
 @keyframes wave {
     0% { transform: rotate(  0.0deg); }
