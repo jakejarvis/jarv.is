@@ -29,7 +29,7 @@
 }
 
 
-/* Main Styles */
+/*! JJ CSS */
 
 body {
   display: table;
@@ -47,7 +47,7 @@ a {
   background-color: transparent;
   text-decoration: none;
   border-bottom: 1px dashed transparent;
-  transition: border-color 0.2s linear;
+  transition: border-color 0.15s linear;
 }
 
 div#home {
@@ -151,13 +151,13 @@ div#home sup {
 }
 
 
-/* Colorful Links */
+/* Colo[u]rful Links */
 
 div#home a#boston {
-  color: #008349;
+  color: #fb4d42;
 }
 div#home a#boston:hover {
-  border-color: #008349;
+  border-color: #fb4d42;
 }
 
 div#home a#javascript {
@@ -172,6 +172,20 @@ div#home a#node {
 }
 div#home a#node:hover {
   border-color: #6fbc4e;
+}
+
+div#home a#express {
+  color: #259dff;
+}
+div#home a#express:hover {
+  border-color: #259dff;
+}
+
+div#home a#mongo {
+  color: #13aa52;
+}
+div#home a#mongo:hover {
+  border-color: #13aa52;
 }
 
 div#home a#react {
@@ -189,10 +203,10 @@ div#home a#angular:hover {
 }
 
 div#home a#vue {
-  color: #41b883;
+  color: #486491;
 }
 div#home a#vue:hover {
-  border-color: #41b883;
+  border-color: #486491;
 }
 
 div#home a#java {
@@ -245,7 +259,7 @@ div#home a#server:hover {
 }
 div#home a#server span#serverless {
   color: #87cef7;
-  margin-left: 0.06em;
+  padding-left: 0.06em;
 }
 
 div#home a#devops {
@@ -386,8 +400,8 @@ div#home a#email:hover {
 
 div#home a#pgp {
   color: #777777;
-  margin-left: 4px;
-  margin-right: 2px;
+  margin-left: -2px;
+  margin-right: 1px;
 }
 div#home a#pgp:hover {
   border-color: #777777;
