@@ -9,7 +9,12 @@
     "redirects": [
       {
         "source": "/powncer.mov",
-        "destination": "/powncer.mp4",
+        "destination": "/leo.mp4",
+        "type": 301
+      },
+      {
+        "source": "/powncer.mp4",
+        "destination": "/leo.mp4",
         "type": 301
       }
     ],
