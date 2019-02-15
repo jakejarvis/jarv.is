@@ -31,18 +31,22 @@ deploy:
     - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --cache-control "max-age=86400, public" --metadata-directive "REPLACE"
 
     # set certain content-types manually because S3 sucks at guessing
-    - aws s3 cp --exclude "*" --include "*.ico" --content-type="image/x-icon" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.ico" --content-type="image/x-icon" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.svg" --content-type="image/svg+xml" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.ttf" --content-type="font/ttf" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.otf" --content-type="font/otf" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.eot" --content-type="application/vnd.ms-fontobject" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.woff" --content-type="font/woff" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
     - aws s3 cp --exclude "*" --include "*.woff2" --content-type="font/woff2" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
-    - aws s3 cp --exclude "*" --include "*.xml" --content-type="text/xml" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
-    - aws s3 cp --exclude "*" --include "*.mp4" --content-type="video/mp4" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
-    - aws s3 cp --exclude "*" --include "*.webm" --content-type="video/webm" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
-    - aws s3 cp --exclude "*" --include "*.docx" --content-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
-    - aws s3 cp --exclude "*" --include "*.pdf" --content-type="application/pdf" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.xml" --content-type="text/xml" --cache-control "max-age=3600, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.mp4" --content-type="video/mp4" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.webm" --content-type="video/webm" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.docx" --content-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --exclude "*" --include "*.pdf" --content-type="application/pdf" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+
+    # a few caching improvements
+    - aws s3 cp --exclude "*" --include "*.jpg" --include "*.png" --include "*.gif" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME
+    - aws s3 cp --content-type="text/plain; charset=utf-8" --cache-control "max-age=0, no-cache, no-store" --content-disposition "inline; filename=\"jarvis.asc\"" --metadata-directive="REPLACE" s3://$S3_BUCKET_NAME/jarvis.asc s3://$S3_BUCKET_NAME/jarvis.asc
 
     # invalidate entire CloudFront cache
     - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*";
