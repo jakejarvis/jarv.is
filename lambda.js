@@ -23,10 +23,6 @@ exports.handler = (event, context, callback) => {
       key: 'X-XSS-Protection',
       value: "1; mode=block; report=https://jarvis.report-uri.com/r/d/xss/enforce"
     }];
-//    response.headers['Accept-Ranges'] = [{
-//      key: 'Accept-Ranges',
-//      value: "bytes"
-//    }];
     response.headers['Content-Security-Policy'] = [{
       key: 'Content-Security-Policy',
       value: "default-src 'self'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src 'self'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
