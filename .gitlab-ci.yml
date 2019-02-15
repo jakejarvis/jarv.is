@@ -1,20 +1,34 @@
-image: node:alpine
-
 variables:
   HUGO_VERSION: '0.53' # https://github.com/gohugoio/hugo/releases
   HUGO_SHA: '0e4424c90ce5c7a0c0f7ad24a558dd0c2f1500256023f6e3c0004f57a20ee119' # xxx_Linux-64bit.tar.gz
 
-before_script:
-  - apk update && apk add openssl coreutils
-  - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-  - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
-  - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
-  - npm config set unsafe-perm true
-  - npm install --quiet firebase-tools -g
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: alpine:latest
+  script:
+    - apk update && apk add openssl coreutils
+    - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
+    - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
+    - rm -rf public
+    - hugo
+  artifacts:
+    paths:
+    - public
 
 deploy:
   stage: deploy
+  image: python:3.6-alpine
+  dependencies:
+    - build
   script:
-  - rm -rf public
-  - hugo
-  - firebase deploy --token $FIREBASE_TOKEN
+    - pip install awscli
+    - aws configure set preview.cloudfront true
+    - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --metadata-directive REPLACE
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*";
+  only:
+    - master
