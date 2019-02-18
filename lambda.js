@@ -37,7 +37,7 @@ exports.handler = (event, context, callback) => {
     }];
     response.headers['Expect-CT'] = [{
       key: 'Expect-CT',
-      value: "max-age=0, report-uri=https://jarvis.report-uri.com/r/d/ct/reportOnly"
+      value: "max-age=0, report-uri=\"https://jarvis.report-uri.com/r/d/ct/reportOnly\""
     }];
 
     delete response.headers['Last-Modified'];

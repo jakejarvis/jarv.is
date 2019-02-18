@@ -30,9 +30,9 @@
 # TECHNOLOGY COLOPHON
 
     Hugo
-    Fastly CDN (via Google Firebase)
+    AWS S3/CloudFront/Lambda
+    GitLab CI
     Matomo Analytics
-    Let's Encrypt SSL
 
 # VIEW SOURCE
 
