@@ -23,9 +23,13 @@ exports.handler = (event, context, callback) => {
       key: 'X-XSS-Protection',
       value: "1; mode=block; report=https://jarvis.report-uri.com/r/d/xss/enforce"
     }];
+//    response.headers['Accept-Ranges'] = [{
+//      key: 'Accept-Ranges',
+//      value: "bytes"
+//    }];
     response.headers['Content-Security-Policy'] = [{
       key: 'Content-Security-Policy',
-      value: "default-src 'self'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src 'self'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
+      value: "default-src 'none'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
     }];
     response.headers['X-DNS-Prefetch-Control'] = [{
       key: 'X-DNS-Prefetch-Control',
@@ -38,6 +42,10 @@ exports.handler = (event, context, callback) => {
     response.headers['Expect-CT'] = [{
       key: 'Expect-CT',
       value: "max-age=0, report-uri=\"https://jarvis.report-uri.com/r/d/ct/reportOnly\""
+    }];
+    response.headers['X-Permitted-Cross-Domain-Policies'] = [{
+      key: 'X-Permitted-Cross-Domain-Policies',
+      value: "none"
     }];
 
     delete response.headers['Last-Modified'];
