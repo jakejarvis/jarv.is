@@ -29,7 +29,7 @@ exports.handler = (event, context, callback) => {
 //    }];
     response.headers['Content-Security-Policy'] = [{
       key: 'Content-Security-Policy',
-      value: "default-src 'none'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
+      value: "default-src 'none'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; form-action 'self'; child-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; object-src 'none'; worker-src 'none'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce"
     }];
     response.headers['X-DNS-Prefetch-Control'] = [{
       key: 'X-DNS-Prefetch-Control',
@@ -46,6 +46,10 @@ exports.handler = (event, context, callback) => {
     response.headers['X-Permitted-Cross-Domain-Policies'] = [{
       key: 'X-Permitted-Cross-Domain-Policies',
       value: "none"
+    }];
+    response.headers['Feature-Policy'] = [{
+      key: 'Feature-Policy',
+      value: "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; sync-xhr 'none'; payment 'none'; usb 'none'; vr 'none'"
     }];
 
     delete response.headers['Last-Modified'];
