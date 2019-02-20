@@ -35,6 +35,10 @@ exports.handler = (event, context, callback) => {
       key: 'Report-To',
       value: "{\"group\":\"default\",\"max_age\":31536000,\"endpoints\":[{\"url\":\"https://jarvis.report-uri.com/a/d/g\"}],\"include_subdomains\":true}"
     }];
+    response.headers['NEL'] = [{
+      key: 'NEL',
+      value: "{\"report_to\":\"default\",\"max_age\":31536000,\"include_subdomains\":true}"
+    }];
     response.headers['X-DNS-Prefetch-Control'] = [{
       key: 'X-DNS-Prefetch-Control',
       value: "off"
