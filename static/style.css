@@ -56,16 +56,16 @@ div#home {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 8%;
+  padding: 6% 8%;
 }
 
 div#home img#me {
   float: right;
-  margin: 0 0 6px 12px;
+  margin: 0 0 20px 20px;
   padding: 4px;
   border: 1px solid #dddddd;
-  width: 135px;
-  height: 135px;
+  width: 160px;
+  height: 160px;
 }
 
 div#home h1 {
@@ -110,7 +110,7 @@ div#home sup {
     width: 70px;
     height: 70px;
     padding: 2px;
-    margin: 0 0 6px 6px;
+    margin: 0 0 10px 10px;
   }
 
   div#home h1 {
@@ -400,7 +400,7 @@ div#home a#email:hover {
 
 div#home a#pgp {
   color: #777777;
-  margin-left: -2px;
+  margin-left: -3px;
   margin-right: 1px;
 }
 div#home a#pgp:hover {
