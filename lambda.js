@@ -33,11 +33,11 @@ exports.handler = (event, context, callback) => {
     }];
     response.headers['Report-To'] = [{
       key: 'Report-To',
-      value: "{\"group\":\"default\",\"max_age\":31536000,\"endpoints\":[{\"url\":\"https://jarvis.report-uri.com/a/d/g\"}],\"include_subdomains\":true}"
+      value: "{\"group\":\"default\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://jarvis.report-uri.com/a/d/g\"}]}"
     }];
     response.headers['NEL'] = [{
       key: 'NEL',
-      value: "{\"report_to\":\"default\",\"max_age\":31536000,\"include_subdomains\":true}"
+      value: "{\"report_to\":\"default\",\"max_age\":604800}"
     }];
     response.headers['X-DNS-Prefetch-Control'] = [{
       key: 'X-DNS-Prefetch-Control',
@@ -49,7 +49,7 @@ exports.handler = (event, context, callback) => {
     }];
     response.headers['Expect-CT'] = [{
       key: 'Expect-CT',
-      value: "max-age=86400, enforce, report-uri=\"https://jarvis.report-uri.com/r/d/ct/enforce\""
+      value: "max-age=604800, enforce, report-uri=\"https://jarvis.report-uri.com/r/d/ct/enforce\""
     }];
     response.headers['X-Permitted-Cross-Domain-Policies'] = [{
       key: 'X-Permitted-Cross-Domain-Policies',
