@@ -29,7 +29,7 @@ exports.handler = (event, context, callback) => {
 //    }];
     response.headers['Content-Security-Policy'] = [{
       key: 'Content-Security-Policy',
-      value: "default-src 'none'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; object-src 'none'; media-src 'self'; base-uri 'none'; form-action 'self'; frame-src 'self'; frame-ancestors 'self'; worker-src 'none'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce; report-to default"
+      value: "default-src 'none'; script-src 'self' stats.jarv.is 'sha256-TLAu2p9kt4LHt+sWwE0cvqq1Ok5LoGzRPrw7+mzhX00='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; object-src 'self'; media-src 'self'; base-uri 'none'; form-action 'self'; frame-src 'self'; frame-ancestors 'self'; worker-src 'none'; connect-src 'self' jarvis.report-uri.com stats.jarv.is; upgrade-insecure-requests; report-uri https://jarvis.report-uri.com/r/d/csp/enforce; report-to default"
     }];
     response.headers['Report-To'] = [{
       key: 'Report-To',
