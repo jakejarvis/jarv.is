@@ -50,7 +50,7 @@ deploy:
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.pdf"   --content-type="application/pdf" --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
 
     # a few caching improvements
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.jpg" --include "*.png" --include "*.gif" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
+    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.css" --include "*.js" --include "*.jpg" --include "*.png" --include "*.gif" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME/jarvis.asc s3://$S3_BUCKET_NAME/jarvis.asc --content-type="text/plain; charset=utf-8" --cache-control "max-age=0, no-cache, no-store" --content-disposition "inline; filename=\"jarvis.asc\"" --metadata-directive="REPLACE"
 
     # invalidate entire CloudFront cache
