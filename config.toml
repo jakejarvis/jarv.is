@@ -2,8 +2,6 @@ baseURL = "https://jarv.is/"
 languageCode = "en-us"
 title = "Jake Jarvis"
 
-disableHugoGeneratorInject = true
-
 disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 
 [taxonomies]
