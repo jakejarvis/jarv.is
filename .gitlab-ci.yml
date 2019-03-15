@@ -5,36 +5,23 @@ variables:
   HUGO_SHA: '0e4424c90ce5c7a0c0f7ad24a558dd0c2f1500256023f6e3c0004f57a20ee119'  # xxx_Linux-64bit.tar.gz
   AWSCLI_VERSION: '1.16.21'  # https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst
 
-stages:
-  - build
-  - deploy
-
 before_script:
+  # update alpine
   - apk update && apk add openssl coreutils
 
-build:
-  stage: build
-  script:
-    # download and install Hugo
-    - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-    - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
-    - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
+  # download and install Hugo
+  - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+  - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
+  - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && cp ./hugo /usr/bin
 
+  # install awscli
+  - pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
+
+deploy: 
+  script:
     # build site
     - rm -rf public
     - hugo
-  artifacts:
-    paths:
-      # send built site to deploy stage
-      - public
-
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  script:
-    # install awscli
-    - pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
     # upload all files
     - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --region us-east-1 --cache-control "max-age=86400, public" --metadata-directive "REPLACE"
@@ -56,5 +43,6 @@ deploy:
     # a few more caching improvements
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.css" --include "*.js" --include "*.jpg" --include "*.png" --include "*.gif" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME/jarvis.asc s3://$S3_BUCKET_NAME/jarvis.asc --content-type="text/plain; charset=utf-8" --cache-control "max-age=0, no-store, no-cache, must-revalidate" --content-disposition "inline; filename=\"jarvis.asc\"" --metadata-directive="REPLACE"
+
   only:
     - master
