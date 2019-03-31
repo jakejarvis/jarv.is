@@ -2,7 +2,10 @@ baseURL = "https://jarv.is/"
 languageCode = "en-us"
 title = "Jake Jarvis"
 
-disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
+canonifyURLs = true
+
+disableHugoGeneratorInject = true   # don't worry, inserted manually :)
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [taxonomies]
   tag = ""
@@ -10,3 +13,10 @@ disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 
 [sitemap]
   filename = "sitemap.xml"
+
+[blackfriday]
+  # hrefTargetBlank = true    # prefer not to use this until noopener option implemented (https://discourse.gohugo.io/t/link-with--target-blank-in-markdown-tipp/7569/10)
+  nofollowLinks = true
+  noreferrerLinks = true
+  plainIDAnchors = false
+

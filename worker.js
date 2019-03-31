@@ -3,7 +3,7 @@ let newHeaders = {
   "Report-To": "{\"group\":\"default\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://jarvis.report-uri.com/a/d/g\"}]}",
   "NEL": "{\"report_to\":\"default\",\"max_age\":604800}",
 //  "Strict-Transport-Security" : "max-age=1000",
-  "X-Xss-Protection": "1; mode=block; report=https://jarvis.report-uri.com/r/d/xss/enforce",
+  "X-XSS-Protection": "1; mode=block; report=https://jarvis.report-uri.com/r/d/xss/enforce",
   "X-Frame-Options": "SAMEORIGIN",
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "same-origin",

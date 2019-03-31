@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div id="single">
+  <div id="info">
+    <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+    <h2 class="headline">
+      {{ .Date.Format "January 2, 2006" }} &middot; {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; {{ .ReadingTime }} minute read
+      <span class="tags">
+      {{ with .Params.tags }}
+        {{ if ge (len .) 1 }}
+          {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span>{{ end }}
+        {{ end }}
+      {{ end }}
+      </span>
+    </h2>
+  </div>
+  {{ if .Site.Params.enableToc }}
+    {{ if .TableOfContents }}
+    <div id="toc">
+      {{ .TableOfContents }}
+    </div>
+    {{ end }}
+  {{ end }}
+  <div id="content">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

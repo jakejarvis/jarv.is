@@ -3,7 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ .Title }}{{ if .IsHome }} &#x1f468;&#x200d;&#x1f4bb;{{ end }}</title>
+    {{ .Hugo.Generator }}
+    <title>{{ .Title }}{{ if .IsHome }} &#x1f468;&#x200d;&#x1f4bb;{{ else }} | Jake Jarvis {{ end }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,8 +33,6 @@
     <link rel="icon" type="image/png" href="{{ "favicon-32.png" | absURL }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ "favicon-16.png" | absURL }}" sizes="16x16">
     <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
-    <link rel="preload" href="{{ "fonts/open-sans-light.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ "fonts/open-sans-regular.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
     <link rel="dns-prefetch" href="https://stats.jarv.is">
     <link rel="stylesheet" href="{{ "style.css" | absURL }}">
     <link rel="author" href="https://plus.google.com/+jakejarvis/posts">

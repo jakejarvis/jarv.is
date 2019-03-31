@@ -1,34 +1,3 @@
-/*! Open Sans Light | Apache License 2.0 | fonts.google.com/specimen/Open+Sans */
-
-@font-face {
-  font-family: "Open Sans";
-  font-display: fallback;
-  font-style: normal;
-  font-weight: 300;
-  src: url("fonts/open-sans-light.eot");
-  src: local("Open Sans Light"), local("OpenSans-Light"),
-       url("fonts/open-sans-light.eot?#iefix") format("embedded-opentype"),
-       url("fonts/open-sans-light.woff2") format("woff2"),
-       url("fonts/open-sans-light.woff") format("woff"),
-       url("fonts/open-sans-light.ttf") format("truetype"),
-       url("fonts/open-sans-light.svg#OpenSans") format("svg");
-}
-
-@font-face {
-  font-family: "Open Sans";
-  font-display: fallback;
-  font-style: normal;
-  font-weight: 400;
-  src: url("fonts/open-sans-regular.eot");
-  src: local("Open Sans Regular"), local("OpenSans-Regular"),
-       url("fonts/open-sans-regular.eot?#iefix") format("embedded-opentype"),
-       url("fonts/open-sans-regular.woff2") format("woff2"),
-       url("fonts/open-sans-regular.woff") format("woff"),
-       url("fonts/open-sans-regular.ttf") format("truetype"),
-       url("fonts/open-sans-regular.svg#OpenSans") format("svg");
-}
-
-
 /*! JJ CSS */
 
 body {
@@ -37,10 +6,16 @@ body {
   height: 100%;
   margin: 0;
   color: #000000;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 200;
   font-size: 24px;
   line-height: 1.5em;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -71,9 +46,8 @@ body#home img#me {
 body#home h1 {
   margin: 0 0 20px 0;
   font-size: 1.5em;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1em;
-  letter-spacing: -0.01em;
 }
 
 body#home h2 {
@@ -81,7 +55,6 @@ body#home h2 {
   font-size: 1.2em;
   font-weight: 400;
   line-height: 1.4em;
-  letter-spacing: -0.01em;
 }
 
 body#home p {
@@ -259,7 +232,6 @@ body#home a#server:hover {
 }
 body#home a#server span#serverless {
   color: #87cef7;
-  padding-left: 0.06em;
 }
 
 body#home a#devops {
@@ -400,8 +372,7 @@ body#home a#email:hover {
 
 body#home a#pgp {
   color: #777777;
-  margin-left: -3px;
-  margin-right: 1px;
+  margin-left: -2px;
 }
 body#home a#pgp:hover {
   border-color: #777777;
@@ -435,10 +406,10 @@ body#home div#footer div#blog {
   font-size: 0.75em;
 }
 
-body#home div#footer div#blog a#wordpress {
+body#home div#footer div#blog a {
   color: #0087be;
 }
-body#home div#footer div#blog a#wordpress:hover {
+body#home div#footer div#blog a:hover {
   border-color: #0087be;
 }
 
@@ -483,9 +454,295 @@ body#home div#footer div#info a#source {
 
 body#home h1 span#wave {
   display: inline-block;
-  margin-left: 2px;
   animation-name: wave;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
 }
+
+
+
+/*! Blog CSS */
+
+body#notes {
+  font-size: 18px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+body#notes, body#notes div#single {
+  width: 700px;
+  max-width: 700px;
+}
+
+body#notes a {
+  color: #0087be;
+  background-color: transparent;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s linear;
+}
+body#notes a:hover {
+  border-color: #0087be;
+}
+
+
+@media screen and (max-width: 800px) {
+  body#notes {
+    padding: 20px;
+  }
+
+  body#notes, body#notes div#single {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  body#notes div#header a#logo img {
+    height: 75px !important;
+    width: 50px !important;
+  }
+
+  body#notes div#footer div#panda {
+    display: none;
+  }
+
+  body#notes div#footer div#copyright, body#notes div#footer div#poweredby {
+    width: 50% !important;
+    line-height: 20px !important;
+  }
+
+  body#notes div#footer div#poweredby a#hugo::after {
+    content: "\A";
+    white-space: pre;
+  }
+
+  body#notes div#content code {
+    white-space: normal;
+  }
+
+  body#notes div.year div.date {
+    width: 25% !important;
+  }
+
+  body#notes div.year div.title {
+    width: 75% !important;
+  }
+}
+
+
+/* Header */
+
+body#notes div#header {
+  font-size: 16px;
+}
+
+body#notes div#header a#home {
+  border: none;
+}
+
+body#notes div#header a#logo {
+  border: none;
+  margin: 40px auto;
+  display: block;
+}
+
+body#notes div#header a#logo img {
+  height: 150px;
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+  border: none;
+}
+
+
+/* Footer */
+
+body#notes div#footer {
+  border-top: 1px solid #cccccc;
+  height: 40px;
+  font-size: 24px;
+  padding-top: 16px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+body#notes div#footer a {
+  color: #777777;
+  border: none;
+}
+
+body#notes div#footer div {
+  float: left;
+  vertical-align: middle;
+  line-height: 40px;
+  height: 100%;
+}
+
+body#notes div#footer div#copyright, body#notes div#footer div#poweredby {
+  width: 40%;
+  font-size: 0.5em;
+  color: #777777;
+}
+
+body#notes div#footer div#copyright {
+  text-align: left;
+}
+
+body#notes div#footer div#poweredby {
+  text-align: right;
+}
+
+body#notes div#footer div#poweredby a#source {
+  border-bottom: 1px solid #dddddd;
+}
+
+body#notes div#footer div#panda {
+  width: 20%;
+  text-align: center;
+  font-size: 1em;
+}
+
+body#notes div#footer div#panda span {
+  text-align: center;
+  width: 12px;
+}
+
+
+/* Posts */
+
+body#notes div#content, body#notes div#content p {
+  line-height: 1.7;
+  object-fit: contain;
+}
+
+body#notes div#content blockquote {
+  border-left: 6px solid #0087be;
+  margin-left: 6px;
+  padding-left: 15px;
+}
+
+body#notes div#single div#info {
+  text-align: center;
+}
+
+body#notes div#single h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #222;
+  font-size: 32px;
+  line-height: 1.4em;
+}
+
+body#notes div#single h1 a {
+  color: #222;
+  border: none;
+}
+
+body#notes div#single h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.5em;
+  color: #111;
+}
+
+body#notes div#single h2.headline {
+  margin: -5px 0 0 0;
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.5em;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+body#notes div#single h2.headline span.tags {
+  color: #777777;
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 1.5em;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  display: block;
+}
+body#notes div#single h2.headline span.tags span.tag {
+  color: #777777;
+  border: none;
+  margin: 0 7px;
+}
+body#notes div#single h2.headline span.tags span.tag a {
+  color: #777777;
+  border: none;
+}
+
+body#notes div#content img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  object-fit: scale-down;
+}
+body#notes div#content img + em {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  color: #555555;
+}
+
+body#notes div#content code {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 1em 1.5em;
+  font-size: 15px;
+  line-height: 1.6;
+  page-break-inside: avoid;
+  border: 1px solid #ddd;
+  border-left: 3px solid #0087be;
+  overflow-x: scroll;
+  display: block;
+  max-width: 100%;
+  object-fit: scale-down;
+}
+
+body#notes div#content hr {
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+}
+
+
+/* Post List */
+
+body#notes div.year ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: block;
+}
+
+body#notes div.year ul li::after {
+
+  content: '';
+  display: block;
+  clear: both;
+}
+
+body#notes div.year ul li:last-child {
+  margin-bottom: 20px;
+}
+
+body#notes div.year ul li+li {
+  padding-top: 20px;
+}
+
+body#notes div.year div.date {
+  float: left;
+  color: #888888;
+  width: 80px;
+  font-weight: 400;
+}
+
+body#notes div.year div.title {
+  float: left;
+  width: 620px;
+}
+
