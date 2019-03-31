@@ -24,7 +24,7 @@ deploy:
     - hugo --gc
 
     # upload all files
-    - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --region us-east-1 --cache-control "max-age=86400, public" --metadata-directive "REPLACE"
+    - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --region us-east-1 --cache-control "max-age=3600, public" --metadata-directive "REPLACE"
 
     # set cache-control and certain content-types manually because S3 sucks at guessing
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.ico"   --content-type="image/x-icon"    --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
