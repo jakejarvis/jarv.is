@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     {{ .Hugo.Generator }}
-    <title>{{ .Title }}{{ if .IsHome }} &#x1f468;&#x200d;&#x1f4bb;{{ else }} | Jake Jarvis {{ end }}</title>
+    <title>{{ .Title }}{{ if not .IsHome }} &ndash; {{ .Site.Title }}{{ end }} &#x1f468;&#x200d;&#x1f4bb;</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
