@@ -1,7 +1,6 @@
 /*! JJ CSS */
 
 body {
-  display: table;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -649,30 +648,27 @@ body#notes div#single h2 {
   color: #111;
 }
 
-body#notes div#single h2.headline {
+body#notes div#single div.meta {
   margin: -5px 0 0 0;
   color: #777777;
   font-size: 13px;
   line-height: 1.5em;
   letter-spacing: 1px;
-  display: inline-block;
 }
 
-body#notes div#single h2.headline span.tags {
-  color: #777777;
+body#notes div#single div.meta div.tags {
   font-size: 13px;
   text-transform: uppercase;
   line-height: 1.5em;
   letter-spacing: 2px;
   margin-top: 5px;
-  display: block;
 }
-body#notes div#single h2.headline span.tags span.tag {
+body#notes div#single div.meta div.tags span.tag {
   color: #777777;
   border: none;
   margin: 0 7px;
 }
-body#notes div#single h2.headline span.tags span.tag a {
+body#notes div#single div.meta div.tags span.tag a {
   color: #777777;
   border: none;
 }
