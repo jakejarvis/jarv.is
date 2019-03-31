@@ -1,4 +1,4 @@
-image: python:3.6-alpine
+image: python:3.7
 
 variables:
   HUGO_VERSION: '0.53'  # https://github.com/gohugoio/hugo/releases
@@ -6,9 +6,6 @@ variables:
   AWSCLI_VERSION: '1.16.21'  # https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst
 
 before_script:
-  # update alpine
-  - apk update && apk add openssl coreutils
-
   # download and install Hugo
   - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
   - echo "${HUGO_SHA}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" | sha256sum -c
@@ -17,7 +14,7 @@ before_script:
   # install awscli
   - pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
-deploy: 
+deploy:
   script:
     # build site
     - rm -rf public
