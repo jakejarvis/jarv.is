@@ -45,11 +45,12 @@ deploy:
     - aws s3 cp s3://$S3_BUCKET_NAME/jarvis.asc s3://$S3_BUCKET_NAME/jarvis.asc --content-type="text/plain; charset=utf-8" --cache-control "max-age=0, no-store, no-cache, must-revalidate" --content-disposition "inline; filename=\"jarvis.asc\"" --metadata-directive="REPLACE"
 
     # purge CloudFlare cache
-    curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache" \
-         -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-         -H "X-Auth-Key: $CLOUDFLARE_KEY" \
-         -H "Content-Type: application/json" \
-         --data '{"purge_everything":true}'
+    - >-
+        curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache"
+             -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}"
+             -H "X-Auth-Key: ${CLOUDFLARE_KEY}"
+             -H "Content-Type: application/json"
+             --data '{"purge_everything":true}'
 
   only:
     - master
