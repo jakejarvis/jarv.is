@@ -487,6 +487,8 @@ body#notes a:hover {
 }
 
 
+/* Responsiveness */
+
 @media screen and (max-width: 800px) {
   body#notes {
     padding: 20px;
@@ -498,7 +500,12 @@ body#notes a:hover {
     box-sizing: border-box;
   }
 
-  body#notes div#header a#logo img {
+  body#notes div#header {
+    margin-top: 0px  !important;
+    margin-bottom: 20px !important;
+  }
+
+  body#notes div#header a#logo img, body#notes div#header a#logo svg {
     height: 75px !important;
     width: 50px !important;
   }
@@ -521,11 +528,11 @@ body#notes a:hover {
     white-space: normal;
   }
 
-  body#notes div.year div.date {
+  body#notes div#archive div.year div.date {
     width: 25% !important;
   }
 
-  body#notes div.year div.title {
+  body#notes div#archive div.year div.title {
     width: 75% !important;
   }
 }
@@ -535,19 +542,23 @@ body#notes a:hover {
 
 body#notes div#header {
   font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-body#notes div#header a#home {
+body#notes div#header a#more {
   border: none;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 body#notes div#header a#logo {
   border: none;
-  margin: 40px auto;
+  margin: 20px auto;
   display: block;
 }
 
-body#notes div#header a#logo img {
+body#notes div#header a#logo img, body#notes div#header a#logo svg {
   height: 150px;
   width: 100px;
   margin: 0 auto;
@@ -609,17 +620,11 @@ body#notes div#footer div#panda span {
 }
 
 
-/* Posts */
+/* Single Post */
 
 body#notes div#content, body#notes div#content p {
   line-height: 1.7;
   object-fit: contain;
-}
-
-body#notes div#content blockquote {
-  border-left: 6px solid #0087be;
-  margin-left: 6px;
-  padding-left: 15px;
 }
 
 body#notes div#single div#info {
@@ -657,7 +662,6 @@ body#notes div#single div.meta {
 }
 
 body#notes div#single div.meta div.tags {
-  font-size: 13px;
   text-transform: uppercase;
   line-height: 1.5em;
   letter-spacing: 2px;
@@ -684,6 +688,13 @@ body#notes div#content img + em {
   text-align: center;
   font-size: 15px;
   color: #555555;
+  margin-top: 5px;
+}
+
+body#notes div#content blockquote {
+  border-left: 6px solid #0087be;
+  margin-left: 6px;
+  padding-left: 15px;
 }
 
 body#notes div#content code {
@@ -708,36 +719,36 @@ body#notes div#content hr {
 }
 
 
-/* Post List */
+/* Archive List */
 
-body#notes div.year ul {
+body#notes div#archive div.year ul {
   list-style-type: none;
   padding-left: 0;
   display: block;
 }
 
-body#notes div.year ul li::after {
+body#notes div#archive div.year ul li::after {
   content: '';
   display: block;
   clear: both;
 }
 
-body#notes div.year ul li:last-child {
+body#notes div#archive div.year ul li:last-child {
   margin-bottom: 20px;
 }
 
-body#notes div.year ul li+li {
+body#notes div#archive div.year ul li+li {
   padding-top: 20px;
 }
 
-body#notes div.year div.date {
+body#notes div#archive div.year div.date {
   float: left;
   color: #888888;
   width: 80px;
   font-weight: 400;
 }
 
-body#notes div.year div.title {
+body#notes div#archive div.year div.title {
   float: left;
   width: 620px;
 }

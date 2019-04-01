@@ -1,4 +1,17 @@
     <div id="header">
-      <a href="{{ .Site.BaseURL }}" id="home" title="Return to Homepage">&laquo; Return Home</a>
-      <a href="{{ "notes/" | absURL }}" id="logo" title="Jake Jarvis's Blog"><img src="{{ "logo.png" | absURL }}" alt="Jake Jarvis's Blog" title="Jake Jarvis's Blog"></a>
+        {{ if eq .Kind "page" }}<a href="{{ "notes/" | absURL }}" id="more" title="More Posts">&laquo; More Posts</a>{{ else }}<a href="{{ .Site.BaseURL }}" id="more" title="Return Home">&laquo; Return Home</a>{{ end }}
+        <a href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144.1">
+          <title>Jake Jarvis</title>
+          <polygon points="57.6 88.7 19.2 110.9 19.2 110.9 38.4 121.9 76.8 99.8 76.8 99.8 57.6 88.7 57.6 88.7" style="fill: #6fbc4e"/>
+          <polygon points="57.6 0 38.4 11.1 38.4 11.1 76.8 33.2 96 22.1 96 22.1 57.6 0 57.6 0" style="fill: #6fbc4e"/>
+          <polygon points="38.4 11.1 38.4 33.3 57.6 44.3 57.6 88.7 76.8 99.8 76.8 33.2 38.4 11.1 38.4 11.1" style="fill: #ffb900"/>
+          <polygon points="57.6 44.2 57.6 44.3 57.6 44.3 57.6 44.2 57.6 44.2" style="fill: #ffb900"/>
+          <polygon points="76.8 33.2 76.8 99.8 76.8 99.8 38.4 121.9 38.4 144.1 96 110.9 96 22.1 76.8 33.2 76.8 33.2" style="fill: #009cdf"/>
+          <polygon points="19.2 66.5 0 77.6 0 77.6 19.2 88.7 38.4 77.6 38.4 77.6 19.2 66.5 19.2 66.5" style="fill: #6fbc4e"/>
+          <polygon points="19.2 110.9 19.2 110.8 19.2 88.7 0 77.6 0 121.9 38.4 144.1 38.4 121.9 19.2 110.9 19.2 110.9" style="fill: #ffb900"/>
+          <polygon points="19.2 110.9 38.4 99.8 38.4 77.6 19.2 88.7 19.2 110.9 19.2 110.9" style="fill: #009cdf"/>
+        </svg>
+      </a>
+     
     </div>

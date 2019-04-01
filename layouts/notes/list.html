@@ -1,4 +1,5 @@
 {{ define "main" }}
+<div id="archive">
 
 {{ range .Data.Pages.GroupByDate "2006" }}
 <div class="year">
@@ -14,4 +15,5 @@
 </div>
 {{ end }}
 
+</div>
 {{ end }}
