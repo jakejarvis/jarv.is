@@ -4,3 +4,30 @@ A:visited {color: Blue}
 A:hover {
 	color: #7CFC00;
 }
+
+
+/* added 2019 */
+
+body#warning {
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px 12px;
+	background-color: #fff8dc;
+	font-size: 13px;
+	font-family: Arial, sans-serif;
+	line-height: 1.5em;
+	border-bottom: 2px solid #e00000;
+	text-align: center;
+}
+body#warning strong {
+	color: #e00000;
+}
+body#warning a {
+  color: #0000ff;
+}
+@media screen and (max-width: 650px) {
+	body#warning {
+	font-size: 11.5px;
+	line-height: 1.2em;
+  }
+}

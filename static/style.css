@@ -462,7 +462,7 @@ body#home h1 span#wave {
 
 
 
-/*! Blog CSS */
+/*! Blog Styles */
 
 body#notes {
   font-size: 18px;
@@ -753,3 +753,42 @@ body#notes div#archive div.year div.title {
   width: 620px;
 }
 
+
+
+/*! Error Styles */
+
+body#error {
+  background: #efefef;
+  color: #5f5f5f;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body#error div#message {
+  background: #ffffff;
+  max-width: 400px;
+  margin: 100px auto 16px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px #e0e0e0, 0 1px 2px #888888;
+}
+body#error div#message h1 {
+  margin: 16px 0;
+  font-size: 22px;
+  font-weight: 300;
+}
+body#error div#message p {
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 140%;
+}
+body#error div#message a {
+  color: #039be5;
+}
+@media (max-width: 600px) {
+  body#error, body#error div#message {
+    background: #ffffff;
+    margin-top: 16px;
+    box-shadow: none;
+  }
+}
