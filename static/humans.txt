@@ -30,7 +30,8 @@
 # TECHNOLOGY COLOPHON
 
     Hugo
-    AWS S3/CloudFront/Lambda
+    Amazon S3
+    CloudFlare Workers
     GitLab CI
     Matomo Analytics
 
