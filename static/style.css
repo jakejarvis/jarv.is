@@ -723,6 +723,22 @@ body#notes div#content hr {
   border: 1px solid #ccc;
 }
 
+body#notes div#content div.embed.video-player {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+body#notes div#content div.embed.video-player iframe.youtube-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 
 /* Archive List */
 
