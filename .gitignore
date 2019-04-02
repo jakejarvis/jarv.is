@@ -11,5 +11,6 @@ yarn.lock
 
 public/
 builds/
+resources/
 
 .DS_Store
