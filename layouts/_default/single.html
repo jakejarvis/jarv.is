@@ -1,31 +1,22 @@
 {{ partial "header.html" . }}
 {{ partial "blog-header.html" . }}
 
-<div id="single">
-  <div id="info">
-    <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-    <div class="meta">
-      {{ .Date.Format "January 2, 2006" }} &middot; {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; {{ .ReadingTime }} minute read
-      <div class="tags">
-      {{ with .Params.tags }}
-        {{ if ge (len .) 1 }}
-          {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
-        {{ end }}
-      {{ end }}
+    <div id="single">
+      <div id="info">
+        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        <div class="meta">
+          {{ .Date.Format "January 2, 2006" }} &middot; {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; {{ .ReadingTime }} minute read
+          <div class="tags">
+          {{ with .Params.tags }}{{ if ge (len .) 1 }}
+            {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
+          {{ end }}{{ end }}
+          </div>
+        </div>
+      </div>
+      <div id="content">
+{{ .Content }}
       </div>
     </div>
-  </div>
-  {{ if .Site.Params.enableToc }}
-    {{ if .TableOfContents }}
-    <div id="toc">
-      {{ .TableOfContents }}
-    </div>
-    {{ end }}
-  {{ end }}
-  <div id="content">
-    {{ .Content }}
-  </div>
-</div>
 
 {{ partial "blog-footer.html" . }}
 {{ partial "footer.html" . }}
