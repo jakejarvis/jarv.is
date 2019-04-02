@@ -1,4 +1,6 @@
-{{ define "main" }}
+{{ partial "header.html" . }}
+{{ partial "blog-header.html" . }}
+
 <div id="single">
   <div id="info">
     <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
@@ -24,4 +26,6 @@
     {{ .Content }}
   </div>
 </div>
-{{ end }}
+
+{{ partial "blog-footer.html" . }}
+{{ partial "footer.html" . }}

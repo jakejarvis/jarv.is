@@ -700,8 +700,13 @@ body#notes div#content blockquote {
 body#notes div#content code {
   font-family: monospace;
   background: #f4f4f4;
+  padding: 0.2em;
+  border: 1px solid #cccccc;
+  font-size: 16px;
+}
+
+body#notes div#content pre code {
   padding: 1em 1.5em;
-  font-size: 15px;
   line-height: 1.6;
   page-break-inside: avoid;
   border: 1px solid #ddd;

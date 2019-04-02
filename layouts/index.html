@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ partial "header.html" . }}
     <div itemscope itemtype="http://schema.org/Person">
       <img itemprop="image" id="me" src="{{ "me.jpg" | absURL }}" alt="Photo of Jake Jarvis" title="Photo of Jake Jarvis">
       <h1>Hi! I'm <span itemprop="name">Jake Jarvis</span>. <span id="wave">&#x1F44B;<!--&#x1F3FB;--></span></h1>
@@ -24,4 +24,4 @@
         <div id="info"><span id="copyright"><a href="https://web.archive.org/web/20010501000000*/jakejarvis.com" title="View Old Versions on Wayback Machine" id="wayback" target="_blank" rel="noopener noreferrer nofollow">&copy; 2001 &ndash;</a> {{ now.Format "2006" }} <a itemprop="url" rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis">Jake Jarvis</a>.</span> <a href="https://git.jarv.is/jake/jarv.is" title="View Source Code Repository" id="source" target="_blank" rel="noopener">View source.</a></div>
       </div>
     </div>
-{{ end }}
+{{ partial "footer.html" . }}

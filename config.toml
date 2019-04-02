@@ -4,6 +4,7 @@ title = "Jake Jarvis"
 
 canonifyURLs = true
 
+disableFastRender = true
 disableHugoGeneratorInject = true   # don't worry, inserted manually :)
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
