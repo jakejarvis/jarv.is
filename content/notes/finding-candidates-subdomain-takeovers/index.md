@@ -31,7 +31,7 @@ The most common services eligible for takeovers of abandoned subdomains are the 
 - Pantheon.io
 - Shopify
 - Tumblr
-- [...and many more.](https://github.com/EdOverflow/can-i-take-over-xyz)
+- [...and many more.](https://github.com/EdOverflow/can-i-take-over-xyz#all-entries)
 
 On [my GitHub profile](https://github.com/jakejarvis/), you'll find a Go-based tool named [`subtake`](https://github.com/jakejarvis/subtake) (based on [`subjack`](https://github.com/haccer/subjack)).
 
@@ -47,7 +47,7 @@ One of their free monthly datasets is called [Forward DNS](https://opendata.rapi
 ./sonar.sh 2019-03-30-1553989414-fdns_cname.json.gz all_cnames.txt
 ```
 
-This new text file contains *both active and abandoned* subdomains -- we still need to narrow it down to the takeover candidates, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed](https://golang.org/doc/install#install) and run the following:
+This new text file contains *both active and abandoned* subdomains -- we still need to narrow it down to the takeover candidates, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
 
 ```
 go get github.com/jakejarvis/subtake
