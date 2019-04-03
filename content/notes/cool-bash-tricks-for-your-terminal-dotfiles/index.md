@@ -3,12 +3,14 @@ title: "Cool Bash Tricks for Your Terminal's \"Dotfiles\""
 date: 2018-12-10 20:01:50+00:00
 description: "Bashfiles usually contain shortcuts compatible with Bash terminals to automate convoluted commands. Here's a summary of the ones I find most helpful that you can add to your own .bash_profile or .bashrc file."
 tags:
-- Dotfiles
-- Hacks
-- macOS
-- Programming
-- Technology
-- Terminal
+  - Dotfiles
+  - Hacks
+  - macOS
+  - Programming
+  - Technology
+  - Terminal
+aliases:
+  - /2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles/
 draft: false
 ---
 

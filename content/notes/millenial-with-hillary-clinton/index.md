@@ -3,10 +3,12 @@ title: "Why This Millennial Is With Hillary Clinton Now  — and Why We All Ne
 date: 2016-02-29 00:10:26+00:00
 description: "I am a 24-year-old \"millennial\" and I passionately support Hillary Clinton for the 45th President of the United States. Yes, we exist."
 tags:
-- 2016 Presidential Election
-- Bernie Sanders
-- Hillary Clinton
-- Politics
+  - 2016 Presidential Election
+  - Bernie Sanders
+  - Hillary Clinton
+  - Politics
+aliases:
+  - /2016/02/28/millenial-with-hillary-clinton/
 draft: false
 ---
 
