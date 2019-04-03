@@ -7,8 +7,8 @@ tags:
   - Hacks
   - macOS
   - Programming
-  - Technology
   - Terminal
+  - Tutorial
 aliases:
   - /2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles/
 draft: false
