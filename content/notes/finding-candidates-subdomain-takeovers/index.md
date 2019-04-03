@@ -1,6 +1,6 @@
 ---
 title: "Finding Candidates for Subdomain Takeovers"
-date: 2019-04-02 16:01:00+00:00
+date: 2019-04-03T11:19:48-04:00
 description: "A subdomain takeover occurs when a subdomain points to a shared hosting service that is abandoned by its owner, leaving the account available to claim for yourself."
 tags:
   - Pentesting
