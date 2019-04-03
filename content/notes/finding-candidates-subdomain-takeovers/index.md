@@ -8,7 +8,7 @@ tags:
   - Subdomain Takeover
   - Bug Bounty
   - Tutorial
-draft: true
+draft: false
 ---
 
 A **subdomain takeover** occurs when a subdomain (like *example*.jarv.is) points to a shared hosting service that is abandoned by its owner, leaving the account available to claim for yourself.
