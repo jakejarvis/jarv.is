@@ -5,7 +5,10 @@
       <div id="info">
         <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
         <div class="meta">
-          {{ .Date.Format "January 2, 2006" }} &middot; {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; {{ .ReadingTime }} minute read
+          by <a rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis">Jake Jarvis</a> &middot; 
+          {{ .Date.Format "January 2, 2006" }} &middot; 
+          <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
+          {{ .ReadingTime }} minute read
           <div class="tags">
           {{ with .Params.tags }}{{ if ge (len .) 1 }}
             {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}

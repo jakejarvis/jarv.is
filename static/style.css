@@ -661,6 +661,11 @@ body#notes div#single div.meta {
   letter-spacing: 1px;
 }
 
+body#notes div#single div.meta a {
+  color: #777777;
+  border: none;
+}
+
 body#notes div#single div.meta div.tags {
   text-transform: uppercase;
   line-height: 1.5em;
