@@ -15,7 +15,7 @@ A **subdomain takeover** occurs when a subdomain (like *example*.jarv.is) points
 
 Not only are takeovers a fun way to dip your toes into [penetration testing](https://www.cloudflare.com/learning/security/glossary/what-is-penetration-testing/), but they can also be incredibly lucrative thanks to [bug bounty programs](https://en.wikipedia.org/wiki/Bug_bounty_program) on services like [HackerOne](https://hackerone.com/hacktivity?order_direction=DESC&order_field=popular&filter=type%3Aall&querystring=subdomain%20takeover) and [Bugcrowd](https://bugcrowd.com/programs), where corporations pay pentesters for their discoveries.
 
-![Huge rewards for subdomain takeovers on HackerOne](images/hackerone.png)
+![Huge rewards for subdomain takeovers on HackerOne](images/hackerone-2.png)
 *Huge rewards for subdomain takeovers on [HackerOne](https://hackerone.com/hacktivity?order_direction=DESC&order_field=popular&filter=type%3Aall&querystring=subdomain%20takeover)*
 
 For a deep dive on the implications of takeovers, which can be a pretty serious vector of attack for malicious actors to obtain information from users of the targeted company, [Patrik Hudak](https://twitter.com/0xpatrik) wrote a [great post here](https://0xpatrik.com/subdomain-takeover/). Definitely take some time to skim through it and come back here when you're ready to hunt for a potential takeover yourself.
@@ -75,6 +75,6 @@ Since you have this luxury of time, it becomes ***extremely important*** that yo
 
 ---
 
-I have several more [improvements](https://github.com/jakejarvis/subtake) I want to make to `subtake`, but still feel free to [make a suggestion](https://github.com/jakejarvis/subtake/issues) and/or contribute to it in the meantime.
+I have several more [improvements](https://github.com/jakejarvis/subtake#to-do) I want to make to `subtake` (integrating the `sonar.sh` script into the main program, an all-in-one automated Docker image, a self-updating list of services, etc.) but still feel free to [make a suggestion](https://github.com/jakejarvis/subtake/issues) and/or contribute to the repository in the meantime.
 
 Happy hunting, fellow penetrators! 😉
