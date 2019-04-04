@@ -9,7 +9,7 @@ body {
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 200;
+  font-weight: 300;
   font-size: 24px;
   line-height: 1.5em;
 }
@@ -407,10 +407,10 @@ body#home div#footer div#blog {
 }
 
 body#home div#footer div#blog a {
-  color: #0087be;
+  color: #0077a7;
 }
 body#home div#footer div#blog a:hover {
-  border-color: #0087be;
+  border-color: #0077a7;
 }
 
 body#home div#footer div#panda {
@@ -427,12 +427,12 @@ body#home div#footer div#panda span {
 body#home div#footer div#info {
   width: 40%;
   font-size: 0.5em;
-  color: #777777;
+  color: #666666;
   text-align: right;
 }
 
 body#home div#footer div#info a {
-  color: #777777;
+  color: #666666;
 }
 
 body#home div#footer div#info a#source {
@@ -466,6 +466,7 @@ body#home h1 span#wave {
 
 body#notes {
   font-size: 18px;
+  font-weight: 400;
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -476,14 +477,14 @@ body#notes, body#notes div#single {
 }
 
 body#notes a {
-  color: #0087be;
+  color: #0077a7;
   background-color: transparent;
   text-decoration: none;
   border-bottom: 1px dashed transparent;
   transition: border-color 0.15s linear;
 }
 body#notes a:hover {
-  border-color: #0087be;
+  border-color: #0077a7;
 }
 
 
@@ -510,6 +511,10 @@ body#notes a:hover {
     width: 50px !important;
   }
 
+  body#notes div#footer {
+    margin-bottom: 30px !important;
+  }
+
   body#notes div#footer div#panda {
     display: none;
   }
@@ -517,6 +522,8 @@ body#notes a:hover {
   body#notes div#footer div#copyright, body#notes div#footer div#poweredby {
     width: 50% !important;
     line-height: 20px !important;
+    font-size: 14px !important;
+    line-height: 1.8em !important;
   }
 
   body#notes div#footer div#poweredby a#hugo::after {
@@ -579,7 +586,7 @@ body#notes div#footer {
 }
 
 body#notes div#footer a {
-  color: #777777;
+  color: #666666;
   border: none;
 }
 
@@ -593,7 +600,7 @@ body#notes div#footer div {
 body#notes div#footer div#copyright, body#notes div#footer div#poweredby {
   width: 40%;
   font-size: 0.5em;
-  color: #777777;
+  color: #666666;
 }
 
 body#notes div#footer div#copyright {
@@ -655,14 +662,14 @@ body#notes div#single h2 {
 
 body#notes div#single div.meta {
   margin: -5px 0 0 0;
-  color: #777777;
+  color: #666666;
   font-size: 13px;
   line-height: 1.5em;
   letter-spacing: 1px;
 }
 
 body#notes div#single div.meta a {
-  color: #777777;
+  color: #666666;
   border: none;
 }
 
@@ -673,12 +680,12 @@ body#notes div#single div.meta div.tags {
   margin-top: 5px;
 }
 body#notes div#single div.meta div.tags span.tag {
-  color: #777777;
+  color: #666666;
   border: none;
   margin: 0 7px;
 }
 body#notes div#single div.meta div.tags span.tag a {
-  color: #777777;
+  color: #666666;
   border: none;
 }
 
@@ -769,7 +776,7 @@ body#notes div#archive div.year ul li+li {
 
 body#notes div#archive div.year div.date {
   float: left;
-  color: #888888;
+  color: #666666;
   width: 80px;
   font-weight: 400;
 }
