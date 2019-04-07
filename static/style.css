@@ -763,9 +763,13 @@ body#notes div#single div#commento {
   margin-top: 20px;
 }
 
-body#notes div#single div#commento .commento-name {
+body#notes div#single div#commento a.commento-name {
   max-width: none !important;
   border: none;
+}
+
+body#notes div#single div#commento div.commento-logged-container {
+  display: block !important;
 }
 
 body#notes div#single div#commento div#commento-footer {
