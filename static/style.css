@@ -468,12 +468,8 @@ body#notes {
   font-size: 18px;
   font-weight: 400;
   margin: 0 auto;
-  padding: 20px 0;
-}
-
-body#notes, body#notes div#single {
-  width: 700px;
-  max-width: 700px;
+  padding: 20px 10%;
+  max-width: 1150px;
 }
 
 body#notes a {
@@ -492,7 +488,7 @@ body#notes a:hover {
 
 @media screen and (max-width: 800px) {
   body#notes {
-    padding: 20px;
+    padding: 20px !important;
   }
 
   body#notes, body#notes div#single {
@@ -537,14 +533,6 @@ body#notes a:hover {
 
   body#notes div#content code {
     white-space: normal;
-  }
-
-  body#notes div#archive div.year div.date {
-    width: 25% !important;
-  }
-
-  body#notes div#archive div.year div.title {
-    width: 75% !important;
   }
 }
 
@@ -803,13 +791,13 @@ body#notes div#archive div.year ul li+li {
 body#notes div#archive div.year div.date {
   float: left;
   color: #666666;
-  width: 80px;
+  width: 100px;
   font-weight: 400;
 }
 
 body#notes div#archive div.year div.title {
   float: left;
-  width: 620px;
+  width: calc(100% - 100px);
 }
 
 
