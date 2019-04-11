@@ -1,6 +1,6 @@
 ---
 title: "Finding Candidates for Subdomain Takeovers"
-date: 2019-04-03T11:19:48-04:00
+date: 2019-04-10T11:19:48-04:00
 description: "A subdomain takeover occurs when a subdomain points to a shared hosting account that is abandoned by its owner, leaving the endpoint available to claim for yourself."
 tags:
   - Pentesting
@@ -43,25 +43,25 @@ Conveniently, [Rapid7](https://www.rapid7.com/) publishes a monthly list for us 
 
 > [Project Sonar](https://opendata.rapid7.com/about/) is a security research project by Rapid7 that conducts internet-wide surveys across different services and protocols to gain insights into global exposure to common vulnerabilities. The data collected is available to the public in an effort to enable security research.
 
-One of their free monthly datasets is called [Forward DNS](https://opendata.rapid7.com/sonar.fdns_v2/), where you'll find `.json` files named `xxxx-fdns_cname.json.gz`. Within the [`subtake`](https://github.com/jakejarvis/subtake) repository, there's an automated script named [`sonar.sh`](https://github.com/jakejarvis/subtake/blob/master/sonar.sh), which downloads the dataset for you and outputs a simple text file of CNAMEs pointed to any of the services listed above. Once you've [cloned the `subtake` repository](https://github.com/jakejarvis/subtake) and grabbed the full name of the most recent `fdns_cname.json.gz` file, usage of the script is as follows:
+One of their free monthly datasets is called [Forward DNS](https://opendata.rapid7.com/sonar.fdns_v2/), where you'll find `.json` files named `xxxx-fdns_cname.json.gz`. Within the [`subtake`](https://github.com/jakejarvis/subtake) repository, there's an automated script named [`sonar.sh`](https://github.com/jakejarvis/subtake/blob/master/sonar.sh), which downloads the dataset for you and outputs a simple text file of CNAMEs pointed to any of the services listed above. Once you've [cloned the `subtake` repository](https://github.com/jakejarvis/subtake) and grabbed the timestamp part of the filename (the string that precedes `-fdns_cname.json.gz`), usage of the script is as follows:
 
 ```
-./sonar.sh 2019-03-30-1553989414-fdns_cname.json.gz all_cnames.txt
+./sonar.sh 2019-03-30-1553989414 sonar_output.txt
 ```
 
-This new text file contains *both active and abandoned* subdomains -- we still need to narrow it down to the takeover candidates, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
+This new text file contains *both active and abandoned* subdomains pointing to any of the services listed above -- we still need to narrow it down to the takeover candidates by attempting to actually resolve each of them, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
 
 ```
 go get github.com/jakejarvis/subtake
 ```
 
-For a detailed description of the different options you can play around with, see the [full readme on GitHub](https://github.com/jakejarvis/subtake#usage) -- but here's a simple example command that uses 50 threads to take the CNAMEs listed in `all_cnames.txt` and outputs potentially vulnerable subdomains to `vulnerable.txt`.
+For a detailed description of the different options you can play around with, see the [full readme on GitHub](https://github.com/jakejarvis/subtake#usage) -- but here's a simple example command that uses 50 threads to take the CNAMEs listed in `sonar_output.txt` and outputs potentially vulnerable subdomains to `vulnerable.txt`.
 
 ```
-subtake -f all_cnames.txt -t 50 -ssl -a -o vulnerable.txt
+subtake -f sonar_output.txt -c fingerprints.json -t 50 -ssl -a -o vulnerable.txt
 ```
 
-This could take quite a while -- up to a day, depending on your CPU and bandwidth -- so I usually run it on a VM in the cloud and use [Linux's `screen` command](https://www.howtoforge.com/linux_screen) to keep it running and check in periodically. There will also be many unavoidable false positives that you'll need to check yourself by trying to claim the abandoned name on the corresponding service's portal, which is why I keep using the term *potential* takeovers. 
+This could take quite a while -- up to a day, depending on your CPU, memory, and bandwidth -- so I usually run it on a VM in the cloud and use [Linux's `screen` command](https://www.howtoforge.com/linux_screen) to keep it running and check in periodically. There will also be many unavoidable false positives that you'll need to check yourself by trying to claim the abandoned name on the corresponding service's portal, which is why I keep using the term *potential* takeovers. 
 
 I also have a collection of root domains of companies offering bounties through [HackerOne](https://hackerone.com/directory/) or [Bugcrowd](https://bugcrowd.com/programs) at a [different GitHub repository](https://github.com/jakejarvis/bounty-domains/). Using the [`grep`-friendly text file](https://github.com/jakejarvis/bounty-domains/blob/master/grep.txt), it's easy to use [`grep`](http://man7.org/linux/man-pages/man1/grep.1.html) to narrow down your `vulnerable.txt` list even more:
 
@@ -109,6 +109,6 @@ No self-promotional links or redirects, no examples of XSS/cookie hijacking to b
 
 ---
 
-I have several more [improvements](https://github.com/jakejarvis/subtake#to-do) I want to make to `subtake` (like integrating the `sonar.sh` script into the main program, an all-in-one automated Docker image, a self-updating list of service fingerprints, etc.) but still feel free to [make a suggestion](https://github.com/jakejarvis/subtake/issues) and/or contribute to the repository in the meantime.
+I have several more [improvements](https://github.com/jakejarvis/subtake#to-do) I want to make to `subtake` (like integrating the `sonar.sh` script into the main Go executable, polishing the [all-in-one automated Docker image](https://hub.docker.com/r/jakejarvis/subtake), a self-updating list of service fingerprints, etc.) but still feel free to [make a suggestion](https://github.com/jakejarvis/subtake/issues) and/or contribute to the repository in the meantime.
 
 Happy hunting, fellow penetrators! 😉
