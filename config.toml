@@ -8,6 +8,8 @@ disableFastRender = true
 disableHugoGeneratorInject = true   # don't worry, inserted manually :)
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
+enableGitInfo = true
+
 [taxonomies]
   tag = ""
   category = ""

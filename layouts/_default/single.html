@@ -1,26 +1,26 @@
 {{ partial "header.html" . }}
 {{ partial "blog-header.html" . }}
-
-    <div id="single">
-      <div id="info">
-        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-        <div class="meta">
-          by <a rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis">Jake Jarvis</a> &middot; 
-          {{ .Date.Format "January 2, 2006" }} &middot; 
-          <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
-          {{ .ReadingTime }} minute read
-          <div class="tags">
-          {{ with .Params.tags }}{{ if ge (len .) 1 }}
-            {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
-          {{ end }}{{ end }}
+    <main id="single">
+      <article>
+        <div id="info">
+          <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+          <div class="meta">
+            by <a rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis">Jake Jarvis</a> &middot; 
+            <a href="{{ .Permalink }}">{{ .Date.Format "January 2, 2006" }}</a> &middot; 
+            <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
+            {{ .ReadingTime }} minute read
+            <div class="tags">
+            {{ with .Params.tags }}{{ if ge (len .) 1 }}
+              {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
+            {{ end }}{{ end }}
+            </div>
           </div>
         </div>
-      </div>
-      <div id="content">
+        <div id="content">
 {{ .Content }}
-      </div>
-      <div id="commento"></div>
-    </div>
-
+        </div>
+        <div id="commento"></div>
+      </article>
+    </main>
 {{ partial "blog-footer.html" . }}
 {{ partial "footer.html" . }}

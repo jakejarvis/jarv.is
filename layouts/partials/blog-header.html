@@ -1,4 +1,4 @@
-    <div id="header">
+    <header>
       {{ if eq .Kind "page" }}<a href="{{ "notes/" | absURL }}" id="more" title="More Posts">&laquo; More Posts</a>{{ else }}<a href="{{ .Site.BaseURL }}" id="more" title="Return Home">&laquo; Return Home</a>{{ end }}
       <a href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144.1">
@@ -13,4 +13,4 @@
           <polygon fill="#009cdf" points="19.2 110.9 38.4 99.8 38.4 77.6 19.2 88.7 19.2 110.9 19.2 110.9"/>
         </svg>
       </a>
-    </div>
+    </header>
