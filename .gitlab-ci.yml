@@ -7,7 +7,7 @@ variables:
 
 before_script:
   # update alpine
-  - apk update && apk add openssl curl coreutils
+  - apk update && apk add openssl curl coreutils git
 
   # download and install Hugo
   - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
