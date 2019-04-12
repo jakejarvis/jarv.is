@@ -16,5 +16,4 @@
   </body>
 </html>
 
-{{ printf "<!-- Build Date: %s-->" hugo.BuildDate | safeHTML }}
-{{ printf "<!-- Commit Hash: %s-->" .Hugo.CommitHash | safeHTML }}
+{{ printf "<!-- %s -->" hugo.CommitHash | safeHTML }}
