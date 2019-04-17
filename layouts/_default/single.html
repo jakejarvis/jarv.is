@@ -1,22 +1,22 @@
 {{ partial "header.html" . }}
 {{ partial "blog-header.html" . }}
     <main id="single">
-      <article>
+      <article itemscope itemtype="http://schema.org/Article" class="h-entry">
         <div id="info">
-          <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+          <h1 itemprop="name" class="p-name"><a href="{{ .Permalink }}" itemprop="url" class="u-url">{{ .Title }}</a></h1>
           <div class="meta">
-            by <a rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis">Jake Jarvis</a> &middot; 
-            <a href="{{ .Permalink }}">{{ .Date.Format "January 2, 2006" }}</a> &middot; 
+            by <span itemprop="author" itemscope itemtype="http://schema.org/Person" class="p-author"><a itemprop="url" rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis" class="h-card"><span itemprop="name" class="p-name">Jake Jarvis</span></a></span> &middot; 
+            <a href="{{ .Permalink }}"><time itemprop="datePublished" content="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="dt-published">{{ .Date.Format "January 2, 2006" }}</time></a> &middot; 
             <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
             {{ .ReadingTime }} minute read
             <div class="tags">
             {{ with .Params.tags }}{{ if ge (len .) 1 }}
-              {{ range . }}<span class="tag"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
+              {{ range . }}<span class="tag p-category"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span> {{ end }}
             {{ end }}{{ end }}
             </div>
           </div>
         </div>
-        <div id="content">
+        <div id="content" itemprop="articleBody" class="e-content">
 {{ .Content }}
         </div>
         <div id="commento"></div>

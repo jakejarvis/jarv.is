@@ -74,6 +74,11 @@ body#home sup {
   vertical-align: middle;
 }
 
+body#home h1 a {
+  color: inherit;
+  border: none;
+}
+
 
 /* Responsive Awesomeness */
 
