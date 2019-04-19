@@ -853,6 +853,7 @@ body#error {
   margin: 0;
   padding: 0;
 }
+
 body#error div#message {
   background: #fff;
   max-width: 400px;
@@ -874,6 +875,7 @@ body#error div#message p {
 body#error div#message a {
   color: #039be5;
 }
+
 @media (max-width: 600px) {
   body#error, body#error div#message {
     background: #fff;
