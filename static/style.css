@@ -485,7 +485,7 @@ body#home footer div#info a#source {
 }
 
 
-/* Fancy Waving Hand Emoji (TM) - https://jarv.is/notes/css-waving-hand-emoji/ */
+/* Fancy Waving Hand Emoji (TM) - https://jarv.is/notes/css-waving-hand-emoji/ */
 
 @keyframes wave {
     0% { transform: rotate(  0.0deg); }
@@ -839,7 +839,7 @@ body#notes main#archive section.year div.title {
 }
 
 
-/*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
+/*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 
 /* Error */ div.highlight span.err { color: #960050; }
 /* Keyword */ div.highlight span.k { color: #03748a }
