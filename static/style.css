@@ -485,7 +485,7 @@ body#home footer div#info a#source {
 }
 
 
-/* Fancy Waving Hand Emoji (TM) – https://jarv.is/notes/css-waving-hand-emoji/ */
+/* Fancy Waving Hand Emoji (TM) - https://jarv.is/notes/css-waving-hand-emoji/ */
 
 @keyframes wave {
     0% { transform: rotate(  0.0deg); }
@@ -839,76 +839,76 @@ body#notes main#archive section.year div.title {
 }
 
 
-/* Syntax Highlighting – modified from Monokai Light https://pypi.org/project/pygments-style-monokailight/ */
+/*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 
-/* Error */ .highlight .err { color: #960050; }
-/* Keyword */ .highlight .k { color: #03748a }
-/* KeywordConstant */ .highlight .kc { color: #03748a }
-/* KeywordDeclaration */ .highlight .kd { color: #03748a }
-/* KeywordNamespace */ .highlight .kn { color: #e8003d }
-/* KeywordPseudo */ .highlight .kp { color: #03748a }
-/* KeywordReserved */ .highlight .kr { color: #03748a }
-/* KeywordType */ .highlight .kt { color: #03748a }
-/* Name */ .highlight .n { color: #111111 }
-/* NameAttribute */ .highlight .na { color: #489c44 }
-/* NameBuiltin */ .highlight .nb { color: #111111 }
-/* NameBuiltinPseudo */ .highlight .bp { color: #111111 }
-/* NameClass */ .highlight .nc { color: #489c44 }
-/* NameConstant */ .highlight .no { color: #03748a }
-/* NameDecorator */ .highlight .nd { color: #489c44 }
-/* NameEntity */ .highlight .ni { color: #111111 }
-/* NameException */ .highlight .ne { color: #489c44 }
-/* NameFunction */ .highlight .nf { color: #489c44 }
-/* NameFunctionMagic */ .highlight .fm { color: #111111 }
-/* NameLabel */ .highlight .nl { color: #111111 }
-/* NameNamespace */ .highlight .nn { color: #111111 }
-/* NameOther */ .highlight .nx { color: #489c44 }
-/* NameProperty */ .highlight .py { color: #111111 }
-/* NameTag */ .highlight .nt { color: #e8003d }
-/* NameVariable */ .highlight .nv { color: #111111 }
-/* NameVariableClass */ .highlight .vc { color: #111111 }
-/* NameVariableGlobal */ .highlight .vg { color: #111111 }
-/* NameVariableInstance */ .highlight .vi { color: #111111 }
-/* NameVariableMagic */ .highlight .vm { color: #111111 }
-/* Literal */ .highlight .l { color: #8145ec }
-/* LiteralDate */ .highlight .ld { color: #c17005 }
-/* LiteralString */ .highlight .s { color: #c17005 }
-/* LiteralStringAffix */ .highlight .sa { color: #c17005 }
-/* LiteralStringBacktick */ .highlight .sb { color: #c17005 }
-/* LiteralStringChar */ .highlight .sc { color: #c17005 }
-/* LiteralStringDelimiter */ .highlight .dl { color: #c17005 }
-/* LiteralStringDoc */ .highlight .sd { color: #c17005 }
-/* LiteralStringDouble */ .highlight .s2 { color: #c17005 }
-/* LiteralStringEscape */ .highlight .se { color: #8045ff }
-/* LiteralStringHeredoc */ .highlight .sh { color: #c17005 }
-/* LiteralStringInterpol */ .highlight .si { color: #c17005 }
-/* LiteralStringOther */ .highlight .sx { color: #c17005 }
-/* LiteralStringRegex */ .highlight .sr { color: #c17005 }
-/* LiteralStringSingle */ .highlight .s1 { color: #c17005 }
-/* LiteralStringSymbol */ .highlight .ss { color: #c17005 }
-/* LiteralNumber */ .highlight .m { color: #8145ec }
-/* LiteralNumberBin */ .highlight .mb { color: #8145ec }
-/* LiteralNumberFloat */ .highlight .mf { color: #8145ec }
-/* LiteralNumberHex */ .highlight .mh { color: #8145ec }
-/* LiteralNumberInteger */ .highlight .mi { color: #8145ec }
-/* LiteralNumberIntegerLong */ .highlight .il { color: #8145ec }
-/* LiteralNumberOct */ .highlight .mo { color: #8145ec }
-/* Operator */ .highlight .o { color: #e8003d }
-/* OperatorWord */ .highlight .ow { color: #e8003d }
-/* Punctuation */ .highlight .p { color: #111111 }
-/* Comment */ .highlight .c { color: #6b6859 }
-/* CommentHashbang */ .highlight .ch { color: #6b6859 }
-/* CommentMultiline */ .highlight .cm { color: #6b6859 }
-/* CommentSingle */ .highlight .c1 { color: #6b6859 }
-/* CommentSpecial */ .highlight .cs { color: #6b6859 }
-/* CommentPreproc */ .highlight .cp { color: #6b6859 }
-/* CommentPreprocFile */ .highlight .cpf { color: #6b6859 }
-/* GenericEmph */ .highlight .ge { font-style: italic }
-/* GenericStrong */ .highlight .gs { font-weight: bold }
+/* Error */ div.highlight span.err { color: #960050; }
+/* Keyword */ div.highlight span.k { color: #03748a }
+/* KeywordConstant */ div.highlight span.kc { color: #03748a }
+/* KeywordDeclaration */ div.highlight span.kd { color: #03748a }
+/* KeywordNamespace */ div.highlight span.kn { color: #e8003d }
+/* KeywordPseudo */ div.highlight span.kp { color: #03748a }
+/* KeywordReserved */ div.highlight span.kr { color: #03748a }
+/* KeywordType */ div.highlight span.kt { color: #03748a }
+/* Name */ div.highlight span.n { color: #111111 }
+/* NameAttribute */ div.highlight span.na { color: #489c44 }
+/* NameBuiltin */ div.highlight span.nb { color: #111111 }
+/* NameBuiltinPseudo */ div.highlight span.bp { color: #111111 }
+/* NameClass */ div.highlight span.nc { color: #489c44 }
+/* NameConstant */ div.highlight span.no { color: #03748a }
+/* NameDecorator */ div.highlight span.nd { color: #489c44 }
+/* NameEntity */ div.highlight span.ni { color: #111111 }
+/* NameException */ div.highlight span.ne { color: #489c44 }
+/* NameFunction */ div.highlight span.nf { color: #489c44 }
+/* NameFunctionMagic */ div.highlight span.fm { color: #111111 }
+/* NameLabel */ div.highlight span.nl { color: #111111 }
+/* NameNamespace */ div.highlight span.nn { color: #111111 }
+/* NameOther */ div.highlight span.nx { color: #489c44 }
+/* NameProperty */ div.highlight span.py { color: #111111 }
+/* NameTag */ div.highlight span.nt { color: #e8003d }
+/* NameVariable */ div.highlight span.nv { color: #111111 }
+/* NameVariableClass */ div.highlight span.vc { color: #111111 }
+/* NameVariableGlobal */ div.highlight span.vg { color: #111111 }
+/* NameVariableInstance */ div.highlight span.vi { color: #111111 }
+/* NameVariableMagic */ div.highlight span.vm { color: #111111 }
+/* Literal */ div.highlight span.l { color: #8145ec }
+/* LiteralDate */ div.highlight span.ld { color: #c17005 }
+/* LiteralString */ div.highlight span.s { color: #c17005 }
+/* LiteralStringAffix */ div.highlight span.sa { color: #c17005 }
+/* LiteralStringBacktick */ div.highlight span.sb { color: #c17005 }
+/* LiteralStringChar */ div.highlight span.sc { color: #c17005 }
+/* LiteralStringDelimiter */ div.highlight span.dl { color: #c17005 }
+/* LiteralStringDoc */ div.highlight span.sd { color: #c17005 }
+/* LiteralStringDouble */ div.highlight span.s2 { color: #c17005 }
+/* LiteralStringEscape */ div.highlight span.se { color: #8045ff }
+/* LiteralStringHeredoc */ div.highlight span.sh { color: #c17005 }
+/* LiteralStringInterpol */ div.highlight span.si { color: #c17005 }
+/* LiteralStringOther */ div.highlight span.sx { color: #c17005 }
+/* LiteralStringRegex */ div.highlight span.sr { color: #c17005 }
+/* LiteralStringSingle */ div.highlight span.s1 { color: #c17005 }
+/* LiteralStringSymbol */ div.highlight span.ss { color: #c17005 }
+/* LiteralNumber */ div.highlight span.m { color: #8145ec }
+/* LiteralNumberBin */ div.highlight span.mb { color: #8145ec }
+/* LiteralNumberFloat */ div.highlight span.mf { color: #8145ec }
+/* LiteralNumberHex */ div.highlight span.mh { color: #8145ec }
+/* LiteralNumberInteger */ div.highlight span.mi { color: #8145ec }
+/* LiteralNumberIntegerLong */ div.highlight span.il { color: #8145ec }
+/* LiteralNumberOct */ div.highlight span.mo { color: #8145ec }
+/* Operator */ div.highlight span.o { color: #e8003d }
+/* OperatorWord */ div.highlight span.ow { color: #e8003d }
+/* Punctuation */ div.highlight span.p { color: #111111 }
+/* Comment */ div.highlight span.c { color: #6b6859 }
+/* CommentHashbang */ div.highlight span.ch { color: #6b6859 }
+/* CommentMultiline */ div.highlight span.cm { color: #6b6859 }
+/* CommentSingle */ div.highlight span.c1 { color: #6b6859 }
+/* CommentSpecial */ div.highlight span.cs { color: #6b6859 }
+/* CommentPreproc */ div.highlight span.cp { color: #6b6859 }
+/* CommentPreprocFile */ div.highlight span.cpf { color: #6b6859 }
+/* GenericEmph */ div.highlight span.ge { font-style: italic }
+/* GenericStrong */ div.highlight span.gs { font-weight: bold }
 
 
 
-/*! Error Styles */
+/*! 404 Styles */
 
 body#error {
   background: #efefef;
@@ -929,18 +929,21 @@ body#error div#message {
 
 body#error div#message h1 {
   margin: 16px 0;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 300;
 }
 
 body#error div#message p {
   margin: 16px 0;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 140%;
 }
 
 body#error div#message a {
-  color: #039be5;
+  color: #0077a7;
+}
+body#error div#message a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
