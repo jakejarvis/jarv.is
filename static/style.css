@@ -619,7 +619,7 @@ body#notes main#single article div#info {
   text-align: center;
 }
 
-body#notes main#single article h1 {
+body#notes main#single article div#info h1 {
   margin-top: 0;
   margin-bottom: 20px;
   color: #222;
@@ -627,18 +627,16 @@ body#notes main#single article h1 {
   line-height: 1.4em;
 }
 
-body#notes main#single article h1 a {
+body#notes main#single article div#info h1 a {
   color: #222;
   border: none;
 }
 
-body#notes main#single article h2 {
+body#notes main#single article div#content h1, body#notes main#single article div#content h2, body#notes main#single article div#content h3 {
   margin-top: 20px;
   margin-bottom: 10px;
-  font-weight: normal;
-  font-size: 24px;
+  font-weight: 500;
   line-height: 1.5em;
-  color: #222;
 }
 
 body#notes main#single article div.meta {

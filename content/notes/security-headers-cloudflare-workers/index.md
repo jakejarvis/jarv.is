@@ -29,7 +29,7 @@ The following script can be added as a Worker and customized to your needs. Some
 ```js
 let newHeaders = {
   "Content-Security-Policy": "default-src 'self'; upgrade-insecure-requests",
-  "Strict-Transport-Security" : "max-age=1000",
+  "Strict-Transport-Security": "max-age=1000",
   "X-XSS-Protection": "1; mode=block",
   "X-Frame-Options": "SAMEORIGIN",
   "X-Content-Type-Options": "nosniff",
