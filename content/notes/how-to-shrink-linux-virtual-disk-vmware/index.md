@@ -1,6 +1,6 @@
 ---
 title: "How To: Shrink a Linux Virtual Machine Disk with VMware"
-date: 2018-12-04 19:10:04+00:00
+date: 2018-12-04 19:10:04-0400
 description: "VMware is bad at shrinking Linux VMs when space is freed up. How to optimize and shrink virtual disks."
 tags:
   - How To

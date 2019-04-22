@@ -6,7 +6,7 @@
           <h1 itemprop="name" class="p-name"><a href="{{ .Permalink }}" itemprop="url" class="u-url">{{ .Title }}</a></h1>
           <div class="meta">
             by <span itemprop="author" itemscope itemtype="http://schema.org/Person" class="p-author"><a itemprop="url" rel="me author" href="{{ .Site.BaseURL }}" title="Jake Jarvis" class="h-card"><span itemprop="name" class="p-name">Jake Jarvis</span></a></span> &middot; 
-            <a href="{{ .Permalink }}"><time itemprop="datePublished" content="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="dt-published">{{ .Date.Format "January 2, 2006" }}</time></a> &middot; 
+            <a href="{{ .Permalink }}" title="{{ .Date.Format "Mon, Jan 2 2006 3:04:05 PM MST" }}"><time itemprop="datePublished" content="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="dt-published">{{ .Date.Format "January 2, 2006" }}</time></a> &middot; 
             <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
             {{ .ReadingTime }} minute read
             <div class="tags">

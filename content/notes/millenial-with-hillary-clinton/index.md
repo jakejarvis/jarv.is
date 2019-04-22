@@ -1,6 +1,6 @@
 ---
 title: "Why This Millennial Is With Hillary Clinton Now  — and Why We All Need To Be In November"
-date: 2016-02-29 00:10:26+00:00
+date: 2016-02-29 00:10:26-0400
 description: "I am a 24-year-old \"millennial\" and I passionately support Hillary Clinton for the 45th President of the United States. Yes, we exist."
 tags:
   - 2016 Presidential Election
