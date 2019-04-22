@@ -841,70 +841,88 @@ body#notes main#archive section.year div.title {
 
 /*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 
-/* Error */ div.highlight span.err { color: #960050; }
-/* Keyword */ div.highlight span.k { color: #03748a }
-/* KeywordConstant */ div.highlight span.kc { color: #03748a }
-/* KeywordDeclaration */ div.highlight span.kd { color: #03748a }
-/* KeywordNamespace */ div.highlight span.kn { color: #e8003d }
-/* KeywordPseudo */ div.highlight span.kp { color: #03748a }
-/* KeywordReserved */ div.highlight span.kr { color: #03748a }
-/* KeywordType */ div.highlight span.kt { color: #03748a }
-/* Name */ div.highlight span.n { color: #111111 }
-/* NameAttribute */ div.highlight span.na { color: #489c44 }
-/* NameBuiltin */ div.highlight span.nb { color: #111111 }
-/* NameBuiltinPseudo */ div.highlight span.bp { color: #111111 }
-/* NameClass */ div.highlight span.nc { color: #489c44 }
-/* NameConstant */ div.highlight span.no { color: #03748a }
-/* NameDecorator */ div.highlight span.nd { color: #489c44 }
-/* NameEntity */ div.highlight span.ni { color: #111111 }
-/* NameException */ div.highlight span.ne { color: #489c44 }
-/* NameFunction */ div.highlight span.nf { color: #489c44 }
-/* NameFunctionMagic */ div.highlight span.fm { color: #111111 }
-/* NameLabel */ div.highlight span.nl { color: #111111 }
-/* NameNamespace */ div.highlight span.nn { color: #111111 }
-/* NameOther */ div.highlight span.nx { color: #489c44 }
-/* NameProperty */ div.highlight span.py { color: #111111 }
-/* NameTag */ div.highlight span.nt { color: #e8003d }
-/* NameVariable */ div.highlight span.nv { color: #111111 }
-/* NameVariableClass */ div.highlight span.vc { color: #111111 }
-/* NameVariableGlobal */ div.highlight span.vg { color: #111111 }
-/* NameVariableInstance */ div.highlight span.vi { color: #111111 }
-/* NameVariableMagic */ div.highlight span.vm { color: #111111 }
-/* Literal */ div.highlight span.l { color: #8145ec }
-/* LiteralDate */ div.highlight span.ld { color: #c17005 }
-/* LiteralString */ div.highlight span.s { color: #c17005 }
-/* LiteralStringAffix */ div.highlight span.sa { color: #c17005 }
-/* LiteralStringBacktick */ div.highlight span.sb { color: #c17005 }
-/* LiteralStringChar */ div.highlight span.sc { color: #c17005 }
-/* LiteralStringDelimiter */ div.highlight span.dl { color: #c17005 }
-/* LiteralStringDoc */ div.highlight span.sd { color: #c17005 }
-/* LiteralStringDouble */ div.highlight span.s2 { color: #c17005 }
-/* LiteralStringEscape */ div.highlight span.se { color: #8045ff }
-/* LiteralStringHeredoc */ div.highlight span.sh { color: #c17005 }
-/* LiteralStringInterpol */ div.highlight span.si { color: #c17005 }
-/* LiteralStringOther */ div.highlight span.sx { color: #c17005 }
-/* LiteralStringRegex */ div.highlight span.sr { color: #c17005 }
-/* LiteralStringSingle */ div.highlight span.s1 { color: #c17005 }
-/* LiteralStringSymbol */ div.highlight span.ss { color: #c17005 }
-/* LiteralNumber */ div.highlight span.m { color: #8145ec }
-/* LiteralNumberBin */ div.highlight span.mb { color: #8145ec }
-/* LiteralNumberFloat */ div.highlight span.mf { color: #8145ec }
-/* LiteralNumberHex */ div.highlight span.mh { color: #8145ec }
-/* LiteralNumberInteger */ div.highlight span.mi { color: #8145ec }
-/* LiteralNumberIntegerLong */ div.highlight span.il { color: #8145ec }
-/* LiteralNumberOct */ div.highlight span.mo { color: #8145ec }
-/* Operator */ div.highlight span.o { color: #e8003d }
-/* OperatorWord */ div.highlight span.ow { color: #e8003d }
-/* Punctuation */ div.highlight span.p { color: #111111 }
-/* Comment */ div.highlight span.c { color: #6b6859 }
-/* CommentHashbang */ div.highlight span.ch { color: #6b6859 }
-/* CommentMultiline */ div.highlight span.cm { color: #6b6859 }
-/* CommentSingle */ div.highlight span.c1 { color: #6b6859 }
-/* CommentSpecial */ div.highlight span.cs { color: #6b6859 }
-/* CommentPreproc */ div.highlight span.cp { color: #6b6859 }
-/* CommentPreprocFile */ div.highlight span.cpf { color: #6b6859 }
-/* GenericEmph */ div.highlight span.ge { font-style: italic }
-/* GenericStrong */ div.highlight span.gs { font-weight: bold }
+div.highlight span.k,
+div.highlight span.kc,
+div.highlight span.kd,
+div.highlight span.kp,
+div.highlight span.kr,
+div.highlight span.kt,
+div.highlight span.no {
+  color: #03748a;
+}
+div.highlight span.n,
+div.highlight span.bp,
+div.highlight span.nb,
+div.highlight span.ni,
+div.highlight span.fm,
+div.highlight span.nl,
+div.highlight span.nn,
+div.highlight span.py,
+div.highlight span.nv,
+div.highlight span.vc,
+div.highlight span.vg,
+div.highlight span.vi,
+div.highlight span.vm,
+div.highlight span.p {
+  color: #111111;
+}
+div.highlight span.na,
+div.highlight span.nc,
+div.highlight span.nd,
+div.highlight span.ne,
+div.highlight span.nf,
+div.highlight span.nx {
+  color: #489c44;
+}
+div.highlight span.err,
+div.highlight span.nt,
+div.highlight span.o,
+div.highlight span.ow,
+div.highlight span.kn {
+  color: #e8003d;
+}
+div.highlight span.l,
+div.highlight span.se,
+div.highlight span.m,
+div.highlight span.mb,
+div.highlight span.mf,
+div.highlight span.mh,
+div.highlight span.mi,
+div.highlight span.il,
+div.highlight span.mo {
+  color: #8145ec;
+}
+div.highlight span.ld,
+div.highlight span.s,
+div.highlight span.sa,
+div.highlight span.sb,
+div.highlight span.sc,
+div.highlight span.dl,
+div.highlight span.sd,
+div.highlight span.s2,
+div.highlight span.sh,
+div.highlight span.si,
+div.highlight span.sx,
+div.highlight span.sr,
+div.highlight span.s1,
+div.highlight span.ss {
+  color: #c17005;
+}
+div.highlight span.c,
+div.highlight span.ch,
+div.highlight span.cm,
+div.highlight span.c1,
+div.highlight span.cs,
+div.highlight span.cp,
+div.highlight span.cpf {
+  color: #6b6859;
+}
+div.highlight span.ge {
+  font-style: italic;
+}
+div.highlight span.gs {
+  font-weight: bold;
+}
 
 
 
