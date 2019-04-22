@@ -101,7 +101,7 @@ I removed the company's name because an important part of responsible *disclosur
 
 The `poc-d4ca9e8ceb.html` proof-of-concept file contained this single, hidden line:
 
-```
+```html
 <!-- subdomain takeover POC by @jakejarvis on Bugcrowd -->
 ```
 

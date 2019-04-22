@@ -11,7 +11,7 @@ tags:
 draft: false
 ---
 
-If you examine [my homepage](https://jarv.is/) long enough, you might notice the 👋 hand emoji at the top subtly waving at you. This was easily accomplished using a few lines of CSS with a feature called [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) -- no bulky GIFs involved, and no messy JS or jQuery overkill required.
+If you examine [my homepage](https://jarv.is/) long enough, you might notice the 👋 hand emoji at the top subtly waving at you. This was easily accomplished using a few lines of CSS with a feature called [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) -- no awkward GIFs involved, and no messy JS or jQuery overkill required.
 
 Below are the code snippets you can grab and customize to make your own 
 ["waving hand" 👋](https://emojipedia.org/waving-hand-sign/) emojis ***actually wave***, and a [CodePen playground](https://codepen.io/jakejarvis/pen/pBZWZw) for live testing.
@@ -20,11 +20,11 @@ Below are the code snippets you can grab and customize to make your own
 
 ### CSS:
 
-```
+```css
 span#wave {
   animation-name: wave-animation;    /* refers to the name of your @keyframes element below */
   animation-duration: 2.5s;          /* change to speed up or slow down */
-  animation-iteration-count: infinite;    /* never stop waving! */
+  animation-iteration-count: infinite;    /* never stop waving! :) */
   transform-origin: 70% 70%;
   display: inline-block;
 }
@@ -42,10 +42,10 @@ span#wave {
 
 ### HTML:
 
-```
+```html
 <span id="wave">👋</span>
 ```
 
-That's it! Different hand variations and skin tones can be [found on 📕Emojipedia](https://emojipedia.org/search/?q=waving+hand).
+That's it! All skin tones and different hands can be [found on 📕Emojipedia](https://emojipedia.org/search/?q=waving+hand).
 
 👋🏼 Toodles!

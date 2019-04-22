@@ -8,6 +8,9 @@ disableFastRender = true
 disableHugoGeneratorInject = true   # don't worry, inserted manually :)
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
 enableGitInfo = true
 
 [taxonomies]
