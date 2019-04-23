@@ -23,11 +23,11 @@ Below are the code snippets you can grab and customize to make your own
 ### CSS:
 
 ```css
-span#wave {
+span.wave {
   animation-name: wave-animation;    /* Refers to the name of your @keyframes element below */
   animation-duration: 2.5s;          /* Change to speed up or slow down */
-  animation-iteration-count: infinite;    /* Never stop waving! :) */
-  transform-origin: 70% 70%;
+  animation-iteration-count: infinite;    /* Never stop waving :) */
+  transform-origin: 70% 70%;         /* Pivot around the bottom-left palm */
   display: inline-block;
 }
 
@@ -45,7 +45,7 @@ span#wave {
 ### HTML:
 
 ```html
-<span id="wave">👋</span>
+<span class="wave">👋</span>
 ```
 
 That's it! More skin tones can be [found on 📕Emojipedia](https://emojipedia.org/search/?q=waving+hand).
