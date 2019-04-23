@@ -1,6 +1,6 @@
 ---
 title: "Adding Security Headers Using Cloudflare Workers"
-date: 2019-03-30 03:18:10-0400
+date: 2019-02-28 03:18:10-0400
 description: "How to add important security headers to your website using Cloudflare Workers before delivering the response to the user."
 tags:
   - Security
