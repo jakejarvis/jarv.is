@@ -1,6 +1,6 @@
 ---
 title: "Animated Waving Hand Emoji 👋 Using CSS"
-date: 2019-04-22 09:20:10-0400
+date: 2019-04-11 14:20:10-0400
 description: "How to make the 👋 waving hand emoji actually wave using pure CSS animation!"
 tags:
   - CSS
