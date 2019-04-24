@@ -688,6 +688,13 @@ body#notes main#single article div#content blockquote {
   padding-left: 15px;
 }
 
+body#notes main#single article div#content ul {
+  list-style-position: inside;
+  list-style-type: square;
+  margin-left: 12px;
+  padding-left: 0;
+}
+
 body#notes main#single article div#content code {
   font-family: monospace;
   background: #f4f4f4;
