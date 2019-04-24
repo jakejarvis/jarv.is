@@ -4,7 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page Not Found</title>
-    <link rel="stylesheet" href="https://jarv.is/style.css">
+    <style>
+      body {
+        background: #efefef;
+        color: #5f5f5f;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      div#message {
+        background: #fff;
+        max-width: 400px;
+        margin: 100px auto 16px;
+        padding: 16px 32px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px #e0e0e0, 0 1px 2px #888;
+      }
+
+      div#message h1 {
+        margin: 16px 0;
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      div#message p {
+        margin: 16px 0;
+        font-size: 15px;
+        line-height: 140%;
+      }
+
+      div#message a {
+        color: #0077a7;
+      }
+      div#message a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        body, div#message {
+          background: #fff;
+          margin-top: 16px;
+          box-shadow: none;
+        }
+      }
+    </style>
   </head>
   <body id="error">
     <div id="message">
