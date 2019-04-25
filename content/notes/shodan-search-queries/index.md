@@ -56,7 +56,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 ![Example: Electronic Billboards](images/billboard2.png)
 
 
-### Gas Station Pump Inventories [&#x2192;](https://www.shodan.io/search?query=%22in-tank+inventory%22+port%3A10001)
+### Gas Station Pump Controllers [&#x2192;](https://www.shodan.io/search?query=%22in-tank+inventory%22+port%3A10001)
 
 ```
 "in-tank inventory" port:10001
@@ -109,14 +109,14 @@ http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 
 
-### Nordex Wind Turbine Farms [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22Nordex+Control%22+%22Windows+2000+5.0+x86%22+%22Jetty%2F3.1+%28JSP+1.1%3B+Servlet+2.2%3B+java+1.6.0_14%29%22)
+### [Nordex Wind Turbine](http://www.nordex-online.com/en/products-services/wind-turbines.html) Farms [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22Nordex+Control%22+%22Windows+2000+5.0+x86%22+%22Jetty%2F3.1+%28JSP+1.1%3B+Servlet+2.2%3B+java+1.6.0_14%29%22)
 
 ```
 http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 2.2; java 1.6.0_14)"
 ```
 
 
-### [C4 Max](https://www.mobile-devices.com/our-products/c4-max/) Vehicle GPS Trackers [&#x2192;](https://www.shodan.io/search?query=%22%5B1m%5B35mWelcome+on+console%22)
+### [C4 Max](https://www.mobile-devices.com/our-products/c4-max/) Commercial Vehicle GPS Trackers [&#x2192;](https://www.shodan.io/search?query=%22%5B1m%5B35mWelcome+on+console%22)
 
 ```
 "[1m[35mWelcome on console"
@@ -125,7 +125,7 @@ http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 
 ![Example: C4 Max Vehicle GPS](images/c4max.png)
 
 
-### DICOM Medical X-Ray Machines [&#x2192;](https://www.shodan.io/search?query=%22DICOM+Server+Response%22+port%3A104)
+### [DICOM](https://www.dicomstandard.org/about/) Medical X-Ray Machines [&#x2192;](https://www.shodan.io/search?query=%22DICOM+Server+Response%22+port%3A104)
 
 Secured by default, thankfully, but these 1,700+ machines still [have no business](https://documents.trendmicro.com/assets/rpt/rpt-securing-connected-hospitals.pdf) being on the internet.
 
@@ -282,7 +282,7 @@ PBX "gateway console" -password port:23
 ```
 
 
-### Polycom Video Conferencing [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22-+Polycom%22+%22Server%3A+lighttpd%22)
+### [Polycom](https://www.polycom.com/hd-video-conferencing.html) Video Conferencing [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22-+Polycom%22+%22Server%3A+lighttpd%22)
 
 ```
 http.title:"- Polycom" "Server: lighttpd"
@@ -297,7 +297,7 @@ Telnet Configuration: [&#x2192;](https://www.shodan.io/search?query=%22Polycom+C
 ![Example: Polycom Video Conferencing](images/polycom.png)
 
 
-### Bomgar Help Desk Portal [&#x2192;](https://www.shodan.io/search?query=%22Server%3A+Bomgar%22+%22200+OK%22)
+### [Bomgar Help Desk](https://www.beyondtrust.com/remote-support/integrations) Portal [&#x2192;](https://www.shodan.io/search?query=%22Server%3A+Bomgar%22+%22200+OK%22)
 
 ```
 "Server: Bomgar" "200 OK"
@@ -402,14 +402,14 @@ Redirecting sencha port:9000
 ![Example: Logitech Media Servers](images/logitech.png)
 
 
-### Plex Media Servers [&#x2192;](https://www.shodan.io/search?query=%22X-Plex-Protocol%22+%22200+OK%22+port%3A32400)
+### [Plex](https://www.plex.tv/) Media Servers [&#x2192;](https://www.shodan.io/search?query=%22X-Plex-Protocol%22+%22200+OK%22+port%3A32400)
 
 ```
 "X-Plex-Protocol" "200 OK" port:32400
 ```
 
 
-### PlexPy / Tautulli Dashboards [&#x2192;](https://www.shodan.io/search?query=%22CherryPy%2F5.1.0%22+%22%2Fhome%22)
+### [Tautulli / PlexPy](https://github.com/Tautulli/Tautulli) Dashboards [&#x2192;](https://www.shodan.io/search?query=%22CherryPy%2F5.1.0%22+%22%2Fhome%22)
 
 ```
 "CherryPy/5.1.0" "/home"
@@ -531,7 +531,7 @@ ssl:"Xerox Generic Root"
 ```
 
 
-### Crestron Smart Home Controllers [&#x2192;](https://www.shodan.io/search?query=%22Model%3A+PYNG-HUB%22)
+### [Crestron Smart Home](https://www.crestron.com/Products/Market-Solutions/Residential-Solutions) Controllers [&#x2192;](https://www.shodan.io/search?query=%22Model%3A+PYNG-HUB%22)
 
 ```
 "Model: PYNG-HUB"
@@ -570,7 +570,7 @@ http.title:"Index of /" http.html:".pem"
 ```
 
 
-### Literally Everything in North Korea 🇰🇵 [&#x2192;](https://www.shodan.io/search?query=net%3A175.45.176.0%2F22%2C210.52.109.0%2F24)
+### Literally [Everything](https://www.vox.com/2014/12/22/7435625/north-korea-internet) in North Korea 🇰🇵 [&#x2192;](https://www.shodan.io/search?query=net%3A175.45.176.0%2F22%2C210.52.109.0%2F24)
 
 ```
 net:175.45.176.0/22,210.52.109.0/24,77.94.35.0/24
@@ -579,7 +579,7 @@ net:175.45.176.0/22,210.52.109.0/24,77.94.35.0/24
 
 ### TCP Quote of the Day [&#x2192;](https://www.shodan.io/search?query=port%3A17+product%3A%22Windows+qotd%22)
 
-[RFC 865](https://tools.ietf.org/html/rfc865) has a [bizarre history](https://en.wikipedia.org/wiki/QOTD)...
+Port 17 ([RFC 865](https://tools.ietf.org/html/rfc865)) has a [bizarre history](https://en.wikipedia.org/wiki/QOTD)...
 
 ```
 port:17 product:"Windows qotd"
