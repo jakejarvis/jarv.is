@@ -12,6 +12,9 @@ draft: false
 ---
 
 
+<p style="text-align: center;"><a class="github-button" href="https://github.com/jakejarvis/awesome-shodan-queries" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jakejarvis/awesome-shodan-queries on GitHub">Star</a>&nbsp;&nbsp;&nbsp;<a class="github-button" href="https://github.com/jakejarvis/awesome-shodan-queries/issues" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue jakejarvis/awesome-shodan-queries on GitHub">Issue</a></p>
+
+
 Over time, I've collected an assortment of interesting, funny, and depressing search queries to plug into [Shodan](https://www.shodan.io/), the ([literal](https://www.vice.com/en_uk/article/9bvxmd/shodan-exposes-the-dark-side-of-the-net)) internet search engine. Some return facepalm-inducing results, while others return serious and/or ancient vulnerabilities in the wild.
 
 ![](images/shodan.png)
@@ -600,3 +603,5 @@ port:17 product:"Windows qotd"
 If you've found any other juicy Shodan gems, whether it's a search query or a specific example, definitely drop a comment below or [open an issue/PR on GitHub](https://github.com/jakejarvis/awesome-shodan-queries)!
 
 Bon voyage, fellow penetrators! 😉
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
