@@ -412,7 +412,7 @@ Redirecting sencha port:9000
 ### PlexPy / Tautulli Dashboards [&#x2192;](https://www.shodan.io/search?query=%22CherryPy%2F5.1.0%22+%22%2Fhome%22)
 
 ```
-"CherryPy/5.1.0" /home
+"CherryPy/5.1.0" "/home"
 ```
 
 ![Example: PlexPy / Tautulli Dashboards](images/plexpy.png)
@@ -524,7 +524,7 @@ ssl:"Xerox Generic Root"
 ![Example: Yamaha Stereos](images/yamaha.png)
 
 
-### Chromecasts/Smart TVs [&#x2192;](https://www.shodan.io/search?query=%22Chromecast%3A%22+port%3A8008)
+### Chromecasts / Smart TVs [&#x2192;](https://www.shodan.io/search?query=%22Chromecast%3A%22+port%3A8008)
 
 ```
 "Chromecast:" port:8008
@@ -563,6 +563,13 @@ http.title:"Index of /" http.html:".pem"
 ```
 
 
+### Too Many Minecraft Servers [&#x2192;](https://www.shodan.io/search?query=%22Minecraft+Server%22+%22protocol+340%22+port%3A25565)
+
+```
+"Minecraft Server" "protocol 340" port:25565
+```
+
+
 ### Literally Everything in North Korea 🇰🇵 [&#x2192;](https://www.shodan.io/search?query=net%3A175.45.176.0%2F22%2C210.52.109.0%2F24)
 
 ```
@@ -570,14 +577,9 @@ net:175.45.176.0/22,210.52.109.0/24,77.94.35.0/24
 ```
 
 
-### Way Too Many Minecraft Servers
-
-```
-Minecraft "protocol 340" port:25565
-```
-
-
 ### TCP Quote of the Day [&#x2192;](https://www.shodan.io/search?query=port%3A17+product%3A%22Windows+qotd%22)
+
+[RFC 865](https://tools.ietf.org/html/rfc865) has a [bizarre history](https://en.wikipedia.org/wiki/QOTD)...
 
 ```
 port:17 product:"Windows qotd"
