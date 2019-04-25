@@ -79,7 +79,7 @@ mikrotik streetlight
 ```
 
 
-### Voting Machines in the US [&#x2192;](https://www.shodan.io/search?query=%22voter+system+serial%22+country%3AUS)
+### Voting Machines in the United States [&#x2192;](https://www.shodan.io/search?query=%22voter+system+serial%22+country%3AUS)
 
 ```
 "voter system serial" country:US
@@ -93,10 +93,10 @@ mikrotik streetlight
 ```
 
 
-### [Tesla PowerPack](https://www.tesla.com/powerpack) Charging Status [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22Tesla+PowerPack+System%22+http.component%3A%22bootstrap%22+-org%3A%22Google+Cloud%22)
+### [Tesla PowerPack](https://www.tesla.com/powerpack) Charging Status [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22Tesla+PowerPack+System%22+http.component%3A%22d3%22+-ga3ca4f2)
 
 ```
-http.title:"Tesla PowerPack System" http.component:"bootstrap" -org:"Google Cloud"
+http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 
 ![Example: Tesla PowerPack Charging Status](images/tesla.png)
@@ -114,6 +114,15 @@ http.title:"Tesla PowerPack System" http.component:"bootstrap" -org:"Google Clou
 ```
 http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 2.2; java 1.6.0_14)"
 ```
+
+
+### [C4 Max](https://www.mobile-devices.com/our-products/c4-max/) Vehicle GPS Trackers [&#x2192;](https://www.shodan.io/search?query=%22%5B1m%5B35mWelcome+on+console%22)
+
+```
+"[1m[35mWelcome on console"
+```
+
+![Example: C4 Max Vehicle GPS](images/c4max.png)
 
 
 ### DICOM Medical X-Ray Machines [&#x2192;](https://www.shodan.io/search?query=%22DICOM+Server+Response%22+port%3A104)
@@ -170,7 +179,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 [Shodan Images](https://images.shodan.io/) is a great supplementary tool to browse screenshots, by the way!  [&#x2192;](https://images.shodan.io/?query=%22authentication+disabled%22+%21screenshot.label%3Ablank)
 
 ![Example: Unprotected VNC](images/vnc.png)
-*The first result right now. :(*
+*The first result right now. 😞*
 
 
 ### Windows RDP [&#x2192;](https://www.shodan.io/search?query=%22%5Cx03%5Cx00%5Cx00%5Cx0b%5Cx06%5Cxd0%5Cx00%5Cx00%5Cx124%5Cx00%22)
@@ -224,10 +233,10 @@ Older versions were insecure by default. [Very scary.](https://krebsonsecurity.c
 ```
 
 
-### Already Logged-In as `root` via Telnet [&#x2192;](https://www.shodan.io/search?query=%22root%40%22+port%3A23+-login+-password)
+### Already Logged-In as `root` via Telnet [&#x2192;](https://www.shodan.io/search?query=%22root%40%22+port%3A23+-login+-password+-name+-Session)
 
 ```
-"root@" port:23 -login -password
+"root@" port:23 -login -password -name -Session
 ```
 
 
@@ -558,6 +567,13 @@ http.title:"Index of /" http.html:".pem"
 
 ```
 net:175.45.176.0/22,210.52.109.0/24,77.94.35.0/24
+```
+
+
+### Way Too Many Minecraft Servers
+
+```
+Minecraft "protocol 340" port:25565
 ```
 
 
