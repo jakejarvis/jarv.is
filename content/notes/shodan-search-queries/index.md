@@ -1,6 +1,6 @@
 ---
 title: "Fascinating & Frightening Shodan Search Queries (AKA: The Internet of Sh*t)"
-date: 2019-04-24 16:05:32-0400
+date: 2019-04-29 16:05:32-0400
 description: "I've collected some interesting and scary search queries for Shodan, the internet-of-things search engine. Some return fun results, while others return serious vulnerabilities."
 tags:
   - Infosec
@@ -546,6 +546,15 @@ ssl:"Xerox Generic Root"
 
 
 # Random Stuff:
+
+
+### OctoPrint 3D Printer Controllers [&#x2192;](https://www.shodan.io/search?query=title%3A%22OctoPrint%22+-title%3A%22Login%22+http.favicon.hash%3A1307375944)
+
+```
+title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
+```
+
+![Example: OctoPrint 3D Printers](images/octoprint.png)
 
 
 ### Etherium Miners [&#x2192;](https://www.shodan.io/search?query=%22ETH+-+Total+speed%22)
