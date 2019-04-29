@@ -1,6 +1,6 @@
 ---
 title: "Fascinating & Frightening Shodan Search Queries (AKA: The Internet of Sh*t)"
-date: 2019-04-29 16:05:32-0400
+date: 2019-04-29 12:05:32-0400
 description: "I've collected some interesting and scary search queries for Shodan, the internet-of-things search engine. Some return fun results, while others return serious vulnerabilities."
 tags:
   - Infosec

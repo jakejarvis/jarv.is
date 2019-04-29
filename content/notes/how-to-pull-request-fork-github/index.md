@@ -1,6 +1,6 @@
 ---
 title: "How To: Fork a GitHub Repository & Submit a Pull Request"
-date: 2019-04-26 02:17:03-0400
+date: 2019-04-09 02:17:03-0400
 description: "Walkthrough of forking a GitHub repository, cloning it, commiting your changes to a new branch, and pushing it back upstream."
 tags:
   - How To
