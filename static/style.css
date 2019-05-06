@@ -70,7 +70,6 @@ body#home sup {
   font-size: 0.5em;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
   vertical-align: middle;
 }
 
@@ -743,15 +742,6 @@ body#notes main#single article div#commento {
   border-top: 1px solid #ccc;
   padding-top: 20px;
   margin-top: 20px;
-}
-
-body#notes main#single article div#commento a.commento-name {
-  max-width: none !important;
-  border: none;
-}
-
-body#notes main#single article div#commento div.commento-logged-container {
-  display: block !important;
 }
 
 body#notes main#single article div#commento div#commento-footer {
