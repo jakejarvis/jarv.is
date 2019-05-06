@@ -25,4 +25,10 @@ enableGitInfo = true
   nofollowLinks = true
   noreferrerLinks = true
   plainIDAnchors = true
+  fractions = false
 
+[privacy]
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true
