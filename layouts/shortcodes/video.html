@@ -1,0 +1,7 @@
+<video class="embed" width="{{ if .Get "width" }}{{ .Get "width" }}{{ else }}640{{ end }}" height="{{ if .Get "height" }}{{ .Get "height" }}{{ else }}385{{ end }}" {{ if .Get "poster" }}poster="{{ .Get "poster" }}" {{ end }}controls>
+  {{ if .Get "webm" }}<source src="{{ .Get "webm" }}" type="video/webm">{{ end }}
+  {{ if .Get "mp4"  }}<source src="{{ .Get "mp4" }}" type="video/mp4">{{ end }}
+  {{ if .Get "ogg"  }}<source src="{{ .Get "ogg" }}" type="video/ogg">{{ end }}
+
+  Your browser does not support HTML5 video. <a href="{{ .Get "mp4" }}">Load the video directly.</a>
+</video>

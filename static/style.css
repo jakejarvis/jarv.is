@@ -720,6 +720,11 @@ body#notes main#single article div#content hr {
   border: 1px solid #ccc;
 }
 
+body#notes main#single article div#content video.embed {
+  display: block;
+  margin: 0 auto;
+}
+
 body#notes main#single article div#content div.embed.video-player {
   position: relative;
   padding-bottom: 56.25%;
@@ -736,6 +741,11 @@ body#notes main#single article div#content div.embed.video-player iframe.youtube
   border: none;
   margin-bottom: 10px;
   display: inline-block;
+}
+
+body#notes main#single article div#content twitter-widget {
+  margin: 0 auto;
+  display: block;
 }
 
 body#notes main#single article div#commento {

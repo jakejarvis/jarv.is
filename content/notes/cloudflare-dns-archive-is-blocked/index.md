@@ -1,6 +1,6 @@
 ---
 title: "Does Cloudflare's 1.1.1.1 DNS Block Archive.is?"
-date: 2019-05-06 09:35:12-0400
+date: 2019-05-04 09:35:12-0400
 description: "Short answer: no. Quite the opposite, actually -- Archive.is is intentionally blocking 1.1.1.1 users. Here's why."
 tags:
   - Cloudflare
