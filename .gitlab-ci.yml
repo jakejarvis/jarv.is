@@ -21,7 +21,7 @@ deploy:
   script:
     # build site
     - rm -rf public
-    - hugo --gc --enableGitInfo
+    - hugo --gc
 
     # upload all files
     - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --region us-east-1 --cache-control "max-age=3600, public" --metadata-directive "REPLACE"
