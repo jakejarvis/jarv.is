@@ -1,6 +1,6 @@
 ---
 title: "Fascinating & Frightening Shodan Search Queries (AKA: The Internet of Sh*t)"
-date: 2019-05-11 12:05:32-0400
+date: 2019-06-30 12:05:32-0400
 description: "I've collected some interesting and scary search queries for Shodan, the internet-of-things search engine. Some return fun results, while others return serious vulnerabilities."
 tags:
   - Infosec
@@ -91,6 +91,17 @@ mikrotik streetlight
 ```
 
 
+### Telcos Running [Cisco Lawful Intercept](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/12-2SX/lawful/intercept/book/65LIch1.html) Wiretaps [🔎 &#x2192;](https://www.shodan.io/search?query=%22Cisco+IOS%22+%22ADVIPSERVICESK9_LI-M%22)
+
+```
+"Cisco IOS" "ADVIPSERVICESK9_LI-M"
+```
+
+Wiretapping mechanism outlined by Cisco in [RFC 3924](https://tools.ietf.org/html/rfc3924):
+
+> Lawful intercept is the lawfully authorized interception and monitoring of communications of an intercept subject.  The term "intercept subject" [...] refers to the subscriber of a telecommunications service whose communications and/or intercept related information (IRI) has been lawfully authorized to be intercepted and delivered to some agency.
+
+
 ### Prison Pay Phones [&#x2192;](https://www.shodan.io/search?query=%22%5B2J%5BH+Encartele+Confidential%22)
 
 ```
@@ -112,6 +123,26 @@ http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 "Server: gSOAP/2.8" "Content-Length: 583"
 ```
+
+
+### Maritime Satellites [🔎 &#x2192;](https://www.shodan.io/search?query=%22Cobham+SATCOM%22+OR+%28%22Sailor%22+%22VSAT%22%29)
+
+Shodan made a pretty sweet [Ship Tracker](https://shiptracker.shodan.io/) that maps ship locations in real time, too!
+
+```
+"Cobham SATCOM" OR ("Sailor" "VSAT")
+```
+
+![Example: Maritime Satellites](images/sailor-vsat.png)
+
+
+### [CAREL PlantVisor](https://www.carel.com/product/plantvisor) Refrigeration Units [🔎 &#x2192;](https://www.shodan.io/search?query=%22Server%3A+CarelDataServer%22+%22200+Document+follows%22)
+
+```
+"Server: CarelDataServer" "200 Document follows"
+```
+
+![Example: CAREL PlantVisor Refrigeration Units](images/refrigeration.png)
 
 
 ### [Nordex Wind Turbine](http://www.nordex-online.com/en/products-services/wind-turbines.html) Farms [&#x2192;](https://www.shodan.io/search?query=http.title%3A%22Nordex+Control%22+%22Windows+2000+5.0+x86%22+%22Jetty%2F3.1+%28JSP+1.1%3B+Servlet+2.2%3B+java+1.6.0_14%29%22)
