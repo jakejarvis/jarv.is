@@ -3,7 +3,7 @@
 body {
   width: 100%;
   height: 100%;
-  margin: 0;
+  margin: 0 auto;
   color: #202020;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -30,10 +30,7 @@ a {
 /*! Home Styles */
 
 body#home {
-  height: 100%;
-  width: 100%;
   max-width: 1450px;
-  margin: 0 auto;
   padding: 6% 8%;
 }
 
@@ -511,9 +508,8 @@ body#home h1 span#wave {
 body#notes {
   font-size: 18px;
   font-weight: 400;
-  margin: 0 auto;
-  padding: 20px 10%;
   max-width: 1350px;
+  padding: 20px 10%;
 }
 
 body#notes a {
@@ -632,7 +628,7 @@ body#notes main#single article div#info h1 a {
 }
 
 body#notes main#single article div#content h1, body#notes main#single article div#content h2, body#notes main#single article div#content h3 {
-  margin-top: 20px;
+  margin-top: 18px;
   margin-bottom: 10px;
   font-weight: 500;
   line-height: 1.5em;
