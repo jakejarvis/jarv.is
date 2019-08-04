@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Powncer on &quot;The Lab with Leo Laporte&quot; &ndash; Jake Jarvis &#x1f468;&#x200d;&#x1f4bb;</title>
+    <link rel="canonical" href="https://jarv.is/leo/">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-128.png" sizes="128x128">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-48.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://jarv.is/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" href="https://jarv.is/favicon.ico">
+    <link rel="dns-prefetch" href="https://stats.jarv.is">
+    <link rel="stylesheet" href="https://jarv.is/leo/plyr/plyr.css">
+    <style>
+      html, body {
+        display: table;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        color: #202020;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+          "Droid Sans", "Helvetica Neue", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      div#container {
+        display: table-cell;
+        vertical-align: middle;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+      img#logo {
+        height: 48px;
+        width: 48px;
+        margin-top: 6px;
+      }
+
+      /* responsive embed */
+      video, .plyr {
+        width: 640px;
+        margin: 0 auto;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+          "Droid Sans", "Helvetica Neue", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      @media screen and (max-width: 640px) {
+        video, .plyr {
+          width: 100%;
+        }
+        h1 {
+          font-size: 1.6em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Powncer App on <em>"The Lab with Leo Laporte"</em></h1>
+
+      <video id="player" poster="https://jarv.is/leo/thumb.png" controls crossorigin playsinline>
+        <!-- Video files -->
+        <source src="https://jarv.is/leo/leo.webm" type="video/webm">
+        <source src="https://jarv.is/leo/leo.mp4" type="video/mp4">
+
+        <!-- Caption files -->
+        <track src="https://jarv.is/leo/subs.en.vtt" kind="captions" label="English" srclang="en" default>
+
+        <!-- Fallback for browsers that don't support the <video> element -->
+        Your browser doesn't support HTML5 video. <a href="https://jarv.is/leo/leo.mp4">Click here to view the raw .mp4 video.</a>
+      </video>
+
+      <p><a href="https://jarv.is/"><img src="https://jarv.is/favicon-128.png" id="logo" alt="Return home" title="Return home"></a></p>
+    </div>
+
+    <script src="https://jarv.is/leo/plyr/plyr.min.js"></script>
+    <script>
+      const player = new Plyr('#player', {
+        debug: false,
+        iconUrl: "https://jarv.is/leo/plyr/plyr.svg",
+        blankVideo: "https://jarv.is/leo/plyr/blank.mp4",
+        settings: [],
+        storage: { enabled: false },
+        autoplay: false,
+        captions: { active: true, language: 'en', update: false }
+      });
+    </script>
+
+    <script>
+      var _paq = _paq || [];
+      _paq.push(['setRequestMethod', 'POST']);
+      _paq.push(['setSecureCookie', true]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      _paq.push(['enableHeartBeatTimer']);
+      (function() {
+        var u='https://stats.jarv.is/';
+        _paq.push(['setTrackerUrl', u+'send']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.defer=true; g.src=u+'stats.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+  </body>
+</html>

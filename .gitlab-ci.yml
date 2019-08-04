@@ -37,6 +37,7 @@ deploy:
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.xml"   --content-type="text/xml"        --cache-control "max-age=3600, public"     --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.mp4"   --content-type="video/mp4"       --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.webm"  --content-type="video/webm"      --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
+    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.vtt"   --content-type="text/vtt"        --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.docx"  --content-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
     - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.pdf"   --content-type="application/pdf" --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
 
