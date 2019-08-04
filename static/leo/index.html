@@ -35,13 +35,24 @@
         height: 100%;
         text-align: center;
       }
-      img#logo {
+      p#logo img {
         height: 48px;
         width: 48px;
         margin-top: 6px;
       }
+      p#copyright {
+        font-size: 0.85em;
+        line-height: 1.5em;
+        color: #666;
+        padding: 0 10px;
+      }
+      p#copyright a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #666;
+      }
 
-      /* responsive embed */
+      /* Responsive embed: */
       video, .plyr {
         width: 640px;
         margin: 0 auto;
@@ -56,6 +67,7 @@
         }
         h1 {
           font-size: 1.6em;
+          padding: 0 10px;
         }
       }
     </style>
@@ -76,7 +88,9 @@
         Your browser doesn't support HTML5 video. <a href="https://jarv.is/leo/leo.mp4">Click here to view the raw .mp4 video.</a>
       </video>
 
-      <p><a href="https://jarv.is/"><img src="https://jarv.is/favicon-128.png" id="logo" alt="Return home" title="Return home"></a></p>
+      <p id="logo"><a href="https://jarv.is/"><img src="https://jarv.is/favicon-128.png" id="logo" alt="Return home" title="Return home"></a></p>
+
+      <p id="copyright">Video is property of <a href="https://leolaporte.com/" target="_blank" rel="noopener noreferrer nofollow">Leo Laporte</a> and <strong>G4techTV</strong> / <strong>HOW TO Channel</strong>. &copy; 2007.</p>
     </div>
 
     <script src="https://jarv.is/leo/plyr/plyr.min.js"></script>
