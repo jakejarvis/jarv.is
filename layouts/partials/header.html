@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
@@ -18,6 +18,7 @@
     <meta property="fb:app_id" content="3357248167622283">
     <meta property="twitter:account_id" content="229769022">
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@jakejarvis">
     <meta name="twitter:creator" content="@jakejarvis">
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:url" content="{{ .Permalink }}">
