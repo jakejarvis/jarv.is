@@ -8,6 +8,7 @@ tags:
   - Bernie Sanders
   - 2020 Presidential Campaign
   - Politics
+image: "sad-bernie.jpg"
 draft: false
 ---
 

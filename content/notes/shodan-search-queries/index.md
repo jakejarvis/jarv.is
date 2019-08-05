@@ -8,6 +8,7 @@ tags:
   - Shodan
   - Internet of Things
   - Dorking
+image: "shodan.png"
 draft: false
 ---
 

@@ -9,6 +9,7 @@ tags:
   - Pull Request
   - Open Source
   - GitHub
+image: "forks.png"
 draft: false
 ---
 

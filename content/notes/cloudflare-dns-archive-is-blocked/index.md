@@ -7,6 +7,7 @@ tags:
   - DNS
   - Networking
   - Temper Tantrums
+image: "archive-is.png"
 draft: false
 ---
 

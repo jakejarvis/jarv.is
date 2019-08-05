@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta property="og:image" content="{{ "me.jpg" | absURL }}">
+    <meta property="og:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
     <meta property="fb:admins" content="1329090853">
     <meta property="twitter:account_id" content="229769022">
     <meta name="twitter:card" content="summary">
@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:url" content="{{ .Permalink }}">
     <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta name="twitter:image" content="{{ "me.jpg" | absURL }}">
+    <meta name="twitter:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
     <meta name="google-site-verification" content="qQhmLTwjNWYgQ7W42nSTq63xIrTch13X_11mmxBE9zk">
     <meta name="msvalidate.01" content="164551986DA47F7F6FC0D21A93FFFCA6">
     <meta name="p:domain_verify" content="e8aefab89c04734260da89b6ff26fd5b">

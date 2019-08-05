@@ -8,6 +8,7 @@ tags:
   - Tutorial
   - Virtual Machines
   - VMware
+image: "screen-shot-2018-12-07-at-2-04-04-pm.png"
 aliases:
   - /2018/12/04/how-to-shrink-linux-virtual-disk-vmware/
 draft: false

@@ -9,6 +9,7 @@ tags:
   - Backups
   - Linux
   - Restic
+image: "apocalypse.png"
 draft: false
 ---
 
