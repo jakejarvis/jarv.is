@@ -30,8 +30,8 @@ a {
 /*! Home Styles */
 
 body#home {
-  max-width: 1450px;
-  padding: 6% 8%;
+  max-width: 1070px;
+  padding: 60px;
 }
 
 body#home img#me {
@@ -432,8 +432,7 @@ body#home footer div#info a#source {
 @media screen and (max-width: 800px) {
   body#home {
     font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 30px;
   }
 
   body#home img#me {
@@ -508,8 +507,8 @@ body#home h1 span#wave {
 body#notes {
   font-size: 18px;
   font-weight: 400;
-  max-width: 1350px;
-  padding: 20px 10%;
+  max-width: 1010px;
+  padding: 20px 50px;
 }
 
 body#notes a {
@@ -795,13 +794,12 @@ body#notes main#archive section.year div.title {
 
 @media screen and (max-width: 800px) {
   body#notes {
-    padding: 20px;
+    padding: 30px;
   }
 
   body#notes, body#notes main#single article {
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
   }
 
   body#notes header {
@@ -824,7 +822,6 @@ body#notes main#archive section.year div.title {
 
   body#notes footer div#copyright, body#notes footer div#poweredby {
     width: 50%;
-    line-height: 20px;
     font-size: 14px;
     line-height: 1.8em;
   }
