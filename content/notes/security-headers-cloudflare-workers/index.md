@@ -28,7 +28,7 @@ If you run your own server, these can be added by way of your Apache or nginx co
 The following script can be added as a Worker and customized to your needs. Some can be extremely picky with syntax, so be sure to [read the documentation](https://www.netsparker.com/whitepaper-http-security-headers/) carefully. You can fiddle with it in [the playground](https://cloudflareworkers.com/), too. Simply modify the current headers to your needs, or add new ones to the `newHeaders` or `removeHeaders` arrays. 
 
 ```js
-let newHeaders = {
+let addHeaders = {
   "Content-Security-Policy": "default-src 'self'; upgrade-insecure-requests",
   "Strict-Transport-Security": "max-age=1000",
   "X-XSS-Protection": "1; mode=block",
@@ -45,26 +45,28 @@ let removeHeaders = [
 ]
 
 addEventListener("fetch", event => {
-  event.respondWith(addHeaders(event.request))
+  event.respondWith(fetchAndApply(event.request))
 })
 
-async function addHeaders(req) {
-  let response = await fetch(req)
-  let responseHeaders = new Headers(response.headers)
+async function fetchAndApply(req) {
+  // Fetch the original page from the origin
+  let response = await fetch(request)
 
-  Object.keys(newHeaders).map(function(name, index) {
-    responseHeaders.set(name, newHeaders[name])
+  // Make response headers mutable
+  response = new Response(response.body, response)
+
+  // Set each header in addHeaders
+  Object.keys(addHeaders).map(function(name, index) {
+    response.headers.set(name, addHeaders[name])
   })
 
+  // Delete each header in removeHeaders
   removeHeaders.forEach(function(name){
-    responseHeaders.delete(name)
+    response.headers.delete(name)
   })
 
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: responseHeaders
-  })
+  // Return the new mutated page
+  return response
 }
 ```
 
