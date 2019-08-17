@@ -51,6 +51,55 @@ async function fetchAndApply(request) {
   // Make response headers mutable
   response = new Response(response.body, response)
 
+  // Content-Type and Cache-Control headers based on file extension...
+  // ...because S3 sucks at guessing.
+  if(response.status === 200) {
+    let url = new URL(request.url)
+
+    // Content-Type
+    if (new RegExp(`\\.ico$`).test(url.pathname))
+      response.headers.set("Content-Type", "image/x-icon")
+    else if (new RegExp(`\\.svg$`).test(url.pathname))
+      response.headers.set("Content-Type", "image/svg+xml")
+    else if (new RegExp(`\\.ttf$`).test(url.pathname))
+      response.headers.set("Content-Type", "font/ttf")
+    else if (new RegExp(`\\.otf$`).test(url.pathname))
+      response.headers.set("Content-Type", "font/otf")
+    else if (new RegExp(`\\.eot$`).test(url.pathname))
+      response.headers.set("Content-Type", "application/vnd.ms-fontobject")
+    else if (new RegExp(`\\.woff$`).test(url.pathname))
+      response.headers.set("Content-Type", "font/woff")
+    else if (new RegExp(`\\.woff2$`).test(url.pathname))
+      response.headers.set("Content-Type", "font/woff2")
+    else if (new RegExp(`\\.xml$`).test(url.pathname))
+      response.headers.set("Content-Type", "text/xml")
+    else if (new RegExp(`\\.mp4$`).test(url.pathname))
+      response.headers.set("Content-Type", "video/mp4")
+    else if (new RegExp(`\\.webm$`).test(url.pathname))
+      response.headers.set("Content-Type", "video/webm")
+    else if (new RegExp(`\\.vtt$`).test(url.pathname))
+      response.headers.set("Content-Type", "text/vtt")
+    else if (new RegExp(`\\.docx$`).test(url.pathname))
+      response.headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    else if (new RegExp(`\\.pdf$`).test(url.pathname))
+      response.headers.set("Content-Type", "application/pdf")
+
+    // Cache-Control
+    if (new RegExp(`\\.(css|js|jpg|png|gif|svg|ico|mp4|webm|vtt|pdf)$`).test(url.pathname))
+      response.headers.set("Cache-Control", "max-age=604800, public")
+    else if (new RegExp(`\\.(ttf|otf|eot|woff|woff2)$`).test(url.pathname))
+      response.headers.set("Cache-Control", "max-age=2628000, public")
+    else
+      response.headers.set("Cache-Control", "max-age=3600, public")
+
+    // .asc exception
+    if (new RegExp(`\\.asc$`).test(url.pathname)) {
+      response.headers.set("Content-Type", "text/plain; charset=utf-8")
+      response.headers.set("Cache-Control", "max-age=0, no-store, no-cache, must-revalidate")
+      response.headers.set("Content-Disposition", "inline; filename=\"jarvis.asc\"")
+    }
+  }
+
   // Set each header in addHeaders
   Object.keys(addHeaders).map(function(name, index) {
     response.headers.set(name, addHeaders[name])

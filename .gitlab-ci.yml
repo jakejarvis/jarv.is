@@ -3,7 +3,7 @@ image: python:3.7-alpine
 variables:
   HUGO_VERSION: '0.53'  # https://github.com/gohugoio/hugo/releases
   HUGO_SHA: '0e4424c90ce5c7a0c0f7ad24a558dd0c2f1500256023f6e3c0004f57a20ee119'  # xxx_Linux-64bit.tar.gz
-  AWSCLI_VERSION: '1.16.21'  # https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst
+  AWSCLI_VERSION: '1.16.220'  # https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst
 
 before_script:
   # update alpine
@@ -25,25 +25,6 @@ deploy:
 
     # upload all files
     - aws s3 sync ./public s3://$S3_BUCKET_NAME --delete --region us-east-1 --cache-control "max-age=3600, public" --metadata-directive "REPLACE"
-
-    # set cache-control and certain content-types manually because S3 sucks at guessing
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.ico"   --content-type="image/x-icon"    --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.svg"   --content-type="image/svg+xml"   --cache-control "max-age=2628000, public"  --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.ttf"   --content-type="font/ttf"        --cache-control "max-age=2628000, public"  --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.otf"   --content-type="font/otf"        --cache-control "max-age=2628000, public"  --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.eot"   --content-type="application/vnd.ms-fontobject" --cache-control "max-age=2628000, public" --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.woff"  --content-type="font/woff"       --cache-control "max-age=2628000, public"  --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.woff2" --content-type="font/woff2"      --cache-control "max-age=2628000, public"  --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.xml"   --content-type="text/xml"        --cache-control "max-age=3600, public"     --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.mp4"   --content-type="video/mp4"       --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.webm"  --content-type="video/webm"      --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.vtt"   --content-type="text/vtt"        --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.docx"  --content-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.pdf"   --content-type="application/pdf" --cache-control "max-age=604800, public"   --metadata-directive="REPLACE" --recursive
-
-    # a few more caching improvements
-    - aws s3 cp s3://$S3_BUCKET_NAME s3://$S3_BUCKET_NAME --exclude "*" --include "*.css" --include "*.js" --include "*.jpg" --include "*.png" --include "*.gif" --cache-control "max-age=604800, public" --metadata-directive="REPLACE" --recursive
-    - aws s3 cp s3://$S3_BUCKET_NAME/jarvis.asc s3://$S3_BUCKET_NAME/jarvis.asc --content-type="text/plain; charset=utf-8" --cache-control "max-age=0, no-store, no-cache, must-revalidate" --content-disposition "inline; filename=\"jarvis.asc\"" --metadata-directive="REPLACE"
 
     # purge CloudFlare cache
     - >-
