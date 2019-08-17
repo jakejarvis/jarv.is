@@ -48,7 +48,7 @@ addEventListener("fetch", event => {
   event.respondWith(fetchAndApply(event.request))
 })
 
-async function fetchAndApply(req) {
+async function fetchAndApply(request) {
   // Fetch the original page from the origin
   let response = await fetch(request)
 
