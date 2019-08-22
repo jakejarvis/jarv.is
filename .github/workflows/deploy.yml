@@ -19,7 +19,15 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: public
-        path: ./public
+        path: './public'
+    - name: Sync to S3
+      uses: jakejarvis/s3-sync-action@master
+      env:
+        SOURCE_DIR: './public'
+        AWS_REGION: 'us-east-1'
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
       env:
