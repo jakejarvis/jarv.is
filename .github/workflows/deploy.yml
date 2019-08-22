@@ -14,7 +14,7 @@ jobs:
     - name: Build Hugo site
       uses: peaceiris/actions-hugo@v0.56.3
       with:
-        args: -b "/" --gc --cleanDestinationDir -v --debug
+        args: --gc --cleanDestinationDir -v --debug
     - name: Upload artifact for debugging
       uses: actions/upload-artifact@master
       with:
