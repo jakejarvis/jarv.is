@@ -3,6 +3,7 @@ on: push
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     steps:
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
