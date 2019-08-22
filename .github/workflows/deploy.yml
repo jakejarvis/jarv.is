@@ -9,27 +9,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
-    - name: Build Hugo site
-      uses: peaceiris/actions-hugo@v0.56.3
+    - uses: actions/checkout@master
+    - uses: peaceiris/actions-hugo@v0.56.3
       with:
-        args: --gc --cleanDestinationDir -v --debug
-    - name: Upload artifact for debugging
-      uses: actions/upload-artifact@master
+        args: --gc --cleanDestinationDir
+    - uses: actions/upload-artifact@master
       with:
         name: public
         path: './public'
-    - name: Sync to S3
-      uses: jakejarvis/s3-sync-action@master
+    - uses: jakejarvis/s3-sync-action@master
       env:
         SOURCE_DIR: './public'
         AWS_REGION: 'us-east-1'
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    - name: Purge cache
-      uses: jakejarvis/cloudflare-purge-action@master
+    - uses: jakejarvis/cloudflare-purge-action@master
       env:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
         CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
