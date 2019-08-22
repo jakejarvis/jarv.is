@@ -4,9 +4,6 @@ on: push
 jobs:
   deploy:
     steps:
-
-    # Put steps here to build your site, deploy it to a service, etc.
-
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
       env:
