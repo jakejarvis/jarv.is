@@ -1,0 +1,15 @@
+name: Build & Deploy
+on: push
+
+jobs:
+  deploy:
+    steps:
+
+    # Put steps here to build your site, deploy it to a service, etc.
+
+    - name: Purge cache
+      uses: jakejarvis/cloudflare-purge-action@master
+      env:
+        - CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+        - CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+        - CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
