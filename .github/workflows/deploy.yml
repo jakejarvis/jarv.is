@@ -13,7 +13,7 @@ jobs:
     - name: Build Hugo site
       uses: peaceiris/actions-hugo@v0.57.2
       with:
-        args: -v --debug
+        args: --debug -v
     - name: test artifact
       uses: actions/upload-artifact@master
       with:
