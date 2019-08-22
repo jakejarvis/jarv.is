@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Deploy
 
 on:
   push:
@@ -14,6 +14,11 @@ jobs:
       uses: peaceiris/actions-hugo@v0.57.2
       with:
         args: --gc -b "/"
+    - name: test artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: public
+        path: ./public
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
       env:
