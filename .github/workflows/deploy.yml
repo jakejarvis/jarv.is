@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build Hugo site
-      uses: peaceiris/actions-hugo@v0.57.2
+      uses: peaceiris/actions-hugo@v0.56.3
       with:
-        args: --debug -v
+        args: -b "/" -v --debug
     - name: test artifact
       uses: actions/upload-artifact@master
       with:
