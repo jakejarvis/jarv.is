@@ -9,9 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: jakejarvis/wait-action@master
-      with:
-        time: '10s'
     - uses: actions/checkout@master
     - uses: peaceiris/actions-hugo@v0.56.3
       with:
@@ -32,3 +29,13 @@ jobs:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
         CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
         CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+    - uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
+    - uses: jakejarvis/lighthouse-action@master
+      with:
+        url: 'https://jarv.is/'
+    - uses: actions/upload-artifact@master
+      with:
+        name: report
+        path: './report'
