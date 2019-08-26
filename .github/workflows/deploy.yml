@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: peaceiris/actions-hugo@v0.56.3
+    - uses: jakejarvis/hugo-build-action@master
       with:
-        args: --gc --cleanDestinationDir
+        args: --gc --cleanDestinationDir -b "/"
     - uses: actions/upload-artifact@master
       with:
         name: public
