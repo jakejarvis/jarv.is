@@ -17,26 +17,4 @@ jobs:
       with:
         name: public
         path: './public'
-    - uses: jakejarvis/s3-sync-action@master
-      env:
-        SOURCE_DIR: './public'
-        AWS_REGION: 'us-east-1'
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    - uses: jakejarvis/cloudflare-purge-action@master
-      env:
-        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-        CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
-    - uses: jakejarvis/wait-action@master
-      with:
-        time: '30s'
-    - uses: jakejarvis/lighthouse-action@master
-      with:
-        url: 'https://jarv.is/'
-    - uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
  
