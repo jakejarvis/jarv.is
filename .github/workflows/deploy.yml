@@ -11,8 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: jakejarvis/hugo-build-action@master
-      with:
-        args: --gc --cleanDestinationDir -b "/"
     - uses: actions/upload-artifact@master
       with:
         name: public
