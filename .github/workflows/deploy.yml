@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: jakejarvis/hugo-build-action@0.53
+    - uses: jakejarvis/hugo-build-action@v0.53
     - uses: actions/upload-artifact@master
       with:
         name: public
