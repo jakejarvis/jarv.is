@@ -37,4 +37,4 @@
 
 # VIEW SOURCE
 
-    https://git.jarv.is/jake/jarv.is
+    https://github.com/jakejarvis/jarv.is
