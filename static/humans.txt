@@ -31,8 +31,8 @@
 
     Hugo
     Amazon S3
+    GitHub Actions
     CloudFlare Workers
-    GitLab CI
     Matomo Analytics
 
 # VIEW SOURCE
