@@ -12,7 +12,6 @@
         margin: 0;
         padding: 0;
       }
-
       div#message {
         background: #fff;
         max-width: 400px;
@@ -21,26 +20,22 @@
         border-radius: 4px;
         box-shadow: 0 1px 3px #e0e0e0, 0 1px 2px #888;
       }
-
       div#message h1 {
         margin: 16px 0;
         font-size: 24px;
         font-weight: 300;
       }
-
       div#message p {
         margin: 16px 0;
         font-size: 15px;
         line-height: 140%;
       }
-
       div#message a {
         color: #0077a7;
       }
       div#message a:hover {
         text-decoration: underline;
       }
-
       @media (max-width: 600px) {
         body, div#message {
           background: #fff;
@@ -53,7 +48,7 @@
   <body id="error">
     <div id="message">
       <h1>Welp, this is awkward... &#x1F633;</h1>
-      <p>The file you asked for wasn't found in this neck of the woods. Please check the URL for mistakes and try again, or <a href="https://jarv.is/">go home</a>.</p>
+      <p>The file you asked for wasn't found in this neck of the woods. Please check the URL for mistakes and try again, or take your ball and <a href="{{ .Site.BaseURL }}">go home</a>.</p>
     </div>
     <script>
       var _paq = _paq || [];

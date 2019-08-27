@@ -13,9 +13,9 @@ pygmentsCodeFences = true
 
 # enableGitInfo = true     # messed up sitemap.xml timestamps
 
-[taxonomies]
-  tag = ""
-  category = ""
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
 
 [sitemap]
   filename = "sitemap.xml"
