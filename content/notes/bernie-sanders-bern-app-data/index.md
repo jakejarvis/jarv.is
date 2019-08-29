@@ -14,7 +14,7 @@ draft: false
 
 The team behind Bernie Sanders' 2020 campaign [released a new web app](https://www.nbcnews.com/politics/2020-election/bernie-sanders-2020-campaign-unveils-app-increase-its-voter-database-n999206) last month named [BERN](https://app.berniesanders.com/). The goal of BERN is simple: to gather as much information as they can on as many voters in the United States as they can, and make their grassroots army of enthusiastic supporters do the work. It's undoubtedly a smart strategy, but also a concerning one for myself and other privacy advocates.
 
-![](images/sad-bernie.jpg)
+{{< image src="images/sad-bernie.jpg" alt="Sad Bernie" >}}
 
 BERN has two features: one called "Friend-to-Friend" (described as "add everyone in your network") and another called "Community Canvassing" (described as "talk to people around you every day, e.g. on the bus, outside the grocery store, at a park"). Both of these involve phoning home to Sanders HQ with the following information on anybody you know or meet:
 
@@ -46,34 +46,33 @@ Here's one of the instructional videos provided internally to volunteers:
 
 ...and a few privacy-related questions about the friend-to-friend feature were answered by campaign staff in a separate closed webinar for volunteers this week:
 
-![](images/webinar-qa-1.png)
+{{< image src="images/webinar-qa-1.png" width="400" alt="Q&A 1" >}}
 
-![](images/webinar-qa-2.png)
-
+{{< image src="images/webinar-qa-2.png" width="400" alt="Q&A 2" >}}
 
 Defenders of the BERN app have pointed out that the information used is already available from public voter rolls maintained independently by each state. This is true. But these public records have never been tied to a campaign's internal voter files through a tool that’s wide open to the entire internet, with incentives to add valuable data that benefits one candidate.
 
 There were even unverified claims that [BERN was leaking voter ID numbers](https://info.idagent.com/blog/bern-app-exposes-150m-voter-records), which are the same as one's driver's license ID numbers in some states, through JSON responses in the first few days after its release. There don't be appear to be strict rate limits on calls to the API either, potentially inviting malicious actors from around the world  --- wink wink  --- to scrape personal data on tens of millions of Americans en masse.
 
-![](images/json-response.jpg)
+{{< image src="images/json-response.jpg" alt="JSON Response" caption="BERN's API response in Chrome DevTools" >}}
 
 Others have noted that web-based organizing tools like BERN have been used by campaigns at all levels since President Obama's well-oiled, futuristic machine in 2007. This is also true, and I'm a big fan of the trend they started.
 
 But the latter category of databases --- like [NationBuilder](https://nationbuilder.com/) and, more notably, [NGP VAN's VoteBuilder](https://act.ngpvan.com/votebuilder) software based on the Obama campaign's inventions and now used by almost all Democratic campaigns across the United States --- are secured and strictly guarded. Volunteer accounts need to be created and approved by paid campaign organizers and are locked down to provide the bare minimum amount of information necessary for one to canvass or phone bank a shortlist of voters. Every single click is also recorded in a [detailed log](sanders-campaign-audit.pdf) down to the millisecond. (This is how [Bernie's organizers got busted](http://time.com/4155185/bernie-sanders-hillary-clinton-data/) snooping around Hillary's VoteBuilder data last cycle, by the way.)
 
-![](images/votebuilder-audit.png)
+{{< image src="images/votebuilder-audit.png" width="750" alt="asdf" caption="NGP VAN's audit of of the Sanders campaign's VoteBuilder activity" >}}
 
 BERN is taking this to an unprecedented level. Allowing anybody on the internet to sign up and add others' personal information to the campaign's database without their knowledge is troubling, especially when you consider the gamified "points" system they've added as an incentive to report as much information on as many people as possible.
 
-![](images/reddit-bros.png)
+{{< image src="images/reddit-bros.png" width="600" alt="" >}}
 
 In addition to the points system, it was revealed in the webinar mentioned above that the campaign is planning on giving out shiny rewards based on how many friends one adds, setting expectations at 50+ contacts to reach the “Bernie Super Bundler” tier — whatever that means.
 
-![](images/webinar-slide-1.png)
+{{< image src="images/webinar-slide-1.png" width="700" alt="Webinar Slide 1" >}}
 
 In the middle of the webinar, the organizer also paused the presentation for *fifteen minutes * --- complete with a countdown clock  ---  and told volunteers to race to add as many of their friends as possible in that time. She announced afterwards that participants added 20 to 40 friends into the app on average, with some allegedly adding close to 100 in fifteen minutes.
 
-![](images/webinar-slide-2.png)
+{{< image src="images/webinar-slide-2.png" width="700" alt="Webinar Slide 2" >}}
 
 The [Privacy Policy link](https://berniesanders.com/privacy-policy/) at the bottom of the app links to a generic policy that looks like it's been copied from a default Wix website. There's no mention of the BERN app, no details of how they explicitly use our information, and no sign of an opt-out procedure.
 

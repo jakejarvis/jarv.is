@@ -668,7 +668,8 @@ body#notes main#single article div#content img {
   display: block;
   object-fit: scale-down;
 }
-body#notes main#single article div#content img + em {
+body#notes main#single article div#content img + em,
+body#notes main#single article div#content figure figcaption {
   display: block;
   text-align: center;
   font-size: 15px;
