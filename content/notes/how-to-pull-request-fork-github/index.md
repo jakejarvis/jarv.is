@@ -14,7 +14,7 @@ draft: false
 ---
 
 
-![](images/forks.png)
+{{< image src="images/forks.png" alt="Git Forks Visualization" >}}
 
 
 Contributing to an open-source project can be intimidating at first. The convoluted process of submitting your improvements for approval via a [**pull request**](https://help.github.com/en/articles/about-pull-requests) certainly doesn't help.
@@ -29,7 +29,7 @@ Starting from the very beginning, we'll fork an existing repository to our accou
 
 Assuming you're using GitHub, this step is easy. Just find the repository you're contributing to and press the Fork button in the upper left. This will create an exact copy of the repository (and all of its branches) under your own username.
 
-![](images/step1.png)
+{{< image src="images/step1.png" alt="Step 1" >}}
 
 
 ## 2. Clone your new fork locally
@@ -40,7 +40,7 @@ GitHub will automatically redirect you to the forked repository under your usern
 git clone git@github.com:jakejarvis/react-native.git
 ```
 
-![](images/step2.png)
+{{< image src="images/step2.png" width="420" alt="Step 2" >}}
 
 
 ## 3. Track the original repository as a remote of the fork
@@ -91,9 +91,9 @@ git push -u origin fix-readme-typo
 
 You're now all ready to submit the improvement you've made to the project's maintainers for approval. Head over to the original repositories Pull Requests tab, and you should see an automatic suggestion from GitHub to create a pull request from your new branch.
 
-![](images/step7-1.png)
+{{< image src="images/step7-1.png" alt="Step 7.1" >}}
 
-![](images/step7-2.png)
+{{< image src="images/step7-2.png" width="700" alt="Step 7.2" >}}
 
 ---
 

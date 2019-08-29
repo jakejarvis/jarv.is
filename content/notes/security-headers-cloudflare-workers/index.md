@@ -13,13 +13,13 @@ draft: false
 ---
 
 
-![A+ security grade for this website](images/security-headers.png)
+{{< image src="images/security-headers.png" width="700" alt="A+ security grade for this website" >}}
 
 In 2019, it's becoming more and more important to harden websites via HTTP response headers, which all modern browsers parse and enforce. Multiple standards have been introduced over the past few years to protect users from various attack vectors, including `Content-Security-Policy` for injection protection, `Strict-Transport-Security` for HTTPS enforcement, `X-XSS-Protection` for cross-site scripting prevention, `X-Content-Type-Options` to enforce correct MIME types, `Referrer-Policy` to limit information sent with external links, [and many, many more](https://www.netsparker.com/whitepaper-http-security-headers/).
 
 [Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/) are a great feature of [Cloudflare](https://www.cloudflare.com/) that allows you to modify responses on-the-fly between your origin server and the user, similar to [AWS Lambda](https://aws.amazon.com/lambda/) (but much simpler). We'll use a Worker to add the headers.
 
-![Cloudflare Workers](images/cf-workers.png)
+{{< image src="images/cf-workers.png" width="650" alt="Cloudflare Workers" >}}
 
 Workers can be enabled for $5/month via the [Cloudflare Dashboard](https://dash.cloudflare.com/). (It's worth noting, once enabled, Workers can be used on *any zone* on your account, not just one website!).
 

@@ -60,7 +60,7 @@ Others have noted that web-based organizing tools like BERN have been used by ca
 
 But the latter category of databases --- like [NationBuilder](https://nationbuilder.com/) and, more notably, [NGP VAN's VoteBuilder](https://act.ngpvan.com/votebuilder) software based on the Obama campaign's inventions and now used by almost all Democratic campaigns across the United States --- are secured and strictly guarded. Volunteer accounts need to be created and approved by paid campaign organizers and are locked down to provide the bare minimum amount of information necessary for one to canvass or phone bank a shortlist of voters. Every single click is also recorded in a [detailed log](sanders-campaign-audit.pdf) down to the millisecond. (This is how [Bernie's organizers got busted](http://time.com/4155185/bernie-sanders-hillary-clinton-data/) snooping around Hillary's VoteBuilder data last cycle, by the way.)
 
-{{< image src="images/votebuilder-audit.png" width="750" alt="asdf" caption="NGP VAN's audit of of the Sanders campaign's VoteBuilder activity" >}}
+{{< image src="images/votebuilder-audit.png" width="750" alt="asdf" caption="NGP VAN's audit of the Sanders campaign's VoteBuilder activity" >}}
 
 BERN is taking this to an unprecedented level. Allowing anybody on the internet to sign up and add others' personal information to the campaign's database without their knowledge is troubling, especially when you consider the gamified "points" system they've added as an incentive to report as much information on as many people as possible.
 
