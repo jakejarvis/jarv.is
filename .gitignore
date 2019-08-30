@@ -1,16 +1,6 @@
-.vscode/
-.npm
-.firebase
-node_modules
-lib
-firebase-debug.log
-npm-debug.log
-package-lock.json
-yarn.lock
-.npmrc
-
 public/
 builds/
 resources/
 
 .DS_Store
+.vscode/
