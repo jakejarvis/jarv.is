@@ -6,11 +6,13 @@
     {{ hugo.Generator }}
     <title>{{ .Title }}{{ if not .IsHome }} &ndash; {{ .Site.Title }}{{ end }} &#x1f468;&#x200d;&#x1f4bb;</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="author" content="Jake Jarvis">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
