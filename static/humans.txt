@@ -22,19 +22,26 @@
 # humanstxt.org/
 # The humans responsible & technology colophon
 
-# TEAM
+# HUMAN
 
-    Jake Jarvis - @jakejarvis
-    jake@jarv.is
+    Jake Jarvis <jake@jarv.is>
+    @jakejarvis
 
-# TECHNOLOGY COLOPHON
+# TECHNOLOGY
 
     Hugo
     Amazon S3
     GitHub Actions
-    CloudFlare Workers
+    Cloudflare Workers
     Matomo Analytics
 
 # VIEW SOURCE
 
     https://github.com/jakejarvis/jarv.is
+
+# LICENSE
+
+    All content is licensed under CC-BY-4.0, an
+    open & permissive Creative Commons license.
+
+    https://jarv.is/license.txt
