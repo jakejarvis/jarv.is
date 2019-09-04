@@ -1,11 +1,11 @@
-# [jarv.is](https://jarv.is/) 🐼
+# 🏡 &nbsp;[jarv.is](https://jarv.is/)
 
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
 - [Hugo](https://github.com/gohugoio/hugo)
 - [Amazon S3](https://aws.amazon.com/)
 - [GitHub Actions](https://github.com/jakejarvis/jarv.is/blob/master/.github/workflows/deploy.yml)
-- [CloudFlare Workers](https://developers.cloudflare.com/workers/about/)
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/about/)
 - [Matomo Analytics](https://matomo.org/)
 
 ---

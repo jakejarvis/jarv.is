@@ -102,28 +102,20 @@ body#home a#node:hover {
   border-color: #6fbc4e60;
 }
 
-body#home a#express {
-  color: #259dff;
+body#home a#golang {
+  color: #00acd7;
 }
-body#home a#express:hover {
-  border-color: #259dff;
-  border-color: #259dff60;
-}
-
-body#home a#mongo {
-  color: #13aa52;
-}
-body#home a#mongo:hover {
-  border-color: #13aa52;
-  border-color: #13aa5260;
+body#home a#golang:hover {
+  border-color: #00acd7;
+  border-color: #00acd760;
 }
 
 body#home a#react {
-  color: #61dafb;
+  color: #4fb3cd;
 }
 body#home a#react:hover {
-  border-color: #61dafb;
-  border-color: #61dafb60;
+  border-color: #4fb3cd;
+  border-color: #4fb3cd60;
 }
 
 body#home a#angular {
@@ -159,11 +151,11 @@ body#home a#cpp:hover {
 }
 
 body#home a#python {
-  color: #efb60b;
+  color: #fea500;
 }
 body#home a#python:hover {
-  border-color: #efb60b;
-  border-color: #efb60b60;
+  border-color: #fea500;
+  border-color: #fea50060;
 }
 
 body#home a#php {
