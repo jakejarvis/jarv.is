@@ -1,17 +1,19 @@
-# 🏡 &nbsp;[jarv.is](https://jarv.is/)
+# 🏡&nbsp; [jarv.is](https://jarv.is/)
 
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
 - [Hugo](https://github.com/gohugoio/hugo)
-- [Amazon S3](https://aws.amazon.com/)
-- [GitHub Actions](https://github.com/jakejarvis/jarv.is/blob/master/.github/workflows/deploy.yml)
-- [Cloudflare Workers](https://developers.cloudflare.com/workers/about/)
+- [GitHub Actions](.github/workflows/deploy.yml)
+- [Amazon S3](https://aws.amazon.com/s3/)
+- [Cloudflare Workers](worker.js)
 - [Matomo Analytics](https://matomo.org/)
+
+I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.is/issues/1) as an issue in this repo.
 
 ---
 
 ![Creative Commons Attribution 4.0 International License](https://github.com/creativecommons/cc-cert-core/blob/master/images/cc-by-88x31.png "CC BY")
 
-Site content (everything in [`content/notes`](https://github.com/jakejarvis/jarv.is/tree/master/content/notes)) is licensed under a [Creative Commons Attribution 4.0 International License (CC BY)](LICENSE.md), which means that you can copy, redistribute, remix, transform and build upon the content for any purpose as long as you give appropriate credit and provide a link to the license.
+Site content (everything in [`content/notes`](content/notes/)) is published under the [Creative Commons Attribution 4.0 International License](LICENSE.md) (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
 
-Code in this repository, such as the custom Hugo theme, is published under the [MIT license](https://opensource.org/licenses/MIT).
+All code in this repository (such as my [Hugo theme](layouts/)) is published under the [MIT license](https://opensource.org/licenses/MIT). Everything else (such as the press articles and videos in [`misc`](misc/)) belongs to its respective owner(s) under the original license/copyright.
