@@ -1,16 +1,14 @@
-<p>
 {{ if .Get "caption"}}
 <figure>
   <picture>
+{{ else }}
+<p>
 {{ end }}
-<img
-  src="{{ .Get "src" }}"
-  alt="{{ .Get "alt" }}"
-{{ if .Get "width"}}  width="{{ .Get "width" }}px"{{ end }}
-{{ if .Get "caption"}}  title="{{ .Get "caption"}}"{{ end }}>
+<img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}"{{ if .Get "width"}} width="{{ .Get "width" }}"{{ end }}{{ if .Get "caption"}} title="{{ .Get "caption"}}"{{ end }}>
 {{ if .Get "caption"}}
   </picture>
   <figcaption>{{ .Get "caption" }}</figcaption>
 </figure>
-{{ end }}
+{{ else }}
 </p>
+{{ end }}
