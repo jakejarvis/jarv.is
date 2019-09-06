@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    - uses: jakejarvis/hugo-build-action@v0.53
+    - uses: jakejarvis/hugo-build-action@v0.58.1
     - uses: actions/upload-artifact@master
       with:
         name: public
@@ -35,7 +35,7 @@ jobs:
     - uses: jakejarvis/wait-action@master
       with:
         time: '30s'
-    - uses: jakejarvis/lighthouse-action@master
+    - uses: jakejarvis/lighthouse-action@develop
       with:
         url: 'https://jarv.is/'
     - uses: actions/upload-artifact@master
