@@ -35,7 +35,7 @@ jobs:
     - uses: jakejarvis/wait-action@master
       with:
         time: '30s'
-    - uses: jakejarvis/lighthouse-action@develop
+    - uses: jakejarvis/lighthouse-action@master
       with:
         url: 'https://jarv.is/'
     - uses: actions/upload-artifact@master
