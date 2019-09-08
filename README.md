@@ -1,5 +1,7 @@
 # 🏡&nbsp; [jarv.is](https://jarv.is/)
 
+![](https://github.com/jakejarvis/jarv.is/workflows/Deploy/badge.svg)
+
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
 - [Hugo](https://github.com/gohugoio/hugo)
