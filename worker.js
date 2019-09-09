@@ -15,7 +15,9 @@ let addHeaders = {
   "X-DNS-Prefetch-Control": "off",
   "X-UA-Compatible": "IE=edge",
   "X-Permitted-Cross-Domain-Policies": "none",
-  "Feature-Policy": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; sync-xhr 'none'; payment 'none'; usb 'none'; vr 'none'"
+  "Feature-Policy": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; sync-xhr 'none'; payment 'none'; usb 'none'; vr 'none'",
+  "X-Humans": "https://jarv.is/humans.txt",
+  "X-View-Source": "https://github.com/jakejarvis/jarv.is"
 }
 
 let removeHeaders = [

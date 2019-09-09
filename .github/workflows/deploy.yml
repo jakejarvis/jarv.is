@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    - uses: jakejarvis/hugo-build-action@develop
+    - uses: jakejarvis/hugo-build-action@v0.53
     - uses: actions/upload-artifact@master
       with:
         name: public
@@ -27,12 +27,13 @@ jobs:
         AWS_S3_BUCKET: 'jarv.is'
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    - uses: cloudflare/serverless-action@master
+    - uses: jakejarvis/cloudflare-serverless-action@master
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_AUTH_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
         CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_KEY }}
         CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE }}
+        CLOUDFLARE_WORKER_NAME: 'jarv-is'
         CLOUDFLARE_SCRIPT_NAME: 'worker'
     - uses: jakejarvis/cloudflare-purge-action@master
       env:
