@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    - uses: jakejarvis/hugo-build-action@v0.53
+    - uses: jakejarvis/hugo-build-action@develop-v0.53-DEV
     - uses: actions/upload-artifact@master
       with:
         name: public
