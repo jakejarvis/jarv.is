@@ -40,9 +40,7 @@ jobs:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
         CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
         CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
-    - uses: jakejarvis/wait-action@master
-      with:
-        time: '30s'
+    - run: sleep 30s
     - uses: jakejarvis/lighthouse-action@master
       with:
         url: 'https://jarv.is/'
