@@ -597,6 +597,7 @@ body#notes footer div#panda span {
 /* Single Post */
 
 body#notes main#single article div#content, body#notes main#single article div#content p {
+  font-size: 16px;
   line-height: 1.7;
   object-fit: contain;
 }
