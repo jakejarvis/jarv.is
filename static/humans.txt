@@ -30,9 +30,8 @@
 # TECHNOLOGY
 
     Hugo
-    Amazon S3
     GitHub Actions
-    Cloudflare Workers
+    GitHub Pages
     Matomo Analytics
 
 # VIEW SOURCE

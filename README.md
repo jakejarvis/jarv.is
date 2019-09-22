@@ -1,13 +1,12 @@
 # 🏡&nbsp; [jarv.is](https://jarv.is/)
 
-![](https://github.com/jakejarvis/jarv.is/workflows/Deploy/badge.svg)
+![](https://github.com/jakejarvis/jarv.is/workflows/GitHub%20Pages/badge.svg)
 
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
 - [Hugo](https://github.com/gohugoio/hugo)
-- [GitHub Actions](.github/workflows/deploy.yml)
-- [Amazon S3](https://aws.amazon.com/s3/)
-- [Cloudflare Workers](worker.js)
+- [GitHub Actions](.github/workflows)
+- [GitHub Pages](https://pages.github.com/)
 - [Matomo Analytics](https://matomo.org/)
 
 I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.is/issues/1) as an issue in this repo.
