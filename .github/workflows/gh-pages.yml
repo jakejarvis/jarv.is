@@ -14,6 +14,8 @@ jobs:
         fetch-depth: 1
         lfs: false
     - uses: jakejarvis/hugo-build-action@develop-v0.53-DEV
+      with:
+        args: --gc --cleanDestinationDir
     - uses: jakejarvis/github-pages-deploy-action@master
       env:
         PAGES_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}

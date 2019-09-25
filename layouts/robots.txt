@@ -2,4 +2,4 @@ User-Agent: *
 Disallow: /y2k/
 Disallow: /comp20/
 
-Sitemap: https://jarv.is/sitemap.xml
+Sitemap: {{ "sitemap.xml" | absURL }}

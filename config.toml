@@ -11,6 +11,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 
+enableRobotsTXT = true
+
 # enableGitInfo = true     # messed up sitemap.xml timestamps
 
 [outputs]

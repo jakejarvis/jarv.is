@@ -1,6 +1,6 @@
 # 🏡&nbsp; [jarv.is](https://jarv.is/)
 
-![Deploy status](https://github.com/jakejarvis/jarv.is/workflows/GitHub%20Pages/badge.svg) ![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is) ![License](https://img.shields.io/github/license/jakejarvis/jarv.is?color=red)
+[![Deploy status](https://github.com/jakejarvis/jarv.is/workflows/GitHub%20Pages/badge.svg)](.github/workflows) [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is)](https://github.com/jakejarvis/jarv.is) [![License](https://img.shields.io/github/license/jakejarvis/jarv.is?color=red)](LICENSE.md)
 
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
