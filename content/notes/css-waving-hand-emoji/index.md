@@ -18,7 +18,7 @@ If you examine [my homepage](https://jarv.is/) long enough, you might notice the
 Below are the code snippets you can grab and customize to make your own 
 ["waving hand" 👋](https://emojipedia.org/waving-hand-sign/) emojis ***actually wave***, and a [CodePen playground](https://codepen.io/jakejarvis/pen/pBZWZw) for live testing.
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="Waving Hand Emoji w/ CSS Keyframes" src="https://codepen.io/jakejarvis/embed/pBZWZw/?height=400&theme-id=light&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
+{{<codepen username="jakejarvis" id="pBZWZw" left-tab="css" right-tab="result" height="400">}}
 
 ### CSS:
 
