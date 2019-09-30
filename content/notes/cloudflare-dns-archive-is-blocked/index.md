@@ -6,6 +6,7 @@ tags:
   - Cloudflare
   - DNS
   - Networking
+  - Privacy
   - Temper Tantrums
 image: "archive-is.png"
 draft: false
@@ -34,5 +35,3 @@ I wrote the [following reply](https://news.ycombinator.com/item?id=19828898) to 
 > I hesitate to compare this to Apple calling themselves "courageous" when removing the headphone jack, but in this case, I think the word is appropriate. I'll happily stand behind you guys if you take some PR hits while forcing the rest of the industry to make DNS safer – since it is understandable, admittedly, for users to conclude that "Cloudflare is blocking websites, sound the alarms!" at first glance.
 
 Sure, it's annoying that I'll need to use a VPN or change my DNS resolvers to use a pretty slick (and otherwise convenient) website archiver. But I'm more happy to see that Cloudflare is playing the privacy long-game, even at the risk of their users concluding that they're blocking websites accessible to everyone else on the internet.
-
-[**Learn how to switch your DNS to 1.1.1.1 for more privacy here.**](https://1.1.1.1/dns/#setup-instructions)

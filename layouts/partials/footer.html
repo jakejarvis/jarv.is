@@ -1,4 +1,4 @@
-    <script>
+    {{ if eq hugo.Environment "production" }}<script>
       var _paq = _paq || [];
       _paq.push(['setRequestMethod', 'POST']);
       _paq.push(['setSecureCookie', true]);
@@ -11,7 +11,7 @@
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.defer=true; g.src=u+'stats.js'; s.parentNode.insertBefore(g,s);
       })();
-    </script>
+    </script>{{ end }}
   </body>
 </html>
 
