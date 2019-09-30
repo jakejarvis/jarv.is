@@ -30,7 +30,7 @@
     <meta name="msvalidate.01" content="164551986DA47F7F6FC0D21A93FFFCA6">
     <meta name="p:domain_verify" content="e8aefab89c04734260da89b6ff26fd5b">
     <meta name="yandex-verification" content="7432e013ad0164ab">
-    {{ $style := resources.Get "style.scss" | resources.ToCSS }}<link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ $style := resources.Get "style.scss" | resources.ToCSS (dict "outputStyle" "compact") }}<link rel="stylesheet" href="{{ $style.Permalink }}">
     <link rel="dns-prefetch" href="https://stats.jarv.is">
     <link rel="dns-prefetch" href="https://comments.jarv.is">
     <link rel="canonical" href="{{ .Permalink }}">

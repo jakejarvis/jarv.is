@@ -1,5 +1,4 @@
-/* JJ SCSS */
-/* Compiled from https://github.com/jakejarvis/jarv.is/blob/master/assets/style.scss */
+/*! Compiled from https://github.com/jakejarvis/jarv.is/blob/master/assets/style.scss */
 
 // Global Colors
 $color-background:   #ffffff;
@@ -136,6 +135,9 @@ body {
           color: $color;
 
           &:hover {
+            // Lighter underline compared to text color. mix()'ing with
+            // background (#fff) gives the impression of transparency
+            // but with MUCH better compatibility.
             border-color: mix($color, $color-background, 40%);
           }
         }
@@ -618,7 +620,7 @@ body {
 }
 
 
-/* Fancy Waving Hand Emoji (TM) - https://jarv.is/notes/css-waving-hand-emoji/ */
+/*! Fancy Waving Hand Emoji (TM) - https://jarv.is/notes/css-waving-hand-emoji/ */
 @keyframes wave {
   0% { transform: rotate(  0.0deg); }
  10% { transform: rotate(-10.0deg); }
@@ -630,7 +632,7 @@ body {
 }
 
 
-/* Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
+/*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 div.highlight span {
   &.k, &.kc, &.kd, &.kp, &.kr, &.kt, &.no {
     color: #03748a;
