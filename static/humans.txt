@@ -36,7 +36,7 @@
 
 # VIEW SOURCE
 
-    https://github.com/jakejarvis/jarv.is
+    https://go.jarv.is/source
 
 # LICENSE
 
