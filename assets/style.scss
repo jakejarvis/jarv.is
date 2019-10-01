@@ -51,6 +51,10 @@ $colors-home:(
 $color-serverless: #87cef7;
 $color-fairy: #f23e93;
 
+// Other Settings
+$link-opacity: 50%;
+$link-underline-size: 2px;
+
 
 // Global Styles
 body {
@@ -68,15 +72,26 @@ body {
 
   a {
     color: $color-links;
-    background-color: transparent;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    // linear-gradient() hack to get our custom underline to wrap:
+    // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
+    // Calculate lighter underline color compared to text color by
+    // mix()'ing with background (#fff) to give the impression of
+    // opacity but with MUCH better compatibility.
+    background-image: linear-gradient(mix($color-links, $color-background, $link-opacity), mix($color-links, $color-background, $link-opacity));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: $link-underline-size;
+    background-size: 0% $link-underline-size;
+    transition: background-size 0.25s ease-in-out;
 
     &:hover {
-      // Calculate lighter underline color compared to text color.
-      // mix()'ing with background (#fff) gives the impression of
-      // opacity but with MUCH better compatibility.
-      border-color: mix($color-links, $color-background, 40%);
+      text-decoration: none;
+      background-size: 100% $link-underline-size;
+    }
+
+    &.no-underline {
+      background: none !important;
     }
   }
 
@@ -87,20 +102,15 @@ body {
     max-width: 1070px;
     padding: 60px;
 
-    img#me {
-      float: right;
-      margin: 0 0 20px 20px;
-      padding: 4px;
-      border: 1px solid $color-super-light;
-      width: 160px;
-      height: 160px;
-    }
-
     h1 {
       margin: 0 0 20px 0;
       font-size: 1.5em;
       font-weight: 500;
       line-height: 1;
+
+      a {
+        color: inherit;
+      }
     }
 
     h2 {
@@ -122,9 +132,13 @@ body {
       vertical-align: middle;
     }
 
-    h1 a {
-      color: inherit;
-      border: none;
+    img#me {
+      float: right;
+      margin: 0 0 20px 20px;
+      padding: 4px;
+      border: 1px solid $color-super-light;
+      width: 160px;
+      height: 160px;
     }
 
     a {
@@ -132,10 +146,7 @@ body {
       @each $id, $color in $colors-home {
         &##{$id} {
           color: $color;
-
-          &:hover {
-            border-color: mix($color, $color-background, 40%);
-          }
+          background-image: linear-gradient(mix($color, $color-background, $link-opacity), mix($color, $color-background, $link-opacity));
         }
       }
     }
@@ -151,6 +162,7 @@ body {
 
       &#fairy {
         color: $color-fairy;
+
         &:hover {
           cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNiIgdmlld3BvcnQ9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZm9udC1zaXplOjE4cHgiPjx0ZXh0IHk9IjUwJSI+8J+nmjwvdGV4dD48L3N2Zz4=) 5 5, auto;
         }
@@ -180,12 +192,12 @@ body {
           line-height: 1.5;
 
           a {
-            border: none;
-          }
+            display: inline-block;
+            transition: transform 0.2s ease-in-out;
 
-          span {
-            text-align: center;
-            width: 12px;
+            &:hover {
+              transform: scale(1.4);
+            }
           }
         }
 
@@ -197,7 +209,6 @@ body {
 
           a {
             color: $color-light;
-            border: none;
 
             &#source {
               border-bottom: 1px solid $color-super-light;
@@ -224,8 +235,7 @@ body {
     padding: 20px 50px;
 
     header {
-      margin-top: 20px;
-      margin-bottom: 40px;
+      margin: 30px 0;
 
       a {
         &#more {
@@ -288,11 +298,15 @@ body {
         &#panda {
           width: 20%;
           text-align: center;
-          font-size: 1.5em;
+          font-size: 1.7em;
 
-          span {
-            text-align: center;
-            width: 12px;
+          a {
+            display: inline-block;
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+              transform: scale(1.4);
+            }
           }
         }
       }
@@ -379,7 +393,7 @@ body {
 
           figure figcaption {
             display: block;
-              font-size: 0.95em;
+            font-size: 0.95em;
             text-align: center;
             color: $color-light;
             margin-top: 5px;
@@ -462,6 +476,15 @@ body {
           div#commento-footer {
             display: none;
           }
+
+          // disable link underline effect
+          a {
+            background: none;
+            
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
 
@@ -520,13 +543,6 @@ body {
     font-size: 1em;
     padding: 30px;
 
-    img#me {
-      width: 68px;
-      height: 68px;
-      padding: 2px;
-      margin: 0 0 10px 10px;
-    }
-
     h1 {
       margin: 0 0 12px 0;
     }
@@ -539,6 +555,13 @@ body {
       font-size: 1.1em;
       line-height: 1.5;
       margin: 12px 0;
+    }
+
+    img#me {
+      width: 68px;
+      height: 68px;
+      padding: 2px;
+      margin: 0 0 10px 10px;
     }
 
     footer div {
@@ -555,15 +578,15 @@ body {
         width: 50%;
         line-height: 20px;
         font-size: 0.7em;
+
+        span#copyright::after {
+          content: "\A";
+          white-space: pre;
+        }
       }
 
       &#blog {
         font-size: 1em;
-      }
-
-      &#info span#copyright::after {
-        content: "\A";
-        white-space: pre;
       }
     }
   }
@@ -602,17 +625,17 @@ body {
     }
 
     footer div {
+      line-height: 1.8;
+
       &#panda {
         display: none;
       }
 
-      &#copyright {
+      &#copyright, &#poweredby {
         width: 50%;
-        line-height: 1.8;
       }
 
       &#poweredby {
-        width: 50%;
         line-height: 1.8;
 
         a#hugo::after {

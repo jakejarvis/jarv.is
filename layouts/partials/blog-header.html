@@ -1,6 +1,6 @@
     <header>
       {{ if eq .Kind "page" }}<a href="{{ "notes/" | absURL }}" id="more" title="More Posts">&laquo; More Posts</a>{{ else }}<a href="{{ .Site.BaseURL }}" id="more" title="Return Home">&laquo; Return Home</a>{{ end }}
-      <a href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
+      <a class="no-underline" href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144.1">
           <title>Jake Jarvis</title>
           <polygon fill="#6fbc4e" points="57.6 0 38.4 11.1 38.4 11.1 76.8 33.2 96 22.1 96 22.1 57.6 0 57.6 0"/>
