@@ -88,8 +88,8 @@ body {
     background-image: underline-hack($color-links);
     background-position: 0% 100%;
     background-repeat: no-repeat;
-    padding-bottom: $link-underline-size;
     background-size: 0% $link-underline-size;
+    padding-bottom: $link-underline-size;
     transition: background-size 0.25s ease-in-out;
 
     &:hover {
@@ -434,8 +434,9 @@ body {
           }
           
           code {
-            font-family: monospace;
-            font-size: 1.2em;
+            // https://markdotto.com/2018/02/07/github-system-fonts/
+            font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+            font-size: 0.9em;
             padding: 0.2em;
             background: $color-super-duper-light;
             border: 1px solid $color-super-light;
@@ -567,6 +568,10 @@ body {
         width: 50%;
       }
 
+      &#blog {
+        font-size: 1em;
+      }
+
       &#info {
         font-size: 0.7em;
 
@@ -574,10 +579,6 @@ body {
           content: "\A";
           white-space: pre;
         }
-      }
-
-      &#blog {
-        font-size: 1em;
       }
     }
   }
@@ -587,19 +588,6 @@ body {
     padding: 30px;
     width: 100%;
     max-width: 100%;
-
-    main#archive section.year div {
-      font-size: 1em;
-    }
-
-    main#single article {
-      width: 100%;
-      max-width: 100%;
-
-      div#info h1 {
-        font-size: 1.7em;
-      }
-    }
 
     header {
       margin-top: 0;
@@ -631,6 +619,19 @@ body {
           content: "\A";
           white-space: pre;
         }
+      }
+    }
+
+    main#archive section.year div {
+      font-size: 1em;
+    }
+
+    main#single article {
+      width: 100%;
+      max-width: 100%;
+
+      div#info h1 {
+        font-size: 1.7em;
       }
     }
   }
