@@ -107,13 +107,13 @@ body {
     font-size: 1.5em;
     line-height: 1.5;
     max-width: 1070px;
-    padding: 60px;
+    padding: 2em 2.5em;
 
     h1 {
-      margin: 0 0 20px 0;
+      margin: 0;
       font-size: 1.5em;
       font-weight: 500;
-      line-height: 1;
+      line-height: 1.2;
 
       a {
         color: inherit;
@@ -121,14 +121,14 @@ body {
     }
 
     h2 {
-      margin: 20px 0;
+      margin: 0.6em 0;
       font-size: 1.2em;
       font-weight: 400;
       line-height: 1.4;
     }
 
     p {
-      margin: 20px 0;
+      margin: 0.8em 0;
     }
 
     sup {
@@ -141,7 +141,7 @@ body {
 
     img#me {
       float: right;
-      margin: 0 0 20px 20px;
+      margin: 0 0 0.75em 0.75em;
       padding: 4px;
       border: 1px solid $color-super-light;
       width: 160px;
@@ -178,9 +178,7 @@ body {
 
     footer {
       margin: 0;
-      height: 40px;
-      // TODO: switch to em:
-      line-height: 40px;
+      height: 1.7em;
 
       div {
         float: left;
@@ -191,6 +189,7 @@ body {
           width: 40%;
           text-align: left;
           font-size: 0.9em;
+          line-height: 1.8;
         }
 
         &#panda {
@@ -212,6 +211,7 @@ body {
         &#info {
           width: 40%;
           font-size: 0.55em;
+          line-height: 3.2;
           color: $color-light;
           text-align: right;
 
@@ -240,10 +240,10 @@ body {
     line-height: 1.5;
     font-weight: 400;
     max-width: 1010px;
-    padding: 20px 50px;
+    padding: 3em;
 
     header {
-      margin: 30px 0;
+      margin-bottom: 1.75em;
 
       a {
         &#more {
@@ -251,14 +251,11 @@ body {
         }
 
         &#logo {
-          margin: 20px auto;
-          display: block;
-
           img,
           svg {
             height: 150px;
             width: 100px;
-            margin: 0 auto;
+            margin: 1.5em auto;
             display: block;
           }
         }
@@ -267,11 +264,10 @@ body {
 
     footer {
       border-top: 1px solid $color-super-light;
-      height: 40px;
-      // TODO: switch to em:
-      line-height: 40px;
-      padding-top: 16px;
-      margin-top: 30px;
+      height: 1.7em;
+      line-height: 1.7;
+      padding-top: 1.5em;
+      margin-top: 2em;
       color: $color-light;
 
       a {
@@ -286,6 +282,7 @@ body {
         &#poweredby {
           width: 40%;
           font-size: 0.85em;
+          line-height: 2;
         }
 
         &#copyright {
@@ -304,6 +301,7 @@ body {
           width: 20%;
           text-align: center;
           font-size: 1.7em;
+          line-height: 1;
 
           a {
             display: inline-block;
@@ -324,7 +322,7 @@ body {
 
           h1 {
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 0.3em;
             font-size: 2em;
             line-height: 1.4;
 
@@ -335,7 +333,6 @@ body {
         }
 
         &#meta {
-          margin: -5px 0 0 0;
           color: $color-light;
           font-size: 0.85em;
           line-height: 1.5;
@@ -348,10 +345,10 @@ body {
           div#tags {
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 5px;
+            margin-top: 0.5em;
 
             span.tag {
-              margin: 0 8px;
+              margin: 0 0.6em;
             }
           }
         }
@@ -363,8 +360,8 @@ body {
           h1,
           h2,
           h3 {
-            margin-top: 18px;
-            margin-bottom: 10px;
+            margin-top: 0.9em;
+            margin-bottom: 0.5em;
             font-weight: 500;
             line-height: 1.5;
           }
@@ -383,13 +380,13 @@ body {
             font-style: normal;
             color: $color-light;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 0.4em;
           }
 
           blockquote {
-            border-left: 6px solid $color-links;
-            margin-left: 6px;
-            padding-left: 15px;
+            border-left: 5px solid $color-links;
+            margin-left: 0.5em;
+            padding-left: 1em;
           }
 
           ul {
@@ -405,7 +402,7 @@ body {
 
           hr {
             width: 60%;
-            margin: 10px auto;
+            margin: 0.75em auto;
             border: 1px solid $color-super-light;
           }
 
@@ -427,7 +424,6 @@ body {
               width: 100%;
               height: 100%;
               border: none;
-              margin-bottom: 10px;
               display: inline-block;
             }
           }
@@ -460,8 +456,8 @@ body {
 
         &#commento {
           border-top: 1px solid #ccc;
-          padding-top: 20px;
-          margin-top: 20px;
+          padding-top: 1.5em;
+          margin-top: 1.5em;
 
           // disable link underline effect in comments
           a {
@@ -499,11 +495,11 @@ body {
           }
 
           &:last-child {
-            margin-bottom: 20px;
+            margin-bottom: 1.8em;
           }
 
           + li {
-            padding-top: 20px;
+            margin-top: 1.3em;
           }
         }
 
@@ -537,27 +533,17 @@ body {
   // Responsive Home
   body#home {
     font-size: 1em;
-    padding: 30px;
-
-    h1 {
-      margin: 0 0 12px 0;
-    }
-
-    h2 {
-      margin: 12px 0;
-    }
+    padding: 2em;
+    margin-bottom: 1.75em;  // hard to click lower links on mobile
 
     p {
       font-size: 1.1em;
-      line-height: 1.5;
-      margin: 12px 0;
     }
 
     img#me {
       width: 68px;
       height: 68px;
       padding: 2px;
-      margin: 0 0 10px 10px;
     }
 
     footer div {
@@ -574,10 +560,12 @@ body {
 
       &#blog {
         font-size: 1em;
+        line-height: 1.5;
       }
 
       &#info {
         font-size: 0.7em;
+        line-height: 2;
 
         span#copyright::after {
           content: "\A";
@@ -589,13 +577,14 @@ body {
 
   // Responsive Blog
   body#notes {
-    padding: 30px;
+    padding: 2em;
+    margin-bottom: 2em;
     width: 100%;
     max-width: 100%;
 
     header {
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 1.3em;
 
       a#logo {
         img,
