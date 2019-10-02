@@ -393,10 +393,14 @@ body {
           }
 
           ul {
-            list-style-position: inside;
+            list-style-position: outside;
             list-style-type: square;
-            margin-left: 12px;
+            margin-left: 1.5em;
             padding-left: 0;
+
+            li {
+              padding-left: 0.25em;
+            }
           }
 
           hr {
