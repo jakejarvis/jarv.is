@@ -52,7 +52,7 @@ $color-serverless: #87cef7;
 $color-fairy: #f23e93;
 
 // Other Settings
-$link-opacity: 50%;
+$link-opacity: 40%;
 $link-underline-size: 2px;
 
 // Gradient hack to get our custom underline to wrap:
@@ -203,7 +203,7 @@ body {
             transition: transform 0.2s ease-in-out;
 
             &:hover {
-              transform: scale(1.4);
+              transform: scale(1.6) rotate(10deg);
             }
           }
         }
@@ -308,7 +308,7 @@ body {
             transition: transform 0.2s ease-in-out;
 
             &:hover {
-              transform: scale(1.4);
+              transform: scale(1.6) rotate(10deg);
             }
           }
         }
