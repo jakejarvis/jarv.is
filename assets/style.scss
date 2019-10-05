@@ -107,7 +107,7 @@ body {
     font-size: 1.5em;
     line-height: 1.5;
     max-width: 1070px;
-    padding: 2em 2.5em;
+    padding: 50px 65px;
 
     h1 {
       margin: 0;
@@ -240,7 +240,7 @@ body {
     line-height: 1.5;
     font-weight: 400;
     max-width: 1010px;
-    padding: 3em;
+    padding: 35px 50px;
 
     header {
       margin-bottom: 1.75em;
@@ -355,7 +355,6 @@ body {
 
         &#content {
           line-height: 1.8;
-          object-fit: contain;
 
           h1,
           h2,
@@ -370,7 +369,6 @@ body {
             max-width: 100%;
             margin: 0 auto;
             display: block;
-            object-fit: scale-down;
           }
 
           img + em,
@@ -530,101 +528,108 @@ body {
 
 // Responsive Awesomeness
 @media screen and (max-width: 800px) {
-  // Responsive Home
-  body#home {
-    font-size: 1em;
-    padding: 2em;
-    margin-bottom: 1.75em;  // hard to click lower links on mobile
+  body {
+    // Safari iOS menu bar reappers below 44px:
+    // https://www.eventbrite.com/engineering/mobile-safari-why/
+    padding-bottom: 50px !important;
+    // Allows content to fill the viewport and go beyond the bottom
+    height: 100%;
+    // Allows you to scroll below the viewport; default value is visible
+    overflow-y: scroll;
 
-    p {
-      font-size: 1.1em;
-    }
-
-    img#me {
-      width: 68px;
-      height: 68px;
-      padding: 2px;
-    }
-
-    footer div {
-      line-height: 1.7;
-
-      &#panda {
-        display: none;
-      }
-
-      &#blog,
-      &#info {
-        width: 50%;
-      }
-
-      &#blog {
-        font-size: 1em;
-        line-height: 1.5;
-      }
-
-      &#info {
-        font-size: 0.7em;
-        line-height: 2;
-
-        span#copyright::after {
-          content: "\A";
-          white-space: pre;
-        }
-      }
-    }
-  }
-
-  // Responsive Blog
-  body#notes {
-    padding: 2em;
-    margin-bottom: 2em;
-    width: 100%;
-    max-width: 100%;
-
-    header {
-      margin-top: 0;
-      margin-bottom: 1.3em;
-
-      a#logo {
-        img,
-        svg {
-          height: 75px;
-          width: 50px;
-        }
-      }
-    }
-
-    footer div {
-      line-height: 1.8;
-
-      &#panda {
-        display: none;
-      }
-
-      &#copyright,
-      &#poweredby {
-        width: 50%;
-      }
-
-      &#poweredby {
-        a#hugo::after {
-          content: "\A";
-          white-space: pre;
-        }
-      }
-    }
-
-    main#archive section.year div {
+    // Responsive Home
+    &#home {
       font-size: 1em;
+      padding: 25px;
+
+      p {
+        font-size: 1.1em;
+      }
+
+      img#me {
+        width: 68px;
+        height: 68px;
+        padding: 2px;
+      }
+
+      footer div {
+        line-height: 1.7;
+
+        &#panda {
+          display: none;
+        }
+
+        &#blog,
+        &#info {
+          width: 50%;
+        }
+
+        &#blog {
+          font-size: 1em;
+          line-height: 1.5;
+        }
+
+        &#info {
+          font-size: 0.7em;
+          line-height: 2;
+
+          span#copyright::after {
+            content: "\A";
+            white-space: pre;
+          }
+        }
+      }
     }
 
-    main#single article {
+    // Responsive Blog
+    &#notes {
+      padding: 20px;
       width: 100%;
       max-width: 100%;
 
-      div#info h1 {
-        font-size: 1.7em;
+      header {
+        margin-top: 0;
+        margin-bottom: 1.3em;
+
+        a#logo {
+          img,
+          svg {
+            height: 75px;
+            width: 50px;
+          }
+        }
+      }
+
+      footer div {
+        &#panda {
+          display: none;
+        }
+
+        &#copyright,
+        &#poweredby {
+          line-height: 1.8;
+          width: 50%;
+        }
+
+        &#poweredby {
+          a#hugo::after {
+            content: "\A";
+            white-space: pre;
+          }
+        }
+      }
+
+      main#archive section.year div {
+        font-size: 1em;
+      }
+
+      main#single article {
+        width: 100%;
+        max-width: 100%;
+
+        div#info h1 {
+          font-size: 1.7em;
+        }
       }
     }
   }
