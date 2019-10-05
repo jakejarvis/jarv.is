@@ -29,6 +29,7 @@ $colors-home:(
   containers: #c48f49,
   y2k:        #4169e1,
   jbb:        #9932cc,
+  birthday:   #e40088,
   github:     #8d4eff,
   linkedin:   #0073b1,
   facebook:   #4267b2,
@@ -49,7 +50,6 @@ $colors-home:(
   news-7:     #973999
 );
 $color-serverless: #87cef7;
-$color-fairy: #e40088;
 
 // Other Settings
 $link-opacity: 40%;
@@ -158,6 +158,14 @@ body {
       }
     }
 
+    // easter egg emoji cursor
+    a#birthday {
+      &:hover {
+        cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNiIgdmlld3BvcnQ9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZm9udC1zaXplOjE4cHgiPjx0ZXh0IHk9IjUwJSI+8J+nmjwvdGV4dD48L3N2Zz4=) 5 5, auto;
+      }
+    }
+
+    // non-link colors
     span {
       &#serverless {
         color: $color-serverless;
@@ -165,14 +173,6 @@ body {
 
       &#shh {
         color: $color-medium-light;
-      }
-
-      &#fairy {
-        color: $color-fairy;
-
-        &:hover {
-          cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNiIgdmlld3BvcnQ9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZm9udC1zaXplOjE4cHgiPjx0ZXh0IHk9IjUwJSI+8J+nmjwvdGV4dD48L3N2Zz4=) 5 5, auto;
-        }
       }
     }
 
