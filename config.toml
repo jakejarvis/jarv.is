@@ -23,9 +23,10 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [blackfriday]
-  # hrefTargetBlank = true    # prefer not to use this until noopener option implemented (https://discourse.gohugo.io/t/link-with--target-blank-in-markdown-tipp/7569/10)
+  hrefTargetBlank = true
   nofollowLinks = true
   noreferrerLinks = true
+  noopenerLinks = true       # requires custom fork w/ custom blackfriday: https://github.com/jakejarvis/hugo/tree/noopener
   plainIDAnchors = true
   fractions = false
 

@@ -13,7 +13,8 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    - uses: jakejarvis/hugo-build-action@develop-v0.53-DEV
+    # pull from local Hugo action b/c LOTS of opinionated customizations
+    - uses: ./.github/actions/hugo-build-action
       with:
         args: --gc --cleanDestinationDir
     - uses: jakejarvis/github-pages-deploy-action@master
