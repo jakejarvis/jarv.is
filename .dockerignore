@@ -1,0 +1,6 @@
+# Repo will be added as a volume, so ignore everything...
+**
+
+# ...except readme and license
+!/README.md
+!/LICENSE.md
