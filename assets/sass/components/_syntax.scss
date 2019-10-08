@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
+div.highlight span {
+  &.k, &.kc, &.kd, &.kp, &.kr, &.kt, &.no {
+    color: #03748a;
+  }
+  &.n, &.bp, &.nb, &.ni, &.fm, &.nl, &.nn, &.py, &.nv, &.vc, &.vg, &.vi, &.vm, &.p {
+    color: #111111;
+  }
+  &.na, &.nc, &.nd, &.ne, &.nf, &.nx {
+    color: #489c44;
+  }
+  &.err, &.nt, &.o, &.ow, &.kn {
+    color: #e8003d;
+  }
+  &.l, &.se, &.m, &.mb, &.mf, &.mh, &.mi, &.il, &.mo {
+    color: #8145ec;
+  }
+  &.ld, &.s, &.sa, &.sb, &.sc, &.dl, &.sd, &.s2, &.sh, &.si, &.sx, &.sr, &.s1, &.ss {
+    color: #c17005;
+  }
+  &.c, &.ch, &.cm, &.c1, &.cs, &.cp, &.cpf {
+    color: #6b6859;
+  }
+  &.ge {
+    font-style: italic;
+  }
+  &.gs {
+    font-weight: bold;
+  }
+}

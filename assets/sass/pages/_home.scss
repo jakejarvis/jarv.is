@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+// Home Styles
+body#home {
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 1070px;
+  padding: 50px 65px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1.2;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  h2 {
+    margin: 0.6em 0;
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 0.8em 0;
+  }
+
+  sup {
+    top: -0.5em;
+    font-size: 0.5em;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  img#me {
+    float: right;
+    margin: 0 0 0.75em 0.75em;
+    padding: 4px;
+    border: 1px solid $color-super-light;
+    width: 160px;
+    height: 160px;
+  }
+
+  a {
+    // Loop through $colors-home -- the main reason I switched to SASS :)
+    @each $id, $color in $colors-home {
+      &##{$id} {
+        color: $color;
+        background-image: underline-hack($color);
+      }
+    }
+  }
+
+  // easter egg emoji cursor
+  a#birthday {
+    &:hover {
+      cursor: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNiIgdmlld3BvcnQ9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZm9udC1zaXplOjE4cHgiPjx0ZXh0IHk9IjUwJSI+8J+nmjwvdGV4dD48L3N2Zz4=) 5 5, auto;
+    }
+  }
+
+  // non-link colors
+  span {
+    &#serverless {
+      color: $color-serverless;
+    }
+
+    &#shh {
+      color: $color-medium-light;
+    }
+  }
+
+  footer {
+    height: 1.7em;
+
+    div {
+      float: left;
+      vertical-align: middle;
+      height: 100%;
+
+      &#blog {
+        width: 40%;
+        text-align: left;
+        font-size: 0.9em;
+        line-height: 1.8;
+      }
+
+      &#panda {
+        width: 20%;
+        text-align: center;
+        font-size: 1.25em;
+        line-height: 1.5;
+
+        a {
+          display: inline-block;
+          transition: transform 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.6) rotate(10deg);
+          }
+        }
+      }
+
+      &#info {
+        width: 40%;
+        text-align: right;
+        font-size: 0.55em;
+        line-height: 3.2;
+        color: $color-light;
+
+        a {
+          color: inherit;
+
+          &#source {
+            border-bottom: 1px solid $color-super-light;
+          }
+        }
+      }
+    }
+  }
+
+  h1 span#wave {
+    display: inline-block;
+    animation-name: wave;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+  }
+}

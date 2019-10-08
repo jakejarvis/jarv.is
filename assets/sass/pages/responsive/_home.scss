@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+// Responsive Home
+body#home {
+  font-size: 1em;
+  padding: 25px;
+
+  p {
+    font-size: 1.1em;
+  }
+
+  img#me {
+    width: 68px;
+    height: 68px;
+    padding: 2px;
+  }
+
+  footer div {
+    line-height: 1.7;
+
+    &#panda {
+      display: none;
+    }
+
+    &#blog,
+    &#info {
+      width: 50%;
+    }
+
+    &#blog {
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    &#info {
+      font-size: 0.7em;
+      line-height: 2;
+
+      span#copyright::after {
+        content: "\A";
+        white-space: pre;
+      }
+    }
+  }
+}

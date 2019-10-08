@@ -29,10 +29,10 @@
 
 # TECHNOLOGY
 
-    Hugo
-    GitHub Actions
+    Hugo extended
     GitHub Pages
-    Matomo Analytics
+    GitHub Actions
+    Matomo
 
 # VIEW SOURCE
 

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+// Responsive Blog
+body#notes {
+  padding: 20px;
+  width: 100%;
+  max-width: 100%;
+
+  header {
+    margin-bottom: 1.3em;
+
+    a#logo {
+      img,
+      svg {
+        height: 75px;
+        width: 50px;
+      }
+    }
+  }
+
+  footer div {
+    &#panda {
+      display: none;
+    }
+
+    &#copyright,
+    &#poweredby {
+      line-height: 1.8;
+      width: 50%;
+    }
+
+    &#poweredby {
+      a#hugo::after {
+        content: "\A";
+        white-space: pre;
+      }
+    }
+  }
+
+  main#archive section.year div {
+    font-size: 1em;
+  }
+
+  main#single article {
+    width: 100%;
+    max-width: 100%;
+
+    div#info h1 {
+      font-size: 1.7em;
+    }
+  }
+}

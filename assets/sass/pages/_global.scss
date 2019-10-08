@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+// Global Styles
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: $color-background;
+  color: $color-text;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  box-sizing: border-box;
+
+  a {
+    color: $color-links;
+    text-decoration: none;
+    background-image: underline-hack($color-links);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% $link-underline-size;
+    padding-bottom: $link-underline-size;
+    transition: background-size 0.25s ease-in-out;
+
+    &:hover {
+      text-decoration: none;
+      background-size: 100% $link-underline-size;
+    }
+
+    &.no-underline {
+      background: none !important;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+// Responsive Awesomeness
+@media screen and (max-width: $responsive-width) {
+  body {
+    // Safari iOS menu bar reappers below 44px:
+    // https://www.eventbrite.com/engineering/mobile-safari-why/
+    padding-bottom: 50px !important;
+    // Allows content to fill the viewport and go beyond the bottom
+    height: 100%;
+    // Allows you to scroll below the viewport; default value is visible
+    overflow-y: scroll;
+  }
+
+  @import 'home';
+  @import 'notes';
+}
