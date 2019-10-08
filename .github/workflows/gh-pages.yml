@@ -14,9 +14,9 @@ jobs:
         fetch-depth: 1
         lfs: false
     # pull from custom Hugo Extended image with opinionated changes
-    # Docker hub: https://hub.docker.com/r/jakejarvis/hugo-jarv.is
-    # base Dockerfile source: https://go.jarv.is/30KA6DS
-    - uses: docker://jakejarvis/hugo-jarv.is:v0.53-DEV
+    # Docker hub: https://hub.docker.com/r/jakejarvis/hugo-custom
+    # base Dockerfile source: https://go.jarv.is/hugo-dockerfile
+    - uses: docker://jakejarvis/hugo-custom:latest
       with:
         args: --gc --cleanDestinationDir
     - uses: jakejarvis/github-pages-deploy-action@master
