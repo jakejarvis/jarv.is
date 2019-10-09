@@ -4,7 +4,7 @@
   "editor.detectIndentation": true,
   "files.encoding": "utf8",
   "files.eol": "\n",
-  "files.insertFinalNewline": true,
+  // "files.insertFinalNewline": true,
   "scss.lint.important": "ignore",
   "scss.lint.universalSelector": "ignore",
   "[markdown]": {

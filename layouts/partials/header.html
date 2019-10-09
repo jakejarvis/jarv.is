@@ -8,7 +8,6 @@
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="author" content="Jake Jarvis">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
@@ -18,30 +17,23 @@
     <meta property="og:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
     <meta property="fb:admins" content="1329090853">
     <meta property="fb:app_id" content="3357248167622283">
-    <meta property="twitter:account_id" content="229769022">
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="jarv.is">
     <meta name="twitter:site" content="@jakejarvis">
     <meta name="twitter:creator" content="@jakejarvis">
-    <meta name="twitter:title" content="{{ .Title }}">
-    <meta name="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta name="twitter:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
-    <meta name="google-site-verification" content="qQhmLTwjNWYgQ7W42nSTq63xIrTch13X_11mmxBE9zk">
-    <meta name="msvalidate.01" content="164551986DA47F7F6FC0D21A93FFFCA6">
-    <meta name="p:domain_verify" content="e8aefab89c04734260da89b6ff26fd5b">
-    <meta name="yandex-verification" content="7432e013ad0164ab">
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:widgets:csp" content="on">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }} (RSS)">
     {{ $style := resources.Get "sass/main.scss" | resources.ToCSS (dict "targetPath" "style.css" "outputStyle" "compact") }}<link rel="stylesheet" href="{{ $style.Permalink }}">
+    <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
+    <link rel="icon" href="{{ "favicon-192.png" | absURL }}" sizes="192x192">
+    <link rel="icon" href="{{ "favicon-48.png" | absURL }}" sizes="48x48">
+    <link rel="icon" href="{{ "favicon-32.png" | absURL }}" sizes="32x32">
+    <link rel="icon" href="{{ "favicon-16.png" | absURL }}" sizes="16x16">
+    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
     <link rel="dns-prefetch" href="https://stats.jarv.is">
     <link rel="dns-prefetch" href="https://comments.jarv.is">
-    <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }}">
-    <link rel="icon" type="image/png" href="{{ "favicon-128.png" | absURL }}" sizes="128x128">
-    <link rel="icon" type="image/png" href="{{ "favicon-96.png" | absURL }}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{ "favicon-64.png" | absURL }}" sizes="64x64">
-    <link rel="icon" type="image/png" href="{{ "favicon-48.png" | absURL }}" sizes="48x48">
-    <link rel="icon" type="image/png" href="{{ "favicon-32.png" | absURL }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ "favicon-16.png" | absURL }}" sizes="16x16">
-    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
     <link rel="author" href="{{ "humans.txt" | absURL }}">
   </head>
   <body id="{{ .Type }}">
