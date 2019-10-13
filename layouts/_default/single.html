@@ -10,6 +10,7 @@
             <!-- {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }} &middot; -->
             <!-- {{ .ReadingTime }} minute read -->
             <!-- &middot; <a class="no-underline" href="{{ .Permalink }}#commento">Comments</a> -->
+            {{ with .File }}&middot; <a class="no-underline" href="https://github.com/jakejarvis/jarv.is/blob/master/content/{{ .Path }}" title="Edit this page on GitHub" target="_blank" rel="noopener nofollow noreferrer">Improve Post</a>{{ end }}
             <div id="tags">
             {{ with .Params.tags }}{{ if ge (len .) 1 }}
               {{ range . }}<span itemprop="keywords" class="tag p-category"><!--<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">-->{{ . }}<!--</a>--></span>
