@@ -23,6 +23,24 @@ body#notes {
           margin: 1.5em auto;
           display: block;
         }
+
+        &:hover {
+          $logo-original1: #6fbc4e;
+          $logo-original2: #ffb900;
+          $logo-original3: #009cdf;
+
+          svg {
+            g#area1 {
+              fill: $logo-original2;
+            }
+            g#area2 {
+              fill: $logo-original3;
+            }
+            g#area3 {
+              fill: $logo-original1;
+            }
+          }
+        }
       }
     }
   }
@@ -217,33 +235,6 @@ body#notes {
           object-fit: scale-down;
         }
       }
-
-      /*
-      &#commento {
-        border-top: 1px solid #ccc;
-        padding-top: 1.5em;
-        margin-top: 1.5em;
-
-        // disable link underline effect in comments
-        a {
-          background: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        div.commento-body {
-          a {
-            color: $color-links;
-          }
-        }
-
-        div#commento-footer {
-          display: none;
-        }
-      }
-      */
     }
 
     &#archive section.year {
