@@ -32,6 +32,7 @@
     Hugo extended
     GitHub Pages
     GitHub Actions
+    Commento
     Matomo
 
 # VIEW SOURCE
