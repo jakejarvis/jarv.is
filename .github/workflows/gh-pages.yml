@@ -13,29 +13,35 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    # pull from custom Hugo Extended image with opinionated changes
-    # Docker hub: https://hub.docker.com/r/jakejarvis/hugo-custom
-    # base Dockerfile source: https://go.jarv.is/hugo-dockerfile
+
+    # Pull from custom Hugo Extended image with opinionated changes:
+    #    https://github.com/jakejarvis/hugo-custom/packages
+    #    https://github.com/jakejarvis/hugo-custom/blob/master/Dockerfile
+    # Can't use native `uses: docker://` syntax for GitHub Package Registry...
     - name: Build Hugo
-      uses: docker://jakejarvis/hugo-custom:latest
-      with:
-        args: --gc --cleanDestinationDir
-    # native git commands for speed and simplicity, and because this
-    # setup is a weird edge case not worth making an action for.
-    - name: Push to jakejarvis.github.io
-      shell: bash
       run: |
-        # copy Hugo output to somewhere we have permissions
+        echo ${{ secrets.GITHUB_REGISTRY_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+        docker run -v $GITHUB_WORKSPACE:/src docker.pkg.github.com/jakejarvis/hugo-custom/hugo-custom:latest --gc --cleanDestinationDir
+        docker logout docker.pkg.github.com
+
+    # Copy built site to a directory where we have permissions, and
+    # add a CNAME file for a custom domain (jarv.is).
+    - name: Prepare for GitHub Pages
+      run: |
         mkdir gh-pages
         cp -r public/* gh-pages
+        echo "jarv.is" > gh-pages/CNAME
+
+    # Initialize a sub-repository in the new gh-pages directory and
+    # add jakejarvis/jakejarvis.github.io as a remote.
+    # Using native git commands for speed and simplicity, and because
+    # this setup is a weird edge case not worth making an action for.
+    - name: Deploy to jakejarvis.github.io
+      run: |
         cd gh-pages
-        # CNAME file for GitHub Pages custom domain
-        echo "jarv.is" > CNAME
-        # set up git
         git init
-        git config user.name "Jake Jarvis"
-        git config user.email "jakejarvis@users.noreply.github.com"
-        # deploy folder to external *.github.io repository
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
         git remote add target https://${{ secrets.GITHUB_ACCESS_TOKEN }}@github.com/jakejarvis/jakejarvis.github.io.git
         git add -A
         git commit -m "GitHub Pages deploy from $GITHUB_REPOSITORY@$GITHUB_SHA"

@@ -15,7 +15,7 @@ I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.i
 
 ## Running a local testing server with Docker
 
-This site runs a [custom version](https://github.com/jakejarvis/hugo-custom) of [Hugo Extended](https://github.com/gohugoio/hugo) with a few (very opinionated) changes. To ensure consistency, the [`Dockerfile`](Dockerfile) in this repository will pull my Hugo [fork](https://github.com/jakejarvis/hugo-custom) (forked from `v0.53-DEV`, [gohugo/hugo@`a28865c`](https://github.com/gohugoio/hugo/tree/a28865cfc3e296cf0ddd0bd6c1368fcdb2154d0f) and pre-built [on Docker Hub](https://hub.docker.com/r/jakejarvis/hugo-custom)) and run a live testing server.
+This site runs a [custom version](https://github.com/jakejarvis/hugo-custom) of [Hugo Extended](https://github.com/gohugoio/hugo) with a few (very opinionated) changes. To ensure consistency, the [`Dockerfile`](Dockerfile) in this repository will pull my Hugo [fork](https://github.com/jakejarvis/hugo-custom) (forked from `v0.53-DEV`, [gohugo/hugo@`a28865c`](https://github.com/gohugoio/hugo/tree/a28865cfc3e296cf0ddd0bd6c1368fcdb2154d0f) and pre-built [on GitHub Package Registry](https://github.com/jakejarvis/hugo-custom/packages)) and run a live testing server.
 
 Run these commands on the root of this repository:
 
