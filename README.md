@@ -34,5 +34,3 @@ docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop
 Site content (everything in [`content/notes`](content/notes/)) is published under the [Creative Commons Attribution 4.0 International License](LICENSE.md) (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
 
 All code in this repository (like my [Hugo theme](layouts/)) is published under the [MIT license](https://opensource.org/licenses/MIT), except the customized Hugo fork in the [`Dockerfile`](Dockerfile) which retains Hugo's [original Apache-2.0 license](https://github.com/gohugoio/hugo/blob/master/LICENSE).
-
-Everything else (such as the press articles and videos in [`misc`](misc/)) belongs to its respective owner(s) under the original license/copyright.
