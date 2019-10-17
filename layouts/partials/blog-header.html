@@ -1,21 +1,28 @@
     <header>
-      {{ if eq .Kind "page" }}<a href="{{ "notes/" | absURL }}" id="more" title="More Posts">&laquo; More Posts</a>{{ else }}<a href="{{ .Site.BaseURL }}" id="more" title="Return Home">&laquo; Return Home</a>{{ end }}
-      <a class="no-underline" href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144.1">
-          <title>Jake Jarvis</title>
-          <g id="area1" fill="#6fbc4e">
-            <polygon points="57.6 0 38.4 11.1 38.4 11.1 76.8 33.2 96 22.1 96 22.1 57.6 0 57.6 0"/>
-            <polygon points="19.2 66.5 0 77.6 0 77.6 19.2 88.7 38.4 77.6 38.4 77.6 19.2 66.5 19.2 66.5"/>
-            <polygon points="57.6 88.7 19.2 110.9 19.2 110.9 38.4 121.9 76.8 99.8 76.8 99.8 57.6 88.7 57.6 88.7"/>
-          </g>
-          <g id="area2" fill="#ffb900">
-            <polygon points="38.4 11.1 38.4 33.3 57.6 44.3 57.6 88.7 76.8 99.8 76.8 33.2 38.4 11.1 38.4 11.1"/>
-            <polygon points="19.2 110.9 19.2 110.8 19.2 88.7 0 77.6 0 121.9 38.4 144.1 38.4 121.9 19.2 110.9 19.2 110.9"/>
-          </g>
-          <g id="area3" fill="#009cdf">
-            <polygon points="76.8 33.2 76.8 99.8 76.8 99.8 38.4 121.9 38.4 144.1 96 110.9 96 22.1 76.8 33.2 76.8 33.2"/>
-            <polygon points="19.2 110.9 38.4 99.8 38.4 77.6 19.2 88.7 19.2 110.9 19.2 110.9"/>
-          </g>
-        </svg>
-      </a>
+      <nav>
+        <a class="no-underline" href="{{ .Site.BaseURL }}" id="logo" title="Jake Jarvis">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144.1">
+            <g id="color1" fill="#6fbc4e">
+              <polygon points="57.6 0 38.4 11.1 38.4 11.1 76.8 33.2 96 22.1 96 22.1 57.6 0 57.6 0"/>
+              <polygon points="19.2 66.5 0 77.6 0 77.6 19.2 88.7 38.4 77.6 38.4 77.6 19.2 66.5 19.2 66.5"/>
+              <polygon points="57.6 88.7 19.2 110.9 19.2 110.9 38.4 121.9 76.8 99.8 76.8 99.8 57.6 88.7 57.6 88.7"/>
+            </g>
+            <g id="color2" fill="#ffb900">
+              <polygon points="38.4 11.1 38.4 33.3 57.6 44.3 57.6 88.7 76.8 99.8 76.8 33.2 38.4 11.1 38.4 11.1"/>
+              <polygon points="19.2 110.9 19.2 110.8 19.2 88.7 0 77.6 0 121.9 38.4 144.1 38.4 121.9 19.2 110.9 19.2 110.9"/>
+            </g>
+            <g id="color3" fill="#009cdf">
+              <polygon points="76.8 33.2 76.8 99.8 76.8 99.8 38.4 121.9 38.4 144.1 96 110.9 96 22.1 76.8 33.2 76.8 33.2"/>
+              <polygon points="19.2 110.9 38.4 99.8 38.4 77.6 19.2 88.7 19.2 110.9 19.2 110.9"/>
+            </g>
+          </svg>
+          <span id="name">Jake Jarvis</span>
+        </a>
+        <ul>
+          <li><a class="no-underline" href="{{ .Site.BaseURL }}" title="Home">&#x1F3E0;</a></li>
+          <li><a class="no-underline" href="{{ "notes/" | absURL }}" title="Notes">&#x1F4DD;</a></li>
+          <li><a class="no-underline" href="https://github.com/jakejarvis" title="GitHub" target="_blank" rel="me noopener noreferrer">&#x1F468;&#x200D;&#x1F4BB;</a></li>
+          <li><a class="no-underline" href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;&#x6A;&#x61;&#x6B;&#x65;&#x40;&#x6A;&#x61;&#x72;&#x76;&#x2E;&#x69;&#x73;" title="Email Me">&#x1F48C;</a></li>
+        </ul>
+      </nav>
     </header>

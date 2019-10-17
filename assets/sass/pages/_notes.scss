@@ -5,39 +5,74 @@ body#notes {
   line-height: 1.5;
   font-weight: 400;
   max-width: 1010px;
-  padding: 35px 50px;
+  padding: 10px 50px 35px 50px;
 
   header {
-    margin-bottom: 1.75em;
+    border-bottom: 1px solid $color-super-light;
+    margin-bottom: 25px;
 
-    a {
-      &#more {
-        font-size: 1.25em;
-      }
+    nav {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      &#logo {
-        img,
-        svg {
-          height: 150px;
-          width: 100px;
-          margin: 1.5em auto;
-          display: block;
+      a#logo {
+        display: flex;
+        align-items: center;
+        color: $color-medium;
+
+        img, svg {
+          height: 45px;
+          width: auto;
         }
 
+        span#name {
+          margin: 0 20px;
+          font-size: 1.4em;
+          font-weight: 500;
+        }
+        
         &:hover {
+          color: $color-links;
+
           $logo-original1: #6fbc4e;
           $logo-original2: #ffb900;
           $logo-original3: #009cdf;
 
           svg {
-            g#area1 {
+            g#color1 {
               fill: $logo-original2;
             }
-            g#area2 {
+            g#color2 {
               fill: $logo-original3;
             }
-            g#area3 {
+            g#color3 {
               fill: $logo-original1;
+            }
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        line-height: 1;
+
+        li {
+          width: 60px;
+          text-align: right;
+
+          a {
+            display: inline-block;
+            transition: transform 0.15s ease-in-out;
+
+            &:hover {
+              transform: scale(1.4);
             }
           }
         }
@@ -104,8 +139,7 @@ body#notes {
         text-align: center;
 
         h1 {
-          margin-top: 0;
-          margin-bottom: 0.3em;
+          margin: 0.3em 0;
           font-size: 2em;
           line-height: 1.4;
 

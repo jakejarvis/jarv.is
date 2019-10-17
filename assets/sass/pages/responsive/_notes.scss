@@ -2,17 +2,25 @@
 
 // Responsive Blog
 body#notes {
-  padding: 20px;
+  padding: 10px 20px 30px 20px;
   width: 100%;
   max-width: 100%;
 
   header {
-    margin-bottom: 1.3em;
 
-    a#logo {
-      img,
-      svg {
-        height: 75px;
+    nav {
+      a#logo {
+        img, svg {
+          height: 55px;
+          width: auto;
+        }
+
+        span#name {
+          display: none;
+        }
+      }
+
+      ul li {
         width: 50px;
       }
     }
