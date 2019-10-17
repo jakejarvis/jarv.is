@@ -5,7 +5,7 @@ body#notes {
   line-height: 1.5;
   font-weight: 400;
   max-width: 1010px;
-  padding: 10px 50px 35px 50px;
+  padding: 0 50px 35px 50px;
 
   header {
     border-bottom: 1px solid $color-super-light;
@@ -13,7 +13,7 @@ body#notes {
 
     nav {
       width: 100%;
-      padding: 10px;
+      padding: 6px 12px;
       box-sizing: border-box;
       display: flex;
       align-items: center;
@@ -62,6 +62,7 @@ body#notes {
         align-items: center;
         font-size: 1.5em;
         line-height: 1;
+        padding: 0;
 
         li {
           width: 60px;
