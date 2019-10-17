@@ -1,5 +1,5 @@
 # Custom Hugo Extended fork, pre-built on GitHub Package Registry:
-#     https://github.com/jakejarvis/hugo-custom/packages
+#     https://hub.docker.com/r/jakejarvis/hugo-custom
 #     https://github.com/jakejarvis/hugo-custom/blob/master/Dockerfile
 # 
 # Usage:
@@ -7,7 +7,7 @@
 #     docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop
 # ...then open http://localhost:1313 for the live-refresh server.
 
-FROM docker.pkg.github.com/jakejarvis/hugo-custom/hugo-custom:latest
+FROM jakejarvis/hugo-custom:latest
 
 # verify everything's OK
 RUN /usr/bin/hugo version
