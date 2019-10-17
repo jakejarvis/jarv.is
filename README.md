@@ -8,7 +8,7 @@ Personal website of [@jakejarvis](https://github.com/jakejarvis), created and de
 - [GitHub Pages](https://pages.github.com/)
 - [GitHub Actions](.github/workflows)
 - [Commento](https://gitlab.com/commento/commento)
-- [Matomo](https://matomo.org/)
+- [Fathom Analytics](https://github.com/usefathom/fathom)
 
 I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.is/issues/1) as an issue in this repo.
 

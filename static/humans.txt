@@ -33,7 +33,7 @@
     GitHub Pages
     GitHub Actions
     Commento
-    Matomo
+    Fathom Analytics
 
 # VIEW SOURCE
 
