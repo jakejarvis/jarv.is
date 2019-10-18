@@ -13,7 +13,7 @@ body#notes {
 
     nav {
       width: 100%;
-      padding: 6px 12px;
+      padding: 8px 0;
       box-sizing: border-box;
       display: flex;
       align-items: center;
@@ -23,6 +23,7 @@ body#notes {
         display: flex;
         align-items: center;
         color: $color-medium;
+        padding: 15px;
 
         img, svg {
           height: 45px;
@@ -30,7 +31,7 @@ body#notes {
         }
 
         span#name {
-          margin: 0 20px;
+          margin-left: 20px;
           font-size: 1.4em;
           font-weight: 500;
         }
@@ -63,6 +64,7 @@ body#notes {
         font-size: 1.5em;
         line-height: 1;
         padding: 0;
+        margin-right: 15px;
 
         li {
           width: 60px;
@@ -83,19 +85,18 @@ body#notes {
 
   footer {
     border-top: 1px solid $color-super-light;
-    height: 1.7em;
     line-height: 1.7;
     padding-top: 1.5em;
     margin-top: 2em;
     color: $color-light;
+    display: flex;
+    justify-content: space-between;
 
     a {
       color: inherit;
     }
 
     div {
-      float: left;
-      vertical-align: middle;
 
       &#copyright,
       &#poweredby {
@@ -273,6 +274,8 @@ body#notes {
     }
 
     &#archive section.year {
+      font-size: 1.1em;
+
       ul {
         list-style-type: none;
         padding-left: 0;
@@ -280,6 +283,14 @@ body#notes {
       }
 
       li {
+        display: flex;
+
+        div.date {
+          color: $color-light;
+          width: 5.25em;
+          flex-shrink: 0;
+        }
+      
         &::after {
           content: '';
           display: block;
@@ -299,20 +310,6 @@ body#notes {
         font-size: 1.8em;
       }
 
-      div {
-        font-size: 1.1em;
-
-        &.date {
-          float: left;
-          width: 5.25em;
-          color: $color-light;
-        }
-
-        &.title {
-          float: left;
-          width: calc(100% - 5.25em);
-        }
-      }
     }
   }
 }

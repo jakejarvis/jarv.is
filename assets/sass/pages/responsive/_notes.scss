@@ -2,16 +2,19 @@
 
 // Responsive Blog
 body#notes {
-  padding: 10px 20px 30px 20px;
+  padding: 0 20px;
   width: 100%;
   max-width: 100%;
 
   header {
-
     nav {
+      padding: 5px 0;
+
       a#logo {
+        padding: 10px;
+
         img, svg {
-          height: 55px;
+          height: 60px;
           width: auto;
         }
 
@@ -20,8 +23,18 @@ body#notes {
         }
       }
 
-      ul li {
-        width: 50px;
+      ul {
+        font-size: 1.75em;
+        margin-right: 10px;
+
+        li {
+          width: 55px;
+
+          // hide home emoji on mobile -- logo probably suffices?
+          // &:first-child {
+          //   display: none;
+          // }
+        }
       }
     }
   }
@@ -45,7 +58,7 @@ body#notes {
     }
   }
 
-  main#archive section.year div {
+  main#archive section.year {
     font-size: 1em;
   }
 

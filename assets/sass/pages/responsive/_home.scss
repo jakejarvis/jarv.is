@@ -16,8 +16,6 @@ body#home {
   }
 
   footer div {
-    line-height: 1.7;
-
     &#panda {
       display: none;
     }
@@ -34,7 +32,7 @@ body#home {
 
     &#info {
       font-size: 0.7em;
-      line-height: 2;
+      line-height: 2.1;  // magic numbers don't judge
 
       span#copyright::after {
         content: "\A";

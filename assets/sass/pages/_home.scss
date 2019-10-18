@@ -76,10 +76,10 @@ body#home {
   }
 
   footer {
-    height: 1.7em;
+    display: flex;
+    justify-content: space-between;
 
     div {
-      float: left;
       vertical-align: middle;
       height: 100%;
 
@@ -87,7 +87,7 @@ body#home {
         width: 40%;
         text-align: left;
         font-size: 0.9em;
-        line-height: 1.8;
+        line-height: 2;
 
         span {
           margin-right: 4px;
@@ -98,7 +98,7 @@ body#home {
         width: 20%;
         text-align: center;
         font-size: 1.25em;
-        line-height: 1.5;
+        line-height: 1.4;  // magic numbers don't judge
 
         a {
           display: inline-block;
@@ -114,7 +114,7 @@ body#home {
         width: 40%;
         text-align: right;
         font-size: 0.55em;
-        line-height: 3.2;
+        line-height: 3.35;  // magic numbers don't judge
         color: $color-light;
 
         a {
