@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>Games</title>
+</head>
+<body bgcolor="Cornsilk">
+<center><h1>Tic-Tac-Toe</h1><br><hr><br><font color="red" face="Comic Sans MS">Good Luck!
+
+<table border=0 cellspacing=0 cellpadding=0 width=438>
+
+<tr valign="top">
+	<td colspan=1 rowspan=1 width=226><!-- Tic-Tac-Toe -->
+
+<SCRIPT TYPE="text/javascript">
+
+var ticPRELOADTHESE = new Array("shall1","shall2","shall3","shall4","shall5","shall6","shall7","shall8","shall9","shall10","shall11","shall12","shall13","shall14","shall15","win1","win2","win3","win4","win5","tie1","tie2","tie3","tie4","tie5","lose1","lose2","lose3","lose4","lose5","x","o","x_lite","o_lite","ticNEWGAME_on","ticNEWGAME_off","ticQUIT_on","ticQUIT_off");
+var ticIMAGECACHE = new Array(37);
+for (var ticCOUNTTHIS = 0; ticCOUNTTHIS < 37; ticCOUNTTHIS++) {
+ticIMAGECACHE[ticCOUNTTHIS] = new Image();
+ticIMAGECACHE[ticCOUNTTHIS].src = "tictac/" + ticPRELOADTHESE[ticCOUNTTHIS] + ".gif";
+}
+var ticGAMESTATE=0;   //no interaction with player
+var ticNEWSCREEN = new Array(17);
+var ticSCREENBOARD = new Array(9);
+var ticBOARD = new Array(9);
+var ticFORCEDATA = new Array(1,0,1,3,0,0,3,3,1,3,3,1,3,0,0,1,0,1,1,3,3,0,0,3,1,0,1,1,0,1,0,0,3,1,3,3,1,0,1,3,1,3,0,3,0,0,3,1,3,1,0,0,3,1,0,3,0,3,1,3,1,0,1,1,3,0,0,1,3,1,3,0,0,1,1,3,3,1,3,3,0,1,1,0,1,3,3,0,3,3,0,3,3,1,3,3,1,1,0,3,3,0,3,3,1,0,1,1,3,0,3,0,1,1,3,1,3,3,1,3,0,1,1,3,0,3,3,1,3,1,1,0,3,1,3,3,0,3,1,1,0,3,1,3,1,3,3,1,1,3,0,3,0,3,3,0,3,1,3,1,1,0,0,3,0,3,1,1,3,3,1,0,1,1,3,1,3,0,3,3);
+var ticFLASHER = 10;
+var ticGOESFIRST = 0;
+var ticTIMERLOCATION = setTimeout("ticOPENFLASH()", 1000);
+
+// opening flasher
+function ticOPENFLASH() {
+ if ((ticFLASHER / 2) == Math.floor(ticFLASHER / 2)) {
+  ticUPDATESCREEN(1);
+ }
+ else {
+  ticUPDATESCREEN(0);
+ }
+ticFLASHER--
+if (ticFLASHER > 0) {
+  ticTIMERLOCATION = setTimeout("ticOPENFLASH()", 1000);
+  }
+}
+
+
+  
+// update the screen
+function ticUPDATESCREEN(ticX) {
+  ticNEWSCREEN = ["pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green","pixel_blue","pixel_green"];
+  if (ticX==1) ticNEWSCREEN = ["shall1","shall2","shall3","shall4","shall5","pixel_green","shall6","shall7","shall8","shall9","shall10","pixel_green","shall11","shall12","shall13","shall14","shall15"];
+  if (ticX==2) ticNEWSCREEN = ["pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","win1","win2","win3","win4","win5","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green"];
+  if (ticX==3) ticNEWSCREEN = ["pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","lose1","lose2","lose3","lose4","lose5","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green"];
+  if (ticX==4) ticNEWSCREEN = [ticSCREENBOARD[0],"pixel_blue",ticSCREENBOARD[1],"pixel_blue",ticSCREENBOARD[2],"pixel_blue",ticSCREENBOARD[3],"pixel_blue",ticSCREENBOARD[4],"pixel_blue",ticSCREENBOARD[5],"pixel_blue",ticSCREENBOARD[6],"pixel_blue",ticSCREENBOARD[7],"pixel_blue",ticSCREENBOARD[8]];
+  if (ticX==5) ticNEWSCREEN = ["master1","master2","master3","master4","master5","pixel_green","master6","master7","master8","master9","master10","pixel_green","master11","master12","master13","master14","master15"];
+  if (ticX==6) ticNEWSCREEN = ["pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","tie1","tie2","tie3","tie4","tie5","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green","pixel_green"];
+for (ticX=0; ticX < 17; ticX++) {
+if (document.images["tic" + ticX].src != "tictac/" + ticNEWSCREEN[ticX] + ".gif") document.images["tic" + ticX].src = "tictac/" + ticNEWSCREEN[ticX] + ".gif";
+}
+}
+
+// start a new game
+function ticPLAYGAME() {
+ticBOARD = [0,0,0,0,0,0,0,0,0];
+clearTimeout(ticTIMERLOCATION);
+ticUPDATEBOARD();
+if (ticGOESFIRST == 0) {
+  ticME = "o";
+  ticYOU = "x";
+  ticGOESFIRST = 1;
+  ticGAMESTATE = 20; // YOUR TURN
+  document.images['ticTURN'].src = "tictac/turn1.gif"
+  ticTIMERLOCATION = setTimeout("ticQUITGAME()", 60000); // IN CASE YOU WERE TEASING
+  }
+  else {
+  ticME = "x";
+  ticYOU = "o";
+  ticGOESFIRST = 0;
+  ticMYTURN()
+  }
+}
+
+//Here's the brain
+function ticMYTURN() {
+  clearTimeout(ticTIMERLOCATION);
+  ticGAMESTATE = 10; //MY TURN
+  document.images['ticTURN'].src = "tictac/turn0.gif"
+  setTimeout("ticMAKEMOVE()", 1000);
+}
+
+function ticMAKEMOVE() {
+  ticBESTMOVE = 0;
+  ticBESTMOVE = ticCHECKWINNINGMOVE(1);
+  if (ticBESTMOVE == -1) ticBESTMOVE = ticCHECKWINNINGMOVE(2);
+
+//dummy array
+  if (ticBESTMOVE == -1) {
+    var ticDUMMY = new Array(4,0,2,6,8,1,3,5,7)
+    for (ticX = 0; ticX < 9; ticX++) {
+      if (ticBOARD[ticDUMMY[ticX]] == 0) {
+        ticBESTMOVE = ticDUMMY[ticX];
+        break;
+      }
+     }
+   }
+//make my move here.
+ticBOARD[ticBESTMOVE] = 1;
+ticUPDATEBOARD();
+  if (ticCHECKWINNER(1) == 0) {
+        if (ticCHECKSTALEMATE() == 1) {
+        ticUPDATESCREEN(6);
+        ticGAMESTATE = 1;
+        ticTIMERLOCATION = setTimeout("ticUPDATESCREEN(4)", 2000);
+        return;
+        }
+  ticGAMESTATE = 20;
+  document.images['ticTURN'].src = "tictac/turn1.gif";
+  ticTIMERLOCATION = setTimeout("ticQUITGAME()", 60000);
+  }
+  else {
+  ticGAMESTATE = 1;
+  ticUPDATESCREEN(3);
+  ticTIMERLOCATION = setTimeout("ticUPDATESCREEN(4)", 2000);
+  }
+}
+
+//look for a possible force win move
+function ticFINDFORCE() {
+var ticFORCEHERE = -1;
+for (ticX = 0; ticX < 20; ticX++) {
+  ticV = 0;
+  ticW = 0;
+  for (ticY = 0; ticY < 9; ticY++) {
+      if (ticBOARD[ticY] == ticFORCEDATA[(ticX * 9) + ticY]) {
+        if (ticBOARD[ticY] == 0) ticV++;
+        if (ticBOARD[ticY] == 1) ticW++;
+      }
+      if ((ticFORCEDATA[(ticX * 9) + ticY] == 1) && (ticBOARD[ticY] == 0)) ticTEMPFORCEHERE = ticY;
+  }
+  if ((ticV > 1) && (ticW > 1)) {
+    ticFORCEHERE = ticTEMPFORCEHERE;
+  }
+}
+return[ticFORCEHERE];
+}
+
+
+//checkwinner
+function ticCHECKWINNER(ticX) {
+  if ((ticBOARD[0] == ticX) && (ticBOARD[1] == ticX) && (ticBOARD[2] == ticX)) return[1];
+  else if ((ticBOARD[3] == ticX) && (ticBOARD[4] == ticX) && (ticBOARD[5] == ticX)) return[1];
+  else if ((ticBOARD[6] == ticX) && (ticBOARD[7] == ticX) && (ticBOARD[8] == ticX)) return[1];
+  else if ((ticBOARD[0] == ticX) && (ticBOARD[3] == ticX) && (ticBOARD[6] == ticX)) return[1];
+  else if ((ticBOARD[1] == ticX) && (ticBOARD[4] == ticX) && (ticBOARD[7] == ticX)) return[1];
+  else if ((ticBOARD[2] == ticX) && (ticBOARD[5] == ticX) && (ticBOARD[8] == ticX)) return[1];
+  else if ((ticBOARD[0] == ticX) && (ticBOARD[4] == ticX) && (ticBOARD[8] == ticX)) return[1];
+  else if ((ticBOARD[2] == ticX) && (ticBOARD[4] == ticX) && (ticBOARD[6] == ticX)) return[1];
+  else return[0];
+}
+//check for winning move
+function ticCHECKWINNINGMOVE(ticX) {
+  if ((ticBOARD[0] == 0) && (((ticBOARD[3] == ticX) && (ticBOARD[6] == ticX)) || ((ticBOARD[1] == ticX) && (ticBOARD[2] == ticX)) || ((ticBOARD[4] == ticX) && (ticBOARD[8] == ticX)))) return[0];
+  else if ((ticBOARD[1] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[2] == ticX)) || ((ticBOARD[4] == ticX) && (ticBOARD[7] == ticX)))) return[1];
+  else if ((ticBOARD[2] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[1] == ticX)) || ((ticBOARD[4] == ticX) && (ticBOARD[6] == ticX)) || ((ticBOARD[5] == ticX) && (ticBOARD[7] == ticX)))) return[2];
+  else if ((ticBOARD[3] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[6] == ticX)) || ((ticBOARD[4] == ticX) && (ticBOARD[5] == ticX)))) return[3];
+  else if ((ticBOARD[4] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[8] == ticX)) || ((ticBOARD[1] == ticX) && (ticBOARD[7] == ticX)) || ((ticBOARD[2] == ticX) && (ticBOARD[6] == ticX)) || ((ticBOARD[3] == ticX) && (ticBOARD[5] == ticX)))) return[4];
+  else if ((ticBOARD[5] == 0) && (((ticBOARD[2] == ticX) && (ticBOARD[8] == ticX)) || ((ticBOARD[3] == ticX) && (ticBOARD[4] == ticX)))) return[5];
+  else if ((ticBOARD[6] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[3] == ticX)) || ((ticBOARD[2] == ticX) && (ticBOARD[4] == ticX)) || ((ticBOARD[7] == ticX) && (ticBOARD[8] == ticX)))) return[6];
+  else if ((ticBOARD[7] == 0) && (((ticBOARD[1] == ticX) && (ticBOARD[4] == ticX)) || ((ticBOARD[6] == ticX) && (ticBOARD[8] == ticX)))) return[7];
+  else if ((ticBOARD[8] == 0) && (((ticBOARD[0] == ticX) && (ticBOARD[4] == ticX)) || ((ticBOARD[2] == ticX) && (ticBOARD[5] == ticX)) || ((ticBOARD[6] == ticX) && (ticBOARD[7] == ticX)))) return[8];
+  else return[-1];
+}
+
+//check for a stalemate
+function ticCHECKSTALEMATE(){
+var ticSTALL = 1
+ for (ticX = 0; ticX < 9; ticX++){
+  if (ticBOARD[ticX] == 0) ticSTALL=0;
+ }
+if (ticSTALL == 1);
+return[ticSTALL];
+}
+ 
+
+//click on a square
+function ticTACTOE(ticX) {
+if (ticGAMESTATE < 10) ticPLAYGAME();
+else {
+  if ((ticGAMESTATE == 20) && (ticBOARD[ticX] == 0)) {
+      ticBOARD[ticX] = 2;
+      ticUPDATEBOARD();
+      if (ticCHECKWINNER(2) == 0) {
+        if (ticCHECKSTALEMATE() == 1) {
+        ticUPDATESCREEN(6);
+        ticGAMESTATE = 1;
+        ticTIMERLOCATION = setTimeout("ticUPDATESCREEN(4)", 2000);
+        return;
+        }
+        ticMYTURN();
+      }
+      else {
+        ticGAMESTATE = 1;
+        ticUPDATESCREEN(2);
+        ticTIMERLOCATION = setTimeout("ticUPDATESCREEN(4)", 2000);
+      }
+   }
+ }
+}
+
+
+//roll on a square
+function ticTACON(ticX) {
+if ((ticGAMESTATE < 10)  && (ticFLASHER < 1)) ticUPDATESCREEN(1);
+if ((ticX > -1) && (ticGAMESTATE == 20) && (ticBOARD[ticX/2] == 0)) {
+ ticSCREENBOARD[ticX / 2] = ticYOU + "_lite";
+ ticUPDATESCREEN(4);
+ }
+}
+
+//roll off a square
+function ticTACOFF(ticX) {
+if ((ticGAMESTATE < 10) && (ticFLASHER < 1)) ticUPDATESCREEN(0);
+if ((ticX > -1) && (GAMESTATE = 20) && (ticBOARD[ticX/2] == 0)) ticUPDATEBOARD();
+}
+
+
+//copy board to updateboard
+function ticUPDATEBOARD() {
+for (ticX = 0; ticX < 9; ticX++) {
+  ticSCREENBOARD[ticX] = "pixel_green"
+  if (ticBOARD[ticX] == 1) ticSCREENBOARD[ticX] = ticME
+  if (ticBOARD[ticX] == 2) ticSCREENBOARD[ticX] = ticYOU
+  }
+ticUPDATESCREEN(4);
+}
+
+// quit game early
+function ticQUITGAME() {
+        ticGAMESTATE = 1;
+        ticUPDATESCREEN(3);
+        ticTIMERLOCATION = setTimeout("ticUPDATESCREEN(4)", 2000);
+}
+
+function ticROLLOFFOTHER() {
+document.images['ticNEWGAME'].src = "tictac/ticNEWGAME_off.gif";
+document.images['ticQUIT'].src = "tictac/ticQUIT_off.gif";
+}
+
+// Roll over on
+function ticIMAGEON(ticNEWIMAGE) {
+  document.images[ticNEWIMAGE].src = "tictac/" + ticNEWIMAGE + "_on.gif";
+}
+document.write('<table width=226 cellpadding=0 cellspacing=0 border=0><tr><td><table width=164 cellpadding=0 cellspacing=0 border=0>  <tr><td><img src="tictac/outtop.gif" height=44 width=164></td></tr><tr><td align="center" bgcolor="#003366"><table cellpadding=0 cellspacing=0 border=0><tr><td rowspan=5 bgcolor="#ffffff" width=8><img src="tictac/pixel_green.gif" width=8 height=128></td><td><a href="javascript:ticTACTOE(0)" onMouseOver="ticTACON(0)" onMouseOut="ticTACOFF(0)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic0"></a></td><td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic1"></a></td><td><a href="javascript:ticTACTOE(1)" onMouseOver="ticTACON(2)" onMouseOut="ticTACOFF(2)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic2"></a></td><td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic3"></a></td><td><a href="javascript:ticTACTOE(2)" onMouseOver="ticTACON(4)" onMouseOut="ticTACOFF(4)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic4"></a></td><td rowspan=5 bgcolor="#ffffff" width=8><img src="tictac/pixel_green.gif" width=8 height=128></td></tr><tr><td colspan=5><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=128 height=4 name="tic5" border=0></a></td></tr>');
+document.write('<tr><td><a href="javascript:ticTACTOE(3)" onMouseOver="ticTACON(6)" onMouseOut="ticTACOFF(6)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic6"></a></td><td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic7"></a></td><td><a href="javascript:ticTACTOE(4)" onMouseOver="ticTACON(8)" onMouseOut="ticTACOFF(8)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic8"></a></td>');
+document.write('<td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic9"></a></td><td><a href="javascript:ticTACTOE(5)" onMouseOver="ticTACON(10)" onMouseOut="ticTACOFF(10)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic10"></a></td></tr><tr><td colspan=5><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=128 height=4 border=0 name="tic11"></a></td></tr><tr><td><a href="javascript:ticTACTOE(6)" onMouseOver="ticTACON(12)" onMouseOut="ticTACOFF(12)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic12"></a></td><td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic13"></a></td><td><a href="javascript:ticTACTOE(7)" onMouseOver="ticTACON(14)" onMouseOut="ticTACOFF(14)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic14"></a></td><td><a href="javascript:ticTACTOE(-1)" onMouseOver="ticTACON(-1)" onMouseOut="ticTACOFF(-1)"><img src="tictac/pixel_blue.gif" width=4 height=40 border=0 name="tic15"></a></td><td><a href="javascript:ticTACTOE(8)" onMouseOver="ticTACON(16)" onMouseOut="ticTACOFF(16)"><img src="tictac/pixel_green.gif" width=40 height=40 border=0 name="tic16"></a></td></tr></table></td></tr><tr><td bgcolor="#003366" align="center"><img src="tictac/in_bottom.gif" height=8 width=144></td></tr>');
+document.write('<tr><td bgcolor="#003366" align="center"><img src="tictac/pixel_blue.gif" height=20 width=144 name="ticTURN"></td></tr><tr><td bgcolor="#003366">&nbsp;</td></tr><tr><td bgcolor="#003366" align="center"><font face="helvetica,arial" size=1 color="#FFFFFF">&nbsp;<br><img src="tictac/pixel.gif" width=120 height=20></td></tr><tr><td bgcolor="#003366">&nbsp;</td></tr>');
+document.write('<tr><td><a href="tictac/outbottom.gif" height=18 width=164 border=0></a></td></tr></table></td><td valign="top"><br><br><table width=62 cellpadding=0 cellspacing=0 border=0><tr><td><img src="tictac/sidetop.gif" height=10 width=62></td></tr><tr><td bgcolor="#003366">&nbsp;</td></tr><tr><td><a href="javascript:ticPLAYGAME()" onMouseOver="ticIMAGEON(\'ticNEWGAME\')" onMouseOut="ticROLLOFFOTHER()"><img src="tictac/ticNEWGAME_off.gif" height=12 width=62 border=0 name="ticNEWGAME"></a></td></tr><tr><td><a href="javascript:ticQUITGAME()" onMouseOver="ticIMAGEON(\'ticQUIT\')" onMouseOut="ticROLLOFFOTHER()"><img src="tictac/ticQUIT_off.gif" height=12 width=62 border=0 name="ticQUIT"></a></td></tr><tr><td bgcolor="#003366">&nbsp;</td></tr><tr><td><img src="tictac/sidebottom.gif" height=10 width=62></td></tr></table></td></tr></table>');
+
+</SCRIPT>
+
+
+</tr>
+</table>
+</body>
+</html>
