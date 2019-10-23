@@ -30,10 +30,9 @@
 # TECHNOLOGY
 
     Hugo extended
-    GitHub Pages
-    GitHub Actions
+    Netlify
     Commento
-    Fathom Analytics
+    GitHub Actions
 
 # VIEW SOURCE
 

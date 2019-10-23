@@ -1,14 +1,13 @@
 # 🏡&nbsp; [jarv.is](https://jarv.is/)
 
-[![Deploy status](https://github.com/jakejarvis/jarv.is/workflows/GitHub%20Pages/badge.svg)](.github/workflows) [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is)](https://github.com/jakejarvis/jarv.is) [![License](https://img.shields.io/github/license/jakejarvis/jarv.is?color=red)](LICENSE.md)
+[![Deploy status](https://github.com/jakejarvis/jarv.is/workflows/Netlify/badge.svg)](.github/workflows) [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is)](https://github.com/jakejarvis/jarv.is) [![License](https://img.shields.io/github/license/jakejarvis/jarv.is?color=red)](LICENSE.md)
 
 Personal website of [@jakejarvis](https://github.com/jakejarvis), created and deployed using the following:
 
 - [Hugo extended](https://github.com/gohugoio/hugo)
-- [GitHub Pages](https://pages.github.com/)
-- [GitHub Actions](.github/workflows)
+- [Netlify](https://www.netlify.com/)
 - [Commento](https://gitlab.com/commento/commento)
-- [Fathom Analytics](https://github.com/usefathom/fathom)
+- [GitHub Actions](.github/workflows)
 
 I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.is/issues/1) as an issue in this repo.
 

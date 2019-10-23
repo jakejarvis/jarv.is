@@ -1,0 +1,31 @@
+name: Netlify
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+        lfs: false
+    - uses: actions/setup-node@master
+
+    # Pull from custom Hugo Extended image with opinionated changes:
+    #    https://github.com/jakejarvis/hugo-custom/packages
+    #    https://github.com/jakejarvis/hugo-custom/blob/master/Dockerfile
+    # Can't use native `uses: docker://` syntax for GitHub Package Registry...
+    - name: Build Hugo
+      run: |
+        echo ${{ secrets.GITHUB_ACCESS_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+        docker run -v $GITHUB_WORKSPACE:/src docker.pkg.github.com/jakejarvis/hugo-custom/hugo-custom:latest --gc --cleanDestinationDir
+        docker logout docker.pkg.github.com
+
+    - name: Push to Netlify
+      run: |
+        npm install -g netlify-cli
+        netlify deploy --prod --dir ./public --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }}
