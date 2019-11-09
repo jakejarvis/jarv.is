@@ -30,8 +30,7 @@
 # TECHNOLOGY
 
     Hugo extended
-    GitHub Pages
-    GitHub Actions
+    Netlify
     Commento
 
 # VIEW SOURCE
