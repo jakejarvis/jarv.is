@@ -30,8 +30,8 @@ $BINDIR/hugo-extended version
 $BINDIR/hugo-extended -b "/" --gc --cleanDestinationDir --verbose
 
 # optimize images
-# find ./public -iname "*.jp*" -print0 | xargs -0 $BINDIR/jpegoptim --max=80 --strip-all
-# find ./public -iname "*.png" -print0 | xargs -0 $BINDIR/pngquant --quality=50-70 --speed 1 --ext=.png --force
+find ./public -iname "*.jp*" -print0 | xargs -0 $BINDIR/jpegoptim --max=80 --strip-all
+find ./public -iname "*.png" -print0 | xargs -0 $BINDIR/pngquant --quality=50-70 --speed 1 --ext=.png --force
 
 # remove binaries (TODO: make safe, doesn't really matter b/c docker)
 rm -rf $BINDIR
