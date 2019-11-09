@@ -1,0 +1,7 @@
+# Smart security headers
+
+/*
+  X-Frame-Options: sameorigin
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff

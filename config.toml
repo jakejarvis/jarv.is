@@ -16,6 +16,9 @@ pygmentsCodeFences = true
 
 enableRobotsTXT = true
 
+# prefer Netlify's _redirects file, see outputs below
+disableAliases = true
+
 [author]
   name = "Jake Jarvis"
   email = "jake@jarv.is"
@@ -32,8 +35,24 @@ enableRobotsTXT = true
   copyrightFirstYear = "2001"
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "REDIRECTS", "HEADERS"]
   section = ["HTML"]
+
+[mediaTypes]
+  [mediaTypes."text/netlify"]
+  delimiter = ""
+
+[outputFormats]
+  [outputFormats.REDIRECTS]
+    mediatype = "text/netlify"
+    baseName = "_redirects"
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.HEADERS]
+    mediatype = "text/netlify"
+    baseName = "_headers"
+    isPlainText = true
+    notAlternative = true
 
 [sitemap]
   filename = "sitemap.xml"
