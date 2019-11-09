@@ -23,8 +23,8 @@ chmod +x $BINDIR/pngquant
 
 # make sure everything's okay
 $BINDIR/hugo-extended version
-$BINDIR/jpegoptim
-$BINDIR/pngquant
+#$BINDIR/jpegoptim
+#$BINDIR/pngquant
 
 # build site
 $BINDIR/hugo-extended -b "/" --gc --cleanDestinationDir --verbose
