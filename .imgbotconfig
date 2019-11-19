@@ -1,7 +1,7 @@
 {
     "ignoredFiles": [
-        "misc/*",
-        "*.svg"
+        "*.svg",
+        "**/logo.*"
     ],
     "aggressiveCompression": "false"
 }
