@@ -2,30 +2,32 @@
   "name": "jarv.is",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "author": "Jake Jarvis",
+  "license": "MIT",
+  "homepage": "https://jarv.is/",
   "scripts": {
     "build": "npm run hugo:build && npm run optimize",
     "build:preview": "npm run hugo:build-preview && npm run optimize",
     "hugo:build": "hugo --gc --cleanDestinationDir --verbose",
-    "hugo:build-preview": "HUGO_ENV=development hugo -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
-    "hugo:serve": "hugo server --buildDrafts --buildFuture --port 1313 --verbose",
+    "hugo:build-preview": "HUGO_ENV=development hugo -e development -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
+    "hugo:serve": "hugo server --buildDrafts --buildFuture --port 1313 --bind=0.0.0.0 --verbose",
+    "hugo:serve-netlify": "netlify dev --command 'npm run hugo:serve' --port 1313",
     "optimize": "npm run optimize:img",
-    "optimize:img": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --plugin=svgo --out-dir={} \\;",
+    "optimize:img": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --plugin=svgo --plugin=gifsicle --out-dir={} \\;",
     "test": "hugo version; hugo env"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "imagemin-cli": "^5.0.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-jpegoptim": "^6.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "netlify-cli": "^2.21.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jakejarvis/jarv.is.git"
-  },
-  "author": "Jake Jarvis",
-  "license": "MIT",
-  "homepage": "https://jarv.is/",
-  "dependencies": {},
-  "devDependencies": {
-    "imagemin-cli": "^5.0.0",
-    "imagemin-jpegoptim": "^6.0.0",
-    "imagemin-optipng": "^7.1.0",
-    "imagemin-pngquant": "^8.0.0",
-    "imagemin-svgo": "^7.0.0"
   }
 }

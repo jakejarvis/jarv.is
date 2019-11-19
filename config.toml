@@ -78,7 +78,7 @@ disableAliases = true
   hrefTargetBlank = true
   nofollowLinks = true
   noreferrerLinks = true
-  noopenerLinks = true       # requires custom fork w/ custom blackfriday: https://github.com/jakejarvis/hugo/tree/noopener
+  # noopenerLinks = true       # requires custom fork w/ custom blackfriday: https://github.com/jakejarvis/hugo/tree/noopener
   plainIDAnchors = true
   fractions = false
 
