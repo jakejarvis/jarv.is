@@ -1,4 +1,3 @@
-# netlify.sh downloads Hugo fork and builds the site independently.
 [build]
   command = "npm run build"
   publish = "public"
@@ -8,7 +7,7 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "npm run build-preview"
+  command = "npm run build:preview"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.59.1"

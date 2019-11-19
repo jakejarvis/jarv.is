@@ -4,13 +4,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npm run hugo && npm run optimize",
-    "build-preview": "npm run hugo-preview && npm run optimize",
-    "hugo": "hugo --gc --cleanDestinationDir --verbose",
-    "hugo-preview": "hugo --gc --buildDrafts --buildFuture -b $DEPLOY_PRIME_URL",
-    "serve": "hugo server --verbose",
-    "optimize": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --out-dir={} \\;",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run hugo:build && npm run optimize",
+    "build:preview": "npm run hugo:build-preview && npm run optimize",
+    "hugo:build": "hugo --gc --cleanDestinationDir --verbose",
+    "hugo:build-preview": "HUGO_ENV=development hugo -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
+    "hugo:serve": "hugo server --buildDrafts --buildFuture --port 1313 --verbose",
+    "optimize": "npm run optimize:img",
+    "optimize:img": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --plugin=svgo --out-dir={} \\;",
+    "test": "hugo version; hugo env"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "imagemin-cli": "^5.0.0",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-optipng": "^7.1.0",
-    "imagemin-pngquant": "^8.0.0"
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0"
   }
 }

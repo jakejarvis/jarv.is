@@ -13,9 +13,7 @@ I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.i
 
 ## Running a local testing server with Docker
 
-This site runs a [custom version](https://github.com/jakejarvis/hugo-custom) of [Hugo Extended](https://github.com/gohugoio/hugo) with a few (very opinionated) changes. To ensure consistency, the [`Dockerfile`](Dockerfile) in this repository will pull my Hugo [fork](https://github.com/jakejarvis/hugo-custom) (forked from `v0.53-DEV`, [gohugo/hugo@`a28865c`](https://github.com/gohugoio/hugo/tree/a28865cfc3e296cf0ddd0bd6c1368fcdb2154d0f) and pre-built on [Docker Hub](https://hub.docker.com/r/jakejarvis/hugo-custom) and [GitHub Package Registry](https://github.com/jakejarvis/hugo-custom/packages)) and run a live testing server.
-
-Run [`./scripts/docker-server.sh`](scripts/docker-server.sh) from the root of this repository, or execute these Docker commands:
+This site is built with [Hugo Extended](https://github.com/gohugoio/hugo). To ensure consistency, the [`Dockerfile`](Dockerfile) in this repository will download and verify Hugo (v0.59.1) and run a live testing server.
 
 ```bash
 docker build -t jarv.is:develop -f Dockerfile .
@@ -31,4 +29,4 @@ docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop
 
 Site content (everything in [`content/notes`](content/notes/)) is published under the [Creative Commons Attribution 4.0 International License](LICENSE.md) (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
 
-All code in this repository (like my [Hugo theme](layouts/)) is published under the [MIT license](https://opensource.org/licenses/MIT), except the customized Hugo fork in the [`Dockerfile`](Dockerfile) which retains Hugo's [original Apache-2.0 license](https://github.com/gohugoio/hugo/blob/master/LICENSE).
+All code in this repository (like my [Hugo theme](layouts/)) is published under the [MIT license](https://opensource.org/licenses/MIT).
