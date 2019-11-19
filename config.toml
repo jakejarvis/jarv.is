@@ -41,7 +41,7 @@ disableAliases = true
 
 [mediaTypes]
   [mediaTypes."text/netlify"]
-  delimiter = ""
+    delimiter = ""
 
 [outputFormats]
   [outputFormats.AMP]

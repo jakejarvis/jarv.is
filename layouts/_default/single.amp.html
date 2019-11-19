@@ -14,44 +14,6 @@
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="author" content="{{ .Site.Author.name }}">
 {{ partial "open-graph.html" . }}
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
-        "headline": {{ .Title }},
-        "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
-        "dateModified": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
-        "description": {{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }},
-        "keywords": "{{ with .Params.tags }}{{ range $index, $tag := . }}{{ if gt $index 0 }}, {{ end }}{{ $tag }}{{ end }}{{ end }}",
-        "author": {
-          "@type": "Person",
-          "name": {{ .Site.Author.name }},
-          "url": {{ .Site.BaseURL }},
-          "image": {
-            "@type": "ImageObject",
-            "url": {{ "me.jpg" | absURL }},
-            "width": 320,
-            "height": 320
-          }
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": {{ .Site.Author.name }},
-          "url": {{ .Site.BaseURL }},
-          "logo": {
-            "@type": "ImageObject",
-            "url": {{ "favicon-512.png" | absURL }},
-            "width": 512,
-            "height": 512
-          }
-        },
-        "image": {
-          "@type": "ImageObject",
-          "url": {{ if .Params.image }}{{ (printf "%s%s%s"  (.OutputFormats.Get "html").Permalink  "images/" .Params.image ) }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}
-        }
-      }
-    </script>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <style amp-custom>
       body {
@@ -80,7 +42,7 @@
       h1.title {
         text-align: center;
         font-size: 2.2rem;
-        line-height: 3.5rem;
+        line-height: 3rem;
         margin-top: 0.75rem;
         margin-bottom: 0.25rem;
       }
@@ -93,7 +55,7 @@
         text-decoration: none;
         color: #444444;
       }
-      p.image, p.caption, p.video {
+      p.center, p.image, p.caption, p.video {
         text-align: center;
       }
       header {
@@ -184,6 +146,44 @@
     <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
     <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }} (RSS)">
     <link rel="manifest" href="{{ "manifest.json" | absURL }}">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
+        "headline": {{ .Title }},
+        "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "dateModified": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "description": {{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }},
+        "keywords": "{{ with .Params.tags }}{{ range $index, $tag := . }}{{ if gt $index 0 }}, {{ end }}{{ $tag }}{{ end }}{{ end }}",
+        "author": {
+          "@type": "Person",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "image": {
+            "@type": "ImageObject",
+            "url": {{ "me.jpg" | absURL }},
+            "width": 320,
+            "height": 320
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "logo": {
+            "@type": "ImageObject",
+            "url": {{ "favicon-512.png" | absURL }},
+            "width": 512,
+            "height": 512
+          }
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": {{ if .Params.image }}{{ (printf "%s%s%s"  (.OutputFormats.Get "html").Permalink  "images/" .Params.image ) }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -200,15 +200,10 @@
       </nav>
     </header>
 
-<!-- TODO: #BeBest and improve SUUUUUUUUPER hacky AMP tag support -->
-{{- $amp_content := .Content }}
-{{- $amp_content = replace $amp_content "<script " "<!--<script " }}
-{{- $amp_content = replace $amp_content "</script>" "</script>-->" }}
-
     <article>
       <h1 class="title">{{ .Title }}</h1>
       <p class="meta">by <a class="author" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a> on <a class="date" href="{{ .Permalink }}">{{ .Date.Format "January 2, 2006" }}</a></p>
-{{ $amp_content | safeHTML }}
+{{ .Content }}
     </article>
 
     <footer>
