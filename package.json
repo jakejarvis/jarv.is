@@ -1,17 +1,22 @@
 {
   "name": "jarv.is",
-  "private": true,
   "version": "1.0.0",
-  "author": "Jake Jarvis",
-  "license": "MIT",
   "homepage": "https://jarv.is/",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Jake Jarvis",
+    "email": "jake@jarv.is",
+    "url": "https://github.com/jakejarvis"
+  },
   "scripts": {
     "build": "npm run hugo:build && npm run optimize",
-    "build:preview": "npm run hugo:build-preview && npm run optimize",
+    "build:preview": "npm run hugo:build-dev && npm run optimize",
     "hugo:build": "hugo --gc --cleanDestinationDir --verbose",
-    "hugo:build-preview": "HUGO_ENV=development hugo -e development -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
+    "hugo:build-": "HUGO_ENV=development hugo -e development -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
     "hugo:serve": "hugo server --buildDrafts --buildFuture --port 1313 --bind=0.0.0.0 --verbose",
-    "hugo:serve-netlify": "netlify dev --command 'npm run hugo:serve' --port 1313",
+    "docker:serve": "docker build -t jarv.is:develop -f Dockerfile . ; docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop",
+    "netlify:serve": "netlify dev --command 'npm run hugo:serve'",
     "optimize": "npm run optimize:img",
     "optimize:img": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --plugin=svgo --plugin=gifsicle --out-dir={} \\;",
     "test": "hugo version; hugo env"

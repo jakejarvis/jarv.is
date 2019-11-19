@@ -1,0 +1,38 @@
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
+        "headline": {{ .Title }},
+        "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "dateModified": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "description": {{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }},
+        "keywords": "{{ with .Params.tags }}{{ range $index, $tag := . }}{{ if gt $index 0 }}, {{ end }}{{ $tag }}{{ end }}{{ end }}",
+        "author": {
+          "@type": "Person",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "image": {
+            "@type": "ImageObject",
+            "url": {{ "me.jpg" | absURL }},
+            "width": 320,
+            "height": 320
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "logo": {
+            "@type": "ImageObject",
+            "url": {{ "favicon-512.png" | absURL }},
+            "width": 512,
+            "height": 512
+          }
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": {{ if .Params.image }}{{ (printf "%s%s%s"  (.OutputFormats.Get "html").Permalink  "images/" .Params.image ) }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}
+        }
+      }
+    </script>
