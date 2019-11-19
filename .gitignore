@@ -2,4 +2,8 @@ public/
 builds/
 resources/
 
+node_modules/
+package.lock
+yarn.lock
+
 .DS_Store

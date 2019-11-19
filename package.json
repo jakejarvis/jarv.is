@@ -1,0 +1,29 @@
+{
+  "name": "jarv.is",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run hugo && npm run optimize",
+    "build-preview": "npm run hugo-preview && npm run optimize",
+    "hugo": "hugo --gc --cleanDestinationDir --verbose",
+    "hugo-preview": "hugo --gc --buildDrafts --buildFuture -b $DEPLOY_PRIME_URL",
+    "serve": "hugo server --verbose",
+    "optimize": "find public/ -type d -exec imagemin {}/* --plugin=jpegoptim --plugin=pngquant --plugin=optipng --out-dir={} \\;",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakejarvis/jarv.is.git"
+  },
+  "author": "Jake Jarvis",
+  "license": "MIT",
+  "homepage": "https://jarv.is/",
+  "dependencies": {},
+  "devDependencies": {
+    "imagemin-cli": "^5.0.0",
+    "imagemin-jpegoptim": "^6.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-pngquant": "^8.0.0"
+  }
+}
