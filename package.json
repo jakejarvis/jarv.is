@@ -13,7 +13,7 @@
     "build": "npm run hugo:build && npm run optimize",
     "build:preview": "npm run hugo:build-dev && npm run optimize",
     "hugo:build": "hugo --gc --cleanDestinationDir --verbose",
-    "hugo:build-": "HUGO_ENV=development hugo -e development -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
+    "hugo:build-dev": "HUGO_ENV=development hugo -e development -b $DEPLOY_PRIME_URL --gc --cleanDestinationDir --buildDrafts --buildFuture --verbose",
     "hugo:serve": "hugo server --buildDrafts --buildFuture --port 1313 --bind=0.0.0.0 --verbose",
     "docker:serve": "docker build -t jarv.is:develop -f Dockerfile . ; docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop",
     "netlify:serve": "netlify dev --command 'npm run hugo:serve'",
