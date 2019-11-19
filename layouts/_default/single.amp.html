@@ -199,13 +199,11 @@
         </ul>
       </nav>
     </header>
-
     <article>
       <h1 class="title">{{ .Title }}</h1>
       <p class="meta">by <a class="author" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a> on <a class="date" href="{{ .Permalink }}">{{ .Date.Format "January 2, 2006" }}</a></p>
 {{ .Content }}
     </article>
-
     <footer>
       Content by <a href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution 4.0 International" target="_blank" rel="noopener noreferrer nofollow">CC-BY-4.0</a>.
       <a class="back-to-top" href="#top">↑ Back to top.</a>

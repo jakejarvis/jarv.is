@@ -7,7 +7,7 @@
 {{- $maxWidth := 910 -}}
 {{- $setWidth := 0 -}}
 
-{{- if .Get "width" }}
+{{- if .Get "width" -}}
   {{- $setWidth = (int (.Get "width")) -}}
   {{- $retinaWidth := (mul $setWidth 2) -}}
 
@@ -24,7 +24,7 @@
 
 {{- $image := .Scratch.Get "image" -}}
 
-{{- $origRatio := (div (float $image.Height) $image.Width) }}
+{{- $origRatio := (div (float $image.Height) $image.Width) -}}
 {{- $displayWidth := $setWidth -}}
 {{- $displayHeight := (math.Ceil (mul $origRatio $setWidth)) -}}
 

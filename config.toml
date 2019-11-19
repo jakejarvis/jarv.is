@@ -71,8 +71,8 @@ disableAliases = true
 [imaging]
   # options for resampling filters:
   # https://github.com/disintegration/imaging#image-resizing
-  resampleFilter = "Linear"
-  quality = 100
+  resampleFilter = "Box"
+  quality = 75
 
 [blackfriday]
   hrefTargetBlank = true
