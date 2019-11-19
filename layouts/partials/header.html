@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 {{"<!--\n      ,,,        ,,,\n    ;\"   ^;    ;\"   \",\n   ;     s$$$$$s      ;\n    ,  ss$$$$$$$ss  ,\"\n    ;$$$$$$$$$$$$$$$$\n    $$$$$$$$$$$$$$$$$$           Hello, human. :)\n   $$$$$\"\"\"$$$\"\"\"$$$$$$\n  $$$$$  p\"$$$\"q  $$$$$     https://jarv.is/humans.txt\n   $$$$  .$$$$$.  $$$$\n    $$$$$$$$$$$$$$$$$\n      \"$$$$\"*\"$$$$\"\n         \"$$.$$\"\n-->" | safeHTML}}
 <html lang="en">
   <head>
@@ -8,32 +8,7 @@
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="author" content="{{ .Site.Author.name }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="{{ .Title }}">
-    <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta property="og:image" content="{{ if .Params.image }}{{ .Permalink }}images/{{ .Params.image }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}">
-{{- if .IsPage }}
-{{- if not .PublishDate.IsZero }}
-    <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTMLAttr }}">
-{{- else if not .Date.IsZero }}
-    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTMLAttr }}">
-{{- end }}
-{{- with .Site.Author.facebook }}
-    <meta property="article:author" content="https://www.facebook.com/{{ . }}">{{ end }}
-{{- with .Params.tags }}{{ range . }}
-    <meta property="article:tag" content="{{ . }}">{{ end }}{{ end }}
-{{- end }}
-    <meta property="fb:admins" content="{{ .Site.Author.facebook_id }}">
-    <meta property="fb:app_id" content="{{ .Site.Params.facebook_app_id }}">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:domain" content="{{ .Site.Params.domain }}">
-    <meta name="twitter:site" content="{{ .Site.Author.twitter }}">
-    <meta name="twitter:creator" content="{{ .Site.Author.twitter }}">
-    <meta name="twitter:dnt" content="on">
-    <meta name="twitter:widgets:csp" content="on">
+{{ partial "open-graph.html" . }}
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
@@ -49,6 +24,9 @@
     <link rel="icon" href="{{ "favicon-16.png" | absURL }}" sizes="16x16">
     <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
     <link rel="canonical" href="{{ .Permalink }}">
+{{- if and (eq .Type "notes") (eq .Kind "page") }}{{ with .OutputFormats.Get "amp" }}
+    <link rel="amphtml" href="{{ .Permalink }}">
+{{- end }}{{ end }}
     <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }} (RSS)">
     <link rel="author" href="{{ "humans.txt" | absURL }}">
   </head>

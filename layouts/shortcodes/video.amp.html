@@ -1,0 +1,23 @@
+{{- $video_webm := .Page.Resources.GetMatch (.Get "webm") -}}
+{{- $video_mp4 := .Page.Resources.GetMatch (.Get "mp4") -}}
+{{- $video_ogg := .Page.Resources.GetMatch (.Get "ogg") -}}
+{{- $img_poster := .Page.Resources.GetMatch (.Get "poster") -}}
+
+<p class="video">
+  <amp-video
+    layout="responsive"
+    width="{{ if .Get "width" }}{{ .Get "width" }}{{ else }}910{{ end }}"
+    height="{{ if .Get "height" }}{{ .Get "height" }}{{ else }}600{{ end }}"
+    {{- if .Get "poster" }} poster="{{ $img_poster.Permalink }}"{{ end }}
+    {{- if .Get "autoplay" }} autoplay{{ end }}
+    {{- if .Get "loop" }} loop{{ end }}
+    {{- if ne (.Get "nocontrols") "1" }} controls{{ end }}>
+    {{ if .Get "webm" }}<source src="{{ $video_webm.Permalink }}" type="video/webm">{{ end }}
+    {{ if .Get "mp4"  }}<source src="{{ $video_mp4.Permalink }}" type="video/mp4">{{ end }}
+    {{ if .Get "ogg"  }}<source src="{{ $video_ogg.Permalink }}" type="video/ogg">{{ end }}
+
+    <div fallback>
+      Your browser does not support HTML5 video. <a href="{{ $video_mp4.Permalink }}">Load the .mp4 video directly.</a>
+    </div>
+  </amp-video>
+</p>

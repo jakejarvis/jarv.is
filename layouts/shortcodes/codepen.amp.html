@@ -1,0 +1,7 @@
+<amp-iframe
+  layout="responsive"
+  width="1200"
+  height="{{ if .Get "height" }}{{ .Get "height" }}{{ else }}500{{ end }}"
+  scrolling="no"
+  src="https://codepen.io/{{ .Get "username" }}/embed/{{ .Get "id" }}/?height={{ if .Get "height" }}{{ .Get "height" }}{{ else }}500{{ end }}&amp;theme-id=light&amp;default-tab={{ .Get "left-tab" }}{{ if .Get "right-tab" }},{{ .Get "right-tab" }}{{ end }}">
+</amp-iframe>

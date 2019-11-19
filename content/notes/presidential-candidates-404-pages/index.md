@@ -31,7 +31,7 @@ I'm a _huge_ sucker for Kate McKinnon's spot-on impression of Warren on Saturday
 
 Although the designer who selected this GIF likely had _thousands_ of choices when searching "[Bernie finger wagging GIF](https://www.google.com/search?q=Bernie+finger+wagging+GIF&tbm=isch&tbs=itp:animated)," the text beside it is well-written and funny — even though we both know putting a page at [berniesanders.com/zxcliaosid](https://berniesanders.com/zxcliaosid/) probably won't be a top priority of a President Sanders.
 
-{{< video mp4="images/sanders.mp4" webm="images/sanders.webm" autoplay="1" loop="1" nocontrols="1" >}}
+{{< video mp4="images/sanders.mp4" height="346" webm="images/sanders.webm" autoplay="1" loop="1" nocontrols="1" >}}
 
 ---
 
@@ -47,7 +47,7 @@ Uncle Joe has a nice and simple 404 page. I like it, along with the Ray-Bans and
 
 A ballsy move, considering Beto's infamous [DUI arrest](https://www.politifact.com/texas/statements/2019/mar/14/club-growth/beto-orourke-arrested-dwi-flee-scene/) in the '90s — but still a clever ask for a donation and a great use of a GIF, even if it's left over from his Senate campaign.
 
-{{< video mp4="images/orourke.mp4" webm="images/orourke.webm" autoplay="1" loop="1" nocontrols="1" >}}
+{{< video mp4="images/orourke.mp4" height="467" webm="images/orourke.webm" autoplay="1" loop="1" nocontrols="1" >}}
 
 ---
 
@@ -55,7 +55,7 @@ A ballsy move, considering Beto's infamous [DUI arrest](https://www.politifact.c
 
 Another clean and simple page with a top-notch GIF. It injected some emotion into visiting [kamalaharris.com/alskdjf](https://kamalaharris.com/alskdjf).
 
-{{< video mp4="images/harris.mp4" webm="images/harris.webm" autoplay="1" loop="1" nocontrols="1" >}}
+{{< video mp4="images/harris.mp4" height="512" webm="images/harris.webm" autoplay="1" loop="1" nocontrols="1" >}}
 
 ---
 

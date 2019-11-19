@@ -37,12 +37,19 @@ disableAliases = true
 [outputs]
   home = ["HTML", "RSS", "MANIFEST", "REDIRECTS", "HEADERS"]
   section = ["HTML"]
+  page = ["HTML", "AMP"]
 
 [mediaTypes]
   [mediaTypes."text/netlify"]
   delimiter = ""
 
 [outputFormats]
+  [outputFormats.AMP]
+    mediaType = "text/html"
+    basename = "amp"
+    path = "."
+    permalinkable = true
+    isHTML = true
   [outputFormats.MANIFEST]
     mediaType = "application/json"
     baseName = "manifest"

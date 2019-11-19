@@ -1,0 +1,219 @@
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
+    <title>{{ .Title }} &ndash; {{ .Site.Title }}</title>
+    {{ with .OutputFormats.Get "html" }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    {{ hugo.Generator }}
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="author" content="{{ .Site.Author.name }}">
+{{ partial "open-graph.html" . }}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
+        "headline": {{ .Title }},
+        "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "dateModified": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+        "description": {{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }},
+        "keywords": "{{ with .Params.tags }}{{ range $index, $tag := . }}{{ if gt $index 0 }}, {{ end }}{{ $tag }}{{ end }}{{ end }}",
+        "author": {
+          "@type": "Person",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "image": {
+            "@type": "ImageObject",
+            "url": {{ "me.jpg" | absURL }},
+            "width": 320,
+            "height": 320
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ .Site.Author.name }},
+          "url": {{ .Site.BaseURL }},
+          "logo": {
+            "@type": "ImageObject",
+            "url": {{ "favicon-512.png" | absURL }},
+            "width": 512,
+            "height": 512
+          }
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": {{ if .Params.image }}{{ (printf "%s%s%s"  (.OutputFormats.Get "html").Permalink  "images/" .Params.image ) }}{{ else }}{{ "me.jpg" | absURL }}{{ end }}
+        }
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background: #ffffff;
+        color: #222222;
+      }
+      a {
+        color: #0e6dc2;
+      }
+      hr {
+        width: 60%;
+        margin: 0.75em auto;
+        border: 1px solid #dddddd;
+      }
+      blockquote {
+        border-left: 5px solid #0e6dc2;
+        margin-left: 0.5em;
+        padding-left: 1em;
+      }
+      article {
+        font-size: 1rem;
+        line-height: 1.8rem;
+        padding: 0 20px;
+      }
+      h1.title {
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+      }
+      p.meta {
+        text-align: center;
+        margin: 0.25rem;
+        color: #777777;
+      }
+      p.meta a {
+        text-decoration: none;
+        color: #444444;
+      }
+      p.image, p.caption, p.video {
+        text-align: center;
+      }
+      header {
+        width: 100%;
+        border-bottom: 1px solid #bbbbbb;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 30px;
+      }
+      nav a {
+        text-decoration: none;
+      }
+      nav a#logo {
+        display: flex;
+        align-items: center;
+        color: #333333;
+        padding: 10px 0;
+      }
+      nav a#logo svg {
+        height: 45px;
+        width: 30px;
+      }
+      nav a#logo span {
+        margin-left: 16px;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        line-height: 1;
+        padding: 0;
+      }
+      nav ul li {
+        width: 60px;
+        text-align: right;
+      }
+      footer {
+        width: 100%;
+        padding: 20px;
+        border-top: 1px solid #bbbbbb;
+        color: #555;
+      }
+      footer a {
+        text-decoration: none;
+      }
+      footer a.back-to-top {
+        position: absolute;
+        right: 20px;
+      }
+      code {
+        font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+        font-size: 0.9em;
+        padding: 0.2em;
+        background: #f4f4f4;
+        border: 1px solid #dddddd;
+      }
+      pre code {
+        display: block;
+        padding: 1em 1.5em;
+        margin: 1.4em 0;
+        line-height: 1.6;
+        border-left: 3px solid #0e6dc2;
+        max-width: 100%;
+        overflow-x: scroll;
+        page-break-inside: avoid;
+        object-fit: scale-down;
+      }
+      div.highlight span.k, div.highlight span.kc, div.highlight span.kd, div.highlight span.kp, div.highlight span.kr, div.highlight span.kt, div.highlight span.no { color: #03748a; }
+      div.highlight span.n, div.highlight span.bp, div.highlight span.nb, div.highlight span.ni, div.highlight span.fm, div.highlight span.nl, div.highlight span.nn, div.highlight span.py, div.highlight span.nv, div.highlight span.vc, div.highlight span.vg, div.highlight span.vi, div.highlight span.vm, div.highlight span.p { color: #111111; }
+      div.highlight span.na, div.highlight span.nc, div.highlight span.nd, div.highlight span.ne, div.highlight span.nf, div.highlight span.nx { color: #489c44; }
+      div.highlight span.err, div.highlight span.nt, div.highlight span.o, div.highlight span.ow, div.highlight span.kn { color: #e8003d; }
+      div.highlight span.l, div.highlight span.se, div.highlight span.m, div.highlight span.mb, div.highlight span.mf, div.highlight span.mh, div.highlight span.mi, div.highlight span.il, div.highlight span.mo { color: #8145ec; }
+      div.highlight span.ld, div.highlight span.s, div.highlight span.sa, div.highlight span.sb, div.highlight span.sc, div.highlight span.dl, div.highlight span.sd, div.highlight span.s2, div.highlight span.sh, div.highlight span.si, div.highlight span.sx, div.highlight span.sr, div.highlight span.s1, div.highlight span.ss { color: #c17005; }
+      div.highlight span.c, div.highlight span.ch, div.highlight span.cm, div.highlight span.c1, div.highlight span.cs, div.highlight span.cp, div.highlight span.cpf { color: #6b6859; }
+      div.highlight span.ge { font-style: italic; }
+      div.highlight span.gs { font-weight: bold; }
+    </style>
+    <link rel="icon" href="{{ "favicon-192.png" | absURL }}" sizes="192x192">
+    <link rel="icon" href="{{ "favicon-48.png" | absURL }}" sizes="48x48">
+    <link rel="icon" href="{{ "favicon-32.png" | absURL }}" sizes="32x32">
+    <link rel="icon" href="{{ "favicon-16.png" | absURL }}" sizes="16x16">
+    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
+    <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }} (RSS)">
+    <link rel="manifest" href="{{ "manifest.json" | absURL }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a id="logo" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+{{ partial "logo.html" . }}
+          <span id="name">{{ .Site.Title }}</span>
+        </a>
+        <ul>
+          <li><a href="{{ .Site.BaseURL }}" title="Home">&#x1F3E0;</a></li>
+          <li><a href="{{ "notes/" | absURL }}" title="Notes">&#x1F4DD;</a></li>
+          <li><a href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;&#x6A;&#x61;&#x6B;&#x65;&#x40;&#x6A;&#x61;&#x72;&#x76;&#x2E;&#x69;&#x73;" title="Email Me">&#x1F48C;</a></li>
+        </ul>
+      </nav>
+    </header>
+
+<!-- TODO: #BeBest and improve SUUUUUUUUPER hacky AMP tag support -->
+{{- $amp_content := .Content }}
+{{- $amp_content = replace $amp_content "<script " "<!--<script " }}
+{{- $amp_content = replace $amp_content "</script>" "</script>-->" }}
+
+    <article>
+      <h1 class="title">{{ .Title }}</h1>
+      <p class="meta">by <a class="author" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a> on <a class="date" href="{{ .Permalink }}">{{ .Date.Format "January 2, 2006" }}</a></p>
+{{ $amp_content | safeHTML }}
+    </article>
+
+    <footer>
+      Content by <a href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution 4.0 International" target="_blank" rel="noopener noreferrer nofollow">CC-BY-4.0</a>.
+      <a class="back-to-top" href="#top">↑ Back to top.</a>
+    </footer>
+  </body>
+</html>

@@ -234,7 +234,7 @@ body#notes {
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
             display: inline-block;
           }
         }
@@ -242,6 +242,10 @@ body#notes {
         iframe.twitter-tweet, twitter-widget {
           margin: 0 auto;
           display: block;
+        }
+
+        iframe {
+          border: 0;
         }
 
         code {

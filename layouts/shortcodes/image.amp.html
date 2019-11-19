@@ -1,0 +1,41 @@
+
+{{- $original := .Page.Resources.GetMatch (.Get "src") -}}
+{{- .Scratch.Set "image" $original -}}
+
+<!-- TODO: automatically pull max-width of page -->
+{{- $maxWidth := 910 -}}
+{{- $setWidth := 0 -}}
+
+{{- if .Get "width" }}
+  {{- $setWidth = (int (.Get "width")) -}}
+  {{- $retinaWidth := (mul $setWidth 2) -}}
+
+  {{- if gt $original.Width $retinaWidth -}}
+    {{- $finalWidth := (printf "%dx" $retinaWidth ) -}}
+    {{- .Scratch.Set "image" ($original.Resize $finalWidth) -}}
+  {{- end -}}
+{{- else -}}
+  {{- $setWidth = $maxWidth -}}
+  {{- if gt $original.Width 1820 -}}
+    {{- .Scratch.Set "image" ($original.Resize "1820x") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $image := .Scratch.Get "image" -}}
+
+{{- $origRatio := (div (float $image.Height) $image.Width) }}
+{{- $displayWidth := $setWidth -}}
+{{- $displayHeight := (math.Ceil (mul $origRatio $setWidth)) -}}
+
+<p class="image">
+  <amp-img
+    alt="{{ .Get "alt" }}"
+    src="{{ $image.Permalink }}"
+    width="{{ $displayWidth }}"
+    height="{{ $displayHeight }}"
+    layout="intrinsic"
+  >
+  </amp-img>
+</p>
+
+{{- with (.Get "caption") }}<p class="caption"><em>{{ . }}</em></p>{{ end -}}
