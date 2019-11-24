@@ -2,8 +2,9 @@
 
 // Global Header Styles
 header {
-  border-bottom: 1px solid $color-super-light;
   width: 100%;
+  background-color: $color-nav-bg;
+  border-bottom: 1px solid $color-super-light;
 
   nav {
     width: 100%;
@@ -77,7 +78,7 @@ header {
         height: 60px;
       }
 
-      span#name {
+      h1#name {
         display: none;
       }
     }

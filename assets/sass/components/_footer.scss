@@ -2,12 +2,15 @@
 
 // Global Footer Styles
 footer {
-  border-top: 1px solid $color-super-light;
-  line-height: 1.7;
-  padding: 1.5em;
-  color: $color-light;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  line-height: 1.7;
+  padding: 1.5em;
+  box-sizing: border-box;
+  color: $color-light;
+  background-color: $color-nav-bg;
+  border-top: 1px solid $color-super-light;
 
   /* stylelint-disable-next-line no-descending-specificity */
   a {
