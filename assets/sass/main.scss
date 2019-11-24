@@ -7,11 +7,14 @@
 @import 'abstracts/functions';
 
 // Global Styles
-@import 'pages/global';
+@import 'components/global';
+@import 'components/header';
+@import 'components/footer';
 
 // Pages
 @import 'pages/home';
-@import 'pages/notes';
+@import 'pages/archive';
+@import 'pages/single';
 @import 'pages/videos';
 
 // Responsive Mixins

@@ -3,7 +3,11 @@
 // Responsive Awesomeness
 @media screen and (max-width: $responsive-width) {
   @include responsive--global();
+  @include responsive--header();
+  @include responsive--footer();
+
   @include responsive--home();
-  @include responsive--notes();
+  @include responsive--archive();
+  @include responsive--single();
   @include responsive--videos();
 }

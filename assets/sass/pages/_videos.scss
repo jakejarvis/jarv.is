@@ -1,27 +1,23 @@
 @charset "UTF-8";
 
 // Video Styles
-body#videos {
-  margin: 75px auto;
+main#video {
+  margin: 20px auto;
   text-align: center;
+
+  h2 {
+    font-size: 2em;
+  }
 
   p {
     font-size: 0.85em;
     line-height: 1.5em;
     color: #777777;
-    margin: 0;
-    padding: 0 10px;
+    margin: 20px 10px;
   }
 
   a {
     font-weight: bold;
-  }
-
-  a#logo svg {
-    height: 48px;
-    width: 48px;
-    padding: 4px;
-    margin: 16px 0 8px 0;
   }
 
   video {
@@ -34,10 +30,10 @@ body#videos {
 
 // Responsive
 @mixin responsive--videos() {
-  body#videos {
+  main#video {
     margin: 20px 0;
   
-    h1 {
+    h2 {
       font-size: 1.6em;
       padding: 0 10px;
     }

@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+// Post Styles
+main#single {
+  max-width: 1010px;
+  padding: 0 50px;
+  margin: 1.5em auto;
+
+  article div {
+    &#meta {
+      color: $color-light;
+      font-size: 0.85em;
+      line-height: 1.5;
+      letter-spacing: 1px;
+
+      a {
+        color: inherit;
+      }
+
+      div#tags {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 0.5em;
+
+        span.tag {
+          margin: 0 0.6em;
+        }
+      }
+    }
+
+    &#info {
+      text-align: center;
+
+      h1 {
+        margin: 0.3em 0;
+        font-size: 2em;
+        line-height: 1.4;
+
+        a {
+          color: inherit;
+        }
+      }
+    }
+
+    &#content {
+      font-weight: 400;
+      line-height: 1.8;
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 0.9em;
+        margin-bottom: 0.5em;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      img,
+      figure {
+        height: auto;
+        max-width: 100%;
+        margin: 1em auto;
+        display: block;
+      }
+
+      // reduce margin between image and caption
+      figure img {
+        margin-bottom: 0.4em;
+      }
+
+      // image captions -- two different markdown hacks
+      img + em,
+      figure figcaption {
+        display: block;
+        font-size: 0.9em;
+        font-style: normal;
+        color: $color-light;
+        text-align: center;
+      }
+
+      blockquote {
+        border-left: 5px solid $color-links;
+        margin-left: 0.5em;
+        padding-left: 1em;
+      }
+
+      ul {
+        list-style-position: outside;
+        list-style-type: square;
+        margin-left: 1.5em;
+        padding-left: 0;
+
+        li {
+          padding-left: 0.25em;
+        }
+      }
+
+      hr {
+        width: 60%;
+        margin: 0.75em auto;
+        border: 1px solid $color-super-light;
+      }
+
+      video.embed {
+        display: block;
+        margin: 1em auto;
+        max-width: 100%;
+        height: auto;
+        border: 0;
+      }
+
+      div.embed.video-player {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+
+        iframe.youtube-player {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+          display: inline-block;
+        }
+      }
+
+      iframe.twitter-tweet, twitter-widget {
+        margin: 0 auto;
+        display: block;
+      }
+
+      iframe {
+        border: 0;
+      }
+
+      code {
+        // https://markdotto.com/2018/02/07/github-system-fonts/
+        font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+        font-size: 0.9em;
+        padding: 0.2em;
+        background: $color-super-duper-light;
+        border: 1px solid $color-super-light;
+      }
+
+      pre code {
+        display: block;
+        padding: 1em 1.5em;
+        margin: 1.4em 0;
+        line-height: 1.6;
+        border-left: 3px solid $color-links;
+        max-width: 100%;
+        overflow-x: scroll;
+        page-break-inside: avoid;
+        object-fit: scale-down;
+      }
+    }
+  }
+}
+
+
+// Responsive
+@mixin responsive--single() {
+  main#single {
+    padding: 0 20px;
+
+    article {
+      width: 100%;
+      max-width: 100%;
+
+      div#info h1 {
+        font-size: 1.7em;
+      }
+    }
+  }
+}

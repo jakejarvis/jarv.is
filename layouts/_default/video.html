@@ -1,21 +1,19 @@
 {{ partial "header.html" . }}
-<h1>{{ .Title }}</h1>
+<main id="video">
+  <h2>{{ .Title }}</h2>
 
-<video poster="{{ with .Resources.GetMatch "images/*.png" }}{{ .Permalink }}{{ end }}" controls crossorigin playsinline preload="none">
-  <!-- Video files -->
-  {{ with .Resources.GetMatch "*.webm" }}<source src="{{ .Permalink }}" type="video/webm">{{ end }}
-  {{ with .Resources.GetMatch "*.mp4" }}<source src="{{ .Permalink }}" type="video/mp4">{{ end }}
+  <video poster="{{ with .Resources.GetMatch "images/*.png" }}{{ .Permalink }}{{ end }}" controls crossorigin playsinline preload="none">
+    <!-- Video files -->
+    {{ with .Resources.GetMatch "*.webm" }}<source src="{{ .Permalink }}" type="video/webm">{{ end }}
+    {{ with .Resources.GetMatch "*.mp4" }}<source src="{{ .Permalink }}" type="video/mp4">{{ end }}
 
-  <!-- Caption files -->
-  {{ with .Resources.GetMatch "*.en.vtt" }}<track src="{{ .Permalink }}" kind="captions" label="English" srclang="en" default>{{ end }}
+    <!-- Caption files -->
+    {{ with .Resources.GetMatch "*.en.vtt" }}<track src="{{ .Permalink }}" kind="captions" label="English" srclang="en" default>{{ end }}
 
-  <!-- Fallback for browsers that don't support the <video> element -->
-  Your browser doesn't support HTML5 video. {{ with .Resources.GetMatch "*.mp4" }}<a href="{{ .Permalink }}">Click here to view the raw .mp4 video.</a>{{ end }}
-</video>
-<div>
-  <a class="no-underline" id="logo" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}">
-{{ partial "logo.html" . }}
-  </a>
-</div>
-{{ .Content }}
+    <!-- Fallback for browsers that don't support the <video> element -->
+    Your browser doesn't support HTML5 video. {{ with .Resources.GetMatch "*.mp4" }}<a href="{{ .Permalink }}">Click here to view the raw .mp4 video.</a>{{ end }}
+  </video>
+
+  {{ .Content }}
+</main>
 {{ partial "footer.html" . }}

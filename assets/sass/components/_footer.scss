@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+// Global Footer Styles
+footer {
+  border-top: 1px solid $color-super-light;
+  line-height: 1.7;
+  padding: 1.5em;
+  color: $color-light;
+  display: flex;
+  justify-content: space-between;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  a {
+    color: inherit;
+  }
+
+  div {
+    &#copyright,
+    &#poweredby {
+      width: 40%;
+      font-size: 0.85em;
+      line-height: 2;
+    }
+
+    &#copyright {
+      text-align: left;
+    }
+
+    &#poweredby {
+      text-align: right;
+
+      a#source {
+        border-bottom: 1px solid $color-super-light;
+      }
+    }
+
+    &#panda {
+      width: 20%;
+      text-align: center;
+      font-size: 1.7em;
+      line-height: 1;
+
+      a {
+        display: inline-block;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.6) rotate(10deg);
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@mixin responsive--footer() {
+  footer {
+    padding-bottom: 0.25em;
+    
+    div {
+      &#panda {
+        display: none;
+      }
+
+      &#copyright,
+      &#poweredby {
+        line-height: 1.8;
+        width: 50%;
+      }
+
+      &#poweredby {
+        a#hugo::after {
+          content: "\A";
+          white-space: pre;
+        }
+      }
+    }
+  }
+}

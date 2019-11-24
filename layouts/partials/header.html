@@ -34,4 +34,19 @@
       {{ partial "schema-person.html" . }}
     {{ end }}
   </head>
-  <body id="{{ .Type }}">
+  <body> <!--  id="{{ .Type }}" -->
+    <header>
+      <nav>
+        <a class="no-underline" href="{{ .Site.BaseURL }}" id="logo" rel="me author" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}">
+          {{ partial "logo.html" . }}
+          <h1 id="name">{{ .Site.Title }}</h1>
+        </a>
+        <ul>
+          <li><a class="no-underline" href="{{ .Site.BaseURL }}" title="Home">&#x1F3E0;</a></li>
+          <li><a class="no-underline" href="{{ "notes/" | absURL }}" title="Notes">&#x1F4DD;</a></li>
+          <li><a class="no-underline" href="https://github.com/{{ .Site.Author.github }}" title="GitHub" target="_blank" rel="me noopener noreferrer">&#x1F468;&#x200D;&#x1F4BB;</a></li>
+          <li><a class="no-underline" href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;&#x6A;&#x61;&#x6B;&#x65;&#x40;&#x6A;&#x61;&#x72;&#x76;&#x2E;&#x69;&#x73;" title="Email Me">&#x1F48C;</a></li>
+        </ul>
+      </nav>
+    </header>
+    

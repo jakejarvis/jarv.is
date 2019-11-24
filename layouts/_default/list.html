@@ -1,5 +1,4 @@
 {{ partial "header.html" . }}
-{{ partial "blog-header.html" . }}
 <main id="archive">
   {{- range (where .Site.RegularPages "Type" "notes").GroupByDate "2006" }}
   <section class="year">
@@ -15,5 +14,4 @@
   </section>
   {{- end }}
 </main>
-{{ partial "blog-footer.html" . }}
 {{ partial "footer.html" . }}

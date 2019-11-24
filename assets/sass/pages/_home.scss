@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 // Home Styles
-body#home {
+main#home {
   font-size: 1.5em;
   font-weight: 300;
-  line-height: 1.5;
-  max-width: 1070px;
-  padding: 50px 65px;
+  max-width: 980px;
+  padding: 10px 40px;
+  margin: 1em auto;
 
   a {
     // Loop through $colors-home -- the main reason I switched to SASS :)
@@ -18,20 +18,24 @@ body#home {
     }
   }
 
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
+  h2 {
+    margin: 0 0 0.6em 0;
+    font-size: 1.4em;
     font-weight: 500;
     line-height: 1.2;
 
-    a {
-      color: inherit;
+    span#wave {
+      display: inline-block;
+      animation-name: wave;
+      animation-duration: 2.5s;
+      animation-iteration-count: infinite;
+      transform-origin: 70% 70%;
     }
   }
 
-  h2 {
+  h3 {
     margin: 0.6em 0;
-    font-size: 1.2em;
+    font-size: 1.15em;
     font-weight: 400;
     line-height: 1.4;
   }
@@ -75,76 +79,23 @@ body#home {
     }
   }
 
-  footer {
-    display: flex;
-    justify-content: space-between;
+  p#blog {
+    font-size: 0.9em;
+    margin-bottom: 0;
 
-    div {
-      vertical-align: middle;
-      height: 100%;
-
-      &#blog {
-        width: 40%;
-        text-align: left;
-        font-size: 0.9em;
-        line-height: 2;
-
-        span {
-          margin-right: 4px;
-        }
-      }
-
-      &#info {
-        width: 40%;
-        text-align: right;
-        font-size: 0.55em;
-        line-height: 3.35;  // magic numbers don't judge
-        color: $color-light;
-
-        a {
-          color: inherit;
-
-          &#source {
-            border-bottom: 1px solid $color-super-light;
-          }
-        }
-      }
-
-      &#panda {
-        width: 20%;
-        text-align: center;
-        font-size: 1.25em;
-        line-height: 1.4;  // magic numbers don't judge
-
-        a {
-          display: inline-block;
-          transition: transform 0.2s ease-in-out;
-
-          &:hover {
-            transform: scale(1.6) rotate(10deg);
-          }
-        }
-      }
+    span {
+      margin-right: 4px;
     }
-  }
-
-  h1 span#wave {
-    display: inline-block;
-    animation-name: wave;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    transform-origin: 70% 70%;
   }
 }
 
 
 // Responsive
 @mixin responsive--home() {
-  body#home {
-    font-size: 1em;
-    padding: 25px;
+  main#home {
+    font-size: 1.1em;
   
-    p {
+    p, p#blog {
       font-size: 1.1em;
     }
   
@@ -152,32 +103,6 @@ body#home {
       width: 68px;
       height: 68px;
       padding: 2px;
-    }
-  
-    footer div {
-      &#panda {
-        display: none;
-      }
-  
-      &#blog,
-      &#info {
-        width: 50%;
-      }
-  
-      &#blog {
-        font-size: 1em;
-        line-height: 1.5;
-      }
-  
-      &#info {
-        font-size: 0.7em;
-        line-height: 2.1;  // magic numbers don't judge
-  
-        span#copyright::after {
-          content: "\A";
-          white-space: pre;
-        }
-      }
     }
   }  
 }

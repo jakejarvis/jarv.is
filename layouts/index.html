@@ -1,10 +1,5 @@
 {{ partial "header.html" . }}
-    <main>
-{{ .Content }}
-      <footer>
-        <div id="blog"><a href="{{ "notes/" | absURL }}" title="{{ .Site.Author.name }}&#39;s Blog" rel="me"><span>&#x1F4DD;</span> Read more at my blog...</a></div>
-        <div id="panda"><a class="no-underline" href="https://nationalzoo.si.edu/webcams/panda-cam" title="Live Panda Party!!!11" target="_blank" rel="noopener noreferrer nofollow"><span>&#x1F43C;</span></a></div>
-        <div id="info"><span id="copyright"><a class="no-underline" href="{{ .Site.Params.wayback }}" title="View Old Versions on Wayback Machine" id="wayback" target="_blank" rel="noopener noreferrer nofollow">&copy; {{ .Site.Params.copyrightFirstYear }} &ndash;</a> {{ now.Format "2006" }} <a class="no-underline" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a>.</span> <a class="no-underline" href="{{ .Site.Params.gitRepo }}" title="View Source on GitHub" id="source" target="_blank" rel="noopener noreferrer">View source.</a></div>
-      </footer>
-    </main>
+<main id="home">
+  {{ .Content }}
+</main>
 {{ partial "footer.html" . }}
