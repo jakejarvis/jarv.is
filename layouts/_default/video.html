@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 <main id="video">
-  <h2>{{ .Title }}</h2>
+  <h1>{{ .Title }}</h1>
 
   <video poster="{{ with .Resources.GetMatch "images/*.png" }}{{ .Permalink }}{{ end }}" controls crossorigin playsinline preload="none">
     <!-- Video files -->
