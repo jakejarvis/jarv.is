@@ -20,5 +20,5 @@
 
 /manifest.json
   Content-Type: application/manifest+json; charset=UTF-8
-*.webmanifest
+/*.webmanifest
   Content-Type: application/manifest+json; charset=UTF-8

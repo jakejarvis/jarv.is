@@ -17,7 +17,7 @@ This site is built with [Hugo extended](https://github.com/gohugoio/hugo). To en
 
 #### Usage:
 
-Simply run `yarn docker:serve` ([Yarn required](https://yarnpkg.com/en/docs/install)) or build manually with:
+Simply run `yarn docker:serve` ([install Yarn](https://yarnpkg.com/en/docs/install) first) or build manually with:
 
 ```bash
 docker build -t jarv.is:develop -f Dockerfile .
