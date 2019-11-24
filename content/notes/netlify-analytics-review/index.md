@@ -22,17 +22,17 @@ I've been trying out [Netlify Analytics](https://www.netlify.com/products/analyt
 ---
 
 
-## 👍&nbsp; Pros
+## 👍&nbsp; Pros {#pros}
 
 Pretty much all of the benefits of Netlify Analytics stem from the fact that it's **purely server-side software**. This is what singularly sets it apart from [Google Analytics](https://analytics.google.com/analytics/web/) — by _far_ the [status quo](https://trends.builtwith.com/analytics/Google-Analytics) — and even self-hosted, open-source applications I've tried like [Matomo](https://github.com/matomo-org/matomo) and [Fathom](https://github.com/usefathom/fathom).
 
-### ⚡&nbsp; Speed
+### ⚡&nbsp; Speed {#speed}
 
 To start using Netlify Analytics, you press a few buttons on the Netlify dashboard and voilà. No need to copy and paste some obfuscated JavaScript snippet into the `<head>` of each page, which is a painful task for those of us who care about speed and efficiency on the web.
 
 On top of sending yet another DNS request to one of Google's domains — and more HTTP payloads for each outgoing click, file downloaded, etc. — Google's `analytics.js` script is currently 43 KB. For a site like [nytimes.com](https://www.nytimes.com/), which transfers **nearly 20 MB** on its homepage, this is negligible. But for simple sites like mine, which I've [painstakingly optimized](https://gtmetrix.com/reports/jarv.is/uOzCBKlv) (mostly for fun, don't judge), that doubles the size of my homepage. Matomo's script, weighing in at 65 KB, made it even worse.
 
-### 🕵️‍♂️&nbsp; Privacy
+### 🕵️‍♂️&nbsp; Privacy {#privacy}
 
 This is the big one.
 
@@ -46,7 +46,7 @@ Instead, Netlify Analytics pulls and compiles data from server logs on each of t
 
 Netlify does store some short-term data, like IP addresses, as any normal hosting provider does. But for the purposes of analytics, the data is anonymized and only used to determine things like unique visitors vs. individual page views — and not shown to the customer. [Netlify's DPA](https://www.netlify.com/gdpr/) (Data Processing Agreement) is one of the most conservative I've seen on the web.
 
-### 🛑&nbsp; AdBlock Immunity
+### 🛑&nbsp; AdBlock Immunity {#adblock-immunity}
 
 Ad blocking is becoming commonplace on the World Wide Web with [over 25% of users](https://www.statista.com/statistics/804008/ad-blocking-reach-usage-us/) reportedly installing extensions to do so as soon as their new browser touches the net. And for good reason, since most of them also [block cross-site tracking scripts](https://moz.com/blog/analytics-black-holes) like Google's by default.
 
@@ -62,15 +62,15 @@ _Side note: This section has also become cluttered with requests from script kid
 ---
 
 
-## 👎&nbsp; Cons
+## 👎&nbsp; Cons {#cons}
 
-### 💰&nbsp; Price
+### 💰&nbsp; Price {#price}
 
 Netlify is one of the most awesome free-as-in-beer services on the web today, providing a fast CDN and instant deployments at zero cost (up to a pretty insane amount, of course). But if you want to add Netlify Analytics, your bill suddenly jumps to [$9 a month](https://www.netlify.com/pricing/#analytics). **Nine dollars!** That's over **$100 per year!** If you have more than 250,000 visitors per month, the cost can be even higher (to the point where you'll need to contact Netlify's sales team).
 
 It makes sense that Netlify needs to subsidize the cost of providing free enterprise-grade web hosting for the rest of its non-enterprise users to stay alive. But when Google Analytics is free, this is a pretty tough ask for any hobbyist — even if Google is [getting more from them](https://support.google.com/analytics/answer/1011397?hl=en) than they are from Google. 😬
 
-### 📈&nbsp; Accuracy
+### 📈&nbsp; Accuracy {#accuracy}
 
 {{< image src="images/sources-bandwidth.png" alt="Referrer and bandwidth tracking on Netlify Analytics" >}}
 
@@ -82,7 +82,7 @@ Another benefit of using Google's own analytics service becomes glaringly appare
 
 One more note: since Netlify doesn't process IP addresses or user agents, bots crawling your site (like [Googlebot](https://support.google.com/webmasters/answer/182072?hl=en) and [Bingbot](https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0)) get counted towards your stats, possibly overinflating your ego a little more than it should.
 
-### ⏱️&nbsp; Historical Data
+### ⏱️&nbsp; Historical Data {#historical-data}
 
 {{< image src="images/overview.png" alt="Overview of Netlify Analytics stats" >}}
 

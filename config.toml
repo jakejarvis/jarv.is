@@ -78,10 +78,8 @@ disableAliases = true
   quality = 75
 
 [blackfriday]
-  hrefTargetBlank = true
   nofollowLinks = true
   noreferrerLinks = true
-  # noopenerLinks = true       # requires custom fork w/ custom blackfriday: https://github.com/jakejarvis/hugo/tree/noopener
   plainIDAnchors = true
   fractions = false
 
@@ -92,7 +90,8 @@ disableAliases = true
     privacyEnhanced = true
 
 # TODO: find better way than double-mounting content as weird hack to allow
-#       access to image resources from templates
+# access to image resources from templates.
+# https://gohugo.io/hugo-modules/configuration/#module-config-mounts
 [module]
   [[module.mounts]]
     source = "content"

@@ -13,8 +13,6 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5;
   box-sizing: border-box;
-
-
 }
 
 a {
@@ -41,8 +39,10 @@ a {
 // Responsive
 @mixin responsive--global() {
   body {
-    // Allows you to scroll below the viewport on Safari iOS:
+    // Safari iOS menu bar reappers below 44px:
     // https://www.eventbrite.com/engineering/mobile-safari-why/
+    padding-bottom: 45px !important;
+    // Allows you to scroll below the viewport; default value is visible
     overflow-y: scroll;
   }
 }

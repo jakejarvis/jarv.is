@@ -57,10 +57,8 @@ footer {
 // Responsive
 @mixin responsive--footer() {
   footer {
-    // Safari iOS menu bar reappers below 44px:
-    // https://www.eventbrite.com/engineering/mobile-safari-why/
-    padding-bottom: 45px !important;
-    
+    padding-bottom: 0;
+
     div {
       &#panda {
         display: none;
