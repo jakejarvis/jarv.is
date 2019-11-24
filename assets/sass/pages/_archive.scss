@@ -3,11 +3,17 @@
 // Archive/List Styles
 main#archive {
   max-width: 1010px;
-  padding: 0 50px;
+  padding: 1.5em 3em;
   margin: 0 auto;
 
   section.year {
     font-size: 1.1em;
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    h2 {
+      font-size: 1.8em;
+      margin: 0;
+    }
 
     /* stylelint-disable-next-line no-descending-specificity */
     ul {
@@ -42,11 +48,6 @@ main#archive {
         margin-top: 1.3em;
       }
     }
-
-    /* stylelint-disable-next-line no-descending-specificity */
-    h2 {
-      font-size: 1.8em;
-    }
   }
 }
 
@@ -54,7 +55,7 @@ main#archive {
 // Responsive
 @mixin responsive--archive() {
   main#archive {
-    padding: 0 20px;
+    padding: 1em 1.2em;
 
     section.year {
       font-size: 1em;

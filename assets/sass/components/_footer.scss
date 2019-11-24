@@ -9,7 +9,6 @@ footer {
   padding: 1.5em;
   box-sizing: border-box;
   color: $color-light;
-  background-color: $color-nav-bg;
   border-top: 1px solid $color-super-light;
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -58,7 +57,9 @@ footer {
 // Responsive
 @mixin responsive--footer() {
   footer {
-    padding-bottom: 0.25em;
+    // Safari iOS menu bar reappers below 44px:
+    // https://www.eventbrite.com/engineering/mobile-safari-why/
+    padding-bottom: 45px !important;
     
     div {
       &#panda {

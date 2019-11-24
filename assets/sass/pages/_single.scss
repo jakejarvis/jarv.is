@@ -2,9 +2,9 @@
 
 // Post Styles
 main#single {
-  max-width: 1010px;
-  padding: 0 50px;
-  margin: 1.5em auto;
+  max-width: 910px;
+  padding: 1em 3em;
+  margin: 0 auto;
 
   article div {
     &#meta {
@@ -163,7 +163,7 @@ main#single {
 // Responsive
 @mixin responsive--single() {
   main#single {
-    padding: 0 20px;
+    padding: 0.8em 1.2em;
 
     article {
       width: 100%;

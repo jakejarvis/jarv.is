@@ -5,8 +5,8 @@ main#home {
   font-size: 1.5em;
   font-weight: 300;
   max-width: 980px;
-  padding: 10px 40px;
-  margin: 1em auto;
+  padding: 1.5em 1.75em;
+  margin: 0 auto;
 
   a {
     // Loop through $colors-home -- the main reason I switched to SASS :)

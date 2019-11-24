@@ -14,24 +14,26 @@ body {
   line-height: 1.5;
   box-sizing: border-box;
 
-  a {
-    color: $color-links;
+
+}
+
+a {
+  color: $color-links;
+  text-decoration: none;
+  background-image: underline-hack($color-links);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% $link-underline-size;
+  padding-bottom: $link-underline-size;
+  transition: background-size 0.25s ease-in-out;
+
+  &:hover {
     text-decoration: none;
-    background-image: underline-hack($color-links);
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% $link-underline-size;
-    padding-bottom: $link-underline-size;
-    transition: background-size 0.25s ease-in-out;
+    background-size: 100% $link-underline-size;
+  }
 
-    &:hover {
-      text-decoration: none;
-      background-size: 100% $link-underline-size;
-    }
-
-    &.no-underline {
-      background: none !important;
-    }
+  &.no-underline {
+    background: none !important;
   }
 }
 
@@ -39,10 +41,8 @@ body {
 // Responsive
 @mixin responsive--global() {
   body {
-    // Safari iOS menu bar reappers below 44px:
+    // Allows you to scroll below the viewport on Safari iOS:
     // https://www.eventbrite.com/engineering/mobile-safari-why/
-    padding-bottom: 45px !important;
-    // Allows you to scroll below the viewport; default value is visible
     overflow-y: scroll;
   }
 }
