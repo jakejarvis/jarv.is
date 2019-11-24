@@ -28,6 +28,7 @@ disableAliases = true
   facebook = "jakejarvis"
   facebook_id = "1329090853"
   linkedin = "jakejarvis"
+  mastodon = "mastodon.social/@jakejarvis"
 
 [params]
   description = "Hello! I'm a frontend web developer based in Boston, Massachusetts specializing in modern JavaScript frameworks and progressive web apps."

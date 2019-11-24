@@ -54,6 +54,11 @@ $colors-home:(
 );
 $color-serverless: #87cef7;
 
+// For nifty color swapping on svg logo hover in components/_header.scss
+$color-logo1: #6fbc4e;
+$color-logo2: #ffb900;
+$color-logo3: #009cdf;
+
 // Other Settings
 $link-opacity: 40%;
 $link-underline-size: 2px;

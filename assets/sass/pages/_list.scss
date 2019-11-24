@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 // Archive/List Styles
-main#archive {
+main#list {
   max-width: 1010px;
   padding: 1.5em 3em;
   margin: 0 auto;
@@ -53,8 +53,8 @@ main#archive {
 
 
 // Responsive
-@mixin responsive--archive() {
-  main#archive {
+@mixin responsive--list() {
+  main#list {
     padding: 1em 1.2em;
 
     section.year {

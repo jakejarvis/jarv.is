@@ -7,7 +7,7 @@
   @include responsive--footer();
 
   @include responsive--home();
-  @include responsive--archive();
+  @include responsive--list();
   @include responsive--single();
   @include responsive--videos();
 }

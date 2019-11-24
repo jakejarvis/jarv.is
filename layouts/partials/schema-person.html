@@ -9,15 +9,16 @@
   "image": {
     "@type": "ImageObject",
     "url": {{ "me_large.jpg" | absURL }},
-    "width": "1000",
-    "height": "1000"
+    "width": "1200",
+    "height": "1200"
   },
   "sameAs": [
     {{ .Site.BaseURL }},
-    "https://github.com/{{ .Site.Author.github }}",
-    "https://twitter.com/{{ .Site.Author.twitter }}",
-    "https://www.facebook.com/{{ .Site.Author.facebook }}",
-    "https://www.linkedin.com/in/{{ .Site.Author.linkedin }}/"
+    {{ printf "%s%s" "https://github.com/" .Site.Author.github }},
+    {{ printf "%s%s" "https://twitter.com/" .Site.Author.twitter }},
+    {{ printf "%s%s" "https://www.facebook.com/" .Site.Author.facebook }},
+    {{ printf "%s%s%s" "https://www.linkedin.com/in/" .Site.Author.linkedin "/" }},
+    {{ printf "%s%s" "https://" .Site.Author.mastodon }}
   ]
 }
 </script>

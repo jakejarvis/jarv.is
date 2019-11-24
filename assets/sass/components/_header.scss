@@ -20,27 +20,6 @@ header {
       color: $color-medium-dark;
       padding: 15px;
 
-      &:hover {
-        color: $color-links;
-
-        // nifty color swapping on svg logo hover
-        $logo-original1: #6fbc4e;
-        $logo-original2: #ffb900;
-        $logo-original3: #009cdf;
-    
-        svg {
-          g#c1 {
-            fill: $logo-original2;
-          }
-          g#c2 {
-            fill: $logo-original3;
-          }
-          g#c3 {
-            fill: $logo-original1;
-          }
-        }
-      }
-
       img,
       svg {
         width: 30px;
@@ -52,8 +31,26 @@ header {
         font-size: 1.4em;
         font-weight: 500;
       }
+
+      // mix up logo colors on hover
+      &:hover {
+        color: $color-links;
+    
+        svg {
+          g#c1 {
+            fill: $color-logo1;
+          }
+          g#c2 {
+            fill: $color-logo2;
+          }
+          g#c3 {
+            fill: $color-logo3;
+          }
+        }
+      }
     }
 
+    // Horizontal emoji links
     ul {
       list-style: none;
       display: flex;

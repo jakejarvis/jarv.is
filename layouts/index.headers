@@ -1,7 +1,24 @@
-# Smart security headers
+# Sensible default security headers
+#  - More info: https://scotthelme.co.uk/hardening-your-http-response-headers/
+#  - Test website: https://securityheaders.com/
 
 /*
   X-Frame-Options: sameorigin
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
+
+
+# Recommended MIME type for RSS feed
+
+/index.xml
+  Content-Type: application/rss+xml
+
+
+# Recommended MIME type for PWA manifests
+# https://github.com/w3c/manifest/issues/689
+
+/manifest.json
+  Content-Type: application/manifest+json; charset=UTF-8
+*.webmanifest
+  Content-Type: application/manifest+json; charset=UTF-8

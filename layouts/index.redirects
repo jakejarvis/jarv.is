@@ -2,7 +2,12 @@
 # https://www.netlify.com/docs/redirects/
 
 {{ range $p := .Site.Pages -}}
-{{ range .Aliases }}
-{{- . | printf "%-35s" }}	{{ $p.RelPermalink }}
+{{- range .Aliases }}
+{{- . | printf "%-35s" }}    {{ $p.RelPermalink }}    301
 {{ end -}}
-{{- end -}}
+{{- end }}
+
+# Rewrite generated manifest.json to manifest.webmanifest
+# https://github.com/w3c/manifest/issues/689
+
+/manifest.webmanifest      /manifest.json      200

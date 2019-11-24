@@ -1,5 +1,5 @@
 {{ partial "header.html" . }}
-<main id="archive">
+<main id="list">
   {{- range (where .Site.RegularPages "Type" "notes").GroupByDate "2006" }}
   <section class="year">
     <h2>{{ .Key }}</h2>
