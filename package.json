@@ -45,7 +45,7 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "markdownlint-cli": "~0.19.0",
-    "netlify-cli": "^2.21.0",
+    "netlify-cli": "^2.25.0",
     "rimraf": "^3.0.0",
     "stylelint": "~12.0.0",
     "stylelint-config-recommended-scss": "~4.1.0",
