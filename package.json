@@ -35,7 +35,7 @@
     "clean-css-cli": "~4.3.0",
     "get-folder-size": "^2.0.1",
     "html-minifier": "~4.0.0",
-    "hugo-bin": "0.48.1",
+    "hugo-bin": "0.49.0",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-jpegoptim": "^6.0.0",
