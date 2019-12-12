@@ -39,7 +39,7 @@
     "get-folder-size": "^2.0.1",
     "html-minifier": "~4.0.0",
     "hugo-bin": "0.48.1",
-    "imagemin-cli": "^5.0.0",
+    "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-optipng": "^7.1.0",
