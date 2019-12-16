@@ -7,9 +7,9 @@
   X-Frame-Options: sameorigin
   X-XSS-Protection: 1; mode=block
 
-# Long cache for web fonts
+# Super long cache for web fonts (one year)
 /fonts/*
-  Cache-Control: max-age=604800, public, immutable, no-transform
+  Cache-Control: max-age=31536000, public, immutable, no-transform
 
 # Recommended MIME type for PWA manifests
 # https://github.com/w3c/manifest/issues/689
