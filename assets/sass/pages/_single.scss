@@ -188,8 +188,15 @@ main#single {
         }
 
         // hide "Improve Post" link on mobile
-        div#byline span#edit {
-          display: none;
+        div#byline {
+          span#edit {
+            display: none;
+          }
+
+          // less space between tags
+          ul#tags li {
+            margin: 0 0.4em;
+          }
         }
       }
     }
