@@ -151,11 +151,16 @@ main#single {
       div#byline {
         color: $color-medium;
         font-size: 0.85em;
-        line-height: 1.5;
-        letter-spacing: 0.08em;
+        line-height: 1.6;
+        letter-spacing: 0.075em;
 
         a {
           color: inherit;
+        }
+
+        span.dot {
+          margin: 0 0.1em;
+          font-weight: 700;
         }
 
         ul#tags {
@@ -187,8 +192,8 @@ main#single {
           font-size: 1.7em;
         }
 
-        // hide "Improve Post" link on mobile
         div#byline {
+          // hide "Improve Post" link on mobile
           span#edit {
             display: none;
           }
