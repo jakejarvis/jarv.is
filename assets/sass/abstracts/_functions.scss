@@ -12,7 +12,7 @@
   @return linear-gradient($color-opaque, $color-opaque);
 }
 
-// Webfonts (see components/_webfonts.scss)
+// Web fonts (see components/_webfonts.scss)
 @mixin font-face($family, $src-local, $src-local-alt, $src,
                  $style: normal, $weight: normal,
                  $range: U+000-5FF, $display: swap) {
@@ -24,8 +24,8 @@
     src: local('#{$src-local}'), local('#{$src-local-alt}'),
          url('#{$src}.woff2') format('woff2'),
          url('#{$src}.woff') format('woff');
-    //     url('#{$src}.ttf') format('truetype'),
-    //     url('#{$src}.eot') format('embedded-opentype');
+    //   url('#{$src}.ttf') format('truetype'),
+    //   url('#{$src}.eot') format('embedded-opentype');
     unicode-range: $range;
   }
 }
