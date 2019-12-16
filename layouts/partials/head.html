@@ -9,6 +9,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
 <meta name="theme-color" content="#0e6dc2">
+<link rel="preload" href="{{ "fonts/roboto-latin-regular.woff2" | absURL }}" as="font" type="font/woff2">
+<link rel="preload" href="{{ "fonts/roboto-latin-medium.woff2" | absURL }}" as="font" type="font/woff2">
+<link rel="preload" href="{{ "fonts/roboto-latin-bold.woff2" | absURL }}" as="font" type="font/woff2">
 {{ $style := resources.Get "sass/main.scss" | resources.ToCSS (dict "targetPath" "style.css") }}
 <link rel="stylesheet" href="{{ $style.Permalink }}">
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
