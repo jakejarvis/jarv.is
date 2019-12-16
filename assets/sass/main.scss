@@ -5,9 +5,9 @@
 // Variables & Functions
 @import 'abstracts/variables';
 @import 'abstracts/functions';
-@import 'abstracts/webfonts';
 
 // Global Styles
+@import 'components/webfonts';
 @import 'components/global';
 @import 'components/header';
 @import 'components/footer';
