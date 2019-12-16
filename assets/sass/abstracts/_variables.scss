@@ -6,10 +6,10 @@ $system-fonts: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
                "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
                "Droid Sans", "Helvetica Neue", sans-serif,
                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$system-fonts-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $system-fonts-monospace: "SFMono-Regular", "Consolas", "Liberation Mono",
                "Menlo", "Courier", monospace;
-$webfont-roboto: "Roboto", sans-serif,
-                 "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$webfont-roboto: "Roboto", sans-serif;
 
 // Misc Settings
 $responsive-width: 890px;

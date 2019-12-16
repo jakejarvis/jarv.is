@@ -23,9 +23,9 @@
     font-display: $display;
     src: local('#{$src-local}'), local('#{$src-local-alt}'),
          url('#{$src}.woff2') format('woff2'),
-         url('#{$src}.woff') format('woff'),
-         url('#{$src}.ttf') format('truetype'),
-         url('#{$src}.eot') format('embedded-opentype');
+         url('#{$src}.woff') format('woff');
+    //     url('#{$src}.ttf') format('truetype'),
+    //     url('#{$src}.eot') format('embedded-opentype');
     unicode-range: $range;
   }
 }
