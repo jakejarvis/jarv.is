@@ -5,7 +5,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: local('Roboto2'), local('Roboto-Regular2'),
        url('/fonts/roboto-latin-regular.woff2') format('woff2'),
        url('/fonts/roboto-latin-regular.woff') format('woff'),
@@ -19,7 +19,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: local('Roboto Medium2'), local('Roboto-Medium2'),
        url('/fonts/roboto-latin-medium.woff2') format('woff2'),
        url('/fonts/roboto-latin-medium.woff') format('woff'),
@@ -33,7 +33,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: local('Roboto Bold2'), local('Roboto-Bold2'),
        url('/fonts/roboto-latin-bold.woff2') format('woff2'),
        url('/fonts/roboto-latin-bold.woff') format('woff'),
