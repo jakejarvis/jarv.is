@@ -4,9 +4,9 @@
     <div id="meta">
       <h1><a href="{{ .Permalink }}" class="no-underline">{{ .Title }}</a></h1>
       <div id="byline">
-        by <a class="no-underline" href="{{ .Site.BaseURL }}" rel="me author">{{ .Site.Author.name }}</a>
-        &middot; <a class="no-underline" href="{{ .Permalink }}" title="{{ .Date.Format "Mon, Jan 2 2006 3:04:05 PM MST" }}">{{ .Date.Format "January 2, 2006" }}</a>
-        {{ with .Site.Params.gitRepo }}&middot; <a class="no-underline" href="{{ . }}/blob/master/content/{{ $.File.Path }}" title="Edit this page on GitHub" target="_blank" rel="noopener">Improve Post</a>{{ end }}
+        <span id="author">by <a class="no-underline" href="{{ .Site.BaseURL }}" rel="me author">{{ .Site.Author.name }}</a></span>
+        <span id="date">&middot; <a class="no-underline" href="{{ .Permalink }}" title="{{ .Date.Format "Mon, Jan 2 2006 3:04:05 PM MST" }}">{{ .Date.Format "January 2, 2006" }}</a></span>
+        {{ with .Site.Params.gitRepo }}<span id="edit">&middot; <a class="no-underline" href="{{ . }}/blob/master/content/{{ $.File.Path }}" title="Edit this page on GitHub" target="_blank" rel="noopener">Improve Post</a></span>{{ end }}
         <ul id="tags">
         {{- with .Params.tags }}
         {{- range . }}

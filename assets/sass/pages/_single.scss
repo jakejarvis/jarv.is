@@ -182,8 +182,15 @@ main#single {
     padding: 0.8em 1.5em;
 
     article {
-      div#meta h1 {
-        font-size: 1.7em;
+      div#meta{
+        h1 {
+          font-size: 1.7em;
+        }
+
+        // hide "Improve Post" link on mobile
+        div#byline span#edit {
+          display: none;
+        }
       }
     }
   }
