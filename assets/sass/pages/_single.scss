@@ -151,7 +151,7 @@ main#single {
       div#byline {
         color: $color-medium;
         font-size: 0.85em;
-        line-height: 1.6;
+        line-height: 1.5;
         letter-spacing: 0.075em;
 
         a {
@@ -189,7 +189,7 @@ main#single {
     article {
       div#meta{
         h1 {
-          font-size: 1.7em;
+          font-size: 1.8em;
         }
 
         div#byline {
@@ -200,7 +200,7 @@ main#single {
 
           // less space between tags
           ul#tags li {
-            margin: 0 0.4em;
+            margin: 0 0.5em;
           }
         }
       }
