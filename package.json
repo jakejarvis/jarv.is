@@ -43,7 +43,7 @@
     "imagemin-optipng": "^7.1.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
-    "markdownlint-cli": "~0.19.0",
+    "markdownlint-cli": "~0.20.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.0",
     "stylelint": "~12.0.0",
