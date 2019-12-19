@@ -43,7 +43,7 @@ The infamous [Apple Ecosystem™](https://medium.com/swlh/the-irresistible-lure-
 
 I've never been a proponent of leaving all your eggs in one basket. But it's hard to ignore the convenience of Apple's streamlined (and [finally](https://www.imore.com/developers-encounter-major-icloud-issues-ios-13-beta) reliable) [**iCloud Drive**](https://www.apple.com/icloud/), which is already installed on all of my devices (and actually cheaper than Dropbox gigabyte-for-gigabyte, at $9.99/month for 2 TB). In fact, it's nearly invisible on macOS: I can simply save files in my Documents or Desktop folders as I always have and they're uploaded in the background. Git repositories now sync just fine and my files reappeared without a hitch after I recently formatted my Mac.
 
-{{< image src="images/icloud-drive.png" width="620" alt="iCloud Drive" />}}
+{{< image src="images/icloud-drive.png" width="680" alt="iCloud Drive" />}}
 
 I still use (and highly recommend) [**Backblaze**](https://www.backblaze.com/) ([referral link](https://secure.backblaze.com/r/00x84e)) to backup my home folder and add a second layer of redundancy to storing all of my most important files on ["someone else's computer."](https://www.zdnet.com/article/stop-saying-the-cloud-is-just-someone-elses-computer-because-its-not/) And as long as I remember to plug in my external SSD every so often, they're also backed up locally via [Time Machine](https://support.apple.com/en-us/HT201250).
 

@@ -60,11 +60,11 @@ Others have noted that web-based organizing tools like BERN have been used by ca
 
 But the latter category of databases — like [NationBuilder](https://nationbuilder.com/) and, more notably, [NGP VAN's VoteBuilder](https://act.ngpvan.com/votebuilder) software based on the Obama campaign's inventions and now used by almost all Democratic campaigns across the United States — are secured and strictly guarded. Volunteer accounts need to be created and approved by paid campaign organizers and are locked down to provide the bare minimum amount of information necessary for one to canvass or phone bank a shortlist of voters. Every single click is also recorded in a [detailed log](sanders-campaign-audit.pdf) down to the millisecond. (This is how [Bernie's organizers got busted](http://time.com/4155185/bernie-sanders-hillary-clinton-data/) snooping around Hillary's VoteBuilder data last cycle, by the way.)
 
-{{< image src="images/votebuilder-audit.png" width="750" >}}NGP VAN's audit of the Sanders campaign's VoteBuilder activity{{< /image >}}
+[{{< image src="images/votebuilder-audit.png" width="750" >}}[NGP VAN's audit of the Sanders campaign's VoteBuilder activity](sanders-campaign-audit.pdf){{< /image >}}](sanders-campaign-audit.pdf)
 
 BERN is taking this to an unprecedented level. Allowing anybody on the internet to sign up and add others' personal information to the campaign's database without their knowledge is troubling, especially when you consider the gamified "points" system they've added as an incentive to report as much information on as many people as possible.
 
-{{< image src="images/reddit-bros.png" width="600" alt="Reddit comments on BERN" />}}
+[{{< image src="images/reddit-bros.png" width="600" alt="Reddit comments on BERN" />}}](https://www.reddit.com/r/SandersForPresident/comments/bi15la/new_get_the_official_bernie_sanders_2020_app_bern/elxi85m/)
 
 In addition to the points system, it was revealed in the webinar mentioned above that the campaign is planning on giving out shiny rewards based on how many friends one adds, setting expectations at 50+ contacts to reach the “Bernie Super Bundler” tier — whatever that means.
 

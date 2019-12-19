@@ -13,7 +13,7 @@ draft: false
 ---
 
 
-{{< image src="images/security-headers.png" width="700" >}}An <a href="https://securityheaders.com/?q=jarv.is&amp;followRedirects=on">A+ security grade</a> for this website!{{< /image >}}
+[{{< image src="images/security-headers.png" width="700" >}}An [A+ security grade](https://securityheaders.com/?q=jarv.is&amp;followRedirects=on) for this website!{{< /image >}}](https://securityheaders.com/?q=jarv.is&amp;followRedirects=on)
 
 In 2019, it's becoming more and more important to harden websites via HTTP response headers, which all modern browsers parse and enforce. Multiple standards have been introduced over the past few years to protect users from various attack vectors, including `Content-Security-Policy` for injection protection, `Strict-Transport-Security` for HTTPS enforcement, `X-XSS-Protection` for cross-site scripting prevention, `X-Content-Type-Options` to enforce correct MIME types, `Referrer-Policy` to limit information sent with external links, [and many, many more](https://www.netsparker.com/whitepaper-http-security-headers/).
 
@@ -73,4 +73,4 @@ async function fetchAndApply(request) {
 
 Once you're done, you can analyze your website's headers and get a letter grade with [Scott Helme](https://scotthelme.co.uk/)'s awesome [Security Headers](https://securityheaders.com/) tool. His free [Report-URI](https://report-uri.com/) service is another great companion tool to monitor these headers and report infractions your users run into in the wild.
 
-You can view my website's [full Worker script here](https://git.jarv.is/jake/jarv.is/blob/master/worker.js) and check out [the resulting A+ grade](https://securityheaders.com/?q=https%3A%2F%2Fjarv.is%2F)!
+You can view my website's [full Worker script here](https://github.com/jakejarvis/jarv.is/blob/ededcc05c4a5b2650d5a7eb6f8d00496b61221e3/worker.js) and check out [the resulting A+ grade](https://securityheaders.com/?q=https%3A%2F%2Fjarv.is%2F)!

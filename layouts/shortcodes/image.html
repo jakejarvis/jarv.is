@@ -31,9 +31,9 @@
 <figure>
   <picture>
     <img src="{{ $image.Permalink }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}"
-         alt="{{ . | plainify | safeHTMLAttr }}" title="{{ . | plainify | safeHTMLAttr }}">
+         alt="{{ . | markdownify | plainify | safeHTMLAttr }}" title="{{ . | markdownify | plainify | safeHTMLAttr }}">
   </picture>
-  <figcaption>{{ . | safeHTML }}</figcaption>
+  <figcaption>{{ . | markdownify | safeHTML }}</figcaption>
 </figure>
 {{ else }}
 <p><img src="{{ $image.Permalink }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}"

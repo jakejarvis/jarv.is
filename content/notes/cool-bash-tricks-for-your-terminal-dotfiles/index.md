@@ -16,18 +16,18 @@ draft: false
 ---
 
 
-{{< image src="images/terminal_icon.jpg" width="500" alt="Terminal.app on macOS" />}}
+{{< image src="images/terminal_icon.jpg" width="300" alt="Terminal.app on macOS" />}}
 
 
 You may have noticed the recent trend of techies [posting their "dotfiles" on GitHub](https://github.com/topics/dotfiles) for the world to see. These usually contain shortcuts compatible with Bash terminals to automate convoluted commands that, I'll admit, I needed to Google every single time.
 
-My [full dotfiles are posted at this Git repository](https://git.jarv.is/jake/dotfiles), but here's a summary of the ones I find most helpful that you can add to your own .bash_profile or .bashrc file.
+My [full dotfiles are posted at this Git repository](https://github.com/jakejarvis/dotfiles), but here's a summary of the ones I find most helpful that you can add to your own `.bash_profile` or `.bashrc` file.
 
 
 * * *
 
 
-Check your current IP address (IPv4 or IPv6 or both) — uses [my simpip server!](https://github.com/jakejarvis/simpip):
+Check your current IP address (IPv4 or IPv6 or both) — uses [my ⚡ fast simpip server!](https://github.com/jakejarvis/simpip)
 
 ```bash
 alias ip4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
@@ -75,7 +75,7 @@ alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"   # example: digg
 Make a new directory and change directories into it.
 
 ```bash
-mkcdir() {
+mkcd() {
     mkdir -p -- "$1" &&
     cd -P -- "$1"
 }
@@ -135,7 +135,7 @@ docker-bash() {
 Pull updates for all Docker images with the tag "latest":
 
 ```bash
-docker images --format "{{.Repository}}:{{.Tag}}" | grep :latest | xargs -L1 docker pull
+alias docker-latest="docker images --format '{{.Repository}}:{{.Tag}}' | grep :latest | xargs -L1 docker pull"
 ```
 
 This odd hack is needed to run any of these aliases as sudo:
@@ -148,4 +148,4 @@ alias sudo="sudo "
 * * *
 
 
-[View all of my dotfiles here](https://git.jarv.is/jake/dotfiles) or [check out other cool programmers' dotfiles over at this amazing collection](https://dotfiles.github.io/).
+[View all of my dotfiles here](https://github.com/jakejarvis/dotfiles) or [check out other cool programmers' dotfiles over at this amazing collection](https://dotfiles.github.io/).

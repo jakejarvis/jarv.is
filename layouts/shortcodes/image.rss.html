@@ -30,6 +30,6 @@
 <p style="text-align: center;">
 <img src="{{ $image.Permalink }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}"
      {{- with .Get "alt" }} alt="{{ . | safeHTMLAttr }}" title="{{ . | safeHTMLAttr }}"{{ end }}
-     {{- with .Inner }} alt="{{ . | plainify | safeHTMLAttr }}" title="{{ . | plainify | safeHTMLAttr }}"{{ end }}>
-{{ with .Inner }}<br>{{ . | safeHTML }}{{ end -}}
+     {{- with .Inner }} alt="{{ . | markdownify | plainify | safeHTMLAttr }}" title="{{ . | markdownify | plainify | safeHTMLAttr }}"{{ end }}>
+{{ with .Inner }}<br>{{ . | markdownify | safeHTML }}{{ end -}}
 </p>

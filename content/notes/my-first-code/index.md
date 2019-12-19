@@ -13,7 +13,7 @@ draft: false
 ---
 
 
-{{< image src="images/netscape.png" alt="Awesome First Code on GitHub" />}}
+[{{< image src="images/netscape.png" alt="Awesome First Code on GitHub" />}}](https://github.com/jakejarvis/awesome-first-code)
 
 {{< image src="images/badges.png" width="537" alt="Code Quality: A for effort" />}}
 
@@ -28,7 +28,7 @@ Hopefully we can all look back at our first projects and be proud of how far we'
 ---
 
 
-{{< image src="images/jbb-logo.png" width="640" >}}Jake's Bulletin Board{{< /image >}}
+{{< image src="images/jbb-logo.png" width="640" >}}[Jake's Bulletin Board](https://github.com/jakejarvis/jbb){{< /image >}}
 
 
 Aside from my [first HTML creation](https://jarv.is/y2k) (circa 2001), my first real coding project was in 2003: a PHP 4 masterpiece creatively titled **Jake's Bulletin Board**. I've published the [source code in full on GitHub](https://github.com/jakejarvis/jbb) for your viewing pleasure and highlighted the best/worst parts below.

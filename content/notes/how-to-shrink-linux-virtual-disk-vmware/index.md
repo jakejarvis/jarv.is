@@ -15,7 +15,7 @@ draft: false
 ---
 
 
-{{< image src="images/screen-shot-2018-12-07-at-2-04-04-pm.png" width="620" >}}df -dh = WTF{{< /image >}}
+{{< image src="images/screen-shot-2018-12-07-at-2-04-04-pm.png" width="620" >}}`df -dh` = WTF{{< /image >}}
 
 
 **[VMware Workstation](https://www.vmware.com/products/workstation-pro.html)** and **[Fusion](https://www.vmware.com/products/fusion.html)** normally work hard to minimize the size of virtual hard disks for optimizing the amount of storage needed on your host machine . On Windows virtual machines, [VMware has a “clean up” function](https://docs.vmware.com/en/VMware-Fusion/11/com.vmware.fusion.using.doc/GUID-6BB29187-F47F-41D1-AD92-1754036DACD9.html), which detects newly unused space and makes the size of the virtual hard disk smaller accordingly. You’ll notice that even if you create a virtual machine with a capacity of 60 GB, for example, the actual size of the VMDK file will dynamically resize to fit the usage of the guest operating system. 60 GB is simply the maximum amount of storage allowed; if your guest operating system and its files amount to 20 GB, the VMDK file will simply be 20 GB.

@@ -30,7 +30,7 @@
 <p class="image">
   <amp-img
     {{- with .Get "alt" }} alt="{{ . | safeHTMLAttr }}" title="{{ . | safeHTMLAttr }}"{{ end }}
-    {{- with .Inner }} alt="{{ . | plainify | safeHTMLAttr }}" title="{{ . | plainify | safeHTMLAttr }}"{{ end }}
+    {{- with .Inner }} alt="{{ . | markdownify | plainify | safeHTMLAttr }}" title="{{ . | markdownify | plainify | safeHTMLAttr }}"{{ end }}
     src="{{ $image.Permalink }}"
     width="{{ $displayWidth }}"
     height="{{ $displayHeight }}"
@@ -38,4 +38,4 @@
   </amp-img>
 </p>
 
-{{- with .Inner }}<p class="caption">{{ . | safeHTML }}</p>{{ end -}}
+{{- with .Inner }}<p class="caption">{{ . | markdownify | safeHTML }}</p>{{ end -}}

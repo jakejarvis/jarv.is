@@ -12,7 +12,7 @@
   @return linear-gradient($color-opaque, $color-opaque);
 }
 
-// Web fonts (see components/_webfonts.scss)
+// Web fonts (see components/_fonts.scss)
 @mixin font-face($family, $src-local, $src-local-alt, $src,
                  $style: normal, $weight: normal, $display: swap) {
 	@font-face {
