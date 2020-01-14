@@ -32,7 +32,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.7.3",
+    "autoprefixer": "^9.7.4",
     "cross-env": "^6.0.3",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
