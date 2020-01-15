@@ -93,10 +93,10 @@
 
 # Mirror these directories from elsewhere to mimic old GitHub Pages behavior
 # and keep the main repository squeaky clean:
-[[redirects]]
-  from = "/y2k/*"
-  to = "https://jakejarvis.github.io/y2k/:splat"
-  status = 200
+#[[redirects]]
+#  from = "/y2k/*"
+#  to = "https://jakejarvis.github.io/y2k/:splat"
+#  status = 200
 [[redirects]]
   from = "/ios-trackers/*"
   to = "https://jakejarvis.github.io/ios-trackers/:splat"

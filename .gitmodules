@@ -1,0 +1,4 @@
+[submodule "static/y2k"]
+	path = static/y2k
+	url = https://github.com/jakejarvis/y2k
+	branch = gh-pages
