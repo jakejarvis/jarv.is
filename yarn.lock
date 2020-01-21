@@ -3288,6 +3288,16 @@ gifsicle@^4.0.0:
     execa "^1.0.0"
     logalot "^2.0.0"
 
+gifsicle@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/gifsicle/-/gifsicle-5.0.0.tgz#d1ca7f223e949966d373eb1fb6e7ce156d257750"
+  integrity sha512-GZ1ym4uY12FHXsf26Kk1G06Edwago9zctqUqin69pm8ObA13jb3urgHU9PgKmtH6kHaCjEcjoRzNjxUyYvb1Bg==
+  dependencies:
+    bin-build "^3.0.0"
+    bin-wrapper "^4.0.0"
+    execa "^1.0.0"
+    logalot "^2.0.0"
+
 git-repo-info@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/git-repo-info/-/git-repo-info-2.1.1.tgz#220ffed8cbae74ef8a80e3052f2ccb5179aed058"
@@ -3810,13 +3820,22 @@ imagemin-cli@^5.1.0:
     imagemin-optipng "^6.0.0"
     imagemin-svgo "^7.0.0"
 
-imagemin-gifsicle@^6.0.0, imagemin-gifsicle@^6.0.1:
+imagemin-gifsicle@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/imagemin-gifsicle/-/imagemin-gifsicle-6.0.1.tgz#6abad4e95566d52e5a104aba1c24b4f3b48581b3"
   integrity sha512-kuu47c6iKDQ6R9J10xCwL0lgs0+sMz3LRHqRcJ2CRBWdcNmo3T5hUaM8hSZfksptZXJLGKk8heSAvwtSdB1Fng==
   dependencies:
     exec-buffer "^3.0.0"
     gifsicle "^4.0.0"
+    is-gif "^3.0.0"
+
+imagemin-gifsicle@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/imagemin-gifsicle/-/imagemin-gifsicle-7.0.0.tgz#1a7ab136a144c4678657ba3b6c412f80805d26b0"
+  integrity sha512-LaP38xhxAwS3W8PFh4y5iQ6feoTSF+dTAXFRUEYQWYst6Xd+9L/iPk34QGgK/VO/objmIlmq9TStGfVY2IcHIA==
+  dependencies:
+    execa "^1.0.0"
+    gifsicle "^5.0.0"
     is-gif "^3.0.0"
 
 imagemin-jpegoptim@^6.0.0:

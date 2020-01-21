@@ -39,7 +39,7 @@
     "html-minifier": "^4.0.0",
     "hugo-bin": "0.50.1",
     "imagemin-cli": "^5.1.0",
-    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
