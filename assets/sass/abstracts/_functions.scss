@@ -13,17 +13,18 @@
 }
 
 // Web fonts (see components/_fonts.scss)
-@mixin font-face($family, $src-local, $src-local-alt, $src,
+@mixin font-face($family, $src,
                  $style: normal, $weight: normal, $display: swap) {
 	@font-face {
     font-family: $family;
     font-style: $style;
     font-weight: $weight;
     font-display: $display;
-    src: local("#{$src-local}"), local("#{$src-local-alt}"),
-         url("#{$src}.woff2") format("woff2"),
+    //src: local("#{$src-local}"), local("#{$src-local-alt}"),
+    src: url("#{$src}.woff2") format("woff2"),
          url("#{$src}.woff") format("woff");
     //   url('#{$src}.ttf') format('truetype'),
     //   url('#{$src}.eot') format('embedded-opentype');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   }
 }

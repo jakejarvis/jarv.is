@@ -7,7 +7,10 @@ body {
   margin: 0 auto;
   background-color: $color-gray-background;   // really just the color of header & footer
   color: $color-text;
-  font-family: $webfont-roboto, $system-fonts-emoji;
+  font-family: $webfont-inter, $system-fonts-emoji;
+  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
+  font-kerning: normal;
+  font-variant-ligatures: none;
   line-height: 1.5;
   box-sizing: border-box;
 }

@@ -9,6 +9,7 @@ main#single {
   article div {
     &#content {
       font-weight: 400;
+      letter-spacing: -0.01em;
       line-height: 1.7;
 
       h1,
@@ -17,6 +18,9 @@ main#single {
         margin: 0.5em 0;
         font-weight: 500;
         line-height: 1.5;
+      }
+
+      p {
       }
 
       img,

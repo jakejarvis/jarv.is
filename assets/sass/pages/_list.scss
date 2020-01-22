@@ -7,10 +7,11 @@ main#list {
   margin: 0 auto;
 
   section.year {
-    font-size: 1.1em;
+    font-size: 1.05em;
 
     h2 {
-      font-size: 1.8em;
+      font-size: 2.25em;
+      letter-spacing: -0.025em;
       margin: 0;
     }
 
@@ -22,6 +23,7 @@ main#list {
 
     li {
       display: flex;
+      letter-spacing: -0.014em;
 
       div.date {
         color: $color-medium;
