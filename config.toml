@@ -90,7 +90,7 @@ disableAliases = true
     [markup.goldmark.extensions]
       linkify = false
       strikethrough = true
-      typographer = true
+      typographer = false
     [markup.goldmark.parser]
       autoHeadingID = false
     [markup.goldmark.renderer]
