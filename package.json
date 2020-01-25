@@ -33,7 +33,7 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.7.4",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
     "hugo-bin": "0.51.1",
