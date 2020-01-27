@@ -36,7 +36,7 @@
     "cross-env": "^7.0.0",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
-    "hugo-bin": "0.51.1",
+    "hugo-bin": "0.51.2",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^6.0.0",
