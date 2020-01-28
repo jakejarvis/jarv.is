@@ -5223,10 +5223,10 @@ stylelint-order@^3.0.0:
     postcss "^7.0.17"
     postcss-sorting "^5.0.1"
 
-stylelint-scss@^3.4.0, stylelint-scss@~3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.14.0.tgz#92a35b96755668d8a0745001a32e0dcb8423f9bc"
-  integrity sha512-59tZ/vfSEJxZX1N+B96xBcmhDwCUimeuZ9kp08R7WRqUUKRJ+INilfOmIqCzHZpEY/tZDKt+grOYCxffSs49fA==
+stylelint-scss@^3.4.0, stylelint-scss@~3.14.1:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.14.1.tgz#f4e73605a6f59bf4d038b11e7a7f22501599590a"
+  integrity sha512-3Yw10ScqR3fCne7ub7BebZtg3vZbPlndDzB9lk+/B/whcFuSfLKJwSDgI8drrvPadTaSa73gohmOgSZJfbr9pA==
   dependencies:
     lodash "^4.17.15"
     postcss-media-query-parser "^0.2.3"
