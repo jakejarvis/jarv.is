@@ -27,9 +27,10 @@
     "lint:markdown": "markdownlint content/**/*.md",
     "lint:sass": "stylelint assets/sass/**/* --syntax scss",
     "lint:links": "linkinator http://localhost:1313/ --recurse --silent --skip https://www.shodan.io/ --skip https://images.shodan.io/ --skip https://archive.today/ --skip https://archive.is/ --skip https://www.linkedin.com/ --skip http://localhost:1313/y2k/ --skip 'asdfasdf404/?$'",
+    "index": "run-s clean hugo index:** clean",
+    "index:algolia": "atomic-algolia",
     "debug:hugo": "hugo version && hugo env",
-    "debug:size": "get-folder-size --folder=public",
-    "algolia": "atomic-algolia"
+    "debug:size": "get-folder-size --folder=public"
   },
   "dependencies": {},
   "devDependencies": {
@@ -38,7 +39,7 @@
     "cross-env": "^7.0.0",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
-    "hugo-extended": "git+https://github.com/jakejarvis/hugo-extended.git#master",
+    "hugo-extended": "git+https://github.com/jakejarvis/hugo-extended.git",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^6.0.0",

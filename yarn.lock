@@ -3195,7 +3195,7 @@ https-proxy-agent@^4.0.0:
     agent-base "5"
     debug "4"
 
-"hugo-extended@git+https://github.com/jakejarvis/hugo-extended.git#master":
+"hugo-extended@git+https://github.com/jakejarvis/hugo-extended.git":
   version "0.63.2"
   resolved "git+https://github.com/jakejarvis/hugo-extended.git#f6b20c2deeabdc9d45f49ee9cfa3f8d7c704737a"
   dependencies:
