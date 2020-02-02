@@ -28,10 +28,12 @@
     "lint:sass": "stylelint assets/sass/**/* --syntax scss",
     "lint:links": "linkinator http://localhost:1313/ --recurse --silent --skip https://www.shodan.io/ --skip https://images.shodan.io/ --skip https://archive.today/ --skip https://archive.is/ --skip https://www.linkedin.com/ --skip http://localhost:1313/y2k/ --skip 'asdfasdf404/?$'",
     "debug:hugo": "hugo version && hugo env",
-    "debug:size": "get-folder-size --folder=public"
+    "debug:size": "get-folder-size --folder=public",
+    "algolia": "atomic-algolia"
   },
   "dependencies": {},
   "devDependencies": {
+    "atomic-algolia": "^0.3.17",
     "autoprefixer": "^9.7.4",
     "cross-env": "^7.0.0",
     "get-folder-size": "^2.0.1",

@@ -28,6 +28,10 @@ disableAliases = true
   copyrightFirstYear = "2001"
   wayback = "https://web.archive.org/web/20010501000000*/jakejarvis.com"
 
+[params.algolia]
+  vars = ["title", "summary", "date", "permalink"]
+  params = ["tags"]
+
 [author]
   name = "Jake Jarvis"
   jobTitle = "Front-End Web Developer"
@@ -42,7 +46,7 @@ disableAliases = true
   mastodon = "mastodon.social/@jakejarvis"
 
 [outputs]
-  home = ["HTML", "RSS", "MANIFEST", "REDIRECTS", "HEADERS"]
+  home = ["HTML", "RSS", "ALGOLIA", "MANIFEST", "REDIRECTS", "HEADERS"]
   section = ["HTML"]
   page = ["HTML", "AMP"]
 
@@ -60,6 +64,11 @@ disableAliases = true
     path = "."
     permalinkable = true
     isHTML = true
+  [outputFormats.ALGOLIA]
+    mediaType = "application/json"
+    baseName = "algolia"
+    isPlainText = true
+    notAlternative = true
   [outputFormats.MANIFEST]
     mediaType = "application/json"
     baseName = "manifest"
