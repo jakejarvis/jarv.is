@@ -29,7 +29,7 @@ disableAliases = true
   wayback = "https://web.archive.org/web/20010501000000*/jakejarvis.com"
 
 [params.algolia]
-  vars = ["title", "summary", "date", "permalink"]
+  vars = ["title", "summary", "date", "permalink", "draft"]
   params = ["tags"]
 
 [author]
