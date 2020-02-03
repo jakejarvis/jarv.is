@@ -51,8 +51,8 @@
     "postcss-cli": "^7.1.0",
     "postcss-reporter": "^6.0.1",
     "rimraf": "^3.0.1",
-    "stylelint": "~12.0.1",
-    "stylelint-config-sass-guidelines": "~6.2.0",
+    "stylelint": "~13.0.0",
+    "stylelint-config-sass-guidelines": "~7.0.0",
     "stylelint-scss": "~3.14.2"
   },
   "engines": {
