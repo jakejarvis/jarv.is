@@ -2462,9 +2462,10 @@ https-proxy-agent@^4.0.0:
     agent-base "5"
     debug "4"
 
-"hugo-extended@git+https://github.com/jakejarvis/hugo-extended.git#f6b20c2deeabdc9d45f49ee9cfa3f8d7c704737a":
-  version "0.63.2"
-  resolved "git+https://github.com/jakejarvis/hugo-extended.git#f6b20c2deeabdc9d45f49ee9cfa3f8d7c704737a"
+hugo-extended@^0.64.0:
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.64.0.tgz#ca2996b29a485043fa7cc1b964a818c077220fa2"
+  integrity sha512-52SXm/k8BA2aZTkwr9/hjdahaRDB8MMfuGN0MNOTSZZs5PtvAwP3i6k7MRyDA0OF8lL2GFjot3W+QvfYCTg1oA==
   dependencies:
     bin-wrapper "^4.1.0"
     rimraf "^3.0.1"
