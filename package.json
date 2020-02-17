@@ -39,7 +39,7 @@
     "cross-env": "^7.0.0",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
-    "hugo-extended": "git+https://github.com/jakejarvis/hugo-extended.git#f6b20c2deeabdc9d45f49ee9cfa3f8d7c704737a",
+    "hugo-extended": "^0.64.1",
     "husky": "^4.2.3",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
