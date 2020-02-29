@@ -2904,10 +2904,10 @@ linkify-it@^2.0.0:
   dependencies:
     uc.micro "^1.0.1"
 
-linkinator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-2.0.2.tgz#616fb8281f4ba5645b3e239351731df47290aff9"
-  integrity sha512-0b6TdqQO4Zei8qH9agiKY1odeOMWHVZomd1QslXgVBLXFao7ncQZ5Uzh0xw/QAZH0yUvd2IaJ6GYXRi/Lezruw==
+linkinator@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-2.0.3.tgz#59b9959591fd2f4369e6d946ad78af4ce8e55c9f"
+  integrity sha512-K1AhPAydXL9l4YX0o/FEYQUcBmjQQon3P6xzEZeZvQD1HSpa6FrAVrqZMxaEaDXUc8N1Y7vCmAKKNC6TX+2a5g==
   dependencies:
     chalk "^3.0.0"
     cheerio "^1.0.0-rc.2"
