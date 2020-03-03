@@ -3,8 +3,8 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "12.14.1"
-  YARN_VERSION = "1.21.1"
+  NODE_VERSION = "12.16.1"
+  YARN_VERSION = "1.22.0"
   YARN_FLAGS = "--no-ignore-optional --frozen-lockfile"
 
 # Ensure *only* Pretty URLs are enabled, even though this is already set up in
@@ -43,7 +43,7 @@
     X-XSS-Protection = "1; mode=block"
     # X-XSS-Protection = "1; mode=block; report=https://jarvis.report-uri.com/r/d/xss/enforce"
     X-Pingback = "https://jarv.is/ping/xmlrpc"
-    X-Got-Milk = "always"
+    X-Got-Milk = "2%"
     X-View-Source = "https://github.com/jakejarvis/jarv.is"
 
 # PGP file: open in browser, download correctly

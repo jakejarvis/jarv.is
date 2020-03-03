@@ -108,7 +108,7 @@ export RESTIC_PASSWORD="passw0rd123-just-kidding"
 ```
 
 
-## 3. Initialize the backup respository
+## 3. Initialize the backup repository
 
 Now we're ready to have Restic initialize the repository. This saves a `config` file in your S3 bucket and starts the encryption process right off the bat. You only need to run this once.
 

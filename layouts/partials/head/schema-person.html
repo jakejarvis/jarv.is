@@ -3,14 +3,14 @@
 {
   "@context": "http://schema.org",
   "@type": "Person",
-  "@id": {{ printf "%s%s" $.Site.BaseURL "#author" }},
-  "name": {{ $.Site.Author.name }},
+  "@id": {{ path.Join $.Site.BaseURL "#author" }},
+  "name": {{ .name }},
   "url": {{ $.Site.BaseURL }},
   "description": {{ $.Site.Params.description }},
   {{ with .jobtitle }}"jobTitle": {{ . }},{{ end }}
   "image": {
     "@type": "ImageObject",
-    "url": {{ $.Scratch.Get "defaultImage_url" }},
+    "url": {{ $.Scratch.Get "defaultImage_url" | absURL }},
     "width": "{{ $.Scratch.Get "defaultImage_width" }}",
     "height": "{{ $.Scratch.Get "defaultImage_height" }}"
   },

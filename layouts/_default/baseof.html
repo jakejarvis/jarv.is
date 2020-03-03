@@ -1,6 +1,6 @@
 <!doctype html>
 {{ printf "<!--\n     ,,,        ,,,\n   ;\"   ^;    ;\"   \",\n  ;     s$$$$$s      ;\n   ,  ss$$$$$$$ss  ,\"\n   ;$$$$$$$$$$$$$$$$\n   $$$$$$$$$$$$$$$$$$           Hello, human. :)\n  $$$$$\"\"\"$$$\"\"\"$$$$$$\n $$$$$  p\"$$$\"q  $$$$$     %s\n  $$$$  .$$$$$.  $$$$\n   $$$$$$$$$$$$$$$$$\n     \"$$$$\"*\"$$$$\"\n        \"$$.$$\"\n-->" ("humans.txt" | absURL) | safeHTML }}
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en{{ end }}">
+<html lang="{{ .Site.LanguageCode | default "en" }}">
   <head>
 {{ partial "head/head" . }}
   </head>

@@ -6,11 +6,11 @@
 $unicode-subset: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
 
 /*!
- *  Inter typeface v3.11 - https://rsms.me/inter/
+ *  Inter typeface v3.12 - https://rsms.me/inter/
  *
  *  Copyright (c) 2016-2019 The Inter Project Authors.
  *  Licensed under the SIL Open Font License, Version 1.1:
- *  https://github.com/rsms/inter/blob/v3.11/LICENSE.txt
+ *  https://github.com/rsms/inter/blob/v3.12/LICENSE.txt
  */
 @include font-face("Inter", "fonts/inter-regular-subset", 400) {
   unicode-range: $unicode-subset;

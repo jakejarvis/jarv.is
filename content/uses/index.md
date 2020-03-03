@@ -83,7 +83,7 @@ layout: etc
 
 ## 🌎&nbsp; Browsing {#browsing}
 
-- [**Firefox Developer Editon**](https://www.mozilla.org/en-US/firefox/developer/) 🦊
+- [**Firefox Developer Edition**](https://www.mozilla.org/en-US/firefox/developer/) 🦊
   - [My default `user.js` settings.](https://github.com/jakejarvis/dotfiles/blob/master/firefox/user.js)
   - Add-ons:
     - [1Password](https://1password.com/browsers/firefox/)
@@ -174,7 +174,7 @@ I've been making recent efforts to [de-Google](https://www.reddit.com/r/degoogle
 
 - [**Synology RT2600ac**](https://www.synology.com/en-us/products/RT2600ac)
 - [**Synology DiskStation DS218+**](https://www.synology.com/en-us/products/DS218+)
-- [**Dell Inspiron 3647**](https://www.cnet.com/products/dell-inspiron-3647-desktop-computer-fddonp321s/) running [**VMware ESXi**](https://www.vmware.com/products/esxi-and-esx.html) as a really, _really_ crappy home server.
+- [**Dell Inspiron 3647**](https://www.cnet.com/products/dell-inspiron-3647-desktop-computer-fddonp321s/) running [**VMware ESXi**](https://www.vmware.com/products/esxi-and-esx.html) as a really, *really* crappy home server.
 - [**Philips Hue**](https://www2.meethue.com/en-us) — color bulbs, dimmer switches, etc.
 - 2x [**Sonos One**](https://www.sonos.com/en-us/shop/one.html) (with Alexa turned off...allegedly.)
 - [**Petcube Play**](https://petcube.com/play/) 😻

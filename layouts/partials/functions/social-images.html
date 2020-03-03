@@ -1,6 +1,6 @@
 {{/* Default image */}}
 {{- $defaultImagePath := (path.Join "content" $.Site.Params.defaultimage) }}
-{{ $.Scratch.Set "defaultImage_url" (replace $defaultImagePath "content/" $.Site.BaseURL) }}
+{{ $.Scratch.Set "defaultImage_url" (replace $defaultImagePath "content/" "") }}
 {{ with (imageConfig $defaultImagePath) }}
   {{- $.Scratch.Set "defaultImage_width" .Width }}
   {{- $.Scratch.Set "defaultImage_height" .Height }}
@@ -10,13 +10,13 @@
 {{- with .Params.image }}
   {{- $imagePath := (path.Join "content" $.File.Dir "images/" .) }}
 
-  {{- $.Scratch.Set "socialImage_url" (replace $imagePath "content/" $.Site.BaseURL) }}
+  {{- $.Scratch.Set "socialImage_url" (replace $imagePath "content/" "") }}
   {{- with (imageConfig $imagePath) }}
     {{- $.Scratch.Set "socialImage_width" .Width }}
     {{- $.Scratch.Set "socialImage_height" .Height }}
   {{- end }}
 {{ else }}
-  {{- $.Scratch.Set "socialImage_url" (replace $defaultImagePath "content/" $.Site.BaseURL) }}
+  {{- $.Scratch.Set "socialImage_url" (replace $defaultImagePath "content/" "") }}
   {{- with (imageConfig $defaultImagePath) }}
     {{- $.Scratch.Set "socialImage_width" .Width }}
     {{- $.Scratch.Set "socialImage_height" .Height }}
@@ -25,7 +25,7 @@
 
 {{/* Site logo */}}
 {{- $logoImagePath := (path.Join "content" "logo.png") }}
-{{ $.Scratch.Set "logoImage_url" (replace $logoImagePath "content/" $.Site.BaseURL) }}
+{{ $.Scratch.Set "logoImage_url" (replace $logoImagePath "content/" "") }}
 {{ with (imageConfig $logoImagePath) }}
   {{- $.Scratch.Set "logoImage_width" .Width }}
   {{- $.Scratch.Set "logoImage_height" .Height }}

@@ -19,14 +19,15 @@
     "build:preview": "run-s clean hugo:dev",
     "hugo": "hugo --gc --cleanDestinationDir --verbose",
     "hugo:dev": "hugo --environment development --baseURL \"${DEPLOY_PRIME_URL:-/}\" --buildDrafts --buildFuture --gc --cleanDestinationDir --verbose",
-    "start": "hugo server --buildDrafts --buildFuture --port 1313 --bind 0.0.0.0 --verbose",
+    "start": "hugo server --buildDrafts --buildFuture --port 1337 --bind 0.0.0.0 --verbose",
     "optimize": "run-s optimize:**",
     "optimize:html": "html-minifier --html5 --collapse-whitespace --collapse-boolean-attributes --preserve-line-breaks --minify-css --file-ext html --input-dir public --output-dir public **/*.html",
     "optimize:img": "find public/ -type d | xargs -n1 -P8 -I{} imagemin {}/* --plugin=jpegoptim --plugin.jpegoptim.progressive --plugin.jpegoptim.stripAll --plugin=pngquant --plugin.pngquant.speed=5 --plugin.pngquant.strip --plugin=optipng --plugin.optipng.optimizationLevel=2 --plugin=svgo --plugin=gifsicle --out-dir={}",
-    "lint": "run-p lint:**",
-    "lint:markdown": "markdownlint content/**/*.md",
+    "lint": "run-s lint:**",
     "lint:sass": "stylelint assets/sass/**/* --syntax scss",
-    "lint:links": "linkinator http://localhost:1313/ --recurse --silent --skip https://www.shodan.io/ --skip https://images.shodan.io/ --skip https://archive.today/ --skip https://archive.is/ --skip https://www.linkedin.com/ --skip http://localhost:1313/y2k/ --skip 'asdfasdf404/?$'",
+    "lint:markdown": "markdownlint --rules markdownlint-rule-emphasis-style content/**/*.md",
+    "lint:spellcheck": "mdspell --en-us --ignore-numbers --ignore-acronyms --report content/**/*.md content/notes/**/*.md content/_index.html",
+    "lint:links": "linkinator http://localhost:1337/ --recurse --silent --skip https://www.shodan.io/ --skip https://images.shodan.io/ --skip https://archive.today/ --skip https://archive.is/ --skip https://www.linkedin.com/ --skip http://localhost:1337/y2k/ --skip 'asdfasdf404/?$' || true",
     "index": "run-s clean hugo index:** clean",
     "index:algolia": "atomic-algolia",
     "debug:hugo": "hugo version && hugo env",
@@ -36,27 +37,44 @@
   "devDependencies": {
     "atomic-algolia": "^0.3.17",
     "autoprefixer": "^9.7.4",
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.1",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
-    "hugo-extended": "git+https://github.com/jakejarvis/hugo-extended.git",
+    "hugo-extended": "0.65.3",
+    "husky": "^4.2.3",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "imagemin-pngquant": "^8.0.0",
-    "imagemin-svgo": "^7.0.0",
-    "linkinator": "^1.8.2",
-    "markdownlint-cli": "~0.21.0",
+    "imagemin-svgo": "^7.1.0",
+    "linkinator": "^2.0.3",
+    "lint-staged": "^10.0.8",
+    "markdown-spellcheck": "^1.3.1",
+    "markdownlint-cli": "~0.22.0",
+    "markdownlint-rule-emphasis-style": "^1.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-clean": "^1.1.0",
     "postcss-cli": "^7.1.0",
     "postcss-reporter": "^6.0.1",
-    "rimraf": "^3.0.1",
-    "stylelint": "~12.0.1",
-    "stylelint-config-sass-guidelines": "~6.2.0",
+    "rimraf": "^3.0.2",
+    "stylelint": "~13.2.0",
+    "stylelint-config-sass-guidelines": "~7.0.0",
     "stylelint-scss": "~3.14.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.scss": [
+      "yarn lint:sass"
+    ],
+    "*.md": [
+      "yarn lint:markdown"
+    ]
   },
   "engines": {
     "node": ">=12.13.0",

@@ -12,7 +12,7 @@
   "description": {{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }},
   "wordCount": "{{ .WordCount }}",
   "author": {
-    "@id": {{ printf "%s%s" .Site.BaseURL "#author" }}
+    "@id": {{ path.Join .Site.BaseURL "#author" }}
   },
   "publisher": {
     "@type": "Organization",
@@ -20,14 +20,14 @@
     "url": {{ .Site.BaseURL }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ .Scratch.Get "logoImage_url" }},
+      "url": {{ .Scratch.Get "logoImage_url" | absURL }},
       "width": "{{ .Scratch.Get "logoImage_width" }}",
       "height": "{{ .Scratch.Get "logoImage_height" }}"
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": {{ .Scratch.Get "socialImage_url" }},
+    "url": {{ .Scratch.Get "socialImage_url" | absURL }},
     "width": "{{ .Scratch.Get "socialImage_width" }}",
     "height": "{{ .Scratch.Get "socialImage_height" }}"
   }
