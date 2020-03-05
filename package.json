@@ -37,7 +37,7 @@
   "devDependencies": {
     "atomic-algolia": "^0.3.17",
     "autoprefixer": "^9.7.4",
-    "cross-env": "^7.0.1",
+    "cross-env": "^7.0.2",
     "get-folder-size": "^2.0.1",
     "html-minifier": "^4.0.0",
     "hugo-extended": "0.65.3",
