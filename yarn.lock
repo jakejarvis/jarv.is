@@ -3242,10 +3242,10 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hugo-extended@0.65.3:
-  version "0.65.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.65.3.tgz#dc702230d0dd9dd0ff6091ce1ee83eef4feb78e8"
-  integrity sha512-Pp0JSiJkMTcW8fAfKwyhyyUWsLRRPXhPqtH6E1cKxcedr/8E9voDx1woIduCRdnbQq0W95vqVDa1Gjui0jKraA==
+hugo-extended@0.66.0:
+  version "0.66.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.66.0.tgz#62f0bfa45f612807d09c14755a859cc22e111d83"
+  integrity sha512-SdzGJNtEmNZzElMzOPlnUUdrBYa7DGHB7KaYv+BLXLQsN3JBNldaFBoGix67E/eww27MvrbekBn89kibV9PKAg==
   dependencies:
     bin-wrapper "^4.1.0"
 
