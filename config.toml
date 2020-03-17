@@ -32,6 +32,7 @@ disableAliases = true
   license = "CC-BY-4.0"
   licenseFull = "Creative Commons Attribution 4.0 International"
   licenseURL = "https://creativecommons.org/licenses/by/4.0/"
+  utterancesRepo = "jakejarvis/jarv.is"
 
 [author]
   name = "Jake Jarvis"

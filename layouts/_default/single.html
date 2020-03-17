@@ -17,6 +17,9 @@
     <div id="content">
       {{ .Content }}
     </div>
+    <div id="comments">
+      {{ partial "scripts/utterances" . }}
+    </div>
   </article>
 </main>
 {{ end }}
