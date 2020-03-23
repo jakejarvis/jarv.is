@@ -7,47 +7,29 @@ main#single {
   margin: 0 auto;
 
   div#meta {
-    text-align: center;
+    color: $color-medium;
+    font-size: 0.85em;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    margin-top: 0.8em;
 
-    h1 {
-      margin: 0.3em 0;
-      font-size: 2em;
-      line-height: 1.4;
-
-      a {
-        color: inherit;
-      }
+    a {
+      color: inherit;
     }
 
-    div#byline {
-      color: $color-medium;
-      font-size: 0.85em;
-      line-height: 1.5;
-      letter-spacing: 0.07em;
+    span.dash {
+      margin: 0 0.7em;
+    }
+  }
 
-      a {
-        color: inherit;
-      }
+  h1#title {
+    margin: 0.3em 0 0.5em 0;
+    font-size: 2.3em;
+    line-height: 1.25;
+    font-weight: 700;
 
-      span.dot {
-        margin: 0 0.1em;
-        font-weight: 700;
-      }
-
-      ul#tags {
-        margin-top: 0.5em;
-        padding: 0;
-        list-style: none;
-
-        li {
-          display: inline;
-          margin-left: 0.8em;
-          margin-right: 0.8em;
-          text-transform: uppercase;
-          letter-spacing: 0.15em;
-          white-space: nowrap;
-        }
-      }
+    a {
+      color: inherit;
     }
   }
 
@@ -68,22 +50,14 @@ main#single {
   main#single {
     padding: 0.8em 1.1em;
 
+    h1#title {
+      font-size: 1.8em;
+    }
+
     div#meta {
-      h1 {
-        font-size: 1.8em;
-      }
-
-      div#byline {
-        // hide "Improve Post" link on mobile
-        span#edit {
-          display: none;
-        }
-
-        // less space between tags
-        ul#tags li {
-          margin: 0 0.5em;
-          line-height: 1.7;
-        }
+      // hide "Improve This Post" link on mobile
+      span#edit {
+        display: none;
       }
     }
   }
