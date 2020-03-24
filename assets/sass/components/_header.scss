@@ -53,19 +53,27 @@ header {
       list-style: none;
       display: flex;
       align-items: center;
-      font-size: 1.5em;
+      font-size: 1.2em;
       line-height: 1;
 
       li {
-        width: 2.5em;
         text-align: right;
+        margin-left: 1.45em;
 
         a {
           display: inline-block;
+          color: $color-medium;
           transition: transform 0.15s ease-in-out;
 
           &:hover {
-            transform: scale(1.4);
+            transform: scale(1.15);
+            color: $color-links;
+          }
+
+          span.text {
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-left: 0.55em;
           }
         }
       }
@@ -95,7 +103,18 @@ header {
       font-size: 1.7em;
 
       li {
-        width: 2em;
+        margin-left: 1em;
+
+        a {
+          // hide text next to emojis on mobile
+          span.text {
+            display: none;
+          }
+
+          &:hover {
+            transform: scale(1.4);
+          }
+        }
       }
     }
   }
