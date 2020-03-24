@@ -2907,10 +2907,10 @@ http-cache-semantics@3.8.1:
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz#39b0e16add9b605bf0a9ef3d9daaf4843b4cacd2"
   integrity sha512-5ai2iksyV8ZXmnZhHH4rWPoxxistEexSi5936zIQ1bnNTW5VnA85B6P/VpXiRM017IgRvb2kKo1a//y+0wSp3w==
 
-hugo-extended@0.65.3:
-  version "0.65.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.65.3.tgz#dc702230d0dd9dd0ff6091ce1ee83eef4feb78e8"
-  integrity sha512-Pp0JSiJkMTcW8fAfKwyhyyUWsLRRPXhPqtH6E1cKxcedr/8E9voDx1woIduCRdnbQq0W95vqVDa1Gjui0jKraA==
+hugo-extended@0.68.1:
+  version "0.68.1"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.68.1.tgz#41f54f2066467031ecf788833080cfb1321cfc56"
+  integrity sha512-xb+qa92GbrQhnZXNIYcGUdcYEhZ/29y0bQuLvV5ZBFKKK1Jfs44+Mq/oSwDdhTMJ5xajl38lm75dOaEL0+3MOQ==
   dependencies:
     bin-wrapper "^4.1.0"
 
