@@ -1,0 +1,42 @@
+name: Lighthouse
+
+on: [push, pull_request]
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+#    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install utilities
+      run: npm install -g netlify-cli @lhci/cli
+    - name: Wait for Netlify
+      run: netlify watch
+      env:
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    - name: Audit PR
+      if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
+      continue-on-error: true
+      run: |
+        lhci autorun --config=./lighthouserc.json \
+          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.com/ \
+          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.com/notes/ \
+          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.com/notes/how-to-pull-request-fork-github/ \
+          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.com/notes/how-to-pull-request-fork-github/amp.html
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+    - name: Audit Production
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      continue-on-error: true
+      run: |
+        lhci autorun --config=./lighthouserc.json \
+          --collect.url=https://jarv.is/ \
+          --collect.url=https://jarv.is/notes/ \
+          --collect.url=https://jarv.is/notes/how-to-pull-request-fork-github/ \
+          --collect.url=https://jarv.is/notes/how-to-pull-request-fork-github/amp.html
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
