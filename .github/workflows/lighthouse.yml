@@ -1,6 +1,10 @@
 name: Lighthouse
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   lhci:
@@ -19,7 +23,7 @@ jobs:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
     - name: Audit PR
-      if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
+      if: github.event_name == 'pull_request'
       continue-on-error: true
       run: |
         lhci autorun --config=./lighthouserc.json \
