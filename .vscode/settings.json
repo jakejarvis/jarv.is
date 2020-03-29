@@ -10,5 +10,6 @@
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": false
-  }
+  },
+  "git.ignoreLimitWarning": true
 }

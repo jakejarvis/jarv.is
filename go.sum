@@ -1,0 +1,5 @@
+github.com/twitter/twemoji v1.4.2 h1:AOD6NuL0n39nxziFJRfYEhh3s5V9uxLVHLEoUNhrRf0=
+github.com/twitter/twemoji v12.0.5-0.20200128193524-d998789b5d5e+incompatible h1:YgZzWr28GaMPQvDSDhD7SHfEYGxiYsvJmu1rCOGJttA=
+github.com/twitter/twemoji v12.0.5-0.20200128193524-d998789b5d5e+incompatible/go.mod h1:06L6PdKuWDx/Yh6s4B7yGkAeBmWZzbFZgfNnWlJPPYM=
+github.com/twitter/twemoji v12.1.5+incompatible h1:q2DZm6LI6aF46VSUhYsrWDd7IeBV1H/2uTjGXDhVyEA=
+github.com/twitter/twemoji v12.1.5+incompatible/go.mod h1:06L6PdKuWDx/Yh6s4B7yGkAeBmWZzbFZgfNnWlJPPYM=

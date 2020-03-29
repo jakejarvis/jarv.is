@@ -2,6 +2,7 @@
 public/
 builds/
 resources/
+_vendor/
 
 # node/npm/yarn
 node_modules/

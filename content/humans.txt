@@ -33,6 +33,7 @@
     Netlify
     Simple Analytics
     utteranc.es
+    Twemoji
     ...and much more: https://jarv.is/uses/
 
 # VIEW SOURCE

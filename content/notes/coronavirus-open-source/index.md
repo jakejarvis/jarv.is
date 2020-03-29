@@ -13,16 +13,14 @@ draft: false
 ---
 
 {{< page-css >}}
-/* override link underlines */
+/* disable link underlines in h2's */
 h2 a {
   background-image: none !important;
   padding-bottom: 0 !important;
   margin-right: 8px !important;
 }
-/* override image alignment */
+/* align octocat with text */
 h2 img {
-  display: inline !important;
-  margin: 0 !important;
   vertical-align: text-bottom;
 }
 {{< /page-css >}}

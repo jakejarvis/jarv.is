@@ -6,7 +6,7 @@
     </a>
     <ul>
       {{- range .Site.Menus.main }}
-      <li><a class="no-underline" {{ printf "href=%q" .URL | safeHTMLAttr }} aria-label="{{ .Name }}"{{ if strings.HasPrefix .URL "http" }} target="_blank" rel="me noopener"{{ end }}><span class="emoji">{{ .Pre }}</span><span class="text">{{ .Name }}</span></a></li>
+      <li><a class="no-underline" {{ printf "href=%q" .URL | safeHTMLAttr }} aria-label="{{ .Name }}"{{ if strings.HasPrefix .URL "http" }} target="_blank" rel="me noopener"{{ end }}><span class="icon">{{ .Pre }}</span><span class="text">{{ .Name }}</span></a></li>
       {{ end -}}
     </ul>
   </nav>

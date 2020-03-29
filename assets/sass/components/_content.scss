@@ -19,7 +19,7 @@ div#content {
     border-bottom: 1px solid $color-kinda-light;
   }
 
-  img,
+  p.image img,
   figure {
     height: auto;
     max-width: 100%;
@@ -28,11 +28,6 @@ div#content {
   }
 
   figure {
-    // reduce margin between image and caption
-    img {
-      margin-bottom: 0.4em;
-    }
-
     // image captions
     figcaption {
       font-size: 0.9em;

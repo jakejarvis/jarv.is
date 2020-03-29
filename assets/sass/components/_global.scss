@@ -87,6 +87,15 @@ div.highlight {
   }
 }
 
+// make SVG twemojis relative to surrounding text
+// https://github.com/twitter/twemoji#inline-styles
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.1em;
+}
+
 // white background for entire width content area
 div#wrap {
   width: 100%;

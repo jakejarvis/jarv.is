@@ -9,6 +9,6 @@
   <figcaption>{{ . | $.Page.RenderString | safeHTML }}</figcaption>
 </figure>
 {{- else -}}
-<p><img src="{{ $optimized.Permalink }}" width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
-     {{- with .Get "alt" }} alt="{{ . | safeHTML }}" title="{{ . | safeHTML }}"{{ end }}></p>
+<p class="image"><img src="{{ $optimized.Permalink }}" width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
+                    {{- with .Get "alt" }} alt="{{ . | safeHTML }}" title="{{ . | safeHTML }}"{{ end }}></p>
 {{- end }}

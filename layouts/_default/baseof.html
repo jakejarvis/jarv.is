@@ -10,6 +10,7 @@
 {{ block "main" . }}{{ end }}
 </div>
 {{ partialCached "page/footer" . }}
+{{ partial "scripts/twemoji" . }}
 {{ partial "scripts/shortcodes" . }}
 {{ if eq hugo.Environment "production" }}
   {{ partialCached "scripts/simple_analytics" . }}

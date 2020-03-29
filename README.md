@@ -13,6 +13,7 @@ Personal website of [@jakejarvis](https://github.com/jakejarvis), created and de
 - [Netlify](https://www.netlify.com/)
 - [Simple Analytics](https://referral.simpleanalytics.com/jake-jarvis) (referral link)
 - [utteranc.es](https://utteranc.es/)
+- [Twemoji](https://twemoji.twitter.com/)
 - [...and much more.](https://jarv.is/uses/)
 
 I keep an ongoing list of [blog post ideas](https://github.com/jakejarvis/jarv.is/issues/1) and [coding to-dos](https://github.com/jakejarvis/jarv.is/issues/11) as issues in this repo.

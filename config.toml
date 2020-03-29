@@ -139,6 +139,14 @@ disableAliases = true
     noClasses = true
     tabWidth = 4
 
+[module]
+  [[module.imports]]
+    path = "github.com/twitter/twemoji"
+    disabled = false
+    [[module.imports.mounts]]
+      source = "v/12.1.5"
+      target = "static/twemoji"
+
 [privacy]
   [privacy.twitter]
     enableDNT = true
