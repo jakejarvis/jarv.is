@@ -20,14 +20,21 @@ div#content {
   }
 
   p.image img,
-  figure {
+  figure img {
     height: auto;
     max-width: 100%;
-    margin: 1em auto;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   figure {
+    margin: 1em auto;
+
+    img {
+      margin-bottom: 0.4em;
+    }
+
     // image captions
     figcaption {
       font-size: 0.9em;
