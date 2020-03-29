@@ -58,7 +58,7 @@ header {
 
       li {
         text-align: right;
-        margin-left: 1.45em;
+        margin-left: 1.6em;
 
         a {
           display: inline-block;
@@ -70,10 +70,15 @@ header {
             color: $color-links;
           }
 
+          span.icon {
+            font-size: 1.15em;
+            vertical-align: -0.05em;
+          }
+
           span.text {
             font-size: 0.8em;
             font-weight: 500;
-            margin-left: 0.55em;
+            margin-left: 0.45em;
           }
         }
       }
@@ -106,6 +111,10 @@ header {
         margin-left: 1em;
 
         a {
+          span.icon {
+            font-size: 0.9em;
+          }
+
           // hide text next to emojis on mobile
           span.text {
             display: none;

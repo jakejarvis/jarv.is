@@ -51,7 +51,7 @@ disableAliases = true
 [menu]
   [[menu.main]]
     name = "Home"
-    pre = "&#x1F3E0;"
+    pre = "&#x1F3E1;"
     url = "/"
     weight = -100
   [[menu.main]]
