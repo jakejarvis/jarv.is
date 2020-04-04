@@ -12,13 +12,13 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF
  *  Licensed under the SIL Open Font License, Version 1.1:
  *  https://github.com/rsms/inter/blob/v3.12/LICENSE.txt
  */
-@include font-face("Inter", "fonts/inter-regular-subset", 400) {
+@include font-face("Inter", "vendor/inter/inter-regular-subset", 400) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "fonts/inter-medium-subset", 500) {
+@include font-face("Inter", "vendor/inter/inter-medium-subset", 500) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "fonts/inter-bold-subset", 700) {
+@include font-face("Inter", "vendor/inter/inter-bold-subset", 700) {
   unicode-range: $unicode-subset;
 }
 
@@ -29,4 +29,4 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF
  *  Licensed under the MIT License:
  *  https://github.com/source-foundry/Hack/blob/v3.003/LICENSE.md
  */
-@include font-face("Hack", "fonts/hack-regular-subset", 400);
+@include font-face("Hack", "vendor/hack/hack-regular-subset", 400);

@@ -12,9 +12,8 @@
 {{ partialCached "page/footer" . }}
 {{ partial "scripts/twemoji" . }}
 {{ partial "scripts/shortcodes" . }}
-{{ if eq hugo.Environment "production" }}
-  {{ partialCached "scripts/simple_analytics" . }}
-{{ end }}
+
+{{ partialCached "scripts/simple_analytics" . }}
   </body>
 </html>
 

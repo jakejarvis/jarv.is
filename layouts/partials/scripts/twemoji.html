@@ -1,2 +1,2 @@
-<script src="{{ "/twemoji/twemoji.min.js" | absURL }}"></script>
-<script>twemoji.parse(document.body,{{ dict "base" ("/" | absURL) "folder" "twemoji/svg" "ext" ".svg" | jsonify | safeJS }})</script>
+<script src="{{ "/vendor/emoji/twemoji.min.js" | absURL }}"></script>
+<script>twemoji.parse(document.body,{{ dict "base" ("/" | absURL) "folder" "vendor/emoji/svg" "ext" ".svg" | jsonify | safeJS }})</script>

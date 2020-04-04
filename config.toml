@@ -35,6 +35,14 @@ disableAliases = true
   licenseURL = "https://creativecommons.org/licenses/by/4.0/"
   utterancesRepo = "jakejarvis/jarv.is"
 
+[module]
+  [[module.imports]]
+    path = "github.com/twitter/twemoji"
+    disabled = false
+    [[module.imports.mounts]]
+      source = "v/12.1.5"
+      target = "static/vendor/emoji"
+
 [author]
   name = "Jake Jarvis"
   jobTitle = "Front-End Web Developer"
@@ -139,16 +147,8 @@ disableAliases = true
     noClasses = true
     tabWidth = 4
 
-[module]
-  [[module.imports]]
-    path = "github.com/twitter/twemoji"
-    disabled = false
-    [[module.imports.mounts]]
-      source = "v/12.1.5"
-      target = "static/twemoji"
-
-[privacy]
-  [privacy.twitter]
-    enableDNT = true
-  [privacy.youtube]
-    privacyEnhanced = true
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Access-Control-Allow-Origin = "*"

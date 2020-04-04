@@ -139,7 +139,25 @@
   to = "https://modest-jackson-d5516b.netlify.com/awesome/:splat"
   status = 200
 
+# Reorganized static assets; this can probably be temporary:
+[[redirects]]
+  from = "/fonts/inter-*"
+  to = "/vendor/inter/inter-:splat"
+  status = 301
+[[redirects]]
+  from = "/fonts/hack-*"
+  to = "/vendor/hack/hack-:splat"
+  status = 301
+[[redirects]]
+  from = "/twemoji/*"
+  to = "/vendor/emoji/:splat"
+  status = 301
+
 # More miscellaneous mirrors:
+[[redirects]]
+  from = "/vendor/simple/*"
+  to = "https://s.jarv.is/:splat"
+  status = 200
 [[redirects]]
   from = "/apple-touch-icon-precomposed.png"
   to = "/apple-touch-icon.png"

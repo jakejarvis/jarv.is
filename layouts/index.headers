@@ -6,13 +6,9 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: sameorigin
 
-# Super long cache for web fonts (one year)
-/fonts/*
-  Cache-Control: max-age=31536000, public, immutable, no-transform
-
-# Super long cache for Twemojis (one year)
-/twemoji/*
-  Cache-Control: max-age=31536000, public, immutable, no-transform
+# Super long cache for web fonts and Twemojis (one year)
+/vendor/*
+  Cache-Control: max-age=31536000, public, immutable
 
 # Recommended MIME type for PWA manifests
 # https://github.com/w3c/manifest/issues/689
