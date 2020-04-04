@@ -155,10 +155,6 @@
 
 # More miscellaneous mirrors:
 [[redirects]]
-  from = "/vendor/simple/*"
-  to = "https://s.jarv.is/:splat"
-  status = 200
-[[redirects]]
   from = "/apple-touch-icon-precomposed.png"
   to = "/apple-touch-icon.png"
   status = 200
