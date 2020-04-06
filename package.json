@@ -31,7 +31,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.7.5",
+    "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",
     "html-minifier": "^4.0.0",
     "hugo-extended": "0.68.3",
