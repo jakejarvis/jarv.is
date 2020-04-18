@@ -6,12 +6,17 @@ body {
   height: 100%;
   margin: 0 auto;
   background-color: $color-super-duper-light;   // really just the color of header & footer
-  color: $color-text;
   font-family: $webfont-sans;
   font-kerning: normal;
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
   line-height: 1.5;
   box-sizing: border-box;
+}
+
+main {
+  @include themed() {
+    color: t(color-text);
+  }
 }
 
 a {
@@ -100,9 +105,11 @@ img.emoji {
 // white background for entire width content area
 div#wrap {
   width: 100%;
-  background-color: $color-background;
-}
 
+  @include themed() {
+    background-color: t(color-background);
+  }
+}
 
 // Responsive
 @mixin responsive--global() {

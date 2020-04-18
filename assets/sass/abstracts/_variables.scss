@@ -16,64 +16,10 @@ $system-fonts-monospace: "SFMono-Regular", "Consolas", "Liberation Mono",
                "Menlo", "Courier", monospace;
 // stylelint-enable indentation
 
-// Misc Settings
+// Width at which to switch to mobile styles
 $responsive-width: 820px;
+
+// Fancy link underline settings
 $link-underline-opacity: 40%;
 $link-underline-size: 2px;
-
-// Global Colors
-$color-background:   #ffffff;
-$color-text:         #202020;
-$color-medium-dark:  #494949;
-$color-medium:       #5e5e5e;
-$color-medium-light: #757575;
-$color-light:        #d2d2d2;
-$color-kinda-light:  #e3e3e3;
-$color-super-light:  #f4f4f4;
-$color-super-duper-light: #fbfbfb;
-$color-links:        #0e6dc2;
-
-// For nifty color swapping on svg logo hover in components/_header.scss
-$color-logo1: #6fbc4e;
-$color-logo2: #ffb900;
-$color-logo3: #009cdf;
-
-// Colorful Homepage
-$colors-home:(
-  boston:     #fb4d42,
-  javascript: #f48024,
-  node:       #6fbc4e,
-  golang:     #00acd7,
-  react:      #4fb3cd,
-  angular:    #c3002f,
-  php:        #8892bf,
-  ruby:       #d34135,
-  python:     #fea500,
-  java:       #ab6311,
-  infosec:    #00b81a,
-  server:     #0098ec,
-  devops:     #ff6200,
-  containers: #c48f49,
-  y2k:        #4169e1,
-  jbb:        #9932cc,
-  birthday:   #e40088,
-  github:     #8d4eff,
-  linkedin:   #0073b1,
-  facebook:   #4267b2,
-  twitter:    #00acee,
-  dm:         #00acee,
-  instagram:  #a37754,
-  mastodon:   #6d8ca7,
-  resume:     #d54b3d,
-  email:      #de0c0c,
-  pgp:        #757575,
-  sms:        #6fcc01,
-  news-1:     #ff1b1b,
-  news-2:     #f78200,
-  news-3:     #f2b702,
-  news-4:     #5ebd3e,
-  news-5:     #009cdf,
-  news-6:     #3e49bb,
-  news-7:     #973999
-);
-$color-serverless: #87cef7;
+$link-opacity-color: #ffffff;

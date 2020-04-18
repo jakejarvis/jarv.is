@@ -7,6 +7,7 @@ $base-url: "{{ strings.TrimRight "/" .Site.BaseURL }}/";   // consistent trailin
 // stylelint-enable
 
 // Variables & Functions
+@import 'abstracts/themes';
 @import 'abstracts/variables';
 @import 'abstracts/functions';
 
