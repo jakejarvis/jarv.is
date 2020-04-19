@@ -5,12 +5,20 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: $color-default-background;   // really just the color of header & footer
   font-family: $webfont-sans;
   font-kerning: normal;
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
   line-height: 1.5;
   box-sizing: border-box;
+
+  // manually setting light/dark mode backgrounds
+  // really just the color of header & footer
+  &.light {
+    background-color: $color-light-background;
+  }
+  &.dark {
+    background-color: $color-dark-background;
+  }
 }
 
 main {

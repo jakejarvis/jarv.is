@@ -4,28 +4,16 @@
   <head>
 {{ partial "head/head" . }}
   </head>
-  <body class="dark">
+  <body class="light">
 
-    <div id="theme-switch">
-    <input type="checkbox" id="dark">
-    <label for="dark">Dark Mode!!!!11</label>
-  </div>
+    <button id="dark-mode-toggle">Dark mode!!!!!111</button>
+
+    {{ $theme_switch := resources.Get "js/light-dark.js" }}
+    <script src="{{ $theme_switch.Permalink }}"></script>
 
     <script>
-      const toggleSwitch = document.querySelector('div#theme-switch input[type="checkbox"]');
-
-      function switchTheme(e) {
-          if (e.target.checked) {
-            document.body.className = "dark";
-//              document.documentElement.setAttribute('data-theme', 'dark');
-          }
-          else {
-            document.body.className = "light";
-//              document.documentElement.setAttribute('data-theme', 'light');
-          }
-      }
-
-      toggleSwitch.addEventListener('change', switchTheme, false);
+      // force for testing
+      enableDarkMode();
     </script>
 
 {{ partialCached "page/header" . }}
