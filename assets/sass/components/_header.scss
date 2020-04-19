@@ -104,17 +104,20 @@ header {
           margin-left: 0;
         }
       }
-    }
 
-    // Dark mode toggle
-    button#dark-mode-toggle {
-      background: transparent;
-      background-repeat: no-repeat;
-      border: 0;
-      cursor: pointer;
-      height: 25px;
-      width: 25px;
-      padding: 0;
+      // Dark mode toggle
+      button#dark-mode-toggle {
+        background: transparent;
+        background-repeat: no-repeat;
+        padding: 0;
+        border: 0;
+        height: 26px;
+        width: 17px;
+        cursor: pointer;
+
+        // hide by default in case user's JS is disabled
+        visibility: hidden;
+      }
     }
   }
 }
@@ -155,6 +158,12 @@ header {
           &:hover {
             transform: scale(1.4);
           }
+        }
+
+        button#dark-mode-toggle {
+          width: 20px;
+          height: 30px;
+          vertical-align: 2px;
         }
       }
     }

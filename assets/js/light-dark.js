@@ -1,7 +1,9 @@
 // check for preset `dark_mode` in localStorage
 var pref = localStorage.getItem('dark_mode');
-
 var toggle = document.querySelector('button#dark-mode-toggle');
+
+// lightbulb toggle re-appears now that we know user has JS enabled
+toggle.style.visibility = "visible";
 
 var enableDarkMode = function() {
   document.body.classList.remove('light');
