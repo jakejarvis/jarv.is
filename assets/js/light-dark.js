@@ -1,40 +1,61 @@
-// check for preset `dark_mode` in localStorage
-var pref = localStorage.getItem('dark_mode');
-var toggle = document.querySelector('button#dark-mode-toggle');
+/* jshint esversion: 6, indent: 2, browser: true */
+
+// inspired by https://codepen.io/kevinpowell/pen/EMdjOV
 
 // lightbulb toggle re-appears now that we know user has JS enabled
+const toggle = document.querySelector('button#dark-mode-toggle');
 toggle.style.visibility = "visible";
 
-var enableDarkMode = function() {
+// check for preset `dark_mode_pref` in localStorage
+let pref = localStorage.getItem('dark_mode_pref');
+
+// check for OS dark mode setting
+// https://gist.github.com/Gioni06/eb5b28343bcf5793a70f6703004cf333#file-darkmode-js-L47
+const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const isSystemLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+
+// keep track of current state, no matter how we get there...
+let currentlyDark = false;
+
+const activateDarkMode = function() {
   document.body.classList.remove('light');
   document.body.classList.add('dark');
-
-  localStorage.setItem('dark_mode', 'true');
+  currentlyDark = true;
 };
 
-var disableDarkMode = function() {
+const activateLightMode = function() {
   document.body.classList.remove('dark');
   document.body.classList.add('light');
-
-  localStorage.removeItem('dark_mode');
+  currentlyDark = false;
 };
 
-// if the user already enabled dark mode,
-// turn it on.
+// if user already explicitly enabled dark mode in the past, turn it back on.
 if (pref === 'true') {
-  enableDarkMode();
+  activateDarkMode();
+}
+
+// user has never clicked the button, so go by their OS preference until/if they do so
+if (pref !== "true" && pref !== "false") {
+  if (isSystemDark) activateDarkMode();
+  if (isSystemLight) activateLightMode();
+
+  // real-time switching if supported by OS/browser
+  // TODO: these keep listening even when the parent condition becomes false (until refresh or new page)
+  window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && activateDarkMode());
+  window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && activateLightMode());
 }
 
 // handle toggle click
-toggle.addEventListener('click', function() {
-  // get current dark_mode preference
-  pref = localStorage.getItem('dark_mode');
+toggle.addEventListener("click", function() {
+  // get current preference, if there is one
+  let pref = localStorage.getItem("dark_mode_pref");
 
-  // if dark mode was disabled, turn it on
-  if (pref !== 'true') {
-    enableDarkMode();
-  // if dark mode was enabled, turn it off
+  // switch to the opposite theme & save preference in local storage
+  if (pref !== "true") {
+    activateDarkMode();
+    localStorage.setItem("dark_mode_pref", "true");
   } else {
-    disableDarkMode();
+    activateLightMode();
+    localStorage.setItem("dark_mode_pref", "false");
   }
 });

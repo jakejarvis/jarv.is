@@ -3,8 +3,3 @@
 
 {{ $js := slice $darkmode $twemoji | resources.Concat "/js/main.js" }}
 <script src="{{ $js.Permalink }}"></script>
-
-<script>
-  // force for testing
-  enableDarkMode();
-</script>
