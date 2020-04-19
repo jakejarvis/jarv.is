@@ -4,25 +4,31 @@
 $themes: (
   light: (
     color-background:   #ffffff,
-    color-text:         #202020
+    color-text:         #202020,
+    color-medium-dark:  #494949,
+    color-medium:       #5e5e5e,
+    color-medium-light: #757575,
+    color-light:        #d2d2d2,
+    color-kinda-light:  #e3e3e3,
+    color-super-light:  #f4f4f4,
+    color-super-duper-light: #fbfbfb,
+    color-links:        #0e6dc2
   ),
   dark: (
-    color-background:   #000000,
-    color-text:         #ffffff
+    color-background:   #292929,
+    color-text:         #e3e3e3,
+    color-medium-dark:  #c0c0c0,
+    color-medium:       #b1b1b1,
+    color-medium-light: #797979,
+    color-light:        #646464,
+    color-kinda-light:  #535353,
+    color-super-light:  #272727,
+    color-super-duper-light: #1f1f1f,
+    color-links:        #98ceff
   )
 );
 
-// Global Colors
-// $color-background:   #ffffff;
-// $color-text:         #202020;
-$color-medium-dark:  #494949;
-$color-medium:       #5e5e5e;
-$color-medium-light: #757575;
-$color-light:        #d2d2d2;
-$color-kinda-light:  #e3e3e3;
-$color-super-light:  #f4f4f4;
-$color-super-duper-light: #fbfbfb;
-$color-links:        #0e6dc2;
+$color-default-background: #fbfbfb;
 
 // For nifty color swapping on svg logo hover in components/_header.scss
 $color-logo1: #6fbc4e;
@@ -75,7 +81,7 @@ $color-serverless: #87cef7;
     body.#{$theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $value: map-get(map-get($themes, $theme), "#{$key}");
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;

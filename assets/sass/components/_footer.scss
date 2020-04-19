@@ -7,11 +7,17 @@ footer {
   line-height: 1.7;
   padding: 1.25em 1.75em;
   box-sizing: border-box;
-  color: $color-medium;
-  border-top: 1px solid $color-light;
+
+  @include themed() {
+    color: t(color-medium);
+    border-top: 1px solid t(color-kinda-light);
+    background-color: t(color-super-duper-light);
+  }
 
   a {
-    color: inherit;
+    @include themed() {
+      color: t(color-medium);
+    }
   }
 
   div#row {
@@ -38,8 +44,11 @@ footer {
       text-align: right;
 
       a#source {
-        border-bottom: 1px solid $color-light;
         padding-bottom: 2px;
+
+        @include themed() {
+          border-bottom: 1px solid t(color-light);
+        }
       }
     }
 

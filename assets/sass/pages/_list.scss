@@ -30,9 +30,12 @@ main#list {
       margin-bottom: 1em;
 
       div.date {
-        color: $color-medium;
         width: 5.25em;
         flex-shrink: 0;
+
+        @include themed() {
+          color: t(color-medium);
+        }
       }
 
       &:last-child {

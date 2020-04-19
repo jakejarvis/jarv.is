@@ -16,7 +16,10 @@ div#content {
 
   h2 {
     padding-bottom: 0.25em;
-    border-bottom: 1px solid $color-kinda-light;
+
+    @include themed() {
+      border-bottom: 1px solid t(color-kinda-light);
+    }
   }
 
   p.image img,
@@ -38,8 +41,11 @@ div#content {
     // image captions
     figcaption {
       font-size: 0.95em;
-      color: $color-medium;
       text-align: center;
+
+      @include themed() {
+        color: t(color-medium);
+      }
     }
   }
 

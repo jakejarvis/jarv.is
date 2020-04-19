@@ -43,10 +43,13 @@ main#home {
     margin-bottom: 0.5em;
     margin-left: 1em;
     padding: 4px;
-    border: 1px solid $color-light;
     border-radius: 50%;
     width: 160px;
     height: 160px;
+
+    @include themed() {
+      border: 1px solid t(color-light);
+    }
   }
 
   a {
@@ -83,7 +86,9 @@ main#home {
     }
 
     &#shh {
-      color: $color-medium-light;
+      @include themed() {
+        color: t(color-medium-light);
+      }
     }
   }
 }

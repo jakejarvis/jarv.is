@@ -3,7 +3,11 @@
 // Global Header Styles
 header {
   width: 100%;
-  border-bottom: 1px solid $color-kinda-light;
+
+  @include themed() {
+    border-bottom: 1px solid t(color-kinda-light);
+    background-color: t(color-super-duper-light);
+  }
 
   nav {
     width: 100%;
@@ -18,7 +22,10 @@ header {
     a#logo {
       display: flex;
       align-items: center;
-      color: $color-medium-dark;
+
+      @include themed() {
+        color: t(color-medium-dark);
+      }
 
       h1#name {
         margin-left: 0.8em;
@@ -34,7 +41,9 @@ header {
 
       // mix up logo colors on hover
       &:hover {
-        color: $color-links;
+        @include themed() {
+          color: t(color-links);
+        }
 
         svg {
           g#c1 {
@@ -65,12 +74,18 @@ header {
 
         a {
           display: inline-block;
-          color: $color-medium;
           transition: transform 0.15s ease-in-out;
+
+          @include themed() {
+            color: t(color-medium);
+          }
 
           &:hover {
             transform: scale(1.15);
-            color: $color-links;
+
+            @include themed() {
+              color: t(color-links);
+            }
           }
 
           span.icon {

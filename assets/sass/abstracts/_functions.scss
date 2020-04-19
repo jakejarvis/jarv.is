@@ -6,10 +6,13 @@
   // Calculate lighter underline color compared to text color by
   // mix()'ing with background (#fff) to give the impression of
   // opacity but with MUCH better compatibility.
-  $color-opaque: mix($color, $link-opacity-color, $link-underline-opacity);
+  $color-opaque-hex: mix($color, $link-opacity-color, $link-underline-opacity);
+
+  // Less compatible but better for light/dark mode switching.
+  $color-opaque-alpha: rgba($color, $link-underline-opacity / 100%);
 
   // Return non-gradient linear-gradient():
-  @return linear-gradient($color-opaque, $color-opaque);
+  @return linear-gradient($color-opaque-alpha, $color-opaque-alpha);
 }
 
 // Web fonts (see components/_fonts.scss)

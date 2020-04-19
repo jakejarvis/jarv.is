@@ -6,7 +6,7 @@
     "function-parentheses-space-inside": null,
     "function-url-quotes": null,
     "indentation": [ 2, { "severity": "warning" } ],
-    "max-nesting-depth": 5,
+    "max-nesting-depth": 6,
     "number-no-trailing-zeros": null,
     "order/properties-alphabetical-order": null,
     "rule-empty-line-before": null,

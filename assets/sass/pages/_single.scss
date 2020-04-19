@@ -7,11 +7,14 @@ main#single {
   margin: 0 auto;
 
   div#meta {
-    color: $color-medium;
     font-size: 0.85em;
     line-height: 1.3;
     letter-spacing: 0.04em;
     margin-top: 0.8em;
+
+    @include themed() {
+      color: t(color-medium);
+    }
 
     a {
       color: inherit;
@@ -37,7 +40,10 @@ main#single {
   div#comments {
     margin-top: 1.5em;
     padding-top: 0.5em;
-    border-top: 2px solid $color-light;
+
+    @include themed() {
+      border-top: 2px solid t(color-light);
+    }
 
     div.utterances {
       max-width: unset;
