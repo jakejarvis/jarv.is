@@ -10,10 +10,10 @@ snapshot:
       display: none;
     }
     div.highlight {
-      border: 0;  /* no clue why this bugs out... */
+      border: 0 !important;  /* no clue why this bugs out... */
     }
     .wave, .beat {
-      animation: none;
+      animation: none !important;
     }
 static-snapshots:
   path: public/

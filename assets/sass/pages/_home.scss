@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+
+
+// Loop through $colors-home (see abstracts/_variables)
+@each $id, $colors in $colors-home {
+  @each $theme, $color in $colors {
+    body.#{$theme} main#home a##{$id} {
+      color: $color;
+      background-image: underline-hack($color);
+    }
+  }
+}
+
+
 // Home Styles
 main#home {
   font-size: 1.1em;
@@ -53,14 +66,6 @@ main#home {
   }
 
   a {
-    // Loop through $colors-home (see abstracts/_variables)
-    @each $id, $color in $colors-home {
-      &##{$id} {
-        color: $color;
-        background-image: underline-hack($color);
-      }
-    }
-
     &#blog {
       font-size: 0.9em;
       margin-bottom: 0;

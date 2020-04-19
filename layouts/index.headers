@@ -5,8 +5,11 @@
   X-Frame-Options: sameorigin
   X-XSS-Protection: 1; mode=block
 
-# Super long cache (one year) for vendored assets: web fonts, emojis, etc.
+# Super long cache (one year) for some assets:
+# web fonts, emojis, fingerprinted scripts, etc.
 /vendor/*
+  Cache-Control: max-age=31536000, public, immutable
+/js/*
   Cache-Control: max-age=31536000, public, immutable
 
 # Proper MIME type for Atom feed
