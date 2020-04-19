@@ -10,32 +10,6 @@ body {
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
   line-height: 1.5;
   box-sizing: border-box;
-
-  // manually setting light/dark mode backgrounds
-  // really just the color of header & footer
-  &.light {
-    background-color: $color-light-background;
-
-    button#dark-mode-toggle {
-      background-image: url($base-url + "bulb_on.svg");
-
-      &:hover {
-        background-image: url($base-url + "bulb_off.svg");
-      }
-    }
-  }
-
-  &.dark {
-    background-color: $color-dark-background;
-
-    button#dark-mode-toggle {
-      background-image: url($base-url + "bulb_off.svg");
-
-      &:hover {
-        background-image: url($base-url + "bulb_on.svg");
-      }
-    }
-  }
 }
 
 main {
@@ -148,6 +122,34 @@ div#wrap {
 
   @include themed() {
     background-color: t(color-background);
+  }
+}
+
+// manually setting light/dark mode backgrounds
+// really just the color of header & footer
+body {
+  &.light {
+    background-color: $color-light-background;
+
+    button#dark-mode-toggle {
+      background-image: url($icon-bulb-on);
+
+      &:hover {
+        background-image: url($icon-bulb-off);
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $color-dark-background;
+
+    button#dark-mode-toggle {
+      background-image: url($icon-bulb-off);
+
+      &:hover {
+        background-image: url($icon-bulb-on);
+      }
+    }
   }
 }
 

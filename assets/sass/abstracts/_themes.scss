@@ -24,7 +24,7 @@ $themes: (
     color-kinda-light:  #535353,
     color-super-light:  #272727,
     color-super-duper-light: #1f1f1f,
-    color-links:        #98ceff
+    color-links:        #85baea
   )
 );
 
@@ -39,7 +39,7 @@ $color-logo3: #009cdf;
 // Colorful Homepage
 $colors-home:(
   boston:     (light: #fb4d42, dark: #ff5146),
-  javascript: (light: #f48024, dark: #ec924a),
+  javascript: (light: #f48024, dark: #e18431),
   node:       (light: #6fbc4e, dark: #84d95f),
   golang:     (light: #00acd7, dark: #2ad1fb),
   react:      (light: #4fb3cd, dark: #6fcbe3),
@@ -47,11 +47,11 @@ $colors-home:(
   php:        (light: #8892bf, dark: #a4afe3),
   ruby:       (light: #d34135, dark: #f95a4d),
   python:     (light: #fea500, dark: #ffbb3c),
-  java:       (light: #ab6311, dark: #d98c34),
+  java:       (light: #ab6311, dark: #e86a2c),
   infosec:    (light: #00b81a, dark: #57f06d),
   server:     (light: #0098ec, dark: #43b9fb),
-  devops:     (light: #ff6200, dark: #f28744),
-  containers: (light: #c48f49, dark: #e8ac5d),
+  devops:     (light: #ff6200, dark: #f46c16),
+  containers: (light: #c48f49, dark: #ca9249),
   y2k:        (light: #4169e1, dark: #8ca9ff),
   jbb:        (light: #9932cc, dark: #d588fb),
   birthday:   (light: #e40088, dark: #fd40b1),
@@ -75,6 +75,12 @@ $colors-home:(
   news-7:     (light: #973999, dark: #db60dd)
 );
 $color-serverless: #87cef7;
+
+// Icons (modified twemojis)
+// lightbulb on
+$icon-bulb-on: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjIgMzUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJub25lIj48cGF0aCBkPSJNMjIgMTEuMDZjMCA2LjQ0LTUgNy40NC01IDEzLjQ0IDAgMy4xLTMuMTIgMy4zNi01LjUgMy4zNi0yLjA1IDAtNi41OS0uNzgtNi41OS0zLjM2IDAtNi00LjkxLTctNC45MS0xMy40NEMwIDUuMDMgNS4yOS4xNCAxMS4wOC4xNCAxNi44OC4xNCAyMiA1LjAzIDIyIDExLjA2eiIgZmlsbD0iI0ZGRDk4MyIvPjxwYXRoIGQ9Ik0xNS4xNyAzMi41YzAgLjgzLTIuMjQgMi41LTQuMTcgMi41LTEuOTMgMC00LjE3LTEuNjctNC4xNy0yLjUgMC0uODMgMi4yNC0uNSA0LjE3LS41IDEuOTMgMCA0LjE3LS4zMyA0LjE3LjV6IiBmaWxsPSIjQ0NENkREIi8+PHBhdGggZD0iTTE1LjcgMTAuM2ExIDEgMCAwMC0xLjQgMEwxMSAxMy41OGwtMy4zLTMuM2ExIDEgMCAxMC0xLjQgMS40MmwzLjcgMy43VjI2YTEgMSAwIDEwMiAwVjE1LjQxbDMuNy0zLjdhMSAxIDAgMDAwLTEuNDJ6IiBmaWxsPSIjRkZDQzREIi8+PHBhdGggZD0iTTE3IDMxYTIgMiAwIDAxLTIgMkg3YTIgMiAwIDAxLTItMnYtNmgxMnY2eiIgZmlsbD0iIzk5QUFCNSIvPjxwYXRoIGQ9Ik01IDMyYTEgMSAwIDAxLS4xNi0xLjk5bDEyLTJhMSAxIDAgMTEuMzMgMS45N2wtMTIgMkEuOTMuOTMgMCAwMTUgMzJ6bTAtNGExIDEgMCAwMS0uMTYtMS45OWwxMi0yYTEgMSAwIDExLjMzIDEuOTdsLTEyIDJBLjkzLjkzIDAgMDE1IDI4eiIgZmlsbD0iI0NDRDZERCIvPjwvZz48L3N2Zz4K";
+// lightbulb off
+$icon-bulb-off: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjIgMzUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJub25lIj48cGF0aCBkPSJNMjIgMTEuMDZjMCA2LjQ0LTUgNy40NC01IDEzLjQ0IDAgMy4xLTMuMTIgMy4zNi01LjUgMy4zNi0yLjA1IDAtNi41OS0uNzgtNi41OS0zLjM2IDAtNi00LjkxLTctNC45MS0xMy40NEMwIDUuMDMgNS4yOS4xNCAxMS4wOC4xNCAxNi44OC4xNCAyMiA1LjAzIDIyIDExLjA2eiIgZmlsbD0iI0NDQ0JDQiIvPjxwYXRoIGQ9Ik0xNS4xNyAzMi41YzAgLjgzLTIuMjQgMi41LTQuMTcgMi41LTEuOTMgMC00LjE3LTEuNjctNC4xNy0yLjUgMC0uODMgMi4yNC0uNSA0LjE3LS41IDEuOTMgMCA0LjE3LS4zMyA0LjE3LjV6IiBmaWxsPSIjQ0NENkREIi8+PHBhdGggZD0iTTE1LjcgMTAuM2ExIDEgMCAwMC0xLjQgMEwxMSAxMy41OGwtMy4zLTMuM2ExIDEgMCAxMC0xLjQgMS40MmwzLjcgMy43VjI2YTEgMSAwIDEwMiAwVjE1LjQxbDMuNy0zLjdhMSAxIDAgMDAwLTEuNDJ6IiBmaWxsPSIjN0Q3QTcyIi8+PHBhdGggZD0iTTE3IDMxYTIgMiAwIDAxLTIgMkg3YTIgMiAwIDAxLTItMnYtNmgxMnY2eiIgZmlsbD0iIzk5QUFCNSIvPjxwYXRoIGQ9Ik01IDMyYTEgMSAwIDAxLS4xNi0xLjk5bDEyLTJhMSAxIDAgMTEuMzMgMS45N2wtMTIgMkEuOTMuOTMgMCAwMTUgMzJ6bTAtNGExIDEgMCAwMS0uMTYtMS45OWwxMi0yYTEgMSAwIDExLjMzIDEuOTdsLTEyIDJBLjkzLjkzIDAgMDE1IDI4eiIgZmlsbD0iI0NDRDZERCIvPjwvZz48L3N2Zz4K";
 
 // https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
 @mixin themed() {

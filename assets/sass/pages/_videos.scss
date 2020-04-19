@@ -19,8 +19,11 @@ main#video {
     font-size: 0.85em;
     letter-spacing: -0.005em;
     line-height: 1.5;
-    color: #777777;
     margin: 1.25em 1em 0 1em;
+
+    @include themed() {
+      color: t(color-medium-light);
+    }
 
     a {
       font-weight: bold;
@@ -34,7 +37,6 @@ main#video {
     height: auto;
   }
 }
-
 
 // Responsive
 @mixin responsive--videos() {
