@@ -1,2 +1,0 @@
-{{ $twemoji := resources.Get "vendor/emoji/emoji.min.js" | resources.ExecuteAsTemplate "vendor/emoji/emoji.min.js" . }}
-<script async defer src="{{ $twemoji.Permalink }}"></script>

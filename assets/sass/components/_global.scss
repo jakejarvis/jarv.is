@@ -15,9 +15,26 @@ body {
   // really just the color of header & footer
   &.light {
     background-color: $color-light-background;
+
+    button#dark-mode-toggle {
+      background-image: url($base-url + "bulb_on.svg");
+
+      &:hover {
+        background-image: url($base-url + "bulb_off.svg");
+      }
+    }
   }
+
   &.dark {
     background-color: $color-dark-background;
+
+    button#dark-mode-toggle {
+      background-image: url($base-url + "bulb_off.svg");
+
+      &:hover {
+        background-image: url($base-url + "bulb_on.svg");
+      }
+    }
   }
 }
 

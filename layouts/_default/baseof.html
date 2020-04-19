@@ -5,23 +5,12 @@
 {{ partial "head/head" . }}
   </head>
   <body class="light">
-
-    <button id="dark-mode-toggle">Dark mode!!!!!111</button>
-
-    {{ $theme_switch := resources.Get "js/light-dark.js" }}
-    <script src="{{ $theme_switch.Permalink }}"></script>
-
-    <script>
-      // force for testing
-      enableDarkMode();
-    </script>
-
 {{ partialCached "page/header" . }}
 <div id="wrap">
 {{ block "main" . }}{{ end }}
 </div>
 {{ partialCached "page/footer" . }}
-{{ partial "scripts/twemoji" . }}
+{{ partial "scripts/bundle" . }}
 {{ partial "scripts/shortcodes" . }}
 {{ if eq hugo.Environment "production" }}
   {{ partialCached "scripts/simple_analytics" . }}

@@ -1,37 +1,35 @@
-// https://codepen.io/kevinpowell/pen/EMdjOV
+// check for preset `dark_mode` in localStorage
+var pref = localStorage.getItem('dark_mode');
 
-// check for saved 'darkMode' in localStorage
-let darkMode = localStorage.getItem('dark_mode');
+var toggle = document.querySelector('button#dark-mode-toggle');
 
-const darkModeToggle = document.querySelector('button#dark-mode-toggle');
-
-const enableDarkMode = () => {
+var enableDarkMode = function() {
   document.body.classList.remove('light');
   document.body.classList.add('dark');
 
   localStorage.setItem('dark_mode', 'true');
-}
+};
 
-const disableDarkMode = () => {
+var disableDarkMode = function() {
   document.body.classList.remove('dark');
   document.body.classList.add('light');
 
   localStorage.removeItem('dark_mode');
-}
+};
 
-// If the user already visited and enabled darkMode
-// start things off with it on
-if (darkMode === 'true') {
+// if the user already enabled dark mode,
+// turn it on.
+if (pref === 'true') {
   enableDarkMode();
 }
 
-// When someone clicks the button
-darkModeToggle.addEventListener('click', () => {
-  // get their dark_mode setting
-  darkMode = localStorage.getItem('dark_mode');
+// handle toggle click
+toggle.addEventListener('click', function() {
+  // get current dark_mode preference
+  pref = localStorage.getItem('dark_mode');
 
   // if dark mode was disabled, turn it on
-  if (darkMode !== 'true') {
+  if (pref !== 'true') {
     enableDarkMode();
   // if dark mode was enabled, turn it off
   } else {
