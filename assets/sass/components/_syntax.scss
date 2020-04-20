@@ -3,25 +3,39 @@
 /*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 div.highlight span {
   &.k, &.kc, &.kd, &.kp, &.kr, &.kt, &.no {
-    color: #03748a;
+    @include themed() {
+      color: t(syntax-k);
+    }
   }
   &.n, &.bp, &.nb, &.ni, &.fm, &.nl, &.nn, &.py, &.nv, &.vc, &.vg, &.vi, &.vm, &.p {
-    color: #111111;
+    @include themed() {
+      color: t(syntax-n);
+    }
   }
   &.na, &.nc, &.nd, &.ne, &.nf, &.nx {
-    color: #068200;
+    @include themed() {
+      color: t(syntax-na);
+    }
   }
   &.err, &.nt, &.o, &.ow, &.kn {
-    color: #e8003d;
+    @include themed() {
+      color: t(syntax-err);
+    }
   }
   &.l, &.se, &.m, &.mb, &.mf, &.mh, &.mi, &.il, &.mo {
-    color: #8145ec;
+    @include themed() {
+      color: t(syntax-l);
+    }
   }
   &.ld, &.s, &.sa, &.sb, &.sc, &.dl, &.sd, &.s2, &.sh, &.si, &.sx, &.sr, &.s1, &.ss {
-    color: #b35c00;
+    @include themed() {
+      color: t(syntax-ld);
+    }
   }
   &.c, &.ch, &.cm, &.c1, &.cs, &.cp, &.cpf {
-    color: #6b6859;
+    @include themed() {
+      color: t(syntax-c);
+    }
   }
   &.ge {
     font-style: italic;
@@ -32,7 +46,10 @@ div.highlight span {
 
   // line numbers
   &.lnt {
-    color: #999999;
     user-select: none;
+
+    @include themed() {
+      color: t(syntax-lnt);
+    }
   }
 }

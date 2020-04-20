@@ -12,11 +12,19 @@ $themes: (
     color-kinda-light:  #e3e3e3,
     color-super-light:  #f4f4f4,
     color-super-duper-light: #fbfbfb,
-    color-links:        #0e6dc2
+    color-links:        #0e6dc2,
+    syntax-k:           #0e6dc2,
+    syntax-n:           #111111,
+    syntax-na:          #337a15,
+    syntax-err:         #d43d2e,
+    syntax-l:           #8d4eff,
+    syntax-ld:          #bd5500,
+    syntax-c:           #6b6859,
+    syntax-lnt:         #999999
   ),
   dark: (
     color-background:   #292929,
-    color-text:         #eeeeee,
+    color-text:         #efefef,
     color-medium-dark:  #cfcfcf,
     color-medium:       #b1b1b1,
     color-medium-light: #929292,
@@ -24,7 +32,15 @@ $themes: (
     color-kinda-light:  #535353,
     color-super-light:  #272727,
     color-super-duper-light: #1f1f1f,
-    color-links:        #85baea
+    color-links:        #85baea,
+    syntax-k:           #3b9dd2,
+    syntax-n:           #cfcfcf,
+    syntax-na:          #78df55,
+    syntax-err:         #f95757,
+    syntax-l:           #d588fb,
+    syntax-ld:          #fd992a,
+    syntax-c:           #929292,
+    syntax-lnt:         #b1b1b1
   )
 );
 

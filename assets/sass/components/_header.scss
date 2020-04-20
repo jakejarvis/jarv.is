@@ -162,9 +162,10 @@ header {
 
       // Dark mode toggle
       button#dark-mode-toggle {
-        height: 1em;
+        // TODO: figure out need for weird magic numbers here
+        height: 1.025em;
         width: 0.75em;
-        margin-top: 0.125em;   // TODO: figure out weird positioning fix
+        margin-top: 0.125em;
       }
     }
   }
