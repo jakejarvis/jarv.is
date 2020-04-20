@@ -53,7 +53,7 @@
     "rimraf": "^3.0.2",
     "stylelint": "~13.3.2",
     "stylelint-config-sass-guidelines": "~7.0.0",
-    "stylelint-scss": "~3.17.0"
+    "stylelint-scss": "~3.17.1"
   },
   "resolutions": {
     "postcss-clean/postcss": "^7.x"
