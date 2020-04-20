@@ -6,8 +6,10 @@
   X-XSS-Protection: 1; mode=block
 
 # Super long cache (one year) for some assets:
-# web fonts, emojis, fingerprinted scripts, etc.
+# web fonts, emojis, fingerprinted CSS/JS, etc.
 /vendor/*
+  Cache-Control: max-age=31536000, public, immutable
+/css/*
   Cache-Control: max-age=31536000, public, immutable
 /js/*
   Cache-Control: max-age=31536000, public, immutable
