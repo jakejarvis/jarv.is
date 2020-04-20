@@ -107,15 +107,11 @@ header {
 
       // Dark mode toggle
       button#dark-mode-toggle {
-        background: transparent;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         display: block;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        height: 2.5em;
-        width: 2em;
+        height: 1.5em;
+        width: 1em;
         cursor: pointer;
 
         // hide by default in case user's JS is disabled
@@ -146,7 +142,7 @@ header {
       font-size: 1.7em;
 
       li {
-        margin-left: 1em;
+        margin-left: 0.85em;
 
         a {
           span.icon {
@@ -162,6 +158,13 @@ header {
             transform: scale(1.4);
           }
         }
+      }
+
+      // Dark mode toggle
+      button#dark-mode-toggle {
+        height: 1em;
+        width: 0.75em;
+        margin-top: 0.125em;   // TODO: figure out weird positioning fix
       }
     }
   }

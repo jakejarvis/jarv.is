@@ -64,6 +64,28 @@ hr {
   }
 }
 
+// button reset
+button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+
+  // inherit font & color from ancestor
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+
+  // corrects inability to style clickable `input` types in iOS
+  appearance: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
 // all code
 code {
   font-family: $webfont-mono;
@@ -125,7 +147,7 @@ div#wrap {
   }
 }
 
-// manually setting light/dark mode backgrounds
+// manually setting light/dark mode backgrounds and bulb icon
 // really just the color of header & footer
 body {
   &.light {
@@ -133,10 +155,6 @@ body {
 
     button#dark-mode-toggle {
       background-image: url($icon-bulb-on);
-
-      &:hover {
-        background-image: url($icon-bulb-off);
-      }
     }
   }
 
@@ -145,10 +163,6 @@ body {
 
     button#dark-mode-toggle {
       background-image: url($icon-bulb-off);
-
-      &:hover {
-        background-image: url($icon-bulb-on);
-      }
     }
   }
 }
