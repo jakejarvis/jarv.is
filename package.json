@@ -52,7 +52,7 @@
     "postcss-cli": "^7.1.0",
     "postcss-reporter": "^6.0.1",
     "rimraf": "^3.0.2",
-    "stylelint": "~13.3.2",
+    "stylelint": "~13.3.3",
     "stylelint-config-sass-guidelines": "~7.0.0",
     "stylelint-scss": "~3.17.1",
     "terser": "^4.6.11"
