@@ -36,7 +36,7 @@
     "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",
     "html-minifier": "^4.0.0",
-    "hugo-extended": "0.68.3",
+    "hugo-extended": "0.69.2",
     "husky": "^4.2.5",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
