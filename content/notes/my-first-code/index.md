@@ -12,11 +12,9 @@ image: "images/jbb-screen1.png"
 draft: false
 ---
 
-
 {{< image src="images/netscape.png" alt="Awesome First Code on GitHub" />}}
 
 {{< image src="images/badges.png" width="537" alt="Code Quality: A for effort" />}}
-
 
 I recently published my terrible, horrible, no good, very bad [first HTML site](/y2k/) and [first PHP project](https://github.com/jakejarvis/jbb#readme) ever and developed a new addiction to Web 1.0 nostalgia, fed by others who were brave enough to do the same.
 
@@ -24,12 +22,9 @@ So, I started compiling an [awesome-list of other "first code" on GitHub](https:
 
 Hopefully we can all look back at our first projects and be proud of how far we've come since then — no embarrassment allowed! Okay, maybe a little is fine...
 
-
 ---
 
-
 {{< image src="images/jbb-logo.png" width="640" link="https://github.com/jakejarvis/jbb" >}}[Jake's Bulletin Board](https://github.com/jakejarvis/jbb){{< /image >}}
-
 
 Aside from my [first HTML creation](/y2k/) (circa 2001), my first real coding project was in 2003: a PHP 4 masterpiece creatively titled **Jake's Bulletin Board**. I've published the [source code in full on GitHub](https://github.com/jakejarvis/jbb) for your viewing pleasure and highlighted the best/worst parts below.
 
@@ -42,7 +37,6 @@ If you're bored on a rainy day, potential activities could include:
 - Beating the [world record for longest laugh](http://goldenbookofrecords.com/longest-laughter/), currently held by Mr. Belachew Girma of Ethiopia with 3 hours and 6 minutes.
 - Actually getting this to run in 2019.
 
-
 ## Embarrassing Highlights
 
 Who cares if somebody wants to delete a post with the ID "`*`" no matter the author? ([delete_reply_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/delete_reply_submit.php#L9))
@@ -52,7 +46,7 @@ Who cares if somebody wants to delete a post with the ID "`*`" no matter the aut
   $query2 = "DELETE FROM jbb_replies
 WHERE replyID ='$replyID'";
 $result2 = mysql_query ($query2)
-        or die ($query2); 
+        or die ($query2);
 ?>
 ```
 
@@ -121,7 +115,7 @@ $query = "INSERT INTO jbb_users (username, password, email, avatar) VALUES ('$us
 ?>
 ```
 
-I guess I gave up on counting `$query`s by ones...  ([functions.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/functions.php#L231))
+I guess I gave up on counting `$query`s by ones... ([functions.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/functions.php#L231))
 
 ```php
 <?php
@@ -129,7 +123,7 @@ while ($topic = mysql_fetch_object($result30)) {
     $query40 = "SELECT * FROM jbb_users WHERE userID = '$topic->userID'";
     $result20 = mysql_query($query40)
         or die ($query40);
-		
+
     $query50 = "SELECT * FROM jbb_replies WHERE replyID = '$replyID'";
     $result50 = mysql_query($query50)
         or die ($query50);

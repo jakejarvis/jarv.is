@@ -3,45 +3,45 @@
 // Dark & Light Themes
 $themes: (
   light: (
-    color-background:   #ffffff,
-    color-text:         #202020,
-    color-medium-dark:  #494949,
-    color-medium:       #5e5e5e,
+    color-background: #ffffff,
+    color-text: #202020,
+    color-medium-dark: #494949,
+    color-medium: #5e5e5e,
     color-medium-light: #757575,
-    color-light:        #d2d2d2,
-    color-kinda-light:  #e3e3e3,
-    color-super-light:  #f4f4f4,
+    color-light: #d2d2d2,
+    color-kinda-light: #e3e3e3,
+    color-super-light: #f4f4f4,
     color-super-duper-light: #fbfbfb,
-    color-links:        #0e6dc2,
-    syntax-k:           #0e6dc2,
-    syntax-n:           #111111,
-    syntax-na:          #337a15,
-    syntax-err:         #d43d2e,
-    syntax-l:           #8d4eff,
-    syntax-ld:          #bd5500,
-    syntax-c:           #6b6859,
-    syntax-lnt:         #999999
+    color-links: #0e6dc2,
+    syntax-k: #0e6dc2,
+    syntax-n: #111111,
+    syntax-na: #337a15,
+    syntax-err: #d43d2e,
+    syntax-l: #8d4eff,
+    syntax-ld: #bd5500,
+    syntax-c: #6b6859,
+    syntax-lnt: #999999,
   ),
   dark: (
-    color-background:   #292929,
-    color-text:         #efefef,
-    color-medium-dark:  #cfcfcf,
-    color-medium:       #b1b1b1,
+    color-background: #292929,
+    color-text: #efefef,
+    color-medium-dark: #cfcfcf,
+    color-medium: #b1b1b1,
     color-medium-light: #929292,
-    color-light:        #646464,
-    color-kinda-light:  #535353,
-    color-super-light:  #272727,
+    color-light: #646464,
+    color-kinda-light: #535353,
+    color-super-light: #272727,
     color-super-duper-light: #1f1f1f,
-    color-links:        #85baea,
-    syntax-k:           #3b9dd2,
-    syntax-n:           #cfcfcf,
-    syntax-na:          #78df55,
-    syntax-err:         #f95757,
-    syntax-l:           #d588fb,
-    syntax-ld:          #fd992a,
-    syntax-c:           #929292,
-    syntax-lnt:         #b1b1b1
-  )
+    color-links: #85baea,
+    syntax-k: #3b9dd2,
+    syntax-n: #cfcfcf,
+    syntax-na: #78df55,
+    syntax-err: #f95757,
+    syntax-l: #d588fb,
+    syntax-ld: #fd992a,
+    syntax-c: #929292,
+    syntax-lnt: #b1b1b1,
+  ),
 );
 
 $color-light-background: #fbfbfb;
@@ -53,43 +53,151 @@ $color-logo2: #ffb900;
 $color-logo3: #009cdf;
 
 // Colorful Homepage
-$colors-home:(
-  boston:     (light: #fb4d42, dark: #ff5146),
-  jamstack:   (light: #04a699, dark: #08bbac),
-  javascript: (light: #f48024, dark: #e18431),
-  node:       (light: #6fbc4e, dark: #84d95f),
-  golang:     (light: #00acd7, dark: #2ad1fb),
-  react:      (light: #4fb3cd, dark: #6fcbe3),
-  angular:    (light: #c3002f, dark: #f95757),
-  php:        (light: #8892bf, dark: #a4afe3),
-  ruby:       (light: #d34135, dark: #f95a4d),
-  python:     (light: #fea500, dark: #ffbb3c),
-  java:       (light: #ab6311, dark: #e86a2c),
-  infosec:    (light: #00b81a, dark: #57f06d),
-  server:     (light: #0098ec, dark: #43b9fb),
-  devops:     (light: #ff6200, dark: #f46c16),
-  containers: (light: #c48f49, dark: #ca9249),
-  y2k:        (light: #4169e1, dark: #8ca9ff),
-  jbb:        (light: #9932cc, dark: #d588fb),
-  birthday:   (light: #e40088, dark: #fd40b1),
-  github:     (light: #8d4eff, dark: #a379f0),
-  linkedin:   (light: #0073b1, dark: #3b9dd2),
-  twitter:    (light: #00acee, dark: #3bc9ff),
-  dm:         (light: #00acee, dark: #3bc9ff),
-  facebook:   (light: #4267b2, dark: #5f8dec),
-  instagram:  (light: #a37754, dark: #c49169),
-  mastodon:   (light: #6d8ca7, dark: #87b0d5),
-  resume:     (light: #d54b3d, dark: #f46151),
-  email:      (light: #de0c0c, dark: #ff5050),
-  pgp:        (light: #757575, dark: #979797),
-  sms:        (light: #6fcc01, dark: #8edb34),
-  news-1:     (light: #ff1b1b, dark: #f06060),
-  news-2:     (light: #f78200, dark: #fd992a),
-  news-3:     (light: #f2b702, dark: #ffcc2e),
-  news-4:     (light: #5ebd3e, dark: #78df55),
-  news-5:     (light: #009cdf, dark: #29bfff),
-  news-6:     (light: #3e49bb, dark: #7b87ff),
-  news-7:     (light: #973999, dark: #db60dd)
+$colors-home: (
+  boston: (
+    light: #fb4d42,
+    dark: #ff5146,
+  ),
+  jamstack: (
+    light: #04a699,
+    dark: #08bbac,
+  ),
+  javascript: (
+    light: #f48024,
+    dark: #e18431,
+  ),
+  node: (
+    light: #6fbc4e,
+    dark: #84d95f,
+  ),
+  golang: (
+    light: #00acd7,
+    dark: #2ad1fb,
+  ),
+  react: (
+    light: #4fb3cd,
+    dark: #6fcbe3,
+  ),
+  angular: (
+    light: #c3002f,
+    dark: #f95757,
+  ),
+  php: (
+    light: #8892bf,
+    dark: #a4afe3,
+  ),
+  ruby: (
+    light: #d34135,
+    dark: #f95a4d,
+  ),
+  python: (
+    light: #fea500,
+    dark: #ffbb3c,
+  ),
+  java: (
+    light: #ab6311,
+    dark: #e86a2c,
+  ),
+  infosec: (
+    light: #00b81a,
+    dark: #57f06d,
+  ),
+  server: (
+    light: #0098ec,
+    dark: #43b9fb,
+  ),
+  devops: (
+    light: #ff6200,
+    dark: #f46c16,
+  ),
+  containers: (
+    light: #c48f49,
+    dark: #ca9249,
+  ),
+  y2k: (
+    light: #4169e1,
+    dark: #8ca9ff,
+  ),
+  jbb: (
+    light: #9932cc,
+    dark: #d588fb,
+  ),
+  birthday: (
+    light: #e40088,
+    dark: #fd40b1,
+  ),
+  github: (
+    light: #8d4eff,
+    dark: #a379f0,
+  ),
+  linkedin: (
+    light: #0073b1,
+    dark: #3b9dd2,
+  ),
+  twitter: (
+    light: #00acee,
+    dark: #3bc9ff,
+  ),
+  dm: (
+    light: #00acee,
+    dark: #3bc9ff,
+  ),
+  facebook: (
+    light: #4267b2,
+    dark: #5f8dec,
+  ),
+  instagram: (
+    light: #a37754,
+    dark: #c49169,
+  ),
+  mastodon: (
+    light: #6d8ca7,
+    dark: #87b0d5,
+  ),
+  resume: (
+    light: #d54b3d,
+    dark: #f46151,
+  ),
+  email: (
+    light: #de0c0c,
+    dark: #ff5050,
+  ),
+  pgp: (
+    light: #757575,
+    dark: #979797,
+  ),
+  sms: (
+    light: #6fcc01,
+    dark: #8edb34,
+  ),
+  news-1: (
+    light: #ff1b1b,
+    dark: #f06060,
+  ),
+  news-2: (
+    light: #f78200,
+    dark: #fd992a,
+  ),
+  news-3: (
+    light: #f2b702,
+    dark: #ffcc2e,
+  ),
+  news-4: (
+    light: #5ebd3e,
+    dark: #78df55,
+  ),
+  news-5: (
+    light: #009cdf,
+    dark: #29bfff,
+  ),
+  news-6: (
+    light: #3e49bb,
+    dark: #7b87ff,
+  ),
+  news-7: (
+    light: #973999,
+    dark: #db60dd,
+  ),
 );
 $color-serverless: #87cef7;
 
@@ -106,7 +214,12 @@ $icon-bulb-off: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjIgMzUiIHhtb
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
       }
       @content;
       $theme-map: null !global;

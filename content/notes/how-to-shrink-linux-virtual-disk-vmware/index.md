@@ -14,9 +14,7 @@ aliases:
 draft: false
 ---
 
-
 {{< image src="images/screen-shot-2018-12-07-at-2-04-04-pm.png" width="620" >}}`df -dh` = WTF{{< /image >}}
-
 
 **[VMware Workstation](https://www.vmware.com/products/workstation-pro.html)** and **[Fusion](https://www.vmware.com/products/fusion.html)** normally work hard to minimize the size of virtual hard disks for optimizing the amount of storage needed on your host machine . On Windows virtual machines, [VMware has a "clean up" function](https://docs.vmware.com/en/VMware-Fusion/11/com.vmware.fusion.using.doc/GUID-6BB29187-F47F-41D1-AD92-1754036DACD9.html), which detects newly unused space and makes the size of the virtual hard disk smaller accordingly. You'll notice that even if you create a virtual machine with a capacity of 60 GB, for example, the actual size of the VMDK file will dynamically resize to fit the usage of the guest operating system. 60 GB is simply the maximum amount of storage allowed; if your guest operating system and its files amount to 20 GB, the VMDK file will simply be 20 GB.
 
@@ -54,7 +52,6 @@ Boot up your Linux virtual machine. We'll start by optimizing the OS as much as 
 sudo apt-get clean
 ```
 
-
 ## **Step 2:** Make "empty" space actually empty
 
 This step is the crucial one. In order for VMware to detect the newly free space, we need to free it up ourselves using a little trickery. We're going to have Linux overwrite the free space with a file full of zeros — the size of this file will be the size of however much space we're freeing up (5 GB, in the example above) — and then delete it. These commands will create the file, wait a moment, and then delete the file:
@@ -68,7 +65,6 @@ rm -f zero.fill
 ```
 
 Depending on how much space we're freeing, this could take a while. Let it finish or else you'll be left with an actual, real file that will occupy a ton of space — the opposite of what we're trying to accomplish!
-
 
 ## **Step 3:** Letting VMware know we've done its dirty work
 
@@ -101,7 +97,6 @@ After the defragmentation completes, we need to finally shrink the image. We do 
 ```bash {linenos=false}
 /Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -k <path to the same .VMDK file>
 ```
-
 
 ## **Step 4:** Storage Profit!
 

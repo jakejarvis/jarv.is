@@ -1,5 +1,3 @@
-/* jshint indent: 2, browser: true, bitwise: true, plusplus: true */
-
 /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
     https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
   */
@@ -7,13 +5,8 @@
 (function () {
   'use strict';
 
-  /* jshint maxparams:4 */
-
-  var
-    // the exported module object
-    emoji = {
-
-
+  // the exported module object
+  var emoji = {
     /////////////////////////
     //      properties     //
     /////////////////////////

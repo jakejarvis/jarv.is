@@ -17,7 +17,7 @@ main {
   margin: 0 auto;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  display: block;   // https://stackoverflow.com/questions/28794718/max-width-not-working-for-ie-11
+  display: block; // https://stackoverflow.com/questions/28794718/max-width-not-working-for-ie-11
 
   @include themed() {
     color: t(color-text);

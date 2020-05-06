@@ -9,18 +9,18 @@
   var storage = localStorage;
 
   // check for preset `dark_mode_pref` preference in local storage
-  var pref_key = 'dark_mode_pref';
+  var pref_key = "dark_mode_pref";
   var pref = storage.getItem(pref_key);
 
   // change CSS via these <body> classes:
-  var dark = 'dark';
-  var light = 'light';
+  var dark = "dark";
+  var light = "light";
 
   // which class is <body> set to initially?
   var default_theme = light;
 
   // use an element with class `dark-mode-toggle` to trigger swap when clicked
-  var toggle = doc.querySelector('.dark-mode-toggle');
+  var toggle = doc.querySelector(".dark-mode-toggle");
 
   // keep track of current state no matter how we got there
   var active = default_theme === dark;
@@ -40,7 +40,7 @@
   if (!pref) {
     // returns media query selector syntax
     var prefers = function (theme) {
-      return '(prefers-color-scheme: ' + theme + ')';
+      return "(prefers-color-scheme: " + theme + ")";
     };
 
     // check for OS dark/light mode preference and switch accordingly
@@ -61,23 +61,23 @@
   // don't freak out if page happens not to have a toggle
   if (toggle) {
     // toggle re-appears now that we know user has JS enabled
-    toggle.style.visibility = 'visible';
+    toggle.style.visibility = "visible";
 
     // handle toggle click
     toggle.addEventListener(
-      'click',
+      "click",
       function () {
         // switch to the opposite theme & save preference in local storage
         if (active) {
           activateTheme(light);
           storage.setItem(pref_key, light);
           // send event to SA
-          sa_event('triggered_light_mode'); // eslint-disable-line no-undef
+          sa_event("triggered_light_mode"); // eslint-disable-line no-undef
         } else {
           activateTheme(dark);
           storage.setItem(pref_key, dark);
           // send event to SA
-          sa_event('triggered_dark_mode'); // eslint-disable-line no-undef
+          sa_event("triggered_dark_mode"); // eslint-disable-line no-undef
         }
       },
       true

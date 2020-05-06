@@ -3,14 +3,6 @@ module.exports = {
     map: false
   },
   plugins: [
-    require("stylelint")({
-      configFile: ".stylelintrc",
-      configOverrides: {
-        "rules": {
-          "indentation": null
-        }
-      }
-    }),
     require("autoprefixer")(),
     require("postcss-clean")({
       compatibility: "*",

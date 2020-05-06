@@ -12,8 +12,7 @@ image: "images/cf-workers.png"
 draft: false
 ---
 
-
-{{< image src="images/security-headers.png" width="700" >}}An [A+ security grade](https://securityheaders.com/?q=jarv.is&amp;followRedirects=on) for this website!{{< /image >}}
+{{< image src="images/security-headers.png" width="700" >}}An [A+ security grade](https://securityheaders.com/?q=jarv.is&followRedirects=on) for this website!{{< /image >}}
 
 In 2019, it's becoming more and more important to harden websites via HTTP response headers, which all modern browsers parse and enforce. Multiple standards have been introduced over the past few years to protect users from various attack vectors, including `Content-Security-Policy` for injection protection, `Strict-Transport-Security` for HTTPS enforcement, `X-XSS-Protection` for cross-site scripting prevention, `X-Content-Type-Options` to enforce correct MIME types, `Referrer-Policy` to limit information sent with external links, [and many, many more](https://www.netsparker.com/whitepaper-http-security-headers/).
 
@@ -21,12 +20,13 @@ In 2019, it's becoming more and more important to harden websites via HTTP respo
 
 {{< image src="images/cf-workers.png" width="650" alt="Cloudflare Workers" />}}
 
-Workers can be enabled for $5/month via the [Cloudflare Dashboard](https://dash.cloudflare.com/). (It's worth noting, once enabled, Workers can be used on *any zone* on your account, not just one website!).
+Workers can be enabled for \$5/month via the [Cloudflare Dashboard](https://dash.cloudflare.com/). (It's worth noting, once enabled, Workers can be used on _any zone_ on your account, not just one website!).
 
 If you run your own server, these can be added by way of your Apache or nginx configuration. But if you're using a shiny static site host like [GitHub Pages](https://pages.github.com/), [Amazon S3](https://aws.amazon.com/s3/), [Surge](https://surge.sh/), etc. it may be difficult or impossible to do so.
 
-The following script can be added as a Worker and customized to your needs. Some can be extremely picky with syntax, so be sure to [read the documentation](https://www.netsparker.com/whitepaper-http-security-headers/) carefully. You can fiddle with it in [the playground](https://cloudflareworkers.com/), too. Simply modify the current headers to your needs, or add new ones to the `newHeaders` or `removeHeaders` arrays. 
+The following script can be added as a Worker and customized to your needs. Some can be extremely picky with syntax, so be sure to [read the documentation](https://www.netsparker.com/whitepaper-http-security-headers/) carefully. You can fiddle with it in [the playground](https://cloudflareworkers.com/), too. Simply modify the current headers to your needs, or add new ones to the `newHeaders` or `removeHeaders` arrays.
 
+<!-- prettier-ignore -->
 ```js
 let addHeaders = {
   "Content-Security-Policy": "default-src 'self'; upgrade-insecure-requests",
@@ -69,7 +69,6 @@ async function fetchAndApply(request) {
   return response
 }
 ```
-
 
 Once you're done, you can analyze your website's headers and get a letter grade with [Scott Helme](https://scotthelme.co.uk/)'s awesome [Security Headers](https://securityheaders.com/) tool. His free [Report-URI](https://report-uri.com/) service is another great companion tool to monitor these headers and report infractions your users run into in the wild.
 

@@ -12,7 +12,6 @@ image: "images/actions-flow.png"
 draft: false
 ---
 
-
 {{< image src="images/actions-flow.png" width="780" alt="Example workflow for a GitHub Action" />}}
 
 Since being accepted into the beta for [GitHub Actions](https://github.com/features/actions) a few months ago, I've found a new side hobby of whipping up new (and ideally creative) actions for anybody to add to their CI pipeline. Actions are modular steps that interact with a GitHub repository and can be coded with [Docker](https://github.com/actions/hello-world-docker-action) or [JavaScript/Node](https://github.com/actions/hello-world-javascript-action) — and either way, they can be as [simple](https://github.com/jakejarvis/wait-action) or as [complex](https://github.com/jakejarvis/lighthouse-action) as you want. But in both cases, they're incredibly fun to make and the results always scratch my itch for instant gratification.
@@ -30,12 +29,12 @@ Here are the actions I've made so far, sorted by popularity as of this posting:
 - **[🗑️ Cloudflare Purge Cache](https://github.com/jakejarvis/cloudflare-purge-action)** — Purge a website's cache via the Cloudflare API.
 - **[✏️ Hugo Build](https://github.com/jakejarvis/hugo-build-action)** — The static site generator [Hugo](https://github.com/gohugoio) as an action, with support for legacy versions and extended features.
 - **[🔥 Firebase Deploy](https://github.com/jakejarvis/firebase-deploy-action)** — Deploy a static site to [Firebase Hosting](https://firebase.google.com/docs/hosting).
-- **[🔄 Backblaze B2 Sync](https://github.com/jakejarvis/backblaze-b2-action)** —  Sync a directory with a remote [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html) storage bucket.
+- **[🔄 Backblaze B2 Sync](https://github.com/jakejarvis/backblaze-b2-action)** — Sync a directory with a remote [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html) storage bucket.
 - **[💤 Wait](https://github.com/jakejarvis/wait-action)** — A very, very simple action to sleep for a given amount of time (10s, 2m, etc.)
 
 ---
 
-As an example of an *extremely* simple (and almost completely unnecessary) action, the [Wait action](https://github.com/jakejarvis/wait-action) takes one input — a unit of time — and has the pipeline sleep for that amount of time. The [`Dockerfile`](https://github.com/jakejarvis/wait-action/blob/master/Dockerfile) is as simple as this:
+As an example of an _extremely_ simple (and almost completely unnecessary) action, the [Wait action](https://github.com/jakejarvis/wait-action) takes one input — a unit of time — and has the pipeline sleep for that amount of time. The [`Dockerfile`](https://github.com/jakejarvis/wait-action/blob/master/Dockerfile) is as simple as this:
 
 {{< gist id="6a0830c7c3e514980b30fdf86b4931c5" file="Dockerfile" >}}
 
@@ -49,7 +48,7 @@ Using an action is also surprisingly simple, and more intuitive than [Travis CI]
 
 ---
 
-For a more complex example, when I forked [Hugo](https://github.com/gohugoio/hugo) (the static site generator used to build this website) to make some small personalized changes, I also translated [their `.travis.yml` file](https://github.com/gohugoio/hugo/blob/master/.travis.yml) into a [`workflow.yml` file](https://github.com/jakejarvis/hugo-custom/blob/master/.github/workflows/workflow.yml) for practice, which simultaneously runs comprehensive unit tests on **three operating systems** (Ubuntu 18.04, Windows 10, and macOS 10.14) with the latest two Go versions *each!* If the tests are all successful, it builds a Docker image and pushes it to both [Docker Hub](https://hub.docker.com/r/jakejarvis/hugo-custom) and the [GitHub Package Registry](https://github.com/jakejarvis/hugo-custom/packages) (also [in beta](https://github.com/features/package-registry)).
+For a more complex example, when I forked [Hugo](https://github.com/gohugoio/hugo) (the static site generator used to build this website) to make some small personalized changes, I also translated [their `.travis.yml` file](https://github.com/gohugoio/hugo/blob/master/.travis.yml) into a [`workflow.yml` file](https://github.com/jakejarvis/hugo-custom/blob/master/.github/workflows/workflow.yml) for practice, which simultaneously runs comprehensive unit tests on **three operating systems** (Ubuntu 18.04, Windows 10, and macOS 10.14) with the latest two Go versions _each!_ If the tests are all successful, it builds a Docker image and pushes it to both [Docker Hub](https://hub.docker.com/r/jakejarvis/hugo-custom) and the [GitHub Package Registry](https://github.com/jakejarvis/hugo-custom/packages) (also [in beta](https://github.com/features/package-registry)).
 
 {{< image src="images/hugo-logs.png" alt="Build logs for my Hugo fork" />}}
 

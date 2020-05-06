@@ -12,7 +12,6 @@ sitemap:
 
 {{< image src="images/desktop.png" alt="My mess of a desktop." />}}
 
-
 ## 🍎&nbsp; Hardware {#hardware}
 
 - [**MacBook Pro 15"** (Mid-2018)](https://browser.geekbench.com/v5/cpu/1074682)
@@ -33,7 +32,6 @@ sitemap:
 - [**Powerbeats<sup>3</sup> Wireless**](https://www.beatsbydre.com/earphones/powerbeats3-wireless) (in the pretty rad [Pop Indigo](https://www.apple.com/shop/product/MREQ2LL/A/powerbeats3-wireless-earphones-beats-pop-collection-pop-indigo) color)
   - I also have incredibly weird ears, apparently, so my AirPods went right back to the store when they came out. 😢
   - ...but these are a great alternative with the [same pairing and continuity features](https://www.soundguys.com/how-does-apple-w1-chip-work-21049/) between all of my 🍎 devices.
-
 
 ## 💾&nbsp; Development {#development}
 
@@ -69,7 +67,7 @@ sitemap:
   - Microsoft's [free Windows 7 & 10 virtual machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) for developers are super convenient and shockingly generous.
 - [**Sketch**](https://www.sketch.com/)
 - [**Adobe Creative Cloud**](https://www.adobe.com/creativecloud.html)
-  - Still on the $20/month [Student Plan](https://www.adobe.com/creativecloud/buy/students.html), somehow. Will need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x that...
+  - Still on the \$20/month [Student Plan](https://www.adobe.com/creativecloud/buy/students.html), somehow. Will need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x that...
 - [**Transmit**](https://panic.com/transmit/)
 - [**Postman**](https://www.getpostman.com/)
 - [**BrowserStack**](https://www.browserstack.com/)
@@ -77,7 +75,6 @@ sitemap:
 - [~~Robo 3T~~](https://robomongo.org/) → [**TablePlus**](https://tableplus.com/)
 - [**ImageOptim**](https://imageoptim.com/mac)
 - [**Local by Flywheel**](https://localbyflywheel.com/)
-
 
 ## 🌎&nbsp; Browsing {#browsing}
 
@@ -106,7 +103,6 @@ sitemap:
   - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en)
   - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
-
 ## 💻&nbsp; macOS {#macos}
 
 - [**1Password**](https://1password.com/)
@@ -126,7 +122,6 @@ sitemap:
 - [**NVIDIA GeForce NOW** (beta)](https://www.nvidia.com/en-us/geforce-now/)
 - [**Microsoft Office**](https://products.office.com/en-us/mac/microsoft-office-for-mac)
 
-
 ## 📱&nbsp; iOS {#ios}
 
 I have far too many apps to count, but here the essentials that have earned a spot on my home screen:
@@ -143,7 +138,6 @@ I have far too many apps to count, but here the essentials that have earned a sp
 - [**Wunderlist**](https://apps.apple.com/us/app/wunderlist-to-do-list-tasks/id406644151)
 - [**Reeder 4**](https://apps.apple.com/us/app/reeder-4/id1449412357)
 - [**Blink Shell**](https://apps.apple.com/us/app/blink-shell-mosh-ssh-client/id1156707581)
-
 
 ## ☁️&nbsp; Cloud {#cloud}
 
@@ -164,12 +158,11 @@ I've been making recent efforts to [de-Google](https://www.reddit.com/r/degoogle
 - [**Backblaze**](https://www.backblaze.com/) [(referral link)](https://secure.backblaze.com/r/00x84e)
 - [**Plex**](https://www.plex.tv/) + [**Sonarr**](https://sonarr.tv/) + [**Radarr**](https://radarr.video/)
 
-
 ## 🏠&nbsp; Internet of ~~Things~~ [Crap](/notes/shodan-search-queries/) {#home}
 
 - [**Synology RT2600ac**](https://www.synology.com/en-us/products/RT2600ac)
 - [**Synology DiskStation DS218+**](https://www.synology.com/en-us/products/DS218+)
-- [**Dell Inspiron 3647**](https://www.amazon.com/dp/B00HWML468/) running [**VMware ESXi**](https://www.vmware.com/products/esxi-and-esx.html) as a really, *really* crappy home server.
+- [**Dell Inspiron 3647**](https://www.amazon.com/dp/B00HWML468/) running [**VMware ESXi**](https://www.vmware.com/products/esxi-and-esx.html) as a really, _really_ crappy home server.
 - [**Philips Hue**](https://www2.meethue.com/en-us) — color bulbs, dimmer switches, etc.
 - 2x [**Sonos One**](https://www.sonos.com/en-us/shop/one.html) (with Alexa turned off...allegedly.)
 - [**Petcube Play**](https://petcube.com/play/) 😻

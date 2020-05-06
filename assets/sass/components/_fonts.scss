@@ -3,6 +3,7 @@
 // Note to self: got this list after subsetting Inter with glyphhanger:
 // https://github.com/filamentgroup/glyphhanger
 // ex: glyphhanger --whitelist="" --family="Inter" --formats=woff2,woff --subset="*.woff"
+// prettier-ignore
 $unicode-subset: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
 
 /*!

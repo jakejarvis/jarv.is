@@ -8,7 +8,7 @@ sitemap:
   changefreq: yearly
   priority: 0.2
 resources:
-- src: "birthday.mp4"
-- src: "birthday.webm"
-- src: "thumb.png"
+  - src: "birthday.mp4"
+  - src: "birthday.webm"
+  - src: "thumb.png"
 ---

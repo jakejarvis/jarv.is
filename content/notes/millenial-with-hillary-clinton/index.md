@@ -1,7 +1,7 @@
 ---
 title: "Why This Millennial Is With Hillary Clinton Now — and Why We All Need To Be In November"
 date: 2016-02-29 00:10:26-0400
-description: "I am a 24-year-old \"millennial\" and I passionately support Hillary Clinton for the 45th President of the United States. Yes, we exist."
+description: 'I am a 24-year-old "millennial" and I passionately support Hillary Clinton for the 45th President of the United States. Yes, we exist.'
 tags:
   - 2016 Presidential Election
   - Bernie Sanders
@@ -14,9 +14,7 @@ draft: false
 comments: false
 ---
 
-
 {{< image src="images/24707394571_0818d4ab83_o-1-copy.jpg" >}}[Hillary for New Hampshire](https://medium.com/@HillaryForNH) Winter Fellows with [Hillary Clinton](https://medium.com/@HillaryClinton) in Derry, NH ([February 3, 2016](https://www.flickr.com/photos/hillaryclinton/24707394571/)){{< /image >}}
-
 
 ## Keeping in mind the big picture...
 
@@ -28,9 +26,7 @@ My goal here isn't to convince every Bernie believer to jump ship and support he
 
 After working for months as a fellow on Hillary's campaign in New Hampshire leading up to the first primary in the country, I could feed you all the standard campaign talking points in my sleep: After graduating from Yale Law she went to work at the [Children's Defense Fund](http://www.childrensdefense.org/), not a high-paying New York law firm. She [went undercover](http://www.nytimes.com/2015/12/28/us/politics/how-hillary-clinton-went-undercover-to-examine-race-in-education.html?_r=0) in Alabama to investigate discrimination in public schools. She [got juveniles out of adult prisons](http://www.huffingtonpost.com/entry/huffpost-criminal-justice-survey-democratics_us_56bb85eae4b0b40245c5038b). She [gave 8 million children healthcare](https://www.hillaryclinton.com/briefing/factsheets/2015/12/23/hillary-clintons-lifelong-fight-for-quality-affordable-health-care-for-all-americans/). But there's just one thing that, for some reason, is hard for people to believe: at her core she is a good, caring, and loving person who has had only selfless intentions her entire life. I promise you.
 
-
 {{< image src="images/9e58a-1bvweqv_ve2_c1tw5-ihrhw.jpg" width="400" >}}The best birthday gift. 🎉{{< /image >}}
-
 
 I had the incredible chance to meet Hillary the weekend before the New Hampshire primary. Her motorcade plowed through a quiet suburb in Manchester around noon and she hopped out to go knock on the doors of some lucky families. As neighbors started coming out of their houses to shake her hand, I couldn't restrain myself from at least trying to get close and wave hello. (By the way, it's amazing how casual the people in New Hampshire are about meeting presidential candidates.)
 
@@ -46,9 +42,7 @@ As [Bill Maher](https://medium.com/u/cdc04a9799f6) (an avid Bernie supporter) [s
 
 <!-- {{< youtube TqrwDMTByNM >}} -->
 
-
 ---
-
 
 **Update:** The campaign has included my snowy New Hampshire interaction with her in one of the DNC convention videos! See a few short seconds of my joy at 1:24.
 

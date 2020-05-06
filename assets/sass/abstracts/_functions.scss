@@ -16,14 +16,20 @@
 }
 
 // Web fonts (see components/_fonts.scss)
-@mixin font-face($family, $src, $weight: normal, $style: normal, $display: swap) {
+@mixin font-face(
+  $family,
+  $src,
+  $weight: normal,
+  $style: normal,
+  $display: swap
+) {
   @font-face {
     font-family: $family;
     font-style: $style;
     font-weight: $weight;
     font-display: $display;
     src: url($base-url + $src + ".woff2") format("woff2"),
-         url($base-url + $src + ".woff") format("woff");    // stylelint-disable-line indentation
+      url($base-url + $src + ".woff") format("woff");
 
     // Allow additional declarations to be passed in:
     @content;

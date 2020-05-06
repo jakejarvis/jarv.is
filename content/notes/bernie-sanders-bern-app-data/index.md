@@ -1,5 +1,5 @@
 ---
-title: "Bernie Sanders' Creepy \"BERN\" App Wants Your Data...From Your Best Friends"
+title: 'Bernie Sanders'' Creepy "BERN" App Wants Your Data...From Your Best Friends'
 date: 2019-05-08 10:31:02-0400
 description: "The team behind Bernie's campaign has a new app named BERN. It's undoubtedly a smart move, but also a concerning one for privacy advocates."
 tags:
@@ -34,9 +34,8 @@ But how do I know who I know, you might ask? BERN's [FAQ page](https://app.berni
 > - Go through your phone book or, if you use Facebook, your Facebook friend list.
 > - Who would you invite to your birthday party or wedding? Where have you lived throughout your life? Who did you know in each of the places you have lived?
 >
-> **Which people can I add to my contact list the BERN app?** *[sic]*
-> We use the word "friend" very broadly: You can add anyone you have met and known in your life to the app. 
-
+> **Which people can I add to my contact list the BERN app?** _[sic]_
+> We use the word "friend" very broadly: You can add anyone you have met and known in your life to the app.
 
 Using either feature, a volunteer starts with a search of the database for the voter he or she is (theoretically) talking to by entering the voter's first name, last name, and location (which only requires entering the state but can be narrowed down by town and/or ZIP code). Every match pops up with each voter's age, sex, and location along with an option to add the information of someone who's not listed or still needs to register to vote.
 

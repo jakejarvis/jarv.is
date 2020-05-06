@@ -1,21 +1,19 @@
-assets/sass/main.scss
+# Hugo stuff
 assets/vendor
+assets/sass/main.scss
 layouts/
 static/
-.*
-
-
 public/
 builds/
 resources/
 _vendor/
 
+# dotfiles/config
+.*
+*.log
+postcss.config.js
 
+# miscellaneous
 .lighthouseci/
 .netlify/
-
-node_modules/
-package-lock.json
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+LICENSE.md

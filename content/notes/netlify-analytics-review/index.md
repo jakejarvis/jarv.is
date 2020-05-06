@@ -3,21 +3,19 @@ title: "Netlify Analytics Review"
 date: 2019-11-13T08:21:22-05:00
 description: "Netlify has released Netlify Analytics, a tracking tool that's the only one of its kind, prioritizing privacy and speed."
 tags:
-- Review
-- Analytics
-- Data
-- Netlify
-- Privacy
-- JAMStack
+  - Review
+  - Analytics
+  - Data
+  - Netlify
+  - Privacy
+  - JAMStack
 image: "images/overview.png"
 draft: false
 ---
 
-
 I've been trying out [Netlify Analytics](https://www.netlify.com/products/analytics/) on this site for over a month now and have some quick thoughts about this unique offering in a world full of bloated and invasive tracking scripts.
 
 {{< image src="images/pageviews-2.png" alt="Pageview charts on Netlify Analytics" />}}
-
 
 ## 👍&nbsp; Pros {#pros}
 
@@ -55,12 +53,11 @@ Another tangential benefit you simply don't get from JavaScript-based tools like
 
 _Side note: This section has also become cluttered with requests from script kiddies who are scanning the internet for files like `login.php` and `/wp-admin` and `AspCms_Config.asp` (huh?) — but that's a whole separate problem for another day._
 
-
 ## 👎&nbsp; Cons {#cons}
 
 ### 💰&nbsp; Price {#price}
 
-Netlify is one of the most awesome free-as-in-beer services on the web today, providing a fast CDN and instant deployments at zero cost (up to a pretty insane amount, of course). But if you want to add Netlify Analytics, your bill suddenly jumps to [$9 a month](https://www.netlify.com/pricing/#analytics). **Nine dollars!** That's over **$100 per year!** If you have more than 250,000 visitors per month, the cost can be even higher (to the point where you'll need to contact Netlify's sales team).
+Netlify is one of the most awesome free-as-in-beer services on the web today, providing a fast CDN and instant deployments at zero cost (up to a pretty insane amount, of course). But if you want to add Netlify Analytics, your bill suddenly jumps to [\$9 a month](https://www.netlify.com/pricing/#analytics). **Nine dollars!** That's over **\$100 per year!** If you have more than 250,000 visitors per month, the cost can be even higher (to the point where you'll need to contact Netlify's sales team).
 
 It makes sense that Netlify needs to subsidize the cost of providing free enterprise-grade web hosting for the rest of its non-enterprise users to stay alive. But when Google Analytics is free, this is a pretty tough ask for any hobbyist — even if Google is [getting more from them](https://support.google.com/analytics/answer/1011397?hl=en) than they are from Google. 😬
 

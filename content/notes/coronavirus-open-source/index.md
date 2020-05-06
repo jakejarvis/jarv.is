@@ -35,7 +35,7 @@ These are just a few incredible open source projects that didn't exist a few mon
 
 ## [The COVID Tracking Project](https://covidtracking.com/) {{< octocat.inline "https://github.com/COVID19Tracking/website" />}}
 
-Now that Americans are *finally* starting to get tested for the coronavirus, information and statistics about the results are being released state-by-state, which has led to a scattering of primary sources across the web, each releasing [different figures in different forms](https://docs.google.com/document/d/1OyN6_1UeDePwPwKi6UKZB8GwNC7-kSf1-BO2af8kqVA/edit). The [COVID Tracking Project](https://covidtracking.com/) collects as much information as possible from each local health authority's website and puts everything together in [easy-to-digest tables](https://covidtracking.com/data/), as well as [spreadsheets](https://docs.google.com/spreadsheets/u/2/d/e/2PACX-1vRwAqp96T9sYYq2-i7Tj0pvTf6XVHjDSMIKBdZHXiCGGdNC0ypEU9NbngS8mxea55JuCFuua1MUeOj5/pubhtml) and a [public API](https://covidtracking.com/api/).
+Now that Americans are _finally_ starting to get tested for the coronavirus, information and statistics about the results are being released state-by-state, which has led to a scattering of primary sources across the web, each releasing [different figures in different forms](https://docs.google.com/document/d/1OyN6_1UeDePwPwKi6UKZB8GwNC7-kSf1-BO2af8kqVA/edit). The [COVID Tracking Project](https://covidtracking.com/) collects as much information as possible from each local health authority's website and puts everything together in [easy-to-digest tables](https://covidtracking.com/data/), as well as [spreadsheets](https://docs.google.com/spreadsheets/u/2/d/e/2PACX-1vRwAqp96T9sYYq2-i7Tj0pvTf6XVHjDSMIKBdZHXiCGGdNC0ypEU9NbngS8mxea55JuCFuua1MUeOj5/pubhtml) and a [public API](https://covidtracking.com/api/).
 
 The maintainers are also [fully transparent](https://covidtracking.com/about-tracker/) about their process and take great care to annotate individual figures with the methodology used to arrive at each, which has earned them the [trust](https://covidtracking.com/#press) of even the largest national news organizations reporting on COVID-19.
 
@@ -45,15 +45,15 @@ The maintainers are also [fully transparent](https://covidtracking.com/about-tra
 
 This one might be my favorite, simply because of its laser-like focus on solving a very specific (yet catastrophic) problem. The United States is [already running out](https://www.nytimes.com/2020/03/19/health/coronavirus-masks-shortage.html) of [personal protective equipment (PPE)](https://www.fda.gov/medical-devices/general-hospital-devices-and-supplies/personal-protective-equipment-infection-control) for the healthcare professionals on the front lines of this crisis. [#findthemasks.com](https://findthemasks.com/) has gathered specific donation requests and points of contact from hospitals around the country in desperate need of basic supplies.
 
-*Please* look up your local hospitals on [#findthemasks](https://findthemasks.com/#sites) and follow their instructions to donate anything you have hoarded — it's likely the single most impactful thing you can do at this point. If you don't see your local hospital, or don't feel comfortable shipping equipment to any hospital listed, you can also visit [PPE Link](https://ppelink.org/ppe-donations/) and they will connect you with hospitals in your area.
+_Please_ look up your local hospitals on [#findthemasks](https://findthemasks.com/#sites) and follow their instructions to donate anything you have hoarded — it's likely the single most impactful thing you can do at this point. If you don't see your local hospital, or don't feel comfortable shipping equipment to any hospital listed, you can also visit [PPE Link](https://ppelink.org/ppe-donations/) and they will connect you with hospitals in your area.
 
 {{< image src="images/findthemasks.png" width="600" alt="#findthemasks" link="https://findthemasks.com/" />}}
 
 ## [#StayTheFuckHome](https://staythefuckhome.com/) {{< octocat.inline "https://github.com/flore2003/staythefuckhome" />}}
 
-I figured I'd throw in this cheeky website broadcasting a simple but serious message: **STAY THE FUCK HOME!!!** If you're *still* not convinced of the importance of this "suggestion," give their ["Self-Quarantine Manifesto"](https://staythefuckhome.com/) a quick read. Now.
+I figured I'd throw in this cheeky website broadcasting a simple but serious message: **STAY THE FUCK HOME!!!** If you're _still_ not convinced of the importance of this "suggestion," give their ["Self-Quarantine Manifesto"](https://staythefuckhome.com/) a quick read. Now.
 
-The [GitHub community](https://github.com/flore2003/staythefuckhome/pulls?q=is%3Apr) has translated the instructional essay into over a dozen different languages — including a [safe-for-work version](https://staythefuckhome.com/sfw/), if that helps — and they're [looking for more translators](https://github.com/flore2003/staythefuckhome#contributing) if you're multilingual and need something besides Netflix to fill your time with while you ***stay the fuck home!*** 😉
+The [GitHub community](https://github.com/flore2003/staythefuckhome/pulls?q=is%3Apr) has translated the instructional essay into over a dozen different languages — including a [safe-for-work version](https://staythefuckhome.com/sfw/), if that helps — and they're [looking for more translators](https://github.com/flore2003/staythefuckhome#contributing) if you're multilingual and need something besides Netflix to fill your time with while you **_stay the fuck home!_** 😉
 
 {{< image src="images/staythefuckhome.png" width="600" alt="#StayTheFuckHome" link="https://staythefuckhome.com/" />}}
 
@@ -103,13 +103,14 @@ Similar to the [COVID Tracking Project](https://covidtracking.com/) above, the [
 
 ## [Folding@home](https://foldingathome.org/covid19/) {{< octocat.inline "https://github.com/FoldingAtHome/coronavirus" />}}
 
-[Folding@home](https://foldingathome.org/) has been around [*forever*](https://en.wikipedia.org/wiki/Folding@home). I remember installing it on my family's home computer as a curious kid and making my father infuriated over how slow it got. But they [switched gears this month](https://foldingathome.org/2020/03/15/coronavirus-what-were-doing-and-how-you-can-help-in-simple-terms/) from using our computers to crunch various proteins and molecules in the background, and all of their power is now going towards discovering unknown "folds" in the coronavirus, which might be able to lead scientists to find better cures and potential vaccines.
+[Folding@home](https://foldingathome.org/) has been around [_forever_](https://en.wikipedia.org/wiki/Folding@home). I remember installing it on my family's home computer as a curious kid and making my father infuriated over how slow it got. But they [switched gears this month](https://foldingathome.org/2020/03/15/coronavirus-what-were-doing-and-how-you-can-help-in-simple-terms/) from using our computers to crunch various proteins and molecules in the background, and all of their power is now going towards discovering unknown "folds" in the coronavirus, which might be able to lead scientists to find better cures and potential vaccines.
 
 You can [download their software here](https://foldingathome.org/start-folding/) to donate some idle computing power to their efforts — they definitely know what they're doing by now, after pioneering en-masse distributed computing 20 years ago.
 
 **Fun fact:** The team behind Folding@home has seen a [**huge** spike in computational power](https://www.reddit.com/r/pcmasterrace/comments/flgm7q/ama_with_the_team_behind_foldinghome_coronavirus/) this month after cryptominers started mining coronavirus proteins instead of boring, old Ethereum with their insanely overpowered GPUs! 👏
 
 <!-- https://www.youtube.com/watch?v=NTLU1anxe8c -->
+
 {{< video mp4="images/folding.mp4" webm="images/folding.webm" width="365" height="291" poster="images/folding-thumb.png" >}}
 
 ## [Coronavirus Tracker API](https://coronavirus-tracker-api.herokuapp.com/v2/locations) {{< octocat.inline "https://github.com/ExpDev07/coronavirus-tracker-api" />}}

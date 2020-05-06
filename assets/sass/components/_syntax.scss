@@ -2,37 +2,92 @@
 
 /*! Syntax Highlighting - modified from Monokai Light https://github.com/mlgill/pygments-style-monokailight */
 div.highlight span {
-  &.k, &.kc, &.kd, &.kp, &.kr, &.kt, &.no {
+  &.k,
+  &.kc,
+  &.kd,
+  &.kp,
+  &.kr,
+  &.kt,
+  &.no {
     @include themed() {
       color: t(syntax-k);
     }
   }
-  &.n, &.bp, &.nb, &.ni, &.fm, &.nl, &.nn, &.py, &.nv, &.vc, &.vg, &.vi, &.vm, &.p {
+  &.n,
+  &.bp,
+  &.nb,
+  &.ni,
+  &.fm,
+  &.nl,
+  &.nn,
+  &.py,
+  &.nv,
+  &.vc,
+  &.vg,
+  &.vi,
+  &.vm,
+  &.p {
     @include themed() {
       color: t(syntax-n);
     }
   }
-  &.na, &.nc, &.nd, &.ne, &.nf, &.nx {
+  &.na,
+  &.nc,
+  &.nd,
+  &.ne,
+  &.nf,
+  &.nx {
     @include themed() {
       color: t(syntax-na);
     }
   }
-  &.err, &.nt, &.o, &.ow, &.kn {
+  &.err,
+  &.nt,
+  &.o,
+  &.ow,
+  &.kn {
     @include themed() {
       color: t(syntax-err);
     }
   }
-  &.l, &.se, &.m, &.mb, &.mf, &.mh, &.mi, &.il, &.mo {
+  &.l,
+  &.se,
+  &.m,
+  &.mb,
+  &.mf,
+  &.mh,
+  &.mi,
+  &.il,
+  &.mo {
     @include themed() {
       color: t(syntax-l);
     }
   }
-  &.ld, &.s, &.sa, &.sb, &.sc, &.dl, &.sd, &.s2, &.sh, &.si, &.sx, &.sr, &.s1, &.ss {
+  &.ld,
+  &.s,
+  &.sa,
+  &.sb,
+  &.sc,
+  &.dl,
+  &.sd,
+  &.s2,
+  &.sh,
+  &.si,
+  &.sx,
+  &.sr,
+  &.s1,
+  &.ss {
     @include themed() {
       color: t(syntax-ld);
     }
   }
-  &.c, &.ch, &.cm, &.c1, &.cs, &.cp, &.cpf {
+  &.c,
+  &.ch,
+  &.cm,
+  &.c1,
+  &.cs,
+  &.cp,
+  &.cpf {
     @include themed() {
       color: t(syntax-c);
     }

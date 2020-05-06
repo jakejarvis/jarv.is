@@ -1,7 +1,7 @@
 ---
-title: "\"No Homo!\" — Still Rap's Motto in 2012?"
+title: '"No Homo!" — Still Rap''s Motto in 2012?'
 date: 2013-11-22 11:58:20-0400
-description: "This essay was written for Professor David Valdes-Greenwood's \"Love & Sexuality\" class at Tufts University in April 2012."
+description: 'This essay was written for Professor David Valdes-Greenwood''s "Love & Sexuality" class at Tufts University in April 2012.'
 tags:
   - Essay
   - Homosexuality
@@ -15,14 +15,11 @@ draft: false
 comments: false
 ---
 
-
 {{< image src="images/1_b41ztscbaxqi60snwsswfw.jpg" >}}This essay was written for Professor [David Valdes-Greenwood](http://www.davidvaldesgreenwood.com/)'s "Love & Sexuality" class at [Tufts University](https://www.tufts.edu/) in April 2012.{{< /image >}}
-
 
 > _Too many faggot n\*ggas clocking my spending, exercising your gay-like minds like Richard Simmons ... Fucking faggot-ass light skin n\*ggas, get the fuck out of my face ... It's crazy how you can go from being Joe Blow, to everybody on your dick, no homo ... You homo n\*ggas getting AIDS in the ass, while the homie here's trying to get paid in advance ... If y'all leave me alone this wouldn't be my M.O., I wouldn't have to go, ‘eenee-meene-minie-moe,' catch a homo by his toe, man I don't know no more..._
 
-
-What do all of these lyrics have in common? Two things. Firstly, they are all blatant in their use of anti-gay slurs and graphically homophobic language. And secondly, they've each been written and recorded by one of the top five mainstream rap artists of 2011: Jay-Z, Diddy, Kanye West, Lil Wayne, and Eminem — a worshipped all-star team in music with a combined income of $82 million last year alone, with multi-platinum records endorsed by and distributed through Universal, Sony, and Warner Brothers, and with endorsement deals from Gatorade, HP, Pepsi, Chrysler, Lipton, and others.
+What do all of these lyrics have in common? Two things. Firstly, they are all blatant in their use of anti-gay slurs and graphically homophobic language. And secondly, they've each been written and recorded by one of the top five mainstream rap artists of 2011: Jay-Z, Diddy, Kanye West, Lil Wayne, and Eminem — a worshipped all-star team in music with a combined income of \$82 million last year alone, with multi-platinum records endorsed by and distributed through Universal, Sony, and Warner Brothers, and with endorsement deals from Gatorade, HP, Pepsi, Chrysler, Lipton, and others.
 
 Of course, these five rappers are protected by their right to free speech to speak these irrefutably homophobic lyrics into a studio microphone, release them onto future multi-platinum CDs, and get played by world-renowned New York City radio stations. But what about their gay and bisexual counterparts? A fame-aspiring gay rapper has just as much of a right, if not more, to record music as Jay-Z and Eminem record, and as much of a right to speak publicly as Ellen DeGeneres and Rosie O'Donnell speak. So, to put it candidly, where are all the gay rappers? I'll give you a minute to scroll through your iPod.
 
@@ -34,9 +31,7 @@ My next inquiry was about whether there's room for a gay person in the mainstrea
 
 It became apparent to me that there is still an ethical divide between the rap industry and the rest of America. In 2012, there are few areas where undisguised and unapologetic homophobia is not only accepted, but rewarded with money and power. (Rap and the Republican presidential nomination race come to mind.) Every few years, we see the issue of rap and homophobia as front-page news, but the time between these climaxes of public outrage is filled with self-encouraging homophobic songs that get no backlash at all.
 
-
 {{< image src="images/66574-132xjztnwqcm40hmdrec08q.jpg" width="700" >}}Frank Micelotta/Getty Images{{< /image >}}
-
 
 Eminem is a prime example of this. After rapping about "homos" and "fags" for years, his third studio album, _The Marshall Mathers LP_, finally saw mainstream recognition and acclaim, including the nomination for Best Rap Album and Album of the Year at the 2001 Grammy Awards. After both the National Academy of Recording Arts & Sciences and CBS "endured a storm of protest over the rapper's best album nomination" due to his use of homophobic slurs, Eminem announced a duet with Elton John to be performed at the Grammy ceremony. "I'd rather tear down walls between people than build them up. If I thought for one minute that he was hateful, I wouldn't do it," John said in defense of the performance.
 
@@ -62,29 +57,23 @@ A year earlier, in 2009, Queens rapper N.O.R.E. also revealed to DJ Vlad:
 
 > I have recorded, not with people who are openly gay, but people who are closet gays. I've got songs, you know, Google it. I'm positive I have worked with a gay rapper. There is one and he won't get me to say the name. Once he's a success story to the point where he can't be stopped, then yeah, he's gonna come out the closet... It's not a big secret, everybody is gonna be like, "Oh yeah, I knew that."
 
-Several other rappers have recently been vocal against homophobia. Nicki Minaj, protégé of Lil Wayne, said in an interview last year with _Out Magazine_, "Normally, Wayne probably wouldn't have gay guys coming to see his shows much, but they're definitely a big part of my movement, and I hope they'd still come out and see me. I think that will be really, really interesting, just to start bridging that gap." Up-and-coming 23-year-old rapper A$AP Rocky, admitted last year to Pitchfork.com, "I used to be homophobic, but that's fucked up. I had to look in the mirror and say, ‘All the designers I'm wearing are gay.'"
-
+Several other rappers have recently been vocal against homophobia. Nicki Minaj, protégé of Lil Wayne, said in an interview last year with _Out Magazine_, "Normally, Wayne probably wouldn't have gay guys coming to see his shows much, but they're definitely a big part of my movement, and I hope they'd still come out and see me. I think that will be really, really interesting, just to start bridging that gap." Up-and-coming 23-year-old rapper A\$AP Rocky, admitted last year to Pitchfork.com, "I used to be homophobic, but that's fucked up. I had to look in the mirror and say, ‘All the designers I'm wearing are gay.'"
 
 {{< image src="images/f9d7a-1gad6zdgng2-mjsedg5igwa.jpg" width="350" >}}Sarah Taylor/Fashion Magazine{{< /image >}}
 
-
-Unfortunately, not all rappers — including and especially the most popular and celebrated — are not as enlightened as today's up-and-comers such as Nicki Minaj and A$AP Rocky. Kanye West, one of the rappers quoted before for shouting "no homo" on Jay-Z's number-one single _Run This Town_ and (in)famous for speaking what's on his mind, was the target of countless questions about his sexuality after his sudden attendance at Paris fashion shows and interest in women's designer clothing. When asked by DJ Sway for MTV News to respond to accusations from fans that he "dresses gay," West responded, "Your dress don't give away whether or not you like a man. Think about actors that straight dress up like a woman or something like that. People wanna label me and throw that on me all the time, but I'm so secure with my manhood."
+Unfortunately, not all rappers — including and especially the most popular and celebrated — are not as enlightened as today's up-and-comers such as Nicki Minaj and A\$AP Rocky. Kanye West, one of the rappers quoted before for shouting "no homo" on Jay-Z's number-one single _Run This Town_ and (in)famous for speaking what's on his mind, was the target of countless questions about his sexuality after his sudden attendance at Paris fashion shows and interest in women's designer clothing. When asked by DJ Sway for MTV News to respond to accusations from fans that he "dresses gay," West responded, "Your dress don't give away whether or not you like a man. Think about actors that straight dress up like a woman or something like that. People wanna label me and throw that on me all the time, but I'm so secure with my manhood."
 
 West, disagreeing with Fat Joe's claim of being surrounded by gay members of the music industry, told Sway that, before releasing a music video for a 2008 collaboration with rapper Fonzworth Bentley, "There was people calling me before we dropped it, like ‘Man y'all shouldn't put that out with y'all dancing, man. People gonna say y'all gay!'" West also disagreed with the prospect of a gay rapper, making a claim that the industry has actually gotten more homophobic in recent years. "Back in the day, people used to have songs like ‘Get In That Ass' or something like that," West said. "Someone would never make a song like that today because they'd be like ‘Whoa! I can't make no song like that! People gonna call me gay!'"
 
 While the sentiment from mainstream rappers is becoming increasingly supportive of all sexualities, West's automatic instinct to defend himself so passionately against rumors about his own sexuality reflects no such sentiment from the community of rap fans and critics. In other words, maybe the record executives are justified to think that a gay rapper would jeopardize the one thing they are hired to protect: a profitable return on investments in recording contracts, marketing, and concert venues.
 
-
 {{< image src="images/a5c2a-1fkblnzkye3g04gdvsbbtpa.jpg" width="580" >}}Amy Odell/New York Magazine Fashion{{< /image >}}
-
 
 Lil Wayne's performance at MTV's Video Music Awards last year showed the community's lack of progress in the area of homophobia. The performance generated tons of instantaneous buzz on the Internet, but not for the reasons Wayne had hoped. Instead of his musical performance being discussed, the topic instead turned to his wardrobe. Viewers of the live award show started wondering and asking online, _"Is Lil Wayne wearing women's pants right now?"_
 
-Sure enough, _Rolling Stone_ confirmed with the fashion store Tripp NYC that Wayne was sporting their ladies' leopard-print jeggings that retail online for $44. _Out Magazine_'s assistant editor Max Berlinger spoke in support of Wayne, attributing his choice of clothes to Dandyism, or "extreme visual paradigms that are manifested in a completely overt way and also heavily rooted in consumerism." Berlinger, when asked to elaborate on artists like Kanye wearing women's blouses and calling it individualism, simply responded with, "Fuck all that theoretical bullshit. At the end of the day, I just want someone to look confidently like themselves, which Lil Wayne did perfectly". However, Wayne's fans vocally disagreed. A Twitter account, @Waynes_Jeggings, was created almost immediately after the performance, and spent the rest of the night questioning Wayne's sexuality (the messages have since been deleted).
-
+Sure enough, _Rolling Stone_ confirmed with the fashion store Tripp NYC that Wayne was sporting their ladies' leopard-print jeggings that retail online for \$44. _Out Magazine_'s assistant editor Max Berlinger spoke in support of Wayne, attributing his choice of clothes to Dandyism, or "extreme visual paradigms that are manifested in a completely overt way and also heavily rooted in consumerism." Berlinger, when asked to elaborate on artists like Kanye wearing women's blouses and calling it individualism, simply responded with, "Fuck all that theoretical bullshit. At the end of the day, I just want someone to look confidently like themselves, which Lil Wayne did perfectly". However, Wayne's fans vocally disagreed. A Twitter account, @Waynes_Jeggings, was created almost immediately after the performance, and spent the rest of the night questioning Wayne's sexuality (the messages have since been deleted).
 
 {{< image src="images/a805a-1ghqzd91ei4fdntwmzwxw6g.jpg" width="350" >}}Martin Rose/Getty Images{{< /image >}}
-
 
 In the most revealing and straightforward social experiment yet, 21-year-old rapper Lil B, famous for his intentionally offbeat rhythm, extremely loose rhymes, and, according to him, over 3,000 songs, some with ridiculous titles such as "I'm Miley Cyrus," "I'm God," "I'm Orange Juice," and "Wonton Soup," decided to test the rap community's homophobia once and for all. In April of last year, Lil B announced during his Coachella performance that his next independently released album would be titled _I'm Gay_. Lil B elaborated on the title, claiming "that he does not partake in that lifestyle but, but he wants to make a statement about the power of words, or lack thereof," but little of his reasoning made it past the headlines and onto the radar of rap fans other than the title, _I'm Gay_.
 

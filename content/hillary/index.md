@@ -8,10 +8,10 @@ sitemap:
   changefreq: yearly
   priority: 0.2
 resources:
-- src: "convention-720p.mp4"
-- src: "convention-720p.webm"
-- src: "subs.en.vtt"
-- src: "thumb.png"
+  - src: "convention-720p.mp4"
+  - src: "convention-720p.webm"
+  - src: "subs.en.vtt"
+  - src: "thumb.png"
 ---
 
 Video is property of [Hillary for America](https://www.hillaryclinton.com/), the [Democratic National Committee](https://democrats.org/), and [CNN / WarnerMedia](http://cnnpressroom.blogs.cnn.com/). &copy; 2016.

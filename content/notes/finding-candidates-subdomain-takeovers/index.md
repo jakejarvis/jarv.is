@@ -12,7 +12,7 @@ image: "images/hackerone-2.png"
 draft: false
 ---
 
-A **subdomain takeover** occurs when a subdomain (like *example*.jarv.is) points to a shared hosting account that is abandoned by its owner, leaving the endpoint available to claim for yourself.
+A **subdomain takeover** occurs when a subdomain (like _example_.jarv.is) points to a shared hosting account that is abandoned by its owner, leaving the endpoint available to claim for yourself.
 
 Not only are takeovers a fun way to dip your toes into [penetration testing](https://www.cloudflare.com/learning/security/glossary/what-is-penetration-testing/), but they can also be incredibly lucrative thanks to [bug bounty programs](https://en.wikipedia.org/wiki/Bug_bounty_program) on services like [HackerOne](https://hackerone.com/hacktivity?order_direction=DESC&order_field=popular&filter=type%3Aall&querystring=subdomain%20takeover) and [Bugcrowd](https://bugcrowd.com/programs), where corporations pay pentesters for their discoveries.
 
@@ -49,7 +49,7 @@ One of their free monthly datasets is called [Forward DNS](https://opendata.rapi
 ./sonar.sh 2019-03-30-1553989414 sonar_output.txt
 ```
 
-This new text file contains *both active and abandoned* subdomains pointing to any of the services listed above — we still need to narrow it down to the takeover candidates by attempting to actually resolve each of them, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
+This new text file contains _both active and abandoned_ subdomains pointing to any of the services listed above — we still need to narrow it down to the takeover candidates by attempting to actually resolve each of them, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
 
 ```bash {linenos=false}
 go get github.com/jakejarvis/subtake
@@ -61,7 +61,7 @@ For a detailed description of the different options you can play around with, se
 subtake -f sonar_output.txt -c fingerprints.json -t 50 -ssl -a -o vulnerable.txt
 ```
 
-This could take quite a while — up to a day, depending on your CPU, memory, and bandwidth — so I usually run it on a VM in the cloud and use [Linux's `screen` command](https://www.howtoforge.com/linux_screen) to keep it running and check in periodically. There will also be many unavoidable false positives that you'll need to check yourself by trying to claim the abandoned name on the corresponding service's portal, which is why I keep using the term *potential* takeovers. 
+This could take quite a while — up to a day, depending on your CPU, memory, and bandwidth — so I usually run it on a VM in the cloud and use [Linux's `screen` command](https://www.howtoforge.com/linux_screen) to keep it running and check in periodically. There will also be many unavoidable false positives that you'll need to check yourself by trying to claim the abandoned name on the corresponding service's portal, which is why I keep using the term _potential_ takeovers.
 
 I also have a collection of root domains of companies offering bounties through [HackerOne](https://hackerone.com/directory/) or [Bugcrowd](https://bugcrowd.com/programs) at a [different GitHub repository](https://github.com/jakejarvis/bounty-domains/). Using the [`grep`-friendly text file](https://github.com/jakejarvis/bounty-domains/blob/master/grep.txt), it's easy to use [`grep`](http://man7.org/linux/man-pages/man1/grep.1.html) to narrow down your `vulnerable.txt` list even more:
 
@@ -73,29 +73,29 @@ grep -f grep.txt vulnerable.txt
 
 In my view, takeovers are a fantastic way to begin a side hustle in bug bounties, simply due to the fact that once you've taken over a subdomain, you don't need to worry about another hunter beating you to the punch and reporting it before you.
 
-Since you have this luxury of time, it becomes ***extremely important*** that you let your adrenaline subside and follow [responsible disclosure](https://www.bugcrowd.com/resource/what-is-responsible-disclosure/) guidelines — especially in the creation of a "proof of concept" file with your username at an obscure location, **not** at `index.html`. I won't go over the details of writing a report because [Patrik Hudak](https://twitter.com/0xpatrik) wrote another [great post about it here](https://0xpatrik.com/takeover-proofs/). This is an example of one of my own reports (company name censored because it has not been publicly disclosed) on [Bugcrowd](https://bugcrowd.com/programs):
+Since you have this luxury of time, it becomes **_extremely important_** that you let your adrenaline subside and follow [responsible disclosure](https://www.bugcrowd.com/resource/what-is-responsible-disclosure/) guidelines — especially in the creation of a "proof of concept" file with your username at an obscure location, **not** at `index.html`. I won't go over the details of writing a report because [Patrik Hudak](https://twitter.com/0xpatrik) wrote another [great post about it here](https://0xpatrik.com/takeover-proofs/). This is an example of one of my own reports (company name censored because it has not been publicly disclosed) on [Bugcrowd](https://bugcrowd.com/programs):
 
-> I have found three subdomains of ********.com vulnerable to takeovers via unclaimed endpoints at [Azure's Traffic Manager](https://azure.microsoft.com/en-us/services/traffic-manager/). I have claimed these endpoints and redirected them to a blank page to prevent a bad actor from doing so in the meantime, and hosted a POC file at obscure URLs. These are the following domains I discovered and the outdated endpoints on Azure to which they point:
+> I have found three subdomains of \*\*\*\*\*\*\*\*.com vulnerable to takeovers via unclaimed endpoints at [Azure's Traffic Manager](https://azure.microsoft.com/en-us/services/traffic-manager/). I have claimed these endpoints and redirected them to a blank page to prevent a bad actor from doing so in the meantime, and hosted a POC file at obscure URLs. These are the following domains I discovered and the outdated endpoints on Azure to which they point:
 >
-> xxxx.********.com --> aaa.trafficmanager.net
+> xxxx.\*\*\*\*\*\*\*\*.com --> aaa.trafficmanager.net
 >
-> yyyy.********.com --> bbb.trafficmanager.net
+> yyyy.\*\*\*\*\*\*\*\*.com --> bbb.trafficmanager.net
 >
-> zzzz.********.com --> ccc.trafficmanager.net
+> zzzz.\*\*\*\*\*\*\*\*.com --> ccc.trafficmanager.net
 >
 > ...and the proof-of-concept files are at the following locations:
 >
-> [http://xxxx.********.com/poc-d4ca9e8ceb.html](#)
+> [http://xxxx.\*\*\*\*\*\*\*\*.com/poc-d4ca9e8ceb.html](#)
 >
-> [http://yyyy.********.com/poc-d4ca9e8ceb.html](#)
+> [http://yyyy.\*\*\*\*\*\*\*\*.com/poc-d4ca9e8ceb.html](#)
 >
-> [http://zzzz.********.com/poc-d4ca9e8ceb.html](#)
+> [http://zzzz.\*\*\*\*\*\*\*\*.com/poc-d4ca9e8ceb.html](#)
 >
-> I have not hosted any other file nor attempted any other vector of attack. You're probably familiar with takeovers like this by now, but through this vulnerability, it would be possible for an attacker to obtain cookies and other sensitive information from your users via phishing, cookie hijacking, or XSS. It is also possible to obtain SSL certificates for ********.com subdomains from CAs that only require domain validation such as [Let's Encrypt](https://letsencrypt.org/how-it-works/), but I have not attempted to do so. More info on possible attack vectors [can be found here](https://0xpatrik.com/subdomain-takeover/).
+> I have not hosted any other file nor attempted any other vector of attack. You're probably familiar with takeovers like this by now, but through this vulnerability, it would be possible for an attacker to obtain cookies and other sensitive information from your users via phishing, cookie hijacking, or XSS. It is also possible to obtain SSL certificates for \*\*\*\*\*\*\*\*.com subdomains from CAs that only require domain validation such as [Let's Encrypt](https://letsencrypt.org/how-it-works/), but I have not attempted to do so. More info on possible attack vectors [can be found here](https://0xpatrik.com/subdomain-takeover/).
 >
 > Please let me know when you've received this report and I'll delete the endpoints from my personal Azure account, so you can either reclaim them or remove the subdomains entirely from your DNS records. Thanks!
 
-I removed the company's name because an important part of responsible *disclosure* is the *disclosure*, or lack thereof. Until the company explicitly gives permission to publicly disclose the vulnerability after patching it — and there are built-in features on both HackerOne and Bugcrowd to request this — it's **not okay** to talk about it publicly.
+I removed the company's name because an important part of responsible _disclosure_ is the _disclosure_, or lack thereof. Until the company explicitly gives permission to publicly disclose the vulnerability after patching it — and there are built-in features on both HackerOne and Bugcrowd to request this — it's **not okay** to talk about it publicly.
 
 The `poc-d4ca9e8ceb.html` proof-of-concept file contained this single, hidden line:
 

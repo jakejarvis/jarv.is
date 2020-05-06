@@ -101,7 +101,7 @@ I'll never publicly say anything against a good Dad joke. This is no exception.
 
 # 11. Michael Bennet — [michaelbennet.com](https://michaelbennet.com/asdfasdf404) {#bennet}
 
-Another quality Dad joke here. 
+Another quality Dad joke here.
 
 {{< image src="images/bennet.png" alt="Michael Bennet" />}}
 
@@ -158,4 +158,3 @@ These candidates haven't configured a custom 404 page, settling for the default 
 # 18. Joe Sestak — [joesestak.com](https://www.joesestak.com/asdfasdf404) {#sestak}
 
 {{< image src="images/sestak.png" alt="Joe Sestak" />}}
-

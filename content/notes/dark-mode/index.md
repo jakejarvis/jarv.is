@@ -46,6 +46,7 @@ A _very_ barebones example is embedded above ([view the source here](https://git
 
 ### Minified JS: (410 bytes gzipped 📦)
 
+<!-- prettier-ignore -->
 ```js
 /*! Dark mode switcheroo | MIT License | jrvs.io/darkmode */
 (function(){var e=window,t=e.document,i=t.body.classList,a=localStorage,c="dark_mode_pref",d=a.getItem(c),n="dark",o="light",r=o,s=t.querySelector(".dark-mode-toggle"),m=r===n,l=function(e){i.remove(n,o);i.add(e);m=e===n};d===n&&l(n);d===o&&l(o);if(!d){var f=function(e){return"(prefers-color-scheme: "+e+")"};e.matchMedia(f(n)).matches?l(n):e.matchMedia(f(o)).matches?l(o):l(r);e.matchMedia(f(n)).addListener((function(e){e.matches&&l(n)}));e.matchMedia(f(o)).addListener((function(e){e.matches&&l(o)}))}if(s){s.style.visibility="visible";s.addEventListener("click",(function(){if(m){l(o);a.setItem(c,o)}else{l(n);a.setItem(c,n)}}),!0)}})();
@@ -53,6 +54,7 @@ A _very_ barebones example is embedded above ([view the source here](https://git
 
 ### Full JS:
 
+<!-- prettier-ignore -->
 ```js
 /*! Dark mode switcheroo | MIT License | jrvs.io/darkmode */
 
@@ -135,6 +137,7 @@ A _very_ barebones example is embedded above ([view the source here](https://git
 
 ### HTML & CSS Example:
 
+<!-- prettier-ignore -->
 ```html
 <!doctype html>
 <head>
