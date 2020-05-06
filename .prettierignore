@@ -1,8 +1,10 @@
-# Hugo stuff
-assets/vendor
+# Hugo stuff that doesn't play well with Prettier
+assets/vendor/
 assets/sass/main.scss
 layouts/
 static/
+
+# output from Hugo
 public/
 builds/
 resources/
@@ -10,10 +12,11 @@ _vendor/
 
 # dotfiles/config
 .*
-*.log
 postcss.config.js
 
 # miscellaneous
+.github/
 .lighthouseci/
 .netlify/
+.vscode/
 LICENSE.md
