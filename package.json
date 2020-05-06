@@ -60,7 +60,7 @@
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-sass-guidelines": "~7.0.0",
     "stylelint-prettier": "^1.1.2",
-    "stylelint-scss": "~3.17.1",
+    "stylelint-scss": "~3.17.2",
     "terser": "^4.6.13"
   },
   "resolutions": {
