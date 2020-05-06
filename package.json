@@ -15,26 +15,29 @@
   },
   "scripts": {
     "clean": "rimraf public/ resources/ builds/ && hugo mod clean",
-    "build": "run-s clean hugo optimize",
+    "build": "run-s clean hugo minify",
     "build:preview": "run-s clean hugo:dev",
     "hugo": "hugo --gc --cleanDestinationDir --verbose",
     "hugo:dev": "hugo --environment development --baseURL ${DEPLOY_PRIME_URL:-/} --buildDrafts --buildFuture --gc --cleanDestinationDir --verbose",
     "start": "hugo server --disableFastRender --buildDrafts --buildFuture --port 1337 --bind 0.0.0.0 --verbose",
-    "optimize": "run-s optimize:**",
-    "optimize:html": "html-minifier --html5 --collapse-whitespace --collapse-boolean-attributes --preserve-line-breaks --minify-css --file-ext html --input-dir public --output-dir public **/*.html",
-    "optimize:js": "terser --compress passes=3,negate_iife=false,keep_fargs=false,sequences=false,reduce_vars=false --mangle reserved=['sa','sa_event'] --output public/js/app.js -- public/js/app.js",
-    "optimize:img": "find ./public -type d ! -path './public/vendor*' | xargs -n1 -P8 -I{} imagemin {}/* --plugin=jpegoptim --plugin.jpegoptim.progressive --plugin.jpegoptim.stripAll --plugin=pngquant --plugin.pngquant.quality={0.1,0.3} --plugin.pngquant.speed=1 --plugin.pngquant.strip --plugin=gifsicle --plugin=svgo --out-dir={}",
+    "minify": "run-s minify:**",
+    "minify:html": "html-minifier --html5 --collapse-whitespace --collapse-boolean-attributes --preserve-line-breaks --minify-css --file-ext html --input-dir public --output-dir public **/*.html",
+    "minify:js": "terser --compress passes=3,negate_iife=false,keep_fargs=false,sequences=false,reduce_vars=false --mangle reserved=['sa','sa_event'] --output public/js/app.js -- public/js/app.js",
+    "minify:img": "find ./public -type d ! -path './public/vendor*' | xargs -n1 -P8 -I{} imagemin {}/* --plugin=jpegoptim --plugin.jpegoptim.progressive --plugin.jpegoptim.stripAll --plugin=pngquant --plugin.pngquant.quality={0.1,0.3} --plugin.pngquant.speed=1 --plugin.pngquant.strip --plugin=gifsicle --plugin=svgo --out-dir={}",
     "lint": "run-s lint:**",
     "lint:scss": "stylelint assets/sass/**/* --syntax scss",
-    "lint:js": "jshint assets/js/*.js",
+    "lint:js": "eslint assets/js/*.js",
     "lint:md": "markdownlint content/**/*.md content/**/**/*.md",
-    "index": "run-s clean hugo index:** clean",
+    "index": "run-s clean hugo index:**",
     "index:algolia": "npx atomic-algolia"
   },
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
     "html-minifier": "^4.0.0",
     "hugo-extended": "0.68.3",
     "husky": "^4.2.5",
@@ -43,7 +46,6 @@
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.1.0",
-    "jshint": "~2.11.0",
     "lint-staged": "^10.2.2",
     "markdownlint-cli": "~0.23.0",
     "npm-run-all": "^4.1.5",
@@ -51,9 +53,12 @@
     "postcss-clean": "^1.1.0",
     "postcss-cli": "^7.1.1",
     "postcss-reporter": "^6.0.1",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "stylelint": "~13.3.3",
+    "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-sass-guidelines": "~7.0.0",
+    "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "~3.17.1",
     "terser": "^4.6.13"
   },
@@ -67,13 +72,16 @@
   },
   "lint-staged": {
     "*.scss": [
-      "yarn lint:scss"
+      "stylelint --syntax scss",
+      "prettier --write"
     ],
     "*.js": [
-      "yarn lint:js"
+      "jshint",
+      "prettier --write"
     ],
     "*.md": [
-      "yarn lint:md"
+      "markdownlint",
+      "prettier --write"
     ]
   }
 }

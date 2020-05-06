@@ -1,5 +1,3 @@
-/* jshint esversion: 6, indent: 2, browser: true, quotmark: single */
-
 /*! Dark mode switcheroo | MIT License | jrvs.io/darkmode */
 
 (function () {
@@ -25,13 +23,13 @@
   var toggle = doc.querySelector('.dark-mode-toggle');
 
   // keep track of current state no matter how we got there
-  var active = (default_theme === dark);
+  var active = default_theme === dark;
 
   // receives a class name and switches <body> to it
   var activateTheme = function (theme) {
     classes.remove(dark, light);
     classes.add(theme);
-    active = (theme === dark);
+    active = theme === dark;
   };
 
   // if user already explicitly toggled in the past, restore their preference
@@ -47,16 +45,17 @@
 
     // check for OS dark/light mode preference and switch accordingly
     // default to `default_theme` set above if unsupported
-    if (win.matchMedia(prefers(dark)).matches)
-      activateTheme(dark);
-    else if (win.matchMedia(prefers(light)).matches)
-      activateTheme(light);
-    else
-      activateTheme(default_theme);
+    if (win.matchMedia(prefers(dark)).matches) activateTheme(dark);
+    else if (win.matchMedia(prefers(light)).matches) activateTheme(light);
+    else activateTheme(default_theme);
 
     // real-time switching if supported by OS/browser
-    win.matchMedia(prefers(dark)).addListener(function (e) { if (e.matches) activateTheme(dark); });
-    win.matchMedia(prefers(light)).addListener(function (e) { if (e.matches) activateTheme(light); });
+    win.matchMedia(prefers(dark)).addListener(function (e) {
+      if (e.matches) activateTheme(dark);
+    });
+    win.matchMedia(prefers(light)).addListener(function (e) {
+      if (e.matches) activateTheme(light);
+    });
   }
 
   // don't freak out if page happens not to have a toggle
@@ -65,19 +64,23 @@
     toggle.style.visibility = 'visible';
 
     // handle toggle click
-    toggle.addEventListener('click', function () {
-      // switch to the opposite theme & save preference in local storage
-      if (active) {
-        activateTheme(light);
-        storage.setItem(pref_key, light);
-        // send event to SA
-        sa_event('triggered_light_mode');
-      } else {
-        activateTheme(dark);
-        storage.setItem(pref_key, dark);
-        // send event to SA
-        sa_event('triggered_dark_mode');
-      }
-    }, true);
+    toggle.addEventListener(
+      'click',
+      function () {
+        // switch to the opposite theme & save preference in local storage
+        if (active) {
+          activateTheme(light);
+          storage.setItem(pref_key, light);
+          // send event to SA
+          sa_event('triggered_light_mode'); // eslint-disable-line no-undef
+        } else {
+          activateTheme(dark);
+          storage.setItem(pref_key, dark);
+          // send event to SA
+          sa_event('triggered_dark_mode'); // eslint-disable-line no-undef
+        }
+      },
+      true
+    );
   }
 })();

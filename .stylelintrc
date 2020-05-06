@@ -1,6 +1,9 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
-  "plugins": [],
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-prettier/recommended"
+  ],
+  "plugins": ["stylelint-prettier"],
   "rules": {
     "color-hex-length": "long",
     "function-parentheses-space-inside": null,

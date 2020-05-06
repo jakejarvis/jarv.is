@@ -1,5 +1,3 @@
-/* jshint browser: true, laxbreak:true, -W080 */
-
 /*! Simple Analytics - Privacy friendly analytics (docs.simpleanalytics.com/script; 2020-05-03; d98d) */
 // https://github.com/simpleanalytics/scripts/blob/915d98d39868cbb578619f64b5e2374a5af60c2b/src/default.js
 
@@ -9,17 +7,17 @@
   // Generate the needed variables, this seems like a lot of repetition, but it
   // makes our script availble for multple destination which prevents us to
   // need multiple scripts. The minified version stays small.
-  var https = "https:";
-  var pageviewsText = "pageview";
-  var errorText = "error";
-  var protocol = https + "//";
+  var https = 'https:';
+  var pageviewsText = 'pageview';
+  var errorText = 'error';
+  var protocol = https + '//';
   var con = window.console;
-  var slash = "/";
+  var slash = '/';
   var nav = window.navigator;
   var loc = window.location;
   var hostname = loc.hostname;
   var doc = window.document;
-  var notSending = "Not sending requests ";
+  var notSending = 'Not sending requests ';
   var encodeURIComponentFunc = encodeURIComponent;
   var decodeURIComponentFunc = decodeURIComponent;
   var stringify = JSON.stringify;
@@ -27,7 +25,7 @@
   var addEventListenerFunc = window.addEventListener;
   var fullApiUrl = protocol + baseUrl;
   var undefinedVar = undefined;
-  var functionName = "sa_event";
+  var functionName = 'sa_event';
 
   var payload = {
     version: 2,
@@ -42,7 +40,7 @@
 
   // A simple log function so the user knows why a request is not being send
   var warn = function (message) {
-    if (con && con.warn) con.warn("Simple Analytics:", message);
+    if (con && con.warn) con.warn('Simple Analytics:', message);
   };
 
   var now = Date.now;
@@ -99,7 +97,7 @@
     }
     image.src =
       fullApiUrl +
-      "/send.gif?" +
+      '/send.gif?' +
       Object.keys(data)
         .filter(function (key) {
           return data[key] != undefinedVar;
@@ -107,11 +105,11 @@
         .map(function (key) {
           return (
             encodeURIComponentFunc(key) +
-            "=" +
+            '=' +
             encodeURIComponentFunc(data[key])
           );
         })
-        .join("&");
+        .join('&');
   }
 
   // Send errors
@@ -138,7 +136,7 @@
   );
 
   /** if duration **/
-  var duration = "duration";
+  var duration = 'duration';
   var start = now();
   /** endif **/
 
@@ -152,18 +150,18 @@
 
   // Don't track when localhost
   /** unless testing **/
-  if (hostname.indexOf(".") == -1) return warn(notSending + "from " + hostname);
+  if (hostname.indexOf('.') == -1) return warn(notSending + 'from ' + hostname);
   /** endunless **/
 
   try {
     var getParams = function (regex) {
       // From the search we grab the utm_source and ref and save only that
       var matches = loc.search.match(
-        new RegExp("[?&](" + regex + ")=([^?&]+)", "gi")
+        new RegExp('[?&](' + regex + ')=([^?&]+)', 'gi')
       );
       var match = matches
         ? matches.map(function (m) {
-            return m.split("=")[1];
+            return m.split('=')[1];
           })
         : [];
       if (match && match[0]) return match[0];
@@ -174,17 +172,17 @@
     var lastSendPath;
 
     // We don't want to end up with sensitive data so we clean the referrer URL
-    var utmRegexPrefix = "(utm_)?";
+    var utmRegexPrefix = '(utm_)?';
     var source = {
-      source: getParams(utmRegexPrefix + "source|source|ref"),
-      medium: getParams(utmRegexPrefix + "medium"),
-      campaign: getParams(utmRegexPrefix + "campaign"),
-      term: getParams(utmRegexPrefix + "term"),
-      content: getParams(utmRegexPrefix + "content"),
+      source: getParams(utmRegexPrefix + 'source|source|ref'),
+      medium: getParams(utmRegexPrefix + 'medium'),
+      campaign: getParams(utmRegexPrefix + 'campaign'),
+      term: getParams(utmRegexPrefix + 'term'),
+      content: getParams(utmRegexPrefix + 'content'),
       referrer:
-        (doc.referrer || "")
-          .replace(/^https?:\/\/((m|l|w{2,3}([0-9]+)?)\.)?([^?#]+)(.*)$/, "$4")
-          .replace(/^([^/]+)\/$/, "$1") || undefinedVar,
+        (doc.referrer || '')
+          .replace(/^https?:\/\/((m|l|w{2,3}([0-9]+)?)\.)?([^?#]+)(.*)$/, '$4')
+          .replace(/^([^/]+)\/$/, '$1') || undefinedVar,
     };
 
     // We don't put msHidden in if duration block, because it's used outside of that functionality
@@ -193,7 +191,7 @@
     /** if duration **/
     var hiddenStart;
     window.addEventListener(
-      "visibilitychange",
+      'visibilitychange',
       function () {
         if (doc.hidden) hiddenStart = now();
         else msHidden += now() - hiddenStart;
@@ -202,10 +200,10 @@
     );
     /** endif **/
 
-    var sendBeaconText = "sendBeacon";
+    var sendBeaconText = 'sendBeacon';
 
     var sendOnLeave = function (id, push) {
-      var append = { type: "append", original_id: push ? id : lastPageId };
+      var append = { type: 'append', original_id: push ? id : lastPageId };
 
       /** if duration **/
       append[duration] = Math.round((now() - start + msHidden) / thousand);
@@ -221,24 +219,24 @@
         sendData(append);
       } else {
         nav[sendBeaconText](
-          fullApiUrl + "/append",
+          fullApiUrl + '/append',
           stringify(assign(payload, append))
         );
       }
     };
 
-    addEventListenerFunc("unload", sendOnLeave, false);
+    addEventListenerFunc('unload', sendOnLeave, false);
 
     /** if scroll **/
-    var scroll = "scroll";
+    var scroll = 'scroll';
     var body = doc.body || {};
     var documentElement = doc.documentElement || {};
     var position = function () {
       try {
-        var Height = "Height";
+        var Height = 'Height';
         var scrollHeight = scroll + Height;
-        var offsetHeight = "offset" + Height;
-        var clientHeight = "client" + Height;
+        var offsetHeight = 'offset' + Height;
+        var clientHeight = 'client' + Height;
         var documentClientHeight = documentElement[clientHeight] || 0;
         var height = Math.max(
           body[scrollHeight] || 0,
@@ -260,7 +258,7 @@
       }
     };
 
-    addEventListenerFunc("load", function () {
+    addEventListenerFunc('load', function () {
       scrolled = position();
       addEventListenerFunc(
         scroll,
@@ -273,7 +271,7 @@
     /** endif **/
 
     var sendPageView = function (isPushState, deleteSourceInfo) {
-      if (isPushState) sendOnLeave("" + lastPageId, true);
+      if (isPushState) sendOnLeave('' + lastPageId, true);
       lastPageId = uuid();
       page.id = lastPageId;
 
@@ -302,7 +300,7 @@
 
       // If a user does refresh we need to delete the referrer because otherwise it count double
       var perf = window.performance;
-      var navigation = "navigation";
+      var navigation = 'navigation';
 
       // Check if back, forward or reload buttons are being used in modern browsers
       var userNavigated =
@@ -310,7 +308,7 @@
         perf.getEntriesByType &&
         perf.getEntriesByType(navigation)[0] &&
         perf.getEntriesByType(navigation)[0].type
-          ? ["reload", "back_forward"].indexOf(
+          ? ['reload', 'back_forward'].indexOf(
               perf.getEntriesByType(navigation)[0].type
             ) > -1
           : // Check if back, forward or reload buttons are being use in older browsers
@@ -338,9 +336,7 @@
 
     /** if events **/
     var sessionId = uuid();
-    var validTypes = ["string", "number"];
-
-    var endEvent = function () {};
+    var validTypes = ['string', 'number'];
 
     var sendEvent = function (event, callbackRaw) {
       var isFunction = event instanceof Function;
@@ -348,7 +344,7 @@
         callbackRaw instanceof Function ? callbackRaw : function () {};
 
       if (validTypes.indexOf(typeof event) < 0 && !isFunction) {
-        warn("event is not a string: " + event);
+        warn('event is not a string: ' + event);
         return callback();
       }
 
@@ -356,20 +352,20 @@
         if (isFunction) {
           event = event();
           if (validTypes.indexOf(typeof event) < 0) {
-            warn("event function output is not a string: " + event);
+            warn('event function output is not a string: ' + event);
             return callback();
           }
         }
       } catch (error) {
-        warn("in your event function: " + error.message);
+        warn('in your event function: ' + error.message);
         return callback();
       }
 
-      event = ("" + event).replace(/[^a-z0-9]+/gi, "_").replace(/(^_|_$)/g, "");
+      event = ('' + event).replace(/[^a-z0-9]+/gi, '_').replace(/(^_|_$)/g, '');
       if (event)
         sendData(
           assign(source, {
-            type: "event",
+            type: 'event',
             event: event,
             session_id: sessionId,
           }),
@@ -399,4 +395,4 @@
   } catch (e) {
     sendError(e);
   }
-})(window, "{{ (urls.Parse .Site.BaseURL).Host }}/sa");
+})(window, '{{ (urls.Parse .Site.BaseURL).Host }}/sa');
