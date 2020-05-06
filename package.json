@@ -28,6 +28,7 @@
     "lint:scss": "stylelint assets/sass/**/* --syntax scss",
     "lint:js": "eslint assets/js/*.js",
     "lint:md": "markdownlint content/**/*.md content/**/**/*.md",
+    "lint:prettier": "prettier --check .",
     "index": "run-s clean hugo index:**",
     "index:algolia": "npx atomic-algolia"
   },
