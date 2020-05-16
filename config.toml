@@ -76,10 +76,9 @@ disableAliases = true
     url = "https://github.com/jakejarvis"
     weight = -80
   [[menu.main]]
-    name = "Email"
+    name = "Contact"
     pre = "&#x1F4EC;"
-    # encode my email address like it's 2005 ( ͡° ͜ʖ ͡°)
-    url = "&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;&#x6A;&#x61;&#x6B;&#x65;&#x40;&#x6A;&#x61;&#x72;&#x76;&#x2E;&#x69;&#x73;"
+    url = "/contact/"
     weight = -70
 
 [outputs]
