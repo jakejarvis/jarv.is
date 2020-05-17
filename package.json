@@ -49,7 +49,7 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.1.0",
     "lint-staged": "^10.2.2",
-    "markdownlint-cli": "~0.23.0",
+    "markdownlint-cli": "~0.23.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.x",
     "postcss-clean": "^1.1.0",
