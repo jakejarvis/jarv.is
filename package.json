@@ -44,7 +44,7 @@
     "html-minifier": "^4.0.0",
     "hugo-extended": "0.68.3",
     "husky": "^4.2.5",
-    "imagemin-cli": "^5.1.0",
+    "imagemin-cli": "^6.0.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
