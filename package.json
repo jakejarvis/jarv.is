@@ -68,7 +68,7 @@
     "stylelint-config-sass-guidelines": "~7.0.0",
     "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "~3.17.2",
-    "terser": "^4.7.0"
+    "terser": "^4.8.0"
   },
   "resolutions": {
     "postcss-clean/postcss": "^7.x"
