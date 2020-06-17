@@ -3095,9 +3095,9 @@ natural-compare@^1.4.0:
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
 netlify-plugin-cache@*:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/netlify-plugin-cache/-/netlify-plugin-cache-1.0.2.tgz#7d0759af2228d7360c461377334f28b10adb7030"
-  integrity sha512-0abQlUdGX4cRtQiyP+6HLYlnxPZDe+dqckEOL6a4I4sTd2M0ZwOX6iPvxig6eHH26NDLPOXx7ugF6aQ5x8WXAg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-cache/-/netlify-plugin-cache-1.0.3.tgz#f60514e259dff2b3286b6d60b570bb1c81206794"
+  integrity sha512-CTOwNWrTOP59T6y6unxQNnp1WX702v2R/faR5peSH94ebrYfyY4zT5IsRcIiHKq57jXeyCrhy0GLuTN8ktzuQg==
 
 netlify-plugin-debug-cache@*:
   version "1.0.3"
