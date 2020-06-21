@@ -2048,10 +2048,10 @@ http-cache-semantics@3.8.1:
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz#39b0e16add9b605bf0a9ef3d9daaf4843b4cacd2"
   integrity sha512-5ai2iksyV8ZXmnZhHH4rWPoxxistEexSi5936zIQ1bnNTW5VnA85B6P/VpXiRM017IgRvb2kKo1a//y+0wSp3w==
 
-hugo-extended@0.68.3:
-  version "0.68.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.68.3.tgz#54b3e1ac0137553780bcc33933234ceb287c1f86"
-  integrity sha512-BDZwhbKV0g9fK12Hj0NeNbEkGUNy1+AVDqhcmhMiNod/DGQsjrtB9rlVRUFa2GU50R2TYSJSF0HWWjoEM5RSPA==
+hugo-extended@0.72.0:
+  version "0.72.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.72.0.tgz#944f326b216fa08aa2bf8b67b16e1c9b6629cbc1"
+  integrity sha512-DURE2sSurdCjeKyizVVV3H9CjzA6TAiB3k+nV8ZuwTkDllZVkJ5tUpKlfwUcYJeYV+N8uPmTSmPgjhGZF5u4Cw==
   dependencies:
     bin-wrapper "^4.1.0"
 
