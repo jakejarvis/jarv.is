@@ -3883,10 +3883,10 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-hugo-extended@0.68.3:
-  version "0.68.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.68.3.tgz#54b3e1ac0137553780bcc33933234ceb287c1f86"
-  integrity sha512-BDZwhbKV0g9fK12Hj0NeNbEkGUNy1+AVDqhcmhMiNod/DGQsjrtB9rlVRUFa2GU50R2TYSJSF0HWWjoEM5RSPA==
+hugo-extended@0.73.0:
+  version "0.73.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.73.0.tgz#53c604e0e0bcd8b948356d6caafa0eb33220f9bb"
+  integrity sha512-jEZI6TjupCzuf67ptYCMVSCNHdqgXk1OTvxeWRB5siq9+tA5xrPni3CuxXY4ZV86vBCa0vkMlka9CpNFiys/3g==
   dependencies:
     bin-wrapper "^4.1.0"
 
