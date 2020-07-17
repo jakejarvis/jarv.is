@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "normalize.css": "8.0.1",
-    "twemoji": "13.0.0",
+    "twemoji": "13.0.1",
     "twemoji-parser": "13.0.0"
   },
   "devDependencies": {

@@ -7872,10 +7872,10 @@ twemoji-parser@13.0.0:
   resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-13.0.0.tgz#bd9d1b98474f1651dc174696b45cabefdfa405af"
   integrity sha512-zMaGdskpH8yKjT2RSE/HwE340R4Fm+fbie4AaqjDa4H/l07YUmAvxkSfNl6awVWNRRQ0zdzLQ8SAJZuY5MgstQ==
 
-twemoji@13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/twemoji/-/twemoji-13.0.0.tgz#bdda95c0a76553bb57a355459955feb79eeebcfb"
-  integrity sha512-JIkoLy0lL7ZlsiUKAOdXTp0o8C15O3CzDzAmnWdeDHpjeifmKDDKX4CyViUj+9g33pIqMr8Uhcy1WLwETr8oNg==
+twemoji@13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/twemoji/-/twemoji-13.0.1.tgz#57ddc8bd86c8175c11376f5f9ab322a02e739c2d"
+  integrity sha512-mrTBq+XpCLM4zm76NJOjLHoQNV9mHdBt3Cba/T5lS1rxn8ArwpqE47mqTocupNlkvcLxoeZJjYSUW0DU5ZwqZg==
   dependencies:
     fs-extra "^8.0.1"
     jsonfile "^5.0.0"
