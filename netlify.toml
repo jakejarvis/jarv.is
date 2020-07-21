@@ -25,10 +25,10 @@
     compress = false
 
 [context.deploy-preview]
-  command = "yarn build:hugo --environment development --baseURL $DEPLOY_PRIME_URL --buildDrafts --buildFuture"
+  command = "yarn build:functions && yarn build:hugo --environment development --baseURL $DEPLOY_PRIME_URL --buildDrafts --buildFuture"
 
 [context.branch-deploy]
-  command = "yarn build:hugo --environment development --baseURL $DEPLOY_PRIME_URL --buildDrafts --buildFuture"
+  command = "yarn build:functions && yarn build:hugo --environment development --baseURL $DEPLOY_PRIME_URL --buildDrafts --buildFuture"
 
 # https://github.com/netlify/cli/blob/master/docs/netlify-dev.md#netlifytoml-dev-block
 [dev]

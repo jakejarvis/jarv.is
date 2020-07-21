@@ -5,9 +5,9 @@
 
 {{/* set the location of Netlify Function endpoints for future reference */}}
 {{- if $includeAnalytics }}
-  {{ .Scratch.Set "apiUrl" "http://localhost:9337/.netlify/functions/" }}
-{{- else }}
   {{ .Scratch.Set "apiUrl" (printf "%s%s" .Site.BaseURL "api/") }}
+{{- else }}
+  {{ .Scratch.Set "apiUrl" "http://localhost:9337/.netlify/functions/" }}
 {{- end }}
 
 {{- $darkmode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode.js" . -}}
