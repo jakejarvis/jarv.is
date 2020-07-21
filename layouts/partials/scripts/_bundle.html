@@ -1,14 +1,25 @@
 {{/* only parse and append analytics script on production site */}}
-{{- $includeAnalytics := eq hugo.Environment "production" -}}
+{{/* TODO: REVERT BEFORE MERGING PR */}}
+{{/* $includeAnalytics := eq hugo.Environment "production" */}}
+{{- $includeAnalytics := true -}}
+
+{{/* set the location of Netlify Function endpoints for future reference */}}
+{{- if $includeAnalytics }}
+  {{ .Scratch.Set "apiUrl" "http://localhost:9337/.netlify/functions/" }}
+{{- else }}
+  {{ .Scratch.Set "apiUrl" (printf "%s%s" .Site.BaseURL "api/") }}
+{{- end }}
 
 {{- $darkmode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode.js" . -}}
 {{- $twemoji := resources.Get "js/vendor/twemoji.js" | resources.ExecuteAsTemplate "js/vendor/twemoji.js" . -}}
 
 {{- $bundle := slice $darkmode $twemoji -}}
 
+{{/* only include analytics script on production */}}
 {{- if $includeAnalytics }}
+  {{- $views := resources.Get "js/views.js" | resources.ExecuteAsTemplate "js/views.js" . }}
   {{- $analytics := resources.Get "js/analytics.js" | resources.ExecuteAsTemplate "js/analytics.js" . }}
-  {{- $bundle = slice $darkmode $twemoji $analytics }}
+  {{- $bundle = slice $darkmode $twemoji $views $analytics }}
 {{- end }}
 
 {{- $js := $bundle | resources.Concat "/js/app.js" -}}

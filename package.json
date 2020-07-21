@@ -17,10 +17,10 @@
     "clean": "hugo mod clean && rimraf public/ resources/ builds/ _vendor/ .netlify/{cache,functions}/ $TMPDIR/hugo_cache/ || true",
     "build": "run-s build:hugo build:functions minify",
     "build:hugo": "hugo --gc --cleanDestinationDir --verbose",
-    "build:functions": "netlify-lambda build functions",
+    "build:functions": "netlify-lambda build --config webpack.functions.js functions",
     "start": "run-p start:hugo start:functions",
     "start:hugo": "hugo server --disableFastRender --buildDrafts --buildFuture --port 1337 --bind 0.0.0.0 --verbose",
-    "start:functions": "netlify-lambda serve --port 9337 functions",
+    "start:functions": "netlify-lambda serve --config webpack.functions.js --port 9337 functions",
     "start:docker": "docker run --rm -v $(pwd):/src -p 1337:1337 $(docker build --no-cache -q .)",
     "minify": "run-s minify:**",
     "minify:html": "html-minifier --html5 --collapse-whitespace --collapse-boolean-attributes --preserve-line-breaks --minify-css --remove-comments --file-ext html --input-dir public --output-dir public **/*.html",
@@ -33,6 +33,8 @@
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
+    "firebase": "^7.16.1",
+    "firebase-admin": "^9.0.0",
     "normalize.css": "8.0.1",
     "twemoji": "13.0.1",
     "twemoji-parser": "13.0.0"
@@ -40,6 +42,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.5",
     "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "~7.5.0",
     "eslint-config-prettier": "~6.11.0",
     "eslint-plugin-compat": "~3.8.0",
@@ -55,7 +58,7 @@
     "imagemin-svgo": "^8.0.0",
     "lint-staged": "^10.2.11",
     "markdownlint-cli": "~0.23.2",
-    "netlify-lambda": "^2.0.0",
+    "netlify-lambda": "^2.0.1",
     "netlify-plugin-cache": "*",
     "netlify-plugin-debug-cache": "*",
     "npm-run-all": "^4.1.5",
@@ -73,7 +76,9 @@
     "stylelint-no-unsupported-browser-features": "~4.0.0",
     "stylelint-prettier": "~1.1.2",
     "stylelint-scss": "~3.18.0",
-    "terser": "^4.8.0"
+    "terser": "^4.8.0",
+    "webpack": "^4.43.0",
+    "webpack-node-externals": "^2.5.0"
   },
   "resolutions": {
     "imagemin-gifsicle/gifsicle": "jakejarvis/gifsicle-bin#master",
