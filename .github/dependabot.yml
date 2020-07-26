@@ -5,13 +5,15 @@ updates:
   directory: "/"
   schedule:
     interval: daily
+  versioning-strategy: increase
+  open-pull-requests-limit: 99
 
-- package-ecosystem: docker
+- package-ecosystem: gomod
   directory: "/"
   schedule:
     interval: daily
 
-- package-ecosystem: gomod
+- package-ecosystem: docker
   directory: "/"
   schedule:
     interval: daily
