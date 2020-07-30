@@ -38,7 +38,7 @@
     "twemoji-assets": "jakejarvis/twemoji-assets#13.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.5",
+    "autoprefixer": "^9.8.6",
     "cross-env": "^7.0.2",
     "eslint": "~7.5.0",
     "eslint-config-prettier": "~6.11.0",
