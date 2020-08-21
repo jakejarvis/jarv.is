@@ -56,7 +56,15 @@ Setting the default branch remotely is the only step that can't be done on the c
 
 {{< image src="images/github-default.png" width="810" alt="Changing the default branch of a GitHub repository" />}}
 
-### 4. Delete the old `master` branch on GitHub:
+You may also need to check for other configuration changes in the github project settings. E.g. changing your branch protection rules.
+
+### 4. Update PR branch bases:
+
+The step after this will be removing the master branch from github. You should consider updating the base branch on any open PR's, otherwise they will be automatically closed and are not re-openable. However, it's not the end of the world, you still have the branch so can reconstruct them. Go into each PR and hit the edit button, then you can select the new base branch.
+
+{{< image src="https://github-images.s3.amazonaws.com/enterprise/2.14/assets/images/help/pull_requests/pull-request-edit-base-branch.png" width="810" alt="Changing the base branch of a PR" />}}
+
+### 5. Delete the old `master` branch on GitHub:
 
 We used `-m` (move) to **rename** the `master` branch locally, but GitHub will still have two identical branches at this point (as you saw in the previous step). Deleting it can be a little nerve-racking, so poke around your repository on GitHub and make sure your new branch is there and the commit history is correct.
 
@@ -66,7 +74,7 @@ You can say good riddance to `master` [through the GitHub UI](https://help.githu
 git push origin --delete master
 ```
 
-### 4. Scan your code, scripts, automation, etc. for references to `master`:
+### 6. Scan your code, scripts, automation, etc. for references to `master`:
 
 Do a quick search of your codebase for `master` to manually replace any dead references to it.
 
