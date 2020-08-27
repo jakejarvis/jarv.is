@@ -61,7 +61,7 @@
     "postcss-color-rgba-fallback": "^4.0.0",
     "postcss-focus": "^4.0.0",
     "postcss-reporter": "^6.0.1",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
     "stylelint": "~13.6.1",
     "stylelint-config-prettier": "~8.0.2",
