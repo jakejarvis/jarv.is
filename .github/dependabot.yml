@@ -8,11 +8,6 @@ updates:
   versioning-strategy: increase
   open-pull-requests-limit: 99
 
-- package-ecosystem: gomod
-  directory: "/"
-  schedule:
-    interval: daily
-
 - package-ecosystem: docker
   directory: "/"
   schedule:
