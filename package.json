@@ -63,7 +63,7 @@
     "postcss-reporter": "^6.0.1",
     "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
-    "stylelint": "~13.7.0",
+    "stylelint": "~13.7.1",
     "stylelint-config-prettier": "~8.0.2",
     "stylelint-config-sass-guidelines": "~7.1.0",
     "stylelint-no-unsupported-browser-features": "~4.0.0",
