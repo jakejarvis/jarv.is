@@ -32,7 +32,7 @@ jobs:
       with:
         fetch-depth: 2
         lfs: false
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2.1.2
       with:
         node-version: 14.x
     - name: Install LHCI
@@ -72,7 +72,7 @@ jobs:
       with:
         fetch-depth: 1
         lfs: false
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2.1.2
       with:
         node-version: 14.x
     - name: Get Yarn cache path
