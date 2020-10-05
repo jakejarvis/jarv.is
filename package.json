@@ -37,7 +37,7 @@
     "normalize.css": "8.0.1",
     "twemoji": "13.0.1",
     "twemoji-emojis": "13.0.1",
-    "uuid": "^8.3.0"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
