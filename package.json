@@ -33,7 +33,7 @@
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "normalize.css": "8.0.1",
     "twemoji": "13.0.1",
     "twemoji-emojis": "13.0.1"
