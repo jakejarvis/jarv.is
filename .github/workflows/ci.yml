@@ -100,6 +100,6 @@ jobs:
     - name: Percy snapshots
       # uncomment to disable all bot PRs (eg. dependabot) -- I'm using the free plan...
       # if: "!contains(github.actor, '[bot]')"
-      uses: percy/snapshot-action@v0.1.0
+      uses: percy/snapshot-action@v0.1.2
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
