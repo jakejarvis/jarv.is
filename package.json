@@ -41,7 +41,7 @@
   "devDependencies": {
     "autoprefixer": "^10.0.1",
     "cross-env": "^7.0.2",
-    "eslint": "~7.11.0",
+    "eslint": "~7.12.1",
     "eslint-config-prettier": "~6.14.0",
     "eslint-plugin-compat": "~3.8.0",
     "eslint-plugin-prettier": "~3.1.4",
