@@ -68,7 +68,7 @@
     "stylelint": "~13.7.2",
     "stylelint-config-prettier": "~8.0.2",
     "stylelint-config-sass-guidelines": "~7.1.0",
-    "stylelint-no-unsupported-browser-features": "~4.1.3",
+    "stylelint-no-unsupported-browser-features": "~4.1.4",
     "stylelint-prettier": "~1.1.2",
     "stylelint-scss": "~3.18.0",
     "terser": "^5.3.8"
