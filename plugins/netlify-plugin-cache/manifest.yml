@@ -1,0 +1,5 @@
+name: netlify-plugin-cache
+inputs:
+- name: paths
+  description: Array of files and/or directories to cache between builds.
+  default: [".cache"]
