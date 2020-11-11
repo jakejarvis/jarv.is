@@ -40,12 +40,21 @@
   # don't launch browser automatically
   autoLaunch = false
 
+# Enable local Netlify build plugins:
+[[plugins]]
+  package = "@netlify/plugin-local-install-core"
+# Optimize AMP pages server-side:
+# https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer
+# https://github.com/martinbean/netlify-plugin-amp-server-side-rendering
+[[plugins]]
+  package = "./plugins/netlify-plugin-amp-optimizer"
 # Cache resoures between builds:
 # https://github.com/jakejarvis/netlify-plugin-cache
 [[plugins]]
-  package = "netlify-plugin-cache"
+  package = "./plugins/netlify-plugin-cache"
   [plugins.inputs]
     paths = ["resources", "public", "_vendor"]
+# List cached resources for debugging:
 # [[plugins]]
 #   package = "netlify-plugin-debug-cache"
 

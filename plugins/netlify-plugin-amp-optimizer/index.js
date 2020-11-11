@@ -21,7 +21,8 @@ module.exports = {
     );
 
     utils.status.show({
-      title: `${files.length} AMP pages optimized!`
+      title: 'Success! ⚡',
+      summary: `${files.length} AMP pages optimized!`
     });
   }
 };
