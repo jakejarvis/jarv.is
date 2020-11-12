@@ -11,11 +11,18 @@
     "es6": true
   },
   "overrides": [{
-    "files": ["functions/**.js"],
+    "files": ["{functions,plugins}/**/*.js"],
     "parserOptions": {
       "ecmaVersion": 8,
       "sourceType": "module"
+    },
+    "env": {
+      "browser": false
+    },
+    "rules": {
+      "compat/compat": "off"
     }
   }],
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["public/**"]
 }

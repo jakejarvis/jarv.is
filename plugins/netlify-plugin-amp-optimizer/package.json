@@ -1,16 +1,7 @@
 {
   "name": "netlify-plugin-amp-optimizer",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Render your AMP pages, server-side.",
-  "keywords": [
-    "netlify",
-    "netlify-plugin",
-    "amp",
-    "amp-html"
-  ],
-  "bugs": {
-    "url": "https://github.com/martinbean/netlify-plugin-amp-server-side-rendering"
-  },
   "license": "MIT",
   "author": {
     "name": "Martin Bean",
@@ -21,10 +12,6 @@
     "index.js"
   ],
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/martinbean/netlify-plugin-amp-server-side-rendering.git"
-  },
   "dependencies": {
     "@ampproject/toolbox-optimizer": "^2.x",
     "glob": "^7.x"
