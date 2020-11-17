@@ -65,7 +65,7 @@
     "postcss-svgo": "^4.0.2",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
-    "stylelint": "~13.7.2",
+    "stylelint": "~13.8.0",
     "stylelint-config-prettier": "~8.0.2",
     "stylelint-config-sass-guidelines": "~7.1.0",
     "stylelint-no-unsupported-browser-features": "~4.1.4",
