@@ -63,7 +63,7 @@
     "postcss-import": "^13.0.0",
     "postcss-reporter": "^7.0.1",
     "postcss-svgo": "^4.0.2",
-    "prettier": "^2.1.2",
+    "prettier": "^2.2.0",
     "rimraf": "^3.0.2",
     "stylelint": "~13.8.0",
     "stylelint-config-prettier": "~8.0.2",
