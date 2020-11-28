@@ -3,5 +3,6 @@
   width="1200"
   height="{{ with .Get "height" }}{{ . }}{{ else }}500{{ end }}"
   scrolling="no"
-  src="https://codepen.io/{{ .Get "username" }}/embed/{{ .Get "id" }}/?theme-id=light&amp;default-tab={{ .Get "left-tab" }}{{ with .Get "right-tab" }},{{ . }}{{ end }}">
+  src="https://codepen.io/{{ .Get "username" }}/embed/{{ .Get "id" }}/?theme-id=light&amp;default-tab={{ .Get "left-tab" }}{{ with .Get "right-tab" }},{{ . }}{{ end }}"
+  sandbox="allow-scripts allow-same-origin">
 </amp-iframe>

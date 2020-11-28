@@ -117,16 +117,16 @@
     # https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/secure-pages/
     Content-Security-Policy = '''
     default-src 'self';
-    connect-src 'self' https://api.github.com https://csp-collector.appspot.com/csp/amp https://platform.twitter.com https://queue.simpleanalyticscdn.com;
+    connect-src 'self' https://*.ampproject.net https://csp-collector.appspot.com/csp/amp https://api.github.com https://queue.simpleanalyticscdn.com https://platform.twitter.com;
     font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
     form-action 'none';
     frame-ancestors 'self';
-    frame-src 'self' https://buttons.github.io https://cdn.ampproject.org https://codepen.io https://jakejarvis.github.io https://platform.twitter.com https://player.vimeo.com https://simpleanalytics.com https://www.youtube-nocookie.com;
+    frame-src 'self' https://jakejarvis.github.io https://*.ampproject.net https://cdn.ampproject.org https://buttons.github.io https://codepen.io https://cdpn.io https://platform.twitter.com https://player.vimeo.com https://simpleanalytics.com https://www.youtube-nocookie.com;
     img-src 'self' data: https:;
     manifest-src 'self';
     media-src 'self' data: https:;
     object-src 'none';
-    script-src 'self' https://buttons.github.io https://cdn.ampproject.org/v0.js https://cdn.ampproject.org/v0/ https://cdn.ampproject.org/viewer/ https://cdn.ampproject.org/rtv/ https://gist.github.com https://platform.twitter.com https://player.vimeo.com https://scripts.simpleanalyticscdn.com https://syndication.twitter.com;
+    script-src 'self' https://cdn.ampproject.org/v0.js https://cdn.ampproject.org/v0/ https://cdn.ampproject.org/viewer/ https://cdn.ampproject.org/rtv/ https://3p.ampproject.net https://buttons.github.io https://scripts.simpleanalyticscdn.com https://gist.github.com https://syndication.twitter.com https://platform.twitter.com https://player.vimeo.com;
     style-src 'self' 'unsafe-inline' https://cdn.ampproject.org/rtv/ https://fonts.googleapis.com https://github.githubassets.com;
     worker-src 'self';
     block-all-mixed-content;
