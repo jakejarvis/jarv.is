@@ -6269,10 +6269,10 @@ postcss-media-query-parser@^0.2.3:
   resolved "https://registry.yarnpkg.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
   integrity sha1-J7Ocb02U+Bsac7j3Y1HGCeXO8kQ=
 
-postcss-reporter@^7.0.0, postcss-reporter@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-7.0.1.tgz#463780d0d8d64f356403eba901fdeae71d988f2b"
-  integrity sha512-R9AK80KIqqMb+lwGRBcRkXS7r96VCTxrZvvrfibyA/dWjqctwx7leHMCC05A9HbW8PnChwOWwrmISwp5HQu5wg==
+postcss-reporter@^7.0.0, postcss-reporter@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-7.0.2.tgz#03e9e7381c1afe40646f9c22e7aeeb860e051065"
+  integrity sha512-JyQ96NTQQsso42y6L1H1RqHfWH1C3Jr0pt91mVv5IdYddZAE9DUZxuferNgk6q0o6vBVOrfVJb10X1FgDzjmDw==
   dependencies:
     colorette "^1.2.1"
     lodash.difference "^4.5.0"
@@ -6280,7 +6280,6 @@ postcss-reporter@^7.0.0, postcss-reporter@^7.0.1:
     lodash.get "^4.4.2"
     lodash.groupby "^4.6.0"
     lodash.sortby "^4.7.0"
-    log-symbols "^4.0.0"
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"

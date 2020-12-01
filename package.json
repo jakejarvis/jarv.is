@@ -61,7 +61,7 @@
     "postcss-color-rgba-fallback": "^4.0.0",
     "postcss-focus": "^5.0.1",
     "postcss-import": "^13.0.0",
-    "postcss-reporter": "^7.0.1",
+    "postcss-reporter": "^7.0.2",
     "postcss-svgo": "^4.0.2",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
