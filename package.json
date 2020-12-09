@@ -39,7 +39,7 @@
     "twemoji-emojis": "13.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.4",
+    "autoprefixer": "^10.1.0",
     "cross-env": "^7.0.2",
     "eslint": "~7.14.0",
     "eslint-config-prettier": "~6.15.0",
