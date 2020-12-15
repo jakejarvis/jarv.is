@@ -40,7 +40,7 @@
     "twemoji-emojis": "13.0.1"
   },
   "devDependencies": {
-    "@algolia/netlify-plugin-crawler": "^1.0.0",
+    "@algolia/netlify-plugin-crawler": "^1.0.2",
     "autoprefixer": "^10.0.4",
     "cross-env": "^7.0.3",
     "eslint": "~7.15.0",
