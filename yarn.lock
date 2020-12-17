@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@algolia/algoliasearch-netlify-frontend@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@algolia/algoliasearch-netlify-frontend/-/algoliasearch-netlify-frontend-1.0.0.tgz#f180b1e95ce2cded5569ad055992c7cf1e99c207"
-  integrity sha512-hRr4EXpGGpdmh5OB/DZiGHDBz/oG4PVlaAzmLwWDHT+TFNOe7wfigOZ0QgAock2+LUYD8F7ZRb32PJtddWDYCA==
+"@algolia/algoliasearch-netlify-frontend@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@algolia/algoliasearch-netlify-frontend/-/algoliasearch-netlify-frontend-1.0.3.tgz#2df27ebac28824c529c9983ff75cf138d50d8b16"
+  integrity sha512-dxGvMDGdyG4HllpNoJxs10FuPJGXImA7vE5DdmnUpDLMwmV8kia92vUKB4R1oo6mr7aGkWSfpOVFPaqkN7UgYQ==
 
 "@algolia/netlify-plugin-crawler@^1.0.0":
   version "1.0.0"

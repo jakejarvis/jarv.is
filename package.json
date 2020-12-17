@@ -33,7 +33,7 @@
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
-    "@algolia/algoliasearch-netlify-frontend": "1.0.0",
+    "@algolia/algoliasearch-netlify-frontend": "1.0.3",
     "axios": "^0.21.0",
     "normalize.css": "8.0.1",
     "twemoji": "13.0.1",
