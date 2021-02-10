@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@algolia/algoliasearch-netlify-frontend/-/algoliasearch-netlify-frontend-1.0.3.tgz#2df27ebac28824c529c9983ff75cf138d50d8b16"
   integrity sha512-dxGvMDGdyG4HllpNoJxs10FuPJGXImA7vE5DdmnUpDLMwmV8kia92vUKB4R1oo6mr7aGkWSfpOVFPaqkN7UgYQ==
 
-"@algolia/netlify-plugin-crawler@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@algolia/netlify-plugin-crawler/-/netlify-plugin-crawler-1.0.3.tgz#ade6c6b009f8f5e5c639c970b3a91913403ed131"
-  integrity sha512-n17aU7aXlgjtMlv+IT6sGIsN2lJvbBQv0ru9woncufbo5nGi4zW3Bp2RLtd0y3YP33Jj4fUJPPKX47/eOcPv8g==
+"@algolia/netlify-plugin-crawler@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@algolia/netlify-plugin-crawler/-/netlify-plugin-crawler-1.0.4.tgz#2082c768838a6f343be1cd47199b7d9dd4b11148"
+  integrity sha512-Lgw2XWCVHPqX9OUAgvXwQv1k7FI/IJqNzu8OSFsD2teM+3BhS1zMwkelGFKFYPZrl5PLo18Jk1fbaGJP4GYR6w==
   dependencies:
     node-fetch "2.6.1"
 
