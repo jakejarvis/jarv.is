@@ -72,7 +72,7 @@
     "stylelint-no-unsupported-browser-features": "~4.1.4",
     "stylelint-prettier": "~1.1.2",
     "stylelint-scss": "~3.19.0",
-    "terser": "^5.5.1"
+    "terser": "^5.6.0"
   },
   "optionalDependencies": {
     "imagemin-cli": "^6.0.0",
