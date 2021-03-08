@@ -78,7 +78,7 @@
     "imagemin-cli": "^6.0.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegoptim": "^7.0.0",
-    "imagemin-pngquant": "^9.0.1",
+    "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0"
   },
   "resolutions": {
