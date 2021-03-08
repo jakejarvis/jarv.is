@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@algolia/netlify-plugin-crawler": "^1.0.4",
-    "autoprefixer": "^10.2.4",
+    "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
     "eslint": "~7.21.0",
     "eslint-config-prettier": "~8.1.0",
