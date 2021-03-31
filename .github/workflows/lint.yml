@@ -1,0 +1,49 @@
+name: Lint
+
+# this step was separated out from ci.yml because of changes to how secrets are handled:
+# https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+        lfs: false
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - name: Get Yarn cache path
+      # https://github.com/actions/cache/blob/master/examples.md#node---yarn
+      # https://github.com/actions/cache/issues/60
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.yarn-cache.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - name: Install dependencies
+      run: yarn install --no-ignore-optional --frozen-lockfile
+    - name: Audit dependencies
+      run: yarn audit || true
+      continue-on-error: true
+    - name: Lint
+      run: yarn lint
+      continue-on-error: true
+    - name: Build
+      run: yarn build:hugo --environment development --baseURL / --buildDrafts --buildFuture
+    - name: Percy snapshots
+      uses: percy/snapshot-action@v0.1.2
+      env:
+        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

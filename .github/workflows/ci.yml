@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     # "[skip ci]" also causes Netlify to skip, so these are automatically in harmony
     # https://docs.netlify.com/site-deploys/manage-deploys/#skip-a-deploy
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    if: "github.actor == 'jakejarvis' && !contains(github.event.head_commit.message, '[skip ci]')"
     timeout-minutes: 20
-    env:
-      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
     steps:
     - name: Wait for Netlify
       # installing via `npx` each run takes a long time, but deploys always take longer
       run: npx netlify-cli watch
+      env:
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   audit:
     runs-on: ubuntu-latest
@@ -63,43 +63,3 @@ jobs:
       with:
         name: lhci-results
         path: ./.lighthouseci
-
-  lint:
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-        lfs: false
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-    - name: Get Yarn cache path
-      # https://github.com/actions/cache/blob/master/examples.md#node---yarn
-      # https://github.com/actions/cache/issues/60
-      id: yarn-cache
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    - name: Install dependencies
-      run: yarn install --no-ignore-optional --frozen-lockfile
-    - name: Audit dependencies
-      run: yarn audit || true
-      continue-on-error: true
-    - name: Lint
-      run: yarn lint
-      continue-on-error: true
-    - name: Build
-      run: yarn build:hugo --environment development --baseURL / --buildDrafts --buildFuture
-    - name: Percy snapshots
-      # uncomment to disable all bot PRs (eg. dependabot) -- I'm using the free plan...
-      # if: "!contains(github.actor, '[bot]')"
-      uses: percy/snapshot-action@v0.1.2
-      env:
-        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
