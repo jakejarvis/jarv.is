@@ -58,7 +58,7 @@
     "postcss-focus": "^5.0.1",
     "postcss-import": "^14.0.1",
     "postcss-reporter": "^7.0.2",
-    "postcss-svgo": "^4.0.2",
+    "postcss-svgo": "^4.0.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "stylelint": "~13.12.0",
