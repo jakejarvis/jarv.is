@@ -43,7 +43,7 @@
     "eslint": "~7.23.0",
     "eslint-config-prettier": "~8.1.0",
     "eslint-plugin-compat": "~3.9.0",
-    "eslint-plugin-prettier": "~3.3.1",
+    "eslint-plugin-prettier": "~3.4.0",
     "html-minifier": "^4.0.0",
     "hugo-extended": "0.79.1",
     "husky": "^4.3.8",
