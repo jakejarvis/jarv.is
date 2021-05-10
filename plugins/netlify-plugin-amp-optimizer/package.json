@@ -19,18 +19,18 @@
   "dependencies": {
     "@ampproject/toolbox-optimizer": "^2.7.6",
     "@ampproject/toolbox-update-cache": "^2.7.6",
-    "cssnano-simple": "^1.2.2",
-    "glob": "^7.1.6",
+    "cssnano-simple": "^2.0.0",
+    "glob": "^7.1.7",
     "jimp": "^0.16.1",
     "lru-cache": "^6.0.0",
-    "postcss": "^8.2.4",
+    "postcss": "^8.2.14",
     "postcss-safe-parser": "^5.0.2",
     "probe-image-size": "^7.1.0",
-    "terser": "^5.5.1"
+    "terser": "^5.7.0"
   },
   "devDependencies": {
     "netlify-cli": "*",
-    "xo": "~0.39.1"
+    "xo": "~0.40.0"
   },
   "engines": {
     "node": ">=10.18"

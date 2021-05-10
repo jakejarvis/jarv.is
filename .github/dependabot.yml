@@ -7,7 +7,7 @@ updates:
     interval: daily
   versioning-strategy: increase
   commit-message:
-    prefix: "npm:"
+    prefix: "📦 npm:"
   labels:
     - "npm"
     - "dependencies"
@@ -18,11 +18,12 @@ updates:
     interval: daily
   versioning-strategy: increase
   commit-message:
-    prefix: "plugin(amp):"
+    prefix: "📦 build(amp):"
   labels:
     - "build plugins"
     - "npm"
     - "dependencies"
+  rebase-strategy: disabled
 
 - package-ecosystem: npm
   directory: "/plugins/netlify-plugin-cache"
@@ -30,18 +31,19 @@ updates:
     interval: daily
   versioning-strategy: increase
   commit-message:
-    prefix: "plugin(cache):"
+    prefix: "📦 build(cache):"
   labels:
-    - "plugins"
+    - "build plugins"
     - "npm"
     - "dependencies"
+  rebase-strategy: disabled
 
 - package-ecosystem: docker
   directory: "/"
   schedule:
     interval: daily
   commit-message:
-    prefix: "docker:"
+    prefix: "📦 docker:"
   rebase-strategy: disabled
 
 - package-ecosystem: github-actions
@@ -49,7 +51,7 @@ updates:
   schedule:
     interval: daily
   commit-message:
-    prefix: "ci:"
+    prefix: "📦 ci:"
   rebase-strategy: disabled
 
 - package-ecosystem: pip
@@ -57,5 +59,5 @@ updates:
   schedule:
     interval: weekly
   commit-message:
-    prefix: "pip:"
+    prefix: "📦 pip:"
   rebase-strategy: disabled
