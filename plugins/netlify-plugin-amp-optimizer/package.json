@@ -23,7 +23,7 @@
     "glob": "^7.1.6",
     "jimp": "^0.16.1",
     "lru-cache": "^6.0.0",
-    "postcss": "^8.2.4",
+    "postcss": "^8.2.14",
     "postcss-safe-parser": "^5.0.2",
     "probe-image-size": "^7.1.0",
     "terser": "^5.5.1"
