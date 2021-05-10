@@ -19,7 +19,7 @@
   "dependencies": {
     "@ampproject/toolbox-optimizer": "^2.7.6",
     "@ampproject/toolbox-update-cache": "^2.7.6",
-    "cssnano-simple": "^1.2.2",
+    "cssnano-simple": "^2.0.0",
     "glob": "^7.1.6",
     "jimp": "^0.16.1",
     "lru-cache": "^6.0.0",
