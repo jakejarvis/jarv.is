@@ -28,7 +28,7 @@ jobs:
       LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 2
         lfs: false
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 1
         lfs: false
