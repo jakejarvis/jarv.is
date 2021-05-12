@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "netlify-cli": "*",
-    "xo": "~0.40.0"
+    "xo": "~0.40.1"
   },
   "engines": {
     "node": ">=10.18"
