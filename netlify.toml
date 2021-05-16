@@ -94,7 +94,6 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
-    X-View-Source = "https://jrvs.io/src"
     X-Got-Milk = "2%"
 # PGP key: open in browser, download correctly
 [[headers]]

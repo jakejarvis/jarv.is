@@ -28,6 +28,7 @@ disableAliases = true
   description = "Hi there! I'm a frontend web developer based in Boston, Massachusetts specializing in the JAMstack, modern JavaScript frameworks, and progressive web apps."
   image = "img/logo.png"  # relative to assetDir root
   mainSection = "notes"  # content that appears in feeds
+  baseOnionURL = "http://jarvisz2fxjx54yve4zgtp5rehnwehu22nkww47dg2qv4e6xxzq6fdyd.onion"
   [params.theme]
     maxWidth = 865  # px
     defaultTheme = "light"  # light or dark?

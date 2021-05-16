@@ -11,3 +11,16 @@
 # https://developers.google.com/amp/cache/update-cache#update-cache-guidelines
 /.well-known/amphtml/apikey.pub
   Content-Type: text/plain; charset=UTF-8
+
+# Set Source and Onion-Location headers based on each URL
+{{- range $page := .Site.Pages }}
+{{ $page.Permalink }}
+  Onion-Location: {{ print .Site.Params.baseOnionURL $page.Permalink }}
+  X-View-Source: {{ .Scratch.Get "sourceURL" }}
+
+{{ if and .IsPage (ne .Params.amp false) -}}
+{{ print $page.Permalink "amp.html" }}
+  Onion-Location: {{ print .Site.Params.baseOnionURL $page.Permalink "amp.html" }}
+  X-View-Source: {{ .Scratch.Get "sourceURL" }}
+{{- end }}
+{{ end -}}
