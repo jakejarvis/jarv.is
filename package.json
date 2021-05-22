@@ -35,15 +35,15 @@
     "@fontsource/inter": "4.3.0",
     "@fontsource/roboto-mono": "4.3.0",
     "fathom-client": "3.0.0",
-    "normalize.css": "8.0.1",
+    "modern-normalize": "1.1.0",
     "twemoji": "13.0.2",
     "twemoji-emojis": "13.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^9.0.2",
-    "eslint": "~7.26.0",
+    "dotenv": "^10.0.0",
+    "eslint": "~7.27.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-compat": "~3.9.0",
     "eslint-plugin-prettier": "~3.4.0",

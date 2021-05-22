@@ -4,7 +4,6 @@
 header {
   width: 100%;
   padding: 0 1.5em;
-  box-sizing: border-box;
   border-bottom: 1px solid;
 
   @include colors() {
@@ -15,7 +14,6 @@ header {
     width: 100%;
     max-width: $max-width;
     margin: 0 auto;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,7 +69,7 @@ header {
 
       li {
         text-align: right;
-        margin-left: 2em;
+        margin-left: 1.75em;
 
         a {
           display: inline-block;
@@ -91,15 +89,15 @@ header {
           }
 
           span.icon {
-            font-size: 1.35em;
-            vertical-align: -0.075em;
+            font-size: 1.3em;
+            vertical-align: -0.085em;
           }
 
           span.text {
             font-size: 0.95em;
             font-weight: 500;
             letter-spacing: -0.002em;
-            margin-left: 0.6em;
+            margin-left: 0.65em;
           }
         }
 
@@ -122,9 +120,10 @@ header {
         background-repeat: no-repeat;
         background-size: 100% 100%;
 
-        height: 1.5em;
-        width: 1em;
-        margin-left: 2em;
+        height: 1.56em; // 24.33px, don't ask
+        width: 1.56em;
+        margin-left: 1.4em;
+        margin-right: -0.3em; // weirdness w/ svg ratio
         cursor: pointer;
 
         // hidden by default in case user's JS is disabled, switches to `block` onload in dark-mode.js
@@ -178,10 +177,11 @@ header {
         // Dark mode toggle
         button.dark-mode-toggle {
           // TODO: figure out need for weird magic numbers here
-          height: 1.025em;
-          width: 0.75em;
-          margin-top: 0.15em;
-          margin-left: 1.15em;
+          height: 1.08em; // ~27px, don't ask
+          width: 1.08em;
+          margin-top: 0.175em;
+          margin-left: 1em;
+          margin-right: -0.2em; // weirdness w/ svg ratio
         }
       }
     }

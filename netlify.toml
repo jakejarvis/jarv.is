@@ -99,11 +99,11 @@
     X-View-Source = "https://github.com/jakejarvis/jarv.is"
 # PGP key: open in browser, download correctly
 [[headers]]
-  for = "/jarvis.asc"
+  for = "/pubkey.asc"
   [headers.values]
     Cache-Control = "no-cache"
     Content-Type = "text/plain; charset=UTF-8"
-    Content-Disposition = "inline; filename=\"jarvis.asc\""
+    Content-Disposition = "inline; filename=\"pubkey.asc\""
 
 # Redirect Netlify and www subdomains to primary domain:
 [[redirects]]
@@ -171,6 +171,10 @@
 [[redirects]]
   from = "/keybase.txt"
   to = "/.well-known/keybase.txt"
+  status = 301
+[[redirects]]
+  from = "/jarvis.asc"
+  to = "/pubkey.asc"
   status = 301
 [[redirects]]
   from = "/img/me_large.jpg"

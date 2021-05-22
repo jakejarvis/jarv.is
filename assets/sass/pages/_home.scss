@@ -3,20 +3,23 @@
 // Home Styles
 div.layout-home {
   font-size: 1em;
-  padding-top: 1.5em;
+  padding-top: 1.25em;
   padding-bottom: 0.75em;
 
   h1 {
-    margin: 0 0 0.6em 0;
+    margin: 0 0 0.3em 0;
     font-size: 1.8em;
     font-weight: 500;
     letter-spacing: -0.014em;
-    line-height: 1.1;
     margin-left: -0.03em; // TODO: why is this indented slightly?
+
+    img.emoji {
+      margin-left: 0.1em; // a little extra social distancing for the hand
+    }
   }
 
   h2 {
-    margin: 0.6em 0;
+    margin: 0.5em 0;
     font-size: 1.35em;
     font-weight: 400;
     letter-spacing: -0.022em;
@@ -39,7 +42,7 @@ div.layout-home {
       margin-right: 0.1em;
 
       img.emoji {
-        vertical-align: -0.15em; // magic number to align with text :\
+        vertical-align: -0.2em; // magic number to align with text :\
         padding: 0;
       }
     }
@@ -47,11 +50,10 @@ div.layout-home {
 
   img#me {
     float: right;
-    margin-bottom: 0.6em;
-    margin-left: 1.2em;
+    margin: 0.2em 0 0.6em 1.2em;
     padding: 4px;
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
     border: 1px solid;
     border-radius: 50%;
 
@@ -99,18 +101,19 @@ div.layout-home {
 @mixin responsive--home() {
   div.layout-home {
     font-size: 0.975em;
-    padding: 1.2em 1.2em 0.4em 1.2em;
+    padding-top: 1.2em;
+    padding-bottom: 0.2em;
 
     h1 {
       font-size: 1.5em;
       letter-spacing: -0.014em;
-      line-height: 1.4;
+      line-height: 1.7;
     }
 
     h2 {
       font-size: 1.185em;
       letter-spacing: -0.017em;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     p {
@@ -118,8 +121,8 @@ div.layout-home {
     }
 
     img#me {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       margin: 0 0 0.3em 0.6em;
       padding: 2px;
     }

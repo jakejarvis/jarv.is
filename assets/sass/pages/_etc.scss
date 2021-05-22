@@ -19,8 +19,6 @@ div.layout-etc {
 // Responsive
 @mixin responsive--etc() {
   div.layout-etc {
-    padding: 1.25em 1.1em;
-
     h1 {
       font-size: 1.6em;
       padding: 0 0.6em;

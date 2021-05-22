@@ -42,7 +42,8 @@ div.layout-single {
 // Responsive
 @mixin responsive--single() {
   div.layout-single {
-    padding: 0.8em 1.1em;
+    padding-top: 0.8em;
+    padding-bottom: 0.4em;
 
     h1.title {
       margin-top: 0.4em;
