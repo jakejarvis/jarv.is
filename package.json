@@ -36,7 +36,7 @@
     "@fontsource/roboto-mono": "4.4.0",
     "fathom-client": "3.0.0",
     "modern-normalize": "1.1.0",
-    "twemoji": "13.0.2",
+    "twemoji": "13.1.0",
     "twemoji-emojis": "13.0.2"
   },
   "devDependencies": {
