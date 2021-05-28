@@ -12,7 +12,8 @@
 {{ block "main" . }}{{ end }}
 </main>
 {{ partial "page/footer" . }}
-{{ partial "scripts/_bundle" . -}}
+{{ partialCached "scripts/set_theme" . -}}
+{{ partialCached "scripts/_bundle" . -}}
 {{ partial "scripts/shortcodes" . -}}
   </body>
 </html>

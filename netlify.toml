@@ -78,7 +78,7 @@
     manifest-src 'self';
     media-src 'self' data: https:;
     object-src 'none';
-    script-src 'self' cdn.ampproject.org/lts/v0.js cdn.ampproject.org/lts/v0/ cdn.ampproject.org/viewer/ cdn.ampproject.org/rtv/ 3p.ampproject.net buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com player.vimeo.com 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
+    script-src 'self' cdn.ampproject.org/lts/v0.js cdn.ampproject.org/lts/v0/ cdn.ampproject.org/viewer/ cdn.ampproject.org/rtv/ 3p.ampproject.net buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com player.vimeo.com 'sha256-V9zKolC6KHYAOi4RSOadxuO6JSHoYEYfMUOZ8gTiTr4=' 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
     style-src 'self' 'unsafe-inline' cdn.ampproject.org/rtv/ fonts.googleapis.com assets-cdn.github.com github.githubassets.com;
     worker-src 'self';
     block-all-mixed-content;
