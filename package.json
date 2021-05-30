@@ -39,7 +39,7 @@
     "@fontsource/roboto-mono": "4.4.0",
     "dotenv": "^10.0.0",
     "encoding": "^0.1.13",
-    "faunadb": "^4.3.0",
+    "faunadb": "fauna/faunadb-js#master",
     "modern-normalize": "1.1.0",
     "numeral": "^2.0.6",
     "pluralize": "^8.0.0",
