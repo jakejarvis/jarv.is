@@ -4,6 +4,9 @@ const pluralize = require("pluralize");
 require("dotenv").config();
 const q = faunadb.query;
 
+// https://github.com/netlify/netlify-lambda/issues/201
+require("encoding");
+
 exports.handler = async (event, context) => {
   const { slug } = event.queryStringParameters;
   const index = "hits_by_slug";
