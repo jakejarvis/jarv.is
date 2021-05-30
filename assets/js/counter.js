@@ -13,16 +13,16 @@
     // this will return an error from the API anyways
     if (!slug || slug === "/") return;
 
-    // eslint-disable-next-line compat/compat
     fetch("/api/hits?slug=" + slug)
       .then((response) => response.json())
       .then((data) => {
         // finally inject the hits
+        var spinner = document.getElementById("hit-spinner");
         var counter = document.getElementById("hit-counter");
-        counter.appendChild(document.createTextNode(data.pretty_hits));
 
-        // hide outside span until everything's done
-        wrapper.style.display = "inline";
+        // show the hits and hide the loading spinner
+        spinner.style.display = "none";
+        counter.appendChild(document.createTextNode(data.pretty_hits));
         wrapper.title = data.pretty_hits + " " + data.pretty_unit;
       })
       .catch((error) => {});

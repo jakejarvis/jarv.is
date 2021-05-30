@@ -16,6 +16,31 @@
   will-change: transform; // stylelint-disable-line plugin/no-unsupported-browser-features
 }
 
+// modified from https://tobiasahlin.com/spinkit/
+.spinner {
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+
+  > div {
+    width: 5px;
+    height: 10px;
+    display: inline-block;
+    animation: loader 1.4s infinite ease-in-out both;
+
+    @include colors() {
+      background-color: c(medium-light);
+    }
+  }
+
+  .spin-bounce1 {
+    animation-delay: -0.32s;
+  }
+  .spin-bounce2 {
+    animation-delay: -0.16s;
+  }
+}
+
 @keyframes wave {
   0% {
     transform: rotate(0deg);
@@ -63,6 +88,17 @@
   // pause for ~9 out of 10 seconds
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes loader {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(0.6);
   }
 }
 
