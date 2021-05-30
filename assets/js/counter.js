@@ -3,6 +3,8 @@
   var wrapper = document.getElementById("meta-hits");
 
   if (wrapper) {
+    wrapper.style.display = "inline-block";
+
     // deduce a consistent identifier for this page, no matter the URL
     var canonical = document.createElement("a");
     canonical.href = document.querySelector("link[rel='canonical']").href;
@@ -16,14 +18,13 @@
     fetch("/api/hits?slug=" + slug)
       .then((response) => response.json())
       .then((data) => {
-        // finally inject the hits
+        // finally inject the hits and hide the loading spinner
         var spinner = document.getElementById("hit-spinner");
         var counter = document.getElementById("hit-counter");
 
-        // show the hits and hide the loading spinner
         spinner.style.display = "none";
-        counter.appendChild(document.createTextNode(data.pretty_hits));
         wrapper.title = data.pretty_hits + " " + data.pretty_unit;
+        counter.appendChild(document.createTextNode(data.pretty_hits));
       })
       .catch((error) => {});
   }
