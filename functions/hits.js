@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 400,
       body: JSON.stringify({
-        message: "Page slug not provided.",
+        message: "Page slug required.",
       }),
     };
   }
@@ -34,23 +34,18 @@ exports.handler = async (event, context) => {
         q.Let(
           {
             ref: q.Select("ref", q.Get(q.Var("match"))),
+            data: q.Select("data", q.Get(q.Var("match"))),
           },
-          q.Let(
-            {
-              data: q.Select("data", q.Get(q.Var("match"))),
+          q.Update(q.Var("ref"), {
+            data: {
+              hits: q.Add(q.ToInteger(q.Select("hits", q.Var("data"))), 1),
             },
-
-            q.Update(q.Var("ref"), {
-              data: {
-                hits: q.Add(q.ToInteger(q.Select("hits", q.Var("data"))), 1),
-              },
-            })
-          )
+          })
         ),
         q.Create(q.Collection("hits"), {
           data: {
             slug: slug,
-            hits: 0,
+            hits: 1,
           },
         })
       )
@@ -71,7 +66,7 @@ exports.handler = async (event, context) => {
     },
     body: JSON.stringify({
       slug: slug,
-      hits: "a",
+      hits: hits,
       pretty_hits: numeral(hits).format("0,0"),
       pretty_unit: pluralize("hit", hits),
     }),
