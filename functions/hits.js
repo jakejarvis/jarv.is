@@ -4,18 +4,18 @@ const numeral = require("numeral");
 const pluralize = require("pluralize");
 require("dotenv").config();
 
+// .....??????
 // https://github.com/netlify/netlify-lambda/issues/201
 require("encoding");
 
 exports.handler = async (event, context) => {
   const { slug } = event.queryStringParameters;
-  const index = "hits_by_slug";
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET,
   });
 
   // some rudimentary error handling
-  if (!slug) {
+  if (!slug || slug === "/") {
     return {
       statusCode: 400,
       body: JSON.stringify({
@@ -27,18 +27,18 @@ exports.handler = async (event, context) => {
   const result = await client.query(
     q.Let(
       {
-        match: q.Match(q.Index(index), slug),
+        match: q.Match(q.Index("hits_by_slug"), slug),
       },
       q.If(
         q.Exists(q.Var("match")),
         q.Let(
           {
             ref: q.Select("ref", q.Get(q.Var("match"))),
-            data: q.Select("data", q.Get(q.Var("match"))),
+            hits: q.ToInteger(q.Select("hits", q.Select("data", q.Get(q.Var("match"))))),
           },
           q.Update(q.Var("ref"), {
             data: {
-              hits: q.Add(q.ToInteger(q.Select("hits", q.Var("data"))), 1),
+              hits: q.Add(q.Var("hits"), 1),
             },
           })
         ),
@@ -52,9 +52,9 @@ exports.handler = async (event, context) => {
     )
   );
 
-  const hits = result.data.hits;
-
   client.close();
+
+  const hits = result.data.hits;
 
   // send client the new hit count
   return {
