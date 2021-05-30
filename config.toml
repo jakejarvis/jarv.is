@@ -191,6 +191,11 @@ disableAliases = true
   useResourceCacheWhen = "never"
 
 [server]
+# proxy /api requests to netlify-lambda's local server (port 9337) for each function
+  [[server.redirects]]
+    from = "/api/**"
+    to = "http://localhost:9337/"
+    status = 200
   [[server.headers]]
     for = "/**"
     [server.headers.values]

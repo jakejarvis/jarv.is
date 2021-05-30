@@ -6,7 +6,7 @@ div.layout-single {
   padding-bottom: 1em;
 
   div#meta {
-    font-size: 0.875em;
+    font-size: 0.825em;
     line-height: 1.3;
     letter-spacing: 0.04em;
     margin-top: 0.8em;
@@ -19,8 +19,13 @@ div.layout-single {
       color: inherit;
     }
 
-    span.dash {
-      margin: 0 0.7em;
+    > span {
+      margin-right: 1.25em;
+
+      img.emoji {
+        margin-right: 0.25em;
+        cursor: inherit;
+      }
     }
   }
 

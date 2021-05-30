@@ -2,8 +2,9 @@
 {{- $includeProdScripts := eq hugo.Environment "production" -}}
 
 {{- $twemoji := resources.Get "js/vendor/twemoji.js" | resources.ExecuteAsTemplate "js/vendor/twemoji.js" . -}}
+{{- $counter := resources.Get "js/counter.js"  -}}
 
-{{- $bundle := slice $twemoji -}}
+{{- $bundle := slice $twemoji $counter -}}
 
 {{- if $includeProdScripts }}
   {{- $fathom := resources.Get "js/fathom.js" | resources.ExecuteAsTemplate "js/fathom.js" . }}
