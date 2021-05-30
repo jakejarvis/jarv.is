@@ -24,29 +24,42 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // check if a counter for the slug already exists
-  const doesPageExist = await client.query(q.Exists(q.Match(q.Index(index), slug)));
-  if (!doesPageExist) {
-    await client.query(
-      q.Create(q.Collection("hits"), {
-        data: {
-          slug: slug,
-          hits: 0,
-        },
-      })
-    );
-  }
-
-  // fetch the slug's document and send it back with one more hit
-  const doc = await client.query(q.Get(q.Match(q.Index(index), slug)));
-  const new_hits = doc.data.hits + 1;
-  await client.query(
-    q.Update(doc.ref, {
-      data: {
-        hits: new_hits,
+  const result = await client.query(
+    q.Let(
+      {
+        match: q.Match(q.Index(index), slug),
       },
-    })
+      q.If(
+        q.Exists(q.Var("match")),
+        q.Let(
+          {
+            ref: q.Select("ref", q.Get(q.Var("match"))),
+          },
+          q.Let(
+            {
+              data: q.Select("data", q.Get(q.Var("match"))),
+            },
+
+            q.Update(q.Var("ref"), {
+              data: {
+                hits: q.Add(q.ToInteger(q.Select("hits", q.Var("data"))), 1),
+              },
+            })
+          )
+        ),
+        q.Create(q.Collection("hits"), {
+          data: {
+            slug: slug,
+            hits: 0,
+          },
+        })
+      )
+    )
   );
+
+  const hits = result.data.hits;
+
+  client.close();
 
   // send client the new hit count
   return {
@@ -58,9 +71,9 @@ exports.handler = async (event, context) => {
     },
     body: JSON.stringify({
       slug: slug,
-      hits: new_hits,
-      pretty_hits: numeral(new_hits).format("0,0"),
-      pretty_unit: pluralize("hit", new_hits),
+      hits: "a",
+      pretty_hits: numeral(hits).format("0,0"),
+      pretty_unit: pluralize("hit", hits),
     }),
   };
 };
