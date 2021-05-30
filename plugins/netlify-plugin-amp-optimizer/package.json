@@ -21,7 +21,7 @@
     "lru-cache": "^6.0.0",
     "postcss": "^8.x",
     "postcss-safe-parser": "^5.0.2",
-    "probe-image-size": "^7.1.0",
+    "probe-image-size": "^7.1.1",
     "terser": "^5.7.0"
   },
   "engines": {
