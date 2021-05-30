@@ -1,8 +1,8 @@
-const faunadb = require("faunadb");
+const faunadb = require("faunadb"),
+  q = faunadb.query;
 const numeral = require("numeral");
 const pluralize = require("pluralize");
 require("dotenv").config();
-const q = faunadb.query;
 
 // https://github.com/netlify/netlify-lambda/issues/201
 require("encoding");
@@ -51,6 +51,11 @@ exports.handler = async (event, context) => {
   // send client the new hit count
   return {
     statusCode: 200,
+    headers: {
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+      Expires: "0",
+      Pragma: "no-cache",
+    },
     body: JSON.stringify({
       slug: slug,
       hits: new_hits,
