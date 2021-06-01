@@ -12,5 +12,5 @@
 {{- range .AlternativeOutputFormats }}
 {{ .RelPermalink }}
   Onion-Location: {{ $.Site.Params.baseOnionURL }}{{ .RelPermalink }}
-{{ end }}
+{{ end -}}
 {{ end -}}

@@ -19,3 +19,8 @@
 {{ . }}    {{ $page.RelPermalink }}    301
 {{- end }}
 {{- end }}
+
+# Redirect old AMP URLs to the normal HTML page
+{{- range $page := .Site.Pages }}
+{{ print .RelPermalink "amp.html" }}    {{ .RelPermalink }}    301!
+{{ end -}}
