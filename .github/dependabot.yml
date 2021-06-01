@@ -14,18 +14,6 @@ updates:
     - "npm"
     - "dependencies"
 
-- package-ecosystem: npm
-  directory: "/plugins/netlify-plugin-cache"
-  schedule:
-    interval: weekly
-  versioning-strategy: increase
-  commit-message:
-    prefix: "📦 build(cache):"
-  labels:
-    - "build plugins"
-    - "npm"
-    - "dependencies"
-
 - package-ecosystem: docker
   directory: "/"
   schedule:

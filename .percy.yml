@@ -7,7 +7,7 @@ snapshot:
     iframe,
     video,
     img[src$=".gif"],
-    #hit-spinner, #hit-spinner {
+    div#meta-hits {
       display: none !important;  /* don't worry about third-party content/embeds */
     }
     code,
@@ -20,7 +20,7 @@ snapshot:
     }
 static-snapshots:
   path: public/
-  snapshot-files: 'index.html,uses/index.html,notes/{netlify-analytics-review,shodan-search-queries,dropping-dropbox,coronavirus-open-source}/*.html'
+  snapshot-files: 'index.html,uses/index.html,notes/{netlify-analytics-review,shodan-search-queries,dropping-dropbox,coronavirus-open-source}/index.html'
 agent:
   asset-discovery:
     network-idle-timeout: 2000 # ms

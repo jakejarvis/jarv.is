@@ -47,7 +47,7 @@
 # Cache resoures between builds:
 # https://github.com/jakejarvis/netlify-plugin-cache
 [[plugins]]
-  package = "./plugins/netlify-plugin-cache"
+  package = "netlify-plugin-cache"
   [plugins.inputs]
     paths = ["public", "builds", "_vendor"]
 # List cached resources for debugging:
