@@ -68,7 +68,7 @@
     font-src 'self';
     form-action 'none';
     frame-ancestors 'self';
-    frame-src 'self' jakejarvis.github.io app.usefathom.com buttons.github.io codepen.io cdpn.io platform.twitter.com www.youtube-nocookie.com;
+    frame-src 'self' jakejarvis.github.io buttons.github.io codepen.io cdpn.io platform.twitter.com www.youtube-nocookie.com;
     img-src 'self' data: https:;
     manifest-src 'self';
     media-src 'self' data: https:;
@@ -128,12 +128,6 @@
 [[redirects]]
   from = "/api/csp_wizard"
   to = "https://jarvis.report-uri.com/r/d/csp/enforce"
-  status = 200
-  force = true
-## Fathom Analytics endpoint
-[[redirects]]
-  from = "/api/count_view*"
-  to = "https://starman.fathomdns.com/:splat"
   status = 200
   force = true
 ## Webmention.io endpoints
