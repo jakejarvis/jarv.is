@@ -4,7 +4,6 @@ date: 2021-05-26 21:40:49-0400
 type: home
 sitemap:
   priority: 1.0
-amp: false
 ---
 
 # Hi there! I'm Jake. <span class="wave">👋</span>

@@ -7,7 +7,6 @@ snapshot:
     iframe,
     video,
     img[src$=".gif"],
-    .i-amphtml-element,
     #hit-spinner, #hit-spinner {
       display: none !important;  /* don't worry about third-party content/embeds */
     }

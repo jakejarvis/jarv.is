@@ -98,7 +98,7 @@ disableAliases = true
 [outputs]
   home = ["HTML", "RSS", "ATOM", "MANIFEST", "REDIRECTS", "HEADERS"]
   section = ["HTML"]
-  page = ["HTML", "AMP"]
+  page = ["HTML"]
 
 [outputFormats]
   [outputFormats.RSS]
@@ -111,12 +111,6 @@ disableAliases = true
     baseName = "feed"   # /feed.atom
     isPlainText = false
     isHTML = false
-  [outputFormats.AMP]
-    mediaType = "text/html"
-    baseName = "amp"   # amp.html
-    path = "."   # put in same directory as original post
-    permalinkable = true
-    isHTML = true
   [outputFormats.MANIFEST]
     mediaType = "application/manifest+json"   # https://github.com/w3c/manifest/issues/689
     baseName = "site"   # /site.webmanifest

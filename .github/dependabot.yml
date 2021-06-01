@@ -15,18 +15,6 @@ updates:
     - "dependencies"
 
 - package-ecosystem: npm
-  directory: "/plugins/netlify-plugin-amp-optimizer"
-  schedule:
-    interval: weekly
-  versioning-strategy: increase
-  commit-message:
-    prefix: "📦 build(amp):"
-  labels:
-    - "build plugins"
-    - "npm"
-    - "dependencies"
-
-- package-ecosystem: npm
   directory: "/plugins/netlify-plugin-cache"
   schedule:
     interval: weekly

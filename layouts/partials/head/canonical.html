@@ -1,11 +1,5 @@
 <link rel="canonical" href="{{ .Permalink }}">
 
-{{ if and .IsPage (ne .Params.amp false) -}}
-  {{- with .OutputFormats.Get "amp" -}}
-    <link rel="amphtml" href="{{ .Permalink }}">
-  {{- end }}
-{{- end }}
-
 <link rel="author" href="{{ "humans.txt" | absURL }}">
 <link rel="pgpkey" href="{{ "pubkey.asc" | absURL }}" type="application/pgp-keys">
 <link rel="license" href="{{ "license/" | absURL }}">

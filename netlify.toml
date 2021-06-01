@@ -44,11 +44,6 @@
 # Enable local Netlify build plugins:
 [[plugins]]
   package = "@netlify/plugin-local-install-core"
-# Optimize AMP pages server-side:
-# https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer
-# https://github.com/martinbean/netlify-plugin-amp-server-side-rendering
-[[plugins]]
-  package = "./plugins/netlify-plugin-amp-optimizer"
 # Cache resoures between builds:
 # https://github.com/jakejarvis/netlify-plugin-cache
 [[plugins]]
@@ -67,21 +62,20 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/secure-pages/
     Content-Security-Policy = '''
     default-src 'self';
     base-uri 'none';
-    connect-src 'self' *.ampproject.net csp-collector.appspot.com/csp/amp api.github.com platform.twitter.com;
-    font-src 'self' fonts.googleapis.com fonts.gstatic.com;
+    connect-src 'self' api.github.com platform.twitter.com;
+    font-src 'self';
     form-action 'none';
     frame-ancestors 'self';
-    frame-src 'self' jakejarvis.github.io *.ampproject.net cdn.ampproject.org app.usefathom.com buttons.github.io codepen.io cdpn.io platform.twitter.com player.vimeo.com www.youtube-nocookie.com;
+    frame-src 'self' jakejarvis.github.io app.usefathom.com buttons.github.io codepen.io cdpn.io platform.twitter.com player.vimeo.com www.youtube-nocookie.com;
     img-src 'self' data: https:;
     manifest-src 'self';
     media-src 'self' data: https:;
     object-src 'none';
-    script-src 'self' cdn.ampproject.org/lts/v0.js cdn.ampproject.org/lts/v0.mjs cdn.ampproject.org/lts/v0/ cdn.ampproject.org/viewer/ cdn.ampproject.org/rtv/ 3p.ampproject.net buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com player.vimeo.com 'sha256-1j1MKfE70TTCp5KmiC2YImxw2RMS52uCH5yXl1heG9U=' 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
-    style-src 'self' 'unsafe-inline' cdn.ampproject.org/rtv/ fonts.googleapis.com assets-cdn.github.com github.githubassets.com;
+    script-src 'self' buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com player.vimeo.com 'sha256-1j1MKfE70TTCp5KmiC2YImxw2RMS52uCH5yXl1heG9U=' 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
+    style-src 'self' 'unsafe-inline' assets-cdn.github.com github.githubassets.com;
     worker-src 'self';
     block-all-mixed-content;
     report-uri https://jarv.is/api/csp_wizard;

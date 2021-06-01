@@ -47,16 +47,14 @@ jobs:
       run: |
         lhci autorun \
           --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.app/ \
-          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.app/notes/netlify-analytics-review/ \
-          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.app/notes/how-to-pull-request-fork-github/amp.html
+          --collect.url=https://deploy-preview-${{ github.event.number }}--jakejarvis.netlify.app/notes/netlify-analytics-review/
     - name: Audit production site
       if: "github.event_name == 'push' && github.ref == 'refs/heads/main'"
       continue-on-error: true
       run: |
         lhci autorun \
           --collect.url=https://jarv.is/ \
-          --collect.url=https://jarv.is/notes/netlify-analytics-review/ \
-          --collect.url=https://jarv.is/notes/how-to-pull-request-fork-github/amp.html
+          --collect.url=https://jarv.is/notes/netlify-analytics-review/
     - name: Upload results as artifact
       uses: actions/upload-artifact@v2
       if: success()
