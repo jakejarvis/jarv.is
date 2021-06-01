@@ -1,4 +1,1 @@
-{{- $url := printf "https://www.facebook.com/plugins/post/oembed.json/?omitscript=1&url=%s" (.Get "url" | urlize) -}}
-{{- $json := getJSON $url -}}
-
-{{ $json.html | safeHTML }}
+facebook.rss.xml

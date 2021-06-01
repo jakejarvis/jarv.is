@@ -194,5 +194,3 @@ disableAliases = true
     for = "/**"
     [server.headers.values]
       Access-Control-Allow-Origin = "*"
-      # uncomment to get hashes of inline scripts via console errors:
-      # content-security-policy = "script-src 'self';"

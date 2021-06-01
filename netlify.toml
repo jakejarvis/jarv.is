@@ -7,7 +7,6 @@
     NODE_VERSION = "14"
     YARN_VERSION = "1.22.10"
     YARN_FLAGS = "--no-ignore-optional --frozen-lockfile"
-    PYTHON_VERSION = "3.7"
 
   # Ensure *only* Pretty URLs are enabled, even though this is already set up in
   # the Netlify dashboard.
@@ -69,13 +68,13 @@
     font-src 'self';
     form-action 'none';
     frame-ancestors 'self';
-    frame-src 'self' jakejarvis.github.io app.usefathom.com buttons.github.io codepen.io cdpn.io platform.twitter.com player.vimeo.com www.youtube-nocookie.com;
+    frame-src 'self' jakejarvis.github.io app.usefathom.com buttons.github.io codepen.io cdpn.io platform.twitter.com www.youtube-nocookie.com;
     img-src 'self' data: https:;
     manifest-src 'self';
     media-src 'self' data: https:;
     object-src 'none';
-    script-src 'self' buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com player.vimeo.com 'sha256-1j1MKfE70TTCp5KmiC2YImxw2RMS52uCH5yXl1heG9U=' 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
-    style-src 'self' 'unsafe-inline' assets-cdn.github.com github.githubassets.com;
+    script-src 'self' buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com 'sha256-1j1MKfE70TTCp5KmiC2YImxw2RMS52uCH5yXl1heG9U=' 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg=' 'sha256-JGG0npUp+0ABq/NY1azjpQ0WBtm+m5gU58mzF+2DCXY=';
+    style-src 'self' 'unsafe-inline' github.githubassets.com;
     worker-src 'self';
     block-all-mixed-content;
     report-uri https://jarv.is/api/csp_wizard;

@@ -1,1 +1,1 @@
-<p><a href="https://vimeo.com/{{ .Get "id" }}" target="_blank" rel="noopener">Watch this video on Vimeo.</a></p>
+vimeo.rss.xml

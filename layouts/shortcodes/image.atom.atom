@@ -1,10 +1,1 @@
-{{- $optimized := partial "functions/optimize-image" . -}}
-
-<p align="center">
-{{ with .Get "link" }}<a href="{{ . }}">{{ end }}
-<img src="{{ $optimized.Permalink }}" width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
-     {{- with .Get "alt" }} alt="{{ . | safeHTML }}"{{ end }}
-     {{- with .Inner }} alt="{{ . | $.Page.RenderString | plainify | safeHTML }}"{{ end }}>
-{{ if .Get "link" }}</a>{{ end }}
-{{ with .Inner }}<br>{{ . | $.Page.RenderString | safeHTML }}{{ end -}}
-</p>
+image.rss.xml

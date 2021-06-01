@@ -1,4 +1,1 @@
-{{- $url := printf "https://publish.twitter.com/oembed?lang=en&omit_script=true&dnt=true&align=center&url=%s" (index .Params 0 | safeURL) -}}
-{{- $json := getJSON $url -}}
-
-{{ $json.html | safeHTML }}
+tweet.rss.xml

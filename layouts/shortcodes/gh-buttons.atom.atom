@@ -1,1 +1,1 @@
-<p><a href="https://github.com/{{ .Get "username" }}/{{ .Get "repo" }}">Star {{ .Get "username" }}/{{ .Get "repo" }} on GitHub</a> &mdash; <a href="https://github.com/{{ .Get "username" }}/{{ .Get "repo" }}/issues">Issues for {{ .Get "username" }}/{{ .Get "repo" }} on GitHub</a></p>
+gh-buttons.rss.xml

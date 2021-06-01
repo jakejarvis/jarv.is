@@ -1,3 +1,0 @@
-fonttools[lxml,ufo,unicode,woff]==4.24.4
-Brotli==1.0.9
-zopfli==0.1.8
