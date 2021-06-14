@@ -5,11 +5,11 @@ const webpack = require('webpack'); // we're using a newer version of webpack th
 const webpackStream = require('webpack-stream');
 const webpackConfig = require("./webpack.config.js");
 const imagemin = require("gulp-imagemin");
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 const del = require("del");
 
 const hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
-const webpackOptions = ["--profile"];
+const webpackOptions = [];
 
 gulp.task(
   "clean",
@@ -25,41 +25,21 @@ gulp.task(
   }
 );
 
-gulp.task(
-  "hugo",
-  function () {
-    return spawn("yarn", ["hugo"].concat(hugoOptions), {
+function runHugo (options) {
+  return function () {
+    return spawn("./node_modules/.bin/hugo", hugoOptions.concat(options || []), {
       stdio: "inherit",
     });
   }
-);
+}
 
-gulp.task(
-  "watchHugo",
-  function () {
-    return spawn("yarn", ["hugo"].concat(hugoOptions, ["--watch", "--buildDrafts", "--buildFuture", "--baseURL", "/"]), {
+function runWebpack (options) {
+  return function () {
+    return spawn("./node_modules/.bin/webpack", webpackOptions.concat(options || []), {
       stdio: "inherit",
     });
   }
-);
-
-gulp.task(
-  "webpack",
-  function () {
-    return spawn("yarn", ["webpack"].concat(["--mode", "production"], webpackOptions), {
-      stdio: "inherit",
-    });
-  }
-);
-
-gulp.task(
-  "watchWebpack",
-  function () {
-    return spawn("yarn", ["webpack"].concat(["serve"], webpackOptions), {
-      stdio: "inherit",
-    });
-  }
-);
+}
 
 gulp.task(
   "optimizeHtml",
@@ -113,8 +93,9 @@ gulp.task(
 gulp.task(
   "build",
   gulp.series(
-    "webpack",
-    "hugo",
+    "clean",
+    runWebpack(["--mode", "production", "--profile"]),
+    runHugo(),
     "optimize",
   )
 );
@@ -122,39 +103,7 @@ gulp.task(
 gulp.task(
   "serve",
   gulp.parallel(
-    "watchHugo",
-    "watchWebpack",
+    runWebpack(["serve"]),
+    runHugo(["--watch", "--buildDrafts", "--buildFuture", "--baseURL", "/"]),
   )
 );
-
-/*
-gulp.task(
-  "watch",
-  gulp.parallel(
-    () => runWebpack(["serve"]),
-    () => runHugo(["--buildFuture", "--watch", "--baseURL", "/"])
-  )
-);
-*/
-/*
-browserSync.init({
-  server: {
-    baseDir: "./public",
-  },
-});*/
-//  gulp.watch("./public/**/*").on("change", browserSync.reload);
-
-// helper functions
-/*
-function runHugo(options) {
-  return spawn("yarn", ["hugo"].concat(hugoOptions, options || []), {
-    stdio: "inherit",
-  });
-}
-
-function runWebpack(options) {
-  return spawn("yarn", ["webpack"].concat(webpackOptions, options || []), {
-    stdio: "inherit",
-  });
-}
-*/
