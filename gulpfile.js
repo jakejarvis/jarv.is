@@ -8,6 +8,10 @@ const del = require("del");
 const hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
 const webpackOptions = [];
 
+if (process.env.NODE_ENV === "development") {
+  hugoOptions = hugoOptions.concat(["--baseURL", process.env.VERCEL_URL || "/"]);
+}
+
 exports.default = gulp.series(
   clean,
   runWebpack(["--mode", "production", "--profile"]),
@@ -20,7 +24,7 @@ exports.default = gulp.series(
 
 exports.serve = gulp.parallel(
   runWebpack(["serve"]),
-  runHugo(["--watch", "--buildDrafts", "--buildFuture", "--baseURL", "/"]),
+  runHugo(["--watch", "--buildDrafts", "--buildFuture", "--baseURL", hugoBaseUrl]),
 );
 
 exports.clean = gulp.task(clean);
