@@ -3,10 +3,12 @@ const gulp = require("gulp");
 const htmlmin = require("gulp-htmlmin");
 const webpack = require('webpack'); // we're using a newer version of webpack than webpack-stream does
 const webpackStream = require('webpack-stream');
+const webpackConfig = require("./webpack.config.js");
 const { spawn } = require("child_process");
 const del = require("del");
 
 const hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
+const webpackOptions = [];
 
 gulp.task(
   "clean",
@@ -32,6 +34,15 @@ gulp.task(
 );
 
 gulp.task(
+  "hugoWatch",
+  function () {
+    return spawn("yarn", ["hugo"].concat(hugoOptions, ["--watch", "--buildDrafts", "--buildFuture", "--baseURL", "/"]), {
+      stdio: "inherit",
+    });
+  }
+);
+
+gulp.task(
   "webpack",
   function () {
     return gulp
@@ -47,6 +58,15 @@ gulp.task(
 );
 
 gulp.task(
+  "webpackWatch",
+  function () {
+    return spawn("yarn", ["webpack"].concat(["serve"], webpackOptions), {
+      stdio: "inherit",
+    });
+  }
+);
+
+gulp.task(
   "html",
   function () {
     return gulp.src("public/**/*.html")
@@ -54,7 +74,11 @@ gulp.task(
         htmlmin(
           {
             // TODO: html-minifier --html5 --collapse-whitespace --collapse-boolean-attributes --preserve-line-breaks --minify-css --remove-comments
-            collapseWhitespace: true
+            html5: true,
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            preserveLineBreaks: true,
+            removeComments: true,
           }
         )
       )
@@ -69,8 +93,16 @@ gulp.task(
     "webpack",
     "hugo",
     gulp.parallel(
-      "html"
+      "html",
     )
+  )
+);
+
+gulp.task(
+  "serve",
+  gulp.parallel(
+    "webpackWatch",
+    "hugoWatch",
   )
 );
 
