@@ -18,7 +18,7 @@ module.exports = {
     filename: isProd ? "js/[name]-[contenthash:6].js" : "js/[name].js",
     path: path.resolve(__dirname, "static/assets/"),
     publicPath: "/assets/",
-    //clean: true,
+    clean: true,
     crossOriginLoading: "anonymous",
   },
   plugins: [

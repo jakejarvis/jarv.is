@@ -69,7 +69,7 @@ function optimizeHtml() {
       )
     )
     .pipe(gulp.dest(".", { overwrite: true }));
-      }
+}
 
 function optimizeImages() {
   return gulp
@@ -77,8 +77,13 @@ function optimizeImages() {
     .pipe(
       // TODO: --plugin=mozjpeg --plugin.mozjpeg.progressive --plugin.mozjpeg.quality=85 --plugin=pngquant --plugin.pngquant.quality={0.1,0.3} --plugin.pngquant.speed=1 --plugin.pngquant.strip --plugin=gifsicle --plugin=svgo
       imagemin([
-        imagemin.mozjpeg(),
-        imagemin.optipng(),
+        imagemin.mozjpeg({
+          quality: 85,
+          progressive: true,
+        }),
+        imagemin.optipng({
+          optimizationLevel: 2,
+        }),
         imagemin.gifsicle(),
         imagemin.svgo(),
       ],
