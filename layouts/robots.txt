@@ -3,7 +3,7 @@ User-Agent: *
 Disallow: /403.html
 Disallow: /404.html
 Disallow: /api/
-Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ print .Site.Params.baseUrl "/sitemap.xml" }}
 {{- else }}
 Disallow: /
 {{- end }}

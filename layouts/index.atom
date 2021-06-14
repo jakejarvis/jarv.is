@@ -2,24 +2,24 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ .Site.Title }}</title>
-  <id>{{ .Permalink }}</id>
+  <id>{{ print .Site.Params.baseUrl .Permalink }}</id>
   <author>
     <name>{{ .Site.Title }}</name>
-    <uri>{{ .Permalink }}</uri>
+    <uri>{{ print .Site.Params.baseUrl .Permalink }}</uri>
   </author>
   <generator>Hugo -- gohugo.io</generator>
   {{- with .Site.Copyright }}
   <rights>{{ . }}</rights>
   {{- end }}
   {{- with .Scratch.Get "authorImage" }}
-  <logo>{{ .Permalink }}</logo>
+  <logo>{{ print $.Site.Params.baseUrl .Permalink }}</logo>
   {{- end }}
   <updated>{{ .Site.LastChange.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
   {{- with .OutputFormats.Get "ATOM" }}
-  {{ printf `<link rel="self" type="%s" href="%s" />` .MediaType.Type .Permalink | safeHTML }}
+  {{ printf `<link rel="self" type="%s" href="%s" />` .MediaType.Type (print $.Site.Params.baseUrl .Permalink) | safeHTML }}
   {{- end }}
   {{- range .AlternativeOutputFormats }}
-  {{ printf `<link rel="alternate" type="%s" href="%s" />` .MediaType.Type .Permalink | safeHTML }}
+  {{ printf `<link rel="alternate" type="%s" href="%s" />` .MediaType.Type (print $.Site.Params.baseUrl .Permalink) | safeHTML }}
   {{- end }}
   {{- range (where .Site.RegularPages "Section" .Site.Params.mainSection) }}
   <entry>
@@ -27,10 +27,10 @@
     {{- with .Site.Author.name }}
     <author>
       <name>{{ . }}</name>
-      <uri>{{ $.Permalink }}</uri>
+      <uri>{{ print $.Site.Params.baseUrl $.Permalink }}</uri>
     </author>
     {{- end }}
-    <id>{{ .Permalink }}</id>
+    <id>{{ print $.Site.Params.baseUrl .Permalink }}</id>
     <published>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</published>
     <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
     <content type="html">

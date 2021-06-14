@@ -3,6 +3,7 @@ assets/**/vendor/
 layouts/
 static/
 hugo_stats.json
+data/manifest.json
 
 # output from Hugo
 public/
@@ -10,14 +11,11 @@ builds/
 resources/
 _vendor/
 
-# webpack
-webpack.config.js
-gulpfile.js
-data/manifest.json
-
 # dotfiles/config
 .*
 postcss.config.js
+webpack.config.js
+gulpfile.js
 babel.config.json
 tsconfig.json
 

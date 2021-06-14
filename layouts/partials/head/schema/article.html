@@ -12,7 +12,7 @@
   "description": {{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }},
   "wordCount": "{{ .WordCount }}",
   "author": {
-    "@id": {{ print .Site.Params.baseURL "/" "#author" }}
+    "@id": {{ print .Site.Params.baseURL $.Site.BaseURL "#author" }}
   },
   "publisher": {
     "@type": "Organization",

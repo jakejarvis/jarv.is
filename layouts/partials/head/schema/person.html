@@ -3,9 +3,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Person",
-  "@id": {{ print $.Site.Params.baseURL "/" "#author" }},
+  "@id": {{ print $.Site.Params.baseURL $.Site.BaseURL "#author" }},
   "name": {{ .name }},
-  "url": {{ print $.Site.Params.baseURL "/" }},
+  "url": {{ print $.Site.Params.baseURL $.Site.BaseURL }},
   "description": {{ $.Site.Params.description }},{{ with $.Scratch.Get "authorImage" }}
   "image": {
     "@type": "ImageObject",
@@ -14,7 +14,7 @@
     "height": "{{ .Height }}"
   },{{ end }}
   "sameAs": [
-    {{ print $.Site.Params.baseURL "/" }},{{ with .social }}
+    {{ print $.Site.Params.baseURL $.Site.BaseURL }},{{ with .social }}
     {{ with .github }}{{ print "https://github.com/" . }},{{ end }}
     {{ with .keybase }}{{ print "https://keybase.io/" . }},{{ end }}
     {{ with .twitter }}{{ print "https://twitter.com/" . }},{{ end }}

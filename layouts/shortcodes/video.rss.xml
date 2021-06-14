@@ -1,1 +1,1 @@
-<p>Your browser does not support HTML5 video. {{ with .Page.Resources.GetMatch (.Get "mp4") }}<a href="{{ .Permalink }}">Click to open the .mp4 video directly.</a>{{ end }}</p>
+<p>Your browser does not support HTML5 video. {{ with .Page.Resources.GetMatch (.Get "mp4") }}<a href="{{ print $.Site.Params.baseUrl .Permalink }}">Click to open the .mp4 video directly.</a>{{ end }}</p>

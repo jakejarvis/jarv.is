@@ -2,7 +2,7 @@
 
 <p align="center">
 {{ with .Get "link" }}<a href="{{ . }}">{{ end }}
-<img src="{{ $optimized.Permalink }}" width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
+<img src="{{ print .Site.Params.baseUrl $optimized.Permalink }}" width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
      {{- with .Get "alt" }} alt="{{ . | safeHTML }}"{{ end }}
      {{- with .Inner }} alt="{{ . | $.Page.RenderString | plainify | safeHTML }}"{{ end }}>
 {{ if .Get "link" }}</a>{{ end }}
