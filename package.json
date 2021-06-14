@@ -15,7 +15,7 @@
   },
   "main": "assets/js/index.js",
   "scripts": {
-    "clean": "rimraf public/ resources/ builds/ _vendor/ static/{css,js,fonts}/ data/manifest.json hugo_stats.json $TMPDIR/hugo_cache/ .vercel/cache/",
+    "clean": "rimraf public/ resources/ builds/ _vendor/ static/dist/ data/manifest.json hugo_stats.json $TMPDIR/hugo_cache/ .vercel/cache/",
     "start": "run-p start:**",
     "start:webpack": "webpack --mode=development --watch",
     "start:hugo": "hugo server --buildDrafts --buildFuture --port=${PORT:-1337} --baseURL=/ --appendPort=false --bind=0.0.0.0 --verbose",
@@ -74,6 +74,8 @@
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "babel-minify": "^0.5.1",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "eslint": "~7.28.0",

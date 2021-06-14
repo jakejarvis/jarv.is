@@ -1,7 +1,9 @@
 {{/* Pull in assets processed by Webpack */}}
 {{- define "__head_css" -}}
-  {{ with index .Site.Data.manifest "main.css" }}
-    <link rel="stylesheet" href="{{ .src | absURL }}">
+  {{ with .Site.Data.manifest }}
+    {{ with index . "main.css" }}
+      <link rel="stylesheet" href="{{ .src | absURL }}">
+    {{ end }}
   {{ end }}
 
   {{/* Page-specific styles set via front matter, piped through PostCSS and inlined */}}
@@ -18,14 +20,16 @@
 {{- end -}}
 
 {{- define "__head_preload" -}}
-  {{ with index .Site.Data.manifest "fonts/inter-subset.var.woff2" }}
-    <link rel="preload" href="{{ .src | absURL }}" as="font" type="font/woff2" crossorigin>
-  {{ end }}
-  {{ with index .Site.Data.manifest "fonts/roboto-mono-subset.var.woff2" }}
-    <link rel="preload" href="{{ .src | absURL }}" as="font" type="font/woff2" crossorigin>
-  {{ end }}
-  {{ with index .Site.Data.manifest "main.js" }}
-    <link rel="preload" href="{{ .src | absURL }}" as="script">
+  {{ with .Site.Data.manifest }}
+    {{ with index . "fonts/inter-subset.var.woff2" }}
+      <link rel="preload" href="{{ .src | absURL }}" as="font" type="font/woff2" crossorigin>
+    {{ end }}
+    {{ with index . "fonts/roboto-mono-subset.var.woff2" }}
+      <link rel="preload" href="{{ .src | absURL }}" as="font" type="font/woff2" crossorigin>
+    {{ end }}
+    {{ with index . "main.js" }}
+      <link rel="preload" href="{{ .src | absURL }}" as="script">
+    {{ end }}
   {{ end }}
 {{- end -}}
 
@@ -33,8 +37,10 @@
   <!-- inline the dark mode script to avoid a blinding flash of white background on loads -->
   <script>(function(d){var u=d.document,f=u.body.classList,e=localStorage,c="dark_mode_pref",t=e.getItem(c),a="dark",n="light",r="{{ .Site.Params.Theme.defaultTheme | safeJS }}",o=u.querySelector(".dark-mode-toggle"),i=r===a,b=function(d){f.remove(a,n);f.add(d);i=d===a};t===a&&b(a);t===n&&b(n);if(!t){var s=function(d){return"(prefers-color-scheme: "+d+")"};d.matchMedia(s(a)).matches?b(a):d.matchMedia(s(n)).matches?b(n):b(r);d.matchMedia(s(a)).addListener((function(d){d.matches&&b(a)}));d.matchMedia(s(n)).addListener((function(d){d.matches&&b(n)}))}if(o){o.style.display="block";o.addEventListener("click",(function(){if(i){b(n);e.setItem(c,n)}else{b(a);e.setItem(c,a)}}),!0)}})(window)</script>
 
-  {{ with index .Site.Data.manifest "main.js" }}
-    <script async defer src="{{ .src | absURL }}" ></script>
+  {{ with .Site.Data.manifest }}
+    {{ with index . "main.js" }}
+      <script async defer src="{{ .src | absURL }}" ></script>
+    {{ end }}
   {{ end }}
 {{- end -}}
 

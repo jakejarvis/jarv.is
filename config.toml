@@ -56,18 +56,6 @@ disableAliases = true
     instagram = "jakejarvis"
     mastodon = "mastodon.social/@jakejarvis"
 
-[module]
-  # we're grabbing Twemoji SVGs from an NPM helper package:
-  # https://www.npmjs.com/package/twemoji-emojis
-  [[module.mounts]]
-    source = "node_modules/twemoji-emojis/vendor/svg"
-    target = "static/vendor/emoji/svg"
-  # this is required, or else the Twemoji mount completely takes over /static:
-  # https://discourse.gohugo.io/t/can-hugo-copy-files-from-one-dir-to-another/24085/4
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-
 [frontmatter]
   lastmod = ["date", "publishDate", ":default"]
 

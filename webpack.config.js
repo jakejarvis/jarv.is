@@ -1,31 +1,47 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SriPlugin = require("webpack-subresource-integrity");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
+const CopyPlugin = require("copy-webpack-plugin");
+
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
   entry: [
     path.resolve(__dirname, "assets/js/index.js"),
     path.resolve(__dirname, "assets/sass/main.scss"),
   ],
-  mode: "production",
+  mode: isProd ? "production" : "development",
   output: {
-    filename: "js/[contenthash].js",
-    path: path.resolve(__dirname, "static/"),
-    publicPath: "/",
+    filename: isProd ? "js/[name]-[contenthash:6].js" : "js/[name].js",
+    path: path.resolve(__dirname, "static/dist/"),
+    publicPath: "/dist/",
+    clean: true,
     crossOriginLoading: "anonymous",
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[contenthash].css",
+      filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
     }),
     new SriPlugin({
-      hashFuncNames: ["sha384", "sha512"],
+      hashFuncNames: ["sha512"],
       enabled: true,
     }),
     new WebpackAssetsManifest({
+      writeToDisk: true,
       output: path.resolve(__dirname, "data/manifest.json"),
+      publicPath: true,
       integrity: true,
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "node_modules/twemoji-emojis/vendor/svg/",
+          to: "emoji/"
+        },
+      ],
     }),
   ],
   module: {
@@ -52,14 +68,14 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "[name].[contenthash].[ext]",
+              name: "[name].[ext]",
               outputPath: "fonts/",
             },
           },
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: "file-loader",
@@ -72,13 +88,4 @@ module.exports = {
       },
     ],
   },
-  /* optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        test: /\.js(\?.*)?$/i,
-        extractComments: /^\**!|@preserve|@license|@cc_on|license/i,
-      }),
-    ],
-  }, */
 };
