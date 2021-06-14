@@ -5,8 +5,8 @@ const imagemin = require("gulp-imagemin");
 const { spawn } = require("child_process");
 const del = require("del");
 
-const hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
-const webpackOptions = [];
+let hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
+let webpackOptions = [];
 
 if (process.env.NODE_ENV === "development") {
   hugoOptions = hugoOptions.concat(["--baseURL", process.env.VERCEL_URL || "/"]);
@@ -24,7 +24,7 @@ exports.default = gulp.series(
 
 exports.serve = gulp.parallel(
   runWebpack(["serve"]),
-  runHugo(["--watch", "--buildDrafts", "--buildFuture", "--baseURL", hugoBaseUrl]),
+  runHugo(["--watch", "--buildDrafts", "--buildFuture"]),
 );
 
 exports.clean = gulp.task(clean);
