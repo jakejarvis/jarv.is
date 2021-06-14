@@ -43,20 +43,11 @@
   ],
   "headers": [
     {
-      "source": "/vendor/(.*)",
+      "source": "/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=2628000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(img|js|css)/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
         }
       ]
     },
