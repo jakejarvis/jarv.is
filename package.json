@@ -15,10 +15,9 @@
   },
   "main": "assets/js/index.js",
   "scripts": {
-    "clean": "rimraf public/ resources/ builds/ _vendor/ static/assets/ data/manifest.json hugo_stats.json $TMPDIR/hugo_cache/ .vercel/cache/",
+    "clean": "gulp clean",
     "start": "gulp serve",
     "build": "gulp build",
-    "minify:img": "glob-exec --parallel --foreach 'public/**/{img,images}/' -- imagemin '{{file.path}}*' --plugin=mozjpeg --plugin.mozjpeg.progressive --plugin.mozjpeg.quality=85 --plugin=pngquant --plugin.pngquant.quality={0.1,0.3} --plugin.pngquant.speed=1 --plugin.pngquant.strip --plugin=gifsicle --plugin=svgo --out-dir='{{file.path}}'",
     "lint": "run-s lint:**",
     "lint:ts": "tsc --noEmit",
     "lint:js": "eslint --ext .js,.ts .",
@@ -84,9 +83,9 @@
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0",
     "html-minifier": "^4.0.0",
     "hugo-extended": "jakejarvis/hugo-extended#9f615221831632cb3b8879ab3fc420fff921e1fd",
-    "imagemin-cli": "^6.0.0",
     "lint-staged": "^11.0.0",
     "markdownlint-cli": "~0.27.1",
     "mini-css-extract-plugin": "^1.6.0",
@@ -103,7 +102,6 @@
     "postcss-reporter": "^7.0.2",
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.3.1",
-    "rimraf": "^3.0.2",
     "sass": "^1.34.1",
     "sass-loader": "^12.1.0",
     "simple-git-hooks": "^2.4.1",
@@ -125,7 +123,7 @@
   "optionalDependencies": {
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-pngquant": "^9.0.2",
+    "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^9.0.0"
   },
   "simple-git-hooks": {
