@@ -13,6 +13,7 @@ module.exports = {
     path.resolve(__dirname, "assets/sass/main.scss"),
   ],
   mode: isProd ? "production" : "development",
+  devtool: false,
   output: {
     filename: isProd ? "js/[name]-[contenthash:6].js" : "js/[name].js",
     path: path.resolve(__dirname, "static/assets/"),

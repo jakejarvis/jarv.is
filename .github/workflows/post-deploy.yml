@@ -16,6 +16,7 @@ jobs:
       with:
         fetch-depth: 0
     - uses: getsentry/action-release@v1
+      if: github.event.deployment_status.environment == 'production'
       env:
         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         SENTRY_ORG: jakejarvis

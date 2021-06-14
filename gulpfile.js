@@ -6,7 +6,6 @@ const webpackStream = require('webpack-stream');
 const { spawn } = require("child_process");
 const del = require("del");
 
-//const webpackOptions = [];
 const hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
 
 gulp.task(
