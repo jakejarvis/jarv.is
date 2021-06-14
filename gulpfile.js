@@ -8,10 +8,6 @@ const del = require("del");
 let hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
 let webpackOptions = [];
 
-if (process.env.NODE_ENV === "development") {
-  hugoOptions = hugoOptions.concat(["--baseURL", process.env.VERCEL_URL || "/"]);
-}
-
 exports.default = gulp.series(
   clean,
   runWebpack(["--mode", "production", "--profile"]),

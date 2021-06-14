@@ -3,18 +3,18 @@
 {
   "@context": "http://schema.org",
   "@type": "Person",
-  "@id": {{ print (absURL "/") "#author" }},
+  "@id": {{ print $.Site.Params.baseURL "/" "#author" }},
   "name": {{ .name }},
-  "url": {{ $.Site.BaseURL }},
+  "url": {{ print $.Site.Params.baseURL "/" }},
   "description": {{ $.Site.Params.description }},{{ with $.Scratch.Get "authorImage" }}
   "image": {
     "@type": "ImageObject",
-    "url": {{ .Permalink }},
+    "url": {{ print $.Site.Params.baseURL .Permalink }},
     "width": "{{ .Width }}",
     "height": "{{ .Height }}"
   },{{ end }}
   "sameAs": [
-    {{ $.Site.BaseURL }},{{ with .social }}
+    {{ print $.Site.Params.baseURL "/" }},{{ with .social }}
     {{ with .github }}{{ print "https://github.com/" . }},{{ end }}
     {{ with .keybase }}{{ print "https://keybase.io/" . }},{{ end }}
     {{ with .twitter }}{{ print "https://twitter.com/" . }},{{ end }}

@@ -1,5 +1,9 @@
-<link rel="canonical" href="{{ .Permalink }}">
+<link rel="canonical" href="{{ print .Site.Params.baseURL .Permalink }}">
+
+{{ if .Site.Params.social.webmentionIO }}
+<link rel="webmention" href="{{ print $.Site.Params.baseURL "/api/mention/" }}">
+<link rel="pingback" href="{{ print $.Site.Params.baseURL "/api/ping/" }}">
+{{ end }}
 
 <link rel="author" href="{{ "humans.txt" | absURL }}">
 <link rel="pgpkey" href="{{ "pubkey.asc" | absURL }}" type="application/pgp-keys">
-<link rel="license" href="{{ "license/" | absURL }}">

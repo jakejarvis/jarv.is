@@ -2,8 +2,8 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "url": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
-  "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }},
+  "url": {{ with .OutputFormats.Get "html" }}{{ print $.Site.Params.baseURL .Permalink }}{{ end }},
+  "mainEntityOfPage": {{ with .OutputFormats.Get "html" }}{{ print $.Site.Params.baseURL .Permalink }}{{ end }},
   "name": {{ .Scratch.Get "plainTitle" }},
   "headline": {{ .Scratch.Get "plainTitle" }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
@@ -12,22 +12,22 @@
   "description": {{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }},
   "wordCount": "{{ .WordCount }}",
   "author": {
-    "@id": {{ print (absURL "/") "#author" }}
+    "@id": {{ print .Site.Params.baseURL "/" "#author" }}
   },
   "publisher": {
     "@type": "Organization",
     "name": {{ .Site.Title }},
-    "url": {{ .Site.BaseURL }}{{ with .Scratch.Get "logoImage" }},
+    "url": {{ .Site.Params.baseURL }}{{ with .Scratch.Get "logoImage" }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ .Permalink }},
+      "url": {{ print $.Site.Params.baseURL .Permalink }},
       "width": "{{ .Width }}",
       "height": "{{ .Height }}"
     }{{ end }}
   }{{ with .Scratch.Get "pageImage" }},
   "image": {
     "@type": "ImageObject",
-    "url": {{ .Permalink }},
+    "url": {{ print $.Site.Params.baseURL .Permalink }},
     "width": "{{ .Width }}",
     "height": "{{ .Height }}"
   }{{ end }}

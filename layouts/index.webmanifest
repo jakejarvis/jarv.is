@@ -27,7 +27,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "{{ .Site.BaseURL | safeJS }}",
+  "start_url": "/",
   "display": "browser",
   "background_color": "#ffffff",
   "theme_color": "#0e6dc2"
