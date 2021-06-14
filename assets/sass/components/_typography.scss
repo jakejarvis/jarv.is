@@ -16,30 +16,30 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
  */
 
 // Variable
-@include font-face("Inter var", "vendor/fonts/inter-subset.var", 100 900, $variable: true) {
+@include font-face("Inter var", "inter-subset.var", 100 900, $variable: true) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter var", "vendor/fonts/inter-italic-subset.var", 100 900, italic, $variable: true) {
+@include font-face("Inter var", "inter-italic-subset.var", 100 900, italic, $variable: true) {
   unicode-range: $unicode-subset;
 }
 
 // Legacy
-@include font-face("Inter", "vendor/fonts/inter-regular-subset", 400) {
+@include font-face("Inter", "inter-regular-subset", 400) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "vendor/fonts/inter-regular-italic-subset", 400, italic) {
+@include font-face("Inter", "inter-regular-italic-subset", 400, italic) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "vendor/fonts/inter-medium-subset", 500) {
+@include font-face("Inter", "inter-medium-subset", 500) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "vendor/fonts/inter-medium-italic-subset", 500, italic) {
+@include font-face("Inter", "inter-medium-italic-subset", 500, italic) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "vendor/fonts/inter-bold-subset", 700) {
+@include font-face("Inter", "inter-bold-subset", 700) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "vendor/fonts/inter-bold-italic-subset", 700, italic) {
+@include font-face("Inter", "inter-bold-italic-subset", 700, italic) {
   unicode-range: $unicode-subset;
 }
 
@@ -52,12 +52,26 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
  */
 
 // Variable
-@include font-face("Roboto Mono var", "vendor/fonts/roboto-mono-subset.var", 100 700, $variable: true);
-@include font-face("Roboto Mono var", "vendor/fonts/roboto-mono-italic-subset.var", 100 700, italic, $variable: true);
+@include font-face("Roboto Mono var", "roboto-mono-subset.var", 100 700, $variable: true);
+@include font-face("Roboto Mono var", "roboto-mono-italic-subset.var", 100 700, italic, $variable: true);
 
 // Legacy
-@include font-face("Roboto Mono", "vendor/fonts/roboto-mono-regular-subset", 400);
-@include font-face("Roboto Mono", "vendor/fonts/roboto-mono-italic-subset", 400, italic);
+@include font-face("Roboto Mono", "roboto-mono-regular-subset", 400);
+@include font-face("Roboto Mono", "roboto-mono-italic-subset", 400, italic);
+
+/*!
+  *  Comic Neue typeface v2.5 - http://comicneue.com/
+  *
+  *  Copyright (c) 2014 The Comic Neue Project Authors.
+  *  Licensed under the SIL Open Font License, Version 1.1:
+  *  https://github.com/crozynski/comicneue/blob/v2.5/OFL.txt
+  */
+@include font-face("Comic Neue", "comic-neue-regular-subset", 400) {
+  unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
+}
+@include font-face("Comic Neue", "comic-neue-bold-subset", 700) {
+  unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
+}
 
 /* --------- */
 

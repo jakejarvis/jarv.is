@@ -3,7 +3,11 @@
     [
       "@babel/preset-env",
       {
-        "include": ["transform-arrow-functions", "transform-block-scoping", "transform-template-literals"],
+        "include": [
+          "transform-arrow-functions",
+          "transform-block-scoping",
+          "transform-template-literals"
+        ],
         "useBuiltIns": "entry",
         "corejs": 3
       }
@@ -11,7 +15,9 @@
     [
       "minify",
       {
-        "removeConsole": true
+        "removeConsole": true,
+        // https://github.com/babel/minify/issues/904#issuecomment-424367995
+        "builtIns": false
       }
     ]
   ]

@@ -46,5 +46,5 @@
       "es6": true
     }
   }],
-  "ignorePatterns": ["public/**", "postcss.config.js"]
+  "ignorePatterns": ["public/**", "postcss.config.js", "webpack.config.js"]
 }

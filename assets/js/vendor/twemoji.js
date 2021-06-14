@@ -1,4 +1,4 @@
-/*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
+/*  Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
     https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
   */
 

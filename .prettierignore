@@ -10,6 +10,10 @@ builds/
 resources/
 _vendor/
 
+# webpack
+webpack.config.js
+data/manifest.json
+
 # dotfiles/config
 .*
 postcss.config.js

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@use "sass:math";
 
 // Gradient hack to get our custom underline to wrap:
 // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
@@ -10,14 +11,22 @@
 
   // Less compatible but better for light/dark mode switching.
   // We fall back to non-alpha hex colors with postcss-color-rgba-fallback to mitigate this.
-  $color-opaque-alpha: rgba($color, $link-underline-opacity / 100%);
+  $color-opaque-alpha: rgba($color, math.div($link-underline-opacity, 100%));
 
   // Return non-gradient linear-gradient():
   @return linear-gradient($color-opaque-alpha, $color-opaque-alpha);
 }
 
 // Web fonts (see components/_typography.scss)
-@mixin font-face($family, $src, $weight: normal, $style: normal, $display: swap, $variable: false) {
+@mixin font-face(
+  $family,
+  $src,
+  $weight: normal,
+  $style: normal,
+  $display: swap,
+  $variable: false,
+  $base-path: "../fonts/"
+) {
   @font-face {
     font-family: $family;
     font-style: $style;
@@ -27,9 +36,10 @@
     @if $variable {
       // all browsers that support variable fonts also support woff2, so a woff file is unncessary
       // draft spec for formats: https://www.w3.org/TR/css-fonts-4/#src-desc
-      src: url($base-url + $src + ".woff2") format("woff2-variations"), url($base-url + $src + ".woff2") format("woff2");
+      src: url($base-path + $src + ".woff2") format("woff2-variations"),
+        url($base-path + $src + ".woff2") format("woff2");
     } @else {
-      src: url($base-url + $src + ".woff2") format("woff2"), url($base-url + $src + ".woff") format("woff");
+      src: url($base-path + $src + ".woff2") format("woff2"), url($base-path + $src + ".woff") format("woff");
     }
 
     // Allow additional rules to be passed in:

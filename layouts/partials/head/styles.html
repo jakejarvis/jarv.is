@@ -1,11 +1,1 @@
-{{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS (dict "targetPath" "css/main.css") | resources.PostCSS (dict "config" "postcss.config.js") }}
-<link rel="stylesheet" href="{{ $style.Permalink }}">
-
-{{/* Page-specific styles set via front matter, piped through PostCSS and inlined (see functions/init) */}}
-{{- with .Scratch.Get "pageCss" -}}
-{{ printf "<!-- htmlmin:ignore -->" | safeHTML -}}
-<style>
-{{ . | safeCSS }}
-</style>
-{{- printf "<!-- htmlmin:ignore -->" | safeHTML }}
-{{ end -}}
+{{ template "__head_css" . }}

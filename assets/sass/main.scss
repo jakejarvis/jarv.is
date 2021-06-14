@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
-// NOTE: all variables set by Hugo's config.toml MUST go here:
-// prettier-ignore
-$max-width: "{{ printf "%d%s" .Site.Params.Theme.maxWidth "px" }}";
-$base-url: "{{ strings.TrimRight "/" .Site.BaseURL }}" + "/";
+// TODO
+$max-width: "865px";
+$base-url: "/";
 
 // those values need quotes because, even though prettier & stylelint are correct
 // in that it's insanely invalid SCSS, they refuse to ignore it. but $max-width is

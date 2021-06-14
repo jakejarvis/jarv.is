@@ -5,25 +5,9 @@ description: "An incredibly embarrassing and somewhat painful walkthrough of thi
 image: "images/2001_12.png"
 layout: etc
 css: |
-  /*!
-   *  Comic Neue typeface v2.5 - http://comicneue.com/
-   *
-   *  Copyright (c) 2014 The Comic Neue Project Authors.
-   *  Licensed under the SIL Open Font License, Version 1.1:
-   *  https://github.com/crozynski/comicneue/blob/v2.5/OFL.txt
-   */
-  @font-face {
-    font-family: "Comic Neue";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url("{{ absURL "/vendor/fonts/comic-neue-bold-subset.woff2" | safeCSS }}") format("woff2"),
-         url("{{ absURL "/vendor/fonts/comic-neue-bold-subset.woff" | safeCSS }}") format("woff");
-    unicode-range: U+0000-00FF,U+2000-206F,U+20A0-20CF,U+2190-21FF,U+2200-22FF,U+2122;
-  }
   body {
     font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", "Inter", sans-serif;
-    font-weight: 700;
+    font-weight: 700 !important;
   }
   div#content {
     text-align: center;
@@ -40,17 +24,19 @@ css: |
     border: 2px solid #e3d18c;
   }
   div#content code {
-    font-weight: 400;
+    font-weight: 400 !important;
   }
   div#content span.limegreen {
     color: #32cd32;
   }
   header nav a#logo span#name {
     font-size: 1.5em;
+    font-weight: 700 !important;
   }
   header nav ul li a span.text {
     font-size: 1.05em;
     line-height: 1.05;
+    font-weight: 700 !important;
   }
   footer div#copyright, footer div#poweredby {
     font-size: 1.1em;
