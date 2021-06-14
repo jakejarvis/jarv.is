@@ -6,7 +6,7 @@ hugo_stats.json
 
 # webpack artifacts
 data/manifest.json
-static/dist/
+static/assets/
 
 # node/npm/yarn
 node_modules/

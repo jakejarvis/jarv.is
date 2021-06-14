@@ -12,7 +12,7 @@
     /////////////////////////
 
       // default assets url, by default will be Twitter Inc. CDN
-      base: '/dist/emoji/',
+      base: '/assets/emoji/',
 
       // default assets file extensions, by default '.png'
       ext: '.svg',

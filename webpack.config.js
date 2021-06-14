@@ -1,5 +1,5 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+//const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SriPlugin = require("webpack-subresource-integrity");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
@@ -15,13 +15,13 @@ module.exports = {
   mode: isProd ? "production" : "development",
   output: {
     filename: isProd ? "js/[name]-[contenthash:6].js" : "js/[name].js",
-    path: path.resolve(__dirname, "static/dist/"),
-    publicPath: "/dist/",
-    clean: true,
+    path: path.resolve(__dirname, "static/assets/"),
+    publicPath: "/assets/",
+    //clean: true,
     crossOriginLoading: "anonymous",
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    //new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
     }),
@@ -87,5 +87,10 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public/'),
+    publicPath: "/assets/",
+    port: process.env.PORT || 1337,
   },
 };

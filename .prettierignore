@@ -12,6 +12,7 @@ _vendor/
 
 # webpack
 webpack.config.js
+gulpfile.js
 data/manifest.json
 
 # dotfiles/config
