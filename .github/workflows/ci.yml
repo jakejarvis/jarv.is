@@ -34,8 +34,8 @@ jobs:
         node-version: 14.x
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: Build preview
-      run: yarn build:hugo --environment=development --baseURL=/ --buildDrafts --buildFuture
+    - name: Build site
+      run: yarn build
     - name: Percy snapshots
       uses: percy/snapshot-action@v0.1.2
       env:
