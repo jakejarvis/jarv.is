@@ -78,8 +78,9 @@ function optimizeImages() {
           progressive: true,
         }),
         imageminPngquant({
-          quality: [0.1, 0.3],
+          quality: [0.7, 0.9],
           speed: 1,
+          strip: true,
         }),
         imageminGifsicle(),
         imageminSvgo(),
