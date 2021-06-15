@@ -1,5 +1,4 @@
 const path = require("path");
-//const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SriPlugin = require("webpack-subresource-integrity");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
@@ -15,16 +14,15 @@ module.exports = {
   mode: isProd ? "production" : "development",
   devtool: false,
   output: {
-    filename: isProd ? "js/[name]-[contenthash:6].js" : "js/[name].js",
+    filename: isProd ? "js/[name]-[contenthash:8].js" : "js/[name].js",
     path: path.resolve(__dirname, "static/assets/"),
     publicPath: "/assets/",
     clean: true,
     crossOriginLoading: "anonymous",
   },
   plugins: [
-    //new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
+      filename: isProd ? "css/[name]-[contenthash:8].css" : "css/[name].css",
     }),
     new SriPlugin({
       hashFuncNames: ["sha512"],
@@ -71,18 +69,6 @@ module.exports = {
             options: {
               name: "[name].[ext]",
               outputPath: "fonts/",
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "img/",
             },
           },
         ],

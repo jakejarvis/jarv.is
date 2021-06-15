@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const gulp = require("gulp");
 const htmlmin = require("gulp-html-minifier-terser");
 const imagemin = require("gulp-imagemin");
@@ -6,8 +5,8 @@ const { spawn } = require("child_process");
 const del = require("del");
 const hugoBin = require("hugo-extended");
 
-let hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
-let webpackOptions = [];
+let hugoDefaults = ["--gc", "--cleanDestinationDir", "--verbose"];
+let webpackDefaults = [];
 
 exports.default = gulp.series(
   clean,
@@ -29,7 +28,7 @@ exports.clean = gulp.task(clean);
 function runHugo(options) {
   return hugo = () => {
     // WARNING: MAJOR HACK AHEAD
-    return spawn(hugoBin, hugoOptions.concat(options || []), {
+    return spawn(hugoBin, hugoDefaults.concat(options || []), {
       stdio: "inherit",
     });
   }
@@ -38,7 +37,7 @@ function runHugo(options) {
 function runWebpack(options) {
   return webpack = () => {
     // WARNING: MAJOR HACK AHEAD
-    return spawn("./node_modules/.bin/webpack", webpackOptions.concat(options || []), {
+    return spawn("./node_modules/.bin/webpack", webpackDefaults.concat(options || []), {
       stdio: "inherit",
     });
   }
