@@ -115,6 +115,12 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-subresource-integrity": "^1.5.2"
   },
+  "optionalDependencies": {
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^9.0.0"
+  },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },

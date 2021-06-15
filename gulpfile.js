@@ -5,6 +5,12 @@ const { spawn } = require("child_process");
 const del = require("del");
 const hugoBin = require("hugo-extended");
 
+// use up-to-date imagemin plugins instead of those bundled with gulp-imagemin:
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminSvgo = require('imagemin-svgo');
+
 let hugoDefaults = ["--gc", "--cleanDestinationDir", "--verbose"];
 let webpackDefaults = [];
 
@@ -67,15 +73,16 @@ function optimizeImages() {
     .src(["public/**/*.{gif,jpg,png,svg}", "!public/assets/emoji/*"], { base: "./" })
     .pipe(
       imagemin([
-        imagemin.mozjpeg({
+        imageminMozjpeg({
           quality: 85,
           progressive: true,
         }),
-        imagemin.optipng({
-          optimizationLevel: 2,
+        imageminPngquant({
+          quality: [0.1, 0.3],
+          speed: 1,
         }),
-        imagemin.gifsicle(),
-        imagemin.svgo(),
+        imageminGifsicle(),
+        imageminSvgo(),
       ],
       {
         verbose: true,
