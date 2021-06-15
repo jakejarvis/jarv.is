@@ -70,7 +70,6 @@
     "babel-minify": "^0.5.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.0",
-    "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "del": "^6.0.0",
     "eslint": "~7.28.0",
@@ -79,12 +78,10 @@
     "eslint-plugin-import": "~2.23.4",
     "eslint-plugin-prettier": "~3.4.0",
     "file-loader": "^6.2.0",
-    "glob-exec": "^0.1.1",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "gulp-htmlmin": "^5.0.1",
+    "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^7.1.0",
-    "html-minifier": "^4.0.0",
     "hugo-extended": "jakejarvis/hugo-extended#9f615221831632cb3b8879ab3fc420fff921e1fd",
     "lint-staged": "^11.0.0",
     "markdownlint-cli": "~0.27.1",
@@ -112,18 +109,11 @@
     "stylelint-prettier": "~1.2.0",
     "stylelint-scss": "~3.19.0",
     "typescript": "^4.3.2",
-    "web-vitals": "^2.0.1",
     "webpack": "^5.38.1",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-subresource-integrity": "^1.5.2"
-  },
-  "optionalDependencies": {
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^9.0.0"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

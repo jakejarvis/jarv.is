@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 const gulp = require("gulp");
-const htmlmin = require("gulp-htmlmin");
+const htmlmin = require("gulp-html-minifier-terser");
 const imagemin = require("gulp-imagemin");
 const { spawn } = require("child_process");
 const del = require("del");
+const hugoBin = require("hugo-extended");
 
 let hugoOptions = ["--gc", "--cleanDestinationDir", "--verbose"];
 let webpackOptions = [];
@@ -25,27 +26,18 @@ exports.serve = gulp.parallel(
 
 exports.clean = gulp.task(clean);
 
-function clean() {
-  return del([
-    "public/",
-    "resources/",
-    "builds/",
-    "_vendor/",
-    "static/assets/",
-    "data/manifest.json",
-  ]);
-}
-
 function runHugo(options) {
-  return function() {
-    return spawn("./node_modules/.bin/hugo", hugoOptions.concat(options || []), {
+  return hugo = () => {
+    // WARNING: MAJOR HACK AHEAD
+    return spawn(hugoBin, hugoOptions.concat(options || []), {
       stdio: "inherit",
     });
   }
 }
 
 function runWebpack(options) {
-  return function() {
+  return webpack = () => {
+    // WARNING: MAJOR HACK AHEAD
     return spawn("./node_modules/.bin/webpack", webpackOptions.concat(options || []), {
       stdio: "inherit",
     });
@@ -75,7 +67,6 @@ function optimizeImages() {
   return gulp
     .src(["public/**/*.{gif,jpg,png,svg}", "!public/assets/emoji/*"], { base: "./" })
     .pipe(
-      // TODO: --plugin=mozjpeg --plugin.mozjpeg.progressive --plugin.mozjpeg.quality=85 --plugin=pngquant --plugin.pngquant.quality={0.1,0.3} --plugin.pngquant.speed=1 --plugin.pngquant.strip --plugin=gifsicle --plugin=svgo
       imagemin([
         imagemin.mozjpeg({
           quality: 85,
@@ -92,4 +83,14 @@ function optimizeImages() {
       })
     )
     .pipe(gulp.dest(".", { overwrite: true }));
+}
+
+function clean() {
+  return del([
+    "public/",
+    "builds/",
+    "_vendor/",
+    "static/assets/",
+    "data/manifest.json",
+  ]);
 }
