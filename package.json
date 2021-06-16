@@ -82,7 +82,7 @@
     "gulp-cli": "^2.3.0",
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^7.1.0",
-    "hugo-extended": "jakejarvis/hugo-extended#9f615221831632cb3b8879ab3fc420fff921e1fd",
+    "hugo-extended": "jakejarvis/hugo-extended#7bd97c7bed83327cc2a6c8426bced5532eea160e",
     "lint-staged": "^11.0.0",
     "markdownlint-cli": "~0.27.1",
     "mini-css-extract-plugin": "^1.6.0",
