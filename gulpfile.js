@@ -1,9 +1,8 @@
 const gulp = require("gulp");
+const execa = require("gulp-execa").task;
 const htmlmin = require("gulp-html-minifier-terser");
 const imagemin = require("gulp-imagemin");
-const { spawn } = require("child_process");
 const del = require("del");
-const hugoBin = require("hugo-extended");
 
 // use up-to-date imagemin plugins instead of those bundled with gulp-imagemin:
 const imageminMozjpeg = require('imagemin-mozjpeg');
@@ -11,13 +10,10 @@ const imageminPngquant = require('imagemin-pngquant');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 
-let hugoDefaults = ["--gc", "--cleanDestinationDir", "--verbose"];
-let webpackDefaults = [];
-
 exports.default = gulp.series(
   clean,
-  runWebpack(["--mode", "production", "--profile"]),
-  runHugo(),
+  npx("webpack", ["--mode", "production", "--profile"]),
+  npx("hugo"),
   gulp.parallel(
     optimizeHtml,
     optimizeImages,
@@ -25,29 +21,11 @@ exports.default = gulp.series(
 );
 
 exports.serve = gulp.parallel(
-  runWebpack(["serve"]),
-  runHugo(["--watch", "--buildDrafts", "--buildFuture"]),
+  npx("webpack", ["serve"]),
+  npx("hugo", ["--watch", "--buildDrafts", "--buildFuture", "--verbose"]),
 );
 
 exports.clean = gulp.task(clean);
-
-function runHugo(options) {
-  return hugo = () => {
-    // WARNING: MAJOR HACK AHEAD
-    return spawn(hugoBin, hugoDefaults.concat(options || []), {
-      stdio: "inherit",
-    });
-  }
-}
-
-function runWebpack(options) {
-  return webpack = () => {
-    // WARNING: MAJOR HACK AHEAD
-    return spawn("./node_modules/.bin/webpack", webpackDefaults.concat(options || []), {
-      stdio: "inherit",
-    });
-  }
-}
 
 function optimizeHtml() {
   return gulp
@@ -100,4 +78,11 @@ function clean() {
     "static/assets/",
     "data/manifest.json",
   ]);
+}
+
+// WARNING: MAJOR HACKS AHEAD:
+function npx(bin, options) {
+  const args = options ? options.join(" ") : "";
+  const cmd = `npx ${bin} ${args}`.trim();
+  return execa(cmd, { stdio: "inherit", shell: true });
 }

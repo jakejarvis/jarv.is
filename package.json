@@ -80,6 +80,7 @@
     "file-loader": "^6.2.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
+    "gulp-execa": "^2.0.0",
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^7.1.0",
     "hugo-extended": "jakejarvis/hugo-extended#7bd97c7bed83327cc2a6c8426bced5532eea160e",
