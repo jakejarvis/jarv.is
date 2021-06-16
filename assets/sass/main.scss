@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-// TODO
-$max-width: "865px";
-$base-url: "/";
-
-// those values need quotes because, even though prettier & stylelint are correct
-// in that it's insanely invalid SCSS, they refuse to ignore it. but $max-width is
-// a numerical value that can't have quotes, so let's remove them...
-$max-width: unquote($max-width);
-
 // Variables & Functions
 @import "abstracts/functions";
 @import "abstracts/settings";

@@ -29,7 +29,9 @@
 
 # TECHNOLOGY
 
-    Hugo extended
+    Hugo
+    Webpack
+    Gulp
     Vercel
     FaunaDB
     ...and more: https://jarv.is/uses/

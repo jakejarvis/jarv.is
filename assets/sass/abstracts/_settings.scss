@@ -17,7 +17,9 @@ $font-stack-variable: $webfont-sans-variable, $system-fonts-sans;
 $font-stack-mono: $webfont-mono, $system-fonts-monospace;
 $font-stack-mono-variable: $webfont-mono-variable, $system-fonts-monospace;
 
-// Width at which to switch to mobile styles
+// The maximum width of the content area:
+$max-width: 865px;
+// Width at which to switch to mobile styles:
 $responsive-width: 800px;
 
 // Fancy link underline settings
