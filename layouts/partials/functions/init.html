@@ -10,12 +10,10 @@
   {{- with .Params.css -}}
     {{/* NOTE: This file doesn't end up getting published (which is good) */}}
     {{- $target := path.Join $.File.Dir "css/inline.scss" -}}
-    {{- $css := . | resources.FromString $target | resources.ExecuteAsTemplate $target . | resources.ToCSS (dict "targetPath" $target) | resources.PostCSS (dict "config" "postcss.config.js") -}}
-{{ printf "<!-- htmlmin:ignore -->" | safeHTML -}}
+    {{- $css := . | resources.FromString $target | resources.PostCSS (dict "config" "postcss.config.js") -}}
 <style>
 {{ $css.Content | safeCSS }}
 </style>
-{{- printf "<!-- htmlmin:ignore -->" | safeHTML }}
   {{- end -}}
 {{- end -}}
 
