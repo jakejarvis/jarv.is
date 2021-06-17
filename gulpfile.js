@@ -80,9 +80,13 @@ function clean() {
   ]);
 }
 
-// WARNING: MAJOR HACKS AHEAD:
+// run a locally installed (i.e. ./node_modules/.bin/foo) binary, similar to a package.json script
 function npx(bin, options) {
-  const args = options ? options.join(" ") : "";
-  const cmd = `npx ${bin} ${args}`.trim();
-  return execa(cmd, { stdio: "inherit", shell: true });
+  // WARNING: MAJOR HACKS AHEAD:
+  const cmd = `${bin} ${options ? options.join(" ") : ""}`.trim();
+  return execa(cmd, {
+    preferLocal: true,
+    shell: true,
+    stdio: "inherit",
+  });
 }
