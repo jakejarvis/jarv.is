@@ -31,7 +31,7 @@
 {{ with .Site.Params.social.facebookAppID }}<meta property="fb:app_id" content="{{ . }}">{{ end }}
 
 <meta name="twitter:card" content="{{ if .IsPage }}summary_large_image{{ else }}summary{{ end }}">
-<meta name="twitter:domain" content="{{ (urls.Parse .Site.BaseURL).Host }}">
+<meta name="twitter:domain" content="{{ (urls.Parse .Site.Params.baseURL).Host }}">
 {{- with .Site.Author.social.twitter }}
 <meta name="twitter:site" content="{{ print "@" . }}">
 <meta name="twitter:creator" content="{{ print "@" . }}">

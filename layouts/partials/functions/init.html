@@ -62,10 +62,8 @@
 
 {{/* Chooses and initializes various images for use by JSON schema & open graph tags */}}
 {{/* Author image (default) */}}
-{{- with .Site.Author.image -}}
-  {{- with resources.Get . -}}
-    {{- $.Scratch.Set "authorImage" . -}}
-  {{- end -}}
+{{- with index .Site.Data.manifest .Site.Author.image -}}
+  {{- $.Scratch.Set "authorImage" (dict "Permalink" (absURL .src) "Width" 1200 "Height" 1200 "MediaType" "image/jpeg") -}}
 {{- end -}}
 {{/* Page image (via frontmatter) */}}
 {{- with .Params.image -}}
@@ -79,8 +77,6 @@
   {{- end -}}
 {{- end -}}
 {{/* Site logo */}}
-{{- with .Site.Params.image -}}
-  {{- with resources.Get . -}}
-    {{- $.Scratch.Set "logoImage" . -}}
-  {{- end -}}
+{{- with index .Site.Data.manifest .Site.Params.image -}}
+  {{- $.Scratch.Set "logoImage" (dict "Permalink" (absURL .src) "Width" 2048 "Height" 2048 "MediaType" "image/png") -}}
 {{- end -}}

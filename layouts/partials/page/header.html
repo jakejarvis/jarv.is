@@ -1,9 +1,9 @@
 <header>
   <nav>
     <a class="no-underline" href="{{ .Site.BaseURL }}" id="logo" rel="me author" aria-label="{{ .Site.Title }}">
-      {{ $meImg := resources.Get .Site.Author.image }}
-      {{ $meImgSm := $meImg.Resize "160x160 q90 jpg" }}
-      <img id="selfie" src="{{ $meImgSm.Permalink }}" width="54" height="54" alt="Photo of Jake Jarvis">
+      {{ with index .Site.Data.manifest "images/tiny-selfie.jpg" }}
+      <img id="selfie" src="{{ .src | absURL }}" width="54" height="54" alt="Photo of Jake Jarvis">
+      {{ end }}
 
       <span id="name">{{ .Site.Title }}</span>
     </a>

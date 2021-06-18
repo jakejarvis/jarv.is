@@ -26,7 +26,7 @@ disableAliases = true
 
 [params]
   description = "Hi there! I'm a frontend web developer based in Boston, Massachusetts specializing in the JAMstack, modern JavaScript frameworks, and progressive web apps."
-  image = "img/logo.png"  # relative to assetDir root
+  image = "images/logo.png"  # relative to assetDir root
   mainSection = "notes"  # content that appears in feeds
   baseURL = "https://jarv.is"  # different from baseURL above, this is only used where necessary
   [params.theme]
@@ -43,7 +43,7 @@ disableAliases = true
 
 [author]
   name = "Jake Jarvis"
-  image = "img/me.jpg"  # relative to assetDir root
+  image = "images/me.jpg"  # relative to assetDir root
   email = "jake@jarv.is"
   [author.social]
     github = "jakejarvis"

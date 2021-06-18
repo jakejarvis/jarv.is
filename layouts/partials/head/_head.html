@@ -4,7 +4,7 @@
 {{ partialCached "head/mobile" . -}}
 {{ partialCached "head/preload" . -}}
 {{ partial "head/styles" . -}}
-{{ partialCached "head/favicons" (dict "pngSizes" "192 48 32 16" "icoSizes" "16 32") -}}
+{{ partialCached "head/favicons" (dict "pngSizes" "192 48 32 16" "icoSizes" "16 32" "manifest" .Site.Data.manifest) -}}
 {{ partialCached "head/feeds" . -}}
 {{ partial "head/canonical" . -}}
 {{ partial "head/schema" . -}}

@@ -1,31 +1,31 @@
 {
   "name": "{{ .Site.Title }}",
-  "short_name": "{{ (urls.Parse .Site.BaseURL).Host }}",
+  "short_name": "{{ (urls.Parse .Site.Params.baseURL).Host }}",
   "icons": [
-    {
-      "src": "{{ (resources.Get "img/android-chrome-512x512.png").Permalink | safeJS }}",
+    {{ with index .Site.Data.manifest "images/android-chrome-512x512.png" }}{
+      "src": "{{ .src | absURL | safeJS }}",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "{{ (resources.Get "img/android-chrome-192x192.png").Permalink | safeJS }}",
+    },{{ end }}
+    {{ with index .Site.Data.manifest "images/android-chrome-192x192.png" }}{
+      "src": "{{ .src | absURL | safeJS }}",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "{{ (resources.Get "img/maskable-512x512.png").Permalink | safeJS }}",
+    },{{ end }}
+    {{ with index .Site.Data.manifest "images/maskable-512x512.png" }}{
+      "src": "{{ .src | absURL | safeJS }}",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "{{ (resources.Get "img/maskable-192x192.png").Permalink | safeJS }}",
+    },{{ end }}
+    {{ with index .Site.Data.manifest "images/maskable-192x192.png" }}{
+      "src": "{{ .src | absURL | safeJS }}",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
-    }
+    }{{ end }}
   ],
   "start_url": "/",
   "display": "browser",
