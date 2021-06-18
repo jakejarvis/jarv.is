@@ -12,7 +12,7 @@ module.exports = {
     path.resolve(__dirname, "assets/sass/main.scss"),
   ],
   mode: isProd ? "production" : "development",
-  devtool: isProd ? "source-map" : "eval",
+  devtool: "source-map",
   output: {
     filename: isProd ? "js/[name]-[contenthash:8].js" : "js/[name].js",
     path: path.resolve(__dirname, "static/assets/"),
@@ -37,11 +37,11 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: "assets/images/",
+          from: path.resolve(__dirname, "assets/images/"),
           to: "images/"
         },
         {
-          from: "node_modules/twemoji-emojis/vendor/svg/",
+          from: path.resolve(__dirname, "node_modules/twemoji-emojis/vendor/svg/"),
           to: "emoji/"
         },
       ],
@@ -80,9 +80,9 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, "public/"),
     publicPath: "/assets/",
-    // host: '0.0.0.0', // required when inside Docker
+    // host: "0.0.0.0",  // required when inside Docker
     port: process.env.PORT || 1337,
     compress: true,
   },

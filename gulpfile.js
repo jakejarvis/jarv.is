@@ -5,10 +5,10 @@ const imagemin = require("gulp-imagemin");
 const del = require("del");
 
 // use up-to-date imagemin plugins instead of those bundled with gulp-imagemin:
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminGifsicle = require('imagemin-gifsicle');
-const imageminSvgo = require('imagemin-svgo');
+const imageminMozjpeg = require("imagemin-mozjpeg");
+const imageminPngquant = require("imagemin-pngquant");
+const imageminGifsicle = require("imagemin-gifsicle");
+const imageminSvgo = require("imagemin-svgo");
 
 exports.default = gulp.series(
   clean,
