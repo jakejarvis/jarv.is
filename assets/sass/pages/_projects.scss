@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@use "../abstracts/themes";
 
 // Video Styles
 div.layout-projects {
@@ -38,10 +38,8 @@ div.layout-projects {
       border-radius: 6px;
       font-size: 0.9em;
 
-      @include colors() {
-        color: c(medium-dark);
-        border-color: c(kinda-light);
-      }
+      @include themes.themed(color, "medium-dark");
+      @include themes.themed(border-color, "kinda-light");
 
       a.repo-name {
         font-size: 1.2em;
@@ -57,9 +55,7 @@ div.layout-projects {
         margin-right: 12px;
         font-size: 0.925em;
 
-        @include colors() {
-          color: c(medium);
-        }
+        @include themes.themed(color, "medium");
 
         svg {
           display: inline-block;
@@ -84,7 +80,7 @@ div.layout-projects {
 }
 
 // Responsive
-@mixin responsive--projects() {
+@mixin responsive() {
   div.layout-projects {
     // stylelint-disable-block block-no-empty
   }

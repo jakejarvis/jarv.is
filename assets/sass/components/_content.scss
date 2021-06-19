@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@use "../abstracts/themes";
 
 div#content {
   font-size: 0.925em;
@@ -19,9 +19,7 @@ div#content {
     padding-bottom: 0.25em;
     border-bottom: 1px solid;
 
-    @include colors() {
-      border-color: c(kinda-light);
-    }
+    @include themes.themed(border-color, "kinda-light");
   }
 
   p.center {
@@ -43,9 +41,7 @@ div#content {
       line-height: 1.5;
       margin-top: 0.5em;
 
-      @include colors() {
-        color: c(medium);
-      }
+      @include themes.themed(color, "medium");
     }
   }
 
@@ -61,6 +57,6 @@ div#content {
 }
 
 // Responsive
-@mixin responsive--content() {
+@mixin responsive() {
   // stylelint-disable-block block-no-empty
 }

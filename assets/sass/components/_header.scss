@@ -1,4 +1,5 @@
-@charset "UTF-8";
+@use "../abstracts/settings";
+@use "../abstracts/themes";
 
 // Global Header Styles
 header {
@@ -6,13 +7,11 @@ header {
   padding: 0.7em 1.5em;
   border-bottom: 1px solid;
 
-  @include colors() {
-    border-color: c(kinda-light);
-  }
+  @include themes.themed(border-color, "kinda-light");
 
   nav {
     width: 100%;
-    max-width: $max-width;
+    max-width: settings.$max-width;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -22,9 +21,7 @@ header {
       display: flex;
       align-items: center;
 
-      @include colors() {
-        color: c(medium-dark);
-      }
+      @include themes.themed(color, "medium-dark");
 
       img#selfie {
         width: 50px;
@@ -32,9 +29,7 @@ header {
         border: 1px solid;
         border-radius: 50%;
 
-        @include colors() {
-          border-color: c(light);
-        }
+        @include themes.themed(border-color, "light");
       }
 
       span#name {
@@ -45,9 +40,7 @@ header {
       }
 
       &:hover {
-        @include colors() {
-          color: c(links);
-        }
+        @include themes.themed(color, "links");
 
         img#selfie {
           opacity: 0.9;
@@ -70,18 +63,14 @@ header {
         a {
           display: inline-block;
           transition: transform 0.15s ease-in-out;
-          will-change: transform; // stylelint-disable-line plugin/no-unsupported-browser-features
+          will-change: transform;
 
-          @include colors() {
-            color: c(medium-dark);
-          }
+          @include themes.themed(color, "medium-dark");
 
           &:hover {
             transform: scale(1.1);
 
-            @include colors() {
-              color: c(links);
-            }
+            @include themes.themed(color, "links");
           }
 
           span.icon {
@@ -128,7 +117,7 @@ header {
 }
 
 // Responsive
-@mixin responsive--header() {
+@mixin responsive() {
   header {
     padding: 0.5em 1.25em;
 

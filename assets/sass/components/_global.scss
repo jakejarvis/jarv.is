@@ -1,4 +1,7 @@
-@charset "UTF-8";
+@use "sass:map";
+@use "../abstracts/functions";
+@use "../abstracts/settings";
+@use "../abstracts/themes";
 
 // Global Styles
 body {
@@ -15,18 +18,18 @@ body {
 // really just the color of header & footer
 body {
   &.light {
-    background-color: map-get(map-get($themes, "light"), "background-outer");
+    background-color: map.get(map.get(themes.$themes, "light"), "background-outer");
 
     button.dark-mode-toggle {
-      background-image: url($icon-bulb-on);
+      background-image: url(themes.$icon-bulb-on);
     }
   }
 
   &.dark {
-    background-color: map-get(map-get($themes, "dark"), "background-outer");
+    background-color: map.get(map.get(themes.$themes, "dark"), "background-outer");
 
     button.dark-mode-toggle {
-      background-image: url($icon-bulb-off);
+      background-image: url(themes.$icon-bulb-off);
     }
   }
 }
@@ -36,36 +39,37 @@ main {
   width: 100%;
   padding: 0 1.5em;
 
-  @include colors() {
-    background-color: c(background-inner);
-    color: c(text);
-  }
+  @include themes.themed(color, "text");
+  @include themes.themed(background-color, "background-inner");
 }
 
 // this is what's extended by different layouts (in ../pages)
 div.layout {
-  max-width: $max-width;
+  max-width: settings.$max-width;
   margin: 0 auto;
   display: block; // https://stackoverflow.com/questions/28794718/max-width-not-working-for-ie-11
 }
 
-// cool link underlines:
-// https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
 a {
   text-decoration: none;
   background-position: 0% 100%;
   background-repeat: no-repeat;
-  background-size: 0% $link-underline-size;
-  padding-bottom: $link-underline-size;
+  background-size: 0% settings.$link-underline-size;
+  padding-bottom: settings.$link-underline-size;
   transition: background-size 0.25s ease-in-out;
 
-  @include colors() {
-    color: c(links);
-    background-image: underline-hack(c(links));
+  @include themes.themed(color, "links");
+
+  // cool link underlines (via messy SCSS hacking):
+  // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
+  @each $theme, $map in themes.$themes {
+    @at-root body.#{$theme} #{&} {
+      background-image: functions.underline-hack(map-get($map, "links"));
+    }
   }
 
   &:hover {
-    background-size: 100% $link-underline-size;
+    background-size: 100% settings.$link-underline-size;
   }
 
   &.no-underline {
@@ -90,10 +94,8 @@ blockquote {
   padding-left: 1.5em;
   border-left: 3px solid;
 
-  @include colors() {
-    color: c(medium-dark);
-    border-color: c(links);
-  }
+  @include themes.themed(color, "medium-dark");
+  @include themes.themed(border-color, "links");
 }
 
 hr {
@@ -101,9 +103,7 @@ hr {
   height: 2px;
   border: 0;
 
-  @include colors() {
-    background-color: c(light);
-  }
+  @include themes.themed(background-color, "light");
 }
 
 // make SVG twemojis relative to surrounding text
@@ -126,7 +126,7 @@ a img.emoji {
 }
 
 // Responsive
-@mixin responsive--global() {
+@mixin responsive() {
   body {
     // Safari iOS menu bar reappears below 44px:
     // https://www.eventbrite.com/engineering/mobile-safari-why/

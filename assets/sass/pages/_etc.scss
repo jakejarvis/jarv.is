@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 // Video Styles
 div.layout-etc {
   padding-top: 1.5em;
@@ -17,7 +15,7 @@ div.layout-etc {
 }
 
 // Responsive
-@mixin responsive--etc() {
+@mixin responsive() {
   div.layout-etc {
     h1 {
       font-size: 1.6em;

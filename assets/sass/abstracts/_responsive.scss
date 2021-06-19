@@ -1,16 +1,28 @@
-@charset "UTF-8";
+@use "../abstracts/settings";
+
+@use "../components/global";
+@use "../components/header";
+@use "../components/footer";
+@use "../components/content";
+
+@use "../pages/home";
+@use "../pages/list";
+@use "../pages/single";
+@use "../pages/videos";
+@use "../pages/etc";
+@use "../pages/projects";
 
 // Responsive Awesomeness
-@media screen and (max-width: $responsive-width) {
-  @include responsive--global();
-  @include responsive--header();
-  @include responsive--footer();
-  @include responsive--content();
+@media screen and (max-width: settings.$responsive-width) {
+  @include global.responsive();
+  @include header.responsive();
+  @include footer.responsive();
+  @include content.responsive();
 
-  @include responsive--home();
-  @include responsive--list();
-  @include responsive--single();
-  @include responsive--videos();
-  @include responsive--etc();
-  @include responsive--projects();
+  @include home.responsive();
+  @include list.responsive();
+  @include single.responsive();
+  @include videos.responsive();
+  @include etc.responsive();
+  @include projects.responsive();
 }

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@use "../abstracts/themes";
 
 // Post Styles
 div.layout-single {
@@ -11,9 +11,7 @@ div.layout-single {
     letter-spacing: 0.04em;
     margin-top: 0.3em;
 
-    @include colors() {
-      color: c(medium);
-    }
+    @include themes.themed(color, "medium");
 
     a {
       color: inherit;
@@ -47,9 +45,7 @@ div.layout-single {
           content: "#"; // cosmetically hashtagify tags
           padding-right: 0.125em;
 
-          @include colors() {
-            color: c(light);
-          }
+          @include themes.themed(color, "light");
         }
 
         &:last-of-type {
@@ -75,7 +71,7 @@ div.layout-single {
 }
 
 // Responsive
-@mixin responsive--single() {
+@mixin responsive() {
   div.layout-single {
     padding-top: 0.8em;
     padding-bottom: 0.4em;

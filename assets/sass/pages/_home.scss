@@ -1,4 +1,5 @@
-@charset "UTF-8";
+@use "../abstracts/functions";
+@use "../abstracts/themes";
 
 // Home Styles
 div.layout-home {
@@ -52,20 +53,18 @@ div.layout-home {
   // easter egg emoji cursor
   a#birthday {
     &:hover {
-      cursor: url($icon-wand) 0 0, auto;
+      cursor: url(themes.$icon-wand) 0 0, auto;
     }
   }
 
   // non-link colors
   span {
     &#serverless {
-      color: $color-serverless;
+      color: themes.$color-serverless;
     }
 
     &#shh {
-      @include colors() {
-        color: c(medium-light);
-      }
+      @include themes.themed(color, "medium-light");
     }
 
     &.wave {
@@ -75,17 +74,17 @@ div.layout-home {
 }
 
 // Loop through $colors-home (see abstracts/_variables)
-@each $id, $colors in $colors-home {
+@each $id, $colors in themes.$colors-home {
   @each $theme, $color in $colors {
-    body.#{$theme} div.layout-home a##{$id} {
+    @at-root body.#{$theme} div.layout-home a##{$id} {
       color: $color;
-      background-image: underline-hack($color);
+      background-image: functions.underline-hack($color);
     }
   }
 }
 
 // Responsive
-@mixin responsive--home() {
+@mixin responsive() {
   div.layout-home {
     font-size: 0.975em;
     padding-top: 1em;

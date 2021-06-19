@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@use "../abstracts/themes";
 
 /*! Magic Waving Hand Emoji™: https://jrvs.io/wave */
 .wave {
@@ -6,14 +6,14 @@
   animation: wave 5s infinite;
   animation-delay: 1s;
   transform-origin: 65% 80%;
-  will-change: transform; // stylelint-disable-line plugin/no-unsupported-browser-features
+  will-change: transform;
 }
 
 .beat {
   display: inline-block;
   animation: beat 10s infinite; // 6 bpm, call 911 if you see this please.
   animation-delay: 7.5s; // offset from wave animation
-  will-change: transform; // stylelint-disable-line plugin/no-unsupported-browser-features
+  will-change: transform;
 }
 
 // modified from https://tobiasahlin.com/spinkit/
@@ -28,9 +28,7 @@
     display: inline-block;
     animation: loader 1.4s infinite ease-in-out both;
 
-    @include colors() {
-      background-color: c(medium-light);
-    }
+    @include themes.themed(background-color, "medium-light");
   }
 
   .spin-bounce1 {

@@ -10,6 +10,7 @@
   "rules": {
     "color-hex-length": "long",
     "max-nesting-depth": 6,
+    "order/order": null,
     "order/properties-alphabetical-order": null,
     "plugin/no-unsupported-browser-features": [true, {
       "severity": "warning",

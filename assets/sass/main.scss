@@ -1,30 +1,25 @@
 @charset "UTF-8";
 
-// Variables & Functions
-@import "abstracts/functions";
-@import "abstracts/settings";
-@import "abstracts/themes";
-@import "abstracts/reset";
-
 // Global Styles
-@import "components/typography";
-@import "components/global";
-@import "components/header";
-@import "components/footer";
-@import "components/content";
-@import "components/embeds";
+@use "components/reset";
+@use "components/typography";
+@use "components/global";
+@use "components/header";
+@use "components/footer";
+@use "components/content";
+@use "components/embeds";
 
 // Pages
-@import "pages/home";
-@import "pages/list";
-@import "pages/single";
-@import "pages/videos";
-@import "pages/etc";
-@import "pages/projects";
-
-// Responsive Mixins
-@import "abstracts/responsive";
+@use "pages/home";
+@use "pages/list";
+@use "pages/single";
+@use "pages/videos";
+@use "pages/etc";
+@use "pages/projects";
 
 // Miscellaneous
-@import "components/syntax";
-@import "components/animation";
+@use "components/syntax";
+@use "components/animation";
+
+// Responsive Mixins
+@use "abstracts/responsive";

@@ -1,4 +1,5 @@
-@charset "UTF-8";
+@use "../abstracts/functions";
+@use "../abstracts/settings";
 
 // Note to self: got this list after subsetting Inter with glyphhanger or pyftsubset:
 // https://github.com/filamentgroup/glyphhanger
@@ -16,30 +17,30 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
  */
 
 // Variable
-@include font-face("Inter var", "inter-subset.var", 100 900, $variable: true) {
+@include functions.font-face("Inter var", "inter-subset.var", 100 900, $variable: true) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter var", "inter-italic-subset.var", 100 900, italic, $variable: true) {
+@include functions.font-face("Inter var", "inter-italic-subset.var", 100 900, italic, $variable: true) {
   unicode-range: $unicode-subset;
 }
 
 // Legacy
-@include font-face("Inter", "inter-regular-subset", 400) {
+@include functions.font-face("Inter", "inter-regular-subset", 400) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "inter-regular-italic-subset", 400, italic) {
+@include functions.font-face("Inter", "inter-regular-italic-subset", 400, italic) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "inter-medium-subset", 500) {
+@include functions.font-face("Inter", "inter-medium-subset", 500) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "inter-medium-italic-subset", 500, italic) {
+@include functions.font-face("Inter", "inter-medium-italic-subset", 500, italic) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "inter-bold-subset", 700) {
+@include functions.font-face("Inter", "inter-bold-subset", 700) {
   unicode-range: $unicode-subset;
 }
-@include font-face("Inter", "inter-bold-italic-subset", 700, italic) {
+@include functions.font-face("Inter", "inter-bold-italic-subset", 700, italic) {
   unicode-range: $unicode-subset;
 }
 
@@ -52,12 +53,12 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
  */
 
 // Variable
-@include font-face("Roboto Mono var", "roboto-mono-subset.var", 100 700, $variable: true);
-@include font-face("Roboto Mono var", "roboto-mono-italic-subset.var", 100 700, italic, $variable: true);
+@include functions.font-face("Roboto Mono var", "roboto-mono-subset.var", 100 700, $variable: true);
+@include functions.font-face("Roboto Mono var", "roboto-mono-italic-subset.var", 100 700, italic, $variable: true);
 
 // Legacy
-@include font-face("Roboto Mono", "roboto-mono-regular-subset", 400);
-@include font-face("Roboto Mono", "roboto-mono-italic-subset", 400, italic);
+@include functions.font-face("Roboto Mono", "roboto-mono-regular-subset", 400);
+@include functions.font-face("Roboto Mono", "roboto-mono-italic-subset", 400, italic);
 
 /*!
   *  Comic Neue typeface v2.5 - http://comicneue.com/
@@ -66,17 +67,17 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
   *  Licensed under the SIL Open Font License, Version 1.1:
   *  https://github.com/crozynski/comicneue/blob/v2.5/OFL.txt
   */
-@include font-face("Comic Neue", "comic-neue-regular-subset", 400) {
+@include functions.font-face("Comic Neue", "comic-neue-regular-subset", 400) {
   unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
 }
-@include font-face("Comic Neue", "comic-neue-bold-subset", 700) {
+@include functions.font-face("Comic Neue", "comic-neue-bold-subset", 700) {
   unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
 }
 
 /* --------- */
 
 body {
-  font-family: $font-stack-sans;
+  font-family: settings.$font-stack-sans;
   font-kerning: normal;
   font-variant-ligatures: normal;
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
@@ -86,20 +87,20 @@ body {
 code,
 pre,
 .monospace {
-  font-family: $font-stack-mono;
+  font-family: settings.$font-stack-mono;
 }
 
 // override above font-family if browser supports variable fonts
 // https://caniuse.com/#feat=variable-fonts
 @supports (font-variation-settings: normal) {
   body {
-    font-family: $font-stack-variable;
+    font-family: settings.$font-stack-variable;
     font-optical-sizing: auto;
   }
 
   code,
   pre,
   .monospace {
-    font-family: $font-stack-mono-variable;
+    font-family: settings.$font-stack-mono-variable;
   }
 }

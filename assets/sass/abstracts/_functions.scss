@@ -1,5 +1,6 @@
-@charset "UTF-8";
 @use "sass:math";
+@use "sass:string";
+@use "settings";
 
 // Gradient hack to get our custom underline to wrap:
 // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
@@ -11,7 +12,7 @@
 
   // Less compatible but better for light/dark mode switching.
   // We fall back to non-alpha hex colors with postcss-color-rgba-fallback to mitigate this.
-  $color-opaque-alpha: rgba($color, math.div($link-underline-opacity, 100%));
+  $color-opaque-alpha: rgba($color, math.div(settings.$link-underline-opacity, 100%));
 
   // Return non-gradient linear-gradient():
   @return linear-gradient($color-opaque-alpha, $color-opaque-alpha);
@@ -28,7 +29,7 @@
   $base-path: "../fonts/"
 ) {
   @font-face {
-    font-family: $family;
+    font-family: string.quote($family);
     font-style: $style;
     font-weight: $weight;
     font-display: $display;
@@ -45,41 +46,4 @@
     // Allow additional rules to be passed in:
     @content;
   }
-}
-
-// Simple dark/light theme switching via <body> class and $themes map in abstracts/_themes.scss
-// https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
-//
-// Note: ONLY color rules should go in here (eg: just `border-color`, not the whole `border` rule)
-$theme-map: (); // now declaring global variables this way: https://sass-lang.com/documentation/variables#scope
-@mixin colors() {
-  @each $theme, $map in $themes {
-    body.#{$theme} & {
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge(
-          $theme-map,
-          (
-            $key: $value,
-          )
-        ) !global;
-      }
-      @content;
-    }
-  }
-}
-
-// Just @include colors() and call c() when a rule depends on which theme is active.
-// The argument is a key in the $themes array in abstracts/_themes.
-//
-//    img {
-//      border: 1px solid;
-//
-//      @include colors() {
-//        border-color: c(medium-dark);   // ONLY the color rules here.
-//      }
-//    }
-//
-@function c($key) {
-  @return map-get($theme-map, $key);
 }

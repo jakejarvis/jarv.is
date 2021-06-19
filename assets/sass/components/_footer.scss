@@ -1,4 +1,5 @@
-@charset "UTF-8";
+@use "../abstracts/settings";
+@use "../abstracts/themes";
 
 // Global Footer Styles
 footer {
@@ -7,21 +8,17 @@ footer {
   padding: 1.25em 1.5em;
   border-top: 1px solid;
 
-  @include colors() {
-    color: c(medium-dark);
-    border-color: c(kinda-light);
-  }
+  @include themes.themed(color, "medium-dark");
+  @include themes.themed(border-color, "kinda-light");
 
   a {
-    @include colors() {
-      color: c(medium-dark);
-    }
+    @include themes.themed(color, "medium-dark");
   }
 
   div.row {
     display: flex;
     width: 100%;
-    max-width: $max-width;
+    max-width: settings.$max-width;
     margin: 0 auto;
     justify-content: space-between;
     font-size: 0.85em;
@@ -33,14 +30,12 @@ footer {
     padding-bottom: 2px;
     border-bottom: 1px solid;
 
-    @include colors() {
-      border-color: c(light);
-    }
+    @include themes.themed(border-color, "light");
   }
 }
 
 // Responsive
-@mixin responsive--footer() {
+@mixin responsive() {
   footer {
     padding: 1em 1.25em 0 1.25em;
 
