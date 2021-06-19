@@ -1,4 +1,5 @@
 @use "sass:map";
+
 @use "../abstracts/functions";
 @use "../abstracts/settings";
 @use "../abstracts/themes";
@@ -10,27 +11,47 @@ body {
   margin: 0 auto;
   scroll-behavior: smooth;
 
+  font-family: settings.$font-stack-sans;
+  font-kerning: normal;
+  font-variant-ligatures: normal;
+  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
+
   // global base font size:
   font-size: 0.975em;
-}
+  line-height: 1.5;
 
-// manually setting light/dark mode backgrounds and bulb icon
-// really just the color of header & footer
-body {
-  &.light {
-    background-color: map.get(map.get(themes.$themes, "light"), "background-outer");
-
-    button.dark-mode-toggle {
-      background-image: url(themes.$icon-bulb-on);
-    }
+  // set themed lightbulb icons manually
+  &.light button.dark-mode-toggle {
+    background-image: url(themes.$icon-bulb-on);
   }
 
-  &.dark {
-    background-color: map.get(map.get(themes.$themes, "dark"), "background-outer");
+  &.dark button.dark-mode-toggle {
+    background-image: url(themes.$icon-bulb-off);
+  }
+}
 
-    button.dark-mode-toggle {
-      background-image: url(themes.$icon-bulb-off);
-    }
+code,
+pre,
+.monospace {
+  font-family: settings.$font-stack-mono;
+  letter-spacing: normal;
+}
+
+// need to set light/dark mode backgrounds outside of the body selector
+@include themes.themed(background-color, "background-outer");
+
+// override above font-family if browser supports variable fonts
+// https://caniuse.com/#feat=variable-fonts
+@supports (font-variation-settings: normal) {
+  body {
+    font-family: settings.$font-stack-variable;
+    font-optical-sizing: auto;
+  }
+
+  code,
+  pre,
+  .monospace {
+    font-family: settings.$font-stack-mono-variable;
   }
 }
 
@@ -81,12 +102,6 @@ a {
 b,
 strong {
   letter-spacing: 0.008em; // not sure why the discrepancy between weights
-}
-
-code,
-pre,
-.monospace {
-  letter-spacing: normal;
 }
 
 blockquote {

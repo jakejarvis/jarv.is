@@ -73,34 +73,3 @@ $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
 @include functions.font-face("Comic Neue", "comic-neue-bold-subset", 700) {
   unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
 }
-
-/* --------- */
-
-body {
-  font-family: settings.$font-stack-sans;
-  font-kerning: normal;
-  font-variant-ligatures: normal;
-  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
-  line-height: 1.5;
-}
-
-code,
-pre,
-.monospace {
-  font-family: settings.$font-stack-mono;
-}
-
-// override above font-family if browser supports variable fonts
-// https://caniuse.com/#feat=variable-fonts
-@supports (font-variation-settings: normal) {
-  body {
-    font-family: settings.$font-stack-variable;
-    font-optical-sizing: auto;
-  }
-
-  code,
-  pre,
-  .monospace {
-    font-family: settings.$font-stack-mono-variable;
-  }
-}

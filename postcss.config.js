@@ -14,7 +14,7 @@ module.exports = {
         "background-image"
       ],
     }),
-    require("postcss-merge-rules")(),
+    require("postcss-combine-duplicated-selectors")(),
     require("postcss-normalize-charset")(),
     require("postcss-clean")({
       compatibility: "*",
