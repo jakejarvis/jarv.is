@@ -31,7 +31,7 @@
     "@fontsource/comic-neue": "4.4.5",
     "@fontsource/inter": "4.4.5",
     "@fontsource/roboto-mono": "4.4.5",
-    "@sentry/node": "^6.7.1",
+    "@sentry/node": "^6.7.2",
     "@sentry/tracing": "^6.7.1",
     "dotenv": "^10.0.0",
     "faunadb": "fauna/faunadb-js#master",
