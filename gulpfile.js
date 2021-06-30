@@ -48,7 +48,7 @@ function optimizeHtml() {
 
 function optimizeImages() {
   return gulp
-    .src(["public/**/*.{gif,jpg,jpeg,png,svg}", "!public/assets/emoji/*"], { base: "./" })
+    .src(["public/**/*.{gif,jpg,jpeg,png,svg}", "!public/assets/emoji/**/*"], { base: "./" })
     .pipe(
       imagemin([
         imageminMozjpeg({

@@ -1,5 +1,5 @@
 import "./src/counter.js";
 import "./src/projects.js";
-import "./vendor/twemoji.js";
+import "./src/emoji.js";
 
 export default () => {};

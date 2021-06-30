@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 
 // don't continue if there isn't a span#meta-hits element on this page
 const wrapper = document.getElementById("meta-hits");
