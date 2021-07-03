@@ -49,7 +49,7 @@
     "querystring": "^0.2.1",
     "rss-parser": "^3.12.0",
     "twemoji": "13.1.0",
-    "twemoji-emojis": "13.1.0"
+    "twemoji-emojis": "14.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
