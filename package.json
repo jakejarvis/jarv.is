@@ -42,7 +42,7 @@
     "graphql-request": "^3.4.0",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
-    "luxon": "^1.27.0",
+    "luxon": "^1.28.0",
     "modern-normalize": "1.1.0",
     "node-fetch": "^2.6.1",
     "numeral": "^2.0.6",
