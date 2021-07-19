@@ -1884,10 +1884,10 @@ assign-symbols@^1.0.0:
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
   integrity sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
 
-ast-metadata-inferer@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/ast-metadata-inferer/-/ast-metadata-inferer-0.5.0.tgz#6007bfa32543258322c3652dde0ca6a6761e2515"
-  integrity sha512-uhp1vIlDHp+VuhtHFlD7uSD9aAOc45AV9b0hIqGIbWM51932Q2DQwTeL5CL5CWnQwPWp/6qvSah9naO4bvklIQ==
+ast-metadata-inferer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/ast-metadata-inferer/-/ast-metadata-inferer-0.5.1.tgz#8268d68b20c03ff3dbce97c15dfa00dcac70fa5c"
+  integrity sha512-fj+QuB47ODy18p5gJ4BFnpenk992o7gx7oPid6oUK9+Uy/F3/5cvZ13harpQPN5Y8MlcjYf0y1LwgOV1J31k+A==
   dependencies:
     "@mdn/browser-compat-data" "^3.3.11"
 
@@ -3857,13 +3857,13 @@ eslint-module-utils@^2.6.1:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
-eslint-plugin-compat@~3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-3.11.0.tgz#f67485c7564127b17b6ba5fc1e673b73c196b79f"
-  integrity sha512-rQzJtZ9A618PBgL2dj3iWkQYvOWfYpaG5gNWEd5EFIYcVnB4zvxImcvpn0DS90T8lRU8pti7pWDUSGRqy5HitA==
+eslint-plugin-compat@~3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-3.11.1.tgz#f95d7da1cdbb7c05c81d75fa2e1ecee266ccf4aa"
+  integrity sha512-iJyltnaVN9g/MYL3WGb6GFyJs+4mMkumq2E5srxsQIfPqQh14HEE0dtQC/HKDWze+hkwQtSo5DvC3IW5Gmxdtw==
   dependencies:
     "@mdn/browser-compat-data" "^3.3.11"
-    ast-metadata-inferer "^0.5.0"
+    ast-metadata-inferer "^0.5.1"
     browserslist "^4.16.6"
     caniuse-lite "^1.0.30001245"
     core-js "^3.15.2"
