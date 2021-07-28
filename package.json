@@ -33,7 +33,7 @@
     "@fontsource/inter": "4.5.0",
     "@fontsource/roboto-mono": "4.5.0",
     "@octokit/graphql": "^4.6.4",
-    "@octokit/graphql-schema": "^10.55.1",
+    "@octokit/graphql-schema": "^10.56.0",
     "@sentry/node": "^6.10.0",
     "cross-fetch": "3.1.4",
     "dayjs": "1.10.6",
