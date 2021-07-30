@@ -2528,10 +2528,10 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.0, chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
-  integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
+chalk@^4.0, chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -5361,12 +5361,12 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hugo-extended@0.84.3:
-  version "0.84.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.84.3.tgz#cafbb66ff0fda856ff790ad6c628f91317ea4823"
-  integrity sha512-ENvVxRRVtA8BzzdBeSWf07H+sAISUcE7EnHg9NSS8T70Fmgd3MMCOROd9I86MUcK+ANuxylXeHwY5tcZsZFyvw==
+hugo-extended@0.86.1:
+  version "0.86.1"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.86.1.tgz#9b1503974364f4dd3504d28a40a845037ec1199b"
+  integrity sha512-j+T+RgyhuJ9F6TjogMkqC/8VLh9lqvSbMCquhXUu1CEwwnVi2RVT7Lve2K9Cp+weBMrsODl8U0ENJ9h9ToE8Nw==
   dependencies:
-    chalk "^4.1.1"
+    chalk "^4.1.2"
     decompress "^4.2.1"
     execa "^5.1.1"
     got "^11.8.2"
