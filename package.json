@@ -58,7 +58,7 @@
     "@babel/core": "^7.14.8",
     "@babel/eslint-parser": "^7.14.9",
     "@babel/preset-env": "^7.14.9",
-    "@percy/cli": "^1.0.0-beta.62",
+    "@percy/cli": "^1.0.0-beta.63",
     "@types/node-fetch": "^2.5.12",
     "@types/numeral": "^2.0.1",
     "@types/twemoji": "^12.1.2",
