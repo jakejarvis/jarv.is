@@ -1607,14 +1607,14 @@
     "@typescript-eslint/types" "4.29.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vercel/node@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.11.1.tgz#3500dff4ebb4fa93e7451ffa16dcade8be2bb305"
-  integrity sha512-2OheDtjxr1OkYyvMh7laDkOA4K6KfLL60IBg1D+PksNri2YEFaPK1lzdq7xuByuDRUs+tm9U57sPVAlyzGjlvw==
+"@vercel/node@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.12.0.tgz#e863777c8624b1306f1aca83e9fbdda074c951a0"
+  integrity sha512-McwhEg6KI0y7R875IG87Ry3HrFvws+60/yKk1KqJxbOud/n/Mj9eEZTI5mxxMFj8tT7KhmFaRdl8pJz8ISR1Cg==
   dependencies:
     "@types/node" "*"
     ts-node "8.9.1"
-    typescript "3.9.3"
+    typescript "4.3.4"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -10640,10 +10640,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.9.3:
-  version "3.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
-  integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
+typescript@4.3.4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
+  integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
 
 typescript@^4.3.5:
   version "4.3.5"
