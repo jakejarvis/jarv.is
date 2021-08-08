@@ -32,7 +32,7 @@
     "@fontsource/comic-neue": "4.5.0",
     "@fontsource/inter": "4.5.0",
     "@fontsource/roboto-mono": "4.5.0",
-    "@jakejarvis/dark-mode": "0.6.1",
+    "@jakejarvis/dark-mode": "0.6.2",
     "@octokit/graphql": "^4.6.4",
     "@octokit/graphql-schema": "^10.59.0",
     "@sentry/node": "^6.11.0",
