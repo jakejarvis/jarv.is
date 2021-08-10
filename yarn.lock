@@ -1607,10 +1607,10 @@
     "@typescript-eslint/types" "4.29.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vercel/node@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.12.0.tgz#e863777c8624b1306f1aca83e9fbdda074c951a0"
-  integrity sha512-McwhEg6KI0y7R875IG87Ry3HrFvws+60/yKk1KqJxbOud/n/Mj9eEZTI5mxxMFj8tT7KhmFaRdl8pJz8ISR1Cg==
+"@vercel/node@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.12.1.tgz#15f42f64690f904f8a52a387123ce0958657060f"
+  integrity sha512-NcawIY05BvVkWlsowaxF2hl/hJg475U8JvT2FnGykFPMx31q1/FtqyTw/awSrKfOSRXR0InrbEIDIelmS9NzPA==
   dependencies:
     "@types/node" "*"
     ts-node "8.9.1"
