@@ -81,7 +81,7 @@
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-compat": "~3.13.0",
-    "eslint-plugin-import": "~2.24.0",
+    "eslint-plugin-import": "~2.24.1",
     "eslint-plugin-lit": "~1.5.1",
     "eslint-plugin-no-unsanitized": "~3.1.5",
     "eslint-plugin-prettier": "~3.4.0",
