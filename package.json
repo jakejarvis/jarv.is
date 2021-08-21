@@ -45,7 +45,7 @@
     "graphql-request": "^3.5.0",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
-    "lit-html": "^2.0.0-rc.3",
+    "lit-html": "^2.0.0-rc.4",
     "modern-normalize": "^1.1.0",
     "node-fetch": "^2.6.1",
     "numeral": "^2.0.6",
