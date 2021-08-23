@@ -949,10 +949,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jakejarvis/dark-mode@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@jakejarvis/dark-mode/-/dark-mode-0.6.3.tgz#a73057ea935311aa7532ac225f5948b07f580cbd"
-  integrity sha512-VoURlkphwAguVG3cxFLvG/UU3OKfsKA5tt1zcjGSz3GQsmtRFPfJbfeEExcr61nIg5/st3+uRbU6BMUqLiWhXQ==
+"@jakejarvis/dark-mode@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@jakejarvis/dark-mode/-/dark-mode-0.7.1.tgz#df85955905925379565c163712e44a99df3b500a"
+  integrity sha512-T9pUWd3dp2lcJabGGkQClNPbPUsBeoR2APnKkgjtxiTrnbl4cRjaXYlQvyyvRRASAe07agYnJobdDqA+IbvnXg==
 
 "@jest/types@^27.0.6":
   version "27.0.6"
