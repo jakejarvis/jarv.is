@@ -50,7 +50,7 @@
     "node-fetch": "^2.6.1",
     "numeral": "^2.0.6",
     "query-string": "^7.0.1",
-    "simple-anchor": "^1.0.2",
+    "simple-anchor": "^1.0.3",
     "trim-newlines": "^4.0.2",
     "twemoji": "13.1.0",
     "twemoji-emojis": "14.1.0",

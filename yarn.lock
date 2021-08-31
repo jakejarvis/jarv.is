@@ -9493,10 +9493,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
-simple-anchor@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/simple-anchor/-/simple-anchor-1.0.2.tgz#a58aab1dad122ccb1cc5d07a5b1130132dc0a6eb"
-  integrity sha512-PeUwwqJqj43UkW+Pyb4IaSPXDdrANANnnhYV4n9czRbnBuxIIhpiKC3KNkOWh8iaFbCdnP8vnmfQBPg4H4QU8A==
+simple-anchor@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/simple-anchor/-/simple-anchor-1.0.3.tgz#9e23e3c53f6cd913e576e44a2b1cb666c4e553d1"
+  integrity sha512-g2CrKyqfxRzEpDuuLWsGaDrN/WlU+oft1xGkiGTUB73SiG4MmqW0YMBibQ32pcu4jpL4fnEotggpMpa+ddVM3g==
 
 simple-git-hooks@^2.6.1:
   version "2.6.1"
