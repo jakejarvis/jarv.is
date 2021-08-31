@@ -949,10 +949,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jakejarvis/dark-mode@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@jakejarvis/dark-mode/-/dark-mode-0.7.1.tgz#df85955905925379565c163712e44a99df3b500a"
-  integrity sha512-T9pUWd3dp2lcJabGGkQClNPbPUsBeoR2APnKkgjtxiTrnbl4cRjaXYlQvyyvRRASAe07agYnJobdDqA+IbvnXg==
+"@jakejarvis/dark-mode@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@jakejarvis/dark-mode/-/dark-mode-0.7.2.tgz#e3aafc181ad65d6ebfaba209c9d996b42a10614f"
+  integrity sha512-irscv28IZAlqvQ7d70rmiev/fgEqfMMh85AY36WvlFuo1Q8x8yeDeLcE9c12A2SgvEY0xbWSe+MjUnwgdbftvQ==
 
 "@jakejarvis/eslint-config@*":
   version "1.0.3"
