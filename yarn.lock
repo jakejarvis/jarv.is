@@ -5602,10 +5602,10 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hugo-extended@0.86.1:
-  version "0.86.1"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.86.1.tgz#9b1503974364f4dd3504d28a40a845037ec1199b"
-  integrity sha512-j+T+RgyhuJ9F6TjogMkqC/8VLh9lqvSbMCquhXUu1CEwwnVi2RVT7Lve2K9Cp+weBMrsODl8U0ENJ9h9ToE8Nw==
+hugo-extended@0.87.0:
+  version "0.87.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.87.0.tgz#558b2885dcdb699454487f6b315e1eb8c5abf74d"
+  integrity sha512-oSgcxKPiaCZhzXa4lhLbSkcEsmq0sSFHfAzPNu0LJwxRzELeGE/xhaP6aARTBjtLs6XH8FbvVqCA6AnBMOg+Ag==
   dependencies:
     chalk "^4.1.2"
     decompress "^4.2.1"
