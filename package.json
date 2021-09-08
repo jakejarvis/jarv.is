@@ -47,7 +47,7 @@
     "html-entities": "^2.3.2",
     "lit-html": "^2.0.0-rc.5",
     "modern-normalize": "^1.1.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "numeral": "^2.0.6",
     "query-string": "^7.0.1",
     "simple-anchor": "^1.0.3",
