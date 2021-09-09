@@ -46,7 +46,7 @@ jobs:
     - if: github.event.deployment_status.environment == 'preview'
       run: |
         echo "BASE_DEPLOY_URL=${{ github.event.deployment_status.target_url }}" >> $GITHUB_ENV
-        echo "LHCI_EXTRA_FLAGS=--skip-audits=is-crawlable,canonical" >> $GITHUB_ENV
+        echo "LHCI_EXTRA_FLAGS=--assert.assertions.is-crawlable=off --assert.assertions.canonical=off" >> $GITHUB_ENV
         echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=${{ github.event.deployment.ref }}" >> $GITHUB_ENV
     - continue-on-error: true
       run: |
