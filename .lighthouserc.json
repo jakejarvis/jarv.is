@@ -22,8 +22,6 @@
         "unused-javascript": "warn",
         "uses-optimized-images": "warn",
         "uses-rel-preconnect": "warn",
-        "canonical": "off",
-        "is-crawlable": "off",
         "modern-image-formats": "off",
         "offscreen-images": "off",
         "uses-long-cache-ttl": "off",

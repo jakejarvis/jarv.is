@@ -27,7 +27,6 @@ jobs:
         SENTRY_PROJECT: jarvis
       with:
         environment: ${{ github.event.deployment_status.environment }}
-        sourcemaps: ./api
     - uses: browser-actions/setup-chrome@latest
       with:
         chrome-version: stable
@@ -42,14 +41,16 @@ jobs:
     - if: github.event.deployment_status.environment == 'production'
       run: |
         echo "BASE_DEPLOY_URL=https://jarv.is" >> $GITHUB_ENV
+        echo "LHCI_EXTRA_FLAGS=" >> $GITHUB_ENV
         echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=main" >> $GITHUB_ENV
     - if: github.event.deployment_status.environment == 'preview'
       run: |
         echo "BASE_DEPLOY_URL=${{ github.event.deployment_status.target_url }}" >> $GITHUB_ENV
+        echo "LHCI_EXTRA_FLAGS=--skip-audits=seo/is-crawlable,seo/canonical" >> $GITHUB_ENV
         echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=${{ github.event.deployment.ref }}" >> $GITHUB_ENV
     - continue-on-error: true
       run: |
-        lhci autorun \
+        lhci autorun ${{ env.LHCI_EXTRA_FLAGS }} \
           --collect.url=${{ env.BASE_DEPLOY_URL }}/ \
           --collect.url=${{ env.BASE_DEPLOY_URL }}/notes/how-to-pull-request-fork-github/ \
           --collect.url=${{ env.BASE_DEPLOY_URL }}/projects/
