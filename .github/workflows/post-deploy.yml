@@ -19,10 +19,6 @@ jobs:
       with:
         node-version: 14.x
     - run: yarn install --frozen-lockfile
-    # https://docs.sentry.io/platforms/node/typescript/#configuring-typescript-compiler
-    - run: |
-        npx -p typescript tsc
-        ls -lah ./api
     - uses: getsentry/action-release@v1
       if: github.event.deployment_status.environment == 'production'
       env:

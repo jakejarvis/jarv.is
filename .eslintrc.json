@@ -33,27 +33,12 @@
     ]
   },
   "overrides": [{
+    // Serverless functions
     "files": [
-      "api/**/*.ts"
+      "api/**/*.js"
     ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:import/recommended",
-      "plugin:import/typescript",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": ["./tsconfig.json"]
-    },
     "rules": {
-      "@typescript-eslint/restrict-template-expressions": "off"
+      "compat/compat": "off"
     },
     "env": {
       "browser": false,
@@ -63,8 +48,6 @@
   "ignorePatterns": [
     "public/**",
     "static/assets/**",
-    "*.d.ts",
-    "api/**/*.js",
     "gulpfile.js",
     "webpack.config.js"
   ]

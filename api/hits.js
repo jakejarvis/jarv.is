@@ -1,11 +1,9 @@
 import * as Sentry from "@sentry/node";
-import { VercelRequest, VercelResponse } from "@vercel/node";
-import { Client, query as q } from "faunadb";
 import fetch from "node-fetch";
 import parser from "fast-xml-parser";
 import { decode } from "html-entities";
-
-import type { PageStats, OverallStats } from "./types/hits";
+import faunadb from "faunadb";
+const q = faunadb.query;
 
 const baseUrl = "https://jarv.is/";
 
@@ -14,8 +12,7 @@ Sentry.init({
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req, res) => {
   try {
     // some rudimentary error handling
     if (!process.env.FAUNADB_SERVER_SECRET) {
@@ -25,12 +22,11 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       throw new Error(`Method ${req.method} not allowed.`);
     }
 
-    const client = new Client({
+    const client = new faunadb.Client({
       secret: process.env.FAUNADB_SERVER_SECRET,
     });
     const { slug } = req.query;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let result: any;
+    let result;
 
     if (!slug || slug === "/") {
       // return overall site stats if slug not specified
@@ -65,9 +61,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   }
 };
 
-const incrementPageHits = async (slug: string | string[], client: Client): Promise<PageStats> => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const result = await client.query<any>(
+const incrementPageHits = async (slug, client) => {
+  const result = await client.query(
     q.Let(
       { match: q.Match(q.Index("hits_by_slug"), slug) },
       q.If(
@@ -85,14 +80,12 @@ const incrementPageHits = async (slug: string | string[], client: Client): Promi
   );
 
   // send client the *new* hit count
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
   return result.data;
 };
 
-const getSiteStats = async (client: Client): Promise<OverallStats> => {
+const getSiteStats = async (client) => {
   // get database and RSS results asynchronously
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const [feed, result] = await Promise.all<{ [key: string]: any }, any>([
+  const [feed, result] = await Promise.all([
     parser.parse(await (await fetch(baseUrl + "feed.xml")).text()), // this is messy but it works :)
     client.query(
       q.Map(
@@ -102,25 +95,18 @@ const getSiteStats = async (client: Client): Promise<OverallStats> => {
     ),
   ]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-  const pages: PageStats[] = result.data;
-  const stats: OverallStats = {
+  const pages = result.data;
+  const stats = {
     total: { hits: 0 },
     pages,
   };
 
-  pages.map((p: PageStats) => {
+  pages.map((p) => {
     // match URLs from RSS feed with db to populate some metadata
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    const match = feed.rss.channel.item.find(
-      (x: { link: string }) => x.link === baseUrl + p.slug + "/"
-    );
+    const match = feed.rss.channel.item.find((x) => x.link === baseUrl + p.slug + "/");
     if (match) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       p.title = decode(match.title);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       p.url = match.link;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       p.date = new Date(match.pubDate);
     }
 
@@ -131,9 +117,7 @@ const getSiteStats = async (client: Client): Promise<OverallStats> => {
   });
 
   // sort by hits (descending)
-  stats.pages.sort((a: { hits: number }, b: { hits: number }) => {
-    return a.hits > b.hits ? -1 : 1;
-  });
+  stats.pages.sort((a, b) => (a.hits > b.hits ? -1 : 1));
 
   return stats;
 };

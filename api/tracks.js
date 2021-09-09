@@ -2,17 +2,8 @@
 // Heavily inspired by @leerob: https://leerob.io/snippets/spotify
 
 import * as Sentry from "@sentry/node";
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import fetch from "node-fetch";
 import * as queryString from "query-string";
-
-import type {
-  Track,
-  SpotifyTrackSchema,
-  SpotifyActivitySchema,
-  SpotifyTokenSchema,
-  SpotifyTopSchema,
-} from "./types/tracks";
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
 
@@ -30,8 +21,7 @@ Sentry.init({
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req, res) => {
   try {
     // some rudimentary error handling
     if (req.method !== "GET") {
@@ -80,7 +70,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   }
 };
 
-const getAccessToken = async (): Promise<SpotifyTokenSchema> => {
+const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: "POST",
     headers: {
@@ -93,10 +83,10 @@ const getAccessToken = async (): Promise<SpotifyTokenSchema> => {
     }),
   });
 
-  return response.json() as Promise<SpotifyTokenSchema>;
+  return response.json();
 };
 
-const getNowPlaying = async (): Promise<Track> => {
+const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -112,7 +102,7 @@ const getNowPlaying = async (): Promise<Track> => {
     return { isPlaying: false };
   }
 
-  const active = (await response.json()) as SpotifyActivitySchema;
+  const active = await response.json();
 
   if (active.is_playing === true && active.item) {
     return {
@@ -128,7 +118,7 @@ const getNowPlaying = async (): Promise<Track> => {
   }
 };
 
-const getTopTracks = async (): Promise<Track[]> => {
+const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(TOP_TRACKS_ENDPOINT, {
@@ -140,9 +130,9 @@ const getTopTracks = async (): Promise<Track[]> => {
     },
   });
 
-  const { items } = (await response.json()) as SpotifyTopSchema;
+  const { items } = await response.json();
 
-  const tracks: Track[] = items.map((track: Readonly<SpotifyTrackSchema>) => ({
+  const tracks = items.map((track) => ({
     artist: track.artists.map((_artist) => _artist.name).join(", "),
     title: track.name,
     album: track.album.name,

@@ -1,16 +1,12 @@
 import * as Sentry from "@sentry/node";
-import { VercelRequest, VercelResponse } from "@vercel/node";
-import { graphql, GraphQlQueryResponseData } from "@octokit/graphql";
-
-import type { Repository, GHRepoSchema } from "./types/projects";
+import { graphql } from "@octokit/graphql";
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN || "",
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req, res) => {
   try {
     // some rudimentary error handling
     if (req.method !== "GET") {
@@ -48,9 +44,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   }
 };
 
-const fetchRepos = async (sort: string): Promise<Repository[]> => {
+const fetchRepos = async (sort) => {
   // https://docs.github.com/en/graphql/reference/objects#repository
-  const { user } = await graphql<GraphQlQueryResponseData>(
+  const { user } = await graphql(
     `
       query ($username: String!, $sort: String, $limit: Int) {
         user(login: $username) {
@@ -90,18 +86,15 @@ const fetchRepos = async (sort: string): Promise<Repository[]> => {
     }
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const repos: Repository[] = user.repositories.edges.map(
-    ({ node: repo }: { [key: string]: Readonly<GHRepoSchema> }) => ({
-      name: repo.name,
-      url: repo.url,
-      description: repo.description,
-      updatedAt: new Date(repo.pushedAt),
-      stars: repo.stargazerCount,
-      forks: repo.forkCount,
-      language: repo.primaryLanguage,
-    })
-  );
+  const repos = user.repositories.edges.map(({ node: repo }) => ({
+    name: repo.name,
+    url: repo.url,
+    description: repo.description,
+    updatedAt: new Date(repo.pushedAt),
+    stars: repo.stargazerCount,
+    forks: repo.forkCount,
+    language: repo.primaryLanguage,
+  }));
 
   return repos;
 };

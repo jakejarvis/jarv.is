@@ -17,7 +17,6 @@ postcss.config.js
 webpack.config.js
 gulpfile.js
 babel.config.json
-tsconfig.json
 
 # miscellaneous
 vercel.json
@@ -26,5 +25,4 @@ vercel.json
 .lighthouseci/
 .vscode/
 LICENSE.md
-api/**/*.js
 content/notes/dark-mode/example.html
