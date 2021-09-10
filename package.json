@@ -115,7 +115,7 @@
     "stylelint-scss": "~3.20.1",
     "terser": "^5.7.2",
     "terser-webpack-plugin": "^5.2.4",
-    "webpack": "^5.52.0",
+    "webpack": "^5.52.1",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.8.0",
     "webpack-subresource-integrity": "^5.0.0"
