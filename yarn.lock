@@ -934,12 +934,12 @@
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
 "@jakejarvis/eslint-config@*":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@jakejarvis/eslint-config/-/eslint-config-1.0.3.tgz#4074b572dbb0ad0b5223ef9f286ae1a863042e9f"
-  integrity sha512-BQvuO9h8bgxtMYhz9ksutEzNqBl74Bi4PL5MDRv4xoBLMCcbhXyDWZOGiyMSNy3CyaK0LSUEGUTKWIqz9avyrQ==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@jakejarvis/eslint-config/-/eslint-config-1.0.4.tgz#117fd18a1ade5455cad6fa664990eb715ad26310"
+  integrity sha512-58EGRdE1NSZmcAt8vPVUdetTg5u/mvX8z0D1NoaHW5NJ4a9MkLsRNFWIh3Ia/njrpYneK2NYN+0Qhb1tKJdyEQ==
   dependencies:
-    eslint-plugin-compat "^3.13.0"
-    eslint-plugin-import "^2.24.2"
+    eslint-plugin-compat "~3.13.0"
+    eslint-plugin-import "~2.24.2"
 
 "@jest/types@^27.1.1":
   version "27.1.1"
@@ -3973,7 +3973,7 @@ eslint-module-utils@^2.6.2:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
-eslint-plugin-compat@^3.13.0, eslint-plugin-compat@~3.13.0:
+eslint-plugin-compat@~3.13.0:
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-3.13.0.tgz#fade6f2ad25263cf93f8d23c988533551ced8663"
   integrity sha512-cv8IYMuTXm7PIjMVDN2y4k/KVnKZmoNGHNq27/9dLstOLydKblieIv+oe2BN2WthuXnFNhaNvv3N1Bvl4dbIGA==
@@ -3987,7 +3987,7 @@ eslint-plugin-compat@^3.13.0, eslint-plugin-compat@~3.13.0:
     lodash.memoize "4.1.2"
     semver "7.3.5"
 
-eslint-plugin-import@^2.24.2, eslint-plugin-import@~2.24.2:
+eslint-plugin-import@~2.24.2:
   version "2.24.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.24.2.tgz#2c8cd2e341f3885918ee27d18479910ade7bb4da"
   integrity sha512-hNVtyhiEtZmpsabL4neEj+6M5DCLgpYyG9nzJY8lZQeQXEn5UPW1DpUdsMHMXsq98dbNm7nt1w9ZMSVpfJdi8Q==
