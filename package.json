@@ -101,7 +101,7 @@
     "postcss-normalize-charset": "^5.0.1",
     "postcss-reporter": "^7.0.2",
     "postcss-svgo": "^5.0.2",
-    "prettier": "^2.4.0",
+    "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
     "sass": "^1.40.1",
     "sass-loader": "^12.1.0",
