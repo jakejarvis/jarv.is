@@ -39,7 +39,7 @@
     "date-fns": "^2.23.0",
     "fast-xml-parser": "^3.20.0",
     "faunadb": "^4.4.1",
-    "graphql": "^15.5.3",
+    "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
