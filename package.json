@@ -112,7 +112,7 @@
     "stylelint-no-unsupported-browser-features": "~5.0.2",
     "stylelint-prettier": "~1.2.0",
     "stylelint-scss": "~3.21.0",
-    "terser": "^5.8.0",
+    "terser": "^5.9.0",
     "terser-webpack-plugin": "^5.2.4",
     "webpack": "^5.52.1",
     "webpack-assets-manifest": "^5.0.6",
