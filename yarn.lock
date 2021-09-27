@@ -7237,6 +7237,11 @@ nanocolors@^0.1.5:
   resolved "https://registry.yarnpkg.com/nanocolors/-/nanocolors-0.1.6.tgz#bc2350d3edfdbfadd7ac018c855ae7c13905a6ad"
   integrity sha512-2pvTw6vYRaBLGir2xR7MxaJtyWkrn+C53EpW8yPotG+pdAwBvt0Xwk4VJ6VHLY0aLthVZPvDfm9TdZvrvAm5UQ==
 
+nanocolors@^0.2.6:
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/nanocolors/-/nanocolors-0.2.9.tgz#319c5e7a73571abd60e4d273150c2cb95017ac5b"
+  integrity sha512-aymgS4Xe0LMqHOHl7jSUEkFh/6O/pcF0j61dBtreQZ1nmbyYdYjSYSJzz0iPLbKPkMtSmdRgyBGywNZGjKOEfw==
+
 nanoid@^3.1.25:
   version "3.1.25"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
@@ -8382,17 +8387,17 @@ postcss-reduce-transforms@^5.0.1:
     cssnano-utils "^2.0.1"
     postcss-value-parser "^4.1.0"
 
-postcss-reporter@^7.0.0, postcss-reporter@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-7.0.2.tgz#03e9e7381c1afe40646f9c22e7aeeb860e051065"
-  integrity sha512-JyQ96NTQQsso42y6L1H1RqHfWH1C3Jr0pt91mVv5IdYddZAE9DUZxuferNgk6q0o6vBVOrfVJb10X1FgDzjmDw==
+postcss-reporter@^7.0.0, postcss-reporter@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-7.0.3.tgz#c37f81c9a30ab773df72789ea7ceeb3beb442b59"
+  integrity sha512-WoYHwtStmiR74UQDO3vZMbkhOBXSXyteWnhMCVbAK6KRRKLTS0EnTZxOxvbUEnQiMZ+3xRG04x41HhHnLBtQfA==
   dependencies:
-    colorette "^1.2.1"
     lodash.difference "^4.5.0"
     lodash.forown "^4.4.0"
     lodash.get "^4.4.2"
     lodash.groupby "^4.6.0"
     lodash.sortby "^4.7.0"
+    nanocolors "^0.2.6"
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"

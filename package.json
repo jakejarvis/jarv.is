@@ -101,7 +101,7 @@
     "postcss-loader": "^6.1.1",
     "postcss-merge-rules": "^5.0.2",
     "postcss-normalize-charset": "^5.0.1",
-    "postcss-reporter": "^7.0.2",
+    "postcss-reporter": "^7.0.3",
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
