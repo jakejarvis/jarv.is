@@ -63,7 +63,7 @@
     "@types/numeral": "^2.0.2",
     "@types/twemoji": "^12.1.2",
     "@types/url-parse": "^1.4.4",
-    "autoprefixer": "^10.3.5",
+    "autoprefixer": "^10.3.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "clean-css": "^5.1.5",
