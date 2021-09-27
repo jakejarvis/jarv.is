@@ -93,7 +93,7 @@
     "mini-css-extract-plugin": "^2.3.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.3.7",
-    "postcss-cli": "^8.3.1",
+    "postcss-cli": "^9.0.0",
     "postcss-color-rgba-fallback": "^4.0.0",
     "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-discard-duplicates": "^5.0.1",
