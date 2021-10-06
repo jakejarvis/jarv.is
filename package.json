@@ -38,7 +38,7 @@
     "fast-xml-parser": "^3.20.3",
     "faunadb": "^4.4.1",
     "get-canonical-url": "^1.0.0",
-    "graphql": "^15.6.0",
+    "graphql": "^15.6.1",
     "graphql-request": "^3.5.0",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
