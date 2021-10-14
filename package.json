@@ -100,7 +100,7 @@
     "postcss-reporter": "^7.0.3",
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.4.1",
-    "sass": "^1.42.1",
+    "sass": "^1.43.2",
     "sass-loader": "^12.2.0",
     "simple-git-hooks": "^2.6.1",
     "stylelint": "~13.13.1",
