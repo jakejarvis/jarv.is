@@ -5057,8 +5057,9 @@ https-proxy-agent@^5.0.0:
     debug "4"
 
 "hugo-extended@github:jakejarvis/hugo-extended#main":
-  version "0.88.1-patch1"
-  resolved "https://codeload.github.com/jakejarvis/hugo-extended/tar.gz/8698b388877ef0f4ffcd3c4b0411ec0608d44561"
+  version "0.89.0"
+  uid "8ae6f1fb942e616d184b6d8b515ef11c5cad0016"
+  resolved "https://codeload.github.com/jakejarvis/hugo-extended/tar.gz/8ae6f1fb942e616d184b6d8b515ef11c5cad0016"
   dependencies:
     careful-downloader "^2.0.1"
     log-symbols "^5.0.0"
