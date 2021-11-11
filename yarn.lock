@@ -5144,10 +5144,10 @@ imagemin@^8.0.1:
     replace-ext "^2.0.0"
     slash "^3.0.0"
 
-imagemoji@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/imagemoji/-/imagemoji-0.1.1.tgz#41f235ba96c9a88bf52a5d5aea03b73d174f8142"
-  integrity sha512-tdArhXS3KNrVOgmwYfaj2F/oAc0EyTBK/VmMcUDmJrE4enwnM5JZDQzjD54z6Kn1wo+m1JCluNngJjBW4Zz3rQ==
+imagemoji@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/imagemoji/-/imagemoji-0.1.4.tgz#830bcae26e4cc58bb44ec9102b8775d850cc4ec3"
+  integrity sha512-bj8IOBOgXM2ntVoNyLxtHDKLvhKQ7a6cswXYaJQZctIEOSrnM+3h9S5oV0d/pTZBg46U1W9uU6W4ifi104ovlw==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
