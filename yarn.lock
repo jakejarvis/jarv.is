@@ -2916,10 +2916,10 @@ d@1, d@^1.0.1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
-dark-mode-switcheroo@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/dark-mode-switcheroo/-/dark-mode-switcheroo-0.9.1.tgz#d1e85a5c701a64fd511a52ffbaf6c33088163bba"
-  integrity sha512-+29AEcswgJhgOY+A5/tb/c5H5x/hfwWfCgul4G4m7k1vMZIEtHpQy3h43syftWHSh9XnPGXI6iX/hiivUKSOjg==
+dark-mode-switcheroo@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/dark-mode-switcheroo/-/dark-mode-switcheroo-0.10.0.tgz#2b38085082fa7bf4f8047e9d082afe86a38281f6"
+  integrity sha512-/EIoyXUE/wmyBF8vRJMOaszCIqgjb2IrnFRREQvSMkYI6QHb3A9kVgs7w+laZAvj4If64bNXpAU6C09NJnGS7g==
 
 data-uri-to-buffer@^4.0.0:
   version "4.0.0"
