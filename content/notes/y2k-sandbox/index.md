@@ -1,5 +1,5 @@
 ---
-title: "I Made A Thing, Powered by Windows Me™"
+title: "I Made A Thing, Powered by Windows Me"
 date: 2020-06-06 10:05:23-0400
 description: "Introducing the Y2K Sandbox: fully featured, fully isolated, on-demand Windows Millennium Edition® virtual machines."
 tags:

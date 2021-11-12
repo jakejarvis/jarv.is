@@ -2,14 +2,8 @@
 
 // Main content
 div#content {
-  font-size: 0.925em;
-  letter-spacing: -0.004em;
+  font-size: 0.95em;
   line-height: 1.7;
-
-  b,
-  strong {
-    letter-spacing: 0.008em; // not sure why the discrepancy between weights
-  }
 
   blockquote {
     margin-left: 0;
@@ -29,7 +23,6 @@ div#content {
   h4 {
     margin-top: 1.25em;
     margin-bottom: 0.5em;
-    letter-spacing: 0.001em;
     line-height: 1.5;
 
     &:hover > a.anchorjs-link {

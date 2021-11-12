@@ -47,9 +47,8 @@ header {
 
       span#header-name {
         margin: 0 0.6em;
-        font-size: 1.25em;
+        font-size: 1.3em;
         font-weight: 500;
-        letter-spacing: -0.01em;
       }
 
       &:hover {
@@ -103,9 +102,8 @@ header {
             }
 
             &.header-menu-text {
-              font-size: 0.95em;
+              font-size: 1em;
               font-weight: 500;
-              letter-spacing: -0.002em;
               margin-left: 0.65em;
             }
           }

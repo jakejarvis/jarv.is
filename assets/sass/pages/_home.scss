@@ -133,7 +133,6 @@ div.layout-home {
     margin: 0 0 0.3em 0;
     font-size: 1.8em;
     font-weight: 500;
-    letter-spacing: -0.014em;
     margin-left: -0.03em; // TODO: why is this indented slightly?
 
     img.emoji {
@@ -145,19 +144,16 @@ div.layout-home {
     margin: 0.5em 0;
     font-size: 1.35em;
     font-weight: 400;
-    letter-spacing: -0.022em;
     margin-left: -0.03em; // TODO: why is this indented slightly?
     line-height: 1.4;
   }
 
   p {
     margin: 0.85em 0;
-    letter-spacing: -0.009em;
     line-height: 1.7;
   }
 
   sup {
-    letter-spacing: normal;
     position: relative;
 
     &#key {
@@ -218,18 +214,12 @@ div.layout-home {
 
     h1 {
       font-size: 1.5em;
-      letter-spacing: -0.014em;
       line-height: 1.7;
     }
 
     h2 {
       font-size: 1.185em;
-      letter-spacing: -0.017em;
       line-height: 1.6;
-    }
-
-    p {
-      letter-spacing: -0.012em;
     }
   }
 }

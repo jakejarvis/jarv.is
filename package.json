@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@fontsource/comic-neue": "4.5.0",
-    "@fontsource/inter": "4.5.0",
+    "@fontsource/public-sans": "4.5.0",
     "@fontsource/roboto-mono": "4.5.0",
     "@octokit/graphql": "^4.8.0",
     "@sentry/node": "^6.14.3",

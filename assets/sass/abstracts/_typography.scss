@@ -1,22 +1,23 @@
-@use "~@fontsource/inter/scss/mixins" as Inter;
+@use "~@fontsource/public-sans/scss/mixins" as PublicSans;
 @use "~@fontsource/roboto-mono/scss/mixins" as RobotoMono;
 @use "~@fontsource/comic-neue/scss/mixins" as ComicNeue;
 
 /*!
- * Inter typeface - https://rsms.me/inter/
+ * Public Sans typeface - https://public-sans.digital.gov/
  *
- * Copyright (c) 2016-2020 The Inter Project Authors.
+ * Copyright (c) 2015 The Public Sans Project Authors.
  * Licensed under the SIL Open Font License, Version 1.1:
- * https://github.com/rsms/inter/blob/master/LICENSE.txt
+ * https://github.com/uswds/public-sans/blob/main/LICENSE.md
  */
 
 // Variable
-@include Inter.fontFaceVariable($fontName: "Inter var", $type: "full");
+@include PublicSans.fontFaceVariable($fontName: "Public Sans var");
+@include PublicSans.fontFaceVariable($fontName: "Public Sans var", $style: italic);
 
 // Legacy
-@include Inter.fontFace($fontName: "Inter", $weight: 400);
-@include Inter.fontFace($fontName: "Inter", $weight: 500);
-@include Inter.fontFace($fontName: "Inter", $weight: 700);
+@include PublicSans.fontFace($fontName: "Public Sans", $weight: 400);
+@include PublicSans.fontFace($fontName: "Public Sans", $weight: 500);
+@include PublicSans.fontFace($fontName: "Public Sans", $weight: 700);
 
 /*!
  * Roboto Mono typeface - https://fonts.google.com/specimen/Roboto+Mono
