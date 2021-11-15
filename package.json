@@ -79,7 +79,7 @@
     "gulp-execa": "^3.0.2",
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^8.0.0",
-    "hugo-extended": "0.89.2",
+    "hugo-extended": "0.89.3",
     "lint-staged": "^12.0.2",
     "markdownlint-cli": "~0.29.0",
     "mini-css-extract-plugin": "^2.4.4",
