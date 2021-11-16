@@ -102,7 +102,7 @@
     "stylelint-scss": "~4.0.0",
     "terser": "^5.9.0",
     "terser-webpack-plugin": "^5.2.5",
-    "webpack": "^5.64.0",
+    "webpack": "^5.64.1",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
