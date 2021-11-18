@@ -5041,10 +5041,10 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hugo-extended@0.89.3:
-  version "0.89.3"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.89.3.tgz#ecae6c57b32e799d3b61d159aa43baba9504e3e8"
-  integrity sha512-8Q0VVonteCtNPAQXIXG8pZjDHD/Eke3OQpu46c6mYubBDFe2d3H/pPrBouPeAoGY3zP9pAz0VpxWbHCtMssucQ==
+hugo-extended@0.89.4:
+  version "0.89.4"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.89.4.tgz#377e4a1caff51dc51f7beeac04cb91e15b67cb37"
+  integrity sha512-vaZrvPNqNmNcok2nOb542XmPzlj1qrrzFaux2g1tvu8ecDoE+vkg8i1moCvVxxOgwz1V+NvUxpiVEqcI+e0pcg==
   dependencies:
     careful-downloader "^2.0.1"
     log-symbols "^5.0.0"
