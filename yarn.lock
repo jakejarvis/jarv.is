@@ -935,8 +935,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@jakejarvis/eslint-config@github:jakejarvis/eslint-config#main":
-  version "2.0.0"
-  resolved "https://codeload.github.com/jakejarvis/eslint-config/tar.gz/02f185c144ee514c4ce182e892ad43717374998f"
+  version "3.0.0"
+  uid cbe2b1e5fa675f787d38b5dd395aa13cfdfa371e
+  resolved "https://codeload.github.com/jakejarvis/eslint-config/tar.gz/cbe2b1e5fa675f787d38b5dd395aa13cfdfa371e"
 
 "@jest/types@^27.2.5":
   version "27.2.5"
