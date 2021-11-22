@@ -104,7 +104,7 @@
     "terser": "^5.10.0",
     "terser-webpack-plugin": "^5.2.5",
     "web-vitals": "^2.1.2",
-    "webpack": "^5.64.1",
+    "webpack": "^5.64.2",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
