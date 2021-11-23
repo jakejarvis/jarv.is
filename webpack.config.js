@@ -52,10 +52,6 @@ export default {
  */`,
       additionalModules: [
         {
-          name: "lit-html",
-          directory: path.join(__dirname, "node_modules", "lit-html"),
-        },
-        {
           name: "twemoji",
           directory: path.join(__dirname, "node_modules", "twemoji"),
         },
@@ -114,18 +110,10 @@ export default {
               ],
               plugins: [
                 [
-                  "template-html-minifier",
+                  "@babel/plugin-transform-react-jsx",
                   {
-                    modules: {
-                      "lit-html": ["html"],
-                      "lit-html/static.js": ["html"],
-                    },
-                    htmlMinifier: {
-                      html5: true,
-                      caseSensitive: true,
-                      collapseWhitespace: true,
-                      removeComments: false,
-                    },
+                    pragma: "h",
+                    pragmaFrag: "Fragment",
                   },
                 ],
               ],

@@ -58,7 +58,7 @@ export default async (req, res) => {
     const message = error instanceof Error ? error.message : "Unknown error.";
 
     // 500 Internal Server Error
-    return res.status(500).json({ success: false, message: message });
+    return res.status(500).json({ success: false, message });
   }
 };
 
@@ -105,9 +105,9 @@ const getNowPlaying = async () => {
       imageUrl: active.item.album.images ? active.item.album.images[0].url : undefined,
       songUrl: active.item.external_urls.spotify,
     };
-  } else {
-    return { isPlaying: false };
   }
+
+  return { isPlaying: false };
 };
 
 const getTopTracks = async () => {

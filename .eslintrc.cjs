@@ -2,9 +2,9 @@ module.exports = {
   root: true,
   extends: [
     "@jakejarvis/eslint-config",
+    "preact",
     "plugin:compat/recommended",
     "plugin:import/recommended",
-    "plugin:lit/recommended",
     "plugin:no-unsanitized/DOM",
     "plugin:prettier/recommended",
   ],

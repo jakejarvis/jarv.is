@@ -45,7 +45,7 @@ export default async (req, res) => {
     const message = error instanceof Error ? error.message : "Unknown error.";
 
     // 500 Internal Server Error
-    return res.status(500).json({ success: false, message: message });
+    return res.status(500).json({ success: false, message });
   }
 };
 
@@ -83,8 +83,8 @@ const fetchRepos = async (sort, limit) => {
     `,
     {
       username: "jakejarvis",
-      limit: parseInt(limit),
-      sort: sort,
+      limit: parseInt(limit, 10),
+      sort,
       headers: {
         authorization: `token ${process.env.GH_PUBLIC_TOKEN}`,
       },

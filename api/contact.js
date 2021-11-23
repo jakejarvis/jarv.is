@@ -69,7 +69,7 @@ export default async (req, res) => {
     }
 
     // 500 Internal Server Error
-    return res.status(500).json({ success: false, message: message });
+    return res.status(500).json({ success: false, message });
   }
 };
 

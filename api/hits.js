@@ -62,7 +62,7 @@ export default async (req, res) => {
     const message = error instanceof Error ? error.message : "Unknown error.";
 
     // 500 Internal Server Error
-    return res.status(500).json({ success: false, message: message });
+    return res.status(500).json({ success: false, message });
   }
 };
 
@@ -79,7 +79,7 @@ const incrementPageHits = async (slug, client) => {
           },
           q.Update(q.Var("ref"), { data: { hits: q.Add(q.Var("hits"), 1) } })
         ),
-        q.Create(q.Collection("hits"), { data: { slug: slug, hits: 1 } })
+        q.Create(q.Collection("hits"), { data: { slug, hits: 1 } })
       )
     )
   );
@@ -92,7 +92,7 @@ const getSiteStats = async (client) => {
   // get database and RSS results asynchronously
   const parser = new Parser();
   const [feed, result] = await Promise.all([
-    parser.parseURL(BASE_URL + "feed.xml"),
+    parser.parseURL(`${BASE_URL}feed.xml`),
     client.query(
       q.Map(
         q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
@@ -109,7 +109,7 @@ const getSiteStats = async (client) => {
 
   pages.map((p) => {
     // match URLs from RSS feed with db to populate some metadata
-    const match = feed.items.find((x) => x.link === BASE_URL + p.slug + "/");
+    const match = feed.items.find((x) => x.link === `${BASE_URL}${p.slug}/`);
     if (match) {
       p.title = decode(match.title);
       p.url = match.link;

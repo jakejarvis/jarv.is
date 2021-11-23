@@ -75,9 +75,9 @@ const sendCsp = async (body, headers) => {
     }
 
     return response.status;
-  } else {
-    return 400; // 400 Bad Request
   }
+
+  return 400; // 400 Bad Request
 };
 
 const sendReport = async (body, headers) => {

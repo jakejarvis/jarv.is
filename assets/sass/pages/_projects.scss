@@ -17,7 +17,7 @@ div.layout-projects {
   div#loading-spinner {
     width: 40px;
     display: block;
-    margin: 1.2em auto 0 auto;
+    margin: 0.7em auto 0 auto;
 
     > div {
       width: 10px;
@@ -78,7 +78,7 @@ div.layout-projects {
             display: inline-block;
             position: relative;
             top: 0.25em;
-            margin-right: 0.2em;
+            margin-right: 0.5em;
             fill: currentColor;
           }
 
@@ -89,7 +89,7 @@ div.layout-projects {
             border-radius: 50%;
             position: relative;
             top: 0.235em;
-            margin-right: 0.2em;
+            margin-right: 0.5em;
           }
         }
       }
