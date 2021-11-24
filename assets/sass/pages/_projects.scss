@@ -14,17 +14,6 @@ div.layout-projects {
     text-align: center;
   }
 
-  div#loading-spinner {
-    width: 40px;
-    display: block;
-    margin: 0.7em auto 0 auto;
-
-    > div {
-      width: 10px;
-      height: 20px;
-    }
-  }
-
   div#github-cards {
     display: flex;
     flex-flow: row wrap;
@@ -93,6 +82,17 @@ div.layout-projects {
           }
         }
       }
+    }
+  }
+
+  div.loading {
+    width: 40px;
+    display: block;
+    margin: 0.7em auto 0 auto;
+
+    > div {
+      width: 10px;
+      height: 20px;
     }
   }
 }

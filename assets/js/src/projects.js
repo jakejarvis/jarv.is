@@ -1,6 +1,6 @@
-import fetch from "cross-fetch";
 import { h, render, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import fetch from "cross-fetch";
 import dayjs from "dayjs";
 import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
@@ -9,38 +9,53 @@ import { parse as parseEmoji } from "imagemoji";
 // API endpoint (sort by stars, limit to 12)
 const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
 
-// TODO: extract this out to a common element for use on other pages
-const Loading = () => (
-  <div id="loading-spinner" class="loading">
-    <div />
-    <div />
-    <div />
-  </div>
-);
+const RepositoryGrid = () => {
+  const [repos, setRepos] = useState([]);
 
-const Card = (repo) => (
+  useEffect(() => {
+    fetch(PROJECTS_ENDPOINT)
+      .then((response) => response.json())
+      .then((data) => setRepos(data || []));
+  }, []);
+
+  // spinning loading indicator
+  if (repos.length === 0) {
+    return <Loading />;
+  }
+
+  return (
+    <Fragment>
+      {repos.map((repo) => (
+        // eslint-disable-next-line react/jsx-key
+        <RepositoryCard {...repo} />
+      ))}
+    </Fragment>
+  );
+};
+
+const RepositoryCard = (repo) => (
   <div class="github-card">
     <a class="repo-name" href={repo.url} target="_blank" rel="noopener noreferrer">
       {repo.name}
     </a>
 
-    {repo.description ? (
+    {repo.description && (
       <p
         class="repo-description"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: parseEmoji(repo.description, (icon) => `/assets/emoji/${icon}.svg`) }}
       />
-    ) : null}
+    )}
 
     <div class="repo-meta">
-      {repo.language ? (
+      {repo.language && (
         <div class="repo-meta-item">
           <span class="repo-language-color" style={{ "background-color": repo.language.color }} />
           <span>{repo.language.name}</span>
         </div>
-      ) : null}
+      )}
 
-      {repo.stars > 0 ? (
+      {repo.stars > 0 && (
         <div
           class="repo-meta-item"
           title={`${repo.stars.toLocaleString("en-US")} ${repo.stars === 1 ? "star" : "stars"}`}
@@ -53,9 +68,9 @@ const Card = (repo) => (
           </svg>
           <span>{repo.stars.toLocaleString("en-US")}</span>
         </div>
-      ) : null}
+      )}
 
-      {repo.forks > 0 ? (
+      {repo.forks > 0 && (
         <div
           class="repo-meta-item"
           title={`${repo.forks.toLocaleString("en-US")} ${repo.forks === 1 ? "fork" : "forks"}`}
@@ -68,7 +83,7 @@ const Card = (repo) => (
           </svg>
           <span>{repo.forks.toLocaleString("en-US")}</span>
         </div>
-      ) : null}
+      )}
 
       <div class="repo-meta-item" title={dayjs(repo.updatedAt).format("lll Z")}>
         <span>Updated {dayjs(repo.updatedAt).fromNow()}</span>
@@ -77,37 +92,26 @@ const Card = (repo) => (
   </div>
 );
 
-const Grid = () => {
-  const [repos, setRepos] = useState([]);
+// TODO: extract this out to a shared component for use on other pages
+const Loading = (props) => {
+  // allow a custom number of pulsing boxes (defaults to 3)
+  const boxes = props.boxes || 3;
+  // each box is just an empty div
+  const divs = [];
 
-  useEffect(() => {
-    fetch(PROJECTS_ENDPOINT)
-      .then((response) => response.json())
-      .then((data) => {
-        setRepos(data || []);
-      });
-  }, []);
-
-  // spinning loading indicator
-  if (repos.length === 0) {
-    return <Loading />;
+  for (let i = 0; i < boxes; i++) {
+    divs.push(<div />);
   }
 
-  return (
-    <Fragment>
-      {repos.map((repo) => (
-        // eslint-disable-next-line react/jsx-key
-        <Card {...repo} />
-      ))}
-    </Fragment>
-  );
+  return <div class="loading">{divs}</div>;
 };
 
+// detect if these cards are wanted on this page (only /projects)
 const wrapper = document.querySelector("div#github-cards");
 
 if (wrapper) {
   dayjs.extend(dayjsLocalizedFormat);
   dayjs.extend(dayjsRelativeTime);
 
-  render(<Grid />, wrapper);
+  render(<RepositoryGrid />, wrapper);
 }
