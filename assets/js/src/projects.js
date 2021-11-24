@@ -16,17 +16,19 @@ const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
 const RepositoryGrid = () => {
   const [repos, setRepos] = useState([]);
 
+  // start fetching repos from API immediately
   useEffect(() => {
     fetch(PROJECTS_ENDPOINT)
       .then((response) => response.json())
       .then((data) => setRepos(data || []));
   }, []);
 
-  // spinning loading indicator
+  // show spinning loading indicator if data isn't fetched yet
   if (repos.length === 0) {
     return <Loading boxes={3} width={40} style={{ margin: "0.7em auto" }} />;
   }
 
+  // we have data!
   return (
     <Fragment>
       {repos.map((repo) => (
@@ -64,7 +66,7 @@ const RepositoryCard = (repo) => (
           class="repo-meta-item"
           title={`${repo.stars.toLocaleString("en-US")} ${repo.stars === 1 ? "star" : "stars"}`}
         >
-          <StarIcon size={16} />
+          <StarIcon size={16} fill="currentColor" />
           <span>{repo.stars.toLocaleString("en-US")}</span>
         </div>
       )}
@@ -74,7 +76,7 @@ const RepositoryCard = (repo) => (
           class="repo-meta-item"
           title={`${repo.forks.toLocaleString("en-US")} ${repo.forks === 1 ? "fork" : "forks"}`}
         >
-          <RepoForkedIcon size={16} />
+          <RepoForkedIcon size={16} fill="currentColor" />
           <span>{repo.forks.toLocaleString("en-US")}</span>
         </div>
       )}
@@ -89,7 +91,8 @@ const RepositoryCard = (repo) => (
 // detect if these cards are wanted on this page (only /projects)
 const wrapper = document.querySelector("div#github-cards");
 
-if (wrapper) {
+if (typeof window !== "undefined" && wrapper) {
+  // dayjs plugins: https://day.js.org/docs/en/plugin/loading-into-nodejs
   dayjs.extend(dayjsLocalizedFormat);
   dayjs.extend(dayjsRelativeTime);
 

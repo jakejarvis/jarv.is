@@ -12,17 +12,19 @@ const HITS_ENDPOINT = "/api/hits/";
 const Counter = (props) => {
   const [hits, setHits] = useState();
 
+  // start fetching hits from API once slug is set
   useEffect(() => {
     fetch(`${HITS_ENDPOINT}?slug=${encodeURIComponent(props.slug)}`)
       .then((response) => response.json())
       .then((data) => setHits(data.hits || 0));
   }, [props.slug]);
 
-  // spinning loading indicator
+  // show spinning loading indicator if data isn't fetched yet
   if (!hits) {
     return <Loading boxes={3} width={20} />;
   }
 
+  // we have data!
   return (
     <span title={`${hits.toLocaleString("en-US")} ${hits === 1 ? "view" : "views"}`}>
       {hits.toLocaleString("en-US")}
@@ -34,7 +36,7 @@ const Counter = (props) => {
 const wrapper = document.querySelector("div#meta-hits-counter");
 
 // page must have both span#meta-hits and canonical URL to enter
-if (wrapper) {
+if (typeof window !== "undefined" && wrapper) {
   // use <link rel="canonical"> to deduce a consistent identifier for this page
   const canonical = canonicalUrl({
     normalize: true,

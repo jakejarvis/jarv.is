@@ -38,9 +38,7 @@ export default {
     alias: {
       // https://preactjs.com/guide/v10/getting-started#aliasing-in-webpack
       react: "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
       "react-dom": "preact/compat",
-      "react/jsx-runtime": "preact/jsx-runtime",
     },
   },
   plugins: [
