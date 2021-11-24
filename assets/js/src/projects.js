@@ -6,7 +6,7 @@ import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
 import { parse as parseEmoji } from "imagemoji";
 
-// shared preact components:
+// shared react components:
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
 import Loading from "./components/loading.js";
 
@@ -24,7 +24,7 @@ const RepositoryGrid = () => {
 
   // spinning loading indicator
   if (repos.length === 0) {
-    return <Loading boxes={3} width={40} />;
+    return <Loading boxes={3} width={40} style={{ margin: "0.7em auto" }} />;
   }
 
   return (

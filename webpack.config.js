@@ -200,7 +200,7 @@ export default {
           },
           format: {
             // cut all comments except for the banner declared above via LicensePlugin:
-            comments: (astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
+            comments: (_astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
             ascii_only: true, // some symbols get disfigured otherwise
           },
           mangle: true,

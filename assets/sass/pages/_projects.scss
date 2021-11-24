@@ -23,7 +23,6 @@ div.layout-projects {
 
     div.github-card {
       flex-grow: 1;
-      display: block;
       width: 416px; // magic number
       padding: 1em 1.2em;
       margin: 0.6em;
@@ -44,7 +43,7 @@ div.layout-projects {
       }
 
       p.repo-description {
-        margin: 0.3em 0 0.6em 0;
+        margin: 0.2em 0 0.8em 0;
       }
 
       div.repo-meta {
@@ -52,8 +51,6 @@ div.layout-projects {
         flex-wrap: wrap;
 
         div.repo-meta-item {
-          display: inline-block;
-          align-self: baseline;
           margin-right: 1.5em;
           font-size: 0.925em;
 
@@ -63,27 +60,23 @@ div.layout-projects {
             )
           );
 
-          svg {
+          .octicon,
+          span.repo-language-color {
             margin-right: 0.5em;
           }
 
           span.repo-language-color {
             display: inline-block;
-            width: 1.2em;
-            height: 1.2em;
+            width: 1.15em;
+            height: 1.15em;
             border-radius: 50%;
             position: relative;
-            top: 0.235em;
+            top: 0.175em;
             margin-right: 0.5em;
           }
         }
       }
     }
-  }
-
-  div.loading {
-    height: 20px;
-    margin: 0.7em auto;
   }
 }
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "preact/hooks";
 import fetch from "cross-fetch";
 import canonicalUrl from "get-canonical-url";
 
-// shared preact components:
+// shared react components:
 import Loading from "./components/loading.js";
 
 // API endpoint
