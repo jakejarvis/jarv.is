@@ -161,6 +161,19 @@ a img.emoji {
   cursor: inherit;
 }
 
+// pulsating loading spinner
+.loading {
+  display: inline-block;
+
+  > div {
+    @include themes.themed(
+      (
+        background-color: "medium-light",
+      )
+    );
+  }
+}
+
 // Responsive
 @mixin responsive() {
   body {

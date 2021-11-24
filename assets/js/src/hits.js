@@ -20,7 +20,7 @@ const Counter = (props) => {
 
   // spinning loading indicator
   if (!hits) {
-    return <Loading />;
+    return <Loading boxes={3} width={20} />;
   }
 
   return (

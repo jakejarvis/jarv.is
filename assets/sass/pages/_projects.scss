@@ -86,14 +86,8 @@ div.layout-projects {
   }
 
   div.loading {
-    width: 40px;
-    display: block;
-    margin: 0.7em auto 0 auto;
-
-    > div {
-      width: 10px;
-      height: 20px;
-    }
+    height: 20px;
+    margin: 0.7em auto;
   }
 }
 

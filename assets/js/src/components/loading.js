@@ -7,10 +7,24 @@ const Loading = (props) => {
   const divs = [];
 
   for (let i = 0; i < boxes; i++) {
-    divs.push(<div />);
+    divs.push(
+      <div
+        style={{
+          width: `${props.width / (boxes + 1)}px`,
+          height: "100%",
+          display: "inline-block",
+          animation: "loading 1.5s infinite ease-in-out both", // see assets/sass/components/_animation.scss
+          "animation-delay": `${i * 0.16}s`,
+        }}
+      />
+    );
   }
 
-  return <div class="loading">{divs}</div>;
+  return (
+    <div class="loading" style={{ width: `${props.width}px`, display: "inline-block", "text-align": "center" }}>
+      {divs}
+    </div>
+  );
 };
 
 export default Loading;

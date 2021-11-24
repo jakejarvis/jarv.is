@@ -23,7 +23,7 @@ const RepositoryGrid = () => {
 
   // spinning loading indicator
   if (repos.length === 0) {
-    return <Loading />;
+    return <Loading boxes={3} width={40} />;
   }
 
   return (
