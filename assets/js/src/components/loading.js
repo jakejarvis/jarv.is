@@ -13,7 +13,9 @@ const Loading = (props) => {
           width: `${props.width / (boxes + 1)}px`,
           height: "100%",
           display: "inline-block",
-          animation: "loading 1.5s infinite ease-in-out both", // see assets/sass/components/_animation.scss
+
+          // see assets/sass/components/_animation.scss:
+          animation: "loading 1.5s infinite ease-in-out both",
           "animation-delay": `${i * 0.16}s`,
         }}
       />

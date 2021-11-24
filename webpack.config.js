@@ -156,6 +156,13 @@ export default {
         ],
       },
       {
+        test: /\.(png|jp(e*)g|svg|gif|ico)$/,
+        type: "asset/resource",
+        generator: {
+          filename: isProd ? "images/[name]-[contenthash:6][ext]" : "images/[name][ext]",
+        },
+      },
+      {
         test: /\.(woff(2)?|ttf|otf|eot)$/,
         type: "asset/resource",
         generator: {
