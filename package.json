@@ -30,6 +30,7 @@
     "@fontsource/inter": "4.5.1",
     "@fontsource/roboto-mono": "4.5.0",
     "@octokit/graphql": "^4.8.0",
+    "@primer/octicons-react": "^16.1.1",
     "@sentry/node": "^6.15.0",
     "clipboard-copy": "^4.0.1",
     "cross-fetch": "^3.1.4",

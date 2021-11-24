@@ -34,6 +34,15 @@ export default {
     },
     devtoolModuleFilenameTemplate: "webpack:///[resource-path]",
   },
+  resolve: {
+    alias: {
+      // https://preactjs.com/guide/v10/getting-started#aliasing-in-webpack
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      "react/jsx-runtime": "preact/jsx-runtime",
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
