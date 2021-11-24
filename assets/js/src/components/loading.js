@@ -4,7 +4,7 @@ const Loading = (props) => {
   // allow a custom number of pulsing boxes (defaults to 3)
   const boxes = props.boxes || 3;
   // each individual box's animation has a staggered start in corresponding order
-  const animationTiming = 0.16; // seconds
+  const animationTiming = props.timing || 0.1; // seconds
   // each box is just an empty div
   const divs = [];
 
