@@ -10,6 +10,7 @@ snapshot:
     video,
     img[src$=".gif"],
     .loading,
+    #meta-hits,
     #contact-form-captcha {
       display: none !important;
     }
