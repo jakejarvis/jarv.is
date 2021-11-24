@@ -3,6 +3,9 @@ import { useState, useEffect } from "preact/hooks";
 import fetch from "cross-fetch";
 import canonicalUrl from "get-canonical-url";
 
+// shared preact components:
+import Loading from "./components/loading.js";
+
 // API endpoint
 const HITS_ENDPOINT = "/api/hits/";
 
@@ -25,20 +28,6 @@ const Counter = (props) => {
       {hits.toLocaleString("en-US")}
     </span>
   );
-};
-
-// TODO: extract this out to a shared component for use on other pages
-const Loading = (props) => {
-  // allow a custom number of pulsing boxes (defaults to 3)
-  const boxes = props.boxes || 3;
-  // each box is just an empty div
-  const divs = [];
-
-  for (let i = 0; i < boxes; i++) {
-    divs.push(<div />);
-  }
-
-  return <div class="loading">{divs}</div>;
 };
 
 // don't continue if there isn't a span#meta-hits element on this page

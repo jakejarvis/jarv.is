@@ -6,6 +6,9 @@ import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
 import { parse as parseEmoji } from "imagemoji";
 
+// shared preact components:
+import Loading from "./components/loading.js";
+
 // API endpoint (sort by stars, limit to 12)
 const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
 
@@ -91,20 +94,6 @@ const RepositoryCard = (repo) => (
     </div>
   </div>
 );
-
-// TODO: extract this out to a shared component for use on other pages
-const Loading = (props) => {
-  // allow a custom number of pulsing boxes (defaults to 3)
-  const boxes = props.boxes || 3;
-  // each box is just an empty div
-  const divs = [];
-
-  for (let i = 0; i < boxes; i++) {
-    divs.push(<div />);
-  }
-
-  return <div class="loading">{divs}</div>;
-};
 
 // detect if these cards are wanted on this page (only /projects)
 const wrapper = document.querySelector("div#github-cards");
