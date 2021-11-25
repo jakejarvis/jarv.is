@@ -92,7 +92,7 @@
     "postcss-loader": "^6.2.0",
     "postcss-svgo": "^5.0.3",
     "prettier": "~2.4.1",
-    "sass": "^1.43.4",
+    "sass": "^1.43.5",
     "sass-loader": "^12.3.0",
     "simple-git-hooks": "^2.7.0",
     "source-map-loader": "^3.0.0",
