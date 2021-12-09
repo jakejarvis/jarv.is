@@ -42,7 +42,7 @@
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",
     "node-fetch": "^3.1.0",
     "p-retry": "^5.0.0",
-    "preact": "^10.6.2",
+    "preact": "^10.6.3",
     "query-string": "^7.0.1",
     "rss-parser": "^3.12.0",
     "trim-newlines": "^4.0.2",
