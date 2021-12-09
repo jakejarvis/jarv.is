@@ -5149,13 +5149,13 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hugo-extended@0.89.4:
-  version "0.89.4"
-  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.89.4.tgz#377e4a1caff51dc51f7beeac04cb91e15b67cb37"
-  integrity sha512-vaZrvPNqNmNcok2nOb542XmPzlj1qrrzFaux2g1tvu8ecDoE+vkg8i1moCvVxxOgwz1V+NvUxpiVEqcI+e0pcg==
+hugo-extended@0.90.0:
+  version "0.90.0"
+  resolved "https://registry.yarnpkg.com/hugo-extended/-/hugo-extended-0.90.0.tgz#9ff66a921e618d1927f0ffbfdbc9631fb9d33981"
+  integrity sha512-hI4r/2zPHd7A/jQWpd8hFP6nM4v8QbwP+CN6L3ClR5o6NBqGLy/EF/0VoujIykcNPAVjaVgq8SuvLklI5Db+3A==
   dependencies:
     careful-downloader "^2.0.1"
-    log-symbols "^5.0.0"
+    log-symbols "^5.1.0"
     read-pkg-up "^9.0.0"
 
 human-signals@^1.1.1:
@@ -6281,7 +6281,7 @@ lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.20:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log-symbols@^5.0.0:
+log-symbols@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-5.1.0.tgz#a20e3b9a5f53fac6aeb8e2bb22c07cf2c8f16d93"
   integrity sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==

@@ -76,7 +76,7 @@
     "gulp-execa": "^3.0.2",
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^8.0.0",
-    "hugo-extended": "0.89.4",
+    "hugo-extended": "0.90.0",
     "license-webpack-plugin": "^4.0.0",
     "lint-staged": "^12.1.2",
     "markdownlint-cli": "~0.30.0",
