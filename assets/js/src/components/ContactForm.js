@@ -90,7 +90,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} id="contact-form" action={CONTACT_ENDPOINT} method="POST">
+    <form onSubmit={onSubmit} id="contact-form" action="/api/contact/" method="POST">
       <input type="text" name="name" placeholder="Name" disabled={status.success} />
       <input type="email" name="email" placeholder="Email" disabled={status.success} />
       <textarea name="message" placeholder="Write something..." disabled={status.success} />
