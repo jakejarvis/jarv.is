@@ -24,15 +24,6 @@ body {
       background-color: "background-outer",
     )
   );
-
-  // set themed lightbulb icons manually
-  &.light button.dark-mode-toggle {
-    background-image: url("data:image/svg+xml;charset=utf-8,#{themes.$icon-bulb-on}");
-  }
-
-  &.dark button.dark-mode-toggle {
-    background-image: url("data:image/svg+xml;charset=utf-8,#{themes.$icon-bulb-off}");
-  }
 }
 
 code,

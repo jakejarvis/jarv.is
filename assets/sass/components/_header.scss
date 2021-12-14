@@ -69,7 +69,7 @@ header {
     ul {
       list-style: none;
       display: flex;
-      align-items: baseline;
+      align-items: center;
       margin: 0;
       padding: 0;
 
@@ -78,6 +78,7 @@ header {
 
         a {
           display: inline-flex;
+          align-items: center;
 
           @include themes.themed(
             (
@@ -94,11 +95,8 @@ header {
           }
 
           span {
-            align-self: center;
-
             &.header-menu-icon {
               font-size: 1.3em;
-              vertical-align: -0.085em;
               user-select: none;
             }
 
@@ -112,22 +110,16 @@ header {
         }
 
         // Dark mode toggle
-        &#header-lightbulb {
-          align-self: center;
+        &.theme-toggle button {
+          border: 0;
+          padding: 0;
+          background: none;
+          margin: 0.3em -0.3em 0 1.4em;
+          cursor: pointer;
 
-          button {
-            // native button reset
-            border: 0;
-            padding: 0;
+          svg {
             width: 1.56em; // 24.33px, don't ask
             height: 1.56em;
-            margin: -0.075em -0.3em 0 1.4em; // weirdness w/ svg ratio
-            cursor: pointer;
-
-            // prepare for lightbulb symbol depending on active theme (set in components/_global)
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
           }
         }
 
@@ -183,11 +175,14 @@ header {
           }
 
           // Dark mode toggle
-          &#header-lightbulb button.dark-mode-toggle {
-            width: 1.08em; // ~27px, don't ask
-            height: 1.08em;
+          &.theme-toggle button {
             margin-left: 1em;
             margin-right: -0.2em; // weirdness w/ svg ratio
+
+            svg {
+              width: 1.08em; // ~27px, don't ask
+              height: 1.08em;
+            }
           }
         }
       }

@@ -1,4 +1,4 @@
-import "./src/dark-mode.js";
+import "./src/theme.js";
 import "./src/emoji.js";
 import "./src/hits.js";
 import "./src/clipboard.js";
