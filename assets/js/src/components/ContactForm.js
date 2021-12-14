@@ -8,8 +8,6 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CheckIcon, XIcon } from "@primer/octicons-react";
 import SendEmoji from "twemoji-emojis/vendor/svg/1f4e4.svg";
 
-const CONTACT_ENDPOINT = "/api/contact/";
-
 const ContactForm = () => {
   // status/feedback:
   const [status, setStatus] = useState({ success: false, message: "" });
@@ -44,7 +42,7 @@ const ContactForm = () => {
     }
 
     // if we've gotten here then all data is (or should be) valid and ready to post to API
-    fetch(CONTACT_ENDPOINT, {
+    fetch("/api/contact/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
