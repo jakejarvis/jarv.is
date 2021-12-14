@@ -8,12 +8,12 @@ const Anchor = (props) => {
       class="anchorjs-link"
       href={`#${props.id}`}
       title={`Jump to "${props.title}"`}
+      aria-label={`Jump to "${props.title}"`}
       style={{
         // if this is a touchscreen, always show the "#" icon instead waiting for hover
         // NOTE: this is notoriously unreliable; see https://github.com/Modernizr/Modernizr/pull/2432
         opacity: isTouchDevice() ? 1 : null,
       }}
-      aria-hidden="true"
     />
   );
 };
