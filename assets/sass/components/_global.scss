@@ -132,8 +132,7 @@ main {
 
 // make SVG twemojis relative to surrounding text
 // https://github.com/twitter/twemoji#inline-styles
-img.emoji,
-svg.emoji {
+.emoji {
   height: 1.2em;
   width: 1.2em;
   margin: 0 0.05em;
@@ -151,16 +150,12 @@ a .emoji {
 }
 
 // pulsating loading spinner
-.loading {
-  display: inline-block;
-
-  > div {
-    @include themes.themed(
-      (
-        background-color: "medium-light",
-      )
-    );
-  }
+div.loading > div {
+  @include themes.themed(
+    (
+      background-color: "medium-light",
+    )
+  );
 }
 
 // Responsive
