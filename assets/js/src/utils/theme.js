@@ -1,5 +1,5 @@
 // store preference in local storage
-export const storageKey = "dark";
+export const storageKey = "dark_mode";
 
 // use the body class as a hint to what the theme was set to outside of the button component
 // there's probably (definitely) a cleaner way to do this..?
