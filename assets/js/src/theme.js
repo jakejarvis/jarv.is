@@ -1,11 +1,11 @@
 import { h, render } from "preact";
-import { setDarkClass, storageKey } from "./utils/theme.js";
+import { getDarkPref, setDarkClass } from "./utils/theme.js";
 
 // react components:
 import ThemeToggle from "./components/ThemeToggle.js";
 
 // check for existing preference in local storage
-const pref = localStorage.getItem(storageKey);
+const pref = getDarkPref();
 
 // do initialization before *any* react-related stuff to avoid white flashes as much as possible
 if (pref) {

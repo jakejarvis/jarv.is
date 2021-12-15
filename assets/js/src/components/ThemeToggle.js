@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { isDark, setDarkClass, storageKey } from "../utils/theme.js";
+import { isDark, setDarkClass, setDarkPref } from "../utils/theme.js";
 
 // react components:
 import BulbOn from "../assets/bulb-on.svg";
@@ -16,7 +16,7 @@ const ThemeToggle = () => {
 
   const handleToggle = () => {
     // only update the local storage preference if the user explicitly presses the lightbulb
-    localStorage.setItem(storageKey, !dark);
+    setDarkPref(!dark);
 
     // set theme to the opposite of current theme
     setDark(!dark);
