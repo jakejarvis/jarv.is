@@ -113,7 +113,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "github:jakejarvis/imagemin-mozjpeg.git#ff7f05ce95f1c6cb326e03e2d817502a231b94d8",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^10.0.0"
+    "imagemin-svgo": "^10.0.1"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

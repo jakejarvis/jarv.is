@@ -5473,10 +5473,10 @@ imagemin-pngquant@^9.0.2:
     ow "^0.17.0"
     pngquant-bin "^6.0.0"
 
-imagemin-svgo@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/imagemin-svgo/-/imagemin-svgo-10.0.0.tgz#0cc0c5636dc707ae96c580836c79922601da9b34"
-  integrity sha512-nuikUDlf8u81V25ckHrWE8l7fECNx403EU3a3qrSO8H4ipBSEL3QlOgrBqZ1SJQ1lsIzJbBKwXvsrVGGO6Hj2g==
+imagemin-svgo@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/imagemin-svgo/-/imagemin-svgo-10.0.1.tgz#bc592950831c13998a40cb248f6e82e0b0b5c3dd"
+  integrity sha512-v27/UTGkb3vrm5jvjsMGQ2oxaDfSOTBfJOgmFO2fYepx05bY1IqWCK13aDytVR+l9w9eOlq0NMCLbxJlghYb2g==
   dependencies:
     is-svg "^4.3.1"
     svgo "^2.5.0"
