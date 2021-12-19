@@ -44,6 +44,13 @@ params:
     githubRepo: jakejarvis/jarv.is # user/repo
     webmentionIO: jarv.is # webmention.io username
     facebookAppID: 3357248167622283
+  algolia:
+    vars:
+      - title
+      - summary
+      - date
+      - permalink
+      - draft
 
 author:
   name: Jake Jarvis
@@ -96,6 +103,7 @@ outputs:
     - rss
     - atom
     - manifest
+    - algolia
   section:
     - html
   page:
@@ -115,6 +123,11 @@ outputFormats:
   manifest:
     mediaType: application/manifest+json # https://github.com/w3c/manifest/issues/689
     baseName: site # /site.webmanifest
+    isPlainText: true
+    notAlternative: true
+  algolia:
+    mediaType: application/json
+    baseName: algolia # /algolia.json
     isPlainText: true
     notAlternative: true
 

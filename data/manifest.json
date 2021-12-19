@@ -1,3 +1,170 @@
 {
-  "//": "This file will be overwritten by Webpack, but Hugo will fail to wait for that to happen if it doesn't exist at first."
+  "fonts/comic-neue-all-400-normal.woff": {
+    "src": "/assets/fonts/comic-neue-all-400-normal-2fd117.woff",
+    "integrity": "sha384-zkrqyk+cBvuTr7xtWxU/91nhpFQdawz9qhiIAg6aeBS9slNPAxgZ7sGf+nZAonHM"
+  },
+  "fonts/comic-neue-all-700-normal.woff": {
+    "src": "/assets/fonts/comic-neue-all-700-normal-ffa722.woff",
+    "integrity": "sha384-BiqP3HfIU7B5d9cA7xFS0r09lV10pygi6vrdwMBn/hyYE1vXxLexh6GM6Ekrcvg1"
+  },
+  "fonts/comic-neue-latin-400-normal.woff2": {
+    "src": "/assets/fonts/comic-neue-latin-400-normal-2505a6.woff2",
+    "integrity": "sha384-h6TWJNGy82a5pm+O1MNhcsBCYt9wT2BF2j1/y1CygxaKeKboEkST0VkS0j3wPa6h"
+  },
+  "fonts/comic-neue-latin-700-normal.woff2": {
+    "src": "/assets/fonts/comic-neue-latin-700-normal-1c7441.woff2",
+    "integrity": "sha384-wlnY13c2mVV4bys4zb2CLpzEkJyIUiVuYeKjoPNcUFrG8dkz3PQUcNc5fE8vivpo"
+  },
+  "fonts/inter-all-400-normal.woff": {
+    "src": "/assets/fonts/inter-all-400-normal-e71ac3.woff",
+    "integrity": "sha384-szbG6o5VoVOGatKFbISk8lzYvoHlbTNuuMzIJegcRaw+q/5FbHjBmI4Hnm9BwdJy"
+  },
+  "fonts/inter-all-500-normal.woff": {
+    "src": "/assets/fonts/inter-all-500-normal-d244e0.woff",
+    "integrity": "sha384-zH2AhofL0TD2DmXwCjFCME3ydBhS7WW5fw3Hx/f9HJB+Tdv/411j8cism9Alt+kB"
+  },
+  "fonts/inter-all-700-normal.woff": {
+    "src": "/assets/fonts/inter-all-700-normal-967111.woff",
+    "integrity": "sha384-sIjV+qUb8EItGJmzSQfwxEUabNsBxSszL7rq/PVvNOaveI8e54gW0Kc+X+vcBTHF"
+  },
+  "fonts/inter-latin-400-normal.woff2": {
+    "src": "/assets/fonts/inter-latin-400-normal-5e6a77.woff2",
+    "integrity": "sha384-/rQWtBer+4Yq7+bU3T14ahcRIQZrcK73YF0YPdUcECh4LMlawOtwUkOLnreuQZaK"
+  },
+  "fonts/inter-latin-500-normal.woff2": {
+    "src": "/assets/fonts/inter-latin-500-normal-09888c.woff2",
+    "integrity": "sha384-1zu9WVFOv+cUjPlI9wIJSZtfnosd08+6fW+Ab2lFnuhZKQyHeBJ+5G7E/RNoSsnJ"
+  },
+  "fonts/inter-latin-700-normal.woff2": {
+    "src": "/assets/fonts/inter-latin-700-normal-c2ceaa.woff2",
+    "integrity": "sha384-KquMOri24k6W/iZuojSUiAnS/ZtvZKDhNKrNlaSb62uNxaDYaYPtuQVsqwvP4erj"
+  },
+  "fonts/inter-latin-variable-full-normal.woff2": {
+    "src": "/assets/fonts/inter-latin-variable-full-normal-662312.woff2",
+    "integrity": "sha384-7N/Ra2/4BtvnHrRG+PTr9p44vF4gsMaVH5WNvhG63Ky98k0sDxEXGJznIob7i3rk"
+  },
+  "fonts/roboto-mono-all-400-normal.woff": {
+    "src": "/assets/fonts/roboto-mono-all-400-normal-8c12de.woff",
+    "integrity": "sha384-S/IbBswf6n1k/m9n4TiSTB2vJO01xVKIg5tIEqnrKjQaQTioSTe5EcfTCs2ywdhL"
+  },
+  "fonts/roboto-mono-all-500-normal.woff": {
+    "src": "/assets/fonts/roboto-mono-all-500-normal-90ffb4.woff",
+    "integrity": "sha384-6h27ZNdbUix3oy+SEtYPOjTeEU8yYm5NzXeSaij8lwV9eMXKXMmAUSqWH+zesuug"
+  },
+  "fonts/roboto-mono-all-700-normal.woff": {
+    "src": "/assets/fonts/roboto-mono-all-700-normal-261f3e.woff",
+    "integrity": "sha384-1E+SGLlMw/8KKdT3MzObuMaeI1WyEKrB8VPZhOKRfx4Ub6xd13pDtePUymbIOvqz"
+  },
+  "fonts/roboto-mono-latin-400-normal.woff2": {
+    "src": "/assets/fonts/roboto-mono-latin-400-normal-535bc8.woff2",
+    "integrity": "sha384-9PR7rSbowMeZL36v121GZy+d9mDrM7DDLFqVX0HcKvq6gM6oY23fFoiX+qaelBRS"
+  },
+  "fonts/roboto-mono-latin-500-normal.woff2": {
+    "src": "/assets/fonts/roboto-mono-latin-500-normal-c1f173.woff2",
+    "integrity": "sha384-5w7USdbXJhktFGpq5UtaP2dQLA31uqLwO7FgARj4ikbhQ5xLYX4KIXXxWnCOgn/U"
+  },
+  "fonts/roboto-mono-latin-700-normal.woff2": {
+    "src": "/assets/fonts/roboto-mono-latin-700-normal-c5c395.woff2",
+    "integrity": "sha384-jEgtA0TioB9eChQEhTcBwOBOvmnK4E6I1NZMi+9NBjahaohH3UTnXkYEg95lE+HP"
+  },
+  "fonts/roboto-mono-latin-variable-wghtOnly-italic.woff2": {
+    "src": "/assets/fonts/roboto-mono-latin-variable-wghtOnly-italic-9f44ec.woff2",
+    "integrity": "sha384-VKky5URDGkJZE6W0y72FQMGMSOuTgfTkIpB+QBpUoF+tS/iKSh8J88nZp2KnwSsX"
+  },
+  "fonts/roboto-mono-latin-variable-wghtOnly-normal.woff2": {
+    "src": "/assets/fonts/roboto-mono-latin-variable-wghtOnly-normal-683f4e.woff2",
+    "integrity": "sha384-kguS5geQEYXA1I9udXNu4cPUV3mXzHng0rjhEPTDtcZQF9Ur65Vgq5BAqFhcGjOj"
+  },
+  "images/android-chrome-192x192.png": {
+    "src": "/assets/images/android-chrome-192x192.png",
+    "integrity": "sha384-FmYfgucrQl9WryngCZciPFNY5sRgduznkQXsKj5mdMSQetHgyUhLEGacH6oCaKJq"
+  },
+  "images/android-chrome-512x512.png": {
+    "src": "/assets/images/android-chrome-512x512.png",
+    "integrity": "sha384-wvH7uqHXZCbErKd7o9s3Oes9QIkjSXzOacFzjYVdM/Q19IUhdKXHmSl/1yD7r9Dr"
+  },
+  "images/angry-panda.gif": {
+    "src": "/assets/images/angry-panda.gif",
+    "integrity": "sha384-HBMtkB5/wwA7QIBeOkq9jCbRlJ0EGmpnFkAlWgnBvaUHCtUIQ3r2tK4JF3oDD/UO"
+  },
+  "images/apple-touch-icon.png": {
+    "src": "/assets/images/apple-touch-icon.png",
+    "integrity": "sha384-3SBov4Vt1jVlnKfMeqyDmBaFfXZDZk2IGiq1les0AIBfwJMa6yxrPRejvlD8xMU0"
+  },
+  "images/favicon-128.png": {
+    "src": "/assets/images/favicon-128.png",
+    "integrity": "sha384-VElxMu7U2amVqcPYUGxL5yIowAFlrbDB1ayVkH4pZ/qjqUaof+uMrf41NcqsTdAW"
+  },
+  "images/favicon-16.png": {
+    "src": "/assets/images/favicon-16.png",
+    "integrity": "sha384-YrWzslXBw2luN59qZLSPFHVy0HysV9IBg2cY56PO0ar9TgXQ/Ov39IPTj+vWz5z7"
+  },
+  "images/favicon-192.png": {
+    "src": "/assets/images/favicon-192.png",
+    "integrity": "sha384-OTgxOHX1U0Eu65ashZsUUwBIkok0s9xBZgLjIdwdpRQ34fEjlSFWh4PwLwTxOzar"
+  },
+  "images/favicon-32.png": {
+    "src": "/assets/images/favicon-32.png",
+    "integrity": "sha384-X0Vt1DvkfzNayzrceSNs/O2Yuj7u/ALRBdlJlZqlGxvRFcrMc8yvhbhdeuTtQOyP"
+  },
+  "images/favicon-48.png": {
+    "src": "/assets/images/favicon-48.png",
+    "integrity": "sha384-lj8QKjPDnFXQe65ZoqVgeVc88Zxo4mRXzJa8diFvV8XXuZHVtHm6sHcrJ7nyGqct"
+  },
+  "images/favicon-64.png": {
+    "src": "/assets/images/favicon-64.png",
+    "integrity": "sha384-4paGqY9bmISB68ZHXJnYuZn7ePRnycCWtV5MqvAb8P5LiqI7z6GMmnh294sEE1/B"
+  },
+  "images/favicon.ico": {
+    "src": "/assets/images/favicon.ico",
+    "integrity": "sha384-P1cWLNh9blwpdCVRT9DHU5TdZ1fjbpptFiPwmPOTMKtUuaVMtoR2oii3zrg1Am8y"
+  },
+  "images/favicon.svg": {
+    "src": "/assets/images/favicon.svg",
+    "integrity": "sha384-h0hIhye8bFukk9e+yijIN2BShVHaLLtXBLRTrvjY/XBSnPoScQkjxxAw93UJQQh+"
+  },
+  "images/logo.png": {
+    "src": "/assets/images/logo.png",
+    "integrity": "sha384-y4cRtl2D1g8C+13UHqGl/y0b5fvHdq6mS1pH+SQ1ejQt1g0CxnTBUrQ2kx2DlAsi"
+  },
+  "images/logo.svg": {
+    "src": "/assets/images/logo.svg",
+    "integrity": "sha384-BOaxfLvz8RPPSqR+Bk5l3x1zAA19SZSMWFG+0cdiPLqnr4Nrj6xM3ILFJssxFtOL"
+  },
+  "images/maskable-192x192.png": {
+    "src": "/assets/images/maskable-192x192.png",
+    "integrity": "sha384-8wBrYNMcSkaoJKb5ecsua8kdTWkSd+KudfkEqXuFWgE9Jb63TTR7iIWCAF4DFRXT"
+  },
+  "images/maskable-512x512.png": {
+    "src": "/assets/images/maskable-512x512.png",
+    "integrity": "sha384-C+1RhctnVAgu0D+bQvQ7cDGgAOu5ZIoCC49rXLpjVDAhb4rfLuOH+XBuwKcZ3xPr"
+  },
+  "images/me.jpg": {
+    "src": "/assets/images/me.jpg",
+    "integrity": "sha384-+niD1b4j9l6wbOG07Vuwj9G45IVN1nATCQ01PeD68SHWtfV8VnWmD28NCMdeIooX"
+  },
+  "images/mstile-150x150.png": {
+    "src": "/assets/images/mstile-150x150.png",
+    "integrity": "sha384-DaHqhhWG7PltvNglKaLA1pBriwjIYYEhNZk9yhnC43gpNedIR2cUWFklCBUyQhbb"
+  },
+  "images/mstile-310x310.png": {
+    "src": "/assets/images/mstile-310x310.png",
+    "integrity": "sha384-sccgq9g0QwuhNvwpk7IAXW5HKPN546MT69CVki/SGRMsn9gjAx0cbbUrqKCjRhhT"
+  },
+  "images/safari-pinned-tab.svg": {
+    "src": "/assets/images/safari-pinned-tab.svg",
+    "integrity": "sha384-To7j2UM38bJTWMg3QpqvaDaVLjCbn/jV3u3l2dR1ICNFjR90ZeOuCMVOra7ppCk2"
+  },
+  "images/tiny-selfie.jpg": {
+    "src": "/assets/images/tiny-selfie.jpg",
+    "integrity": "sha384-PXcpao3kt6YcIX3+/gTdo1y+8Ea8Tztd0UdoI9lIti6gdyv5l3C93j26UxoaTx5d"
+  },
+  "main.css": {
+    "src": "/assets/css/main-0fe417.css",
+    "integrity": "sha384-i5kdAl9tU8d/DIezF2o/S9zaM/UOD9FoUNGs5xXNUYqUcM39Qk4dZ7JIBixrL8ys"
+  },
+  "main.js": {
+    "src": "/assets/js/main-ad4e8b.js",
+    "integrity": "sha384-ghS80vDnHdGeh8Fk9+x8IQJSJmWPz2516iqVPwxbZUudHEo27gDtaYIOj7a1ZwZJ"
+  }
 }
