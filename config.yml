@@ -7,9 +7,8 @@ timeout: 180000
 
 canonifyURLs: true
 
-enableRobotsTXT: true
-enableInlineShortcodes: true
 enableGitInfo: true
+enableRobotsTXT: true
 
 # as of v0.73.0: taxonomy => term, taxonomyTerm => taxonomy
 # https://github.com/gohugoio/hugo/releases/tag/v0.73.0
@@ -153,6 +152,9 @@ imaging:
   # can be overridden (overrode?) inline for individual JPEGs:
   # https://gohugo.io/content-management/image-processing/#jpeg-quality
   quality: 100
+
+security:
+  enableInlineShortcodes: true
 
 build:
   # don't use cache for SCSS compilation, better to throw error than be stale
