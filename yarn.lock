@@ -1023,10 +1023,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.0.tgz#27e44fbb1d86a9ef14501493a37eef1d73e60d02"
   integrity sha512-/6Gm6fJjBHZiFNyvzIKGJkVuyifoc1aoTel+pkzdhxNh7yNhFyokCoChdbbqZEpGKpqs5uld74G5TJthUVFyjw==
 
-"@hcaptcha/react-hcaptcha@^0.3.9":
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/@hcaptcha/react-hcaptcha/-/react-hcaptcha-0.3.9.tgz#37f16f80827699d37fb77473a436ff10fe100e12"
-  integrity sha512-yc3rRVQCz3w+rq9+Y1yi+hUlZscMDoXli0st8liefZ79gkFRa3vqd2zl+qGeRq+3HG7i+ydNNIXmnWhg8wJCSg==
+"@hcaptcha/react-hcaptcha@^0.3.10":
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/@hcaptcha/react-hcaptcha/-/react-hcaptcha-0.3.10.tgz#42d0562dcc579c4034724b6b6da8677a0bb36148"
+  integrity sha512-lpxQGKFFPf5fzieY6Z1Hik5zGvXu6GGUnZdmjeGWB+OjzY2ucTPxfN3biPCfy18Od6YKdkkSUZUyteVLdUbigA==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.2"
