@@ -32,8 +32,7 @@
   - Next.js
   - React
   - Vercel
-  - FaunaDB
-  - Sentry
+  - Fathom Analytics
   - ...and more: https://jarv.is/uses/
 
 # VIEW SOURCE

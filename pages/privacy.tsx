@@ -21,36 +21,7 @@ export default function Privacy() {
         />
         <Content>
           <p>Okay, this is an easy one. 😉</p>
-          <h2 id="analytics">Analytics</h2>
-          <p>
-            A simple hit counter on each page tallies an aggregate number of pageviews (i.e.{" "}
-            <code>hits = hits + 1</code>). Individual views and identifying (or non-identifying) details are{" "}
-            <strong>never stored or logged</strong>.
-          </p>
-          <p>
-            The{" "}
-            <a
-              href="https://github.com/jakejarvis/jarv.is/blob/main/api/hits.js"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              serverless function
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://github.com/jakejarvis/jarv.is/blob/main/assets/js/src/components/Counter.js"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              client script
-            </a>{" "}
-            are open source, and{" "}
-            <a href="https://github.com/jakejarvis/website-stats" target="_blank" rel="noopener noreferrer">
-              snapshots of the database
-            </a>{" "}
-            are public.
-          </p>
-          <Image src={faunaImg} placeholder="blur" alt="The entire database schema." />
+
           <h2 id="hosting">Hosting</h2>
           <p>
             Pages and first-party assets on this website are served by{" "}
@@ -81,6 +52,76 @@ export default function Privacy() {
               </a>
             </p>
           </blockquote>
+
+          <h2 id="analytics">Analytics</h2>
+          <p>
+            A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
+            <code>hits = hits + 1</code>) in a{" "}
+            <a href="https://fauna.com/" target="_blank" rel="noopener noreferrer">
+              Fauna
+            </a>{" "}
+            database. Individual views and identifying (or non-identifying) details are{" "}
+            <strong>never stored or logged</strong>.
+          </p>
+          <p>
+            The{" "}
+            <a
+              href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/hits.ts"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              serverless function
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://github.com/jakejarvis/jarv.is/blob/main/components/hits/Hits.tsx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              client script
+            </a>{" "}
+            are open source, and{" "}
+            <a href="https://github.com/jakejarvis/website-stats" target="_blank" rel="noopener noreferrer">
+              snapshots of the database
+            </a>{" "}
+            are public.
+          </p>
+          <Image src={faunaImg} placeholder="blur" alt="The entire database schema." />
+          <p>
+            <a href="https://usefathom.com/ref/ZEYG0O" target="_blank" rel="noopener noreferrer">
+              <strong>Fathom Analytics</strong>
+            </a>
+            , a <em>very</em>{" "}
+            <a href="https://usefathom.com/privacy-focused-web-analytics" target="_blank" rel="noopener noreferrer">
+              privacy-focused
+            </a>{" "}
+            service, is also used to gain insights into referrers, search terms, etc.{" "}
+            <strong>without collecting anything identifiable about you</strong>. (My{" "}
+            <a href="https://app.usefathom.com/share/wbgnqukw/jarv.is" target="_blank" rel="noopener noreferrer">
+              dashboard
+            </a>{" "}
+            is completely public, too!)
+          </p>
+          <iframe src="https://app.usefathom.com/share/wbgnqukw/jarv.is" title="Fathom Analytics dashboard">
+            <style jsx>{`
+              iframe {
+                width: 100%;
+                height: 500px;
+                border: 2px solid var(--kinda-light);
+              }
+            `}</style>
+          </iframe>
+          <p>
+            <a href="https://vercel.com/analytics" target="_blank" rel="noopener noreferrer">
+              <strong>Vercel Analytics</strong>
+            </a>{" "}
+            keeps track of{" "}
+            <a href="https://vercel.com/docs/concepts/analytics/web-vitals" target="_blank" rel="noopener noreferrer">
+              "web vitals"
+            </a>{" "}
+            (input delays, layout shifts, etc.), also in an anonymous and aggregate fashion.
+          </p>
+
           <h2 id="third-party">Third-Party Content</h2>
           <p>
             Occasionally, embedded content from third-party services is included in posts, and some may contain tracking
@@ -127,6 +168,7 @@ export default function Privacy() {
               </a>
             </li>
           </ul>
+
           <h2 id="hcaptcha">Fighting Spam</h2>
           <p>
             Using{" "}
