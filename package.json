@@ -13,7 +13,7 @@
     "url": "https://github.com/jakejarvis/jarv.is.git"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
