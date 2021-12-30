@@ -23,9 +23,6 @@ module.exports = withBundleAnalyzer({
   experimental: {
     optimizeFonts: true,
     optimizeImages: true,
-    removeConsole: {
-      exclude: ["error"],
-    },
   },
   webpack: (config) => {
     config.module.rules.push({

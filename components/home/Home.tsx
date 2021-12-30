@@ -53,7 +53,7 @@ export default function Home() {
         <Link href="https://nodejs.org/en/" title="Node.js Official Website" lightColor="#6fbc4e" darkColor="#84d95f">
           Node.js
         </Link>{" "}
-        services. But I'm fluent in classics like{" "}
+        services. But I'm fluent in non-buzzwords like{" "}
         <Link
           href="https://stitcher.io/blog/php-in-2020"
           title='"PHP in 2020" by Brent Roose'

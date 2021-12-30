@@ -1,6 +1,8 @@
 // @ts-nocheck
 // ^ type checking causes a bunch of issues in DefaultSeo, BE CAREFUL
 
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Script from "next/script";
 import type { AppProps } from "next/app";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
@@ -13,6 +15,24 @@ import appleTouchIconPng from "../public/static/images/apple-touch-icon.png";
 import "../styles/index.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    // https://nextjs.org/docs/messages/next-script-for-ga
+    // https://developers.google.com/analytics/devguides/collection/gtagjs/single-page-applications#measure_virtual_pageviews
+    const handlePageview = (url: string) => {
+      if (typeof window.gtag === "function") {
+        window.gtag("set", "page_path", url);
+        window.gtag("event", "page_view");
+      }
+    };
+
+    router.events.on("routeChangeComplete", handlePageview);
+    return () => {
+      router.events.off("routeChangeComplete", handlePageview);
+    };
+  }, [router.events]);
+
   return (
     <>
       <DefaultSeo
@@ -131,12 +151,21 @@ export default function App({ Component, pageProps }: AppProps) {
       />
 
       {/* Inline script to restore light/dark theme preference ASAP */}
-      <Script id="restore_theme">{`
+      <Script id="restore_theme" strategy="afterInteractive">{`
 try {
   var pref = localStorage.getItem("dark_mode"),
       dark = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
 } catch (e) {}`}</Script>
+
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=UA-1563964-4`} strategy="afterInteractive" />
+      <Script id="ga4" strategy="afterInteractive">{`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-1563964-4', {
+  anonymize_ip: true
+});`}</Script>
 
       <Component {...pageProps} />
     </>
