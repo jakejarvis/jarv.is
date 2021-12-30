@@ -83,6 +83,7 @@ module.exports = withBundleAnalyzer({
   redirects: async () => [
     { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
     { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
+    { source: "/stats/", destination: "https://app.usefathom.com/share/wbgnqukw/jarv.is", permanent: false },
     { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
     { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
     { source: "/index.xml", destination: "/feed.xml", permanent: true },

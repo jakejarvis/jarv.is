@@ -97,7 +97,7 @@ export default function Privacy() {
             </a>{" "}
             service, is also used to gain insights into referrers, search terms, etc.{" "}
             <strong>without collecting anything identifiable about you</strong>. (My{" "}
-            <a href="https://app.usefathom.com/share/wbgnqukw/jarv.is" target="_blank" rel="noopener noreferrer">
+            <a href="/stats/" target="_blank" rel="noopener noreferrer">
               dashboard
             </a>{" "}
             is completely public, too!)
