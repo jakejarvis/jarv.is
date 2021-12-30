@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
+      url: `https://${config.fathomCustomDomain || "cdn.usefathom.com"}/script.js`,
       includedDomains: [config.siteDomain],
     });
 
