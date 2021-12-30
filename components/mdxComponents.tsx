@@ -71,7 +71,7 @@ const mdxComponents = {
     />
   ),
   gist: (props: { id: string; file?: string }) => <Gist {...props} />,
-  octocat: (props) => (
+  octocat: (props: { repo: string }) => (
     <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
       <MarkGithubIcon size={24} verticalAlign="text-top" />
       <style jsx>{`

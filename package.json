@@ -48,7 +48,7 @@
     "is-absolute-url": "^4.0.1",
     "lodash.groupby": "^4.6.0",
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",
-    "next": "^v12.0.8-canary.13",
+    "next": "v12.0.8-canary.13",
     "next-mdx-remote": "^3.0.8",
     "next-seo": "^4.28.1",
     "next-sitemap": "^1.6.203",
