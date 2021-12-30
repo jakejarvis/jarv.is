@@ -1,5 +1,17 @@
 {
+  "name": "jarv.is",
   "private": true,
+  "license": "MIT",
+  "homepage": "https://jarv.is/",
+  "author": {
+    "name": "Jake Jarvis",
+    "email": "jake@jarv.is",
+    "url": "https://github.com/jakejarvis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakejarvis/jarv.is.git"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",

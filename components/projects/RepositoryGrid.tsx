@@ -7,7 +7,6 @@ export default function RepositoryGrid({ repos }) {
     <>
       <div className={styles.grid}>
         {repos.map((repo) => (
-          // eslint-disable-next-line react/jsx-key
           <RepositoryCard key={repo.name} {...repo} />
         ))}
       </div>

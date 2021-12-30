@@ -27,13 +27,9 @@ export default function ContactForm() {
     };
 
     // some client-side validation to save requests (these are also checked on the server to be safe)
-    // TODO: change border color of the specific empty/missing field(s) to red
     if (!(formData.name && formData.email && formData.message && formData["h-captcha-response"])) {
       setSending(false);
       setStatus({ success: false, message: "Please make sure that all fields are filled in." });
-
-      // TODO: remove focus from the submit button
-      // document.activeElement.blur();
 
       return;
     }
@@ -80,9 +76,6 @@ export default function ContactForm() {
           // something else went wrong, and it's probably my fault...
           setStatus({ success: false, message: "Internal server error. Try again later?" });
         }
-
-        // TODO: remove focus from the submit button
-        // document.activeElement.blur();
       });
   };
 
