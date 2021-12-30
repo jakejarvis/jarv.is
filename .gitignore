@@ -1,6 +1,6 @@
 # next.js
-.next/
-out/
+/.next/
+/out/
 
 # generated at build-time by next-sitemap
 public/robots.txt
@@ -26,12 +26,6 @@ yarn-error.log*
 .Trashes
 *.icloud
 .nosync
-
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 # vercel
 .vercel
