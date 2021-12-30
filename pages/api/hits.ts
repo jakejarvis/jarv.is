@@ -12,7 +12,7 @@ Sentry.init({
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
 });
 
-const BASE_URL = config.baseURL === "" ? `${config.siteDomain}/` : `${config.baseURL}/`;
+const BASE_URL = config.baseURL === "" ? `https://${config.siteDomain}/` : `${config.baseURL}/`;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

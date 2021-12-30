@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import type { AppProps } from "next/app";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import * as Fathom from "fathom-client";
 import * as config from "../lib/config";
 
 import meJpg from "../public/static/images/me.jpg";
@@ -18,20 +19,24 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // https://nextjs.org/docs/messages/next-script-for-ga
-    // https://developers.google.com/analytics/devguides/collection/gtagjs/single-page-applications#measure_virtual_pageviews
-    const handlePageview = (url: string) => {
-      if (typeof window.gtag === "function") {
-        window.gtag("set", "page_path", url);
-        window.gtag("event", "page_view");
-      }
+    // https://usefathom.com/docs/integrations/next
+    // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
+    Fathom.load(config.fathomSiteId, {
+      includedDomains: [config.siteDomain],
+    });
+
+    const onRouteChangeComplete = () => {
+      Fathom.trackPageview();
     };
 
-    router.events.on("routeChangeComplete", handlePageview);
+    // send ping when route changes
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
     return () => {
-      router.events.off("routeChangeComplete", handlePageview);
+      // unassign event listener
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
     };
-  }, [router.events]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -152,15 +157,6 @@ try {
       dark = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
 } catch (e) {}`}</Script>
-
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=UA-1563964-4`} strategy="afterInteractive" />
-      <Script id="ga4" strategy="afterInteractive">{`
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-1563964-4', {
-  anonymize_ip: true
-});`}</Script>
 
       <Component {...pageProps} />
     </>
