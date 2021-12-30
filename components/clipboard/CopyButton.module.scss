@@ -1,0 +1,23 @@
+.copy_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75em;
+  color: var(--text);
+  background-color: var(--background-inner);
+  border: 1px solid var(--kinda-light);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--link);
+  }
+
+  .octicon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .octicon-check {
+    color: var(--success);
+  }
+}

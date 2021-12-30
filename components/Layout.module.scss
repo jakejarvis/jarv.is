@@ -1,0 +1,12 @@
+.main {
+  width: 100%;
+  padding: 1.5em;
+  color: var(--text);
+  background-color: var(--background-inner);
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    padding: 1.25em;
+  }
+}

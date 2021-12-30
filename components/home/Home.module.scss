@@ -1,0 +1,107 @@
+.home {
+  font-size: 1em;
+
+  h1 {
+    margin: 0 0 0.3em -0.03em; // TODO: why is this indented slightly?
+    font-size: 1.8em;
+    font-weight: 500;
+    letter-spacing: -0.014em;
+
+    .wave {
+      display: inline-block;
+      margin-left: 2px;
+      animation: wave 5s infinite;
+      animation-delay: 1s;
+      transform-origin: 65% 80%;
+      will-change: transform;
+    }
+  }
+
+  h2 {
+    margin: 0.5em 0 0.5em -0.03em; // TODO: why is this indented slightly?
+    font-size: 1.35em;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 0.85em 0;
+    letter-spacing: -0.009em;
+    line-height: 1.7;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  sup {
+    letter-spacing: normal;
+    position: relative;
+    margin-left: 0.2em;
+
+    a {
+      background: none;
+      padding-bottom: 0;
+    }
+  }
+
+  .pgp {
+    font-size: 0.875em;
+    word-spacing: -0.3em;
+    margin-right: 0.075em;
+  }
+
+  .light {
+    color: var(--medium-light);
+  }
+
+  .birthday:hover {
+    cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 36 36%27 width=%2720%27 height=%2720%27%3E%3Cg fill=%27none%27%3E%3Cpath fill=%27%23292F33%27 d=%27m2.651 6.073 26.275 26.276c.391.391 2.888-2.107 2.497-2.497L5.148 3.576c-.39-.391-2.888 2.107-2.497 2.497z%27/%3E%3Cpath fill=%27%2366757F%27 d=%27M29.442 31.23 3.146 4.934l.883-.883 26.296 26.296z%27/%3E%3Cpath fill=%27%23E1E8ED%27 d=%27m33.546 33.483-.412.412-.671.671a.967.967 0 0 1-.255.169.988.988 0 0 1-1.159-.169l-2.102-2.102.495-.495.883-.883 1.119-1.119 2.102 2.102a.999.999 0 0 1 0 1.414zM4.029 4.79l-.883.883-.495.495L.442 3.96a.988.988 0 0 1-.169-1.159.967.967 0 0 1 .169-.255l.671-.671.412-.412a.999.999 0 0 1 1.414 0l2.208 2.208L4.029 4.79z%27/%3E%3Cpath fill=%27%23F5F8FA%27 d=%27m30.325 30.497 2.809 2.809-.671.671a.967.967 0 0 1-.255.169l-2.767-2.767.884-.882zM3.146 5.084.273 2.211a.967.967 0 0 1 .169-.255l.671-.671 2.916 2.916-.883.883z%27/%3E%3Cpath fill=%27%23FFAC33%27 d=%27m27.897 10.219 1.542.571.6 2.2a.667.667 0 0 0 1.287 0l.6-2.2 1.542-.571a.665.665 0 0 0 0-1.25l-1.534-.568-.605-2.415a.667.667 0 0 0-1.293 0l-.605 2.415-1.534.568a.665.665 0 0 0 0 1.25m-16.936 9.628 2.61.966.966 2.61a1.103 1.103 0 0 0 2.07 0l.966-2.61 2.609-.966a1.103 1.103 0 0 0 0-2.07l-2.609-.966-.966-2.61a1.105 1.105 0 0 0-2.07 0l-.966 2.61-2.61.966a1.104 1.104 0 0 0 0 2.07M23.13 4.36l1.383.512.512 1.382a.585.585 0 0 0 1.096 0l.512-1.382 1.382-.512a.584.584 0 0 0 0-1.096l-1.382-.512-.512-1.382a.585.585 0 0 0-1.096 0l-.512 1.382-1.383.512a.585.585 0 0 0 0 1.096%27/%3E%3C/g%3E%3C/svg%3E")
+        0 0,
+      auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home {
+    font-size: 0.975em;
+
+    h1 {
+      font-size: 1.6em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(14deg);
+  }
+  10% {
+    transform: rotate(-8deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+
+  // pause for 3.5 out of 5 seconds
+  100% {
+    transform: rotate(0deg);
+  }
+}

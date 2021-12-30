@@ -1,17 +1,11 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-sass-guidelines", "stylelint-prettier/recommended"],
-  "plugins": ["stylelint-no-unsupported-browser-features", "stylelint-prettier"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-prettier/recommended"],
+  "plugins": ["stylelint-scss", "stylelint-prettier"],
   "rules": {
     "color-hex-length": "long",
-    "max-nesting-depth": 6,
     "no-descending-specificity": null,
-    "order/order": null,
-    "order/properties-alphabetical-order": null,
-    "plugin/no-unsupported-browser-features": [true, { "severity": "warning", "ignore": ["flexbox"] }],
-    "selector-max-compound-selectors": null,
-    "selector-max-id": null,
-    "selector-no-qualifying-type": null,
-    "shorthand-property-no-redundant-values": null
+    "rule-empty-line-before": null,
+    "selector-class-pattern": null
   },
-  "ignoreFiles": ["public/**", "static/assets/**", "node_modules/**"]
+  "ignoreFiles": ["public/**"]
 }

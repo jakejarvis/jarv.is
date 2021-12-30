@@ -1,6 +1,0 @@
-<footer>
-  <div class="footer-row">
-    <div id="footer-copyright">Content <a href="{{ "license/" | absURL }}"{{ with .Site.Params.license.nameLong }} title="{{ . }}"{{ end }}>licensed under {{ .Site.Params.license.name }}</a>, {{ with .Site.Params.license.copyrightFirstYear }}<a href="{{ "previously/" | absURL }}" title="Previously on...">{{ . }} &ndash;</a>{{ end }} {{ now.Format "2006" }}.</div>
-    <div id="footer-powered-by">Made with <span class="beat">❤️</span> and <a href="https://gohugo.io/" title="Powered by Hugo" target="_blank" rel="noopener">Hugo</a>. {{ with .Scratch.Get "sourceURL" }}<a href="{{ . | safeURL }}" title="View Source on GitHub" id="footer-view-source" target="_blank" rel="noopener">View source.</a>{{ end }}</div>
-  </div>
-</footer>

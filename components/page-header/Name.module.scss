@@ -1,0 +1,43 @@
+.title {
+  display: flex;
+  align-items: center;
+  color: var(--medium-dark);
+  background: none;
+  padding-bottom: 0;
+
+  &:hover {
+    color: var(--link);
+
+    .selfie {
+      opacity: 0.9;
+    }
+  }
+}
+
+.selfie {
+  width: 50px;
+  height: 50px;
+
+  img {
+    border: 1px solid var(--light) !important;
+    border-radius: 50%;
+  }
+}
+
+.name {
+  margin: 0 0.6em;
+  font-size: 1.25em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@media screen and (max-width: 800px) {
+  .selfie {
+    width: 70px;
+    height: 70px;
+  }
+
+  .name {
+    display: none;
+  }
+}

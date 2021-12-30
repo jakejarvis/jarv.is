@@ -1,0 +1,38 @@
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  margin-left: 1.8em;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+
+  svg {
+    width: 1.6em;
+    height: 1.6em;
+  }
+}
+
+.theme_toggle {
+  margin-left: 1.25em;
+}
+
+@media screen and (max-width: 800px) {
+  .item {
+    margin-left: 2em;
+
+    svg {
+      width: 1.75em;
+      height: 1.75em;
+    }
+  }
+
+  .theme_toggle {
+    margin-left: 1.6em;
+  }
+}

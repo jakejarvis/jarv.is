@@ -1,0 +1,25 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0.7em 1.5em;
+  border-bottom: 1px solid var(--kinda-light);
+  background-color: var(--background-header);
+  backdrop-filter: saturate(180%) blur(5px);
+  z-index: 1000;
+}
+
+.nav {
+  width: 100%;
+  max-width: 865px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    padding: 0.5em 1.25em;
+  }
+}
