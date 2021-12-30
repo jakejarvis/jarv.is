@@ -64,11 +64,6 @@ export default function App({ Component, pageProps }: AppProps) {
         additionalLinkTags={[
           {
             rel: "icon",
-            href: "data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%236fbc4e' d='m27.7 5 17.1 9.8 8.5-4.9-17-9.9z'/%3E%3Cpath fill='%23ffb900' d='m27.7 14.8 8.6 4.9v19.7l8.5 4.9V14.8L27.7 5zm-8.5 24.6-8.5-4.9v19.6l17 9.9v-9.8l-8.5-5z'/%3E%3Cpath fill='%23009cdf' d='M27.7 44.3v-9.8l-8.5 4.9v9.8zm17.1 0-17.1 9.9V64l25.6-14.7V9.9l-8.5 4.9z'/%3E%3Cpath fill='%236fbc4e' d='m10.7 34.5 8.5 4.9 8.5-4.9-8.5-4.9zm8.5 14.7 8.5 5 17.1-9.9-8.5-4.9z'/%3E%3C/svg%3E",
-            type: "image/svg+xml",
-          },
-          {
-            rel: "icon",
             href: faviconIco.src,
           },
           {
