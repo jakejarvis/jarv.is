@@ -13,14 +13,14 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postStartCommand": "yarn install --frozen-lockfile && git update-index --assume-unchanged data/manifest.json && git config pull.rebase true",
+  "postStartCommand": "yarn install --frozen-lockfile && ./node_modules/.bin/next telemetry disable",
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [1337],
+  "forwardPorts": [3000],
 
   "portsAttributes": {
-    "1337": {
-      "label": "Webpack",
+    "3000": {
+      "label": "next dev",
       "onAutoForward": "notify"
     }
   },
@@ -32,12 +32,11 @@
 
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
-    "editorconfig.editorconfig",
-    "budparr.language-hugo-vscode",
     "dbaeumer.vscode-eslint",
-    "davidanson.vscode-markdownlint",
+    "divlo.vscode-styled-jsx-languageserver",
+    "divlo.vscode-styled-jsx-syntax",
+    "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint",
-    "ms-vscode.wordcount"
+    "stylelint.vscode-stylelint"
   ]
 }

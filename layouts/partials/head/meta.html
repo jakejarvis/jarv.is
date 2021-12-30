@@ -1,7 +1,0 @@
-<meta charset="utf-8">
-{{ hugo.Generator }}
-{{ if ne hugo.Environment "production" }}<meta name="robots" content="noindex, nofollow">{{ end }}
-<title>{{ .Scratch.Get "plainTitle" }}{{ if not .IsHome }} – {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-{{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
-<meta name="viewport" content="width=device-width, initial-scale=1">

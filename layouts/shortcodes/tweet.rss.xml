@@ -1,4 +1,0 @@
-{{- $url := printf "https://publish.twitter.com/oembed?lang=en&omit_script=true&dnt=true&url=%s" (index .Params 0 | safeURL) -}}
-{{- $json := getJSON $url -}}
-
-{{ $json.html | safeHTML }}

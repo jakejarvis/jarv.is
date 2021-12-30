@@ -1,0 +1,27 @@
+.section {
+  margin: 1.5em 0;
+
+  .year {
+    font-size: 2.1em;
+    margin-top: 0;
+    margin-bottom: 0.4em;
+  }
+
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

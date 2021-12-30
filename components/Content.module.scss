@@ -1,0 +1,67 @@
+.content {
+  font-size: 0.925em;
+  letter-spacing: -0.004em;
+  line-height: 1.7;
+
+  b,
+  strong {
+    letter-spacing: 0.008em; // not sure why the discrepancy between weights
+  }
+
+  blockquote {
+    margin-left: 0;
+    padding-left: 1.5em;
+    border-left: 3px solid var(--link);
+    color: var(--medium-dark);
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.001em;
+    line-height: 1.5;
+  }
+
+  // special bottom border for H2s
+  h2 {
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid var(--kinda-light);
+  }
+
+  figure {
+    margin: 1em auto;
+    text-align: center;
+    line-height: 1;
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+
+    figcaption {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-top: 0.5em;
+      color: var(--medium);
+    }
+  }
+
+  ul,
+  ol {
+    margin-left: 1.5em;
+    padding-left: 0;
+
+    li {
+      padding-left: 0.25em;
+    }
+  }
+
+  hr {
+    margin: 1.5em auto;
+    height: 2px;
+    border: 0;
+    background-color: var(--light);
+  }
+}

@@ -1,1 +1,0 @@
-<p><a href="https://www.instagram.com/p/{{ .Get "id" }}" target="_blank" rel="noopener">View this image on Instagram.</a></p>

@@ -5,29 +5,18 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "search.exclude": {
+    "**/.next": true,
+    "**/node_modules": true
+  },
   "css.validate": false,
   "scss.validate": false,
-  "html.format.templating": true,
-  "go-template.languages": [
-    "html",
-    "json",
-    "xml",
-    "atom",
-    "webmanifest"
-  ],
-  "go-template.patterns": [
-    "layouts/**/*"
-  ],
   "prettier.requireConfig": true,
   "prettier.configPath": ".prettierrc.json",
-  "markdown.preview.lineHeight": 1.75,
   "stylelint.packageManager": "yarn",
   "stylelint.reportNeedlessDisables": true,
   "stylelint.reportInvalidScopeDisables": true,
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "scss"],
   "npm.packageManager": "yarn",
   "eslint.packageManager": "yarn"
 }

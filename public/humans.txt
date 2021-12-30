@@ -1,0 +1,56 @@
+          ##
+   ###----##
+   ###      \
+   /        ##__
+  /       ##   #     --#
+ :           __/   -#   :
+,'          _\     >     :
+####      :'     #########:
+##########          |  ###:
+######################    :
+#######################   :
+######################...,'
+            :
+             ;
+              ;
+               ;
+              ,;
+           ;##########
+          ;###########
+,,,,,,,,,;###########
+
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# HUMAN
+
+    Jake Jarvis <jake@jarv.is>
+    @jakejarvis
+
+# TECHNOLOGY
+
+  - Next.js
+  - React
+  - Vercel
+  - FaunaDB
+  - Sentry
+  - ...and more: https://jarv.is/uses/
+
+# VIEW SOURCE
+
+    https://github.com/jakejarvis/jarv.is
+
+# PRIVACY POLICY
+
+    https://jarv.is/privacy/
+
+# TOR MIRROR
+
+    http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/
+
+# LICENSE
+
+    All content is licensed under CC-BY-4.0, an
+    open & permissive Creative Commons license:
+
+    https://jarv.is/license/

@@ -1,6 +1,0 @@
-{{/* Output these variables for debugging purposes: */}}
-{{- print "<!-- htmlmin:ignore -->" | safeHTML }}
-{{ with hugo }}{{ with .Environment }}{{ printf "<!-- env: %s -->" . | safeHTML }}{{ end }}{{ end }}
-{{ with .GitInfo }}{{ with .AbbreviatedHash }}{{ printf "<!-- commit: %s -->" . | safeHTML }}{{ end }}{{ end }}
-{{ with .File }}{{ with .Path }}{{ printf "<!-- source: content/%s -->" . | safeHTML }}{{ end }}{{ end }}
-{{- print "<!-- htmlmin:ignore -->" | safeHTML }}

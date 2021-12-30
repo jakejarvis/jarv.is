@@ -1,0 +1,8 @@
+@use "sass:meta";
+
+// hacky way to assign different HLJS themes to light/dark mode
+@include meta.load-css("../node_modules/highlight.js/styles/stackoverflow-light.css");
+
+[data-theme="dark"] {
+  @include meta.load-css("../node_modules/highlight.js/styles/stackoverflow-dark.css");
+}

@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  letter-spacing: -0.008em;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+
+.date {
+  width: 5.25em;
+  flex-shrink: 0;
+  color: var(--medium);
+}

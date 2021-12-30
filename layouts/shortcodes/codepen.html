@@ -1,7 +1,0 @@
-<div class="embed {{ .Name }}">
-  <iframe
-    height="{{ with .Get "height" }}{{ . }}{{ else }}500{{ end }}"
-    src="https://codepen.io/{{ .Get "username" }}/embed/{{ .Get "id" }}/?theme-id=light&amp;default-tab={{ .Get "left-tab" }}{{ with .Get "right-tab" }},{{ . }}{{ end }}"
-    scrolling="no">
-  </iframe>
-</div>

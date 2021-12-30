@@ -1,1 +1,0 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . | safeHTMLAttr }}"{{ end }}{{ if (urls.Parse .Destination).IsAbs }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>

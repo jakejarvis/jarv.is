@@ -1,6 +1,2 @@
 # Set default behavior to automatically normalize line endings.
 * text=auto eol=lf
-
-# Mark cached Hugo resources/assets as generated to suppress in Git diffs and repo stats.
-# https://github.com/github/linguist/blob/master/README.md#generated-code
-resources/_gen/** linguist-generated=true

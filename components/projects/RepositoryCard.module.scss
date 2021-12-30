@@ -1,0 +1,56 @@
+.card {
+  flex-grow: 1;
+  width: 416px; // magic number
+  padding: 1em 1.2em;
+  margin: 0.6em;
+  border: 1px solid;
+  border-radius: 0.5em;
+  font-size: 0.85em;
+  color: var(--medium-dark);
+  border-color: var(--kinda-light);
+
+  .name {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  .description {
+    margin: 0.25em 0 0.75em;
+    line-height: 1.7;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    .meta_item {
+      margin-right: 1.5em;
+      font-size: 0.9em;
+      color: var(--medium);
+
+      a {
+        background: none;
+        padding-bottom: 0;
+        color: inherit;
+
+        &:hover {
+          color: var(--link);
+        }
+      }
+
+      .octicon,
+      .language_color {
+        margin-right: 0.5em;
+      }
+
+      .language_color {
+        display: inline-block;
+        width: 1.15em;
+        height: 1.15em;
+        border-radius: 50%;
+        position: relative;
+        top: 0.175em;
+      }
+    }
+  }
+}
