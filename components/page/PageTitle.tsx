@@ -6,7 +6,7 @@ type Props = {
   title: unknown;
 };
 
-export default function Content({ title }: Props) {
+export default function PageTitle({ title }: Props) {
   const router = useRouter();
 
   return (

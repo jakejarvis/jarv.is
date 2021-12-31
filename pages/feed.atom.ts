@@ -1,5 +1,5 @@
-import { getAllNotes } from "../lib/parseNotes";
-import { buildFeed } from "../lib/buildFeed";
+import { getAllNotes } from "../lib/parse-notes";
+import { buildFeed } from "../lib/build-feed";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

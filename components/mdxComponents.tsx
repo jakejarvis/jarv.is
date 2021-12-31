@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
 import Gist from "react-gist";
-import getNodeText from "../lib/getNodeText";
+import getNodeText from "../lib/get-node-text";
 import Video from "./video/FullPageVideo";
 import CopyButton from "./clipboard/CopyButton";
 import { MarkGithubIcon } from "@primer/octicons-react";

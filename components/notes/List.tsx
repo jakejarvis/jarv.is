@@ -18,5 +18,7 @@ export default function List({ allNotes }) {
     );
   });
 
-  return <>{sections.reverse()}</>;
+  const reversed = sections.reverse();
+
+  return <>{reversed}</>;
 }

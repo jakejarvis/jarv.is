@@ -8,7 +8,7 @@ import Layout from "../../components/Layout";
 import Container from "../../components/Container";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
-import { notePaths, NOTES_PATH } from "../../lib/parseNotes";
+import { notePaths, NOTES_PATH } from "../../lib/parse-notes";
 import mdxComponents from "../../components/mdxComponents";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = notePaths
     // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ""))
+    .map((notePath) => notePath.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
     .map((slug) => ({ params: { slug } }));
 

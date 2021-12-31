@@ -1,13 +1,10 @@
-// @ts-nocheck
-// ^ type checking causes a bunch of issues in DefaultSeo, BE CAREFUL
-
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import type { AppProps } from "next/app";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import * as config from "../lib/config";
+import type { AppProps } from "next/app";
 
 import meJpg from "../public/static/images/me.jpg";
 import faviconIco from "../public/static/images/favicon.ico";
@@ -41,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      {/* @ts-ignore */}
       <DefaultSeo
         defaultTitle={`${config.siteName} – ${config.shortDescription}`}
         titleTemplate={`%s – ${config.siteName}`}

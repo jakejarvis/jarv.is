@@ -3,7 +3,7 @@ import groupBy from "lodash.groupby";
 import Layout from "../../components/Layout";
 import Container from "../../components/Container";
 import List from "../../components/notes/List";
-import { getAllNotes } from "../../lib/parseNotes";
+import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
 export default function Notes({ allNotes }) {

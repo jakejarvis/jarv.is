@@ -1,6 +1,4 @@
 import { intlFormat, formatDistanceToNowStrict, parseISO } from "date-fns";
-
-// react components:
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
 
 import styles from "./RepositoryCard.module.scss";

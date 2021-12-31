@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import trimNewlines from "trim-newlines";
-
-// react components:
 import { CopyIcon, CheckIcon } from "@primer/octicons-react";
 
 import styles from "./CopyButton.module.scss";
