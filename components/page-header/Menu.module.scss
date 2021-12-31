@@ -43,21 +43,21 @@
 }
 
 @media screen and (max-width: 800px) {
-  .item {
-    margin-left: 1.75em;
+  .menu {
+    max-width: 380px;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
 
+  .item {
     .icon {
-      width: 1.75em;
-      height: 1.75em;
+      width: 1.8em;
+      height: 1.8em;
     }
 
     // hide text next to emojis on mobile
     .text {
       display: none;
     }
-  }
-
-  .theme_toggle {
-    margin-left: 1.4em;
   }
 }

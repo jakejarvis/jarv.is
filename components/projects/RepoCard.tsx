@@ -1,7 +1,7 @@
 import { intlFormat, formatDistanceToNowStrict, parseISO } from "date-fns";
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
 
-import styles from "./RepositoryCard.module.scss";
+import styles from "./RepoCard.module.scss";
 
 type Props = {
   name: string;
@@ -16,7 +16,7 @@ type Props = {
   updatedAt: string;
 };
 
-export default function RepositoryCard({ name, url, description, language, stars, forks, updatedAt }: Props) {
+export default function RepoCard({ name, url, description, language, stars, forks, updatedAt }: Props) {
   return (
     <div className={styles.card}>
       <a className={styles.name} href={url} target="_blank" rel="noopener noreferrer">

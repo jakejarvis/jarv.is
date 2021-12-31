@@ -2,14 +2,14 @@ import { graphql } from "@octokit/graphql";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import PageTitle from "../components/page/PageTitle";
-import RepositoryGrid from "../components/projects/RepositoryGrid";
+import RepoCard from "../components/projects/RepoCard";
 import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
 
 export default function Projects({ repos }) {
   return (
     <Layout>
-      <Container title="👨‍💻 Projects">
+      <Container title="Projects">
         <PageTitle
           title={
             <>
@@ -17,7 +17,42 @@ export default function Projects({ repos }) {
             </>
           }
         />
-        <RepositoryGrid repos={repos} />
+
+        <div>
+          {repos.map((repo) => (
+            <div key={repo.name} className="repo_card">
+              <RepoCard {...repo} />
+            </div>
+          ))}
+
+          <style jsx>{`
+            div {
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: space-between;
+              align-items: flex-start;
+              width: 100%;
+            }
+
+            div .repo_card {
+              flex-grow: 1;
+              margin: 0.5em;
+              width: 400px;
+            }
+          `}</style>
+        </div>
+
+        <p>
+          <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
+            View more on GitHub...
+          </a>
+          <style jsx>{`
+            p {
+              text-align: center;
+              margin-bottom: 0;
+            }
+          `}</style>
+        </p>
       </Container>
     </Layout>
   );

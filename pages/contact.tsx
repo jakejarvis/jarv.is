@@ -7,7 +7,7 @@ import { MailIcon, LockIcon } from "../components/icons";
 export default function Contact() {
   return (
     <Layout>
-      <Container title="✉️ Contact Me">
+      <Container title="Contact Me">
         <PageTitle
           title={
             <>
