@@ -150,8 +150,7 @@ export default function App({ Component, pageProps }: AppProps) {
       />
 
       {/* Inline script to restore light/dark theme preference ASAP */}
-      <Script id="restore_theme" strategy="afterInteractive">{`
-try {
+      <Script id="restore_theme" strategy="afterInteractive">{`try {
   var root = document.documentElement,
       pref = localStorage.getItem("dark_mode"),
       theme = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
