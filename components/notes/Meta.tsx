@@ -18,15 +18,17 @@ export default function Meta({ title, date, slug, tags = [] }: Props) {
     <>
       <div className={styles.meta}>
         <div className={styles.date}>
-          <span className={styles.meta_icon}>
-            <DateIcon className={`icon ${styles.icon_svg}`} />
+          <span>
+            <DateIcon className={`icon ${styles.icon}`} />
           </span>
-          <span title={format(parseISO(date), "PPppp")}>{format(parseISO(date), "MMMM d, yyyy")}</span>
+          <span title={format(parseISO(date), "PPppp")}>
+            <Link href={`/notes/${slug}/`}>{format(parseISO(date), "MMMM d, yyyy")}</Link>
+          </span>
         </div>
         {tags.length > 0 && (
           <div className={styles.tags}>
-            <span className={styles.meta_icon}>
-              <TagIcon className={`icon ${styles.icon_svg}`} />
+            <span>
+              <TagIcon className={`icon ${styles.icon}`} />
             </span>
             {tags.map((tag) => (
               <span key={tag} className={styles.tag}>
@@ -36,8 +38,8 @@ export default function Meta({ title, date, slug, tags = [] }: Props) {
           </div>
         )}
         <div>
-          <span className={styles.meta_icon}>
-            <EditIcon className={`icon ${styles.icon_svg}`} />
+          <span>
+            <EditIcon className={`icon ${styles.icon}`} />
           </span>
           <span>
             <a
@@ -51,8 +53,8 @@ export default function Meta({ title, date, slug, tags = [] }: Props) {
           </span>
         </div>
         <div>
-          <span className={styles.meta_icon}>
-            <ViewsIcon className={`icon ${styles.icon_svg}`} />
+          <span>
+            <ViewsIcon className={`icon ${styles.icon}`} />
           </span>
           <Hits slug={`notes/${slug}`} />
         </div>

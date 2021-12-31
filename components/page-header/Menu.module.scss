@@ -12,9 +12,29 @@
   align-items: center;
   line-height: 1;
 
-  svg {
+  .link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--medium-dark);
+    background: none;
+    padding-bottom: 0;
+
+    &:hover {
+      color: var(--link);
+    }
+  }
+
+  .icon {
     width: 1.6em;
     height: 1.6em;
+  }
+
+  .text {
+    font-size: 0.95em;
+    font-weight: 500;
+    margin-top: 0.125em;
+    margin-left: 0.75em;
+    line-height: 1;
   }
 }
 
@@ -24,15 +44,20 @@
 
 @media screen and (max-width: 800px) {
   .item {
-    margin-left: 2em;
+    margin-left: 1.75em;
 
-    svg {
+    .icon {
       width: 1.75em;
       height: 1.75em;
+    }
+
+    // hide text next to emojis on mobile
+    .text {
+      display: none;
     }
   }
 
   .theme_toggle {
-    margin-left: 1.6em;
+    margin-left: 1.4em;
   }
 }

@@ -10,6 +10,7 @@ export default function RepositoryGrid({ repos }) {
           <RepositoryCard key={repo.name} {...repo} />
         ))}
       </div>
+
       <p className={styles.view_more}>
         <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
           View more on GitHub...

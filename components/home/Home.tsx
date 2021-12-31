@@ -133,7 +133,7 @@ export default function Home() {
         >
           the Tooth Fairy
         </Link>
-        . <span className={styles.light}>I've improved a bit since then, I think...</span>
+        . <span className={styles.quiet}>I've improved a bit since then, I think...</span>
       </p>
 
       <p>
@@ -220,11 +220,9 @@ export default function Home() {
         <Link href="/contact/" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
           email
         </Link>{" "}
-        <sup className="monospace">
+        <sup className={`monospace ${styles.pgp_key}`}>
           <Link href="/pubkey.asc" title="My Public Key" lightColor="#757575" darkColor="#959595" external={true}>
-            <span className={styles.pgp}>
-              <LockIcon alt="PGP Key" /> 2B0C 9CF2 51E6 9A39
-            </span>
+            <LockIcon className="icon" /> 2B0C 9CF2 51E6 9A39
           </Link>
         </sup>
         ,{" "}

@@ -8,19 +8,20 @@ const storageKey = "dark_mode";
 export const getDarkPref = () => localStorage.getItem(storageKey);
 export const setDarkPref = (pref: boolean) => localStorage.setItem(storageKey, pref as unknown as string);
 
-// use the `<html class="...">` as a hint to what the theme was set to outside of the button component
-// there's probably (definitely) a cleaner way to do this..?
+// use the `<html data-theme="...">` as a hint to what the theme was set to outside of the button component
+// TODO: there's probably (definitely) a cleaner way to do this, maybe with react hooks..?
 export const isDark = () => document.documentElement.getAttribute("data-theme") === "dark";
 
-// sets appropriate `<html data-theme="...">` CSS property
+// sets appropriate `<html data-theme="...">` and color-scheme CSS properties
 export const updateDOM = (dark: boolean) => {
   const root = document.documentElement;
+  const theme = dark ? "dark" : "light";
 
-  // set `<html data-theme="...">`
-  root.setAttribute("data-theme", dark ? "dark" : "light");
+  root.setAttribute("data-theme", theme);
+  root.style.colorScheme = theme;
 };
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className = "" }) {
   // sync button up with theme and preference states after initialization
   const [dark, setDark] = useState(isDark());
   const [saved, setSaved] = useState(!!getDarkPref());
@@ -61,7 +62,7 @@ export default function ThemeToggle() {
       title={dark ? "Toggle Light Mode" : "Toggle Dark Mode"}
       aria-label={dark ? "Toggle Light Mode" : "Toggle Dark Mode"}
     >
-      {dark ? <BulbOffIcon /> : <BulbOnIcon />}
+      {dark ? <BulbOffIcon className={`icon ${className}`} /> : <BulbOnIcon className={`icon ${className}`} />}
     </button>
   );
 }

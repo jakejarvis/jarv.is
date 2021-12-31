@@ -31,6 +31,7 @@ module.exports = withBundleAnalyzer({
         {
           loader: "@svgr/webpack",
           options: {
+            icon: true,
             typescript: true,
             svgProps: {
               className: "icon",
