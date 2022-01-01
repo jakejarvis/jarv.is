@@ -81,15 +81,23 @@ export default function App({ Component, pageProps }: AppProps) {
           },
           {
             rel: "alternate",
-            href: `/feed.xml`,
+            href: "/feed.xml",
             type: "application/rss+xml",
             title: `${config.siteName} (RSS)`,
           },
           {
             rel: "alternate",
-            href: `/feed.atom`,
+            href: "/feed.atom",
             type: "application/atom+xml",
             title: `${config.siteName} (Atom)`,
+          },
+          {
+            rel: "preconnect",
+            href: `https://${config.fathomCustomDomain}`,
+          },
+          {
+            rel: "dns-prefetch",
+            href: `https://${config.fathomCustomDomain}`,
           },
           {
             rel: "webmention",
@@ -100,12 +108,16 @@ export default function App({ Component, pageProps }: AppProps) {
             href: `https://webmention.io/${config.webmentionId}/xmlrpc`,
           },
           {
+            rel: "license",
+            href: "https://creativecommons.org/licenses/by/4.0/",
+          },
+          {
             rel: "humans",
-            href: `/humans.txt`,
+            href: "/humans.txt",
           },
           {
             rel: "pgpkey",
-            href: `/pubkey.asc`,
+            href: "/pubkey.asc",
             type: "application/pgp-keys",
           },
         ]}
@@ -123,11 +135,23 @@ export default function App({ Component, pageProps }: AppProps) {
             content: config.monetization,
           },
           {
-            name: "twitter:dnt",
-            content: "on",
+            name: "google-site-verification",
+            content: "qQhmLTwjNWYgQ7W42nSTq63xIrTch13X_11mmxBE9zk",
           },
           {
-            name: "twitter:widgets:csp",
+            name: "facebook-domain-verification",
+            content: "q45jxbgyp22ef55xror1pvbehisg9m",
+          },
+          {
+            name: "msvalidate.01",
+            content: "164551986DA47F7F6FC0D21A93FFFCA6",
+          },
+          {
+            name: "yandex-verification",
+            content: "634a039ec46fa286",
+          },
+          {
+            name: "twitter:dnt",
             content: "on",
           },
         ]}
@@ -149,14 +173,19 @@ export default function App({ Component, pageProps }: AppProps) {
         ]}
       />
 
-      {/* Inline script to restore light/dark theme preference ASAP */}
+      {/*
+        Inline script to restore light/dark theme preference ASAP:
+        `<html data-theme="...">`, `<meta name="color-scheme" ...>`, and color-scheme style
+      */}
       <Script id="restore_theme" strategy="afterInteractive">{`try {
-  var root = document.documentElement,
-      pref = localStorage.getItem("dark_mode"),
-      theme = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-
-  root.setAttribute("data-theme", theme);
-  root.style.colorScheme = theme;
+  var pref = localStorage.getItem("dark_mode"),
+      dark = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches),
+      meta = document.createElement("meta");
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  document.documentElement.style.colorScheme = dark ? "dark" : "light";
+  meta.setAttribute("name", "theme-color");
+  meta.content = dark ? "${config.themeColorDark}" : "${config.themeColorLight}";
+  document.head.prepend(meta);
 } catch (e) {}`}</Script>
 
       <Component {...pageProps} />

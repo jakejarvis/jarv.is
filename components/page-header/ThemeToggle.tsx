@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import * as config from "../../lib/config";
 import BulbOffIcon from "../icons/svg/bulb-off.svg";
 import BulbOnIcon from "../icons/svg/bulb-on.svg";
 
@@ -13,13 +14,13 @@ export const setDarkPref = (pref: boolean) => localStorage.setItem(storageKey, p
 // TODO: there's probably (definitely) a cleaner way to do this, maybe with react hooks..?
 export const isDark = () => document.documentElement.getAttribute("data-theme") === "dark";
 
-// sets appropriate `<html data-theme="...">` and color-scheme CSS properties
+// sets appropriate `<html data-theme="...">`, `<meta name="color-scheme" ...>`, and color-scheme CSS property
 export const updateDOM = (dark: boolean) => {
-  const root = document.documentElement;
-  const theme = dark ? "dark" : "light";
-
-  root.setAttribute("data-theme", theme);
-  root.style.colorScheme = theme;
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  document.documentElement.style.colorScheme = dark ? "dark" : "light";
+  document.head
+    .querySelector("meta[name=theme-color]")
+    ?.setAttribute("content", dark ? config.themeColorDark : config.themeColorLight);
 };
 
 export default function ThemeToggle({ className = "" }) {

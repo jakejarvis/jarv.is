@@ -7,7 +7,7 @@ export const buildFeed = (notes: any[]) => {
     link: `${config.baseURL}/`,
     title: config.siteName,
     description: config.longDescription,
-    copyright: "CC-BY-4.0",
+    copyright: "https://creativecommons.org/licenses/by/4.0/",
     updated: new Date(),
     image: `${config.baseURL}/static/images/me.jpg`,
     feedLinks: {
