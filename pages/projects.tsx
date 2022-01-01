@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import PageTitle from "../components/page/PageTitle";
 import RepoCard from "../components/projects/RepoCard";
-import ProjectsIcon from "../components/icons/svg/projects.svg";
+import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
 
 export default function Projects({ repos }) {

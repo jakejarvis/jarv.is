@@ -1,5 +1,5 @@
 import { intlFormat, formatDistanceToNowStrict, parseISO } from "date-fns";
-import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
+import { StarOcticon, ForkOcticon } from "../icons/octicons";
 
 import styles from "./RepoCard.module.scss";
 
@@ -47,7 +47,7 @@ export default function RepoCard({ name, url, description, language, stars, fork
               target="_blank"
               rel="noopener noreferrer"
             >
-              <StarIcon size={16} className={styles.octicon} />
+              <StarOcticon fill="currentColor" className={styles.octicon} />
               <span>{stars.toLocaleString("en-US")}</span>
             </a>
           </div>
@@ -61,7 +61,7 @@ export default function RepoCard({ name, url, description, language, stars, fork
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RepoForkedIcon size={16} className={styles.octicon} />
+              <ForkOcticon fill="currentColor" className={styles.octicon} />
               <span>{forks.toLocaleString("en-US")}</span>
             </a>
           </div>

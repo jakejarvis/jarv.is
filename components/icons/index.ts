@@ -1,51 +1,24 @@
-import BotIcon from "./svg/bot.svg";
-import BulbOffIcon from "./svg/bulb-off.svg";
-import BulbOnIcon from "./svg/bulb-on.svg";
-import ContactIcon from "./svg/contact.svg";
-import DateIcon from "./svg/date.svg";
-import EditIcon from "./svg/edit.svg";
-import FloppyIcon from "./svg/floppy.svg";
-import HeartIcon from "./svg/heart.svg";
-import HomeIcon from "./svg/home.svg";
-import LaptopIcon from "./svg/laptop.svg";
-import LicenseIcon from "./svg/license.svg";
-import LockIcon from "./svg/lock.svg";
-import MailIcon from "./svg/mail.svg";
-import NextjsIcon from "./svg/nextjs.svg";
-import NotesIcon from "./svg/notes.svg";
-import PrivacyIcon from "./svg/privacy.svg";
-import ProjectsIcon from "./svg/projects.svg";
-import SendIcon from "./svg/send.svg";
-import SirenIcon from "./svg/siren.svg";
-import TagIcon from "./svg/tag.svg";
-import TapeIcon from "./svg/tape.svg";
-import ViewsIcon from "./svg/views.svg";
-import WandIcon from "./svg/wand.svg";
-import WaveIcon from "./svg/wave.svg";
-
-export {
-  BotIcon,
-  BulbOffIcon,
-  BulbOnIcon,
-  ContactIcon,
-  DateIcon,
-  EditIcon,
-  FloppyIcon,
-  HeartIcon,
-  HomeIcon,
-  LaptopIcon,
-  LicenseIcon,
-  LockIcon,
-  MailIcon,
-  NextjsIcon,
-  NotesIcon,
-  PrivacyIcon,
-  ProjectsIcon,
-  SendIcon,
-  SirenIcon,
-  TagIcon,
-  TapeIcon,
-  ViewsIcon,
-  WandIcon,
-  WaveIcon,
-};
+export { default as BotIcon } from "./svg/bot.svg";
+export { default as BulbOffIcon } from "./svg/bulb-off.svg";
+export { default as BulbOnIcon } from "./svg/bulb-on.svg";
+export { default as ContactIcon } from "./svg/contact.svg";
+export { default as DateIcon } from "./svg/date.svg";
+export { default as EditIcon } from "./svg/edit.svg";
+export { default as FloppyIcon } from "./svg/floppy.svg";
+export { default as HeartIcon } from "./svg/heart.svg";
+export { default as HomeIcon } from "./svg/home.svg";
+export { default as LaptopIcon } from "./svg/laptop.svg";
+export { default as LicenseIcon } from "./svg/license.svg";
+export { default as LockIcon } from "./svg/lock.svg";
+export { default as MailIcon } from "./svg/mail.svg";
+export { default as NextjsIcon } from "./svg/nextjs.svg";
+export { default as NotesIcon } from "./svg/notes.svg";
+export { default as PrivacyIcon } from "./svg/privacy.svg";
+export { default as ProjectsIcon } from "./svg/projects.svg";
+export { default as SendIcon } from "./svg/send.svg";
+export { default as SirenIcon } from "./svg/siren.svg";
+export { default as TagIcon } from "./svg/tag.svg";
+export { default as TapeIcon } from "./svg/tape.svg";
+export { default as ViewsIcon } from "./svg/views.svg";
+export { default as WandIcon } from "./svg/wand.svg";
+export { default as WaveIcon } from "./svg/wave.svg";

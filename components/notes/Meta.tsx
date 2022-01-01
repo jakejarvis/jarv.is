@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import Hits from "../hits/Hits";
-import DateIcon from "../icons/svg/date.svg";
-import TagIcon from "../icons/svg/tag.svg";
-import EditIcon from "../icons/svg/edit.svg";
-import ViewsIcon from "../icons/svg/views.svg";
+import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
 
 import styles from "./Meta.module.scss";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { CheckIcon, XIcon } from "@primer/octicons-react";
-import SendIcon from "../icons/svg/send.svg";
+import { CheckOcticon, XOcticon } from "../icons/octicons";
+import { SendIcon } from "../icons";
 
 import styles from "./ContactForm.module.scss";
 
@@ -131,7 +131,7 @@ export default function ContactForm() {
           className={status.success ? styles.result_success : styles.result_error}
           style={{ display: !status.message || sending ? "none" : null }}
         >
-          {status.success ? <CheckIcon size={16} /> : <XIcon size={16} />} {status.message}
+          {status.success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {status.message}
         </span>
       </div>
     </form>

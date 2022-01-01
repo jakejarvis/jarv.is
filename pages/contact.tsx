@@ -2,8 +2,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import PageTitle from "../components/page/PageTitle";
 import ContactForm from "../components/contact/ContactForm";
-import MailIcon from "../components/icons/svg/mail.svg";
-import LockIcon from "../components/icons/svg/lock.svg";
+import { MailIcon, LockIcon } from "../components/icons";
 
 export default function Contact() {
   return (

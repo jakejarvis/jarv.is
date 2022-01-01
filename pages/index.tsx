@@ -3,8 +3,7 @@ import hexRgb from "hex-rgb";
 import isAbsoluteUrl from "is-absolute-url";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
-import WaveIcon from "../components/icons/svg/wave.svg";
-import LockIcon from "../components/icons/svg/lock.svg";
+import { WaveIcon, LockIcon } from "../components/icons";
 
 type ColorLinkProps = {
   children: unknown;

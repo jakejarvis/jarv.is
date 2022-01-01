@@ -3,6 +3,7 @@
   top: 0;
   right: 0;
   padding: 0.75em;
+  line-height: 1;
   color: var(--text);
   background-color: var(--background-inner);
   border: 1px solid var(--kinda-light);
@@ -15,6 +16,7 @@
   .octicon {
     width: 16px;
     height: 16px;
+    vertical-align: text-bottom;
   }
 
   .octicon-check {

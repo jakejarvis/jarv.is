@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import trimNewlines from "trim-newlines";
-import { CopyIcon, CheckIcon } from "@primer/octicons-react";
+import { CopyOcticon, CheckOcticon } from "../icons/octicons";
 
 import styles from "./CopyButton.module.scss";
 
@@ -48,9 +48,9 @@ export default function CopyButton({ content, timeout = 2000 }: Props) {
       disabled={copied}
     >
       {copied ? (
-        <CheckIcon size={16} className={`${styles.octicon} ${styles["octicon-check"]}`} />
+        <CheckOcticon fill="currentColor" className={`${styles.octicon} ${styles["octicon-check"]}`} />
       ) : (
-        <CopyIcon size={16} className={styles.octicon} />
+        <CopyOcticon fill="currentColor" className={styles.octicon} />
       )}
     </button>
   );

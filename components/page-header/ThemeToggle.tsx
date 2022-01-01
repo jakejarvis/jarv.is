@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import * as config from "../../lib/config";
-import BulbOffIcon from "../icons/svg/bulb-off.svg";
-import BulbOnIcon from "../icons/svg/bulb-on.svg";
+import { BulbOffIcon, BulbOnIcon } from "../icons";
 
 import styles from "./ThemeToggle.module.scss";
 

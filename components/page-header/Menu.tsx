@@ -1,9 +1,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import HomeIcon from "../icons/svg/home.svg";
-import NotesIcon from "../icons/svg/notes.svg";
-import ProjectsIcon from "../icons/svg/projects.svg";
-import ContactIcon from "../icons/svg/contact.svg";
+import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../icons";
 
 import styles from "./Menu.module.scss";
 

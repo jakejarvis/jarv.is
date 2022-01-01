@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import BotIcon from "../components/icons/svg/tape.svg";
+import { BotIcon } from "../components/icons";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
 

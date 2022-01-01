@@ -5,7 +5,7 @@ import Gist from "react-gist";
 import getNodeText from "../lib/get-node-text";
 import Video from "./video/FullPageVideo";
 import CopyButton from "./clipboard/CopyButton";
-import { MarkGithubIcon } from "@primer/octicons-react";
+import { OctocatOcticon } from "./icons/octicons";
 import type { LinkProps } from "next/link";
 import type { ImageProps } from "next/image";
 import type { ReactPlayerProps } from "react-player";
@@ -73,7 +73,7 @@ const mdxComponents = {
   gist: (props: { id: string; file?: string }) => <Gist {...props} />,
   octocat: (props: { repo: string }) => (
     <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
-      <MarkGithubIcon size={24} verticalAlign="text-top" />
+      <OctocatOcticon verticalAlign="text-top" fill="currentColor" />
       <style jsx>{`
         a {
           margin: 0 0.3em;

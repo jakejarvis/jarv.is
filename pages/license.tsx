@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import LicenseIcon from "../components/icons/svg/license.svg";
+import { LicenseIcon } from "../components/icons";
 
 export default function License() {
   return (

@@ -40,6 +40,9 @@
 
       .octicon,
       .language_color {
+        width: 16px;
+        height: 16px;
+        vertical-align: text-bottom;
         margin-right: 0.5em;
       }
 
@@ -49,7 +52,7 @@
         height: 1.15em;
         border-radius: 50%;
         position: relative;
-        top: 0.175em;
+        vertical-align: text-top;
       }
     }
   }

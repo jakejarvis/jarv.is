@@ -3,6 +3,7 @@
   "private": true,
   "license": "MIT",
   "homepage": "https://jarv.is/",
+  "sideEffects": false,
   "author": {
     "name": "Jake Jarvis",
     "email": "jake@jarv.is",
