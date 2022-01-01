@@ -23,9 +23,8 @@ export default function ColorLink({
 }: Props) {
   external = external || isAbsoluteUrl(href);
 
-  // hacky hack to form a unique CSS var based on the light hex code, since they need to be set "globally"
-  const varName = `Home__${lightColor.replace("#", "")}`;
-  const alpha = 0.4;
+  // spits out an alpha color in rgb() that's compatible with linear-gradient()
+  const bgAlpha = (color: string) => hexRgb(color, { alpha: 0.4, format: "css" });
 
   return (
     <Link href={href} passHref={true} prefetch={false}>
@@ -37,20 +36,15 @@ export default function ColorLink({
         rel={external ? "noopener noreferrer" : undefined}
       >
         {children}
-        <style jsx global>{`
-          :root {
-            --${varName}: ${lightColor};
-            --${varName}_alpha: ${hexRgb(lightColor, { alpha: alpha, format: "css" })};
-          }
-          [data-theme="dark"] {
-            --${varName}: ${darkColor};
-            --${varName}_alpha: ${hexRgb(darkColor, { alpha: alpha, format: "css" })};
-          }
-        `}</style>
         <style jsx>{`
           a {
-            color: var(--${varName});
-            background-image: linear-gradient(var(--${varName}_alpha), var(--${varName}_alpha));
+            color: ${lightColor};
+            background-image: linear-gradient(${bgAlpha(lightColor)}, ${bgAlpha(lightColor)});
+          }
+
+          :global([data-theme="dark"]) a {
+            color: ${darkColor};
+            background-image: linear-gradient(${bgAlpha(darkColor)}, ${bgAlpha(darkColor)});
           }
         `}</style>
       </a>

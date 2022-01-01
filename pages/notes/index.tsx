@@ -6,12 +6,12 @@ import List from "../../components/notes/List";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
-export default function Notes({ allNotes }) {
+export default function Notes({ notesByYear }) {
   return (
     <>
       <Layout>
         <Container title="Notes" description="Recent posts by Jake Jarvis.">
-          <List allNotes={allNotes} />
+          <List notesByYear={notesByYear} />
         </Container>
       </Layout>
     </>
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      allNotes: groupBy(allNotes, "year"),
+      notesByYear: groupBy(allNotes, "year"),
     },
   };
 };

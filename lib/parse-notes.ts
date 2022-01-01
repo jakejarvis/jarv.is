@@ -21,12 +21,9 @@ export const getNoteBySlug = (slug, fields = []) => {
   fields.forEach((field) => {
     if (field === "slug") {
       items[field] = realSlug;
-    }
-    if (field === "content") {
+    } else if (field === "content") {
       items[field] = content;
-    }
-
-    if (typeof data[field] !== "undefined") {
+    } else if (typeof data[field] !== "undefined") {
       items[field] = data[field];
     }
   });
