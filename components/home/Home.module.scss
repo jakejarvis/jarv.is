@@ -1,13 +1,13 @@
 .home {
   h1 {
-    margin: 0 0 0.3em -0.03em; // TODO: why is this indented slightly?
+    margin: 0 0 0.5em -0.03em; // TODO: why is this indented slightly?
     font-size: 1.8em;
     font-weight: 500;
-    letter-spacing: -0.014em;
+    letter-spacing: -0.01em;
 
     .wave {
       display: inline-block;
-      margin-left: 2px;
+      margin-left: 0.1em;
       animation: wave 5s infinite;
       animation-delay: 1s;
       transform-origin: 65% 80%;
@@ -19,13 +19,13 @@
     margin: 0.5em 0 0.5em -0.03em; // TODO: why is this indented slightly?
     font-size: 1.35em;
     font-weight: 400;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.016em;
     line-height: 1.4;
   }
 
   p {
     margin: 0.85em 0;
-    letter-spacing: -0.009em;
+    letter-spacing: -0.004em;
     line-height: 1.7;
 
     &:last-of-type {
@@ -55,16 +55,18 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .home {
-    font-size: 0.975em;
-
     h1 {
-      font-size: 1.6em;
+      font-size: 1.5em;
     }
 
     h2 {
       font-size: 1.2em;
+    }
+
+    p {
+      font-size: 0.925em;
     }
   }
 }

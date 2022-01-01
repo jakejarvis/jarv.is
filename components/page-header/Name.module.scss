@@ -26,12 +26,11 @@
 
 .name {
   margin: 0 0.6em;
-  font-size: 1.25em;
+  font-size: 1.2em;
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .selfie {
     width: 70px;
     height: 70px;

@@ -1,6 +1,6 @@
 .card {
   width: 100%;
-  padding: 1em 1.2em;
+  padding: 1.2em;
   border: 1px solid;
   border-radius: 0.5em;
   font-size: 0.85em;
@@ -13,17 +13,18 @@
   }
 
   .description {
-    margin: 0.4em 0 0.7em;
+    margin: 0.7em 0;
     line-height: 1.7;
   }
 
   .meta {
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
 
     .meta_item {
       margin-right: 1.5em;
-      font-size: 0.9em;
+      font-size: 0.875em;
       color: var(--medium);
 
       a {

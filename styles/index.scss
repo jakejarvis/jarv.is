@@ -14,10 +14,6 @@ body {
   font-kerning: normal;
   font-variant-ligatures: normal;
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
-
-  // global base font size:
-  font-size: 0.975em;
-  line-height: 1.5;
 }
 
 code,
@@ -26,7 +22,6 @@ samp,
 pre,
 .monospace {
   font-family: typography.$font-stack-mono;
-  letter-spacing: normal;
 }
 
 // override above font-family if browser supports variable fonts
@@ -95,7 +90,6 @@ a {
 // all code
 code {
   font-size: 0.925em;
-  letter-spacing: normal;
   page-break-inside: avoid;
 }
 
@@ -118,7 +112,6 @@ code {
   color: var(--medium-light);
   background: none;
   font-weight: 300;
-  line-height: 1;
   opacity: 0; // overridden on hover
   user-select: none;
 
@@ -136,12 +129,20 @@ h2,
 h3,
 h4 {
   // offset (approximately) with sticky header so jumped-to content isn't hiding behind it
-  scroll-margin-top: 90px;
+  scroll-margin-top: 4em;
 
   &:hover {
     .h-anchor {
       opacity: 1;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h2,
+  h3,
+  h4 {
+    scroll-margin-top: 5em;
   }
 }
 

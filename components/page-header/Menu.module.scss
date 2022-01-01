@@ -9,8 +9,6 @@
 .item {
   margin-left: 1.8em;
   display: inline-flex;
-  align-items: center;
-  line-height: 1;
 
   .link {
     display: inline-flex;
@@ -34,7 +32,6 @@
     font-weight: 500;
     margin-top: 0.125em;
     margin-left: 0.75em;
-    line-height: 1;
   }
 }
 
@@ -42,9 +39,9 @@
   margin-left: 1.25em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .menu {
-    max-width: 380px;
+    max-width: 360px;
     justify-content: space-between;
     flex-grow: 1;
   }

@@ -41,7 +41,7 @@ export default function Contact() {
           div {
             max-width: 600px;
             margin: 0 auto;
-            font-size: 0.925em;
+            font-size: 0.9em;
             line-height: 1.7;
           }
 

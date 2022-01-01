@@ -1,12 +1,6 @@
 .content {
-  font-size: 0.925em;
-  letter-spacing: -0.004em;
+  font-size: 0.9em;
   line-height: 1.7;
-
-  b,
-  strong {
-    letter-spacing: 0.008em; // not sure why the discrepancy between weights
-  }
 
   blockquote {
     margin-left: 0;
@@ -18,9 +12,8 @@
   h2,
   h3,
   h4 {
-    margin-top: 1.25em;
+    margin-top: 1em;
     margin-bottom: 0.5em;
-    letter-spacing: 0.001em;
     line-height: 1.5;
   }
 
@@ -33,7 +26,6 @@
   figure {
     margin: 1em auto;
     text-align: center;
-    line-height: 1;
 
     img {
       height: auto;
@@ -41,9 +33,9 @@
     }
 
     figcaption {
-      font-size: 0.95em;
+      font-size: 0.9em;
       line-height: 1.5;
-      margin-top: 0.5em;
+      margin-top: 0.3em;
       color: var(--medium);
     }
   }

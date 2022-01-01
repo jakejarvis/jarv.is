@@ -1,6 +1,6 @@
 .title {
   margin-top: 0;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.6em;
   font-size: 2em;
   text-align: center;
 
@@ -11,7 +11,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .title {
     font-size: 1.8em;
   }

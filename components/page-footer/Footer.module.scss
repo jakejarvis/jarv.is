@@ -1,6 +1,5 @@
 .footer {
   width: 100%;
-  letter-spacing: -0.005em;
   padding: 1.25em 1.5em;
   border-top: 1px solid var(--kinda-light);
   color: var(--medium-dark);
@@ -35,7 +34,7 @@
   will-change: transform;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .footer {
     padding: 1em 1.25em 0;
 
@@ -50,7 +49,6 @@
   // stack columns on left instead of flexboxing across
   .row {
     display: block;
-    line-height: 2;
   }
 }
 

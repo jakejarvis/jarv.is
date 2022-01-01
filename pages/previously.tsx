@@ -207,12 +207,13 @@ export default function Previously() {
           font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", "Inter", sans-serif;
           font-weight: 600 !important;
         }
-        header nav a span:nth-of-type(2) {
-          font-size: 1.1em;
+        header nav a span {
+          font-size: 1.1em !important;
           font-weight: 700 !important;
         }
         header nav > a span:nth-of-type(2) {
-          font-size: 1.5em;
+          font-size: 1.4em !important;
+          font-weight: 700 !important;
         }
         main > div > div {
           font-size: 1.1em !important;
