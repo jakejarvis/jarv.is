@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CheckIcon, XIcon } from "@primer/octicons-react";
-import { SendIcon } from "../icons";
+import SendIcon from "../icons/svg/send.svg";
 
 import styles from "./ContactForm.module.scss";
 

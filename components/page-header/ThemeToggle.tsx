@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { BulbOffIcon, BulbOnIcon } from "../icons";
+import BulbOffIcon from "../icons/svg/bulb-off.svg";
+import BulbOnIcon from "../icons/svg/bulb-on.svg";
 
 import styles from "./ThemeToggle.module.scss";
 

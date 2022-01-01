@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { HeartIcon, NextjsIcon } from "../icons";
+import HeartIcon from "../icons/svg/heart.svg";
+import NextjsIcon from "../icons/svg/nextjs.svg";
 import * as config from "../../lib/config";
 
 import styles from "./Footer.module.scss";

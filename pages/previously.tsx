@@ -5,7 +5,8 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import { FloppyIcon, SirenIcon } from "../components/icons";
+import FloppyIcon from "../components/icons/svg/floppy.svg";
+import SirenIcon from "../components/icons/svg/siren.svg";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
 import img_2002_02 from "../public/static/images/previously/2002_02.png";

@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import { LaptopIcon } from "../components/icons";
+import LaptopIcon from "../components/icons/svg/laptop.svg";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
 

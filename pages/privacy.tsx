@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import { PrivacyIcon } from "../components/icons";
+import PrivacyIcon from "../components/icons/svg/privacy.svg";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 

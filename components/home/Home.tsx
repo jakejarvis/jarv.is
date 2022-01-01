@@ -1,5 +1,6 @@
 import Link from "./ColorLink";
-import { WaveIcon, LockIcon } from "../icons";
+import WaveIcon from "../icons/svg/wave.svg";
+import LockIcon from "../icons/svg/lock.svg";
 
 import styles from "./Home.module.scss";
 

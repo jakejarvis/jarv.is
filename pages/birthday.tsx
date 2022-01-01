@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import Video from "../components/video/FullPageVideo";
-import { TapeIcon } from "../components/icons";
+import TapeIcon from "../components/icons/svg/tape.svg";
 
 import thumbnail from "../public/static/images/birthday/thumb.png";
 
