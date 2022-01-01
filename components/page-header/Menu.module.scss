@@ -41,12 +41,15 @@
 
 @media screen and (max-width: 768px) {
   .menu {
-    max-width: 360px;
+    max-width: 320px;
+    margin-left: 20px;
     justify-content: space-between;
     flex-grow: 1;
   }
 
   .item {
+    margin-left: 0;
+
     .icon {
       width: 1.8em;
       height: 1.8em;
@@ -56,5 +59,9 @@
     .text {
       display: none;
     }
+  }
+
+  .theme_toggle {
+    margin-left: -0.3em;
   }
 }

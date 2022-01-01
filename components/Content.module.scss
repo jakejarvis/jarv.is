@@ -57,3 +57,10 @@
     background-color: var(--light);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .content {
+    font-size: 0.925em;
+    line-height: 1.85;
+  }
+}

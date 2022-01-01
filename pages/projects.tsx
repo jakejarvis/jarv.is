@@ -37,7 +37,7 @@ export default function Projects({ repos }) {
             div .repo_card {
               flex-grow: 1;
               margin: 0.5em;
-              width: 400px;
+              width: 370px;
             }
           `}</style>
         </div>
