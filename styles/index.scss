@@ -128,9 +128,6 @@ code {
 h2,
 h3,
 h4 {
-  // offset (approximately) with sticky header so jumped-to content isn't hiding behind it
-  scroll-margin-top: 4em;
-
   &:hover {
     .h-anchor {
       opacity: 1;
@@ -138,11 +135,24 @@ h4 {
   }
 }
 
+// offset (approximately) with sticky header so jumped-to content isn't hiding behind it
+h2 {
+  scroll-margin-top: 4em;
+}
+
+h3,
+h4 {
+  scroll-margin-top: 5em;
+}
+
 @media screen and (max-width: 768px) {
-  h2,
+  h2 {
+    scroll-margin-top: 5em;
+  }
+
   h3,
   h4 {
-    scroll-margin-top: 5em;
+    scroll-margin-top: 6em;
   }
 }
 
