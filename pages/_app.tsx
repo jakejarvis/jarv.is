@@ -6,10 +6,15 @@ import * as Fathom from "fathom-client";
 import * as config from "../lib/config";
 import type { AppProps } from "next/app";
 
-import meJpg from "../public/static/images/me.jpg";
 import faviconIco from "../public/static/images/favicon.ico";
 import appleTouchIconPng from "../public/static/images/apple-touch-icon.png";
+import meJpg from "../public/static/images/me.jpg";
 
+// global styles
+import "modern-normalize/modern-normalize.css";
+import "../styles/colors.scss";
+import "../styles/typography.scss";
+import "../styles/highlight.scss";
 import "../styles/index.scss";
 
 export default function App({ Component, pageProps }: AppProps) {

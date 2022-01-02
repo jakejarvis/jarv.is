@@ -1,60 +1,9 @@
-@use "reset";
-@use "typography";
-@use "syntax";
-@use "colors";
-
-// Global Styles
 body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   scroll-behavior: smooth;
   background-color: var(--background-outer);
-  font-family: typography.$font-stack-sans;
-  font-kerning: normal;
-  font-variant-ligatures: normal;
-  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
-}
-
-code,
-kbd,
-samp,
-pre,
-.monospace {
-  font-family: typography.$font-stack-mono;
-}
-
-// override above font-family if browser supports variable fonts
-// https://caniuse.com/#feat=variable-fonts
-@supports (font-variation-settings: normal) {
-  body {
-    font-family: typography.$font-stack-sans-variable;
-    font-optical-sizing: auto;
-  }
-
-  code,
-  kbd,
-  samp,
-  pre,
-  .monospace {
-    font-family: typography.$font-stack-mono-variable;
-  }
-
-  // Chrome doesn't automatically slant multi-axis Inter var, for some reason.
-  // Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
-  em {
-    font-style: normal !important;
-    font-variation-settings: "ital" 1, "slnt" -10;
-
-    // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-    code,
-    kbd,
-    samp,
-    pre,
-    .monospace {
-      font-style: italic !important;
-    }
-  }
 }
 
 a {
