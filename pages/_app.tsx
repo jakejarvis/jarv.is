@@ -6,8 +6,9 @@ import * as Fathom from "fathom-client";
 import * as config from "../lib/config";
 import type { AppProps } from "next/app";
 
-import faviconIco from "../public/static/images/favicon.ico";
-import appleTouchIconPng from "../public/static/images/apple-touch-icon.png";
+import faviconIco from "../public/static/favicons/favicon.ico";
+import faviconPng from "../public/static/favicons/favicon.png";
+import appleTouchIconPng from "../public/static/favicons/apple-touch-icon.png";
 import meJpg from "../public/static/images/me.jpg";
 
 // global styles
@@ -74,6 +75,11 @@ export default function App({ Component, pageProps }: AppProps) {
           {
             rel: "icon",
             href: faviconIco.src,
+          },
+          {
+            rel: "icon",
+            href: faviconPng.src,
+            type: "image/png",
           },
           {
             rel: "apple-touch-icon",

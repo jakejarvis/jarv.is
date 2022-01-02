@@ -75,9 +75,10 @@ module.exports = withBundleAnalyzer({
     },
   ],
   rewrites: async () => [
-    { source: "/favicon.ico", destination: "/static/images/favicon.ico" },
-    { source: "/apple-touch-icon.png", destination: "/static/images/apple-touch-icon.png" },
-    { source: "/apple-touch-icon-precomposed.png", destination: "/static/images/apple-touch-icon.png" },
+    { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
+    { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
+    { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
+    { source: "/dark-mode-example/:path*", destination: "https://jakejarvis.github.io/dark-mode-example/:path*" },
   ],
   redirects: async () => [
     { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
