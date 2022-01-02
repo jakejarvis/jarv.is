@@ -18,7 +18,7 @@ import "../styles/typography.scss";
 import "../styles/highlight.scss";
 import "../styles/index.scss";
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -202,4 +202,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </>
   );
-}
+};
+
+export default App;

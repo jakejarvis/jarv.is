@@ -5,7 +5,7 @@ import { SendIcon } from "../icons";
 
 import styles from "./ContactForm.module.scss";
 
-export default function ContactForm() {
+const ContactForm = () => {
   // status/feedback:
   const [status, setStatus] = useState({ success: false, message: "" });
   // keep track of fetch:
@@ -136,4 +136,6 @@ export default function ContactForm() {
       </div>
     </form>
   );
-}
+};
+
+export default ContactForm;

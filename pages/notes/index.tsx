@@ -6,17 +6,13 @@ import List from "../../components/notes/List";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
-export default function Notes({ notesByYear }) {
-  return (
-    <>
-      <Layout>
-        <Container title="Notes" description="Recent posts by Jake Jarvis.">
-          <List notesByYear={notesByYear} />
-        </Container>
-      </Layout>
-    </>
-  );
-}
+const Notes = ({ notesByYear }) => (
+  <Layout>
+    <Container title="Notes" description="Recent posts by Jake Jarvis.">
+      <List notesByYear={notesByYear} />
+    </Container>
+  </Layout>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   const allNotes = getAllNotes(["date", "slug", "title"]);
@@ -30,3 +26,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+export default Notes;

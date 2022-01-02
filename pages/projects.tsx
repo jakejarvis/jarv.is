@@ -6,57 +6,55 @@ import RepoCard from "../components/projects/RepoCard";
 import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
 
-export default function Projects({ repos }) {
-  return (
-    <Layout>
-      <Container title="Projects">
-        <PageTitle
-          title={
-            <>
-              <ProjectsIcon /> Projects
-            </>
+const Projects = ({ repos }) => (
+  <Layout>
+    <Container title="Projects">
+      <PageTitle
+        title={
+          <>
+            <ProjectsIcon /> Projects
+          </>
+        }
+      />
+
+      <div>
+        {repos.map((repo) => (
+          <div key={repo.name} className="repo_card">
+            <RepoCard {...repo} />
+          </div>
+        ))}
+
+        <style jsx>{`
+          div {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
           }
-        />
 
-        <div>
-          {repos.map((repo) => (
-            <div key={repo.name} className="repo_card">
-              <RepoCard {...repo} />
-            </div>
-          ))}
+          div .repo_card {
+            flex-grow: 1;
+            margin: 0.5em;
+            width: 370px;
+          }
+        `}</style>
+      </div>
 
-          <style jsx>{`
-            div {
-              display: flex;
-              flex-flow: row wrap;
-              justify-content: space-between;
-              align-items: flex-start;
-              width: 100%;
-            }
-
-            div .repo_card {
-              flex-grow: 1;
-              margin: 0.5em;
-              width: 370px;
-            }
-          `}</style>
-        </div>
-
-        <p>
-          <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
-            View more on GitHub...
-          </a>
-          <style jsx>{`
-            p {
-              text-align: center;
-              margin-bottom: 0;
-            }
-          `}</style>
-        </p>
-      </Container>
-    </Layout>
-  );
-}
+      <p>
+        <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
+          View more on GitHub...
+        </a>
+        <style jsx>{`
+          p {
+            text-align: center;
+            margin-bottom: 0;
+          }
+        `}</style>
+      </p>
+    </Container>
+  </Layout>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   // https://docs.github.com/en/graphql/reference/objects#repository
@@ -119,3 +117,5 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 600,
   };
 };
+
+export default Projects;

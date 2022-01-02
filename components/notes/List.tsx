@@ -9,7 +9,7 @@ type NoteProps = {
   slug: string;
 };
 
-export default function List({ notesByYear }) {
+const List = ({ notesByYear }) => {
   const sections = [];
 
   Object.entries(notesByYear).forEach(([year, notes]: [string, NoteProps[]]) => {
@@ -36,4 +36,6 @@ export default function List({ notesByYear }) {
   const reversed = sections.reverse();
 
   return <>{reversed}</>;
-}
+};
+
+export default List;

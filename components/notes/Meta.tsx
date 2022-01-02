@@ -13,58 +13,58 @@ export type Props = {
   tags?: string[];
 };
 
-export default function Meta({ title, date, slug, tags = [] }: Props) {
-  return (
-    <>
-      <div className={styles.meta}>
-        <div className={styles.date}>
-          <span>
-            <DateIcon className={`icon ${styles.icon}`} />
-          </span>
-          <span title={format(parseISO(date), "PPppp")}>
-            <Link href={`/notes/${slug}/`}>{format(parseISO(date), "MMMM d, yyyy")}</Link>
-          </span>
-        </div>
-        {tags.length > 0 && (
-          <div className={styles.tags}>
-            <span>
-              <TagIcon className={`icon ${styles.icon}`} />
-            </span>
-            {tags.map((tag) => (
-              <span key={tag} className={styles.tag}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-        <div>
-          <span>
-            <EditIcon className={`icon ${styles.icon}`} />
-          </span>
-          <span>
-            <a
-              href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`Edit "${title}" on GitHub`}
-            >
-              Improve This Post
-            </a>
-          </span>
-        </div>
-        <div>
-          <span>
-            <ViewsIcon className={`icon ${styles.icon}`} />
-          </span>
-          <Hits slug={`notes/${slug}`} />
-        </div>
+const Meta = ({ title, date, slug, tags = [] }: Props) => (
+  <>
+    <div className={styles.meta}>
+      <div className={styles.date}>
+        <span>
+          <DateIcon className={`icon ${styles.icon}`} />
+        </span>
+        <span title={format(parseISO(date), "PPppp")}>
+          <Link href={`/notes/${slug}/`}>{format(parseISO(date), "MMMM d, yyyy")}</Link>
+        </span>
       </div>
+      {tags.length > 0 && (
+        <div className={styles.tags}>
+          <span>
+            <TagIcon className={`icon ${styles.icon}`} />
+          </span>
+          {tags.map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <div>
+        <span>
+          <EditIcon className={`icon ${styles.icon}`} />
+        </span>
+        <span>
+          <a
+            href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Edit "${title}" on GitHub`}
+          >
+            Improve This Post
+          </a>
+        </span>
+      </div>
+      <div>
+        <span>
+          <ViewsIcon className={`icon ${styles.icon}`} />
+        </span>
+        <Hits slug={`notes/${slug}`} />
+      </div>
+    </div>
 
-      <h1 className={styles.title}>
-        <Link href={`/notes/${slug}/`}>
-          <a>{title}</a>
-        </Link>
-      </h1>
-    </>
-  );
-}
+    <h1 className={styles.title}>
+      <Link href={`/notes/${slug}/`}>
+        <a>{title}</a>
+      </Link>
+    </h1>
+  </>
+);
+
+export default Meta;

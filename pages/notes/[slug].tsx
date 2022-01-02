@@ -19,54 +19,52 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-export default function Page({ source, frontMatter, slug }) {
-  return (
-    <>
-      <NextSeo
-        title={frontMatter.title}
-        description={frontMatter.description}
-        openGraph={{
-          title: frontMatter.title,
-          type: "article",
-          article: {
-            publishedTime: frontMatter.date,
+const Note = ({ source, frontMatter, slug }) => (
+  <>
+    <NextSeo
+      title={frontMatter.title}
+      description={frontMatter.description}
+      openGraph={{
+        title: frontMatter.title,
+        type: "article",
+        article: {
+          publishedTime: frontMatter.date,
+        },
+        images: [
+          {
+            url: `${config.baseURL}${frontMatter.image}`,
+            alt: frontMatter.title,
           },
-          images: [
-            {
-              url: `${config.baseURL}${frontMatter.image}`,
-              alt: frontMatter.title,
-            },
-          ],
-        }}
-        twitter={{
-          handle: `@${config.twitterHandle}`,
-          site: `@${config.twitterHandle}`,
-          cardType: "summary_large_image",
-        }}
-      />
-      <ArticleJsonLd
-        url={`${config.baseURL}/notes/${slug}`}
-        title={frontMatter.title}
-        description={frontMatter.description}
-        datePublished={frontMatter.date}
-        dateModified={frontMatter.date}
-        images={[`${config.baseURL}${frontMatter.image}`]}
-        authorName={[config.authorName]}
-        publisherName={config.siteName}
-        publisherLogo={`${config.baseURL}/static/images/me.jpg`}
-      />
+        ],
+      }}
+      twitter={{
+        handle: `@${config.twitterHandle}`,
+        site: `@${config.twitterHandle}`,
+        cardType: "summary_large_image",
+      }}
+    />
+    <ArticleJsonLd
+      url={`${config.baseURL}/notes/${slug}`}
+      title={frontMatter.title}
+      description={frontMatter.description}
+      datePublished={frontMatter.date}
+      dateModified={frontMatter.date}
+      images={[`${config.baseURL}${frontMatter.image}`]}
+      authorName={[config.authorName]}
+      publisherName={config.siteName}
+      publisherLogo={`${config.baseURL}/static/images/me.jpg`}
+    />
 
-      <Layout>
-        <Container>
-          <Meta {...frontMatter} slug={slug} />
-          <Content>
-            <MDXRemote {...source} components={mdxComponents} />
-          </Content>
-        </Container>
-      </Layout>
-    </>
-  );
-}
+    <Layout>
+      <Container>
+        <Meta {...frontMatter} slug={slug} />
+        <Content>
+          <MDXRemote {...source} components={mdxComponents} />
+        </Content>
+      </Container>
+    </Layout>
+  </>
+);
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const filePath = path.join(NOTES_PATH, `${params.slug}.mdx`);
@@ -111,3 +109,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+export default Note;

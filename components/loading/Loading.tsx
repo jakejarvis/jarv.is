@@ -4,7 +4,7 @@ type Props = {
   width: number;
 };
 
-export default function Loading({ boxes = 3, timing = 0.1, width }: Props) {
+const Loading = ({ boxes = 3, timing = 0.1, width }: Props) => {
   // each box is just an empty div
   const divs = [];
 
@@ -53,4 +53,6 @@ export default function Loading({ boxes = 3, timing = 0.1, width }: Props) {
       `}</style>
     </div>
   );
-}
+};
+
+export default Loading;

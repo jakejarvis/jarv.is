@@ -4,6 +4,6 @@ type Props = {
   children: unknown;
 };
 
-export default function Content({ children }: Props) {
-  return <div className={styles.content}>{children}</div>;
-}
+const Content = ({ children }: Props) => <div className={styles.content}>{children}</div>;
+
+export default Content;

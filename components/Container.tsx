@@ -10,7 +10,7 @@ type Props = {
   children: unknown;
 };
 
-export default function Container({ title, description, children }: Props) {
+const Container = ({ title, description, children }: Props) => {
   const router = useRouter();
 
   return (
@@ -27,4 +27,6 @@ export default function Container({ title, description, children }: Props) {
       <div className={styles.container}>{children}</div>
     </>
   );
-}
+};
+
+export default Container;

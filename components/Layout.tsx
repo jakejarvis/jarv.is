@@ -3,12 +3,12 @@ import Footer from "./page-footer/Footer";
 
 import styles from "./Layout.module.scss";
 
-export default function Layout({ children }) {
-  return (
-    <>
-      <Header />
-      <main className={styles.main}>{children}</main>
-      <Footer />
-    </>
-  );
-}
+const Layout = ({ children }) => (
+  <>
+    <Header />
+    <main className={styles.main}>{children}</main>
+    <Footer />
+  </>
+);
+
+export default Layout;

@@ -6,7 +6,7 @@ type Props = {
   title: unknown;
 };
 
-export default function PageTitle({ title }: Props) {
+const PageTitle = ({ title }: Props) => {
   const router = useRouter();
 
   return (
@@ -14,4 +14,6 @@ export default function PageTitle({ title }: Props) {
       <a href={router.asPath}>{title}</a>
     </h1>
   );
-}
+};
+
+export default PageTitle;

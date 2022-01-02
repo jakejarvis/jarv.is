@@ -3,13 +3,13 @@ import Menu from "./Menu";
 
 import styles from "./Header.module.scss";
 
-export default function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        <Name />
-        <Menu />
-      </nav>
-    </header>
-  );
-}
+const Header = () => (
+  <header className={styles.header}>
+    <nav className={styles.nav}>
+      <Name />
+      <Menu />
+    </nav>
+  </header>
+);
+
+export default Header;

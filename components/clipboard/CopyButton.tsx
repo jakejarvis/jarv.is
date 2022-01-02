@@ -10,7 +10,7 @@ type Props = {
   timeout?: number;
 };
 
-export default function CopyButton({ content, timeout = 2000 }: Props) {
+const CopyButton = ({ content, timeout = 2000 }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (e) => {
@@ -54,4 +54,6 @@ export default function CopyButton({ content, timeout = 2000 }: Props) {
       )}
     </button>
   );
-}
+};
+
+export default CopyButton;
