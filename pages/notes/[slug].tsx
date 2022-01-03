@@ -20,15 +20,15 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-const Note = ({ source, frontMatter, slug }) => (
+const Note = ({ frontMatter, source }) => (
   <>
     <NextSeo
       title={frontMatter.title}
       description={frontMatter.description}
-      canonical={`${config.baseUrl}/notes/${slug}/`}
+      canonical={frontMatter.permalink}
       openGraph={{
         title: frontMatter.title,
-        url: `${config.baseUrl}/notes/${slug}/`,
+        url: frontMatter.permalink,
         type: "article",
         article: {
           publishedTime: frontMatter.date,
@@ -47,7 +47,7 @@ const Note = ({ source, frontMatter, slug }) => (
       }}
     />
     <ArticleJsonLd
-      url={`${config.baseUrl}/notes/${slug}/`}
+      url={frontMatter.permalink}
       title={frontMatter.title}
       description={frontMatter.description}
       datePublished={frontMatter.date}
@@ -60,7 +60,7 @@ const Note = ({ source, frontMatter, slug }) => (
 
     <Layout>
       <Container>
-        <Meta {...frontMatter} slug={slug} />
+        <Meta {...frontMatter} />
         <Content>
           <div className="markdown">
             <MDXRemote {...source} components={mdxComponents} />
@@ -73,9 +73,8 @@ const Note = ({ source, frontMatter, slug }) => (
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const filePath = path.join(process.cwd(), config.NOTES_DIR, `${params.slug}.mdx`);
-  const source = fs.readFileSync(filePath);
-
-  const { content, data } = matter(source);
+  const rawSource = fs.readFileSync(filePath);
+  const { data, content } = matter(rawSource);
 
   const mdxSource = await serialize(content, {
     scope: data,
@@ -97,10 +96,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       frontMatter: {
         ...data,
+        slug: params.slug,
+        permalink: `${config.baseUrl}/notes/${params.slug}/`,
         date: parseISO(data.date).toISOString(), // validate/normalize the date string provided from front matter
       },
       source: mdxSource,
-      slug: params.slug,
     },
   };
 };

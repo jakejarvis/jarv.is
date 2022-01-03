@@ -1,5 +1,4 @@
 import * as Sentry from "@sentry/node";
-import * as config from "../../lib/config";
 import { getAllNotes } from "../../lib/parse-notes";
 import pRetry from "p-retry";
 import faunadb from "faunadb";
@@ -101,7 +100,7 @@ const getSiteStats = async (client) => {
     const match: any = notes.find((note) => `notes/${note.slug}` === page.slug);
     if (match) {
       page.title = match.title;
-      page.url = `${config.baseUrl}/${page.slug}/`;
+      page.url = match.permalink;
       page.date = match.date;
     }
 

@@ -25,9 +25,9 @@ export const buildFeed = () => {
   const notes = getAllNotes();
   notes.forEach((note: any) => {
     feed.addItem({
+      guid: note.permalink,
+      link: note.permalink,
       title: note.title,
-      link: `${config.baseUrl}/notes/${note.slug}/`,
-      guid: `${config.baseUrl}/notes/${note.slug}/`,
       description: note.description,
       image: note.image ? `${config.baseUrl}${note.image}` : "",
       author: [
