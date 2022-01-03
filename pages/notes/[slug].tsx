@@ -8,8 +8,8 @@ import Layout from "../../components/Layout";
 import Container from "../../components/Container";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
-import { notePaths, NOTES_PATH } from "../../lib/parse-notes";
 import mdxComponents from "../../components/mdxComponents";
+import { getNoteFiles } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
@@ -59,7 +59,9 @@ const Note = ({ source, frontMatter, slug }) => (
       <Container>
         <Meta {...frontMatter} slug={slug} />
         <Content>
-          <MDXRemote {...source} components={mdxComponents} />
+          <div className="markdown">
+            <MDXRemote {...source} components={mdxComponents} />
+          </div>
         </Content>
       </Container>
     </Layout>
@@ -67,7 +69,7 @@ const Note = ({ source, frontMatter, slug }) => (
 );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const filePath = path.join(NOTES_PATH, `${params.slug}.mdx`);
+  const filePath = path.join(process.cwd(), config.NOTES_DIR, `${params.slug}.mdx`);
   const source = fs.readFileSync(filePath);
 
   const { content, data } = matter(source);
@@ -98,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = notePaths
+  const paths = getNoteFiles()
     // Remove file extensions for page paths
     .map((notePath) => notePath.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js

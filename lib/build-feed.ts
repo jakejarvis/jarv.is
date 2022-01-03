@@ -1,37 +1,40 @@
 import { Feed } from "feed";
+import { getAllNotes } from "./parse-notes";
 import * as config from "./config";
 
-export const buildFeed = (notes: any[]) => {
+export const buildFeed = () => {
+  const baseURL = config.baseURL || "http://localhost:3000"; // necessary for local testing
   const feed = new Feed({
-    id: `${config.baseURL}/`,
-    link: `${config.baseURL}/`,
+    id: `${baseURL}/`,
+    link: `${baseURL}/`,
     title: config.siteName,
     description: config.longDescription,
     copyright: "https://creativecommons.org/licenses/by/4.0/",
     updated: new Date(),
-    image: `${config.baseURL}/static/images/me.jpg`,
+    image: `${baseURL}/static/images/me.jpg`,
     feedLinks: {
-      rss: `${config.baseURL}/feed.xml`,
-      atom: `${config.baseURL}/feed.atom`,
+      rss: `${baseURL}/feed.xml`,
+      atom: `${baseURL}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: config.baseURL,
+      link: baseURL,
       email: "jake@jarv.is",
     },
   });
 
-  notes.forEach((note: { title: any; slug: any; description: any; image: any; date: string | number | Date }) => {
+  const notes = getAllNotes();
+  notes.forEach((note: any) => {
     feed.addItem({
       title: note.title,
-      link: `${config.baseURL}/notes/${note.slug}/`,
-      guid: `${config.baseURL}/notes/${note.slug}/`,
+      link: `${baseURL}/notes/${note.slug}/`,
+      guid: `${baseURL}/notes/${note.slug}/`,
       description: note.description,
-      image: note.image ? `${config.baseURL}${note.image}` : "",
+      image: note.image ? `${baseURL}${note.image}` : "",
       author: [
         {
           name: config.authorName,
-          link: config.baseURL,
+          link: baseURL,
         },
       ],
       date: new Date(note.date),

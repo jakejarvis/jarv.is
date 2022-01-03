@@ -14,7 +14,7 @@
     "url": "https://github.com/jakejarvis/jarv.is.git"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -85,7 +85,7 @@
     "eslint-config-next": "~12.0.7",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-prettier": "~4.0.0",
-    "lint-staged": "^12.1.4",
+    "lint-staged": "^12.1.5",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.5",
     "postcss-focus": "^5.0.1",
