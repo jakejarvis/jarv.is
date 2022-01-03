@@ -20,12 +20,18 @@ const Footer = () => (
       </div>
       <div className={styles.powered_by}>
         Made with{" "}
-        <span className={styles.beat}>
-          <HeartIcon alt="Love" />
+        <span className={styles.beat} title="Love">
+          <HeartIcon />
         </span>{" "}
         and{" "}
-        <a href="https://nextjs.org/" title="Powered by Next.js" target="_blank" rel="noopener noreferrer">
-          <NextjsIcon alt="Next.js" fill="currentColor" />
+        <a
+          href="https://nextjs.org/"
+          title="Powered by Next.js"
+          aria-label="Next.js"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <NextjsIcon fill="currentColor" />
         </a>
         .{" "}
         <a

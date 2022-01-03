@@ -50,6 +50,7 @@ module.exports = (phase) => {
               icon: true,
               typescript: true,
               svgProps: {
+                "aria-hidden": true,
                 className: "icon",
               },
             },
