@@ -49,16 +49,16 @@ const App = ({ Component, pageProps }: AppProps) => {
         defaultTitle={`${config.siteName} – ${config.shortDescription}`}
         titleTemplate={`%s – ${config.siteName}`}
         description={config.longDescription}
-        canonical={`${config.baseURL}/`}
+        canonical={`${config.baseUrl}/`}
         openGraph={{
           site_name: config.siteName,
           title: `${config.siteName} – ${config.shortDescription}`,
-          url: `${config.baseURL}/`,
+          url: `${config.baseUrl}/`,
           locale: "en_US",
           type: "website",
           images: [
             {
-              url: `${config.baseURL}${meJpg.src}`,
+              url: `${config.baseUrl}${meJpg.src}`,
               alt: `${config.siteName} – ${config.shortDescription}`,
             },
           ],
@@ -170,9 +170,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SocialProfileJsonLd
         type="Person"
         name="Jake Jarvis"
-        url={`${config.baseURL}/`}
+        url={`${config.baseUrl}/`}
         sameAs={[
-          `${config.baseURL}/`,
+          `${config.baseUrl}/`,
           "https://github.com/jakejarvis",
           "https://keybase.io/jakejarvis",
           "https://twitter.com/jakejarvis",

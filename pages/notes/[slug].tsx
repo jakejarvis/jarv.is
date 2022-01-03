@@ -32,7 +32,7 @@ const Note = ({ source, frontMatter, slug }) => (
         },
         images: [
           {
-            url: `${config.baseURL}${frontMatter.image}`,
+            url: `${config.baseUrl}${frontMatter.image}`,
             alt: frontMatter.title,
           },
         ],
@@ -44,15 +44,15 @@ const Note = ({ source, frontMatter, slug }) => (
       }}
     />
     <ArticleJsonLd
-      url={`${config.baseURL}/notes/${slug}`}
+      url={`${config.baseUrl}/notes/${slug}`}
       title={frontMatter.title}
       description={frontMatter.description}
       datePublished={frontMatter.date}
       dateModified={frontMatter.date}
-      images={[`${config.baseURL}${frontMatter.image}`]}
+      images={[`${config.baseUrl}${frontMatter.image}`]}
       authorName={[config.authorName]}
       publisherName={config.siteName}
-      publisherLogo={`${config.baseURL}/static/images/me.jpg`}
+      publisherLogo={`${config.baseUrl}/static/images/me.jpg`}
     />
 
     <Layout>

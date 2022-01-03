@@ -12,8 +12,6 @@ Sentry.init({
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
 });
 
-const BASE_URL = config.baseURL === "" ? `https://${config.siteDomain}/` : `${config.baseURL}/`;
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // permissive access control headers
@@ -94,7 +92,7 @@ const getSiteStats = async (client) => {
   // get database and RSS results asynchronously
   const parser = new Parser();
   const [feed, result] = await Promise.all([
-    parser.parseURL(`${BASE_URL}feed.xml`),
+    parser.parseURL(`${config.baseUrl}/feed.xml`),
     client.query(
       q.Map(
         q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
@@ -111,7 +109,7 @@ const getSiteStats = async (client) => {
 
   pages.map((p) => {
     // match URLs from RSS feed with db to populate some metadata
-    const match = feed.items.find((x) => x.link === `${BASE_URL}${p.slug}/`);
+    const match = feed.items.find((x) => x.link === `${config.baseUrl}/${p.slug}/`);
     if (match) {
       p.title = decode(match.title);
       p.url = match.link;

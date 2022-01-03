@@ -1,8 +1,7 @@
+const config = require("./lib/config");
+
 module.exports = {
-  siteUrl:
-    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-      ? "https://jarv.is"
-      : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
+  siteUrl: config.baseUrl || "https://jarv.is",
   generateRobotsTxt: true,
   sitemapSize: 99,
 };

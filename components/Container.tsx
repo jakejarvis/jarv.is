@@ -18,10 +18,10 @@ const Container = ({ title, description, children }: Props) => {
       <NextSeo
         title={title}
         description={description}
-        canonical={`${config.baseURL}${router.asPath}`}
+        canonical={`${config.baseUrl}${router.asPath}`}
         openGraph={{
           title: title,
-          url: `${config.baseURL}${router.asPath}`,
+          url: `${config.baseUrl}${router.asPath}`,
         }}
       />
       <div className={styles.container}>{children}</div>

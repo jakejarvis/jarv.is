@@ -3,22 +3,21 @@ import { getAllNotes } from "./parse-notes";
 import * as config from "./config";
 
 export const buildFeed = () => {
-  const baseURL = config.baseURL || "http://localhost:3000"; // necessary for local testing
   const feed = new Feed({
-    id: `${baseURL}/`,
-    link: `${baseURL}/`,
+    id: `${config.baseUrl}/`,
+    link: `${config.baseUrl}/`,
     title: config.siteName,
     description: config.longDescription,
     copyright: "https://creativecommons.org/licenses/by/4.0/",
     updated: new Date(),
-    image: `${baseURL}/static/images/me.jpg`,
+    image: `${config.baseUrl}/static/images/me.jpg`,
     feedLinks: {
-      rss: `${baseURL}/feed.xml`,
-      atom: `${baseURL}/feed.atom`,
+      rss: `${config.baseUrl}/feed.xml`,
+      atom: `${config.baseUrl}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: baseURL,
+      link: config.baseUrl,
       email: "jake@jarv.is",
     },
   });
@@ -27,14 +26,14 @@ export const buildFeed = () => {
   notes.forEach((note: any) => {
     feed.addItem({
       title: note.title,
-      link: `${baseURL}/notes/${note.slug}/`,
-      guid: `${baseURL}/notes/${note.slug}/`,
+      link: `${config.baseUrl}/notes/${note.slug}/`,
+      guid: `${config.baseUrl}/notes/${note.slug}/`,
       description: note.description,
-      image: note.image ? `${baseURL}${note.image}` : "",
+      image: note.image ? `${config.baseUrl}${note.image}` : "",
       author: [
         {
           name: config.authorName,
-          link: baseURL,
+          link: config.baseUrl,
         },
       ],
       date: new Date(note.date),

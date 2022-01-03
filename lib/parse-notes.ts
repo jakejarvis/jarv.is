@@ -12,9 +12,9 @@ export const getNoteData = (file: string) => {
 
   return {
     ...data,
-    slug: slug,
+    slug,
     date: parseISO(data.date).toISOString(), // validate/normalize the date string provided from front matter
-    year: parseInt(format(parseISO(data.date), "yyyy")),
+    year: parseInt(format(parseISO(data.date), "yyyy")), // parse years here so it's easier to group them on list page
   };
 };
 
