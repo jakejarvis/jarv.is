@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { format, parseISO } from "date-fns";
-import groupBy from "lodash.groupby";
+import { format } from "date-fns";
 
 import styles from "./List.module.scss";
 
@@ -10,18 +9,17 @@ type NoteProps = {
   slug: string;
 };
 
-const List = ({ notes }) => {
-  const notesByYear = groupBy(notes, "year");
+const List = ({ notesByYear }) => {
   const sections = [];
 
-  Object.entries(notesByYear).forEach(([year, yearNotes]: [string, NoteProps[]]) => {
+  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteProps[]]) => {
     sections.push(
       <section key={year} className={styles.section}>
         <h2 className={styles.year}>{year}</h2>
         <ul className={styles.list}>
-          {yearNotes.map((note) => (
+          {notes.map((note) => (
             <li key={note.slug} className={styles.row}>
-              <span className={styles.date}>{format(parseISO(note.date), "MMM d")}</span>
+              <span className={styles.date}>{format(new Date(note.date), "MMM d")}</span>
               <span>
                 <Link href={`/notes/${note.slug}/`} prefetch={false}>
                   <a>{note.title}</a>

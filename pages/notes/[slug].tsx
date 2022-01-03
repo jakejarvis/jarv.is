@@ -1,7 +1,3 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { parseISO } from "date-fns";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo, ArticleJsonLd } from "next-seo";
@@ -10,7 +6,7 @@ import Container from "../../components/Container";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
 import mdxComponents from "../../components/mdxComponents";
-import { getNoteFiles } from "../../lib/parse-notes";
+import { getNoteData, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
@@ -72,12 +68,9 @@ const Note = ({ frontMatter, source }) => (
 );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const filePath = path.join(process.cwd(), config.NOTES_DIR, `${params.slug}.mdx`);
-  const rawSource = fs.readFileSync(filePath);
-  const { data, content } = matter(rawSource);
+  const { frontMatter, content } = getNoteData(params.slug as string);
 
-  const mdxSource = await serialize(content, {
-    scope: data,
+  const source = await serialize(content, {
     mdxOptions: {
       // remarkPlugins: [],
       rehypePlugins: [
@@ -94,23 +87,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      frontMatter: {
-        ...data,
-        slug: params.slug,
-        permalink: `${config.baseUrl}/notes/${params.slug}/`,
-        date: parseISO(data.date).toISOString(), // validate/normalize the date string provided from front matter
-      },
-      source: mdxSource,
+      frontMatter,
+      source,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getNoteFiles()
-    // Remove file extensions for page paths
-    .map((notePath) => notePath.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
+  const paths = getNoteSlugs().map((slug) => ({ params: { slug } }));
 
   return {
     paths,

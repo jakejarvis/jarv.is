@@ -14,7 +14,7 @@ type ColorLinkProps = {
   external?: boolean;
 };
 
-const ColorLink = ({ children, href, lightColor, darkColor, title, external = false }: ColorLinkProps) => {
+const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
   external = external || isAbsoluteUrl(href);
 
   // spits out an alpha color in rgb() that's compatible with linear-gradient()

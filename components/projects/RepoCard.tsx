@@ -1,4 +1,4 @@
-import { intlFormat, formatDistanceToNowStrict, parseISO } from "date-fns";
+import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import { StarOcticon, ForkOcticon } from "../icons/octicons";
 
 import styles from "./RepoCard.module.scss";
@@ -69,7 +69,7 @@ const RepoCard = ({ name, url, description, language, stars, forks, updatedAt }:
       <div
         className={styles.meta_item}
         title={intlFormat(
-          parseISO(updatedAt),
+          new Date(updatedAt),
           {
             year: "numeric",
             month: "short",
@@ -83,7 +83,7 @@ const RepoCard = ({ name, url, description, language, stars, forks, updatedAt }:
           }
         )}
       >
-        <span>Updated {formatDistanceToNowStrict(parseISO(updatedAt), { addSuffix: true })}</span>
+        <span>Updated {formatDistanceToNowStrict(new Date(updatedAt), { addSuffix: true })}</span>
       </div>
     </div>
   </div>

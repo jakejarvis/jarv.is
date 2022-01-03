@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import Hits from "../hits/Hits";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
@@ -20,8 +20,8 @@ const Meta = ({ title, date, slug, tags = [] }: Props) => (
         <span>
           <DateIcon className={`icon ${styles.icon}`} />
         </span>
-        <span title={format(parseISO(date), "PPppp")}>
-          <Link href={`/notes/${slug}/`}>{format(parseISO(date), "MMMM d, yyyy")}</Link>
+        <span title={format(new Date(date), "PPppp")}>
+          <Link href={`/notes/${slug}/`}>{format(new Date(date), "MMMM d, yyyy")}</Link>
         </span>
       </div>
       {tags.length > 0 && (
