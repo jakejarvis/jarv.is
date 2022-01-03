@@ -9,10 +9,6 @@ Sentry.init({
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // permissive access control headers
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
     if (req.method !== "GET") {
       return res.status(405).send(""); // 405 Method Not Allowed
     }
@@ -25,8 +21,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const result = await fetchRepos(req.query.sort === "top" ? "STARGAZERS" : "PUSHED_AT", limit);
 
-    // let Vercel edge and browser cache results for 15 mins
-    res.setHeader("Cache-Control", "public, max-age=900, s-maxage=900, stale-while-revalidate");
+    // let Vercel edge cache results for 15 mins
+    res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate");
 
     return res.status(200).json(result);
   } catch (error) {

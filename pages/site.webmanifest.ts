@@ -21,8 +21,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { res } = context;
 
   // https://developer.mozilla.org/en-US/docs/Web/Manifest#deploying_a_manifest
-  res.setHeader("content-type", "application/manifest+json");
-  // cache for one day
+  res.setHeader("content-type", "application/manifest+json; charset=utf-8");
+  // cache on edge for one day
   res.setHeader("cache-control", "s-maxage=86400, stale-while-revalidate");
   res.write(JSON.stringify(manifest));
   res.end();

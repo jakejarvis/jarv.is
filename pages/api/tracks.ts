@@ -26,10 +26,6 @@ const TOP_TRACKS_ENDPOINT = "https://api.spotify.com/v1/me/top/tracks?time_range
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // permissive access control headers
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
     if (req.method !== "GET") {
       return res.status(405).send(""); // 405 Method Not Allowed
     }
@@ -41,13 +37,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (typeof req.query.now !== "undefined") {
       response = await getNowPlaying();
 
-      // let Vercel edge and browser cache results for 5 mins
-      res.setHeader("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate");
+      // let Vercel edge cache results for 5 mins
+      res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate");
     } else {
       response = await getTopTracks();
 
-      // let Vercel edge and browser cache results for 3 hours
-      res.setHeader("Cache-Control", "public, max-age=10800, s-maxage=10800, stale-while-revalidate");
+      // let Vercel edge cache results for 3 hours
+      res.setHeader("Cache-Control", "s-maxage=10800, stale-while-revalidate");
     }
 
     return res.status(200).json(response);

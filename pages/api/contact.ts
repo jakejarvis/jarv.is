@@ -19,12 +19,8 @@ const AIRTABLE_API_ENDPOINT = "https://api.airtable.com/v0/";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // permissive access control headers
-    res.setHeader("Access-Control-Allow-Methods", "POST");
-    res.setHeader("Access-Control-Allow-Origin", "*");
     // disable caching on both ends
     res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-    res.setHeader("Expires", 0);
     res.setHeader("Pragma", "no-cache");
 
     if (req.method !== "POST") {

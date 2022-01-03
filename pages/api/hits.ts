@@ -14,10 +14,6 @@ Sentry.init({
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // permissive access control headers
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
     if (req.method !== "GET") {
       return res.status(405).send(""); // 405 Method Not Allowed
     }
@@ -33,8 +29,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       // return overall site stats if slug not specified
       result = await getSiteStats(client);
 
-      // let Vercel edge and browser cache results for 15 mins
-      res.setHeader("Cache-Control", "public, max-age=900, s-maxage=900, stale-while-revalidate");
+      // let Vercel edge cache results for 15 mins
+      res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate");
     } else {
       // increment this page's hits. retry 3 times in case of Fauna "contended transaction" error:
       // https://sentry.io/share/issue/9c60a58211954ed7a8dfbe289bd107b5/
@@ -47,7 +43,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       // disable caching on both ends
       res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-      res.setHeader("Expires", 0);
       res.setHeader("Pragma", "no-cache");
     }
 
