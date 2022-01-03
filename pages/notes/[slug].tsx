@@ -38,8 +38,8 @@ const Note = ({ source, frontMatter, slug }) => (
         ],
       }}
       twitter={{
-        handle: `@${config.twitterHandle}`,
-        site: `@${config.twitterHandle}`,
+        handle: `@${config.authorSocial.twitter}`,
+        site: `@${config.authorSocial.twitter}`,
         cardType: "summary_large_image",
       }}
     />

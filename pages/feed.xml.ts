@@ -1,7 +1,7 @@
 import { buildFeed } from "../lib/build-feed";
 import type { GetServerSideProps } from "next";
 
-const RssPage = () => null;
+const RssFeed = () => null;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const feed = buildFeed();
@@ -16,4 +16,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default RssPage;
+export default RssFeed;

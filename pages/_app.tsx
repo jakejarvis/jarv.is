@@ -54,7 +54,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           site_name: config.siteName,
           title: `${config.siteName} – ${config.shortDescription}`,
           url: `${config.baseUrl}/`,
-          locale: "en_US",
+          locale: config.siteLocale,
           type: "website",
           images: [
             {
@@ -64,8 +64,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           ],
         }}
         twitter={{
-          handle: `@${config.twitterHandle}`,
-          site: `@${config.twitterHandle}`,
+          handle: `@${config.authorSocial.twitter}`,
+          site: `@${config.authorSocial.twitter}`,
           cardType: "summary",
         }}
         facebook={{
@@ -169,18 +169,18 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd
         type="Person"
-        name="Jake Jarvis"
+        name={config.authorName}
         url={`${config.baseUrl}/`}
         sameAs={[
           `${config.baseUrl}/`,
-          "https://github.com/jakejarvis",
-          "https://keybase.io/jakejarvis",
-          "https://twitter.com/jakejarvis",
-          "https://medium.com/@jakejarvis",
-          "https://www.linkedin.com/in/jakejarvis/",
-          "https://www.facebook.com/jakejarvis",
-          "https://www.instagram.com/jakejarvis/",
-          "https://mastodon.social/@jakejarvis",
+          `https://github.com/${config.authorSocial.github}`,
+          `https://keybase.io/${config.authorSocial.keybase}`,
+          `https://twitter.com/${config.authorSocial.twitter}`,
+          `https://medium.com/@${config.authorSocial.medium}`,
+          `https://www.linkedin.com/in/${config.authorSocial.linkedin}/`,
+          `https://www.facebook.com/${config.authorSocial.facebook}`,
+          `https://www.instagram.com/${config.authorSocial.instagram}/`,
+          `https://${config.authorSocial.mastodon}`,
         ]}
       />
 

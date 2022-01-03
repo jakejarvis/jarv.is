@@ -17,8 +17,8 @@ export const buildFeed = () => {
     },
     author: {
       name: config.authorName,
-      link: config.baseUrl,
-      email: "jake@jarv.is",
+      link: `${config.baseUrl}/`,
+      email: config.authorEmail,
     },
   });
 
