@@ -1,7 +1,6 @@
 import * as Sentry from "@sentry/node";
 import * as config from "../../lib/config";
-import Parser from "rss-parser";
-import { decode } from "html-entities";
+import { getAllNotes } from "../../lib/parse-notes";
 import pRetry from "p-retry";
 import faunadb from "faunadb";
 const q = faunadb.query;
@@ -84,37 +83,32 @@ const incrementPageHits = async (slug, client) => {
 };
 
 const getSiteStats = async (client) => {
-  // get database and RSS results asynchronously
-  const parser = new Parser();
-  const [feed, result] = await Promise.all([
-    parser.parseURL(`${config.baseUrl}/feed.xml`),
-    client.query(
-      q.Map(
-        q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
-        q.Lambda((x) => q.Select("data", q.Get(x)))
-      )
-    ),
-  ]);
+  const notes = getAllNotes();
+  const { data: pages } = await client.query(
+    q.Map(
+      q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
+      q.Lambda((x) => q.Select("data", q.Get(x)))
+    )
+  );
 
-  const pages = result.data;
   const stats = {
     total: { hits: 0 },
     pages,
   };
 
-  pages.map((p) => {
+  pages.map((page: any) => {
     // match URLs from RSS feed with db to populate some metadata
-    const match = feed.items.find((x) => x.link === `${config.baseUrl}/${p.slug}/`);
+    const match: any = notes.find((note) => `notes/${note.slug}` === page.slug);
     if (match) {
-      p.title = decode(match.title);
-      p.url = match.link;
-      p.date = new Date(match.pubDate);
+      page.title = match.title;
+      page.url = `${config.baseUrl}/${page.slug}/`;
+      page.date = match.date;
     }
 
     // add these hits to running tally
-    stats.total.hits += p.hits;
+    stats.total.hits += page.hits;
 
-    return p;
+    return page;
   });
 
   // sort by hits (descending)
