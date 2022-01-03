@@ -1,6 +1,4 @@
-import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import * as config from "../lib/config";
 
 import styles from "./Container.module.scss";
 
@@ -11,17 +9,13 @@ type Props = {
 };
 
 const Container = ({ title, description, children }: Props) => {
-  const router = useRouter();
-
   return (
     <>
       <NextSeo
         title={title}
         description={description}
-        canonical={`${config.baseUrl}${router.asPath}`}
         openGraph={{
           title: title,
-          url: `${config.baseUrl}${router.asPath}`,
         }}
       />
       <div className={styles.container}>{children}</div>

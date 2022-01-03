@@ -21,6 +21,10 @@ import "../styles/index.scss";
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
+  // get this page's URL with full domain, and hack around query parameters and anchors
+  // NOTE: this assumes trailing slashes are enabled in next.config.js
+  const canonical = `${config.baseUrl}${router.pathname === "/" ? "" : router.pathname}/`;
+
   useEffect(() => {
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
@@ -49,11 +53,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         defaultTitle={`${config.siteName} – ${config.shortDescription}`}
         titleTemplate={`%s – ${config.siteName}`}
         description={config.longDescription}
-        canonical={`${config.baseUrl}/`}
+        canonical={canonical}
         openGraph={{
           site_name: config.siteName,
           title: `${config.siteName} – ${config.shortDescription}`,
-          url: `${config.baseUrl}/`,
+          url: canonical,
           locale: config.siteLocale,
           type: "website",
           images: [

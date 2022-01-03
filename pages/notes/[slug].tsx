@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { parseISO } from "date-fns";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo, ArticleJsonLd } from "next-seo";
@@ -24,13 +25,15 @@ const Note = ({ source, frontMatter, slug }) => (
     <NextSeo
       title={frontMatter.title}
       description={frontMatter.description}
+      canonical={`${config.baseUrl}/notes/${slug}/`}
       openGraph={{
         title: frontMatter.title,
+        url: `${config.baseUrl}/notes/${slug}/`,
         type: "article",
         article: {
           publishedTime: frontMatter.date,
         },
-        images: [
+        images: frontMatter.image && [
           {
             url: `${config.baseUrl}${frontMatter.image}`,
             alt: frontMatter.title,
@@ -44,12 +47,12 @@ const Note = ({ source, frontMatter, slug }) => (
       }}
     />
     <ArticleJsonLd
-      url={`${config.baseUrl}/notes/${slug}`}
+      url={`${config.baseUrl}/notes/${slug}/`}
       title={frontMatter.title}
       description={frontMatter.description}
       datePublished={frontMatter.date}
       dateModified={frontMatter.date}
-      images={[`${config.baseUrl}${frontMatter.image}`]}
+      images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
       authorName={[config.authorName]}
       publisherName={config.siteName}
       publisherLogo={`${config.baseUrl}/static/images/me.jpg`}
@@ -92,7 +95,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      frontMatter: data,
+      frontMatter: {
+        ...data,
+        date: parseISO(data.date).toISOString(), // validate/normalize the date string provided from front matter
+      },
       source: mdxSource,
       slug: params.slug,
     },
