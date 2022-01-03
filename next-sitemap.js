@@ -2,6 +2,6 @@ const config = require("./lib/config");
 
 module.exports = {
   siteUrl: config.baseUrl || "",
-  generateRobotsTxt: true,
-  sitemapSize: 99,
+  changefreq: "weekly",
+  exclude: ["/feed.xml", "/feed.atom", "/site.webmanifest"],
 };

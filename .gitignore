@@ -3,7 +3,6 @@
 /out/
 
 # generated at build-time by next-sitemap
-public/robots.txt
 public/sitemap.xml
 
 # node/npm/yarn
