@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Markdown from "markdown-to-jsx";
 import { format } from "date-fns";
 
 import styles from "./List.module.scss";
@@ -22,7 +23,9 @@ const List = ({ notesByYear }) => {
               <span className={styles.date}>{format(new Date(note.date), "MMM d")}</span>
               <span>
                 <Link href={`/notes/${note.slug}/`} prefetch={false}>
-                  <a>{note.title}</a>
+                  <a>
+                    <Markdown options={{ disableParsingRawHTML: true, forceInline: true }}>{note.title}</Markdown>
+                  </a>
                 </Link>
               </span>
             </li>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { format } from "date-fns";
+import Markdown from "markdown-to-jsx";
 import Hits from "../hits/Hits";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
@@ -61,7 +62,9 @@ const Meta = ({ title, date, slug, tags = [] }: Props) => (
 
     <h1 className={styles.title}>
       <Link href={`/notes/${slug}/`}>
-        <a>{title}</a>
+        <a>
+          <Markdown options={{ disableParsingRawHTML: true, forceInline: true }}>{title}</Markdown>
+        </a>
       </Link>
     </h1>
   </>

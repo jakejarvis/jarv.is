@@ -42,6 +42,7 @@
     "hex-rgb": "^5.0.0",
     "highlight.js": "^11.3.1",
     "is-absolute-url": "^4.0.1",
+    "markdown-to-jsx": "^7.1.5",
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",
     "next": "v12.0.8-canary.16",
     "next-mdx-remote": "^3.0.8",
