@@ -1,15 +1,18 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import TweetEmbed from "react-tweet-embed";
-import Gist from "react-gist";
-import Video from "./video/FullPageVideo";
-import CopyButton from "./clipboard/CopyButton";
 import getNodeText from "../lib/get-node-text";
 import { OctocatOcticon } from "./icons/octicons";
 
 import type { LinkProps } from "next/link";
 import type { ImageProps } from "next/image";
+import type { GistProps } from "react-gist";
 import type { ReactPlayerProps } from "react-player";
+
+const TweetEmbed = dynamic(() => import("react-tweet-embed"));
+const Gist = dynamic(() => import("react-gist"));
+const Video = dynamic(() => import("./video/FullPageVideo"));
+const CopyButton = dynamic(() => import("./clipboard/CopyButton"));
 
 // The following components are all passed into <MDXProvider /> as replacement HTML tags or drop-in React components
 // available in .mdx files containing post content, since they're not directly aware of the components in this folder.
@@ -76,11 +79,11 @@ const CustomTweet = (props: { id: string }) => (
   />
 );
 
-const CustomGist = (props: { id: string; file?: string }) => <Gist {...props} />;
+const CustomGist = (props: GistProps) => <Gist {...props} />;
 
 const CustomGitHubLink = (props: { repo: string }) => (
   <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
-    <OctocatOcticon verticalAlign="text-top" fill="currentColor" />
+    <OctocatOcticon fill="currentColor" />
     <style jsx>{`
       a {
         margin: 0 0.3em;
