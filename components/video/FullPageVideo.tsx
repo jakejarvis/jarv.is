@@ -1,7 +1,9 @@
-import ReactPlayer from "react-player/lazy";
+import dynamic from "next/dynamic";
 import type { ReactPlayerProps } from "react-player";
 
 import styles from "./FullPageVideo.module.scss";
+
+const ReactPlayer = dynamic(() => import("react-player"));
 
 const FullPageVideo = (props: ReactPlayerProps) => (
   <div className={styles.wrapper}>
