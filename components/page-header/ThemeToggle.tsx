@@ -2,8 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import * as config from "../../lib/config";
 import { BulbOffIcon, BulbOnIcon } from "../icons";
 
-import styles from "./ThemeToggle.module.scss";
-
 // store preference in local storage
 const storageKey = "dark_mode";
 const getDarkPref = () => localStorage.getItem(storageKey);
@@ -58,10 +56,15 @@ const ThemeToggle = ({ className = "" }) => {
 
   return (
     <button
-      className={styles.toggle}
       onClick={handleToggle}
       title={dark ? "Toggle Light Mode" : "Toggle Dark Mode"}
       aria-label={dark ? "Toggle Light Mode" : "Toggle Dark Mode"}
+      style={{
+        border: 0,
+        padding: 0,
+        background: "none",
+        cursor: "pointer",
+      }}
     >
       {dark ? <BulbOffIcon className={`icon ${className}`} /> : <BulbOnIcon className={`icon ${className}`} />}
     </button>
