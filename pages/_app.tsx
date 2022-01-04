@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
+import { restoreThemeScript } from "../lib/restore-theme";
 import * as config from "../lib/config";
 import type { AppProps } from "next/app";
 
@@ -48,6 +49,10 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      <Script id="restore_theme" strategy="afterInteractive">
+        {restoreThemeScript}
+      </Script>
+
       {/* @ts-ignore */}
       <DefaultSeo
         defaultTitle={`${config.siteName} – ${config.shortDescription}`}
@@ -178,21 +183,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           `https://${config.authorSocial.mastodon}`,
         ]}
       />
-
-      {/*
-        Inline script to restore light/dark theme preference ASAP:
-        `<html data-theme="...">`, `<meta name="color-scheme" ...>`, and color-scheme style
-      */}
-      <Script id="restore_theme" strategy="afterInteractive">{`try {
-  var pref = localStorage.getItem("dark_mode"),
-      dark = pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches),
-      meta = document.createElement("meta");
-  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-  document.documentElement.style.colorScheme = dark ? "dark" : "light";
-  meta.setAttribute("name", "theme-color");
-  meta.content = dark ? "${config.themeColorDark}" : "${config.themeColorLight}";
-  document.head.prepend(meta);
-} catch (e) {}`}</Script>
 
       <Component {...pageProps} />
     </>
