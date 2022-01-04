@@ -29,7 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
-      url: `https://${config.fathomCustomDomain || "cdn.usefathom.com"}/script.js`,
+      url: `${config.fathomCustomDomain || "https://cdn.usefathom.com"}/script.js`,
       includedDomains: [config.siteDomain],
     });
 
@@ -108,11 +108,11 @@ const App = ({ Component, pageProps }: AppProps) => {
           },
           {
             rel: "preconnect",
-            href: `https://${config.fathomCustomDomain}`,
+            href: config.fathomCustomDomain,
           },
           {
             rel: "dns-prefetch",
-            href: `https://${config.fathomCustomDomain}`,
+            href: config.fathomCustomDomain,
           },
           {
             rel: "webmention",
@@ -121,10 +121,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           {
             rel: "pingback",
             href: `https://webmention.io/${config.webmentionId}/xmlrpc`,
-          },
-          {
-            rel: "license",
-            href: "https://creativecommons.org/licenses/by/4.0/",
           },
           {
             rel: "humans",
@@ -160,10 +156,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           {
             name: "msvalidate.01",
             content: "164551986DA47F7F6FC0D21A93FFFCA6",
-          },
-          {
-            name: "yandex-verification",
-            content: "634a039ec46fa286",
           },
           {
             name: "twitter:dnt",
