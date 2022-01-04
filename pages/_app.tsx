@@ -157,11 +157,10 @@ const App = ({ Component, pageProps }: AppProps) => {
             name: "msvalidate.01",
             content: "164551986DA47F7F6FC0D21A93FFFCA6",
           },
-          {
-            name: "twitter:dnt",
-            content: "on",
-          },
         ]}
+        // don't let search engines index branch/deploy previews
+        dangerouslySetAllPagesToNoIndex={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
+        dangerouslySetAllPagesToNoFollow={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
       />
       <SocialProfileJsonLd
         type="Person"
