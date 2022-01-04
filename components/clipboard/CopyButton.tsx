@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
-import trimNewlines from "trim-newlines";
 import { CopyOcticon, CheckOcticon } from "../icons/octicons";
 
 import styles from "./CopyButton.module.scss";
@@ -19,8 +18,8 @@ const CopyButton = ({ content, timeout = 2000 }: Props) => {
     // prevent unintentional double-clicks by unfocusing button
     e.target.blur();
 
-    // trim any surrounding whitespace from target block's content and send it to the clipboard
-    const didCopy = copy(trimNewlines(content));
+    // send plaintext to the clipboard
+    const didCopy = copy(content);
 
     // indicate success
     setCopied(didCopy);

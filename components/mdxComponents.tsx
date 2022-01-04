@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import getNodeText from "../lib/get-node-text";
+import innerText from "react-innertext";
 import { OctocatOcticon } from "./icons/octicons";
 
 import type { LinkProps } from "next/link";
@@ -50,7 +50,7 @@ const CustomCode = (props: any) => {
   if (props.className?.split(" ").includes("hljs")) {
     return (
       <div>
-        <CopyButton content={getNodeText(props.children)} />
+        <CopyButton content={innerText(props.children)} />
         <code {...props}>{props.children}</code>
         <style jsx>{`
           div {
