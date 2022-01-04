@@ -2,9 +2,6 @@
 /.next/
 /out/
 
-# generated at build-time by next-sitemap
-public/sitemap.xml
-
 # node/npm/yarn
 node_modules/
 package-lock.json
