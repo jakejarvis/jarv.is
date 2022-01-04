@@ -1,32 +1,45 @@
-import fs from "fs";
-import { globby } from "globby";
+import { getAllNotes } from "../lib/parse-notes";
 import { baseUrl } from "../lib/config";
 import type { GetServerSideProps } from "next";
 
 const Sitemap = () => null;
 
+type Page = {
+  relUrl: string;
+  priority?: number;
+  changeFreq?: string;
+  lastMod?: string | Date;
+};
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const pages = await globby(["pages/*.tsx", "pages/notes/index.tsx", "!pages/_*.tsx", "notes/*.mdx"]);
+  // TODO: make this not manual (serverless functions can't see /pages at runtime)
+  const pages: Page[] = [
+    { relUrl: "/", priority: 1.0 }, // homepage
+    { relUrl: "/notes/" },
+    { relUrl: "/birthday/" },
+    { relUrl: "/cli/" },
+    { relUrl: "/contact/" },
+    { relUrl: "/hillary/" },
+    { relUrl: "/leo/" },
+    { relUrl: "/license/", priority: 0.1 },
+    { relUrl: "/previously/" },
+    { relUrl: "/privacy/", priority: 0.1 },
+    { relUrl: "/projects/", changeFreq: "daily" },
+    { relUrl: "/uses/" },
+  ];
+  getAllNotes().map((note) => pages.push({ relUrl: `/notes/${note.slug}/`, lastMod: note.date }));
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages
-    .map((page) => {
-      // very, VERY hacky way to remove unnecessary directories and file extensions
-      const relUrl = page.includes("index.tsx")
-        ? page.replace("pages/", "").replace("index.tsx", "")
-        : `${page.replace("pages/", "").replace(".tsx", "").replace(".mdx", "")}/`;
-      const fileMod = fs.statSync(page).mtime.toISOString();
-      const changeFreq = "weekly";
-      const priority = page === "pages/index.tsx" ? "1.0" : "0.7";
-
-      return `
+    .map(
+      (page) => `
   <url>
-    <loc>${baseUrl}/${relUrl}</loc>
-    <changefreq>${changeFreq}</changefreq>
-    <priority>${priority}</priority>
-    <lastmod>${fileMod}</lastmod>
-  </url>`;
-    })
+    <loc>${baseUrl}${page.relUrl}</loc>
+    <priority>${page.priority || 0.7}</priority>
+    <changefreq>${page.changeFreq || "monthly"}</changefreq>
+    <lastmod>${page.lastMod || new Date().toISOString()}</lastmod>
+  </url>`
+    )
     .join("")}
 </urlset>`;
 
