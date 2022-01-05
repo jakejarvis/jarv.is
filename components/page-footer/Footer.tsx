@@ -14,9 +14,9 @@ const Footer = () => (
         </Link>
         ,{" "}
         <Link href="/previously/" prefetch={false}>
-          <a title="Previously on...">2001 –</a>
+          <a title="Previously on...">2001</a>
         </Link>{" "}
-        {new Date().getFullYear()}.
+        – {new Date().getFullYear()}.
       </div>
       <div className={styles.powered_by}>
         Made with{" "}
