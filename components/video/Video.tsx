@@ -3,7 +3,7 @@ import type { ReactPlayerProps } from "react-player";
 
 import styles from "./Video.module.scss";
 
-const ReactPlayer = dynamic(() => import("react-player"));
+const ReactPlayer = dynamic(() => import("react-player/lazy"));
 
 const Video = (props: ReactPlayerProps) => (
   <div className={styles.wrapper}>
