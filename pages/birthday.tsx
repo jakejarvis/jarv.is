@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
-import Video from "../components/video/FullPageVideo";
+import Video from "../components/video/Video";
 import { TapeIcon } from "../components/icons";
 
 import thumbnail from "../public/static/images/birthday/thumb.png";

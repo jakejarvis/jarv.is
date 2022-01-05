@@ -6,29 +6,17 @@ import { OctocatOcticon } from "./icons/octicons";
 
 import type { LinkProps } from "next/link";
 import type { ImageProps } from "next/image";
-import type { GistProps } from "react-gist";
-import type { ReactPlayerProps } from "react-player";
-
-const TweetEmbed = dynamic(() => import("react-tweet-embed"));
-const Gist = dynamic(() => import("react-gist"));
-const Video = dynamic(() => import("./video/FullPageVideo"));
-const CopyButton = dynamic(() => import("./clipboard/CopyButton"));
 
 // The following components are all passed into <MDXProvider /> as replacement HTML tags or drop-in React components
 // available in .mdx files containing post content, since they're not directly aware of the components in this folder.
 
-const CustomLink = ({
-  href,
-  target,
-  rel,
-  className,
-  children,
-}: LinkProps & {
+type CustomLinkProps = LinkProps & {
   target?: string;
   rel?: string;
   className?: string;
   children?: unknown;
-}) => (
+};
+const CustomLink = ({ href, target, rel, className, children }: CustomLinkProps) => (
   <Link href={href} passHref={true}>
     <a className={className} target={target} rel={rel}>
       {children}
@@ -36,18 +24,19 @@ const CustomLink = ({
   </Link>
 );
 
-const CustomImg = (props: ImageProps) => {
-  return (
-    // height and width are part of the props, so they get automatically passed here with {...props}
-    <div className={props.className}>
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <Image {...props} />
-    </div>
-  );
-};
+const CustomImg = (props: ImageProps) => (
+  // the required height and width are part of the props, so they get automatically passed here with {...props}
+  <div className={props.className}>
+    {/* eslint-disable-next-line jsx-a11y/alt-text */}
+    <Image {...props} />
+  </div>
+);
 
 const CustomCode = (props: any) => {
   if (props.className?.split(" ").includes("hljs")) {
+    const CopyButton = dynamic(() => import("./clipboard/CopyButton"));
+
+    // full multi-line code blocks with highlight.js and copy-to-clipboard button
     return (
       <div>
         <CopyButton content={innerText(props.children)} />
@@ -63,23 +52,28 @@ const CustomCode = (props: any) => {
       </div>
     );
   } else {
+    // inline code in paragraphs, headings, etc. (not highlighted)
     return <code {...props}>{props.children}</code>;
   }
 };
 
-const CustomVideo = (props: ReactPlayerProps) => <Video {...props} />;
+const CustomTweet = (props: { id: string }) => {
+  const TweetEmbed = dynamic(() => import("react-tweet-embed"));
 
-const CustomTweet = (props: { id: string }) => (
-  <TweetEmbed
-    id={props.id}
-    options={{
-      dnt: true,
-      align: "center",
-    }}
-  />
-);
+  return (
+    <TweetEmbed
+      id={props.id}
+      options={{
+        dnt: true,
+        align: "center",
+      }}
+    />
+  );
+};
 
-const CustomGist = (props: GistProps) => <Gist {...props} />;
+const CustomGist = dynamic(() => import("react-gist"));
+
+const CustomVideo = dynamic(() => import("./video/Video"));
 
 const CustomGitHubLink = (props: { repo: string }) => (
   <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
@@ -97,6 +91,7 @@ const CustomGitHubLink = (props: { repo: string }) => (
   </a>
 );
 
+// These are the actual tags referenced in mdx files:
 const mdxComponents = {
   a: CustomLink,
   img: CustomImg,

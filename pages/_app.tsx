@@ -30,7 +30,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
+      // optional custom domain: https://usefathom.com/docs/script/custom-domains
       url: `${config.fathomCustomDomain || "https://cdn.usefathom.com"}/script.js`,
+      // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
     });
 
@@ -38,7 +40,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       Fathom.trackPageview();
     };
 
-    // send ping when route changes
+    // needs to be triggered manually on link clicks (the page doesn't actually change)
     router.events.on("routeChangeComplete", onRouteChangeComplete);
 
     return () => {
