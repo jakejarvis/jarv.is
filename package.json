@@ -84,7 +84,7 @@
     "postcss": "^8.4.5",
     "postcss-focus": "^5.0.1",
     "prettier": "^2.5.1",
-    "sass": "^1.45.2",
+    "sass": "^1.46.0",
     "simple-git-hooks": "^2.7.0",
     "stylelint": "~14.2.0",
     "stylelint-config-prettier": "~9.0.3",
