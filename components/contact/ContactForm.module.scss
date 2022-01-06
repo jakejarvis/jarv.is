@@ -16,6 +16,10 @@
       outline: none; // disable browsers' outer border
       border-color: var(--link);
     }
+
+    &.missing {
+      border-color: var(--error);
+    }
   }
 
   textarea {
