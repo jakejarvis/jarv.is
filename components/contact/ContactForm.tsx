@@ -3,8 +3,8 @@ import { useTheme } from "next-themes";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import isEmailLike from "is-email-like";
-import { CheckOcticon, XOcticon } from "../icons/octicons";
 import { SendIcon } from "../icons";
+import { CheckOcticon, XOcticon } from "../icons/octicons";
 
 import type { FormikHelpers } from "formik";
 
