@@ -129,9 +129,7 @@ const ContactForm = () => {
             ](https://jarv.is), and <code>`code`</code>.
           </div>
 
-          <div
-            className={cx({ hcaptcha: true, missing: errors["h-captcha-response"] && touched["h-captcha-response"] })}
-          >
+          <div className={styles.hcaptcha}>
             <HCaptcha
               sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
               size="normal"
