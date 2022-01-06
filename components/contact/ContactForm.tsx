@@ -21,9 +21,13 @@ interface Values {
 const ContactForm = () => {
   const { resolvedTheme } = useTheme();
   // status/feedback:
-  const [status, setStatus] = useState({ success: false, message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState(null);
+  const [feedback, setFeedback] = useState("");
 
   const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+    setSubmitted(true);
+
     // extract data from form fields
     const formData = {
       name: values.name,
@@ -48,7 +52,8 @@ const ContactForm = () => {
         if (data.success === true) {
           // handle successful submission
           // disable submissions, hide the send button, and let user know we were successful
-          setStatus({ success: true, message: "Thanks! You should hear from me soon." });
+          setSuccess(true);
+          setFeedback("Thanks! You should hear from me soon.");
         } else {
           // pass on any error sent by the server
           throw new Error(data.message);
@@ -56,7 +61,12 @@ const ContactForm = () => {
       })
       .catch((error) => {
         // something else went wrong, and it's probably my fault...
-        setStatus({ success: false, message: error.message });
+        setSuccess(false);
+        setFeedback(
+          error.message === "UNKNOWN_EXCEPTION"
+            ? "Internal server error... Try again later or shoot me an old-fashioned email!"
+            : "Please make sure that all fields are properly filled in."
+        );
       })
       .finally(() => setSubmitting(false));
   };
@@ -71,7 +81,7 @@ const ContactForm = () => {
         "h-captcha-response": "",
       }}
       validate={(values) => {
-        const errors: any = {};
+        const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
 
         errors.name = !values.name;
         errors.email = !values.email || !isEmailLike(values.email);
@@ -79,11 +89,12 @@ const ContactForm = () => {
         errors["h-captcha-response"] = !values["h-captcha-response"];
 
         if (!errors.name && !errors.email && !errors.message && !errors["h-captcha-response"]) {
-          return false;
+          setFeedback("");
+          return null;
+        } else {
+          setSuccess(false);
+          setFeedback("Please make sure that all fields are properly filled in.");
         }
-        /* else {
-          setStatus({ success: false, message: "missing somethign!!!" });
-        } */
 
         return errors;
       }}
@@ -126,7 +137,11 @@ const ContactForm = () => {
             ](https://jarv.is), and <code>`code`</code>.
           </div>
 
-          <div className={styles.captcha}>
+          <div
+            className={`${styles.captcha} ${
+              errors["h-captcha-response"] && touched["h-captcha-response"] ? styles.missing : undefined
+            }`}
+          >
             <HCaptcha
               sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
               size="normal"
@@ -137,14 +152,13 @@ const ContactForm = () => {
 
           <div className={styles.action_row}>
             <button
-              className={`${styles.btn_submit} ${
-                errors["h-captcha-response"] && touched["h-captcha-response"] ? styles.missing : undefined
-              }`}
+              className={styles.btn_submit}
               type="submit"
               title="Send Message"
               aria-label="Send Message"
+              onClick={() => setSubmitted(true)}
               disabled={isSubmitting}
-              style={{ display: status.success ? "none" : null }}
+              style={{ display: success ? "none" : null }}
             >
               {isSubmitting ? (
                 <span>Sending...</span>
@@ -156,11 +170,10 @@ const ContactForm = () => {
             </button>
 
             <span
-              className={status.success ? styles.result_success : styles.result_error}
-              style={{ display: !status.message || isSubmitting ? "none" : null }}
+              className={success ? styles.result_success : styles.result_error}
+              style={{ display: !submitted || !feedback || isSubmitting ? "none" : null }}
             >
-              {status.success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />}{" "}
-              {status.message}
+              {success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {feedback}
             </span>
           </div>
         </Form>
