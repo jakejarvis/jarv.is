@@ -16,6 +16,10 @@
       outline: none; // disable browsers' outer border
       border-color: var(--link);
     }
+
+    &.missing {
+      border-color: var(--error);
+    }
   }
 
   textarea {
@@ -43,7 +47,7 @@
   }
 }
 
-.captcha {
+.hcaptcha {
   margin: 1em 0;
 }
 
@@ -71,13 +75,7 @@
   }
 
   .send_icon {
-    height: 1.2em;
-    width: 1.2em;
-    vertical-align: -0.22em;
-    border: 0;
-    display: inline-block;
     margin-right: 0.4em;
-    cursor: inherit;
   }
 }
 
@@ -92,4 +90,8 @@
 
 .result_error {
   color: var(--error);
+}
+
+.hidden {
+  display: none !important;
 }

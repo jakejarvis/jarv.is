@@ -1,40 +1,35 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import classNames from "classnames/bind";
+import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { CheckOcticon, XOcticon } from "../icons/octicons";
+import isEmailLike from "is-email-like";
 import { SendIcon } from "../icons";
+import { CheckOcticon, XOcticon } from "../icons/octicons";
+
+import type { FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.scss";
+const cx = classNames.bind(styles);
+
+type Values = {
+  name: string;
+  email: string;
+  message: string;
+  "h-captcha-response": string;
+};
 
 const ContactForm = () => {
   const { resolvedTheme } = useTheme();
+
   // status/feedback:
-  const [status, setStatus] = useState({ success: false, message: "" });
-  // keep track of fetch:
-  const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState(null);
+  const [feedback, setFeedback] = useState("");
 
-  const onSubmit = (e) => {
-    // immediately prevent browser from actually navigating to a new page
-    e.preventDefault();
-
-    // begin the process
-    setSending(true);
-
-    // extract data from form fields
-    const formData = {
-      name: e.target.elements.name?.value,
-      email: e.target.elements.email?.value,
-      message: e.target.elements.message?.value,
-      "h-captcha-response": e.target.elements["h-captcha-response"]?.value,
-    };
-
-    // some client-side validation to save requests (these are also checked on the server to be safe)
-    if (!(formData.name && formData.email && formData.message && formData["h-captcha-response"])) {
-      setSending(false);
-      setStatus({ success: false, message: "Please make sure that all fields are filled in." });
-
-      return;
-    }
+  const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+    // once a user attempts a submission, this is true and stays true whether or not the next attempt(s) are successful
+    setSubmitted(true);
 
     // if we've gotten here then all data is (or should be) valid and ready to post to API
     fetch("/api/contact/", {
@@ -43,101 +38,146 @@ const ContactForm = () => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(values),
     })
       .then((response) => response.json())
       .then((data) => {
-        setSending(false);
-
         if (data.success === true) {
           // handle successful submission
           // disable submissions, hide the send button, and let user know we were successful
-          setStatus({ success: true, message: "Thanks! You should hear from me soon." });
+          setSuccess(true);
+          setFeedback("Thanks! You should hear from me soon.");
         } else {
-          // pass on any error sent by the server
+          // pass on any error sent by the server to the catch block below
           throw new Error(data.message);
         }
       })
       .catch((error) => {
-        const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
+        setSuccess(false);
 
-        setSending(false);
-
-        // give user feedback based on the error message returned
-        if (message === "USER_INVALID_CAPTCHA") {
-          setStatus({
-            success: false,
-            message: "Did you complete the CAPTCHA? (If you're human, that is...)",
-          });
-        } else if (message === "USER_MISSING_DATA") {
-          setStatus({
-            success: false,
-            message: "Please make sure that all fields are filled in.",
-          });
+        if (error.message === "USER_MISSING_DATA") {
+          // this should be validated client-side but it's also checked server-side just in case someone slipped past
+          setFeedback("Please make sure that all fields are properly filled in.");
+        } else if (error.message === "USER_INVALID_CAPTCHA") {
+          // missing/invalid captcha
+          setFeedback("Did you complete the CAPTCHA? (If you're human, that is...)");
         } else {
           // something else went wrong, and it's probably my fault...
-          setStatus({ success: false, message: "Internal server error. Try again later?" });
+          setFeedback("Internal server error... Try again later or shoot me an old-fashioned email?");
         }
-      });
+      })
+      .finally(() => setSubmitting(false));
   };
 
   return (
-    <form className={styles.form} onSubmit={onSubmit} action="/api/contact/" method="POST">
-      <input type="text" name="name" placeholder="Name" required disabled={status.success} />
-      <input type="email" name="email" placeholder="Email" required disabled={status.success} />
-      <textarea name="message" placeholder="Write something..." required disabled={status.success} />
+    <Formik
+      onSubmit={handleSubmit}
+      initialValues={{
+        name: "",
+        email: "",
+        message: "",
+        "h-captcha-response": "",
+      }}
+      validate={(values: Values) => {
+        const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
 
-      <div className={styles.markdown_tip}>
-        Basic{" "}
-        <a
-          href="https://commonmark.org/help/"
-          title="Markdown reference sheet"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Markdown syntax
-        </a>{" "}
-        is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-        <a href="https://jarv.is" target="_blank" rel="noopener noreferrer">
-          links
-        </a>
-        ](https://jarv.is), and <code>`code`</code>.
-      </div>
+        errors.name = !values.name;
+        errors.email = !values.email || !isEmailLike(values.email); // also loosely validate email with regex (not foolproof)
+        errors.message = !values.message;
+        errors["h-captcha-response"] = !values["h-captcha-response"];
 
-      <div className={styles.captcha}>
-        <HCaptcha
-          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
-          size="normal"
-          theme={resolvedTheme === "dark" ? "dark" : "light"}
-          onVerify={() => true} // this is allegedly optional but a function undefined error is thrown without it
-        />
-      </div>
+        if (!errors.name && !errors.email && !errors.message && !errors["h-captcha-response"]) {
+          setFeedback("");
+          return null;
+        } else {
+          setSuccess(false);
+          setFeedback("Please make sure that all fields are properly filled in.");
+        }
 
-      <div className={styles.action_row}>
-        <button
-          className={styles.btn_submit}
-          title="Send Message"
-          aria-label="Send Message"
-          disabled={sending}
-          style={{ display: status.success ? "none" : null }}
-        >
-          {sending ? (
-            <span>Sending...</span>
-          ) : (
-            <>
-              <SendIcon className={styles.send_icon} /> <span>Send</span>
-            </>
-          )}
-        </button>
+        return errors;
+      }}
+    >
+      {({ setFieldValue, isSubmitting, touched, errors }) => (
+        <Form className={styles.form} name="contact">
+          <Field
+            type="text"
+            name="name"
+            placeholder="Name"
+            className={cx({ missing: errors.name && touched.name })}
+            disabled={success}
+          />
+          <Field
+            type="email"
+            name="email"
+            placeholder="Email"
+            className={cx({ missing: errors.email && touched.email })}
+            disabled={success}
+          />
+          <Field
+            className={cx({ missing: errors.message && touched.message })}
+            component="textarea"
+            name="message"
+            placeholder="Write something..."
+            disabled={success}
+          />
 
-        <span
-          className={status.success ? styles.result_success : styles.result_error}
-          style={{ display: !status.message || sending ? "none" : null }}
-        >
-          {status.success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {status.message}
-        </span>
-      </div>
-    </form>
+          <div className={styles.markdown_tip}>
+            Basic{" "}
+            <a
+              href="https://commonmark.org/help/"
+              title="Markdown reference sheet"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Markdown syntax
+            </a>{" "}
+            is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
+            <a href="https://jarv.is" target="_blank" rel="noopener noreferrer">
+              links
+            </a>
+            ](https://jarv.is), and <code>`code`</code>.
+          </div>
+
+          <div className={styles.hcaptcha}>
+            <HCaptcha
+              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+              size="normal"
+              theme={resolvedTheme === "dark" ? "dark" : "light"}
+              onVerify={(token) => setFieldValue("h-captcha-response", token)}
+            />
+          </div>
+
+          <div className={styles.action_row}>
+            <button
+              className={cx({ btn_submit: true, hidden: success })}
+              type="submit"
+              title="Send Message"
+              aria-label="Send Message"
+              onClick={() => setSubmitted(true)}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <span>Sending...</span>
+              ) : (
+                <>
+                  <SendIcon className={`icon ${styles.send_icon}`} /> <span>Send</span>
+                </>
+              )}
+            </button>
+
+            <span
+              className={cx({
+                result_success: success,
+                result_error: !success,
+                hidden: !submitted || !feedback || isSubmitting,
+              })}
+            >
+              {success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {feedback}
+            </span>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
