@@ -28,14 +28,6 @@ const ContactForm = () => {
   const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
     setSubmitted(true);
 
-    // extract data from form fields
-    const formData = {
-      name: values.name,
-      email: values.email,
-      message: values.message,
-      "h-captcha-response": values["h-captcha-response"],
-    };
-
     // if we've gotten here then all data is (or should be) valid and ready to post to API
     fetch("/api/contact/", {
       method: "POST",
@@ -43,7 +35,7 @@ const ContactForm = () => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(values),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -53,18 +45,23 @@ const ContactForm = () => {
           setSuccess(true);
           setFeedback("Thanks! You should hear from me soon.");
         } else {
-          // pass on any error sent by the server
+          // pass on any error sent by the server to the catch block below
           throw new Error(data.message);
         }
       })
       .catch((error) => {
-        // something else went wrong, and it's probably my fault...
         setSuccess(false);
-        setFeedback(
-          error.message === "UNKNOWN_EXCEPTION"
-            ? "Internal server error... Try again later or shoot me an old-fashioned email!"
-            : "Please make sure that all fields are properly filled in."
-        );
+
+        if (error.message === "USER_MISSING_DATA") {
+          // this should be validated client-side but it's also checked server-side just in case someone slipped past
+          setFeedback("Please make sure that all fields are properly filled in.");
+        } else if (error.message === "USER_INVALID_CAPTCHA") {
+          // missing/invalid captcha
+          setFeedback("Did you complete the CAPTCHA? (If you're human, that is...)");
+        } else {
+          // something else went wrong, and it's probably my fault...
+          setFeedback("Internal server error... Try again later or shoot me an old-fashioned email?");
+        }
       })
       .finally(() => setSubmitting(false));
   };
@@ -82,7 +79,7 @@ const ContactForm = () => {
         const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
 
         errors.name = !values.name;
-        errors.email = !values.email || !isEmailLike(values.email);
+        errors.email = !values.email || !isEmailLike(values.email); // also loosely validate email with regex (not foolproof)
         errors.message = !values.message;
         errors["h-captcha-response"] = !values["h-captcha-response"];
 
@@ -112,8 +109,8 @@ const ContactForm = () => {
             className={errors.email && touched.email ? styles.missing : undefined}
           />
           <Field
-            name="message"
             component="textarea"
+            name="message"
             placeholder="Write something..."
             className={errors.message && touched.message ? styles.missing : undefined}
           />
