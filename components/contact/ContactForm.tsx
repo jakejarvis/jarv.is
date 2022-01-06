@@ -3,7 +3,6 @@ import { useTheme } from "next-themes";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import isEmailLike from "is-email-like";
-
 import { CheckOcticon, XOcticon } from "../icons/octicons";
 import { SendIcon } from "../icons";
 
@@ -11,15 +10,16 @@ import type { FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.scss";
 
-interface Values {
+type Values = {
   name: string;
   email: string;
   message: string;
   "h-captcha-response": string;
-}
+};
 
 const ContactForm = () => {
   const { resolvedTheme } = useTheme();
+
   // status/feedback:
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -35,8 +35,6 @@ const ContactForm = () => {
       message: values.message,
       "h-captcha-response": values["h-captcha-response"],
     };
-
-    console.log(formData);
 
     // if we've gotten here then all data is (or should be) valid and ready to post to API
     fetch("/api/contact/", {
@@ -80,7 +78,7 @@ const ContactForm = () => {
         message: "",
         "h-captcha-response": "",
       }}
-      validate={(values) => {
+      validate={(values: Values) => {
         const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
 
         errors.name = !values.name;
@@ -138,7 +136,7 @@ const ContactForm = () => {
           </div>
 
           <div
-            className={`${styles.captcha} ${
+            className={`${styles.hcaptcha} ${
               errors["h-captcha-response"] && touched["h-captcha-response"] ? styles.missing : undefined
             }`}
           >
@@ -164,7 +162,7 @@ const ContactForm = () => {
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SendIcon className={styles.send_icon} /> <span>Send</span>
+                  <SendIcon className={`icon ${styles.send_icon}`} /> <span>Send</span>
                 </>
               )}
             </button>
