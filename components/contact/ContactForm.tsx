@@ -28,6 +28,7 @@ const ContactForm = () => {
   const [feedback, setFeedback] = useState("");
 
   const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+    // once a user attempts a submission, this is true and stays true whether or not the next attempt(s) are successful
     setSubmitted(true);
 
     // if we've gotten here then all data is (or should be) valid and ready to post to API
