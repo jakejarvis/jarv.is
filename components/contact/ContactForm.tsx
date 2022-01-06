@@ -98,18 +98,26 @@ const ContactForm = () => {
     >
       {({ setFieldValue, isSubmitting, touched, errors }) => (
         <Form className={styles.form} name="contact">
-          <Field type="text" name="name" placeholder="Name" className={cx({ missing: errors.name && touched.name })} />
+          <Field
+            type="text"
+            name="name"
+            placeholder="Name"
+            className={cx({ missing: errors.name && touched.name })}
+            disabled={success}
+          />
           <Field
             type="email"
             name="email"
             placeholder="Email"
             className={cx({ missing: errors.email && touched.email })}
+            disabled={success}
           />
           <Field
+            className={cx({ missing: errors.message && touched.message })}
             component="textarea"
             name="message"
             placeholder="Write something..."
-            className={cx({ missing: errors.message && touched.message })}
+            disabled={success}
           />
 
           <div className={styles.markdown_tip}>
