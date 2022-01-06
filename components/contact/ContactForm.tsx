@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import isEmailLike from "is-email-like";
@@ -9,6 +10,7 @@ import { CheckOcticon, XOcticon } from "../icons/octicons";
 import type { FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.scss";
+const cx = classNames.bind(styles);
 
 type Values = {
   name: string;
@@ -96,23 +98,18 @@ const ContactForm = () => {
     >
       {({ setFieldValue, isSubmitting, touched, errors }) => (
         <Form className={styles.form} name="contact">
-          <Field
-            type="text"
-            name="name"
-            placeholder="Name"
-            className={errors.name && touched.name ? styles.missing : undefined}
-          />
+          <Field type="text" name="name" placeholder="Name" className={cx({ missing: errors.name && touched.name })} />
           <Field
             type="text"
             name="email"
             placeholder="Email"
-            className={errors.email && touched.email ? styles.missing : undefined}
+            className={cx({ missing: errors.email && touched.email })}
           />
           <Field
             component="textarea"
             name="message"
             placeholder="Write something..."
-            className={errors.message && touched.message ? styles.missing : undefined}
+            className={cx({ missing: errors.message && touched.message })}
           />
 
           <div className={styles.markdown_tip}>
@@ -133,9 +130,7 @@ const ContactForm = () => {
           </div>
 
           <div
-            className={`${styles.hcaptcha} ${
-              errors["h-captcha-response"] && touched["h-captcha-response"] ? styles.missing : undefined
-            }`}
+            className={cx({ hcaptcha: true, missing: errors["h-captcha-response"] && touched["h-captcha-response"] })}
           >
             <HCaptcha
               sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
@@ -147,13 +142,12 @@ const ContactForm = () => {
 
           <div className={styles.action_row}>
             <button
-              className={styles.btn_submit}
+              className={cx({ btn_submit: true, hidden: success })}
               type="submit"
               title="Send Message"
               aria-label="Send Message"
               onClick={() => setSubmitted(true)}
               disabled={isSubmitting}
-              style={{ display: success ? "none" : null }}
             >
               {isSubmitting ? (
                 <span>Sending...</span>
@@ -165,8 +159,11 @@ const ContactForm = () => {
             </button>
 
             <span
-              className={success ? styles.result_success : styles.result_error}
-              style={{ display: !submitted || !feedback || isSubmitting ? "none" : null }}
+              className={cx({
+                result_success: success,
+                result_error: !success,
+                hidden: !submitted || !feedback || isSubmitting,
+              })}
             >
               {success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {feedback}
             </span>
@@ -178,63 +175,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-/*
-
-      <form className={styles.form} onSubmit={handleSubmit} action="/api/contact/" method="POST">
-        <input type="text" name="name" placeholder="Name" required disabled={status.success} />
-        <input type="email" name="email" placeholder="Email" required disabled={status.success} />
-        <textarea name="message" placeholder="Write something..." required disabled={status.success} />
-
-        <div className={styles.markdown_tip}>
-          Basic{" "}
-          <a
-            href="https://commonmark.org/help/"
-            title="Markdown reference sheet"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Markdown syntax
-          </a>{" "}
-          is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-          <a href="https://jarv.is" target="_blank" rel="noopener noreferrer">
-            links
-          </a>
-          ](https://jarv.is), and <code>`code`</code>.
-        </div>
-
-        <div className={styles.captcha}>
-          <HCaptcha
-            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
-            size="normal"
-            theme={resolvedTheme === "dark" ? "dark" : "light"}
-            onVerify={() => true} // this is allegedly optional but a function undefined error is thrown without it
-          />
-        </div>
-
-        <div className={styles.action_row}>
-          <button
-            className={styles.btn_submit}
-            title="Send Message"
-            aria-label="Send Message"
-            disabled={sending}
-            style={{ display: status.success ? "none" : null }}
-          >
-            {sending ? (
-              <span>Sending...</span>
-            ) : (
-              <>
-                <SendIcon className={styles.send_icon} /> <span>Send</span>
-              </>
-            )}
-          </button>
-
-          <span
-            className={status.success ? styles.result_success : styles.result_error}
-            style={{ display: !status.message || sending ? "none" : null }}
-          >
-            {status.success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {status.message}
-          </span>
-        </div>
-      </form>
-      */
