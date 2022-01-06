@@ -70,16 +70,7 @@ module.exports = (phase, { defaultConfig }) => {
           headers: [
             {
               key: "Onion-Location",
-              value: `http://${config.onionDomain}/:path*`,
-            },
-            {
-              // https://developer.chrome.com/blog/floc/#how-can-websites-opt-out-of-the-floc-computation
-              key: "Permissions-Policy",
-              value: "interest-cohort=()",
-            },
-            {
-              key: "Referrer-Policy",
-              value: "no-referrer-when-downgrade",
+              value: `${config.onionDomain}/:path*`,
             },
           ],
         },

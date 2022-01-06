@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Script from "next/script";
+import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
-import { restoreThemeScript } from "../lib/restore-theme";
 import * as config from "../lib/config";
 import type { AppProps } from "next/app";
 
@@ -51,10 +50,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <Script id="restore_theme" strategy="afterInteractive">
-        {restoreThemeScript}
-      </Script>
-
       {/* @ts-ignore */}
       <DefaultSeo
         defaultTitle={`${config.siteName} – ${config.shortDescription}`}
@@ -186,7 +181,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         ]}
       />
 
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 };

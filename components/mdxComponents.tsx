@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 import type { LinkProps } from "next/link";
 import type { ImageProps } from "next/image";
@@ -57,6 +58,7 @@ const CustomCode = (props: any) => {
 
 const CustomTweet = (props: { id: string }) => {
   const TweetEmbed = dynamic(() => import("react-tweet-embed"));
+  const { resolvedTheme } = useTheme();
 
   return (
     <TweetEmbed
@@ -64,6 +66,7 @@ const CustomTweet = (props: { id: string }) => {
       options={{
         dnt: true,
         align: "center",
+        theme: resolvedTheme === "dark" ? "dark" : "light",
       }}
     />
   );

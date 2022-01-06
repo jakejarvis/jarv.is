@@ -12,10 +12,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang={config.siteLocale?.replace("_", "-")}>
-        <Head>
-          {/* set dynamically by script in _app.tsx, but tag must exist first */}
-          <meta name="theme-color" content="" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

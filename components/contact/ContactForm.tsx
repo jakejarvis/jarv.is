@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CheckOcticon, XOcticon } from "../icons/octicons";
 import { SendIcon } from "../icons";
@@ -6,6 +7,7 @@ import { SendIcon } from "../icons";
 import styles from "./ContactForm.module.scss";
 
 const ContactForm = () => {
+  const { resolvedTheme } = useTheme();
   // status/feedback:
   const [status, setStatus] = useState({ success: false, message: "" });
   // keep track of fetch:
@@ -106,6 +108,7 @@ const ContactForm = () => {
         <HCaptcha
           sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
           size="normal"
+          theme={resolvedTheme === "dark" ? "dark" : "light"}
           onVerify={() => true} // this is allegedly optional but a function undefined error is thrown without it
         />
       </div>

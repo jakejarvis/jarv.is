@@ -1,5 +1,5 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../icons";
 
 import styles from "./Menu.module.scss";
@@ -26,9 +26,6 @@ const links = [
     href: "/contact/",
   },
 ];
-
-// ensure the theme toggle isn't evaluated server-side
-const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
 const Menu = () => (
   <ul className={styles.menu}>
