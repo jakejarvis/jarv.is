@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import innerText from "react-innertext";
-import { OctocatOcticon } from "./icons/octicons";
 
 import type { LinkProps } from "next/link";
 import type { ImageProps } from "next/image";
@@ -39,7 +37,7 @@ const CustomCode = (props: any) => {
     // full multi-line code blocks with highlight.js and copy-to-clipboard button
     return (
       <div>
-        <CopyButton content={innerText(props.children)} />
+        <CopyButton source={props.children} />
         <code {...props}>{props.children}</code>
         <style jsx>{`
           div {
@@ -75,21 +73,25 @@ const CustomGist = dynamic(() => import("react-gist"));
 
 const CustomVideo = dynamic(() => import("./video/Video"));
 
-const CustomGitHubLink = (props: { repo: string }) => (
-  <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
-    <OctocatOcticon fill="currentColor" />
-    <style jsx>{`
-      a {
-        margin: 0 0.3em;
-        color: var(--text);
-      }
+const CustomGitHubLink = (props: { repo: string }) => {
+  const OctocatOcticon: any = dynamic(() => import("./icons/octicons").then((mod) => mod.OctocatOcticon));
 
-      a:hover {
-        color: var(--link);
-      }
-    `}</style>
-  </a>
-);
+  return (
+    <a className="no-underline" href={`https://github.com/${props.repo}`} target="_blank" rel="noopener noreferrer">
+      <OctocatOcticon className="icon" fill="currentColor" />
+      <style jsx>{`
+        a {
+          margin: 0 0.3em;
+          color: var(--text);
+        }
+
+        a:hover {
+          color: var(--link);
+        }
+      `}</style>
+    </a>
+  );
+};
 
 // These are the actual tags referenced in mdx files:
 const mdxComponents = {

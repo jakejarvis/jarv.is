@@ -1,7 +1,7 @@
 :root {
   --background-inner: #ffffff;
   --background-outer: #fcfcfc;
-  --background-header: rgb(252 252 252 / 70%);
+  --background-header: rgba(252, 252, 252, 0.7);
   --text: #202020;
   --medium-dark: #515151;
   --medium: #5e5e5e;
@@ -11,7 +11,7 @@
   --super-light: #f4f4f4;
   --super-duper-light: #fbfbfb;
   --link: #0e6dc2;
-  --link-underline: rgb(14 109 194 / 40%);
+  --link-underline: rgba(14, 109, 194, 0.4);
   --success: #44a248;
   --error: #ff1b1b;
 }
@@ -19,7 +19,7 @@
 [data-theme="dark"] {
   --background-inner: #1e1e1e;
   --background-outer: #252525;
-  --background-header: rgb(37 37 37 / 85%);
+  --background-header: rgba(37, 37, 37, 0.85);
   --text: #f1f1f1;
   --medium-dark: #d7d7d7;
   --medium: #b1b1b1;
@@ -29,7 +29,7 @@
   --super-light: #272727;
   --super-duper-light: #1f1f1f;
   --link: #88c7ff;
-  --link-underline: rgb(136 199 255 / 40%);
+  --link-underline: rgba(136, 199, 255, 0.4);
   --success: #78df55;
   --error: #ff5151;
 }

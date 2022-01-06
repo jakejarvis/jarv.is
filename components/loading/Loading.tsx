@@ -24,7 +24,6 @@ const Loading = ({ boxes = 3, timing = 0.1, width }: Props) => {
             background-color: var(--medium-light);
           }
 
-          /* modified from https://tobiasahlin.com/spinkit/ */
           @keyframes loading {
             0%,
             80%,

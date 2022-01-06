@@ -1142,10 +1142,10 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-12.0.8-canary.17.tgz#1620a32a41e3b9e78a4fc07e108ea53a2d3ba228"
-  integrity sha512-tq/p3BW6dU17MYDqGvfk9tDwjRvn+LAQUA0ectmLaraNcSbw1dnZ4xeLmoLmzlswftAV6cpe8mkxYkpkwPhBzg==
+"@next/env@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-12.0.8-canary.18.tgz#9515392e01520380604027da7f1455e699cf57e7"
+  integrity sha512-F6faasEJg8BzKT16WjJLrKLvS341mj+aXvc4+bdF9X9f8Dnzt9KyvUMlO5tG5+c/5jBh7qMmwA0rGc4Q+uAfFQ==
 
 "@next/eslint-plugin-next@12.0.7":
   version "12.0.7"
@@ -1154,65 +1154,65 @@
   dependencies:
     glob "7.1.7"
 
-"@next/react-refresh-utils@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-12.0.8-canary.17.tgz#7fa426fef3a5712482a3fa3d14104829d6ae7fb8"
-  integrity sha512-TyOY9MaDROCW5xeDXdwj8uoqAU2EaMZMw7hqUvD0fQEExhJyTzRX4Y5vdyFbsYNN0eCKmahOTwyBCkjfFyimIQ==
+"@next/react-refresh-utils@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-12.0.8-canary.18.tgz#1035244759b080d61c5f013a3336bde33e8ad48a"
+  integrity sha512-Wuldh8ocxfZ1mpfGb5IVwpuR6Nje2eqLF2D/TEqye8oVU5dJs1XmG78FUT1KCKNItYRF5odxV5RI+/y20/5jrQ==
 
-"@next/swc-android-arm64@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.0.8-canary.17.tgz#6556f20ead84b196abb092f64d86ad6486a44d77"
-  integrity sha512-AY26ryEdCrQs1M42QOa7TVt5Cb9+/ndOjKH2tV2gCaqyhCpB+3Yxe2natHHORemKbQBc4Ad8gs818pYgeXjESw==
+"@next/swc-android-arm64@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.0.8-canary.18.tgz#8a9b9961b5eef505e5930abca2ac6eb9e0cc0fbc"
+  integrity sha512-U3iQvI7nc9KK35XGdfhXZLbqKbfCwQos88MBs9uMp2kaKyeaO4UX57pg3yz8ypssbJ8nQYLCu3+JgMr5gXkOrg==
 
-"@next/swc-darwin-arm64@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.0.8-canary.17.tgz#3fb704263a3aff48abba4e5770c5d9f90171ad0e"
-  integrity sha512-OJYpjzsJNfq8KU2cmBHhfW6J86X6NY4D0ZSHqAVjvm8g7B+INFH1n5opECicffwFFSAHFM5sIahH6pfVzpaZlw==
+"@next/swc-darwin-arm64@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.0.8-canary.18.tgz#86944c189aacd8465a8009a2165d94be86cc0a58"
+  integrity sha512-rNK/dmPAwv5gNyvRNnS6V+HaOfTAYx5Me5oWyyvihcCffcNqLk3mb8mblqfZrTUzAj4C0J6bTVSCtMbGCRHKkg==
 
-"@next/swc-darwin-x64@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.8-canary.17.tgz#190807c0256d425cc4c3b28285d0b57eb5b8b1e7"
-  integrity sha512-2na1qSCTiNMJ8lLvCEXZ1o61X/at/ZgxCUsxYJ7aH19B2qVwWKSjHWM83ySl7hSsjXbLHz3xBr4tPU9aZTO4/Q==
+"@next/swc-darwin-x64@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.8-canary.18.tgz#fab3dafe5064348b8e3eaa62180f9d24b92c883b"
+  integrity sha512-VFIKC/y3pNjA62F4UXlGrnB8M9DDURcwoqKC4z1IJw4Snr1gwdUgBTusOyFyxdC3I0lauoPkt+F/YdKmrjk4Uw==
 
-"@next/swc-linux-arm-gnueabihf@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.0.8-canary.17.tgz#fd0c2f5e7e14c7cc494e417a2a2a85c680035ff2"
-  integrity sha512-anL81+PTLATNlXEJsuq6czADzoQtkaYsmiqCZJUFoh9kpFeAZMwrimh5dpFh2Cy9s6Ur3PQcV4Je+5YIJ4iTnA==
+"@next/swc-linux-arm-gnueabihf@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.0.8-canary.18.tgz#e5b7ae0fe7d54d8517f4a8dbbc28b091b8fd060a"
+  integrity sha512-LKln3dTXfokZ9ppN7U3+xaTq+pIGbnk1e12kdWCyOJ6psGcH9u7Z9PlX1/qtNUKUHNvdLJmpepBKk5AVk2y4GA==
 
-"@next/swc-linux-arm64-gnu@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.0.8-canary.17.tgz#3ecea6b37f6f676a270be90c4d57f3b0c7fb8c1a"
-  integrity sha512-kD67w+GFgafB7WigPRxgdNCJtaDjPdo3Udz6xPJqVUc7Vy3pB3HX5JQW3fWaplaJZbcaaUK+dVj87Wk0Md+Dzw==
+"@next/swc-linux-arm64-gnu@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.0.8-canary.18.tgz#12918c73105e7f03389d0416abec512135f74274"
+  integrity sha512-nFUTHLHJEAUUkXfyRoUzxrDAWxgTZJ8bfK4/D76GChNIpNAeTVeWUpGTv5SMu0A4WNDYRceVpJ+4qBjmFqYnsw==
 
-"@next/swc-linux-arm64-musl@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.0.8-canary.17.tgz#e3787fc01f78fe5e78cf66b16e79f38003977bd4"
-  integrity sha512-qbWY787Sv68VFT8LvR4zs+Dj0gm/RPjF7EgqayzhEFKQLDqj5hMvWA1Lhfs7eDE0gN4XQznRBZJbLRTnl6pEWw==
+"@next/swc-linux-arm64-musl@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.0.8-canary.18.tgz#8efe1757bfcff70c4a318df1771716ee8cde7687"
+  integrity sha512-FpJDB0W22mEmz2FQNY2dk9QWiZsq/HiJDiDkXzoDUpn5Qj8MqVdTGhBXJmFSt8iPMFL34IO4CFhPH4NQ/iOAWQ==
 
-"@next/swc-linux-x64-gnu@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.0.8-canary.17.tgz#1dc9e2395e96de7daad10b2eefce9fdb082211be"
-  integrity sha512-+ugQmC8ePJZJK17CEgADEkl6LmaK7jn6WOGUomYNJjrSZqIJABoxQ5g0NHOgjG5sq6c2rs+zKUMDF/gkeoZm1Q==
+"@next/swc-linux-x64-gnu@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.0.8-canary.18.tgz#47ea8a1f970738de97b22d8474cd0a55a0a82de2"
+  integrity sha512-wuNsr2qUWkv9qXK6MD1gwoBBClDg7xB4xpgq26HEnX+4QcbGSaqfeXmMihrka1W6hyrvfmr8TQStqWWZXY1oCw==
 
-"@next/swc-linux-x64-musl@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.0.8-canary.17.tgz#8198d8781edeb82e20630b15520a8da5dd667c10"
-  integrity sha512-mfeByPkTD1V37E9RIDPBibY4kXretRmDhpmmdXj/dHqE1rMleil4dzmwX4UAV0U20EzT3AIl1sJThsJf1dDfLg==
+"@next/swc-linux-x64-musl@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.0.8-canary.18.tgz#2dc738962b99f22c348d43eb0bdfe93c14ae9078"
+  integrity sha512-tbcw1DLj+QGbD+mOYrCnnFvw/O3m4vlp6C6ZP8zcDJTSSxn6O37paTi7lgjSWRkMakyIl+Vm+u498JjfSk75SQ==
 
-"@next/swc-win32-arm64-msvc@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.0.8-canary.17.tgz#51468485cb4177ec1760043b67a05f3dcc372e15"
-  integrity sha512-ScVr8CypY0rGbKA2X0EPEKIKflzHYiIXh4aNdUQ+byS2s+xHtoQ9FQfYiZnT8WjYVLm0I5KFj2l6b3OVmpjBIg==
+"@next/swc-win32-arm64-msvc@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.0.8-canary.18.tgz#2e1be96c68480b6a48c214dfed2b4ab9e05becfd"
+  integrity sha512-7zNvUhJOLni5qhSIL1sDL/nTTfjH1mZ5CgQVkfPmgAR0cdcC9Bjn9t50l4hbhtcQ3ynHzePMKozUq88DG6nTNA==
 
-"@next/swc-win32-ia32-msvc@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.0.8-canary.17.tgz#a4875fc7c5d776bb84ce62e22ec2359bfa329bd9"
-  integrity sha512-108TRZkxjj0EmpnnjScvHBQ2L4eZcTu+TL1isg0SMdUbQumpqjPGbFUvxUaevCnTJQ1joJH5moqnLKYA/hxooA==
+"@next/swc-win32-ia32-msvc@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.0.8-canary.18.tgz#6edadb5d2530a0b31643faac8ff1975908b3a748"
+  integrity sha512-Xpdd3G1ZFBSZp/CcBSckcdiaHwjvWNY5jmNwIbwyO7f/+KglzV+YAGHg+NU9ff/tOwsPu6vzH+d5KE+Sux9BfQ==
 
-"@next/swc-win32-x64-msvc@12.0.8-canary.17":
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.8-canary.17.tgz#189d0376496e7002f4435394d89e3233d3628ab9"
-  integrity sha512-ltTc+zwQIraNjoFXWJouC+ZhXwIJbcvFTdG455MWaNi3IKQPuwG0nzisXLZwUJm8G286JayZBmuWS7MXlYeGIQ==
+"@next/swc-win32-x64-msvc@12.0.8-canary.18":
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.8-canary.18.tgz#c794a646a53523c6b0a0f2779b9e1b268342ac4b"
+  integrity sha512-c/ZLoPSn/ChViFasnIbvdvmkHvUAn6rrZabtGUuFzYV4YGPEm5QHXRp5jqiIKNa76bWTthzq7yfQmGO3Wn//7Q==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2417,9 +2417,9 @@ duplexer@^0.1.2:
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
 
 electron-to-chromium@^1.4.17:
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.34.tgz#7d87dc0e95c2c65cbd0687ae23146a662506d1ef"
-  integrity sha512-B7g6Y9No9XMYk1VNrQ8KAmSEo1Iltrz/5EjOGxl1DffQAb3z/XbpHRCfYKwV8D+CPXm4Q7Xg1sceSt9osNwRIA==
+  version "1.4.36"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.36.tgz#446c6184dbe5baeb5eae9a875490831e4bc5319a"
+  integrity sha512-MbLlbF39vKrXWlFEFpCgDHwdlz4O3LmHM5W4tiLRHjSmEUXjJjz8sZkMgWgvYxlZw3N1iDTmCEtOkkESb5TMCg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -3085,9 +3085,9 @@ globjoin@^0.1.4:
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
 graceful-fs@^4.1.2:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
-  integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
+  integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
 
 gray-matter@^4.0.3:
   version "4.0.3"
@@ -3248,11 +3248,6 @@ hastscript@^6.0.0:
     hast-util-parse-selector "^2.0.0"
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
-
-hex-rgb@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/hex-rgb/-/hex-rgb-5.0.0.tgz#e2c9eb6a37498d66c5a350a221ed4c2c7d1a92d6"
-  integrity sha512-NQO+lgVUCtHxZ792FodgW0zflK+ozS9X9dwGp9XvvmPlH7pyxd588cn24TD3rmPm/N0AIRXF10Otah8yKqGw4w==
 
 highlight.js@^11.3.1, highlight.js@~11.3.0:
   version "11.3.1"
@@ -3420,9 +3415,9 @@ is-callable@^1.1.4, is-callable@^1.2.4:
   integrity sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==
 
 is-core-module@^2.2.0, is-core-module@^2.5.0, is-core-module@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.0.tgz#0321336c3d0925e497fd97f5d95cb114a5ccd548"
-  integrity sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.1.tgz#f59fdfca701d5879d0a6b100a40aa1560ce27211"
+  integrity sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==
   dependencies:
     has "^1.0.3"
 
@@ -4042,13 +4037,13 @@ next-seo@^4.28.1:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.28.1.tgz#c98ee559c8ab7196c62d0f6903afd7a8cde47a03"
   integrity sha512-WZgwdM+UhpNF3A37zFllzmPhnOVJ9vYeYlc0n3Z/kYfz/QQgy8NEdncNNggS9dU4JD8xriaCcyknhy5OsrFsJw==
 
-next@v12.0.8-canary.17:
-  version "12.0.8-canary.17"
-  resolved "https://registry.yarnpkg.com/next/-/next-12.0.8-canary.17.tgz#2dd6b44a327bdbee6df38cdcf8c814275f8df8f8"
-  integrity sha512-s5fjQLR9a/+GcjOJZ2slVrTRGcto9K1rYdasEwrRah5UuR+2HGGTKIKqtVz7q40MK1qmY2qZ2Fm1fJJ5k4xoRA==
+next@v12.0.8-canary.18:
+  version "12.0.8-canary.18"
+  resolved "https://registry.yarnpkg.com/next/-/next-12.0.8-canary.18.tgz#4ec836f37f079f4cfe4e1ad9940319c047d32be3"
+  integrity sha512-WyBlaeICJWUEz2AUJMFy21wN+BT8++IUhTy9bN6QBBGkJQUPwWbcBivxcnk7y5I04uoXYRwQ+xdpC8/VWSco4A==
   dependencies:
-    "@next/env" "12.0.8-canary.17"
-    "@next/react-refresh-utils" "12.0.8-canary.17"
+    "@next/env" "12.0.8-canary.18"
+    "@next/react-refresh-utils" "12.0.8-canary.18"
     caniuse-lite "^1.0.30001283"
     jest-worker "27.0.0-next.5"
     node-fetch "2.6.1"
@@ -4059,17 +4054,17 @@ next@v12.0.8-canary.17:
     styled-jsx "5.0.0-beta.6"
     use-subscription "1.5.1"
   optionalDependencies:
-    "@next/swc-android-arm64" "12.0.8-canary.17"
-    "@next/swc-darwin-arm64" "12.0.8-canary.17"
-    "@next/swc-darwin-x64" "12.0.8-canary.17"
-    "@next/swc-linux-arm-gnueabihf" "12.0.8-canary.17"
-    "@next/swc-linux-arm64-gnu" "12.0.8-canary.17"
-    "@next/swc-linux-arm64-musl" "12.0.8-canary.17"
-    "@next/swc-linux-x64-gnu" "12.0.8-canary.17"
-    "@next/swc-linux-x64-musl" "12.0.8-canary.17"
-    "@next/swc-win32-arm64-msvc" "12.0.8-canary.17"
-    "@next/swc-win32-ia32-msvc" "12.0.8-canary.17"
-    "@next/swc-win32-x64-msvc" "12.0.8-canary.17"
+    "@next/swc-android-arm64" "12.0.8-canary.18"
+    "@next/swc-darwin-arm64" "12.0.8-canary.18"
+    "@next/swc-darwin-x64" "12.0.8-canary.18"
+    "@next/swc-linux-arm-gnueabihf" "12.0.8-canary.18"
+    "@next/swc-linux-arm64-gnu" "12.0.8-canary.18"
+    "@next/swc-linux-arm64-musl" "12.0.8-canary.18"
+    "@next/swc-linux-x64-gnu" "12.0.8-canary.18"
+    "@next/swc-linux-x64-musl" "12.0.8-canary.18"
+    "@next/swc-win32-arm64-msvc" "12.0.8-canary.18"
+    "@next/swc-win32-ia32-msvc" "12.0.8-canary.18"
+    "@next/swc-win32-x64-msvc" "12.0.8-canary.18"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -4534,10 +4529,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-query-string@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.0.1.tgz#45bd149cf586aaa582dffc7ec7a8ad97dd02f75d"
-  integrity sha512-uIw3iRvHnk9to1blJCG3BTc+Ro56CBowJXKmNNAm3RulvPBzWLRqKSiiDk+IplJhsydwtuNMHi8UGQFcCLVfkA==
+query-string@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.0.tgz#96b88f27b39794f97b8c8ccd060bc900495078ef"
+  integrity sha512-wnJ8covk+S9isYR5JIXPt93kFUmI2fQ4R/8130fuq+qwLiGVTurg7Klodgfw4NSz/oe7xnyi09y3lSrogUeM3g==
   dependencies:
     decode-uri-component "^0.2.0"
     filter-obj "^1.1.0"
@@ -4918,10 +4913,10 @@ safe-buffer@~5.2.0:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
-sass@^1.45.2:
-  version "1.45.2"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.45.2.tgz#130b428c1692201cfa181139835d6fc378a33323"
-  integrity sha512-cKfs+F9AMPAFlbbTXNsbGvg3y58nV0mXA3E94jqaySKcC8Kq3/8983zVKQ0TLMUrHw7hF9Tnd3Bz9z5Xgtrl9g==
+sass@^1.46.0:
+  version "1.46.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.46.0.tgz#923117049525236026a7ede69715580eb0fac751"
+  integrity sha512-Z4BYTgioAOlMmo4LU3Ky2txR8KR0GRPLXxO38kklaYxgo7qMTgy+mpNN4eKsrXDTFlwS5vdruvazG4cihxHRVQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -5474,9 +5469,9 @@ swr@^1.1.2:
   integrity sha512-UsM0eo5T+kRPyWFZtWRx2XR5qzohs/LS4lDC0GCyLpCYFmsfTk28UCVDbOE9+KtoXY4FnwHYiF+ZYEU3hnJ1lQ==
 
 table@^6.7.5:
-  version "6.7.5"
-  resolved "https://registry.yarnpkg.com/table/-/table-6.7.5.tgz#f04478c351ef3d8c7904f0e8be90a1b62417d238"
-  integrity sha512-LFNeryOqiQHqCVKzhkymKwt6ozeRhlm8IL1mE8rNUurkir4heF6PzMyRgaTa4tlyPTGGgXuvVOF/OLWiH09Lqw==
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/table/-/table-6.8.0.tgz#87e28f14fa4321c3377ba286f07b79b281a3b3ca"
+  integrity sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==
   dependencies:
     ajv "^8.0.1"
     lodash.truncate "^4.4.2"

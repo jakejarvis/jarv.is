@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
+import innerText from "react-innertext";
 import { CopyOcticon, CheckOcticon } from "../icons/octicons";
 
 import styles from "./CopyButton.module.scss";
 
+import type { ReactNode } from "react";
+
 type Props = {
-  content: string;
+  source: ReactNode;
   timeout?: number;
 };
 
-const CopyButton = ({ content, timeout = 2000 }: Props) => {
+const CopyButton = ({ source, timeout = 2000 }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (e) => {
@@ -19,7 +22,7 @@ const CopyButton = ({ content, timeout = 2000 }: Props) => {
     e.target.blur();
 
     // send plaintext to the clipboard
-    const didCopy = copy(content);
+    const didCopy = copy(innerText(source));
 
     // indicate success
     setCopied(didCopy);

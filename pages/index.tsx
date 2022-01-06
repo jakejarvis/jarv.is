@@ -1,6 +1,6 @@
 import Link from "next/link";
-import hexRgb from "hex-rgb";
 import isAbsoluteUrl from "is-absolute-url";
+import { colord } from "colord";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import { WaveIcon, LockIcon } from "../components/icons";
@@ -17,8 +17,9 @@ type ColorLinkProps = {
 const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
   external = external || isAbsoluteUrl(href);
 
-  // spits out an alpha color in rgb() that's compatible with linear-gradient()
-  const bgAlpha = (color: string) => hexRgb(color, { alpha: 0.4, format: "css" });
+  // spits out an alpha color in rgba() that's compatible with linear-gradient()
+  const underlineAlpha = 0.4;
+  const hexToRgba = (hex: string) => colord(hex).alpha(underlineAlpha).toRgbString();
 
   return (
     <Link href={href} passHref={true} prefetch={false}>
@@ -27,11 +28,11 @@ const ColorLink = ({ href, title, lightColor, darkColor, external = false, child
         <style jsx>{`
           a {
             color: ${lightColor};
-            background-image: linear-gradient(${bgAlpha(lightColor)}, ${bgAlpha(lightColor)});
+            background-image: linear-gradient(${hexToRgba(lightColor)}, ${hexToRgba(lightColor)});
           }
           :global([data-theme="dark"]) a {
             color: ${darkColor};
-            background-image: linear-gradient(${bgAlpha(darkColor)}, ${bgAlpha(darkColor)});
+            background-image: linear-gradient(${hexToRgba(darkColor)}, ${hexToRgba(darkColor)});
           }
         `}</style>
       </a>
