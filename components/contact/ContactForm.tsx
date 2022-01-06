@@ -100,7 +100,7 @@ const ContactForm = () => {
         <Form className={styles.form} name="contact">
           <Field type="text" name="name" placeholder="Name" className={cx({ missing: errors.name && touched.name })} />
           <Field
-            type="text"
+            type="email"
             name="email"
             placeholder="Email"
             className={cx({ missing: errors.email && touched.email })}
