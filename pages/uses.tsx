@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { LaptopIcon } from "../components/icons";
@@ -8,7 +8,15 @@ import { LaptopIcon } from "../components/icons";
 import desktopImg from "../public/static/images/uses/bigsur.png";
 
 const Uses = () => (
-  <Layout title="/uses" description="Things I use daily.">
+  <>
+    <NextSeo
+      title="/uses"
+      description="Things I use daily."
+      openGraph={{
+        title: "/uses",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -1070,7 +1078,7 @@ const Uses = () => (
         </li>
       </ul>
     </Content>
-  </Layout>
+  </>
 );
 
 export default Uses;

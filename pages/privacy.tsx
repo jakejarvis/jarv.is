@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { PrivacyIcon } from "../components/icons";
@@ -8,7 +8,14 @@ import { PrivacyIcon } from "../components/icons";
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 
 const Privacy = () => (
-  <Layout title="Privacy">
+  <>
+    <NextSeo
+      title="Privacy"
+      openGraph={{
+        title: "Privacy",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -211,7 +218,7 @@ const Privacy = () => (
         , for what it's worth. (A few cents, probably... 💰)
       </p>
     </Content>
-  </Layout>
+  </>
 );
 
 export default Privacy;

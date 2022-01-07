@@ -1,10 +1,17 @@
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { LicenseIcon } from "../components/icons";
 
 const License = () => (
-  <Layout title="License">
+  <>
+    <NextSeo
+      title="License"
+      openGraph={{
+        title: "License",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -459,7 +466,7 @@ const License = () => (
         </p>
       </blockquote>
     </Content>
-  </Layout>
+  </>
 );
 
 export default License;

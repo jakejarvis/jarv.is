@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import Video from "../components/video/Video";
@@ -6,10 +6,15 @@ import Video from "../components/video/Video";
 import thumbnail from "../public/static/images/hillary/thumb.png";
 
 const Hillary = () => (
-  <Layout
-    title="My Brief Apperance in Hillary Clinton's DNC Video"
-    description="My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse."
-  >
+  <>
+    <NextSeo
+      title="My Brief Apperance in Hillary Clinton's DNC Video"
+      description="My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse."
+      openGraph={{
+        title: "My Brief Apperance in Hillary Clinton's DNC Video",
+      }}
+    />
+
     <PageTitle title="My Brief Apperance in Hillary Clinton's DNC Video" />
     <Content>
       <Video
@@ -39,6 +44,7 @@ const Hillary = () => (
         }}
         controls={true}
       />
+
       <p className="copyright">
         Video is property of{" "}
         <a href="https://www.hillaryclinton.com/" target="_blank" rel="noopener noreferrer">
@@ -54,21 +60,22 @@ const Hillary = () => (
         </a>
         . &copy; 2016.
       </p>
-      <style jsx>{`
-        .copyright {
-          text-align: center;
-          font-size: 0.9em;
-          line-height: 1.8;
-          margin: 1.25em 1em 0.5em;
-          color: var(--medium-light);
-        }
-
-        .copyright a {
-          font-weight: 700;
-        }
-      `}</style>
     </Content>
-  </Layout>
+
+    <style jsx>{`
+      .copyright {
+        text-align: center;
+        font-size: 0.9em;
+        line-height: 1.8;
+        margin: 1.25em 1em 0.5em;
+        color: var(--medium-light);
+      }
+
+      .copyright a {
+        font-weight: 700;
+      }
+    `}</style>
+  </>
 );
 
 export default Hillary;

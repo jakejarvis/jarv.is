@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
-import Header from "../components/page-header/Header";
-import Footer from "../components/page-footer/Footer";
+import Layout from "../components/Layout";
 import * as config from "../lib/config";
 import type { AppProps } from "next/app";
 
@@ -184,9 +183,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
 
       <ThemeProvider>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   );

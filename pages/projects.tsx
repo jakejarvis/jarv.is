@@ -1,12 +1,19 @@
 import { graphql } from "@octokit/graphql";
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import PageTitle from "../components/page/PageTitle";
 import RepoCard from "../components/projects/RepoCard";
 import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
 
 const Projects = ({ repos }) => (
-  <Layout title="Projects">
+  <>
+    <NextSeo
+      title="Projects"
+      openGraph={{
+        title: "Projects",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -43,6 +50,7 @@ const Projects = ({ repos }) => (
       <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
         View more on GitHub...
       </a>
+
       <style jsx>{`
         p {
           text-align: center;
@@ -50,7 +58,7 @@ const Projects = ({ repos }) => (
         }
       `}</style>
     </p>
-  </Layout>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

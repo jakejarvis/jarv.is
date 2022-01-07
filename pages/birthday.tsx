@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import Video from "../components/video/Video";
@@ -7,10 +7,15 @@ import { TapeIcon } from "../components/icons";
 import thumbnail from "../public/static/images/birthday/thumb.png";
 
 const Birthday = () => (
-  <Layout
-    title="🎉 Cranky Birthday Boy on VHS Tape 📼"
-    description="The origin of my hatred for the Happy Birthday song."
-  >
+  <>
+    <NextSeo
+      title="🎉 Cranky Birthday Boy on VHS Tape 📼"
+      description="The origin of my hatred for the Happy Birthday song."
+      openGraph={{
+        title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -38,7 +43,7 @@ const Birthday = () => (
         controls={true}
       />
     </Content>
-  </Layout>
+  </>
 );
 
 export default Birthday;

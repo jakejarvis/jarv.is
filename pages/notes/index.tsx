@@ -1,13 +1,21 @@
+import { NextSeo } from "next-seo";
 import { format } from "date-fns";
-import Layout from "../../components/Layout";
 import List from "../../components/notes/List";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
 const Notes = ({ notesByYear }) => (
-  <Layout title="Notes" description="Recent posts by Jake Jarvis.">
+  <>
+    <NextSeo
+      title="Notes"
+      description="Recent posts by Jake Jarvis."
+      openGraph={{
+        title: "Notes",
+      }}
+    />
+
     <List notesByYear={notesByYear} />
-  </Layout>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

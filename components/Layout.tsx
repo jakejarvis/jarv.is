@@ -1,26 +1,15 @@
-import { NextSeo } from "next-seo";
+import Header from "./page-header/Header";
+import Footer from "./page-footer/Footer";
 
 import styles from "./Layout.module.scss";
 
-type Props = {
-  title?: string;
-  description?: string;
-  children: unknown;
-};
-
-const Layout = ({ title, description, children }: Props) => (
+const Layout = ({ children }) => (
   <>
-    <NextSeo
-      title={title}
-      description={description}
-      openGraph={{
-        title: title,
-      }}
-    />
-
+    <Header />
     <main className={styles.main}>
       <div className={styles.container}>{children}</div>
     </main>
+    <Footer />
   </>
 );
 

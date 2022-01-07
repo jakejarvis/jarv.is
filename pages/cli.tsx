@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Layout from "../components/Layout";
+import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { BotIcon } from "../components/icons";
@@ -7,7 +7,15 @@ import { BotIcon } from "../components/icons";
 import cliImg from "../public/static/images/cli/screenshot.png";
 
 const CLI = () => (
-  <Layout title="CLI" description="AKA, the most useless Node module ever published, in history, by anyone, ever.">
+  <>
+    <NextSeo
+      title="CLI"
+      description="AKA, the most useless Node module ever published, in history, by anyone, ever."
+      openGraph={{
+        title: "CLI",
+      }}
+    />
+
     <PageTitle
       title={
         <>
@@ -82,7 +90,7 @@ const CLI = () => (
         </a>
       </p>
     </Content>
-  </Layout>
+  </>
 );
 
 export default CLI;

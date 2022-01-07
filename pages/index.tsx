@@ -1,7 +1,6 @@
 import Link from "next/link";
 import isAbsoluteUrl from "is-absolute-url";
 import { colord } from "colord";
-import Layout from "../components/Layout";
 import { WaveIcon, LockIcon } from "../components/icons";
 
 type ColorLinkProps = {
@@ -40,7 +39,7 @@ const ColorLink = ({ href, title, lightColor, darkColor, external = false, child
 };
 
 const Index = () => (
-  <Layout>
+  <>
     <h1>
       Hi there! I'm Jake.{" "}
       <span className="wave">
@@ -376,7 +375,7 @@ const Index = () => (
         }
       }
     `}</style>
-  </Layout>
+  </>
 );
 
 export default Index;
