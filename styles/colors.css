@@ -15,19 +15,19 @@
   --success: #44a248;
   --error: #ff1b1b;
 
-  /* https://github.com/highlightjs/highlight.js/blob/main/src/styles/stackoverflow-light.css */
-  --highlight-color: #2f3337;
-  --highlight-bg: #f6f6f6;
+  /* Syntax Highlighting (light) - modified from Monokai Light: https://github.com/mlgill/pygments-style-monokailight */
+  --highlight-color: #313131;
+  --highlight-bg: #fbfbfb;
   --highlight-comment: #656e77;
-  --highlight-keyword: #015692;
-  --highlight-attribute: #015692;
+  --highlight-keyword: #029cb9;
+  --highlight-attribute: #70a800;
   --highlight-symbol: #803378;
-  --highlight-namespace: #b75501;
-  --highlight-literal: #b75501;
-  --highlight-punctuation: #535a60;
-  --highlight-variable: #54790d;
-  --highlight-deletion: #c02d2e;
-  --highlight-addition: #2f6f44;
+  --highlight-namespace: #f92672;
+  --highlight-literal: #ae81ff;
+  --highlight-punctuation: #111111;
+  --highlight-variable: #d88200;
+  --highlight-deletion: #ff1b1b;
+  --highlight-addition: #44a248;
 }
 
 [data-theme="dark"] {
@@ -47,17 +47,17 @@
   --success: #78df55;
   --error: #ff5151;
 
-  /* https://github.com/highlightjs/highlight.js/blob/main/src/styles/stackoverflow-dark.css */
-  --highlight-color: #ffffff;
-  --highlight-bg: #1c1b1b;
-  --highlight-comment: #999999;
-  --highlight-keyword: #88aece;
-  --highlight-attribute: #88aece;
+  /* Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments */
+  --highlight-color: #e4e4e4;
+  --highlight-bg: #252525;
+  --highlight-comment: #929292;
+  --highlight-keyword: #3b9dd2;
+  --highlight-attribute: #78df55;
   --highlight-symbol: #c59bc1;
-  --highlight-namespace: #f08d49;
-  --highlight-literal: #f08d49;
+  --highlight-namespace: #f95757;
+  --highlight-literal: #d588fb;
   --highlight-punctuation: #cccccc;
-  --highlight-variable: #b5bd68;
-  --highlight-deletion: #de7176;
-  --highlight-addition: #76c490;
+  --highlight-variable: #fd992a;
+  --highlight-deletion: #ff5151;
+  --highlight-addition: #78df55;
 }

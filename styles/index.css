@@ -41,12 +41,19 @@ a:hover {
 code {
   font-size: 0.925em;
   page-break-inside: avoid;
+  border: 1px solid var(--kinda-light);
 }
 
 /* inline code in paragraphs/elsewhere (single backticks) */
-:not(pre) > code {
-  padding: 0.075em 0.25em;
-  border: 1px solid var(--kinda-light);
+:not(pre) code {
+  padding: 0.1em 0.25em;
+}
+
+/* code blocks */
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
 }
 
 .center {
