@@ -1,18 +1,8 @@
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { BulbOffIcon, BulbOnIcon } from "../icons";
 
 const ThemeToggle = ({ className = "" }) => {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-
-  // avoid hydration mismatch:
-  // https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
-  useEffect(() => setMounted(true), []);
-  if (!mounted) {
-    // always return one of the bulbs just so there are never flashing layout shifts
-    return <BulbOffIcon className={`icon ${className}`} />;
-  }
 
   return (
     <button
