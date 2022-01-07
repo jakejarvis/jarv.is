@@ -42,7 +42,6 @@
     "feed": "^4.2.2",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.4.0",
     "html-escaper": "^3.0.3",
     "is-absolute-url": "^4.0.1",
     "is-email-like": "^2.0.0",
