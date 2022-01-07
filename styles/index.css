@@ -54,6 +54,7 @@ pre code {
   display: block;
   overflow-x: auto;
   padding: 1em;
+  tab-size: 2;
 }
 
 .center {

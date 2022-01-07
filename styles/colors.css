@@ -49,7 +49,7 @@
 
   /* Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments */
   --highlight-color: #e4e4e4;
-  --highlight-bg: #252525;
+  --highlight-bg: #212121;
   --highlight-comment: #929292;
   --highlight-keyword: #3b9dd2;
   --highlight-attribute: #78df55;

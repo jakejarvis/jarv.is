@@ -1,6 +1,6 @@
 .hljs {
   color: var(--highlight-color);
-  background-color: var(--highlight-bg);
+  background: var(--highlight-bg);
 }
 
 .hljs-subst {
@@ -13,9 +13,12 @@
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-meta .hljs-keyword,
 .hljs-doctag,
-.hljs-section {
+.hljs-section,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-meta,
+.hljs-meta .hljs-keyword {
   color: var(--highlight-keyword);
 }
 
@@ -36,23 +39,15 @@
   color: var(--highlight-namespace);
 }
 
-.hljs-selector-class {
-  color: var(--highlight-keyword);
-}
-
 .hljs-string,
 .hljs-regexp,
 .hljs-symbol,
 .hljs-variable,
 .hljs-template-variable,
 .hljs-link,
-.hljs-selector-attr {
+.hljs-selector-attr,
+.hljs-meta .hljs-string {
   color: var(--highlight-variable);
-}
-
-.hljs-meta,
-.hljs-selector-pseudo {
-  color: var(--highlight-keyword);
 }
 
 .hljs-built_in,
@@ -64,10 +59,6 @@
 .hljs-bullet,
 .hljs-code {
   color: var(--highlight-punctuation);
-}
-
-.hljs-meta .hljs-string {
-  color: var(--highlight-variable);
 }
 
 .hljs-deletion {
