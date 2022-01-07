@@ -31,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
       // optional custom domain: https://usefathom.com/docs/script/custom-domains
-      url: config.fathomCustomScript || "https://cdn.usefathom.com/script.js",
+      url: `${config.fathomCustomDomain || "https://cdn.usefathom.com"}/script.js`,
       // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
     });
