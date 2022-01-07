@@ -43,6 +43,7 @@
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.4.0",
+    "html-escaper": "^3.0.3",
     "is-absolute-url": "^4.0.1",
     "is-email-like": "^2.0.0",
     "markdown-to-jsx": "^7.1.5",
@@ -73,6 +74,7 @@
   "devDependencies": {
     "@jakejarvis/eslint-config": "github:jakejarvis/eslint-config#main",
     "@svgr/webpack": "^6.1.2",
+    "@types/html-escaper": "^3.0.0",
     "@types/prop-types": "^15.7.4",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",

@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo, ArticleJsonLd } from "next-seo";
+import { escape } from "html-escaper";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
 import mdxComponents from "../../components/mdxComponents";
@@ -42,8 +43,8 @@ const Note = ({ frontMatter, source }) => (
     />
     <ArticleJsonLd
       url={frontMatter.permalink}
-      title={frontMatter.title}
-      description={frontMatter.description}
+      title={escape(frontMatter.title)}
+      description={escape(frontMatter.description)}
       datePublished={frontMatter.date}
       dateModified={frontMatter.date}
       images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
