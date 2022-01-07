@@ -31,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
       // optional custom domain: https://usefathom.com/docs/script/custom-domains
-      url: `${config.fathomCustomDomain || "https://cdn.usefathom.com"}/script.js`,
+      url: config.fathomCustomScript || "https://cdn.usefathom.com/script.js",
       // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
     });
@@ -150,15 +150,15 @@ const App = ({ Component, pageProps }: AppProps) => {
           },
           {
             name: "google-site-verification",
-            content: "qQhmLTwjNWYgQ7W42nSTq63xIrTch13X_11mmxBE9zk",
-          },
-          {
-            name: "facebook-domain-verification",
-            content: "q45jxbgyp22ef55xror1pvbehisg9m",
+            content: config.verifyGoogle,
           },
           {
             name: "msvalidate.01",
-            content: "164551986DA47F7F6FC0D21A93FFFCA6",
+            content: config.verifyBing,
+          },
+          {
+            name: "facebook-domain-verification",
+            content: config.verifyFacebook,
           },
         ]}
         // don't let search engines index branch/deploy previews
