@@ -3,7 +3,7 @@ import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { CopyOcticon, CheckOcticon } from "../icons/octicons";
 
-import styles from "./CopyButton.module.scss";
+import styles from "./CopyButton.module.css";
 
 import type { ReactNode } from "react";
 

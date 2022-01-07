@@ -1,6 +1,6 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-prettier/recommended"],
-  "plugins": ["stylelint-scss", "stylelint-prettier"],
+  "extends": ["stylelint-prettier/recommended"],
+  "plugins": ["stylelint-prettier"],
   "rules": {
     "alpha-value-notation": "number",
     "color-function-notation": "legacy",

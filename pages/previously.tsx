@@ -20,6 +20,9 @@ import img_2009_07 from "../public/static/images/previously/2009_07.png";
 import img_2012_09 from "../public/static/images/previously/2012_09.png";
 import img_2018_04 from "../public/static/images/previously/2018_04.png";
 
+import "@fontsource/comic-neue/latin-400.css";
+import "@fontsource/comic-neue/latin-700.css";
+
 const Previously = () => (
   <>
     <NextSeo

@@ -5,7 +5,7 @@ import Hits from "../hits/Hits";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
 
-import styles from "./Meta.module.scss";
+import styles from "./Meta.module.css";
 
 export type Props = {
   title: string;

@@ -8,18 +8,18 @@
   background-color: var(--background-inner);
   border: 1px solid var(--kinda-light);
   cursor: pointer;
+}
 
-  &:hover {
-    color: var(--link);
-  }
+.copy_button:hover {
+  color: var(--link);
+}
 
-  .octicon {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
-  }
+.octicon {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
 
-  .octicon-check {
-    color: var(--success);
-  }
+.octicon-check {
+  color: var(--success);
 }

@@ -1,7 +1,7 @@
 import Name from "./Name";
 import Menu from "./Menu";
 
-import styles from "./Header.module.scss";
+import styles from "./Header.module.css";
 
 const Header = () => (
   <header className={styles.header}>

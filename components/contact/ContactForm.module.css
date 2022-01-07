@@ -1,0 +1,90 @@
+.input {
+  width: 100%;
+  padding: 0.8em;
+  margin: 0.6em 0;
+  border: 2px solid;
+  border-radius: 0.3em;
+  color: var(--text);
+  background-color: var(--super-duper-light);
+  border-color: var(--light);
+}
+
+textarea.input {
+  height: 12em;
+  min-height: 6em;
+  margin-bottom: 0;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--link);
+}
+
+.input.missing {
+  border-color: var(--error);
+}
+
+.markdown_tip {
+  font-size: 0.825em;
+  line-height: 1.75;
+}
+
+.markdown_tip a {
+  background: none;
+  padding-bottom: 0;
+}
+
+.markdown_tip a:first-of-type {
+  font-weight: 500;
+}
+
+.hcaptcha {
+  margin: 1em 0;
+}
+
+.action_row {
+  display: flex;
+  align-items: center;
+  min-height: 3.75em;
+}
+
+.btn_submit {
+  flex-shrink: 0;
+  height: 3.25em;
+  padding: 1em 1.25em;
+  margin-right: 1.5em;
+  border: 0;
+  border-radius: 0.3em;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text);
+  background-color: var(--kinda-light);
+}
+
+.btn_submit:hover {
+  color: var(--super-duper-light);
+  background-color: var(--link);
+}
+
+.btn_submit .send_icon {
+  margin-right: 0.4em;
+}
+
+.result_success,
+.result_error {
+  font-weight: 600;
+}
+
+.result_success {
+  color: var(--success);
+}
+
+.result_error {
+  color: var(--error);
+}
+
+.hidden {
+  display: none !important;
+}

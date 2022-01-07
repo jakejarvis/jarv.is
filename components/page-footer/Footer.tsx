@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HeartIcon, NextjsIcon } from "../icons";
 import * as config from "../../lib/config";
 
-import styles from "./Footer.module.scss";
+import styles from "./Footer.module.css";
 
 const Footer = () => (
   <footer className={styles.footer}>

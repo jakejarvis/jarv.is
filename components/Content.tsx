@@ -1,4 +1,4 @@
-import styles from "./Content.module.scss";
+import styles from "./Content.module.css";
 
 type Props = {
   children: unknown;

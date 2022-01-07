@@ -2,7 +2,7 @@ import Link from "next/link";
 import Markdown from "markdown-to-jsx";
 import { format } from "date-fns";
 
-import styles from "./List.module.scss";
+import styles from "./List.module.css";
 
 type NoteProps = {
   title: string;

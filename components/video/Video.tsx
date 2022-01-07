@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import type { ReactPlayerProps } from "react-player";
 
-import styles from "./Video.module.scss";
+import styles from "./Video.module.css";
 
 const ReactPlayer = dynamic(() => import("react-player/lazy"));
 

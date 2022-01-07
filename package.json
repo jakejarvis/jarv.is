@@ -19,7 +19,7 @@
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "run-s lint:*",
     "lint:next": "next lint",
-    "lint:css": "stylelint '**/*.{css,scss}'",
+    "lint:css": "stylelint '**/*.css'",
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
@@ -42,7 +42,6 @@
     "feed": "^4.2.2",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.4.0",
     "html-escaper": "^3.0.3",
     "is-absolute-url": "^4.0.1",
     "is-email-like": "^2.0.0",
@@ -89,20 +88,17 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
-    "sass": "^1.46.0",
     "simple-git-hooks": "^2.7.0",
     "stylelint": "~14.2.0",
     "stylelint-config-prettier": "~9.0.3",
-    "stylelint-config-standard-scss": "~3.0.0",
     "stylelint-prettier": "~2.0.0",
-    "stylelint-scss": "~4.1.0",
     "typescript": "^4.5.4"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.{css,scss}": [
+    "*.css": [
       "stylelint",
       "prettier --check"
     ],

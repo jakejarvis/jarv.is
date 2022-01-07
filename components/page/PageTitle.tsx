@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import styles from "./PageTitle.module.scss";
+import styles from "./PageTitle.module.css";
 
 type Props = {
   title: unknown;
