@@ -9,7 +9,10 @@ const ThemeToggle = ({ className = "" }) => {
   // avoid hydration mismatch:
   // https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  if (!mounted) {
+    // always return one of the bulbs just so there are never flashing layout shifts
+    return <BulbOffIcon className={`icon ${className}`} />;
+  }
 
   return (
     <button

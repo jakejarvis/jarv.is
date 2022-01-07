@@ -1,15 +1,12 @@
 import { format } from "date-fns";
 import Layout from "../../components/Layout";
-import Container from "../../components/Container";
 import List from "../../components/notes/List";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
 const Notes = ({ notesByYear }) => (
-  <Layout>
-    <Container title="Notes" description="Recent posts by Jake Jarvis.">
-      <List notesByYear={notesByYear} />
-    </Container>
+  <Layout title="Notes" description="Recent posts by Jake Jarvis.">
+    <List notesByYear={notesByYear} />
   </Layout>
 );
 

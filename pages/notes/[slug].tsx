@@ -2,7 +2,6 @@ import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import Layout from "../../components/Layout";
-import Container from "../../components/Container";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
 import mdxComponents from "../../components/mdxComponents";
@@ -55,14 +54,12 @@ const Note = ({ frontMatter, source }) => (
     />
 
     <Layout>
-      <Container>
-        <Meta {...frontMatter} />
-        <Content>
-          <div className="markdown">
-            <MDXRemote {...source} components={mdxComponents} />
-          </div>
-        </Content>
-      </Container>
+      <Meta {...frontMatter} />
+      <Content>
+        <div className="markdown">
+          <MDXRemote {...source} components={mdxComponents} />
+        </div>
+      </Content>
     </Layout>
   </>
 );

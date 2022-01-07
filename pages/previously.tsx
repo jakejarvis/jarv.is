@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Layout from "../components/Layout";
-import Container from "../components/Container";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { FloppyIcon, SirenIcon } from "../components/icons";
@@ -23,183 +22,181 @@ import img_2018_04 from "../public/static/images/previously/2018_04.png";
 
 const Previously = () => (
   <>
-    <Layout>
-      <Container
-        title="Previously on..."
-        description="An incredibly embarrassing and somewhat painful down of this site's memory lane..."
-      >
-        <PageTitle
-          title={
-            <>
-              <FloppyIcon /> Previously on...
-            </>
-          }
-        />
-        <Content>
-          <figure>
+    <Layout
+      title="Previously on..."
+      description="An incredibly embarrassing and somewhat painful down of this site's memory lane..."
+    >
+      <PageTitle
+        title={
+          <>
+            <FloppyIcon /> Previously on...
+          </>
+        }
+      />
+      <Content>
+        <figure>
+          <a
+            className="no-underline"
+            href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={img_wayback} placeholder="blur" alt="Timeline of this website's past." />
+          </a>
+          <figcaption>
+            ...the{" "}
             <a
-              className="no-underline"
               href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={img_wayback} placeholder="blur" alt="Timeline of this website's past." />
+              Cringey Chronicles&trade;
+            </a>{" "}
+            of this website's past.
+          </figcaption>
+        </figure>
+
+        <hr />
+
+        <p>
+          <SirenIcon /> <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
+          <code>
+            color: <span className="limegreen">limegreen</span>
+          </code>
+          ...{" "}
+          <a href="https://y2k.app/" target="_blank" rel="noopener noreferrer">
+            Click for the{" "}
+            <strong>
+              <em>FULL</em>
+            </strong>{" "}
+            experience anyway.
+          </a>
+        </p>
+        <figure>
+          <iframe
+            className="y2k_frame"
+            src="https://jakejarvis.github.io/my-first-website/"
+            title="My Terrible, Horrible, No Good, Very Bad First Website"
+          ></iframe>
+          <figcaption>
+            November 2001 (
+            <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
+              archived source
             </a>
-            <figcaption>
-              ...the{" "}
-              <a
-                href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Cringey Chronicles&trade;
-              </a>{" "}
-              of this website's past.
-            </figcaption>
-          </figure>
+            )
+          </figcaption>
+        </figure>
 
-          <hr />
+        <hr />
 
-          <p>
-            <SirenIcon /> <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
-            <code>
-              color: <span className="limegreen">limegreen</span>
-            </code>
-            ...{" "}
-            <a href="https://y2k.app/" target="_blank" rel="noopener noreferrer">
-              Click for the{" "}
-              <strong>
-                <em>FULL</em>
-              </strong>{" "}
-              experience anyway.
+        <figure>
+          <Image src={img_2002_02} placeholder="blur" alt="February 2002" />
+          <figcaption>February 2002</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2002_10} placeholder="blur" alt="October 2002" />
+          <figcaption>October 2002</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2003_08} placeholder="blur" alt="August 2003" />
+          <figcaption>August 2003</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2004_11} placeholder="blur" alt="November 2004" />
+          <figcaption>November 2004</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2006_04} placeholder="blur" alt="April 2006" />
+          <figcaption>April 2006</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2006_05} placeholder="blur" alt="May 2006" />
+          <figcaption>May 2006</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2007_01} placeholder="blur" alt="January 2007" />
+          <figcaption>January 2007</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2007_04} placeholder="blur" alt="April 2007" />
+          <figcaption>April 2007</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2007_05} placeholder="blur" alt="May 2007" />
+          <figcaption>May 2007</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <Image src={img_2009_07} placeholder="blur" alt="July 2009" />
+          <figcaption>July 2009</figcaption>
+        </figure>
+
+        <hr />
+
+        <figure>
+          <a
+            className="no-underline"
+            href="https://github.com/jakejarvis/jarv.is/tree/v1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={img_2012_09} placeholder="blur" alt="September 2012" />
+          </a>
+          <figcaption>
+            September 2012 (
+            <a href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
+              archived source
             </a>
-          </p>
-          <figure>
-            <iframe
-              className="y2k_frame"
-              src="https://jakejarvis.github.io/my-first-website/"
-              title="My Terrible, Horrible, No Good, Very Bad First Website"
-            ></iframe>
-            <figcaption>
-              November 2001 (
-              <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
-                archived source
-              </a>
-              )
-            </figcaption>
-          </figure>
+            )
+          </figcaption>
+        </figure>
 
-          <hr />
+        <hr />
 
-          <figure>
-            <Image src={img_2002_02} placeholder="blur" alt="February 2002" />
-            <figcaption>February 2002</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2002_10} placeholder="blur" alt="October 2002" />
-            <figcaption>October 2002</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2003_08} placeholder="blur" alt="August 2003" />
-            <figcaption>August 2003</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2004_11} placeholder="blur" alt="November 2004" />
-            <figcaption>November 2004</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2006_04} placeholder="blur" alt="April 2006" />
-            <figcaption>April 2006</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2006_05} placeholder="blur" alt="May 2006" />
-            <figcaption>May 2006</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2007_01} placeholder="blur" alt="January 2007" />
-            <figcaption>January 2007</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2007_04} placeholder="blur" alt="April 2007" />
-            <figcaption>April 2007</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2007_05} placeholder="blur" alt="May 2007" />
-            <figcaption>May 2007</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <Image src={img_2009_07} placeholder="blur" alt="July 2009" />
-            <figcaption>July 2009</figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <a
-              className="no-underline"
-              href="https://github.com/jakejarvis/jarv.is/tree/v1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={img_2012_09} placeholder="blur" alt="September 2012" />
+        <figure>
+          <a
+            className="no-underline"
+            href="https://github.com/jakejarvis/jarv.is/tree/v2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={img_2018_04} placeholder="blur" alt="April 2018" />
+          </a>
+          <figcaption>
+            April 2018 (
+            <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
+              archived source
             </a>
-            <figcaption>
-              September 2012 (
-              <a href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
-                archived source
-              </a>
-              )
-            </figcaption>
-          </figure>
-
-          <hr />
-
-          <figure>
-            <a
-              className="no-underline"
-              href="https://github.com/jakejarvis/jarv.is/tree/v2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={img_2018_04} placeholder="blur" alt="April 2018" />
-            </a>
-            <figcaption>
-              April 2018 (
-              <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
-                archived source
-              </a>
-              )
-            </figcaption>
-          </figure>
-        </Content>
-      </Container>
+            )
+          </figcaption>
+        </figure>
+      </Content>
     </Layout>
     <style jsx global>{`
       body {
