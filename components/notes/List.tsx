@@ -22,7 +22,13 @@ const List = ({ notesByYear }) => {
             <li key={note.slug} className={styles.row}>
               <span className={styles.date}>{format(new Date(note.date), "MMM d")}</span>
               <span>
-                <Link href={`/notes/${note.slug}/`} prefetch={false}>
+                <Link
+                  href={{
+                    pathname: "/notes/[slug]",
+                    query: { slug: note.slug },
+                  }}
+                  prefetch={false}
+                >
                   <a>
                     <Markdown options={{ disableParsingRawHTML: true, forceInline: true }}>{note.title}</Markdown>
                   </a>
