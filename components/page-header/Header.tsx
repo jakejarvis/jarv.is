@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Name from "./Name";
 import Menu from "./Menu";
 
@@ -12,4 +13,4 @@ const Header = () => (
   </header>
 );
 
-export default Header;
+export default memo(Header);

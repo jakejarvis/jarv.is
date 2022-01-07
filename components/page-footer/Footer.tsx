@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 import { HeartIcon, NextjsIcon } from "../icons";
 import * as config from "../../lib/config";
@@ -48,4 +49,4 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer;
+export default memo(Footer);

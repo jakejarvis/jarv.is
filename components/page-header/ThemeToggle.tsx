@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useTheme } from "next-themes";
 import { BulbOffIcon, BulbOnIcon } from "../icons";
 
@@ -25,4 +26,4 @@ const ThemeToggle = ({ className = "" }) => {
   );
 };
 
-export default ThemeToggle;
+export default memo(ThemeToggle);
