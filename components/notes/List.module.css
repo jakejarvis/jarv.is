@@ -1,13 +1,13 @@
 .section {
   margin: 2.4em 0;
+}
 
-  &:first-of-type {
-    margin-top: 0;
-  }
+.section:first-of-type {
+  margin-top: 0;
+}
 
-  &:last-of-type {
-    margin-bottom: 0;
-  }
+.section:last-of-type {
+  margin-bottom: 0;
 }
 
 .year {
@@ -26,10 +26,10 @@
   display: flex;
   line-height: 1.75;
   margin-bottom: 1em;
+}
 
-  &:last-of-type {
-    margin-bottom: 0;
-  }
+.row:last-of-type {
+  margin-bottom: 0;
 }
 
 .date {

@@ -4,24 +4,24 @@
   color: var(--medium-dark);
   background: none;
   padding-bottom: 0;
+}
 
-  &:hover {
-    color: var(--link);
-
-    .selfie {
-      opacity: 0.9;
-    }
-  }
+.title:hover {
+  color: var(--link);
 }
 
 .selfie {
   width: 50px;
   height: 50px;
+}
 
-  img {
-    border: 1px solid var(--light) !important;
-    border-radius: 50%;
-  }
+.selfie img {
+  border: 1px solid var(--light) !important;
+  border-radius: 50%;
+}
+
+.title:hover .selfie {
+  opacity: 0.9;
 }
 
 .name {

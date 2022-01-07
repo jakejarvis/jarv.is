@@ -1,7 +1,7 @@
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import { StarOcticon, ForkOcticon } from "../icons/octicons";
 
-import styles from "./RepoCard.module.scss";
+import styles from "./RepoCard.module.css";
 
 type Props = {
   name: string;

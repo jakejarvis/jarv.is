@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../icons";
 
-import styles from "./Menu.module.scss";
+import styles from "./Menu.module.css";
 
 // ensure the theme toggle isn't evaluated server-side
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });

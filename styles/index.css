@@ -14,20 +14,22 @@ a {
   padding-bottom: 2px;
   transition: background-size 0.25s ease-in-out;
   background-image: linear-gradient(var(--link-underline), var(--link-underline));
-
-  &:hover {
-    background-size: 100% 2px;
-  }
 }
 
-// set an anchor's class to `no-underline` to disable all of this
+a:hover {
+  background-size: 100% 2px;
+}
+
+/* set an anchor's class to `no-underline` to disable all of this */
 .no-underline {
   background: none !important;
   padding-bottom: 0;
 }
 
-// make SVG icons relative to surrounding text
-// https://github.com/twitter/twemoji#inline-styles
+/*
+ * make SVG icons relative to surrounding text:
+ * https://github.com/twitter/twemoji#inline-styles
+ */
 .icon {
   display: inline-block;
   height: 1.2em;
@@ -35,13 +37,13 @@ a {
   vertical-align: -0.2em;
 }
 
-// all code
+/* all code */
 code {
   font-size: 0.925em;
   page-break-inside: avoid;
 }
 
-// inline code in paragraphs/elsewhere (single backticks)
+/* inline code in paragraphs/elsewhere (single backticks) */
 :not(pre) > code {
   padding: 0.075em 0.25em;
   border: 1px solid var(--kinda-light);
@@ -53,37 +55,31 @@ code {
   margin-right: auto;
 }
 
-// sub-heading anchor styles
+/* sub-heading anchor styles */
 .h-anchor {
   margin: 0 0.25em;
   padding: 0 0.25em;
   color: var(--medium-light);
   background: none;
   font-weight: 300;
-  opacity: 0; // overridden on hover
+  opacity: 0; /* overridden on hover */
   user-select: none;
-
-  &::before {
-    content: "\0023"; // pound sign `#`, done here to keep content DOM cleaner
-  }
-
-  &:hover {
-    color: var(--link);
-  }
+}
+.h-anchor::before {
+  content: "\0023"; /* pound sign `#`, done here to keep content DOM cleaner */
+}
+.h-anchor:hover {
+  color: var(--link);
 }
 
-// make anchor `#` link show up on hover over the corresponding heading
-h2,
-h3,
-h4 {
-  &:hover {
-    .h-anchor {
-      opacity: 1;
-    }
-  }
+/* make anchor `#` link show up on hover over the corresponding heading */
+h2:hover .h-anchor,
+h3:hover .h-anchor,
+h4:hover .h-anchor {
+  opacity: 1;
 }
 
-// offset (approximately) with sticky header so jumped-to content isn't hiding behind it
+/* offset (approximately) with sticky header so jumped-to content isn't hiding behind it */
 h2 {
   scroll-margin-top: 4em;
 }
@@ -104,7 +100,7 @@ h4 {
   }
 }
 
-// https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites
+/* https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

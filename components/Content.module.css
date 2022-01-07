@@ -1,0 +1,66 @@
+.content {
+  font-size: 0.9em;
+  line-height: 1.7;
+}
+
+.content blockquote {
+  margin-left: 0;
+  padding-left: 1.5em;
+  border-left: 3px solid var(--link);
+  color: var(--medium-dark);
+}
+
+.content h2,
+.content h3,
+.content h4 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+/* special bottom border for H2s */
+.content h2 {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--kinda-light);
+}
+
+.content figure {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.content figure img {
+  height: auto;
+  max-width: 100%;
+}
+
+.content figure figcaption {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-top: 0.3em;
+  color: var(--medium);
+}
+
+.content ul,
+.content ol {
+  margin-left: 1.5em;
+  padding-left: 0;
+}
+
+.content li {
+  padding-left: 0.25em;
+}
+
+.content hr {
+  margin: 1.5em auto;
+  height: 2px;
+  border: 0;
+  background-color: var(--light);
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    font-size: 0.925em;
+    line-height: 1.85;
+  }
+}

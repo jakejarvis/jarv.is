@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import meJpg from "../../public/static/images/me.jpg";
 
-import styles from "./Name.module.scss";
+import styles from "./Name.module.css";
 
 const Name = () => (
   <Link href="/">

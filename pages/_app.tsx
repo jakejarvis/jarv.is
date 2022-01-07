@@ -14,10 +14,10 @@ import meJpg from "../public/static/images/me.jpg";
 
 // global styles
 import "modern-normalize/modern-normalize.css";
-import "../styles/colors.scss";
-import "../styles/typography.scss";
-import "../styles/highlight.scss";
-import "../styles/index.scss";
+import "../styles/colors.css";
+import "../styles/typography.css";
+import "../styles/highlight.css";
+import "../styles/index.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

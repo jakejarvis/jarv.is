@@ -1,0 +1,63 @@
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/inter/variable-full.css";
+@import "@fontsource/roboto-mono/latin-400.css";
+@import "@fontsource/roboto-mono/latin-500.css";
+@import "@fontsource/roboto-mono/latin-700.css";
+@import "@fontsource/roboto-mono/variable.css";
+@import "@fontsource/roboto-mono/variable-italic.css";
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-kerning: normal;
+  font-variant-ligatures: normal;
+  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
+}
+
+code,
+kbd,
+samp,
+pre,
+.monospace {
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/*
+ * override above font-family if browser supports variable fonts:
+ * https://caniuse.com/#feat=variable-fonts
+ */
+@supports (font-variation-settings: normal) {
+  body {
+    font-family: InterVariable, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif;
+    font-optical-sizing: auto;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre,
+  .monospace {
+    font-family: "Roboto MonoVariable", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+      monospace;
+  }
+
+  /*
+   * Chrome doesn't automatically slant multi-axis Inter var, for some reason.
+   * Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
+   */
+  em {
+    font-style: normal !important;
+    font-variation-settings: "ital" 1, "slnt" -10;
+  }
+
+  /* Roboto Mono doesn't have this problem, but the above fix breaks it, of course. */
+  em code,
+  em kbd,
+  em samp,
+  em pre,
+  em .monospace {
+    font-style: italic !important;
+  }
+}

@@ -3,12 +3,12 @@
   margin-bottom: 0.6em;
   font-size: 2em;
   text-align: center;
+}
 
-  a {
-    background: none;
-    padding-bottom: 0;
-    color: var(--text);
-  }
+.title a {
+  background: none;
+  padding-bottom: 0;
+  color: var(--text);
 }
 
 @media screen and (max-width: 768px) {

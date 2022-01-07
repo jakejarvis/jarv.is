@@ -9,7 +9,7 @@ import { CheckOcticon, XOcticon } from "../icons/octicons";
 
 import type { FormikHelpers } from "formik";
 
-import styles from "./ContactForm.module.scss";
+import styles from "./ContactForm.module.css";
 const cx = classNames.bind(styles);
 
 type Values = {
@@ -100,14 +100,14 @@ const ContactForm = () => {
       {({ setFieldValue, isSubmitting, touched, errors }) => (
         <Form className={styles.form} name="contact">
           <Field
-            className={cx({ missing: errors.name && touched.name })}
+            className={cx({ input: true, missing: errors.name && touched.name })}
             name="name"
             type="text"
             placeholder="Name"
             disabled={success}
           />
           <Field
-            className={cx({ missing: errors.email && touched.email })}
+            className={cx({ input: true, missing: errors.email && touched.email })}
             name="email"
             type="email"
             inputmode="email"
@@ -115,7 +115,7 @@ const ContactForm = () => {
             disabled={success}
           />
           <Field
-            className={cx({ missing: errors.message && touched.message })}
+            className={cx({ input: true, missing: errors.message && touched.message })}
             name="message"
             component="textarea"
             placeholder="Write something..."
