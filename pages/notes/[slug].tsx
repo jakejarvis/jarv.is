@@ -4,6 +4,7 @@ import { NextSeo, ArticleJsonLd } from "next-seo";
 import { escape } from "html-escaper";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
+import Comments from "../../components/notes/Comments";
 import mdxComponents from "../../components/mdxComponents";
 import { getNoteData, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
@@ -55,10 +56,9 @@ const Note = ({ frontMatter, source }) => (
 
     <Meta {...frontMatter} />
     <Content>
-      <div className="markdown">
-        <MDXRemote {...source} components={mdxComponents} />
-      </div>
+      <MDXRemote {...source} components={mdxComponents} />
     </Content>
+    <Comments slug={frontMatter.slug} />
   </>
 );
 
