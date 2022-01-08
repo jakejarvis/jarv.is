@@ -27,7 +27,10 @@ const Note = ({ frontMatter, source }) => (
         url: frontMatter.permalink,
         type: "article",
         article: {
+          authors: [config.authorName],
+          tags: frontMatter.tags,
           publishedTime: frontMatter.date,
+          modifiedTime: frontMatter.date,
         },
         images: frontMatter.image && [
           {
@@ -37,8 +40,6 @@ const Note = ({ frontMatter, source }) => (
         ],
       }}
       twitter={{
-        handle: `@${config.authorSocial.twitter}`,
-        site: `@${config.authorSocial.twitter}`,
         cardType: "summary_large_image",
       }}
     />
