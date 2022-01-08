@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useTheme } from "next-themes";
 import Header from "./page-header/Header";
 import Footer from "./page-footer/Footer";
-import { themeColorLight, themeColorDark } from "../lib/config";
+import { themeColors } from "../lib/config";
 
 import styles from "./Layout.module.css";
 
@@ -11,9 +11,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Head>
-        <meta name="theme-color" content={resolvedTheme === "dark" ? themeColorDark : themeColorLight} />
-      </Head>
+      {resolvedTheme && (
+        <Head>
+          <meta name="theme-color" content={themeColors[resolvedTheme]} />
+        </Head>
+      )}
 
       <Header />
       <main className={styles.main}>
