@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import Head from "next/head";
 import { useTheme } from "next-themes";
 import { githubRepo } from "../../lib/config";
 
@@ -40,21 +39,11 @@ const Comments = (props: Props) => {
   }, [resolvedTheme]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
-      <Head>
-        <link rel="preload" href="https://utteranc.es/client.js" as="script" crossOrigin="anonymous" />
-      </Head>
-
-      <div ref={scriptRef} id="comments" />
-
-      <style jsx>{`
-        div {
-          margin-top: 2em;
-          padding-top: 1em;
-          border-top: 2px solid var(--light);
-        }
-      `}</style>
-    </>
+    <div
+      ref={scriptRef}
+      id="comments"
+      style={{ marginTop: "2em", paddingTop: "1em", borderTop: "2px solid var(--light)" }}
+    />
   );
 };
 

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { escape } from "html-escaper";
 import { getMDXComponent } from "mdx-bundler/client";
@@ -17,6 +18,15 @@ const Note = ({ frontMatter, mdxSource }) => {
 
   return (
     <>
+      {/* preload here instead of Comments.tsx -- by the time it's loaded dynamically, there's no real point anymore */}
+      {frontMatter.noComments !== true && (
+        <Head>
+          <link rel="preload" as="script" href="https://utteranc.es/client.js" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://api.utteranc.es" />
+          <link rel="dns-prefetch" href="https://api.github.com" />
+        </Head>
+      )}
+
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}
