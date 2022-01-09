@@ -16,52 +16,52 @@ type Props = {
   updatedAt: string;
 };
 
-const RepoCard = ({ name, url, description, language, stars, forks, updatedAt }: Props) => (
+const RepoCard = (props: Props) => (
   <div className={styles.card}>
-    <a className={styles.name} href={url} target="_blank" rel="noopener noreferrer">
-      {name}
+    <a className={styles.name} href={props.url} target="_blank" rel="noopener noreferrer">
+      {props.name}
     </a>
 
-    {description && <p className={styles.description}>{description}</p>}
+    {props.description && <p className={styles.description}>{props.description}</p>}
 
     <div className={styles.meta}>
-      {language && (
+      {props.language && (
         <div className={styles.meta_item}>
           <span className={styles.language_color}>
             <style jsx>{`
               span {
-                background-color: ${language.color};
+                background-color: ${props.language.color};
               }
             `}</style>
           </span>
-          <span>{language.name}</span>
+          <span>{props.language.name}</span>
         </div>
       )}
 
-      {stars > 0 && (
+      {props.stars > 0 && (
         <div className={styles.meta_item}>
           <a
-            href={`${url}/stargazers`}
-            title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
+            href={`${props.url}/stargazers`}
+            title={`${props.stars.toLocaleString("en-US")} ${props.stars === 1 ? "star" : "stars"}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <StarOcticon fill="currentColor" className={styles.octicon} />
-            <span>{stars.toLocaleString("en-US")}</span>
+            <span>{props.stars.toLocaleString("en-US")}</span>
           </a>
         </div>
       )}
 
-      {forks > 0 && (
+      {props.forks > 0 && (
         <div className={styles.meta_item}>
           <a
-            href={`${url}/network/members`}
-            title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
+            href={`${props.url}/network/members`}
+            title={`${props.forks.toLocaleString("en-US")} ${props.forks === 1 ? "fork" : "forks"}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <ForkOcticon fill="currentColor" className={styles.octicon} />
-            <span>{forks.toLocaleString("en-US")}</span>
+            <span>{props.forks.toLocaleString("en-US")}</span>
           </a>
         </div>
       )}
@@ -69,7 +69,7 @@ const RepoCard = ({ name, url, description, language, stars, forks, updatedAt }:
       <div
         className={styles.meta_item}
         title={intlFormat(
-          new Date(updatedAt),
+          new Date(props.updatedAt),
           {
             year: "numeric",
             month: "short",
@@ -83,7 +83,7 @@ const RepoCard = ({ name, url, description, language, stars, forks, updatedAt }:
           }
         )}
       >
-        <span>Updated {formatDistanceToNowStrict(new Date(updatedAt), { addSuffix: true })}</span>
+        <span>Updated {formatDistanceToNowStrict(new Date(props.updatedAt), { addSuffix: true })}</span>
       </div>
     </div>
   </div>

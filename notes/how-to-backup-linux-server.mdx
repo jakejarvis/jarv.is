@@ -12,6 +12,8 @@ tags:
 image: "/static/images/notes/how-to-backup-linux-server/apocalypse.png"
 ---
 
+import Tweet from "./components/embeds/Tweet";
+
 <figure>
   <img
     src="/static/images/notes/how-to-backup-linux-server/apocalypse.png"
@@ -26,7 +28,7 @@ image: "/static/images/notes/how-to-backup-linux-server/apocalypse.png"
 
 Last month, the founder of [a small startup](https://raisup.com/) got quite a bit of [attention on Twitter](https://twitter.com/w3Nicolas/status/1134529316904153089) (and [Hacker News](https://news.ycombinator.com/item?id=20064169)) when he called out [DigitalOcean](https://www.digitalocean.com/) who, in his words, "killed" his company. Long story short: DigitalOcean's automated abuse system flagged the startup's account after they spun up about ten powerful droplets for some CPU-intensive jobs and deleted them shortly after — which is literally **the biggest selling point** of a "servers by the hour" company like DigitalOcean, by the way — and, after replying to the support ticket, an unsympathetic customer support agent [declined to reactivate](https://twitter.com/w3Nicolas/status/1134529372172509184) the account without explanation. [Nicolas](https://twitter.com/w3Nicolas) had no way of even accessing his data, turning the inconvenient but trivial task of migrating servers into a potentially fatal situation for his company.
 
-<tweet id="1134529316904153089" />
+<Tweet id="1134529316904153089" />
 
 Predictably, there were [a](https://twitter.com/kolaente/status/1134897543643615238) [lot](https://twitter.com/hwkfr/status/1135164281731911681) [of](https://twitter.com/joestarstuff/status/1135406188114276352) [Monday](https://twitter.com/FearbySoftware/status/1134717875351052288)-[morning](https://twitter.com/mkozak/status/1134557954785587200) [quarterbacks](https://twitter.com/MichMich/status/1134547174447026181) who weighed in, scolding him for not having backups ([he did](https://twitter.com/w3Nicolas/status/1134529374676500482), but they were also stored on DigitalOcean) and not paying a boatload of non-existent money for expensive load balancers pointing to multiple cloud providers. Hindsight is always 20/20, of course, but if we're talking about a small side project that exploded into a full-fledged startup with Fortune 500 clients seemingly overnight, I _completely_ understand Nicolas' thought process. _"Let's just take advantage of cloud computing's #1 selling point: press a few buttons to make our servers [harder, better, faster, stronger](https://www.youtube.com/watch?v=x84m3YyO2oU) and get back to coding!"_
 
