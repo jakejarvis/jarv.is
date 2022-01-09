@@ -59,7 +59,7 @@ const Note = ({ frontMatter, mdxSource }) => {
         {/* @ts-ignore */}
         <MDXComponent components={mdxComponents} />
       </Content>
-      <Comments slug={frontMatter.slug} />
+      {frontMatter.noComments !== true && <Comments slug={frontMatter.slug} />}
     </>
   );
 };
