@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type Props = {
   boxes?: number;
   timing?: number;
@@ -54,4 +56,4 @@ const Loading = ({ boxes = 3, timing = 0.1, width }: Props) => {
   );
 };
 
-export default Loading;
+export default memo(Loading);

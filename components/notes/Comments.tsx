@@ -3,9 +3,11 @@ import Head from "next/head";
 import { useTheme } from "next-themes";
 import { githubRepo } from "../../lib/config";
 
-import styles from "./Comments.module.css";
+type Props = {
+  slug: string;
+};
 
-const Comments = ({ slug }) => {
+const Comments = (props: Props) => {
   const [injected, setInjected] = useState(false);
   const scriptRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
@@ -25,7 +27,7 @@ const Comments = ({ slug }) => {
 
     // https://utteranc.es/
     utterances.setAttribute("repo", githubRepo);
-    utterances.setAttribute("issue-term", `notes/${slug}`);
+    utterances.setAttribute("issue-term", `notes/${props.slug}`);
     utterances.setAttribute("theme", resolvedTheme === "dark" ? "github-dark" : "github-light");
     utterances.setAttribute("label", "💬 comments");
 
@@ -43,7 +45,15 @@ const Comments = ({ slug }) => {
         <link rel="preload" href="https://utteranc.es/client.js" as="script" crossOrigin="anonymous" />
       </Head>
 
-      <div ref={scriptRef} id="comments" className={styles.wrapper} />
+      <div ref={scriptRef} id="comments" />
+
+      <style jsx>{`
+        div {
+          margin-top: 2em;
+          padding-top: 1em;
+          border-top: 2px solid var(--light);
+        }
+      `}</style>
     </>
   );
 };
