@@ -1,6 +1,6 @@
 import Link from "next/link";
 import isAbsoluteUrl from "is-absolute-url";
-import { colord } from "colord";
+import hexRgb from "hex-rgb";
 import { WaveIcon, LockIcon } from "../components/icons";
 
 type ColorLinkProps = {
@@ -15,9 +15,8 @@ type ColorLinkProps = {
 const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
   external = external || isAbsoluteUrl(href);
 
-  // spits out an alpha color in rgba() that's compatible with linear-gradient()
-  const underlineAlpha = 0.4;
-  const hexToRgba = (hex: string) => colord(hex).alpha(underlineAlpha).toRgbString();
+  // spits out a translucent color in rgba() format that's compatible with linear-gradient()
+  const hexToRgba = (hex: string, alpha: number = 0.4) => hexRgb(hex, { alpha, format: "css" });
 
   return (
     <Link href={href} passHref={true} prefetch={false}>
