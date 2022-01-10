@@ -15,8 +15,9 @@ const CustomImg = (props: ImageProps) => {
         width={props.width}
         height={props.height}
         alt={props.alt}
-        quality={85}
-        loading="lazy"
+        quality={65}
+        loading={props.priority ? "eager" : "lazy"}
+        priority={!!props.priority}
       />
     </div>
   );
