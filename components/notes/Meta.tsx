@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import Markdown from "markdown-to-jsx";
 import Hits from "../hits/Hits";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
@@ -9,12 +8,13 @@ import styles from "./Meta.module.css";
 
 export type Props = {
   title: string;
+  htmlTitle?: string;
   date: string;
   slug: string;
   tags?: string[];
 };
 
-const Meta = ({ title, date, slug, tags = [] }: Props) => (
+const Meta = ({ title, htmlTitle = "", date, slug, tags = [] }: Props) => (
   <>
     <div className={styles.meta}>
       <div className={styles.date}>
@@ -62,9 +62,7 @@ const Meta = ({ title, date, slug, tags = [] }: Props) => (
 
     <h1 className={styles.title}>
       <Link href={`/notes/${slug}/`}>
-        <a>
-          <Markdown options={{ disableParsingRawHTML: true, forceInline: true }}>{title}</Markdown>
-        </a>
+        <a dangerouslySetInnerHTML={{ __html: htmlTitle }} />
       </Link>
     </h1>
   </>

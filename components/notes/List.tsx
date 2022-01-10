@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Markdown from "markdown-to-jsx";
 import { format } from "date-fns";
 
 import styles from "./List.module.css";
 
 type NoteProps = {
   title: string;
+  htmlTitle?: string;
   date: string;
   slug: string;
 };
@@ -29,9 +29,7 @@ const List = ({ notesByYear }) => {
                   }}
                   prefetch={false}
                 >
-                  <a>
-                    <Markdown options={{ disableParsingRawHTML: true, forceInline: true }}>{note.title}</Markdown>
-                  </a>
+                  <a dangerouslySetInnerHTML={{ __html: note.htmlTitle }} />
                 </Link>
               </span>
             </li>

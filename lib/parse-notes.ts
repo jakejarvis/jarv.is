@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
+import sanitizeHtml from "sanitize-html";
 import { bundleMDX } from "mdx-bundler";
 import readingTime from "reading-time";
 import { NOTES_DIR, baseUrl } from "./config";
@@ -28,10 +30,11 @@ export const getNoteData = (slug: string) => {
   return {
     frontMatter: {
       ...data,
+      htmlTitle: sanitizeHtml(marked.parseInline(data.title), { allowedTags: ["code"] }),
       slug,
       permalink: `${baseUrl}/notes/${slug}/`,
       date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter
-      readingTime: readingTime(content).minutes,
+      readingMins: Math.ceil(readingTime(content).minutes),
     },
     content,
   };
@@ -39,11 +42,10 @@ export const getNoteData = (slug: string) => {
 
 export const getNote = async (slug: string) => {
   // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
-  if (process.platform === "win32") {
-    process.env.ESBUILD_BINARY_PATH = path.join(process.cwd(), "node_modules", "esbuild", "esbuild.exe");
-  } else {
-    process.env.ESBUILD_BINARY_PATH = path.join(process.cwd(), "node_modules", "esbuild", "bin", "esbuild");
-  }
+  process.env.ESBUILD_BINARY_PATH =
+    process.platform === "win32"
+      ? path.join(process.cwd(), "node_modules", "esbuild", "esbuild.exe")
+      : path.join(process.cwd(), "node_modules", "esbuild", "bin", "esbuild");
 
   const { frontMatter, content } = getNoteData(slug);
   const { code: mdxSource } = await bundleMDX({
