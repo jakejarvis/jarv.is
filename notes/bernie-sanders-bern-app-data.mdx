@@ -11,11 +11,17 @@ tags:
 image: "/static/images/notes/bernie-sanders-bern-app-data/sad-bernie.jpg"
 ---
 
+import Image from "./components/embeds/Image";
 import Video from "./components/embeds/Video";
 
 The team behind Bernie Sanders' 2020 campaign [released a new web app](https://www.nbcnews.com/politics/2020-election/bernie-sanders-2020-campaign-unveils-app-increase-its-voter-database-n999206) last month named [BERN](https://app.berniesanders.com/). The goal of BERN is simple: to gather as much information as they can on as many voters in the United States as they can, and make their grassroots army of enthusiastic supporters do the work. It's undoubtedly a smart strategy, but also a concerning one for myself and other privacy advocates.
 
-<img src="/static/images/notes/bernie-sanders-bern-app-data/sad-bernie.jpg" width="865" height="433" alt="Sad Bernie" />
+<Image
+  src="/static/images/notes/bernie-sanders-bern-app-data/sad-bernie.jpg"
+  width="865"
+  height="433"
+  alt="Sad Bernie"
+/>
 
 BERN has two features: one called "Friend-to-Friend" (described as "add everyone in your network") and another called "Community Canvassing" (described as "talk to people around you every day, e.g. on the bus, outside the grocery store, at a park"). Both of these involve phoning home to Sanders HQ with the following information on anybody you know or meet:
 
@@ -62,7 +68,7 @@ Here's one of the instructional videos provided internally to volunteers:
 
 ...and a few privacy-related questions about the friend-to-friend feature were answered by campaign staff in a separate closed webinar for volunteers this week:
 
-<img
+<Image
   className="center"
   src="/static/images/notes/bernie-sanders-bern-app-data/webinar-qa-1.png"
   width="400"
@@ -70,7 +76,7 @@ Here's one of the instructional videos provided internally to volunteers:
   alt="Q&A 1"
 />
 
-<img
+<Image
   className="center"
   src="/static/images/notes/bernie-sanders-bern-app-data/webinar-qa-2.png"
   width="400"
@@ -83,7 +89,7 @@ Defenders of the BERN app have pointed out that the information used is already 
 There were even unverified claims that [BERN was leaking voter ID numbers](https://info.idagent.com/blog/bern-app-exposes-150m-voter-records), which are the same as one's driver's license ID numbers in some states, through JSON responses in the first few days after its release. There don't be appear to be strict rate limits on calls to the API either, potentially inviting malicious actors from around the world — wink wink — to scrape personal data on tens of millions of Americans en masse.
 
 <figure>
-  <img
+  <Image
     src="/static/images/notes/bernie-sanders-bern-app-data/json-response.jpg"
     width="865"
     height="369"
@@ -98,7 +104,7 @@ But the latter category of databases — like [NationBuilder](https://nationbuil
 
 <figure>
   <a className="no-underline" href="/static/images/notes/bernie-sanders-bern-app-data/sanders-campaign-audit.pdf">
-    <img
+    <Image
       src="/static/images/notes/bernie-sanders-bern-app-data/votebuilder-audit.png"
       width="750"
       height="447"
@@ -115,7 +121,7 @@ But the latter category of databases — like [NationBuilder](https://nationbuil
 BERN is taking this to an unprecedented level. Allowing anybody on the internet to sign up and add others' personal information to the campaign's database without their knowledge is troubling, especially when you consider the gamified "points" system they've added as an incentive to report as much information on as many people as possible.
 
 <figure>
-  <img
+  <Image
     src="/static/images/notes/bernie-sanders-bern-app-data/reddit-bros.png"
     width="600"
     height="301"
@@ -134,7 +140,7 @@ BERN is taking this to an unprecedented level. Allowing anybody on the internet 
 
 In addition to the points system, it was revealed in the webinar mentioned above that the campaign is planning on giving out shiny rewards based on how many friends one adds, setting expectations at 50+ contacts to reach the "Bernie Super Bundler" tier — whatever that means.
 
-<img
+<Image
   className="center"
   src="/static/images/notes/bernie-sanders-bern-app-data/webinar-slide-1.png"
   width="700"
@@ -144,7 +150,7 @@ In addition to the points system, it was revealed in the webinar mentioned above
 
 In the middle of the webinar, the organizer also paused the presentation for _fifteen minutes_ — complete with a countdown clock — and told volunteers to race to add as many of their friends as possible in that time. She announced afterwards that participants added 20 to 40 friends into the app on average, with some allegedly adding close to 100 in fifteen minutes.
 
-<img
+<Image
   className="center"
   src="/static/images/notes/bernie-sanders-bern-app-data/webinar-slide-2.png"
   width="700"

@@ -12,9 +12,15 @@ tags:
 image: "/static/images/notes/github-rename-master/github-default.png"
 ---
 
+import Image from "./components/embeds/Image";
 import Tweet from "./components/embeds/Tweet";
 
-<img src="/static/images/notes/github-rename-master/blm-topic.png" width="865" height="162" alt="Black lives matter." />
+<Image
+  src="/static/images/notes/github-rename-master/blm-topic.png"
+  width="865"
+  height="162"
+  alt="Black lives matter."
+/>
 
 In the midst of this year's long-overdue support of the [**Black Lives Matter**](https://blacklivesmatters.carrd.co/) movement and calls to action in the US and around the world, a [new spotlight](https://mail.gnome.org/archives/desktop-devel-list/2019-May/msg00066.html) has been placed on unchecked invocations of racially charged language in the computer science world, no matter how big or small — like the long-standing and, until recently, widely accepted terms ["master" and "slave"](https://tools.ietf.org/id/draft-knodel-terminology-00.html#master-slave) as an oppressive metaphor for ownership/importance.
 
@@ -55,7 +61,7 @@ You can verify this worked by running `git branch -r`. You should see something 
 
 Setting the default branch remotely is the only step that can't be done on the command line (although you can technically [use the GitHub API](https://github.com/erbridge/github-branch-renamer)). Head to **Settings → Branches** on GitHub to [change the default branch](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-base-branch-of-a-pull-request).
 
-<img
+<Image
   className="center"
   src="/static/images/notes/github-rename-master/github-default.png"
   width="810"
@@ -79,7 +85,7 @@ Do a quick search of your codebase for `master` to manually replace any dead ref
 
 Pay attention to CI files — `.travis.yml`, `.github/workflows/`, `.circleci/config.yml`, etc. — and make sure there aren't any external services relying on `master` being there. For example, I almost forgot to change the branch [Netlify triggers auto-deploys](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) from to build this site:
 
-<img
+<Image
   className="center"
   src="/static/images/notes/github-rename-master/netlify-deploy.png"
   width="720"

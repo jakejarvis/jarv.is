@@ -6,7 +6,8 @@ import { escape } from "html-escaper";
 import { getMDXComponent } from "mdx-bundler/client";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
-import mdxComponents from "../../components/mdxComponents";
+import CustomLink from "../../components/embeds/Link";
+import CustomCode from "../../components/embeds/Code";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
@@ -14,6 +15,11 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 const Comments = dynamic(() => import("../../components/notes/Comments"), { ssr: false });
 
 const Note = ({ frontMatter, mdxSource }) => {
+  const customComponents = {
+    a: CustomLink,
+    code: CustomCode,
+  };
+
   const MDXComponent = useMemo(() => getMDXComponent(mdxSource, { process }), [mdxSource]);
 
   return (
@@ -67,7 +73,7 @@ const Note = ({ frontMatter, mdxSource }) => {
       <Meta {...frontMatter} />
       <Content>
         {/* @ts-ignore */}
-        <MDXComponent components={mdxComponents} />
+        <MDXComponent components={customComponents} />
       </Content>
       {frontMatter.noComments !== true && <Comments slug={frontMatter.slug} />}
     </>

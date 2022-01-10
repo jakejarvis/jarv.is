@@ -11,14 +11,16 @@ tags:
 image: "/static/images/notes/my-first-code/jbb-screen1.png"
 ---
 
-<img
+import Image from "./components/embeds/Image";
+
+<Image
   src="/static/images/notes/my-first-code/netscape.png"
   width="865"
   height="155"
   alt="Awesome First Code on GitHub"
 />
 
-<img
+<Image
   className="center"
   src="/static/images/notes/my-first-code/badges.png"
   width="537"
@@ -36,7 +38,7 @@ Hopefully we can all look back at our first projects and be proud of how far we'
 
 <figure>
   <a className="no-underline" href="https://github.com/jakejarvis/jbb" target="_blank" rel="noopener noreferrer">
-    <img src="/static/images/notes/my-first-code/jbb-logo.png" width="640" height="80" alt="Jake's Bulletin Board" />
+    <Image src="/static/images/notes/my-first-code/jbb-logo.png" width="640" height="80" alt="Jake's Bulletin Board" />
   </a>
   <figcaption>
     <a href="https://github.com/jakejarvis/jbb" target="_blank" rel="noopener noreferrer">
@@ -93,11 +95,11 @@ Incredibly ambitious emoticon and [BBCode](https://en.wikipedia.org/wiki/BBCode)
 
 ```php
 <?php
-$replacement = '<IMG SRC=images/emoticons/smile.gif>';
-$replacement2 = '<IMG SRC=images/emoticons/bigsmile.gif>';
-$replacement3 = '<IMG SRC=images/emoticons/frown.gif>';
-$replacement4 = '<IMG SRC=images/emoticons/crying.gif>';
-$replacement5 = '<IMG SRC=images/emoticons/blush.gif>';
+$replacement = '<Image SRC=images/emoticons/smile.gif>';
+$replacement2 = '<Image SRC=images/emoticons/bigsmile.gif>';
+$replacement3 = '<Image SRC=images/emoticons/frown.gif>';
+$replacement4 = '<Image SRC=images/emoticons/crying.gif>';
+$replacement5 = '<Image SRC=images/emoticons/blush.gif>';
 // ... yada yada yada ...
 $replacement21 = '<a href="';
 $replacement22 = '">';
@@ -173,7 +175,7 @@ while ($topic = mysql_fetch_object($result30)) {
 The installation "wizard" (that's the joke, I presume...) ([sql_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/setup/sql_submit.php))
 
 <figure>
-  <img
+  <Image
     src="/static/images/notes/my-first-code/jbb-screen1.png"
     width="865"
     height="458"
@@ -185,11 +187,11 @@ The installation "wizard" (that's the joke, I presume...) ([sql_submit.php](http
 And finally, JBB's actual interface... or literally as much of it as I could get to function in 2019. ([index.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/index.php))
 
 <figure>
-  <img src="/static/images/notes/my-first-code/jbb-screen3.png" width="865" height="561" alt="JBB Homepage" />
+  <Image src="/static/images/notes/my-first-code/jbb-screen3.png" width="865" height="561" alt="JBB Homepage" />
   <figcaption>JBB Homepage</figcaption>
 </figure>
 
 <figure>
-  <img src="/static/images/notes/my-first-code/jbb-screen4.png" width="865" height="493" alt="JBB Post" />
+  <Image src="/static/images/notes/my-first-code/jbb-screen4.png" width="865" height="493" alt="JBB Post" />
   <figcaption>JBB Post</figcaption>
 </figure>

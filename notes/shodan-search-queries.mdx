@@ -11,11 +11,13 @@ tags:
 image: "/static/images/notes/shodan-search-queries/shodan.png"
 ---
 
+import Image from "./components/embeds/Image";
+
 Over time, I've collected an assortment of interesting, funny, and depressing search queries to plug into [Shodan](https://www.shodan.io/), the ([literal](https://www.vice.com/en_uk/article/9bvxmd/shodan-exposes-the-dark-side-of-the-net)) internet search engine. Some return facepalm-inducing results, while others return serious and/or ancient vulnerabilities in the wild.
 
 <figure>
   <a className="no-underline" href="https://account.shodan.io/register" target="_blank" rel="noopener noreferrer">
-    <img
+    <Image
       src="/static/images/notes/shodan-search-queries/shodan.png"
       width="865"
       height="248"
@@ -58,7 +60,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 "Server: Prismview Player"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/billboard3.png"
   width="450"
@@ -72,7 +74,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 "in-tank inventory" port:10001
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/7-11.png"
   width="600"
@@ -86,7 +88,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 P372 "ANPR enabled"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/plate-reader.png"
   width="680"
@@ -128,7 +130,7 @@ Wiretapping mechanism outlined by Cisco in [RFC 3924](https://tools.ietf.org/htm
 http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 
-<img
+<Image
   src="/static/images/notes/shodan-search-queries/tesla.png"
   width="865"
   height="543"
@@ -149,7 +151,7 @@ Shodan made a pretty sweet [Ship Tracker](https://shiptracker.shodan.io/) that m
 "Cobham SATCOM" OR ("Sailor" "VSAT")
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/sailor-vsat.png"
   width="700"
@@ -169,7 +171,7 @@ title:"Slocum Fleet Mission Control"
 "Server: CarelDataServer" "200 Document follows"
 ```
 
-<img
+<Image
   src="/static/images/notes/shodan-search-queries/refrigeration.png"
   width="865"
   height="456"
@@ -188,7 +190,7 @@ http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 
 "[1m[35mWelcome on console"
 ```
 
-<img
+<Image
   src="/static/images/notes/shodan-search-queries/c4max.png"
   width="865"
   height="171"
@@ -209,7 +211,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 "Server: EIG Embedded Web Server" "200 Document follows"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/power-gaugetech.png"
   width="500"
@@ -254,7 +256,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 [Shodan Images](https://images.shodan.io/) is a great supplementary tool to browse screenshots, by the way! [🔎 →](https://images.shodan.io/?query=%22authentication+disabled%22+%21screenshot.label%3Ablank)
 
 <figure>
-  <img
+  <Image
     className="center"
     src="/static/images/notes/shodan-search-queries/vnc.png"
     width="500"
@@ -284,7 +286,7 @@ Command-line access inside Kubernetes pods and Docker containers, and real-time 
 title:"Weave Scope" http.favicon.hash:567176827
 ```
 
-<img
+<Image
   src="/static/images/notes/shodan-search-queries/weavescope.png"
   width="865"
   height="465"
@@ -299,7 +301,7 @@ Older versions were insecure by default. [Very scary.](https://krebsonsecurity.c
 "MongoDB Server Information" port:27017 -authentication
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/mongo.png"
   width="500"
@@ -315,7 +317,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 "Set-Cookie: mongo-express=" "200 OK"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/mongo-express.png"
   width="700"
@@ -329,7 +331,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 "X-Jenkins" "Set-Cookie: JSESSIONID" http.title:"Dashboard"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/jenkins.png"
   width="700"
@@ -381,7 +383,7 @@ Lantronix password port:30718 -secured
 "Citrix Applications:" port:1604
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/citrix.png"
   width="700"
@@ -415,7 +417,7 @@ Telnet Configuration: [🔎 →](https://www.shodan.io/search?query=%22Polycom+C
 "Polycom Command Shell" -failed port:23
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/polycom.png"
   width="550"
@@ -449,7 +451,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "x-owa-version" "IE=EmulateIE7" "Server: Microsoft-IIS/7.0"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/owa2007.png"
   width="450"
@@ -463,7 +465,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "x-owa-version" "IE=EmulateIE7" http.favicon.hash:442749392
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/owa2010.png"
   width="450"
@@ -477,7 +479,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "X-AspNet-Version" http.title:"Outlook" -"x-owa-version"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/owa2013.png"
   width="580"
@@ -527,7 +529,7 @@ Concerning [default network shares of QuickBooks](https://quickbooks.intuit.com/
 "Set-Cookie: iomega=" -"manage/login.html" -http.title:"Log In"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/iomega.png"
   width="600"
@@ -541,7 +543,7 @@ Concerning [default network shares of QuickBooks](https://quickbooks.intuit.com/
 Redirecting sencha port:9000
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/buffalo.png"
   width="580"
@@ -555,7 +557,7 @@ Redirecting sencha port:9000
 "Server: Logitech Media Server" "200 OK"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/logitech.png"
   width="500"
@@ -575,7 +577,7 @@ Redirecting sencha port:9000
 "CherryPy/5.1.0" "/home"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/plexpy.png"
   width="560"
@@ -623,7 +625,7 @@ html:"DVR_H264 ActiveX"
 "Serial Number:" "Built:" "Server: HP HTTP"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/hp.png"
   width="700"
@@ -637,7 +639,7 @@ html:"DVR_H264 ActiveX"
 ssl:"Xerox Generic Root"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/xerox.png"
   width="620"
@@ -655,7 +657,7 @@ ssl:"Xerox Generic Root"
 "Server: EPSON-HTTP" "200 OK"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/epson.png"
   width="550"
@@ -673,7 +675,7 @@ ssl:"Xerox Generic Root"
 "Server: CANON HTTP Server"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/canon.png"
   width="550"
@@ -691,7 +693,7 @@ ssl:"Xerox Generic Root"
 "Server: AV_Receiver" "HTTP/1.1 406"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/yamaha.png"
   width="550"
@@ -729,7 +731,7 @@ Apple TVs, HomePods, etc.
 title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/octoprint.png"
   width="700"
@@ -743,7 +745,7 @@ title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 "ETH - Total speed"
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/shodan-search-queries/eth.png"
   width="800"

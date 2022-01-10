@@ -12,6 +12,8 @@ tags:
 image: "/static/images/notes/how-to-pull-request-fork-github/step7-2.png"
 ---
 
+import Image from "./components/embeds/Image";
+
 <svg width="150" height="150" viewBox="0 0 40 40" style={{ float: "right", marginBottom: "6px", marginLeft: "12px" }}>
   <path d="M6.5 35v-4.8c0-5.4 4.3-9.7 9.7-9.7h7.6c5.4 0 9.7-4.3 9.7-9.7V6M6.5 32.5v-26" fill="none" stroke="#a3b7cc" />
   <path d="M6.5 10.5a4 4 0 110-8 4 4 0 010 8z" fill="#8bb7f0" />
@@ -34,7 +36,7 @@ Starting from the very beginning, we'll fork an existing repository to our accou
 
 Assuming you're using GitHub, this step is easy. Just find the repository you're contributing to and press the Fork button in the upper left. This will create an exact copy of the repository (and all of its branches) under your own username.
 
-<img
+<Image
   className="center"
   src="/static/images/notes/how-to-pull-request-fork-github/step1.png"
   width="865"
@@ -50,7 +52,7 @@ GitHub will automatically redirect you to the forked repository under your usern
 git clone git@github.com:jakejarvis/react-native.git
 ```
 
-<img
+<Image
   className="center"
   src="/static/images/notes/how-to-pull-request-fork-github/step2.png"
   width="420"
@@ -104,7 +106,7 @@ git push -u origin fix-readme-typo
 
 You're now all ready to submit the improvement you've made to the project's maintainers for approval. Head over to the original repositories Pull Requests tab, and you should see an automatic suggestion from GitHub to create a pull request from your new branch.
 
-<img
+<Image
   className="center"
   src="/static/images/notes/how-to-pull-request-fork-github/step7-1.png"
   width="865"
@@ -112,7 +114,7 @@ You're now all ready to submit the improvement you've made to the project's main
   alt="Step 7.1"
 />
 
-<img
+<Image
   className="center"
   src="/static/images/notes/how-to-pull-request-fork-github/step7-2.png"
   width="700"
