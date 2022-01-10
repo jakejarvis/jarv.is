@@ -1,11 +1,10 @@
-/* eslint-disable camelcase */
-
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
 import PageTitle from "../components/page/PageTitle";
 import { FloppyIcon, SirenIcon } from "../components/icons";
 
+/* eslint-disable camelcase */
 import img_wayback from "../public/static/images/previously/wayback.png";
 import img_2002_02 from "../public/static/images/previously/2002_02.png";
 import img_2002_10 from "../public/static/images/previously/2002_10.png";
@@ -27,7 +26,7 @@ const Previously = () => (
   <>
     <NextSeo
       title="Previously on..."
-      description="An incredibly embarrassing and somewhat painful down of this site's memory lane..."
+      description="An incredibly embarrassing and somewhat painful trip down this site's memory lane..."
       openGraph={{
         title: "Previously on...",
       }}
