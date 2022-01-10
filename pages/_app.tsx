@@ -16,7 +16,6 @@ import meJpg from "../public/static/images/me.jpg";
 import "modern-normalize/modern-normalize.css";
 import "../styles/colors.css";
 import "../styles/typography.css";
-import "../styles/highlight.css";
 import "../styles/index.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
