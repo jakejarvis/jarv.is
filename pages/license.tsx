@@ -37,7 +37,7 @@ const License = () => (
       </p>
       <hr />
       <h2>Creative Commons Attribution 4.0 International Public License</h2>
-      <p className="center">
+      <p style={{ textAlign: "center" }}>
         <a
           className="no-underline"
           href="https://creativecommons.org/licenses/by/4.0/"

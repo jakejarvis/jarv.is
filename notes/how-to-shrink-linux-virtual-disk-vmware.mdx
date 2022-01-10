@@ -84,7 +84,6 @@ VMware on macOS makes this a little tricky, since it packages VMs in what looks 
 We need to right click on the .vmwarevm "file," and select **Show Package Contents** to see what's really in there. You should see the actual .VMDK file sitting there — normally we're looking for the plain VMDK file (named _Virtual Disk.vmdk_ by default) without a bunch of numbers after it, but if you have snapshots associated with your VM, this might not be the file we actually want. But run the command below with it anyways, and the output will tell you if you need to use a different file.
 
 <Image
-  className="center"
   src="/static/images/notes/how-to-shrink-linux-virtual-disk-vmware/screen-shot-2018-12-07-at-1-58-42-pm.png"
   width="680"
   height="572"

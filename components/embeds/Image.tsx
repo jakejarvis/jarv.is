@@ -8,7 +8,7 @@ import type { ImageProps } from "next/image";
 const CustomImg = (props: ImageProps) => {
   return (
     // the required height and width are part of the props, so they get automatically passed here with {...props}
-    <div className={props.className}>
+    <div style={{ margin: "1em auto", textAlign: "center" }}>
       <Image
         src={props.src}
         layout="intrinsic"
