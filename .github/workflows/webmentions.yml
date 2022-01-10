@@ -1,0 +1,27 @@
+name: Fetch Webmentions
+
+on:
+  schedule:
+    - cron: "0 */12 * * *" # run every twelve hours at top of hour
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          lfs: false
+      - name: Get webmentions data
+        run: wget -nv -O data/webmentions.json "https://webmention.io/api/mentions.json?domain=jarv.is&token=$WEBMENTIONS_TOKEN"
+        env:
+          WEBMENTIONS_TOKEN: ${{ secrets.WEBMENTIONS_TOKEN }}
+      - name: Format JSON
+        run: npx prettier --write data/webmentions.json
+      - name: Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Add new webmentions 🎉" || echo "No new mentions... 😢"
+          git push origin main

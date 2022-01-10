@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "github:jakejarvis/eslint-config#main",
-    "@svgr/webpack": "^6.1.2",
+    "@svgr/webpack": "^6.2.0",
     "@types/html-escaper": "^3.0.0",
     "@types/marked": "^4.0.1",
     "@types/prop-types": "^15.7.4",
