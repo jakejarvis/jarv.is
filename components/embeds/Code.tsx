@@ -1,27 +1,34 @@
 import dynamic from "next/dynamic";
 import type { ReactNode } from "react";
 
-type Props = {
+type CustomCodeProps = {
   className?: string;
   children: ReactNode;
 };
 
-const CustomCode = (props: Props) => {
+const CustomCode = (props: CustomCodeProps) => {
   if (props.className?.split(" ").includes("hljs")) {
     const CopyButton = dynamic(() => import("../clipboard/CopyButton"));
 
     // full multi-line code blocks with highlight.js and copy-to-clipboard button
     return (
-      <div className="code_block">
+      <div>
         <CopyButton source={props.children} />
         <code {...props}>{props.children}</code>
 
         <style jsx>{`
-          .code_block {
+          div {
             position: relative;
             max-width: 100%;
             overflow-x: scroll;
             margin: 1em 0;
+          }
+
+          div > code {
+            display: block;
+            overflow-x: auto;
+            padding: 1em;
+            tab-size: 2;
           }
         `}</style>
 

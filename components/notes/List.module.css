@@ -39,7 +39,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .section .year {
+  .year {
     font-size: 2em;
   }
 }

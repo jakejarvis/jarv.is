@@ -53,7 +53,6 @@ export const getNote = async (slug: string): Promise<NoteType> => {
   const { code: mdxSource } = await bundleMDX({
     source: content,
     cwd: process.cwd(),
-    // cwd: path.join("/Users/jake/source/jarv.is", "components"),
     xdmOptions: (options) => {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), [remarkGfm, { singleTilde: false }]];
       options.rehypePlugins = [
@@ -62,7 +61,12 @@ export const getNote = async (slug: string): Promise<NoteType> => {
         [rehypeSlug, {}],
         [
           rehypeAutolinkHeadings,
-          { behavior: "append", properties: { className: "h-anchor" }, content: [], test: ["h2", "h3"] },
+          {
+            behavior: "append",
+            properties: { className: "h-anchor", ariaHidden: true, tabIndex: -1 },
+            content: [],
+            test: ["h2", "h3"],
+          },
         ],
         [rehypeHighlight, {}],
       ];

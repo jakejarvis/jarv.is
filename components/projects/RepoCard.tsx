@@ -1,22 +1,10 @@
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import { StarOcticon, ForkOcticon } from "../icons/octicons";
+import { RepoType } from "../../types";
 
 import styles from "./RepoCard.module.css";
 
-type Props = {
-  name: string;
-  url: string;
-  description?: string;
-  language?: {
-    name: string;
-    color?: string;
-  };
-  stars?: number;
-  forks?: number;
-  updatedAt: string;
-};
-
-const RepoCard = (props: Props) => (
+const RepoCard = (props: RepoType) => (
   <div className={styles.card}>
     <a className={styles.name} href={props.url} target="_blank" rel="noopener noreferrer">
       {props.name}

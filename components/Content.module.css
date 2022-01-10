@@ -16,29 +16,41 @@
   margin-top: 1em;
   margin-bottom: 0.5em;
   line-height: 1.5;
+
+  /* offset (approximately) with sticky header so jumped-to content isn't hiding behind it */
+  scroll-margin-top: 4em;
 }
 
-/* special bottom border for H2s */
+/* special bottom border for <h2>s */
 .content h2 {
   padding-bottom: 0.25em;
   border-bottom: 1px solid var(--kinda-light);
 }
 
-.content figure {
+.content h3,
+.content h4 {
+  scroll-margin-top: 5em;
+}
+
+/* default to centering all images */
+.content figure,
+.content :global(.image_wrapper) {
   margin: 1em auto;
   text-align: center;
 }
 
-.content figure img {
-  height: auto;
-  max-width: 100%;
+.content figure :global(.image_wrapper) {
+  margin-bottom: 0;
 }
 
 .content figure figcaption {
   font-size: 0.9em;
   line-height: 1.5;
-  margin-top: 0.3em;
   color: var(--medium);
+}
+
+.content figure figcaption p {
+  margin-top: 0.3em;
 }
 
 .content ul,
@@ -58,9 +70,42 @@
   background-color: var(--light);
 }
 
+/* sub-heading anchor styles */
+.content :global(.h-anchor) {
+  margin: 0 0.25em;
+  padding: 0 0.25em;
+  color: var(--medium-light);
+  background: none;
+  font-weight: 300;
+  opacity: 0; /* overridden on hover */
+  user-select: none;
+}
+.content :global(.h-anchor::before) {
+  content: "\0023"; /* pound sign `#`, done here to keep content DOM cleaner */
+}
+.content :global(.h-anchor:hover) {
+  color: var(--link);
+}
+
+/* make anchor `#` link show up on hover over the corresponding heading */
+.content h2:hover :global(.h-anchor),
+.content h3:hover :global(.h-anchor),
+.content h4:hover :global(.h-anchor) {
+  opacity: 1;
+}
+
 @media screen and (max-width: 768px) {
   .content {
     font-size: 0.925em;
     line-height: 1.85;
+  }
+
+  .content h2 {
+    scroll-margin-top: 5em;
+  }
+
+  .content h3,
+  .content h4 {
+    scroll-margin-top: 6em;
   }
 }

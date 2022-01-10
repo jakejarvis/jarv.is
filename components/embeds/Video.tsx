@@ -1,4 +1,5 @@
-import ReactPlayer, { ReactPlayerProps } from "react-player/lazy";
+import ReactPlayer from "react-player/lazy";
+import type { ReactPlayerProps } from "react-player";
 
 const Video = (props: ReactPlayerProps) => (
   <div style={{ position: "relative", paddingTop: "56.25%" }}>

@@ -4,8 +4,9 @@ import PageTitle from "../components/page/PageTitle";
 import RepoCard from "../components/projects/RepoCard";
 import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
+import { RepoType } from "../types";
 
-const Projects = ({ repos }) => (
+const Projects = (props: { repos: RepoType[] }) => (
   <>
     <NextSeo
       title="Projects"
@@ -23,7 +24,7 @@ const Projects = ({ repos }) => (
     />
 
     <div>
-      {repos.map((repo) => (
+      {props.repos.map((repo: RepoType) => (
         <div key={repo.name} className="repo_card">
           <RepoCard {...repo} />
         </div>
@@ -103,7 +104,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  const repos = user.repositories.edges.map(({ node: repo }) => ({
+  const repos: RepoType[] = user.repositories.edges.map(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
     description: repo.description,

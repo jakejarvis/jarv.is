@@ -15,3 +15,16 @@ export type NoteType = {
   frontMatter: NoteMetaType;
   mdxSource: string;
 };
+
+export type RepoType = {
+  name: string;
+  url: string;
+  description?: string;
+  language?: {
+    name: string;
+    color?: string;
+  };
+  stars?: number;
+  forks?: number;
+  updatedAt: string;
+};
