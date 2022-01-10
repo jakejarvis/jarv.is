@@ -16,7 +16,7 @@ const ColorLink = ({ href, title, lightColor, darkColor, external = false, child
   external = external || isAbsoluteUrl(href);
 
   // spits out a translucent color in rgba() format that's compatible with linear-gradient()
-  const hexToRgba = (hex: string, alpha: number = 0.4) => hexRgb(hex, { alpha, format: "css" });
+  const hexToRgba = (hex: string, alpha = 0.4) => hexRgb(hex, { alpha, format: "css" });
 
   return (
     <Link href={href} passHref={true} prefetch={false}>

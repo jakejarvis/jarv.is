@@ -38,6 +38,7 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
       return () => clearTimeout(id);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }, [timeout, copied]);
 
