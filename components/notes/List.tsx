@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { format } from "date-fns";
+import type { NoteMetaType } from "../../types";
 
 import styles from "./List.module.css";
-
-type NoteProps = {
-  title: string;
-  htmlTitle?: string;
-  date: string;
-  slug: string;
-};
 
 const List = ({ notesByYear }) => {
   const sections = [];
 
-  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteProps[]]) => {
+  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteMetaType[]]) => {
     sections.push(
       <section key={year} className={styles.section}>
         <h2 className={styles.year}>{year}</h2>

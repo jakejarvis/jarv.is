@@ -14,6 +14,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 
+import type { NoteMetaType, NoteType } from "../types";
+
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
 export const getNoteSlugs = () =>
   fs
@@ -22,14 +24,14 @@ export const getNoteSlugs = () =>
     .map((noteFile) => noteFile.replace(/\.mdx$/, ""));
 
 // returns front matter and/or *raw* markdown contents of a given slug
-export const getNoteData = (slug: string) => {
+export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content: string } => {
   const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
   const rawContent = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
   return {
     frontMatter: {
-      ...data,
+      ...(data as NoteMetaType),
       htmlTitle: sanitizeHtml(marked.parseInline(data.title), { allowedTags: ["code"] }),
       slug,
       permalink: `${baseUrl}/notes/${slug}/`,
@@ -40,7 +42,7 @@ export const getNoteData = (slug: string) => {
   };
 };
 
-export const getNote = async (slug: string) => {
+export const getNote = async (slug: string): Promise<NoteType> => {
   // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
   process.env.ESBUILD_BINARY_PATH =
     process.platform === "win32"
@@ -90,4 +92,4 @@ export const getNote = async (slug: string) => {
 export const getAllNotes = () =>
   getNoteSlugs()
     .map((slug) => getNoteData(slug).frontMatter)
-    .sort((note1: any, note2: any) => (note1.date > note2.date ? -1 : 1));
+    .sort((note1: NoteMetaType, note2: NoteMetaType) => (note1.date > note2.date ? -1 : 1));

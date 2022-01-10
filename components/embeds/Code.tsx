@@ -1,6 +1,12 @@
 import dynamic from "next/dynamic";
+import type { ReactNode } from "react";
 
-const CustomCode = (props: any) => {
+type Props = {
+  className?: string;
+  children: ReactNode;
+};
+
+const CustomCode = (props: Props) => {
   if (props.className?.split(" ").includes("hljs")) {
     const CopyButton = dynamic(() => import("../clipboard/CopyButton"));
 

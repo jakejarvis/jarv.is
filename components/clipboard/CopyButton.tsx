@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { CopyOcticon, CheckOcticon } from "../icons/octicons";
+import type { ReactNode } from "react";
 
 import styles from "./CopyButton.module.css";
-
-import type { ReactNode } from "react";
 
 type Props = {
   source: ReactNode;

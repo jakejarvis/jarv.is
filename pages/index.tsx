@@ -2,16 +2,16 @@ import Link from "next/link";
 import isAbsoluteUrl from "is-absolute-url";
 import hexRgb from "hex-rgb";
 import { WaveIcon, LockIcon } from "../components/icons";
+import type { ReactNode } from "react";
 
 type ColorLinkProps = {
-  children: unknown;
+  children: ReactNode;
   href: string;
   lightColor: string;
   darkColor: string;
   title?: string;
   external?: boolean;
 };
-
 const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
   external = external || isAbsoluteUrl(href);
 

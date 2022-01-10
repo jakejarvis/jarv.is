@@ -95,8 +95,10 @@ const getSiteStats = async (client) => {
     pages,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pages.map((page: any) => {
     // match URLs from RSS feed with db to populate some metadata
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const match: any = notes.find((note) => `notes/${note.slug}` === page.slug);
     if (match) {
       page.title = match.title;

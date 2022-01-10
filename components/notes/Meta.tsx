@@ -3,18 +3,11 @@ import { format } from "date-fns";
 import Hits from "../hits/Hits";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
+import type { NoteMetaType } from "../../types";
 
 import styles from "./Meta.module.css";
 
-export type Props = {
-  title: string;
-  htmlTitle?: string;
-  date: string;
-  slug: string;
-  tags?: string[];
-};
-
-const Meta = ({ title, htmlTitle = "", date, slug, tags = [] }: Props) => (
+const Meta = ({ title, htmlTitle, date, slug, tags = [] }: NoteMetaType) => (
   <>
     <div className={styles.meta}>
       <div className={styles.date}>

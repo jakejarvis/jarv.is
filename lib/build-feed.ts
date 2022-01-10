@@ -23,7 +23,7 @@ export const buildFeed = () => {
   });
 
   const notes = getAllNotes();
-  notes.forEach((note: any) => {
+  notes.forEach((note) => {
     feed.addItem({
       guid: note.permalink,
       link: note.permalink,

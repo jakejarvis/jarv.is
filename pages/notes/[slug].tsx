@@ -11,10 +11,11 @@ import CustomCode from "../../components/embeds/Code";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
+import type { NoteType } from "../../types";
 
 const Comments = dynamic(() => import("../../components/notes/Comments"), { ssr: false });
 
-const Note = ({ frontMatter, mdxSource }) => {
+const Note = ({ frontMatter, mdxSource }: NoteType) => {
   const customComponents = {
     a: CustomLink,
     code: CustomCode,
