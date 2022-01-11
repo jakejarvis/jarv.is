@@ -46,7 +46,7 @@
     "marked": "^4.0.9",
     "mdx-bundler": "^8.0.1",
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",
-    "next": "v12.0.8-canary.19",
+    "next": "v12.0.8-canary.20",
     "next-compose-plugins": "^2.2.1",
     "next-seo": "^4.28.1",
     "next-themes": "^0.0.15",
