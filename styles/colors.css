@@ -16,18 +16,17 @@
   --error: #ff1b1b;
 
   /* Syntax Highlighting (light) - modified from Monokai Light: https://github.com/mlgill/pygments-style-monokailight */
-  --highlight-color: #313131;
-  --highlight-bg: #fbfbfb;
-  --highlight-comment: #656e77;
-  --highlight-keyword: #029cb9;
-  --highlight-attribute: #70a800;
-  --highlight-symbol: #803378;
-  --highlight-namespace: #f92672;
-  --highlight-literal: #ae81ff;
-  --highlight-punctuation: #111111;
-  --highlight-variable: #d88200;
-  --highlight-deletion: #ff1b1b;
-  --highlight-addition: #44a248;
+  --code-text: #313131;
+  --code-background: #fbfbfb;
+  --code-comment: #656e77;
+  --code-keyword: #029cb9;
+  --code-attribute: #70a800;
+  --code-namespace: #f92672;
+  --code-literal: #ae81ff;
+  --code-punctuation: #111111;
+  --code-variable: #d88200;
+  --code-addition: #44a248;
+  --code-deletion: #ff1b1b;
 }
 
 [data-theme="dark"] {
@@ -48,16 +47,15 @@
   --error: #ff5151;
 
   /* Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments */
-  --highlight-color: #e4e4e4;
-  --highlight-bg: #212121;
-  --highlight-comment: #929292;
-  --highlight-keyword: #3b9dd2;
-  --highlight-attribute: #78df55;
-  --highlight-symbol: #c59bc1;
-  --highlight-namespace: #f95757;
-  --highlight-literal: #d588fb;
-  --highlight-punctuation: #cccccc;
-  --highlight-variable: #fd992a;
-  --highlight-deletion: #ff5151;
-  --highlight-addition: #78df55;
+  --code-text: #e4e4e4;
+  --code-background: #212121;
+  --code-comment: #929292;
+  --code-keyword: #3b9dd2;
+  --code-attribute: #78df55;
+  --code-namespace: #f95757;
+  --code-literal: #d588fb;
+  --code-punctuation: #cccccc;
+  --code-variable: #fd992a;
+  --code-addition: #78df55;
+  --code-deletion: #ff5151;
 }

@@ -63,19 +63,19 @@ Conveniently, [Rapid7](https://www.rapid7.com/) publishes a monthly list for us 
 
 One of their free monthly datasets is called [Forward DNS](https://opendata.rapid7.com/sonar.fdns_v2/), where you'll find `.json` files named `xxxx-fdns_cname.json.gz`. Within the [`subtake`](https://github.com/jakejarvis/subtake) repository, there's an automated script named [`sonar.sh`](https://github.com/jakejarvis/subtake/blob/master/sonar.sh), which downloads the dataset for you and outputs a simple text file of CNAMEs pointed to any of the services listed above. Once you've [cloned the `subtake` repository](https://github.com/jakejarvis/subtake) and grabbed the timestamp part of the filename (the string that precedes `-fdns_cname.json.gz`), usage of the script is as follows:
 
-```bash {linenos=false}
+```bash
 ./sonar.sh 2019-03-30-1553989414 sonar_output.txt
 ```
 
 This new text file contains _both active and abandoned_ subdomains pointing to any of the services listed above — we still need to narrow it down to the takeover candidates by attempting to actually resolve each of them, which is where `subtake` comes into play. To install `subtake`, make sure [Go is installed first](https://golang.org/doc/install#install) and run the following:
 
-```bash {linenos=false}
+```bash
 go get github.com/jakejarvis/subtake
 ```
 
 For a detailed description of the different options you can play around with, see the [full readme on GitHub](https://github.com/jakejarvis/subtake#usage) — but here's a simple example command that uses 50 threads to take the CNAMEs listed in `sonar_output.txt` and outputs potentially vulnerable subdomains to `vulnerable.txt`.
 
-```bash {linenos=false}
+```bash
 subtake -f sonar_output.txt -c fingerprints.json -t 50 -ssl -a -o vulnerable.txt
 ```
 
@@ -83,7 +83,7 @@ This could take quite a while — up to a day, depending on your CPU, memory, an
 
 I also have a collection of root domains of companies offering bounties through [HackerOne](https://hackerone.com/directory/) or [Bugcrowd](https://bugcrowd.com/programs) at a [different GitHub repository](https://github.com/jakejarvis/bounty-domains/). Using the [`grep`-friendly text file](https://github.com/jakejarvis/bounty-domains/blob/master/grep.txt), it's easy to use [`grep`](https://man7.org/linux/man-pages/man1/grep.1.html) to narrow down your `vulnerable.txt` list even more:
 
-```bash {linenos=false}
+```bash
 grep -f grep.txt vulnerable.txt
 ```
 
@@ -117,7 +117,7 @@ I removed the company's name because an important part of responsible _disclosur
 
 The `poc-d4ca9e8ceb.html` proof-of-concept file contained this single, hidden line:
 
-```html
+```html showLineNumbers
 <!-- subdomain takeover POC by @jakejarvis on Bugcrowd -->
 ```
 
