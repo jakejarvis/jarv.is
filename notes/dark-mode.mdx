@@ -52,7 +52,7 @@ A _very_ barebones example is embedded above ([view the source here](https://git
 
 I have cleaned up this code a bit, added a few features, and packaged it as an [📦 NPM module](https://www.npmjs.com/package/dark-mode-switcheroo) (zero dependencies and still [only ~500 bytes](https://bundlephobia.com/package/dark-mode-switcheroo) minified and gzipped!). Here's a small snippet of the updated method for the browser (pulling the module from [UNPKG](https://unpkg.com/browse/dark-mode-switcheroo/)), but definitely [read the readme](https://github.com/jakejarvis/dark-mode#readme) for much more detail on the API.
 
-```html
+```html showLineNumbers
 <button class="dark-mode-toggle" style="visibility: hidden;">💡 Click to see the light... or not.</button>
 
 <script src="https://unpkg.com/dark-mode-switcheroo/dist/dark-mode.min.js"></script>
@@ -100,7 +100,7 @@ The [example HTML and CSS below](#html-css) is still helpful for reference.
 ### Full JS:
 
 {/* prettier-ignore */}
-```js
+```js showLineNumbers
 /*! Dark mode switcheroo | MIT License | jrvs.io/darkmode */
 
 (function () {
@@ -183,7 +183,7 @@ The [example HTML and CSS below](#html-css) is still helpful for reference.
 ### HTML & CSS Example:
 
 {/* prettier-ignore */}
-```html
+```html showLineNumbers
 <!doctype html>
 <html>
 <head>

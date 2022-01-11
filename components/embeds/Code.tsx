@@ -7,7 +7,7 @@ type CustomCodeProps = {
 };
 
 const CustomCode = (props: CustomCodeProps) => {
-  if (props.className?.split(" ").includes("hljs")) {
+  if (props.className?.split(" ").includes("code-highlight")) {
     const CopyButton = dynamic(() => import("../clipboard/CopyButton"));
 
     // full multi-line code blocks with highlight.js and copy-to-clipboard button
@@ -33,92 +33,90 @@ const CustomCode = (props: CustomCodeProps) => {
         `}</style>
 
         <style jsx global>{`
-          .hljs {
-            color: var(--highlight-color);
-            background: var(--highlight-bg);
+          .code-highlight {
+            color: var(--code-text);
+            background: var(--code-background);
           }
 
-          .hljs-subst {
-            color: var(--highlight-color);
+          /* leave room for clipboard button to the right of the first line */
+          .code-highlight > .code-line:first-of-type {
+            margin-right: 3em;
           }
 
-          .hljs-comment {
-            color: var(--highlight-comment);
+          .code-highlight > .code-line.line-number::before {
+            display: inline-block;
+            width: 1.5em;
+            margin-right: 1.5em;
+            text-align: right;
+            color: var(--code-comment);
+            content: attr(line); /* added to spans by prism */
           }
 
-          .hljs-keyword,
-          .hljs-selector-tag,
-          .hljs-doctag,
-          .hljs-section,
-          .hljs-selector-class,
-          .hljs-selector-pseudo,
-          .hljs-meta,
-          .hljs-meta .hljs-keyword {
-            color: var(--highlight-keyword);
+          .code-highlight .token.comment,
+          .code-highlight .token.prolog,
+          .code-highlight .token.cdata {
+            color: var(--code-comment);
           }
 
-          .hljs-attr {
-            color: var(--highlight-attribute);
+          .code-highlight .token.delimiter,
+          .code-highlight .token.boolean,
+          .code-highlight .token.keyword,
+          .code-highlight .token.selector,
+          .code-highlight .token.important,
+          .code-highlight .token.doctype,
+          .code-highlight .token.atrule,
+          .code-highlight .token.url {
+            color: var(--code-keyword);
           }
 
-          .hljs-attribute {
-            color: var(--highlight-symbol);
+          .code-highlight .token.tag,
+          .code-highlight .token.builtin,
+          .code-highlight .token.regex {
+            color: var(--code-namespace);
           }
 
-          .hljs-name,
-          .hljs-type,
-          .hljs-number,
-          .hljs-selector-id,
-          .hljs-quote,
-          .hljs-template-tag {
-            color: var(--highlight-namespace);
+          .code-highlight .token.property,
+          .code-highlight .token.constant,
+          .code-highlight .token.variable,
+          .code-highlight .token.attr-value,
+          .code-highlight .token.class-name,
+          .code-highlight .token.string,
+          .code-highlight .token.char {
+            color: var(--code-variable);
           }
 
-          .hljs-string,
-          .hljs-regexp,
-          .hljs-symbol,
-          .hljs-variable,
-          .hljs-template-variable,
-          .hljs-link,
-          .hljs-selector-attr,
-          .hljs-meta .hljs-string {
-            color: var(--highlight-variable);
+          .code-highlight .token.literal-property,
+          .code-highlight .token.attr-name {
+            color: var(--code-attribute);
           }
 
-          .hljs-built_in,
-          .hljs-title,
-          .hljs-literal {
-            color: var(--highlight-literal);
+          .code-highlight .token.function {
+            color: var(--code-literal);
           }
 
-          .hljs-bullet,
-          .hljs-code {
-            color: var(--highlight-punctuation);
+          .code-highlight .token.tag .punctuation,
+          .code-highlight .token.attr-value .punctuation {
+            color: var(--code-punctuation);
           }
 
-          .hljs-deletion {
-            color: var(--highlight-deletion);
+          .code-highlight .token.inserted {
+            background-color: var(--code-addition);
           }
 
-          .hljs-addition {
-            color: var(--highlight-addition);
+          .code-highlight .token.deleted {
+            background-color: var(--code-deletion);
           }
 
-          .hljs-emphasis {
-            font-style: italic;
+          .code-highlight .token.url {
+            text-decoration: underline;
           }
 
-          .hljs-strong {
+          .code-highlight .token.bold {
             font-weight: bold;
           }
 
-          .hljs-formula,
-          .hljs-operator,
-          .hljs-params,
-          .hljs-property,
-          .hljs-punctuation,
-          .hljs-tag {
-            /* intentionally empty */
+          .code-highlight .token.italic {
+            font-style: italic;
           }
         `}</style>
       </div>

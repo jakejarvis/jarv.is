@@ -57,7 +57,7 @@ If you're bored on a rainy day, potential activities could include:
 
 Who cares if somebody wants to delete a post with the ID "`*`" no matter the author? ([delete_reply_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/delete_reply_submit.php#L9))
 
-```php
+```php showLineNumbers
 <?php
   $query2 = "DELETE FROM jbb_replies
 WHERE replyID ='$replyID'";
@@ -68,7 +68,7 @@ $result2 = mysql_query ($query2)
 
 Sessions based on storing an auto-incremented user ID in a cookie. ([login_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/login_submit.php#L28))
 
-```php
+```php showLineNumbers
 <?php
 session_id($user->userID);
 session_start();
@@ -80,7 +80,7 @@ $_SESSION["ck_groupID"] = $user->groupID;
 
 Viewing a "private" message based solely on a sequential message ID. ([pm_view.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/pm_view.php#L13))
 
-```php
+```php showLineNumbers
 <?php
 $query1 = "SELECT * FROM jbb_pm WHERE pmID = '$pmID'";
 ?>
@@ -88,7 +88,7 @@ $query1 = "SELECT * FROM jbb_pm WHERE pmID = '$pmID'";
 
 Incredibly ambitious emoticon and [BBCode](https://en.wikipedia.org/wiki/BBCode) support. I honestly can't begin to explain this logic. ([functions.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/functions.php#L18))
 
-```php
+```php showLineNumbers
 <?php
 $replacement = '<Image SRC=images/emoticons/smile.gif>';
 $replacement2 = '<Image SRC=images/emoticons/bigsmile.gif>';
@@ -125,7 +125,7 @@ $topicval = str_replace('
 
 Saving new passwords as plaintext — probably the least problematic problem. ([register_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/register_submit.php#L10))
 
-```php
+```php showLineNumbers
 <?php
 $query = "INSERT INTO jbb_users (username, password, email, avatar) VALUES ('$username','$password','$email','images/avatars/noavatar.gif')";
 ?>
@@ -133,7 +133,7 @@ $query = "INSERT INTO jbb_users (username, password, email, avatar) VALUES ('$us
 
 I guess I gave up on counting `$query`s by ones... ([functions.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/functions.php#L231))
 
-```php
+```php showLineNumbers
 <?php
 while ($topic = mysql_fetch_object($result30)) {
     $query40 = "SELECT * FROM jbb_users WHERE userID = '$topic->userID'";

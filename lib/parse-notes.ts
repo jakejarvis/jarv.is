@@ -12,7 +12,7 @@ import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
+import rehypePrism from "rehype-prism-plus";
 
 import type { NoteMetaType, NoteType } from "../types";
 
@@ -68,7 +68,7 @@ export const getNote = async (slug: string): Promise<NoteType> => {
             test: ["h2", "h3"],
           },
         ],
-        [rehypeHighlight, {}],
+        [rehypePrism, { ignoreMissing: true }],
       ];
 
       return options;
