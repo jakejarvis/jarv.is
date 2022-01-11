@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import classNames from "classnames/bind";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
-import { CopyOcticon, CheckOcticon } from "../icons/octicons";
+import { PasteOcticon, CheckOcticon } from "../icons/octicons";
 import type { ReactNode } from "react";
 
 import styles from "./CopyButton.module.css";
+const cx = classNames.bind(styles);
 
 type Props = {
   source: ReactNode;
@@ -15,8 +17,6 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (e) => {
-    // stop browser from navigating away from page (this shouldn't happen anyways)
-    e.preventDefault();
     // prevent unintentional double-clicks by unfocusing button
     e.target.blur();
 
@@ -28,13 +28,13 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
   };
 
   useEffect(() => {
-    // reset everything after given ms (defaults to 2 seconds)
+    // reset to original icon after given ms (defaults to 2 seconds)
     if (copied) {
-      const id = setTimeout(() => {
+      const reset = setTimeout(() => {
         setCopied(false);
       }, timeout);
 
-      return () => clearTimeout(id);
+      return () => clearTimeout(reset);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -43,16 +43,16 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
 
   return (
     <button
-      className={styles.copy_button}
+      className={cx({ copy: true, success: !!copied })}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}
-      disabled={copied}
+      disabled={!!copied}
     >
       {copied ? (
-        <CheckOcticon fill="currentColor" className={`${styles.octicon} ${styles["octicon-check"]}`} />
+        <CheckOcticon className="icon" fill="currentColor" />
       ) : (
-        <CopyOcticon fill="currentColor" className={styles.octicon} />
+        <PasteOcticon className="icon" fill="currentColor" />
       )}
     </button>
   );

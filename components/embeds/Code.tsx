@@ -10,32 +10,29 @@ const CustomCode = (props: CustomCodeProps) => {
   if (props.className?.split(" ").includes("code-highlight")) {
     const CopyButton = dynamic(() => import("../clipboard/CopyButton"));
 
-    // full multi-line code blocks with highlight.js and copy-to-clipboard button
+    // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
-      <div>
-        <CopyButton source={props.children} />
-        <code {...props}>{props.children}</code>
+      <>
+        <div className="code-block">
+          <CopyButton source={props.children} />
+          <code {...props}>{props.children}</code>
+        </div>
 
-        <style jsx>{`
-          div {
+        <style jsx global>{`
+          .code-block {
             position: relative;
-            max-width: 100%;
+            width: 100%;
             overflow-x: scroll;
-            margin: 1em 0;
+            margin: 1em auto;
           }
 
-          div > code {
+          .code-highlight {
             display: block;
             overflow-x: auto;
             padding: 1em;
             tab-size: 2;
-          }
-        `}</style>
-
-        <style jsx global>{`
-          .code-highlight {
             color: var(--code-text);
-            background: var(--code-background);
+            background-color: var(--code-background);
           }
 
           /* leave room for clipboard button to the right of the first line */
@@ -119,7 +116,7 @@ const CustomCode = (props: CustomCodeProps) => {
             font-style: italic;
           }
         `}</style>
-      </div>
+      </>
     );
   } else {
     // inline code in paragraphs, headings, etc. (not highlighted)
