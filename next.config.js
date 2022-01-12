@@ -59,6 +59,7 @@ module.exports = (phase, { defaultConfig }) => {
               loader: "@svgr/webpack",
               options: {
                 icon: true,
+                memo: true,
                 typescript: true,
                 svgProps: {
                   "aria-hidden": true,
