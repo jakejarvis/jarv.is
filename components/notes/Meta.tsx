@@ -7,7 +7,7 @@ import type { NoteMetaType } from "../../types";
 
 import styles from "./Meta.module.css";
 
-const Meta = ({ title, htmlTitle, date, slug, tags = [] }: NoteMetaType) => (
+const Meta = ({ slug, date, title, htmlTitle = "", tags = [] }: NoteMetaType) => (
   <>
     <div className={styles.meta}>
       <div className={styles.date}>
@@ -55,7 +55,7 @@ const Meta = ({ title, htmlTitle, date, slug, tags = [] }: NoteMetaType) => (
 
     <h1 className={styles.title}>
       <Link href={`/notes/${slug}/`}>
-        <a dangerouslySetInnerHTML={{ __html: htmlTitle }} />
+        <a dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
       </Link>
     </h1>
   </>

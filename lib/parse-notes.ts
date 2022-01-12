@@ -30,10 +30,19 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
   const rawContent = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
+  // carefully allow VERY limited markdown in post titles...
+  const htmlTitle = sanitizeHtml(marked.parseInline(data.title), {
+    allowedTags: ["code", "pre", "em", "strong", "del"],
+  });
+  // ...and add it as a separate prop *only if it's present*
+  if (htmlTitle !== data.title) {
+    data.htmlTitle = htmlTitle;
+  }
+
+  // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as NoteMetaType),
-      htmlTitle: sanitizeHtml(marked.parseInline(data.title), { allowedTags: ["code"] }),
+      ...(data as Omit<NoteMetaType, "slug" | "permalink" | "date" | "readingMins">),
       slug,
       permalink: `${baseUrl}/notes/${slug}/`,
       date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter

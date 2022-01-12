@@ -12,18 +12,18 @@ const List = ({ notesByYear }) => {
       <section key={year} className={styles.section}>
         <h2 className={styles.year}>{year}</h2>
         <ul className={styles.list}>
-          {notes.map((note) => (
-            <li key={note.slug} className={styles.row}>
-              <span className={styles.date}>{format(new Date(note.date), "MMM d")}</span>
+          {notes.map(({ slug, date, title, htmlTitle = "" }) => (
+            <li key={slug} className={styles.row}>
+              <span className={styles.date}>{format(new Date(date), "MMM d")}</span>
               <span>
                 <Link
                   href={{
                     pathname: "/notes/[slug]/",
-                    query: { slug: note.slug },
+                    query: { slug: slug },
                   }}
                   prefetch={false}
                 >
-                  <a dangerouslySetInnerHTML={{ __html: note.htmlTitle }} />
+                  <a dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
                 </Link>
               </span>
             </li>

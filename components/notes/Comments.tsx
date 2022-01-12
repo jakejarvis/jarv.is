@@ -6,7 +6,7 @@ type Props = {
   slug: string;
 };
 
-const Comments = (props: Props) => {
+const Comments = ({ slug }: Props) => {
   const [injected, setInjected] = useState(false);
   const scriptRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
@@ -26,7 +26,7 @@ const Comments = (props: Props) => {
 
     // https://utteranc.es/
     utterances.setAttribute("repo", githubRepo);
-    utterances.setAttribute("issue-term", `notes/${props.slug}`);
+    utterances.setAttribute("issue-term", `Comments on /notes/${slug}`);
     utterances.setAttribute("theme", resolvedTheme === "dark" ? "github-dark" : "github-light");
     utterances.setAttribute("label", "💬 comments");
 
