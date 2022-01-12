@@ -10,16 +10,156 @@
 }
 
 .nav {
-  width: 100%;
-  max-width: 865px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 865px;
+  margin: 0 auto;
+}
+
+.nav > div {
+  line-height: 0;
+}
+
+/*** left side: photo/name ***/
+
+.left {
+  flex: 1;
+}
+
+.name {
+  display: inline-flex;
+  align-items: center;
+  color: var(--medium-dark);
+  background: none;
+  padding-bottom: 0;
+}
+
+.name .selfie {
+  width: 50px;
+  height: 50px;
+  line-height: 0;
+  padding: 0;
+}
+
+.name .selfie img {
+  border: 1px solid var(--light) !important;
+  border-radius: 50%;
+}
+
+.name:hover {
+  color: var(--link);
+}
+
+.name:hover .selfie {
+  opacity: 0.9;
+}
+
+.name span:last-of-type {
+  margin: 0 0.6em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+/*** right side: menu ***/
+
+.menu {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  list-style: none;
+  display: inline-flex;
+  margin-left: 1.8em;
+}
+
+.menu li .link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--medium-dark);
+  background: none;
+  padding-bottom: 0;
+}
+
+.menu li .link:hover {
+  color: var(--link);
+}
+
+.menu li .icon {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.menu li span {
+  font-size: 0.95em;
+  font-weight: 500;
+  margin-left: 0.8em;
+  line-height: 1;
+}
+
+.menu li.theme_toggle {
+  margin-left: 1.25em;
 }
 
 @media screen and (max-width: 768px) {
   .header {
     padding: 0.75em 1.25em;
+  }
+
+  .left {
+    flex: 0;
+  }
+
+  .name .selfie {
+    width: 70px;
+    height: 70px;
+  }
+
+  .name span:last-of-type {
+    display: none;
+  }
+
+  .right {
+    flex: 1;
+    max-width: 325px;
+    margin-left: 2.5em;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .menu li {
+    margin-left: 0;
+  }
+
+  .menu li .icon {
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  /* hide text next to emojis on mobile */
+  .menu li span {
+    display: none;
+  }
+
+  .menu li.theme_toggle {
+    margin-left: -0.3em;
+  }
+}
+
+/* the home icon is redundant when space is SUPER tight */
+@media screen and (max-width: 380px) {
+  .right {
+    max-width: 225px;
+    margin-left: 1.6em;
+  }
+
+  .menu li:first-of-type {
+    display: none;
   }
 }

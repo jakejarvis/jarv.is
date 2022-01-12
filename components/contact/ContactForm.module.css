@@ -31,11 +31,6 @@ textarea.input {
   line-height: 1.75;
 }
 
-.markdown_tip a {
-  background: none;
-  padding-bottom: 0;
-}
-
 .markdown_tip a:first-of-type {
   font-weight: 500;
 }
@@ -59,6 +54,7 @@ textarea.input {
   border-radius: 0.3em;
   cursor: pointer;
   user-select: none;
+  font-weight: 500;
   color: var(--text);
   background-color: var(--kinda-light);
 }

@@ -21,9 +21,10 @@ a:hover {
 }
 
 /* set an anchor's class to `no-underline` to disable all of the above */
-.no-underline {
+a.no-underline {
   background: none !important;
   padding-bottom: 0;
+  transition: none;
 }
 
 /*
