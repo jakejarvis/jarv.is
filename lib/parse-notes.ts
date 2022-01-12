@@ -12,7 +12,8 @@ import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrism from "rehype-prism-plus";
+// note: 'common' only exports these languages: https://github.com/wooorm/refractor/blob/main/lib/common.js
+import rehypePrism from "rehype-prism-plus/common";
 
 import type { NoteMetaType, NoteType } from "../types";
 

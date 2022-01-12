@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
-import { PasteOcticon, CheckOcticon } from "../icons/octicons";
+import { ClipboardOcticon, CheckOcticon } from "../icons";
 import type { ReactNode } from "react";
 
 import styles from "./CopyButton.module.css";
@@ -52,7 +52,7 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
       {copied ? (
         <CheckOcticon className="icon" fill="currentColor" />
       ) : (
-        <PasteOcticon className="icon" fill="currentColor" />
+        <ClipboardOcticon className="icon" fill="currentColor" />
       )}
     </button>
   );

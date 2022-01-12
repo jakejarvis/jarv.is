@@ -1,6 +1,6 @@
 import { memo } from "react";
 import Link from "next/link";
-import { HeartIcon, NextjsIcon } from "../icons";
+import { HeartIcon, NextjsLogo } from "../icons";
 import * as config from "../../lib/config";
 
 import styles from "./Footer.module.css";
@@ -32,7 +32,7 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NextjsIcon fill="currentColor" />
+          <NextjsLogo fill="currentColor" />
         </a>
         .{" "}
         <a

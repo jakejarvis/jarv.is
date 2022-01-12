@@ -37,7 +37,6 @@ module.exports = (phase, { defaultConfig }) => {
         BASE_URL,
       },
       images: {
-        formats: ["image/webp"],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920],
       },
       experimental: {
@@ -48,7 +47,13 @@ module.exports = (phase, { defaultConfig }) => {
         config.module.rules.push({
           test: /\.svg$/,
           issuer: { and: [/\.(js|ts)x?$/] },
-          include: [path.resolve(__dirname, "components/icons")],
+          include: [
+            path.resolve(__dirname, "components/icons"),
+            // slight workaround to grab svg files from these packages directly instead of through their exports:
+            path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
+            path.resolve(__dirname, "node_modules/simple-icons/icons"),
+            path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
+          ],
           use: [
             {
               loader: "@svgr/webpack",

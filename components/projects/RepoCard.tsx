@@ -1,5 +1,5 @@
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
-import { StarOcticon, ForkOcticon } from "../icons/octicons";
+import { StarOcticon, ForkOcticon } from "../icons";
 import { RepoType } from "../../types";
 
 import styles from "./RepoCard.module.css";

@@ -32,34 +32,14 @@
   scroll-margin-top: 5em;
 }
 
-/* default to centering all images */
-.content figure,
-.content :global(.image_wrapper) {
-  margin: 1em auto;
-  text-align: center;
-}
-
-.content figure :global(.image_wrapper) {
-  margin-bottom: 0;
-}
-
-.content figure figcaption {
-  font-size: 0.9em;
-  line-height: 1.5;
-  color: var(--medium);
-}
-
-.content figure figcaption p {
-  margin-top: 0.3em;
-}
-
 .content ul,
 .content ol {
   margin-left: 1.5em;
   padding-left: 0;
 }
 
-.content li {
+.content ul li,
+.content ol li {
   padding-left: 0.25em;
 }
 
@@ -68,6 +48,33 @@
   height: 2px;
   border: 0;
   background-color: var(--light);
+}
+
+.content :global(.image_wrapper) {
+  line-height: 0;
+}
+
+/* default to centering all images */
+.content :global(.image_wrapper),
+.content figure {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.content figure > :global(.image_wrapper) {
+  margin-bottom: 0;
+}
+
+.content figure figcaption {
+  margin-top: 0.75em;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--medium);
+}
+
+/* some figcaptions contain paragraphs, some don't, so reset all of them */
+.content figure figcaption p {
+  margin: 0;
 }
 
 /* sub-heading anchor styles */

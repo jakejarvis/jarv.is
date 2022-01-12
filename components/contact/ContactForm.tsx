@@ -4,8 +4,7 @@ import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import isEmailLike from "is-email-like";
-import { SendIcon } from "../icons";
-import { CheckOcticon, XOcticon } from "../icons/octicons";
+import { SendIcon, CheckOcticon, XOcticon } from "../icons";
 
 import type { FormikHelpers } from "formik";
 
