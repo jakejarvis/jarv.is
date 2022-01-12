@@ -69,7 +69,6 @@
     "remark-gfm": "^3.0.1",
     "sanitize-html": "^2.6.1",
     "simple-icons": "^6.6.0",
-    "styled-jsx": "^4.0.1",
     "swr": "^1.1.2",
     "twemoji": "github:twitter/twemoji#v13.1.0"
   },

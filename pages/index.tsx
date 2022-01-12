@@ -19,21 +19,24 @@ const ColorLink = ({ href, title, lightColor, darkColor, external = false, child
   const hexToRgba = (hex: string, alpha = 0.4) => hexRgb(hex, { alpha, format: "css" });
 
   return (
-    <Link href={href} passHref={true} prefetch={false}>
-      <a title={title} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
-        {children}
-        <style jsx>{`
-          a {
-            color: ${lightColor};
-            background-image: linear-gradient(${hexToRgba(lightColor)}, ${hexToRgba(lightColor)});
-          }
-          :global([data-theme="dark"]) a {
-            color: ${darkColor};
-            background-image: linear-gradient(${hexToRgba(darkColor)}, ${hexToRgba(darkColor)});
-          }
-        `}</style>
-      </a>
-    </Link>
+    <>
+      <Link href={href} passHref={true} prefetch={false}>
+        <a title={title} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+          {children}
+        </a>
+      </Link>
+
+      <style jsx>{`
+        a {
+          color: ${lightColor};
+          background-image: linear-gradient(${hexToRgba(lightColor)}, ${hexToRgba(lightColor)});
+        }
+        :global([data-theme="dark"]) a {
+          color: ${darkColor};
+          background-image: linear-gradient(${hexToRgba(darkColor)}, ${hexToRgba(darkColor)});
+        }
+      `}</style>
+    </>
   );
 };
 
