@@ -16,13 +16,10 @@ const CLI = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <BotIcon /> CLI
-        </>
-      }
-    />
+    <PageTitle>
+      <BotIcon /> CLI
+    </PageTitle>
+
     <Content>
       <blockquote>
         <p>

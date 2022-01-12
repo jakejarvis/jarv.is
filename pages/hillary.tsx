@@ -15,7 +15,7 @@ const Hillary = () => (
       }}
     />
 
-    <PageTitle title="My Brief Apperance in Hillary Clinton's DNC Video" />
+    <PageTitle>My Brief Apperance in Hillary Clinton's DNC Video</PageTitle>
     <Content>
       <Video
         url={[

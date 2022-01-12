@@ -32,13 +32,10 @@ const Previously = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <FloppyIcon /> Previously on...
-        </>
-      }
-    />
+    <PageTitle>
+      <FloppyIcon /> Previously on...
+    </PageTitle>
+
     <Content>
       <figure>
         <a

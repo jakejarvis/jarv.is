@@ -16,13 +16,10 @@ const Privacy = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <PrivacyIcon /> Privacy
-        </>
-      }
-    />
+    <PageTitle>
+      <PrivacyIcon /> Privacy
+    </PageTitle>
+
     <Content>
       <p>Okay, this is an easy one. 😉</p>
 
@@ -179,8 +176,11 @@ const Privacy = () => (
         <a href="https://www.hcaptcha.com/" target="_blank" rel="noopener noreferrer">
           <strong>hCaptcha</strong>
         </a>{" "}
-        to fight bot spam on the <Link href="/contact/">contact form</Link> was an easy choice over seemingly
-        unavoidable alternatives like{" "}
+        to fight bot spam on the{" "}
+        <Link href="/contact/" prefetch={false}>
+          <a>contact form</a>
+        </Link>{" "}
+        was an easy choice over seemingly unavoidable alternatives like{" "}
         <a href="https://developers.google.com/recaptcha/" target="_blank" rel="noopener noreferrer">
           reCAPTCHA
         </a>

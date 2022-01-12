@@ -15,13 +15,9 @@ const Projects = (props: { repos: RepoType[] }) => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <ProjectsIcon /> Projects
-        </>
-      }
-    />
+    <PageTitle>
+      <ProjectsIcon /> Projects
+    </PageTitle>
 
     <div>
       {props.repos.map((repo: RepoType) => (

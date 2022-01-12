@@ -12,13 +12,10 @@ const License = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <LicenseIcon /> License
-        </>
-      }
-    />
+    <PageTitle>
+      <LicenseIcon /> License
+    </PageTitle>
+
     <Content>
       <p>
         Unless otherwise noted, content on this website is published under the{" "}

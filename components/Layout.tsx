@@ -3,10 +3,15 @@ import { useTheme } from "next-themes";
 import Header from "./page-header/Header";
 import Footer from "./page-footer/Footer";
 import { themeColors } from "../lib/config";
+import type { ReactNode } from "react";
 
 import styles from "./Layout.module.css";
 
-const Layout = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const Layout = ({ children }: Props) => {
   const { resolvedTheme } = useTheme();
 
   return (

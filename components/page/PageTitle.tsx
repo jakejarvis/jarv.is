@@ -1,19 +1,24 @@
+import { memo } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import type { ReactNode } from "react";
 
 import styles from "./PageTitle.module.css";
 
 type Props = {
-  title: unknown;
+  children: ReactNode;
 };
 
-const PageTitle = ({ title }: Props) => {
+const PageTitle = ({ children }: Props) => {
   const router = useRouter();
 
   return (
     <h1 className={styles.title}>
-      <a href={router.asPath}>{title}</a>
+      <Link href={router.asPath}>
+        <a>{children}</a>
+      </Link>
     </h1>
   );
 };
 
-export default PageTitle;
+export default memo(PageTitle);

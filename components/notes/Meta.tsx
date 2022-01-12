@@ -15,7 +15,9 @@ const Meta = ({ slug, date, title, htmlTitle = "", tags = [] }: NoteMetaType) =>
           <DateIcon className={`icon ${styles.icon}`} />
         </span>
         <span title={format(new Date(date), "PPppp")}>
-          <Link href={`/notes/${slug}/`}>{format(new Date(date), "MMMM d, yyyy")}</Link>
+          <Link href={`/notes/${slug}/`}>
+            <a>{format(new Date(date), "MMMM d, yyyy")}</a>
+          </Link>
         </span>
       </div>
       {tags.length > 0 && (

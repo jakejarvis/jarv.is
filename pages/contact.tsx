@@ -13,13 +13,10 @@ const Contact = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <MailIcon /> Contact Me
-        </>
-      }
-    />
+    <PageTitle>
+      <MailIcon /> Contact Me
+    </PageTitle>
+
     <Content>
       <div className="wrapper">
         <p>

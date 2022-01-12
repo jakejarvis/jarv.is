@@ -16,13 +16,10 @@ const Birthday = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          <TapeIcon /> 1996.MOV
-        </>
-      }
-    />
+    <PageTitle>
+      <TapeIcon /> 1996.MOV
+    </PageTitle>
+
     <Content>
       <Video
         url={[

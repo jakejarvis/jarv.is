@@ -15,7 +15,8 @@ const Leo = () => (
       }}
     />
 
-    <PageTitle title='Facebook App on "The Lab with Leo Laporte"' />
+    <PageTitle>Facebook App on "The Lab with Leo Laporte"</PageTitle>
+
     <Content>
       <Video
         url={[

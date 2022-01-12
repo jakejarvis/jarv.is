@@ -17,13 +17,10 @@ const Uses = () => (
       }}
     />
 
-    <PageTitle
-      title={
-        <>
-          /uses <LaptopIcon />
-        </>
-      }
-    />
+    <PageTitle>
+      /uses <LaptopIcon />
+    </PageTitle>
+
     <Content>
       <p>
         <del>I regularly get messages asking about which tools I use to work.</del>
