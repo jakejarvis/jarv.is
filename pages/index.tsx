@@ -1,44 +1,5 @@
-import Link from "next/link";
-import isAbsoluteUrl from "is-absolute-url";
-import hexRgb from "hex-rgb";
+import ColorLink from "../components/home/ColorLink";
 import { WaveIcon, LockIcon } from "../components/icons";
-import type { ReactNode } from "react";
-
-type ColorLinkProps = {
-  children: ReactNode;
-  href: string;
-  lightColor: string;
-  darkColor: string;
-  title?: string;
-  external?: boolean;
-};
-const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
-  external = external || isAbsoluteUrl(href);
-
-  // spits out a translucent color in rgba() format that's compatible with linear-gradient()
-  const hexToRgba = (hex: string, alpha = 0.4) => hexRgb(hex, { alpha, format: "css" });
-
-  return (
-    <>
-      <Link href={href} passHref={true} prefetch={false}>
-        <a title={title} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
-          {children}
-        </a>
-      </Link>
-
-      <style jsx>{`
-        a {
-          color: ${lightColor};
-          background-image: linear-gradient(${hexToRgba(lightColor)}, ${hexToRgba(lightColor)});
-        }
-        :global([data-theme="dark"]) a {
-          color: ${darkColor};
-          background-image: linear-gradient(${hexToRgba(darkColor)}, ${hexToRgba(darkColor)});
-        }
-      `}</style>
-    </>
-  );
-};
 
 const Index = () => (
   <>
@@ -331,8 +292,9 @@ const Index = () => (
         color: var(--medium-light);
       }
       .birthday :global(a:hover) {
-        cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 36 36%27 width=%2720%27 height=%2720%27%3E%3Cg fill=%27none%27%3E%3Cpath fill=%27%23292F33%27 d=%27m2.651 6.073 26.275 26.276c.391.391 2.888-2.107 2.497-2.497L5.148 3.576c-.39-.391-2.888 2.107-2.497 2.497z%27/%3E%3Cpath fill=%27%2366757F%27 d=%27M29.442 31.23 3.146 4.934l.883-.883 26.296 26.296z%27/%3E%3Cpath fill=%27%23E1E8ED%27 d=%27m33.546 33.483-.412.412-.671.671a.967.967 0 0 1-.255.169.988.988 0 0 1-1.159-.169l-2.102-2.102.495-.495.883-.883 1.119-1.119 2.102 2.102a.999.999 0 0 1 0 1.414zM4.029 4.79l-.883.883-.495.495L.442 3.96a.988.988 0 0 1-.169-1.159.967.967 0 0 1 .169-.255l.671-.671.412-.412a.999.999 0 0 1 1.414 0l2.208 2.208L4.029 4.79z%27/%3E%3Cpath fill=%27%23F5F8FA%27 d=%27m30.325 30.497 2.809 2.809-.671.671a.967.967 0 0 1-.255.169l-2.767-2.767.884-.882zM3.146 5.084.273 2.211a.967.967 0 0 1 .169-.255l.671-.671 2.916 2.916-.883.883z%27/%3E%3Cpath fill=%27%23FFAC33%27 d=%27m27.897 10.219 1.542.571.6 2.2a.667.667 0 0 0 1.287 0l.6-2.2 1.542-.571a.665.665 0 0 0 0-1.25l-1.534-.568-.605-2.415a.667.667 0 0 0-1.293 0l-.605 2.415-1.534.568a.665.665 0 0 0 0 1.25m-16.936 9.628 2.61.966.966 2.61a1.103 1.103 0 0 0 2.07 0l.966-2.61 2.609-.966a1.103 1.103 0 0 0 0-2.07l-2.609-.966-.966-2.61a1.105 1.105 0 0 0-2.07 0l-.966 2.61-2.61.966a1.104 1.104 0 0 0 0 2.07M23.13 4.36l1.383.512.512 1.382a.585.585 0 0 0 1.096 0l.512-1.382 1.382-.512a.584.584 0 0 0 0-1.096l-1.382-.512-.512-1.382a.585.585 0 0 0-1.096 0l-.512 1.382-1.383.512a.585.585 0 0 0 0 1.096%27/%3E%3C/g%3E%3C/svg%3E")
-            0 0,
+        /* magic wand easter egg */
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🪄</text></svg>")
+            16 0,
           auto;
       }
 

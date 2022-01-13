@@ -38,10 +38,9 @@ const Loading = ({ width, boxes = 3, timing = 0.1 }: Props) => {
     // width of each box correlates with number of boxes (with a little padding)
     // each individual box's animation has a staggered start in corresponding order
     divs.push(
-      <>
-        <div key={i} className={boxClassName} style={{ animationDelay: `${i * timing}s` }} />
+      <div key={i} className={boxClassName} style={{ animationDelay: `${i * timing}s` }}>
         {boxStyles}
-      </>
+      </div>
     );
   }
 

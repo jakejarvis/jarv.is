@@ -206,13 +206,14 @@ const Previously = () => (
         font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", "Inter", sans-serif;
         font-weight: 600 !important;
       }
-      header nav a span {
-        font-size: 1.1em !important;
-        font-weight: 700 !important;
-      }
-      header nav > a span:nth-of-type(2) {
+      header nav > div:first-of-type span:last-of-type {
         font-size: 1.4em !important;
         font-weight: 700 !important;
+      }
+      header nav div:last-of-type a span {
+        font-size: 1.1em !important;
+        font-weight: 700 !important;
+        line-height: 1.1;
       }
       main > div > div {
         font-size: 1.1em !important;

@@ -61,7 +61,7 @@
   text-align: center;
 }
 
-.content figure > :global(.image_wrapper) {
+.content figure :global(.image_wrapper) {
   margin-bottom: 0;
 }
 

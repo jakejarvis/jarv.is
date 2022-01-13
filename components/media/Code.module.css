@@ -1,0 +1,98 @@
+.code_block {
+  position: relative;
+  width: 100%;
+  overflow-x: scroll;
+  margin: 1em auto;
+}
+
+/* the following sub-classes MUST be global -- the highlight rehype plugin isn't aware of this file */
+
+.code_block :global(.code-highlight) {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  tab-size: 2;
+  color: var(--code-text);
+  background-color: var(--code-background);
+}
+
+/* leave room for clipboard button to the right of the first line */
+.code_block :global(.code-highlight) > :global(.code-line:first-of-type) {
+  margin-right: 3em;
+}
+
+.code_block :global(.code-highlight) > :global(.code-line.line-number::before) {
+  display: inline-block;
+  width: 1.5em;
+  margin-right: 1.5em;
+  text-align: right;
+  color: var(--code-comment);
+  content: attr(line); /* added to spans by prism */
+}
+
+.code_block :global(.code-highlight) :global(.token.comment),
+.code_block :global(.code-highlight) :global(.token.prolog),
+.code_block :global(.code-highlight) :global(.token.cdata) {
+  color: var(--code-comment);
+}
+
+.code_block :global(.code-highlight) :global(.token.delimiter),
+.code_block :global(.code-highlight) :global(.token.boolean),
+.code_block :global(.code-highlight) :global(.token.keyword),
+.code_block :global(.code-highlight) :global(.token.selector),
+.code_block :global(.code-highlight) :global(.token.important),
+.code_block :global(.code-highlight) :global(.token.doctype),
+.code_block :global(.code-highlight) :global(.token.atrule),
+.code_block :global(.code-highlight) :global(.token.url) {
+  color: var(--code-keyword);
+}
+
+.code_block :global(.code-highlight) :global(.token.tag),
+.code_block :global(.code-highlight) :global(.token.builtin),
+.code_block :global(.code-highlight) :global(.token.regex) {
+  color: var(--code-namespace);
+}
+
+.code_block :global(.code-highlight) :global(.token.property),
+.code_block :global(.code-highlight) :global(.token.constant),
+.code_block :global(.code-highlight) :global(.token.variable),
+.code_block :global(.code-highlight) :global(.token.attr-value),
+.code_block :global(.code-highlight) :global(.token.class-name),
+.code_block :global(.code-highlight) :global(.token.string),
+.code_block :global(.code-highlight) :global(.token.char) {
+  color: var(--code-variable);
+}
+
+.code_block :global(.code-highlight) :global(.token.literal-property),
+.code_block :global(.code-highlight) :global(.token.attr-name) {
+  color: var(--code-attribute);
+}
+
+.code_block :global(.code-highlight) :global(.token.function) {
+  color: var(--code-literal);
+}
+
+.code_block :global(.code-highlight) :global(.token.tag .punctuation),
+.code_block :global(.code-highlight) :global(.token.attr-value .punctuation) {
+  color: var(--code-punctuation);
+}
+
+.code_block :global(.code-highlight) :global(.token.inserted) {
+  background-color: var(--code-addition);
+}
+
+.code_block :global(.code-highlight) :global(.token.deleted) {
+  background-color: var(--code-deletion);
+}
+
+.code_block :global(.code-highlight) :global(.token.url) {
+  text-decoration: underline;
+}
+
+.code_block :global(.code-highlight) :global(.token.bold) {
+  font-weight: bold;
+}
+
+.code_block :global(.code-highlight) :global(.token.italic) {
+  font-style: italic;
+}

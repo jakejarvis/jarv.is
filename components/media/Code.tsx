@@ -1,5 +1,7 @@
-import dynamic from "next/dynamic";
+import CopyButton from "../clipboard/CopyButton";
 import type { ReactNode } from "react";
+
+import styles from "./Code.module.css";
 
 type CustomCodeProps = {
   className?: string;
@@ -8,114 +10,13 @@ type CustomCodeProps = {
 
 const CustomCode = (props: CustomCodeProps) => {
   if (props.className?.split(" ").includes("code-highlight")) {
-    const CopyButton = dynamic(() => import("../clipboard/CopyButton"));
-
     // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
       <>
-        <div className="code-block">
+        <div className={styles.code_block}>
           <CopyButton source={props.children} />
           <code {...props}>{props.children}</code>
         </div>
-
-        <style jsx global>{`
-          .code-block {
-            position: relative;
-            width: 100%;
-            overflow-x: scroll;
-            margin: 1em auto;
-          }
-
-          .code-highlight {
-            display: block;
-            overflow-x: auto;
-            padding: 1em;
-            tab-size: 2;
-            color: var(--code-text);
-            background-color: var(--code-background);
-          }
-
-          /* leave room for clipboard button to the right of the first line */
-          .code-highlight > .code-line:first-of-type {
-            margin-right: 3em;
-          }
-
-          .code-highlight > .code-line.line-number::before {
-            display: inline-block;
-            width: 1.5em;
-            margin-right: 1.5em;
-            text-align: right;
-            color: var(--code-comment);
-            content: attr(line); /* added to spans by prism */
-          }
-
-          .code-highlight .token.comment,
-          .code-highlight .token.prolog,
-          .code-highlight .token.cdata {
-            color: var(--code-comment);
-          }
-
-          .code-highlight .token.delimiter,
-          .code-highlight .token.boolean,
-          .code-highlight .token.keyword,
-          .code-highlight .token.selector,
-          .code-highlight .token.important,
-          .code-highlight .token.doctype,
-          .code-highlight .token.atrule,
-          .code-highlight .token.url {
-            color: var(--code-keyword);
-          }
-
-          .code-highlight .token.tag,
-          .code-highlight .token.builtin,
-          .code-highlight .token.regex {
-            color: var(--code-namespace);
-          }
-
-          .code-highlight .token.property,
-          .code-highlight .token.constant,
-          .code-highlight .token.variable,
-          .code-highlight .token.attr-value,
-          .code-highlight .token.class-name,
-          .code-highlight .token.string,
-          .code-highlight .token.char {
-            color: var(--code-variable);
-          }
-
-          .code-highlight .token.literal-property,
-          .code-highlight .token.attr-name {
-            color: var(--code-attribute);
-          }
-
-          .code-highlight .token.function {
-            color: var(--code-literal);
-          }
-
-          .code-highlight .token.tag .punctuation,
-          .code-highlight .token.attr-value .punctuation {
-            color: var(--code-punctuation);
-          }
-
-          .code-highlight .token.inserted {
-            background-color: var(--code-addition);
-          }
-
-          .code-highlight .token.deleted {
-            background-color: var(--code-deletion);
-          }
-
-          .code-highlight .token.url {
-            text-decoration: underline;
-          }
-
-          .code-highlight .token.bold {
-            font-weight: bold;
-          }
-
-          .code-highlight .token.italic {
-            font-style: italic;
-          }
-        `}</style>
       </>
     );
   } else {

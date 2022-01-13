@@ -22,7 +22,7 @@
 }
 
 .view_source {
-  padding-bottom: 2px;
+  padding-bottom: 2px !important;
   border-bottom: 1px solid;
   border-color: var(--light);
 }
