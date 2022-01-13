@@ -6,7 +6,7 @@ import { escape } from "html-escaper";
 import { getMDXComponent } from "mdx-bundler/client";
 import Content from "../../components/Content";
 import Meta from "../../components/notes/Meta";
-import CustomCode from "../../components/media/Code";
+import CustomCode from "../../components/code-block/Code";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";

@@ -12,6 +12,7 @@ image: "/static/images/notes/github-actions/actions-flow.png"
 ---
 
 import Image from "./components/media/Image";
+import Figure from "./components/media/Figure";
 import Gist from "./components/media/Gist";
 
 <Image
@@ -26,17 +27,9 @@ Since being accepted into the beta for [GitHub Actions](https://github.com/featu
 
 My favorite so far is my [Lighthouse Audit action](https://github.com/jakejarvis/lighthouse-action), which spins up a headless Google Chrome instance in an Ubuntu container and runs [Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse), which scores webpages on performance, accessibility, SEO, etc. and provides actual suggestions to improve them. It's a perfect example of the power of combining containers with Git workflows.
 
-<figure>
-  <Image
-    src="/static/images/notes/github-actions/lighthouse-output.png"
-    width="750"
-    height="297"
-    alt="The results of a Lighthouse audit on this website, after running tests in a headless Google Chrome."
-  />
-  <figcaption>
-    The results of a Lighthouse audit on this website, after running tests in a headless Google Chrome.
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/github-actions/lighthouse-output.png" width="750" height="297">
+  The results of a Lighthouse audit on this website, after running tests in a headless Google Chrome.
+</Figure>
 
 It's also been a fantastic avenue to dip my feet into the collaborative nature of GitHub and the open-source community. I've made some small apps in the past but these are the first projects where I'm regularly receiving new issues to help out with and impressive pull requests to merge. It's a great feeling!
 

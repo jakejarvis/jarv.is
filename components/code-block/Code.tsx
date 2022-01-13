@@ -1,9 +1,9 @@
-import CopyButton from "../clipboard/CopyButton";
+import CopyButton from "./CopyButton";
 import type { ReactNode } from "react";
 
 import styles from "./Code.module.css";
 
-type CustomCodeProps = {
+export type CustomCodeProps = {
   className?: string;
   children: ReactNode;
 };

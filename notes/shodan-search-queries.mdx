@@ -12,25 +12,13 @@ image: "/static/images/notes/shodan-search-queries/shodan.png"
 ---
 
 import Image from "./components/media/Image";
+import Figure from "./components/media/Figure";
 
 Over time, I've collected an assortment of interesting, funny, and depressing search queries to plug into [Shodan](https://www.shodan.io/), the ([literal](https://www.vice.com/en_uk/article/9bvxmd/shodan-exposes-the-dark-side-of-the-net)) internet search engine. Some return facepalm-inducing results, while others return serious and/or ancient vulnerabilities in the wild.
 
-<figure>
-  <a className="no-underline" href="https://account.shodan.io/register" target="_blank" rel="noopener noreferrer">
-    <Image
-      src="/static/images/notes/shodan-search-queries/shodan.png"
-      width="865"
-      height="248"
-      alt="Most search filters require a Shodan account."
-      priority
-    />
-  </a>
-  <figcaption>
-    <a href="https://account.shodan.io/register" target="_blank" rel="noopener noreferrer">
-      <strong>Most search filters require a Shodan account.</strong>
-    </a>
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/shodan-search-queries/shodan.png" width="865" height="248" priority>
+  [**Most search filters require a Shodan account.**](https://account.shodan.io/register)
+</Figure>
 
 You can assume these queries only return unsecured/open instances when possible. For your own legal benefit, do not attempt to login (even with default passwords) if they aren't! Narrow down results by adding filters like `country:US` or `org:"Harvard University"` or `hostname:"nasa.gov"` to the end.
 
@@ -251,15 +239,9 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 
 [Shodan Images](https://images.shodan.io/) is a great supplementary tool to browse screenshots, by the way! [🔎 →](https://images.shodan.io/?query=%22authentication+disabled%22+%21screenshot.label%3Ablank)
 
-<figure>
-  <Image
-    src="/static/images/notes/shodan-search-queries/vnc.png"
-    width="500"
-    height="375"
-    alt="The first result right now. 😞"
-  />
-  <figcaption>The first result right now. 😞</figcaption>
-</figure>
+<Figure src="/static/images/notes/shodan-search-queries/vnc.png" width="500" height="375">
+  The first result right now. 😞
+</Figure>
 
 ### Windows RDP [🔎 →](https://www.shodan.io/search?query=%22%5Cx03%5Cx00%5Cx00%5Cx0b%5Cx06%5Cxd0%5Cx00%5Cx00%5Cx124%5Cx00%22)
 

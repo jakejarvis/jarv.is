@@ -12,21 +12,12 @@ tags:
 image: "/static/images/notes/how-to-backup-linux-server/apocalypse.png"
 ---
 
-import Image from "./components/media/Image";
+import Figure from "./components/media/Figure";
 import Tweet from "./components/media/Tweet";
 
-<figure>
-  <Image
-    src="/static/images/notes/how-to-backup-linux-server/apocalypse.png"
-    width="865"
-    height="303"
-    alt="The Cloud-pocalypse: Coming soon(er than you think) to a server near you."
-    priority
-  />
-  <figcaption>
-    <strong>The Cloud-pocalypse:</strong> Coming soon(er than you think) to a server near you.
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/how-to-backup-linux-server/apocalypse.png" width="865" height="303" priority>
+  **The Cloud-pocalypse:** Coming soon(er than you think) to a server near you.
+</Figure>
 
 Last month, the founder of [a small startup](https://raisup.com/) got quite a bit of [attention on Twitter](https://twitter.com/w3Nicolas/status/1134529316904153089) (and [Hacker News](https://news.ycombinator.com/item?id=20064169)) when he called out [DigitalOcean](https://www.digitalocean.com/) who, in his words, "killed" his company. Long story short: DigitalOcean's automated abuse system flagged the startup's account after they spun up about ten powerful droplets for some CPU-intensive jobs and deleted them shortly after — which is literally **the biggest selling point** of a "servers by the hour" company like DigitalOcean, by the way — and, after replying to the support ticket, an unsympathetic customer support agent [declined to reactivate](https://twitter.com/w3Nicolas/status/1134529372172509184) the account without explanation. [Nicolas](https://twitter.com/w3Nicolas) had no way of even accessing his data, turning the inconvenient but trivial task of migrating servers into a potentially fatal situation for his company.
 

@@ -10,28 +10,15 @@ tags:
 image: "/static/images/notes/y2k-sandbox/screenshot.png"
 ---
 
-import Image from "./components/media/Image";
+import Figure from "./components/media/Figure";
 
 A few months ago, I stumbled upon [my first website ever](https://jakejarvis.github.io/my-first-website/) on an old floppy disk. Despite the instant cringing, I [uploaded it](https://github.com/jakejarvis/my-first-website) to GitHub, [collected other iterations](/previously/), and made an [#awesome-list](https://github.com/jakejarvis/awesome-first-code) of others who were brave and/or shameless enough to do the same. But why not take that ~~one~~ 1,000 steps further?
 
 Introducing the [**Y2K Sandbox**](https://y2k.app/) — with fully-featured, fully-isolated, on-demand [**Windows Millennium Edition®**](https://www.youtube.com/watch?v=CaNDeyYP98A) virtual machines, simply to experience my first website in its natural Internet Explorer 5 habitat. And maybe play some [3D Pinball: Space Cadet](https://en.wikipedia.org/wiki/Full_Tilt!_Pinball#3D_Pinball_for_Windows_%E2%80%93_Space_Cadet). Oh, and [Microsoft Bob](https://en.wikipedia.org/wiki/Microsoft_Bob) is there too if you want to say hello and catch up. 🤓
 
-<figure>
-  <a className="no-underline" href="https://y2k.app/" target="_blank" rel="noopener noreferrer">
-    <Image
-      src="/static/images/notes/y2k-sandbox/screenshot.png"
-      width="865"
-      height="649"
-      alt="Play in the Y2K Sandbox, at your own risk."
-      priority
-    />
-  </a>
-  <figcaption>
-    <a href="https://y2k.app/" target="_blank" rel="noopener noreferrer">
-      <strong>Play in the Y2K Sandbox, at your own risk.</strong>
-    </a>
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/y2k-sandbox/screenshot.png" width="865" height="649" priority>
+  [**Play in the Y2K Sandbox, at your own risk.**](https://y2k.app/)
+</Figure>
 
 The backend is powered by [**QEMU**](https://www.qemu.org/) (as a Pentium III emulator) inside isolated **Docker** containers, [**websocketd**](https://github.com/joewalnes/websocketd) (an **_awesome_** lightweight WebSockets server written in Go), and [**Cloudflare Tunnels**](https://www.cloudflare.com/products/tunnel/) (for some protection), all tied together with some [Ruby code](https://github.com/jakejarvis/y2k/blob/main/container/bin/boot.rb) and [shell scripts](https://github.com/jakejarvis/y2k/tree/main/host). ~~I'll push the backend scripts up to GitHub once I have a chance to untangle the spaghetti code. 🍝~~
 
@@ -41,17 +28,9 @@ The frontend is _much_ simpler with [a few lines of JavaScript](https://github.c
 
 I must give credit to both [charlie.bz](https://charlie.bz/) and [benjojo.co.uk](https://benjojo.co.uk/), similar websites I was enamored with when they were posted on Hacker News a few years ago. Think we'll see some websites like these with Windows 29 in a decade?
 
-<figure>
-  <Image
-    src="/static/images/notes/y2k-sandbox/windows-me.png"
-    width="320"
-    height="92"
-    alt="@microsoft Please don't sue me."
-  />
-  <figcaption>
-    <strong>@microsoft</strong> Please don't sue me.
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/y2k-sandbox/windows-me.png" width="320" height="92">
+  **@microsoft** Please don't sue me.
+</Figure>
 
 Feel free to [open an issue on GitHub](https://github.com/jakejarvis/y2k/issues) if you run into connection glitches or have any nostalgic inspiration for software you think would be cool to install persistently on the OS image. I certainly can't help with any actual Windows Me crashes, though — it was beyond help a long, long time ago. Like, [the day it came out](https://books.google.com/books?id=Jbft8HXJZwQC&lpg=PP1&pg=PA76#v=onepage&q&f=false). But it will always have a soft spot in my heart.
 

@@ -2,10 +2,7 @@ import Image from "next/image";
 import type { ImageProps } from "next/image";
 import type { CSSProperties } from "react";
 
-// TODO: infer ratio when given zero/one dimensions
-// TODO: fold figure/figcaption tags into this component
-
-type CustomImageProps = ImageProps & {
+export type CustomImageProps = ImageProps & {
   style?: CSSProperties;
 };
 

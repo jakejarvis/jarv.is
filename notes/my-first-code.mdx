@@ -12,6 +12,7 @@ image: "/static/images/notes/my-first-code/jbb-screen1.png"
 ---
 
 import Image from "./components/media/Image";
+import Figure from "./components/media/Figure";
 
 <Image
   src="/static/images/notes/my-first-code/netscape.png"
@@ -31,16 +32,9 @@ Hopefully we can all look back at our first projects and be proud of how far we'
 
 ---
 
-<figure>
-  <a className="no-underline" href="https://github.com/jakejarvis/jbb" target="_blank" rel="noopener noreferrer">
-    <Image src="/static/images/notes/my-first-code/jbb-logo.png" width="640" height="80" alt="Jake's Bulletin Board" />
-  </a>
-  <figcaption>
-    <a href="https://github.com/jakejarvis/jbb" target="_blank" rel="noopener noreferrer">
-      Jake's Bulletin Board
-    </a>
-  </figcaption>
-</figure>
+<Figure src="/static/images/notes/my-first-code/jbb-logo.png" width="640" height="80">
+  [Jake's Bulletin Board](https://github.com/jakejarvis/jbb)
+</Figure>
 
 Aside from my [first HTML creation](https://jakejarvis.github.io/my-first-website/) (circa 2001), my first real coding project was in 2003: a PHP 4 masterpiece creatively titled **Jake's Bulletin Board**. I've published the [source code in full on GitHub](https://github.com/jakejarvis/jbb) for your viewing pleasure and highlighted the best/worst parts below.
 
@@ -169,24 +163,16 @@ while ($topic = mysql_fetch_object($result30)) {
 
 The installation "wizard" (that's the joke, I presume...) ([sql_submit.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/setup/sql_submit.php))
 
-<figure>
-  <Image
-    src="/static/images/notes/my-first-code/jbb-screen1.png"
-    width="865"
-    height="458"
-    alt="JBB Installation Wizard"
-  />
-  <figcaption>JBB Installation Wizard</figcaption>
-</figure>
+<Figure src="/static/images/notes/my-first-code/jbb-screen1.png" width="865" height="458">
+  JBB Installation Wizard
+</Figure>
 
 And finally, JBB's actual interface... or literally as much of it as I could get to function in 2019. ([index.php](https://github.com/jakejarvis/jbb/blob/87b606797414b2fe563af85e269566fc5e076cc5/index.php))
 
-<figure>
-  <Image src="/static/images/notes/my-first-code/jbb-screen3.png" width="865" height="561" alt="JBB Homepage" />
-  <figcaption>JBB Homepage</figcaption>
-</figure>
+<Figure src="/static/images/notes/my-first-code/jbb-screen3.png" width="865" height="561">
+  JBB Homepage
+</Figure>
 
-<figure>
-  <Image src="/static/images/notes/my-first-code/jbb-screen4.png" width="865" height="493" alt="JBB Post" />
-  <figcaption>JBB Post</figcaption>
-</figure>
+<Figure src="/static/images/notes/my-first-code/jbb-screen4.png" width="865" height="493">
+  JBB Post
+</Figure>
