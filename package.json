@@ -43,7 +43,7 @@
     "html-escaper": "^3.0.3",
     "is-absolute-url": "^4.0.1",
     "is-email-like": "^2.0.0",
-    "marked": "^4.0.9",
+    "marked": "^4.0.10",
     "mdx-bundler": "^8.0.1",
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",
     "next": "v12.0.8",
