@@ -1,7 +1,6 @@
 .code_block {
   position: relative;
   width: 100%;
-  overflow-x: scroll;
   margin: 1em auto;
 }
 

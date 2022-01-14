@@ -17,6 +17,7 @@ const Index = () => (
         title='"Boston Accent Trailer - Late Night with Seth Meyers" on YouTube'
         lightColor="#fb4d42"
         darkColor="#ff5146"
+        external
       >
         Boston
       </ColorLink>
@@ -30,6 +31,7 @@ const Index = () => (
         title='"The Brutal Lifecycle of JavaScript Frameworks" by Ian Allen'
         lightColor="#1091b3"
         darkColor="#6fcbe3"
+        external
       >
         modern JS frameworks
       </ColorLink>{" "}
@@ -39,11 +41,18 @@ const Index = () => (
         title="The best JS framework in the world by Eric Wastl"
         lightColor="#f48024"
         darkColor="#e18431"
+        external
       >
         vanilla JavaScript
       </ColorLink>{" "}
       to make nifty{" "}
-      <ColorLink href="https://jamstack.wtf/" title="WTF is JAMstack?" lightColor="#04a699" darkColor="#08bbac">
+      <ColorLink
+        href="https://jamstack.wtf/"
+        title="WTF is JAMstack?"
+        lightColor="#04a699"
+        darkColor="#08bbac"
+        external
+      >
         JAMstack sites
       </ColorLink>{" "}
       with dynamic{" "}
@@ -52,6 +61,7 @@ const Index = () => (
         title="Node.js Official Website"
         lightColor="#6fbc4e"
         darkColor="#84d95f"
+        external
       >
         Node.js
       </ColorLink>{" "}
@@ -61,6 +71,7 @@ const Index = () => (
         title='"PHP in 2020" by Brent Roose'
         lightColor="#8892bf"
         darkColor="#a4afe3"
+        external
       >
         PHP
       </ColorLink>
@@ -70,11 +81,18 @@ const Index = () => (
         title="Ruby Official Website"
         lightColor="#d34135"
         darkColor="#f95a4d"
+        external
       >
         Ruby
       </ColorLink>
       , and{" "}
-      <ColorLink href="https://golang.org/" title="Golang Official Website" lightColor="#00acd7" darkColor="#2ad1fb">
+      <ColorLink
+        href="https://golang.org/"
+        title="Golang Official Website"
+        lightColor="#00acd7"
+        darkColor="#2ad1fb"
+        external
+      >
         Go
       </ColorLink>{" "}
       too.
@@ -87,6 +105,7 @@ const Index = () => (
         title="jakejarvis/awesome-shodan-queries on GitHub"
         lightColor="#00b81a"
         darkColor="#57f06d"
+        external
       >
         application security
       </ColorLink>
@@ -96,11 +115,18 @@ const Index = () => (
         title='"What is serverless computing?" on Cloudflare'
         lightColor="#0098ec"
         darkColor="#43b9fb"
+        external
       >
         serverless stacks
       </ColorLink>
       , and{" "}
-      <ColorLink href="https://xkcd.com/1319/" title='"Automation" on xkcd' lightColor="#ff6200" darkColor="#f46c16">
+      <ColorLink
+        href="https://xkcd.com/1319/"
+        title='"Automation" on xkcd'
+        lightColor="#ff6200"
+        darkColor="#f46c16"
+        external
+      >
         DevOps automation
       </ColorLink>
       .
@@ -146,6 +172,7 @@ const Index = () => (
         title='"Student designs iPhone JoeyTracker app" on The Tufts Daily'
         lightColor="#ff1b1b"
         darkColor="#f06060"
+        external
       >
         have
       </ColorLink>{" "}
@@ -162,6 +189,7 @@ const Index = () => (
         title='"The Facebook Effect" by David Kirkpatrick (Google Books)'
         lightColor="#f2b702"
         darkColor="#ffcc2e"
+        external
       >
         featured
       </ColorLink>{" "}
@@ -170,6 +198,7 @@ const Index = () => (
         title='"The new Facebook is on a roll" on CNN Money'
         lightColor="#5ebd3e"
         darkColor="#78df55"
+        external
       >
         by
       </ColorLink>{" "}
@@ -178,6 +207,7 @@ const Index = () => (
         title='"Middio: A YouTube Scraper for Major Label Music Videos" on Wired'
         lightColor="#009cdf"
         darkColor="#29bfff"
+        external
       >
         various
       </ColorLink>{" "}
@@ -186,6 +216,7 @@ const Index = () => (
         title='"Fresh Faces in Tech: 10 Kid Entrepreneurs to Watch" on Gigaom'
         lightColor="#3e49bb"
         darkColor="#7b87ff"
+        external
       >
         media
       </ColorLink>{" "}
@@ -194,6 +225,7 @@ const Index = () => (
         title='"Your Next Client? The CEO&#39;s Son" on Advertising Age'
         lightColor="#973999"
         darkColor="#db60dd"
+        external
       >
         outlets
       </ColorLink>
@@ -207,6 +239,7 @@ const Index = () => (
         title="Jake Jarvis on GitHub"
         lightColor="#8d4eff"
         darkColor="#a379f0"
+        external
       >
         GitHub
       </ColorLink>{" "}
@@ -216,6 +249,7 @@ const Index = () => (
         title="Jake Jarvis on LinkedIn"
         lightColor="#0073b1"
         darkColor="#3b9dd2"
+        external
       >
         LinkedIn
       </ColorLink>
@@ -224,7 +258,7 @@ const Index = () => (
         email
       </ColorLink>{" "}
       <sup className="monospace pgp_key">
-        <ColorLink href="/pubkey.asc" title="My Public Key" lightColor="#757575" darkColor="#959595" external={true}>
+        <ColorLink href="/pubkey.asc" title="My Public Key" lightColor="#757575" darkColor="#959595" external>
           <LockIcon className="icon" /> 2B0C 9CF2 51E6 9A39
         </ColorLink>
       </sup>
@@ -234,6 +268,7 @@ const Index = () => (
         title="Jake Jarvis on Twitter"
         lightColor="#00acee"
         darkColor="#3bc9ff"
+        external
       >
         Twitter
       </ColorLink>
@@ -292,8 +327,8 @@ const Index = () => (
         color: var(--medium-light);
       }
       .birthday :global(a:hover) {
-        /* magic wand easter egg */
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🪄</text></svg>")
+        /* magic wand cursor easter egg */
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-18, 5)'>🪄</text></svg>")
             16 0,
           auto;
       }

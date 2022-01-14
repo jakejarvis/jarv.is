@@ -1,7 +1,6 @@
 import { memo } from "react";
 import Link from "next/link";
 import css from "styled-jsx/css";
-import isAbsoluteUrl from "is-absolute-url";
 import type { ReactNode } from "react";
 
 type ColorLinkProps = {
@@ -41,8 +40,6 @@ const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<ColorLinkProps>) 
 };
 
 const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
-  external = external || isAbsoluteUrl(href);
-
   const { className, styles } = getFancyLinkStyles({ lightColor, darkColor });
 
   return (
