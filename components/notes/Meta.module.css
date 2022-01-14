@@ -20,6 +20,8 @@
 }
 
 .meta > div:last-of-type {
+  /* fix potential layout shift when number of hits loads */
+  min-width: 6em;
   margin-right: 0;
 }
 
