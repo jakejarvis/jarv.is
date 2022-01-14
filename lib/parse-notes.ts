@@ -13,6 +13,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 // note: 'common' only exports these languages: https://github.com/wooorm/refractor/blob/main/lib/common.js
+// eslint-disable-next-line import/no-unresolved
 import rehypePrism from "rehype-prism-plus/common";
 
 import type { NoteMetaType, NoteType } from "../types";
