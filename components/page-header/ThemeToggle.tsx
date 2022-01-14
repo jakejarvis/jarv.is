@@ -1,5 +1,7 @@
-import { memo } from "react";
+import { useEffect, useState, memo } from "react";
 import { useTheme } from "next-themes";
+
+import styles from "./ThemeToggle.module.css";
 
 // modified from Twemoji lightbulb:
 const BulbIcon = ({ on = false, className = "" }) => (
@@ -30,21 +32,21 @@ const BulbIcon = ({ on = false, className = "" }) => (
 );
 
 const ThemeToggle = ({ className = "" }) => {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+
+  // render a dummy bulb until we're fully mounted and self-aware
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <BulbIcon on={false} className={`icon ${className}`} />;
 
   return (
     <button
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      title={resolvedTheme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"}
+      className={styles.button}
+      onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
+      title={resolvedTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
       aria-hidden={true}
-      style={{
-        border: 0,
-        padding: 0,
-        background: "none",
-        cursor: "pointer",
-      }}
     >
-      <BulbIcon on={resolvedTheme !== "dark"} className={`icon ${className}`} />
+      <BulbIcon on={resolvedTheme === "light"} className={`icon ${className}`} />
     </button>
   );
 };

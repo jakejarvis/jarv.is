@@ -12,6 +12,17 @@ import faviconPng from "../public/static/favicons/favicon.png";
 import appleTouchIconPng from "../public/static/favicons/apple-touch-icon.png";
 import meJpg from "../public/static/images/me.jpg";
 
+// global webfonts -- imported here so they're processed through PostCSS
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import "@fontsource/inter/latin-700.css";
+import "@fontsource/inter/variable-full.css";
+import "@fontsource/roboto-mono/latin-400.css";
+import "@fontsource/roboto-mono/latin-500.css";
+import "@fontsource/roboto-mono/latin-700.css";
+import "@fontsource/roboto-mono/variable.css";
+import "@fontsource/roboto-mono/variable-italic.css";
+
 // global styles
 import "modern-normalize/modern-normalize.css";
 import "../styles/colors.css";

@@ -1,15 +1,12 @@
 import { memo } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../icons";
 
 import meJpg from "../../public/static/images/me.jpg";
 
 import styles from "./Header.module.css";
-
-// ensure the theme toggle isn't evaluated server-side
-const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
 const links = [
   {
