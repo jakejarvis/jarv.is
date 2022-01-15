@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { renderToStaticMarkup } from "react-dom/server";
 import matter from "gray-matter";
-import { marked } from "marked";
+import { compiler } from "markdown-to-jsx";
 import sanitizeHtml from "sanitize-html";
 import { bundleMDX } from "mdx-bundler";
 import readingTime from "reading-time";
@@ -32,19 +33,24 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
   const { data, content } = matter(rawContent);
 
   // carefully allow VERY limited markdown in post titles...
-  const htmlTitle = sanitizeHtml(marked.parseInline(data.title), {
-    allowedTags: ["code", "pre", "em", "strong", "del"],
-  });
-  // ...and add it as a separate prop *only if it's present*
-  if (htmlTitle !== data.title) {
-    data.htmlTitle = htmlTitle;
-  }
+  const htmlTitle = sanitizeHtml(
+    renderToStaticMarkup(
+      compiler(data.title, {
+        forceInline: true,
+        disableParsingRawHTML: true,
+      })
+    ),
+    {
+      allowedTags: ["code", "pre", "em", "strong", "del"],
+    }
+  );
 
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as Omit<NoteMetaType, "slug" | "permalink" | "date" | "readingMins">),
+      ...(data as Omit<NoteMetaType, "slug" | "htmlTitle" | "permalink" | "date" | "readingMins">),
       slug,
+      htmlTitle,
       permalink: `${baseUrl}/notes/${slug}/`,
       date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter
       readingMins: Math.ceil(readingTime(content).minutes),

@@ -1,6 +1,6 @@
 export type NoteMetaType = {
   title: string;
-  htmlTitle?: string;
+  htmlTitle: string;
   date: string;
   slug: string;
   permalink: string;
