@@ -1,6 +1,6 @@
 import { useMemo } from "react";
+import { useInView } from "react-intersection-observer";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { escape } from "html-escaper";
 import { getMDXComponent } from "mdx-bundler/client";
@@ -16,18 +16,14 @@ const Comments = dynamic(() => import("../../components/notes/Comments"), { ssr:
 
 const Note = ({ frontMatter, mdxSource }: NoteType) => {
   const MDXComponent = useMemo(() => getMDXComponent(mdxSource, { process }), [mdxSource]);
+  const [commentsRef, commentsInView] = useInView({
+    rootMargin: "100px", // start loading utteranc.es script 100px from end of content
+    triggerOnce: true, // don't unload one it's loaded (if user scrolls back up)
+    fallbackInView: true,
+  });
 
   return (
     <>
-      {/* preload here instead of Comments.tsx -- by the time it's loaded dynamically, there's no real point anymore */}
-      {frontMatter.noComments !== true && (
-        <Head>
-          <link rel="preload" as="script" href="https://utteranc.es/client.js" crossOrigin="anonymous" />
-          <link rel="dns-prefetch" href="https://api.utteranc.es" />
-          <link rel="dns-prefetch" href="https://api.github.com" />
-        </Head>
-      )}
-
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}
@@ -69,7 +65,9 @@ const Note = ({ frontMatter, mdxSource }: NoteType) => {
       <Content>
         <MDXComponent components={{ code: CustomCode }} />
       </Content>
-      {frontMatter.noComments !== true && <Comments slug={frontMatter.slug} />}
+      {frontMatter.noComments !== true && (
+        <div ref={commentsRef}>{commentsInView && <Comments slug={frontMatter.slug} />}</div>
+      )}
     </>
   );
 };
