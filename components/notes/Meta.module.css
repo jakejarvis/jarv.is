@@ -21,7 +21,7 @@
 
 .meta > div:last-of-type {
   /* fix potential layout shift when number of hits loads */
-  min-width: 6.5em;
+  min-width: 7em;
   margin-right: 0;
 }
 

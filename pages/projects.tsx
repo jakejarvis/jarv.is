@@ -19,42 +19,40 @@ const Projects = (props: { repos: RepoType[] }) => (
       <ProjectsIcon /> Projects
     </PageTitle>
 
-    <div>
+    <div className="wrapper">
       {props.repos.map((repo: RepoType) => (
-        <div key={repo.name} className="repo_card">
+        <div key={repo.name} className="card">
           <RepoCard {...repo} />
         </div>
       ))}
-
-      <style jsx>{`
-        div {
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: space-between;
-          align-items: flex-start;
-          width: 100%;
-        }
-
-        div .repo_card {
-          flex-grow: 1;
-          margin: 0.5em;
-          width: 370px;
-        }
-      `}</style>
     </div>
 
-    <p>
+    <p className="view_more">
       <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
         View more on GitHub...
       </a>
-
-      <style jsx>{`
-        p {
-          text-align: center;
-          margin-bottom: 0;
-        }
-      `}</style>
     </p>
+
+    <style jsx>{`
+      .wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .card {
+        flex-grow: 1;
+        margin: 0.5em;
+        width: 370px;
+      }
+
+      .view_more {
+        text-align: center;
+        margin-bottom: 0;
+      }
+    `}</style>
   </>
 );
 

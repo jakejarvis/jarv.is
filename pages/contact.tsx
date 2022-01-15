@@ -38,6 +38,7 @@ const Contact = () => (
           </a>
           .
         </p>
+
         <ContactForm />
       </div>
     </Content>

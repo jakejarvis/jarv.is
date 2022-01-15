@@ -201,6 +201,7 @@ const Previously = () => (
       </figure>
     </Content>
 
+    {/* a complete sh*tshow of overrides, mainly to compensate for font change */}
     <style jsx global>{`
       body {
         font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", "Inter", sans-serif;

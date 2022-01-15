@@ -1,0 +1,6 @@
+.wrapper :global(.giscus) {
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 2px solid var(--light);
+  min-height: 350px;
+}

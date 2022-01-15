@@ -15,13 +15,7 @@ const RepoCard = (props: RepoType) => (
     <div className={styles.meta}>
       {props.language && (
         <div className={styles.meta_item}>
-          <span className={styles.language_color}>
-            <style jsx>{`
-              span {
-                background-color: ${props.language.color};
-              }
-            `}</style>
-          </span>
+          <span className={styles.language_color} style={{ backgroundColor: props.language.color }} />
           <span>{props.language.name}</span>
         </div>
       )}
