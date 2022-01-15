@@ -32,7 +32,7 @@
   - Next.js
   - React
   - Vercel
-  - utteranc.es
+  - Giscus
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/
 

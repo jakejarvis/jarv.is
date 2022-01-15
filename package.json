@@ -27,6 +27,7 @@
     "@fontsource/comic-neue": "4.5.0",
     "@fontsource/inter": "4.5.1",
     "@fontsource/roboto-mono": "4.5.0",
+    "@giscus/react": "^1.0.1",
     "@hcaptcha/react-hcaptcha": "^1.0.0",
     "@next/bundle-analyzer": "^12.0.8",
     "@octokit/graphql": "^4.8.0",
