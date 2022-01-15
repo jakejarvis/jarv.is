@@ -36,7 +36,7 @@ const CLI = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image src={cliImg} placeholder="blur" alt="Terminal Screenshot" />
+        <Image src={cliImg} placeholder="blur" alt="Terminal Screenshot" priority />
       </a>
       <h2>Usage</h2>
       <pre>

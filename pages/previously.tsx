@@ -44,7 +44,7 @@ const Previously = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image src={img_wayback} placeholder="blur" alt="Timeline of this website's past." />
+          <Image src={img_wayback} placeholder="blur" alt="Timeline of this website's past." priority />
         </a>
         <figcaption>
           ...the{" "}

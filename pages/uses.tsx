@@ -34,7 +34,7 @@ const Uses = () => (
         . ❤️
       </p>
 
-      <Image src={desktopImg} placeholder="blur" alt="My mess of a desktop." />
+      <Image src={desktopImg} placeholder="blur" alt="My mess of a desktop." priority />
 
       <h2>🍎 Hardware</h2>
       <ul>

@@ -39,6 +39,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .section {
+    margin: 1.8em 0;
+  }
+
   .year {
     font-size: 2em;
   }
