@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import Hits from "../hits/Hits";
+import HitCounter from "./HitCounter";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
 import * as config from "../../lib/config";
 import type { NoteMetaType } from "../../types";
@@ -20,6 +20,7 @@ const Meta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
           </Link>
         </span>
       </div>
+
       {tags.length > 0 && (
         <div className={styles.tags}>
           <span>
@@ -32,6 +33,7 @@ const Meta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
           ))}
         </div>
       )}
+
       <div>
         <span>
           <EditIcon className={`icon ${styles.icon}`} />
@@ -47,11 +49,12 @@ const Meta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
           </a>
         </span>
       </div>
+
       <div>
         <span>
           <ViewsIcon className={`icon ${styles.icon}`} />
         </span>
-        <Hits slug={`notes/${slug}`} />
+        <HitCounter slug={`notes/${slug}`} />
       </div>
     </div>
 

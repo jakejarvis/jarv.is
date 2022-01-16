@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import Video from "../components/media/Video";
 import { TapeIcon } from "../components/icons";
 
@@ -16,9 +16,9 @@ const Birthday = () => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       <TapeIcon /> 1996.MOV
-    </PageTitle>
+    </Title>
 
     <Content>
       <Video

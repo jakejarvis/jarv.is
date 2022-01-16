@@ -1,6 +1,6 @@
 import { graphql } from "@octokit/graphql";
 import { NextSeo } from "next-seo";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import RepoCard from "../components/projects/RepoCard";
 import { ProjectsIcon } from "../components/icons";
 import type { GetStaticProps } from "next";
@@ -15,9 +15,9 @@ const Projects = (props: { repos: RepoType[] }) => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       <ProjectsIcon /> Projects
-    </PageTitle>
+    </Title>
 
     <div className="wrapper">
       {props.repos.map((repo: RepoType) => (

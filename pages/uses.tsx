@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import { LaptopIcon } from "../components/icons";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
@@ -17,9 +17,9 @@ const Uses = () => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       /uses <LaptopIcon />
-    </PageTitle>
+    </Title>
 
     <Content>
       <p>

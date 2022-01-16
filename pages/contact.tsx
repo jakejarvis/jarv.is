@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import ContactForm from "../components/contact/ContactForm";
 import { MailIcon, LockIcon } from "../components/icons";
 import Content from "../components/Content";
@@ -13,9 +13,9 @@ const Contact = () => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       <MailIcon /> Contact Me
-    </PageTitle>
+    </Title>
 
     <Content>
       <div className="wrapper">

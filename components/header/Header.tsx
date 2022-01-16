@@ -64,6 +64,7 @@ const Header = () => (
               </Link>
             </li>
           ))}
+
           <li className={styles.theme_toggle}>
             <ThemeToggle className={styles.icon} />
           </li>

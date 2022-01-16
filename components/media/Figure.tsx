@@ -1,9 +1,9 @@
 import Image from "./Image";
 import innerText from "react-innertext";
 import type { ReactNode } from "react";
-import type { CustomImageProps } from "./Image";
+import type { ImageProps } from "next/image";
 
-export type CustomFigureProps = Omit<CustomImageProps, "alt"> & {
+type CustomFigureProps = Omit<ImageProps, "alt"> & {
   children: ReactNode; // caption (can be in markdown, yay!!!)
   alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
 };

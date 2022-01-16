@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import { FloppyIcon, SirenIcon } from "../components/icons";
 
 /* eslint-disable camelcase */
@@ -32,9 +32,9 @@ const Previously = () => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       <FloppyIcon /> Previously on...
-    </PageTitle>
+    </Title>
 
     <Content>
       <figure>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
-import PageTitle from "../components/page/PageTitle";
+import Title from "../components/title/Title";
 import { BotIcon } from "../components/icons";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
@@ -16,9 +16,9 @@ const CLI = () => (
       }}
     />
 
-    <PageTitle>
+    <Title>
       <BotIcon /> CLI
-    </PageTitle>
+    </Title>
 
     <Content>
       <blockquote>

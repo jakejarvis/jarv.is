@@ -1,23 +1,18 @@
 import Image from "next/image";
 import type { ImageProps } from "next/image";
-import type { CSSProperties } from "react";
 
-export type CustomImageProps = ImageProps & {
-  style?: CSSProperties;
-};
-
-const CustomImage = (props: CustomImageProps) => {
+const CustomImage = ({ src, width, height, alt, priority }: ImageProps) => {
   return (
-    <div className="image_wrapper" style={props.style}>
+    <div className="image_wrapper">
       <Image
-        src={props.src}
+        src={src}
         layout="intrinsic"
-        width={props.width}
-        height={props.height}
-        alt={props.alt}
+        width={width}
+        height={height}
+        alt={alt || ""}
         quality={65}
-        loading={props.priority ? "eager" : "lazy"}
-        priority={!!props.priority}
+        loading={priority ? "eager" : "lazy"}
+        priority={!!priority}
       />
     </div>
   );

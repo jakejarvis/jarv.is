@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { fetcher } from "../../lib/fetcher";
 import Loading from "../loading/Loading";
+import { fetcher } from "../../lib/fetcher";
 
-const Hits = ({ slug }) => {
+const HitCounter = ({ slug }) => {
   // start fetching repos from API immediately
   const { data, error } = useSWR(`/api/hits/?slug=${encodeURIComponent(slug)}`, fetcher, {
     // avoid double (or more) counting views
@@ -27,4 +27,4 @@ const Hits = ({ slug }) => {
   );
 };
 
-export default Hits;
+export default HitCounter;

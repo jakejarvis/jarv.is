@@ -1,6 +1,10 @@
 import TweetEmbed from "react-tweet-embed";
 
-const Tweet = (props: { id: string }) => (
+type CustomTweetProps = {
+  id: string;
+};
+
+const Tweet = (props: CustomTweetProps) => (
   <TweetEmbed
     id={props.id}
     options={{
