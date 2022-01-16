@@ -2,9 +2,10 @@ import fs from "fs";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import matter from "gray-matter";
-import { compiler } from "markdown-to-jsx";
-import sanitizeHtml from "sanitize-html";
 import { bundleMDX } from "mdx-bundler";
+import { compiler } from "markdown-to-jsx";
+import removeMarkdown from "remove-markdown";
+import sanitizeHtml from "sanitize-html";
 import readingTime from "reading-time";
 import { NOTES_DIR, baseUrl } from "./config";
 
@@ -48,9 +49,12 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as Omit<NoteMetaType, "slug" | "htmlTitle" | "permalink" | "date" | "readingMins">),
-      slug,
+      ...(data as Omit<NoteMetaType, "slug" | "title" | "htmlTitle" | "permalink" | "date" | "readingMins">),
+      // zero markdown title:
+      title: removeMarkdown(data.title),
+      // parsed markdown title:
       htmlTitle,
+      slug,
       permalink: `${baseUrl}/notes/${slug}/`,
       date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter
       readingMins: Math.ceil(readingTime(content).minutes),

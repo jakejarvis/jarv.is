@@ -26,6 +26,9 @@ module.exports = {
     {
       files: ["*.md", "*.mdx"],
       extends: ["plugin:mdx/recommended"],
+      rules: {
+        "import/no-unresolved": "off",
+      },
     },
   ],
 };

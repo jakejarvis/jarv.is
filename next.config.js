@@ -98,7 +98,6 @@ module.exports = (phase, { defaultConfig }) => {
         { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
         { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
         { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
-        { source: "/dark-mode-example/:path*", destination: "https://jakejarvis.github.io/dark-mode-example/:path*" },
       ],
       redirects: async () => [
         { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
