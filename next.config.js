@@ -8,10 +8,10 @@ const withPlugins = require("next-compose-plugins");
 const config = require("./lib/config");
 
 module.exports = (phase, { defaultConfig }) => {
-  let BASE_URL = ""; // fallback to relative urls
+  let BASE_URL; // fallback to relative urls
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") {
     // vercel production (set manually)
-    BASE_URL = `https://jarv.is`;
+    BASE_URL = "https://jarv.is";
   } else if (process.env.NEXT_PUBLIC_VERCEL_URL) {
     // vercel deploy previews
     BASE_URL = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
@@ -102,6 +102,7 @@ module.exports = (phase, { defaultConfig }) => {
       redirects: async () => [
         { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
         { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
+        { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: true },
         { source: "/stats/", destination: "https://app.usefathom.com/share/wbgnqukw/jarv.is", permanent: false },
         { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
         { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
@@ -110,11 +111,6 @@ module.exports = (phase, { defaultConfig }) => {
         { source: "/rss/", destination: "/feed.xml", permanent: true },
         { source: "/blog/:path*", destination: "/notes/", permanent: true },
         { source: "/archives/:path*", destination: "/notes/", permanent: true },
-        {
-          source: "/2013/11/21/no-homo-still-raps-motto/",
-          destination: "/notes/no-homo-still-raps-motto/",
-          permanent: true,
-        },
         {
           source: "/2016/02/28/millenial-with-hillary-clinton/",
           destination: "/notes/millenial-with-hillary-clinton/",
