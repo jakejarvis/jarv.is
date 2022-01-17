@@ -188,7 +188,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           `https://www.linkedin.com/in/${config.authorSocial.linkedin}/`,
           `https://www.facebook.com/${config.authorSocial.facebook}`,
           `https://www.instagram.com/${config.authorSocial.instagram}/`,
-          `https://${config.authorSocial.mastodon}`,
         ]}
       />
 
