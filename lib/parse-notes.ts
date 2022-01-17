@@ -73,7 +73,7 @@ export const getNote = async (slug: string): Promise<NoteType> => {
   const { frontMatter, content } = getNoteData(slug);
   const { code: mdxSource } = await bundleMDX({
     source: content,
-    cwd: process.cwd(),
+    cwd: path.join(process.cwd(), NOTES_DIR),
     xdmOptions: (options) => {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), [remarkGfm, { singleTilde: false }]];
       options.rehypePlugins = [
