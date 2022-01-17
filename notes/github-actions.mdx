@@ -11,12 +11,8 @@ tags:
 image: "/static/images/notes/github-actions/actions-flow.png"
 ---
 
-import Image from "../components/media/Image";
-import Figure from "../components/media/Figure";
-import Gist from "../components/media/Gist";
-
 <Image
-  src="/static/images/notes/github-actions/actions-flow.png"
+  src="/public/static/images/notes/github-actions/actions-flow.png"
   width="780"
   height="322"
   alt="Example workflow for a GitHub Action"
@@ -27,7 +23,7 @@ Since being accepted into the beta for [GitHub Actions](https://github.com/featu
 
 My favorite so far is my [Lighthouse Audit action](https://github.com/jakejarvis/lighthouse-action), which spins up a headless Google Chrome instance in an Ubuntu container and runs [Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse), which scores webpages on performance, accessibility, SEO, etc. and provides actual suggestions to improve them. It's a perfect example of the power of combining containers with Git workflows.
 
-<Figure src="/static/images/notes/github-actions/lighthouse-output.png" width="750" height="297">
+<Figure src="/public/static/images/notes/github-actions/lighthouse-output.png" width="750" height="297">
   The results of a Lighthouse audit on this website, after running tests in a headless Google Chrome.
 </Figure>
 
@@ -62,7 +58,7 @@ Using an action is also surprisingly simple, and more intuitive than [Travis CI]
 For a more complex example, when I forked [Hugo](https://github.com/gohugoio/hugo) (the static site generator used to build this website) to make some small personalized changes, I also translated [their `.travis.yml` file](https://github.com/gohugoio/hugo/blob/master/.travis.yml) into a [`workflow.yml` file](https://github.com/jakejarvis/hugo-custom/blob/master/.github/workflows/workflow.yml) for practice, which simultaneously runs comprehensive unit tests on **three operating systems** (Ubuntu 18.04, Windows 10, and macOS 10.14) with the latest two Go versions _each!_ If the tests are all successful, it builds a Docker image and pushes it to both [Docker Hub](https://hub.docker.com/r/jakejarvis/hugo-custom) and the [GitHub Package Registry](https://github.com/jakejarvis/hugo-custom/packages) (also [in beta](https://github.com/features/package-registry)).
 
 <Image
-  src="/static/images/notes/github-actions/hugo-logs.png"
+  src="/public/static/images/notes/github-actions/hugo-logs.png"
   width="865"
   height="418"
   alt="Build logs for my Hugo fork"

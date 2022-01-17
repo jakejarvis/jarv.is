@@ -1,3 +1,5 @@
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+
 export type NoteMetaType = {
   title: string;
   htmlTitle: string;
@@ -13,7 +15,7 @@ export type NoteMetaType = {
 
 export type NoteType = {
   frontMatter: NoteMetaType;
-  mdxSource: string;
+  source: MDXRemoteSerializeResult;
 };
 
 export type RepoType = {

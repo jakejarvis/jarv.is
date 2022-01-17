@@ -11,12 +11,9 @@ tags:
 image: "/static/images/notes/shodan-search-queries/shodan.png"
 ---
 
-import Image from "../components/media/Image";
-import Figure from "../components/media/Figure";
-
 Over time, I've collected an assortment of interesting, funny, and depressing search queries to plug into [Shodan](https://www.shodan.io/), the ([literal](https://www.vice.com/en_uk/article/9bvxmd/shodan-exposes-the-dark-side-of-the-net)) internet search engine. Some return facepalm-inducing results, while others return serious and/or ancient vulnerabilities in the wild.
 
-<Figure src="/static/images/notes/shodan-search-queries/shodan.png" width="865" height="248" priority>
+<Figure src="/public/static/images/notes/shodan-search-queries/shodan.png" width="865" height="248" priority>
   [**Most search filters require a Shodan account.**](https://account.shodan.io/register)
 </Figure>
 
@@ -50,7 +47,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/billboard3.png"
+  src="/public/static/images/notes/shodan-search-queries/billboard3.png"
   width="450"
   height="329"
   alt="Example: Electronic Billboards"
@@ -63,7 +60,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/7-11.png"
+  src="/public/static/images/notes/shodan-search-queries/7-11.png"
   width="600"
   height="226"
   alt="Example: Gas Station Pump Inventories"
@@ -76,7 +73,7 @@ P372 "ANPR enabled"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/plate-reader.png"
+  src="/public/static/images/notes/shodan-search-queries/plate-reader.png"
   width="680"
   height="284"
   alt="Example: Automatic License Plate Reader"
@@ -117,7 +114,7 @@ http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/tesla.png"
+  src="/public/static/images/notes/shodan-search-queries/tesla.png"
   width="865"
   height="543"
   alt="Example: Tesla PowerPack Charging Status"
@@ -138,7 +135,7 @@ Shodan made a pretty sweet [Ship Tracker](https://shiptracker.shodan.io/) that m
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/sailor-vsat.png"
+  src="/public/static/images/notes/shodan-search-queries/sailor-vsat.png"
   width="700"
   height="361"
   alt="Example: Maritime Satellites"
@@ -157,7 +154,7 @@ title:"Slocum Fleet Mission Control"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/refrigeration.png"
+  src="/public/static/images/notes/shodan-search-queries/refrigeration.png"
   width="865"
   height="456"
   alt="Example: CAREL PlantVisor Refrigeration Units"
@@ -176,7 +173,7 @@ http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/c4max.png"
+  src="/public/static/images/notes/shodan-search-queries/c4max.png"
   width="865"
   height="171"
   alt="Example: C4 Max Vehicle GPS"
@@ -197,7 +194,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/power-gaugetech.png"
+  src="/public/static/images/notes/shodan-search-queries/power-gaugetech.png"
   width="500"
   height="246"
   alt="Example: GaugeTech Electricity Meters"
@@ -239,7 +236,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 
 [Shodan Images](https://images.shodan.io/) is a great supplementary tool to browse screenshots, by the way! [🔎 →](https://images.shodan.io/?query=%22authentication+disabled%22+%21screenshot.label%3Ablank)
 
-<Figure src="/static/images/notes/shodan-search-queries/vnc.png" width="500" height="375">
+<Figure src="/public/static/images/notes/shodan-search-queries/vnc.png" width="500" height="375">
   The first result right now. 😞
 </Figure>
 
@@ -264,7 +261,7 @@ title:"Weave Scope" http.favicon.hash:567176827
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/weavescope.png"
+  src="/public/static/images/notes/shodan-search-queries/weavescope.png"
   width="865"
   height="465"
   alt="Example: Weave Scope Dashboards"
@@ -278,7 +275,12 @@ Older versions were insecure by default. [Very scary.](https://krebsonsecurity.c
 "MongoDB Server Information" port:27017 -authentication
 ```
 
-<Image src="/static/images/notes/shodan-search-queries/mongo.png" width="500" height="238" alt="Example: MongoDB" />
+<Image
+  src="/public/static/images/notes/shodan-search-queries/mongo.png"
+  width="500"
+  height="238"
+  alt="Example: MongoDB"
+/>
 
 ### [Mongo Express](https://github.com/mongo-express/mongo-express) Web GUI [🔎 →](https://www.shodan.io/search?query=%22Set-Cookie%3A+mongo-express%3D%22+%22200+OK%22)
 
@@ -289,7 +291,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/mongo-express.png"
+  src="/public/static/images/notes/shodan-search-queries/mongo-express.png"
   width="700"
   height="395"
   alt="Example: Mongo Express GUI"
@@ -302,7 +304,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/jenkins.png"
+  src="/public/static/images/notes/shodan-search-queries/jenkins.png"
   width="700"
   height="225"
   alt="Example: Jenkins CI"
@@ -353,7 +355,7 @@ Lantronix password port:30718 -secured
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/citrix.png"
+  src="/public/static/images/notes/shodan-search-queries/citrix.png"
   width="700"
   height="273"
   alt="Example: Citrix Virtual Apps"
@@ -386,7 +388,7 @@ Telnet Configuration: [🔎 →](https://www.shodan.io/search?query=%22Polycom+C
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/polycom.png"
+  src="/public/static/images/notes/shodan-search-queries/polycom.png"
   width="550"
   height="251"
   alt="Example: Polycom Video Conferencing"
@@ -419,7 +421,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/owa2007.png"
+  src="/public/static/images/notes/shodan-search-queries/owa2007.png"
   width="450"
   height="494"
   alt="Example: OWA for Exchange 2007"
@@ -432,7 +434,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/owa2010.png"
+  src="/public/static/images/notes/shodan-search-queries/owa2010.png"
   width="450"
   height="429"
   alt="Example: OWA for Exchange 2010"
@@ -445,7 +447,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/owa2013.png"
+  src="/public/static/images/notes/shodan-search-queries/owa2013.png"
   width="580"
   height="230"
   alt="Example: OWA for Exchange 2013/2016"
@@ -494,7 +496,7 @@ Concerning [default network shares of QuickBooks](https://quickbooks.intuit.com/
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/iomega.png"
+  src="/public/static/images/notes/shodan-search-queries/iomega.png"
   width="600"
   height="215"
   alt="Example: Iomega / LenovoEMC NAS Drives"
@@ -507,7 +509,7 @@ Redirecting sencha port:9000
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/buffalo.png"
+  src="/public/static/images/notes/shodan-search-queries/buffalo.png"
   width="580"
   height="140"
   alt="Example: Buffalo TeraStation NAS Drives"
@@ -520,7 +522,7 @@ Redirecting sencha port:9000
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/logitech.png"
+  src="/public/static/images/notes/shodan-search-queries/logitech.png"
   width="500"
   height="224"
   alt="Example: Logitech Media Servers"
@@ -539,7 +541,7 @@ Redirecting sencha port:9000
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/plexpy.png"
+  src="/public/static/images/notes/shodan-search-queries/plexpy.png"
   width="560"
   height="266"
   alt="Example: PlexPy / Tautulli Dashboards"
@@ -585,7 +587,12 @@ html:"DVR_H264 ActiveX"
 "Serial Number:" "Built:" "Server: HP HTTP"
 ```
 
-<Image src="/static/images/notes/shodan-search-queries/hp.png" width="700" height="272" alt="Example: HP Printers" />
+<Image
+  src="/public/static/images/notes/shodan-search-queries/hp.png"
+  width="700"
+  height="272"
+  alt="Example: HP Printers"
+/>
 
 ### Xerox Copiers/Printers [🔎 →](https://www.shodan.io/search?query=ssl%3A%22Xerox+Generic+Root%22)
 
@@ -594,7 +601,7 @@ ssl:"Xerox Generic Root"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/xerox.png"
+  src="/public/static/images/notes/shodan-search-queries/xerox.png"
   width="620"
   height="263"
   alt="Example: Xerox Copiers/Printers"
@@ -611,7 +618,7 @@ ssl:"Xerox Generic Root"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/epson.png"
+  src="/public/static/images/notes/shodan-search-queries/epson.png"
   width="550"
   height="308"
   alt="Example: Epson Printers"
@@ -628,7 +635,7 @@ ssl:"Xerox Generic Root"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/canon.png"
+  src="/public/static/images/notes/shodan-search-queries/canon.png"
   width="550"
   height="195"
   alt="Example: Canon Printers"
@@ -645,7 +652,7 @@ ssl:"Xerox Generic Root"
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/yamaha.png"
+  src="/public/static/images/notes/shodan-search-queries/yamaha.png"
   width="550"
   height="349"
   alt="Example: Yamaha Stereos"
@@ -682,7 +689,7 @@ title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/octoprint.png"
+  src="/public/static/images/notes/shodan-search-queries/octoprint.png"
   width="700"
   height="335"
   alt="Example: OctoPrint 3D Printers"
@@ -695,7 +702,7 @@ title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 ```
 
 <Image
-  src="/static/images/notes/shodan-search-queries/eth.png"
+  src="/public/static/images/notes/shodan-search-queries/eth.png"
   width="800"
   height="141"
   alt="Example: Etherium Miners"
