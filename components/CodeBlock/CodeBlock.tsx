@@ -13,7 +13,7 @@ const CodeBlock = (props: Props) => {
     // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
       <>
-        <div className={styles.code_block}>
+        <div className={styles.code}>
           <CopyButton source={props.children} />
           <code {...props}>{props.children}</code>
         </div>

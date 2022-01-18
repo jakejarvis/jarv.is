@@ -12,4 +12,6 @@ export const Video = dynamic(() => import("../components/Video/Video"));
 export const YouTube = dynamic(() => import("../components/YouTubeEmbed/YouTubeEmbed"));
 export const Tweet = dynamic(() => import("../components/TweetEmbed/TweetEmbed"));
 export const Gist = dynamic(() => import("../components/GistEmbed/GistEmbed"));
+
+// one-offs for specific posts
 export const OctocatLink = dynamic(() => import("../components/OctocatLink/OctocatLink"));
