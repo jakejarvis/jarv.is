@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,4 +17,4 @@ const Name = () => (
   </Link>
 );
 
-export default Name;
+export default memo(Name);

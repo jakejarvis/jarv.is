@@ -1,6 +1,6 @@
 import { memo } from "react";
 import Link from "next/link";
-import { HeartIcon, NextjsLogo } from "../helpers/icons";
+import { HeartIcon, NextjsLogo } from "../Icons";
 import * as config from "../../lib/config";
 
 import styles from "./Footer.module.css";

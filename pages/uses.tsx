@@ -3,7 +3,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import Title from "../components/Title/Title";
-import { LaptopIcon } from "../components/helpers/icons";
+import { LaptopIcon } from "../components/Icons";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
 

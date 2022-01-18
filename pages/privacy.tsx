@@ -3,7 +3,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import Title from "../components/Title/Title";
-import { PrivacyIcon } from "../components/helpers/icons";
+import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 

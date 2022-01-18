@@ -37,15 +37,6 @@
     flex: 0;
   }
 
-  .name .selfie {
-    width: 70px;
-    height: 70px;
-  }
-
-  .name span:last-of-type {
-    display: none;
-  }
-
   .right {
     flex: 1;
     max-width: 325px;

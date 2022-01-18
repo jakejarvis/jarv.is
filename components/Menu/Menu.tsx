@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../helpers/icons";
+import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
 import styles from "./Menu.module.css";
 

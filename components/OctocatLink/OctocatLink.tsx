@@ -1,4 +1,4 @@
-import { OctocatOcticon } from "../helpers/icons";
+import { OctocatOcticon } from "../Icons";
 
 type Props = {
   repo: string;
