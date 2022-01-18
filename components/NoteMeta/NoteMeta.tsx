@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
 import HitCounter from "../HitCounter/HitCounter";
-import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
+import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../helpers/icons";
 import * as config from "../../lib/config";
 import type { NoteMetaType } from "../../types";
 

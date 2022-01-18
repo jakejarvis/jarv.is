@@ -5,7 +5,7 @@ import { escape } from "html-escaper";
 import Content from "../../components/Content/Content";
 import Meta from "../../components/NoteMeta/NoteMeta";
 import Comments from "../../components/Comments/Comments";
-import * as mdxComponents from "../../components/MDXComponents";
+import * as mdxComponents from "../../components/helpers/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";

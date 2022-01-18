@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
-import { ClipboardOcticon, CheckOcticon } from "../Icons";
+import { ClipboardOcticon, CheckOcticon } from "../helpers/icons";
 import type { ReactNode } from "react";
 
 import styles from "./CopyButton.module.css";
