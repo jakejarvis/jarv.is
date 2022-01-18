@@ -86,7 +86,7 @@
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
+    "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^10.4.2",
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.11",
