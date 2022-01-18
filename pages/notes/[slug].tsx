@@ -53,7 +53,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
 
       <Meta {...frontMatter} />
       <Content>
-        <MDXRemote {...source} components={{ ...mdxComponents }} />
+        <MDXRemote {...source} components={{ ...mdxComponents }} lazy />
       </Content>
       {frontMatter.noComments !== true && (
         <InView rootMargin="140px" triggerOnce={true} fallbackInView={true}>
