@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
-import Title from "../components/Title/Title";
+import PageTitle from "../components/PageTitle/PageTitle";
 import Video from "../components/Video/Video";
 
 import thumbnail from "../public/static/images/hillary/thumb.png";
@@ -15,7 +15,7 @@ const Hillary = () => (
       }}
     />
 
-    <Title>My Brief Apperance in Hillary Clinton's DNC Video</Title>
+    <PageTitle>My Brief Apperance in Hillary Clinton's DNC Video</PageTitle>
     <Content>
       <Video
         webm="/static/images/hillary/convention-720p.webm"

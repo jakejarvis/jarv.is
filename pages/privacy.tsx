@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
-import Title from "../components/Title/Title";
+import PageTitle from "../components/PageTitle/PageTitle";
 import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
@@ -16,9 +16,9 @@ const Privacy = () => (
       }}
     />
 
-    <Title>
+    <PageTitle>
       <PrivacyIcon /> Privacy
-    </Title>
+    </PageTitle>
 
     <Content>
       <p>Okay, this is an easy one. 😉</p>

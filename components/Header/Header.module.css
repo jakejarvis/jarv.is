@@ -23,7 +23,7 @@
   line-height: 0;
 }
 
-.left {
+.name {
   flex: 1;
 }
 
@@ -33,11 +33,11 @@
     height: 5.9em;
   }
 
-  .left {
+  .name {
     flex: 0;
   }
 
-  .right {
+  .menu {
     flex: 1;
     max-width: 325px;
     margin-left: 2.5em;
@@ -45,7 +45,7 @@
 }
 
 @media screen and (max-width: 380px) {
-  .right {
+  .menu {
     max-width: 225px;
     margin-left: 1.6em;
   }

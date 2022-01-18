@@ -3,7 +3,8 @@ import { NextSeo, ArticleJsonLd } from "next-seo";
 import { MDXRemote } from "next-mdx-remote";
 import { escape } from "html-escaper";
 import Content from "../../components/Content/Content";
-import Meta from "../../components/NoteMeta/NoteMeta";
+import NoteMeta from "../../components/NoteMeta/NoteMeta";
+import NoteTitle from "../../components/NoteTitle/NoteTitle";
 import Comments from "../../components/Comments/Comments";
 import * as mdxComponents from "../../lib/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
@@ -51,10 +52,13 @@ const Note = ({ frontMatter, source }: NoteType) => {
         publisherLogo={`${config.baseUrl}/static/images/me.jpg`}
       />
 
-      <Meta {...frontMatter} />
+      <NoteMeta slug={frontMatter.slug} date={frontMatter.date} title={frontMatter.title} tags={frontMatter.tags} />
+      <NoteTitle slug={frontMatter.slug} htmlTitle={frontMatter.htmlTitle} />
+
       <Content>
         <MDXRemote {...source} components={{ ...mdxComponents }} lazy />
       </Content>
+
       {frontMatter.noComments !== true && (
         <InView rootMargin="140px" triggerOnce={true} fallbackInView={true}>
           {({ inView, ref }) => (

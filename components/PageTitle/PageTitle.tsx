@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import styles from "./Title.module.css";
+import styles from "./PageTitle.module.css";
 
 type Props = {
   children: ReactNode;
 };
 
-const Title = ({ children }: Props) => {
+const PageTitle = ({ children }: Props) => {
   const router = useRouter();
 
   return (
@@ -21,4 +21,4 @@ const Title = ({ children }: Props) => {
   );
 };
 
-export default memo(Title);
+export default memo(PageTitle);

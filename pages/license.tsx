@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
-import Title from "../components/Title/Title";
+import PageTitle from "../components/PageTitle/PageTitle";
 import { LicenseIcon } from "../components/Icons";
 
 const License = () => (
@@ -12,9 +12,9 @@ const License = () => (
       }}
     />
 
-    <Title>
+    <PageTitle>
       <LicenseIcon /> License
-    </Title>
+    </PageTitle>
 
     <Content>
       <p>

@@ -7,11 +7,11 @@ import styles from "./Header.module.css";
 const Header = () => (
   <header className={styles.header}>
     <nav className={styles.nav}>
-      <div className={styles.left}>
+      <div className={styles.name}>
         <Name />
       </div>
 
-      <div className={styles.right}>
+      <div className={styles.menu}>
         <Menu />
       </div>
     </nav>

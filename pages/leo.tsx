@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
-import Title from "../components/Title/Title";
+import PageTitle from "../components/PageTitle/PageTitle";
 import Video from "../components/Video/Video";
 
 import thumbnail from "../public/static/images/leo/thumb.png";
@@ -15,7 +15,7 @@ const Leo = () => (
       }}
     />
 
-    <Title>Facebook App on "The Lab with Leo Laporte"</Title>
+    <PageTitle>Facebook App on "The Lab with Leo Laporte"</PageTitle>
 
     <Content>
       <Video
