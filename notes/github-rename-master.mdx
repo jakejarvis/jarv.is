@@ -12,11 +12,8 @@ tags:
 image: "/static/images/notes/github-rename-master/github-default.png"
 ---
 
-import Image from "../components/media/Image";
-import Tweet from "../components/media/Tweet";
-
 <Image
-  src="/static/images/notes/github-rename-master/blm-topic.png"
+  src="/public/static/images/notes/github-rename-master/blm-topic.png"
   width="865"
   height="162"
   alt="Black lives matter."
@@ -63,7 +60,7 @@ You can verify this worked by running `git branch -r`. You should see something 
 Setting the default branch remotely is the only step that can't be done on the command line (although you can technically [use the GitHub API](https://github.com/erbridge/github-branch-renamer)). Head to **Settings → Branches** on GitHub to [change the default branch](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-base-branch-of-a-pull-request).
 
 <Image
-  src="/static/images/notes/github-rename-master/github-default.png"
+  src="/public/static/images/notes/github-rename-master/github-default.png"
   width="810"
   height="405"
   alt="Changing the default branch of a GitHub repository"
@@ -86,7 +83,7 @@ Do a quick search of your codebase for `master` to manually replace any dead ref
 Pay attention to CI files — `.travis.yml`, `.github/workflows/`, `.circleci/config.yml`, etc. — and make sure there aren't any external services relying on `master` being there. For example, I almost forgot to change the branch [Netlify triggers auto-deploys](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) from to build this site:
 
 <Image
-  src="/static/images/notes/github-rename-master/netlify-deploy.png"
+  src="/public/static/images/notes/github-rename-master/netlify-deploy.png"
   width="720"
   height="460"
   alt="Netlify auto-deployment branch setting"

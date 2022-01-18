@@ -1,20 +1,17 @@
-import { useMemo } from "react";
 import { InView } from "react-intersection-observer";
 import { NextSeo, ArticleJsonLd } from "next-seo";
+import { MDXRemote } from "next-mdx-remote";
 import { escape } from "html-escaper";
-import { getMDXComponent } from "mdx-bundler/client";
-import Content from "../../components/Content";
-import Meta from "../../components/notes/Meta";
-import Comments from "../../components/notes/Comments";
-import CustomCode from "../../components/code-block/Code";
+import Content from "../../components/Content/Content";
+import Meta from "../../components/NoteMeta/NoteMeta";
+import Comments from "../../components/Comments/Comments";
+import * as mdxComponents from "../../lib/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import type { NoteType } from "../../types";
 
-const Note = ({ frontMatter, mdxSource }: NoteType) => {
-  const MDXComponent = useMemo(() => getMDXComponent(mdxSource, { process }), [mdxSource]);
-
+const Note = ({ frontMatter, source }: NoteType) => {
   return (
     <>
       <NextSeo
@@ -56,7 +53,7 @@ const Note = ({ frontMatter, mdxSource }: NoteType) => {
 
       <Meta {...frontMatter} />
       <Content>
-        <MDXComponent components={{ code: CustomCode }} />
+        <MDXRemote {...source} components={{ ...mdxComponents }} lazy />
       </Content>
       {frontMatter.noComments !== true && (
         <InView rootMargin="140px" triggerOnce={true} fallbackInView={true}>
@@ -72,12 +69,12 @@ const Note = ({ frontMatter, mdxSource }: NoteType) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { frontMatter, mdxSource } = await getNote(params.slug as string);
+  const { frontMatter, source } = await getNote(params.slug as string);
 
   return {
     props: {
       frontMatter,
-      mdxSource,
+      source,
     },
   };
 };

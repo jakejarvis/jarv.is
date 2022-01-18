@@ -1,8 +1,8 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import Title from "../components/title/Title";
-import Video from "../components/media/Video";
-import { TapeIcon } from "../components/icons";
+import Content from "../components/Content/Content";
+import Title from "../components/Title/Title";
+import Video from "../components/Video/Video";
+import { TapeIcon } from "../components/Icons";
 
 import thumbnail from "../public/static/images/birthday/thumb.png";
 
@@ -22,22 +22,9 @@ const Birthday = () => (
 
     <Content>
       <Video
-        url={[
-          { src: "/static/images/birthday/birthday.webm", type: "video/webm" },
-          { src: "/static/images/birthday/birthday.mp4", type: "video/mp4" },
-        ]}
-        config={{
-          // @ts-ignore
-          file: {
-            attributes: {
-              poster: thumbnail.src,
-              controlsList: "nodownload",
-              preload: "metadata",
-              autoPlay: false,
-            },
-          },
-        }}
-        controls={true}
+        webm="/static/images/birthday/birthday.webm"
+        mp4="/static/images/birthday/birthday.mp4"
+        thumbnail={thumbnail.src}
       />
     </Content>
   </>

@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import Title from "../components/title/Title";
-import Video from "../components/media/Video";
+import Content from "../components/Content/Content";
+import Title from "../components/Title/Title";
+import Video from "../components/Video/Video";
 
 import thumbnail from "../public/static/images/hillary/thumb.png";
 
@@ -18,31 +18,10 @@ const Hillary = () => (
     <Title>My Brief Apperance in Hillary Clinton's DNC Video</Title>
     <Content>
       <Video
-        url={[
-          { src: "/static/images/hillary/convention-720p.webm", type: "video/webm" },
-          { src: "/static/images/hillary/convention-720p.mp4", type: "video/mp4" },
-        ]}
-        config={{
-          // @ts-ignore
-          file: {
-            attributes: {
-              poster: thumbnail.src,
-              controlsList: "nodownload",
-              preload: "metadata",
-              autoPlay: false,
-            },
-            tracks: [
-              {
-                kind: "subtitles",
-                src: "/static/images/hillary/subs.en.vtt",
-                srcLang: "en",
-                label: "English",
-                default: true,
-              },
-            ],
-          },
-        }}
-        controls={true}
+        webm="/static/images/hillary/convention-720p.webm"
+        mp4="/static/images/hillary/convention-720p.mp4"
+        thumbnail={thumbnail.src}
+        subs="/static/images/hillary/subs.en.vtt"
       />
 
       <p className="copyright">

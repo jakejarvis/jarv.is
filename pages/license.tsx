@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import Title from "../components/title/Title";
-import { LicenseIcon } from "../components/icons";
+import Content from "../components/Content/Content";
+import Title from "../components/Title/Title";
+import { LicenseIcon } from "../components/Icons";
 
 const License = () => (
   <>

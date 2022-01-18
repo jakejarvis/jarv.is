@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import Title from "../components/title/Title";
-import { PrivacyIcon } from "../components/icons";
+import Content from "../components/Content/Content";
+import Title from "../components/Title/Title";
+import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 
@@ -75,7 +75,7 @@ const Privacy = () => (
         </a>{" "}
         and{" "}
         <a
-          href="https://github.com/jakejarvis/jarv.is/blob/main/components/hits/Hits.tsx"
+          href="https://github.com/jakejarvis/jarv.is/blob/main/components/notes/HitCounter.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

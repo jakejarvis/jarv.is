@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import matter from "gray-matter";
-import { bundleMDX } from "mdx-bundler";
+import { serialize } from "next-mdx-remote/serialize";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
@@ -64,20 +64,12 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
 };
 
 export const getNote = async (slug: string): Promise<NoteType> => {
-  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
-  process.env.ESBUILD_BINARY_PATH =
-    process.platform === "win32"
-      ? path.join(process.cwd(), "node_modules", "esbuild", "esbuild.exe")
-      : path.join(process.cwd(), "node_modules", "esbuild", "bin", "esbuild");
-
   const { frontMatter, content } = getNoteData(slug);
-  const { code: mdxSource } = await bundleMDX({
-    source: content,
-    cwd: path.join(process.cwd(), NOTES_DIR),
-    xdmOptions: (options) => {
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), [remarkGfm, { singleTilde: false }]];
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
+  const source = await serialize(content, {
+    parseFrontmatter: false,
+    mdxOptions: {
+      remarkPlugins: [[remarkGfm, { singleTilde: false }]],
+      rehypePlugins: [
         [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
         [rehypeSlug, {}],
         [
@@ -90,26 +82,13 @@ export const getNote = async (slug: string): Promise<NoteType> => {
           },
         ],
         [rehypePrism, { ignoreMissing: true }],
-      ];
-
-      return options;
-    },
-    esbuildOptions: (options) => {
-      options.minify = true;
-      options.target = ["es2018"];
-      options.loader = {
-        ...options.loader,
-        ".js": "jsx",
-        ".ts": "tsx",
-      };
-
-      return options;
+      ],
     },
   });
 
   return {
     frontMatter,
-    mdxSource,
+    source,
   };
 };
 

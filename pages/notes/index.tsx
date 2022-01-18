@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import { format } from "date-fns";
-import List from "../../components/notes/List";
+import List from "../../components/NotesList/NotesList";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
