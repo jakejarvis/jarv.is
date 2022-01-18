@@ -22,22 +22,9 @@ const Birthday = () => (
 
     <Content>
       <Video
-        url={[
-          { src: "/static/images/birthday/birthday.webm", type: "video/webm" },
-          { src: "/static/images/birthday/birthday.mp4", type: "video/mp4" },
-        ]}
-        config={{
-          // @ts-ignore
-          file: {
-            attributes: {
-              poster: thumbnail.src,
-              controlsList: "nodownload",
-              preload: "metadata",
-              autoPlay: false,
-            },
-          },
-        }}
-        controls={true}
+        webm="/static/images/birthday/birthday.webm"
+        mp4="/static/images/birthday/birthday.mp4"
+        thumbnail={thumbnail.src}
       />
     </Content>
   </>

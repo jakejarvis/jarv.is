@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import Title from "../components/Title/Title";
-import Video from "../components/Video/Video";
+import { Video } from "../lib/mdx-components";
 
 import thumbnail from "../public/static/images/leo/thumb.png";
 
@@ -19,31 +19,10 @@ const Leo = () => (
 
     <Content>
       <Video
-        url={[
-          { src: "/static/images/leo/leo.webm", type: "video/webm" },
-          { src: "/static/images/leo/leo.mp4", type: "video/mp4" },
-        ]}
-        config={{
-          // @ts-ignore
-          file: {
-            attributes: {
-              poster: thumbnail.src,
-              controlsList: "nodownload",
-              preload: "metadata",
-              autoPlay: false,
-            },
-            tracks: [
-              {
-                kind: "subtitles",
-                src: "/static/images/leo/subs.en.vtt",
-                srcLang: "en",
-                label: "English",
-                default: true,
-              },
-            ],
-          },
-        }}
-        controls={true}
+        webm="/static/images/leo/leo.webm"
+        mp4="/static/images/leo/leo.mp4"
+        thumbnail={thumbnail.src}
+        subs="/static/images/leo/subs.en.vtt"
       />
 
       <p className="copyright">
