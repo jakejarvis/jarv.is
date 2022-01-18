@@ -1,0 +1,7 @@
+.wrapper {
+  line-height: 0;
+
+  /* default to centering all images */
+  margin: 1em auto;
+  text-align: center;
+}

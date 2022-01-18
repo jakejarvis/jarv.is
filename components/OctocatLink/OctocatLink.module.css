@@ -1,0 +1,11 @@
+.link {
+  margin: 0 0.4em;
+  color: var(--text);
+  background: none !important;
+  padding-bottom: 0;
+  transition: none;
+}
+
+.link:hover {
+  color: var(--link);
+}

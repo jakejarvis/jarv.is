@@ -3,6 +3,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import IFrame from "../components/IFrame/IFrame";
 import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
@@ -24,6 +25,7 @@ const Privacy = () => (
       <p>Okay, this is an easy one. 😉</p>
 
       <h2 id="hosting">Hosting</h2>
+
       <p>
         Pages and first-party assets on this website are served by{" "}
         <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
@@ -35,6 +37,7 @@ const Privacy = () => (
         </a>{" "}
         for more information.
       </p>
+
       <p>
         For a likely excessive level of privacy and security, this website is also mirrored on the{" "}
         <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">
@@ -42,6 +45,7 @@ const Privacy = () => (
         </a>{" "}
         at:
       </p>
+
       <blockquote>
         <p>
           <a
@@ -55,6 +59,7 @@ const Privacy = () => (
       </blockquote>
 
       <h2 id="analytics">Analytics</h2>
+
       <p>
         A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
         <code>hits = hits + 1</code>) in a{" "}
@@ -64,6 +69,7 @@ const Privacy = () => (
         database. Individual views and identifying (or non-identifying) details are{" "}
         <strong>never stored or logged</strong>.
       </p>
+
       <p>
         The{" "}
         <a
@@ -87,7 +93,9 @@ const Privacy = () => (
         </a>{" "}
         are public.
       </p>
+
       <Image src={faunaImg} placeholder="blur" alt="The entire database schema." />
+
       <p>
         <a href="https://usefathom.com/ref/ZEYG0O" target="_blank" rel="noopener noreferrer">
           <strong>Fathom Analytics</strong>
@@ -103,15 +111,14 @@ const Privacy = () => (
         </a>{" "}
         is completely public, too!)
       </p>
-      <iframe src="https://app.usefathom.com/share/wbgnqukw/jarv.is" title="Fathom Analytics dashboard">
-        <style jsx>{`
-          iframe {
-            width: 100%;
-            height: 500px;
-            border: 2px solid var(--kinda-light);
-          }
-        `}</style>
-      </iframe>
+
+      <IFrame
+        src="https://app.usefathom.com/share/wbgnqukw/jarv.is"
+        title="Fathom Analytics dashboard"
+        height={500}
+        allowScripts
+      />
+
       <p>
         <a href="https://vercel.com/analytics" target="_blank" rel="noopener noreferrer">
           <strong>Vercel Analytics</strong>
@@ -124,10 +131,12 @@ const Privacy = () => (
       </p>
 
       <h2 id="third-party">Third-Party Content</h2>
+
       <p>
         Occasionally, embedded content from third-party services is included in posts, and some may contain tracking
         code that is outside of my control. Please refer to their privacy policies for more information:
       </p>
+
       <ul>
         <li>
           <a href="https://blog.codepen.io/documentation/privacy/" target="_blank" rel="noopener noreferrer">
@@ -171,6 +180,7 @@ const Privacy = () => (
       </ul>
 
       <h2 id="hcaptcha">Fighting Spam</h2>
+
       <p>
         Using{" "}
         <a href="https://www.hcaptcha.com/" target="_blank" rel="noopener noreferrer">
@@ -186,6 +196,7 @@ const Privacy = () => (
         </a>
         .
       </p>
+
       <p>
         You can refer to hCaptcha's{" "}
         <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">
@@ -206,6 +217,7 @@ const Privacy = () => (
         </a>
         . 🚗
       </p>
+
       <p>
         I also enabled the setting to donate 100% of my{" "}
         <a href="https://humanprotocol.org/?lng=en-US" target="_blank" rel="noopener noreferrer">

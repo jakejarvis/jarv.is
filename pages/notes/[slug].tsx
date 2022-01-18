@@ -60,7 +60,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
       </Content>
 
       {frontMatter.noComments !== true && (
-        <InView rootMargin="140px" triggerOnce={true} fallbackInView={true}>
+        <InView rootMargin="140px" triggerOnce fallbackInView>
           {({ inView, ref }) => (
             <div id="comments" ref={ref}>
               {inView && <Comments title={frontMatter.title} />}

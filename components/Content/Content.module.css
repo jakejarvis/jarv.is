@@ -3,13 +3,6 @@
   line-height: 1.7;
 }
 
-.content blockquote {
-  margin-left: 0;
-  padding-left: 1.5em;
-  border-left: 3px solid var(--link);
-  color: var(--medium-dark);
-}
-
 .content h2,
 .content h3,
 .content h4 {
@@ -43,38 +36,18 @@
   padding-left: 0.25em;
 }
 
+.content blockquote {
+  margin-left: 0;
+  padding-left: 1.5em;
+  border-left: 3px solid var(--link);
+  color: var(--medium-dark);
+}
+
 .content hr {
   margin: 1.5em auto;
   height: 2px;
   border: 0;
   background-color: var(--light);
-}
-
-.content :global(.image_wrapper) {
-  line-height: 0;
-}
-
-/* default to centering all images */
-.content :global(.image_wrapper),
-.content figure {
-  margin: 1em auto;
-  text-align: center;
-}
-
-.content figure :global(.image_wrapper) {
-  margin-bottom: 0;
-}
-
-.content figure figcaption {
-  margin-top: 0.75em;
-  font-size: 0.9em;
-  line-height: 1.5;
-  color: var(--medium);
-}
-
-/* some figcaptions contain paragraphs, some don't, so reset all of them */
-.content figure figcaption p {
-  margin: 0;
 }
 
 /* sub-heading anchor styles */

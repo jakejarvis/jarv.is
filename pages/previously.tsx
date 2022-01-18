@@ -2,6 +2,7 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import IFrame from "../components/IFrame/IFrame";
 import { FloppyIcon, SirenIcon } from "../components/Icons";
 
 /* eslint-disable camelcase */
@@ -75,12 +76,14 @@ const Previously = () => (
           experience anyway.
         </a>
       </p>
+
       <figure>
-        <iframe
-          className="y2k_frame"
+        <IFrame
           src="https://jakejarvis.github.io/my-first-website/"
           title="My Terrible, Horrible, No Good, Very Bad First Website"
-        ></iframe>
+          height={500}
+          allowScripts
+        />
         <figcaption>
           November 2001 (
           <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
@@ -236,10 +239,24 @@ const Previously = () => (
       footer > div {
         font-size: 0.95em !important;
       }
-      .y2k_frame {
-        width: 100%;
-        height: 500px;
-        border: 2px solid #e3d18c;
+      figure {
+        margin: 1em auto;
+        text-align: center;
+      }
+      figure img {
+        margin-bottom: 0;
+      }
+      figcaption {
+        margin-top: 0.2em;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: var(--medium);
+      }
+      hr {
+        margin: 1em auto !important;
+      }
+      iframe {
+        margin-bottom: 0.6em !important;
       }
       .limegreen {
         color: #32cd32;

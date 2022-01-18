@@ -8,6 +8,7 @@ export { default as code } from "../components/CodeBlock/CodeBlock";
 
 // All of these components are technically passed into all posts, but next/dynamic ensures they're loaded only
 // when they're referenced in the individual mdx files.
+export const IFrame = dynamic(() => import("../components/IFrame/IFrame"));
 export const Video = dynamic(() => import("../components/Video/Video"));
 export const YouTube = dynamic(() => import("../components/YouTubeEmbed/YouTubeEmbed"));
 export const Tweet = dynamic(() => import("../components/TweetEmbed/TweetEmbed"));

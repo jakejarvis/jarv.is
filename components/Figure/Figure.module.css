@@ -1,0 +1,15 @@
+.figure {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.caption {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--medium);
+}
+
+/* some figcaptions contain paragraphs, some don't, so reset all of them */
+.caption p {
+  margin: 0;
+}
