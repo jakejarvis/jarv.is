@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useTheme } from "next-themes";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
-import { themeColors } from "../lib/config";
+import Header from "../Header";
+import Footer from "../Footer";
+import { themeColors } from "../../lib/config";
 import type { ReactNode } from "react";
 
 import styles from "./Layout.module.css";

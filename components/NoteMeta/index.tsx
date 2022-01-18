@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import HitCounter from "./HitCounter";
-import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../icons";
+import HitCounter from "../HitCounter";
+import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
 import * as config from "../../lib/config";
 import type { NoteMetaType } from "../../types";
 
-import styles from "./Meta.module.css";
+import styles from "./NoteMeta.module.css";
 
-const Meta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
+const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
   <>
     <div className={styles.meta}>
       <div className={styles.date}>
@@ -66,4 +66,4 @@ const Meta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaType) => (
   </>
 );
 
-export default Meta;
+export default NoteMeta;

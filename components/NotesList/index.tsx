@@ -2,9 +2,9 @@ import Link from "next/link";
 import { format } from "date-fns";
 import type { NoteMetaType } from "../../types";
 
-import styles from "./List.module.css";
+import styles from "./NotesList.module.css";
 
-const List = ({ notesByYear }) => {
+const NotesList = ({ notesByYear }) => {
   const sections = [];
 
   Object.entries(notesByYear).forEach(([year, notes]: [string, NoteMetaType[]]) => {
@@ -39,4 +39,4 @@ const List = ({ notesByYear }) => {
   return <>{reversed}</>;
 };
 
-export default List;
+export default NotesList;

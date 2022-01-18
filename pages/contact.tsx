@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
-import Title from "../components/title/Title";
-import ContactForm from "../components/contact/ContactForm";
-import { MailIcon, LockIcon } from "../components/icons";
+import Title from "../components/Title";
+import ContactForm from "../components/ContactForm";
+import { MailIcon, LockIcon } from "../components/Icons";
 import Content from "../components/Content";
 
 const Contact = () => (

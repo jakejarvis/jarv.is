@@ -1,8 +1,8 @@
 import { graphql } from "@octokit/graphql";
 import { NextSeo } from "next-seo";
-import Title from "../components/title/Title";
-import RepoCard from "../components/projects/RepoCard";
-import { ProjectsIcon } from "../components/icons";
+import Title from "../components/Title";
+import RepoCard from "../components/RepositoryCard";
+import { ProjectsIcon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import { RepoType } from "../types";
 

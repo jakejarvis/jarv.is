@@ -1,8 +1,8 @@
 import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ThemeToggle from "./ThemeToggle";
-import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../icons";
+import ThemeToggle from "../ThemeToggle";
+import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
 import meJpg from "../../public/static/images/me.jpg";
 

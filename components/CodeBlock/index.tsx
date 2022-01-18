@@ -1,14 +1,14 @@
-import CopyButton from "./CopyButton";
+import CopyButton from "../CopyButton";
 import type { ReactNode } from "react";
 
-import styles from "./Code.module.css";
+import styles from "./CodeBlock.module.css";
 
-export type CustomCodeProps = {
+export type Props = {
   className?: string;
   children: ReactNode;
 };
 
-const CustomCode = (props: CustomCodeProps) => {
+const CodeBlock = (props: Props) => {
   if (props.className?.split(" ").includes("code-highlight")) {
     // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
@@ -25,4 +25,4 @@ const CustomCode = (props: CustomCodeProps) => {
   }
 };
 
-export default CustomCode;
+export default CodeBlock;

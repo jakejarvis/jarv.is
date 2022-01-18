@@ -1,10 +1,10 @@
-import Image from "next/image";
-import type { ImageProps } from "next/image";
+import NextImage from "next/image";
+import type { ImageProps as NextImageProps } from "next/image";
 
-const CustomImage = ({ src, width, height, alt, quality, priority }: ImageProps) => {
+const Image = ({ src, width, height, alt, quality, priority }: NextImageProps) => {
   return (
     <div className="image_wrapper">
-      <Image
+      <NextImage
         src={(src as string).replace(/^\/public/g, "")}
         layout="intrinsic"
         width={width}
@@ -18,4 +18,4 @@ const CustomImage = ({ src, width, height, alt, quality, priority }: ImageProps)
   );
 };
 
-export default CustomImage;
+export default Image;

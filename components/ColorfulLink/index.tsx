@@ -3,7 +3,7 @@ import Link from "next/link";
 import css from "styled-jsx/css";
 import type { ReactNode } from "react";
 
-type ColorLinkProps = {
+type Props = {
   children: ReactNode;
   href: string;
   lightColor: string;
@@ -12,7 +12,7 @@ type ColorLinkProps = {
   external?: boolean;
 };
 
-const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<ColorLinkProps>) => {
+const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<Props>) => {
   // spits out a linear-gradient (that's not realy a gradient) with translucent color in rgba() format
   const linearGradient = (hex: string, alpha = 0.4) => {
     // hex -> rgb, adapted from https://github.com/sindresorhus/hex-rgb/blob/main/index.js
@@ -39,7 +39,7 @@ const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<ColorLinkProps>) 
   `;
 };
 
-const ColorLink = ({ href, title, lightColor, darkColor, external = false, children }: ColorLinkProps) => {
+const ColorfulLink = ({ href, title, lightColor, darkColor, external = false, children }: Props) => {
   const { className, styles } = getFancyLinkStyles({ lightColor, darkColor });
 
   return (
@@ -60,4 +60,4 @@ const ColorLink = ({ href, title, lightColor, darkColor, external = false, child
   );
 };
 
-export default memo(ColorLink);
+export default memo(ColorfulLink);

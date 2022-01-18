@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content";
-import Title from "../components/title/Title";
-import { FloppyIcon, SirenIcon } from "../components/icons";
+import Title from "../components/Title";
+import { FloppyIcon, SirenIcon } from "../components/Icons";
 
 /* eslint-disable camelcase */
 import img_wayback from "../public/static/images/previously/wayback.png";

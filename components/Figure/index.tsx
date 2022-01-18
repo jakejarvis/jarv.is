@@ -1,14 +1,14 @@
-import Image from "./Image";
+import Image from "../Image";
 import innerText from "react-innertext";
 import type { ReactNode } from "react";
-import type { ImageProps } from "next/image";
+import type { ImageProps as NextImageProps } from "next/image";
 
-type CustomFigureProps = Omit<ImageProps, "alt"> & {
+type Props = Omit<NextImageProps, "alt"> & {
   children: ReactNode; // caption (can be in markdown, yay!!!)
   alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
 };
 
-const CustomFigure = ({ children, alt, ...imageProps }: CustomFigureProps) => {
+const Figure = ({ children, alt, ...imageProps }: Props) => {
   return (
     <figure>
       <Image alt={alt || innerText(children)} {...imageProps} />
@@ -17,4 +17,4 @@ const CustomFigure = ({ children, alt, ...imageProps }: CustomFigureProps) => {
   );
 };
 
-export default CustomFigure;
+export default Figure;

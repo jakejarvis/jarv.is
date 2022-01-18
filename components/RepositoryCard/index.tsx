@@ -1,10 +1,10 @@
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
-import { StarOcticon, ForkOcticon } from "../icons";
+import { StarOcticon, ForkOcticon } from "../Icons";
 import { RepoType } from "../../types";
 
-import styles from "./RepoCard.module.css";
+import styles from "./RepositoryCard.module.css";
 
-const RepoCard = (props: RepoType) => (
+const RepositoryCard = (props: RepoType) => (
   <div className={styles.card}>
     <a className={styles.name} href={props.url} target="_blank" rel="noopener noreferrer">
       {props.name}
@@ -71,4 +71,4 @@ const RepoCard = (props: RepoType) => (
   </div>
 );
 
-export default RepoCard;
+export default RepositoryCard;
