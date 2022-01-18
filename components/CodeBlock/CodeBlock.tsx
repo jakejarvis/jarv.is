@@ -1,4 +1,4 @@
-import CopyButton from "../CopyButton";
+import CopyButton from "../CopyButton/CopyButton";
 import type { ReactNode } from "react";
 
 import styles from "./CodeBlock.module.css";

@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 import { fetcher } from "../../lib/fetcher";
 
 const HitCounter = ({ slug }) => {

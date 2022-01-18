@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import Title from "../components/Title";
+import Content from "../components/Content/Content";
+import Title from "../components/Title/Title";
 import { BotIcon } from "../components/Icons";
 
 import cliImg from "../public/static/images/cli/screenshot.png";

@@ -1,4 +1,4 @@
-import Image from "../Image";
+import Image from "../Image/Image";
 import innerText from "react-innertext";
 import type { ReactNode } from "react";
 import type { ImageProps as NextImageProps } from "next/image";

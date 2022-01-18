@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useTheme } from "next-themes";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import { themeColors } from "../../lib/config";
 import type { ReactNode } from "react";
 

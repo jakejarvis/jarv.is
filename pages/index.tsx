@@ -1,4 +1,4 @@
-import ColorfulLink from "../components/ColorfulLink";
+import ColorfulLink from "../components/ColorfulLink/ColorfulLink";
 import { WaveIcon, LockIcon } from "../components/Icons";
 
 const Index = () => (
