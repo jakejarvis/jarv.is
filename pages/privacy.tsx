@@ -81,7 +81,7 @@ const Privacy = () => (
         </a>{" "}
         and{" "}
         <a
-          href="https://github.com/jakejarvis/jarv.is/blob/main/components/notes/HitCounter.tsx"
+          href="https://github.com/jakejarvis/jarv.is/blob/main/components/HitCounter/HitCounter.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -114,7 +114,7 @@ const ContactForm = () => {
             disabled={success}
           />
           <Field
-            className={cx({ input: true, missing: errors.message && touched.message })}
+            className={cx({ input: true, textarea: true, missing: errors.message && touched.message })}
             name="message"
             component="textarea"
             placeholder="Write something..."

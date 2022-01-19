@@ -9,14 +9,6 @@
   border-color: var(--light);
 }
 
-textarea.input {
-  height: 12em;
-  min-height: 6em;
-  margin-bottom: 0;
-  line-height: 1.5;
-  resize: vertical;
-}
-
 .input:focus {
   outline: none;
   border-color: var(--link);
@@ -24,6 +16,14 @@ textarea.input {
 
 .input.missing {
   border-color: var(--error);
+}
+
+.textarea {
+  height: 12em;
+  min-height: 6em;
+  margin-bottom: 0;
+  line-height: 1.5;
+  resize: vertical;
 }
 
 .markdown_tip {
@@ -71,6 +71,7 @@ textarea.input {
 .result_success,
 .result_error {
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .result_success {

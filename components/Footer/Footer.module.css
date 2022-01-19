@@ -40,16 +40,7 @@
 
 @media screen and (max-width: 768px) {
   .footer {
-    padding: 1em 1.25em 0;
-
-    /*
-     * Safari iOS menu bar reappears below 44px:
-     * https://www.eventbrite.com/engineering/mobile-safari-why/
-     */
-    padding-bottom: 45px !important;
-
-    /* Allows you to scroll below the viewport; default value is visible */
-    overflow-y: scroll;
+    padding: 1em 1.25em;
   }
 
   /* stack columns on left instead of flexboxing across */

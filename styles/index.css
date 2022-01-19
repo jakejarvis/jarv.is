@@ -27,27 +27,12 @@ a.no-underline {
   transition: none;
 }
 
-/*
- * make SVG icons relative to surrounding text:
- * https://github.com/twitter/twemoji#inline-styles
- */
+/* make SVG icons relative in size/position to surrounding text */
 .icon {
   display: inline-block;
   height: 1.2em;
   width: 1.2em;
   vertical-align: -0.2em;
-}
-
-/* all code */
-code {
-  font-size: 0.925em;
-  page-break-inside: avoid;
-  border: 1px solid var(--kinda-light);
-}
-
-/* inline code in paragraphs/elsewhere (single backticks) */
-:not(pre) code {
-  padding: 0.1em 0.25em;
 }
 
 /* https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites */

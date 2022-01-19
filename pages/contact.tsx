@@ -34,7 +34,7 @@ const Contact = () => (
         <p>
           <LockIcon /> You can grab my public key here:{" "}
           <a href="/pubkey.asc" title="My Public PGP Key" target="_blank" rel="pgpkey authn noopener">
-            <code>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</code>
+            <code className="pubkey">6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</code>
           </a>
           .
         </p>
@@ -49,7 +49,7 @@ const Contact = () => (
         margin: 0 auto;
       }
 
-      .wrapper code {
+      .pubkey {
         background: none;
         border: 0;
         padding: 0;

@@ -11,5 +11,5 @@
 
 /* some figcaptions contain paragraphs, some don't, so reset all of them */
 .caption p {
-  margin: 0;
+  margin: 0 !important;
 }

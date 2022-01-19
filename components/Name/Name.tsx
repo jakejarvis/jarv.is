@@ -8,11 +8,11 @@ import meJpg from "../../public/static/images/me.jpg";
 
 const Name = () => (
   <Link href="/">
-    <a className={styles.name}>
+    <a className={styles.link}>
       <div className={styles.selfie}>
         <Image src={meJpg} alt="Photo of Jake Jarvis" width={70} height={70} quality={60} layout="intrinsic" priority />
       </div>
-      <span>Jake Jarvis</span>
+      <span className={styles.name}>Jake Jarvis</span>
     </a>
   </Link>
 );

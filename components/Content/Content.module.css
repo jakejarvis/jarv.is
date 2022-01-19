@@ -3,6 +3,8 @@
   line-height: 1.7;
 }
 
+/* TODO: These will all be their own components... eventually. */
+
 .content h2,
 .content h3,
 .content h4 {
@@ -48,6 +50,18 @@
   height: 2px;
   border: 0;
   background-color: var(--light);
+}
+
+/* all code */
+.content code {
+  font-size: 0.925em;
+  page-break-inside: avoid;
+  border: 1px solid var(--kinda-light);
+}
+
+/* inline code in paragraphs/elsewhere (single backticks) */
+.content :not(pre) code {
+  padding: 0.1em 0.25em;
 }
 
 /* sub-heading anchor styles */
