@@ -2,6 +2,9 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Blockquote from "../components/Blockquote/Blockquote";
+import CodeBlock from "../components/CodeBlock/CodeBlock";
+import { H2 } from "../components/Heading/Heading";
 import { BotIcon } from "../components/Icons";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
@@ -21,7 +24,7 @@ const CLI = () => (
     </PageTitle>
 
     <Content>
-      <blockquote>
+      <Blockquote>
         <p>
           The{" "}
           <a href="https://jarv.is/" target="_blank" rel="noopener noreferrer">
@@ -29,7 +32,8 @@ const CLI = () => (
           </a>{" "}
           CLI (aka the most useless Node module ever published, in history, by anyone, ever).
         </p>
-      </blockquote>
+      </Blockquote>
+
       <a
         className="no-underline"
         href="https://www.npmjs.com/package/@jakejarvis/cli"
@@ -38,11 +42,11 @@ const CLI = () => (
       >
         <Image src={cliImg} placeholder="blur" alt="Terminal Screenshot" priority />
       </a>
-      <h2>Usage</h2>
-      <pre>
-        <code>npx @jakejarvis/cli</code>
-      </pre>
-      <h2>Inspired by</h2>
+
+      <H2>Usage</H2>
+      <CodeBlock className="code-highlight">npx @jakejarvis/cli</CodeBlock>
+
+      <H2>Inspired by</H2>
       <ul>
         <li>
           <a href="https://github.com/sindresorhus/sindresorhus-cli" target="_blank" rel="noopener noreferrer">
@@ -55,7 +59,8 @@ const CLI = () => (
           </a>
         </li>
       </ul>
-      <h2>Built with</h2>
+
+      <H2>Built with</H2>
       <ul>
         <li>
           <a href="https://github.com/vadimdemedes/ink" target="_blank" rel="noopener noreferrer">
@@ -75,7 +80,8 @@ const CLI = () => (
           View source on GitHub.
         </a>
       </p>
-      <h2>License</h2>
+
+      <H2>License</H2>
       <p>
         MIT ©{" "}
         <a href="https://jarv.is/" target="_blank" rel="noopener noreferrer">

@@ -1,6 +1,9 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
+import Blockquote from "../components/Blockquote/Blockquote";
+import { H2, H3 } from "../components/Heading/Heading";
 import { LicenseIcon } from "../components/Icons";
 
 const License = () => (
@@ -32,8 +35,8 @@ const License = () => (
         </a>{" "}
         is re-printed below.
       </p>
-      <hr />
-      <h2>Creative Commons Attribution 4.0 International Public License</h2>
+      <HorizontalRule />
+      <H2>Creative Commons Attribution 4.0 International Public License</H2>
       <p style={{ textAlign: "center" }}>
         <a
           className="no-underline"
@@ -63,7 +66,7 @@ const License = () => (
           </svg>
         </a>
       </p>
-      <blockquote>
+      <Blockquote>
         <p>
           <em>
             Creative Commons Corporation ("Creative Commons") is not a law firm and does not provide legal services or
@@ -74,8 +77,8 @@ const License = () => (
             their use to the fullest extent possible.
           </em>
         </p>
-      </blockquote>
-      <h3>Using Creative Commons Public Licenses</h3>
+      </Blockquote>
+      <H3>Using Creative Commons Public Licenses</H3>
       <p>
         Creative Commons public licenses provide a standard set of terms and conditions that creators and other rights
         holders may use to share original works of authorship and other material subject to copyright and certain other
@@ -123,7 +126,7 @@ const License = () => (
           </p>
         </li>
       </ul>
-      <h3>Licensed Rights</h3>
+      <H3>Licensed Rights</H3>
       <p>
         By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions
         of this Creative Commons Attribution 4.0 International Public License ("Public License"). To the extent this
@@ -131,7 +134,7 @@ const License = () => (
         acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits
         the Licensor receives from making the Licensed Material available under these terms and conditions.
       </p>
-      <h3>Section 1 – Definitions.</h3>
+      <H3>Section 1 – Definitions.</H3>
       <p>
         a. <strong>Adapted Material</strong> means material subject to Copyright and Similar Rights that is derived from
         or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged,
@@ -186,7 +189,7 @@ const License = () => (
         k. <strong>You</strong> means the individual or entity exercising the Licensed Rights under this Public License.{" "}
         <strong>Your</strong> has a corresponding meaning.
       </p>
-      <h3>Section 2 – Scope.</h3>
+      <H3>Section 2 – Scope.</H3>
       <p>
         a.{" "}
         <em>
@@ -277,7 +280,7 @@ const License = () => (
           </p>
         </li>
       </ol>
-      <h3>Section 3 – License Conditions.</h3>
+      <H3>Section 3 – License Conditions.</H3>
       <p>Your exercise of the Licensed Rights is expressly made subject to the following conditions.</p>
       <p>
         a.{" "}
@@ -326,7 +329,7 @@ const License = () => (
           </p>
         </li>
       </ol>
-      <h3>Section 4 – Sui Generis Database Rights.</h3>
+      <H3>Section 4 – Sui Generis Database Rights.</H3>
       <p>
         Where the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:
       </p>
@@ -347,7 +350,7 @@ const License = () => (
         For the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public
         License where the Licensed Rights include other Copyright and Similar Rights.
       </p>
-      <h3>Section 5 – Disclaimer of Warranties and Limitation of Liability.</h3>
+      <H3>Section 5 – Disclaimer of Warranties and Limitation of Liability.</H3>
       <p>
         a.{" "}
         <strong>
@@ -374,7 +377,7 @@ const License = () => (
         c. The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner
         that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.
       </p>
-      <h3>Section 6 – Term and Termination.</h3>
+      <H3>Section 6 – Term and Termination.</H3>
       <p>
         a. This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You
         fail to comply with this Public License, then Your rights under this Public License terminate automatically.
@@ -401,7 +404,7 @@ const License = () => (
         Public License.
       </p>
       <p>d. Sections 1, 5, 6, 7, and 8 survive termination of this Public License.</p>
-      <h3>Section 7 – Other Terms and Conditions.</h3>
+      <H3>Section 7 – Other Terms and Conditions.</H3>
       <p>
         a. The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless
         expressly agreed.
@@ -410,7 +413,7 @@ const License = () => (
         b. Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are
         separate from and independent of the terms and conditions of this Public License.
       </p>
-      <h3>Section 8 – Interpretation.</h3>
+      <H3>Section 8 – Interpretation.</H3>
       <p>
         a. For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit,
         restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without
@@ -431,7 +434,7 @@ const License = () => (
         privileges and immunities that apply to the Licensor or You, including from the legal processes of any
         jurisdiction or authority.
       </p>
-      <blockquote>
+      <Blockquote>
         <p>
           Creative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply
           one of its public licenses to material it publishes and in those instances will be considered the "Licensor."
@@ -461,7 +464,7 @@ const License = () => (
           </a>
           .
         </p>
-      </blockquote>
+      </Blockquote>
     </Content>
   </>
 );

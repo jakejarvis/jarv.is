@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import IFrame from "../components/IFrame/IFrame";
+import { H2 } from "../components/Heading/Heading";
+import Blockquote from "../components/Blockquote/Blockquote";
 import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
@@ -24,7 +26,7 @@ const Privacy = () => (
     <Content>
       <p>Okay, this is an easy one. 😉</p>
 
-      <h2 id="hosting">Hosting</h2>
+      <H2 id="hosting">Hosting</H2>
 
       <p>
         Pages and first-party assets on this website are served by{" "}
@@ -46,7 +48,7 @@ const Privacy = () => (
         at:
       </p>
 
-      <blockquote>
+      <Blockquote>
         <p>
           <a
             href="http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"
@@ -56,9 +58,9 @@ const Privacy = () => (
             <strong>jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion</strong>
           </a>
         </p>
-      </blockquote>
+      </Blockquote>
 
-      <h2 id="analytics">Analytics</h2>
+      <H2 id="analytics">Analytics</H2>
 
       <p>
         A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
@@ -130,7 +132,7 @@ const Privacy = () => (
         (input delays, layout shifts, etc.), also in an anonymous and aggregate fashion.
       </p>
 
-      <h2 id="third-party">Third-Party Content</h2>
+      <H2 id="third-party">Third-Party Content</H2>
 
       <p>
         Occasionally, embedded content from third-party services is included in posts, and some may contain tracking
@@ -179,7 +181,7 @@ const Privacy = () => (
         </li>
       </ul>
 
-      <h2 id="hcaptcha">Fighting Spam</h2>
+      <H2 id="hcaptcha">Fighting Spam</H2>
 
       <p>
         Using{" "}

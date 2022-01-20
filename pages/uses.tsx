@@ -3,6 +3,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import { H2 } from "../components/Heading/Heading";
 import { LaptopIcon } from "../components/Icons";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
@@ -36,7 +37,7 @@ const Uses = () => (
 
       <Image src={desktopImg} placeholder="blur" alt="My mess of a desktop." priority />
 
-      <h2>🍎 Hardware</h2>
+      <H2>🍎 Hardware</H2>
       <ul>
         <li>
           <a href="https://browser.geekbench.com/v5/cpu/8124907" target="_blank" rel="noopener noreferrer">
@@ -159,7 +160,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>💾 Development</h2>
+      <H2>💾 Development</H2>
       <ul>
         <li>
           <a href="https://iterm2.com/" target="_blank" rel="noopener noreferrer">
@@ -509,7 +510,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>🌎 Browsing</h2>
+      <H2>🌎 Browsing</H2>
       <ul>
         <li>
           <a href="https://www.mozilla.org/en-US/firefox/developer/" target="_blank" rel="noopener noreferrer">
@@ -686,7 +687,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>💻 macOS</h2>
+      <H2>💻 macOS</H2>
       <ul>
         <li>
           <a href="https://1password.com/" target="_blank" rel="noopener noreferrer">
@@ -791,7 +792,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>📱 iOS</h2>
+      <H2>📱 iOS</H2>
       <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
       <ul>
         <li>
@@ -857,7 +858,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>☁️ Cloud</h2>
+      <H2>☁️ Cloud</H2>
       <p>
         I've been making recent efforts to{" "}
         <a href="https://www.stallman.org/google.html" target="_blank" rel="noopener noreferrer">
@@ -1016,12 +1017,12 @@ const Uses = () => (
         </li>
       </ul>
 
-      <h2>
+      <H2>
         🏠 Internet of <del>Things</del>{" "}
         <Link href="/notes/shodan-search-queries/">
           <a>Crap</a>
         </Link>
-      </h2>
+      </H2>
       <ul>
         <li>
           <a href="https://www.synology.com/en-us/products/RT2600ac" target="_blank" rel="noopener noreferrer">
@@ -1075,6 +1076,18 @@ const Uses = () => (
         </li>
       </ul>
     </Content>
+
+    {/* TODO: use OrderedList component */}
+    <style jsx global>{`
+      ul {
+        margin-left: 1.5em;
+        padding-left: 0;
+      }
+
+      li {
+        padding-left: 0.25em;
+      }
+    `}</style>
   </>
 );
 

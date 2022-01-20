@@ -1,0 +1,51 @@
+.heading {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+
+  /* offset (approximately) with sticky header so jumped-to content isn't hiding behind it */
+  scroll-margin-top: 4em;
+}
+
+/* special bottom border for <h2>s */
+.h2 {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--kinda-light);
+}
+
+.h3,
+.h4 {
+  scroll-margin-top: 5em;
+}
+
+/* sub-heading anchor styles */
+.heading :global(.h-anchor) {
+  margin: 0 0.25em;
+  padding: 0 0.25em;
+  color: var(--medium-light);
+  background: none;
+  font-weight: 300;
+  opacity: 0; /* overridden on hover */
+  user-select: none;
+}
+.heading :global(.h-anchor::before) {
+  content: "\0023"; /* pound sign `#`, done here to keep content DOM cleaner */
+}
+.heading :global(.h-anchor:hover) {
+  color: var(--link);
+}
+/* make anchor `#` link show up on hover over the corresponding heading */
+.heading:hover :global(.h-anchor) {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .h2 {
+    scroll-margin-top: 5em;
+  }
+
+  .h3,
+  .h4 {
+    scroll-margin-top: 6em;
+  }
+}

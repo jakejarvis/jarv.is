@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import IFrame from "../components/IFrame/IFrame";
+import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 import { FloppyIcon, SirenIcon } from "../components/Icons";
 
 /* eslint-disable camelcase */
@@ -60,7 +61,7 @@ const Previously = () => (
         </figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <p>
         <SirenIcon /> <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
@@ -93,77 +94,77 @@ const Previously = () => (
         </figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2002_02} placeholder="blur" alt="February 2002" />
         <figcaption>February 2002</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2002_10} placeholder="blur" alt="October 2002" />
         <figcaption>October 2002</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2003_08} placeholder="blur" alt="August 2003" />
         <figcaption>August 2003</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2004_11} placeholder="blur" alt="November 2004" />
         <figcaption>November 2004</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2006_04} placeholder="blur" alt="April 2006" />
         <figcaption>April 2006</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2006_05} placeholder="blur" alt="May 2006" />
         <figcaption>May 2006</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2007_01} placeholder="blur" alt="January 2007" />
         <figcaption>January 2007</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2007_04} placeholder="blur" alt="April 2007" />
         <figcaption>April 2007</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2007_05} placeholder="blur" alt="May 2007" />
         <figcaption>May 2007</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <Image src={img_2009_07} placeholder="blur" alt="July 2009" />
         <figcaption>July 2009</figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <a
@@ -183,7 +184,7 @@ const Previously = () => (
         </figcaption>
       </figure>
 
-      <hr />
+      <HorizontalRule />
 
       <figure>
         <a

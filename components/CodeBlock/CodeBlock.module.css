@@ -1,4 +1,16 @@
+/* all code */
 .code {
+  font-size: 0.925em;
+  page-break-inside: avoid;
+  border: 1px solid var(--kinda-light);
+}
+
+/* inline code in paragraphs/elsewhere (single backticks) */
+.inline {
+  padding: 0.1em 0.25em;
+}
+
+.block {
   position: relative;
   width: 100%;
   margin: 1em auto;
@@ -6,7 +18,7 @@
 
 /* the following sub-classes MUST be global -- the highlight rehype plugin isn't aware of this file */
 
-.code :global(.code-highlight) {
+.block :global(.code-highlight) {
   display: block;
   overflow-x: auto;
   padding: 1em;
@@ -16,11 +28,11 @@
 }
 
 /* leave room for clipboard button to the right of the first line */
-.code :global(.code-highlight) > :global(.code-line:first-of-type) {
+.block :global(.code-highlight) > :global(.code-line:first-of-type) {
   margin-right: 3em;
 }
 
-.code :global(.code-highlight) > :global(.code-line.line-number::before) {
+.block :global(.code-highlight) > :global(.code-line.line-number::before) {
   display: inline-block;
   width: 1.5em;
   margin-right: 1.5em;
@@ -29,69 +41,69 @@
   content: attr(line); /* added to spans by prism */
 }
 
-.code :global(.code-highlight) :global(.token.comment),
-.code :global(.code-highlight) :global(.token.prolog),
-.code :global(.code-highlight) :global(.token.cdata) {
+.block :global(.code-highlight) :global(.token.comment),
+.block :global(.code-highlight) :global(.token.prolog),
+.block :global(.code-highlight) :global(.token.cdata) {
   color: var(--code-comment);
 }
 
-.code :global(.code-highlight) :global(.token.delimiter),
-.code :global(.code-highlight) :global(.token.boolean),
-.code :global(.code-highlight) :global(.token.keyword),
-.code :global(.code-highlight) :global(.token.selector),
-.code :global(.code-highlight) :global(.token.important),
-.code :global(.code-highlight) :global(.token.doctype),
-.code :global(.code-highlight) :global(.token.atrule),
-.code :global(.code-highlight) :global(.token.url) {
+.block :global(.code-highlight) :global(.token.delimiter),
+.block :global(.code-highlight) :global(.token.boolean),
+.block :global(.code-highlight) :global(.token.keyword),
+.block :global(.code-highlight) :global(.token.selector),
+.block :global(.code-highlight) :global(.token.important),
+.block :global(.code-highlight) :global(.token.doctype),
+.block :global(.code-highlight) :global(.token.atrule),
+.block :global(.code-highlight) :global(.token.url) {
   color: var(--code-keyword);
 }
 
-.code :global(.code-highlight) :global(.token.tag),
-.code :global(.code-highlight) :global(.token.builtin),
-.code :global(.code-highlight) :global(.token.regex) {
+.block :global(.code-highlight) :global(.token.tag),
+.block :global(.code-highlight) :global(.token.builtin),
+.block :global(.code-highlight) :global(.token.regex) {
   color: var(--code-namespace);
 }
 
-.code :global(.code-highlight) :global(.token.property),
-.code :global(.code-highlight) :global(.token.constant),
-.code :global(.code-highlight) :global(.token.variable),
-.code :global(.code-highlight) :global(.token.attr-value),
-.code :global(.code-highlight) :global(.token.class-name),
-.code :global(.code-highlight) :global(.token.string),
-.code :global(.code-highlight) :global(.token.char) {
+.block :global(.code-highlight) :global(.token.property),
+.block :global(.code-highlight) :global(.token.constant),
+.block :global(.code-highlight) :global(.token.variable),
+.block :global(.code-highlight) :global(.token.attr-value),
+.block :global(.code-highlight) :global(.token.class-name),
+.block :global(.code-highlight) :global(.token.string),
+.block :global(.code-highlight) :global(.token.char) {
   color: var(--code-variable);
 }
 
-.code :global(.code-highlight) :global(.token.literal-property),
-.code :global(.code-highlight) :global(.token.attr-name) {
+.block :global(.code-highlight) :global(.token.literal-property),
+.block :global(.code-highlight) :global(.token.attr-name) {
   color: var(--code-attribute);
 }
 
-.code :global(.code-highlight) :global(.token.function) {
+.block :global(.code-highlight) :global(.token.function) {
   color: var(--code-literal);
 }
 
-.code :global(.code-highlight) :global(.token.tag .punctuation),
-.code :global(.code-highlight) :global(.token.attr-value .punctuation) {
+.block :global(.code-highlight) :global(.token.tag .punctuation),
+.block :global(.code-highlight) :global(.token.attr-value .punctuation) {
   color: var(--code-punctuation);
 }
 
-.code :global(.code-highlight) :global(.token.inserted) {
+.block :global(.code-highlight) :global(.token.inserted) {
   background-color: var(--code-addition);
 }
 
-.code :global(.code-highlight) :global(.token.deleted) {
+.block :global(.code-highlight) :global(.token.deleted) {
   background-color: var(--code-deletion);
 }
 
-.code :global(.code-highlight) :global(.token.url) {
+.block :global(.code-highlight) :global(.token.url) {
   text-decoration: underline;
 }
 
-.code :global(.code-highlight) :global(.token.bold) {
+.block :global(.code-highlight) :global(.token.bold) {
   font-weight: bold;
 }
 
-.code :global(.code-highlight) :global(.token.italic) {
+.block :global(.code-highlight) :global(.token.italic) {
   font-style: italic;
 }

@@ -50,9 +50,7 @@ const Contact = () => (
       }
 
       .pubkey {
-        background: none;
-        border: 0;
-        padding: 0;
+        font-size: 0.925em;
         word-spacing: -0.175em;
         white-space: normal;
       }
