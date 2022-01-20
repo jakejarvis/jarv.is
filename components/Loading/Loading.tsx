@@ -1,4 +1,5 @@
 import { memo } from "react";
+import classNames from "classnames";
 
 import styles from "./Loading.module.css";
 
@@ -6,9 +7,10 @@ type Props = {
   width: number; // of entire container, in pixels
   boxes?: number; // total number of boxes (default: 3)
   timing?: number; // staggered timing between each box's pulse, in seconds (default: 0.1s)
+  className?: string;
 };
 
-const Loading = ({ width, boxes = 3, timing = 0.1 }: Props) => {
+const Loading = ({ width, boxes = 3, timing = 0.1, className }: Props) => {
   // each box is just an empty div
   const divs = [];
 
@@ -30,7 +32,7 @@ const Loading = ({ width, boxes = 3, timing = 0.1 }: Props) => {
 
   return (
     <div
-      className={styles.wrapper}
+      className={classNames(styles.wrapper, className)}
       style={{
         width: `${width}px`,
         height: `${width / 2}px`,

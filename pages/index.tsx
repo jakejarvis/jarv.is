@@ -259,7 +259,7 @@ const Index = () => (
       </ColorfulLink>{" "}
       <sup className="monospace pgp_key">
         <ColorfulLink href="/pubkey.asc" title="My Public Key" lightColor="#757575" darkColor="#959595" external>
-          <LockIcon className="icon" /> 2B0C 9CF2 51E6 9A39
+          <LockIcon /> 2B0C 9CF2 51E6 9A39
         </ColorfulLink>
       </sup>
       ,{" "}

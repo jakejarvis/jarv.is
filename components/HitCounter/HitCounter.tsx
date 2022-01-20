@@ -2,7 +2,12 @@ import useSWR from "swr";
 import Loading from "../Loading/Loading";
 import { fetcher } from "../../lib/fetcher";
 
-const HitCounter = ({ slug }) => {
+type Props = {
+  slug: string;
+  className?: string;
+};
+
+const HitCounter = ({ slug, className }: Props) => {
   // start fetching repos from API immediately
   const { data, error } = useSWR(`/api/hits/?slug=${encodeURIComponent(slug)}`, fetcher, {
     // avoid double (or more) counting views
@@ -21,7 +26,7 @@ const HitCounter = ({ slug }) => {
 
   // we have data!
   return (
-    <span title={`${data.hits.toLocaleString("en-US")} ${data.hits === 1 ? "view" : "views"}`}>
+    <span title={`${data.hits.toLocaleString("en-US")} ${data.hits === 1 ? "view" : "views"}`} className={className}>
       {data.hits.toLocaleString("en-US")}
     </span>
   );

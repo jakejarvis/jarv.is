@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import styles from "./IFrame.module.css";
 
 type Props = {
@@ -7,11 +9,12 @@ type Props = {
   width?: number; // defaults to 100%
   allowScripts?: boolean;
   noScroll?: boolean;
+  className?: string;
 };
 
-const IFrame = ({ src, title, height, width, allowScripts, noScroll, ...rest }: Props) => (
+const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, ...rest }: Props) => (
   <iframe
-    className={styles.frame}
+    className={classNames(styles.frame, className)}
     src={src}
     title={title}
     sandbox={allowScripts ? "allow-same-origin allow-scripts allow-popups" : undefined}

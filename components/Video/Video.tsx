@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import ReactPlayer from "react-player/file";
 
 import styles from "./Video.module.css";
@@ -8,9 +9,10 @@ type Props = {
   thumbnail?: string;
   subs?: string;
   autoplay?: boolean;
+  className?: string;
 };
 
-const Video = ({ webm, mp4, thumbnail, subs, autoplay }: Props) => {
+const Video = ({ webm, mp4, thumbnail, subs, autoplay, className, ...rest }: Props) => {
   const url = [
     webm && {
       src: webm,
@@ -53,9 +55,9 @@ const Video = ({ webm, mp4, thumbnail, subs, autoplay }: Props) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, className)}>
       {/* @ts-ignore */}
-      <ReactPlayer width="100%" height="100%" url={url} config={config} controls={!autoplay} />
+      <ReactPlayer width="100%" height="100%" url={url} config={config} controls={!autoplay} {...rest} />
     </div>
   );
 };

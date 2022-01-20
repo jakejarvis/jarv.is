@@ -6,7 +6,11 @@ import { ProjectsIcon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import { RepoType } from "../types";
 
-const Projects = (props: { repos: RepoType[] }) => (
+type Props = {
+  repos: RepoType[];
+};
+
+const Projects = ({ repos }: Props) => (
   <>
     <NextSeo
       title="Projects"
@@ -20,7 +24,7 @@ const Projects = (props: { repos: RepoType[] }) => (
     </PageTitle>
 
     <div className="wrapper">
-      {props.repos.map((repo: RepoType) => (
+      {repos.map((repo: RepoType) => (
         <div key={repo.name} className="card">
           <RepositoryCard {...repo} />
         </div>

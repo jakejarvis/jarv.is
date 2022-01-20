@@ -1,6 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
 import css from "styled-jsx/css";
+import classNames from "classnames";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
   darkColor: string;
   title?: string;
   external?: boolean;
+  className?: string;
 };
 
 const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<Props>) => {
@@ -39,23 +41,33 @@ const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<Props>) => {
   `;
 };
 
-const ColorfulLink = ({ href, title, lightColor, darkColor, external = false, children }: Props) => {
-  const { className, styles } = getFancyLinkStyles({ lightColor, darkColor });
+const ColorfulLink = ({
+  href,
+  title,
+  lightColor,
+  darkColor,
+  external = false,
+  className,
+  children,
+  ...rest
+}: Props) => {
+  const { className: underlineClassName, styles: underlineStyles } = getFancyLinkStyles({ lightColor, darkColor });
 
   return (
     <>
       <Link href={href} passHref={true} prefetch={false}>
         <a
-          className={className}
+          className={classNames(underlineClassName, className)}
           title={title}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
+          {...rest}
         >
           {children}
         </a>
       </Link>
 
-      {styles}
+      {underlineStyles}
     </>
   );
 };

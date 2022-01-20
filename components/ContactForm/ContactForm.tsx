@@ -11,6 +11,10 @@ import type { FormikHelpers } from "formik";
 import styles from "./ContactForm.module.css";
 const cx = classNames.bind(styles);
 
+type Props = {
+  className?: string;
+};
+
 type Values = {
   name: string;
   email: string;
@@ -18,7 +22,7 @@ type Values = {
   "h-captcha-response": string;
 };
 
-const ContactForm = () => {
+const ContactForm = ({ className }: Props) => {
   const { resolvedTheme } = useTheme();
 
   // status/feedback:
@@ -97,7 +101,7 @@ const ContactForm = () => {
       }}
     >
       {({ setFieldValue, isSubmitting, touched, errors }) => (
-        <Form className={styles.form} name="contact">
+        <Form className={className} name="contact">
           <Field
             className={cx({ input: true, missing: errors.name && touched.name })}
             name="name"

@@ -50,11 +50,7 @@ const CopyButton = ({ source, timeout = 2000, className }: Props) => {
       onClick={handleCopy}
       disabled={!!copied}
     >
-      {copied ? (
-        <CheckOcticon className="icon" fill="currentColor" />
-      ) : (
-        <ClipboardOcticon className="icon" fill="currentColor" />
-      )}
+      {copied ? <CheckOcticon fill="currentColor" /> : <ClipboardOcticon fill="currentColor" />}
     </button>
   );
 };

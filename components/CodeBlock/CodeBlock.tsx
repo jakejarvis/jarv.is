@@ -5,24 +5,28 @@ import type { ReactNode } from "react";
 import styles from "./CodeBlock.module.css";
 
 type Props = {
-  className?: string;
   children: ReactNode;
+  className?: string;
 };
 
-const CodeBlock = (props: Props) => {
-  if (props.className?.split(" ").includes("code-highlight")) {
+const CodeBlock = ({ children, className, ...rest }: Props) => {
+  if (className?.split(" ").includes("code-highlight")) {
     // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
       <div className={styles.block}>
-        <CopyButton source={props.children} className={styles.copy_btn} />
-        <code {...props} className={classNames(styles.code, props.className)}>
-          {props.children}
+        <CopyButton source={children} className={styles.copy_btn} />
+        <code className={classNames(styles.code, className)} {...rest}>
+          {children}
         </code>
       </div>
     );
   } else {
     // inline code in paragraphs, headings, etc. (not highlighted)
-    return <code className={classNames(styles.code, styles.inline)}>{props.children}</code>;
+    return (
+      <code className={classNames(styles.code, styles.inline, className)} {...rest}>
+        {children}
+      </code>
+    );
   }
 };
 
