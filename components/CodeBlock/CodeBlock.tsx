@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import CopyButton from "../CopyButton/CopyButton";
 import type { ReactNode } from "react";
 
@@ -13,15 +14,15 @@ const CodeBlock = (props: Props) => {
     // full multi-line code blocks with prism highlighting and copy-to-clipboard button
     return (
       <div className={styles.block}>
-        <CopyButton source={props.children} />
-        <code {...props} className={`${styles.code} ${props.className}`}>
+        <CopyButton source={props.children} className={styles.copy_btn} />
+        <code {...props} className={classNames(styles.code, props.className)}>
           {props.children}
         </code>
       </div>
     );
   } else {
     // inline code in paragraphs, headings, etc. (not highlighted)
-    return <code className={`${styles.code} ${styles.inline}`}>{props.children}</code>;
+    return <code className={classNames(styles.code, styles.inline)}>{props.children}</code>;
   }
 };
 

@@ -27,9 +27,9 @@ const Video = ({ webm, mp4, thumbnail, subs, autoplay }: Props) => {
       attributes: {
         controlsList: "nodownload",
         preload: "metadata",
-        autoPlay: autoplay,
-        muted: autoplay,
-        loop: autoplay,
+        autoPlay: !!autoplay,
+        muted: !!autoplay,
+        loop: !!autoplay,
       },
     },
   };

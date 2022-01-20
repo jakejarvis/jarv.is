@@ -1,17 +1,6 @@
 .copy {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.65em;
   line-height: 1;
-  color: var(--medium-dark);
-  background-color: var(--background-inner);
-  border: 1px solid var(--kinda-light);
   cursor: pointer;
-}
-
-.copy:hover {
-  color: var(--link);
 }
 
 .success {

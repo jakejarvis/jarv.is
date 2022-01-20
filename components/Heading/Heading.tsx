@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import type { HTMLAttributes } from "react";
 
 import styles from "./Heading.module.css";
@@ -8,7 +9,7 @@ type Props = HTMLAttributes<HTMLHeadingElement> & {
 
 const Heading = ({ as: Component, children, ...rest }: Props) => {
   return (
-    <Component className={`${styles.heading} ${styles[Component] || ""}`} {...rest}>
+    <Component className={classNames(styles.heading, styles[Component])} {...rest}>
       {children}
     </Component>
   );

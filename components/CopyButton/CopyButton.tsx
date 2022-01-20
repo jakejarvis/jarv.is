@@ -11,9 +11,10 @@ const cx = classNames.bind(styles);
 type Props = {
   source: ReactNode;
   timeout?: number;
+  className?: string;
 };
 
-const CopyButton = ({ source, timeout = 2000 }: Props) => {
+const CopyButton = ({ source, timeout = 2000, className }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (e) => {
@@ -43,7 +44,7 @@ const CopyButton = ({ source, timeout = 2000 }: Props) => {
 
   return (
     <button
-      className={cx({ copy: true, success: !!copied })}
+      className={cx({ copy: true, success: !!copied }, className)}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}

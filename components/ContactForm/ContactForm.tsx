@@ -160,7 +160,7 @@ const ContactForm = () => {
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SendIcon className={`icon ${styles.send_icon}`} /> <span>Send</span>
+                  <SendIcon className={classNames("icon", styles.send_icon)} /> <span>Send</span>
                 </>
               )}
             </button>

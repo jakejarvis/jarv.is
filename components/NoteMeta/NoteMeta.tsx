@@ -1,4 +1,5 @@
 import Link from "next/link";
+import classNames from "classnames";
 import { format } from "date-fns";
 import HitCounter from "../HitCounter/HitCounter";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
@@ -13,7 +14,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
   <div className={styles.meta}>
     <div className={styles.date}>
       <span>
-        <DateIcon className={`icon ${styles.icon}`} />
+        <DateIcon className={classNames("icon", styles.icon)} />
       </span>
       <span title={format(new Date(date), "PPppp")}>
         <Link href={`/notes/${slug}/`}>
@@ -25,7 +26,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
     {tags.length > 0 && (
       <div className={styles.tags}>
         <span>
-          <TagIcon className={`icon ${styles.icon}`} />
+          <TagIcon className={classNames("icon", styles.icon)} />
         </span>
         {tags.map((tag) => (
           <span key={tag} className={styles.tag}>
@@ -37,7 +38,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
 
     <div>
       <span>
-        <EditIcon className={`icon ${styles.icon}`} />
+        <EditIcon className={classNames("icon", styles.icon)} />
       </span>
       <span>
         <a
@@ -53,7 +54,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
 
     <div>
       <span>
-        <ViewsIcon className={`icon ${styles.icon}`} />
+        <ViewsIcon className={classNames("icon", styles.icon)} />
       </span>
       <HitCounter slug={`notes/${slug}`} />
     </div>

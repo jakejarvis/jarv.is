@@ -1,6 +1,7 @@
 /* all code */
 .code {
   font-size: 0.925em;
+  tab-size: 2;
   page-break-inside: avoid;
   border: 1px solid var(--kinda-light);
 }
@@ -16,13 +17,26 @@
   margin: 1em auto;
 }
 
+.block .copy_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.65em;
+  color: var(--medium-dark);
+  background-color: var(--background-inner);
+  border: 1px solid var(--kinda-light);
+}
+
+.block .copy_btn:hover {
+  color: var(--link);
+}
+
 /* the following sub-classes MUST be global -- the highlight rehype plugin isn't aware of this file */
 
 .block :global(.code-highlight) {
   display: block;
   overflow-x: auto;
   padding: 1em;
-  tab-size: 2;
   color: var(--code-text);
   background-color: var(--code-background);
 }

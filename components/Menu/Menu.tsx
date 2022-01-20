@@ -1,5 +1,6 @@
 import { memo } from "react";
 import Link from "next/link";
+import classNames from "classnames";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
@@ -7,22 +8,22 @@ import styles from "./Menu.module.css";
 
 const links = [
   {
-    icon: <HomeIcon className={`icon ${styles.icon}`} />,
+    icon: <HomeIcon className={classNames("icon", styles.icon)} />,
     text: "Home",
     href: "/",
   },
   {
-    icon: <NotesIcon className={`icon ${styles.icon}`} />,
+    icon: <NotesIcon className={classNames("icon", styles.icon)} />,
     text: "Notes",
     href: "/notes/",
   },
   {
-    icon: <ProjectsIcon className={`icon ${styles.icon}`} />,
+    icon: <ProjectsIcon className={classNames("icon", styles.icon)} />,
     text: "Projects",
     href: "/projects/",
   },
   {
-    icon: <ContactIcon className={`icon ${styles.icon}`} />,
+    icon: <ContactIcon className={classNames("icon", styles.icon)} />,
     text: "Contact",
     href: "/contact/",
   },
