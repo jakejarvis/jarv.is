@@ -3,6 +3,8 @@
   padding: 1.5em;
   color: var(--text);
   background-color: var(--background-inner);
+  /* light-dark theme switch fading */
+  transition: color 0.25s ease, background 0.25s ease, border 0.25s ease;
 }
 
 .container {

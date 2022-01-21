@@ -8,3 +8,8 @@
   top: 0;
   left: 0;
 }
+
+.wrapper :global(.react-player__preview),
+.wrapper iframe {
+  border-radius: var(--rounded-edge-radius);
+}

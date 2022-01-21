@@ -1079,11 +1079,13 @@ const Uses = () => (
 
     {/* TODO: use OrderedList component */}
     <style jsx global>{`
+      img {
+        border-radius: var(--rounded-edge-radius);
+      }
       ul {
         margin-left: 1.5em;
         padding-left: 0;
       }
-
       li {
         padding-left: 0.25em;
       }

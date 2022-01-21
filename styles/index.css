@@ -2,7 +2,10 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  color: var(--text);
   background-color: var(--background-outer);
+  /* light-dark theme switch fading */
+  transition: background 0.25s ease;
 }
 
 a {
@@ -10,21 +13,20 @@ a {
   text-decoration: none;
   background-position: 0% 100%;
   background-repeat: no-repeat;
-  background-size: 0% 2px;
-  padding-bottom: 2px;
-  transition: background-size 0.25s ease-in-out;
+  background-size: 0% var(--link-underline-size);
+  padding-bottom: var(--link-underline-size);
+  transition: background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease;
   background-image: linear-gradient(var(--link-underline), var(--link-underline));
 }
 
 a:hover {
-  background-size: 100% 2px;
+  background-size: 100% var(--link-underline-size);
 }
 
 /* set an anchor's class to `no-underline` to disable all of the above */
 a.no-underline {
   background: none !important;
   padding-bottom: 0;
-  transition: none;
 }
 
 /* make SVG icons relative in size/position to surrounding text */

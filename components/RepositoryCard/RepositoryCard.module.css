@@ -2,10 +2,12 @@
   width: 100%;
   padding: 1.2em 1.2em 0.8em;
   border: 1px solid;
-  border-radius: 0.5em;
+  border-radius: var(--rounded-edge-radius);
   font-size: 0.85em;
   color: var(--medium-dark);
   border-color: var(--kinda-light);
+  /* light-dark theme switch fading */
+  transition: border 0.25s ease;
 }
 
 .name {
@@ -34,7 +36,7 @@
 .meta_item a {
   background: none;
   padding-bottom: 0;
-  color: inherit;
+  color: var(--medium);
 }
 
 .meta_item a:hover {

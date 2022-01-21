@@ -3,7 +3,6 @@
   color: var(--text);
   background: none !important;
   padding-bottom: 0;
-  transition: none;
 }
 
 .link:hover {

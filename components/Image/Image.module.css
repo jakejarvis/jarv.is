@@ -5,3 +5,7 @@
   margin: 1em auto;
   text-align: center;
 }
+
+.wrapper img {
+  border-radius: var(--rounded-edge-radius);
+}

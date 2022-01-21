@@ -20,6 +20,7 @@
 
 .menu li .link:hover {
   color: var(--link);
+  transition: none;
 }
 
 .menu li .icon {

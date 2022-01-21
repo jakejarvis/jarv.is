@@ -3,7 +3,7 @@
   padding: 0.8em;
   margin: 0.6em 0;
   border: 2px solid;
-  border-radius: 0.3em;
+  border-radius: var(--rounded-edge-radius);
   color: var(--text);
   background-color: var(--super-duper-light);
   border-color: var(--light);
@@ -16,6 +16,12 @@
 
 .input.missing {
   border-color: var(--error);
+}
+
+.input,
+.btn_submit {
+  /* light-dark theme switch fading */
+  transition: background 0.25s ease;
 }
 
 .textarea {
@@ -51,7 +57,7 @@
   padding: 1em 1.25em;
   margin-right: 1.5em;
   border: 0;
-  border-radius: 0.3em;
+  border-radius: var(--rounded-edge-radius);
   cursor: pointer;
   user-select: none;
   font-weight: 500;
@@ -65,7 +71,7 @@
 }
 
 .btn_submit .send_icon {
-  margin-right: 0.4em;
+  margin-right: var(--rounded-edge-radius);
 }
 
 .result_success,

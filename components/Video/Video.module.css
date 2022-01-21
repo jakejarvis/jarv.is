@@ -8,3 +8,7 @@
   top: 0;
   left: 0;
 }
+
+.wrapper video {
+  border-radius: var(--rounded-edge-radius);
+}

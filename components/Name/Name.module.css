@@ -8,6 +8,7 @@
 
 .link:hover {
   color: var(--link);
+  transition: none;
 }
 
 .selfie {
@@ -20,10 +21,6 @@
 .selfie img {
   border: 1px solid var(--light) !important;
   border-radius: 50%;
-}
-
-.link:hover .selfie {
-  opacity: 0.9;
 }
 
 .name {

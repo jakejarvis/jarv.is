@@ -246,6 +246,7 @@ const Previously = () => (
       }
       figure img {
         margin-bottom: 0;
+        border-radius: var(--rounded-edge-radius);
       }
       figcaption {
         margin-top: 0.2em;

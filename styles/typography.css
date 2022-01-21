@@ -1,5 +1,5 @@
 body {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-sans);
   font-kerning: normal;
   font-variant-ligatures: normal;
   font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
@@ -10,7 +10,7 @@ kbd,
 samp,
 pre,
 .monospace {
-  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: var(--font-family-mono);
 }
 
 /*
@@ -19,8 +19,7 @@ pre,
  */
 @supports (font-variation-settings: normal) {
   body {
-    font-family: InterVariable, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-      sans-serif;
+    font-family: var(--font-family-sans-variable);
     font-optical-sizing: auto;
   }
 
@@ -29,8 +28,7 @@ pre,
   samp,
   pre,
   .monospace {
-    font-family: "Roboto MonoVariable", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
-      monospace;
+    font-family: var(--font-family-mono-variable);
   }
 
   /*

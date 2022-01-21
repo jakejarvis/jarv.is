@@ -1,0 +1,12 @@
+:root {
+  --rounded-edge-radius: 8px;
+  --link-underline-size: 2px;
+
+  --font-family-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-family-sans-variable: InterVariable, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-family-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier;
+  --font-family-mono-variable: "Roboto MonoVariable", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
+    Courier;
+}

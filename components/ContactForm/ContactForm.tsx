@@ -113,7 +113,7 @@ const ContactForm = ({ className }: Props) => {
             className={cx({ input: true, missing: errors.email && touched.email })}
             name="email"
             type="email"
-            inputmode="email"
+            inputMode="email"
             placeholder="Email"
             disabled={success}
           />

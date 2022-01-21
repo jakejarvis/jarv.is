@@ -1,14 +1,19 @@
 /* all code */
 .code {
   font-size: 0.925em;
+  color: var(--code-text);
   tab-size: 2;
   page-break-inside: avoid;
+  background-color: var(--code-background);
   border: 1px solid var(--kinda-light);
+  border-radius: var(--rounded-edge-radius);
+  /* light-dark theme switch fading */
+  transition: background 0.25s ease, border 0.25s ease;
 }
 
 /* inline code in paragraphs/elsewhere (single backticks) */
 .inline {
-  padding: 0.1em 0.25em;
+  padding: 0.2em 0.3em;
 }
 
 .block {
@@ -25,6 +30,10 @@
   color: var(--medium-dark);
   background-color: var(--background-inner);
   border: 1px solid var(--kinda-light);
+  border-top-right-radius: var(--rounded-edge-radius);
+  border-end-start-radius: var(--rounded-edge-radius);
+  /* light-dark theme switch fading */
+  transition: background 0.25s ease, border 0.25s ease;
 }
 
 .block .copy_btn:hover {
@@ -37,8 +46,6 @@
   display: block;
   overflow-x: auto;
   padding: 1em;
-  color: var(--code-text);
-  background-color: var(--code-background);
 }
 
 /* leave room for clipboard button to the right of the first line */

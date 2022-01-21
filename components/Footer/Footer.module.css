@@ -3,6 +3,8 @@
   padding: 1.25em 1.5em;
   border-top: 1px solid var(--kinda-light);
   color: var(--medium-dark);
+  /* light-dark theme switch fading */
+  transition: color 0.25s ease, background 0.25s ease, border 0.25s ease;
 }
 
 .footer a {

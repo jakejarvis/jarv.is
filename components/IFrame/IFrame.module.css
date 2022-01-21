@@ -3,4 +3,5 @@
   display: block;
   margin: 1em auto;
   border: 2px solid var(--kinda-light);
+  border-radius: var(--rounded-edge-radius);
 }
