@@ -19,23 +19,23 @@
 }
 
 /* sub-heading anchor styles */
-.heading :global(.h-anchor) {
+.anchor {
   margin: 0 0.25em;
   padding: 0 0.25em;
   color: var(--medium-light);
-  background: none;
   font-weight: 300;
+  background: none;
+  transition: none;
   opacity: 0; /* overridden on hover */
-  user-select: none;
 }
-.heading :global(.h-anchor::before) {
+.anchor::before {
   content: "\0023"; /* pound sign `#`, done here to keep content DOM cleaner */
 }
-.heading :global(.h-anchor:hover) {
+.anchor:hover {
   color: var(--link);
 }
 /* make anchor `#` link show up on hover over the corresponding heading */
-.heading:hover :global(.h-anchor) {
+.heading:hover .anchor {
   opacity: 1;
 }
 

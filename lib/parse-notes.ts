@@ -13,7 +13,6 @@ import { NOTES_DIR, baseUrl } from "./config";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 // note: 'common' only exports these languages: https://github.com/wooorm/refractor/blob/main/lib/common.js
 // eslint-disable-next-line import/no-unresolved
 import rehypePrism from "rehype-prism-plus/common";
@@ -72,15 +71,6 @@ export const getNote = async (slug: string): Promise<NoteType> => {
       rehypePlugins: [
         [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
         [rehypeSlug, {}],
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "append",
-            properties: { className: "h-anchor", ariaHidden: true, tabIndex: -1 },
-            content: [],
-            test: ["h2", "h3"],
-          },
-        ],
         [rehypePrism, { ignoreMissing: true }],
       ],
     },
