@@ -9,7 +9,12 @@ type Props = {
 };
 
 const OctocatLink = ({ repo, className }: Props) => (
-  <a className={styles.link} href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
+  <a
+    className={classNames("no-underline", styles.link)}
+    href={`https://github.com/${repo}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     <OctocatOcticon fill="currentColor" className={classNames("icon", className)} />
   </a>
 );

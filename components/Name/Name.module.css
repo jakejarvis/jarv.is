@@ -2,13 +2,10 @@
   display: inline-flex;
   align-items: center;
   color: var(--medium-dark);
-  background: none;
-  padding-bottom: 0;
 }
 
 .link:hover {
   color: var(--link);
-  transition: none;
 }
 
 .selfie {

@@ -5,6 +5,7 @@ import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
 import { ProjectsIcon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import { RepoType } from "../types";
+import Content from "../components/Content/Content";
 
 type Props = {
   repos: RepoType[];
@@ -23,19 +24,21 @@ const Projects = ({ repos }: Props) => (
       <ProjectsIcon /> Projects
     </PageTitle>
 
-    <div className="wrapper">
-      {repos.map((repo: RepoType) => (
-        <div key={repo.name} className="card">
-          <RepositoryCard {...repo} />
-        </div>
-      ))}
-    </div>
+    <Content>
+      <div className="wrapper">
+        {repos.map((repo: RepoType) => (
+          <div key={repo.name} className="card">
+            <RepositoryCard {...repo} />
+          </div>
+        ))}
+      </div>
 
-    <p className="view_more">
-      <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
-        View more on GitHub...
-      </a>
-    </p>
+      <p className="view_more">
+        <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
+          View more on GitHub...
+        </a>
+      </p>
+    </Content>
 
     <style jsx>{`
       .wrapper {
@@ -44,6 +47,8 @@ const Projects = ({ repos }: Props) => (
         justify-content: space-between;
         align-items: flex-start;
         width: 100%;
+        font-size: 1.1em;
+        line-height: 1.1;
       }
 
       .card {

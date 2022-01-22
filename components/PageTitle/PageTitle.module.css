@@ -6,9 +6,7 @@
 }
 
 .title a {
-  background: none;
-  padding-bottom: 0;
-  color: var(--text);
+  color: inherit;
 }
 
 @media screen and (max-width: 768px) {

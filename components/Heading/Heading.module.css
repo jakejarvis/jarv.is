@@ -22,17 +22,15 @@
 .anchor {
   margin: 0 0.25em;
   padding: 0 0.25em;
-  color: var(--medium-light);
+  color: var(--medium-light) !important;
   font-weight: 300;
-  background: none;
-  transition: none;
   opacity: 0; /* overridden on hover */
 }
 .anchor::before {
   content: "\0023"; /* pound sign `#`, done here to keep content DOM cleaner */
 }
 .anchor:hover {
-  color: var(--link);
+  color: var(--link) !important;
 }
 /* make anchor `#` link show up on hover over the corresponding heading */
 .heading:hover .anchor {

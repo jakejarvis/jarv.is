@@ -8,9 +8,7 @@
 }
 
 .footer a {
-  color: var(--medium-dark);
-  background: none;
-  padding-bottom: 0;
+  color: inherit;
 }
 
 .row {
@@ -24,7 +22,7 @@
 }
 
 .view_source {
-  padding-bottom: 2px !important;
+  padding-bottom: 2px;
   border-bottom: 1px solid;
   border-color: var(--light);
 }

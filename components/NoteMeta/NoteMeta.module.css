@@ -8,9 +8,7 @@
 }
 
 .meta a {
-  color: var(--medium);
-  background: none;
-  padding-bottom: 0;
+  color: inherit;
 }
 
 .meta > div {

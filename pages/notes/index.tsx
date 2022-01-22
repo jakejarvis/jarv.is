@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import { format } from "date-fns";
+import Content from "../../components/Content/Content";
 import NotesList from "../../components/NotesList/NotesList";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
@@ -14,7 +15,9 @@ const Notes = ({ notesByYear }) => (
       }}
     />
 
-    <NotesList notesByYear={notesByYear} />
+    <Content>
+      <NotesList notesByYear={notesByYear} />
+    </Content>
   </>
 );
 

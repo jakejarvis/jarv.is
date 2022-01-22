@@ -34,13 +34,11 @@
 }
 
 .meta_item a {
-  background: none;
-  padding-bottom: 0;
-  color: var(--medium);
+  color: inherit !important;
 }
 
 .meta_item a:hover {
-  color: var(--link);
+  color: var(--link) !important;
 }
 
 .octicon,
