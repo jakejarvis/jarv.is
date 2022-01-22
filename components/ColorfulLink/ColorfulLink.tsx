@@ -41,16 +41,7 @@ const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<Props>) => {
   `;
 };
 
-const ColorfulLink = ({
-  href,
-  title,
-  lightColor,
-  darkColor,
-  external = false,
-  className,
-  children,
-  ...rest
-}: Props) => {
+const ColorfulLink = ({ href, lightColor, darkColor, external = false, className, ...rest }: Props) => {
   const { className: underlineClassName, styles: underlineStyles } = getFancyLinkStyles({ lightColor, darkColor });
 
   return (
@@ -58,13 +49,10 @@ const ColorfulLink = ({
       <Link href={href} passHref={true} prefetch={false}>
         <a
           className={classNames(underlineClassName, className)}
-          title={title}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
           {...rest}
-        >
-          {children}
-        </a>
+        />
       </Link>
 
       {underlineStyles}

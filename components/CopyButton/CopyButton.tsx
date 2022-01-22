@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 import styles from "./CopyButton.module.css";
 const cx = classNames.bind(styles);
@@ -14,7 +14,10 @@ type Props = {
   className?: string;
 };
 
-const CopyButton = ({ source, timeout = 2000, className }: Props) => {
+const CopyButton = forwardRef(function CopyButton(
+  { source, timeout = 2000, className }: Props,
+  ref: Ref<HTMLButtonElement>
+) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (e) => {
@@ -49,10 +52,11 @@ const CopyButton = ({ source, timeout = 2000, className }: Props) => {
       aria-label="Copy to clipboard"
       onClick={handleCopy}
       disabled={!!copied}
+      ref={ref}
     >
       {copied ? <CheckOcticon fill="currentColor" /> : <ClipboardOcticon fill="currentColor" />}
     </button>
   );
-};
+});
 
 export default CopyButton;

@@ -6,6 +6,6 @@ type Props = {
   children: ReactNode;
 };
 
-const Content = ({ children }: Props) => <div className={styles.content}>{children}</div>;
+const Content = (props: Props) => <div className={styles.content} {...props} />;
 
 export default Content;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { Giscus } from "@giscus/react";
@@ -28,4 +29,4 @@ const Comments = ({ title, className }: Props) => {
   );
 };
 
-export default Comments;
+export default memo(Comments);

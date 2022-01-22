@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
@@ -23,4 +22,4 @@ const PageTitle = ({ children, className }: Props) => {
   );
 };
 
-export default memo(PageTitle);
+export default PageTitle;
