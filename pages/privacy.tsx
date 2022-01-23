@@ -121,17 +121,6 @@ const Privacy = () => (
         allowScripts
       />
 
-      <p>
-        <a href="https://vercel.com/analytics" target="_blank" rel="noopener noreferrer">
-          <strong>Vercel Analytics</strong>
-        </a>{" "}
-        keeps track of{" "}
-        <a href="https://vercel.com/docs/concepts/analytics/web-vitals" target="_blank" rel="noopener noreferrer">
-          "web vitals"
-        </a>{" "}
-        (input delays, layout shifts, etc.), also in an anonymous and aggregate fashion.
-      </p>
-
       <H2 id="third-party">Third-Party Content</H2>
 
       <p>

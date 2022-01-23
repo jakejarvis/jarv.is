@@ -41,8 +41,6 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
-      // optional custom domain: https://usefathom.com/docs/script/custom-domains
-      url: `${config.fathomCustomDomain || "https://cdn.usefathom.com"}/script.js`,
       // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
     });
@@ -86,9 +84,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           site: `@${config.authorSocial.twitter}`,
           cardType: "summary",
         }}
-        facebook={{
-          appId: config.facebookAppId,
-        }}
         additionalLinkTags={[
           {
             rel: "icon",
@@ -119,14 +114,6 @@ const App = ({ Component, pageProps }: AppProps) => {
             href: "/feed.atom",
             type: "application/atom+xml",
             title: `${config.siteName} (Atom)`,
-          },
-          {
-            rel: "preconnect",
-            href: config.fathomCustomDomain,
-          },
-          {
-            rel: "dns-prefetch",
-            href: config.fathomCustomDomain,
           },
           {
             rel: "webmention",
