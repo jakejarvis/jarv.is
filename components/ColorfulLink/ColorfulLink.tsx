@@ -14,35 +14,28 @@ type Props = {
   className?: string;
 };
 
-const getFancyLinkStyles = ({ lightColor, darkColor }: Partial<Props>) => {
-  // spits out a linear-gradient (that's not realy a gradient) with translucent color in rgba() format
-  const linearGradient = (hex: string, alpha = 0.4) => {
-    // hex -> rgb, adapted from https://github.com/sindresorhus/hex-rgb/blob/main/index.js
-    hex = hex.replace(/^#/, "");
-    const number = Number.parseInt(hex, 16);
-    const red = number >> 16;
-    const green = (number >> 8) & 255;
-    const blue = number & 255;
+// spits out properties for link's color and background-image in a linear-gradient (that's not really a gradient) with
+// translucent color in rgba() format.
+const getColorProperties = (hex: string, alpha = 0.4) => {
+  // hex -> rgb, pulled from https://github.com/sindresorhus/hex-rgb/blob/main/index.js#L29
+  const number = Number.parseInt(hex.replace(/^#/, ""), 16);
+  const red = number >> 16;
+  const green = (number >> 8) & 255;
+  const blue = number & 255;
 
-    const rgbaString = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+  const rgbaString = `rgba(${red},${green},${blue},${alpha})`;
 
-    return `linear-gradient(${rgbaString}, ${rgbaString})`;
-  };
-
-  return css.resolve`
-    a {
-      color: ${lightColor};
-      background-image: ${linearGradient(lightColor)};
-    }
-    :global([data-theme="dark"]) a {
-      color: ${darkColor};
-      background-image: ${linearGradient(darkColor)};
-    }
-  `;
+  // prettier-ignore
+  return `
+color:${hex};
+background-image:linear-gradient(${rgbaString},${rgbaString})`.trim();
 };
 
-const ColorfulLink = ({ href, lightColor, darkColor, external = false, className, ...rest }: Props) => {
-  const { className: underlineClassName, styles: underlineStyles } = getFancyLinkStyles({ lightColor, darkColor });
+const ColorfulLink = ({ href, lightColor, darkColor, external, className, ...rest }: Props) => {
+  // prettier-ignore
+  const { className: underlineClassName, styles: underlineStyles } = css.resolve`
+a {${getColorProperties(lightColor)}}
+:global([data-theme="dark"]) a {${getColorProperties(darkColor)}}`;
 
   return (
     <>
