@@ -17,8 +17,8 @@ const CustomImage = ({
 }: NextImageProps) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
-    width,
-    height,
+    width: typeof width === "string" ? parseInt(width) : width,
+    height: typeof height === "string" ? parseInt(height) : height,
     layout: "intrinsic",
     alt: alt || "",
     quality: quality || 65,

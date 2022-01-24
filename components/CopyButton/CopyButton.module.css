@@ -1,8 +1,8 @@
-.copy {
+.button {
   line-height: 1;
   cursor: pointer;
 }
 
-.success {
+.button.success {
   color: var(--success) !important;
 }
