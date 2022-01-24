@@ -86,8 +86,11 @@ export const getNote = async (slug: string): Promise<NoteType> => {
       // ...so do it manually (and conservatively) with terser for now.
       compiledSource: (
         await minify(source.compiledSource, {
+          ecma: 2018,
+          module: true,
           parse: { bare_returns: true },
-          mangle: false,
+          compress: { defaults: true },
+          sourceMap: false,
         })
       ).code,
     },

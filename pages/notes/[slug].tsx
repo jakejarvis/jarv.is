@@ -56,7 +56,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
       <NoteTitle slug={frontMatter.slug} htmlTitle={frontMatter.htmlTitle} />
 
       <Content>
-        <MDXRemote {...source} components={{ ...mdxComponents }} lazy />
+        <MDXRemote {...source} components={{ ...mdxComponents }} />
       </Content>
 
       {frontMatter.noComments !== true && (
