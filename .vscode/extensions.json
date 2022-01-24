@@ -5,6 +5,8 @@
     "divlo.vscode-styled-jsx-syntax",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint"
+    "silvenon.mdx",
+    "stylelint.vscode-stylelint",
+    "wix.vscode-import-cost"
   ]
 }

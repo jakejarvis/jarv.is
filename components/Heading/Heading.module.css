@@ -3,19 +3,17 @@
   margin-bottom: 0.5em;
   line-height: 1.5;
 
-  /* offset (approximately) with sticky header so jumped-to content isn't hiding behind it */
-  scroll-margin-top: 4em;
+  /**
+   * offset (approximately) with sticky header so jumped-to content isn't hiding behind it.
+   * note: use rem so it isn't based on the heading's font size.
+   */
+  scroll-margin-top: 5.5rem;
 }
 
 /* special bottom border for <h2>s */
 .h2 {
   padding-bottom: 0.25em;
   border-bottom: 1px solid var(--kinda-light);
-}
-
-.h3,
-.h4 {
-  scroll-margin-top: 5em;
 }
 
 /* sub-heading anchor styles */
@@ -38,12 +36,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .h2 {
-    scroll-margin-top: 5em;
-  }
-
-  .h3,
-  .h4 {
-    scroll-margin-top: 6em;
+  .heading {
+    scroll-margin-top: 6.5rem;
   }
 }

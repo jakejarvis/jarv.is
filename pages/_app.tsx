@@ -80,8 +80,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           ],
         }}
         twitter={{
-          handle: `@${config.authorSocial.twitter}`,
-          site: `@${config.authorSocial.twitter}`,
+          handle: `@${config.authorSocial?.twitter}`,
+          site: `@${config.authorSocial?.twitter}`,
           cardType: "summary",
         }}
         additionalLinkTags={[
@@ -169,13 +169,13 @@ const App = ({ Component, pageProps }: AppProps) => {
         url={`${config.baseUrl}/`}
         sameAs={[
           `${config.baseUrl}/`,
-          `https://github.com/${config.authorSocial.github}`,
-          `https://keybase.io/${config.authorSocial.keybase}`,
-          `https://twitter.com/${config.authorSocial.twitter}`,
-          `https://medium.com/@${config.authorSocial.medium}`,
-          `https://www.linkedin.com/in/${config.authorSocial.linkedin}/`,
-          `https://www.facebook.com/${config.authorSocial.facebook}`,
-          `https://www.instagram.com/${config.authorSocial.instagram}/`,
+          `https://github.com/${config.authorSocial?.github}`,
+          `https://keybase.io/${config.authorSocial?.keybase}`,
+          `https://twitter.com/${config.authorSocial?.twitter}`,
+          `https://medium.com/@${config.authorSocial?.medium}`,
+          `https://www.linkedin.com/in/${config.authorSocial?.linkedin}/`,
+          `https://www.facebook.com/${config.authorSocial?.facebook}`,
+          `https://www.instagram.com/${config.authorSocial?.instagram}/`,
         ]}
       />
 

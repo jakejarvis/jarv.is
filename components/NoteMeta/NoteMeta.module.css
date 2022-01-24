@@ -45,7 +45,7 @@
 }
 
 .tags .tag::before {
-  content: "#"; /* cosmetically hashtagify tags */
+  content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;
   color: var(--light);
 }

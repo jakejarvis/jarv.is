@@ -1,5 +1,5 @@
 import { memo } from "react";
-import Name from "../Name/Name";
+import Selfie from "../Selfie/Selfie";
 import Menu from "../Menu/Menu";
 
 import styles from "./Header.module.css";
@@ -7,13 +7,8 @@ import styles from "./Header.module.css";
 const Header = () => (
   <header className={styles.header}>
     <nav className={styles.nav}>
-      <div className={styles.name}>
-        <Name />
-      </div>
-
-      <div className={styles.menu}>
-        <Menu />
-      </div>
+      <Selfie className={styles.selfie} />
+      <Menu className={styles.menu} />
     </nav>
   </header>
 );

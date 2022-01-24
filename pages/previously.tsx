@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Figure from "../components/Figure/Figure";
 import IFrame from "../components/IFrame/IFrame";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 import { FloppyIcon, SirenIcon } from "../components/Icons";
@@ -39,27 +39,13 @@ const Previously = () => (
     </PageTitle>
 
     <Content>
-      <figure>
-        <a
-          className="no-underline"
-          href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={img_wayback} placeholder="blur" alt="Timeline of this website's past." priority />
-        </a>
-        <figcaption>
-          ...the{" "}
-          <a
-            href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Cringey Chronicles&trade;
-          </a>{" "}
-          of this website's past.
-        </figcaption>
-      </figure>
+      <Figure src={img_wayback} alt="Timeline of this website's past." priority>
+        ...the{" "}
+        <a href="https://web.archive.org/web/20010501000000*/jakejarvis.com" target="_blank" rel="noopener noreferrer">
+          Cringey Chronicles&trade;
+        </a>{" "}
+        of this website's past.
+      </Figure>
 
       <HorizontalRule />
 
@@ -78,131 +64,79 @@ const Previously = () => (
         </a>
       </p>
 
-      <figure>
-        <IFrame
-          src="https://jakejarvis.github.io/my-first-website/"
-          title="My Terrible, Horrible, No Good, Very Bad First Website"
-          height={500}
-          allowScripts
-        />
-        <figcaption>
-          November 2001 (
-          <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
-            archived source
-          </a>
-          )
-        </figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2002_02} placeholder="blur" alt="February 2002" />
-        <figcaption>February 2002</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2002_10} placeholder="blur" alt="October 2002" />
-        <figcaption>October 2002</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2003_08} placeholder="blur" alt="August 2003" />
-        <figcaption>August 2003</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2004_11} placeholder="blur" alt="November 2004" />
-        <figcaption>November 2004</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2006_04} placeholder="blur" alt="April 2006" />
-        <figcaption>April 2006</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2006_05} placeholder="blur" alt="May 2006" />
-        <figcaption>May 2006</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2007_01} placeholder="blur" alt="January 2007" />
-        <figcaption>January 2007</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2007_04} placeholder="blur" alt="April 2007" />
-        <figcaption>April 2007</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2007_05} placeholder="blur" alt="May 2007" />
-        <figcaption>May 2007</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <Image src={img_2009_07} placeholder="blur" alt="July 2009" />
-        <figcaption>July 2009</figcaption>
-      </figure>
-
-      <HorizontalRule />
-
-      <figure>
-        <a
-          className="no-underline"
-          href="https://github.com/jakejarvis/jarv.is/tree/v1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={img_2012_09} placeholder="blur" alt="September 2012" />
+      <IFrame
+        src="https://jakejarvis.github.io/my-first-website/"
+        title="My Terrible, Horrible, No Good, Very Bad First Website"
+        height={500}
+        allowScripts
+      />
+      <p className="iframe_caption">
+        November 2001 (
+        <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
+          archived source
         </a>
-        <figcaption>
-          September 2012 (
-          <a href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
-            archived source
-          </a>
-          )
-        </figcaption>
-      </figure>
+        )
+      </p>
 
       <HorizontalRule />
 
-      <figure>
-        <a
-          className="no-underline"
-          href="https://github.com/jakejarvis/jarv.is/tree/v2"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={img_2018_04} placeholder="blur" alt="April 2018" />
+      <Figure src={img_2002_02}>February 2002</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2002_10}>October 2002</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2003_08}>August 2003</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2004_11}>November 2004</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2006_04}>April 2006</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2006_05}>May 2006</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2007_01}>January 2007</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2007_04}>April 2007</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2007_05}>May 2007</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2009_07}>July 2009</Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2012_09} alt="September 2012">
+        September 2012 (
+        <a href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
+          archived source
         </a>
-        <figcaption>
-          April 2018 (
-          <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
-            archived source
-          </a>
-          )
-        </figcaption>
-      </figure>
+        )
+      </Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2018_04} alt="April 2018">
+        April 2018 (
+        <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
+          archived source
+        </a>
+        )
+      </Figure>
     </Content>
 
     {/* a complete sh*tshow of overrides, mainly to compensate for font change */}
@@ -211,15 +145,18 @@ const Previously = () => (
         font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", "Inter", sans-serif;
         font-weight: 600 !important;
       }
-      header nav > div:first-of-type span:last-of-type {
+      /* left header */
+      header nav > a:first-of-type span:last-of-type {
         font-size: 1.4em !important;
         font-weight: 700 !important;
       }
-      header nav div:last-of-type a span {
+      /* right header */
+      header nav ul a span {
         font-size: 1.1em !important;
         font-weight: 700 !important;
         line-height: 1.1;
       }
+      /* content */
       main > div > div {
         font-size: 1.1em !important;
         text-align: center;
@@ -237,22 +174,18 @@ const Previously = () => (
       main > div > div figure:last-of-type {
         margin-bottom: 0;
       }
+      /* footer */
       footer > div {
         font-size: 0.95em !important;
       }
-      figure {
-        margin: 1em auto;
-        text-align: center;
-      }
-      figure img {
-        margin-bottom: 0;
-        border-radius: var(--rounded-edge-radius);
-      }
-      figcaption {
+      /* components */
+      figcaption,
+      .iframe_caption {
         margin-top: 0.2em;
         font-size: 0.9em;
         line-height: 1.5;
         color: var(--medium);
+        text-align: center;
       }
       hr {
         margin: 1em auto !important;

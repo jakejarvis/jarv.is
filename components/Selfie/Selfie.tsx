@@ -1,14 +1,19 @@
 import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import classNames from "classnames";
 
-import styles from "./Name.module.css";
+import styles from "./Selfie.module.css";
 
 import meJpg from "../../public/static/images/me.jpg";
 
-const Name = () => (
+type Props = {
+  className?: string;
+};
+
+const Selfie = ({ className }: Props) => (
   <Link href="/">
-    <a className={styles.link}>
+    <a className={classNames(styles.link, className)}>
       <div className={styles.selfie}>
         <Image src={meJpg} alt="Photo of Jake Jarvis" width={70} height={70} quality={60} layout="intrinsic" priority />
       </div>
@@ -17,4 +22,4 @@ const Name = () => (
   </Link>
 );
 
-export default memo(Name);
+export default memo(Selfie);

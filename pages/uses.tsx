@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Image from "../components/Image/Image";
 import { H2 } from "../components/Heading/Heading";
 import { LaptopIcon } from "../components/Icons";
 
@@ -35,9 +35,9 @@ const Uses = () => (
         . ❤️
       </p>
 
-      <Image src={desktopImg} placeholder="blur" alt="My mess of a desktop." priority />
+      <Image src={desktopImg} alt="My mess of a desktop." priority />
 
-      <H2>🍎 Hardware</H2>
+      <H2 id="hardware">🍎 Hardware</H2>
       <ul>
         <li>
           <a href="https://browser.geekbench.com/v5/cpu/8124907" target="_blank" rel="noopener noreferrer">
@@ -160,7 +160,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>💾 Development</H2>
+      <H2 id="development">💾 Development</H2>
       <ul>
         <li>
           <a href="https://iterm2.com/" target="_blank" rel="noopener noreferrer">
@@ -510,7 +510,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>🌎 Browsing</H2>
+      <H2 id="browsing">🌎 Browsing</H2>
       <ul>
         <li>
           <a href="https://www.mozilla.org/en-US/firefox/developer/" target="_blank" rel="noopener noreferrer">
@@ -687,7 +687,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>💻 macOS</H2>
+      <H2 id="macos">💻 macOS</H2>
       <ul>
         <li>
           <a href="https://1password.com/" target="_blank" rel="noopener noreferrer">
@@ -792,7 +792,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>📱 iOS</H2>
+      <H2 id="ios">📱 iOS</H2>
       <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
       <ul>
         <li>
@@ -858,7 +858,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>☁️ Cloud</H2>
+      <H2 id="cloud">☁️ Cloud</H2>
       <p>
         I've been making recent efforts to{" "}
         <a href="https://www.stallman.org/google.html" target="_blank" rel="noopener noreferrer">
@@ -1017,7 +1017,7 @@ const Uses = () => (
         </li>
       </ul>
 
-      <H2>
+      <H2 id="iot">
         🏠 Internet of <del>Things</del>{" "}
         <Link href="/notes/shodan-search-queries/">
           <a>Crap</a>
@@ -1078,10 +1078,7 @@ const Uses = () => (
     </Content>
 
     {/* TODO: use OrderedList component */}
-    <style jsx global>{`
-      img {
-        border-radius: var(--rounded-edge-radius);
-      }
+    <style jsx>{`
       ul {
         margin-left: 1.5em;
         padding-left: 0;

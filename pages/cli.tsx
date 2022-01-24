@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Image from "../components/Image/Image";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeBlock from "../components/CodeBlock/CodeBlock";
 import { H2 } from "../components/Heading/Heading";
@@ -40,7 +40,7 @@ const CLI = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image src={cliImg} placeholder="blur" alt="Terminal Screenshot" priority />
+        <Image src={cliImg} alt="Terminal Screenshot" priority />
       </a>
 
       <H2>Usage</H2>

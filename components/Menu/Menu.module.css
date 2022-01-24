@@ -4,35 +4,35 @@
   margin: 0;
 }
 
-.menu li {
+.menu_item {
   list-style: none;
   display: inline-flex;
   margin-left: 1.8em;
 }
 
-.menu li .link {
+.menu_item .link {
   display: inline-flex;
   align-items: center;
   color: var(--medium-dark);
 }
 
-.menu li .link:hover {
+.menu_item .link:hover {
   color: var(--link);
 }
 
-.menu li .icon {
+.menu_item .icon {
   width: 1.6em;
   height: 1.6em;
 }
 
-.menu li span {
+.menu_item .label {
   font-size: 0.95em;
   font-weight: 500;
   margin-left: 0.8em;
   line-height: 1;
 }
 
-.menu li.theme_toggle {
+.menu_item.theme_toggle {
   margin-left: 1.25em;
 }
 
@@ -42,28 +42,28 @@
     justify-content: space-between;
   }
 
-  .menu li {
+  .menu_item {
     margin-left: 0;
   }
 
-  .menu li .icon {
+  .menu_item .icon {
     width: 1.8em;
     height: 1.8em;
   }
 
   /* hide text next to emojis on mobile */
-  .menu li span {
+  .menu_item .label {
     display: none;
   }
 
-  .menu li.theme_toggle {
+  .menu_item.theme_toggle {
     margin-left: -0.3em;
   }
 }
 
 /* the home icon is redundant when space is SUPER tight */
 @media screen and (max-width: 380px) {
-  .menu li:first-of-type {
+  .menu_item:first-of-type {
     display: none;
   }
 }

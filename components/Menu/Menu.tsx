@@ -6,6 +6,10 @@ import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
 import styles from "./Menu.module.css";
 
+type Props = {
+  className?: string;
+};
+
 const links = [
   {
     icon: <HomeIcon className={classNames("icon", styles.icon)} />,
@@ -29,19 +33,19 @@ const links = [
   },
 ];
 
-const Menu = () => (
-  <ul className={styles.menu}>
+const Menu = ({ className }: Props) => (
+  <ul className={classNames(styles.menu, className)}>
     {links.map((link, index) => (
-      <li key={index}>
+      <li key={index} className={styles.menu_item}>
         <Link href={link.href} prefetch={false}>
           <a className={styles.link}>
-            {link.icon} <span>{link.text}</span>
+            {link.icon} <span className={styles.label}>{link.text}</span>
           </a>
         </Link>
       </li>
     ))}
 
-    <li className={styles.theme_toggle}>
+    <li className={classNames(styles.theme_toggle, styles.menu_item)}>
       <ThemeToggle className={styles.icon} />
     </li>
   </ul>

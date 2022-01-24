@@ -8,7 +8,7 @@ import styles from "./Footer.module.css";
 const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.row}>
-      <div className={styles.copyright}>
+      <div className={styles.license}>
         Content{" "}
         <Link href="/license/" prefetch={false}>
           <a title="Creative Commons Attribution 4.0 International">licensed under CC-BY-4.0</a>
@@ -21,11 +21,12 @@ const Footer = () => (
       </div>
       <div className={styles.powered_by}>
         Made with{" "}
-        <span className={styles.beat} title="Love">
+        <span className={styles.heart} title="Love">
           <HeartIcon />
         </span>{" "}
         and{" "}
         <a
+          className={styles.nextjs}
           href="https://nextjs.org/"
           title="Powered by Next.js"
           aria-label="Next.js"
@@ -36,9 +37,9 @@ const Footer = () => (
         </a>
         .{" "}
         <a
+          className={styles.view_source}
           href={`https://github.com/${config.githubRepo}`}
           title="View Source on GitHub"
-          className={styles.view_source}
           target="_blank"
           rel="noopener noreferrer"
         >

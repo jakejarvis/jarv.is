@@ -21,6 +21,10 @@
   line-height: 2.3;
 }
 
+.nextjs:hover {
+  color: var(--medium);
+}
+
 .view_source {
   padding-bottom: 2px;
   border-bottom: 1px solid;
@@ -31,7 +35,7 @@
   border-color: var(--kinda-light);
 }
 
-.beat {
+.heart {
   display: inline-block;
   animation: beat 10s infinite; /* 6 bpm, call 911 if you see this please. */
   animation-delay: 7.5s; /* offset from wave animation */

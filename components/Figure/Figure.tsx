@@ -7,7 +7,7 @@ import type { ImageProps as NextImageProps } from "next/image";
 import styles from "./Figure.module.css";
 
 type Props = Omit<NextImageProps, "alt"> & {
-  children: ReactNode; // caption (can be in markdown, yay!!!)
+  children: ReactNode;
   alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
   className?: string;
 };

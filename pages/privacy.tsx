@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Image from "../components/Image/Image";
 import IFrame from "../components/IFrame/IFrame";
 import { H2 } from "../components/Heading/Heading";
 import Blockquote from "../components/Blockquote/Blockquote";
@@ -96,7 +96,7 @@ const Privacy = () => (
         are public.
       </p>
 
-      <Image src={faunaImg} placeholder="blur" alt="The entire database schema." />
+      <Image src={faunaImg} alt="The entire database schema." />
 
       <p>
         <a href="https://usefathom.com/ref/ZEYG0O" target="_blank" rel="noopener noreferrer">
