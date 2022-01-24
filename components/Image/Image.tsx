@@ -4,7 +4,17 @@ import type { ImageProps as NextImageProps } from "next/image";
 
 import styles from "./Image.module.css";
 
-const Image = ({ src, width, height, placeholder, alt, quality, priority, className, ...rest }: NextImageProps) => {
+const CustomImage = ({
+  src,
+  width,
+  height,
+  placeholder,
+  alt,
+  quality,
+  priority,
+  className,
+  ...rest
+}: NextImageProps) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width,
@@ -36,4 +46,4 @@ const Image = ({ src, width, height, placeholder, alt, quality, priority, classN
   );
 };
 
-export default Image;
+export default CustomImage;

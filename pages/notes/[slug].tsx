@@ -1,7 +1,7 @@
 import { InView } from "react-intersection-observer";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { MDXRemote } from "next-mdx-remote";
-import { escape } from "html-escaper";
+import { htmlEscape } from "escape-goat";
 import Content from "../../components/Content/Content";
 import NoteMeta from "../../components/NoteMeta/NoteMeta";
 import NoteTitle from "../../components/NoteTitle/NoteTitle";
@@ -42,8 +42,8 @@ const Note = ({ frontMatter, source }: NoteType) => {
       />
       <ArticleJsonLd
         url={frontMatter.permalink}
-        title={escape(frontMatter.title)}
-        description={escape(frontMatter.description)}
+        title={htmlEscape(frontMatter.title)}
+        description={htmlEscape(frontMatter.description)}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
         images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}

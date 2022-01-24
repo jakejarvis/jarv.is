@@ -3,6 +3,7 @@ import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
+import { minify } from "terser";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
@@ -62,6 +63,7 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
   };
 };
 
+// fully parses MDX into JS and returns *everything* about a note
 export const getNote = async (slug: string): Promise<NoteType> => {
   const { frontMatter, content } = getNoteData(slug);
   const source = await serialize(content, {
@@ -78,7 +80,17 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 
   return {
     frontMatter,
-    source,
+    source: {
+      // next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
+      // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
+      // ...so do it manually (and conservatively) with terser for now.
+      compiledSource: (
+        await minify(source.compiledSource, {
+          parse: { bare_returns: true },
+          mangle: false,
+        })
+      ).code,
+    },
   };
 };
 
