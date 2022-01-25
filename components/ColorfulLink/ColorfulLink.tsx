@@ -1,7 +1,5 @@
 import { memo } from "react";
 import Link from "next/link";
-import css from "styled-jsx/css";
-import classNames from "classnames";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -14,9 +12,8 @@ type Props = {
   className?: string;
 };
 
-// spits out properties for link's color and background-image in a linear-gradient (that's not really a gradient) with
-// translucent color in rgba() format.
-const getColorProperties = (hex: string, alpha = 0.4) => {
+// spits out alpha'd version of given color in rgba() format within a linear-gradient (that's not really a gradient)
+const getLinearGradient = (hex: string, alpha = 0.4) => {
   // hex -> rgb, pulled from https://github.com/sindresorhus/hex-rgb/blob/main/index.js#L29
   const number = Number.parseInt(hex.replace(/^#/, ""), 16);
   const red = number >> 16;
@@ -25,30 +22,31 @@ const getColorProperties = (hex: string, alpha = 0.4) => {
 
   const rgbaString = `rgba(${red},${green},${blue},${alpha})`;
 
-  // prettier-ignore
-  return `
-color:${hex};
-background-image:linear-gradient(${rgbaString},${rgbaString})`.trim();
+  return `linear-gradient(${rgbaString},${rgbaString})`;
 };
 
 const ColorfulLink = ({ href, lightColor, darkColor, external, className, ...rest }: Props) => {
-  // prettier-ignore
-  const { className: underlineClassName, styles: underlineStyles } = css.resolve`
-a {${getColorProperties(lightColor)}}
-:global([data-theme="dark"]) a {${getColorProperties(darkColor)}}`;
-
   return (
     <>
       <Link href={href} passHref={true} prefetch={false}>
         <a
-          className={classNames(underlineClassName, className)}
+          className={className}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
           {...rest}
         />
       </Link>
 
-      {underlineStyles}
+      <style jsx>{`
+        a {
+          color: ${lightColor};
+          background-image: ${getLinearGradient(lightColor)};
+        }
+        :global([data-theme="dark"]) a {
+          color: ${darkColor};
+          background-image: ${getLinearGradient(darkColor)};
+        }
+      `}</style>
     </>
   );
 };

@@ -343,8 +343,8 @@ const Index = () => (
       }
       .home .birthday :global(a:hover) {
         /* magic wand cursor easter egg */
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-18, 5)'>🪄</text></svg>")
-            16 0,
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>")
+            5 5,
           auto;
       }
 

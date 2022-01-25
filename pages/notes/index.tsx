@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // parse the year of each note and group them together
   const notesByYear = {};
   getAllNotes().map((note) => {
-    const year = parseInt(format(new Date(note.date), "yyyy"));
+    const year = Number.parseInt(format(new Date(note.date), "yyyy"));
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });
 
