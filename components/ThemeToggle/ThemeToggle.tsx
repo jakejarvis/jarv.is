@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from "react";
 import { useTheme } from "next-themes";
-import BulbIcon from "./BulbIcon";
+import { SunIcon, MoonIcon } from "../Icons";
 
 import styles from "./ThemeToggle.module.css";
 
@@ -12,9 +12,9 @@ const ThemeToggle = ({ className }: Props) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
-  // render a dummy bulb until we're fully mounted and self-aware
+  // render a dummy icon until we're fully mounted and self-aware
   useEffect(() => setMounted(true), []);
-  if (!mounted) return <BulbIcon on={false} className={className} />;
+  if (!mounted) return <SunIcon className={className} />;
 
   return (
     <button
@@ -23,7 +23,7 @@ const ThemeToggle = ({ className }: Props) => {
       title={resolvedTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
       aria-hidden={true}
     >
-      <BulbIcon on={resolvedTheme === "light"} className={className} />
+      {resolvedTheme === "light" ? <SunIcon className={className} /> : <MoonIcon className={className} />}
     </button>
   );
 };

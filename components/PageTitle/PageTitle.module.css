@@ -9,6 +9,10 @@
   color: inherit;
 }
 
+.title :global(.icon) {
+  margin-right: 0.2em;
+}
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 1.8em;

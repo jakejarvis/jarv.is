@@ -51,10 +51,12 @@ module.exports = (phase, { defaultConfig }) => {
             path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
             path.resolve(__dirname, "node_modules/simple-icons/icons"),
             path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
+            path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
           ],
           use: [
             {
               loader: "@svgr/webpack",
+              /** @type {import('@svgr/webpack').LoaderOptions} */
               options: {
                 icon: true,
                 typescript: true,

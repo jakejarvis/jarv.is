@@ -7,13 +7,15 @@
 .menu_item {
   list-style: none;
   display: inline-flex;
-  margin-left: 1.8em;
+  margin-left: 1em;
 }
 
 .menu_item .link {
   display: inline-flex;
   align-items: center;
   color: var(--medium-dark);
+  line-height: 1;
+  padding: 0.6em;
 }
 
 .menu_item .link:hover {
@@ -21,19 +23,14 @@
 }
 
 .menu_item .icon {
-  width: 1.6em;
-  height: 1.6em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .menu_item .label {
-  font-size: 0.95em;
+  font-size: 0.925em;
   font-weight: 500;
-  margin-left: 0.8em;
-  line-height: 1;
-}
-
-.menu_item.theme_toggle {
-  margin-left: 1.25em;
+  margin-left: 0.6em;
 }
 
 @media screen and (max-width: 768px) {
@@ -54,10 +51,6 @@
   /* hide text next to emojis on mobile */
   .menu_item .label {
     display: none;
-  }
-
-  .menu_item.theme_toggle {
-    margin-left: -0.3em;
   }
 }
 
