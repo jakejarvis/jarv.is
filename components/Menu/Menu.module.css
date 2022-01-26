@@ -28,15 +28,17 @@
 }
 
 .menu_item .label {
-  font-size: 0.925em;
+  font-size: 0.95em;
   font-weight: 500;
-  margin-left: 0.6em;
+  margin-top: 0.1em;
+  margin-left: 0.8em;
 }
 
 @media screen and (max-width: 768px) {
   .menu {
     width: 100%;
     justify-content: space-between;
+    margin-left: 1em;
   }
 
   .menu_item {
@@ -56,6 +58,10 @@
 
 /* the home icon is redundant when space is SUPER tight */
 @media screen and (max-width: 380px) {
+  .menu {
+    margin-left: 1.4em;
+  }
+
   .menu_item:first-of-type {
     display: none;
   }

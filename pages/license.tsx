@@ -4,7 +4,6 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 import Blockquote from "../components/Blockquote/Blockquote";
 import { H2, H3 } from "../components/Heading/Heading";
-import { LicenseIcon } from "../components/Icons";
 
 const License = () => (
   <>
@@ -15,9 +14,7 @@ const License = () => (
       }}
     />
 
-    <PageTitle>
-      <LicenseIcon /> License
-    </PageTitle>
+    <PageTitle>📜 License</PageTitle>
 
     <Content>
       <p>

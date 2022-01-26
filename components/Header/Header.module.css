@@ -29,13 +29,11 @@
 
   .menu {
     max-width: 325px;
-    margin-left: 2.5em;
   }
 }
 
 @media screen and (max-width: 380px) {
   .menu {
     max-width: 225px;
-    margin-left: 1.6em;
   }
 }

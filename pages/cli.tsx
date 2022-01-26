@@ -5,7 +5,6 @@ import Image from "../components/Image/Image";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeBlock from "../components/CodeBlock/CodeBlock";
 import { H2 } from "../components/Heading/Heading";
-import { BotIcon } from "../components/Icons";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
 
@@ -19,9 +18,7 @@ const CLI = () => (
       }}
     />
 
-    <PageTitle>
-      <BotIcon /> CLI
-    </PageTitle>
+    <PageTitle>🤖 CLI</PageTitle>
 
     <Content>
       <Blockquote>

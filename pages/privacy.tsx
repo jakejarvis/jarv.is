@@ -6,7 +6,6 @@ import Image from "../components/Image/Image";
 import IFrame from "../components/IFrame/IFrame";
 import { H2 } from "../components/Heading/Heading";
 import Blockquote from "../components/Blockquote/Blockquote";
-import { PrivacyIcon } from "../components/Icons";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 
@@ -19,9 +18,7 @@ const Privacy = () => (
       }}
     />
 
-    <PageTitle>
-      <PrivacyIcon /> Privacy
-    </PageTitle>
+    <PageTitle>🕵️ Privacy</PageTitle>
 
     <Content>
       <p>Okay, this is an easy one. 😉</p>

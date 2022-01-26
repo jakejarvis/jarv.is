@@ -7,6 +7,8 @@
   color: var(--text);
   background-color: var(--super-duper-light);
   border-color: var(--light);
+  /* light-dark theme switch fading */
+  transition: background 0.25s ease;
 }
 
 .input:focus {
@@ -16,12 +18,6 @@
 
 .input.missing {
   border-color: var(--error);
-}
-
-.input,
-.btn_submit {
-  /* light-dark theme switch fading */
-  transition: background 0.25s ease;
 }
 
 .textarea {

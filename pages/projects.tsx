@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
-import { CoderIcon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import { RepoType } from "../types";
 
@@ -20,9 +19,7 @@ const Projects = ({ repos }: Props) => (
       }}
     />
 
-    <PageTitle>
-      <CoderIcon /> Projects
-    </PageTitle>
+    <PageTitle>💾 Projects</PageTitle>
 
     <Content>
       <div className="wrapper">

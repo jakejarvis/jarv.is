@@ -4,7 +4,6 @@ import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import Image from "../components/Image/Image";
 import { H2 } from "../components/Heading/Heading";
-import { LaptopIcon } from "../components/Icons";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
 
@@ -18,9 +17,7 @@ const Uses = () => (
       }}
     />
 
-    <PageTitle>
-      /uses <LaptopIcon />
-    </PageTitle>
+    <PageTitle>/uses 💻</PageTitle>
 
     <Content>
       <p>

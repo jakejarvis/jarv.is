@@ -49,9 +49,9 @@ module.exports = (phase, { defaultConfig }) => {
             path.resolve(__dirname, "components/icons"),
             // slight workaround to grab svg files from these packages directly instead of through their exports:
             path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
+            path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
             path.resolve(__dirname, "node_modules/simple-icons/icons"),
             path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
-            path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
           ],
           use: [
             {
