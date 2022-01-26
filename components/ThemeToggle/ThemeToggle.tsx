@@ -28,7 +28,6 @@ const ThemeToggle = ({ className }: Props) => {
       className={styles.button}
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
       title={resolvedTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
-      aria-hidden={true}
     >
       {resolvedTheme === "light" ? (
         <SunIcon className={classNames("icon", className)} />
