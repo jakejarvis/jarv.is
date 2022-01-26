@@ -9,13 +9,13 @@ type Props = {
   href: string;
   icon: ReactNode;
   text: string;
-  active?: boolean;
+  current?: boolean;
   className?: string;
 };
 
-const MenuLink = ({ href, icon, text, active, className }: Props) => (
+const MenuLink = ({ href, icon, text, current, className }: Props) => (
   <Link href={href} prefetch={false}>
-    <a className={cx(styles.link, { active: active }, className)}>
+    <a className={cx(styles.link, { current: !!current }, className)}>
       {icon} <span className={styles.label}>{text}</span>
     </a>
   </Link>

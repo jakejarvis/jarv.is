@@ -6,13 +6,18 @@
   padding: 0.6em;
 }
 
-.link:hover {
-  color: var(--link);
+.link:hover,
+.link.current {
+  border-bottom: 3px solid;
+  margin-bottom: -3px;
 }
 
-.link.active {
-  border-bottom: 3px solid var(--link-underline);
-  margin-bottom: -3px;
+.link:hover {
+  border-color: var(--kinda-light);
+}
+
+.link.current {
+  border-color: var(--link-underline);
 }
 
 .label {

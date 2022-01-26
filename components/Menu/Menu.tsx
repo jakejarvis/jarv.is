@@ -42,7 +42,7 @@ const Menu = ({ className }: Props) => {
       {links.map((link, index) => (
         <li key={index} className={styles.menu_item}>
           {/* kinda weird/hacky way to determine if the *first part* of the current path matches this href */}
-          <MenuLink {...link} active={link.href === `/${router.pathname.split("/")[1]}`} />
+          <MenuLink {...link} current={link.href === `/${router.pathname.split("/")[1]}`} />
         </li>
       ))}
 
