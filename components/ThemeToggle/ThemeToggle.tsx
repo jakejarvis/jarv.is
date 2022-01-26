@@ -13,7 +13,7 @@ const ThemeToggle = ({ className }: Props) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
-  // render a dummy icon until we're fully mounted and self-aware
+  // render a dummy button until we're fully mounted and self-aware
   useEffect(() => setMounted(true), []);
   if (!mounted) {
     return (

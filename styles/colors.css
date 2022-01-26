@@ -46,7 +46,7 @@
   --link-underline: rgba(136, 199, 255, 0.4);
   --success: #78df55;
   --error: #ff5151;
-  --warning: #fd992a;
+  --warning: #f2b702;
 
   /* Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments */
   --code-text: #e4e4e4;
