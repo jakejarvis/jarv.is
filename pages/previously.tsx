@@ -20,6 +20,7 @@ import img_2007_05 from "../public/static/images/previously/2007_05.png";
 import img_2009_07 from "../public/static/images/previously/2009_07.png";
 import img_2012_09 from "../public/static/images/previously/2012_09.png";
 import img_2018_04 from "../public/static/images/previously/2018_04.png";
+import img_2020_03 from "../public/static/images/previously/2020_03.png";
 
 import "@fontsource/comic-neue/latin-400.css";
 import "@fontsource/comic-neue/latin-700.css";
@@ -133,6 +134,16 @@ const Previously = () => (
       <Figure src={img_2018_04} alt="April 2018">
         April 2018 (
         <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
+          archived source
+        </a>
+        )
+      </Figure>
+
+      <HorizontalRule />
+
+      <Figure src={img_2020_03} alt="March 2020">
+        March 2020 (
+        <a href="https://github.com/jakejarvis/jarv.is/tree/v3" target="_blank" rel="noopener noreferrer">
           archived source
         </a>
         )
