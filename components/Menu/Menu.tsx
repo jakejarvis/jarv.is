@@ -1,12 +1,11 @@
 import { memo } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import classNames from "classnames/bind";
+import classNames from "classnames";
+import MenuLink from "../MenuLink/MenuLink";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
 import styles from "./Menu.module.css";
-const cx = classNames.bind(styles);
 
 type Props = {
   className?: string;
@@ -42,15 +41,12 @@ const Menu = ({ className }: Props) => {
     <ul className={classNames(styles.menu, className)}>
       {links.map((link, index) => (
         <li key={index} className={styles.menu_item}>
-          <Link href={link.href} prefetch={false}>
-            <a className={cx(styles.link, { active: link.href === `/${router.pathname.split("/")[1]}` })}>
-              {link.icon} <span className={styles.label}>{link.text}</span>
-            </a>
-          </Link>
+          {/* kinda weird/hacky way to determine if the *first part* of the current path matches this href */}
+          <MenuLink {...link} active={link.href === `/${router.pathname.split("/")[1]}`} />
         </li>
       ))}
 
-      <li className={classNames(styles.theme_toggle, styles.menu_item)}>
+      <li className={styles.menu_item}>
         <ThemeToggle className={styles.icon} />
       </li>
     </ul>

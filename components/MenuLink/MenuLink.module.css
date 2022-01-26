@@ -1,0 +1,30 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--medium-dark);
+  line-height: 1;
+  padding: 0.6em;
+}
+
+.link:hover {
+  color: var(--link);
+}
+
+.link.active {
+  border-bottom: 3px solid var(--link-underline);
+  margin-bottom: -3px;
+}
+
+.label {
+  font-size: 0.95em;
+  font-weight: 500;
+  margin-top: 0.1em;
+  margin-left: 0.8em;
+}
+
+@media screen and (max-width: 768px) {
+  /* hide text next to emojis on mobile */
+  .label {
+    display: none;
+  }
+}
