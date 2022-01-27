@@ -3,7 +3,6 @@ import { useTheme } from "next-themes";
 import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import isEmailLike from "is-email-like";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
 
 import type { FormikHelpers } from "formik";
@@ -85,7 +84,7 @@ const ContactForm = ({ className }: Props) => {
         const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
 
         errors.name = !values.name;
-        errors.email = !values.email || !isEmailLike(values.email); // also loosely validate email with regex (not foolproof)
+        errors.email = !values.email; // also loosely validated that it's email-like via browser (not foolproof)
         errors.message = !values.message;
         errors["h-captcha-response"] = !values["h-captcha-response"];
 
