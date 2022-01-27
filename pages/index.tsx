@@ -1,16 +1,12 @@
 import Content from "../components/Content/Content";
 import ColorfulLink from "../components/ColorfulLink/ColorfulLink";
-import { WaveIcon, LockIcon } from "../components/Icons";
 
 const Index = () => (
   <>
     <Content>
       <div className="home">
         <h1>
-          Hi there! I'm Jake.{" "}
-          <span className="wave">
-            <WaveIcon />
-          </span>
+          Hi there! I'm Jake. <span className="wave">👋</span>
         </h1>
 
         <h2>
@@ -269,7 +265,7 @@ const Index = () => (
               darkColor="#959595"
               external
             >
-              <LockIcon /> 2B0C 9CF2 51E6 9A39
+              🔐 2B0C 9CF2 51E6 9A39
             </ColorfulLink>
           </sup>
           ,{" "}
@@ -325,6 +321,7 @@ const Index = () => (
       .home .wave {
         display: inline-block;
         margin-left: 0.1em;
+        font-size: 1.2em;
         animation: wave 5s infinite;
         animation-delay: 1s;
         transform-origin: 65% 80%;

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import { StarOcticon, ForkOcticon } from "../Icons";
-import { RepoType } from "../../types";
+import type { RepoType } from "../../types";
 
 import styles from "./RepositoryCard.module.css";
 

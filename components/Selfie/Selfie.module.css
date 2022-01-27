@@ -36,4 +36,12 @@
   .name {
     display: none;
   }
+
+  .selfie img {
+    border-width: 2px !important;
+  }
+
+  .link:hover .selfie img {
+    border-color: var(--link-underline) !important;
+  }
 }

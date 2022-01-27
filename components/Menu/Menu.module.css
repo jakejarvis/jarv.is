@@ -7,39 +7,19 @@
 .menu_item {
   list-style: none;
   display: inline-flex;
-  margin-left: 1.8em;
-}
-
-.menu_item .link {
-  display: inline-flex;
-  align-items: center;
-  color: var(--medium-dark);
-}
-
-.menu_item .link:hover {
-  color: var(--link);
+  margin-left: 1em;
 }
 
 .menu_item .icon {
-  width: 1.6em;
-  height: 1.6em;
-}
-
-.menu_item .label {
-  font-size: 0.95em;
-  font-weight: 500;
-  margin-left: 0.8em;
-  line-height: 1;
-}
-
-.menu_item.theme_toggle {
-  margin-left: 1.25em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 @media screen and (max-width: 768px) {
   .menu {
     width: 100%;
     justify-content: space-between;
+    margin-left: 1em;
   }
 
   .menu_item {
@@ -50,19 +30,14 @@
     width: 1.8em;
     height: 1.8em;
   }
-
-  /* hide text next to emojis on mobile */
-  .menu_item .label {
-    display: none;
-  }
-
-  .menu_item.theme_toggle {
-    margin-left: -0.3em;
-  }
 }
 
-/* the home icon is redundant when space is SUPER tight */
 @media screen and (max-width: 380px) {
+  .menu {
+    margin-left: 1.4em;
+  }
+
+  /* the home icon is redundant when space is SUPER tight */
   .menu_item:first-of-type {
     display: none;
   }

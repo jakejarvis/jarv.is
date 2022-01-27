@@ -2,7 +2,6 @@ import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import ContactForm from "../components/ContactForm/ContactForm";
-import { MailIcon, LockIcon } from "../components/Icons";
 
 const Contact = () => (
   <>
@@ -13,9 +12,7 @@ const Contact = () => (
       }}
     />
 
-    <PageTitle>
-      <MailIcon /> Contact Me
-    </PageTitle>
+    <PageTitle>📬 Contact Me</PageTitle>
 
     <Content>
       <div className="wrapper">
@@ -32,7 +29,7 @@ const Contact = () => (
           , or <a href="sms:+1-617-917-3737">text me</a>.
         </p>
         <p>
-          <LockIcon /> You can grab my public key here:{" "}
+          🔐 You can grab my public key here:{" "}
           <a href="/pubkey.asc" title="My Public PGP Key" target="_blank" rel="pgpkey authn noopener">
             <code className="pubkey">6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</code>
           </a>

@@ -4,7 +4,6 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Figure from "../components/Figure/Figure";
 import IFrame from "../components/IFrame/IFrame";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
-import { FloppyIcon, SirenIcon } from "../components/Icons";
 
 /* eslint-disable camelcase */
 import img_wayback from "../public/static/images/previously/wayback.png";
@@ -35,9 +34,7 @@ const Previously = () => (
       }}
     />
 
-    <PageTitle>
-      <FloppyIcon /> Previously on...
-    </PageTitle>
+    <PageTitle>🕰️ Previously on...</PageTitle>
 
     <Content>
       <Figure src={img_wayback} alt="Timeline of this website's past." priority>
@@ -51,7 +48,7 @@ const Previously = () => (
       <HorizontalRule />
 
       <p>
-        <SirenIcon /> <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
+        🚨 <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
         <code>
           color: <span className="limegreen">limegreen</span>
         </code>
