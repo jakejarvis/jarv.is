@@ -1,0 +1,59 @@
+.container {
+  padding: 1.5em;
+
+  /* specific retro wallpaper tile is set randomly by JS onload */
+  background-repeat: repeat;
+  background-position: center;
+}
+
+.display {
+  display: block;
+  margin: auto;
+  max-width: 800px;
+  max-height: 600px;
+
+  /* fix fuzziness: https://stackoverflow.com/a/13492784 */
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.display div {
+  background: none !important;
+}
+
+.display div canvas {
+  cursor: default !important;
+}
+
+.cmd {
+  display: block;
+  margin: auto;
+  width: 700px;
+  height: 400px;
+  padding: 12px;
+  z-index: -100;
+
+  background-color: #000000;
+  color: #cccccc;
+
+  font-size: 0.925em;
+  font-weight: 500;
+  line-height: 2;
+  white-space: pre-wrap;
+  user-select: none;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
