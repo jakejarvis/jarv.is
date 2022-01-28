@@ -37,7 +37,7 @@
     "date-fns": "^2.28.0",
     "escape-goat": "^4.0.0",
     "fathom-client": "^3.4.0",
-    "faunadb": "^4.4.1",
+    "faunadb": "^4.4.2",
     "feather-icons": "^4.28.0",
     "feed": "^4.2.2",
     "formik": "^2.2.9",
