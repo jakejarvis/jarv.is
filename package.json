@@ -29,6 +29,7 @@
     "@giscus/react": "^1.0.1",
     "@hcaptcha/react-hcaptcha": "^1.1.0",
     "@next/bundle-analyzer": "^12.0.9",
+    "@novnc/novnc": "1.3.0",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^16.3.0",
     "@sentry/node": "^6.17.3",

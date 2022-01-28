@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
@@ -53,13 +54,15 @@ const Previously = () => (
           color: <span className="limegreen">limegreen</span>
         </code>
         ...{" "}
-        <a href="https://y2k.app/" target="_blank" rel="noopener noreferrer">
-          Click for the{" "}
-          <strong>
-            <em>FULL</em>
-          </strong>{" "}
-          experience anyway.
-        </a>
+        <Link href="/y2k/" prefetch={false}>
+          <a>
+            Click for the{" "}
+            <strong>
+              <em>FULL</em>
+            </strong>{" "}
+            experience anyway.
+          </a>
+        </Link>
       </p>
 
       <IFrame
