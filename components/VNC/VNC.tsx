@@ -6,12 +6,10 @@ import RFB from "@novnc/novnc/core/rfb.js";
 import styles from "./VNC.module.css";
 
 type Props = {
-  className?: string;
+  server: string;
 };
 
-const WEBSOCKETS_SERVER = "wss://socket.y2k.app";
-
-const VNC = ({ className }: Props) => {
+const VNC = ({ server }: Props) => {
   const router = useRouter();
 
   // we definitely do NOT want this page to connect more than once!
@@ -56,7 +54,7 @@ const VNC = ({ className }: Props) => {
     }
 
     // https://github.com/novnc/noVNC/blob/master/docs/API.md
-    rfbRef.current = new RFB(screenRef.current, WEBSOCKETS_SERVER, {
+    rfbRef.current = new RFB(screenRef.current, server, {
       wsProtocols: ["binary", "base64"],
     });
     // scale screen to make it kinda "responsive"
@@ -91,23 +89,17 @@ const VNC = ({ className }: Props) => {
     console.log(
       "🤓 Hey, fellow nerd! Want to see how I made this? Check out this post: https://jarv.is/notes/y2k-sandbox/"
     );
-  }, [loaded]);
+  }, [loaded, server]);
 
   return (
-    <div
-      className={classNames(styles.container, className)}
-      style={{
-        // set a random retro wallpaper tile for the content area
-        backgroundImage: `url(/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png)`,
-      }}
-    >
-      <div ref={consoleRef} className={classNames("monospace", styles.cmd)}>
+    <>
+      <div ref={consoleRef} className={classNames(styles.cmd, "monospace")}>
         <span ref={statusRef}>Spinning up your very own personal computer, please wait!</span>{" "}
         <span className={styles.blink}>_</span>
       </div>
 
       <div ref={screenRef} className={styles.display} style={{ display: "none" }} />
-    </div>
+    </>
   );
 };
 

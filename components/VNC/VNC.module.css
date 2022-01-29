@@ -1,17 +1,3 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5em 0;
-  width: 100%;
-  min-height: 400px;
-  box-sizing: content-box;
-
-  /* specific retro wallpaper tile is set randomly by JS onload */
-  background-repeat: repeat;
-  background-position: center;
-}
-
 .display {
   height: 600px;
   width: 100%;
