@@ -17,7 +17,7 @@ const Y2K = () => (
 
     {/* set a random retro wallpaper tile for the content area */}
     <Wallpaper image={`/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`} tile>
-      <VNC server="wss://socket.y2k.app" />
+      <VNC server="wss://y2k.jrvs.io" />
     </Wallpaper>
 
     <style jsx global>{`
