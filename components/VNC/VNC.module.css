@@ -1,5 +1,11 @@
 .container {
-  padding: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em 0;
+  width: 100%;
+  min-height: 400px;
+  box-sizing: content-box;
 
   /* specific retro wallpaper tile is set randomly by JS onload */
   background-repeat: repeat;
@@ -7,15 +13,12 @@
 }
 
 .display {
-  display: block;
-  margin: auto;
+  height: 600px;
+  width: 100%;
   max-width: 800px;
-  max-height: 600px;
 
   /* fix fuzziness: https://stackoverflow.com/a/13492784 */
   image-rendering: optimizeSpeed;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
@@ -31,12 +34,10 @@
 }
 
 .cmd {
-  display: block;
-  margin: auto;
-  width: 700px;
-  height: 400px;
-  padding: 12px;
-  z-index: -100;
+  width: 100%;
+  max-width: 700px;
+  min-height: 400px;
+  padding: 1em;
 
   background-color: #000000;
   color: #cccccc;

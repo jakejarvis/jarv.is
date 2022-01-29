@@ -59,6 +59,8 @@ const VNC = ({ className }: Props) => {
     rfbRef.current = new RFB(screenRef.current, WEBSOCKETS_SERVER, {
       wsProtocols: ["binary", "base64"],
     });
+    // scale screen to make it kinda "responsive"
+    rfbRef.current.scaleViewport = true;
 
     // this is the one and only time we're spinning up a VM (hopefully)
     setLoaded(true);
@@ -69,6 +71,8 @@ const VNC = ({ className }: Props) => {
 
       // hide the console when VM connects
       consoleRef.current.style.display = "none";
+      // ...and show the screen
+      screenRef.current.style.display = "block";
     });
 
     // VM disconnected
@@ -77,6 +81,7 @@ const VNC = ({ className }: Props) => {
 
       // make the console reappear now that the VM has gone poof for whatever reason (doesn't really matter)
       try {
+        screenRef.current.style.display = "none";
         consoleRef.current.style.display = "block";
         statusRef.current.textContent =
           "Oh dear, it looks like something's gone very wrong. Sorry about that.\n\nPress the Any key or refresh the page to continue.";
@@ -93,7 +98,7 @@ const VNC = ({ className }: Props) => {
       className={classNames(styles.container, className)}
       style={{
         // set a random retro wallpaper tile for the content area
-        background: `url('/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png')`,
+        backgroundImage: `url(/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png)`,
       }}
     >
       <div ref={consoleRef} className={classNames("monospace", styles.cmd)}>
@@ -101,7 +106,7 @@ const VNC = ({ className }: Props) => {
         <span className={styles.blink}>_</span>
       </div>
 
-      <div ref={screenRef} className={styles.display} />
+      <div ref={screenRef} className={styles.display} style={{ display: "none" }} />
     </div>
   );
 };
