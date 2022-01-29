@@ -16,22 +16,38 @@ const VNC = ({ server }: Props) => {
   const [loaded, setLoaded] = useState(false);
 
   // DOS-style box for text
-  const consoleRef = useRef<HTMLDivElement>(null);
-  const statusRef = useRef<HTMLSpanElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const terminalMessageRef = useRef<HTMLSpanElement>(null);
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
   const rfbRef = useRef(null);
   const screenRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // end the session when the current page changes
-    const disconnectVM = () => {
-      try {
-        rfbRef.current.disconnect();
-      } catch (e) {} // eslint-disable-line no-empty
-    };
+  // makes the console reappear with the given message if there's an error loading, or if the VM has gone poof for
+  // whatever reason (doesn't really matter).
+  const showTerminalMessage = (message = "") => {
+    try {
+      screenRef.current.style.display = "none";
+      terminalRef.current.style.display = null;
+      terminalMessageRef.current.textContent = `${message}\n\nPress the Any key or refresh the page to continue.`;
+    } catch (e) {} // eslint-disable-line no-empty
+  };
 
-    // prepare for possible navigation away from this page
+  // hide the console when VM connects and show the screen
+  const showScreen = () => {
+    terminalRef.current.style.display = "none";
+    screenRef.current.style.display = null;
+  };
+
+  // end the session forcefully
+  const disconnectVM = () => {
+    try {
+      rfbRef.current.disconnect();
+    } catch (e) {} // eslint-disable-line no-empty
+  };
+
+  // prepare for possible navigation away from this page, and disconnect when it happens
+  useEffect(() => {
     router.events.on("routeChangeStart", disconnectVM);
 
     return () => {
@@ -42,14 +58,13 @@ const VNC = ({ server }: Props) => {
 
   useEffect(() => {
     if (loaded) {
+      // don't do any of this more than once and overwhelm the fragile backend
       return;
     }
 
     if (!window.WebSocket) {
       // browser doesn't support websockets
-      statusRef.current.textContent =
-        "WebSockets must be enabled to play in the Y2K Sandbox!!!\n\nPress the Any key to continue.";
-
+      showTerminalMessage("WebSockets must be enabled to begin!");
       return;
     }
 
@@ -57,6 +72,7 @@ const VNC = ({ server }: Props) => {
     rfbRef.current = new RFB(screenRef.current, server, {
       wsProtocols: ["binary", "base64"],
     });
+
     // scale screen to make it kinda "responsive"
     rfbRef.current.scaleViewport = true;
 
@@ -67,37 +83,25 @@ const VNC = ({ server }: Props) => {
     rfbRef.current.addEventListener("connect", () => {
       console.log("successfully connected to VM socket!");
 
-      // hide the console when VM connects
-      consoleRef.current.style.display = "none";
-      // ...and show the screen
-      screenRef.current.style.display = "block";
+      showScreen();
     });
 
     // VM disconnected
-    rfbRef.current.addEventListener("disconnect", (detail) => {
+    rfbRef.current.addEventListener("disconnect", (detail: unknown) => {
       console.warn("VM ended session remotely:", detail);
 
-      // make the console reappear now that the VM has gone poof for whatever reason (doesn't really matter)
-      try {
-        screenRef.current.style.display = "none";
-        consoleRef.current.style.display = "block";
-        statusRef.current.textContent =
-          "Oh dear, it looks like something's gone very wrong. Sorry about that.\n\nPress the Any key or refresh the page to continue.";
-      } catch (e) {} // eslint-disable-line no-empty
+      showTerminalMessage("Oh dear, it looks like something's gone very wrong. Sorry about that.");
     });
-
-    console.log(
-      "🤓 Hey, fellow nerd! Want to see how I made this? Check out this post: https://jarv.is/notes/y2k-sandbox/"
-    );
   }, [loaded, server]);
 
   return (
     <>
-      <div ref={consoleRef} className={classNames(styles.cmd, "monospace")}>
-        <span ref={statusRef}>Spinning up your very own personal computer, please wait!</span>{" "}
+      <div ref={terminalRef} className={classNames(styles.cmd, "monospace")}>
+        <span ref={terminalMessageRef}>Spinning up your very own personal computer, please wait!</span>{" "}
         <span className={styles.blink}>_</span>
       </div>
 
+      {/* the VNC canvas is hidden until we've successfully connected to the socket */}
       <div ref={screenRef} className={styles.display} style={{ display: "none" }} />
     </>
   );
