@@ -15,7 +15,7 @@ const OctocatLink = ({ repo, className }: Props) => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    <OctocatOcticon fill="currentColor" className={classNames("icon", className)} />
+    <OctocatOcticon fill="currentColor" className={classNames(styles.icon, className)} />
   </a>
 );
 

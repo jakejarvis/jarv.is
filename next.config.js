@@ -62,7 +62,6 @@ module.exports = (phase, { defaultConfig }) => {
                 typescript: true,
                 svgProps: {
                   "aria-hidden": true,
-                  className: "icon",
                 },
               },
             },

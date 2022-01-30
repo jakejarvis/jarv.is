@@ -6,3 +6,9 @@
 .button.success {
   color: var(--success) !important;
 }
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.3em;
+}

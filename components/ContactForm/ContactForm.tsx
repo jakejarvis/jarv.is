@@ -163,7 +163,7 @@ const ContactForm = ({ className }: Props) => {
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SendIcon className={classNames("icon", styles.send_icon)} /> <span>Send</span>
+                  <SendIcon className={classNames(styles.send_icon)} /> <span>Send</span>
                 </>
               )}
             </button>
@@ -175,7 +175,12 @@ const ContactForm = ({ className }: Props) => {
                 hidden: !submitted || !feedback || isSubmitting,
               })}
             >
-              {success ? <CheckOcticon fill="CurrentColor" /> : <XOcticon fill="CurrentColor" />} {feedback}
+              {success ? (
+                <CheckOcticon className={styles.result_icon} fill="CurrentColor" />
+              ) : (
+                <XOcticon className={styles.result_icon} fill="CurrentColor" />
+              )}{" "}
+              {feedback}
             </span>
           </div>
         </Form>

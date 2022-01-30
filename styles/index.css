@@ -12,14 +12,6 @@ a {
   text-decoration: none;
 }
 
-/* make SVG icons relative in size/position to surrounding text */
-.icon {
-  display: inline-block;
-  height: 1.2em;
-  width: 1.2em;
-  vertical-align: -0.2em;
-}
-
 /* https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -4,15 +4,16 @@
   margin: 0;
 }
 
-.menu_item {
+.link {
   list-style: none;
   display: inline-flex;
   margin-left: 1em;
 }
 
-.menu_item .icon {
+.icon {
   width: 1.25em;
   height: 1.25em;
+  vertical-align: -0.3em;
 }
 
 @media screen and (max-width: 768px) {
@@ -22,11 +23,11 @@
     margin-left: 1em;
   }
 
-  .menu_item {
+  .link {
     margin-left: 0;
   }
 
-  .menu_item .icon {
+  .icon {
     width: 1.8em;
     height: 1.8em;
   }
@@ -38,7 +39,7 @@
   }
 
   /* the home icon is redundant when space is SUPER tight */
-  .menu_item:first-of-type {
+  .link:first-of-type {
     display: none;
   }
 }

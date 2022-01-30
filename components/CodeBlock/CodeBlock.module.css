@@ -22,7 +22,7 @@
   margin: 1em auto;
 }
 
-.block .copy_btn {
+.copy_btn {
   position: absolute;
   top: 0;
   right: 0;
@@ -36,7 +36,7 @@
   transition: background 0.25s ease, border 0.25s ease;
 }
 
-.block .copy_btn:hover {
+.copy_btn:hover {
   color: var(--link);
 }
 

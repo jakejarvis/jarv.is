@@ -17,19 +17,11 @@
   white-space: nowrap;
 }
 
-.meta > div:last-of-type {
-  /* fix potential layout shift when number of hits loads */
-  min-width: 7em;
-  margin-right: 0;
-}
-
 .icon {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
   margin-right: 0.6em;
-}
-
-.date a,
-.edit a {
-  display: inline-flex;
 }
 
 .tags {
@@ -38,18 +30,24 @@
   flex-wrap: wrap;
 }
 
-.tags .tag {
+.tag {
   text-transform: lowercase;
   white-space: nowrap;
   margin-right: 0.75em;
 }
 
-.tags .tag::before {
+.tag::before {
   content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;
   color: var(--light);
 }
 
-.tags .tag:last-of-type {
+.tag:last-of-type {
+  margin-right: 0;
+}
+
+.views {
+  /* fix potential layout shift when number of hits loads */
+  min-width: 7em;
   margin-right: 0;
 }

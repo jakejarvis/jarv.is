@@ -54,7 +54,11 @@ const CopyButton = forwardRef(function CopyButton(
       disabled={!!copied}
       ref={ref}
     >
-      {copied ? <CheckOcticon fill="currentColor" /> : <ClipboardOcticon fill="currentColor" />}
+      {copied ? (
+        <CheckOcticon className={styles.icon} fill="currentColor" />
+      ) : (
+        <ClipboardOcticon className={styles.icon} fill="currentColor" />
+      )}
     </button>
   );
 });

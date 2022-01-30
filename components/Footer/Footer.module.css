@@ -21,6 +21,12 @@
   line-height: 2.3;
 }
 
+.icon {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.2em;
+}
+
 .nextjs:hover {
   color: var(--medium);
 }

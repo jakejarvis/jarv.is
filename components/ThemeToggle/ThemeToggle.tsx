@@ -1,6 +1,5 @@
 import { useEffect, useState, memo } from "react";
 import { useTheme } from "next-themes";
-import classNames from "classnames";
 import { SunIcon, MoonIcon } from "../Icons";
 
 import styles from "./ThemeToggle.module.css";
@@ -18,7 +17,7 @@ const ThemeToggle = ({ className }: Props) => {
   if (!mounted) {
     return (
       <button className={styles.button} aria-hidden={true}>
-        <SunIcon className={classNames("icon", className)} />
+        <SunIcon className={className} />
       </button>
     );
   }
@@ -29,11 +28,7 @@ const ThemeToggle = ({ className }: Props) => {
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
       title={resolvedTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
-      {resolvedTheme === "light" ? (
-        <SunIcon className={classNames("icon", className)} />
-      ) : (
-        <MoonIcon className={classNames("icon", className)} />
-      )}
+      {resolvedTheme === "light" ? <SunIcon className={className} /> : <MoonIcon className={className} />}
     </button>
   );
 };

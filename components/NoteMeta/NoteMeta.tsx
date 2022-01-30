@@ -1,5 +1,4 @@
 import Link from "next/link";
-import classNames from "classnames";
 import { format } from "date-fns";
 import HitCounter from "../HitCounter/HitCounter";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
@@ -12,9 +11,9 @@ type Props = Pick<NoteMetaType, "slug" | "date" | "title" | "tags">;
 
 const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
   <div className={styles.meta}>
-    <div className={styles.date}>
+    <div>
       <span>
-        <DateIcon className={classNames("icon", styles.icon)} />
+        <DateIcon className={styles.icon} />
       </span>
       <span title={format(new Date(date), "PPppp")}>
         <Link href={`/notes/${slug}/`}>
@@ -26,7 +25,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
     {tags.length > 0 && (
       <div className={styles.tags}>
         <span>
-          <TagIcon className={classNames("icon", styles.icon)} />
+          <TagIcon className={styles.icon} />
         </span>
         {tags.map((tag) => (
           <span key={tag} className={styles.tag}>
@@ -38,7 +37,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
 
     <div>
       <span>
-        <EditIcon className={classNames("icon", styles.icon)} />
+        <EditIcon className={styles.icon} />
       </span>
       <span>
         <a
@@ -52,9 +51,9 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
       </span>
     </div>
 
-    <div>
+    <div className={styles.views}>
       <span>
-        <ViewsIcon className={classNames("icon", styles.icon)} />
+        <ViewsIcon className={styles.icon} />
       </span>
       <HitCounter slug={`notes/${slug}`} />
     </div>

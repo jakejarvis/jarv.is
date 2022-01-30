@@ -22,7 +22,7 @@ const Footer = () => (
       <div className={styles.powered_by}>
         Made with{" "}
         <span className={styles.heart} title="Love">
-          <HeartIcon />
+          <HeartIcon className={styles.icon} />
         </span>{" "}
         and{" "}
         <a
@@ -33,7 +33,7 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NextjsLogo fill="currentColor" />
+          <NextjsLogo className={styles.icon} fill="currentColor" />
         </a>
         .{" "}
         <a

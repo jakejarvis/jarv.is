@@ -13,22 +13,22 @@ type Props = {
 
 const links = [
   {
-    icon: <HomeIcon className={classNames("icon", styles.icon)} aria-hidden={true} />,
+    icon: <HomeIcon className={styles.icon} aria-hidden={true} />,
     text: "Home",
     href: "/",
   },
   {
-    icon: <NotesIcon className={classNames("icon", styles.icon)} aria-hidden={true} />,
+    icon: <NotesIcon className={styles.icon} aria-hidden={true} />,
     text: "Notes",
     href: "/notes",
   },
   {
-    icon: <ProjectsIcon className={classNames("icon", styles.icon)} aria-hidden={true} />,
+    icon: <ProjectsIcon className={styles.icon} aria-hidden={true} />,
     text: "Projects",
     href: "/projects",
   },
   {
-    icon: <ContactIcon className={classNames("icon", styles.icon)} aria-hidden={true} />,
+    icon: <ContactIcon className={styles.icon} aria-hidden={true} />,
     text: "Contact",
     href: "/contact",
   },
@@ -40,13 +40,13 @@ const Menu = ({ className }: Props) => {
   return (
     <ul className={classNames(styles.menu, className)}>
       {links.map((link, index) => (
-        <li key={index} className={styles.menu_item}>
+        <li key={index} className={styles.link}>
           {/* kinda weird/hacky way to determine if the *first part* of the current path matches this href */}
           <MenuLink {...link} current={link.href === `/${router.pathname.split("/")[1]}`} />
         </li>
       ))}
 
-      <li className={styles.menu_item}>
+      <li className={styles.link}>
         <ThemeToggle className={styles.icon} />
       </li>
     </ul>
