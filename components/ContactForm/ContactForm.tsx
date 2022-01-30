@@ -3,6 +3,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import Link from "../Link/Link";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
 
 import type { FormikHelpers } from "formik";
@@ -126,18 +127,13 @@ const ContactForm = ({ className }: Props) => {
 
           <div className={styles.markdown_tip}>
             Basic{" "}
-            <a
-              href="https://commonmark.org/help/"
-              title="Markdown reference sheet"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="https://commonmark.org/help/" title="Markdown reference sheet" style={{ fontWeight: 600 }}>
               Markdown syntax
-            </a>{" "}
+            </Link>{" "}
             is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-            <a href="https://jarv.is" target="_blank" rel="noopener noreferrer">
+            <Link href="https://jarv.is" forceNewWindow>
               links
-            </a>
+            </Link>
             ](https://jarv.is), and <code>`code`</code>.
           </div>
 

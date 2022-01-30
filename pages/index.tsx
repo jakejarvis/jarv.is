@@ -4,7 +4,7 @@ import ColorfulLink from "../components/ColorfulLink/ColorfulLink";
 const Index = () => (
   <>
     <Content>
-      <div className="home">
+      <div>
         <h1>
           Hi there! I'm Jake. <span className="wave">👋</span>
         </h1>
@@ -16,7 +16,6 @@ const Index = () => (
             title='"Boston Accent Trailer - Late Night with Seth Meyers" on YouTube'
             lightColor="#fb4d42"
             darkColor="#ff5146"
-            external
           >
             Boston
           </ColorfulLink>
@@ -30,7 +29,6 @@ const Index = () => (
             title='"The Brutal Lifecycle of JavaScript Frameworks" by Ian Allen'
             lightColor="#1091b3"
             darkColor="#6fcbe3"
-            external
           >
             modern JS frameworks
           </ColorfulLink>{" "}
@@ -40,18 +38,11 @@ const Index = () => (
             title="The best JS framework in the world by Eric Wastl"
             lightColor="#f48024"
             darkColor="#e18431"
-            external
           >
             vanilla JavaScript
           </ColorfulLink>{" "}
           to make nifty{" "}
-          <ColorfulLink
-            href="https://jamstack.wtf/"
-            title="WTF is JAMstack?"
-            lightColor="#04a699"
-            darkColor="#08bbac"
-            external
-          >
+          <ColorfulLink href="https://jamstack.wtf/" title="WTF is JAMstack?" lightColor="#04a699" darkColor="#08bbac">
             JAMstack sites
           </ColorfulLink>{" "}
           with dynamic{" "}
@@ -60,7 +51,6 @@ const Index = () => (
             title="Node.js Official Website"
             lightColor="#6fbc4e"
             darkColor="#84d95f"
-            external
           >
             Node.js
           </ColorfulLink>{" "}
@@ -70,7 +60,6 @@ const Index = () => (
             title='"PHP in 2020" by Brent Roose'
             lightColor="#8892bf"
             darkColor="#a4afe3"
-            external
           >
             PHP
           </ColorfulLink>
@@ -80,7 +69,6 @@ const Index = () => (
             title="Ruby Official Website"
             lightColor="#d34135"
             darkColor="#f95a4d"
-            external
           >
             Ruby
           </ColorfulLink>
@@ -90,7 +78,6 @@ const Index = () => (
             title="Golang Official Website"
             lightColor="#00acd7"
             darkColor="#2ad1fb"
-            external
           >
             Go
           </ColorfulLink>{" "}
@@ -104,7 +91,6 @@ const Index = () => (
             title="jakejarvis/awesome-shodan-queries on GitHub"
             lightColor="#00b81a"
             darkColor="#57f06d"
-            external
           >
             application security
           </ColorfulLink>
@@ -114,7 +100,6 @@ const Index = () => (
             title='"What is serverless computing?" on Cloudflare'
             lightColor="#0098ec"
             darkColor="#43b9fb"
-            external
           >
             serverless stacks
           </ColorfulLink>
@@ -124,7 +109,6 @@ const Index = () => (
             title='"Automation" on xkcd'
             lightColor="#ff6200"
             darkColor="#f46c16"
-            external
           >
             DevOps automation
           </ColorfulLink>
@@ -171,7 +155,6 @@ const Index = () => (
             title='"Student designs iPhone JoeyTracker app" on The Tufts Daily'
             lightColor="#ff1b1b"
             darkColor="#f06060"
-            external
           >
             have
           </ColorfulLink>{" "}
@@ -188,7 +171,6 @@ const Index = () => (
             title='"The Facebook Effect" by David Kirkpatrick (Google Books)'
             lightColor="#f2b702"
             darkColor="#ffcc2e"
-            external
           >
             featured
           </ColorfulLink>{" "}
@@ -197,7 +179,6 @@ const Index = () => (
             title='"The new Facebook is on a roll" on CNN Money'
             lightColor="#5ebd3e"
             darkColor="#78df55"
-            external
           >
             by
           </ColorfulLink>{" "}
@@ -206,7 +187,6 @@ const Index = () => (
             title='"Middio: A YouTube Scraper for Major Label Music Videos" on Wired'
             lightColor="#009cdf"
             darkColor="#29bfff"
-            external
           >
             various
           </ColorfulLink>{" "}
@@ -215,7 +195,6 @@ const Index = () => (
             title='"Fresh Faces in Tech: 10 Kid Entrepreneurs to Watch" on Gigaom'
             lightColor="#3e49bb"
             darkColor="#7b87ff"
-            external
           >
             media
           </ColorfulLink>{" "}
@@ -224,7 +203,6 @@ const Index = () => (
             title='"Your Next Client? The CEO&#39;s Son" on Advertising Age'
             lightColor="#973999"
             darkColor="#db60dd"
-            external
           >
             outlets
           </ColorfulLink>
@@ -238,7 +216,6 @@ const Index = () => (
             title="Jake Jarvis on GitHub"
             lightColor="#8d4eff"
             darkColor="#a379f0"
-            external
           >
             GitHub
           </ColorfulLink>{" "}
@@ -248,7 +225,6 @@ const Index = () => (
             title="Jake Jarvis on LinkedIn"
             lightColor="#0073b1"
             darkColor="#3b9dd2"
-            external
           >
             LinkedIn
           </ColorfulLink>
@@ -258,12 +234,13 @@ const Index = () => (
           </ColorfulLink>{" "}
           <sup className="monospace pgp_key">
             <ColorfulLink
-              className="no-underline"
               href="/pubkey.asc"
+              rel="pgpkey authn noopener"
               title="My Public Key"
               lightColor="#757575"
               darkColor="#959595"
-              external
+              style={{ background: "none" }}
+              forceNewWindow
             >
               🔐 2B0C 9CF2 51E6 9A39
             </ColorfulLink>
@@ -274,7 +251,6 @@ const Index = () => (
             title="Jake Jarvis on Twitter"
             lightColor="#00acee"
             darkColor="#3bc9ff"
-            external
           >
             Twitter
           </ColorfulLink>
@@ -293,32 +269,32 @@ const Index = () => (
     </Content>
 
     <style jsx>{`
-      .home {
+      div {
         font-size: 1.1em;
         line-height: 1;
       }
-      .home h1 {
+      h1 {
         margin: 0 0 0.5em -0.03em;
         font-size: 1.8em;
         font-weight: 500;
         letter-spacing: -0.01em;
       }
-      .home h2 {
+      h2 {
         margin: 0.5em 0 0.5em -0.03em;
         font-size: 1.35em;
         font-weight: 400;
         letter-spacing: -0.016em;
         line-height: 1.4;
       }
-      .home p {
+      p {
         margin: 0.85em 0;
         letter-spacing: -0.004em;
         line-height: 1.7;
       }
-      .home p:last-of-type {
+      p:last-of-type {
         margin-bottom: 0;
       }
-      .home .wave {
+      .wave {
         display: inline-block;
         margin-left: 0.1em;
         font-size: 1.2em;
@@ -327,18 +303,15 @@ const Index = () => (
         transform-origin: 65% 80%;
         will-change: transform;
       }
-      .home .pgp_key {
+      .pgp_key {
         margin: 0 0.15em;
         font-size: 0.65em;
         word-spacing: -0.3em;
       }
-      .home .pgp_key :global(a) {
-        background: none !important;
-      }
-      .home .quiet {
+      .quiet {
         color: var(--medium-light);
       }
-      .home .birthday :global(a:hover) {
+      .birthday :global(a:hover) {
         /* magic wand cursor easter egg */
         cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>")
             5 5,
@@ -346,17 +319,18 @@ const Index = () => (
       }
 
       @media screen and (max-width: 768px) {
-        .home h1 {
+        h1 {
           font-size: 1.5em;
         }
-        .home h2 {
+        h2 {
           font-size: 1.2em;
         }
-        .home p {
+        p {
           font-size: 0.925em;
         }
       }
 
+      /* https://jarv.is/notes/css-waving-hand-emoji/ */
       @keyframes wave {
         0% {
           transform: rotate(0deg);

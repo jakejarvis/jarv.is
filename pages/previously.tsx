@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Figure from "../components/Figure/Figure";
 import IFrame from "../components/IFrame/IFrame";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
@@ -40,9 +40,13 @@ const Previously = () => (
     <Content>
       <Figure src={img_wayback} alt="Timeline of this website's past." priority>
         ...the{" "}
-        <a href="https://web.archive.org/web/20010501000000*/jakejarvis.com" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Cringey Chronicles&trade;
-        </a>{" "}
+        </Link>{" "}
         of this website's past.
       </Figure>
 
@@ -55,13 +59,11 @@ const Previously = () => (
         </code>
         ...{" "}
         <Link href="/y2k/" prefetch={false}>
-          <a>
-            Click for the{" "}
-            <strong>
-              <em>FULL</em>
-            </strong>{" "}
-            experience anyway.
-          </a>
+          Click for the{" "}
+          <strong>
+            <em>FULL</em>
+          </strong>{" "}
+          experience anyway.
         </Link>
       </p>
 
@@ -73,9 +75,9 @@ const Previously = () => (
       />
       <p className="iframe_caption">
         November 2001 (
-        <a href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
           archived source
-        </a>
+        </Link>
         )
       </p>
 
@@ -123,9 +125,9 @@ const Previously = () => (
 
       <Figure src={img_2012_09} alt="September 2012">
         September 2012 (
-        <a href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
           archived source
-        </a>
+        </Link>
         )
       </Figure>
 
@@ -133,9 +135,9 @@ const Previously = () => (
 
       <Figure src={img_2018_04} alt="April 2018">
         April 2018 (
-        <a href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
           archived source
-        </a>
+        </Link>
         )
       </Figure>
 
@@ -143,9 +145,9 @@ const Previously = () => (
 
       <Figure src={img_2020_03} alt="March 2020">
         March 2020 (
-        <a href="https://github.com/jakejarvis/jarv.is/tree/v3" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/jakejarvis/jarv.is/tree/v3" target="_blank" rel="noopener noreferrer">
           archived source
-        </a>
+        </Link>
         )
       </Figure>
     </Content>

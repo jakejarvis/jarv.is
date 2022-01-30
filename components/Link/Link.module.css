@@ -1,0 +1,14 @@
+.link {
+  color: var(--link);
+  background-image: linear-gradient(var(--link-underline), var(--link-underline));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% var(--link-underline-size);
+  padding-bottom: var(--link-underline-size);
+  /* background-size is for hover animation, color & border are for theme fading: */
+  transition: background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease;
+}
+
+.link:hover {
+  background-size: 100% var(--link-underline-size);
+}

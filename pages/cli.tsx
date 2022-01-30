@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Image from "../components/Image/Image";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeBlock from "../components/CodeBlock/CodeBlock";
@@ -23,20 +24,12 @@ const CLI = () => (
     <Content>
       <Blockquote>
         <p>
-          The{" "}
-          <a href="https://jarv.is/" target="_blank" rel="noopener noreferrer">
-            Jake Jarvis
-          </a>{" "}
-          CLI (aka the most useless Node module ever published, in history, by anyone, ever).
+          The <Link href="https://jarv.is/">Jake Jarvis</Link> CLI (aka the most useless Node module ever published, in
+          history, by anyone, ever).
         </p>
       </Blockquote>
 
-      <a
-        className="no-underline"
-        href="https://www.npmjs.com/package/@jakejarvis/cli"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.npmjs.com/package/@jakejarvis/cli" target="_blank" rel="noopener noreferrer">
         <Image src={cliImg} alt="Terminal Screenshot" priority />
       </a>
 
@@ -46,48 +39,32 @@ const CLI = () => (
       <H2>Inspired by</H2>
       <ul>
         <li>
-          <a href="https://github.com/sindresorhus/sindresorhus-cli" target="_blank" rel="noopener noreferrer">
-            @sindresorhus/sindresorhus-cli
-          </a>
+          <Link href="https://github.com/sindresorhus/sindresorhus-cli">@sindresorhus/sindresorhus-cli</Link>
         </li>
         <li>
-          <a href="https://github.com/yg/ygcodes" target="_blank" rel="noopener noreferrer">
-            @yg/ygcodes
-          </a>
+          <Link href="https://github.com/yg/ygcodes">@yg/ygcodes</Link>
         </li>
       </ul>
 
       <H2>Built with</H2>
       <ul>
         <li>
-          <a href="https://github.com/vadimdemedes/ink" target="_blank" rel="noopener noreferrer">
-            ink
-          </a>{" "}
-          - React for interactive command-line apps
+          <Link href="https://github.com/vadimdemedes/ink">ink</Link> - React for interactive command-line apps
         </li>
         <li>
-          <a href="https://github.com/sindresorhus/meow" target="_blank" rel="noopener noreferrer">
-            meow
-          </a>{" "}
-          - CLI helper
+          <Link href="https://github.com/sindresorhus/meow">meow</Link> - CLI helper
         </li>
       </ul>
       <p>
-        <a href="https://github.com/jakejarvis/jakejarvis/tree/main/cli" target="_blank" rel="noreferrer">
+        <Link href="https://github.com/jakejarvis/jakejarvis/tree/main/cli" target="_blank" rel="noreferrer">
           View source on GitHub.
-        </a>
+        </Link>
       </p>
 
       <H2>License</H2>
       <p>
-        MIT ©{" "}
-        <a href="https://jarv.is/" target="_blank" rel="noopener noreferrer">
-          Jake Jarvis
-        </a>
-        ,{" "}
-        <a href="https://sindresorhus.com" target="_blank" rel="noopener noreferrer">
-          Sindre Sorhus
-        </a>
+        MIT © <Link href="https://jarv.is/">Jake Jarvis</Link>,{" "}
+        <Link href="https://sindresorhus.com">Sindre Sorhus</Link>
       </p>
     </Content>
   </>

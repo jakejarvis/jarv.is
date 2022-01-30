@@ -1,12 +1,11 @@
 import classNames from "classnames";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./List.module.css";
 
-type Props = {
-  children: ReactNode;
+type Props = PropsWithChildren<{
   className?: string;
-};
+}>;
 
 export const UnorderedList = ({ className, ...rest }: Props) => (
   <ul className={classNames(styles.unordered, className)} {...rest} />

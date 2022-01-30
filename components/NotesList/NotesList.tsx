@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { format } from "date-fns";
+import Link from "../Link/Link";
 import type { NoteMetaType } from "../../types";
 
 import styles from "./NotesList.module.css";
@@ -21,10 +21,8 @@ const NotesList = ({ notesByYear }) => {
                     pathname: "/notes/[slug]/",
                     query: { slug: slug },
                   }}
-                  prefetch={false}
-                >
-                  <a dangerouslySetInnerHTML={{ __html: htmlTitle }} />
-                </Link>
+                  dangerouslySetInnerHTML={{ __html: htmlTitle }}
+                />
               </span>
             </li>
           ))}

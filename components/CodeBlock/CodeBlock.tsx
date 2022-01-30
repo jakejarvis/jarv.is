@@ -1,13 +1,12 @@
 import classNames from "classnames";
 import CopyButton from "../CopyButton/CopyButton";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./CodeBlock.module.css";
 
-type Props = {
-  children: ReactNode;
+type Props = PropsWithChildren<{
   className?: string;
-};
+}>;
 
 const CodeBlock = ({ children, className, ...rest }: Props) => {
   if (className?.split(" ").includes("code-highlight")) {

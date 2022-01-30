@@ -1,16 +1,15 @@
 import { useEffect, useRef } from "react";
 import classNames from "classnames/bind";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./Wallpaper.module.css";
 const cx = classNames.bind(styles);
 
-type Props = {
+type Props = PropsWithChildren<{
   image: string;
   tile?: boolean;
   className?: string;
-  children: ReactNode;
-};
+}>;
 
 const Wallpaper = ({ image, tile, className, ...rest }: Props) => {
   const bgRef = useRef<HTMLDivElement>(null);

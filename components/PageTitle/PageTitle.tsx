@@ -2,23 +2,22 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
 import { baseUrl } from "../../lib/config";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./PageTitle.module.css";
 
-type Props = {
-  children: ReactNode;
+type Props = PropsWithChildren<{
   className?: string;
-};
+}>;
 
-const PageTitle = ({ children, className }: Props) => {
+const PageTitle = ({ className, ...rest }: Props) => {
   const router = useRouter();
   const canonical = `${baseUrl}${router.pathname}/`;
 
   return (
     <h1 className={classNames(styles.title, className)}>
       <Link href={canonical}>
-        <a>{children}</a>
+        <a {...rest} />
       </Link>
     </h1>
   );

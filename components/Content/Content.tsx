@@ -1,12 +1,11 @@
 import classNames from "classnames";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./Content.module.css";
 
-type Props = {
-  children: ReactNode;
+type Props = PropsWithChildren<{
   className?: string;
-};
+}>;
 
 const Content = ({ className, ...rest }: Props) => <div className={classNames(styles.content, className)} {...rest} />;
 

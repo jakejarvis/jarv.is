@@ -2,6 +2,7 @@ import { graphql } from "@octokit/graphql";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
 import type { GetStaticProps } from "next";
 import type { RepoType } from "../types";
@@ -31,9 +32,7 @@ const Projects = ({ repos }: Props) => (
       </div>
 
       <p className="view_more">
-        <a href="https://github.com/jakejarvis?tab=repositories" target="_blank" rel="noopener noreferrer">
-          View more on GitHub...
-        </a>
+        <Link href="https://github.com/jakejarvis?tab=repositories">View more on GitHub...</Link>
       </p>
     </Content>
 
@@ -57,6 +56,8 @@ const Projects = ({ repos }: Props) => (
       .view_more {
         text-align: center;
         margin-bottom: 0;
+        font-size: 1.1em;
+        font-weight: 500;
       }
     `}</style>
   </>

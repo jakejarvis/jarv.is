@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Image from "../components/Image/Image";
 import IFrame from "../components/IFrame/IFrame";
 import { H2 } from "../components/Heading/Heading";
@@ -27,33 +27,23 @@ const Privacy = () => (
 
       <p>
         Pages and first-party assets on this website are served by{" "}
-        <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://vercel.com/">
           <strong>▲ Vercel</strong>
-        </a>
-        . Refer to their{" "}
-        <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-          privacy policy
-        </a>{" "}
-        for more information.
+        </Link>
+        . Refer to their <Link href="https://vercel.com/legal/privacy-policy">privacy policy</Link> for more
+        information.
       </p>
 
       <p>
         For a likely excessive level of privacy and security, this website is also mirrored on the{" "}
-        <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">
-          🧅 Tor network
-        </a>{" "}
-        at:
+        <Link href="https://www.torproject.org/">🧅 Tor network</Link> at:
       </p>
 
       <Blockquote>
         <p>
-          <a
-            href="http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion">
             <strong>jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion</strong>
-          </a>
+          </Link>
         </p>
       </Blockquote>
 
@@ -61,53 +51,29 @@ const Privacy = () => (
 
       <p>
         A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
-        <code>hits = hits + 1</code>) in a{" "}
-        <a href="https://fauna.com/" target="_blank" rel="noopener noreferrer">
-          Fauna
-        </a>{" "}
-        database. Individual views and identifying (or non-identifying) details are{" "}
-        <strong>never stored or logged</strong>.
+        <code>hits = hits + 1</code>) in a <Link href="https://fauna.com/">Fauna</Link> database. Individual views and
+        identifying (or non-identifying) details are <strong>never stored or logged</strong>.
       </p>
 
       <p>
-        The{" "}
-        <a
-          href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/hits.ts"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          serverless function
-        </a>{" "}
+        The <Link href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/hits.ts">serverless function</Link>{" "}
         and{" "}
-        <a
-          href="https://github.com/jakejarvis/jarv.is/blob/main/components/HitCounter/HitCounter.tsx"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="https://github.com/jakejarvis/jarv.is/blob/main/components/HitCounter/HitCounter.tsx">
           client script
-        </a>{" "}
-        are open source, and{" "}
-        <a href="https://github.com/jakejarvis/website-stats" target="_blank" rel="noopener noreferrer">
-          snapshots of the database
-        </a>{" "}
+        </Link>{" "}
+        are open source, and <Link href="https://github.com/jakejarvis/website-stats">snapshots of the database</Link>{" "}
         are public.
       </p>
 
       <Image src={faunaImg} alt="The entire database schema." />
 
       <p>
-        <a href="https://usefathom.com/ref/ZEYG0O" target="_blank" rel="noopener noreferrer">
+        <Link href="https://usefathom.com/ref/ZEYG0O">
           <strong>Fathom Analytics</strong>
-        </a>
-        , a <em>very</em>{" "}
-        <a href="https://usefathom.com/privacy-focused-web-analytics" target="_blank" rel="noopener noreferrer">
-          privacy-focused
-        </a>{" "}
+        </Link>
+        , a <em>very</em> <Link href="https://usefathom.com/privacy-focused-web-analytics">privacy-focused</Link>{" "}
         service, is also used to gain insights into referrers, search terms, etc.{" "}
-        <strong>without collecting anything identifiable about you</strong>. (My{" "}
-        <a href="/stats/" target="_blank" rel="noopener noreferrer">
-          dashboard
-        </a>{" "}
+        <strong>without collecting anything identifiable about you</strong>. (My <Link href="/stats/">dashboard</Link>{" "}
         is completely public, too!)
       </p>
 
@@ -127,43 +93,25 @@ const Privacy = () => (
 
       <ul>
         <li>
-          <a href="https://blog.codepen.io/documentation/privacy/" target="_blank" rel="noopener noreferrer">
-            CodePen
-          </a>
+          <Link href="https://blog.codepen.io/documentation/privacy/">CodePen</Link>
         </li>
         <li>
-          <a href="https://www.facebook.com/policy.php" target="_blank" rel="noopener noreferrer">
-            Facebook
-          </a>
+          <Link href="https://www.facebook.com/policy.php">Facebook</Link>
         </li>
         <li>
-          <a
-            href="https://docs.github.com/en/github/site-policy/github-privacy-statement"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
+          <Link href="https://docs.github.com/en/github/site-policy/github-privacy-statement">GitHub</Link>
         </li>
         <li>
-          <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">
-            SoundCloud
-          </a>
+          <Link href="https://soundcloud.com/pages/privacy">SoundCloud</Link>
         </li>
         <li>
-          <a href="https://twitter.com/en/privacy" target="_blank" rel="noopener noreferrer">
-            Twitter
-          </a>
+          <Link href="https://twitter.com/en/privacy">Twitter</Link>
         </li>
         <li>
-          <a href="https://vimeo.com/privacy" target="_blank" rel="noopener noreferrer">
-            Vimeo
-          </a>
+          <Link href="https://vimeo.com/privacy">Vimeo</Link>
         </li>
         <li>
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-            YouTube
-          </a>
+          <Link href="https://policies.google.com/privacy">YouTube</Link>
         </li>
       </ul>
 
@@ -171,51 +119,27 @@ const Privacy = () => (
 
       <p>
         Using{" "}
-        <a href="https://www.hcaptcha.com/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.hcaptcha.com/">
           <strong>hCaptcha</strong>
-        </a>{" "}
-        to fight bot spam on the{" "}
-        <Link href="/contact/" prefetch={false}>
-          <a>contact form</a>
         </Link>{" "}
-        was an easy choice over seemingly unavoidable alternatives like{" "}
-        <a href="https://developers.google.com/recaptcha/" target="_blank" rel="noopener noreferrer">
-          reCAPTCHA
-        </a>
-        .
+        to fight bot spam on the <Link href="/contact/">contact form</Link> was an easy choice over seemingly
+        unavoidable alternatives like <Link href="https://developers.google.com/recaptcha/">reCAPTCHA</Link>.
       </p>
 
       <p>
-        You can refer to hCaptcha's{" "}
-        <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">
-          privacy policy
-        </a>{" "}
-        and{" "}
-        <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener noreferrer">
-          terms of service
-        </a>{" "}
-        for more details. While some information is sent to the hCaptcha API about your behavior{" "}
-        <strong>(on the contact page only)</strong>, at least you won't be helping a certain internet conglomerate{" "}
-        <a
-          href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          train their self-driving cars
-        </a>
+        You can refer to hCaptcha's <Link href="https://www.hcaptcha.com/privacy">privacy policy</Link> and{" "}
+        <Link href="https://www.hcaptcha.com/terms">terms of service</Link> for more details. While some information is
+        sent to the hCaptcha API about your behavior <strong>(on the contact page only)</strong>, at least you won't be
+        helping a certain internet conglomerate{" "}
+        <Link href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">train their self-driving cars</Link>
         . 🚗
       </p>
 
       <p>
         I also enabled the setting to donate 100% of my{" "}
-        <a href="https://humanprotocol.org/?lng=en-US" target="_blank" rel="noopener noreferrer">
-          HMT token
-        </a>{" "}
-        earnings to the{" "}
-        <a href="https://wikimediafoundation.org/" target="_blank" rel="noopener noreferrer">
-          Wikimedia Foundation
-        </a>
-        , for what it's worth. (A few cents, probably... 💰)
+        <Link href="https://humanprotocol.org/?lng=en-US">HMT token</Link> earnings to the{" "}
+        <Link href="https://wikimediafoundation.org/">Wikimedia Foundation</Link>, for what it's worth. (A few cents,
+        probably... 💰)
       </p>
     </Content>
   </>

@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Video from "../components/Video/Video";
 
 import thumbnail from "../public/static/images/leo/thumb.png";
@@ -27,17 +28,13 @@ const Leo = () => (
 
       <p className="copyright">
         Video is property of{" "}
-        <a
-          href="https://web.archive.org/web/20070511004304/http://www.g4techtv.ca/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="https://web.archive.org/web/20070511004304/http://www.g4techtv.ca/" style={{ fontWeight: 700 }}>
           G4techTV Canada
-        </a>{" "}
+        </Link>{" "}
         &amp;{" "}
-        <a href="https://leolaporte.com/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://leolaporte.com/" style={{ fontWeight: 700 }}>
           Leo Laporte
-        </a>
+        </Link>
         . &copy; 2007 G4 Media, Inc.
       </p>
     </Content>
@@ -49,10 +46,6 @@ const Leo = () => (
         line-height: 1.8;
         margin: 1.25em 1em 0.5em;
         color: var(--medium-light);
-      }
-
-      .copyright a {
-        font-weight: 700;
       }
     `}</style>
   </>

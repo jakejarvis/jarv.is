@@ -33,10 +33,6 @@
   line-height: 1.75;
 }
 
-.markdown_tip a:first-of-type {
-  font-weight: 500;
-}
-
 .hcaptcha {
   margin: 1em 0;
 }

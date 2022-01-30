@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Image from "../components/Image/Image";
 import { H2 } from "../components/Heading/Heading";
 
@@ -25,11 +25,7 @@ const Uses = () => (
       </p>
       <p>
         Nobody has asked me what I use. Ever. But here's a list of my daily drivers and necessities anyways, mostly
-        revolving around my Apple sheepy-ness. Inspired by{" "}
-        <a href="https://uses.tech/" target="_blank" rel="noopener noreferrer">
-          many, many others
-        </a>
-        . ❤️
+        revolving around my Apple sheepy-ness. Inspired by <Link href="https://uses.tech/">many, many others</Link>. ❤️
       </p>
 
       <Image src={desktopImg} alt="My mess of a desktop." priority />
@@ -37,9 +33,9 @@ const Uses = () => (
       <H2 id="hardware">🍎 Hardware</H2>
       <ul>
         <li>
-          <a href="https://browser.geekbench.com/v5/cpu/8124907" target="_blank" rel="noopener noreferrer">
+          <Link href="https://browser.geekbench.com/v5/cpu/8124907">
             <strong>MacBook Air</strong> (2020)
-          </a>
+          </Link>
           <ul>
             <li>Apple M1 (8‑core CPU, 8‑core GPU) 🏎️💨</li>
             <li>16 GB RAM</li>
@@ -47,15 +43,12 @@ const Uses = () => (
           </ul>
         </li>
         <li>
-          <a href="https://browser.geekbench.com/v5/cpu/1074682" target="_blank" rel="noopener noreferrer">
+          <Link href="https://browser.geekbench.com/v5/cpu/1074682">
             <strong>MacBook Pro 15"</strong> (Mid-2018)
-          </a>
+          </Link>
           <ul>
             <li>
-              Core i9 @ 2.9 GHZ,{" "}
-              <a href="https://www.youtube.com/watch?v=Dx8J125s4cg" target="_blank" rel="noopener noreferrer">
-                theoretically 🔥🧯🚒
-              </a>
+              Core i9 @ 2.9 GHZ, <Link href="https://www.youtube.com/watch?v=Dx8J125s4cg">theoretically 🔥🧯🚒</Link>
             </li>
             <li>32 GB RAM</li>
             <li>1 TB SSD</li>
@@ -68,32 +61,20 @@ const Uses = () => (
           <ul>
             <li>512 GB in Graphite 😎</li>
             <li>
-              <a
-                href="https://www.apple.com/shop/product/MM2J3ZM/A/iphone-13-pro-silicone-case-with-magsafe-abyss-blue"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.apple.com/shop/product/MM2J3ZM/A/iphone-13-pro-silicone-case-with-magsafe-abyss-blue">
                 Abyss Blue Silicone Case
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="https://www.apple.com/shop/product/MHLR3ZM/A/iphone-leather-wallet-with-magsafe-saddle-brown"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.apple.com/shop/product/MHLR3ZM/A/iphone-leather-wallet-with-magsafe-saddle-brown">
                 Saddle Brown Leather "Wallet"
-              </a>
+              </Link>
             </li>
             <li>
               Belkin's MagSafe{" "}
-              <a
-                href="https://www.apple.com/shop/product/HPBJ2ZM/A/belkin-car-vent-mount-pro-with-magsafe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.apple.com/shop/product/HPBJ2ZM/A/belkin-car-vent-mount-pro-with-magsafe">
                 Car Vent Mount Pro
-              </a>{" "}
+              </Link>{" "}
               is awesome too, btw.
             </li>
           </ul>
@@ -112,29 +93,17 @@ const Uses = () => (
             <li>40mm (I have incredibly small wrists.)</li>
             <li>
               Usually with the{" "}
-              <a
-                href="https://www.apple.com/shop/product/MLL02ZM/A/42mm-midnight-blue-sport-band-s-m-m-l"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.apple.com/shop/product/MLL02ZM/A/42mm-midnight-blue-sport-band-s-m-m-l">
                 Midnight Blue sport band
-              </a>
+              </Link>
               , 🏳️‍🌈{" "}
-              <a
-                href="https://www.apple.com/shop/product/MQ4F2AM/A/38mm-pride-edition-woven-nylon"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.apple.com/shop/product/MQ4F2AM/A/38mm-pride-edition-woven-nylon">
                 Pride Edition woven nylon band
-              </a>
+              </Link>
               , or employee 🏋️{" "}
-              <a
-                href="https://www.macrumors.com/2018/04/03/apple-employees-rewards-challenge/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.macrumors.com/2018/04/03/apple-employees-rewards-challenge/">
                 Close Your Rings Challenge woven nylon band
-              </a>
+              </Link>
               .
             </li>
           </ul>
@@ -144,11 +113,7 @@ const Uses = () => (
           <ul>
             <li>For some recreational Android development and experimentation.</li>
             <li>
-              Activated on{" "}
-              <a href="https://fi.google.com/" target="_blank" rel="noopener noreferrer">
-                Google Fi
-              </a>{" "}
-              during rare trips.
+              Activated on <Link href="https://fi.google.com/">Google Fi</Link> during rare trips.
             </li>
             <li>
               Really just putting this here in a futile effort to prove I'm not a <em>complete</em> Apple sheep. 🐑
@@ -160,94 +125,54 @@ const Uses = () => (
       <H2 id="development">💾 Development</H2>
       <ul>
         <li>
-          <a href="https://iterm2.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://iterm2.com/">
             <strong>iTerm 2</strong>
-          </a>
+          </Link>
           <ul>
             <li>
               My various{" "}
-              <a
-                href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/aliases.zsh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ZSH aliases
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/functions.zsh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                functions
-              </a>{" "}
-              are in{" "}
-              <a href="https://github.com/jakejarvis/dotfiles" target="_blank" rel="noopener noreferrer">
+              <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/aliases.zsh">ZSH aliases</Link> and{" "}
+              <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/functions.zsh">functions</Link> are in{" "}
+              <Link href="https://github.com/jakejarvis/dotfiles">
                 my <code>.dotfiles</code> repository.
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">
-                Oh My ZSH
-              </a>
+              <Link href="https://ohmyz.sh/">Oh My ZSH</Link>
               <ul>
                 <li>
-                  <a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank" rel="noopener noreferrer">
-                    zsh-autosuggestions
-                  </a>
+                  <Link href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://github.com/zsh-users/zsh-syntax-highlighting"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    zsh-syntax-highlighting
-                  </a>
+                  <Link href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</Link>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://code.visualstudio.com/">
             <strong>Visual Studio Code</strong>
-          </a>
+          </Link>
           <ul>
             <li>
-              <a
-                href="https://github.com/jakejarvis/dotfiles/tree/main/vscode"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                All of my settings.
-              </a>
+              <Link href="https://github.com/jakejarvis/dotfiles/tree/main/vscode">All of my settings.</Link>
             </li>
             <li>
               Themes:
               <ul>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme">
                     GitHub Dark theme
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">
                     Material Icon theme
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://github.com/adobe-fonts/source-code-pro" target="_blank" rel="noopener noreferrer">
-                    Source Code Pro font
-                  </a>
+                  <Link href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro font</Link>
                 </li>
               </ul>
             </li>
@@ -255,254 +180,186 @@ const Uses = () => (
               Extensions:
               <ul>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml">
                     Better TOML
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">
                     Docker
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate">
                     Duplicate action
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">
                     EditorConfig
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://copilot.github.com/" target="_blank" rel="noopener noreferrer">
-                    GitHub Copilot
-                  </a>
+                  <Link href="https://copilot.github.com/">GitHub Copilot</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">
                     GitHub Pull Requests
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub">
                     GitHub Repositories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">
                     Live Share
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">
                     markdownlint
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    npm
-                  </a>
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script">npm</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">
                     Prettier
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">
                     Remote Development Pack
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">
                     Stylelint
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wordcount"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Word Count
-                  </a>
+                  <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wordcount">Word Count</Link>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://brew.sh/">
             <strong>Homebrew</strong>
-          </a>
+          </Link>
           <ul>
             <li>
-              <a
-                href="https://github.com/jakejarvis/dotfiles/blob/main/Brewfile"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://github.com/jakejarvis/dotfiles/blob/main/Brewfile">
                 View my messy <code>Brewfile</code> dump
-              </a>{" "}
+              </Link>{" "}
               with all of my installed packages.
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://developer.apple.com/xcode/">
             <strong>Xcode</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.docker.com/products/docker-desktop">
             <strong>Docker Desktop</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.parallels.com/products/desktop/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.parallels.com/products/desktop/">
             <strong>Parallels Desktop Pro</strong>
-          </a>
+          </Link>
           <ul>
             <li>
               Switched from VMware Fusion when Parallels beat them to the punch with{" "}
-              <a href="https://www.parallels.com/blogs/parallels-desktop-m1/" target="_blank" rel="noopener noreferrer">
-                M1 support
-              </a>
-              .
+              <Link href="https://www.parallels.com/blogs/parallels-desktop-m1/">M1 support</Link>.
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://tailscale.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://tailscale.com/">
             <strong>Tailscale</strong>
-          </a>
+          </Link>
           <ul>
             <li>
-              For connecting to remote servers and my <a href="#home">"homelab"</a> without exposing ports to the world.
-              Highly recommended!
+              For connecting to remote servers and my <Link href="#home">"homelab"</Link> without exposing ports to the
+              world. Highly recommended!
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://www.sketch.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.sketch.com/">
             <strong>Sketch</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.adobe.com/creativecloud.html" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.adobe.com/creativecloud.html">
             <strong>Adobe Creative Cloud</strong>
-          </a>
+          </Link>
           <ul>
             <li>
               Still on the $20/month{" "}
-              <a href="https://www.adobe.com/creativecloud/buy/students.html" target="_blank" rel="noopener noreferrer">
-                Student Plan
-              </a>
-              , somehow. 🤫 Will need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x
-              that...
+              <Link href="https://www.adobe.com/creativecloud/buy/students.html">Student Plan</Link>, somehow. 🤫 Will
+              need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x that...
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://panic.com/transmit/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://panic.com/transmit/">
             <strong>Transmit</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.getpostman.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.getpostman.com/">
             <strong>Postman</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.browserstack.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.browserstack.com/">
             <strong>BrowserStack</strong>
-          </a>{" "}
+          </Link>{" "}
           &amp;{" "}
-          <a href="https://percy.io/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://percy.io/">
             <strong>Percy</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.sequelpro.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.sequelpro.com/">
             <del>Sequel Pro</del>
-          </a>{" "}
+          </Link>{" "}
           →{" "}
-          <a href="https://tableplus.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://tableplus.com/">
             <strong>TablePlus</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://robomongo.org/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://robomongo.org/">
             <del>Robo 3T</del>
-          </a>{" "}
+          </Link>{" "}
           →{" "}
-          <a href="https://tableplus.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://tableplus.com/">
             <strong>TablePlus</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://imageoptim.com/mac" target="_blank" rel="noopener noreferrer">
+          <Link href="https://imageoptim.com/mac">
             <strong>ImageOptim</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://sipapp.io/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://sipapp.io/">
             <strong>Sip</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://localwp.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://localwp.com/">
             <strong>Local</strong>
-          </a>{" "}
+          </Link>{" "}
           for WordPress development.
         </li>
       </ul>
@@ -510,173 +367,91 @@ const Uses = () => (
       <H2 id="browsing">🌎 Browsing</H2>
       <ul>
         <li>
-          <a href="https://www.mozilla.org/en-US/firefox/developer/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.mozilla.org/en-US/firefox/developer/">
             <strong>Firefox</strong>
-          </a>{" "}
+          </Link>{" "}
           🦊
           <ul>
             <li>
-              <a
-                href="https://github.com/jakejarvis/dotfiles/blob/main/firefox/user.js"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://github.com/jakejarvis/dotfiles/blob/main/firefox/user.js">
                 My default <code>user.js</code> settings.
-              </a>
+              </Link>
             </li>
             <li>
               Add-ons:
               <ul>
                 <li>
-                  <a
-                    href="https://support.1password.com/cs/1password-classic-extension/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    1Password Classic
-                  </a>
+                  <Link href="https://support.1password.com/cs/1password-classic-extension/">1Password Classic</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/betterttv/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    BetterTTV
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/betterttv/">BetterTTV</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Cookie Editor
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/">Cookie Editor</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Decentraleyes
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">Decentraleyes</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/facebook-container/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/facebook-container/">
                     Facebook Container
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/">
                     Firefox Multi-Account Containers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    HTTPS Everywhere
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/">HTTPS Everywhere</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Mailvelope
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Mailvelope</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">
                     React Developer Tools
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/octolinker/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    OctoLinker
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/octolinker/">OctoLinker</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Privacy Badger
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/">Privacy Badger</Link>
                 </li>
                 <li>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    uBlock Origin
-                  </a>
+                  <Link href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</Link>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="https://www.google.com/chrome/browser/?extra=devchannel" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.google.com/chrome/browser/?extra=devchannel">
             <strong>Google Chrome</strong>
-          </a>{" "}
+          </Link>{" "}
           😈
           <ul>
             <li>
-              For testing only! See more of <a href="#cloud">my de-Googling efforts below</a>.
+              For testing only! See more of <Link href="#cloud">my de-Googling efforts below</Link>.
             </li>
             <li>
               Add-ons:
               <ul>
                 <li>
-                  <a
-                    href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en">
                     AMP Validator
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en">
                     Lighthouse
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">
                     React Developer Tools
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -687,42 +462,40 @@ const Uses = () => (
       <H2 id="macos">💻 macOS</H2>
       <ul>
         <li>
-          <a href="https://1password.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://1password.com/">
             <strong>1Password</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.obdev.at/products/littlesnitch/index.html" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.obdev.at/products/littlesnitch/index.html">
             <strong>Little Snitch</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://bjango.com/mac/istatmenus/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://bjango.com/mac/istatmenus/">
             <strong>iStat Menus</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.backblaze.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.backblaze.com/">
             <strong>Backblaze</strong>
-          </a>{" "}
-          <a href="https://secure.backblaze.com/r/00x84e" target="_blank" rel="noopener noreferrer">
-            (referral link)
-          </a>
+          </Link>{" "}
+          <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link>
         </li>
         <li>
-          <a href="https://github.com/billycastelli/Silicon-Info" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/billycastelli/Silicon-Info">
             <strong>Silicon Info</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.corecode.io/macupdater/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.corecode.io/macupdater/">
             <strong>MacUpdater</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://unshaky.nestederror.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://unshaky.nestederror.com/">
             <strong>Unshaky</strong>
-          </a>{" "}
+          </Link>{" "}
           ⌨️ (on my 2018 MBP)
           <ul>
             <li>
@@ -732,60 +505,60 @@ const Uses = () => (
           </ul>
         </li>
         <li>
-          <a href="https://daisydiskapp.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://daisydiskapp.com/">
             <strong>DaisyDisk</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://freemacsoft.net/appcleaner/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://freemacsoft.net/appcleaner/">
             <strong>AppCleaner</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://gpgtools.org/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://gpgtools.org/">
             <strong>GPG Suite</strong>
-          </a>
+          </Link>
         </li>
         <li>
           <del>VLC</del> →{" "}
-          <a href="https://iina.io/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://iina.io/">
             <strong>IINA</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://transmissionbt.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://transmissionbt.com/">
             <strong>Transmission</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.paragon-software.com/us/home/ntfs-mac/#" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.paragon-software.com/us/home/ntfs-mac/#">
             <strong>Paragon NTFS</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://roaringapps.com/app/amphetamine" target="_blank" rel="noopener noreferrer">
+          <Link href="https://roaringapps.com/app/amphetamine">
             <strong>Amphetamine</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://coconut-flavour.com/coconutbattery/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://coconut-flavour.com/coconutbattery/">
             <strong>coconutBattery</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://theunarchiver.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://theunarchiver.com/">
             <strong>The Unarchiver</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.intuitibits.com/products/wifi-explorer/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.intuitibits.com/products/wifi-explorer/">
             <strong>WiFi Explorer</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://parsec.app/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://parsec.app/">
             <strong>Parsec</strong>
-          </a>
+          </Link>
         </li>
       </ul>
 
@@ -793,282 +566,241 @@ const Uses = () => (
       <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
       <ul>
         <li>
-          <a href="https://apps.apple.com/app/id568903335" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id568903335">
             <strong>1Password</strong> (beta)
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id323229106" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id323229106">
             <strong>Waze</strong> (beta)
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id585027354" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id585027354">
             <strong>Google Maps</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id517329357" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id517329357">
             <strong>Dark Sky</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id731629156" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id731629156">
             <strong>Xfinity Stream</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id317951436" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id317951436">
             <strong>SiriusXM</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id379693831" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id379693831">
             <strong>Audible</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id414834813" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id414834813">
             <strong>Pocket Casts</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id1488977981" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id1488977981">
             <strong>Sonos</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id383457673" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id383457673">
             <strong>Plex</strong> (beta)
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id1212616790" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id1212616790">
             <strong>Microsoft To-Do</strong>
-          </a>{" "}
+          </Link>{" "}
           (RIP Wunderlist 🙏)
         </li>
         <li>
-          <a href="https://apps.apple.com/app/id985746746" target="_blank" rel="noopener noreferrer">
+          <Link href="https://apps.apple.com/app/id985746746">
             <strong>Discord</strong>
-          </a>
+          </Link>
         </li>
       </ul>
 
       <H2 id="cloud">☁️ Cloud</H2>
       <p>
-        I've been making recent efforts to{" "}
-        <a href="https://www.stallman.org/google.html" target="_blank" rel="noopener noreferrer">
-          de-Google
-        </a>{" "}
-        my life, with mixed results...
+        I've been making recent efforts to <Link href="https://www.stallman.org/google.html">de-Google</Link> my life,
+        with mixed results...
       </p>
       <ul>
         <li>
           <del>Gmail</del> →{" "}
-          <a href="https://www.fastmail.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.fastmail.com/">
             <strong>Fastmail</strong>
-          </a>{" "}
-          <a href="https://ref.fm/u20274504" target="_blank" rel="noopener noreferrer">
-            (referral link)
-          </a>{" "}
-          &amp;{" "}
-          <a href="https://en.wikipedia.org/wiki/Apple_Mail" target="_blank" rel="noopener noreferrer">
+          </Link>{" "}
+          <Link href="https://ref.fm/u20274504">(referral link)</Link> &amp;{" "}
+          <Link href="https://en.wikipedia.org/wiki/Apple_Mail">
             <strong>Mail.app</strong>
-          </a>
+          </Link>
         </li>
         <li>
           <del>Google Drive</del> → <del>Dropbox</del> →{" "}
-          <a href="https://www.icloud.com/iclouddrive" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.icloud.com/iclouddrive">
             <strong>iCloud Drive</strong>
-          </a>
+          </Link>
           <ul>
             <li>
-              <Link href="/notes/dropping-dropbox/">
-                <a>Read why.</a>
-              </Link>
+              <Link href="/notes/dropping-dropbox/">Read why.</Link>
             </li>
           </ul>
         </li>
         <li>
           <del>Google Docs</del> →{" "}
-          <a
-            href="https://products.office.com/en-us/mac/microsoft-office-for-mac"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://products.office.com/en-us/mac/microsoft-office-for-mac">
             <strong>Microsoft Office</strong>
-          </a>{" "}
+          </Link>{" "}
           (hey, it works 🤷)
         </li>
         <li>
           <del>Google Photos</del> →{" "}
-          <a href="https://www.icloud.com/photos/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.icloud.com/photos/">
             <strong>iCloud Photos</strong>
-          </a>
-        </li>
-        <li>
-          <del>Google Analytics</del> →{" "}
-          <a href="https://www.netlify.com/products/analytics/" target="_blank" rel="noopener noreferrer">
-            <strong>Netlify Analytics</strong>
-          </a>{" "}
-          <Link href="/notes/netlify-analytics-review/">
-            <a>(my review)</a>
           </Link>
         </li>
         <li>
+          <del>Google Analytics</del> →{" "}
+          <Link href="https://www.netlify.com/products/analytics/">
+            <strong>Netlify Analytics</strong>
+          </Link>{" "}
+          <Link href="/notes/netlify-analytics-review/">(my review)</Link>
+        </li>
+        <li>
           <del>Google Public DNS</del> →{" "}
-          <a href="https://1.1.1.1/dns/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://1.1.1.1/dns/">
             <strong>Cloudflare's 1.1.1.1</strong>
-          </a>{" "}
+          </Link>{" "}
           on my home network.
         </li>
         <li>
           <del>GoDaddy</del> → <del>Google Domains</del> →{" "}
-          <a href="https://www.cloudflare.com/products/registrar/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.cloudflare.com/products/registrar/">
             <strong>Cloudflare Registrar</strong>
-          </a>{" "}
+          </Link>{" "}
           (and{" "}
-          <a href="https://isnic.is/en/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://isnic.is/en/">
             <strong>ISNIC</strong>
-          </a>{" "}
+          </Link>{" "}
           for this domain, of course 🇮🇸)
         </li>
       </ul>
       <p>Other geeky stuff:</p>
       <ul>
         <li>
-          <a href="https://dnsimple.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://dnsimple.com/">
             <strong>DNSimple</strong>
-          </a>{" "}
-          <a href="https://dnsimple.com/r/eb6ced548f1e0a" target="_blank" rel="noopener noreferrer">
-            (referral link)
-          </a>{" "}
-          &amp;{" "}
-          <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">
+          </Link>{" "}
+          <Link href="https://dnsimple.com/r/eb6ced548f1e0a">(referral link)</Link> &amp;{" "}
+          <Link href="https://www.cloudflare.com/">
             <strong>Cloudflare</strong>
-          </a>{" "}
+          </Link>{" "}
           for domain DNS.
         </li>
         <li>
-          <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.netlify.com/">
             <strong>Netlify</strong>
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://vercel.com/">
             <strong>Vercel</strong>
-          </a>{" "}
+          </Link>{" "}
           for static sites.
         </li>
         <li>
-          <a href="https://www.linode.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.linode.com/">
             <strong>Linode</strong>
-          </a>{" "}
-          <a
-            href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            (referral link)
-          </a>{" "}
-          and{" "}
-          <a href="https://www.digitalocean.com/" target="_blank" rel="noopener noreferrer">
+          </Link>{" "}
+          <Link href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05">(referral link)</Link> and{" "}
+          <Link href="https://www.digitalocean.com/">
             <strong>DigitalOcean</strong>
-          </a>{" "}
-          <a href="https://m.do.co/c/afcf288a7dac" target="_blank" rel="noopener noreferrer">
-            (referral link)
-          </a>{" "}
-          for virtual Linux servers.
+          </Link>{" "}
+          <Link href="https://m.do.co/c/afcf288a7dac">(referral link)</Link> for virtual Linux servers.
         </li>
         <li>
-          <a href="https://www.backblaze.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.backblaze.com/">
             <strong>Backblaze</strong>
-          </a>{" "}
-          <a href="https://secure.backblaze.com/r/00x84e" target="_blank" rel="noopener noreferrer">
-            (referral link)
-          </a>{" "}
-          for off-site MacBook backups.
+          </Link>{" "}
+          <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link> for off-site MacBook backups.
         </li>
         <li>
-          <a href="https://gitea.io/en-us/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://gitea.io/en-us/">
             <strong>Gitea</strong>
-          </a>{" "}
-          as a{" "}
-          <a href="https://code.jarv.is/" target="_blank" rel="noopener noreferrer">
-            self-hosted
-          </a>{" "}
-          Git backup/mirror.
+          </Link>{" "}
+          as a <Link href="https://code.jarv.is/">self-hosted</Link> Git backup/mirror.
         </li>
         <li>
-          <a href="https://www.plex.tv/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.plex.tv/">
             <strong>Plex</strong>
-          </a>{" "}
+          </Link>{" "}
           +{" "}
-          <a href="https://sonarr.tv/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://sonarr.tv/">
             <strong>Sonarr</strong>
-          </a>{" "}
+          </Link>{" "}
           +{" "}
-          <a href="https://radarr.video/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://radarr.video/">
             <strong>Radarr</strong>
-          </a>
+          </Link>
         </li>
       </ul>
 
       <H2 id="iot">
-        🏠 Internet of <del>Things</del>{" "}
-        <Link href="/notes/shodan-search-queries/">
-          <a>Crap</a>
-        </Link>
+        🏠 Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
       </H2>
       <ul>
         <li>
-          <a href="https://www.synology.com/en-us/products/RT2600ac" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.synology.com/en-us/products/RT2600ac">
             <strong>Synology RT2600ac</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.synology.com/en-us/products/DS218+" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.synology.com/en-us/products/DS218+">
             <strong>Synology DiskStation DS218+</strong>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.amazon.com/dp/B00HWML468/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.amazon.com/dp/B00HWML468/">
             <strong>Dell Inspiron 3647</strong>
-          </a>
+          </Link>
           , slightly upgraded and running{" "}
-          <a href="https://www.vmware.com/products/esxi-and-esx.html" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.vmware.com/products/esxi-and-esx.html">
             <strong>VMware ESXi</strong>
-          </a>
+          </Link>
           , as a really, <em>really</em> crappy home server.
         </li>
         <li>
-          <a href="https://www2.meethue.com/en-us" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www2.meethue.com/en-us">
             <strong>Philips Hue</strong>
-          </a>{" "}
+          </Link>{" "}
           color bulbs, dimmer switches, etc.
         </li>
         <li>
           2x{" "}
-          <a
-            href="https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/">
             <strong>ecobee3 lite</strong>
-          </a>{" "}
+          </Link>{" "}
           smart thermostats (HomeKit support was a must.)
         </li>
         <li>
           2x{" "}
-          <a href="https://www.sonos.com/en-us/shop/one.html" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.sonos.com/en-us/shop/one.html">
             <strong>Sonos One</strong>
-          </a>{" "}
+          </Link>{" "}
           (with Alexa turned off...allegedly.)
         </li>
         <li>
-          <a href="https://petcube.com/play/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://petcube.com/play/">
             <strong>Petcube Play</strong>
-          </a>{" "}
+          </Link>{" "}
           😻
         </li>
       </ul>

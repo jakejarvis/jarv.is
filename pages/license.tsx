@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 import Blockquote from "../components/Blockquote/Blockquote";
 import { H2, H3 } from "../components/Heading/Heading";
@@ -19,18 +20,14 @@ const License = () => (
     <Content>
       <p>
         Unless otherwise noted, content on this website is published under the{" "}
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://creativecommons.org/licenses/by/4.0/">
           <strong>Creative Commons Attribution 4.0 International Public License</strong>
-        </a>{" "}
+        </Link>{" "}
         (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any
         purpose as long as you give appropriate credit (such as a hyperlink to the original URL).
       </p>
       <p>
-        The{" "}
-        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank" rel="noopener noreferrer">
-          full license
-        </a>{" "}
-        is re-printed below.
+        The <Link href="https://creativecommons.org/licenses/by/4.0/legalcode">full license</Link> is re-printed below.
       </p>
 
       <HorizontalRule />
@@ -39,7 +36,6 @@ const License = () => (
 
       <p style={{ textAlign: "center", lineHeight: 0 }}>
         <a
-          className="no-underline"
           href="https://creativecommons.org/licenses/by/4.0/"
           target="_blank"
           rel="noopener noreferrer"
@@ -98,13 +94,9 @@ const License = () => (
             our licenses so that the public can reuse the material as expected. Licensors should clearly mark any
             material not subject to the license. This includes other CC-licensed material, or material used under an
             exception or limitation to copyright.{" "}
-            <a
-              href="https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
               More considerations for licensors
-            </a>
+            </Link>
             .
           </p>
         </li>
@@ -118,13 +110,9 @@ const License = () => (
             restricted for other reasons, including because others have copyright or other rights in the material. A
             licensor may make special requests, such as asking that all changes be marked or described. Although not
             required by our licenses, you are encouraged to respect those requests where reasonable.{" "}
-            <a
-              href="https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensees"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
               More considerations for the public
-            </a>
+            </Link>
             .
           </p>
         </li>
@@ -461,30 +449,20 @@ const License = () => (
           Creative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply
           one of its public licenses to material it publishes and in those instances will be considered the "Licensor."
           The text of the Creative Commons public licenses is dedicated to the public domain under the{" "}
-          <a
-            href="https://creativecommons.org/publicdomain/zero/1.0/legalcode"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">
             <em>CC0 Public Domain Dedication</em>
-          </a>
+          </Link>
           . Except for the limited purpose of indicating that material is shared under a Creative Commons public license
           or as otherwise permitted by the Creative Commons policies published at{" "}
-          <a href="https://creativecommons.org/policies" target="_blank" rel="noopener noreferrer">
-            creativecommons.org/policies
-          </a>
-          , Creative Commons does not authorize the use of the trademark "Creative Commons" or any other trademark or
-          logo of Creative Commons without its prior written consent including, without limitation, in connection with
-          any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or
-          agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part
-          of the public licenses.
+          <Link href="https://creativecommons.org/policies">creativecommons.org/policies</Link>, Creative Commons does
+          not authorize the use of the trademark "Creative Commons" or any other trademark or logo of Creative Commons
+          without its prior written consent including, without limitation, in connection with any unauthorized
+          modifications to any of its public licenses or any other arrangements, understandings, or agreements
+          concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the
+          public licenses.
         </p>
         <p>
-          Creative Commons may be contacted at{" "}
-          <a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">
-            creativecommons.org
-          </a>
-          .
+          Creative Commons may be contacted at <Link href="https://creativecommons.org/">creativecommons.org</Link>.
         </p>
       </Blockquote>
     </Content>

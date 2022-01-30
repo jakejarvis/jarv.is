@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
+import Link from "../Link/Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
 import type { RepoType } from "../../types";
 
@@ -11,9 +12,9 @@ type Props = RepoType & {
 
 const RepositoryCard = ({ name, url, description, language, stars, forks, updatedAt, className }: Props) => (
   <div className={classNames(styles.card, className)}>
-    <a className={styles.name} href={url} target="_blank" rel="noopener noreferrer">
+    <Link className={styles.name} href={url}>
       {name}
-    </a>
+    </Link>
 
     {description && <p className={styles.description}>{description}</p>}
 
@@ -28,7 +29,6 @@ const RepositoryCard = ({ name, url, description, language, stars, forks, update
       {stars > 0 && (
         <div className={styles.meta_item}>
           <a
-            className="no-underline"
             href={`${url}/stargazers`}
             title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
             target="_blank"
@@ -43,7 +43,6 @@ const RepositoryCard = ({ name, url, description, language, stars, forks, update
       {forks > 0 && (
         <div className={styles.meta_item}>
           <a
-            className="no-underline"
             href={`${url}/network/members`}
             title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
             target="_blank"

@@ -56,6 +56,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
       <NoteTitle slug={frontMatter.slug} htmlTitle={frontMatter.htmlTitle} />
 
       <Content>
+        {/* @ts-ignore */}
         <MDXRemote {...source} components={{ ...mdxComponents }} />
       </Content>
 

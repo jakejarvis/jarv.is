@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
+import Link from "../components/Link/Link";
 import Video from "../components/Video/Video";
 
 import thumbnail from "../public/static/images/hillary/thumb.png";
@@ -26,17 +27,17 @@ const Hillary = () => (
 
       <p className="copyright">
         Video is property of{" "}
-        <a href="https://www.hillaryclinton.com/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.hillaryclinton.com/" style={{ fontWeight: 700 }}>
           Hillary for America
-        </a>
+        </Link>
         , the{" "}
-        <a href="https://democrats.org/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://democrats.org/" style={{ fontWeight: 700 }}>
           Democratic National Committee
-        </a>
+        </Link>
         , and{" "}
-        <a href="https://cnnpressroom.blogs.cnn.com/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://cnnpressroom.blogs.cnn.com/" style={{ fontWeight: 700 }}>
           CNN / WarnerMedia
-        </a>
+        </Link>
         . &copy; 2016.
       </p>
     </Content>
@@ -48,10 +49,6 @@ const Hillary = () => (
         line-height: 1.8;
         margin: 1.25em 1em 0.5em;
         color: var(--medium-light);
-      }
-
-      .copyright a {
-        font-weight: 700;
       }
     `}</style>
   </>

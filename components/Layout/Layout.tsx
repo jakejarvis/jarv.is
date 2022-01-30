@@ -1,17 +1,18 @@
 import Head from "next/head";
 import { useTheme } from "next-themes";
+import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { themeColors } from "../../lib/config";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import styles from "./Layout.module.css";
 
-type Props = {
-  children: ReactNode;
-};
+type Props = PropsWithChildren<{
+  className?: string;
+}>;
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ className, children }: Props) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -23,7 +24,7 @@ const Layout = ({ children }: Props) => {
       )}
 
       <Header />
-      <main className={styles.main}>
+      <main className={classNames(styles.main, className)}>
         <div className={styles.container}>{children}</div>
       </main>
       <Footer />

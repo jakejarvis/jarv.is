@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { format } from "date-fns";
 import HitCounter from "../HitCounter/HitCounter";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
@@ -15,11 +14,7 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
       <span>
         <DateIcon className={styles.icon} />
       </span>
-      <span title={format(new Date(date), "PPppp")}>
-        <Link href={`/notes/${slug}/`}>
-          <a>{format(new Date(date), "MMMM d, yyyy")}</a>
-        </Link>
-      </span>
+      <span title={format(new Date(date), "PPppp")}>{format(new Date(date), "MMMM d, yyyy")}</span>
     </div>
 
     {tags.length > 0 && (
@@ -36,19 +31,17 @@ const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
     )}
 
     <div>
-      <span>
-        <EditIcon className={styles.icon} />
-      </span>
-      <span>
-        <a
-          href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
-          target="_blank"
-          rel="noopener noreferrer"
-          title={`Edit "${title}" on GitHub`}
-        >
-          Improve This Post
-        </a>
-      </span>
+      <a
+        href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Edit "${title}" on GitHub`}
+      >
+        <span>
+          <EditIcon className={styles.icon} />
+        </span>
+        <span>Improve This Post</span>
+      </a>
     </div>
 
     <div className={styles.views}>

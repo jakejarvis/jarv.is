@@ -12,7 +12,6 @@ import { NOTES_DIR, baseUrl } from "./config";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
-import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 // note: 'common' only exports these languages: https://github.com/wooorm/refractor/blob/main/lib/common.js
 // eslint-disable-next-line import/no-unresolved
@@ -70,11 +69,7 @@ export const getNote = async (slug: string): Promise<NoteType> => {
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [[remarkGfm, { singleTilde: false }]],
-      rehypePlugins: [
-        [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
-        [rehypeSlug, {}],
-        [rehypePrism, { ignoreMissing: true }],
-      ],
+      rehypePlugins: [[rehypeSlug], [rehypePrism, { ignoreMissing: true }]],
     },
   });
 

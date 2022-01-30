@@ -1,15 +1,11 @@
 import { memo } from "react";
-import Link from "next/link";
-import type { ReactNode } from "react";
+import css from "styled-jsx/css";
+import classNames from "classnames";
+import Link, { Props as CustomLinkProps } from "../Link/Link";
 
-type Props = {
-  children: ReactNode;
-  href: string;
+type Props = CustomLinkProps & {
   lightColor: string;
   darkColor: string;
-  title?: string;
-  external?: boolean;
-  className?: string;
 };
 
 // spits out alpha'd version of given color in rgba() format within a linear-gradient (that's not really a gradient)
@@ -25,28 +21,23 @@ const getLinearGradient = (hex: string, alpha = 0.4) => {
   return `linear-gradient(${rgbaString},${rgbaString})`;
 };
 
-const ColorfulLink = ({ href, lightColor, darkColor, external, className, ...rest }: Props) => {
+const ColorfulLink = ({ lightColor, darkColor, className, ...rest }: Props) => {
+  const { className: underlineClassName, styles: underlineStyles } = css.resolve`
+    a {
+      color: ${lightColor};
+      background-image: ${getLinearGradient(lightColor)};
+    }
+    :global([data-theme="dark"]) a {
+      color: ${darkColor};
+      background-image: ${getLinearGradient(darkColor)};
+    }
+  `;
+
   return (
     <>
-      <Link href={href} passHref={true} prefetch={false}>
-        <a
-          className={className}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-          {...rest}
-        />
-      </Link>
+      <Link className={classNames(underlineClassName, className)} {...rest} />
 
-      <style jsx>{`
-        a {
-          color: ${lightColor};
-          background-image: ${getLinearGradient(lightColor)};
-        }
-        :global([data-theme="dark"]) a {
-          color: ${darkColor};
-          background-image: ${getLinearGradient(darkColor)};
-        }
-      `}</style>
+      {underlineStyles}
     </>
   );
 };
