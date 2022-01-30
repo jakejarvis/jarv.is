@@ -7,11 +7,7 @@
   color: var(--medium);
 }
 
-.meta a {
-  color: inherit;
-}
-
-.meta > div {
+.meta_item {
   display: inline-flex;
   margin-right: 1.6em;
   white-space: nowrap;
@@ -44,6 +40,11 @@
 
 .tag:last-of-type {
   margin-right: 0;
+}
+
+.date_link,
+.edit_link {
+  color: inherit;
 }
 
 .views {

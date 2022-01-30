@@ -6,6 +6,7 @@ import Image from "../components/Image/Image";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeBlock from "../components/CodeBlock/CodeBlock";
 import { H2 } from "../components/Heading/Heading";
+import { UnorderedList, ListItem } from "../components/List/List";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
 
@@ -37,24 +38,24 @@ const CLI = () => (
       <CodeBlock className="code-highlight">npx @jakejarvis/cli</CodeBlock>
 
       <H2>Inspired by</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://github.com/sindresorhus/sindresorhus-cli">@sindresorhus/sindresorhus-cli</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://github.com/yg/ygcodes">@yg/ygcodes</Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2>Built with</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://github.com/vadimdemedes/ink">ink</Link> - React for interactive command-line apps
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://github.com/sindresorhus/meow">meow</Link> - CLI helper
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
       <p>
         <Link href="https://github.com/jakejarvis/jakejarvis/tree/main/cli" target="_blank" rel="noreferrer">
           View source on GitHub.
@@ -63,7 +64,7 @@ const CLI = () => (
 
       <H2>License</H2>
       <p>
-        MIT © <Link href="https://jarv.is/">Jake Jarvis</Link>,{" "}
+        MIT &copy; <Link href="https://jarv.is/">Jake Jarvis</Link>,{" "}
         <Link href="https://sindresorhus.com">Sindre Sorhus</Link>
       </p>
     </Content>

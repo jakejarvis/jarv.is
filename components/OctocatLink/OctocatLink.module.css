@@ -1,10 +1,10 @@
 .link {
   margin: 0 0.4em;
-  color: var(--text) !important;
+  color: var(--text);
 }
 
 .link:hover {
-  color: var(--link) !important;
+  color: var(--link);
 }
 
 .icon {

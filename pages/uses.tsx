@@ -4,6 +4,7 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import Image from "../components/Image/Image";
 import { H2 } from "../components/Heading/Heading";
+import { UnorderedList, ListItem } from "../components/List/List";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
 
@@ -31,67 +32,69 @@ const Uses = () => (
       <Image src={desktopImg} alt="My mess of a desktop." priority />
 
       <H2 id="hardware">🍎 Hardware</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://browser.geekbench.com/v5/cpu/8124907">
             <strong>MacBook Air</strong> (2020)
           </Link>
-          <ul>
-            <li>Apple M1 (8‑core CPU, 8‑core GPU) 🏎️💨</li>
-            <li>16 GB RAM</li>
-            <li>1 TB SSD</li>
-          </ul>
-        </li>
-        <li>
+          <UnorderedList>
+            <ListItem>Apple M1 (8‑core CPU, 8‑core GPU) 🏎️💨</ListItem>
+            <ListItem>16 GB RAM</ListItem>
+            <ListItem>1 TB SSD</ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://browser.geekbench.com/v5/cpu/1074682">
             <strong>MacBook Pro 15"</strong> (Mid-2018)
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               Core i9 @ 2.9 GHZ, <Link href="https://www.youtube.com/watch?v=Dx8J125s4cg">theoretically 🔥🧯🚒</Link>
-            </li>
-            <li>32 GB RAM</li>
-            <li>1 TB SSD</li>
-            <li>Radeon Pro 560X – 4 GB</li>
-            <li>Most importantly, I haven't touched it since M1 stole my heart (for a third of the price). 💔</li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+            <ListItem>32 GB RAM</ListItem>
+            <ListItem>1 TB SSD</ListItem>
+            <ListItem>Radeon Pro 560X – 4 GB</ListItem>
+            <ListItem>
+              Most importantly, I haven't touched it since M1 stole my heart (for a third of the price). 💔
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <strong>iPhone 13 Pro</strong>
-          <ul>
-            <li>512 GB in Graphite 😎</li>
-            <li>
+          <UnorderedList>
+            <ListItem>512 GB in Graphite 😎</ListItem>
+            <ListItem>
               <Link href="https://www.apple.com/shop/product/MM2J3ZM/A/iphone-13-pro-silicone-case-with-magsafe-abyss-blue">
                 Abyss Blue Silicone Case
               </Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link href="https://www.apple.com/shop/product/MHLR3ZM/A/iphone-leather-wallet-with-magsafe-saddle-brown">
                 Saddle Brown Leather "Wallet"
               </Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               Belkin's MagSafe{" "}
               <Link href="https://www.apple.com/shop/product/HPBJ2ZM/A/belkin-car-vent-mount-pro-with-magsafe">
                 Car Vent Mount Pro
               </Link>{" "}
               is awesome too, btw.
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <strong>iPad Pro 10.5"</strong>
-          <ul>
-            <li>256 GB in Space Gray</li>
-            <li>Smart Keyboard &amp; Apple Pencil</li>
-          </ul>
-        </li>
-        <li>
+          <UnorderedList>
+            <ListItem>256 GB in Space Gray</ListItem>
+            <ListItem>Smart Keyboard &amp; Apple Pencil</ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <strong>Apple Watch Series 6</strong> (GPS)
-          <ul>
-            <li>Aluminum – Space Gray</li>
-            <li>40mm (I have incredibly small wrists.)</li>
-            <li>
+          <UnorderedList>
+            <ListItem>Aluminum – Space Gray</ListItem>
+            <ListItem>40mm (I have incredibly small wrists.)</ListItem>
+            <ListItem>
               Usually with the{" "}
               <Link href="https://www.apple.com/shop/product/MLL02ZM/A/42mm-midnight-blue-sport-band-s-m-m-l">
                 Midnight Blue sport band
@@ -105,221 +108,221 @@ const Uses = () => (
                 Close Your Rings Challenge woven nylon band
               </Link>
               .
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <strong>Google Pixel 4a</strong>
-          <ul>
-            <li>For some recreational Android development and experimentation.</li>
-            <li>
+          <UnorderedList>
+            <ListItem>For some recreational Android development and experimentation.</ListItem>
+            <ListItem>
               Activated on <Link href="https://fi.google.com/">Google Fi</Link> during rare trips.
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               Really just putting this here in a futile effort to prove I'm not a <em>complete</em> Apple sheep. 🐑
-            </li>
-          </ul>
-        </li>
-      </ul>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="development">💾 Development</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://iterm2.com/">
             <strong>iTerm 2</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               My various{" "}
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/aliases.zsh">ZSH aliases</Link> and{" "}
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/functions.zsh">functions</Link> are in{" "}
               <Link href="https://github.com/jakejarvis/dotfiles">
                 my <code>.dotfiles</code> repository.
               </Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link href="https://ohmyz.sh/">Oh My ZSH</Link>
-              <ul>
-                <li>
+              <UnorderedList>
+                <ListItem>
                   <Link href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
+                </ListItem>
+              </UnorderedList>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://code.visualstudio.com/">
             <strong>Visual Studio Code</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               <Link href="https://github.com/jakejarvis/dotfiles/tree/main/vscode">All of my settings.</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               Themes:
-              <ul>
-                <li>
+              <UnorderedList>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme">
                     GitHub Dark theme
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">
                     Material Icon theme
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro font</Link>
-                </li>
-              </ul>
-            </li>
-            <li>
+                </ListItem>
+              </UnorderedList>
+            </ListItem>
+            <ListItem>
               Extensions:
-              <ul>
-                <li>
+              <UnorderedList>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml">
                     Better TOML
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">
                     Docker
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate">
                     Duplicate action
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">
                     EditorConfig
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://copilot.github.com/">GitHub Copilot</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">
                     GitHub Pull Requests
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub">
                     GitHub Repositories
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">
                     Live Share
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">
                     markdownlint
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script">npm</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">
                     Prettier
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">
                     Remote Development Pack
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">
                     Stylelint
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wordcount">Word Count</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
+                </ListItem>
+              </UnorderedList>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://brew.sh/">
             <strong>Homebrew</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/Brewfile">
                 View my messy <code>Brewfile</code> dump
               </Link>{" "}
               with all of my installed packages.
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://developer.apple.com/xcode/">
             <strong>Xcode</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.docker.com/products/docker-desktop">
             <strong>Docker Desktop</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.parallels.com/products/desktop/">
             <strong>Parallels Desktop Pro</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               Switched from VMware Fusion when Parallels beat them to the punch with{" "}
               <Link href="https://www.parallels.com/blogs/parallels-desktop-m1/">M1 support</Link>.
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://tailscale.com/">
             <strong>Tailscale</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               For connecting to remote servers and my <Link href="#home">"homelab"</Link> without exposing ports to the
               world. Highly recommended!
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.sketch.com/">
             <strong>Sketch</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.adobe.com/creativecloud.html">
             <strong>Adobe Creative Cloud</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               Still on the $20/month{" "}
               <Link href="https://www.adobe.com/creativecloud/buy/students.html">Student Plan</Link>, somehow. 🤫 Will
               need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x that...
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://panic.com/transmit/">
             <strong>Transmit</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.getpostman.com/">
             <strong>Postman</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.browserstack.com/">
             <strong>BrowserStack</strong>
           </Link>{" "}
@@ -327,8 +330,8 @@ const Uses = () => (
           <Link href="https://percy.io/">
             <strong>Percy</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.sequelpro.com/">
             <del>Sequel Pro</del>
           </Link>{" "}
@@ -336,8 +339,8 @@ const Uses = () => (
           <Link href="https://tableplus.com/">
             <strong>TablePlus</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://robomongo.org/">
             <del>Robo 3T</del>
           </Link>{" "}
@@ -345,296 +348,296 @@ const Uses = () => (
           <Link href="https://tableplus.com/">
             <strong>TablePlus</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://imageoptim.com/mac">
             <strong>ImageOptim</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://sipapp.io/">
             <strong>Sip</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://localwp.com/">
             <strong>Local</strong>
           </Link>{" "}
           for WordPress development.
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="browsing">🌎 Browsing</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://www.mozilla.org/en-US/firefox/developer/">
             <strong>Firefox</strong>
           </Link>{" "}
           🦊
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/firefox/user.js">
                 My default <code>user.js</code> settings.
               </Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               Add-ons:
-              <ul>
-                <li>
+              <UnorderedList>
+                <ListItem>
                   <Link href="https://support.1password.com/cs/1password-classic-extension/">1Password Classic</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/betterttv/">BetterTTV</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/">Cookie Editor</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">Decentraleyes</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/facebook-container/">
                     Facebook Container
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/">
                     Firefox Multi-Account Containers
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/">HTTPS Everywhere</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Mailvelope</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">
                     React Developer Tools
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/octolinker/">OctoLinker</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/">Privacy Badger</Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
+                </ListItem>
+              </UnorderedList>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.google.com/chrome/browser/?extra=devchannel">
             <strong>Google Chrome</strong>
           </Link>{" "}
           😈
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               For testing only! See more of <Link href="#cloud">my de-Googling efforts below</Link>.
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               Add-ons:
-              <ul>
-                <li>
+              <UnorderedList>
+                <ListItem>
                   <Link href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en">
                     AMP Validator
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en">
                     Lighthouse
                   </Link>
-                </li>
-                <li>
+                </ListItem>
+                <ListItem>
                   <Link href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">
                     React Developer Tools
                   </Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
+                </ListItem>
+              </UnorderedList>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="macos">💻 macOS</H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://1password.com/">
             <strong>1Password</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.obdev.at/products/littlesnitch/index.html">
             <strong>Little Snitch</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://bjango.com/mac/istatmenus/">
             <strong>iStat Menus</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.backblaze.com/">
             <strong>Backblaze</strong>
           </Link>{" "}
           <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://github.com/billycastelli/Silicon-Info">
             <strong>Silicon Info</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.corecode.io/macupdater/">
             <strong>MacUpdater</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://unshaky.nestederror.com/">
             <strong>Unshaky</strong>
           </Link>{" "}
           ⌨️ (on my 2018 MBP)
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               Toooo &nbsp;lzy too vist &nbsp;&nbsp;the&nbsp; Aple Stre geeniusses oonce &nbsp;agin&nbsp; to fiix
               tthe&nbsp; keeybbbboord. 😒🦋
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <Link href="https://daisydiskapp.com/">
             <strong>DaisyDisk</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://freemacsoft.net/appcleaner/">
             <strong>AppCleaner</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://gpgtools.org/">
             <strong>GPG Suite</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>VLC</del> →{" "}
           <Link href="https://iina.io/">
             <strong>IINA</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://transmissionbt.com/">
             <strong>Transmission</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.paragon-software.com/us/home/ntfs-mac/#">
             <strong>Paragon NTFS</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://roaringapps.com/app/amphetamine">
             <strong>Amphetamine</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://coconut-flavour.com/coconutbattery/">
             <strong>coconutBattery</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://theunarchiver.com/">
             <strong>The Unarchiver</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.intuitibits.com/products/wifi-explorer/">
             <strong>WiFi Explorer</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://parsec.app/">
             <strong>Parsec</strong>
           </Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="ios">📱 iOS</H2>
       <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id568903335">
             <strong>1Password</strong> (beta)
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id323229106">
             <strong>Waze</strong> (beta)
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id585027354">
             <strong>Google Maps</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id517329357">
             <strong>Dark Sky</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id731629156">
             <strong>Xfinity Stream</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id317951436">
             <strong>SiriusXM</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id379693831">
             <strong>Audible</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id414834813">
             <strong>Pocket Casts</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id1488977981">
             <strong>Sonos</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id383457673">
             <strong>Plex</strong> (beta)
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id1212616790">
             <strong>Microsoft To-Do</strong>
           </Link>{" "}
           (RIP Wunderlist 🙏)
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://apps.apple.com/app/id985746746">
             <strong>Discord</strong>
           </Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="cloud">☁️ Cloud</H2>
       <p>
         I've been making recent efforts to <Link href="https://www.stallman.org/google.html">de-Google</Link> my life,
         with mixed results...
       </p>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <del>Gmail</del> →{" "}
           <Link href="https://www.fastmail.com/">
             <strong>Fastmail</strong>
@@ -643,46 +646,46 @@ const Uses = () => (
           <Link href="https://en.wikipedia.org/wiki/Apple_Mail">
             <strong>Mail.app</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>Google Drive</del> → <del>Dropbox</del> →{" "}
           <Link href="https://www.icloud.com/iclouddrive">
             <strong>iCloud Drive</strong>
           </Link>
-          <ul>
-            <li>
+          <UnorderedList>
+            <ListItem>
               <Link href="/notes/dropping-dropbox/">Read why.</Link>
-            </li>
-          </ul>
-        </li>
-        <li>
+            </ListItem>
+          </UnorderedList>
+        </ListItem>
+        <ListItem>
           <del>Google Docs</del> →{" "}
           <Link href="https://products.office.com/en-us/mac/microsoft-office-for-mac">
             <strong>Microsoft Office</strong>
           </Link>{" "}
           (hey, it works 🤷)
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>Google Photos</del> →{" "}
           <Link href="https://www.icloud.com/photos/">
             <strong>iCloud Photos</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>Google Analytics</del> →{" "}
           <Link href="https://www.netlify.com/products/analytics/">
             <strong>Netlify Analytics</strong>
           </Link>{" "}
           <Link href="/notes/netlify-analytics-review/">(my review)</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>Google Public DNS</del> →{" "}
           <Link href="https://1.1.1.1/dns/">
             <strong>Cloudflare's 1.1.1.1</strong>
           </Link>{" "}
           on my home network.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <del>GoDaddy</del> → <del>Google Domains</del> →{" "}
           <Link href="https://www.cloudflare.com/products/registrar/">
             <strong>Cloudflare Registrar</strong>
@@ -692,11 +695,11 @@ const Uses = () => (
             <strong>ISNIC</strong>
           </Link>{" "}
           for this domain, of course 🇮🇸)
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
       <p>Other geeky stuff:</p>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://dnsimple.com/">
             <strong>DNSimple</strong>
           </Link>{" "}
@@ -705,8 +708,8 @@ const Uses = () => (
             <strong>Cloudflare</strong>
           </Link>{" "}
           for domain DNS.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.netlify.com/">
             <strong>Netlify</strong>
           </Link>{" "}
@@ -715,8 +718,8 @@ const Uses = () => (
             <strong>Vercel</strong>
           </Link>{" "}
           for static sites.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.linode.com/">
             <strong>Linode</strong>
           </Link>{" "}
@@ -725,20 +728,20 @@ const Uses = () => (
             <strong>DigitalOcean</strong>
           </Link>{" "}
           <Link href="https://m.do.co/c/afcf288a7dac">(referral link)</Link> for virtual Linux servers.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.backblaze.com/">
             <strong>Backblaze</strong>
           </Link>{" "}
           <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link> for off-site MacBook backups.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://gitea.io/en-us/">
             <strong>Gitea</strong>
           </Link>{" "}
           as a <Link href="https://code.jarv.is/">self-hosted</Link> Git backup/mirror.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.plex.tv/">
             <strong>Plex</strong>
           </Link>{" "}
@@ -750,24 +753,24 @@ const Uses = () => (
           <Link href="https://radarr.video/">
             <strong>Radarr</strong>
           </Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="iot">
         🏠 Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
       </H2>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://www.synology.com/en-us/products/RT2600ac">
             <strong>Synology RT2600ac</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.synology.com/en-us/products/DS218+">
             <strong>Synology DiskStation DS218+</strong>
           </Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.amazon.com/dp/B00HWML468/">
             <strong>Dell Inspiron 3647</strong>
           </Link>
@@ -776,46 +779,35 @@ const Uses = () => (
             <strong>VMware ESXi</strong>
           </Link>
           , as a really, <em>really</em> crappy home server.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www2.meethue.com/en-us">
             <strong>Philips Hue</strong>
           </Link>{" "}
           color bulbs, dimmer switches, etc.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           2x{" "}
           <Link href="https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/">
             <strong>ecobee3 lite</strong>
           </Link>{" "}
           smart thermostats (HomeKit support was a must.)
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           2x{" "}
           <Link href="https://www.sonos.com/en-us/shop/one.html">
             <strong>Sonos One</strong>
           </Link>{" "}
           (with Alexa turned off...allegedly.)
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://petcube.com/play/">
             <strong>Petcube Play</strong>
           </Link>{" "}
           😻
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
     </Content>
-
-    {/* TODO: use OrderedList component */}
-    <style jsx>{`
-      ul {
-        margin-left: 1.5em;
-        padding-left: 0;
-      }
-      li {
-        padding-left: 0.25em;
-      }
-    `}</style>
   </>
 );
 

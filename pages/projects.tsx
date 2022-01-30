@@ -4,6 +4,7 @@ import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
+import { OctocatOcticon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import type { RepoType } from "../types";
 
@@ -32,7 +33,20 @@ const Projects = ({ repos }: Props) => (
       </div>
 
       <p className="view_more">
-        <Link href="https://github.com/jakejarvis?tab=repositories">View more on GitHub...</Link>
+        <Link href="https://github.com/jakejarvis?tab=repositories">
+          View more on{" "}
+          <OctocatOcticon
+            fill="currentColor"
+            style={{
+              color: "var(--text)",
+              width: "1.2em",
+              height: "1.2em",
+              verticalAlign: "-0.2em",
+              margin: "0 0.15em",
+            }}
+          />{" "}
+          GitHub...
+        </Link>
       </p>
     </Content>
 

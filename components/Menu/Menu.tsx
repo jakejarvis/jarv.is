@@ -13,22 +13,22 @@ type Props = {
 
 const links = [
   {
-    icon: <HomeIcon className={styles.icon} aria-hidden={true} />,
+    icon: <HomeIcon className={styles.icon} />,
     text: "Home",
     href: "/",
   },
   {
-    icon: <NotesIcon className={styles.icon} aria-hidden={true} />,
+    icon: <NotesIcon className={styles.icon} />,
     text: "Notes",
     href: "/notes",
   },
   {
-    icon: <ProjectsIcon className={styles.icon} aria-hidden={true} />,
+    icon: <ProjectsIcon className={styles.icon} />,
     text: "Projects",
     href: "/projects",
   },
   {
-    icon: <ContactIcon className={styles.icon} aria-hidden={true} />,
+    icon: <ContactIcon className={styles.icon} />,
     text: "Contact",
     href: "/contact",
   },

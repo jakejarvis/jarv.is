@@ -5,16 +5,12 @@
   font-weight: 700;
 }
 
-.title a {
-  color: inherit;
+.title code {
+  margin: 0 0.075em;
 }
 
-.title code {
-  font-size: 1em;
-  background: none !important;
-  border: 0 !important;
-  margin: 0 0.075em !important;
-  padding: 0 !important;
+.link {
+  color: inherit;
 }
 
 @media screen and (max-width: 768px) {

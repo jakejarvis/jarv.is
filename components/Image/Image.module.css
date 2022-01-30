@@ -6,6 +6,6 @@
   text-align: center;
 }
 
-.wrapper img {
+.image {
   border-radius: var(--rounded-edge-radius);
 }

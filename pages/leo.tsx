@@ -44,7 +44,7 @@ const Leo = () => (
         text-align: center;
         font-size: 0.9em;
         line-height: 1.8;
-        margin: 1.25em 1em 0.5em;
+        margin: 1.25em 1em 0 1em;
         color: var(--medium-light);
       }
     `}</style>

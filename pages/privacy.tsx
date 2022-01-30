@@ -4,8 +4,9 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import Image from "../components/Image/Image";
 import IFrame from "../components/IFrame/IFrame";
-import { H2 } from "../components/Heading/Heading";
 import Blockquote from "../components/Blockquote/Blockquote";
+import { H2 } from "../components/Heading/Heading";
+import { UnorderedList, ListItem } from "../components/List/List";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 
@@ -91,29 +92,29 @@ const Privacy = () => (
         code that is outside of my control. Please refer to their privacy policies for more information:
       </p>
 
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <Link href="https://blog.codepen.io/documentation/privacy/">CodePen</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://www.facebook.com/policy.php">Facebook</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://docs.github.com/en/github/site-policy/github-privacy-statement">GitHub</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://soundcloud.com/pages/privacy">SoundCloud</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://twitter.com/en/privacy">Twitter</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://vimeo.com/privacy">Vimeo</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link href="https://policies.google.com/privacy">YouTube</Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H2 id="hcaptcha">Fighting Spam</H2>
 

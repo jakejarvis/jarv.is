@@ -7,7 +7,7 @@
   transition: color 0.25s ease, background 0.25s ease, border 0.25s ease;
 }
 
-.footer a {
+.link {
   color: inherit;
 }
 

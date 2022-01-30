@@ -5,6 +5,7 @@ import Link from "../components/Link/Link";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 import Blockquote from "../components/Blockquote/Blockquote";
 import { H2, H3 } from "../components/Heading/Heading";
+import { UnorderedList, OrderedList, ListItem } from "../components/List/List";
 
 const License = () => (
   <>
@@ -84,8 +85,8 @@ const License = () => (
         rights specified in the public license below. The following considerations are for informational purposes only,
         are not exhaustive, and do not form part of our licenses.
       </p>
-      <ul>
-        <li>
+      <UnorderedList>
+        <ListItem>
           <p>
             <strong>Considerations for licensors:</strong> Our public licenses are intended for use by those authorized
             to give the public permission to use material in ways otherwise restricted by copyright and certain other
@@ -99,8 +100,8 @@ const License = () => (
             </Link>
             .
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>Considerations for the public:</strong> By using one of our public licenses, a licensor grants the
             public permission to use the licensed material under specified terms and conditions. If the licensor's
@@ -115,8 +116,8 @@ const License = () => (
             </Link>
             .
           </p>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
 
       <H3>Licensed Rights</H3>
 
@@ -193,8 +194,8 @@ const License = () => (
           <strong>License grant.</strong>
         </em>
       </p>
-      <ol>
-        <li>
+      <OrderedList>
+        <ListItem>
           <p>
             Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide,
             royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the
@@ -202,20 +203,20 @@ const License = () => (
           </p>
           <p>A. reproduce and Share the Licensed Material, in whole or in part; and</p>
           <p>B. produce, reproduce, and Share Adapted Material.</p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>Exceptions and Limitations.</strong> For the avoidance of doubt, where Exceptions and Limitations
             apply to Your use, this Public License does not apply, and You do not need to comply with its terms and
             conditions.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>Term.</strong> The term of this Public License is specified in Section 6(a).
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>Media and formats; technical modifications allowed.</strong> The Licensor authorizes You to exercise
             the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical
@@ -225,8 +226,8 @@ const License = () => (
             Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted
             Material.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>Downstream recipients.</strong>
           </p>
@@ -240,43 +241,43 @@ const License = () => (
             terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so
             restricts exercise of the Licensed Rights by any recipient of the Licensed Material.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             <strong>No endorsement.</strong> Nothing in this Public License constitutes or may be construed as
             permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or
             sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution
             as provided in Section 3(a)(1)(A)(i).
           </p>
-        </li>
-      </ol>
+        </ListItem>
+      </OrderedList>
       <p>
         b.{" "}
         <em>
           <strong>Other rights.</strong>
         </em>
       </p>
-      <ol>
-        <li>
+      <OrderedList>
+        <ListItem>
           <p>
             Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity,
             privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives
             and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow
             You to exercise the Licensed Rights, but not otherwise.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>Patent and trademark rights are not licensed under this Public License.</p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the
             Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory
             or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such
             royalties.
           </p>
-        </li>
-      </ol>
+        </ListItem>
+      </OrderedList>
 
       <H3>Section 3 – License Conditions.</H3>
 
@@ -287,8 +288,8 @@ const License = () => (
           <strong>Attribution.</strong>
         </em>
       </p>
-      <ol>
-        <li>
+      <OrderedList>
+        <ListItem>
           <p>If You Share the Licensed Material (including in modified form), You must:</p>
           <p>A. retain the following if it is supplied by the Licensor with the Licensed Material:</p>
           <p>
@@ -307,27 +308,27 @@ const License = () => (
             C. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI
             or hyperlink to, this Public License.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and
             context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the
             conditions by providing a URI or hyperlink to a resource that includes the required information.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the
             extent reasonably practicable.
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>
             If You Share Adapted Material You produce, the Adapter's License You apply must not prevent recipients of
             the Adapted Material from complying with this Public License.
           </p>
-        </li>
-      </ol>
+        </ListItem>
+      </OrderedList>
 
       <H3>Section 4 – Sui Generis Database Rights.</H3>
 
@@ -388,17 +389,17 @@ const License = () => (
         fail to comply with this Public License, then Your rights under this Public License terminate automatically.
       </p>
       <p>b. Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:</p>
-      <ol>
-        <li>
+      <OrderedList>
+        <ListItem>
           <p>
             automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery
             of the violation; or
           </p>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <p>upon express reinstatement by the Licensor.</p>
-        </li>
-      </ol>
+        </ListItem>
+      </OrderedList>
       <p>
         For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies
         for Your violations of this Public License.

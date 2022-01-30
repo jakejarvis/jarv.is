@@ -1,5 +1,6 @@
 import { memo } from "react";
 import Link from "next/link";
+import classNames from "classnames";
 import { HeartIcon, NextjsLogo } from "../Icons";
 import * as config from "../../lib/config";
 
@@ -11,11 +12,15 @@ const Footer = () => (
       <div className={styles.license}>
         Content{" "}
         <Link href="/license/" prefetch={false}>
-          <a title="Creative Commons Attribution 4.0 International">licensed under CC-BY-4.0</a>
+          <a className={styles.link} title="Creative Commons Attribution 4.0 International">
+            licensed under CC-BY-4.0
+          </a>
         </Link>
         ,{" "}
         <Link href="/previously/" prefetch={false}>
-          <a title="Previously on...">2001</a>
+          <a className={styles.link} title="Previously on...">
+            2001
+          </a>
         </Link>{" "}
         – {new Date().getFullYear()}.
       </div>
@@ -26,7 +31,7 @@ const Footer = () => (
         </span>{" "}
         and{" "}
         <a
-          className={styles.nextjs}
+          className={classNames(styles.link, styles.nextjs)}
           href="https://nextjs.org/"
           title="Powered by Next.js"
           aria-label="Next.js"
@@ -37,7 +42,7 @@ const Footer = () => (
         </a>
         .{" "}
         <a
-          className={styles.view_source}
+          className={classNames(styles.link, styles.view_source)}
           href={`https://github.com/${config.githubRepo}`}
           title="View Source on GitHub"
           target="_blank"

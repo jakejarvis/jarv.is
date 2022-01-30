@@ -1,6 +1,6 @@
 .card {
   width: 100%;
-  padding: 1.2em 1.2em 0.8em;
+  padding: 1.2em 1.2em 0.8em 1.2em;
   border: 1px solid;
   border-radius: var(--rounded-edge-radius);
   font-size: 0.85em;
@@ -16,7 +16,8 @@
 }
 
 .description {
-  margin: 0.7em 0 0.5em;
+  margin-top: 0.7em;
+  margin-bottom: 0.5em;
   line-height: 1.7;
 }
 
@@ -33,12 +34,12 @@
   color: var(--medium);
 }
 
-.meta_item a {
-  color: inherit !important;
+.meta_link {
+  color: inherit;
 }
 
-.meta_item a:hover {
-  color: var(--link) !important;
+.meta_link:hover {
+  color: var(--link);
 }
 
 .octicon,

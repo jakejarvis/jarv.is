@@ -42,7 +42,7 @@ const CustomImage = ({
   return (
     <div className={classNames(styles.wrapper, className)}>
       {/* @ts-ignore */}
-      <NextImage {...imageProps} {...rest} />
+      <NextImage className={styles.image} {...imageProps} {...rest} />
     </div>
   );
 };

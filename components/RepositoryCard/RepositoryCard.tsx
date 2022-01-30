@@ -29,6 +29,7 @@ const RepositoryCard = ({ name, url, description, language, stars, forks, update
       {stars > 0 && (
         <div className={styles.meta_item}>
           <a
+            className={styles.meta_link}
             href={`${url}/stargazers`}
             title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
             target="_blank"
@@ -43,6 +44,7 @@ const RepositoryCard = ({ name, url, description, language, stars, forks, update
       {forks > 0 && (
         <div className={styles.meta_item}>
           <a
+            className={styles.meta_link}
             href={`${url}/network/members`}
             title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
             target="_blank"

@@ -17,7 +17,7 @@ const PageTitle = ({ className, ...rest }: Props) => {
   return (
     <h1 className={classNames(styles.title, className)}>
       <Link href={canonical}>
-        <a {...rest} />
+        <a className={styles.link} {...rest} />
       </Link>
     </h1>
   );
