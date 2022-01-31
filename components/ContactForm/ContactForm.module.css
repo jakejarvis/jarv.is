@@ -62,8 +62,11 @@
   background-color: var(--link);
 }
 
-.btn_submit .send_icon {
-  margin-right: var(--rounded-edge-radius);
+.send_icon {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+  margin-right: 0.4em;
 }
 
 .result_icon {

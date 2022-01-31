@@ -9,10 +9,7 @@ import styles from "./Link.module.css";
 export type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
   LinkProps &
   PropsWithChildren<{
-    target?: string;
-    rel?: string;
     forceNewWindow?: boolean;
-    className?: string;
   }>;
 
 const CustomLink = ({

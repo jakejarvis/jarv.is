@@ -1,15 +1,13 @@
 import classNames from "classnames";
+import { IframeHTMLAttributes } from "react";
 
 import styles from "./IFrame.module.css";
 
-type Props = {
-  src: string;
-  title?: string;
+type Props = IframeHTMLAttributes<HTMLElement> & {
   height: number;
   width?: number; // defaults to 100%
   allowScripts?: boolean;
   noScroll?: boolean;
-  className?: string;
 };
 
 const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, ...rest }: Props) => (

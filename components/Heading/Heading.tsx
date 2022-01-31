@@ -5,8 +5,6 @@ import styles from "./Heading.module.css";
 
 type Props = HTMLAttributes<HTMLHeadingElement> & {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  id?: string;
-  className?: string;
 };
 
 const Heading = ({ as: Component, id, className, children, ...rest }: Props) => {

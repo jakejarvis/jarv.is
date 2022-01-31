@@ -9,7 +9,6 @@ import styles from "./Figure.module.css";
 type Props = Omit<NextImageProps, "alt"> &
   PropsWithChildren<{
     alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
-    className?: string;
   }>;
 
 const Figure = ({ children, alt, className, ...imageProps }: Props) => {
