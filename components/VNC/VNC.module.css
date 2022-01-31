@@ -19,28 +19,8 @@
   cursor: default !important;
 }
 
-.cmd {
+.terminal {
+  height: 400px;
   width: 100%;
   max-width: 700px;
-  min-height: 400px;
-  padding: 1em;
-
-  background-color: #000000;
-  color: #cccccc;
-
-  font-size: 0.925em;
-  font-weight: 500;
-  line-height: 2;
-  white-space: pre-wrap;
-  user-select: none;
-}
-
-.blink {
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
 }

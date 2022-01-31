@@ -1,0 +1,28 @@
+.terminal {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+
+  background-color: #000000;
+  color: #cccccc;
+
+  font-size: 0.925em;
+  font-weight: 500;
+  line-height: 2;
+  white-space: pre-wrap;
+  user-select: none;
+}
+
+.blink {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 10px;
+  border-bottom: 2px solid #cccccc;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
