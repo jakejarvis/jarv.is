@@ -8,17 +8,7 @@ const withPlugins = require("next-compose-plugins");
 const config = require("./lib/config");
 
 module.exports = (phase, { defaultConfig }) => {
-  let BASE_URL; // fallback to relative urls
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") {
-    // vercel production (set manually)
-    BASE_URL = "https://jarv.is";
-  } else if (process.env.NEXT_PUBLIC_VERCEL_URL) {
-    // vercel deploy previews
-    BASE_URL = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  } else if (phase === PHASE_DEVELOPMENT_SERVER) {
-    // local dev server
-    BASE_URL = "http://localhost:3000";
-  }
+  const IS_DEV_SERVER = phase === PHASE_DEVELOPMENT_SERVER;
 
   return withPlugins(
     [
@@ -32,7 +22,7 @@ module.exports = (phase, { defaultConfig }) => {
       trailingSlash: true,
       productionBrowserSourceMaps: true,
       env: {
-        BASE_URL,
+        IS_DEV_SERVER,
       },
       images: {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920],

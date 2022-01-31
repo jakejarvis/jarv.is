@@ -143,10 +143,6 @@ const App = ({ Component, pageProps }: AppProps) => {
             content: config.authorName,
           },
           {
-            name: "monetization",
-            content: config.monetization,
-          },
-          {
             name: "google-site-verification",
             content: config.verifyGoogle,
           },
