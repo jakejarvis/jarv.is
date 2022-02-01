@@ -12,6 +12,10 @@ module.exports = (phase, { defaultConfig }) => {
 
   return withPlugins(
     [
+      require("next-transpile-modules")([
+        // fixes some mystery issues in the noVNC library
+        "@novnc/novnc",
+      ]),
       require("@next/bundle-analyzer")({
         enabled: process.env.ANALYZE === "true",
       }),
