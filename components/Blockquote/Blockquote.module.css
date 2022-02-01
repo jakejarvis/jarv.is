@@ -1,6 +1,6 @@
 .blockquote {
   margin-left: 0;
-  padding-left: 1.5em;
-  border-left: 3px solid var(--link);
+  padding-left: 1.25em;
+  border-left: 0.25em solid var(--link);
   color: var(--medium-dark);
 }

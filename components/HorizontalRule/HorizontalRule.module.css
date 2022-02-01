@@ -1,6 +1,6 @@
 .hr {
   margin: 1.5em auto;
-  height: 2px;
+  height: 0.175em;
   border: 0;
   background-color: var(--light);
 }

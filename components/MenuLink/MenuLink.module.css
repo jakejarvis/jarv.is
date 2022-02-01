@@ -8,8 +8,8 @@
 
 .link:hover,
 .link.current {
-  border-bottom: 3px solid;
-  margin-bottom: -3px;
+  border-bottom: 0.2em solid;
+  margin-bottom: -0.2em;
 }
 
 .link:hover {
