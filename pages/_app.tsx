@@ -5,12 +5,8 @@ import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
 import * as config from "../lib/config";
+import { defaultSeo, socialProfileJsonLd } from "../lib/seo";
 import type { AppProps } from "next/app";
-
-import faviconIco from "../public/static/favicons/favicon.ico";
-import faviconPng from "../public/static/favicons/favicon.png";
-import appleTouchIconPng from "../public/static/favicons/apple-touch-icon.png";
-import meJpg from "../public/static/images/me.jpg";
 
 // global webfonts -- imported here so they're processed through PostCSS
 import "@fontsource/inter/latin-400.css";
@@ -60,120 +56,18 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      {/* @ts-ignore */}
       <DefaultSeo
-        defaultTitle={`${config.siteName} – ${config.shortDescription}`}
-        titleTemplate={`%s – ${config.siteName}`}
-        description={config.longDescription}
+        {...defaultSeo}
         canonical={canonical}
         openGraph={{
-          site_name: config.siteName,
-          title: `${config.siteName} – ${config.shortDescription}`,
+          ...defaultSeo.openGraph,
           url: canonical,
-          locale: config.siteLocale,
-          type: "website",
-          images: [
-            {
-              url: `${config.baseUrl}${meJpg.src}`,
-              alt: `${config.siteName} – ${config.shortDescription}`,
-            },
-          ],
         }}
-        twitter={{
-          handle: `@${config.authorSocial?.twitter}`,
-          site: `@${config.authorSocial?.twitter}`,
-          cardType: "summary",
-        }}
-        additionalLinkTags={[
-          {
-            rel: "icon",
-            href: faviconIco.src,
-          },
-          {
-            rel: "icon",
-            href: faviconPng.src,
-            type: "image/png",
-          },
-          {
-            rel: "apple-touch-icon",
-            href: appleTouchIconPng.src,
-            sizes: `${appleTouchIconPng.width}x${appleTouchIconPng.height}`,
-          },
-          {
-            rel: "manifest",
-            href: "/site.webmanifest",
-          },
-          {
-            rel: "alternate",
-            href: "/feed.xml",
-            type: "application/rss+xml",
-            title: `${config.siteName} (RSS)`,
-          },
-          {
-            rel: "alternate",
-            href: "/feed.atom",
-            type: "application/atom+xml",
-            title: `${config.siteName} (Atom)`,
-          },
-          {
-            rel: "webmention",
-            href: `https://webmention.io/${config.webmentionId}/webmention`,
-          },
-          {
-            rel: "pingback",
-            href: `https://webmention.io/${config.webmentionId}/xmlrpc`,
-          },
-          {
-            rel: "humans",
-            href: "/humans.txt",
-          },
-          {
-            rel: "pgpkey",
-            href: "/pubkey.asc",
-            type: "application/pgp-keys",
-          },
-        ]}
-        additionalMetaTags={[
-          {
-            name: "viewport",
-            content: "width=device-width, initial-scale=1",
-          },
-          {
-            name: "author",
-            content: config.authorName,
-          },
-          {
-            name: "google-site-verification",
-            content: config.verifyGoogle,
-          },
-          {
-            name: "msvalidate.01",
-            content: config.verifyBing,
-          },
-          {
-            name: "facebook-domain-verification",
-            content: config.verifyFacebook,
-          },
-        ]}
         // don't let search engines index branch/deploy previews
         dangerouslySetAllPagesToNoIndex={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
         dangerouslySetAllPagesToNoFollow={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
       />
-      <SocialProfileJsonLd
-        type="Person"
-        name={config.authorName}
-        url={`${config.baseUrl}/`}
-        sameAs={[
-          `${config.baseUrl}/`,
-          `https://github.com/${config.authorSocial?.github}`,
-          `https://keybase.io/${config.authorSocial?.keybase}`,
-          `https://twitter.com/${config.authorSocial?.twitter}`,
-          `https://medium.com/@${config.authorSocial?.medium}`,
-          `https://www.linkedin.com/in/${config.authorSocial?.linkedin}/`,
-          `https://www.facebook.com/${config.authorSocial?.facebook}`,
-          `https://www.instagram.com/${config.authorSocial?.instagram}/`,
-        ]}
-      />
+      <SocialProfileJsonLd {...socialProfileJsonLd} />
 
       <ThemeProvider>
         <Layout>

@@ -9,6 +9,7 @@ import Comments from "../../components/Comments/Comments";
 import * as mdxComponents from "../../lib/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
+import { articleJsonLd } from "../../lib/seo";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import type { NoteType } from "../../types";
 
@@ -47,9 +48,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
         images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
-        authorName={[config.authorName]}
-        publisherName={config.siteName}
-        publisherLogo={`${config.baseUrl}/static/images/me.jpg`}
+        {...articleJsonLd}
       />
 
       <NoteMeta slug={frontMatter.slug} date={frontMatter.date} title={frontMatter.title} tags={frontMatter.tags} />

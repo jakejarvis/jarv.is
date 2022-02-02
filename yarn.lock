@@ -2569,9 +2569,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.17:
-  version "1.4.59"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.59.tgz#657f2588c048fb95975779f8fea101fad854de89"
-  integrity sha512-AOJ3cAE0TWxz4fQ9zkND5hWrQg16nsZKVz9INOot1oV//u4wWu5xrj9CQMmPTYskkZRunSRc9sAnr4EkexXokg==
+  version "1.4.60"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.60.tgz#2b824d862f068a9794b2b75d66ad40ff44745f18"
+  integrity sha512-h53hbEiKC6hijelDgxgkgAUC3PKyR7TmIfvjHnBjUGPMg/3sBuTyG6eDormw+lY24uUJvHkUPzB8dpK8b2u3Sw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -3052,10 +3052,10 @@ fathom-client@^3.4.0:
   resolved "https://registry.yarnpkg.com/fathom-client/-/fathom-client-3.4.0.tgz#424b6732d035b68fa1139f0317d10fd4106dc75f"
   integrity sha512-9ZgVLSP5GLXrIOLqY2ipar2Pw2/Dw6YNsqix9SbbrK9XpFA318VYf0GeKUBqZQQM+z7fbyDTWkBjl+UMe+eQwA==
 
-faunadb@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/faunadb/-/faunadb-4.4.2.tgz#f5ea92469aab7854dd45a4953bf42fd36aa71ffe"
-  integrity sha512-kbyfN18hmFTuJ3EwU9wsnQG1F5xsHpSZHXl7H79fMZ0TX28CVQY5A64g13z2PR+fcR5WiACqcWfkJQLMpQSaAw==
+faunadb@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/faunadb/-/faunadb-4.5.0.tgz#e9864272ca5b6bc85c753b1a1a07b067fb123911"
+  integrity sha512-QNSw4XD53aHdikld1rt3kiiVbgx8DiXeeL5Z1/1TfhoiwgAEfYZ9VyGfXjwmthrlLy3YilU+bRPFyysK8q+kMg==
   dependencies:
     abort-controller "^3.0.0"
     base64-js "^1.2.0"
@@ -4823,10 +4823,10 @@ next-mdx-remote@4.0.0-rc.1:
     vfile "^5.2.0"
     vfile-matter "^3.0.1"
 
-next-seo@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.0.0.tgz#8a5c82279edcbd74c4ce58efa5588528e47c0d72"
-  integrity sha512-uCa8hoE5VQz4D2NqZAPhqR64hY5LSmaq70wmfGK09U57TMY7XzsDI+MjfZo0MgHJM87bj3Fd/oMQbDcZ/YWhJQ==
+next-seo@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.1.0.tgz#aa9fd6249a11bf93e6da06fa2a6bc89268936edf"
+  integrity sha512-ampuQfNTOi1x+xtRIb6CZGunIo6rQXtMo2Tyu861d5GjJFIwfOXsA4lzCa4+e2rLkyXDyVpavNNUZWa3US9ELw==
 
 next-themes@^0.0.15:
   version "0.0.15"
