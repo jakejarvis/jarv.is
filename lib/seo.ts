@@ -15,7 +15,7 @@ import meJpg from "../public/static/images/me.jpg";
 
 export const defaultSeo: DefaultSeoProps = {
   defaultTitle: `${config.siteName} – ${config.shortDescription}`,
-  titleTemplate: `%s – ${config.siteName}`, // appends `– siteName` to title provided by each page
+  titleTemplate: `%s – ${config.siteName}`, // appends `– siteName` to title provided by each page (except home)
   description: config.longDescription,
   openGraph: {
     site_name: config.siteName,

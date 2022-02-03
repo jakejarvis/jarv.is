@@ -56,6 +56,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      {/* all SEO config is in ./lib/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
         canonical={canonical}

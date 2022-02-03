@@ -73,21 +73,26 @@ export const getNote = async (slug: string): Promise<NoteType> => {
     },
   });
 
+  // next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
+  // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
+  // ...so for now do it manually (and conservatively) with terser when building for production.
+  const compiledSource =
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? (
+          await minify(source.compiledSource, {
+            ecma: 2018,
+            module: true,
+            parse: { bare_returns: true },
+            compress: { defaults: true },
+            sourceMap: false,
+          })
+        ).code
+      : source.compiledSource;
+
   return {
     frontMatter,
     source: {
-      // next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
-      // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
-      // ...so do it manually (and conservatively) with terser for now.
-      compiledSource: (
-        await minify(source.compiledSource, {
-          ecma: 2018,
-          module: true,
-          parse: { bare_returns: true },
-          compress: { defaults: true },
-          sourceMap: false,
-        })
-      ).code,
+      compiledSource,
     },
   };
 };
