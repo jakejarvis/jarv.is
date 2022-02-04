@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Pragma", "no-cache");
 
     if (req.method !== "POST") {
-      return res.status(405).send(""); // 405 Method Not Allowed
+      return res.status(405).end(); // 405 Method Not Allowed
     }
 
     const { body } = req;

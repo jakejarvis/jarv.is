@@ -9,10 +9,11 @@ import type { PropsWithChildren } from "react";
 import styles from "./Layout.module.css";
 
 type Props = PropsWithChildren<{
+  noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
   className?: string;
 }>;
 
-const Layout = ({ className, children }: Props) => {
+const Layout = ({ noContainer, className, children }: Props) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -24,9 +25,15 @@ const Layout = ({ className, children }: Props) => {
       )}
 
       <Header />
-      <main className={classNames(styles.main, className)}>
-        <div className={styles.container}>{children}</div>
-      </main>
+
+      {noContainer ? (
+        <main className={className}>{children}</main>
+      ) : (
+        <main className={classNames(styles.main, className)}>
+          <div className={styles.container}>{children}</div>
+        </main>
+      )}
+
       <Footer />
     </>
   );

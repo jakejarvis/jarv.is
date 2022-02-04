@@ -6,6 +6,8 @@ import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/seo";
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 // global webfonts -- imported here so they're processed through PostCSS
@@ -26,7 +28,14 @@ import "../styles/colors.css";
 import "../styles/typography.css";
 import "../styles/index.css";
 
-const App = ({ Component, pageProps }: AppProps) => {
+// https://nextjs.org/docs/basic-features/layouts#with-typescript
+type Props = AppProps & {
+  Component: NextPage & {
+    getLayout?: (page: ReactElement) => ReactNode;
+  };
+};
+
+const App = ({ Component, pageProps }: Props) => {
   const router = useRouter();
 
   // get this page's URL with full domain, and hack around query parameters and anchors
@@ -54,6 +63,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // allow layout overrides per-page, but default to plain `<Layout />`
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+
   return (
     <>
       {/* all SEO config is in ./lib/seo.ts except for canonical URLs, which require access to next router */}
@@ -70,11 +82,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <ThemeProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };

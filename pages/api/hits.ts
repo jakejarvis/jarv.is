@@ -13,7 +13,7 @@ Sentry.init({
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method !== "GET") {
-      return res.status(405).send(""); // 405 Method Not Allowed
+      return res.status(405).end(); // 405 Method Not Allowed
     }
 
     const client = new faunadb.Client({

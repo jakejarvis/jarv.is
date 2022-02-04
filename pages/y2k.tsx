@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
+import Layout from "../components/Layout/Layout";
 import Wallpaper from "../components/Wallpaper/Wallpaper";
+import type { ReactElement } from "react";
 
 // obviously, an interactive VNC display will not work even a little bit server-side
 const VNC = dynamic(() => import("../components/VNC/VNC"), { ssr: false });
@@ -44,17 +46,12 @@ const Y2K = () => {
         header {
           position: relative !important;
         }
-
-        /* make an exception for the wrapper (and its background) to fill up the normal content area */
-        main {
-          padding: 0 !important;
-        }
-        main > div {
-          max-width: 100% !important;
-        }
       `}</style>
     </>
   );
 };
+
+// disable layout's default styles so the wallpaper component can go edge-to-edge
+Y2K.getLayout = (page: ReactElement) => <Layout noContainer>{page}</Layout>;
 
 export default Y2K;
