@@ -3,11 +3,14 @@ import Link from "next/link";
 import classNames from "classnames";
 import { HeartIcon, NextjsLogo } from "../Icons";
 import * as config from "../../lib/config";
+import type { HTMLAttributes } from "react";
 
 import styles from "./Footer.module.css";
 
-const Footer = () => (
-  <footer className={styles.footer}>
+type Props = HTMLAttributes<HTMLDivElement>;
+
+const Footer = ({ className, ...rest }: Props) => (
+  <footer className={classNames(styles.footer, className)} {...rest}>
     <div className={styles.row}>
       <div className={styles.license}>
         Content{" "}

@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import { IframeHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import styles from "./IFrame.module.css";
 
-type Props = IframeHTMLAttributes<HTMLElement> & {
+type Props = HTMLAttributes<HTMLIFrameElement> & {
+  src: string;
   height: number;
   width?: number; // defaults to 100%
   allowScripts?: boolean;

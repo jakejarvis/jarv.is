@@ -2,8 +2,8 @@ import Tweet from "react-tweet-embed";
 
 type Props = {
   id: string;
-  className?: string;
   options?: object;
+  className?: string;
 };
 
 const TweetEmbed = ({ id, className, options }: Props) => (

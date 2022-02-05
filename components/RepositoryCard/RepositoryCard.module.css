@@ -6,6 +6,7 @@
   font-size: 0.85em;
   color: var(--medium-dark);
   border-color: var(--kinda-light);
+
   /* light-dark theme switch fading */
   transition: border 0.25s ease;
 }

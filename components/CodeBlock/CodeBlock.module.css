@@ -7,6 +7,7 @@
   background-color: var(--code-background);
   border: 1px solid var(--kinda-light);
   border-radius: var(--rounded-edge-radius);
+
   /* light-dark theme switch fading */
   transition: background 0.25s ease, border 0.25s ease;
 }
@@ -32,6 +33,7 @@
   border: 1px solid var(--kinda-light);
   border-top-right-radius: var(--rounded-edge-radius);
   border-end-start-radius: var(--rounded-edge-radius);
+
   /* light-dark theme switch fading */
   transition: background 0.25s ease, border 0.25s ease;
 }

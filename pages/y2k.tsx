@@ -36,22 +36,39 @@ const Y2K = () => {
         }}
       />
 
-      {/* set a random retro wallpaper tile for the content area */}
-      <Wallpaper image={`/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`} tile>
-        <VNC server="wss://y2k.jrvs.io" />
-      </Wallpaper>
-
-      <style jsx global>{`
-        /* make the viewport a bit larger by un-sticking the nav bar */
-        header {
-          position: relative !important;
-        }
-      `}</style>
+      <VNC server="wss://y2k.jrvs.io" />
     </>
   );
 };
 
-// disable layout's default styles so the wallpaper component can go edge-to-edge
-Y2K.getLayout = (page: ReactElement) => <Layout noContainer>{page}</Layout>;
+// disable layout's default styles so the wallpaper component can go edge-to-edge:
+Y2K.getLayout = (page: ReactElement) => {
+  // set a random retro Windows ME desktop tile for the entire content area
+  const randomTile = `/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`;
+
+  return (
+    <Layout noContainer>
+      <Wallpaper
+        image={randomTile}
+        tile
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "1.5em 0",
+        }}
+      >
+        {page}
+      </Wallpaper>
+
+      {/* also make the viewport a bit larger by un-sticking the nav bar */}
+      <style jsx global>{`
+        header {
+          position: relative !important;
+        }
+      `}</style>
+    </Layout>
+  );
+};
 
 export default Y2K;

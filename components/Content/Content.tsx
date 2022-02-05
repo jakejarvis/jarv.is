@@ -1,11 +1,9 @@
 import classNames from "classnames";
-import type { PropsWithChildren } from "react";
+import type { HTMLAttributes } from "react";
 
 import styles from "./Content.module.css";
 
-type Props = PropsWithChildren<{
-  className?: string;
-}>;
+type Props = HTMLAttributes<HTMLDivElement>;
 
 const Content = ({ className, ...rest }: Props) => <div className={classNames(styles.content, className)} {...rest} />;
 

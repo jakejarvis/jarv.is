@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import ReactPlayer from "react-player/file";
+import type { FilePlayerProps } from "react-player/file";
 
 import styles from "./Video.module.css";
 
-type Props = {
+type Props = Partial<FilePlayerProps> & {
   webm?: string;
   mp4?: string;
   thumbnail?: string;

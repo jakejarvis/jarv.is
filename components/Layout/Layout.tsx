@@ -4,16 +4,16 @@ import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { themeColors } from "../../lib/config";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, HTMLAttributes } from "react";
 
 import styles from "./Layout.module.css";
 
-type Props = PropsWithChildren<{
-  noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
-  className?: string;
-}>;
+type Props = HTMLAttributes<HTMLDivElement> &
+  PropsWithChildren<{
+    noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
+  }>;
 
-const Layout = ({ noContainer, className, children }: Props) => {
+const Layout = ({ noContainer, className, children, ...rest }: Props) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -24,17 +24,20 @@ const Layout = ({ noContainer, className, children }: Props) => {
         </Head>
       )}
 
-      <Header />
+      <div className={classNames(styles.flex, className)} {...rest}>
+        <Header />
 
-      {noContainer ? (
-        <main className={className}>{children}</main>
-      ) : (
-        <main className={classNames(styles.main, className)}>
-          <div className={styles.container}>{children}</div>
-        </main>
-      )}
+        {/* passing `noContainer={true}` to Layout allows 100% control of the content area on a per-page basis */}
+        {noContainer ? (
+          <>{children}</>
+        ) : (
+          <main className={styles.default}>
+            <div className={styles.container}>{children}</div>
+          </main>
+        )}
 
-      <Footer />
+        <Footer className={styles.footer} />
+      </div>
     </>
   );
 };

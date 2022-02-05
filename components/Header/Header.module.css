@@ -8,6 +8,7 @@
   background-color: var(--background-header);
   backdrop-filter: saturate(180%) blur(5px);
   z-index: 1000;
+
   /* light-dark theme switch fading */
   transition: color 0.25s ease, background 0.25s ease, border 0.25s ease;
 }

@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import { OctocatOcticon } from "../Icons";
+import type { HTMLAttributes } from "react";
 
 import styles from "./OctocatLink.module.css";
 
-type Props = {
+type Props = HTMLAttributes<HTMLAnchorElement> & {
   repo: string;
-  className?: string;
 };
 
 const OctocatLink = ({ repo, className, ...rest }: Props) => (

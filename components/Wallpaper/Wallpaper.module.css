@@ -1,8 +1,4 @@
 .wallpaper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5em 0;
   width: 100%;
   min-height: 400px;
 }

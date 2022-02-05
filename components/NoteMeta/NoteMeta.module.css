@@ -1,5 +1,5 @@
 .meta {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   font-size: 0.825em;
   line-height: 2.3;

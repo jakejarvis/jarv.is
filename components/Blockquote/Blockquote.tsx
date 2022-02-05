@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import type { BlockquoteHTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 
 import styles from "./Blockquote.module.css";
 
-type Props = BlockquoteHTMLAttributes<HTMLElement>;
+type Props = HTMLAttributes<HTMLElement>;
 
 const Blockquote = ({ className, ...rest }: Props) => (
   <blockquote className={classNames(styles.blockquote, className)} {...rest} />

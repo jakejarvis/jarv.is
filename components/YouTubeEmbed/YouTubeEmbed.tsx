@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import ReactPlayer from "react-player/youtube";
+import type { YouTubePlayerProps } from "react-player/youtube";
 
 import styles from "./YouTubeEmbed.module.css";
 
-type Props = {
+type Props = Partial<YouTubePlayerProps> & {
   id: string;
   className?: string;
 };

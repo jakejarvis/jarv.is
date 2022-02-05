@@ -1,16 +1,23 @@
-.main {
+.flex {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.default {
   width: 100%;
   padding: 1.5em;
-  color: var(--text);
-  background-color: var(--background-inner);
-  /* light-dark theme switch fading */
-  transition: color 0.25s ease, background 0.25s ease, border 0.25s ease;
 }
 
 .container {
   max-width: 865px;
   margin: 0 auto;
   display: block;
+}
+
+/* footer needs to fill the remaining vertical screen space. doing it here to keep flex stuff together. */
+.footer {
+  flex: 1;
 }
 
 @media screen and (max-width: 768px) {

@@ -3,20 +3,21 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { Giscus } from "@giscus/react";
 import { giscusConfig } from "../../lib/config";
+import type { PropsWithChildren, HTMLAttributes } from "react";
 import type { GiscusProps } from "@giscus/react";
 
 import styles from "./Comments.module.css";
 
-type Props = {
-  title: string;
-  className?: string;
-};
+type Props = HTMLAttributes<HTMLDivElement> &
+  PropsWithChildren<{
+    title: string;
+  }>;
 
-const Comments = ({ title, className }: Props) => {
+const Comments = ({ title, className, ...rest }: Props) => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <div className={classNames(styles.wrapper, className)} {...rest}>
       <Giscus
         {...(giscusConfig as GiscusProps)}
         term={title}

@@ -1,6 +1,7 @@
 .content {
   font-size: 0.9em;
   line-height: 1.7;
+  color: var(--text);
 }
 
 @media screen and (max-width: 768px) {
