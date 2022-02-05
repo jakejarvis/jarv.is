@@ -51,10 +51,6 @@ export const defaultSeo: DefaultSeoProps = {
       name: "msvalidate.01",
       content: config.verifyBing,
     },
-    {
-      name: "facebook-domain-verification",
-      content: config.verifyFacebook,
-    },
   ],
   additionalLinkTags: [
     {
