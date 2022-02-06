@@ -14,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang={config.siteLocale?.replace("_", "-")}>
         <Head />
-        <body className={classNames("page", "loading")}>
+        <body className={classNames("page", "no-fade")}>
           <Main />
           <NextScript />
         </body>

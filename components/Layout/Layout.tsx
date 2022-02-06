@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { themeColors } from "../../lib/config";
+import themes, { toCSS } from "../../lib/themes";
 import type { PropsWithChildren, HTMLAttributes } from "react";
 
 import styles from "./Layout.module.css";
@@ -20,15 +20,23 @@ const Layout = ({ noContainer, className, children, ...rest }: Props) => {
   return (
     <>
       <Head>
-        {resolvedTheme && <meta name="theme-color" content={themeColors[resolvedTheme]} />}
+        {/* convert themes object into inlined css variables */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `:root{${toCSS(themes.light)}}[data-theme="dark"]{${toCSS(themes.dark)}}`,
+          }}
+        />
 
         {/* kinda a hack to prevent dramatically fading into dark theme if we're immediately setting it on load */}
-        <style>{`.page.loading,.page.loading *{transition:none!important}`}</style>
+        <style>{`.page.no-fade,.page.no-fade *{transition:none!important}`}</style>
+
+        {/* dynamically set browser theme color to match the background color */}
+        <meta name="theme-color" content={themes[resolvedTheme || "light"]["background-outer"]} />
       </Head>
 
-      {/* remove the `.loading` class above from body once the page is finished loading */}
+      {/* remove the `.no-fade` class above from body once the page is finished loading */}
       <Script id="unblock-transitions" strategy="lazyOnload">
-        {`try{const cl=document.body.classList;cl.remove("loading");cl.add("loaded")}catch(e){}`}
+        {`try{document.body.classList.remove("no-fade")}catch(e){}`}
       </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
