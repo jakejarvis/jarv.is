@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import Header from "../Header/Header";
@@ -18,11 +19,17 @@ const Layout = ({ noContainer, className, children, ...rest }: Props) => {
 
   return (
     <>
-      {resolvedTheme && (
-        <Head>
-          <meta name="theme-color" content={themeColors[resolvedTheme]} />
-        </Head>
-      )}
+      <Head>
+        {resolvedTheme && <meta name="theme-color" content={themeColors[resolvedTheme]} />}
+
+        {/* kinda a hack to prevent dramatically fading into dark theme if we're immediately setting it on load */}
+        <style>{`.page.loading,.page.loading *{transition:none!important}`}</style>
+      </Head>
+
+      {/* remove the `.loading` class above from body once the page is finished loading */}
+      <Script id="unblock-transitions" strategy="lazyOnload">
+        {`try{const cl=document.body.classList;cl.remove("loading");cl.add("loaded")}catch(e){}`}
+      </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
         <Header />

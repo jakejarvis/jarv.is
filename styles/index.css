@@ -1,15 +1,8 @@
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
   background-color: var(--background-inner);
 
   /* light-dark theme switch fading */
   transition: background 0.25s ease;
-}
-
-a {
-  text-decoration: none;
 }
 
 /* https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites */

@@ -68,6 +68,8 @@ const App = ({ Component, pageProps }: Props) => {
 
   return (
     <>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+
       {/* all SEO config is in ./lib/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
@@ -81,8 +83,6 @@ const App = ({ Component, pageProps }: Props) => {
         dangerouslySetAllPagesToNoFollow={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
-
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };

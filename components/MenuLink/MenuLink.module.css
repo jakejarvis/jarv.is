@@ -3,6 +3,7 @@
   align-items: center;
   color: var(--medium-dark);
   line-height: 1;
+  text-decoration: none;
   padding: 0.6em;
 }
 

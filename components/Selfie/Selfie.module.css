@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   color: var(--medium-dark);
+  text-decoration: none;
 }
 
 .link:hover {

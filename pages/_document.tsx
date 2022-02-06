@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import classNames from "classnames";
 import * as config from "../lib/config";
 
 import type { DocumentContext } from "next/document";
@@ -13,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang={config.siteLocale?.replace("_", "-")}>
         <Head />
-        <body>
+        <body className={classNames("page", "loading")}>
           <Main />
           <NextScript />
         </body>

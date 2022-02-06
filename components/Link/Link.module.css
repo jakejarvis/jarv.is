@@ -4,6 +4,7 @@
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% var(--link-underline-size);
+  text-decoration: none;
   padding-bottom: 0.2rem;
 
   /* background-size is for hover animation, color & border are for theme fading: */

@@ -37,6 +37,7 @@
 
 .meta_link {
   color: inherit;
+  text-decoration: none;
 }
 
 .meta_link:hover {
