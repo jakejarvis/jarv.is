@@ -68,7 +68,7 @@ const themes = {
 // converts each variable in a given theme object to CSS syntax and returns all of them as one long string
 export const toCSS = (theme: Record<string, string>) =>
   Object.entries(theme)
-    .map(([name, color]) => `--${name}:${color};`) // `--name: #color`
+    .map(([name, color]) => `--${name}:${color};`)
     .join("");
 
 export default themes;
