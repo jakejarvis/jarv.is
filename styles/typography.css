@@ -1,8 +1,7 @@
 body {
   font-family: var(--font-family-sans);
   font-kerning: normal;
-  font-variant-ligatures: normal;
-  font-feature-settings: "kern", "liga", "calt", "clig", "ss01";
+  font-variant-ligatures: common-ligatures;
 }
 
 code,
@@ -36,7 +35,7 @@ pre,
    * Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
    */
   em {
-    font-style: normal !important;
+    font-style: normal;
     font-variation-settings: "ital" 1, "slnt" -10;
   }
 
@@ -47,5 +46,6 @@ pre,
   em pre,
   em .monospace {
     font-style: italic !important;
+    font-variation-settings: initial !important;
   }
 }
