@@ -24,7 +24,6 @@ import "@fontsource/roboto-mono/variable-italic.css";
 // global styles
 import "modern-normalize/modern-normalize.css";
 import "../styles/settings.css";
-import "../styles/colors.css";
 import "../styles/typography.css";
 import "../styles/index.css";
 
