@@ -34,10 +34,10 @@ const CLI = () => (
         <Image src={cliImg} alt="Terminal Screenshot" priority />
       </a>
 
-      <H2>Usage</H2>
-      <CodeBlock className="code-highlight">npx @jakejarvis/cli</CodeBlock>
+      <H2 id="usage">Usage</H2>
+      <CodeBlock forceBlock>npx @jakejarvis/cli</CodeBlock>
 
-      <H2>Inspired by</H2>
+      <H2 id="inspired-by">Inspired by</H2>
       <UnorderedList>
         <ListItem>
           <Link href="https://github.com/sindresorhus/sindresorhus-cli">@sindresorhus/sindresorhus-cli</Link>
@@ -47,7 +47,7 @@ const CLI = () => (
         </ListItem>
       </UnorderedList>
 
-      <H2>Built with</H2>
+      <H2 id="built-with">Built with</H2>
       <UnorderedList>
         <ListItem>
           <Link href="https://github.com/vadimdemedes/ink">ink</Link> - React for interactive command-line apps
@@ -62,7 +62,7 @@ const CLI = () => (
         </Link>
       </p>
 
-      <H2>License</H2>
+      <H2 id="license">License</H2>
       <p>
         MIT &copy; <Link href="https://jarv.is/">Jake Jarvis</Link>,{" "}
         <Link href="https://sindresorhus.com">Sindre Sorhus</Link>

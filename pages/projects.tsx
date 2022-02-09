@@ -8,11 +8,7 @@ import { OctocatOcticon } from "../components/Icons";
 import type { GetStaticProps } from "next";
 import type { RepoType } from "../types";
 
-type Props = {
-  repos: RepoType[];
-};
-
-const Projects = ({ repos }: Props) => (
+const Projects = ({ repos }) => (
   <>
     <NextSeo
       title="Projects"
