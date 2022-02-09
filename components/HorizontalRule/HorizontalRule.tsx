@@ -1,10 +1,11 @@
 import classNames from "classnames";
-import type { HTMLAttributes } from "react";
 
 import styles from "./HorizontalRule.module.css";
 
-type Props = HTMLAttributes<HTMLHRElement>;
+type HorizontalRuleProps = JSX.IntrinsicElements["hr"];
 
-const HorizontalRule = ({ className, ...rest }: Props) => <hr className={classNames(styles.hr, className)} {...rest} />;
+const HorizontalRule = ({ className, ...rest }: HorizontalRuleProps) => (
+  <hr className={classNames(styles.hr, className)} {...rest} />
+);
 
 export default HorizontalRule;

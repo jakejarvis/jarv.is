@@ -12,12 +12,12 @@ I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/iss
 
 ## 🧶 Getting Started
 
-Run `yarn install` and `yarn dev`, then open [http://localhost:3000/](http://localhost:3000/) or the outputted URL. ([Yarn must be installed](https://yarnpkg.com/en/docs/install) first; NPM _should_ also work at your own risk.) Pages will live-refresh when source files are changed.
+Run `yarn install` and `yarn dev`, then open [http://localhost:3000/](http://localhost:3000/). ([Yarn must be installed](https://yarnpkg.com/en/docs/install) first; NPM _should_ also work at your own risk.) Pages will live-refresh when source files are changed.
 
 ## 🌎 Related
 
 - [💻 /uses](https://jarv.is/uses/) – Things and stuff I use.
-- [🕰️ Previously on...](https://jarv.is/previously/) – An embarrassing trip down this site's memory lane.
+- [🕰️ Previously on...](https://jarv.is/previously/) – An embarrassing trip down this site's memory lane. (Try out [/y2k](https://jarv.is/y2k/) if you want to experience the _fully_ immersive time machine...)
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.
 - [📈 Fathom Analytics dashboard](https://jarv.is/stats/)
 - [🧮 jakejarvis/website-stats](https://github.com/jakejarvis/website-stats) – Daily snapshots of the raw [hit counter](pages/api/hits.ts) data.

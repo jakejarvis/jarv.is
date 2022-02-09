@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { HTMLAttributes } from "react";
 
 import styles from "./IFrame.module.css";
 
-type Props = HTMLAttributes<HTMLIFrameElement> & {
+type IFrameProps = JSX.IntrinsicElements["iframe"] & {
   src: string;
   height: number;
   width?: number; // defaults to 100%
@@ -11,7 +10,7 @@ type Props = HTMLAttributes<HTMLIFrameElement> & {
   noScroll?: boolean;
 };
 
-const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, ...rest }: Props) => (
+const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, ...rest }: IFrameProps) => (
   <iframe
     className={classNames(styles.frame, className)}
     src={src}

@@ -1,13 +1,12 @@
 import Link from "next/link";
 import classNames from "classnames";
-import type { HTMLAttributes } from "react";
 import type { NoteMetaType } from "../../types";
 
 import styles from "./NoteTitle.module.css";
 
-type Props = Pick<NoteMetaType, "slug" | "htmlTitle"> & HTMLAttributes<HTMLAnchorElement>;
+type NoteTitleProps = Pick<NoteMetaType, "slug" | "htmlTitle"> & JSX.IntrinsicElements["a"];
 
-const NoteTitle = ({ slug, htmlTitle, className, ...rest }: Props) => (
+const NoteTitle = ({ slug, htmlTitle, className, ...rest }: NoteTitleProps) => (
   <h1 className={classNames(styles.title, className)}>
     <Link
       href={{

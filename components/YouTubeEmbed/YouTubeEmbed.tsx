@@ -4,12 +4,12 @@ import type { YouTubePlayerProps } from "react-player/youtube";
 
 import styles from "./YouTubeEmbed.module.css";
 
-type Props = Partial<YouTubePlayerProps> & {
+type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
   id: string;
   className?: string;
 };
 
-const YouTubeEmbed = ({ id, className, ...rest }: Props) => (
+const YouTubeEmbed = ({ id, className, ...rest }: YouTubeEmbedProps) => (
   <div className={classNames(styles.wrapper, className)}>
     <ReactPlayer
       width="100%"

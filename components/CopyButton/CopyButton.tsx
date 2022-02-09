@@ -8,14 +8,14 @@ import type { ReactNode, Ref } from "react";
 import styles from "./CopyButton.module.css";
 const cx = classNames.bind(styles);
 
-type Props = {
+type CopyButtonProps = {
   source: ReactNode;
   timeout?: number;
   className?: string;
 };
 
 const CopyButton = forwardRef(function CopyButton(
-  { source, timeout = 2000, className }: Props,
+  { source, timeout = 2000, className }: CopyButtonProps,
   ref: Ref<HTMLButtonElement>
 ) {
   const [copied, setCopied] = useState(false);

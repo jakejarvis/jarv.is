@@ -8,9 +8,9 @@ import type { NoteMetaType } from "../../types";
 import styles from "./NoteMeta.module.css";
 import Link from "next/link";
 
-type Props = Pick<NoteMetaType, "slug" | "date" | "title" | "tags">;
+type NoteMetaProps = Pick<NoteMetaType, "slug" | "date" | "title" | "tags">;
 
-const NoteMeta = ({ slug, date, title, tags = [] }: Props) => (
+const NoteMeta = ({ slug, date, title, tags = [] }: NoteMetaProps) => (
   <div className={styles.meta}>
     <div className={styles.meta_item}>
       <Link

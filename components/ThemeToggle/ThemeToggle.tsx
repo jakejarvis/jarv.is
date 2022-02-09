@@ -4,11 +4,11 @@ import { SunIcon, MoonIcon } from "../Icons";
 
 import styles from "./ThemeToggle.module.css";
 
-type Props = {
+type ThemeToggleProps = {
   className?: string;
 };
 
-const ThemeToggle = ({ className }: Props) => {
+const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 

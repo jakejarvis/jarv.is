@@ -7,7 +7,7 @@ import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../Icons";
 
 import styles from "./Menu.module.css";
 
-type Props = {
+type MenuProps = {
   className?: string;
 };
 
@@ -34,7 +34,7 @@ const links = [
   },
 ];
 
-const Menu = ({ className }: Props) => {
+const Menu = ({ className }: MenuProps) => {
   const router = useRouter();
 
   return (

@@ -1,18 +1,17 @@
 import * as config from "./config";
 
-import type { DefaultSeoProps } from "next-seo";
-import type { SocialProfileJsonLdProps } from "next-seo/lib/jsonld/socialProfile";
-import type { ArticleJsonLdProps } from "next-seo/lib/jsonld/article";
-
 import faviconIco from "../public/static/favicons/favicon.ico";
 import faviconPng from "../public/static/favicons/favicon.png";
 import appleTouchIconPng from "../public/static/favicons/apple-touch-icon.png";
 import meJpg from "../public/static/images/me.jpg";
 
+import type { DefaultSeoProps } from "next-seo";
+import type { SocialProfileJsonLdProps } from "next-seo/lib/jsonld/socialProfile";
+import type { ArticleJsonLdProps } from "next-seo/lib/jsonld/article";
+
 // Most of this file simply takes the data already defined in ./config.js and translates it into objects that are
 // compatible with next-seo's props:
 // https://github.com/garmeeh/next-seo#default-seo-configuration
-
 export const defaultSeo: DefaultSeoProps = {
   defaultTitle: `${config.siteName} – ${config.shortDescription}`,
   titleTemplate: `%s – ${config.siteName}`, // appends `– siteName` to title provided by each page (except home)
@@ -122,6 +121,7 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
   ],
 };
 
+// Just the basic items applicable to all notes, extended by pages/notes/[slug].tsx
 // https://github.com/garmeeh/next-seo#article-1
 export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherName" | "publisherLogo"> = {
   authorName: [config.authorName],

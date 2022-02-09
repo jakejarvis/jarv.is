@@ -1,13 +1,13 @@
 import NextLink from "next/link";
 import classNames from "classnames";
 import isAbsoluteUrl from "is-absolute-url";
-import type { AnchorHTMLAttributes, PropsWithChildren } from "react";
-import type { LinkProps } from "next/link";
+import type { PropsWithChildren } from "react";
+import type { LinkProps as NextLinkProps } from "next/link";
 
 import styles from "./Link.module.css";
 
-export type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
-  LinkProps &
+export type CustomLinkProps = Omit<JSX.IntrinsicElements["a"], "href"> &
+  NextLinkProps &
   PropsWithChildren<{
     forceNewWindow?: boolean;
   }>;
@@ -21,7 +21,7 @@ const CustomLink = ({
   forceNewWindow,
   className,
   ...rest
-}: Props) => {
+}: CustomLinkProps) => {
   // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
   // can be overridden with `forceNewWindow={true}`.
   if (forceNewWindow || isAbsoluteUrl(href.toString())) {

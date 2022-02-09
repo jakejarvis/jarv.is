@@ -1,10 +1,11 @@
 import classNames from "classnames";
-import type { HTMLAttributes } from "react";
 
 import styles from "./Content.module.css";
 
-type Props = HTMLAttributes<HTMLDivElement>;
+type ContentProps = JSX.IntrinsicElements["div"];
 
-const Content = ({ className, ...rest }: Props) => <div className={classNames(styles.content, className)} {...rest} />;
+const Content = ({ className, ...rest }: ContentProps) => (
+  <div className={classNames(styles.content, className)} {...rest} />
+);
 
 export default Content;

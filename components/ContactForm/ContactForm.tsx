@@ -5,15 +5,10 @@ import { Formik, Form, Field } from "formik";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import Link from "../Link/Link";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
-
 import type { FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.css";
 const cx = classNames.bind(styles);
-
-type Props = {
-  className?: string;
-};
 
 type Values = {
   name: string;
@@ -22,7 +17,11 @@ type Values = {
   "h-captcha-response": string;
 };
 
-const ContactForm = ({ className }: Props) => {
+type ContactFormProps = {
+  className?: string;
+};
+
+const ContactForm = ({ className }: ContactFormProps) => {
   const { resolvedTheme } = useTheme();
 
   // status/feedback:

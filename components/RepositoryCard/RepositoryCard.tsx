@@ -6,11 +6,20 @@ import type { RepoType } from "../../types";
 
 import styles from "./RepositoryCard.module.css";
 
-type Props = RepoType & {
+type RepositoryCardProps = RepoType & {
   className?: string;
 };
 
-const RepositoryCard = ({ name, url, description, language, stars, forks, updatedAt, className }: Props) => (
+const RepositoryCard = ({
+  name,
+  url,
+  description,
+  language,
+  stars,
+  forks,
+  updatedAt,
+  className,
+}: RepositoryCardProps) => (
   <div className={classNames(styles.card, className)}>
     <Link className={styles.name} href={url}>
       {name}

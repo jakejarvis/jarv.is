@@ -1,11 +1,10 @@
 import classNames from "classnames";
-import type { HTMLAttributes } from "react";
 
 import styles from "./Blockquote.module.css";
 
-type Props = HTMLAttributes<HTMLElement>;
+type BlockquoteProps = JSX.IntrinsicElements["blockquote"];
 
-const Blockquote = ({ className, ...rest }: Props) => (
+const Blockquote = ({ className, ...rest }: BlockquoteProps) => (
   <blockquote className={classNames(styles.blockquote, className)} {...rest} />
 );
 

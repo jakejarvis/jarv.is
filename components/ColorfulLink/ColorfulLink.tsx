@@ -1,9 +1,9 @@
 import { memo } from "react";
 import css from "styled-jsx/css";
 import classNames from "classnames";
-import Link, { Props as CustomLinkProps } from "../Link/Link";
+import Link, { CustomLinkProps } from "../Link/Link";
 
-type Props = CustomLinkProps & {
+type ColorfulLinkProps = CustomLinkProps & {
   lightColor: string;
   darkColor: string;
 };
@@ -21,7 +21,7 @@ const getLinearGradient = (hex: string, alpha = 0.4) => {
   return `linear-gradient(${rgbaString},${rgbaString})`;
 };
 
-const ColorfulLink = ({ lightColor, darkColor, className, ...rest }: Props) => {
+const ColorfulLink = ({ lightColor, darkColor, className, ...rest }: ColorfulLinkProps) => {
   const { className: underlineClassName, styles: underlineStyles } = css.resolve`
     a {
       color: ${lightColor};

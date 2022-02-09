@@ -7,11 +7,11 @@ import styles from "./Selfie.module.css";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
-type Props = {
+type SelfieProps = {
   className?: string;
 };
 
-const Selfie = ({ className }: Props) => (
+const Selfie = ({ className }: SelfieProps) => (
   <Link href="/">
     <a className={classNames(styles.link, className)}>
       <div className={styles.selfie}>

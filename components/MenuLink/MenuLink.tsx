@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import styles from "./MenuLink.module.css";
 const cx = classNames.bind(styles);
 
-type Props = {
+type MenuLinkProps = {
   href: string;
   icon: ReactNode;
   text: string;
@@ -13,7 +13,7 @@ type Props = {
   className?: string;
 };
 
-const MenuLink = ({ href, icon, text, current, className }: Props) => (
+const MenuLink = ({ href, icon, text, current, className }: MenuLinkProps) => (
   <Link href={href} prefetch={false}>
     <a className={cx(styles.link, { current: !!current }, className)}>
       {icon} <span className={styles.label}>{text}</span>

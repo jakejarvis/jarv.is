@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // TODO: make this not manual (serverless functions can't see /pages at runtime)
   const pages: Page[] = [
     { relUrl: "/", priority: 1.0, changeFreq: "weekly" }, // homepage
-    { relUrl: "/notes/" },
+    { relUrl: "/notes/", changeFreq: "weekly" },
     { relUrl: "/birthday/" },
     { relUrl: "/cli/" },
     { relUrl: "/contact/" },
@@ -28,6 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     { relUrl: "/privacy/", priority: 0.1, changeFreq: "yearly" },
     { relUrl: "/projects/", changeFreq: "daily" },
     { relUrl: "/uses/" },
+    { relUrl: "/y2k/" },
   ];
 
   // push notes separately and use their metadata

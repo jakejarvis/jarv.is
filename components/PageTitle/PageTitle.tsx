@@ -2,13 +2,12 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
 import { baseUrl } from "../../lib/config";
-import type { HTMLAttributes } from "react";
 
 import styles from "./PageTitle.module.css";
 
-type Props = HTMLAttributes<HTMLHeadingElement>;
+type PageTitleProps = JSX.IntrinsicElements["h1"];
 
-const PageTitle = ({ className, children, ...rest }: Props) => {
+const PageTitle = ({ className, children, ...rest }: PageTitleProps) => {
   const router = useRouter();
   const canonical = `${baseUrl}${router.pathname}/`;
 

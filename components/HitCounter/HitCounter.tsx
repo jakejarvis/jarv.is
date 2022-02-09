@@ -2,12 +2,12 @@ import useSWR from "swr";
 import Loading from "../Loading/Loading";
 import { fetcher } from "../../lib/fetcher";
 
-type Props = {
+type HitCounterProps = {
   slug: string;
   className?: string;
 };
 
-const HitCounter = ({ slug, className }: Props) => {
+const HitCounter = ({ slug, className }: HitCounterProps) => {
   // start fetching repos from API immediately
   const { data, error } = useSWR(`/api/hits/?slug=${encodeURIComponent(slug)}`, fetcher, {
     // avoid double (or more) counting views

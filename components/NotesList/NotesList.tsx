@@ -4,7 +4,11 @@ import type { NoteMetaType } from "../../types";
 
 import styles from "./NotesList.module.css";
 
-const NotesList = ({ notesByYear }) => {
+type NotesListProps = {
+  notesByYear: Record<string, NoteMetaType[]>;
+};
+
+const NotesList = ({ notesByYear }: NotesListProps) => {
   const sections = [];
 
   Object.entries(notesByYear).forEach(([year, notes]: [string, NoteMetaType[]]) => {

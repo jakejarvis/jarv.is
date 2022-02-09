@@ -33,7 +33,7 @@ const License = () => (
 
       <HorizontalRule />
 
-      <H2>Creative Commons Attribution 4.0 International Public License</H2>
+      <H2 id="full-text">Creative Commons Attribution 4.0 International Public License</H2>
 
       <p style={{ textAlign: "center", lineHeight: 0 }}>
         <a

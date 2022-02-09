@@ -5,11 +5,11 @@ import Terminal from "../Terminal/Terminal";
 
 import styles from "./VNC.module.css";
 
-type Props = {
+type VNCProps = {
   server: string;
 };
 
-const VNC = ({ server }: Props) => {
+const VNC = ({ server }: VNCProps) => {
   const router = useRouter();
 
   // we definitely do NOT want this page to connect more than once!

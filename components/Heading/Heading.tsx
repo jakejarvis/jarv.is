@@ -3,11 +3,11 @@ import type { HTMLAttributes } from "react";
 
 import styles from "./Heading.module.css";
 
-type Props = HTMLAttributes<HTMLHeadingElement> & {
+type HeadingProps = HTMLAttributes<HTMLHeadingElement> & {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
-const Heading = ({ as: Component, id, className, children, ...rest }: Props) => {
+const Heading = ({ as: Component, id, className, children, ...rest }: HeadingProps) => {
   return (
     <Component className={classNames(styles.heading, styles[Component], className)} id={id} {...rest}>
       {children}
@@ -20,11 +20,11 @@ const Heading = ({ as: Component, id, className, children, ...rest }: Props) => 
   );
 };
 
-export const H1 = (props: Omit<Props, "as">) => <Heading as="h1" {...props} />;
-export const H2 = (props: Omit<Props, "as">) => <Heading as="h2" {...props} />;
-export const H3 = (props: Omit<Props, "as">) => <Heading as="h3" {...props} />;
-export const H4 = (props: Omit<Props, "as">) => <Heading as="h4" {...props} />;
-export const H5 = (props: Omit<Props, "as">) => <Heading as="h5" {...props} />;
-export const H6 = (props: Omit<Props, "as">) => <Heading as="h6" {...props} />;
+export const H1 = (props: Omit<HeadingProps, "as">) => <Heading as="h1" {...props} />;
+export const H2 = (props: Omit<HeadingProps, "as">) => <Heading as="h2" {...props} />;
+export const H3 = (props: Omit<HeadingProps, "as">) => <Heading as="h3" {...props} />;
+export const H4 = (props: Omit<HeadingProps, "as">) => <Heading as="h4" {...props} />;
+export const H5 = (props: Omit<HeadingProps, "as">) => <Heading as="h5" {...props} />;
+export const H6 = (props: Omit<HeadingProps, "as">) => <Heading as="h6" {...props} />;
 
 export default Heading;

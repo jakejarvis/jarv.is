@@ -4,7 +4,7 @@ import type { FilePlayerProps } from "react-player/file";
 
 import styles from "./Video.module.css";
 
-type Props = Partial<FilePlayerProps> & {
+type VideoProps = Partial<FilePlayerProps> & {
   webm?: string;
   mp4?: string;
   thumbnail?: string;
@@ -13,7 +13,7 @@ type Props = Partial<FilePlayerProps> & {
   className?: string;
 };
 
-const Video = ({ webm, mp4, thumbnail, subs, autoplay, className, ...rest }: Props) => {
+const Video = ({ webm, mp4, thumbnail, subs, autoplay, className, ...rest }: VideoProps) => {
   const url = [
     webm && {
       src: webm,
