@@ -5,14 +5,12 @@ import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import themes, { toCSS } from "../../lib/themes";
-import type { PropsWithChildren } from "react";
 
 import styles from "./Layout.module.css";
 
-type LayoutProps = JSX.IntrinsicElements["div"] &
-  PropsWithChildren<{
-    noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
-  }>;
+type LayoutProps = JSX.IntrinsicElements["div"] & {
+  noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
+};
 
 const Layout = ({ noContainer, className, children, ...rest }: LayoutProps) => {
   const { resolvedTheme } = useTheme();

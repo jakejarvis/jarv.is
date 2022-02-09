@@ -1,16 +1,14 @@
 import NextLink from "next/link";
 import classNames from "classnames";
 import isAbsoluteUrl from "is-absolute-url";
-import type { PropsWithChildren } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 
 import styles from "./Link.module.css";
 
 export type CustomLinkProps = Omit<JSX.IntrinsicElements["a"], "href"> &
-  NextLinkProps &
-  PropsWithChildren<{
+  NextLinkProps & {
     forceNewWindow?: boolean;
-  }>;
+  };
 
 const CustomLink = ({
   href,

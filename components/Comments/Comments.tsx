@@ -3,15 +3,13 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { Giscus } from "@giscus/react";
 import { giscusConfig } from "../../lib/config";
-import type { PropsWithChildren } from "react";
 import type { GiscusProps } from "@giscus/react";
 
 import styles from "./Comments.module.css";
 
-type CommentsProps = JSX.IntrinsicElements["div"] &
-  PropsWithChildren<{
-    title: string;
-  }>;
+type CommentsProps = JSX.IntrinsicElements["div"] & {
+  title: string;
+};
 
 const Comments = ({ title, className, ...rest }: CommentsProps) => {
   const { resolvedTheme } = useTheme();
