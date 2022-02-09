@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
@@ -68,6 +69,25 @@ const App = ({ Component, pageProps }: Props) => {
   return (
     <>
       <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+
+      {/* static asset preloads */}
+      <Head>
+        {/* TODO: these hrefs will change at some point (and possibly unpredictably). find a better way... */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href="/_next/static/media/inter-latin-variable-full-normal.79d31200.woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href="/_next/static/media/roboto-mono-latin-variable-wghtOnly-normal.3689861c.woff2"
+          crossOrigin="anonymous"
+        />
+      </Head>
 
       {/* all SEO config is in ./lib/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
