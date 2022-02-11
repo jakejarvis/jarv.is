@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // make all relative URLs absolute
   pages.map((page) => (page.loc = `${baseUrl}${page.loc}`));
 
-  // cache on edge for one hour
+  // cache on edge for 12 hours
   const { res } = context;
-  res.setHeader("cache-control", "s-maxage=3600, stale-while-revalidate");
+  res.setHeader("cache-control", "s-maxage=43200, stale-while-revalidate");
 
   // next-sitemap takes care of the rest of the response for us
   return getServerSideSitemap(context, pages);

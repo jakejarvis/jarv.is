@@ -6,7 +6,7 @@ export type NoteMetaType = {
   date: string;
   slug: string;
   permalink: string;
-  description?: string;
+  description: string;
   image?: string;
   tags?: string[];
   readingMins?: number;
