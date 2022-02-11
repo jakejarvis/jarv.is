@@ -1078,10 +1078,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/comic-neue/-/comic-neue-4.5.2.tgz#8a3f8061fbb2a6890e0e9729855886642f137aa1"
   integrity sha512-65ivrkCixQTMyVMGfS55aR2eBwyrify8yvhZtDKdH2kZdMguVHjPgxwVHkK416c6sQlDDcl3TaAb3P/Skh5rmg==
 
-"@fontsource/inter@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.3.tgz#56d5969c4cb9db81d9c58f667f0eb1dc8631c660"
-  integrity sha512-2PC2tEv3Qvzp6z9vDKrcxiGh6woaQB/wi5adkgLLX9bXr8rcwY/zAQGcZhhWZPal5rO5KTdAfuCTH9lwguy5ZA==
+"@fontsource/inter@4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.4.tgz#d6906fdaaf81242d975a1f9b6dedab7bfba77997"
+  integrity sha512-D0icTFpt9bWvB/OEXMztYf0bhUQZoDIYpsco5C7GVfxgKDRl8Jdn3N2aHHQqwjgRUUvRuyMv8HrRM8Hrt4U52w==
 
 "@fontsource/roboto-mono@4.5.3":
   version "4.5.3"
