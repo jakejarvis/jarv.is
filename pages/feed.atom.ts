@@ -1,8 +1,6 @@
 import { buildFeed } from "../lib/build-feed";
 import type { GetServerSideProps } from "next";
 
-const AtomFeed = () => null;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const feed = buildFeed();
   const { res } = context;
@@ -18,4 +16,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default AtomFeed;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => null;

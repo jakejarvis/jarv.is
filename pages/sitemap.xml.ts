@@ -1,72 +1,48 @@
-// WARNING: THIS FILE CONTAINS HISTORICAL LEVELS OF HACKINESS AND SHOULD NOT BE REPLICATED NOR ADMIRED.
-
+import { getServerSideSitemap } from "next-sitemap";
 import { getAllNotes } from "../lib/parse-notes";
 import { baseUrl } from "../lib/config";
 import type { GetServerSideProps } from "next";
-
-const Sitemap = () => null;
-
-type Page = {
-  relUrl: string;
-  priority?: number;
-  changeFreq?: string;
-  lastMod?: string | Date;
-};
+import type { ISitemapField } from "next-sitemap";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // TODO: make this not manual (serverless functions can't see /pages at runtime)
-  const pages: Page[] = [
-    { relUrl: "/", priority: 1.0, changeFreq: "weekly" }, // homepage
-    { relUrl: "/notes/", changeFreq: "weekly" },
-    { relUrl: "/birthday/" },
-    { relUrl: "/cli/" },
-    { relUrl: "/contact/" },
-    { relUrl: "/hillary/" },
-    { relUrl: "/leo/" },
-    { relUrl: "/license/", priority: 0.1, changeFreq: "yearly" },
-    { relUrl: "/previously/" },
-    { relUrl: "/privacy/", priority: 0.1, changeFreq: "yearly" },
-    { relUrl: "/projects/", changeFreq: "daily" },
-    { relUrl: "/uses/" },
-    { relUrl: "/y2k/" },
+  // TODO: make this not manual (serverless functions can't see filesystem at runtime)
+  const pages: ISitemapField[] = [
+    { loc: "/", priority: 1.0, changefreq: "weekly" }, // homepage
+    { loc: "/notes/", changefreq: "weekly" },
+    { loc: "/birthday/" },
+    { loc: "/cli/" },
+    { loc: "/contact/" },
+    { loc: "/hillary/" },
+    { loc: "/leo/" },
+    { loc: "/license/", priority: 0.1, changefreq: "yearly" },
+    { loc: "/previously/" },
+    { loc: "/privacy/", priority: 0.1, changefreq: "yearly" },
+    { loc: "/projects/", changefreq: "daily" },
+    { loc: "/uses/" },
+    { loc: "/y2k/" },
   ];
 
   // push notes separately and use their metadata
   const notes = getAllNotes();
   notes.map((note) =>
     pages.push({
-      relUrl: `/notes/${note.slug}/`,
+      loc: `/notes/${note.slug}/`,
       // pull lastMod from front matter date
-      lastMod: note.date,
+      lastmod: note.date,
+      priority: 0.7,
     })
   );
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${pages
-    .map(
-      (page) => `
-  <url>
-    <loc>${baseUrl}${page.relUrl}</loc>
-    <priority>${page.priority ? page.priority.toFixed(1) : 0.7}</priority>
-    <changefreq>${page.changeFreq || "monthly"}</changefreq>
-    <lastmod>${page.lastMod || new Date().toISOString()}</lastmod>
-  </url>`
-    )
-    .join("")
-    .trim()}
-</urlset>`;
+  // make all relative URLs absolute
+  pages.map((page) => (page.loc = `${baseUrl}${page.loc}`));
 
-  const { res } = context;
-  res.setHeader("content-type", "application/xml; charset=utf-8");
   // cache on edge for one hour
+  const { res } = context;
   res.setHeader("cache-control", "s-maxage=3600, stale-while-revalidate");
-  res.write(xml);
-  res.end();
 
-  return {
-    props: {},
-  };
+  // next-sitemap takes care of the rest of the response for us
+  return getServerSideSitemap(context, pages);
 };
 
-export default Sitemap;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => null;
