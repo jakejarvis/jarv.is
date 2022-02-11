@@ -6,7 +6,7 @@ import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
 import * as config from "../lib/config";
-import { defaultSeo, socialProfileJsonLd } from "../lib/seo";
+import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";

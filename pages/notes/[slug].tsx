@@ -9,7 +9,7 @@ import Comments from "../../components/Comments/Comments";
 import * as mdxComponents from "../../lib/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
 import * as config from "../../lib/config";
-import { articleJsonLd } from "../../lib/seo";
+import { articleJsonLd } from "../../lib/config/seo";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import type { NoteType } from "../../types";
 

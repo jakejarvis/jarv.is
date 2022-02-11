@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import themes, { toCSS } from "../../lib/themes";
+import themes, { toCSS } from "../../lib/config/themes";
 
 import styles from "./Layout.module.css";
 

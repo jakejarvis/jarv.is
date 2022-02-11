@@ -1,9 +1,9 @@
-import * as config from "./config";
+import * as config from ".";
 
-import faviconIco from "../public/static/favicons/favicon.ico";
-import faviconPng from "../public/static/favicons/favicon.png";
-import appleTouchIconPng from "../public/static/favicons/apple-touch-icon.png";
-import meJpg from "../public/static/images/me.jpg";
+import faviconIco from "../../public/static/favicons/favicon.ico";
+import faviconPng from "../../public/static/favicons/favicon.png";
+import appleTouchIconPng from "../../public/static/favicons/apple-touch-icon.png";
+import meJpg from "../../public/static/images/me.jpg";
 
 import type { DefaultSeoProps } from "next-seo";
 import type { SocialProfileJsonLdProps } from "next-seo/lib/jsonld/socialProfile";
