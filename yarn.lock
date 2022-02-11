@@ -1083,10 +1083,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.3.tgz#56d5969c4cb9db81d9c58f667f0eb1dc8631c660"
   integrity sha512-2PC2tEv3Qvzp6z9vDKrcxiGh6woaQB/wi5adkgLLX9bXr8rcwY/zAQGcZhhWZPal5rO5KTdAfuCTH9lwguy5ZA==
 
-"@fontsource/roboto-mono@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.2.tgz#3462d720b7ba0530358dd748545523a711c7428a"
-  integrity sha512-MoWKypBXIyZMnvExDTmaRWJSBNLQvKNaWAk2rAwXCNP5AtIa7mzawx9Yfl1LxCY/kVjhMZHPPKtt75CNQQHzQA==
+"@fontsource/roboto-mono@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.3.tgz#04b9969707b10a53511780b0f686d9d0c233a082"
+  integrity sha512-ELuIIUBo1kq2hFmOXjWv9o2VbM22Pct2F0T+D8f5T0MxDKIqkh0m1JMs9bbTzMjc+wVvyJ6LU5EiNkO26kLlKA==
 
 "@giscus/react@^1.1.2":
   version "1.1.2"
