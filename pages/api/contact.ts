@@ -24,7 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Pragma", "no-cache");
 
     if (req.method !== "POST") {
-      return res.status(405).end(); // 405 Method Not Allowed
+      // 405 Method Not Allowed
+      return res.status(405).end();
     }
 
     const { body } = req;
@@ -52,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       throw new Error("AIRTABLE_API_ERROR");
     }
 
-    // return in JSON format
+    // success! let the client know
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
@@ -84,9 +85,9 @@ const validateCaptcha = async (formResponse) => {
     }),
   });
 
-  const result = await response.json();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: any = await response.json();
 
-  // @ts-ignore
   return result.success;
 };
 

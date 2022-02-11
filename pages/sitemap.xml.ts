@@ -32,7 +32,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   ];
 
   // push notes separately and use their metadata
-  getAllNotes().map((note) =>
+  const notes = getAllNotes();
+  notes.map((note) =>
     pages.push({
       relUrl: `/notes/${note.slug}/`,
       // pull lastMod from front matter date

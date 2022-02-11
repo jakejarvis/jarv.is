@@ -13,9 +13,7 @@ import { NOTES_DIR, baseUrl } from "./config";
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-// note: 'common' only exports these languages: https://github.com/wooorm/refractor/blob/main/lib/common.js
-// eslint-disable-next-line import/no-unresolved
-import rehypePrism from "rehype-prism-plus/common";
+import rehypePrism from "rehype-prism-plus";
 
 import type { MinifyOptions } from "terser";
 import type { NoteMetaType, NoteType } from "../types";

@@ -1,8 +1,7 @@
 import * as Sentry from "@sentry/node";
-import { getAllNotes } from "../../lib/parse-notes";
 import pRetry from "p-retry";
 import faunadb from "faunadb";
-const q = faunadb.query;
+import { getAllNotes } from "../../lib/parse-notes";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 Sentry.init({
@@ -10,10 +9,19 @@ Sentry.init({
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
 });
 
+type PageStats = {
+  slug: string;
+  hits: number;
+  title?: string;
+  url?: string;
+  date?: string;
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method !== "GET") {
-      return res.status(405).end(); // 405 Method Not Allowed
+      // 405 Method Not Allowed
+      return res.status(405).end();
     }
 
     const client = new faunadb.Client({
@@ -21,18 +29,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       checkNewVersion: false, // https://github.com/fauna/faunadb-js/pull/504
     });
     const { slug } = req.query;
-    let result;
 
-    if (!slug || slug === "/") {
-      // return overall site stats if slug not specified
-      result = await getSiteStats(client);
-
-      // let Vercel edge cache results for 15 mins
-      res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate");
-    } else {
+    if (slug) {
       // increment this page's hits. retry 3 times in case of Fauna "contended transaction" error:
       // https://sentry.io/share/issue/9c60a58211954ed7a8dfbe289bd107b5/
-      result = await pRetry(() => incrementPageHits(slug, client), {
+      const pageStats = await pRetry(() => incrementPageHits(slug, client), {
         onFailedAttempt: (error) => {
           console.warn(`Attempt ${error.attemptNumber} failed, trying again...`);
         },
@@ -42,9 +43,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       // disable caching on both ends
       res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
       res.setHeader("Pragma", "no-cache");
-    }
 
-    return res.status(200).json(result);
+      // return in JSON format
+      return res.status(200).json(pageStats);
+    } else {
+      // return overall site stats if slug not specified
+      const siteStats = await getSiteStats(client);
+
+      // let Vercel edge cache results for 15 mins
+      res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate");
+
+      // return in JSON format
+      return res.status(200).json(siteStats);
+    }
   } catch (error) {
     console.error(error);
 
@@ -59,10 +70,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const incrementPageHits = async (slug, client) => {
-  const result = await client.query(
+const incrementPageHits = async (slug: string | string[], client: faunadb.Client) => {
+  const q = faunadb.query;
+  const result: { data: PageStats } = await client.query(
     q.Let(
-      { match: q.Match(q.Index("hits_by_slug"), slug) },
+      {
+        match: q.Match(q.Index("hits_by_slug"), slug),
+      },
       q.If(
         q.Exists(q.Var("match")),
         q.Let(
@@ -70,9 +84,18 @@ const incrementPageHits = async (slug, client) => {
             ref: q.Select("ref", q.Get(q.Var("match"))),
             hits: q.ToInteger(q.Select("hits", q.Select("data", q.Get(q.Var("match"))))),
           },
-          q.Update(q.Var("ref"), { data: { hits: q.Add(q.Var("hits"), 1) } })
+          q.Update(q.Var("ref"), {
+            data: {
+              hits: q.Add(q.Var("hits"), 1),
+            },
+          })
         ),
-        q.Create(q.Collection("hits"), { data: { slug, hits: 1 } })
+        q.Create(q.Collection("hits"), {
+          data: {
+            slug,
+            hits: 1,
+          },
+        })
       )
     )
   );
@@ -81,25 +104,25 @@ const incrementPageHits = async (slug, client) => {
   return result.data;
 };
 
-const getSiteStats = async (client) => {
+const getSiteStats = async (client: faunadb.Client) => {
   const notes = getAllNotes();
-  const { data: pages } = await client.query(
+  const q = faunadb.query;
+
+  const { data: pages }: { data: PageStats[] } = await client.query(
     q.Map(
       q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
       q.Lambda((x) => q.Select("data", q.Get(x)))
     )
   );
 
-  const stats = {
+  const siteStats = {
     total: { hits: 0 },
     pages,
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pages.map((page: any) => {
+  pages.map((page) => {
     // match URLs from RSS feed with db to populate some metadata
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const match: any = notes.find((note) => `notes/${note.slug}` === page.slug);
+    const match = notes.find((note) => `notes/${note.slug}` === page.slug);
     if (match) {
       page.title = match.title;
       page.url = match.permalink;
@@ -107,15 +130,15 @@ const getSiteStats = async (client) => {
     }
 
     // add these hits to running tally
-    stats.total.hits += page.hits;
+    siteStats.total.hits += page.hits;
 
     return page;
   });
 
   // sort by hits (descending)
-  stats.pages.sort((a, b) => (a.hits > b.hits ? -1 : 1));
+  siteStats.pages.sort((a, b) => (a.hits > b.hits ? -1 : 1));
 
-  return stats;
+  return siteStats;
 };
 
 export default handler;
