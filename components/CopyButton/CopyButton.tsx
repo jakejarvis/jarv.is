@@ -47,7 +47,7 @@ const CopyButton = forwardRef(function CopyButton(
 
   return (
     <button
-      className={cx({ button: true, success: !!copied }, className)}
+      className={cx(styles.button, { success: !!copied }, className)}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}

@@ -4,16 +4,10 @@
   margin: 0;
 }
 
-.link {
+.item {
   list-style: none;
   display: inline-flex;
   margin-left: 1em;
-}
-
-.icon {
-  width: 1.25em;
-  height: 1.25em;
-  vertical-align: -0.3em;
 }
 
 @media screen and (max-width: 768px) {
@@ -23,13 +17,8 @@
     margin-left: 1em;
   }
 
-  .link {
+  .item {
     margin-left: 0;
-  }
-
-  .icon {
-    width: 1.8em;
-    height: 1.8em;
   }
 }
 
@@ -39,7 +28,7 @@
   }
 
   /* the home icon is redundant when space is SUPER tight */
-  .link:first-of-type {
+  .item:first-of-type {
     display: none;
   }
 }

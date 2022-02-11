@@ -4,17 +4,9 @@
   margin-right: -0.6em;
   background: none;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
   color: var(--medium-dark);
 }
 
 .button:hover {
   color: var(--warning);
-}
-
-.icon {
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: -0.2em;
 }

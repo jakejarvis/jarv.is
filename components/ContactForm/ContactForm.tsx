@@ -103,7 +103,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             {({ field, meta }) => (
               <input
                 type="text"
-                className={cx({ input: true, missing: meta.error && meta.touched })}
+                className={cx(styles.input, { missing: meta.error && meta.touched })}
                 placeholder="Name"
                 disabled={success}
                 {...field}
@@ -116,7 +116,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
               <input
                 type="email"
                 inputMode="email"
-                className={cx({ input: true, missing: meta.error && meta.touched })}
+                className={cx(styles.input, { missing: meta.error && meta.touched })}
                 placeholder="Email"
                 disabled={success}
                 {...field}
@@ -127,7 +127,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           <Field name="message">
             {({ field, meta }) => (
               <TextareaAutosize
-                className={cx({ input: true, textarea: true, missing: meta.error && meta.touched })}
+                className={cx(styles.input, styles.textarea, { missing: meta.error && meta.touched })}
                 placeholder="Write something..."
                 minRows={5}
                 disabled={success}
@@ -154,7 +154,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <div className={styles.action_row}>
             <button
-              className={cx({ btn_submit: true, hidden: success })}
+              className={cx(styles.btn_submit, { hidden: success })}
               type="submit"
               title="Send Message"
               aria-label="Send Message"

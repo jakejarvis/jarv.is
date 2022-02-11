@@ -21,6 +21,12 @@
   border-color: var(--link-underline);
 }
 
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.3em;
+}
+
 .label {
   font-size: 0.95em;
   font-weight: 500;
@@ -29,6 +35,11 @@
 }
 
 @media screen and (max-width: 768px) {
+  .icon {
+    width: 1.8em;
+    height: 1.8em;
+  }
+
   /* hide text next to emojis on mobile */
   .label {
     display: none;
