@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useTheme } from "next-themes";
 import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 import Link from "../Link/Link";
+import Captcha from "../Captcha/Captcha";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
 import type { FormikHelpers } from "formik";
 
@@ -22,8 +21,6 @@ type ContactFormProps = {
 };
 
 const ContactForm = ({ className }: ContactFormProps) => {
-  const { resolvedTheme } = useTheme();
-
   // status/feedback:
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -137,12 +134,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           </div>
 
           <div className={styles.hcaptcha}>
-            <HCaptcha
-              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
-              size="normal"
-              theme={resolvedTheme === "dark" ? "dark" : "light"}
-              onVerify={(token) => setFieldValue("h-captcha-response", token)}
-            />
+            <Captcha onVerify={(token) => setFieldValue("h-captcha-response", token)} />
           </div>
 
           <div className={styles.action_row}>
