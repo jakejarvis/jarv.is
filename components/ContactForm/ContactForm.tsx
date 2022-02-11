@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames/bind";
 import { Formik, Form, Field } from "formik";
+import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link/Link";
 import Captcha from "../Captcha/Captcha";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
@@ -96,30 +97,44 @@ const ContactForm = ({ className }: ContactFormProps) => {
         return errors;
       }}
     >
-      {({ setFieldValue, isSubmitting, touched, errors }) => (
+      {({ setFieldValue, isSubmitting }) => (
         <Form className={className} name="contact">
-          <Field
-            className={cx({ input: true, missing: errors.name && touched.name })}
-            name="name"
-            type="text"
-            placeholder="Name"
-            disabled={success}
-          />
-          <Field
-            className={cx({ input: true, missing: errors.email && touched.email })}
-            name="email"
-            type="email"
-            inputMode="email"
-            placeholder="Email"
-            disabled={success}
-          />
-          <Field
-            className={cx({ input: true, textarea: true, missing: errors.message && touched.message })}
-            name="message"
-            component="textarea"
-            placeholder="Write something..."
-            disabled={success}
-          />
+          <Field name="name">
+            {({ field, meta }) => (
+              <input
+                type="text"
+                className={cx({ input: true, missing: meta.error && meta.touched })}
+                placeholder="Name"
+                disabled={success}
+                {...field}
+              />
+            )}
+          </Field>
+
+          <Field name="email">
+            {({ field, meta }) => (
+              <input
+                type="email"
+                inputMode="email"
+                className={cx({ input: true, missing: meta.error && meta.touched })}
+                placeholder="Email"
+                disabled={success}
+                {...field}
+              />
+            )}
+          </Field>
+
+          <Field name="message">
+            {({ field, meta }) => (
+              <TextareaAutosize
+                className={cx({ input: true, textarea: true, missing: meta.error && meta.touched })}
+                placeholder="Write something..."
+                minRows={5}
+                disabled={success}
+                {...field}
+              />
+            )}
+          </Field>
 
           <div className={styles.markdown_tip}>
             Basic{" "}
@@ -133,7 +148,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             ](https://jarv.is), and <code>`code`</code>.
           </div>
 
-          <div className={styles.hcaptcha}>
+          <div className={styles.captcha}>
             <Captcha onVerify={(token) => setFieldValue("h-captcha-response", token)} />
           </div>
 

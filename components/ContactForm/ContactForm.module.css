@@ -22,8 +22,6 @@
 }
 
 .textarea {
-  height: 12em;
-  min-height: 6em;
   margin-bottom: 0;
   line-height: 1.5;
   resize: vertical;
@@ -34,7 +32,7 @@
   line-height: 1.75;
 }
 
-.hcaptcha {
+.captcha {
   margin: 1em 0;
 }
 
