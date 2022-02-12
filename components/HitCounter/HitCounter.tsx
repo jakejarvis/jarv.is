@@ -14,22 +14,26 @@ const HitCounter = ({ slug, className }: HitCounterProps) => {
     revalidateOnFocus: false,
   });
 
-  // show spinning loading indicator if data isn't fetched yet
-  if (!data) {
-    return <Loading boxes={3} width={20} />;
-  }
+  try {
+    // show spinning loading indicator if data isn't fetched yet
+    if (!data) {
+      return <Loading boxes={3} width={20} />;
+    }
 
-  // fail secretly
-  if (error) {
-    return;
-  }
+    // fail secretly
+    if (error) {
+      return null;
+    }
 
-  // we have data!
-  return (
-    <span title={`${data.hits.toLocaleString("en-US")} ${data.hits === 1 ? "view" : "views"}`} className={className}>
-      {data.hits.toLocaleString("en-US")}
-    </span>
-  );
+    // we have data!
+    return (
+      <span title={`${data.hits.toLocaleString("en-US")} ${data.hits === 1 ? "view" : "views"}`} className={className}>
+        {data.hits.toLocaleString("en-US")}
+      </span>
+    );
+  } catch (error) {
+    return null;
+  }
 };
 
 export default HitCounter;

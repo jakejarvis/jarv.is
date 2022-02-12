@@ -1,13 +1,8 @@
-import * as Sentry from "@sentry/node";
 import pRetry from "p-retry";
 import faunadb from "faunadb";
 import { getAllNotes } from "../../lib/parse-notes";
+import { logServerError } from "../../lib/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN || "",
-  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
-});
 
 type PageStats = {
   slug: string;
@@ -57,13 +52,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(200).json(siteStats);
     }
   } catch (error) {
-    console.error(error);
-
-    // log error to sentry, give it 2 seconds to finish sending
-    Sentry.captureException(error);
-    await Sentry.flush(2000);
-
+    // extract just the error message to send back to client
     const message = error instanceof Error ? error.message : "Unknown error.";
+
+    // log full error to console and sentry
+    await logServerError(error);
 
     // 500 Internal Server Error
     return res.status(500).json({ success: false, message });

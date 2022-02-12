@@ -1,12 +1,7 @@
-import * as Sentry from "@sentry/node";
 import fetch from "node-fetch";
 import queryString from "query-string";
+import { logServerError } from "../../lib/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN || "",
-  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
-});
 
 // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
 const HCAPTCHA_SITE_KEY =
@@ -56,15 +51,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // success! let the client know
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
-
+    // extract just the error message to send back to client
     const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
 
-    // don't log PEBCAK errors to sentry
+    // log errors (except PEBCAK) to console and sentry
     if (!message.startsWith("USER_")) {
-      // log error to sentry, give it 2 seconds to finish sending
-      Sentry.captureException(error);
-      await Sentry.flush(2000);
+      await logServerError(error);
     }
 
     // 500 Internal Server Error

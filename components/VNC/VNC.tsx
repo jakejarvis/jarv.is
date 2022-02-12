@@ -31,7 +31,7 @@ const VNC = ({ server }: VNCProps) => {
       terminalRef.current.textContent = `${message}${
         anyKey ? "\n\nPress the Any key or refresh the page to continue." : ""
       }`;
-    } catch (e) {} // eslint-disable-line no-empty
+    } catch (error) {} // eslint-disable-line no-empty
   };
 
   // hides the console and show the screen when VM connects
@@ -44,7 +44,7 @@ const VNC = ({ server }: VNCProps) => {
   const disconnectVM = () => {
     try {
       rfbRef.current.disconnect();
-    } catch (e) {} // eslint-disable-line no-empty
+    } catch (error) {} // eslint-disable-line no-empty
   };
 
   // prepare for possible navigation away from this page, and disconnect if/when it happens
