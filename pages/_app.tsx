@@ -48,10 +48,12 @@ const App = ({ Component, pageProps }: Props) => {
     Fathom.load(config.fathomSiteId, {
       // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
+      // we trigger pageview sending manually below, don't also do it on script load
+      auto: false,
     });
 
-    const onRouteChangeComplete = () => {
-      Fathom.trackPageview();
+    const onRouteChangeComplete = (url: string) => {
+      Fathom.trackPageview({ url });
     };
 
     // needs to be triggered manually on link clicks (the page doesn't actually change)
