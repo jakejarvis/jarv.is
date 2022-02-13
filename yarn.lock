@@ -1147,10 +1147,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@next/bundle-analyzer@12.0.10":
-  version "12.0.10"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-12.0.10.tgz#0094c8b27c3df2d742ba987901ab674736082e92"
-  integrity sha512-POUNU5BAyJUvuMnALBFaxQvS6Rpdk2D7snHV/3Wdv2UkVX5PUPBYZc3KLdMirMQ6jPNbnvB0/lG5/LM15fHtqw==
+"@next/bundle-analyzer@12.0.11-canary.15":
+  version "12.0.11-canary.15"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-12.0.11-canary.15.tgz#ef9267c6728dc5959894704b42e9583fa1ea8485"
+  integrity sha512-W3bW/DZ9zWcAJniXQmB+QqFPvON4Rx7+0KZaAQWZ0QSwZBo8ejNtLq8SOV7SyNunr5KNimqCFBtn8tw7y9s6jA==
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
@@ -1159,10 +1159,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.0.11-canary.15.tgz#c124bf871a47b76a9a1bdfbf18d7f2fb9dd01fba"
   integrity sha512-ez1ABQdxicqBbaGVawEmIJpLeiiTNZWGfcELTF2k96HffMsedO8XYc2RZ+zgEiL1dKvPKFnWclRzg/egErKv7w==
 
-"@next/eslint-plugin-next@12.0.10":
-  version "12.0.10"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.0.10.tgz#521ab5d05a89e818528668df8a3edb8f9df2c547"
-  integrity sha512-PbGRnV5HGSfRGLjf8uTh1MaWgLwnjKjWiGVjK752ifITJbZ28/5AmLAFT2shDYeux8BHgpgVll5QXu7GN3YLFw==
+"@next/eslint-plugin-next@12.0.11-canary.15":
+  version "12.0.11-canary.15"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.0.11-canary.15.tgz#c08d458755e082fa801b7fcca6f39fcf82e93ea5"
+  integrity sha512-McoCULg/0X1JONZNM3TFM3ZnP9W9aYsYh33xWPPhUyKr7LWalgCNF6yiknh8hSO5KHkdWAdbRMGQa8Cl7kpM7w==
   dependencies:
     glob "7.1.7"
 
@@ -1242,10 +1242,9 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@novnc/novnc@1.3.0":
+"@novnc/novnc@github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161":
   version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@novnc/novnc/-/novnc-1.3.0.tgz#06db5ff55eae646a623d3717d8bffaf131ffb93a"
-  integrity sha512-tR87mY5ADtaELadmZfW937JO/p8fRdz3wkPoqwhqB/vY1XnTQeLSWwkp4yMlr4iIDY0iCficfzFYX5EHMh4MHw==
+  resolved "https://codeload.github.com/novnc/noVNC/tar.gz/679b45fa3b453c7cf32f4b4455f4814818ecf161"
 
 "@octokit/endpoint@^6.0.1":
   version "6.0.12"
@@ -2647,12 +2646,12 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
-eslint-config-next@12.0.10:
-  version "12.0.10"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.0.10.tgz#f201f8f4514018f7ef46f454f56b81cf5c790379"
-  integrity sha512-l1er6mwSo1bltjLwmd71p5BdT6k/NQxV1n4lKZI6xt3MDMrq7ChUBr+EecxOry8GC/rCRUtPpH8Ygs0BJc5YLg==
+eslint-config-next@12.0.11-canary.15:
+  version "12.0.11-canary.15"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.0.11-canary.15.tgz#85d9036079d6330a3b8a72d81e0cf42d94fe8c09"
+  integrity sha512-L/h+SYBYNvdbVhIGXKqpRRDXivQJzanPJ7W0Etu2tP6/1Zm58VocsDkOLcfYF1m6W/bsBRwgZfNBUdbJFRzyog==
   dependencies:
-    "@next/eslint-plugin-next" "12.0.10"
+    "@next/eslint-plugin-next" "12.0.11-canary.15"
     "@rushstack/eslint-patch" "^1.0.8"
     "@typescript-eslint/parser" "^5.0.0"
     eslint-import-resolver-node "^0.3.4"

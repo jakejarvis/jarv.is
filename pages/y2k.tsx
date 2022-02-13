@@ -8,6 +8,9 @@ import type { ReactElement } from "react";
 // obviously, an interactive VNC display will not work even a little bit server-side
 const VNC = dynamic(() => import("../components/VNC/VNC"), { ssr: false });
 
+// https://github.com/jakejarvis/y2k
+const SOCKET_PROXY = "wss://y2k.jrvs.io";
+
 const Y2K = () => {
   // print a fancy console message (in browser only) just for funsies
   useEffect(() => {
@@ -36,7 +39,7 @@ const Y2K = () => {
         }}
       />
 
-      <VNC server="wss://y2k.jrvs.io" />
+      <VNC server={SOCKET_PROXY} />
     </>
   );
 };
