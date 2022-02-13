@@ -26,7 +26,7 @@ const Layout = ({ noContainer, className, children, ...rest }: LayoutProps) => {
         />
 
         {/* kinda a hack to prevent dramatically fading into dark theme if we're immediately setting it on load */}
-        <style>{`.page.no-fade,.page.no-fade *{transition:none!important}`}</style>
+        <style id="no-fade-css">{`.page.no-fade,.page.no-fade *{transition:none!important}`}</style>
 
         {/* dynamically set browser theme color to match the background color */}
         <meta name="theme-color" content={themes[resolvedTheme || "light"]["background-outer"]} />
@@ -34,7 +34,7 @@ const Layout = ({ noContainer, className, children, ...rest }: LayoutProps) => {
 
       {/* remove the `.no-fade` class above from body once the page is finished loading */}
       <Script id="unblock-transitions" strategy="lazyOnload">
-        {`try{document.body.classList.remove("no-fade")}catch(e){}`}
+        {`try{document.body.classList.remove("no-fade");document.getElementById("no-fade-css").remove()}catch(e){}`}
       </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
