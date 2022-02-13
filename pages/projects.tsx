@@ -5,6 +5,7 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
+import { authorSocial } from "../lib/config";
 import type { GetStaticProps } from "next";
 import type { RepoType } from "../types";
 
@@ -29,7 +30,7 @@ const Projects = ({ repos }) => (
       </div>
 
       <p className="view_more">
-        <Link href="https://github.com/jakejarvis?tab=repositories">
+        <Link href={`https://github.com/${authorSocial.github}`}>
           View more on{" "}
           <OctocatOcticon
             fill="currentColor"
@@ -106,7 +107,7 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     `,
     {
-      username: "jakejarvis",
+      username: authorSocial.github,
       limit: 12,
       sort: "STARGAZERS",
       headers: {
