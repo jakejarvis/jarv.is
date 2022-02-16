@@ -56,12 +56,15 @@ const NoteMeta = ({ slug, date, title, tags = [] }: NoteMetaProps) => (
       </a>
     </div>
 
-    <div className={classNames(styles.meta_item, styles.views)}>
-      <span>
-        <ViewsIcon className={styles.icon} />
-      </span>
-      <HitCounter slug={`notes/${slug}`} />
-    </div>
+    {/* only count hits on production site */}
+    {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+      <div className={classNames(styles.meta_item, styles.views)}>
+        <span>
+          <ViewsIcon className={styles.icon} />
+        </span>
+        <HitCounter slug={`notes/${slug}`} />
+      </div>
+    )}
   </div>
 );
 
