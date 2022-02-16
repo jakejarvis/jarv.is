@@ -6,7 +6,7 @@ import * as config from "../../lib/config";
 
 import styles from "./Footer.module.css";
 
-type FooterProps = JSX.IntrinsicElements["footer"];
+export type FooterProps = JSX.IntrinsicElements["footer"];
 
 const Footer = ({ className, ...rest }: FooterProps) => (
   <footer className={classNames(styles.footer, className)} {...rest}>

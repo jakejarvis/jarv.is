@@ -7,7 +7,7 @@ import styles from "./Selfie.module.css";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
-type SelfieProps = {
+export type SelfieProps = {
   className?: string;
 };
 

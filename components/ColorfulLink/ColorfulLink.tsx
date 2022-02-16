@@ -3,7 +3,7 @@ import css from "styled-jsx/css";
 import classNames from "classnames";
 import Link, { CustomLinkProps } from "../Link/Link";
 
-type ColorfulLinkProps = CustomLinkProps & {
+export type ColorfulLinkProps = CustomLinkProps & {
   lightColor: string;
   darkColor: string;
 };

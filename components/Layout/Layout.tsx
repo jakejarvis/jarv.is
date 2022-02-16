@@ -8,7 +8,7 @@ import themes, { toCSS } from "../../lib/config/themes";
 
 import styles from "./Layout.module.css";
 
-type LayoutProps = JSX.IntrinsicElements["div"] & {
+export type LayoutProps = JSX.IntrinsicElements["div"] & {
   container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
   stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
 };

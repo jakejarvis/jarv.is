@@ -6,7 +6,7 @@ import { menuLinks } from "../../lib/config/menu";
 
 import styles from "./Menu.module.css";
 
-type MenuProps = {
+export type MenuProps = {
   className?: string;
 };
 

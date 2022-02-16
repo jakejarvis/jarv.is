@@ -7,7 +7,7 @@ import type { GiscusProps } from "@giscus/react";
 
 import styles from "./Comments.module.css";
 
-type CommentsProps = JSX.IntrinsicElements["div"] & {
+export type CommentsProps = JSX.IntrinsicElements["div"] & {
   title: string;
 };
 

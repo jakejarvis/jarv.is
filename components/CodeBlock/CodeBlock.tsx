@@ -3,7 +3,7 @@ import CopyButton from "../CopyButton/CopyButton";
 
 import styles from "./CodeBlock.module.css";
 
-type CodeBlockProps = JSX.IntrinsicElements["code"] & {
+export type CodeBlockProps = JSX.IntrinsicElements["code"] & {
   forceBlock?: boolean;
 };
 

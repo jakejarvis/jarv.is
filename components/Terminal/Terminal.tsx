@@ -4,7 +4,7 @@ import type { Ref } from "react";
 
 import styles from "./Terminal.module.css";
 
-type TerminalProps = JSX.IntrinsicElements["div"];
+export type TerminalProps = JSX.IntrinsicElements["div"];
 
 // a DOS-style terminal box with dynamic text
 const Terminal = forwardRef(function Terminal({ className, ...rest }: TerminalProps, ref: Ref<HTMLSpanElement>) {

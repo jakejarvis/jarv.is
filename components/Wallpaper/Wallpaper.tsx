@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import styles from "./Wallpaper.module.css";
 
-type WallpaperProps = JSX.IntrinsicElements["main"] & {
+export type WallpaperProps = JSX.IntrinsicElements["main"] & {
   image: string;
   tile?: boolean;
 };

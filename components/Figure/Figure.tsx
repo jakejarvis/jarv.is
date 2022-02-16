@@ -6,7 +6,7 @@ import type { ImageProps as NextImageProps } from "next/image";
 
 import styles from "./Figure.module.css";
 
-type FigureProps = Omit<NextImageProps, "alt"> &
+export type FigureProps = Omit<NextImageProps, "alt"> &
   PropsWithChildren<{
     alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
   }>;

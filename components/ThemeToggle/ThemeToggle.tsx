@@ -4,7 +4,7 @@ import { SunIcon, MoonIcon } from "../Icons";
 
 import styles from "./ThemeToggle.module.css";
 
-type ThemeToggleProps = {
+export type ThemeToggleProps = {
   className?: string;
 };
 

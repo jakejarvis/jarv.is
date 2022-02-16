@@ -6,7 +6,7 @@ import type { RepoType } from "../../types";
 
 import styles from "./RepositoryCard.module.css";
 
-type RepositoryCardProps = RepoType & {
+export type RepositoryCardProps = RepoType & {
   className?: string;
 };
 

@@ -5,7 +5,7 @@ import Terminal from "../Terminal/Terminal";
 
 import styles from "./VNC.module.css";
 
-type VNCProps = {
+export type VNCProps = {
   server: string;
 };
 

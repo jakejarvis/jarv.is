@@ -5,7 +5,7 @@ import { baseUrl } from "../../lib/config";
 
 import styles from "./PageTitle.module.css";
 
-type PageTitleProps = JSX.IntrinsicElements["h1"];
+export type PageTitleProps = JSX.IntrinsicElements["h1"];
 
 const PageTitle = ({ className, children, ...rest }: PageTitleProps) => {
   const router = useRouter();

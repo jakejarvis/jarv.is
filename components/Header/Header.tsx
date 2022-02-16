@@ -5,7 +5,7 @@ import Menu from "../Menu/Menu";
 
 import styles from "./Header.module.css";
 
-type HeaderProps = JSX.IntrinsicElements["header"] & {
+export type HeaderProps = JSX.IntrinsicElements["header"] & {
   sticky?: boolean;
 };
 

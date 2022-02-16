@@ -7,7 +7,7 @@ import type { ReactNode, Ref } from "react";
 
 import styles from "./CopyButton.module.css";
 
-type CopyButtonProps = {
+export type CopyButtonProps = {
   source: ReactNode;
   timeout?: number;
   className?: string;

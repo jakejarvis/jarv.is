@@ -4,7 +4,7 @@ import type { NoteMetaType } from "../../types";
 
 import styles from "./NotesList.module.css";
 
-type NotesListProps = {
+export type NotesListProps = {
   notesByYear: Record<string, NoteMetaType[]>;
 };
 

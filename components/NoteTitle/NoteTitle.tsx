@@ -4,7 +4,7 @@ import type { NoteMetaType } from "../../types";
 
 import styles from "./NoteTitle.module.css";
 
-type NoteTitleProps = Pick<NoteMetaType, "slug" | "htmlTitle"> & JSX.IntrinsicElements["h1"];
+export type NoteTitleProps = Pick<NoteMetaType, "slug" | "htmlTitle"> & JSX.IntrinsicElements["h1"];
 
 const NoteTitle = ({ slug, htmlTitle, className, ...rest }: NoteTitleProps) => (
   <h1 className={classNames(styles.title, className)} {...rest}>

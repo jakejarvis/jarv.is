@@ -4,7 +4,7 @@ import type { YouTubePlayerProps } from "react-player/youtube";
 
 import styles from "./YouTubeEmbed.module.css";
 
-type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
+export type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
   id: string;
   className?: string;
 };

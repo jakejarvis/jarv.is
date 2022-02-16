@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import styles from "./Loading.module.css";
 
-type LoadingProps = {
+export type LoadingProps = {
   width: number; // of entire container, in pixels
   boxes?: number; // total number of boxes (default: 3)
   timing?: number; // staggered timing between each box's pulse, in seconds (default: 0.1s)

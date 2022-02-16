@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import styles from "./IFrame.module.css";
 
-type IFrameProps = JSX.IntrinsicElements["iframe"] & {
+export type IFrameProps = JSX.IntrinsicElements["iframe"] & {
   src: string;
   height: number;
   width?: number; // defaults to 100%

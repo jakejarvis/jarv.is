@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useTheme } from "next-themes";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
-type CaptchaProps = {
+export type CaptchaProps = {
   size?: "normal" | "compact" | "invisible";
   theme?: "light" | "dark";
   id?: string;

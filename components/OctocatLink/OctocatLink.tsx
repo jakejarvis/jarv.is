@@ -3,7 +3,7 @@ import { OctocatOcticon } from "../Icons";
 
 import styles from "./OctocatLink.module.css";
 
-type OctocatLinkProps = JSX.IntrinsicElements["a"] & {
+export type OctocatLinkProps = JSX.IntrinsicElements["a"] & {
   repo: string;
 };
 

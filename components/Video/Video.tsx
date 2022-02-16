@@ -4,7 +4,7 @@ import type { FilePlayerProps } from "react-player/file";
 
 import styles from "./Video.module.css";
 
-type VideoProps = Partial<FilePlayerProps> & {
+export type VideoProps = Partial<FilePlayerProps> & {
   webm?: string;
   mp4?: string;
   thumbnail?: string;

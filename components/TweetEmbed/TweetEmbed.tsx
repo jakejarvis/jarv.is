@@ -1,6 +1,6 @@
 import Tweet from "react-tweet-embed";
 
-type TweetEmbedProps = {
+export type TweetEmbedProps = {
   id: string;
   options?: object;
   className?: string;

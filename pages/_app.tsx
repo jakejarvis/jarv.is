@@ -9,7 +9,7 @@ import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
-import type { AppProps } from "next/app";
+import type { AppProps as NextAppProps } from "next/app";
 
 // global webfonts -- imported here so they're processed through PostCSS
 import "@fontsource/inter/latin-400.css";
@@ -29,13 +29,13 @@ import "../styles/typography.css";
 import "../styles/index.css";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
-type Props = AppProps & {
+export type AppProps = NextAppProps & {
   Component: NextPage & {
     getLayout?: (page: ReactElement) => ReactNode;
   };
 };
 
-const App = ({ Component, pageProps }: Props) => {
+const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   // get this page's URL with full domain, and hack around query parameters and anchors

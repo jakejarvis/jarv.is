@@ -16,7 +16,7 @@ type Values = {
   "h-captcha-response": string;
 };
 
-type ContactFormProps = {
+export type ContactFormProps = {
   className?: string;
 };
 
