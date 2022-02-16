@@ -19,8 +19,10 @@ const Birthday = () => (
 
     <Content>
       <Video
-        webm="/static/images/birthday/birthday.webm"
-        mp4="/static/images/birthday/birthday.mp4"
+        src={{
+          webm: "/static/images/birthday/birthday.webm",
+          mp4: "/static/images/birthday/birthday.mp4",
+        }}
         thumbnail={thumbnail.src}
       />
     </Content>

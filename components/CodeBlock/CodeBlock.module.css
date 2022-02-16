@@ -2,7 +2,6 @@
 .code {
   font-size: 0.925em;
   color: var(--code-text);
-  tab-size: 2;
   page-break-inside: avoid;
   background-color: var(--code-background);
   border: 1px solid var(--kinda-light);
@@ -28,6 +27,7 @@
   display: block;
   overflow-x: auto;
   padding: 1em;
+  tab-size: 2;
 }
 
 .copy_btn {
@@ -56,7 +56,7 @@
   margin-right: 3em;
 }
 
-.highlight > :global(.code-line.line-number::before) {
+.highlight > :global(.line-number::before) {
   display: inline-block;
   width: 1.5em;
   margin-right: 1.5em;

@@ -19,8 +19,10 @@ const Hillary = () => (
     <PageTitle>My Brief Apperance in Hillary Clinton's DNC Video</PageTitle>
     <Content>
       <Video
-        webm="/static/images/hillary/convention-720p.webm"
-        mp4="/static/images/hillary/convention-720p.mp4"
+        src={{
+          webm: "/static/images/hillary/convention-720p.webm",
+          mp4: "/static/images/hillary/convention-720p.mp4",
+        }}
         thumbnail={thumbnail.src}
         subs="/static/images/hillary/subs.en.vtt"
       />

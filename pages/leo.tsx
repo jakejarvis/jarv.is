@@ -20,8 +20,10 @@ const Leo = () => (
 
     <Content>
       <Video
-        webm="/static/images/leo/leo.webm"
-        mp4="/static/images/leo/leo.mp4"
+        src={{
+          webm: "/static/images/leo/leo.webm",
+          mp4: "/static/images/leo/leo.mp4",
+        }}
         thumbnail={thumbnail.src}
         subs="/static/images/leo/subs.en.vtt"
       />
