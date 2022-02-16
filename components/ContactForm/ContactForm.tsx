@@ -1,5 +1,5 @@
 import { useState } from "react";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link/Link";
@@ -8,7 +8,6 @@ import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
 import type { FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.css";
-const cx = classNames.bind(styles);
 
 type Values = {
   name: string;
@@ -103,7 +102,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             {({ field, meta }) => (
               <input
                 type="text"
-                className={cx(styles.input, { missing: meta.error && meta.touched })}
+                className={classNames(styles.input, meta.error && meta.touched && styles.missing)}
                 placeholder="Name"
                 disabled={success}
                 {...field}
@@ -116,7 +115,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
               <input
                 type="email"
                 inputMode="email"
-                className={cx(styles.input, { missing: meta.error && meta.touched })}
+                className={classNames(styles.input, meta.error && meta.touched && styles.missing)}
                 placeholder="Email"
                 disabled={success}
                 {...field}
@@ -127,7 +126,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           <Field name="message">
             {({ field, meta }) => (
               <TextareaAutosize
-                className={cx(styles.input, styles.textarea, { missing: meta.error && meta.touched })}
+                className={classNames(styles.input, styles.textarea, meta.error && meta.touched && styles.missing)}
                 placeholder="Write something..."
                 minRows={5}
                 disabled={success}
@@ -154,7 +153,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <div className={styles.action_row}>
             <button
-              className={cx(styles.btn_submit, { hidden: success })}
+              className={classNames(styles.btn_submit, success && styles.hidden)}
               type="submit"
               title="Send Message"
               aria-label="Send Message"
@@ -171,11 +170,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
             </button>
 
             <span
-              className={cx({
-                result_success: success,
-                result_error: !success,
-                hidden: !submitted || !feedback || isSubmitting,
-              })}
+              className={classNames(
+                success && styles.result_success,
+                !success && styles.result_error,
+                (!submitted || !feedback || isSubmitting) && styles.hidden
+              )}
             >
               {success ? (
                 <CheckOcticon className={styles.result_icon} fill="CurrentColor" />

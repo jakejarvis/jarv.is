@@ -1,12 +1,11 @@
 import { forwardRef, useState, useEffect } from "react";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
 import type { ReactNode, Ref } from "react";
 
 import styles from "./CopyButton.module.css";
-const cx = classNames.bind(styles);
 
 type CopyButtonProps = {
   source: ReactNode;
@@ -47,7 +46,7 @@ const CopyButton = forwardRef(function CopyButton(
 
   return (
     <button
-      className={cx(styles.button, { success: !!copied }, className)}
+      className={classNames(styles.button, copied && styles.success, className)}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}

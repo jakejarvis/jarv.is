@@ -9,10 +9,11 @@ import themes, { toCSS } from "../../lib/config/themes";
 import styles from "./Layout.module.css";
 
 type LayoutProps = JSX.IntrinsicElements["div"] & {
-  noContainer?: boolean; // pass true to disable default `<main>` container styles with padding, etc.
+  container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
+  stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
 };
 
-const Layout = ({ noContainer, className, children, ...rest }: LayoutProps) => {
+const Layout = ({ container = true, stickyHeader = true, className, children, ...rest }: LayoutProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -38,15 +39,15 @@ const Layout = ({ noContainer, className, children, ...rest }: LayoutProps) => {
       </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
-        <Header />
+        <Header sticky={stickyHeader} />
 
-        {/* passing `noContainer={true}` to Layout allows 100% control of the content area on a per-page basis */}
-        {noContainer ? (
-          <>{children}</>
-        ) : (
+        {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
+        {container ? (
           <main className={styles.default}>
             <div className={styles.container}>{children}</div>
           </main>
+        ) : (
+          <>{children}</>
         )}
 
         <Footer className={styles.footer} />

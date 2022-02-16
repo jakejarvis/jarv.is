@@ -1,8 +1,7 @@
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import CopyButton from "../CopyButton/CopyButton";
 
 import styles from "./CodeBlock.module.css";
-const cx = classNames.bind(styles);
 
 type CodeBlockProps = JSX.IntrinsicElements["code"] & {
   forceBlock?: boolean;
@@ -19,7 +18,11 @@ const CodeBlock = ({ forceBlock, className, children, ...rest }: CodeBlockProps)
       <div className={styles.block}>
         <CopyButton source={children} className={styles.copy_btn} />
         <code
-          className={cx(styles.code, { highlight: prismEnabled }, className?.replace("code-highlight", "").trim())}
+          className={classNames(
+            styles.code,
+            prismEnabled && styles.highlight,
+            className?.replace("code-highlight", "").trim()
+          )}
           {...rest}
         >
           {children}

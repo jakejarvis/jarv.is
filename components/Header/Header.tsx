@@ -5,10 +5,12 @@ import Menu from "../Menu/Menu";
 
 import styles from "./Header.module.css";
 
-type HeaderProps = JSX.IntrinsicElements["div"];
+type HeaderProps = JSX.IntrinsicElements["header"] & {
+  sticky?: boolean;
+};
 
-const Header = ({ className }: HeaderProps) => (
-  <header className={classNames(styles.header, className)}>
+const Header = ({ sticky, className, ...rest }: HeaderProps) => (
+  <header className={classNames(styles.header, sticky && styles.sticky, className)} {...rest}>
     <nav className={styles.nav}>
       <Selfie className={styles.selfie} />
       <Menu className={styles.menu} />

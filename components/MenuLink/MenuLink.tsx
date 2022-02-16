@@ -1,8 +1,7 @@
 import Link from "next/link";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 
 import styles from "./MenuLink.module.css";
-const cx = classNames.bind(styles);
 
 export type MenuLinkProps = {
   href?: string;
@@ -20,7 +19,7 @@ const MenuLink = ({ icon: Icon, href, text, current, className }: MenuLinkProps)
   if (href) {
     return (
       <Link href={href} prefetch={false}>
-        <a className={cx(styles.link, { current: !!current }, className)}>
+        <a className={classNames(styles.link, current && styles.current, className)}>
           <Icon className={styles.icon} /> <span className={styles.label}>{text}</span>
         </a>
       </Link>

@@ -50,7 +50,7 @@ Y2K.getLayout = (page: ReactElement) => {
   const randomTile = `/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`;
 
   return (
-    <Layout noContainer>
+    <Layout container={false} stickyHeader={false}>
       <Wallpaper
         image={randomTile}
         tile
@@ -63,13 +63,6 @@ Y2K.getLayout = (page: ReactElement) => {
       >
         {page}
       </Wallpaper>
-
-      {/* also make the viewport a bit larger by un-sticking the nav bar */}
-      <style jsx global>{`
-        header {
-          position: relative !important;
-        }
-      `}</style>
     </Layout>
   );
 };

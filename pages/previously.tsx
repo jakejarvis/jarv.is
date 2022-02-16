@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import { NextSeo } from "next-seo";
 import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
@@ -6,7 +8,6 @@ import Figure from "../components/Figure/Figure";
 import IFrame from "../components/IFrame/IFrame";
 import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
 
-/* eslint-disable camelcase */
 import img_wayback from "../public/static/images/previously/wayback.png";
 import img_2002_02 from "../public/static/images/previously/2002_02.png";
 import img_2002_10 from "../public/static/images/previously/2002_10.png";
@@ -55,7 +56,7 @@ const Previously = () => (
       <p>
         🚨 <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
         <code>
-          color: <span className="limegreen">limegreen</span>
+          color: <span style={{ color: "#32cd32" }}>limegreen</span>
         </code>
         ...{" "}
         <Link href="/y2k/" prefetch={false}>
@@ -205,9 +206,6 @@ const Previously = () => (
       }
       iframe {
         margin-bottom: 0.6em !important;
-      }
-      .limegreen {
-        color: #32cd32;
       }
     `}</style>
   </>
