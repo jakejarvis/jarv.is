@@ -1,8 +1,8 @@
 import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../../components/Icons";
-import type { MenuLinkProps } from "../../components/MenuLink/MenuLink";
+import type { MenuItemProps } from "../../components/MenuItem/MenuItem";
 
-export const menuLinks: MenuLinkProps[] = [
+export const menuItems: MenuItemProps[] = [
   {
     icon: HomeIcon,
     text: "Home",

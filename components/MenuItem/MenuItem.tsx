@@ -1,9 +1,9 @@
 import Link from "next/link";
 import classNames from "classnames";
 
-import styles from "./MenuLink.module.css";
+import styles from "./MenuItem.module.css";
 
-export type MenuLinkProps = {
+export type MenuItemProps = {
   href?: string;
   text?: string;
   current?: boolean;
@@ -14,19 +14,23 @@ export type MenuLinkProps = {
   icon: any;
 };
 
-const MenuLink = ({ icon: Icon, href, text, current, className }: MenuLinkProps) => {
+const MenuItem = ({ icon: Icon, href, text, current, className }: MenuItemProps) => {
+  const linkContent = (
+    <>
+      <Icon className={classNames(styles.icon, className)} /> {text && <span className={styles.label}>{text}</span>}
+    </>
+  );
+
   // allow both navigational links and/or other interactive react components (e.g. the theme toggle)
   if (href) {
     return (
       <Link href={href} prefetch={false}>
-        <a className={classNames(styles.link, current && styles.current, className)}>
-          <Icon className={styles.icon} /> <span className={styles.label}>{text}</span>
-        </a>
+        <a className={classNames(styles.link, current && styles.current, className)}>{linkContent}</a>
       </Link>
     );
   } else {
-    return <Icon className={classNames(styles.icon, className)} />;
+    return linkContent;
   }
 };
 
-export default MenuLink;
+export default MenuItem;
