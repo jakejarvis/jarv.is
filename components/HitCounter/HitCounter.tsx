@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import Loading from "../Loading/Loading";
-import { fetcher } from "../../lib/fetcher";
+import { fetcher } from "../../lib/helpers/fetcher";
 
 export type HitCounterProps = {
   slug: string;

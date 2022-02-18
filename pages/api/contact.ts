@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import queryString from "query-string";
-import { logServerError } from "../../lib/sentry";
+import { logServerError } from "../../lib/helpers/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
