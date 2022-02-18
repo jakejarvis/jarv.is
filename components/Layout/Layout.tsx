@@ -26,16 +26,14 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
           }}
         />
 
-        {/* kinda a hack to prevent dramatically fading into dark theme if we're immediately setting it on load */}
-        <style id="no-fade-css">{`.page.no-fade,.page.no-fade *{transition:none!important}`}</style>
-
-        {/* dynamically set browser theme color to match the background color */}
+        {/* dynamically set browser theme color to match the background color; default to light for SSR */}
         <meta name="theme-color" content={themes[resolvedTheme || "light"]["background-outer"]} />
       </Head>
 
-      {/* remove the `.no-fade` class above from body once the page is finished loading */}
+      {/* this script removes the CSS that blocks transitions (see _document.tsx) once the page is finished loading...
+          ...and removes itself after it has done that: */}
       <Script id="unblock-transitions" strategy="lazyOnload">
-        {`try{document.body.classList.remove("no-fade");document.getElementById("no-fade-css").remove()}catch(e){}`}
+        {`try{document.getElementById("block-transitions").remove();document.getElementById("unblock-transitions").remove()}catch(e){}`}
       </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
