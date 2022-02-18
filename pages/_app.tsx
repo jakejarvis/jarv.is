@@ -70,8 +70,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
-
       {/* static asset preloads */}
       <Head>
         {/* TODO: these hrefs will change at some point (and possibly unpredictably). find a better way... */}
@@ -104,6 +102,8 @@ const App = ({ Component, pageProps }: AppProps) => {
         dangerouslySetAllPagesToNoFollow={process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"}
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
+
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };

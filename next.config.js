@@ -92,12 +92,11 @@ module.exports = (phase, { defaultConfig }) => {
       { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
     ],
     redirects: async () => [
-      { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
-      { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
-      { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: true },
-      { source: "/stats/", destination: "https://app.usefathom.com/share/wbgnqukw/jarv.is", permanent: false },
-      { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
-      { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
+      // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
+      // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
+      { source: "/:slug/amp.html", destination: "/:slug/", statusCode: 301 },
+
+      // remnants of previous sites/CMSes:
       { source: "/index.xml", destination: "/feed.xml", permanent: true },
       { source: "/feed/", destination: "/feed.xml", permanent: true },
       { source: "/rss/", destination: "/feed.xml", permanent: true },
@@ -118,6 +117,13 @@ module.exports = (phase, { defaultConfig }) => {
         destination: "/notes/cool-bash-tricks-for-your-terminal-dotfiles/",
         permanent: true,
       },
+
+      // misc. crap:
+      { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
+      { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
+      { source: "/stats/", destination: "https://app.usefathom.com/share/wbgnqukw/jarv.is", permanent: false },
+      { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
+      { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
     ],
   };
 
