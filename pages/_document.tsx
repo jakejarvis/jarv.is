@@ -1,25 +1,17 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import classNames from "classnames";
+import { Html, Head, Main, NextScript } from "next/document";
 import * as config from "../lib/config";
-import type { DocumentContext } from "next/document";
 
-class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
+// https://nextjs.org/docs/advanced-features/custom-document
+const Document = () => {
+  return (
+    <Html lang={config.siteLocale?.replace("_", "-")}>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+};
 
-  render() {
-    return (
-      <Html lang={config.siteLocale?.replace("_", "-")}>
-        <Head />
-        <body className={classNames("page", "no-fade")}>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-
-export default CustomDocument;
+export default Document;
