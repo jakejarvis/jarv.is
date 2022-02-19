@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import Header from "../Header/Header";
@@ -21,6 +20,7 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
       <Head>
         {/* convert themes object into inlined css variables */}
         <style
+          id="theme-colors"
           dangerouslySetInnerHTML={{
             __html: `:root{${toCSS(themes.light)}}[data-theme="dark"]{${toCSS(themes.dark)}}`,
           }}
@@ -29,12 +29,6 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
         <meta name="theme-color" content={themes[resolvedTheme || "light"]["background-outer"]} />
       </Head>
-
-      {/* this script removes the CSS that blocks transitions (see _document.tsx) once the page is finished loading...
-          ...and removes itself after it has done that: */}
-      <Script id="unblock-transitions" strategy="lazyOnload">
-        {`try{document.getElementById("block-transitions").remove();document.getElementById("unblock-transitions").remove()}catch(e){}`}
-      </Script>
 
       <div className={classNames(styles.flex, className)} {...rest}>
         <Header sticky={stickyHeader} />
