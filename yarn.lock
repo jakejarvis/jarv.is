@@ -6187,10 +6187,10 @@ simple-git-hooks@^2.7.0:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.7.0.tgz#121a5c3023663b8abcc5648c8bfe8619dc263705"
   integrity sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==
 
-simple-icons@^6.10.0:
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.10.0.tgz#4a4b5bfdb8474d881f5a69102b84613092406f9b"
-  integrity sha512-ttZNI13dH3vHII0/qWwXH1ipSZd5zX9eMh0kMTi8c2V32ON/IFl8fNL9k4MaP5lGy5KpEAchfRZ5NeMynpWRjg==
+simple-icons@^6.11.0:
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.11.0.tgz#c3bf59de4172176d8be74793a987a6b81ce83f2e"
+  integrity sha512-z1OMDOA84AUcL3N+SMWloFPh9FQVUpFSROS5noaPrMKF/iuMlxySE8jEO35E1K295vX8qWPmEJzdXhGaI7KZJA==
 
 sirv@^1.0.7:
   version "1.0.19"

@@ -74,7 +74,7 @@
     "remark-gfm": "^3.0.1",
     "remove-markdown": "^0.3.0",
     "sanitize-html": "^2.7.0",
-    "simple-icons": "^6.10.0",
+    "simple-icons": "^6.11.0",
     "swr": "^1.2.2",
     "terser": "^5.10.0",
     "twemoji": "github:twitter/twemoji#v13.1.0"
