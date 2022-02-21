@@ -23,7 +23,7 @@
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
-    "@fontsource/comic-neue": "4.5.2",
+    "@fontsource/comic-neue": "4.5.3",
     "@fontsource/inter": "4.5.4",
     "@fontsource/roboto-mono": "4.5.3",
     "@giscus/react": "^1.1.2",

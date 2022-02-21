@@ -1050,10 +1050,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/comic-neue@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/comic-neue/-/comic-neue-4.5.2.tgz#8a3f8061fbb2a6890e0e9729855886642f137aa1"
-  integrity sha512-65ivrkCixQTMyVMGfS55aR2eBwyrify8yvhZtDKdH2kZdMguVHjPgxwVHkK416c6sQlDDcl3TaAb3P/Skh5rmg==
+"@fontsource/comic-neue@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/comic-neue/-/comic-neue-4.5.3.tgz#9a6bbda91e4498c65dfc3341f7ca487e6d50ea1d"
+  integrity sha512-kRwsJ+XDh7hTEoWRrRlohQf2BRcPTZO7SEBpWmoiHNHxEX/Tv+EaLYonBVEDrkSia+r8HdMie3OwXL4x0/2r6g==
 
 "@fontsource/inter@4.5.4":
   version "4.5.4"
