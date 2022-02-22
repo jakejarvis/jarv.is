@@ -5681,10 +5681,10 @@ react-textarea-autosize@^8.3.3:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-tweet-embed@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/react-tweet-embed/-/react-tweet-embed-1.3.1.tgz#066d45dd3fc4c72c6ea61a85857c9044d408235f"
-  integrity sha512-qVAlb3/d3YhYHHB6Y3J/8OCY+a5KOzCnY/qUaBnK8qtEKXK9qWePlpGevDQgryWuKxggwxW1UHPLZ3VpPc7XUQ==
+react-tweet-embed@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-tweet-embed/-/react-tweet-embed-2.0.0.tgz#bb8a94bd11bf38ce6c5d9f18f35bf044110a7f40"
+  integrity sha512-g2kfPjSRTOKeJtaQF5EMuSTmp/q8I0qdDs/pZ2qLXZjCWExDT/JgjxSlyM65NyNzsz8072PDpvlO/sIXwwVpdQ==
 
 react@^17.0.2:
   version "17.0.2"
