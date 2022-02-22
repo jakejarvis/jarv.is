@@ -7,7 +7,7 @@ import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
 import { authorSocial } from "../lib/config";
 import type { GetStaticProps } from "next";
-import type { RepoType } from "../types";
+import type { RepositoryType } from "../types";
 
 const Projects = ({ repos }) => (
   <>
@@ -22,7 +22,7 @@ const Projects = ({ repos }) => (
 
     <Content>
       <div className="wrapper">
-        {repos.map((repo: RepoType) => (
+        {repos.map((repo: RepositoryType) => (
           <div key={repo.name} className="card">
             <RepositoryCard {...repo} />
           </div>
@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  const repos: RepoType[] = user.repositories.edges.map(({ node: repo }) => ({
+  const repos: RepositoryType[] = user.repositories.edges.map(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
     description: repo.description,

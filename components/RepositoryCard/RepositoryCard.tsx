@@ -2,11 +2,11 @@ import classNames from "classnames";
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import Link from "../Link/Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
-import type { RepoType } from "../../types";
+import type { RepositoryType } from "../../types";
 
 import styles from "./RepositoryCard.module.css";
 
-export type RepositoryCardProps = RepoType & {
+export type RepositoryCardProps = RepositoryType & {
   className?: string;
 };
 

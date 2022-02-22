@@ -16,7 +16,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
 import type { MinifyOptions } from "terser";
-import type { NoteMetaType, NoteType } from "../types";
+import type { NoteType } from "../types";
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
 export const getNoteSlugs = () =>
@@ -26,7 +26,7 @@ export const getNoteSlugs = () =>
     .map((noteFile) => noteFile.replace(/\.mdx$/, ""));
 
 // returns front matter and/or *raw* markdown contents of a given slug
-export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content: string } => {
+export const getNoteData = (slug: string): Omit<NoteType, "source"> & { content: string } => {
   const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
   const rawContent = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(rawContent);
@@ -47,7 +47,7 @@ export const getNoteData = (slug: string): { frontMatter: NoteMetaType; content:
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as Omit<NoteMetaType, "slug" | "title" | "htmlTitle" | "permalink" | "date" | "readingMins">),
+      ...(data as Omit<NoteType["frontMatter"], "slug" | "title" | "htmlTitle" | "permalink" | "date" | "readingMins">),
       // zero markdown title:
       title: removeMarkdown(data.title),
       // parsed markdown title:
@@ -103,4 +103,4 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 export const getAllNotes = () =>
   getNoteSlugs()
     .map((slug) => getNoteData(slug).frontMatter)
-    .sort((note1: NoteMetaType, note2: NoteMetaType) => (note1.date > note2.date ? -1 : 1));
+    .sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) => (note1.date > note2.date ? -1 : 1));
