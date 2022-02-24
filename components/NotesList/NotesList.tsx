@@ -1,17 +1,17 @@
 import { format } from "date-fns";
 import Link from "../Link/Link";
-import type { NoteMetaType } from "../../types";
+import type { NoteType } from "../../types";
 
 import styles from "./NotesList.module.css";
 
 export type NotesListProps = {
-  notesByYear: Record<string, NoteMetaType[]>;
+  notesByYear: Record<string, NoteType["frontMatter"][]>;
 };
 
 const NotesList = ({ notesByYear }: NotesListProps) => {
   const sections = [];
 
-  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteMetaType[]]) => {
+  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteType["frontMatter"][]]) => {
     sections.push(
       <section key={year} className={styles.section}>
         <h2 className={styles.year}>{year}</h2>
@@ -23,7 +23,7 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
                 <Link
                   href={{
                     pathname: "/notes/[slug]/",
-                    query: { slug: slug },
+                    query: { slug },
                   }}
                   dangerouslySetInnerHTML={{ __html: htmlTitle }}
                 />

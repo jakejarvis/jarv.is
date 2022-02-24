@@ -9,7 +9,7 @@ export type TweetEmbedProps = {
 const TweetEmbed = ({ id, className, options }: TweetEmbedProps) => (
   <Tweet
     className={className}
-    id={id}
+    tweetId={id}
     options={{
       dnt: true,
       align: "center",

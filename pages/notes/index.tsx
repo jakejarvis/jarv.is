@@ -1,11 +1,11 @@
 import { NextSeo } from "next-seo";
 import { format } from "date-fns";
 import Content from "../../components/Content/Content";
-import NotesList from "../../components/NotesList/NotesList";
+import NotesList, { NotesListProps } from "../../components/NotesList/NotesList";
 import { getAllNotes } from "../../lib/parse-notes";
 import type { GetStaticProps } from "next";
 
-const Notes = ({ notesByYear }) => (
+const Notes = ({ notesByYear }: NotesListProps) => (
   <>
     <NextSeo
       title="Notes"
@@ -23,9 +23,10 @@ const Notes = ({ notesByYear }) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   // parse the year of each note and group them together
-  const notesByYear = {};
+  const notesByYear: NotesListProps["notesByYear"] = {};
+
   getAllNotes().map((note) => {
-    const year = Number.parseInt(format(new Date(note.date), "yyyy"));
+    const year = format(new Date(note.date), "yyyy");
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });
 

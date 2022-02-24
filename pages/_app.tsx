@@ -72,7 +72,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       {/* static asset preloads */}
       <Head>
-        {/* TODO: these hrefs will change at some point (and possibly unpredictably). find a better way... */}
+        {/* TODO: these hrefs will change (unpredictably?) at some point. find a safer way to get them from webpack. */}
         <link
           rel="preload"
           as="font"
@@ -89,7 +89,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
 
-      {/* all SEO config is in ./lib/seo.ts except for canonical URLs, which require access to next router */}
+      {/* all SEO config is in ../lib/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
         canonical={canonical}
@@ -103,6 +103,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
+      {/* NOTE: this *must* come last in this fragment */}
       <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );

@@ -38,14 +38,6 @@ module.exports = (phase, { defaultConfig }) => {
       config.module.rules.push({
         test: /\.svg$/,
         issuer: { and: [/\.(js|ts)x?$/] },
-        include: [
-          path.resolve(__dirname, "components/icons"),
-          // slight workaround to grab svg files from these packages directly instead of through their exports:
-          path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
-          path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
-          path.resolve(__dirname, "node_modules/simple-icons/icons"),
-          path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
-        ],
         use: [
           {
             loader: "@svgr/webpack",
@@ -57,6 +49,15 @@ module.exports = (phase, { defaultConfig }) => {
               },
             },
           },
+        ],
+        include: [
+          // allow processing images from these packages directly instead of through their different exports, and leave
+          // other static imports of SVGs alone.
+          // see: ./components/Icons/index.ts
+          path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
+          path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
+          path.resolve(__dirname, "node_modules/simple-icons/icons"),
+          path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
         ],
       });
 

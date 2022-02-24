@@ -4,7 +4,6 @@ import { MDXRemote } from "next-mdx-remote";
 import { htmlEscape } from "escape-goat";
 import Content from "../../components/Content/Content";
 import NoteMeta from "../../components/NoteMeta/NoteMeta";
-import NoteTitle from "../../components/NoteTitle/NoteTitle";
 import Comments from "../../components/Comments/Comments";
 import * as mdxComponents from "../../lib/mdx-components";
 import { getNote, getNoteSlugs } from "../../lib/parse-notes";
@@ -51,15 +50,15 @@ const Note = ({ frontMatter, source }: NoteType) => {
         {...articleJsonLd}
       />
 
-      <NoteMeta slug={frontMatter.slug} date={frontMatter.date} title={frontMatter.title} tags={frontMatter.tags} />
-      <NoteTitle slug={frontMatter.slug} htmlTitle={frontMatter.htmlTitle} />
+      <NoteMeta {...frontMatter} />
 
       <Content>
         {/* @ts-ignore */}
         <MDXRemote {...source} components={{ ...mdxComponents }} />
       </Content>
 
-      {frontMatter.noComments !== true && (
+      {/* comments can be disabled for an individual post via `noComments: true` in its front matter */}
+      {!frontMatter.noComments && (
         <InView rootMargin="140px" triggerOnce fallbackInView>
           {({ inView, ref }) => (
             <div id="comments" ref={ref}>
@@ -72,8 +71,8 @@ const Note = ({ frontMatter, source }: NoteType) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { frontMatter, source } = await getNote(params.slug as string);
+export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<NoteType["frontMatter"], "slug"> }) => {
+  const { frontMatter, source } = await getNote(params.slug);
 
   return {
     props: {
