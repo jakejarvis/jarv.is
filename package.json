@@ -32,7 +32,7 @@
     "@novnc/novnc": "github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^16.3.1",
-    "@sentry/node": "^6.17.9",
+    "@sentry/node": "^6.18.0",
     "@sentry/tracing": "^6.17.9",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
