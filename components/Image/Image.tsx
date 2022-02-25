@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 import classNames from "classnames";
-import type { ImageProps as NextImageProps } from "next/image";
+import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
 import styles from "./Image.module.css";
 
