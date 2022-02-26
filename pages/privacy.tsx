@@ -78,12 +78,7 @@ const Privacy = () => (
         is completely public, too!)
       </p>
 
-      <IFrame
-        src="https://app.usefathom.com/share/wbgnqukw/jarv.is"
-        title="Fathom Analytics dashboard"
-        height={500}
-        allowScripts
-      />
+      <IFrame src="/stats/" title="Fathom Analytics dashboard" height={500} allowScripts />
 
       <H2 id="third-party">Third-Party Content</H2>
 

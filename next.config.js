@@ -122,7 +122,11 @@ module.exports = (phase, { defaultConfig }) => {
       // misc. crap:
       { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
       { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
-      { source: "/stats/", destination: "https://app.usefathom.com/share/wbgnqukw/jarv.is", permanent: false },
+      {
+        source: "/stats/",
+        destination: `https://app.usefathom.com/share/${config.fathomSiteId}/${config.siteDomain}`,
+        permanent: false,
+      },
       { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
       { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
     ],

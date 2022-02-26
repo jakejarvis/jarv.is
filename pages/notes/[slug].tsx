@@ -53,8 +53,11 @@ const Note = ({ frontMatter, source }: NoteType) => {
       <NoteMeta {...frontMatter} />
 
       <Content>
-        {/* @ts-ignore */}
-        <MDXRemote {...source} components={{ ...mdxComponents }} />
+        <MDXRemote
+          {...source}
+          // @ts-ignore
+          components={{ ...mdxComponents }}
+        />
       </Content>
 
       {/* comments can be disabled for an individual post via `noComments: true` in its front matter */}

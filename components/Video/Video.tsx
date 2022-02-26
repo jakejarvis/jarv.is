@@ -60,8 +60,15 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
 
   return (
     <div className={classNames(styles.wrapper, className)}>
-      {/* @ts-ignore */}
-      <ReactPlayer width="100%" height="100%" url={url} config={config} controls={!autoplay} {...rest} />
+      <ReactPlayer
+        width="100%"
+        height="100%"
+        url={url}
+        controls={!autoplay}
+        // @ts-ignore
+        config={config}
+        {...rest}
+      />
     </div>
   );
 };

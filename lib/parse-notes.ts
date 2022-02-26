@@ -8,7 +8,8 @@ import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
 import readingTime from "reading-time";
-import { NOTES_DIR, baseUrl } from "./config";
+import { baseUrl } from "./config";
+import { NOTES_DIR } from "./config/constants";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
