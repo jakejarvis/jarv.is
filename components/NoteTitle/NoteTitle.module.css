@@ -10,7 +10,7 @@
 }
 
 .link {
-  color: inherit;
+  color: var(--text);
   text-decoration: none;
 }
 

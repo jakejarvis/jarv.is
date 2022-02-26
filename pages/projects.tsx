@@ -108,8 +108,8 @@ export const getStaticProps: GetStaticProps = async () => {
     `,
     {
       username: authorSocial.github,
-      limit: 12,
       sort: "STARGAZERS",
+      limit: 12,
       headers: {
         authorization: `token ${process.env.GH_PUBLIC_TOKEN}`,
       },
