@@ -5,8 +5,6 @@ module.exports = {
     "@jakejarvis/eslint-config",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
     "plugin:prettier/recommended",
   ],
   plugins: ["@typescript-eslint", "prettier"],
