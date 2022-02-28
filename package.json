@@ -48,7 +48,7 @@
     "is-absolute-url": "^4.0.1",
     "markdown-to-jsx": "^7.1.6",
     "modern-normalize": "github:sindresorhus/modern-normalize#b59ec0d3d8654cbb6843bc9ea45aef5f1d680108",
-    "next": "12.1.1-canary.3",
+    "next": "12.1.1-canary.4",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote": "^4.0.0",
     "next-seo": "^5.1.0",
