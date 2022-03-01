@@ -69,7 +69,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   // allow layout overrides per-page, but default to plain `<Layout />`
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
-  // body styles defined above
+  // inject body styles defined in ../stitches.config.ts
   globalStyles();
 
   return (

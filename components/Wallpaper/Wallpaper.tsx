@@ -1,21 +1,44 @@
 import { useEffect, useRef } from "react";
-import classNames from "classnames";
+import { styled } from "../../stitches.config";
+import type { ComponentProps } from "react";
+import type { VariantProps } from "@stitches/react";
 
-import styles from "./Wallpaper.module.css";
+const Wrapper = styled("main", {
+  width: "100%",
+  minHeight: "400px",
 
-export type WallpaperProps = JSX.IntrinsicElements["main"] & {
+  variants: {
+    tile: {
+      true: {
+        backgroundRepeat: "repeat",
+        backgroundPosition: "center",
+      },
+    },
+  },
+});
+
+export type WallpaperProps = ComponentProps<typeof Wrapper> & {
   image: string;
   tile?: boolean;
 };
 
 const Wallpaper = ({ image, tile, className, ...rest }: WallpaperProps) => {
-  const bgRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<VariantProps<typeof Wrapper>>(null);
 
   useEffect(() => {
+    // @ts-ignore
     bgRef.current.style.backgroundImage = `url(${image})`;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <main ref={bgRef} className={classNames(styles.wallpaper, tile && styles.tile, className)} {...rest} />;
+  return (
+    <Wrapper
+      className={className}
+      tile={tile}
+      // @ts-ignore
+      ref={bgRef}
+      {...rest}
+    />
+  );
 };
 
 export default Wallpaper;

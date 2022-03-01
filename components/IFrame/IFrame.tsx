@@ -1,5 +1,5 @@
-import type { Ref } from "react";
 import { styled } from "../../stitches.config";
+import type { ComponentProps } from "react";
 
 const StyledIFrame = styled("iframe", {
   width: "100%",
@@ -9,14 +9,12 @@ const StyledIFrame = styled("iframe", {
   borderRadius: "$rounded",
 });
 
-export type IFrameProps = JSX.IntrinsicElements["iframe"] & {
+export type IFrameProps = ComponentProps<typeof StyledIFrame> & {
   src: string;
   height: number;
   width?: number; // defaults to 100%
   allowScripts?: boolean;
   noScroll?: boolean;
-  // LegacyRef bug fix:
-  ref?: Ref<HTMLIFrameElement>;
 };
 
 const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, ...rest }: IFrameProps) => (

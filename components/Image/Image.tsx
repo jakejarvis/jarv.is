@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import { styled } from "../../stitches.config";
+import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
 const Wrapper = styled("div", {
@@ -25,7 +26,7 @@ const CustomImage = ({
   priority,
   className,
   ...rest
-}: NextImageProps) => {
+}: NextImageProps & ComponentProps<typeof RoundedImage>) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width: typeof width === "string" ? Number.parseInt(width) : width,

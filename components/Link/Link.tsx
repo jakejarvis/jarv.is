@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import isAbsoluteUrl from "is-absolute-url";
 import { styled } from "../../stitches.config";
-import type { Ref } from "react";
+import type { ComponentProps } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 
 const FancyLink = styled("a", {
@@ -11,11 +11,9 @@ const FancyLink = styled("a", {
   fancyUnderline: {},
 });
 
-export type CustomLinkProps = Omit<JSX.IntrinsicElements["a"], "href"> &
+export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &
   NextLinkProps & {
     forceNewWindow?: boolean;
-    // LegacyRef bug fix:
-    ref?: Ref<HTMLAnchorElement>;
   };
 
 const CustomLink = ({

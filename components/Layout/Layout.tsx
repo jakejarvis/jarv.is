@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { styled, theme, darkTheme } from "../../stitches.config";
-import type { Ref } from "react";
+import type { ComponentProps } from "react";
 
 const Flex = styled("div", {
   display: "flex",
@@ -31,11 +31,9 @@ const FlexedFooter = styled(Footer, {
   flex: 1,
 });
 
-export type LayoutProps = JSX.IntrinsicElements["div"] & {
+export type LayoutProps = ComponentProps<typeof Flex> & {
   container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
   stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
-  // LegacyRef bug fix:
-  ref?: Ref<HTMLDivElement>;
 };
 
 const Layout = ({ container = true, stickyHeader = true, className, children, ...rest }: LayoutProps) => {

@@ -53,7 +53,7 @@ export const { styled, getCssText, globalCss, keyframes, theme, createTheme } = 
 
   media: {
     mobile: "(max-width: 768px)",
-    sm: "(max-width: 380px)",
+    superNarrow: "(max-width: 380px)",
   },
 
   utils: {
