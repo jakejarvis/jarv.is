@@ -9,6 +9,7 @@ const FancyLink = styled("a", {
   textDecoration: "none",
   transition: "background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease",
   fancyUnderline: {},
+  fancyUnderlineColor: {},
 });
 
 export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &

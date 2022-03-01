@@ -2,10 +2,12 @@ import { memo } from "react";
 import Link, { CustomLinkProps } from "../Link/Link";
 import { styled, darkTheme } from "../../lib/styles/stitches.config";
 
-const FancyColorfulLink = styled(Link, {});
+const FancyColorfulLink = styled(Link, {
+  fancyUnderline: {},
+});
 
+// hex -> rgb, pulled from https://github.com/sindresorhus/hex-rgb/blob/main/index.js#L29
 const hex2rgba = (hex: string, alpha = 0.4) => {
-  // hex -> rgb, pulled from https://github.com/sindresorhus/hex-rgb/blob/main/index.js#L29
   const number = Number.parseInt(hex.replace(/^#/, ""), 16);
   const red = number >> 16;
   const green = (number >> 8) & 255;
@@ -26,11 +28,11 @@ const ColorfulLink = ({ lightColor, darkColor, className, ...rest }: ColorfulLin
         className={className}
         css={{
           color: lightColor,
-          fancyUnderline: { color: hex2rgba(lightColor) },
+          fancyUnderlineColor: { color: hex2rgba(lightColor) },
 
           [`.${darkTheme} &`]: {
             color: darkColor,
-            fancyUnderline: { color: hex2rgba(darkColor) },
+            fancyUnderlineColor: { color: hex2rgba(darkColor) },
           },
         }}
         {...rest}
