@@ -55,7 +55,7 @@ const ViewSourceLink = styled(Link, {
   },
 });
 
-const HeartBeat = keyframes({
+const beat = keyframes({
   "0%": { transform: "scale(1)" },
   "2%": { transform: "scale(1.25)" },
   "4%": { transform: "scale(1)" },
@@ -67,7 +67,7 @@ const HeartBeat = keyframes({
 
 const Heart = styled("span", {
   display: "inline-block",
-  animation: `${HeartBeat} 10s infinite`,
+  animation: `${beat} 10s infinite`,
   animationDelay: "7.5s",
   willChange: "transform",
 });
