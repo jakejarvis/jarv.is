@@ -81,6 +81,8 @@ export const { styled, getCssText, globalCss, keyframes, theme, createTheme } = 
   themeMap: {
     ...defaultThemeMap,
     backgroundSize: "borderWidths",
+    borderTopRightRadius: "radii",
+    borderEndStartRadius: "radii",
   },
 });
 
