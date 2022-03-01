@@ -5,15 +5,15 @@ import { Inter } from "./vendor/fonts/inter";
 import { RobotoMono } from "./vendor/fonts/roboto-mono";
 
 // modern-normalize.css
-import { normalizeCss } from "./vendor/modern-normalize";
+import { normalizeCss } from "./vendor/normalize";
 
 export const { styled, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
   theme: {
     fonts: {
       sans: `Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-      sansVar: `InterVariable, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+      sansVar: `"Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
       mono: `"Roboto Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
-      monoVar: `"Roboto MonoVariable", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
+      monoVar: `"Roboto Mono var", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
     },
 
     colors: {

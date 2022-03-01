@@ -91,6 +91,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
       {/* NOTE: this *must* come last in this fragment */}
+      {/* classnames are generated dynamically by stitches, so have ThemeProvider talk to it */}
       <ThemeProvider attribute="class" value={{ light: theme.className, dark: darkTheme.className }}>
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>

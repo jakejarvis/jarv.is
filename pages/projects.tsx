@@ -28,7 +28,7 @@ const Card = styled(RepositoryCard, {
 
 const ViewMore = styled("p", {
   textAlign: "center",
-  marginBottom: "0",
+  marginBottom: 0,
   fontSize: "1.1em",
   fontWeight: 500,
 });

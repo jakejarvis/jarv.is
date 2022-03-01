@@ -35,7 +35,7 @@ export const Inter = [
     src: `url(${interLatin700NormalWoff2}) format("woff2"),url(${interLatin700NormalWoff}) format("woff")`,
   },
   {
-    fontFamily: "InterVariable",
+    fontFamily: "Inter var",
     fontStyle: "oblique 0deg 10deg",
     fontDisplay: "swap",
     fontWeight: "100 900",
@@ -44,7 +44,7 @@ export const Inter = [
       "U+00??,U+0131,U+0152-0153,U+02bb-02bc,U+02c6,U+02da,U+02dc,U+2000-206f,U+2074,U+20ac,U+2122,U+2191,U+2193,U+2212,U+2215,U+feff,U+fffd",
   },
   {
-    fontFamily: "InterVariable",
+    fontFamily: "Inter var",
     fontStyle: "oblique 0deg 10deg",
     fontDisplay: "swap",
     fontWeight: "100 900",

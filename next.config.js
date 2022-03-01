@@ -31,6 +31,7 @@ module.exports = (phase, { defaultConfig }) => {
       minimumCacheTTL: 43200,
     },
     webpack: (config) => {
+      // this lets us statically import webfonts like we would images, allowing cool things like preloading them
       config.module.rules.push({
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         issuer: { and: [/\.(js|ts|md)x?$/] },
@@ -40,6 +41,9 @@ module.exports = (phase, { defaultConfig }) => {
         },
       });
 
+      // allow processing SVGs from the below packages directly instead of through their different exports, and leave
+      // other static imports of SVGs alone.
+      // see: ./components/Icons/index.ts
       config.module.rules.push({
         test: /\.svg$/i,
         issuer: { and: [/\.(js|ts|md)x?$/] },
@@ -56,9 +60,6 @@ module.exports = (phase, { defaultConfig }) => {
           },
         ],
         include: [
-          // allow processing images from these packages directly instead of through their different exports, and leave
-          // other static imports of SVGs alone.
-          // see: ./components/Icons/index.ts
           path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
           path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
           path.resolve(__dirname, "node_modules/simple-icons/icons"),
