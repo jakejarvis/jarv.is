@@ -3,8 +3,17 @@ import Content from "../components/Content/Content";
 import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import Video from "../components/Video/Video";
+import { styled } from "../lib/styles/stitches.config";
 
 import thumbnail from "../public/static/images/hillary/thumb.png";
+
+const Copyright = styled("p", {
+  textAlign: "center",
+  fontSize: "0.9em",
+  lineHeight: 1.8,
+  margin: "1.25em 1em 0 1em",
+  color: "$mediumLight",
+});
 
 const Hillary = () => (
   <>
@@ -27,7 +36,7 @@ const Hillary = () => (
         subs="/static/images/hillary/subs.en.vtt"
       />
 
-      <p className="copyright">
+      <Copyright>
         Video is property of{" "}
         <Link href="https://www.hillaryclinton.com/" style={{ fontWeight: 700 }}>
           Hillary for America
@@ -41,18 +50,8 @@ const Hillary = () => (
           CNN / WarnerMedia
         </Link>
         . &copy; 2016.
-      </p>
+      </Copyright>
     </Content>
-
-    <style jsx>{`
-      .copyright {
-        text-align: center;
-        font-size: 0.9em;
-        line-height: 1.8;
-        margin: 1.25em 1em 0 1em;
-        color: var(--medium-light);
-      }
-    `}</style>
   </>
 );
 
