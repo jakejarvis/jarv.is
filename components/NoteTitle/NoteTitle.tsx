@@ -1,22 +1,42 @@
-import Link from "next/link";
-import classNames from "classnames";
+import NextLink from "next/link";
+import { styled } from "../../lib/styles/stitches.config";
+import type { ComponentProps } from "react";
 import type { NoteType } from "../../types";
 
-import styles from "./NoteTitle.module.css";
+const Title = styled("h1", {
+  margin: "0.3em 0 0.5em -0.03em",
+  fontSize: "2.1em",
+  lineHeight: 1.3,
+  fontWeight: 700,
 
-export type NoteTitleProps = Pick<NoteType["frontMatter"], "slug" | "htmlTitle"> & JSX.IntrinsicElements["h1"];
+  "& code": {
+    margin: "0 0.075em",
+  },
+
+  "@mobile": {
+    fontSize: "1.8em",
+  },
+});
+
+const Link = styled("a", {
+  color: "$text",
+  textDecoration: "none",
+});
+
+export type NoteTitleProps = Pick<NoteType["frontMatter"], "slug" | "htmlTitle"> & ComponentProps<typeof Title>;
 
 const NoteTitle = ({ slug, htmlTitle, className, ...rest }: NoteTitleProps) => (
-  <h1 className={classNames(styles.title, className)} {...rest}>
-    <Link
+  <Title className={className} {...rest}>
+    <NextLink
       href={{
         pathname: "/notes/[slug]/",
         query: { slug },
       }}
+      passHref={true}
     >
-      <a className={styles.link} dangerouslySetInnerHTML={{ __html: htmlTitle }} />
-    </Link>
-  </h1>
+      <Link dangerouslySetInnerHTML={{ __html: htmlTitle }} />
+    </NextLink>
+  </Title>
 );
 
 export default NoteTitle;
