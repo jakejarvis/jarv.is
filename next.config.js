@@ -32,7 +32,7 @@ module.exports = (phase, { defaultConfig }) => {
     },
     experimental: {
       // use critters to automatically inline critical css:
-      optimizeCss: true,
+      // optimizeCss: true,
     },
     webpack: (config) => {
       config.module.rules.push({

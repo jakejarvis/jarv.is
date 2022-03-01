@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
+import { globalStyles, theme, darkTheme } from "../stitches.config";
 import Layout from "../components/Layout/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
@@ -23,10 +24,10 @@ import "@fontsource/roboto-mono/variable.css";
 import "@fontsource/roboto-mono/variable-italic.css";
 
 // global styles
-import "modern-normalize/modern-normalize.css";
-import "../styles/settings.css";
-import "../styles/typography.css";
-import "../styles/index.css";
+// import "modern-normalize/modern-normalize.css";
+// import "../styles/settings.css";
+// import "../styles/typography.css";
+// import "../styles/index.css";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
 export type AppProps = NextAppProps & {
@@ -68,6 +69,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   // allow layout overrides per-page, but default to plain `<Layout />`
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
+  // body styles defined above
+  globalStyles();
+
   return (
     <>
       {/* static asset preloads */}
@@ -104,7 +108,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
       {/* NOTE: this *must* come last in this fragment */}
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      <ThemeProvider attribute="class" value={{ light: theme.className, dark: darkTheme.className }}>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
     </>
   );
 };

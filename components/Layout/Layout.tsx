@@ -1,15 +1,41 @@
 import Head from "next/head";
 import { useTheme } from "next-themes";
-import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import themes from "../../lib/config/themes";
+import { styled, theme, darkTheme } from "../../stitches.config";
+import type { Ref } from "react";
 
-import styles from "./Layout.module.css";
+const Flex = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "100vh",
+});
+
+const Default = styled("main", {
+  width: "100%",
+  padding: "1.5em",
+
+  "@mobile": {
+    padding: "1.25em",
+  },
+});
+
+const Container = styled("div", {
+  maxWidth: "865px",
+  margin: "0 auto",
+  display: "block",
+});
+
+// footer needs to fill the remaining vertical screen space. doing it here to keep flex stuff together.
+const FlexedFooter = styled(Footer, {
+  flex: 1,
+});
 
 export type LayoutProps = JSX.IntrinsicElements["div"] & {
   container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
   stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
+  // LegacyRef bug fix:
+  ref?: Ref<HTMLDivElement>;
 };
 
 const Layout = ({ container = true, stickyHeader = true, className, children, ...rest }: LayoutProps) => {
@@ -19,23 +45,28 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
     <>
       <Head>
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
-        <meta name="theme-color" content={themes[resolvedTheme || "light"].backgroundOuter} />
+        <meta
+          name="theme-color"
+          content={
+            resolvedTheme === "dark" ? darkTheme.colors.backgroundOuter.value : theme.colors.backgroundOuter.value
+          }
+        />
       </Head>
 
-      <div className={classNames(styles.flex, className)} {...rest}>
+      <Flex className={className} {...rest}>
         <Header sticky={stickyHeader} />
 
         {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
         {container ? (
-          <main className={styles.default}>
-            <div className={styles.container}>{children}</div>
-          </main>
+          <Default>
+            <Container>{children}</Container>
+          </Default>
         ) : (
           <>{children}</>
         )}
 
-        <Footer className={styles.footer} />
-      </div>
+        <FlexedFooter />
+      </Flex>
     </>
   );
 };

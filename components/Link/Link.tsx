@@ -1,13 +1,21 @@
 import NextLink from "next/link";
-import classNames from "classnames";
 import isAbsoluteUrl from "is-absolute-url";
+import { styled } from "../../stitches.config";
+import type { Ref } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 
-import styles from "./Link.module.css";
+const FancyLink = styled("a", {
+  color: "$link",
+  textDecoration: "none",
+  transition: "background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease",
+  fancyUnderline: {},
+});
 
 export type CustomLinkProps = Omit<JSX.IntrinsicElements["a"], "href"> &
   NextLinkProps & {
     forceNewWindow?: boolean;
+    // LegacyRef bug fix:
+    ref?: Ref<HTMLAnchorElement>;
   };
 
 const CustomLink = ({
@@ -24,18 +32,18 @@ const CustomLink = ({
   // can be overridden with `forceNewWindow={true}`.
   if (forceNewWindow || isAbsoluteUrl(href.toString())) {
     return (
-      <a
+      <FancyLink
         href={href.toString()}
         target={target || "_blank"}
         rel={rel || "noopener noreferrer"}
-        className={classNames(styles.link, className)}
+        className={className}
         {...rest}
       />
     );
   } else {
     return (
       <NextLink href={href} prefetch={prefetch} passHref={passHref}>
-        <a className={classNames(styles.link, className)} {...rest} />
+        <FancyLink className={className} {...rest} />
       </NextLink>
     );
   }

@@ -1,8 +1,10 @@
 import Content from "../components/Content/Content";
 import ColorfulLink from "../components/ColorfulLink/ColorfulLink";
+import Loading from "../components/Loading/Loading";
 
 const Index = () => (
   <>
+    <Loading boxes={3} width={20} />
     <Content>
       <div>
         <h1>
