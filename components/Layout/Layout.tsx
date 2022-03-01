@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import themes, { toCSS } from "../../lib/config/themes";
+import themes from "../../lib/config/themes";
 
 import styles from "./Layout.module.css";
 
@@ -18,16 +18,8 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
   return (
     <>
       <Head>
-        {/* convert themes object into inlined css variables */}
-        <style
-          id="theme-colors"
-          dangerouslySetInnerHTML={{
-            __html: `:root{${toCSS(themes.light)}}[data-theme="dark"]{${toCSS(themes.dark)}}`,
-          }}
-        />
-
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
-        <meta name="theme-color" content={themes[resolvedTheme || "light"]["background-outer"]} />
+        <meta name="theme-color" content={themes[resolvedTheme || "light"].backgroundOuter} />
       </Head>
 
       <div className={classNames(styles.flex, className)} {...rest}>
