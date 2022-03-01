@@ -1,7 +1,7 @@
 import { memo } from "react";
 import NextLink from "next/link";
 import { Icon, HeartIcon, NextjsLogo } from "../Icons";
-import { keyframes, styled } from "../../stitches.config";
+import { keyframes, styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { ComponentProps } from "react";
 

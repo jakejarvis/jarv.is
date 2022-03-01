@@ -4,7 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
-import { globalStyles, theme, darkTheme } from "../stitches.config";
+import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
 import Layout from "../components/Layout/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
@@ -12,22 +12,12 @@ import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
 
-// global webfonts -- imported here so they're processed through PostCSS
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-500.css";
-import "@fontsource/inter/latin-700.css";
-import "@fontsource/inter/variable-full.css";
-import "@fontsource/roboto-mono/latin-400.css";
-import "@fontsource/roboto-mono/latin-500.css";
-import "@fontsource/roboto-mono/latin-700.css";
-import "@fontsource/roboto-mono/variable.css";
-import "@fontsource/roboto-mono/variable-italic.css";
-
-// global styles
-// import "modern-normalize/modern-normalize.css";
-// import "../styles/settings.css";
-// import "../styles/typography.css";
-// import "../styles/index.css";
+// only most important webfonts here for preloading -- see ../lib/styles/vendor/fonts for the full families
+// TODO: fix webpack/type warnings
+// @ts-ignore
+import interLatinVarFullNormalWoff2 from "@fontsource/inter/files/inter-latin-variable-full-normal.woff2";
+// @ts-ignore
+import robotoMonoLatinVarWghtOnlyNormalWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-variable-wghtOnly-normal.woff2";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
 export type AppProps = NextAppProps & {
@@ -76,19 +66,12 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       {/* static asset preloads */}
       <Head>
-        {/* TODO: these hrefs will change (unpredictably?) at some point. find a safer way to get them from webpack. */}
+        <link rel="preload" as="font" type="font/woff2" href={interLatinVarFullNormalWoff2} crossOrigin="anonymous" />
         <link
           rel="preload"
           as="font"
           type="font/woff2"
-          href="/_next/static/media/inter-latin-variable-full-normal.79d31200.woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/_next/static/media/roboto-mono-latin-variable-wghtOnly-normal.3689861c.woff2"
+          href={robotoMonoLatinVarWghtOnlyNormalWoff2}
           crossOrigin="anonymous"
         />
       </Head>

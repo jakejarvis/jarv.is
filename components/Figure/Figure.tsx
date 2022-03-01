@@ -1,6 +1,6 @@
 import Image from "../Image/Image";
 import innerText from "react-innertext";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 import type { ImageProps as NextImageProps } from "next/image";
 

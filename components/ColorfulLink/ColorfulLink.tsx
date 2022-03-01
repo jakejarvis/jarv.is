@@ -1,6 +1,6 @@
 import { memo } from "react";
 import Link, { CustomLinkProps } from "../Link/Link";
-import { styled, darkTheme } from "../../stitches.config";
+import { styled, darkTheme } from "../../lib/styles/stitches.config";
 
 const FancyColorfulLink = styled(Link, {});
 

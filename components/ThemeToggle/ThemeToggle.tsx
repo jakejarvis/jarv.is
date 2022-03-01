@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from "react";
 import { useTheme } from "next-themes";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import { SunIcon, MoonIcon } from "../Icons";
 
 const Button = styled("button", {

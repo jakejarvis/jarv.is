@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { styled, keyframes } from "../../stitches.config";
+import { styled, keyframes } from "../../lib/styles/stitches.config";
 
 const pulse = keyframes({
   "0%, 80%, 100%": {

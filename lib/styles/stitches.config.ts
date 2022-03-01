@@ -1,5 +1,11 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
-import { normalize } from "stitches-normalize-css";
+
+// web fonts
+import { Inter } from "./vendor/fonts/inter";
+import { RobotoMono } from "./vendor/fonts/roboto-mono";
+
+// modern-normalize.css
+import { normalizeCss } from "./vendor/modern-normalize";
 
 export const { styled, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
   theme: {
@@ -110,8 +116,15 @@ export const darkTheme = createTheme({
   },
 });
 
-export const globalStyles = globalCss(...normalize, {
+export const globalStyles = globalCss({
+  // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
+  ...normalizeCss,
+
+  // @ts-ignore
+  "@font-face": [...Inter, ...RobotoMono],
+
   body: {
+    margin: 0,
     backgroundColor: "$backgroundInner",
     fontFamily: "$sans",
 
@@ -121,6 +134,7 @@ export const globalStyles = globalCss(...normalize, {
 
   "code, kbd, samp, pre, .monospace": {
     fontFamily: "$mono",
+    fontSize: "1em",
   },
 
   // variable font support

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { VariantProps } from "@stitches/react";
 

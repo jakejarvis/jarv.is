@@ -1,5 +1,5 @@
 import { OctocatOcticon } from "../Icons";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Link = styled("a", {

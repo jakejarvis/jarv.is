@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { getCssText } from "../stitches.config";
+import { getCssText } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 
 // https://nextjs.org/docs/advanced-features/custom-document

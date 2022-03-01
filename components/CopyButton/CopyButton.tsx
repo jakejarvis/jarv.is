@@ -2,7 +2,7 @@ import { forwardRef, useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { Icon, ClipboardOcticon, CheckOcticon } from "../Icons";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref } from "react";
 
 const Button = styled("button", {

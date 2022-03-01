@@ -1,4 +1,4 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 
 const Blockquote = styled("blockquote", {
   marginLeft: 0,

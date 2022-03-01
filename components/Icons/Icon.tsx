@@ -1,4 +1,4 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 
 const Icon = styled("svg", {
   width: "1.25em",

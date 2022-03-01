@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player/file";
 import type { FilePlayerProps } from "react-player/file";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 
 const Wrapper = styled("div", {
   position: "relative",

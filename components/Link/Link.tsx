@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import isAbsoluteUrl from "is-absolute-url";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 

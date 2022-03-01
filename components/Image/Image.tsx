@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 

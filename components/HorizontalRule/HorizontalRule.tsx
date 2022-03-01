@@ -1,4 +1,4 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 
 const HorizontalRule = styled("hr", {
   margin: "1.5em auto",

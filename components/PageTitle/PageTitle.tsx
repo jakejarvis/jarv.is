@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import NextLink from "next/link";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
 

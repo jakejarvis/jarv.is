@@ -30,14 +30,19 @@ module.exports = (phase, { defaultConfig }) => {
       formats: ["image/avif", "image/webp"],
       minimumCacheTTL: 43200,
     },
-    experimental: {
-      // use critters to automatically inline critical css:
-      // optimizeCss: true,
-    },
     webpack: (config) => {
       config.module.rules.push({
-        test: /\.svg$/,
-        issuer: { and: [/\.(js|ts)x?$/] },
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        issuer: { and: [/\.(js|ts|md)x?$/] },
+        type: "asset/resource",
+        generator: {
+          filename: "static/media/[name].[hash:8][ext]",
+        },
+      });
+
+      config.module.rules.push({
+        test: /\.svg$/i,
+        issuer: { and: [/\.(js|ts|md)x?$/] },
         use: [
           {
             loader: "@svgr/webpack",

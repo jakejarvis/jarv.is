@@ -1,4 +1,4 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 
 const Content = styled("div", {
   fontSize: "0.9em",

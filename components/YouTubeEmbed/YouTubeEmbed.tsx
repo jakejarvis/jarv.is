@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player/youtube";
-import { styled } from "../../stitches.config";
+import { styled } from "../../lib/styles/stitches.config";
 import type { YouTubePlayerProps } from "react-player/youtube";
 
 const Wrapper = styled("div", {
