@@ -1070,10 +1070,10 @@
   resolved "https://registry.yarnpkg.com/@giscus/react/-/react-1.1.2.tgz#c97f06aab1272c0fbe567c69ebffe3bad7206e7a"
   integrity sha512-htSAAiTtoHTRE8GqSSkWmT+Iq7LJhtqSmr+HjEC1cXlNd1WeLVZXjnuiIj7+L8DOUnAdfh+1FClN304FVxIcsQ==
 
-"@hcaptcha/react-hcaptcha@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@hcaptcha/react-hcaptcha/-/react-hcaptcha-1.1.0.tgz#ca770c9fc1f456e3c6b057bedf01a94693b2ec96"
-  integrity sha512-+0JYxSFkZaHMOJ91YD9PUNiCUZhG5d9BzVAIye4vAWMyXzfD4b8Dx7EwAVUf1qfbf8KVCa33QwoTRt6EKfDDSA==
+"@hcaptcha/react-hcaptcha@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@hcaptcha/react-hcaptcha/-/react-hcaptcha-1.1.1.tgz#b7f9fef825fe52595e38b61f125dc8d87d2a5440"
+  integrity sha512-fydc0ob5NOEYiJPmohOmPqoBjLPhUokvMZBf1hOhrVcpMyZJbc1N/HPV4kysSayC34IQsaBRtEpswQFbHwe54w==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
