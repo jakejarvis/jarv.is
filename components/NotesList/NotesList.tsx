@@ -1,8 +1,57 @@
 import { format } from "date-fns";
 import Link from "../Link/Link";
+import { styled } from "../../lib/styles/stitches.config";
 import type { NoteType } from "../../types";
 
-import styles from "./NotesList.module.css";
+const Section = styled("section", {
+  fontSize: "1.1em",
+  lineHeight: 1.1,
+  margin: "2.4em 0",
+
+  "&:first-of-type": {
+    marginTop: 0,
+  },
+
+  "&:last-of-type": {
+    marginBottom: 0,
+  },
+
+  "@mobile": {
+    margin: "1.8em 0",
+  },
+});
+
+const Year = styled("h2", {
+  fontSize: "2.2em",
+  marginTop: 0,
+  marginBottom: "0.5em",
+
+  "@mobile": {
+    fontSize: "2em",
+  },
+});
+
+const List = styled("ul", {
+  listStyleType: "none",
+  margin: 0,
+  padding: 0,
+});
+
+const Post = styled("li", {
+  display: "flex",
+  lineHeight: 1.75,
+  marginBottom: "1em",
+
+  "&:last-of-type": {
+    marginBottom: 0,
+  },
+});
+
+const PostDate = styled("span", {
+  width: "5.25em",
+  flexShrink: 0,
+  color: "$medium",
+});
 
 export type NotesListProps = {
   notesByYear: Record<string, NoteType["frontMatter"][]>;
@@ -13,12 +62,12 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
 
   Object.entries(notesByYear).forEach(([year, notes]: [string, NoteType["frontMatter"][]]) => {
     sections.push(
-      <section key={year} className={styles.section}>
-        <h2 className={styles.year}>{year}</h2>
-        <ul className={styles.list}>
+      <Section key={year}>
+        <Year>{year}</Year>
+        <List>
           {notes.map(({ slug, date, htmlTitle }) => (
-            <li key={slug} className={styles.row}>
-              <span className={styles.date}>{format(new Date(date), "MMM d")}</span>
+            <Post key={slug}>
+              <PostDate>{format(new Date(date), "MMM d")}</PostDate>
               <span>
                 <Link
                   href={{
@@ -28,10 +77,10 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
                   dangerouslySetInnerHTML={{ __html: htmlTitle }}
                 />
               </span>
-            </li>
+            </Post>
           ))}
-        </ul>
-      </section>
+        </List>
+      </Section>
     );
   });
 
