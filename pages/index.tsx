@@ -1,11 +1,40 @@
+import hex2rgba from "hex2rgba";
 import Content from "../components/Content/Content";
-import ColorfulLink from "../components/ColorfulLink/ColorfulLink";
-import { styled, keyframes } from "../lib/styles/stitches.config";
+import Link, { CustomLinkProps } from "../components/Link/Link";
+import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
 
 const Wrapper = styled(Content, {
   fontSize: "1em",
   lineHeight: 1,
 });
+
+const ColorfulLink = ({
+  lightColor,
+  darkColor,
+  className,
+  ...rest
+}: CustomLinkProps & {
+  lightColor: string;
+  darkColor: string;
+}) => {
+  return (
+    <>
+      <Link
+        className={className}
+        css={{
+          color: lightColor,
+          fancyUnderlineColor: { color: hex2rgba(lightColor, 0.4) },
+
+          [`.${darkTheme} &`]: {
+            color: darkColor,
+            fancyUnderlineColor: { color: hex2rgba(darkColor, 0.4) },
+          },
+        }}
+        {...rest}
+      />
+    </>
+  );
+};
 
 const H1 = styled("h1", {
   margin: "0 0 0.5em -0.03em",

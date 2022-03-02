@@ -45,6 +45,7 @@
     "feed": "^4.2.2",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
+    "hex2rgba": "^0.0.1",
     "is-absolute-url": "^4.0.1",
     "markdown-to-jsx": "^7.1.6",
     "next": "12.1.1-canary.4",

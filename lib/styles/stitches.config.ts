@@ -7,7 +7,7 @@ import { RobotoMono } from "./vendor/fonts/roboto-mono";
 // modern-normalize.css
 import { normalizeCss } from "./vendor/normalize";
 
-export const { styled, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
+export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
   theme: {
     fonts: {
       sans: `Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,

@@ -22,7 +22,7 @@ const Wrapper = styled("div", {
 
 const Card = styled(RepositoryCard, {
   flexGrow: 1,
-  margin: "0.5em",
+  margin: "0.6em",
   width: "370px",
 });
 
@@ -31,6 +31,14 @@ const ViewMore = styled("p", {
   marginBottom: 0,
   fontSize: "1.1em",
   fontWeight: 500,
+});
+
+const GitHubLogo = styled(OctocatOcticon, {
+  width: "1.2em",
+  height: "1.2em",
+  verticalAlign: "-0.2em",
+  margin: "0 0.15em",
+  fill: "$text",
 });
 
 const Projects = ({ repos }) => (
@@ -53,18 +61,7 @@ const Projects = ({ repos }) => (
 
       <ViewMore>
         <Link href={`https://github.com/${authorSocial.github}`}>
-          View more on{" "}
-          <OctocatOcticon
-            fill="currentColor"
-            style={{
-              color: "var(--text)",
-              width: "1.2em",
-              height: "1.2em",
-              verticalAlign: "-0.2em",
-              margin: "0 0.15em",
-            }}
-          />{" "}
-          GitHub...
+          View more on <GitHubLogo /> GitHub...
         </Link>
       </ViewMore>
     </Content>

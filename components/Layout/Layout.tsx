@@ -14,10 +14,6 @@ const Flex = styled("div", {
 const Default = styled("main", {
   width: "100%",
   padding: "1.5em",
-
-  "@mobile": {
-    padding: "1.25em",
-  },
 });
 
 const Container = styled("div", {

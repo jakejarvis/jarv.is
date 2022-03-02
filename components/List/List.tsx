@@ -1,15 +1,14 @@
-import classNames from "classnames";
+import { styled, css } from "../../lib/styles/stitches.config";
 
-import styles from "./List.module.css";
+const ListStyles = css({
+  marginLeft: "1.5em",
+  paddingLeft: 0,
+});
 
-export const UnorderedList = ({ className, ...rest }: JSX.IntrinsicElements["ul"]) => (
-  <ul className={classNames(styles.unordered, className)} {...rest} />
-);
-export const OrderedList = ({ className, ...rest }: JSX.IntrinsicElements["ol"]) => (
-  <ol className={classNames(styles.ordered, className)} {...rest} />
-);
+export const UnorderedList = styled("ul", ListStyles);
+export const OrderedList = styled("ol", ListStyles);
 
 // TODO: this is based on good faith that the children are all `<li>`s...
-export const ListItem = ({ className, ...rest }: JSX.IntrinsicElements["li"]) => (
-  <li className={classNames(styles.item, className)} {...rest} />
-);
+export const ListItem = styled("li", {
+  paddingLeft: "0.25em",
+});

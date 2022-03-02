@@ -3467,6 +3467,11 @@ hastscript@^7.0.0:
     property-information "^6.0.0"
     space-separated-tokens "^2.0.0"
 
+hex2rgba@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/hex2rgba/-/hex2rgba-0.0.1.tgz#8701ba1c6ec02c204504158407c1c4b47a9336ed"
+  integrity sha1-hwG6HG7ALCBFBBWEB8HEtHqTNu0=
+
 hoist-non-react-statics@^3.3.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
