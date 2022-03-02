@@ -13,9 +13,9 @@ const Code = styled("code", {
   // light-dark theme switch fading
   transition: "background 0.25s ease, border 0.25s ease",
 
-  // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
   variants: {
     highlight: {
+      // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
       true: {
         // leave room for clipboard button to the right of the first line
         ".code-line:first-of-type": {
@@ -28,21 +28,36 @@ const Code = styled("code", {
           textAlign: "right",
           color: "$codeComment",
           content: "attr(line)", // added to spans by prism
+          userSelect: "none",
         },
         ".token": {
-          "&.comment, &.prolog, &.cdata": { color: "$codeComment" },
+          "&.comment, &.prolog, &.cdata": {
+            color: "$codeComment",
+          },
           "&.delimiter, &.boolean, &.keyword, &.selector, &.important, &.doctype, &.atrule, &.url": {
             color: "$codeKeyword",
           },
-          "&.tag, &.builtin, &.regex": { color: "$codeNamespace" },
+          "&.tag, &.builtin, &.regex": {
+            color: "$codeNamespace",
+          },
           "&.property, &.constant, &.variable, &.attr-value, &.class-name, &.string, &.char": {
             color: "$codeVariable",
           },
-          "&.literal-property, &.attr-name": { color: "$codeAttribute" },
-          "&.function": { color: "$codeLiteral" },
-          "&.tag .punctuation, &.attr-value .punctuation": { color: "$codePunctuation" },
-          "&.inserted": { color: "$codeAddition" },
-          "&.deleted": { color: "$codeDeletion" },
+          "&.literal-property, &.attr-name": {
+            color: "$codeAttribute",
+          },
+          "&.function": {
+            color: "$codeLiteral",
+          },
+          "&.tag .punctuation, &.attr-value .punctuation": {
+            color: "$codePunctuation",
+          },
+          "&.inserted": {
+            color: "$codeAddition",
+          },
+          "&.deleted": {
+            color: "$codeDeletion",
+          },
           "&.url": { textDecoration: "underline" },
           "&.bold": { fontWeight: "bold" },
           "&.italic": { fontStyle: "italic" },
