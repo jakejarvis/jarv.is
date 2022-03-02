@@ -30,7 +30,7 @@ const Previously = () => (
       {/* a complete sh*tshow of overrides, mainly to compensate for font change */}
       <style>{`
         body {
-          font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", var(--font-family-sans-variable);
+          font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif !important;
           font-weight: 600 !important;
         }
         /* left header */

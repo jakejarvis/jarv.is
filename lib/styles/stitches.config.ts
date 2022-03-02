@@ -3,6 +3,7 @@ import { createStitches, defaultThemeMap } from "@stitches/react";
 // web fonts
 import { Inter } from "./vendor/fonts/inter";
 import { RobotoMono } from "./vendor/fonts/roboto-mono";
+import { ComicNeue } from "./vendor/fonts/comic-neue";
 
 // modern-normalize.css
 import { normalizeCss } from "./vendor/normalize";
@@ -125,7 +126,7 @@ export const globalStyles = globalCss({
   ...normalizeCss,
 
   // @ts-ignore
-  "@font-face": [...Inter, ...RobotoMono],
+  "@font-face": [...Inter, ...RobotoMono, ...ComicNeue],
 
   body: {
     margin: 0,
