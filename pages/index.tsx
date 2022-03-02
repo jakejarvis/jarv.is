@@ -23,11 +23,11 @@ const ColorfulLink = ({
         className={className}
         css={{
           color: lightColor,
-          fancyUnderlineColor: { color: hex2rgba(lightColor, 0.4) },
+          backgroundGradientHack: { color: hex2rgba(lightColor, 0.4) },
 
           [`.${darkTheme} &`]: {
             color: darkColor,
-            fancyUnderlineColor: { color: hex2rgba(darkColor, 0.4) },
+            backgroundGradientHack: { color: hex2rgba(darkColor, 0.4) },
           },
         }}
         {...rest}

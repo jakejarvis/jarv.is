@@ -74,7 +74,7 @@ figcaption,
   margin-top: 0.2em;
   font-size: 0.9em;
   line-height: 1.5;
-  color: var(--medium);
+  color: var(--colors-medium);
   text-align: center;
 }
 hr {

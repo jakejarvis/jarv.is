@@ -8,8 +8,17 @@ const FancyLink = styled("a", {
   color: "$link",
   textDecoration: "none",
   transition: "background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease",
-  fancyUnderline: {},
-  fancyUnderlineColor: {},
+
+  backgroundPosition: "0% 100%",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "0% $underline",
+  paddingBottom: "0.2rem",
+
+  "&:hover": {
+    backgroundSize: "100% $underline",
+  },
+
+  backgroundGradientHack: {},
 });
 
 export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &

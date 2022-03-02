@@ -64,17 +64,7 @@ export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme
   },
 
   utils: {
-    fancyUnderline: ({ size = "$underline" }) => ({
-      backgroundPosition: "0% 100%",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: `0% ${size}`,
-      paddingBottom: "0.2rem",
-
-      "&:hover": {
-        backgroundSize: `100% ${size}`,
-      },
-    }),
-    fancyUnderlineColor: ({ color = "$linkUnderline" }) => ({
+    backgroundGradientHack: ({ color = "$linkUnderline" }) => ({
       backgroundImage: `linear-gradient(${color}, ${color})`,
     }),
   },
