@@ -81,8 +81,8 @@ const Icon = styled("svg", {
 
 export type FooterProps = ComponentProps<typeof Wrapper>;
 
-const Footer = ({ className, ...rest }: FooterProps) => (
-  <Wrapper className={className} {...rest}>
+const Footer = ({ ...rest }: FooterProps) => (
+  <Wrapper {...rest}>
     <Row>
       <div>
         Content{" "}

@@ -1,4 +1,3 @@
-import hex2rgba from "hex2rgba";
 import Content from "../components/Content/Content";
 import Link, { CustomLinkProps } from "../components/Link/Link";
 import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
@@ -11,7 +10,6 @@ const Wrapper = styled(Content, {
 const ColorfulLink = ({
   lightColor,
   darkColor,
-  className,
   ...rest
 }: CustomLinkProps & {
   lightColor: string;
@@ -20,14 +18,13 @@ const ColorfulLink = ({
   return (
     <>
       <Link
-        className={className}
         css={{
           color: lightColor,
-          backgroundGradientHack: { color: hex2rgba(lightColor, 0.4) },
+          backgroundGradientHack: { color: lightColor },
 
           [`.${darkTheme} &`]: {
             color: darkColor,
-            backgroundGradientHack: { color: hex2rgba(darkColor, 0.4) },
+            backgroundGradientHack: { color: darkColor },
           },
         }}
         {...rest}
@@ -326,7 +323,7 @@ const Index = () => (
       <ColorfulLink href="/contact/" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
         email
       </ColorfulLink>{" "}
-      <PGPKey className="monospace">
+      <PGPKey>
         <ColorfulLink
           href="/pubkey.asc"
           rel="pgpkey authn noopener"
@@ -336,7 +333,7 @@ const Index = () => (
           style={{ background: "none" }}
           forceNewWindow
         >
-          🔐 2B0C 9CF2 51E6 9A39
+          <code>🔐 2B0C 9CF2 51E6 9A39</code>
         </ColorfulLink>
       </PGPKey>
       ,{" "}

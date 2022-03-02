@@ -32,7 +32,7 @@ export type LayoutProps = ComponentProps<typeof Flex> & {
   stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
 };
 
-const Layout = ({ container = true, stickyHeader = true, className, children, ...rest }: LayoutProps) => {
+const Layout = ({ container = true, stickyHeader = true, children, ...rest }: LayoutProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -47,7 +47,7 @@ const Layout = ({ container = true, stickyHeader = true, className, children, ..
         />
       </Head>
 
-      <Flex className={className} {...rest}>
+      <Flex {...rest}>
         <Header sticky={stickyHeader} />
 
         {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}

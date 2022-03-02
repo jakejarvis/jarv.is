@@ -2138,7 +2138,7 @@ character-reference-invalid@^2.0.0:
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz#85c66b041e43b47210faf401278abf808ac45cb9"
   integrity sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==
 
-classnames@^2.2.5, classnames@^2.3.1:
+classnames@^2.2.5:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -3336,11 +3336,6 @@ hastscript@^7.0.0:
     hast-util-parse-selector "^3.0.0"
     property-information "^6.0.0"
     space-separated-tokens "^2.0.0"
-
-hex2rgba@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/hex2rgba/-/hex2rgba-0.0.1.tgz#8701ba1c6ec02c204504158407c1c4b47a9336ed"
-  integrity sha1-hwG6HG7ALCBFBBWEB8HEtHqTNu0=
 
 hoist-non-react-statics@^3.3.0:
   version "3.3.2"

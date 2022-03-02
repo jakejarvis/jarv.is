@@ -25,8 +25,8 @@ const Link = styled("a", {
 
 export type NoteTitleProps = Pick<NoteType["frontMatter"], "slug" | "htmlTitle"> & ComponentProps<typeof Title>;
 
-const NoteTitle = ({ slug, htmlTitle, className, ...rest }: NoteTitleProps) => (
-  <Title className={className} {...rest}>
+const NoteTitle = ({ slug, htmlTitle, ...rest }: NoteTitleProps) => (
+  <Title {...rest}>
     <NextLink
       href={{
         pathname: "/notes/[slug]/",

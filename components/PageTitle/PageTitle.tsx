@@ -22,12 +22,12 @@ const Link = styled("a", {
 
 export type PageTitleProps = ComponentProps<typeof Title>;
 
-const PageTitle = ({ className, children, ...rest }: PageTitleProps) => {
+const PageTitle = ({ children, ...rest }: PageTitleProps) => {
   const router = useRouter();
   const canonical = `${baseUrl}${router.pathname}/`;
 
   return (
-    <Title className={className} {...rest}>
+    <Title {...rest}>
       <NextLink href={canonical} passHref={true}>
         <Link>{children}</Link>
       </NextLink>

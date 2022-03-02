@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import classNames from "classnames";
 import { keyframes, styled } from "../../lib/styles/stitches.config";
 import type { Ref, ComponentProps } from "react";
 
@@ -33,10 +32,12 @@ const Underscore = styled("span", {
 export type TerminalProps = ComponentProps<typeof BlackBox>;
 
 // a DOS-style terminal box with dynamic text
-const Terminal = forwardRef(function Terminal({ className, ...rest }: TerminalProps, ref: Ref<HTMLSpanElement>) {
+const Terminal = forwardRef(function Terminal({ ...rest }: TerminalProps, ref: Ref<HTMLSpanElement>) {
   return (
-    <BlackBox className={classNames("monospace", className)} {...rest}>
-      <span ref={ref} /> <Underscore />
+    <BlackBox {...rest}>
+      <code>
+        <span ref={ref} /> <Underscore />
+      </code>
     </BlackBox>
   );
 });

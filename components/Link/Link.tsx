@@ -18,6 +18,7 @@ const FancyLink = styled("a", {
     backgroundSize: "100% $underline",
   },
 
+  // sets psuedo linear-gradient() for cool underline effect
   backgroundGradientHack: {},
 });
 
@@ -33,25 +34,18 @@ const CustomLink = ({
   target,
   rel,
   forceNewWindow,
-  className,
   ...rest
 }: CustomLinkProps) => {
   // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
   // can be overridden with `forceNewWindow={true}`.
   if (forceNewWindow || isAbsoluteUrl(href.toString())) {
     return (
-      <FancyLink
-        href={href.toString()}
-        target={target || "_blank"}
-        rel={rel || "noopener noreferrer"}
-        className={className}
-        {...rest}
-      />
+      <FancyLink href={href.toString()} target={target || "_blank"} rel={rel || "noopener noreferrer"} {...rest} />
     );
   } else {
     return (
       <NextLink href={href} prefetch={prefetch} passHref={passHref}>
-        <FancyLink className={className} {...rest} />
+        <FancyLink {...rest} />
       </NextLink>
     );
   }

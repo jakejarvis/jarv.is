@@ -2,6 +2,7 @@ import { memo } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { styled } from "../../lib/styles/stitches.config";
+import type { ComponentProps } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
@@ -54,13 +55,11 @@ const Name = styled("span", {
   },
 });
 
-export type SelfieProps = {
-  className?: string;
-};
+export type SelfieProps = ComponentProps<typeof Link>;
 
-const Selfie = ({ className }: SelfieProps) => (
+const Selfie = ({ ...rest }: SelfieProps) => (
   <NextLink href="/" passHref={true}>
-    <Link className={className}>
+    <Link {...rest}>
       <ConstrainImage>
         <Image
           src={selfieJpg}

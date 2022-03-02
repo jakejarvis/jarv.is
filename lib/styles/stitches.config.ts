@@ -1,4 +1,5 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
+import hex2rgba from "./helpers/hex-to-rgba";
 
 // web fonts
 import { Inter } from "./vendor/fonts/inter";
@@ -64,9 +65,14 @@ export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme
   },
 
   utils: {
-    backgroundGradientHack: ({ color = "$linkUnderline" }) => ({
-      backgroundImage: `linear-gradient(${color}, ${color})`,
-    }),
+    backgroundGradientHack: ({ color = "$linkUnderline" }) => {
+      // allow both pre-set rgba stitches variables and hex values
+      const rgba = color.startsWith("#") ? hex2rgba(color, 0.4) : color;
+
+      return {
+        backgroundImage: `linear-gradient(${rgba}, ${rgba})`,
+      };
+    },
   },
 
   themeMap: {
@@ -127,7 +133,7 @@ export const globalStyles = globalCss({
     transition: "background 0.25s ease",
   },
 
-  "code, kbd, samp, pre, .monospace": {
+  "code, kbd, samp, pre": {
     fontFamily: "$mono",
     fontSize: "1em",
   },
@@ -139,7 +145,7 @@ export const globalStyles = globalCss({
       fontOpticalSizing: "auto",
     },
 
-    "code, kbd, samp, pre, .monospace": {
+    "code, kbd, samp, pre": {
       fontFamily: "$monoVar",
     },
 
@@ -150,7 +156,7 @@ export const globalStyles = globalCss({
       fontVariationSettings: `"ital" 1, "slnt" -10`,
 
       // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-      "& code, & kbd, & samp, & pre, & .monospace": {
+      "& code, & kbd, & samp, & pre": {
         fontStyle: "italic !important",
         fontVariationSettings: "initial !important",
       },

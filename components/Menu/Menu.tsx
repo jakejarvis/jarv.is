@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import MenuItem from "../MenuItem/MenuItem";
 import { styled } from "../../lib/styles/stitches.config";
 import { menuItems } from "../../lib/config/menu";
+import type { ComponentProps } from "react";
 
 const Wrapper = styled("ul", {
   display: "inline-flex",
@@ -34,15 +35,13 @@ const Item = styled("li", {
   },
 });
 
-export type MenuProps = {
-  className?: string;
-};
+export type MenuProps = ComponentProps<typeof Wrapper>;
 
-const Menu = ({ className }: MenuProps) => {
+const Menu = ({ ...rest }: MenuProps) => {
   const router = useRouter();
 
   return (
-    <Wrapper className={className}>
+    <Wrapper {...rest}>
       {menuItems.map((item, index) => (
         <Item key={index}>
           {/* kinda weird/hacky way to determine if the *first part* of the current path matches this href */}

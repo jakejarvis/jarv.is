@@ -54,8 +54,8 @@ export type HeaderProps = ComponentProps<typeof Wrapper> & {
   sticky?: boolean;
 };
 
-const Header = ({ sticky, className, ...rest }: HeaderProps) => (
-  <Wrapper className={className} sticky={sticky} {...rest}>
+const Header = ({ sticky, ...rest }: HeaderProps) => (
+  <Wrapper sticky={sticky} {...rest}>
     <Nav>
       <Selfie />
       <ResponsiveMenu />

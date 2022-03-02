@@ -22,7 +22,7 @@ export type WallpaperProps = ComponentProps<typeof Wrapper> & {
   tile?: boolean;
 };
 
-const Wallpaper = ({ image, tile, className, ...rest }: WallpaperProps) => {
+const Wallpaper = ({ image, tile, ...rest }: WallpaperProps) => {
   const bgRef = useRef<VariantProps<typeof Wrapper>>(null);
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const Wallpaper = ({ image, tile, className, ...rest }: WallpaperProps) => {
 
   return (
     <Wrapper
-      className={className}
       tile={tile}
       // @ts-ignore
       ref={bgRef}

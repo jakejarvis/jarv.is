@@ -19,11 +19,11 @@ export type CommentsProps = ComponentProps<typeof Wrapper> & {
   title: string;
 };
 
-const Comments = ({ title, className, ...rest }: CommentsProps) => {
+const Comments = ({ title, ...rest }: CommentsProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <Wrapper className={className} {...rest}>
+    <Wrapper {...rest}>
       <Giscus
         {...(giscusConfig as GiscusProps)}
         term={title}
