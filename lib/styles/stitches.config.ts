@@ -1,13 +1,13 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
 import hex2rgba from "./helpers/hex-to-rgba";
 
-// web fonts
-import { Inter } from "./vendor/fonts/inter";
-import { RobotoMono } from "./vendor/fonts/roboto-mono";
-import { ComicNeue } from "./vendor/fonts/comic-neue";
+// modified modern-normalize.css in object form
+import { normalizeCss } from "./helpers/normalize";
 
-// modern-normalize.css
-import { normalizeCss } from "./vendor/normalize";
+// web fonts
+import { Inter, preloadUrl as interPreloadUrl } from "./fonts/inter";
+import { RobotoMono, preloadUrl as robotoMonoPreloadUrl } from "./fonts/roboto-mono";
+import { ComicNeue } from "./fonts/comic-neue";
 
 export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
   theme: {
@@ -118,7 +118,7 @@ export const darkTheme = createTheme({
 });
 
 export const globalStyles = globalCss({
-  // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
+  // https://github.com/sindresorhus/modern-normalize
   ...normalizeCss,
 
   // @ts-ignore
@@ -135,7 +135,6 @@ export const globalStyles = globalCss({
 
   "code, kbd, samp, pre": {
     fontFamily: "$mono",
-    fontSize: "1em",
   },
 
   // variable font support
@@ -175,3 +174,11 @@ export const globalStyles = globalCss({
     },
   },
 });
+
+// re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/app.tsx
+export const preloads = {
+  fonts: {
+    InterVar: interPreloadUrl,
+    RobotoMonoVar: robotoMonoPreloadUrl,
+  },
+};

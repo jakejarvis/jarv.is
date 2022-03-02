@@ -12,6 +12,9 @@ import interLatin700NormalWoff2 from "@fontsource/inter/files/inter-latin-700-no
 import interLatinVarFullNormalWoff2 from "@fontsource/inter/files/inter-latin-variable-full-normal.woff2";
 import interLatinExtVarFullNormalWoff2 from "@fontsource/inter/files/inter-latin-ext-variable-full-normal.woff2";
 
+// re-export hashed URL of the most prominent font so we can preload it
+export { interLatinVarFullNormalWoff2 as preloadUrl };
+
 export const Inter = [
   {
     fontFamily: "Inter",

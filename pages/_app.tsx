@@ -5,19 +5,12 @@ import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
-import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
+import { globalStyles, theme, darkTheme, preloads } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
-
-// only most important webfonts here for preloading -- see ../lib/styles/vendor/fonts for the full families
-// TODO: fix webpack/type warnings
-// @ts-ignore
-import interLatinVarFullNormalWoff2 from "@fontsource/inter/files/inter-latin-variable-full-normal.woff2";
-// @ts-ignore
-import robotoMonoLatinVarWghtOnlyNormalWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-variable-wghtOnly-normal.woff2";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
 export type AppProps = NextAppProps & {
@@ -59,21 +52,15 @@ const App = ({ Component, pageProps }: AppProps) => {
   // allow layout overrides per-page, but default to plain `<Layout />`
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
-  // inject body styles defined in ../stitches.config.ts
+  // inject body styles defined in ../lib/styles/stitches.config.ts
   globalStyles();
 
   return (
     <>
       {/* static asset preloads */}
       <Head>
-        <link rel="preload" as="font" type="font/woff2" href={interLatinVarFullNormalWoff2} crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href={robotoMonoLatinVarWghtOnlyNormalWoff2}
-          crossOrigin="anonymous"
-        />
+        <link rel="preload" as="font" type="font/woff2" href={preloads.fonts.InterVar} crossOrigin="anonymous" />
+        <link rel="preload" as="font" type="font/woff2" href={preloads.fonts.RobotoMonoVar} crossOrigin="anonymous" />
       </Head>
 
       {/* all SEO config is in ../lib/seo.ts except for canonical URLs, which require access to next router */}

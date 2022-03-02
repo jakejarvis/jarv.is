@@ -8,7 +8,6 @@ const ListStyles = css({
 export const UnorderedList = styled("ul", ListStyles);
 export const OrderedList = styled("ol", ListStyles);
 
-// TODO: this is based on good faith that the children are all `<li>`s...
 export const ListItem = styled("li", {
   paddingLeft: "0.25em",
 });

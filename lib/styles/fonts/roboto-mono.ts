@@ -14,6 +14,9 @@ import robotoMonoLatinExtVarWghtOnlyNormalWoff2 from "@fontsource/roboto-mono/fi
 import robotoMonoLatinVarWghtOnlyItalicWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-variable-wghtOnly-italic.woff2";
 import robotoMonoLatinExtVarWghtOnlyItalicWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-ext-variable-wghtOnly-italic.woff2";
 
+// re-export hashed URL of the most prominent font so we can preload it
+export { robotoMonoLatinVarWghtOnlyNormalWoff2 as preloadUrl };
+
 export const RobotoMono = [
   {
     fontFamily: "Roboto Mono",
