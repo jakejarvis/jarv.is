@@ -35,8 +35,10 @@ const Link = styled("a", {
   "&:hover": {
     color: "$link",
 
-    [`${Image}`]: {
-      borderColor: "$linkUnderline !important",
+    "@mobile": {
+      [`${Image}`]: {
+        borderColor: "$linkUnderline !important",
+      },
     },
   },
 });
