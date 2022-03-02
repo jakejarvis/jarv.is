@@ -169,6 +169,8 @@ export const globalStyles = globalCss({
       animationDelay: "-1ms !important",
       animationDuration: "1ms !important",
       animationIterationCount: "1 !important",
+      backgroundAttachment: "initial !important",
+      scrollBehavior: "auto !important",
       transitionDuration: "0s !important",
       transitionDelay: "0s !important",
     },
