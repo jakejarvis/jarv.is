@@ -1,6 +1,6 @@
 import { memo } from "react";
 import NextLink from "next/link";
-import { Icon, HeartIcon, NextjsLogo } from "../Icons";
+import { HeartIcon, NextjsLogo } from "../Icons";
 import { keyframes, styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { ComponentProps } from "react";
@@ -70,6 +70,13 @@ const Heart = styled("span", {
   animation: `${beat} 10s infinite`,
   animationDelay: "7.5s",
   willChange: "transform",
+});
+
+const Icon = styled("svg", {
+  width: "1.25em",
+  height: "1.25em",
+  verticalAlign: "-0.25em",
+  margin: "0 0.075em",
 });
 
 export type FooterProps = ComponentProps<typeof Wrapper>;

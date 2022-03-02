@@ -28,6 +28,3 @@ export { default as SendIcon } from "../../node_modules/twemoji/assets/svg/1f4e4
 
 // simple icons: https://simpleicons.org/
 export { default as NextjsLogo } from "../../node_modules/simple-icons/icons/nextdotjs.svg";
-
-// base styles for any icon via stiches
-export { default as Icon } from "./Icon";

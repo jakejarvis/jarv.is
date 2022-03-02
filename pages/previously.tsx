@@ -28,61 +28,65 @@ const Previously = () => (
   <>
     <Head>
       {/* a complete sh*tshow of overrides, mainly to compensate for font change */}
-      <style>{`
-        body {
-          font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif !important;
-          font-weight: 600 !important;
-        }
-        /* left header */
-        header nav > a:first-of-type span:last-of-type {
-          font-size: 1.4em !important;
-          font-weight: 700 !important;
-        }
-        /* right header */
-        header nav ul a span {
-          font-size: 1.1em !important;
-          font-weight: 700 !important;
-          line-height: 1.1;
-        }
-        /* content */
-        main > div > div {
-          font-size: 1.1em !important;
-          text-align: center;
-        }
-        main > div > div p {
-          font-size: 0.95em;
-        }
-        main > div > div strong {
-          font-weight: 900;
-        }
-        main > div > div code {
-          font-size: 0.85em;
-          font-weight: 400;
-        }
-        main > div > div figure:last-of-type {
-          margin-bottom: 0;
-        }
-        /* footer */
-        footer > div {
-          font-size: 0.95em !important;
-        }
-        /* components */
-        figcaption,
-        .iframe_caption {
-          margin-top: 0.2em;
-          font-size: 0.9em;
-          line-height: 1.5;
-          color: var(--medium);
-          text-align: center;
-        }
-        hr {
-          margin: 1em auto !important;
-        }
-        iframe {
-          margin-bottom: 0.6em !important;
-        }
-      `}</style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+body {
+  font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif !important;
+  font-weight: 600 !important;
+}
+/* left header */
+header nav > a:first-of-type span:last-of-type {
+  font-size: 1.4em !important;
+  font-weight: 700 !important;
+}
+/* right header */
+header nav ul a span {
+  font-size: 1.1em !important;
+  font-weight: 700 !important;
+  line-height: 1.1;
+}
+/* content */
+main > div > div {
+  font-size: 1.1em !important;
+  text-align: center;
+}
+main > div > div p {
+  font-size: 0.95em;
+}
+main > div > div strong {
+  font-weight: 900;
+}
+main > div > div code {
+  font-size: 0.85em;
+  font-weight: 400;
+}
+main > div > div figure:last-of-type {
+  margin-bottom: 0;
+}
+/* footer */
+footer > div {
+  font-size: 0.95em !important;
+}
+/* components */
+figcaption,
+.iframe_caption {
+  margin-top: 0.2em;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--medium);
+  text-align: center;
+}
+hr {
+  margin: 1em auto !important;
+}
+iframe {
+  margin-bottom: 0.6em !important;
+}`,
+        }}
+      />
     </Head>
+
     <NextSeo
       title="Previously on..."
       description="An incredibly embarrassing and somewhat painful trip down this site's memory lane..."
