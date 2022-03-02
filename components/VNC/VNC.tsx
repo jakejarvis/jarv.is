@@ -11,6 +11,7 @@ const Display = styled(
     width: "100%",
     maxWidth: "800px",
 
+    // these are injected by noVNC after connection, so we can't target them directly:
     "& div": {
       background: "none !important",
 
@@ -23,18 +24,10 @@ const Display = styled(
   // fix fuziness in different browsers: https://stackoverflow.com/a/13492784
   // separate objects since these are duplicate properties: https://github.com/modulz/stitches/issues/758#issuecomment-913580518
   {
-    imageRendering: "optimizeSpeed",
-  },
-  {
     imageRendering: "-webkit-optimize-contrast",
   },
   {
-    imageRendering: "crisp-edges",
-  },
-  {
     imageRendering: "pixelated",
-  },
-  {
     MSInterpolationMode: "nearest-neighbor",
   }
 );
