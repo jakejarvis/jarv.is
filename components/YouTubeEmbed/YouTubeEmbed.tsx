@@ -1,8 +1,21 @@
-import classNames from "classnames";
 import ReactPlayer from "react-player/youtube";
+import { styled } from "../../lib/styles/stitches.config";
 import type { YouTubePlayerProps } from "react-player/youtube";
 
-import styles from "./YouTubeEmbed.module.css";
+const Wrapper = styled("div", {
+  position: "relative",
+  paddingTop: "56.25%",
+
+  "& > div": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+  },
+
+  "& .react-player__preview, & iframe": {
+    borderRadius: "$rounded",
+  },
+});
 
 export type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
   id: string;
@@ -10,7 +23,7 @@ export type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
 };
 
 const YouTubeEmbed = ({ id, className, ...rest }: YouTubeEmbedProps) => (
-  <div className={classNames(styles.wrapper, className)}>
+  <Wrapper className={className}>
     <ReactPlayer
       width="100%"
       height="100%"
@@ -19,7 +32,7 @@ const YouTubeEmbed = ({ id, className, ...rest }: YouTubeEmbedProps) => (
       controls
       {...rest}
     />
-  </div>
+  </Wrapper>
 );
 
 export default YouTubeEmbed;

@@ -7,6 +7,7 @@ export type CaptchaProps = {
   size?: "normal" | "compact" | "invisible";
   theme?: "light" | "dark";
   id?: string;
+  className?: string;
 
   // callbacks pulled verbatim from node_modules/@hcaptcha/react-hcaptcha/types/index.d.ts
   /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -20,7 +21,7 @@ export type CaptchaProps = {
   /* eslint-enable @typescript-eslint/no-explicit-any */
 };
 
-const Captcha = ({ size = "normal", theme, id, ...rest }: CaptchaProps) => {
+const Captcha = ({ size = "normal", theme, id, className, ...rest }: CaptchaProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -30,15 +31,17 @@ const Captcha = ({ size = "normal", theme, id, ...rest }: CaptchaProps) => {
         <link rel="preconnect" href="https://newassets.hcaptcha.com" />
       </Head>
 
-      <HCaptcha
-        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
-        reCaptchaCompat={false}
-        tabIndex={0}
-        size={size}
-        theme={theme || (resolvedTheme === "dark" ? "dark" : "light")}
-        id={id}
-        {...rest}
-      />
+      <div className={className}>
+        <HCaptcha
+          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+          reCaptchaCompat={false}
+          tabIndex={0}
+          size={size}
+          theme={theme || (resolvedTheme === "dark" ? "dark" : "light")}
+          id={id}
+          {...rest}
+        />
+      </div>
     </>
   );
 };

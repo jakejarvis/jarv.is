@@ -1,11 +1,29 @@
 import { forwardRef, useState, useEffect } from "react";
-import classNames from "classnames";
 import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
+import { styled } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref } from "react";
 
-import styles from "./CopyButton.module.css";
+const Button = styled("button", {
+  lineHeight: 1,
+  cursor: "pointer",
+
+  variants: {
+    success: {
+      true: {
+        color: "$success !important",
+      },
+    },
+  },
+});
+
+const Icon = styled("svg", {
+  width: "1.25em",
+  height: "1.25em",
+  verticalAlign: "-0.3em",
+  fill: "currentColor",
+});
 
 export type CopyButtonProps = {
   source: ReactNode;
@@ -45,20 +63,17 @@ const CopyButton = forwardRef(function CopyButton(
   }, [timeout, copied]);
 
   return (
-    <button
-      className={classNames(styles.button, copied && styles.success, className)}
+    <Button
+      className={className}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}
       disabled={!!copied}
+      success={copied}
       ref={ref}
     >
-      {copied ? (
-        <CheckOcticon className={styles.icon} fill="currentColor" />
-      ) : (
-        <ClipboardOcticon className={styles.icon} fill="currentColor" />
-      )}
-    </button>
+      <Icon as={copied ? CheckOcticon : ClipboardOcticon} />
+    </Button>
   );
 });
 

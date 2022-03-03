@@ -1,8 +1,19 @@
 import NextImage from "next/image";
-import classNames from "classnames";
+import { styled } from "../../lib/styles/stitches.config";
+import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
-import styles from "./Image.module.css";
+const Wrapper = styled("div", {
+  lineHeight: 0,
+
+  // default to centering all images
+  margin: "1em auto",
+  textAlign: "center",
+});
+
+const RoundedImage = styled(NextImage, {
+  borderRadius: "$rounded",
+});
 
 const CustomImage = ({
   src,
@@ -15,7 +26,7 @@ const CustomImage = ({
   priority,
   className,
   ...rest
-}: NextImageProps) => {
+}: NextImageProps & ComponentProps<typeof RoundedImage>) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width: typeof width === "string" ? Number.parseInt(width) : width,
@@ -40,10 +51,10 @@ const CustomImage = ({
   }
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <Wrapper className={className}>
       {/* @ts-ignore */}
-      <NextImage className={styles.image} {...imageProps} {...rest} />
-    </div>
+      <RoundedImage {...imageProps} {...rest} />
+    </Wrapper>
   );
 };
 

@@ -1,11 +1,10 @@
-import classNames from "classnames";
+import { styled } from "../../lib/styles/stitches.config";
 
-import styles from "./HorizontalRule.module.css";
-
-export type HorizontalRuleProps = JSX.IntrinsicElements["hr"];
-
-const HorizontalRule = ({ className, ...rest }: HorizontalRuleProps) => (
-  <hr className={classNames(styles.hr, className)} {...rest} />
-);
+const HorizontalRule = styled("hr", {
+  margin: "1.5em auto",
+  height: "0.175em",
+  border: 0,
+  backgroundColor: "$light",
+});
 
 export default HorizontalRule;

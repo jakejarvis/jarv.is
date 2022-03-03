@@ -5,9 +5,41 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Link from "../components/Link/Link";
 import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
+import { styled } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";
 import type { GetStaticProps } from "next";
 import type { RepositoryType } from "../types";
+
+const Wrapper = styled("div", {
+  display: "flex",
+  flexFlow: "row wrap",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  width: "100%",
+  fontSize: "1.1em",
+  lineHeight: 1.1,
+});
+
+const Card = styled(RepositoryCard, {
+  flexGrow: 1,
+  margin: "0.6em",
+  width: "370px",
+});
+
+const ViewMore = styled("p", {
+  textAlign: "center",
+  marginBottom: 0,
+  fontSize: "1.1em",
+  fontWeight: 500,
+});
+
+const GitHubLogo = styled(OctocatOcticon, {
+  width: "1.2em",
+  height: "1.2em",
+  verticalAlign: "-0.2em",
+  margin: "0 0.15em",
+  fill: "$text",
+});
 
 const Projects = ({ repos }) => (
   <>
@@ -21,56 +53,18 @@ const Projects = ({ repos }) => (
     <PageTitle>💾 Projects</PageTitle>
 
     <Content>
-      <div className="wrapper">
+      <Wrapper>
         {repos.map((repo: RepositoryType) => (
-          <div key={repo.name} className="card">
-            <RepositoryCard {...repo} />
-          </div>
+          <Card key={repo.name} {...repo} />
         ))}
-      </div>
+      </Wrapper>
 
-      <p className="view_more">
+      <ViewMore>
         <Link href={`https://github.com/${authorSocial.github}`}>
-          View more on{" "}
-          <OctocatOcticon
-            fill="currentColor"
-            style={{
-              color: "var(--text)",
-              width: "1.2em",
-              height: "1.2em",
-              verticalAlign: "-0.2em",
-              margin: "0 0.15em",
-            }}
-          />{" "}
-          GitHub...
+          View more on <GitHubLogo /> GitHub...
         </Link>
-      </p>
+      </ViewMore>
     </Content>
-
-    <style jsx>{`
-      .wrapper {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 100%;
-        font-size: 1.1em;
-        line-height: 1.1;
-      }
-
-      .card {
-        flex-grow: 1;
-        margin: 0.5em;
-        width: 370px;
-      }
-
-      .view_more {
-        text-align: center;
-        margin-bottom: 0;
-        font-size: 1.1em;
-        font-weight: 500;
-      }
-    `}</style>
   </>
 );
 

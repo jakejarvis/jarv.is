@@ -54,7 +54,7 @@ Y2K.getLayout = (page: ReactElement) => {
       <Wallpaper
         image={randomTile}
         tile
-        style={{
+        css={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

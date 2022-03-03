@@ -1,12 +1,9 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "divlo.vscode-styled-jsx-languageserver",
-    "divlo.vscode-styled-jsx-syntax",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "silvenon.mdx",
-    "stylelint.vscode-stylelint",
     "wix.vscode-import-cost"
   ]
 }

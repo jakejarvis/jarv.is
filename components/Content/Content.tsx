@@ -1,11 +1,14 @@
-import classNames from "classnames";
+import { styled } from "../../lib/styles/stitches.config";
 
-import styles from "./Content.module.css";
+const Content = styled("div", {
+  fontSize: "0.9em",
+  lineHeight: 1.7,
+  color: "$text",
 
-export type ContentProps = JSX.IntrinsicElements["div"];
-
-const Content = ({ className, ...rest }: ContentProps) => (
-  <div className={classNames(styles.content, className)} {...rest} />
-);
+  "@mobile": {
+    fontSize: "0.925em",
+    lineHeight: 1.85,
+  },
+});
 
 export default Content;

@@ -1,8 +1,21 @@
-import classNames from "classnames";
 import ReactPlayer from "react-player/file";
+import { styled } from "../../lib/styles/stitches.config";
 import type { FilePlayerProps } from "react-player/file";
 
-import styles from "./Video.module.css";
+const Wrapper = styled("div", {
+  position: "relative",
+  paddingTop: "56.25%",
+
+  "& > div": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+  },
+
+  "& video": {
+    borderRadius: "$rounded",
+  },
+});
 
 export type VideoProps = Partial<FilePlayerProps> & {
   src: {
@@ -59,7 +72,7 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
   }
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <Wrapper className={className}>
       <ReactPlayer
         width="100%"
         height="100%"
@@ -69,7 +82,7 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
         config={config}
         {...rest}
       />
-    </div>
+    </Wrapper>
   );
 };
 

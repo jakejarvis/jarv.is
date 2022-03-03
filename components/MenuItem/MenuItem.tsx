@@ -1,7 +1,52 @@
-import Link from "next/link";
-import classNames from "classnames";
+import NextLink from "next/link";
+import { styled } from "../../lib/styles/stitches.config";
 
-import styles from "./MenuItem.module.css";
+const Link = styled("a", {
+  display: "inline-flex",
+  alignItems: "center",
+  color: "$mediumDark",
+  lineHeight: 1,
+  textDecoration: "none",
+  padding: "0.6em",
+
+  "&:hover": {
+    borderBottom: "0.2em solid",
+    marginBottom: "-0.2em",
+    borderColor: "$kindaLight",
+  },
+
+  variants: {
+    current: {
+      true: {
+        borderBottom: "0.2em solid",
+        marginBottom: "-0.2em",
+        borderColor: "$linkUnderline !important",
+      },
+    },
+  },
+});
+
+const Label = styled("span", {
+  fontSize: "0.95em",
+  fontWeight: 500,
+  marginTop: "0.1em",
+  marginLeft: "0.8em",
+
+  "@mobile": {
+    display: "none",
+  },
+});
+
+const Icon = styled("svg", {
+  width: "1.25em",
+  height: "1.25em",
+  verticalAlign: "-0.3em",
+
+  "@mobile": {
+    width: "1.8em",
+    height: "1.8em",
+  },
+});
 
 export type MenuItemProps = {
   href?: string;
@@ -14,19 +59,21 @@ export type MenuItemProps = {
   icon: any;
 };
 
-const MenuItem = ({ icon: Icon, href, text, current, className }: MenuItemProps) => {
+const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemProps) => {
   const linkContent = (
     <>
-      <Icon className={classNames(styles.icon, className)} /> {text && <span className={styles.label}>{text}</span>}
+      <Icon as={ItemIcon} /> {text && <Label>{text}</Label>}
     </>
   );
 
   // allow both navigational links and/or other interactive react components (e.g. the theme toggle)
   if (href) {
     return (
-      <Link href={href} prefetch={false}>
-        <a className={classNames(styles.link, current && styles.current, className)}>{linkContent}</a>
-      </Link>
+      <NextLink href={href} prefetch={false} passHref={true}>
+        <Link className={className} current={current}>
+          {linkContent}
+        </Link>
+      </NextLink>
     );
   } else {
     return linkContent;

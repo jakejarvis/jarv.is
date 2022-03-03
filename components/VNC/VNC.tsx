@@ -2,8 +2,41 @@ import { useRef, useEffect, useState, memo } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb.js";
 import Terminal from "../Terminal/Terminal";
+import { styled } from "../../lib/styles/stitches.config";
 
-import styles from "./VNC.module.css";
+const Display = styled(
+  "div",
+  {
+    height: "600px",
+    width: "100%",
+    maxWidth: "800px",
+
+    // these are injected by noVNC after connection, so we can't target them directly:
+    "& div": {
+      background: "none !important",
+
+      "& canvas": {
+        cursor: "default !important",
+      },
+    },
+  },
+
+  // fix fuziness in different browsers: https://stackoverflow.com/a/13492784
+  // separate objects since these are duplicate properties: https://github.com/modulz/stitches/issues/758#issuecomment-913580518
+  {
+    imageRendering: "-webkit-optimize-contrast",
+  },
+  {
+    imageRendering: "pixelated",
+    MSInterpolationMode: "nearest-neighbor",
+  }
+);
+
+const DOS = styled(Terminal, {
+  height: "400px",
+  width: "100%",
+  maxWidth: "700px",
+});
 
 export type VNCProps = {
   server: string;
@@ -104,10 +137,10 @@ const VNC = ({ server }: VNCProps) => {
 
   return (
     <>
-      <Terminal ref={terminalRef} className={styles.terminal} />
+      <DOS ref={terminalRef} />
 
       {/* the VNC canvas is hidden until we've successfully connected to the socket */}
-      <div ref={screenRef} className={styles.display} style={{ display: "none" }} />
+      <Display ref={screenRef} style={{ display: "none" }} />
     </>
   );
 };

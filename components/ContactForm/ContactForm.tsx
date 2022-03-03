@@ -1,13 +1,126 @@
 import { useState } from "react";
-import classNames from "classnames";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link/Link";
 import Captcha from "../Captcha/Captcha";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
+import { styled, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers } from "formik";
 
-import styles from "./ContactForm.module.css";
+// CSS applied to both `<input />` and `<textarea />`
+const InputStyles = css({
+  width: "100%",
+  padding: "0.8em",
+  margin: "0.6em 0",
+  border: "2px solid",
+  borderRadius: "$rounded",
+  color: "$text",
+  backgroundColor: "$superDuperLight",
+  borderColor: "$light",
+
+  // light-dark theme switch fading
+  transition: "background 0.25s ease",
+
+  "&:focus": {
+    outline: "none",
+    borderColor: "$link",
+  },
+
+  variants: {
+    missing: {
+      true: {
+        borderColor: "$error",
+      },
+    },
+  },
+});
+
+const Input = styled("input", InputStyles);
+
+const TextArea = styled(TextareaAutosize, InputStyles, {
+  marginBottom: 0,
+  lineHeight: 1.5,
+  minHeight: "10em",
+  resize: "vertical",
+});
+
+const MarkdownTip = styled("div", {
+  fontSize: "0.825em",
+  lineHeight: 1.75,
+});
+
+const HCaptcha = styled(Captcha, {
+  margin: "1em 0",
+});
+
+const ActionRow = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  minHeight: "3.75em",
+});
+
+const SubmitButton = styled("button", {
+  flexShrink: 0,
+  height: "3.25em",
+  padding: "1em 1.25em",
+  marginRight: "1.5em",
+  border: "0",
+  borderRadius: "$rounded",
+  cursor: "pointer",
+  userSelect: "none",
+  fontWeight: 500,
+  color: "$text",
+  backgroundColor: "$kindaLight",
+
+  "&:hover": {
+    color: "$superDuperLight",
+    backgroundColor: "$link",
+  },
+
+  variants: {
+    hidden: {
+      true: {
+        display: "none",
+      },
+    },
+  },
+});
+
+const SubmitIcon = styled(SendIcon, {
+  width: "1.2em",
+  height: "1.2em",
+  verticalAlign: "-0.2em",
+  marginRight: "0.4em",
+});
+
+const Result = styled("div", {
+  fontWeight: 600,
+  lineHeight: 1.5,
+
+  variants: {
+    status: {
+      success: {
+        color: "$success",
+      },
+      error: {
+        color: "$error",
+      },
+    },
+
+    hidden: {
+      true: {
+        display: "none",
+      },
+    },
+  },
+});
+
+const ResultIcon = styled("svg", {
+  width: "1.3em",
+  height: "1.3em",
+  verticalAlign: "-0.3em",
+  fill: "currentColor",
+});
 
 type Values = {
   name: string;
@@ -100,11 +213,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
         <Form className={className} name="contact">
           <Field name="name">
             {({ field, meta }) => (
-              <input
+              <Input
                 type="text"
-                className={classNames(styles.input, meta.error && meta.touched && styles.missing)}
                 placeholder="Name"
                 disabled={success}
+                missing={meta.error && meta.touched}
                 {...field}
               />
             )}
@@ -112,12 +225,12 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <Field name="email">
             {({ field, meta }) => (
-              <input
+              <Input
                 type="email"
                 inputMode="email"
-                className={classNames(styles.input, meta.error && meta.touched && styles.missing)}
                 placeholder="Email"
                 disabled={success}
+                missing={meta.error && meta.touched}
                 {...field}
               />
             )}
@@ -125,17 +238,17 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <Field name="message">
             {({ field, meta }) => (
-              <TextareaAutosize
-                className={classNames(styles.input, styles.textarea, meta.error && meta.touched && styles.missing)}
+              <TextArea
                 placeholder="Write something..."
                 minRows={5}
                 disabled={success}
+                missing={meta.error && meta.touched}
                 {...field}
               />
             )}
           </Field>
 
-          <div className={styles.markdown_tip}>
+          <MarkdownTip>
             Basic{" "}
             <Link href="https://commonmark.org/help/" title="Markdown reference sheet" style={{ fontWeight: 600 }}>
               Markdown syntax
@@ -145,45 +258,32 @@ const ContactForm = ({ className }: ContactFormProps) => {
               links
             </Link>
             ](https://jarv.is), and <code>`code`</code>.
-          </div>
+          </MarkdownTip>
 
-          <div className={styles.captcha}>
-            <Captcha onVerify={(token) => setFieldValue("h-captcha-response", token)} />
-          </div>
+          <HCaptcha onVerify={(token) => setFieldValue("h-captcha-response", token)} />
 
-          <div className={styles.action_row}>
-            <button
-              className={classNames(styles.btn_submit, success && styles.hidden)}
+          <ActionRow>
+            <SubmitButton
               type="submit"
               title="Send Message"
               aria-label="Send Message"
               onClick={() => setSubmitted(true)}
               disabled={isSubmitting}
+              hidden={success}
             >
               {isSubmitting ? (
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SendIcon className={classNames(styles.send_icon)} /> <span>Send</span>
+                  <SubmitIcon /> <span>Send</span>
                 </>
               )}
-            </button>
+            </SubmitButton>
 
-            <span
-              className={classNames(
-                success && styles.result_success,
-                !success && styles.result_error,
-                (!submitted || !feedback || isSubmitting) && styles.hidden
-              )}
-            >
-              {success ? (
-                <CheckOcticon className={styles.result_icon} fill="CurrentColor" />
-              ) : (
-                <XOcticon className={styles.result_icon} fill="CurrentColor" />
-              )}{" "}
-              {feedback}
-            </span>
-          </div>
+            <Result status={success ? "success" : "error"} hidden={!submitted || !feedback || isSubmitting}>
+              <ResultIcon as={success ? CheckOcticon : XOcticon} /> {feedback}
+            </Result>
+          </ActionRow>
         </Form>
       )}
     </Formik>

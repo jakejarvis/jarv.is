@@ -1,11 +1,10 @@
-import classNames from "classnames";
+import { styled } from "../../lib/styles/stitches.config";
 
-import styles from "./Blockquote.module.css";
-
-export type BlockquoteProps = JSX.IntrinsicElements["blockquote"];
-
-const Blockquote = ({ className, ...rest }: BlockquoteProps) => (
-  <blockquote className={classNames(styles.blockquote, className)} {...rest} />
-);
+const Blockquote = styled("blockquote", {
+  marginLeft: 0,
+  paddingLeft: "1.25em",
+  borderLeft: "0.25em solid $link",
+  color: "$mediumDark",
+});
 
 export default Blockquote;

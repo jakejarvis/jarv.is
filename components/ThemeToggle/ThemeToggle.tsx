@@ -1,8 +1,20 @@
 import { useEffect, useState, memo } from "react";
 import { useTheme } from "next-themes";
+import { styled } from "../../lib/styles/stitches.config";
 import { SunIcon, MoonIcon } from "../Icons";
 
-import styles from "./ThemeToggle.module.css";
+const Button = styled("button", {
+  border: 0,
+  padding: "0.6em",
+  marginRight: "-0.6em",
+  background: "none",
+  cursor: "pointer",
+  color: "$mediumDark",
+
+  "&:hover": {
+    color: "$warning",
+  },
+});
 
 export type ThemeToggleProps = {
   className?: string;
@@ -16,20 +28,19 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   useEffect(() => setMounted(true), []);
   if (!mounted) {
     return (
-      <button className={styles.button} aria-hidden={true}>
+      <Button aria-hidden={true}>
         <SunIcon className={className} />
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
-      className={styles.button}
+    <Button
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
       title={resolvedTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
       {resolvedTheme === "light" ? <SunIcon className={className} /> : <MoonIcon className={className} />}
-    </button>
+    </Button>
   );
 };
 

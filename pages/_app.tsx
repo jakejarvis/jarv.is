@@ -1,32 +1,15 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
+import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
-
-// global webfonts -- imported here so they're processed through PostCSS
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-500.css";
-import "@fontsource/inter/latin-700.css";
-import "@fontsource/inter/variable-full.css";
-import "@fontsource/roboto-mono/latin-400.css";
-import "@fontsource/roboto-mono/latin-500.css";
-import "@fontsource/roboto-mono/latin-700.css";
-import "@fontsource/roboto-mono/variable.css";
-import "@fontsource/roboto-mono/variable-italic.css";
-
-// global styles
-import "modern-normalize/modern-normalize.css";
-import "../styles/settings.css";
-import "../styles/typography.css";
-import "../styles/index.css";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
 export type AppProps = NextAppProps & {
@@ -68,28 +51,12 @@ const App = ({ Component, pageProps }: AppProps) => {
   // allow layout overrides per-page, but default to plain `<Layout />`
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
+  // inject body styles defined in ../lib/styles/stitches.config.ts
+  globalStyles();
+
   return (
     <>
-      {/* static asset preloads */}
-      <Head>
-        {/* TODO: these hrefs will change (unpredictably?) at some point. find a safer way to get them from webpack. */}
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/_next/static/media/inter-latin-variable-full-normal.79d31200.woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/_next/static/media/roboto-mono-latin-variable-wghtOnly-normal.3689861c.woff2"
-          crossOrigin="anonymous"
-        />
-      </Head>
-
-      {/* all SEO config is in ../lib/seo.ts except for canonical URLs, which require access to next router */}
+      {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
         canonical={canonical}
@@ -103,8 +70,16 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      {/* NOTE: this *must* come last in this fragment */}
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      <ThemeProvider
+        // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
+        attribute="class"
+        value={{
+          light: theme.className,
+          dark: darkTheme.className,
+        }}
+      >
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
     </>
   );
 };

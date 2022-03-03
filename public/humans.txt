@@ -29,9 +29,9 @@
 
 # TECHNOLOGY
 
-  - Next.js
-  - React
+  - Next.js & React
   - Vercel
+  - Stitches
   - Giscus
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/

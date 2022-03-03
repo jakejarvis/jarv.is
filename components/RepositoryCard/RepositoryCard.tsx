@@ -1,10 +1,71 @@
-import classNames from "classnames";
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import Link from "../Link/Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
+import { styled } from "../../lib/styles/stitches.config";
 import type { RepositoryType } from "../../types";
 
-import styles from "./RepositoryCard.module.css";
+const Wrapper = styled("div", {
+  width: "100%",
+  padding: "1.2em 1.2em 0.8em 1.2em",
+  border: "1px solid $kindaLight",
+  borderRadius: "$rounded",
+  fontSize: "0.85em",
+  color: "$mediumDark",
+
+  // light-dark theme switch fading
+  transition: "border 0.25s ease",
+});
+
+const Name = styled(Link, {
+  fontSize: "1.2em",
+  fontWeight: 600,
+});
+
+const Description = styled("p", {
+  marginTop: "0.7em",
+  marginBottom: "0.5em",
+  lineHeight: 1.7,
+});
+
+const Meta = styled("div", {
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "baseline",
+});
+
+const MetaItem = styled("div", {
+  marginRight: "1.5em",
+  fontSize: "0.875em",
+  lineHeight: 2,
+  color: "$medium",
+});
+
+const MetaLink = styled("a", {
+  color: "inherit",
+  textDecoration: "none",
+
+  "&:hover": {
+    color: "$link",
+  },
+});
+
+const MetaIcon = styled("svg", {
+  width: "16px",
+  height: "16px",
+  verticalAlign: "text-bottom",
+  marginRight: "0.5em",
+  fill: "currentColor",
+});
+
+const LanguageCircle = styled("span", {
+  display: "inline-block",
+  position: "relative",
+  width: "1.15em",
+  height: "1.15em",
+  marginRight: "0.5em",
+  borderRadius: "50%",
+  verticalAlign: "text-top",
+});
 
 export type RepositoryCardProps = RepositoryType & {
   className?: string;
@@ -20,53 +81,48 @@ const RepositoryCard = ({
   updatedAt,
   className,
 }: RepositoryCardProps) => (
-  <div className={classNames(styles.card, className)}>
-    <Link className={styles.name} href={url}>
-      {name}
-    </Link>
+  <Wrapper className={className}>
+    <Name href={url}>{name}</Name>
 
-    {description && <p className={styles.description}>{description}</p>}
+    {description && <Description>{description}</Description>}
 
-    <div className={styles.meta}>
+    <Meta>
       {language && (
-        <div className={styles.meta_item}>
-          <span className={styles.language_color} style={{ backgroundColor: language.color }} />
+        <MetaItem>
+          <LanguageCircle css={{ backgroundColor: language.color }} />
           <span>{language.name}</span>
-        </div>
+        </MetaItem>
       )}
 
       {stars > 0 && (
-        <div className={styles.meta_item}>
-          <a
-            className={styles.meta_link}
+        <MetaItem>
+          <MetaLink
             href={`${url}/stargazers`}
             title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StarOcticon fill="currentColor" className={styles.octicon} />
+            <MetaIcon as={StarOcticon} />
             <span>{stars.toLocaleString("en-US")}</span>
-          </a>
-        </div>
+          </MetaLink>
+        </MetaItem>
       )}
 
       {forks > 0 && (
-        <div className={styles.meta_item}>
-          <a
-            className={styles.meta_link}
+        <MetaItem>
+          <MetaLink
             href={`${url}/network/members`}
             title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ForkOcticon fill="currentColor" className={styles.octicon} />
+            <MetaIcon as={ForkOcticon} />
             <span>{forks.toLocaleString("en-US")}</span>
-          </a>
-        </div>
+          </MetaLink>
+        </MetaItem>
       )}
 
-      <div
-        className={styles.meta_item}
+      <MetaItem
         title={intlFormat(
           new Date(updatedAt),
           {
@@ -83,9 +139,9 @@ const RepositoryCard = ({
         )}
       >
         <span>Updated {formatDistanceToNowStrict(new Date(updatedAt), { addSuffix: true })}</span>
-      </div>
-    </div>
-  </div>
+      </MetaItem>
+    </Meta>
+  </Wrapper>
 );
 
 export default RepositoryCard;

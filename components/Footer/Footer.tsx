@@ -1,60 +1,128 @@
 import { memo } from "react";
-import Link from "next/link";
-import classNames from "classnames";
+import NextLink from "next/link";
 import { HeartIcon, NextjsLogo } from "../Icons";
+import { keyframes, styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
+import type { ComponentProps } from "react";
 
-import styles from "./Footer.module.css";
+const Wrapper = styled("footer", {
+  width: "100%",
+  padding: "1.25em 1.5em",
+  borderTop: "1px solid $kindaLight",
+  backgroundColor: "$backgroundOuter",
+  color: "$mediumDark",
+  transition: "color 0.25s ease, background 0.25s ease, border 0.25s ease",
 
-export type FooterProps = JSX.IntrinsicElements["footer"];
+  "@mobile": {
+    padding: "1em 1.25em",
+  },
+});
 
-const Footer = ({ className, ...rest }: FooterProps) => (
-  <footer className={classNames(styles.footer, className)} {...rest}>
-    <div className={styles.row}>
-      <div className={styles.license}>
+const Row = styled("div", {
+  display: "flex",
+  width: "100%",
+  maxWidth: "865px",
+  margin: "0 auto",
+  justifyContent: "space-between",
+  fontSize: "0.85em",
+  lineHeight: 2.3,
+
+  // stack columns on left instead of flexboxing across
+  "@mobile": {
+    fontSize: "0.8em",
+    display: "block",
+  },
+});
+
+const Link = styled("a", {
+  color: "$mediumDark",
+  textDecoration: "none",
+});
+
+const NextjsLink = styled(Link, {
+  "&:hover": {
+    color: "$medium",
+  },
+});
+
+const ViewSourceLink = styled(Link, {
+  paddingBottom: "2px",
+  borderBottom: "1px solid",
+  borderColor: "$light",
+
+  "&:hover": {
+    borderColor: "$kindaLight",
+  },
+});
+
+const beat = keyframes({
+  "0%": { transform: "scale(1)" },
+  "2%": { transform: "scale(1.25)" },
+  "4%": { transform: "scale(1)" },
+  "6%": { transform: "scale(1.2)" },
+  "8%": { transform: "scale(1)" },
+  // pause for ~9 out of 10 seconds
+  "100%": { transform: "scale(1)" },
+});
+
+const Heart = styled("span", {
+  display: "inline-block",
+  animation: `${beat} 10s infinite`,
+  animationDelay: "7.5s",
+  willChange: "transform",
+});
+
+const Icon = styled("svg", {
+  width: "1.25em",
+  height: "1.25em",
+  verticalAlign: "-0.25em",
+  margin: "0 0.075em",
+});
+
+export type FooterProps = ComponentProps<typeof Wrapper>;
+
+const Footer = ({ ...rest }: FooterProps) => (
+  <Wrapper {...rest}>
+    <Row>
+      <div>
         Content{" "}
-        <Link href="/license/" prefetch={false}>
-          <a className={styles.link} title="Creative Commons Attribution 4.0 International">
-            licensed under CC-BY-4.0
-          </a>
-        </Link>
+        <NextLink href="/license/" prefetch={false} passHref={true}>
+          <Link title="Creative Commons Attribution 4.0 International">licensed under CC-BY-4.0</Link>
+        </NextLink>
         ,{" "}
-        <Link href="/previously/" prefetch={false}>
-          <a className={styles.link} title="Previously on...">
-            2001
-          </a>
-        </Link>{" "}
+        <NextLink href="/previously/" prefetch={false} passHref={true}>
+          <Link title="Previously on...">2001</Link>
+        </NextLink>{" "}
         – {new Date().getFullYear()}.
       </div>
-      <div className={styles.powered_by}>
+
+      <div>
         Made with{" "}
-        <span className={styles.heart} title="Love">
-          <HeartIcon className={styles.icon} />
-        </span>{" "}
+        <Heart title="Love">
+          <Icon as={HeartIcon} />
+        </Heart>{" "}
         and{" "}
-        <a
-          className={classNames(styles.link, styles.nextjs)}
+        <NextjsLink
           href="https://nextjs.org/"
           title="Powered by Next.js"
           aria-label="Next.js"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NextjsLogo className={styles.icon} fill="currentColor" />
-        </a>
+          <Icon as={NextjsLogo} fill="currentColor" />
+        </NextjsLink>
         .{" "}
-        <a
-          className={classNames(styles.link, styles.view_source)}
+        <ViewSourceLink
           href={`https://github.com/${config.githubRepo}`}
           title="View Source on GitHub"
           target="_blank"
           rel="noopener noreferrer"
         >
           View source.
-        </a>
+        </ViewSourceLink>
       </div>
-    </div>
-  </footer>
+    </Row>
+  </Wrapper>
 );
 
 export default memo(Footer);
