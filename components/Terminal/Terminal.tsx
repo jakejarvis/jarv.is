@@ -11,7 +11,7 @@ const BlackBox = styled("div", {
 });
 
 const Monospace = styled("pre", {
-  display: "block",
+  display: "inline",
   margin: 0,
   lineHeight: 1.75,
   fontSize: "0.925em",
@@ -25,6 +25,7 @@ const Underscore = styled("span", {
   display: "inline-block",
   verticalAlign: "text-bottom",
   width: "10px",
+  margin: "0 4px",
   borderBottom: "2px solid #cccccc",
 
   // blink every second for 0.4s
@@ -34,12 +35,10 @@ const Underscore = styled("span", {
 export type TerminalProps = ComponentProps<typeof BlackBox>;
 
 // a DOS-style terminal box with dynamic text
-const Terminal = forwardRef(function Terminal({ ...rest }: TerminalProps, ref: Ref<HTMLSpanElement>) {
+const Terminal = forwardRef(function Terminal({ ...rest }: TerminalProps, ref: Ref<HTMLPreElement>) {
   return (
     <BlackBox {...rest}>
-      <Monospace>
-        <span ref={ref} /> <Underscore />
-      </Monospace>
+      <Monospace ref={ref} /> <Underscore />
     </BlackBox>
   );
 });

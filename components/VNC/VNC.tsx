@@ -49,7 +49,7 @@ const VNC = ({ server }: VNCProps) => {
   const [loaded, setLoaded] = useState(false);
 
   // DOS-style box for text
-  const terminalRef = useRef<HTMLSpanElement>(null);
+  const terminalRef = useRef<HTMLPreElement>(null);
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
   const rfbRef = useRef(null);
