@@ -78,8 +78,6 @@ export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme
   themeMap: {
     ...defaultThemeMap,
     backgroundSize: "borderWidths",
-    borderTopRightRadius: "radii",
-    borderEndStartRadius: "radii",
   },
 });
 

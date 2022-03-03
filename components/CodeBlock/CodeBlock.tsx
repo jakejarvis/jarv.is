@@ -92,8 +92,8 @@ const CornerCopyButton = styled(CopyButton, {
   color: "$mediumDark",
   backgroundColor: "$backgroundInner",
   border: "1px solid $kindaLight",
-  borderTopRightRadius: "$rounded",
-  borderEndStartRadius: "$rounded",
+  borderTopRightRadius: "$radii$rounded",
+  borderEndStartRadius: "$radii$rounded",
 
   // light-dark theme switch fading
   transition: "background 0.25s ease, border 0.25s ease",
