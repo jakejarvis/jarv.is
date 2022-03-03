@@ -39,11 +39,11 @@ const Leo = () => (
 
       <Copyright>
         Video is property of{" "}
-        <Link href="https://web.archive.org/web/20070511004304/http://www.g4techtv.ca/" style={{ fontWeight: 700 }}>
+        <Link href="https://web.archive.org/web/20070511004304/http://www.g4techtv.ca/" css={{ fontWeight: 700 }}>
           G4techTV Canada
         </Link>{" "}
         &amp;{" "}
-        <Link href="https://leolaporte.com/" style={{ fontWeight: 700 }}>
+        <Link href="https://leolaporte.com/" css={{ fontWeight: 700 }}>
           Leo Laporte
         </Link>
         . &copy; 2007 G4 Media, Inc.

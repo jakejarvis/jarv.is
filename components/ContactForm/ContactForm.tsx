@@ -250,7 +250,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <MarkdownTip>
             Basic{" "}
-            <Link href="https://commonmark.org/help/" title="Markdown reference sheet" style={{ fontWeight: 600 }}>
+            <Link href="https://commonmark.org/help/" title="Markdown reference sheet" css={{ fontWeight: 600 }}>
               Markdown syntax
             </Link>{" "}
             is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [

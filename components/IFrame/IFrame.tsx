@@ -1,5 +1,6 @@
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
+import type * as Stitches from "@stitches/react";
 
 const RoundedIFrame = styled("iframe", {
   width: "100%",
@@ -15,9 +16,10 @@ export type IFrameProps = ComponentProps<typeof RoundedIFrame> & {
   width?: number; // defaults to 100%
   allowScripts?: boolean;
   noScroll?: boolean;
+  css?: Stitches.CSS;
 };
 
-const IFrame = ({ src, title, height, width, allowScripts, noScroll, ...rest }: IFrameProps) => (
+const IFrame = ({ src, title, height, width, allowScripts, noScroll, css, ...rest }: IFrameProps) => (
   <RoundedIFrame
     src={src}
     title={title}
@@ -27,6 +29,7 @@ const IFrame = ({ src, title, height, width, allowScripts, noScroll, ...rest }: 
     css={{
       height: `${height}px`,
       maxWidth: width ? `${width}px` : null,
+      ...css,
     }}
     {...rest}
   />

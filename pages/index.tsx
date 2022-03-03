@@ -1,6 +1,7 @@
 import Content from "../components/Content/Content";
 import Link, { CustomLinkProps } from "../components/Link/Link";
 import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
+import type * as Stitches from "@stitches/react";
 
 const Wrapper = styled(Content, {
   fontSize: "1em",
@@ -10,26 +11,28 @@ const Wrapper = styled(Content, {
 const ColorfulLink = ({
   lightColor,
   darkColor,
+  css,
   ...rest
 }: CustomLinkProps & {
   lightColor: string;
   darkColor: string;
+  css?: Stitches.CSS;
 }) => {
   return (
-    <>
-      <Link
-        css={{
-          color: lightColor,
-          backgroundGradientHack: { color: lightColor },
+    <Link
+      css={{
+        color: lightColor,
+        backgroundGradientHack: { color: lightColor },
 
-          [`.${darkTheme} &`]: {
-            color: darkColor,
-            backgroundGradientHack: { color: darkColor },
-          },
-        }}
-        {...rest}
-      />
-    </>
+        [`.${darkTheme} &`]: {
+          color: darkColor,
+          backgroundGradientHack: { color: darkColor },
+        },
+
+        ...css,
+      }}
+      {...rest}
+    />
   );
 };
 
@@ -330,7 +333,7 @@ const Index = () => (
           title="My Public Key"
           lightColor="#757575"
           darkColor="#959595"
-          style={{ background: "none" }}
+          css={{ background: "none !important" }}
           forceNewWindow
         >
           <code>🔐 2B0C 9CF2 51E6 9A39</code>

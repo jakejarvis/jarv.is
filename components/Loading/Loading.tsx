@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { styled, keyframes } from "../../lib/styles/stitches.config";
+import type * as Stitches from "@stitches/react";
 
 const pulse = keyframes({
   "0%, 80%, 100%": {
@@ -26,10 +27,11 @@ export type LoadingProps = {
   width: number; // of entire container, in pixels
   boxes?: number; // total number of boxes (default: 3)
   timing?: number; // staggered timing between each box's pulse, in seconds (default: 0.1s)
+  css?: Stitches.CSS;
   className?: string;
 };
 
-const Loading = ({ width, boxes = 3, timing = 0.1, className }: LoadingProps) => {
+const Loading = ({ width, boxes = 3, timing = 0.1, css, className }: LoadingProps) => {
   // each box is just an empty div
   const divs = [];
 
@@ -51,9 +53,10 @@ const Loading = ({ width, boxes = 3, timing = 0.1, className }: LoadingProps) =>
   return (
     <Wrapper
       className={className}
-      style={{
+      css={{
         width: `${width}px`,
         height: `${width / 2}px`,
+        ...css,
       }}
     >
       {divs}
