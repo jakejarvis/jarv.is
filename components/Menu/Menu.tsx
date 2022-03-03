@@ -31,7 +31,10 @@ const Item = styled("li", {
   },
 
   "@superNarrow": {
-    display: "none",
+    // the home icon is kinda redundant when space is SUPER tight
+    "&:first-of-type": {
+      display: "none",
+    },
   },
 });
 
