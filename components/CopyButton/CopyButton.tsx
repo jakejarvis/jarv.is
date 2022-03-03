@@ -10,9 +10,16 @@ const Button = styled("button", {
   cursor: "pointer",
 
   variants: {
-    success: {
+    copied: {
       true: {
-        color: "$success !important",
+        color: "$success",
+      },
+      false: {
+        color: "$mediumDark",
+
+        "&:hover": {
+          color: "$link",
+        },
       },
     },
   },
@@ -69,7 +76,7 @@ const CopyButton = forwardRef(function CopyButton(
       aria-label="Copy to clipboard"
       onClick={handleCopy}
       disabled={!!copied}
-      success={copied}
+      copied={copied}
       ref={ref}
     >
       <Icon as={copied ? CheckOcticon : ClipboardOcticon} />

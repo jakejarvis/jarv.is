@@ -2,12 +2,12 @@ import { createStitches, defaultThemeMap } from "@stitches/react";
 import hex2rgba from "./helpers/hex-to-rgba";
 
 // modified modern-normalize.css in object form
-import { normalizeCss } from "./helpers/normalize";
+import normalizeCss from "./helpers/normalize";
 
 // web fonts
-import { Inter, preloadUrl as interPreloadUrl } from "./fonts/inter";
-import { RobotoMono, preloadUrl as robotoMonoPreloadUrl } from "./fonts/roboto-mono";
-import { ComicNeue } from "./fonts/comic-neue";
+import Inter from "./fonts/inter";
+import RobotoMono from "./fonts/roboto-mono";
+import ComicNeue from "./fonts/comic-neue";
 
 export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
   theme: {
@@ -120,7 +120,7 @@ export const globalStyles = globalCss({
   ...normalizeCss,
 
   // @ts-ignore
-  "@font-face": [...Inter, ...RobotoMono, ...ComicNeue],
+  "@font-face": [...Inter.family, ...RobotoMono.family, ...ComicNeue.family],
 
   body: {
     margin: 0,
@@ -176,9 +176,9 @@ export const globalStyles = globalCss({
 });
 
 // re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/_document.tsx
-export const preloads = {
+export const preloadUrls = {
   fonts: {
-    InterVar: interPreloadUrl,
-    RobotoMonoVar: robotoMonoPreloadUrl,
+    InterVar: Inter.preloadUrl,
+    RobotoMonoVar: RobotoMono.preloadUrl,
   },
 };

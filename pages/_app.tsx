@@ -48,11 +48,11 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // allow layout overrides per-page, but default to plain `<Layout />`
-  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
-
   // inject body styles defined in ../lib/styles/stitches.config.ts
   globalStyles();
+
+  // allow layout overrides per-page, but default to plain `<Layout />`
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
     <>

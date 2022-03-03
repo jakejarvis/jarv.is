@@ -5,7 +5,7 @@ const hex2rgba = (hex: string, alpha: number) => {
   const green = (number >> 8) & 255;
   const blue = number & 255;
 
-  return `rgba(${red},${green},${blue},${alpha})`;
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 };
 
 export default hex2rgba;

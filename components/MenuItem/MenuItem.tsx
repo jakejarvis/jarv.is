@@ -9,18 +9,20 @@ const Link = styled("a", {
   textDecoration: "none",
   padding: "0.6em",
 
-  "&:hover": {
-    borderBottom: "0.2em solid",
-    marginBottom: "-0.2em",
-    borderColor: "$kindaLight",
-  },
-
   variants: {
+    // indicate active page/section
     current: {
       true: {
-        borderBottom: "0.2em solid",
         marginBottom: "-0.2em",
-        borderColor: "$linkUnderline !important",
+        borderBottom: "0.2em solid",
+        borderColor: "$linkUnderline",
+      },
+      false: {
+        "&:hover": {
+          marginBottom: "-0.2em",
+          borderBottom: "0.2em solid",
+          borderColor: "$kindaLight",
+        },
       },
     },
   },

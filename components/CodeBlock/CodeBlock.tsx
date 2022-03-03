@@ -89,18 +89,13 @@ const CornerCopyButton = styled(CopyButton, {
   top: 0,
   right: 0,
   padding: "0.65em",
-  color: "$mediumDark",
   backgroundColor: "$backgroundInner",
   border: "1px solid $kindaLight",
-  borderTopRightRadius: "$radii$rounded",
-  borderEndStartRadius: "$radii$rounded",
+  borderTopRightRadius: "$rounded",
+  borderBottomLeftRadius: "$rounded",
 
   // light-dark theme switch fading
   transition: "background 0.25s ease, border 0.25s ease",
-
-  "&:hover": {
-    color: "$link",
-  },
 });
 
 export type CodeBlockProps = ComponentProps<typeof Code> & {

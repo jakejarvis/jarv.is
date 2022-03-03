@@ -64,7 +64,7 @@ const SubmitButton = styled("button", {
   height: "3.25em",
   padding: "1em 1.25em",
   marginRight: "1.5em",
-  border: "0",
+  border: 0,
   borderRadius: "$rounded",
   cursor: "pointer",
   userSelect: "none",

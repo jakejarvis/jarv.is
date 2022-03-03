@@ -1,7 +1,8 @@
 // @sindresorhus's modern-normalize.css converted to a JS object, with a bit of cruft removed:
 // https://github.com/sindresorhus/modern-normalize/blob/b59ec0d3d8654cbb6843bc9ea45aef5f1d680108/modern-normalize.css
+// note: re-defining any of these selector(s) anywhere else will override *every* property for them defined here.
 
-export const normalizeCss = {
+const normalizeCss = {
   "*, ::before, ::after": {
     boxSizing: "border-box",
   },
@@ -85,3 +86,5 @@ export const normalizeCss = {
     display: "list-item",
   },
 };
+
+export default normalizeCss;
