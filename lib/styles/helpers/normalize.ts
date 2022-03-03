@@ -7,9 +7,8 @@ export const normalizeCss = {
   },
   html: {
     lineHeight: 1.15,
-    WebkitTextSizeAdjust: "100%",
-    MozTabSize: 4,
     tabSize: 4,
+    WebkitTextSizeAdjust: "100%",
   },
   hr: {
     height: 0,

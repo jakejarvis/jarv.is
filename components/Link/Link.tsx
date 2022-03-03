@@ -14,12 +14,12 @@ const FancyLink = styled("a", {
   backgroundSize: "0% $underline",
   paddingBottom: "0.2rem",
 
+  // sets psuedo linear-gradient() for cool underline effect
+  backgroundGradientHack: {},
+
   "&:hover": {
     backgroundSize: "100% $underline",
   },
-
-  // sets psuedo linear-gradient() for cool underline effect
-  backgroundGradientHack: {},
 });
 
 export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &

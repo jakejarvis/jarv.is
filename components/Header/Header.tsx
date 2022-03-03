@@ -24,6 +24,8 @@ const Wrapper = styled("header", {
       true: {
         position: "sticky",
         top: 0,
+
+        // blurry glass-like background effect (except on firefox)
         backdropFilter: "saturate(180%) blur(5px)",
         zIndex: 1000,
       },
