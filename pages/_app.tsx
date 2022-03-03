@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import Layout from "../components/Layout/Layout";
-import { globalStyles, theme, darkTheme, preloads } from "../lib/styles/stitches.config";
+import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import type { ReactElement, ReactNode } from "react";
@@ -57,13 +56,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      {/* static asset preloads */}
-      <Head>
-        <link rel="preload" as="font" type="font/woff2" href={preloads.fonts.InterVar} crossOrigin="anonymous" />
-        <link rel="preload" as="font" type="font/woff2" href={preloads.fonts.RobotoMonoVar} crossOrigin="anonymous" />
-      </Head>
-
-      {/* all SEO config is in ../lib/seo.ts except for canonical URLs, which require access to next router */}
+      {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
         canonical={canonical}

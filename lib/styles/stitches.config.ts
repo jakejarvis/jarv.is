@@ -175,7 +175,7 @@ export const globalStyles = globalCss({
   },
 });
 
-// re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/app.tsx
+// re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/_document.tsx
 export const preloads = {
   fonts: {
     InterVar: interPreloadUrl,
