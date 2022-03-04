@@ -2,10 +2,8 @@ import NextLink from "next/link";
 import { styled } from "../../lib/styles/stitches.config";
 
 const Link = styled("a", {
-  display: "inline-flex",
-  alignItems: "center",
+  display: "inline-block",
   color: "$mediumDark",
-  lineHeight: 1,
   textDecoration: "none",
   padding: "0.6em",
 
@@ -28,17 +26,6 @@ const Link = styled("a", {
   },
 });
 
-const Label = styled("span", {
-  fontSize: "0.95em",
-  fontWeight: 500,
-  marginTop: "0.1em",
-  marginLeft: "0.8em",
-
-  "@medium": {
-    display: "none",
-  },
-});
-
 const Icon = styled("svg", {
   width: "1.25em",
   height: "1.25em",
@@ -47,6 +34,16 @@ const Icon = styled("svg", {
   "@medium": {
     width: "1.8em",
     height: "1.8em",
+  },
+});
+
+const Label = styled("span", {
+  fontSize: "0.95em",
+  fontWeight: 500,
+  marginLeft: "0.4em",
+
+  "@medium": {
+    display: "none",
   },
 });
 

@@ -23,7 +23,7 @@ const Wrapper = styled("ul", {
 
 const Item = styled("li", {
   listStyle: "none",
-  display: "inline-flex",
+  display: "inline-block",
   marginLeft: "1em",
 
   "@medium": {

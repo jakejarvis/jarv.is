@@ -17,7 +17,6 @@ const Wrapper = styled("div", {
 });
 
 const MetaItem = styled("div", {
-  display: "inline-flex",
   marginRight: "1.6em",
   whiteSpace: "nowrap",
 });
