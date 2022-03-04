@@ -113,65 +113,65 @@ export const darkTheme = createTheme({
   },
 });
 
-export const globalStyles = globalCss({
-  // https://github.com/sindresorhus/modern-normalize
-  ...normalizeCss,
-
+export const globalStyles = globalCss(
   // @ts-ignore
-  "@font-face": [...Inter.family, ...RobotoMono.family, ...ComicNeue.family],
+  ...normalizeCss,
+  {
+    "@font-face": [...Inter.family, ...RobotoMono.family, ...ComicNeue.family],
 
-  body: {
-    margin: 0,
-    backgroundColor: "$backgroundInner",
-    fontFamily: "$sans",
-
-    // light-dark theme switch fading
-    transition: "background 0.25s ease",
-  },
-
-  "code, kbd, samp, pre": {
-    fontFamily: "$mono",
-  },
-
-  // variable font support
-  "@supports (font-variation-settings: normal)": {
     body: {
-      fontFamily: "$sansVar",
-      fontOpticalSizing: "auto",
+      backgroundColor: "$backgroundInner",
+      fontFamily: "$sans",
+
+      // light-dark theme switch fading
+      transition: "background 0.25s ease",
     },
 
     "code, kbd, samp, pre": {
-      fontFamily: "$monoVar",
+      fontFamily: "$mono",
     },
 
-    // Chrome doesn't automatically slant multi-axis Inter var, for some reason.
-    // Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
-    em: {
-      fontStyle: "normal",
-      fontVariationSettings: `"ital" 1, "slnt" -10`,
+    // variable font support?
+    // @ts-ignore
+    "@supports (font-variation-settings: normal)": {
+      body: {
+        fontFamily: "$sansVar",
+        fontOpticalSizing: "auto",
+      },
 
-      // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-      "& code, & kbd, & samp, & pre": {
-        fontStyle: "italic !important",
-        fontVariationSettings: "initial !important",
+      "code, kbd, samp, pre": {
+        fontFamily: "$monoVar",
+      },
+
+      // Chrome doesn't automatically slant multi-axis Inter var, for some reason.
+      // Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
+      em: {
+        fontStyle: "normal",
+        fontVariationSettings: `"ital" 1, "slnt" -10`,
+
+        // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
+        "& code, & kbd, & samp, & pre": {
+          fontStyle: "italic !important",
+          fontVariationSettings: "initial !important",
+        },
       },
     },
-  },
 
-  // reduced motion preference:
-  // https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites
-  "@media (prefers-reduced-motion: reduce)": {
-    "*, ::before, ::after": {
-      animationDelay: "-1ms !important",
-      animationDuration: "1ms !important",
-      animationIterationCount: "1 !important",
-      backgroundAttachment: "initial !important",
-      scrollBehavior: "auto !important",
-      transitionDuration: "0s !important",
-      transitionDelay: "0s !important",
+    // reduced motion preference:
+    // https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites
+    "@media (prefers-reduced-motion: reduce)": {
+      "*, ::before, ::after": {
+        animationDelay: "-1ms !important",
+        animationDuration: "1ms !important",
+        animationIterationCount: "1 !important",
+        backgroundAttachment: "initial !important",
+        scrollBehavior: "auto !important",
+        transitionDuration: "0s !important",
+        transitionDelay: "0s !important",
+      },
     },
-  },
-});
+  }
+);
 
 // re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/_document.tsx
 export const preloadUrls = {
