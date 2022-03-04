@@ -12,25 +12,28 @@ const ColorfulLink = ({
   lightColor,
   darkColor,
   css,
+  fancy = true,
   ...rest
 }: CustomLinkProps & {
   lightColor: string;
   darkColor: string;
   css?: Stitches.CSS;
+  fancy?: boolean;
 }) => {
   return (
     <Link
       css={{
         color: lightColor,
-        backgroundGradientHack: { color: lightColor },
+        setUnderlineVar: { color: lightColor },
 
         [`.${darkTheme} &`]: {
           color: darkColor,
-          backgroundGradientHack: { color: darkColor },
+          setUnderlineVar: { color: darkColor },
         },
 
         ...css,
       }}
+      fancy={fancy}
       {...rest}
     />
   );
@@ -42,7 +45,7 @@ const H1 = styled("h1", {
   fontWeight: 500,
   letterSpacing: "-0.01em",
 
-  "@mobile": {
+  "@medium": {
     fontSize: "1.5em",
   },
 });
@@ -54,7 +57,7 @@ const H2 = styled("h2", {
   letterSpacing: "-0.016em",
   lineHeight: 1.4,
 
-  "@mobile": {
+  "@medium": {
     fontSize: "1.2em",
   },
 });
@@ -68,7 +71,7 @@ const Paragraph = styled("p", {
     marginBottom: 0,
   },
 
-  "@mobile": {
+  "@medium": {
     fontSize: "0.925em",
   },
 });
@@ -333,7 +336,7 @@ const Index = () => (
           title="My Public Key"
           lightColor="#757575"
           darkColor="#959595"
-          css={{ background: "none !important" }}
+          fancy={false}
           forceNewWindow
         >
           <code>🔐 2B0C 9CF2 51E6 9A39</code>

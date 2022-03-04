@@ -16,7 +16,7 @@ const Section = styled("section", {
     marginBottom: 0,
   },
 
-  "@mobile": {
+  "@medium": {
     margin: "1.8em 0",
   },
 });
@@ -26,7 +26,7 @@ const Year = styled("h2", {
   marginTop: 0,
   marginBottom: "0.5em",
 
-  "@mobile": {
+  "@medium": {
     fontSize: "2em",
   },
 });

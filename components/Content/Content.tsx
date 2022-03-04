@@ -5,7 +5,7 @@ const Content = styled("div", {
   lineHeight: 1.7,
   color: "$text",
 
-  "@mobile": {
+  "@medium": {
     fontSize: "0.925em",
     lineHeight: 1.85,
   },

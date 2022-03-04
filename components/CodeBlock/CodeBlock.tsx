@@ -14,13 +14,9 @@ const Code = styled("code", {
   transition: "background 0.25s ease, border 0.25s ease",
 
   variants: {
-    highlight: {
-      // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
+    // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
+    showLineNumbers: {
       true: {
-        // leave room for clipboard button to the right of the first line
-        ".code-line:first-of-type": {
-          marginRight: "3em",
-        },
         ".line-number::before": {
           display: "inline-block",
           width: "1.5em",
@@ -30,6 +26,14 @@ const Code = styled("code", {
           content: "attr(line)", // added to spans by prism
           userSelect: "none",
         },
+        // leave room for clipboard button to the right of the first line
+        ".code-line:first-of-type": {
+          marginRight: "3em",
+        },
+      },
+    },
+    highlight: {
+      true: {
         ".token": {
           "&.comment, &.prolog, &.cdata": {
             color: "$codeComment",
@@ -64,6 +68,10 @@ const Code = styled("code", {
         },
       },
     },
+  },
+
+  defaultVariants: {
+    showLineNumbers: true,
   },
 });
 

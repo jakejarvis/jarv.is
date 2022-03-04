@@ -20,7 +20,7 @@ const Anchor = styled("a", {
   },
 
   // don't require hover to show anchor link on small (likely touch) screens
-  "@mobile": {
+  "@medium": {
     opacity: 1,
   },
 });
@@ -34,7 +34,7 @@ const H = styled("h1", {
   // note: use rem so it isn't based on the heading's font size.
   scrollMarginTop: "5.5rem",
 
-  "@mobile": {
+  "@medium": {
     scrollMarginTop: "6.5rem",
   },
 

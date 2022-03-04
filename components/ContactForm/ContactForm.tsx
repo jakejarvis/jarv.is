@@ -254,7 +254,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
               Markdown syntax
             </Link>{" "}
             is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-            <Link href="https://jarv.is" forceNewWindow>
+            <Link href="https://jarv.is" fancy={false} forceNewWindow>
               links
             </Link>
             ](https://jarv.is), and <code>`code`</code>.

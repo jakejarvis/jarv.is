@@ -14,7 +14,7 @@ const Wrapper = styled("header", {
   // light-dark theme switch fading
   transition: "color 0.25s ease, background 0.25s ease, border 0.25s ease",
 
-  "@mobile": {
+  "@medium": {
     padding: "0.75em 1.25em",
     height: "5.9em",
   },
@@ -43,11 +43,11 @@ const Nav = styled("nav", {
 });
 
 const ResponsiveMenu = styled(Menu, {
-  "@mobile": {
+  "@medium": {
     maxWidth: "325px",
   },
 
-  "@superNarrow": {
+  "@small": {
     maxWidth: "225px",
   },
 });

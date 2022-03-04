@@ -12,7 +12,7 @@ const ConstrainImage = styled("div", {
   lineHeight: 0,
   padding: 0,
 
-  "@mobile": {
+  "@medium": {
     width: "70px",
     height: "70px",
   },
@@ -22,7 +22,7 @@ const Image = styled(NextImage, {
   border: "1px solid $light !important",
   borderRadius: "50%",
 
-  "@mobile": {
+  "@medium": {
     borderWidth: "2px !important",
   },
 });
@@ -36,7 +36,7 @@ const Link = styled("a", {
   "&:hover": {
     color: "$link",
 
-    "@mobile": {
+    "@medium": {
       [`${Image}`]: {
         borderColor: "$linkUnderline !important",
       },
@@ -50,7 +50,7 @@ const Name = styled("span", {
   fontWeight: 500,
   lineHeight: 1,
 
-  "@mobile": {
+  "@medium": {
     display: "none",
   },
 });

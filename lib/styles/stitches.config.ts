@@ -9,7 +9,7 @@ import Inter from "./fonts/inter";
 import RobotoMono from "./fonts/roboto-mono";
 import ComicNeue from "./fonts/comic-neue";
 
-export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme } = createStitches({
+export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme } = createStitches({
   theme: {
     fonts: {
       sans: `Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
@@ -60,19 +60,17 @@ export const { styled, css, getCssText, globalCss, keyframes, theme, createTheme
   },
 
   media: {
-    mobile: "(max-width: 768px)",
-    superNarrow: "(max-width: 380px)",
+    // most responsive styles will go here:
+    medium: "(max-width: 768px)",
+    // used rarely only for SUPER narrow windows:
+    small: "(max-width: 380px)",
   },
 
   utils: {
-    backgroundGradientHack: ({ color = "$linkUnderline" }) => {
+    setUnderlineVar: ({ color, alpha = 0.4 }) => ({
       // allow both pre-set rgba stitches variables and hex values
-      const rgba = color.startsWith("#") ? hex2rgba(color, 0.4) : color;
-
-      return {
-        backgroundImage: `linear-gradient(${rgba}, ${rgba})`,
-      };
-    },
+      $$underline: color.startsWith("#") ? hex2rgba(color, alpha) : color,
+    }),
   },
 
   themeMap: {

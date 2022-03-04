@@ -13,7 +13,7 @@ const Wrapper = styled("footer", {
   color: "$mediumDark",
   transition: "color 0.25s ease, background 0.25s ease, border 0.25s ease",
 
-  "@mobile": {
+  "@medium": {
     padding: "1em 1.25em",
   },
 });
@@ -28,7 +28,7 @@ const Row = styled("div", {
   lineHeight: 2.3,
 
   // stack columns on left instead of flexboxing across
-  "@mobile": {
+  "@medium": {
     fontSize: "0.8em",
     display: "block",
   },

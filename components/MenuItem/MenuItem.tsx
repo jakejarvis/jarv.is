@@ -34,7 +34,7 @@ const Label = styled("span", {
   marginTop: "0.1em",
   marginLeft: "0.8em",
 
-  "@mobile": {
+  "@medium": {
     display: "none",
   },
 });
@@ -44,7 +44,7 @@ const Icon = styled("svg", {
   height: "1.25em",
   verticalAlign: "-0.3em",
 
-  "@mobile": {
+  "@medium": {
     width: "1.8em",
     height: "1.8em",
   },

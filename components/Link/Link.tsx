@@ -7,18 +7,30 @@ import type { LinkProps as NextLinkProps } from "next/link";
 const FancyLink = styled("a", {
   color: "$link",
   textDecoration: "none",
-  transition: "background-size 0.25s ease-in-out, color 0.25s ease, border 0.25s ease",
 
-  backgroundPosition: "0% 100%",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "0% $underline",
-  paddingBottom: "0.2rem",
+  variants: {
+    // fancy animated link underline effect
+    fancy: {
+      true: {
+        // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind the
+        // local `$$underline` variable.
+        setUnderlineVar: { color: "$colors$linkUnderline" },
+        backgroundImage: `linear-gradient($$underline, $$underline)`,
+        backgroundPosition: "0% 100%",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "0% $underline",
+        transition: "background-size 0.25s ease-in-out",
+        paddingBottom: "0.2rem",
 
-  // sets psuedo linear-gradient() for cool underline effect
-  backgroundGradientHack: {},
+        "&:hover": {
+          backgroundSize: "100% $underline",
+        },
+      },
+    },
+  },
 
-  "&:hover": {
-    backgroundSize: "100% $underline",
+  defaultVariants: {
+    fancy: true,
   },
 });
 

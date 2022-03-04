@@ -13,7 +13,7 @@ const Title = styled("h1", {
     margin: "0 0.075em",
   },
 
-  "@mobile": {
+  "@medium": {
     fontSize: "1.8em",
   },
 });

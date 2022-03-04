@@ -10,13 +10,13 @@ const Wrapper = styled("ul", {
   padding: 0,
   margin: 0,
 
-  "@mobile": {
+  "@medium": {
     width: "100%",
     justifyContent: "space-between",
     marginLeft: "1em",
   },
 
-  "@superNarrow": {
+  "@small": {
     marginLeft: "1.4em",
   },
 });
@@ -26,11 +26,11 @@ const Item = styled("li", {
   display: "inline-flex",
   marginLeft: "1em",
 
-  "@mobile": {
+  "@medium": {
     marginLeft: 0,
   },
 
-  "@superNarrow": {
+  "@small": {
     // the home icon is kinda redundant when space is SUPER tight
     "&:first-of-type": {
       display: "none",
