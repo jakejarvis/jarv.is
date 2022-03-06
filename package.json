@@ -1,18 +1,15 @@
 {
   "name": "jarv.is",
   "private": true,
-  "license": "MIT",
+  "license": "(MIT AND CC-BY-4.0)",
   "homepage": "https://jarv.is/",
-  "sideEffects": false,
+  "repository": "jakejarvis/jarv.is",
   "author": {
     "name": "Jake Jarvis",
     "email": "jake@jarv.is",
     "url": "https://github.com/jakejarvis"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jakejarvis/jarv.is.git"
-  },
+  "sideEffects": false,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -49,7 +46,7 @@
     "next-mdx-remote": "^4.0.0",
     "next-seo": "^5.1.0",
     "next-sitemap": "^2.5.4",
-    "next-themes": "^0.0.15",
+    "next-themes": "0.0.15",
     "next-transpile-modules": "^9.0.0",
     "node-fetch": "^3.2.1",
     "p-retry": "^5.0.0",
@@ -63,14 +60,15 @@
     "react-is": "17.0.2",
     "react-player": "^2.9.0",
     "react-textarea-autosize": "^8.3.3",
-    "react-tweet-embed": "^2.0.0",
+    "react-twitter-embed": "^4.0.4",
     "reading-time": "^1.5.0",
     "rehype-prism-plus": "^1.3.2",
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "remove-markdown": "^0.3.0",
     "sanitize-html": "^2.7.0",
-    "simple-icons": "^6.12.0",
+    "simple-icons": "^6.13.0",
+    "stitches-normalize": "^0.1.0",
     "swr": "^1.2.2",
     "terser": "^5.12.0",
     "twemoji": "github:twitter/twemoji#v13.1.0"
@@ -93,7 +91,7 @@
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-mdx": "~1.16.0",
     "eslint-plugin-prettier": "~4.0.0",
-    "lint-staged": "^12.3.4",
+    "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0",
     "typescript": "~4.5.5"

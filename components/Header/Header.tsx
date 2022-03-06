@@ -12,7 +12,7 @@ const Wrapper = styled("header", {
   backgroundColor: "$backgroundHeader",
 
   // light-dark theme switch fading
-  transition: "color 0.25s ease, background 0.25s ease, border 0.25s ease",
+  transition: "background 0.25s ease, border 0.25s ease",
 
   "@medium": {
     padding: "0.75em 1.25em",
@@ -27,7 +27,7 @@ const Wrapper = styled("header", {
 
         // blurry glass-like background effect (except on firefox)
         backdropFilter: "saturate(180%) blur(5px)",
-        zIndex: 1000,
+        zIndex: 9999,
       },
     },
   },

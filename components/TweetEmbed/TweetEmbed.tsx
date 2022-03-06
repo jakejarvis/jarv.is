@@ -1,4 +1,5 @@
-import Tweet from "react-tweet-embed";
+import { useTheme } from "next-themes";
+import { TwitterTweetEmbed } from "react-twitter-embed";
 
 export type TweetEmbedProps = {
   id: string;
@@ -6,16 +7,20 @@ export type TweetEmbedProps = {
   className?: string;
 };
 
-const TweetEmbed = ({ id, className, options }: TweetEmbedProps) => (
-  <Tweet
-    className={className}
-    tweetId={id}
-    options={{
-      dnt: true,
-      align: "center",
-      ...options,
-    }}
-  />
-);
+const TweetEmbed = ({ id, options }: TweetEmbedProps) => {
+  const { resolvedTheme } = useTheme();
+
+  return (
+    <TwitterTweetEmbed
+      tweetId={id}
+      options={{
+        dnt: true,
+        align: "center",
+        theme: resolvedTheme === "dark" ? "dark" : "light",
+        ...options,
+      }}
+    />
+  );
+};
 
 export default TweetEmbed;

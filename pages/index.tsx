@@ -1,12 +1,6 @@
-import Content from "../components/Content/Content";
 import Link, { CustomLinkProps } from "../components/Link/Link";
 import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
 import type * as Stitches from "@stitches/react";
-
-const Wrapper = styled(Content, {
-  fontSize: "1em",
-  lineHeight: 1,
-});
 
 const ColorfulLink = ({
   lightColor,
@@ -43,10 +37,11 @@ const H1 = styled("h1", {
   margin: "0 0 0.5em -0.03em",
   fontSize: "1.8em",
   fontWeight: 500,
-  letterSpacing: "-0.01em",
+  lineHeight: 1.1,
+  color: "$text",
 
   "@medium": {
-    fontSize: "1.5em",
+    fontSize: "1.6em",
   },
 });
 
@@ -54,25 +49,26 @@ const H2 = styled("h2", {
   margin: "0.5em 0 0.5em -0.03em",
   fontSize: "1.35em",
   fontWeight: 400,
-  letterSpacing: "-0.016em",
   lineHeight: 1.4,
+  color: "$text",
 
   "@medium": {
-    fontSize: "1.2em",
+    fontSize: "1.25em",
   },
 });
 
 const Paragraph = styled("p", {
   margin: "0.85em 0",
-  letterSpacing: "-0.004em",
   lineHeight: 1.7,
+  color: "$text",
 
   "&:last-of-type": {
     marginBottom: 0,
   },
 
   "@medium": {
-    fontSize: "0.925em",
+    fontSize: "0.95em",
+    lineHeight: 1.825,
   },
 });
 
@@ -98,10 +94,14 @@ const Wave = styled("span", {
   willChange: "transform",
 });
 
-const PGPKey = styled("sup", {
+const Sup = styled("sup", {
   margin: "0 0.15em",
   fontSize: "0.65em",
-  wordSpacing: "-0.3em",
+});
+
+const PGPKey = styled("code", {
+  marginLeft: "0.15em",
+  wordSpacing: "-0.4em",
 });
 
 const Quiet = styled("span", {
@@ -109,11 +109,14 @@ const Quiet = styled("span", {
 });
 
 const EasterEgg = styled(ColorfulLink, {
-  cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
+  // rotated 🪄 emoji on hover
+  "&:hover": {
+    cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
+  },
 });
 
 const Index = () => (
-  <Wrapper>
+  <>
     <H1>
       Hi there! I'm Jake. <Wave>👋</Wave>
     </H1>
@@ -329,7 +332,7 @@ const Index = () => (
       <ColorfulLink href="/contact/" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
         email
       </ColorfulLink>{" "}
-      <PGPKey>
+      <Sup>
         <ColorfulLink
           href="/pubkey.asc"
           rel="pgpkey authn noopener"
@@ -339,9 +342,9 @@ const Index = () => (
           fancy={false}
           forceNewWindow
         >
-          <code>🔐 2B0C 9CF2 51E6 9A39</code>
+          🔐 <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
         </ColorfulLink>
-      </PGPKey>
+      </Sup>
       ,{" "}
       <ColorfulLink
         href="https://twitter.com/jakejarvis"
@@ -362,7 +365,7 @@ const Index = () => (
       </ColorfulLink>{" "}
       as well!
     </Paragraph>
-  </Wrapper>
+  </>
 );
 
 export default Index;

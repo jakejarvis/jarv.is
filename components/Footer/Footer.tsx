@@ -11,7 +11,9 @@ const Wrapper = styled("footer", {
   borderTop: "1px solid $kindaLight",
   backgroundColor: "$backgroundOuter",
   color: "$mediumDark",
-  transition: "color 0.25s ease, background 0.25s ease, border 0.25s ease",
+
+  // light-dark theme switch fading
+  transition: "background 0.25s ease, border 0.25s ease",
 
   "@medium": {
     padding: "1em 1.25em",
@@ -49,6 +51,9 @@ const ViewSourceLink = styled(Link, {
   paddingBottom: "2px",
   borderBottom: "1px solid",
   borderColor: "$light",
+
+  // light-dark theme switch fading
+  transition: "border 0.25s ease",
 
   "&:hover": {
     borderColor: "$kindaLight",

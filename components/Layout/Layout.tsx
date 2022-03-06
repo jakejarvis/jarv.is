@@ -41,9 +41,7 @@ const Layout = ({ container = true, stickyHeader = true, children, ...rest }: La
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
         <meta
           name="theme-color"
-          content={
-            resolvedTheme === "dark" ? darkTheme.colors.backgroundOuter.value : theme.colors.backgroundOuter.value
-          }
+          content={(resolvedTheme === "dark" ? darkTheme : theme).colors.backgroundOuter?.value}
         />
       </Head>
 

@@ -30,4 +30,4 @@ Run `yarn install` and `yarn dev`, then open [http://localhost:3000/](http://loc
 
 Site **content** (everything in [`/notes`](notes/)) is published under the [**Creative Commons Attribution 4.0 International License**](LICENSE) ([`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/)), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
 
-All original **code** in this repository is published under the [**MIT License**](https://opensource.org/licenses/MIT).
+All original **code** in this repository is published under the [**MIT License**](LICENSE-CODE).

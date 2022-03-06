@@ -1,8 +1,9 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
 import hex2rgba from "./helpers/hex-to-rgba";
 
-// modified modern-normalize.css in object form
-import normalizeCss from "./helpers/normalize";
+// modified modern-normalize.css in object form:
+// https://github.com/jakejarvis/stitches-normalize/blob/main/index.js
+import normalizeCss from "stitches-normalize";
 
 // web fonts
 import Inter from "./fonts/inter";

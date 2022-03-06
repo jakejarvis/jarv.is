@@ -10,10 +10,9 @@ const Wrapper = styled(Content, {
   margin: "0 auto",
 });
 
-const PubKey = styled("code", {
+const PGPKey = styled("code", {
   fontSize: "0.925em",
-  wordSpacing: "-0.175em",
-  whiteSpace: "normal",
+  wordSpacing: "-0.25em",
 });
 
 const Contact = () => (
@@ -37,7 +36,7 @@ const Contact = () => (
       <p>
         🔐 You can grab my public key here:{" "}
         <Link href="/pubkey.asc" title="My Public PGP Key" rel="pgpkey authn noopener" forceNewWindow>
-          <PubKey>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</PubKey>
+          <PGPKey>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</PGPKey>
         </Link>
         .
       </p>
