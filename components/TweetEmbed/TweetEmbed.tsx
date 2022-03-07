@@ -1,5 +1,5 @@
-import { useTheme } from "next-themes";
 import { TwitterTweetEmbed } from "react-twitter-embed";
+import { useTheme } from "../../hooks/use-theme";
 
 export type TweetEmbedProps = {
   id: string;

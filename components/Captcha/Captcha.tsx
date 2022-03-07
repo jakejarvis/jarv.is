@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Head from "next/head";
-import { useTheme } from "next-themes";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useTheme } from "../../hooks/use-theme";
 
 export type CaptchaProps = {
   size?: "normal" | "compact" | "invisible";
