@@ -40,15 +40,15 @@
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
     "is-absolute-url": "^4.0.1",
-    "markdown-to-jsx": "^7.1.6",
+    "markdown-to-jsx": "^7.1.7",
     "next": "12.1.1-canary.6",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote": "^4.0.0",
     "next-seo": "^5.1.0",
-    "next-sitemap": "^2.5.4",
+    "next-sitemap": "^2.5.7",
     "next-themes": "0.0.15",
     "next-transpile-modules": "^9.0.0",
-    "node-fetch": "^3.2.1",
+    "node-fetch": "^3.2.2",
     "p-retry": "^5.0.0",
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
@@ -83,8 +83,8 @@
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.10.0",
     "eslint-config-next": "12.1.1-canary.6",
@@ -94,7 +94,7 @@
     "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0",
-    "typescript": "~4.5.5"
+    "typescript": "^4.6.2"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

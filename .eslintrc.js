@@ -16,12 +16,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: "*.md",
-      rules: {
-        "prettier/prettier": ["error", { parser: "markdown" }],
-      },
-    },
-    {
       files: ["*.md", "*.mdx"],
       extends: ["plugin:mdx/recommended"],
       rules: {

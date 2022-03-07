@@ -40,7 +40,7 @@ const Icon = styled("svg", {
 const Label = styled("span", {
   fontSize: "0.95em",
   fontWeight: 500,
-  marginLeft: "0.4em",
+  marginLeft: "0.7em",
 
   "@medium": {
     display: "none",
@@ -61,7 +61,8 @@ export type MenuItemProps = {
 const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemProps) => {
   const linkContent = (
     <>
-      <Icon as={ItemIcon} /> {text && <Label>{text}</Label>}
+      <Icon as={ItemIcon} />
+      {text && <Label>{text}</Label>}
     </>
   );
 

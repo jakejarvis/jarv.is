@@ -12,5 +12,6 @@
   "prettier.requireConfig": true,
   "prettier.configPath": ".prettierrc.json",
   "npm.packageManager": "yarn",
-  "eslint.packageManager": "yarn"
+  "eslint.packageManager": "yarn",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
