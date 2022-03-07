@@ -1,5 +1,5 @@
 import { useEffect, useState, memo } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
 import { SunIcon, MoonIcon } from "../Icons";
 
