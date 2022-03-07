@@ -55,7 +55,14 @@ const App = ({ Component, pageProps }: AppProps) => {
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
-    <>
+    <ThemeProvider
+      // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
+      attribute="class"
+      value={{
+        light: theme.className,
+        dark: darkTheme.className,
+      }}
+    >
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
@@ -70,17 +77,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <ThemeProvider
-        // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
-        attribute="class"
-        value={{
-          light: theme.className,
-          dark: darkTheme.className,
-        }}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
-    </>
+      {getLayout(<Component {...pageProps} />)}
+    </ThemeProvider>
   );
 };
 
