@@ -1,7 +1,7 @@
 {
   "name": "jarv.is",
   "private": true,
-  "license": "(MIT AND CC-BY-4.0)",
+  "license": "MIT",
   "homepage": "https://jarv.is/",
   "repository": "jakejarvis/jarv.is",
   "author": {
