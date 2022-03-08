@@ -27,6 +27,7 @@
     "@novnc/novnc": "github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^17.0.0",
+    "@react-spring/web": "^9.4.3",
     "@sentry/node": "^6.18.1",
     "@sentry/tracing": "^6.18.1",
     "@stitches/react": "^1.2.7",
