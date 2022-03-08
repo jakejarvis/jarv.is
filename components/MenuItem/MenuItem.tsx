@@ -70,7 +70,7 @@ const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemPr
   if (href) {
     return (
       <NextLink href={href} prefetch={false} passHref={true}>
-        <Link className={className} current={current}>
+        <Link className={className} current={current} title={text} aria-label={text}>
           {linkContent}
         </Link>
       </NextLink>
