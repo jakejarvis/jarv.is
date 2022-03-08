@@ -7,10 +7,8 @@ export { default as ContactIcon } from "../../node_modules/feather-icons/dist/ic
 export { default as DateIcon } from "../../node_modules/feather-icons/dist/icons/calendar.svg";
 export { default as EditIcon } from "../../node_modules/feather-icons/dist/icons/edit.svg";
 export { default as HomeIcon } from "../../node_modules/feather-icons/dist/icons/home.svg";
-export { default as MoonIcon } from "../../node_modules/feather-icons/dist/icons/moon.svg";
 export { default as NotesIcon } from "../../node_modules/feather-icons/dist/icons/edit-3.svg";
 export { default as ProjectsIcon } from "../../node_modules/feather-icons/dist/icons/code.svg";
-export { default as SunIcon } from "../../node_modules/feather-icons/dist/icons/sun.svg";
 export { default as TagIcon } from "../../node_modules/feather-icons/dist/icons/tag.svg";
 export { default as ViewsIcon } from "../../node_modules/feather-icons/dist/icons/eye.svg";
 

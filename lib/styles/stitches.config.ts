@@ -157,20 +157,6 @@ export const globalStyles = globalCss(
         },
       },
     },
-
-    // reduced motion preference:
-    // https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites
-    "@media (prefers-reduced-motion: reduce)": {
-      "*, ::before, ::after": {
-        animationDelay: "-1ms !important",
-        animationDuration: "1ms !important",
-        animationIterationCount: "1 !important",
-        backgroundAttachment: "initial !important",
-        scrollBehavior: "auto !important",
-        transitionDuration: "0s !important",
-        transitionDelay: "0s !important",
-      },
-    },
   }
 );
 
