@@ -1,6 +1,6 @@
 import { Feed } from "feed";
 import { getAllNotes } from "./parse-notes";
-import * as config from "./config";
+import * as config from "../config";
 import type { GetServerSidePropsContext, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 

@@ -1,22 +1,22 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
-import hex2rgba from "./helpers/hex-to-rgba";
 
 // modified modern-normalize.css in object form:
 // https://github.com/jakejarvis/stitches-normalize/blob/main/index.js
 import normalizeCss from "stitches-normalize";
 
 // web fonts
-import Inter from "./fonts/inter";
-import RobotoMono from "./fonts/roboto-mono";
-import ComicNeue from "./fonts/comic-neue";
+import { Inter, RobotoMono, ComicNeue } from "./helpers/typography";
+
+// misc. helpers
+import hex2rgba from "./helpers/hex-to-rgba";
 
 export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme } = createStitches({
   theme: {
     fonts: {
-      sans: `Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-      sansVar: `"Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-      mono: `"Roboto Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
-      monoVar: `"Roboto Mono var", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
+      sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+      sansVar: `"${Inter.name.variable}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+      mono: `"${RobotoMono.name.regular}", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
+      monoVar: `"${RobotoMono.name.variable}", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
     },
 
     colors: {
@@ -160,10 +160,5 @@ export const globalStyles = globalCss(
   }
 );
 
-// re-export hashed URLs of the most important variable fonts so we can preload them in ../../pages/_document.tsx
-export const preloadUrls = {
-  fonts: {
-    InterVar: Inter.preloadUrl,
-    RobotoMonoVar: RobotoMono.preloadUrl,
-  },
-};
+// re-export all font data so we can do things like preloading them in pages/_document.tsx
+export * as fonts from "./helpers/typography";

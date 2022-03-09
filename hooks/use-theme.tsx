@@ -1,28 +1,23 @@
-// forked & modified from pacocoursey/next-themes as of:
+// forked & modified from pacocoursey/next-themes as of v0.0.15:
 // https://github.com/pacocoursey/next-themes/tree/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a
 
 import { createContext, useCallback, useContext, useEffect, useState, useRef, memo } from "react";
 import NextHead from "next/head";
 import type { PropsWithChildren } from "react";
 
-interface UseThemeProps {
-  /** List of all available theme names */
-  themes: string[];
-  /** Active theme name */
-  theme?: string;
-  /** If the active theme is "system", this returns whether the system preference resolved to "dark" or "light". Otherwise, identical to `theme` */
-  resolvedTheme?: string;
-  /** Forced theme name for the current page */
-  forcedTheme?: string;
-  /** Update the theme */
-  setTheme: (theme: string) => void;
+// https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
+const MEDIA = "(prefers-color-scheme: dark)";
+
+// default to a simple light or dark binary option
+const colorSchemes = ["light", "dark"];
+
+interface AttributeValuesMap {
+  [themeName: string]: string;
 }
 
 export interface ThemeProviderProps {
   /** List of all available theme names */
   themes?: string[];
-  /** Forced theme name for the current page */
-  forcedTheme?: string;
   /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
   enableColorScheme?: boolean;
   /** Key used to store theme setting in localStorage */
@@ -32,9 +27,44 @@ export interface ThemeProviderProps {
   /** HTML attribute modified based on the active theme. Accepts `class` and `data-*` (meaning any data attribute, `data-mode`, `data-color`, etc.) */
   attribute?: string | "class";
   /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
-  value?: ValueObject;
+  value?: AttributeValuesMap;
 }
 
+export interface UseThemeProps {
+  /** List of all available theme names */
+  themes: string[];
+  /** Active theme name */
+  theme?: string;
+  /** If the active theme is "system", this returns whether the system preference resolved to "dark" or "light". Otherwise, identical to `theme` */
+  resolvedTheme?: string;
+  /** Update the theme */
+  setTheme: (theme: string) => void;
+}
+
+// get the current theme *after* being set by this script
+const getTheme = (key: string, fallback?: string) => {
+  if (typeof window === "undefined") return undefined;
+
+  let theme;
+  try {
+    theme = localStorage.getItem(key) || undefined;
+  } catch (e) {} // eslint-disable-line no-empty
+
+  return theme || fallback;
+};
+
+// get the user's prefered theme as set via their OS/browser settings
+const getSystemTheme = (e?: MediaQueryList) => {
+  if (!e) {
+    e = window.matchMedia(MEDIA);
+  }
+
+  const isDark = e.matches;
+  const systemTheme = isDark ? "dark" : "light";
+  return systemTheme;
+};
+
+// useTheme() function to get current theme state from pages/components/etc.
 const ThemeContext = createContext<UseThemeProps>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   setTheme: (_) => {},
@@ -42,15 +72,71 @@ const ThemeContext = createContext<UseThemeProps>({
 });
 export const useTheme = () => useContext(ThemeContext);
 
-const colorSchemes = ["light", "dark"];
-const MEDIA = "(prefers-color-scheme: dark)";
+// the script tag injected manually into `<head>` by provider below
+const ThemeScript = memo(function ThemeScript({
+  storageKey,
+  attribute,
+  defaultTheme,
+  value,
+  attrs,
+}: {
+  storageKey: string;
+  attribute?: string;
+  defaultTheme: string;
+  value?: AttributeValuesMap;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  attrs: any;
+}) {
+  const setDocumentVar = (() => {
+    if (attribute === "class") {
+      const removeClasses = `d.remove(${attrs.map((t: string) => `"${t}"`).join(",")})`;
 
-interface ValueObject {
-  [themeName: string]: string;
-}
+      // `d` is the class list of the `<html>` tag
+      return `var d=document.documentElement.classList;${removeClasses};`;
+    } else {
+      // `d` is the entire document, used to set custom attribute of the `<html>` tag (probably `data-*`)
+      return `var d=document.documentElement;`;
+    }
+  })();
 
+  const updateDOM = (name: string, literal?: boolean) => {
+    name = value?.[name] || name;
+    const val = literal ? name : `"${name}"`;
+
+    // mirrors above logic from setDocumentVar()
+    if (attribute === "class") {
+      return `d.add(${val})`;
+    } else {
+      return `d.setAttribute("${attribute}", ${val})`;
+    }
+  };
+
+  // is the default theme still `system`? (it should be...)
+  const defaultSystem = defaultTheme === "system";
+
+  // even though it's the proper method, using next/script with `strategy="beforeInteractive"` still causes flash of
+  // white on load. injecting a normal script tag lets us prioritize setting `<html>` attributes even more.
+  return (
+    <NextHead>
+      <script
+        key="next-themes-script"
+        dangerouslySetInnerHTML={{
+          __html: `!function(){try{${setDocumentVar}var e=localStorage.getItem("${storageKey}");${
+            !defaultSystem ? updateDOM(defaultTheme) + ";" : ""
+          }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);m.media!==t||m.matches?${updateDOM(
+            "dark"
+          )}:${updateDOM("light")}}else if(e){${value ? `var x=${JSON.stringify(value)}` : ""}}${updateDOM(
+            value ? "x[e]" : "e",
+            true
+          )}}catch(e){}}()`,
+        }}
+      />
+    </NextHead>
+  );
+});
+
+// provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
-  forcedTheme,
   enableColorScheme = true,
   storageKey = "theme",
   themes = [...colorSchemes],
@@ -67,9 +153,9 @@ export const ThemeProvider = ({
     (e?) => {
       const systemTheme = getSystemTheme(e);
       setResolvedTheme(systemTheme);
-      if (theme === "system" && !forcedTheme) changeTheme(systemTheme, false);
+      if (theme === "system") changeTheme(systemTheme, false);
     },
-    [theme, forcedTheme] // eslint-disable-line react-hooks/exhaustive-deps
+    [theme] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   // Ref hack to avoid adding handleMediaQuery as a dep
@@ -82,9 +168,7 @@ export const ThemeProvider = ({
     if (updateStorage) {
       try {
         localStorage.setItem(storageKey, theme);
-      } catch (e) {
-        // Unsupported
-      }
+      } catch (e) {} // eslint-disable-line no-empty
     }
 
     if (theme === "system") {
@@ -120,14 +204,10 @@ export const ThemeProvider = ({
 
   const setTheme = useCallback(
     (newTheme) => {
-      if (forcedTheme) {
-        changeTheme(newTheme, true, false);
-      } else {
-        changeTheme(newTheme);
-      }
+      changeTheme(newTheme);
       setThemeState(newTheme);
     },
-    [forcedTheme] // eslint-disable-line react-hooks/exhaustive-deps
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   // localStorage event handling
@@ -136,6 +216,7 @@ export const ThemeProvider = ({
       if (e.key !== storageKey) {
         return;
       }
+
       // If default theme set, use it if localstorage === null (happens on local storage manual deletion)
       const theme = e.newValue || defaultTheme;
       setTheme(theme);
@@ -143,18 +224,15 @@ export const ThemeProvider = ({
 
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
-  }, [setTheme]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // color-scheme handling
   useEffect(() => {
     if (!enableColorScheme) return;
 
     const colorScheme =
-      // If theme is forced to light or dark, use that
-      forcedTheme && colorSchemes.includes(forcedTheme)
-        ? forcedTheme
-        : // If regular theme is light or dark
-        theme && colorSchemes.includes(theme)
+      // If regular theme is light or dark
+      theme && colorSchemes.includes(theme)
         ? theme
         : // If theme is system, use the resolved version
         theme === "system"
@@ -164,7 +242,7 @@ export const ThemeProvider = ({
     // color-scheme tells browser how to render built-in elements like forms, scrollbars, etc.
     // if color-scheme is null, this will remove the property
     document.documentElement.style.setProperty("color-scheme", colorScheme);
-  }, [enableColorScheme, theme, resolvedTheme, forcedTheme]);
+  }, [theme, resolvedTheme]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ThemeContext.Provider
@@ -172,13 +250,11 @@ export const ThemeProvider = ({
         themes: [...themes, "system"],
         theme,
         resolvedTheme: theme === "system" ? resolvedTheme : theme,
-        forcedTheme,
         setTheme,
       }}
     >
       <ThemeScript
         {...{
-          forcedTheme,
           storageKey,
           attribute,
           value,
@@ -186,105 +262,8 @@ export const ThemeProvider = ({
           attrs,
         }}
       />
+
       {children}
     </ThemeContext.Provider>
   );
-};
-
-const ThemeScript = memo(
-  function ThemeScript({
-    forcedTheme,
-    storageKey,
-    attribute,
-    defaultTheme,
-    value,
-    attrs,
-  }: {
-    forcedTheme?: string;
-    storageKey: string;
-    attribute?: string;
-    defaultTheme: string;
-    value?: ValueObject;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    attrs: any;
-  }) {
-    // Code-golfing the amount of characters in the script
-    const optimization = (() => {
-      if (attribute === "class") {
-        const removeClasses = `d.remove(${attrs.map((t: string) => `"${t}"`).join(",")})`;
-
-        return `var d=document.documentElement.classList;${removeClasses};`;
-      } else {
-        return `var d=document.documentElement;`;
-      }
-    })();
-
-    const updateDOM = (name: string, literal?: boolean) => {
-      name = value?.[name] || name;
-      const val = literal ? name : `"${name}"`;
-
-      if (attribute === "class") {
-        return `d.add(${val})`;
-      }
-
-      return `d.setAttribute("${attribute}", ${val})`;
-    };
-
-    const defaultSystem = defaultTheme === "system";
-
-    return (
-      <NextHead>
-        {forcedTheme ? (
-          <script
-            key="next-themes-script"
-            dangerouslySetInnerHTML={{
-              __html: `!function(){${optimization}${updateDOM(forcedTheme)}}()`,
-            }}
-          />
-        ) : (
-          <script
-            key="next-themes-script"
-            dangerouslySetInnerHTML={{
-              __html: `!function(){try{${optimization}var e=localStorage.getItem("${storageKey}");${
-                !defaultSystem ? updateDOM(defaultTheme) + ";" : ""
-              }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);m.media!==t||m.matches?${updateDOM(
-                "dark"
-              )}:${updateDOM("light")}}else if(e){${value ? `var x=${JSON.stringify(value)}` : ""}}${updateDOM(
-                value ? "x[e]" : "e",
-                true
-              )}}catch(e){}}()`,
-            }}
-          />
-        )}
-      </NextHead>
-    );
-  },
-  (prevProps, nextProps) => {
-    // Only re-render when forcedTheme changes
-    // the rest of the props should be completely stable
-    if (prevProps.forcedTheme !== nextProps.forcedTheme) return false;
-    return true;
-  }
-);
-
-// Helpers
-const getTheme = (key: string, fallback?: string) => {
-  if (typeof window === "undefined") return undefined;
-  let theme;
-  try {
-    theme = localStorage.getItem(key) || undefined;
-  } catch (e) {
-    // Unsupported
-  }
-  return theme || fallback;
-};
-
-const getSystemTheme = (e?: MediaQueryList) => {
-  if (!e) {
-    e = window.matchMedia(MEDIA);
-  }
-
-  const isDark = e.matches;
-  const systemTheme = isDark ? "dark" : "light";
-  return systemTheme;
 };

@@ -1,4 +1,4 @@
-import { buildFeed } from "../lib/build-feed";
+import { buildFeed } from "../lib/helpers/build-feed";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

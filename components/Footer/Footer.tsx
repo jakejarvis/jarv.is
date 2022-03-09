@@ -49,11 +49,7 @@ const NextjsLink = styled(Link, {
 
 const ViewSourceLink = styled(Link, {
   paddingBottom: "2px",
-  borderBottom: "1px solid",
-  borderColor: "$light",
-
-  // light-dark theme switch fading
-  transition: "border 0.25s ease",
+  borderBottom: "1px solid $light",
 
   "&:hover": {
     borderColor: "$kindaLight",

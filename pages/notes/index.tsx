@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { format } from "date-fns";
 import Content from "../../components/Content/Content";
 import NotesList, { NotesListProps } from "../../components/NotesList/NotesList";
-import { getAllNotes } from "../../lib/parse-notes";
+import { getAllNotes } from "../../lib/helpers/parse-notes";
 import type { GetStaticProps } from "next";
 
 const Notes = ({ notesByYear }: NotesListProps) => (

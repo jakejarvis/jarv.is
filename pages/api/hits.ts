@@ -1,6 +1,6 @@
 import pRetry from "p-retry";
 import faunadb from "faunadb";
-import { getAllNotes } from "../../lib/parse-notes";
+import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { logServerError } from "../../lib/helpers/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
 

@@ -8,8 +8,8 @@ import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
 import readingTime from "reading-time";
-import { baseUrl } from "./config";
-import { NOTES_DIR } from "./config/constants";
+import { baseUrl } from "../config";
+import { NOTES_DIR } from "../config/constants";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
@@ -17,7 +17,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
 import type { MinifyOptions } from "terser";
-import type { NoteType } from "../types";
+import type { NoteType } from "../../types";
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
 export const getNoteSlugs = () =>

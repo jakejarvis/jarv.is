@@ -14,6 +14,6 @@ export type NoteType = {
     noComments?: boolean;
   };
 
-  // the final, compiled JSX by next-mdx-remote; see lib/parse-notes.ts
+  // the final, compiled JSX by next-mdx-remote; see lib/helpers/parse-notes.ts
   source: MDXRemoteSerializeResult;
 };

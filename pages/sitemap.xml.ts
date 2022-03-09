@@ -1,5 +1,5 @@
 import { getServerSideSitemap } from "next-sitemap";
-import { getAllNotes } from "../lib/parse-notes";
+import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
 import type { GetServerSideProps } from "next";
 import type { ISitemapField } from "next-sitemap";

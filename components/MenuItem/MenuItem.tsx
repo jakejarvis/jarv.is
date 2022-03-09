@@ -12,14 +12,12 @@ const Link = styled("a", {
     current: {
       true: {
         marginBottom: "-0.2em",
-        borderBottom: "0.2em solid",
-        borderColor: "$linkUnderline",
+        borderBottom: "0.2em solid $linkUnderline",
       },
       false: {
         "&:hover": {
           marginBottom: "-0.2em",
-          borderBottom: "0.2em solid",
-          borderColor: "$kindaLight",
+          borderBottom: "0.2em solid $kindaLight",
         },
       },
     },

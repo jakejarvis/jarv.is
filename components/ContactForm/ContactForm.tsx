@@ -12,11 +12,10 @@ const InputStyles = css({
   width: "100%",
   padding: "0.8em",
   margin: "0.6em 0",
-  border: "2px solid",
+  border: "2px solid $light",
   borderRadius: "$rounded",
   color: "$text",
   backgroundColor: "$superDuperLight",
-  borderColor: "$light",
 
   // light-dark theme switch fading
   transition: "background 0.25s ease",
