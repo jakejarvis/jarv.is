@@ -23,7 +23,7 @@
     "@fontsource/roboto-mono": "4.5.3",
     "@giscus/react": "^1.1.2",
     "@hcaptcha/react-hcaptcha": "^1.1.1",
-    "@next/bundle-analyzer": "12.1.1-canary.8",
+    "@next/bundle-analyzer": "12.1.1-canary.9",
     "@novnc/novnc": "github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^17.0.0",
