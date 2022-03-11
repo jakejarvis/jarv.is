@@ -28,7 +28,7 @@ const IFrame = ({ src, title, height, width, allowScripts, noScroll, css, ...res
     loading="lazy"
     css={{
       height: `${height}px`,
-      maxWidth: width ? `${width}px` : null,
+      maxWidth: width ? `${width}px` : "100%",
       ...css,
     }}
     {...rest}
