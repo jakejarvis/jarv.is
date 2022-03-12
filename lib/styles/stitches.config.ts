@@ -65,6 +65,7 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
     medium: "(max-width: 768px)",
     // used rarely only for SUPER narrow windows:
     small: "(max-width: 380px)",
+    // ...note: things then COMPLETELY break at 300px.
   },
 
   utils: {

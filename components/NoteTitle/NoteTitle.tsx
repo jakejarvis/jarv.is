@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import type { NoteType } from "../../types";
 
 const Title = styled("h1", {
-  margin: "0.3em 0 0.5em -0.03em",
+  margin: "0.3em 0 0.5em -1px", // misaligned left margin, super nitpicky
   fontSize: "2.1em",
   lineHeight: 1.3,
   fontWeight: 700,

@@ -34,7 +34,7 @@ const ColorfulLink = ({
 };
 
 const H1 = styled("h1", {
-  margin: "0 0 0.5em -0.03em",
+  margin: "0 0 0.5em -1px", // misaligned left margin, super nitpicky
   fontSize: "1.8em",
   fontWeight: 500,
   lineHeight: 1.1,
@@ -46,7 +46,7 @@ const H1 = styled("h1", {
 });
 
 const H2 = styled("h2", {
-  margin: "0.5em 0 0.5em -0.03em",
+  margin: "0.5em 0 0.5em -1px", // misaligned left margin, super nitpicky
   fontSize: "1.35em",
   fontWeight: 400,
   lineHeight: 1.4,
