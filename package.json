@@ -70,7 +70,7 @@
     "simple-icons": "^6.14.0",
     "stitches-normalize": "^0.1.0",
     "swr": "^1.2.2",
-    "terser": "^5.12.0",
+    "terser": "^5.12.1",
     "twemoji": "github:twitter/twemoji#v14.0.0"
   },
   "devDependencies": {
