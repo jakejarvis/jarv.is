@@ -24,14 +24,14 @@
 
 # HUMAN
 
-    Jake Jarvis <jake@jarv.is>
-    @jakejarvis
+    Jake Jarvis (@jakejarvis)
 
 # TECHNOLOGY
 
   - Next.js & React
   - Vercel
   - Stitches
+  - Fauna
   - Giscus
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/
