@@ -23,7 +23,6 @@
     "@fontsource/roboto-mono": "4.5.3",
     "@giscus/react": "^1.1.2",
     "@hcaptcha/react-hcaptcha": "^1.1.1",
-    "@next/bundle-analyzer": "12.1.1-canary.10",
     "@novnc/novnc": "github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^17.0.0",
@@ -68,13 +67,13 @@
     "remove-markdown": "^0.3.0",
     "sanitize-html": "^2.7.0",
     "simple-icons": "^6.14.0",
-    "stitches-normalize": "^0.1.0",
+    "stitches-normalize": "^1.0.0",
     "swr": "^1.2.2",
-    "terser": "^5.12.1",
     "twemoji": "github:twitter/twemoji#v14.0.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "github:jakejarvis/eslint-config#main",
+    "@next/bundle-analyzer": "12.1.1-canary.10",
     "@svgr/webpack": "^6.2.1",
     "@types/node": "*",
     "@types/prop-types": "^15.7.4",
@@ -83,8 +82,8 @@
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.11.0",
     "eslint-config-next": "12.1.1-canary.10",
@@ -94,6 +93,7 @@
     "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0",
+    "terser": "^5.12.1",
     "typescript": "^4.6.2"
   },
   "simple-git-hooks": {
