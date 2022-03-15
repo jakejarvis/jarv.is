@@ -83,7 +83,7 @@
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.14.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.11.0",
