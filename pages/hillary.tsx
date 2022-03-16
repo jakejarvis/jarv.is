@@ -1,8 +1,8 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import Video from "../components/Video/Video";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import Video from "../components/Video";
 import { styled } from "../lib/styles/stitches.config";
 
 import thumbnail from "../public/static/images/hillary/thumb.png";

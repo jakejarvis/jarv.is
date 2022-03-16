@@ -1,4 +1,4 @@
-import Link, { CustomLinkProps } from "../components/Link/Link";
+import Link, { CustomLinkProps } from "../components/Link";
 import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
 import type * as Stitches from "@stitches/react";
 

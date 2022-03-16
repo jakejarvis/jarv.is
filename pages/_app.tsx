@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "../hooks/use-theme";
-import Layout from "../components/Layout/Layout";
+import Layout from "../components/Layout";
 import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";

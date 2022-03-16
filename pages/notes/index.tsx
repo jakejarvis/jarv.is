@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import { format } from "date-fns";
-import Content from "../../components/Content/Content";
-import NotesList, { NotesListProps } from "../../components/NotesList/NotesList";
+import Content from "../../components/Content";
+import NotesList, { NotesListProps } from "../../components/NotesList";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
 import type { GetStaticProps } from "next";
 

@@ -1,11 +1,11 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
-import Blockquote from "../components/Blockquote/Blockquote";
-import { H2, H3 } from "../components/Heading/Heading";
-import { UnorderedList, OrderedList, ListItem } from "../components/List/List";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import HorizontalRule from "../components/HorizontalRule";
+import Blockquote from "../components/Blockquote";
+import { H2, H3 } from "../components/Heading";
+import { UnorderedList, OrderedList, ListItem } from "../components/List";
 
 const License = () => (
   <>

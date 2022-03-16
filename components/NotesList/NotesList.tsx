@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import Link from "../Link/Link";
+import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 import type { NoteType } from "../../types";
 

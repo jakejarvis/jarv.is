@@ -1,5 +1,5 @@
 import { intlFormat, formatDistanceToNowStrict } from "date-fns";
-import Link from "../Link/Link";
+import Link from "../Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
 import type { RepositoryType } from "../../types";

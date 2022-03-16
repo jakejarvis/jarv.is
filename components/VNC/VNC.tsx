@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, memo } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb.js";
-import Terminal from "../Terminal/Terminal";
+import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
 
 const Display = styled(

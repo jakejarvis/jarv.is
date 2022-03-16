@@ -2,12 +2,12 @@
 
 import Head from "next/head";
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import Figure from "../components/Figure/Figure";
-import IFrame from "../components/IFrame/IFrame";
-import HorizontalRule from "../components/HorizontalRule/HorizontalRule";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import Figure from "../components/Figure";
+import IFrame from "../components/IFrame";
+import HorizontalRule from "../components/HorizontalRule";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
 import img_2002_02 from "../public/static/images/previously/2002_02.png";

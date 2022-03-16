@@ -11,3 +11,5 @@ export const OrderedList = styled("ol", ListStyles);
 export const ListItem = styled("li", {
   paddingLeft: "0.25em",
 });
+
+export default UnorderedList;

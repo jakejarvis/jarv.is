@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import HitCounter from "../HitCounter/HitCounter";
-import NoteTitle from "../NoteTitle/NoteTitle";
+import HitCounter from "../HitCounter";
+import NoteTitle from "../NoteTitle";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";

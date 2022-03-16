@@ -1,6 +1,6 @@
 import { memo } from "react";
-import Selfie from "../Selfie/Selfie";
-import Menu from "../Menu/Menu";
+import Selfie from "../Selfie";
+import Menu from "../Menu";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 

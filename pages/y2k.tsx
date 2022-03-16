@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
-import Layout from "../components/Layout/Layout";
-import Wallpaper from "../components/Wallpaper/Wallpaper";
+import Layout from "../components/Layout";
+import Wallpaper from "../components/Wallpaper";
 import type { ReactElement } from "react";
 
 // obviously, an interactive VNC display will not work even a little bit server-side
-const VNC = dynamic(() => import("../components/VNC/VNC"), { ssr: false });
+const VNC = dynamic(() => import("../components/VNC"), { ssr: false });
 
 // https://github.com/jakejarvis/y2k
 const SOCKET_PROXY = "wss://y2k.jrvs.io";

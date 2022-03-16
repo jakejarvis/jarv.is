@@ -1,12 +1,12 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import Image from "../components/Image/Image";
-import Blockquote from "../components/Blockquote/Blockquote";
-import CodeBlock from "../components/CodeBlock/CodeBlock";
-import { H2 } from "../components/Heading/Heading";
-import { UnorderedList, ListItem } from "../components/List/List";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import Image from "../components/Image";
+import Blockquote from "../components/Blockquote";
+import CodeBlock from "../components/CodeBlock";
+import { H2 } from "../components/Heading";
+import { UnorderedList, ListItem } from "../components/List";
 
 import cliImg from "../public/static/images/cli/screenshot.png";
 

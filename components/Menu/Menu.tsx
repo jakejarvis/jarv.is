@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useRouter } from "next/router";
-import MenuItem from "../MenuItem/MenuItem";
+import MenuItem from "../MenuItem";
 import { styled } from "../../lib/styles/stitches.config";
 import { menuItems } from "../../lib/config/menu";
 import type { ComponentProps } from "react";

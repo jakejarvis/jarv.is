@@ -1,4 +1,4 @@
-import Image from "../Image/Image";
+import Image from "../Image";
 import innerText from "react-innertext";
 import { styled } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";

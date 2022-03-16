@@ -1,10 +1,10 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import Image from "../components/Image/Image";
-import { H2 } from "../components/Heading/Heading";
-import { UnorderedList, ListItem } from "../components/List/List";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import Image from "../components/Image";
+import { H2 } from "../components/Heading";
+import { UnorderedList, ListItem } from "../components/List";
 
 import desktopImg from "../public/static/images/uses/bigsur.png";
 

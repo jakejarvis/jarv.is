@@ -16,6 +16,8 @@ Run `yarn install` to install the necessary dependencies and `yarn dev` to start
 
 Most production steps are handled [automatically by Vercel](https://vercel.com/docs/concepts/next.js/overview#supported-next.js-features), but running `yarn build` locally will still generate an unoptimized, less-than-ideal static version.
 
+**⚡ Bonus tip:** [Volta](https://volta.sh/), a magical, blazing-fast alternative to [nvm](https://github.com/nvm-sh/nvm), is used to pin Node.js and Yarn versions for development but is completely optional.
+
 ## 🌎 Related
 
 - [💻 /uses](https://jarv.is/uses/) – Things and stuff I use.

@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Video from "../components/Video/Video";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Video from "../components/Video";
 
 import thumbnail from "../public/static/images/birthday/thumb.png";
 

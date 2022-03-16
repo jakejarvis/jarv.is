@@ -1,9 +1,9 @@
 import { graphql } from "@octokit/graphql";
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import RepositoryCard from "../components/RepositoryCard/RepositoryCard";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import RepositoryCard from "../components/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
 import { styled } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";

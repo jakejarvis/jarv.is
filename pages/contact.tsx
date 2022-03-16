@@ -1,8 +1,8 @@
 import { NextSeo } from "next-seo";
-import Content from "../components/Content/Content";
-import PageTitle from "../components/PageTitle/PageTitle";
-import Link from "../components/Link/Link";
-import ContactForm from "../components/ContactForm/ContactForm";
+import Content from "../components/Content";
+import PageTitle from "../components/PageTitle";
+import Link from "../components/Link";
+import ContactForm from "../components/ContactForm";
 import { styled } from "../lib/styles/stitches.config";
 
 const Wrapper = styled(Content, {

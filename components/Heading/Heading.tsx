@@ -1,5 +1,5 @@
 import innerText from "react-innertext";
-import HeadingAnchor from "../HeadingAnchor/HeadingAnchor";
+import HeadingAnchor from "../HeadingAnchor";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 

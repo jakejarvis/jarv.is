@@ -1,4 +1,4 @@
-import CopyButton from "../CopyButton/CopyButton";
+import CopyButton from "../CopyButton";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 

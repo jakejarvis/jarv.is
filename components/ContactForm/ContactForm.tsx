@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
-import Link from "../Link/Link";
-import Captcha from "../Captcha/Captcha";
+import Link from "../Link";
+import Captcha from "../Captcha";
 import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
 import { styled, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers } from "formik";
