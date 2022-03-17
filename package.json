@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "github:jakejarvis/eslint-config#main",
-    "@next/bundle-analyzer": "12.1.1-canary.10",
+    "@next/bundle-analyzer": "12.1.1-canary.13",
     "@svgr/webpack": "^6.2.1",
     "@types/node": "*",
     "@types/prop-types": "^15.7.4",
