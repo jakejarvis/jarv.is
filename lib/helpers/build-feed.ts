@@ -1,6 +1,7 @@
 import { Feed } from "feed";
 import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
+import { RELEASE_DATE } from "../config/constants";
 import type { GetServerSidePropsContext, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -20,7 +21,7 @@ export const buildFeed = (
     title: config.siteName,
     description: config.longDescription,
     copyright: "https://creativecommons.org/licenses/by/4.0/",
-    updated: new Date(),
+    updated: new Date(RELEASE_DATE),
     image: `${config.baseUrl}/static/images/me.jpg`,
     feedLinks: {
       rss: `${config.baseUrl}/feed.xml`,

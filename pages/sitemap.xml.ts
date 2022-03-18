@@ -1,14 +1,21 @@
 import { getServerSideSitemap } from "next-sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
+import { RELEASE_DATE } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
 import type { ISitemapField } from "next-sitemap";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // TODO: make this not manual (serverless functions can't see filesystem at runtime)
   const pages: ISitemapField[] = [
-    { loc: "/", priority: 1.0, changefreq: "weekly" }, // homepage
-    { loc: "/notes/", changefreq: "weekly" },
+    {
+      // homepage
+      loc: "/",
+      priority: 1.0,
+      changefreq: "weekly",
+      lastmod: RELEASE_DATE,
+    },
+    { loc: "/notes/", changefreq: "weekly", lastmod: RELEASE_DATE },
     { loc: "/birthday/" },
     { loc: "/cli/" },
     { loc: "/contact/" },
@@ -28,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     pages.push({
       loc: `/notes/${note.slug}/`,
       // pull lastMod from front matter date
-      lastmod: note.date,
+      lastmod: new Date(note.date).toISOString(),
       priority: 0.7,
     })
   );
