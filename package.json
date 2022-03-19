@@ -10,6 +10,7 @@
     "url": "https://github.com/jakejarvis"
   },
   "sideEffects": false,
+  "packageManager": "yarn@3.2.0",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -103,9 +104,7 @@
       "eslint"
     ]
   },
-  "packageManager": "yarn@1.22.18",
   "volta": {
-    "node": "16.14.2",
-    "yarn": "1.22.18"
+    "node": "16.14.2"
   }
 }

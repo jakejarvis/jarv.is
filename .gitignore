@@ -2,12 +2,22 @@
 /.next/
 /out/
 
-# node/npm/yarn
+# node/npm
 node_modules/
 package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# yarn berry
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # here be secrets
 *.env*

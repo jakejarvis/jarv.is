@@ -1,2 +1,5 @@
 # Set default behavior to automatically normalize line endings.
 * text=auto eol=lf
+
+# Hide .yarn from GitHub's language detection.
+/.yarn/**     linguist-vendored
