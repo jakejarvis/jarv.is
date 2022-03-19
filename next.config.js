@@ -63,10 +63,10 @@ module.exports = (phase, { defaultConfig }) => {
           },
         ],
         include: [
+          path.resolve(__dirname, "components/Icons"),
           path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
           path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
           path.resolve(__dirname, "node_modules/simple-icons/icons"),
-          path.resolve(__dirname, "node_modules/twemoji/assets/svg"),
         ],
       });
 

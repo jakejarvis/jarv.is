@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link";
 import Captcha from "../Captcha";
-import { SendIcon, CheckOcticon, XOcticon } from "../Icons";
+import { CheckOcticon, XOcticon } from "../Icons";
 import { styled, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers } from "formik";
 
@@ -85,11 +85,10 @@ const SubmitButton = styled("button", {
   },
 });
 
-const SubmitIcon = styled(SendIcon, {
-  width: "1.2em",
-  height: "1.2em",
-  verticalAlign: "-0.2em",
-  marginRight: "0.4em",
+const SubmitIcon = styled("span", {
+  fontSize: "1.3em",
+  marginRight: "0.3em",
+  lineHeight: 1,
 });
 
 const Result = styled("div", {
@@ -274,7 +273,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SubmitIcon /> <span>Send</span>
+                  <SubmitIcon>📤</SubmitIcon> <span>Send</span>
                 </>
               )}
             </SubmitButton>

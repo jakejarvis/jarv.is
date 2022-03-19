@@ -56,28 +56,27 @@ const ViewSourceLink = styled(Link, {
   },
 });
 
-const beat = keyframes({
-  "0%": { transform: "scale(1)" },
-  "2%": { transform: "scale(1.25)" },
-  "4%": { transform: "scale(1)" },
-  "6%": { transform: "scale(1.2)" },
-  "8%": { transform: "scale(1)" },
-  // pause for ~9 out of 10 seconds
-  "100%": { transform: "scale(1)" },
-});
-
-const Heart = styled("span", {
-  display: "inline-block",
-  animation: `${beat} 10s infinite`,
-  animationDelay: "7.5s",
-  willChange: "transform",
-});
-
 const Icon = styled("svg", {
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.25em",
   margin: "0 0.075em",
+  fill: "currentColor",
+});
+
+const Heart = styled("span", {
+  display: "inline-block",
+  color: "$error", // somewhat ironically color the heart with the themed "error" red... </3
+  animation: `${keyframes({
+    "0%": { transform: "scale(1)" },
+    "2%": { transform: "scale(1.25)" },
+    "4%": { transform: "scale(1)" },
+    "6%": { transform: "scale(1.2)" },
+    "8%": { transform: "scale(1)" },
+    // pause for ~9 out of 10 seconds
+    "100%": { transform: "scale(1)" },
+  })} 10s ease 7.5s infinite`,
+  willChange: "transform",
 });
 
 export type FooterProps = ComponentProps<typeof Wrapper>;
@@ -110,7 +109,7 @@ const Footer = ({ ...rest }: FooterProps) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon as={NextjsLogo} fill="currentColor" />
+          <Icon as={NextjsLogo} />
         </NextjsLink>
         .{" "}
         <ViewSourceLink

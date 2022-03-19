@@ -16,13 +16,10 @@ export { default as ViewsIcon } from "../../node_modules/feather-icons/dist/icon
 export { default as CheckOcticon } from "../../node_modules/@primer/octicons/build/svg/check-16.svg";
 export { default as ClipboardOcticon } from "../../node_modules/@primer/octicons/build/svg/paste-16.svg";
 export { default as ForkOcticon } from "../../node_modules/@primer/octicons/build/svg/repo-forked-16.svg";
+export { default as HeartIcon } from "../../node_modules/@primer/octicons/build/svg/heart-fill-16.svg";
 export { default as OctocatOcticon } from "../../node_modules/@primer/octicons/build/svg/mark-github-16.svg";
 export { default as StarOcticon } from "../../node_modules/@primer/octicons/build/svg/star-16.svg";
 export { default as XOcticon } from "../../node_modules/@primer/octicons/build/svg/x-16.svg";
-
-// emoji from Twemoji: https://twemoji.twitter.com/
-export { default as HeartIcon } from "../../node_modules/twemoji/assets/svg/2764.svg";
-export { default as SendIcon } from "../../node_modules/twemoji/assets/svg/1f4e4.svg";
 
 // simple icons: https://simpleicons.org/
 export { default as NextjsLogo } from "../../node_modules/simple-icons/icons/nextdotjs.svg";

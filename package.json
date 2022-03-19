@@ -48,7 +48,7 @@
     "next-sitemap": "^2.5.10",
     "next-transpile-modules": "^9.0.0",
     "node-fetch": "^3.2.3",
-    "p-retry": "^5.0.0",
+    "p-retry": "^5.1.0",
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react": "17.0.2",
@@ -57,7 +57,7 @@
     "react-innertext": "^1.1.5",
     "react-intersection-observer": "^8.33.1",
     "react-is": "17.0.2",
-    "react-player": "^2.9.0",
+    "react-player": "^2.10.0",
     "react-textarea-autosize": "^8.3.3",
     "react-twitter-embed": "^4.0.4",
     "reading-time": "^1.5.0",
@@ -68,8 +68,7 @@
     "sanitize-html": "^2.7.0",
     "simple-icons": "^6.14.0",
     "stitches-normalize": "^1.0.0",
-    "swr": "^1.2.2",
-    "twemoji": "github:twitter/twemoji#v14.0.0"
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
@@ -77,8 +76,8 @@
     "@svgr/webpack": "^6.2.1",
     "@types/node": "*",
     "@types/prop-types": "^15.7.4",
-    "@types/react": "^17.0.40",
-    "@types/react-dom": "^17.0.13",
+    "@types/react": "^17.0.41",
+    "@types/react-dom": "^17.0.14",
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
@@ -105,9 +104,9 @@
       "prettier --check"
     ]
   },
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "yarn@1.22.18",
   "volta": {
     "node": "16.14.2",
-    "yarn": "1.22.17"
+    "yarn": "1.22.18"
   }
 }
