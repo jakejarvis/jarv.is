@@ -1248,9 +1248,9 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@novnc/novnc@github:novnc/noVNC#679b45fa3b453c7cf32f4b4455f4814818ecf161":
+"@novnc/novnc@github:novnc/noVNC#7730814b8d43d24db0894b641317be4b9f683da4":
   version "1.3.0"
-  resolved "https://codeload.github.com/novnc/noVNC/tar.gz/679b45fa3b453c7cf32f4b4455f4814818ecf161"
+  resolved "https://codeload.github.com/novnc/noVNC/tar.gz/7730814b8d43d24db0894b641317be4b9f683da4"
 
 "@octokit/endpoint@^6.0.1":
   version "6.0.12"
@@ -5434,10 +5434,10 @@ simple-git-hooks@^2.7.0:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.7.0.tgz#121a5c3023663b8abcc5648c8bfe8619dc263705"
   integrity sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==
 
-simple-icons@^6.14.0:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.14.0.tgz#0440e5a9354e6c83ffd4db70fd7b49ddd6f050a9"
-  integrity sha512-G1BloriCtFDxdxLPJJ7Ri4ffYp4ET/KOvpqTWaFUxeHcGognm468hmXp5g7auPYxKg2OsPqJ1zCYEjCRMqFtMg==
+simple-icons@^6.15.0:
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.15.0.tgz#2a7e7f8d8a3e5c2f430fba364db1f0fe1520abb9"
+  integrity sha512-/JxA/vKsDiHrY16FZF1qJXdSrMqGR8knkmMex/8oJ8P3vv3sj2zxs/6Ky8tiGGgFonG8XUSCNeb3RACgGVMemQ==
 
 sirv@^1.0.7:
   version "1.0.19"
@@ -5532,10 +5532,10 @@ state-toggle@^1.0.0:
   resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.3.tgz#e123b16a88e143139b09c6852221bc9815917dfe"
   integrity sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==
 
-stitches-normalize@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/stitches-normalize/-/stitches-normalize-1.0.0.tgz#c2bc913c377becc030b7704832e60f549e82d752"
-  integrity sha512-MBhi26Ss4Y8tMEG4eD4HyiHgTudh3dJ7HcE82UZNlSA0i9sj/unpCaWW1emznhiQZ3tnqGugPFc5MeuJEOprdw==
+stitches-normalize@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/stitches-normalize/-/stitches-normalize-2.0.0.tgz#efa21a7c4cb27088469196396cf60e2b55155531"
+  integrity sha512-HolFbytRn8gakyeNmVT++SAUobHCNhA1AMeWNT75YHacl8r/OgRnJqrKwiybUvYOCZcRVYCnCl4ribdd+O8How==
 
 strict-uri-encode@^2.0.0:
   version "2.0.0"

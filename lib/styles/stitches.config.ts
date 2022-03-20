@@ -117,7 +117,7 @@ export const darkTheme = createTheme({
 
 export const globalStyles = globalCss(
   // @ts-ignore
-  ...normalizeCss,
+  ...normalizeCss({ systemFonts: false }),
   {
     "@font-face": [...Inter.family, ...RobotoMono.family, ...ComicNeue.family],
 
