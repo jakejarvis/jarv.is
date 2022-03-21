@@ -1366,71 +1366,71 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.8.tgz#be3e914e84eacf16dbebd311c0d0b44aa1174c64"
   integrity sha512-ZK5v4bJwgXldAUA8r3q9YKfCwOqoHTK/ZqRjSeRXQrBXWouoPnS4MQtgC4AXGiiBuUu5wxrRgTlv0ktmM4P1Aw==
 
-"@sentry/core@6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.18.2.tgz#d27619b7b4a4b90e2cfdc254d40ee9d630b251b9"
-  integrity sha512-r5ad/gq5S/JHc9sd5CUhZQT9ojQ+f+thk/AoGeGawX/8HURZYAgIqD565d6FK0VsZEDkdRMl58z1Qon20h3y1g==
+"@sentry/core@6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.19.0.tgz#3d6b37551758aabc2c8ed0f0d9424e38ada398f4"
+  integrity sha512-/Csh4Skm5EA7p5SpT5vWY2s0CRiDkCrRCduA1XzrC7yu8H51HRyddXk5IBIrh/rB0Uv8MswpxP9qgucycj4v1Q==
   dependencies:
-    "@sentry/hub" "6.18.2"
-    "@sentry/minimal" "6.18.2"
-    "@sentry/types" "6.18.2"
-    "@sentry/utils" "6.18.2"
+    "@sentry/hub" "6.19.0"
+    "@sentry/minimal" "6.19.0"
+    "@sentry/types" "6.19.0"
+    "@sentry/utils" "6.19.0"
     tslib "^1.9.3"
 
-"@sentry/hub@6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.18.2.tgz#fdb8536f61899fd48f3d1b49a6957348ad729ec5"
-  integrity sha512-d0AugekMkbnN12b4EXMjseJxtLPc9S20DGobCPUb4oAQT6S2oDQEj1jwP6PQ5vtgyy+GMYWxBMgqAQ4pjVYISQ==
+"@sentry/hub@6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.19.0.tgz#28b2dcf52a14b1459e3e17686aa6f7325637bc7e"
+  integrity sha512-ZSu4CrWOd7xwZtx8mdbs3GG2TaRCGy3vwu2KjaXYCOIRryyw8xN/B/T8Ucpc7xtJRoYaqzNPuOL9NMcpFFb/+w==
   dependencies:
-    "@sentry/types" "6.18.2"
-    "@sentry/utils" "6.18.2"
+    "@sentry/types" "6.19.0"
+    "@sentry/utils" "6.19.0"
     tslib "^1.9.3"
 
-"@sentry/minimal@6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.18.2.tgz#581c2fc030b9c89f1fcdc3e4855b91ce6c95db56"
-  integrity sha512-n7KYuo34W2LxE+3dnZ47of7XHuORINCnXq66XH72eoj67tf0XeWbIhEJrYGmoLRyRfoCYYrBLWiDl/uTjLzrzQ==
+"@sentry/minimal@6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.19.0.tgz#34ce462822b9dbc0838d9c2690512bb128a07e1e"
+  integrity sha512-Sfw0KOX63nb+11F0ZcXcGBbctBBw6NZZfqvVtZXNhdBfu1cFjYdkMWi9DLuCulHR0BRq88RE+SuOqq1lgLSJEQ==
   dependencies:
-    "@sentry/hub" "6.18.2"
-    "@sentry/types" "6.18.2"
+    "@sentry/hub" "6.19.0"
+    "@sentry/types" "6.19.0"
     tslib "^1.9.3"
 
-"@sentry/node@^6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-6.18.2.tgz#0d3a294ad89434b108f79da5c4d9fcde4f251993"
-  integrity sha512-1S+44c09n3KVpCYjwOfnA9jKvnpPegpQWM81Nu5J6ToGx+ZiddMq6B9GRXUnFfZ7Z6fJHZzFtySasQC7KqkQoA==
+"@sentry/node@^6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-6.19.0.tgz#fc531dd677992782a299a9e94deef7cf2a3e93eb"
+  integrity sha512-Ouh6tvxKwSH7PWrHBYpD3/SM/vd3ISpiHfxqta6936EQx/UL5sNIiCliEK5F33YSh+DbAcn1saZy6T65WcPi1Q==
   dependencies:
-    "@sentry/core" "6.18.2"
-    "@sentry/hub" "6.18.2"
-    "@sentry/types" "6.18.2"
-    "@sentry/utils" "6.18.2"
+    "@sentry/core" "6.19.0"
+    "@sentry/hub" "6.19.0"
+    "@sentry/types" "6.19.0"
+    "@sentry/utils" "6.19.0"
     cookie "^0.4.1"
     https-proxy-agent "^5.0.0"
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/tracing@^6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.18.2.tgz#163ecf0042aeb300c12952a91784fda6630085ef"
-  integrity sha512-hg6NLqrqJ5sUPTyWEQ2RqdnhQVnyLtx8II0IyWxQLDWD8UCe3Mu6G7mroDtakPWcP+lWz6OnKfMEfuhMcxR8fw==
+"@sentry/tracing@^6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.19.0.tgz#d7f0b2c8dc149bf72283a8b5ae78ae0b8a4f2926"
+  integrity sha512-/4v/6JocClWIukCz+7jZV1xZbLKJQ3ooRUWv5xFzq/RYKAsQoWLcg9iuegUR1RVuLIWLBDQGNvSwEf+Rwz3Sxg==
   dependencies:
-    "@sentry/hub" "6.18.2"
-    "@sentry/minimal" "6.18.2"
-    "@sentry/types" "6.18.2"
-    "@sentry/utils" "6.18.2"
+    "@sentry/hub" "6.19.0"
+    "@sentry/minimal" "6.19.0"
+    "@sentry/types" "6.19.0"
+    "@sentry/utils" "6.19.0"
     tslib "^1.9.3"
 
-"@sentry/types@6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.18.2.tgz#f528fec8b75c19d5a6976004e71703184c6cf7be"
-  integrity sha512-WzpJf/Q5aORTzrSwer/As1NlO90dBAQpaHV2ikDDKqOyMWEgjKb5/4gh59p9gH8JMMnLetP1AvQel0fOj5UnUw==
+"@sentry/types@6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.19.0.tgz#0c81da174005f8d1bc4aa141e9190686ba22ec6a"
+  integrity sha512-jxxinvue2PzAeEewDwYJlk7tqp1SEnkaQISBSZZsRUvdk1aRWTDR5MgGejzlnaBSihwKVvFhcukd2PKm8EY9AA==
 
-"@sentry/utils@6.18.2":
-  version "6.18.2"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.18.2.tgz#c572a3ff49113e7dc4c97db1a18d117f199b9fff"
-  integrity sha512-EC619jesknyu4xpwud5WC/5odYLz6JUy7OSFy5405PpdGeh/m8XUvuJAx4zDx0Iz/Mlk0S1Md+ZcQwqkv39dkw==
+"@sentry/utils@6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.19.0.tgz#8b61c77edd3b32c9a7d8a4c82e4ad7537ea6754c"
+  integrity sha512-Q0RT9nuMe/v9VSGs4PMIBJVLZCoUpOcVPsCtKnZNsTDzjs6+4xqDPA1dj3fXDM0A9UiJiiHeXCl66ayzbbAfNA==
   dependencies:
-    "@sentry/types" "6.18.2"
+    "@sentry/types" "6.19.0"
     tslib "^1.9.3"
 
 "@stitches/react@^1.2.7":
@@ -2691,10 +2691,10 @@ eslint-import-resolver-typescript@2.4.0:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
-eslint-mdx@^1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.16.0.tgz#e95b8e9bde391d3ad8ec327fdce062e96be166f4"
-  integrity sha512-x+E50XrnGJefbzj7cpKPjXKL06KWSlzCrD5/02ZMmi+IMgwoR9Z8V44S/ff78Kg75WVnXgo0oJMcpNP85xxY+Q==
+eslint-mdx@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.17.0.tgz#f5396fa8256386363ee18cdc9ae73a7e6a93acfa"
+  integrity sha512-O8+JRfwCzpoR2P6zUI1GDAAM/bsuzcoBS1ArvpQrgQO/E2Km0vBmM15ukiJxZ+YUh5d+qDlrqha0fZB50MojJQ==
   dependencies:
     cosmiconfig "^7.0.1"
     remark-mdx "^1.6.22"
@@ -2755,12 +2755,12 @@ eslint-plugin-markdown@^2.2.1:
   dependencies:
     mdast-util-from-markdown "^0.8.5"
 
-eslint-plugin-mdx@~1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.16.0.tgz#16471df68e5ac4095e47eb1a3cd9444676e00ecf"
-  integrity sha512-p5S6+UZMt+9Xa4fJNaBcldO3gHkDwoPMFM6417PfggPlbai8mWbrSEehZU6o3vZ2Lg/WQfVXYic35VYycYqJDA==
+eslint-plugin-mdx@~1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.17.0.tgz#be00f9193e92d595b8869a7e1bf3716edf1dbe9e"
+  integrity sha512-Kicizy+fbfsB2UxTDXP92qTtFqITApu4v4DRQUfXMoPwBHeQRvZnaEtXu2S9aia51GYRYsMSqUvoPPih/5oB+g==
   dependencies:
-    eslint-mdx "^1.16.0"
+    eslint-mdx "^1.17.0"
     eslint-plugin-markdown "^2.2.1"
     synckit "^0.4.1"
     tslib "^2.3.1"
@@ -4576,10 +4576,10 @@ next-seo@^5.1.0:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.1.0.tgz#aa9fd6249a11bf93e6da06fa2a6bc89268936edf"
   integrity sha512-ampuQfNTOi1x+xtRIb6CZGunIo6rQXtMo2Tyu861d5GjJFIwfOXsA4lzCa4+e2rLkyXDyVpavNNUZWa3US9ELw==
 
-next-sitemap@^2.5.10:
-  version "2.5.10"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-2.5.10.tgz#6b4aa7aebb745ef3b3b17dcef859e87043c3b0af"
-  integrity sha512-9jFvViLL2US0obp6NAGlEpE4gWU5NACupHvVFtLhOhgJ33M/vBPqEgCiZQsG9dKDhZXchjrjQrtDvhk/KZBekg==
+next-sitemap@^2.5.12:
+  version "2.5.12"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-2.5.12.tgz#0e80fe3754294c1074268e05b8a273e36439366e"
+  integrity sha512-QnE26v3QEKK1sL2D3+BmNddRoLQE1CNwjgkBXEYfdKWDH/iOAbdRkz5xus0fgesj1f7uXJu6RMJgHopMbfxCMg==
   dependencies:
     "@corex/deepmerge" "^2.6.148"
     minimist "^1.2.5"

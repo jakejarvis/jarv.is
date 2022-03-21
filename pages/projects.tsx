@@ -105,6 +105,7 @@ export const getStaticProps: GetStaticProps = async () => {
       sort: "STARGAZERS",
       limit: 12,
       headers: {
+        accept: "application/vnd.github.v3+json",
         authorization: `token ${process.env.GH_PUBLIC_TOKEN}`,
       },
     }

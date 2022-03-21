@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link";
 import Captcha from "../Captcha";
-import { CheckOcticon, XOcticon } from "../Icons";
+import { CheckOcticon, XOcticon, MarkdownIcon } from "../Icons";
 import { styled, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers } from "formik";
 
@@ -46,6 +46,14 @@ const TextArea = styled(TextareaAutosize, InputStyles, {
 const MarkdownTip = styled("div", {
   fontSize: "0.825em",
   lineHeight: 1.75,
+});
+
+const MarkdownTipIcon = styled(MarkdownIcon, {
+  fill: "currentColor",
+  width: "1.25em",
+  height: "1.25em",
+  verticalAlign: "-0.25em",
+  marginRight: "0.25em",
 });
 
 const HCaptcha = styled(Captcha, {
@@ -247,7 +255,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           </Field>
 
           <MarkdownTip>
-            Basic{" "}
+            <MarkdownTipIcon /> Basic{" "}
             <Link href="https://commonmark.org/help/" title="Markdown reference sheet" css={{ fontWeight: 600 }}>
               Markdown syntax
             </Link>{" "}
