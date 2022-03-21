@@ -29,7 +29,7 @@ const Uses = () => (
         revolving around my Apple sheepy-ness. Inspired by <Link href="https://uses.tech/">many, many others</Link>. ❤️
       </p>
 
-      <Image src={desktopImg} alt="My mess of a desktop." priority />
+      <Image src={desktopImg} href={desktopImg.src} alt="My mess of a desktop." priority />
 
       <H2 id="hardware">🍎 Hardware</H2>
       <UnorderedList>

@@ -1,8 +1,7 @@
-import Image from "../Image";
+import Image, { CustomImageProps } from "../Image";
 import innerText from "react-innertext";
 import { styled } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
-import type { ImageProps as NextImageProps } from "next/image";
 
 const Wrapper = styled("figure", {
   margin: "1em auto",
@@ -21,7 +20,7 @@ const Caption = styled("figcaption", {
   },
 });
 
-export type FigureProps = Omit<NextImageProps, "alt"> &
+export type FigureProps = Omit<CustomImageProps, "alt"> &
   PropsWithChildren<{
     alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
   }>;

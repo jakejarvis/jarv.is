@@ -30,9 +30,7 @@ const CLI = () => (
         </p>
       </Blockquote>
 
-      <a href="https://www.npmjs.com/package/@jakejarvis/cli" target="_blank" rel="noopener noreferrer">
-        <Image src={cliImg} alt="Terminal Screenshot" priority />
-      </a>
+      <Image src={cliImg} href="https://www.npmjs.com/package/@jakejarvis/cli" alt="Terminal Screenshot" priority />
 
       <H2 id="usage">Usage</H2>
       <CodeBlock forceBlock>npx @jakejarvis/cli</CodeBlock>

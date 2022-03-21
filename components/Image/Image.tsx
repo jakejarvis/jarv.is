@@ -1,4 +1,5 @@
 import NextImage from "next/image";
+import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
@@ -15,6 +16,11 @@ const RoundedImage = styled(NextImage, {
   borderRadius: "$rounded",
 });
 
+export type CustomImageProps = NextImageProps &
+  ComponentProps<typeof RoundedImage> & {
+    href?: string; // optionally wrap image in a link
+  };
+
 const CustomImage = ({
   src,
   width,
@@ -24,9 +30,10 @@ const CustomImage = ({
   layout,
   quality,
   priority,
+  href,
   className,
   ...rest
-}: NextImageProps & ComponentProps<typeof RoundedImage>) => {
+}: CustomImageProps) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width: typeof width === "string" ? Number.parseInt(width) : width,
@@ -50,10 +57,18 @@ const CustomImage = ({
     imageProps.src = (src as string).replace(/^\/public/g, "");
   }
 
+  // @ts-ignore
+  const img = <RoundedImage {...imageProps} {...rest} />;
+
   return (
     <Wrapper className={className}>
-      {/* @ts-ignore */}
-      <RoundedImage {...imageProps} {...rest} />
+      {href ? (
+        <Link href={href} fancy={false}>
+          {img}
+        </Link>
+      ) : (
+        img
+      )}
     </Wrapper>
   );
 };

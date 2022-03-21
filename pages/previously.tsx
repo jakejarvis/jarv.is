@@ -98,7 +98,12 @@ iframe {
     <PageTitle>🕰️ Previously on...</PageTitle>
 
     <Content>
-      <Figure src={img_wayback} alt="Timeline of this website's past." priority>
+      <Figure
+        src={img_wayback}
+        href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
+        alt="Timeline of this website's past."
+        priority
+      >
         ...the{" "}
         <Link
           href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
@@ -136,7 +141,7 @@ iframe {
       <p className="iframe_caption">
         November 2001 (
         <Link href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
-          archived source
+          view source
         </Link>
         )
       </p>
@@ -183,32 +188,23 @@ iframe {
 
       <HorizontalRule />
 
-      <Figure src={img_2012_09} alt="September 2012">
-        September 2012 (
-        <Link href="https://github.com/jakejarvis/jarv.is/tree/v1" target="_blank" rel="noopener noreferrer">
-          archived source
-        </Link>
-        )
+      <Figure src={img_2012_09} href="https://focused-knuth-7bc10d.netlify.app/" alt="September 2012">
+        <Link href="https://focused-knuth-7bc10d.netlify.app/">September 2012</Link> (
+        <Link href="https://github.com/jakejarvis/jarv.is/tree/v1">view source</Link>)
       </Figure>
 
       <HorizontalRule />
 
-      <Figure src={img_2018_04} alt="April 2018">
-        April 2018 (
-        <Link href="https://github.com/jakejarvis/jarv.is/tree/v2" target="_blank" rel="noopener noreferrer">
-          archived source
-        </Link>
-        )
+      <Figure src={img_2018_04} href="https://hungry-mayer-40e790.netlify.app/" alt="April 2018">
+        <Link href="https://hungry-mayer-40e790.netlify.app/">April 2018</Link> (
+        <Link href="https://github.com/jakejarvis/jarv.is/tree/v2">view source</Link>)
       </Figure>
 
       <HorizontalRule />
 
-      <Figure src={img_2020_03} alt="March 2020">
-        March 2020 (
-        <Link href="https://github.com/jakejarvis/jarv.is/tree/v3" target="_blank" rel="noopener noreferrer">
-          archived source
-        </Link>
-        )
+      <Figure src={img_2020_03} href="https://jarvis-git-v4-jakejarvis.vercel.app/" alt="March 2020">
+        <Link href="https://jarvis-git-v4-jakejarvis.vercel.app/">March 2020</Link> (
+        <Link href="https://github.com/jakejarvis/jarv.is-hugo">view source</Link>)
       </Figure>
     </Content>
   </>
