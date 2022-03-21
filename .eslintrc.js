@@ -13,6 +13,15 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-var-requires": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        // normal .prettierrc config:
+        singleQuote: false,
+        tabWidth: 2,
+        printWidth: 120,
+      },
+    ],
   },
   overrides: [
     {
@@ -20,7 +29,17 @@ module.exports = {
       extends: ["plugin:mdx/recommended"],
       rules: {
         "react/jsx-no-undef": "off",
+        "prettier/prettier": [
+          "error",
+          {
+            // normal .prettierrc config:
+            singleQuote: false,
+            tabWidth: 2,
+            printWidth: 120,
+          },
+        ],
       },
     },
   ],
+  ignorePatterns: ["README.md"],
 };
