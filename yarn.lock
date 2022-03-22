@@ -1160,10 +1160,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.1-canary.15.tgz#d1c210df31c8865042f2b81ffb37660b9cc70045"
   integrity sha512-2r7r5r/+hSgCTeGTMErGwlxiawNX3RGCKrgWGyyIYKGcJ2xunxN3ScDKIAjGa77eOWGm4JccB4T6xXwmPUut5g==
 
-"@next/eslint-plugin-next@12.1.1-canary.15":
-  version "12.1.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.1-canary.15.tgz#b8b60ea705639bf4d19dfc0e8d362e554b7081e3"
-  integrity sha512-qhRAEc0Rgc5IWQfZM7og/KifwJtoWlCx9HiXp1eOwkdnjFtgUVuMcFcGoYdlL+S+jT7gEVttVFcitMd03d40Ng==
+"@next/eslint-plugin-next@12.1.1-canary.16":
+  version "12.1.1-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.1-canary.16.tgz#3fa21ef32c88e7b73b479ef559843c936dbddc95"
+  integrity sha512-u0uYF7hmexjMoqwai9NaVFbgTB4cdWdwSq697FK/JUqgazoT/fecvpOYOLZ9v8oTZvKpSUpANwp8WhAytAysuw==
   dependencies:
     glob "7.1.7"
 
@@ -2644,12 +2644,12 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
-eslint-config-next@12.1.1-canary.15:
-  version "12.1.1-canary.15"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.1-canary.15.tgz#6121bb77b80f367827e95b5c12754945ed5acf41"
-  integrity sha512-p5OWxIbvobOyBHlLzp3wkNpyl0XF450z4QUgRB1rDp/dlxnXXw/6cmDsyvm2dS5j4rSCh0qTbOoWJmT2Ldpzsw==
+eslint-config-next@12.1.1-canary.16:
+  version "12.1.1-canary.16"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.1-canary.16.tgz#737f3c060c48d05da68b1c0b0eceb7ac99addd97"
+  integrity sha512-CyA4cd0gqlNLDgMgbDEIHt9gtXADQhbIP/5UVB4XIVmAP1z1cya5PxW203up+I7mzUNDtqwNMzt/JWCLCREBpg==
   dependencies:
-    "@next/eslint-plugin-next" "12.1.1-canary.15"
+    "@next/eslint-plugin-next" "12.1.1-canary.16"
     "@rushstack/eslint-patch" "1.0.8"
     "@typescript-eslint/parser" "5.10.1"
     eslint-import-resolver-node "0.3.4"
