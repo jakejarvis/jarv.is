@@ -1160,10 +1160,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.1-canary.17.tgz#901cbd0ec0bd8e79f46dc20bd0f26272aa142d43"
   integrity sha512-wh4S/HKsqpJ4EjlCLoucFXbw+AKsqBQjwLYqIuCl0bVq3wNjfC52mfaE8ooS4JJlSD77RyzihOE4Jv5UhcQqKQ==
 
-"@next/eslint-plugin-next@12.1.1-canary.17":
-  version "12.1.1-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.1-canary.17.tgz#ee7d31243e2f6b3a99f34cbaa2a29d30462c945e"
-  integrity sha512-gyztkMVApXiuuACzxSWR0kT+H449eomieS5yTmjOQUPgANzXDjzgElBj6UtL+ewC0/bnEbnnuIcdv2DQvlr2Cw==
+"@next/eslint-plugin-next@12.1.1":
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.1.tgz#e3e51503e9d7f987a0e080344648bc84ac1e8eb8"
+  integrity sha512-5hd1VFWZzECADhvA+OE+g0CnrRBFZbPm03HbiUtpk7XeluNn7xVxBU6XvNQA+YrQ7qe5jCK9q7R8MbI9R55Y/Q==
   dependencies:
     glob "7.1.7"
 
@@ -2644,12 +2644,12 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
-eslint-config-next@12.1.1-canary.17:
-  version "12.1.1-canary.17"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.1-canary.17.tgz#08217f4d3080604e76219b4be06593ce7d152ee7"
-  integrity sha512-csaKXe2LldfIqB+952kbY6UNvNXDGO+veSupSSi/YpzcXykJrOh0uNzVKxylbOVSrKnosfDRmAtfrBiQthG77Q==
+eslint-config-next@12.1.1:
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.1.tgz#11f948c5f4959267c2157dff8f2c28d067e3e1d9"
+  integrity sha512-+Ql9F07Pafs+cDgy8Zp0F8FxCBq7ke02ZyC2/MMEiGAX+WlnuUCrboBDnfzmHJpAAkcBPjUthunu6LBnF9KWIQ==
   dependencies:
-    "@next/eslint-plugin-next" "12.1.1-canary.17"
+    "@next/eslint-plugin-next" "12.1.1"
     "@rushstack/eslint-patch" "1.0.8"
     "@typescript-eslint/parser" "5.10.1"
     eslint-import-resolver-node "0.3.4"
