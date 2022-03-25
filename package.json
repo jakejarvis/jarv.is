@@ -43,7 +43,7 @@
     "markdown-to-jsx": "^7.1.7",
     "next": "12.1.1-canary.17",
     "next-compose-plugins": "^2.2.1",
-    "next-mdx-remote": "^4.0.0",
+    "next-mdx-remote": "^4.0.1",
     "next-seo": "^5.1.0",
     "next-sitemap": "^2.5.13",
     "next-transpile-modules": "^9.0.0",
