@@ -20,7 +20,7 @@
   "dependencies": {
     "@fontsource/comic-neue": "4.5.4",
     "@fontsource/inter": "4.5.5",
-    "@fontsource/roboto-mono": "4.5.3",
+    "@fontsource/roboto-mono": "4.5.5",
     "@giscus/react": "^1.1.2",
     "@hcaptcha/react-hcaptcha": "^1.1.1",
     "@novnc/novnc": "github:novnc/noVNC#7730814b8d43d24db0894b641317be4b9f683da4",
