@@ -2545,9 +2545,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.84:
-  version "1.4.94"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.94.tgz#f19206c977361264a51d53a7ea7ef861a94baa10"
-  integrity sha512-CoOKsuACoa0PAG3hQXxbh/XDiFcjGuSyGKUi09cjMHOt6RCi7/EXgXhaFF3I+aC89Omudqmkzd0YOQKxwtf/Bg==
+  version "1.4.96"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.96.tgz#a97438a01d5db1460343fea4a344960b09330990"
+  integrity sha512-DPNjvNGPabv6FcyjzLAN4C0psN/GgD9rSGvMTuv81SeXG/EX3mCz0wiw9N1tUEnfQXYCJi3H8M0oFPRziZh7rw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -5433,10 +5433,10 @@ simple-git-hooks@^2.7.0:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.7.0.tgz#121a5c3023663b8abcc5648c8bfe8619dc263705"
   integrity sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==
 
-simple-icons@^6.15.0:
-  version "6.15.0"
-  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.15.0.tgz#2a7e7f8d8a3e5c2f430fba364db1f0fe1520abb9"
-  integrity sha512-/JxA/vKsDiHrY16FZF1qJXdSrMqGR8knkmMex/8oJ8P3vv3sj2zxs/6Ky8tiGGgFonG8XUSCNeb3RACgGVMemQ==
+simple-icons@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.16.0.tgz#1f98839215a9578af701fe3810bf7eb57d2c5ac8"
+  integrity sha512-CCZ8xUgTJa+aJtj8+qBmMkWRJyv/0xinBA9Ypbq65pyz5tWmeA7n9IGtQIOqb7rOxJNxPuo9ddn4vFcRQZIFlQ==
 
 sirv@^1.0.7:
   version "1.0.19"

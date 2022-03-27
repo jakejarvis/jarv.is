@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 // Legacy
 import robotoMonoLatin400NormalWoff from "@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff";
 import robotoMonoLatin400NormalWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2";

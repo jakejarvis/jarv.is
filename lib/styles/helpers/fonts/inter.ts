@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 // Legacy
 import interLatin400NormalWoff from "@fontsource/inter/files/inter-latin-400-normal.woff";
 import interLatin400NormalWoff2 from "@fontsource/inter/files/inter-latin-400-normal.woff2";

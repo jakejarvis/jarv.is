@@ -134,7 +134,6 @@ export const globalStyles = globalCss(
     },
 
     // variable font support?
-    // @ts-ignore
     "@supports (font-variation-settings: normal)": {
       body: {
         fontFamily: "$sansVar",
