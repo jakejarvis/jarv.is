@@ -82,7 +82,7 @@
     "@types/remove-markdown": "^0.3.1",
     "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
+    "@typescript-eslint/parser": "^5.17.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.12.0",
     "eslint-config-next": "12.1.1",
