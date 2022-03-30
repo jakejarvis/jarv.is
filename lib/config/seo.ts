@@ -5,9 +5,7 @@ import faviconPng from "../../public/static/favicons/favicon.png";
 import appleTouchIconPng from "../../public/static/favicons/apple-touch-icon.png";
 import meJpg from "../../public/static/images/me.jpg";
 
-import type { DefaultSeoProps } from "next-seo";
-import type { SocialProfileJsonLdProps } from "next-seo/lib/jsonld/socialProfile";
-import type { ArticleJsonLdProps } from "next-seo/lib/jsonld/article";
+import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
 // Most of this file simply takes the data already defined in ./config.js and translates it into objects that are
 // compatible with next-seo's props:
