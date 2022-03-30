@@ -27,7 +27,7 @@
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^17.0.0",
     "@react-spring/web": "^9.4.4",
-    "@sentry/node": "^6.19.2",
+    "@sentry/node": "^6.19.3",
     "@sentry/tracing": "^6.19.2",
     "@stitches/react": "^1.2.7",
     "copy-to-clipboard": "^3.3.1",
