@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import ThemeScript from "../components/ThemeScript/ThemeScript";
 import { getCssText, fonts } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 
@@ -7,6 +8,9 @@ const Document = () => {
   return (
     <Html lang={config.siteLocale?.replace("_", "-")}>
       <Head>
+        {/* inject a small script to set/restore the user's theme ASAP */}
+        <ThemeScript />
+
         {/* preload highest priority fonts defined in ../lib/styles/fonts/ */}
         {fonts.preloadUrls.map((relativeUrl, index) => (
           <link

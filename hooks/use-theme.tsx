@@ -1,27 +1,15 @@
 // forked & modified from pacocoursey/next-themes as of v0.0.15:
 // https://github.com/pacocoursey/next-themes/tree/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a
 
-import { createContext, useCallback, useContext, useEffect, useState, useRef, memo } from "react";
-import NextHead from "next/head";
+import { createContext, useCallback, useContext, useEffect, useState, useRef } from "react";
+import { query, colorSchemes, storageKey } from "../lib/styles/helpers/themes";
 import type { PropsWithChildren } from "react";
 
-// https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
-const MEDIA = "(prefers-color-scheme: dark)";
-
-// default to a simple light or dark binary option
-const colorSchemes = ["light", "dark"];
-
-interface AttributeValuesMap {
-  [themeName: string]: string;
-}
-
 export interface ThemeProviderProps {
+  /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
+  classNames: { [themeName: string]: string };
   /** List of all available theme names */
   themes?: string[];
-  /** Key used to store theme setting in localStorage */
-  storageKey?: string;
-  /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
-  classNames?: AttributeValuesMap;
   /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
   enableColorScheme?: boolean;
 }
@@ -52,7 +40,7 @@ const getTheme = (key: string, fallback?: string) => {
 // get the user's prefered theme as set via their OS/browser settings
 const getSystemTheme = (e?: MediaQueryList) => {
   if (!e) {
-    e = window.matchMedia(MEDIA);
+    e = window.matchMedia(query);
   }
 
   const isDark = e.matches;
@@ -68,75 +56,11 @@ const ThemeContext = createContext<UseThemeProps>({
 });
 export const useTheme = () => useContext(ThemeContext);
 
-// the script tag injected manually into `<head>` by provider below
-const ThemeScript = memo(function ThemeScript({ storageKey, classNames }: Partial<ThemeProviderProps>) {
-  // commenst are up here to avoid having them inside the actual client output:
-  //  - `p` is the user's saved preference
-  //  - `cn` is the map of theme -> classname
-  //  - `cl` is the list of <html>'s current class(es), which the `cn` values are removed to start fresh
-  //  - `q` is always the CSS media query set at the top of this file
-  //  - `m` is the listener which tests that media query
-  //  - `try/catch` is in case I messed something up here bigly... (will default to light theme)
-  /* eslint-disable no-empty, no-var, one-var */
-  const clientScript = () => {
-    try {
-      var p = localStorage.getItem("__STORAGE_KEY__"),
-        cn = "__CLASS_NAMES__",
-        cl = document.documentElement.classList;
-      cl.remove("__LIST_OF_CLASSES__");
-
-      if (!p || p === "system") {
-        var q = "__MEDIA_QUERY__",
-          m = window.matchMedia(q);
-        m.media !== q || m.matches ? cl.add(cn["dark"]) : cl.add(cn["light"]);
-      } else if (p) {
-        cl.add(cn[p]);
-      }
-    } catch (e) {}
-  };
-  /* eslint-enable no-empty */
-
-  // since the function above will end up being injected as a plain dumb string, we need to set the dynamic values here:
-  const prepareScript = (script: unknown) => {
-    const functionString = String(script)
-      .replace('"__MEDIA_QUERY__"', `"${MEDIA}"`)
-      .replace('"__STORAGE_KEY__"', `"${storageKey}"`)
-      .replace('"__CLASS_NAMES__"', JSON.stringify(classNames))
-      .replace(
-        '"__LIST_OF_CLASSES__"',
-        Object.values(classNames)
-          .map((t: string) => `"${t}"`)
-          .join(",")
-      )
-      // somewhat "minify" the final code by removing tabs/newlines:
-      // https://github.com/sindresorhus/condense-whitespace/blob/main/index.js
-      .replace(/\s{2,}/gu, "")
-      .trim();
-
-    // make it an IIFE:
-    return `(${functionString})()`;
-  };
-
-  // even though it's the proper method, using next/script with `strategy="beforeInteractive"` still causes flash of
-  // white on load. injecting a normal script tag lets us prioritize setting `<html>` attributes even more.
-  return (
-    <NextHead>
-      <script
-        key="next-themes-script"
-        dangerouslySetInnerHTML={{
-          __html: prepareScript(clientScript),
-        }}
-      />
-    </NextHead>
-  );
-});
-
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
-  enableColorScheme = true,
-  storageKey = "theme",
-  themes = [...colorSchemes],
   classNames,
+  themes = [...colorSchemes],
+  enableColorScheme = true,
   children,
 }: PropsWithChildren<ThemeProviderProps>) => {
   const [theme, setThemeState] = useState(() => getTheme(storageKey, "system"));
@@ -183,7 +107,7 @@ export const ThemeProvider = ({
     const handler = (...args: any) => mediaListener.current(...args);
 
     // Always listen to System preference
-    const media = window.matchMedia(MEDIA);
+    const media = window.matchMedia(query);
 
     // Intentionally use deprecated listener methods to support iOS & old browsers
     media.addListener(handler);
@@ -243,8 +167,6 @@ export const ThemeProvider = ({
         setTheme,
       }}
     >
-      <ThemeScript {...{ storageKey, classNames }} />
-
       {children}
     </ThemeContext.Provider>
   );
