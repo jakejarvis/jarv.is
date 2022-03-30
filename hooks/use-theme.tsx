@@ -1,7 +1,8 @@
 // forked & modified from pacocoursey/next-themes as of v0.0.15:
 // https://github.com/pacocoursey/next-themes/tree/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a
 
-import { createContext, useCallback, useContext, useEffect, useState, useRef } from "react";
+import { createContext, useCallback, useContext, useEffect, useState, useRef, memo } from "react";
+import NextHead from "next/head";
 import type { PropsWithChildren } from "react";
 
 // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
@@ -72,15 +73,20 @@ const ThemeContext = createContext<UseThemeProps>({
 export const useTheme = () => useContext(ThemeContext);
 
 // the script tag injected manually into `<head>` by provider below
-export const ThemeScript = ({
-  storageKey = "theme",
-  defaultTheme = "system",
-  attribute = "data-theme",
-  themes = [...colorSchemes],
+const ThemeScript = memo(function ThemeScript({
+  storageKey,
+  attribute,
+  defaultTheme,
   value,
-}: ThemeProviderProps) => {
-  const attrs = !value ? themes : Object.values(value);
-
+  attrs,
+}: {
+  storageKey: string;
+  attribute?: string;
+  defaultTheme: string;
+  value?: AttributeValuesMap;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  attrs: any;
+}) {
   const setDocumentVar = (() => {
     if (attribute === "class") {
       const removeClasses = `d.remove(${attrs.map((t: string) => `"${t}"`).join(",")})`;
@@ -111,21 +117,23 @@ export const ThemeScript = ({
   // even though it's the proper method, using next/script with `strategy="beforeInteractive"` still causes flash of
   // white on load. injecting a normal script tag lets us prioritize setting `<html>` attributes even more.
   return (
-    <script
-      key="next-themes-script"
-      dangerouslySetInnerHTML={{
-        __html: `!function(){try{${setDocumentVar}var e=localStorage.getItem("${storageKey}");${
-          !defaultSystem ? updateDOM(defaultTheme) + ";" : ""
-        }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);m.media!==t||m.matches?${updateDOM(
-          "dark"
-        )}:${updateDOM("light")}}else if(e){${value ? `var x=${JSON.stringify(value)}` : ""}}${updateDOM(
-          value ? "x[e]" : "e",
-          true
-        )}}catch(e){}}()`,
-      }}
-    />
+    <NextHead>
+      <script
+        key="next-themes-script"
+        dangerouslySetInnerHTML={{
+          __html: `!function(){try{${setDocumentVar}var e=localStorage.getItem("${storageKey}");${
+            !defaultSystem ? updateDOM(defaultTheme) + ";" : ""
+          }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);m.media!==t||m.matches?${updateDOM(
+            "dark"
+          )}:${updateDOM("light")}}else if(e){${value ? `var x=${JSON.stringify(value)}` : ""}}${updateDOM(
+            value ? "x[e]" : "e",
+            true
+          )}}catch(e){}}()`,
+        }}
+      />
+    </NextHead>
   );
-};
+});
 
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
@@ -224,7 +232,7 @@ export const ThemeProvider = ({
 
     const colorScheme =
       // If regular theme is light or dark
-      theme && themes.includes(theme)
+      theme && colorSchemes.includes(theme)
         ? theme
         : // If theme is system, use the resolved version
         theme === "system"
@@ -245,6 +253,16 @@ export const ThemeProvider = ({
         setTheme,
       }}
     >
+      <ThemeScript
+        {...{
+          storageKey,
+          attribute,
+          value,
+          defaultTheme,
+          attrs,
+        }}
+      />
+
       {children}
     </ThemeContext.Provider>
   );

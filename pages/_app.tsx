@@ -4,10 +4,9 @@ import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "../hooks/use-theme";
 import Layout from "../components/Layout";
+import { globalStyles, theme, darkTheme } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
-import { themeProviderConfig } from "../lib/config/themes";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
-import { globalStyles } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
@@ -56,7 +55,14 @@ const App = ({ Component, pageProps }: AppProps) => {
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
-    <ThemeProvider {...themeProviderConfig}>
+    <ThemeProvider
+      // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
+      attribute="class"
+      value={{
+        light: theme.className,
+        dark: darkTheme.className,
+      }}
+    >
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
