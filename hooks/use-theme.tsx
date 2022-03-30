@@ -18,16 +18,12 @@ interface AttributeValuesMap {
 export interface ThemeProviderProps {
   /** List of all available theme names */
   themes?: string[];
-  /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
-  enableColorScheme?: boolean;
   /** Key used to store theme setting in localStorage */
   storageKey?: string;
-  /** Default theme name (for v0.0.12 and lower the default was light). If `enableSystem` is false, the default theme is light */
-  defaultTheme?: string;
-  /** HTML attribute modified based on the active theme. Accepts `class` and `data-*` (meaning any data attribute, `data-mode`, `data-color`, etc.) */
-  attribute?: string | "class";
   /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
-  value?: AttributeValuesMap;
+  classNames?: AttributeValuesMap;
+  /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
+  enableColorScheme?: boolean;
 }
 
 export interface UseThemeProps {
@@ -45,7 +41,7 @@ export interface UseThemeProps {
 const getTheme = (key: string, fallback?: string) => {
   if (typeof window === "undefined") return undefined;
 
-  let theme;
+  let theme: string;
   try {
     theme = localStorage.getItem(key) || undefined;
   } catch (e) {} // eslint-disable-line no-empty
@@ -73,46 +69,53 @@ const ThemeContext = createContext<UseThemeProps>({
 export const useTheme = () => useContext(ThemeContext);
 
 // the script tag injected manually into `<head>` by provider below
-const ThemeScript = memo(function ThemeScript({
-  storageKey,
-  attribute,
-  defaultTheme,
-  value,
-  attrs,
-}: {
-  storageKey: string;
-  attribute?: string;
-  defaultTheme: string;
-  value?: AttributeValuesMap;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  attrs: any;
-}) {
-  const setDocumentVar = (() => {
-    if (attribute === "class") {
-      const removeClasses = `d.remove(${attrs.map((t: string) => `"${t}"`).join(",")})`;
+const ThemeScript = memo(function ThemeScript({ storageKey, classNames }: Partial<ThemeProviderProps>) {
+  // commenst are up here to avoid having them inside the actual client output:
+  //  - `p` is the user's saved preference
+  //  - `cn` is the map of theme -> classname
+  //  - `cl` is the list of <html>'s current class(es), which the `cn` values are removed to start fresh
+  //  - `q` is always the CSS media query set at the top of this file
+  //  - `m` is the listener which tests that media query
+  //  - `try/catch` is in case I messed something up here bigly... (will default to light theme)
+  /* eslint-disable no-empty, no-var, one-var */
+  const clientScript = () => {
+    try {
+      var p = localStorage.getItem("__STORAGE_KEY__"),
+        cn = "__CLASS_NAMES__",
+        cl = document.documentElement.classList;
+      cl.remove("__LIST_OF_CLASSES__");
 
-      // `d` is the class list of the `<html>` tag
-      return `var d=document.documentElement.classList;${removeClasses};`;
-    } else {
-      // `d` is the entire document, used to set custom attribute of the `<html>` tag (probably `data-*`)
-      return `var d=document.documentElement;`;
-    }
-  })();
-
-  const updateDOM = (name: string, literal?: boolean) => {
-    name = value?.[name] || name;
-    const val = literal ? name : `"${name}"`;
-
-    // mirrors above logic from setDocumentVar()
-    if (attribute === "class") {
-      return `d.add(${val})`;
-    } else {
-      return `d.setAttribute("${attribute}", ${val})`;
-    }
+      if (!p || p === "system") {
+        var q = "__MEDIA_QUERY__",
+          m = window.matchMedia(q);
+        m.media !== q || m.matches ? cl.add(cn["dark"]) : cl.add(cn["light"]);
+      } else if (p) {
+        cl.add(cn[p]);
+      }
+    } catch (e) {}
   };
+  /* eslint-enable no-empty */
 
-  // is the default theme still `system`? (it should be...)
-  const defaultSystem = defaultTheme === "system";
+  // since the function above will end up being injected as a plain dumb string, we need to set the dynamic values here:
+  const prepareScript = (script: unknown) => {
+    const functionString = String(script)
+      .replace('"__MEDIA_QUERY__"', `"${MEDIA}"`)
+      .replace('"__STORAGE_KEY__"', `"${storageKey}"`)
+      .replace('"__CLASS_NAMES__"', JSON.stringify(classNames))
+      .replace(
+        '"__LIST_OF_CLASSES__"',
+        Object.values(classNames)
+          .map((t: string) => `"${t}"`)
+          .join(",")
+      )
+      // somewhat "minify" the final code by removing tabs/newlines:
+      // https://github.com/sindresorhus/condense-whitespace/blob/main/index.js
+      .replace(/\s{2,}/gu, "")
+      .trim();
+
+    // make it an IIFE:
+    return `(${functionString})()`;
+  };
 
   // even though it's the proper method, using next/script with `strategy="beforeInteractive"` still causes flash of
   // white on load. injecting a normal script tag lets us prioritize setting `<html>` attributes even more.
@@ -121,14 +124,7 @@ const ThemeScript = memo(function ThemeScript({
       <script
         key="next-themes-script"
         dangerouslySetInnerHTML={{
-          __html: `!function(){try{${setDocumentVar}var e=localStorage.getItem("${storageKey}");${
-            !defaultSystem ? updateDOM(defaultTheme) + ";" : ""
-          }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);m.media!==t||m.matches?${updateDOM(
-            "dark"
-          )}:${updateDOM("light")}}else if(e){${value ? `var x=${JSON.stringify(value)}` : ""}}${updateDOM(
-            value ? "x[e]" : "e",
-            true
-          )}}catch(e){}}()`,
+          __html: prepareScript(clientScript),
         }}
       />
     </NextHead>
@@ -140,14 +136,11 @@ export const ThemeProvider = ({
   enableColorScheme = true,
   storageKey = "theme",
   themes = [...colorSchemes],
-  defaultTheme = "system",
-  attribute = "data-theme",
-  value,
+  classNames,
   children,
 }: PropsWithChildren<ThemeProviderProps>) => {
-  const [theme, setThemeState] = useState(() => getTheme(storageKey, defaultTheme));
+  const [theme, setThemeState] = useState(() => getTheme(storageKey, "system"));
   const [resolvedTheme, setResolvedTheme] = useState(() => getTheme(storageKey));
-  const attrs = !value ? themes : Object.values(value);
 
   const handleMediaQuery = useCallback(
     (e?) => {
@@ -163,7 +156,7 @@ export const ThemeProvider = ({
   mediaListener.current = handleMediaQuery;
 
   const changeTheme = useCallback((theme, updateStorage = true, updateDOM = true) => {
-    let name = value?.[theme] || theme;
+    let name = classNames?.[theme] || theme;
 
     if (updateStorage) {
       try {
@@ -173,18 +166,15 @@ export const ThemeProvider = ({
 
     if (theme === "system") {
       const resolved = getSystemTheme();
-      name = value?.[resolved] || resolved;
+      name = classNames?.[resolved] || resolved;
     }
 
     if (updateDOM) {
+      // remove all theme classes first to start fresh
+      const all = Object.values(classNames);
       const d = document.documentElement;
-
-      if (attribute === "class") {
-        d.classList.remove(...attrs);
-        d.classList.add(name);
-      } else {
-        d.setAttribute(attribute, name);
-      }
+      d.classList.remove(...all);
+      d.classList.add(name);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -217,8 +207,8 @@ export const ThemeProvider = ({
         return;
       }
 
-      // If default theme set, use it if localstorage === null (happens on local storage manual deletion)
-      const theme = e.newValue || defaultTheme;
+      // use default theme if localstorage === null (happens on local storage manual deletion)
+      const theme = e.newValue || "system";
       setTheme(theme);
     };
 
@@ -253,15 +243,7 @@ export const ThemeProvider = ({
         setTheme,
       }}
     >
-      <ThemeScript
-        {...{
-          storageKey,
-          attribute,
-          value,
-          defaultTheme,
-          attrs,
-        }}
-      />
+      <ThemeScript {...{ storageKey, classNames }} />
 
       {children}
     </ThemeContext.Provider>

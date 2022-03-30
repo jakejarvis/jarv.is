@@ -57,8 +57,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider
       // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
-      attribute="class"
-      value={{
+      classNames={{
         light: theme.className,
         dark: darkTheme.className,
       }}
