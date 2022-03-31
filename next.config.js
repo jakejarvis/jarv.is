@@ -33,6 +33,9 @@ module.exports = (phase, { defaultConfig }) => {
       formats: ["image/avif", "image/webp"],
       minimumCacheTTL: 43200,
     },
+    experimental: {
+      reactRoot: true,
+    },
     webpack: (config) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them
       config.module.rules.push({
