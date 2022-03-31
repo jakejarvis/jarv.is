@@ -34,13 +34,6 @@ module.exports = (phase, { defaultConfig }) => {
       minimumCacheTTL: 43200,
     },
     webpack: (config) => {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // fixes next-mdx-remote: Package path ./jsx-runtime.js is not exported from package react
-        // https://github.com/hashicorp/next-mdx-remote/issues/237
-        "react/jsx-runtime.js": require.resolve("react/jsx-runtime"),
-      };
-
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them
       config.module.rules.push({
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -105,6 +98,7 @@ module.exports = (phase, { defaultConfig }) => {
     ],
     rewrites: async () => [
       { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
+      { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
       { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
       { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
     ],
