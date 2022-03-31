@@ -1,4 +1,4 @@
-import { query, storageKey, classNames } from "../../lib/styles/helpers/themes";
+import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/styles/helpers/themes";
 
 // comments are up here to avoid having them inside the actual client output:
 //  - `p` is the user's saved preference
@@ -29,12 +29,12 @@ const clientScript = () => {
 // since the function above will end up being injected as a plain dumb string, we need to set the dynamic values here:
 const prepareScript = (script: unknown) => {
   const functionString = String(script)
-    .replace('"__MEDIA_QUERY__"', `"${query}"`)
-    .replace('"__STORAGE_KEY__"', `"${storageKey}"`)
-    .replace('"__CLASS_NAMES__"', JSON.stringify(classNames))
+    .replace('"__MEDIA_QUERY__"', `"${darkModeQuery}"`)
+    .replace('"__STORAGE_KEY__"', `"${themeStorageKey}"`)
+    .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames))
     .replace(
       '"__LIST_OF_CLASSES__"',
-      Object.values(classNames)
+      Object.values(themeClassNames)
         .map((t: string) => `"${t}"`)
         .join(",")
     )

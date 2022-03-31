@@ -6,7 +6,7 @@ import { ThemeProvider } from "../hooks/use-theme";
 import Layout from "../components/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
-import { classNames } from "../lib/styles/helpers/themes";
+import { themeClassNames } from "../lib/styles/helpers/themes";
 import { globalStyles } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
@@ -56,7 +56,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
-    <ThemeProvider {...{ classNames }}>
+    <ThemeProvider classNames={themeClassNames}>
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}

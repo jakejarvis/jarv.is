@@ -2,7 +2,7 @@
 // https://github.com/pacocoursey/next-themes/tree/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a
 
 import { createContext, useCallback, useContext, useEffect, useState, useRef } from "react";
-import { query, colorSchemes, storageKey } from "../lib/styles/helpers/themes";
+import { darkModeQuery, colorSchemes, themeStorageKey } from "../lib/styles/helpers/themes";
 import type { PropsWithChildren } from "react";
 
 export interface ThemeProviderProps {
@@ -40,7 +40,7 @@ const getTheme = (key: string, fallback?: string) => {
 // get the user's prefered theme as set via their OS/browser settings
 const getSystemTheme = (e?: MediaQueryList) => {
   if (!e) {
-    e = window.matchMedia(query);
+    e = window.matchMedia(darkModeQuery);
   }
 
   const isDark = e.matches;
@@ -63,8 +63,8 @@ export const ThemeProvider = ({
   enableColorScheme = true,
   children,
 }: PropsWithChildren<ThemeProviderProps>) => {
-  const [theme, setThemeState] = useState(() => getTheme(storageKey, "system"));
-  const [resolvedTheme, setResolvedTheme] = useState(() => getTheme(storageKey));
+  const [theme, setThemeState] = useState(() => getTheme(themeStorageKey, "system"));
+  const [resolvedTheme, setResolvedTheme] = useState(() => getTheme(themeStorageKey));
 
   const handleMediaQuery = useCallback(
     (e?) => {
@@ -84,7 +84,7 @@ export const ThemeProvider = ({
 
     if (updateStorage) {
       try {
-        localStorage.setItem(storageKey, theme);
+        localStorage.setItem(themeStorageKey, theme);
       } catch (e) {} // eslint-disable-line no-empty
     }
 
@@ -107,7 +107,7 @@ export const ThemeProvider = ({
     const handler = (...args: any) => mediaListener.current(...args);
 
     // Always listen to System preference
-    const media = window.matchMedia(query);
+    const media = window.matchMedia(darkModeQuery);
 
     // Intentionally use deprecated listener methods to support iOS & old browsers
     media.addListener(handler);
@@ -127,7 +127,7 @@ export const ThemeProvider = ({
   // localStorage event handling
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
-      if (e.key !== storageKey) {
+      if (e.key !== themeStorageKey) {
         return;
       }
 
