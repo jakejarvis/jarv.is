@@ -2,8 +2,8 @@ import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/style
 
 // comments are up here to avoid having them inside the actual client output:
 //  - `p` is the user's saved preference
-//  - `cn` is the map of theme -> classname
-//  - `cl` is the list of <html>'s current class(es), which the `cn` values are removed to start fresh
+//  - `c` is the map of theme -> classname
+//  - `l` is the list of <html>'s current class(es), which the `cn` values are removed to start fresh
 //  - `q` is always the CSS media query for prefers dark mode
 //  - `m` is the listener which tests that media query
 //  - `try/catch` is in case I messed something up here bigly... (will default to light theme)
@@ -11,16 +11,16 @@ import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/style
 const clientScript = () => {
   try {
     var p = localStorage.getItem("__STORAGE_KEY__"),
-      cn = "__CLASS_NAMES__",
-      cl = document.documentElement.classList;
-    cl.remove("__LIST_OF_CLASSES__");
+      c = "__CLASS_NAMES__",
+      l = document.documentElement.classList;
+    l.remove("__LIST_OF_CLASSES__");
 
     if (!p || p === "system") {
       var q = "__MEDIA_QUERY__",
         m = window.matchMedia(q);
-      m.media !== q || m.matches ? cl.add(cn["dark"]) : cl.add(cn["light"]);
-    } else if (p) {
-      cl.add(cn[p]);
+      m.media !== q || m.matches ? l.add(c["dark"]) : l.add(c["light"]);
+    } else {
+      l.add(c[p]);
     }
   } catch (e) {}
 };
@@ -37,11 +37,11 @@ const prepareScript = (script: unknown) => {
       Object.values(themeClassNames)
         .map((t: string) => `"${t}"`)
         .join(",")
-    )
-    // somewhat "minify" the final code by removing tabs/newlines:
-    // https://github.com/sindresorhus/condense-whitespace/blob/main/index.js
-    .replace(/\s{2,}/gu, "")
-    .trim();
+    );
+  // somewhat "minify" the final code by removing tabs/newlines:
+  // https://github.com/sindresorhus/condense-whitespace/blob/main/index.js
+  // .replace(/\s{2,}/gu, "")
+  // .trim();
 
   // make it an IIFE:
   return `(${functionString})()`;
