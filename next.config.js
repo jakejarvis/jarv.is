@@ -35,6 +35,9 @@ module.exports = (phase, { defaultConfig }) => {
     },
     experimental: {
       reactRoot: true,
+      images: {
+        layoutRaw: true,
+      },
     },
     webpack: (config) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them

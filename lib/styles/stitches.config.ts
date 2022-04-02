@@ -1,7 +1,7 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
 
 // modified modern-normalize.css in object form:
-// https://github.com/jakejarvis/stitches-normalize/blob/main/index.js
+// https://github.com/jakejarvis/stitches-normalize/blob/main/src/index.ts
 import normalizeCss from "stitches-normalize";
 
 // web fonts

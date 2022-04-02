@@ -6,23 +6,16 @@ import type { ComponentProps } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
-const ConstrainImage = styled("div", {
+const Image = styled(NextImage, {
+  display: "block",
   width: "50px",
   height: "50px",
-  lineHeight: 0,
-  padding: 0,
-
-  "@medium": {
-    width: "70px",
-    height: "70px",
-  },
-});
-
-const Image = styled(NextImage, {
   border: "1px solid $light !important",
   borderRadius: "50%",
 
   "@medium": {
+    width: "70px",
+    height: "70px",
     borderWidth: "2px !important",
   },
 });
@@ -60,17 +53,7 @@ export type SelfieProps = ComponentProps<typeof Link>;
 const Selfie = ({ ...rest }: SelfieProps) => (
   <NextLink href="/" passHref={true}>
     <Link {...rest}>
-      <ConstrainImage>
-        <Image
-          src={selfieJpg}
-          alt="Photo of Jake Jarvis"
-          width={70}
-          height={70}
-          quality={60}
-          layout="intrinsic"
-          priority
-        />
-      </ConstrainImage>
+      <Image src={selfieJpg} alt="Photo of Jake Jarvis" width={50} height={50} quality={60} layout="raw" priority />
       <Name>Jake Jarvis</Name>
     </Link>
   </NextLink>
