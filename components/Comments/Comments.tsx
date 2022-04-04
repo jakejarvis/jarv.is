@@ -7,12 +7,10 @@ import type { ComponentProps } from "react";
 import type { GiscusProps } from "@giscus/react";
 
 const Wrapper = styled("div", {
-  ".giscus": {
-    marginTop: "2em",
-    paddingTop: "2em",
-    borderTop: "2px solid $light",
-    minHeight: "350px",
-  },
+  marginTop: "2em",
+  paddingTop: "2em",
+  borderTop: "2px solid $light",
+  minHeight: "300px",
 });
 
 export type CommentsProps = ComponentProps<typeof Wrapper> & {
@@ -22,6 +20,7 @@ export type CommentsProps = ComponentProps<typeof Wrapper> & {
 const Comments = ({ title, ...rest }: CommentsProps) => {
   const { resolvedTheme } = useTheme();
 
+  // TODO: use custom `<Loading />` spinner component during suspense
   return (
     <Wrapper {...rest}>
       <Giscus
