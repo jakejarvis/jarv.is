@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player/file";
+import { useHasMounted } from "../../hooks/use-has-mounted";
 import { styled } from "../../lib/styles/stitches.config";
 import type { FilePlayerProps } from "react-player/file";
 
@@ -30,6 +31,12 @@ export type VideoProps = Partial<FilePlayerProps> & {
 };
 
 const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProps) => {
+  // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
+  const hasMounted = useHasMounted();
+  if (!hasMounted) {
+    return null;
+  }
+
   const url = [
     src.webm && {
       src: src.webm,
