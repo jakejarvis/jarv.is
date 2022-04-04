@@ -39,6 +39,7 @@ const CustomImage = ({
     width: typeof width === "string" ? Number.parseInt(width.replace("px", "")) : width,
     height: typeof height === "string" ? Number.parseInt(height.replace("px", "")) : height,
     alt: alt || "",
+    layout: layout || "intrinsic",
     quality: quality || 65,
     priority: !!priority,
     loading: priority ? "eager" : "lazy",
@@ -51,13 +52,9 @@ const CustomImage = ({
     imageProps.src = staticImg;
     // default to blur placeholder while loading
     imageProps.placeholder = placeholder || (staticImg.blurDataURL ? "blur" : "empty");
-    // base width off of container instead of the (likely oversized) raw image size
-    imageProps.layout = layout || "intrinsic";
   } else {
     // regular path to jpg/png/etc. passed in, which makes explicit width and height required
     imageProps.src = (src as string).replace(/^\/public/g, "");
-    // don't include all the wrapper crap if display width/height are provided
-    imageProps.layout = layout || "raw";
   }
 
   // @ts-ignore
