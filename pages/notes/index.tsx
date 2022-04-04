@@ -1,8 +1,8 @@
 import { NextSeo } from "next-seo";
-import { format } from "date-fns";
 import Content from "../../components/Content";
 import NotesList, { NotesListProps } from "../../components/NotesList";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
+import { formatDateTZ } from "../../lib/helpers/format-date";
 import type { GetStaticProps } from "next";
 
 const Notes = ({ notesByYear }: NotesListProps) => (
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const notesByYear: NotesListProps["notesByYear"] = {};
 
   getAllNotes().map((note) => {
-    const year = format(new Date(note.date), "yyyy");
+    const year = formatDateTZ(note.date, "yyyy");
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });
 

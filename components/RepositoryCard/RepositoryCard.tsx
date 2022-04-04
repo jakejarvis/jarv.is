@@ -1,8 +1,9 @@
-import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import Link from "../Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
+import { formatDateTZ, formatTimeAgo } from "../../lib/helpers/format-date";
 import { styled } from "../../lib/styles/stitches.config";
 import type { RepositoryType } from "../../types";
+import { useHasMounted } from "../../hooks/use-has-mounted";
 
 const Wrapper = styled("div", {
   width: "100%",
@@ -80,68 +81,58 @@ const RepositoryCard = ({
   forks,
   updatedAt,
   className,
-}: RepositoryCardProps) => (
-  <Wrapper className={className}>
-    <Name href={url}>{name}</Name>
+}: RepositoryCardProps) => {
+  const hasMounted = useHasMounted();
 
-    {description && <Description>{description}</Description>}
+  return (
+    <Wrapper className={className}>
+      <Name href={url}>{name}</Name>
 
-    <Meta>
-      {language && (
-        <MetaItem>
-          <LanguageCircle css={{ backgroundColor: language.color }} />
-          <span>{language.name}</span>
-        </MetaItem>
-      )}
+      {description && <Description>{description}</Description>}
 
-      {stars > 0 && (
-        <MetaItem>
-          <MetaLink
-            href={`${url}/stargazers`}
-            title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MetaIcon as={StarOcticon} />
-            <span>{stars.toLocaleString("en-US")}</span>
-          </MetaLink>
-        </MetaItem>
-      )}
-
-      {forks > 0 && (
-        <MetaItem>
-          <MetaLink
-            href={`${url}/network/members`}
-            title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MetaIcon as={ForkOcticon} />
-            <span>{forks.toLocaleString("en-US")}</span>
-          </MetaLink>
-        </MetaItem>
-      )}
-
-      <MetaItem
-        title={intlFormat(
-          new Date(updatedAt),
-          {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            timeZoneName: "short",
-          },
-          {
-            locale: "en-US",
-          }
+      <Meta>
+        {language && (
+          <MetaItem>
+            <LanguageCircle css={{ backgroundColor: language.color }} />
+            <span>{language.name}</span>
+          </MetaItem>
         )}
-      >
-        <span>Updated {formatDistanceToNowStrict(new Date(updatedAt), { addSuffix: true })}</span>
-      </MetaItem>
-    </Meta>
-  </Wrapper>
-);
+
+        {stars > 0 && (
+          <MetaItem>
+            <MetaLink
+              href={`${url}/stargazers`}
+              title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MetaIcon as={StarOcticon} />
+              <span>{stars.toLocaleString("en-US")}</span>
+            </MetaLink>
+          </MetaItem>
+        )}
+
+        {forks > 0 && (
+          <MetaItem>
+            <MetaLink
+              href={`${url}/network/members`}
+              title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MetaIcon as={ForkOcticon} />
+              <span>{forks.toLocaleString("en-US")}</span>
+            </MetaLink>
+          </MetaItem>
+        )}
+
+        {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
+        <MetaItem title={formatDateTZ(updatedAt)}>
+          <span>Updated {hasMounted ? formatTimeAgo(updatedAt) : `on ${formatDateTZ(updatedAt, "PP")}`}</span>
+        </MetaItem>
+      </Meta>
+    </Wrapper>
+  );
+};
 
 export default RepositoryCard;
