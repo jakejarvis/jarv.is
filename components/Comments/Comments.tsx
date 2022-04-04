@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Giscus } from "@giscus/react";
+import Giscus from "@giscus/react";
 import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
 import { giscusConfig } from "../../lib/config";
