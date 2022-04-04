@@ -92,10 +92,10 @@ const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
     config: springProperties.springConfig,
   });
 
-  // render a dummy button until we're fully mounted and self-aware
+  // render a blank div of the same size to avoid layout shifting until we're fully mounted and self-aware
   if (!hasMounted) {
     return (
-      <Button aria-hidden={true} disabled={true}>
+      <Button as="div" aria-hidden={true}>
         <div className={className} />
       </Button>
     );
