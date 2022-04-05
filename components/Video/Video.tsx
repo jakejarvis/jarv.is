@@ -6,12 +6,12 @@ import type { FilePlayerProps } from "react-player/file";
 const Wrapper = styled("div", {
   position: "relative",
   paddingTop: "56.25%",
+});
 
-  "& > div": {
-    position: "absolute",
-    top: 0,
-    left: 0,
-  },
+const Player = styled(ReactPlayer, {
+  position: "absolute",
+  top: 0,
+  left: 0,
 
   "& video": {
     borderRadius: "$rounded",
@@ -33,9 +33,6 @@ export type VideoProps = Partial<FilePlayerProps> & {
 const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProps) => {
   // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
   const hasMounted = useHasMounted();
-  if (!hasMounted) {
-    return null;
-  }
 
   const url = [
     src.webm && {
@@ -80,15 +77,17 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
 
   return (
     <Wrapper className={className}>
-      <ReactPlayer
-        width="100%"
-        height="100%"
-        url={url}
-        controls={!autoplay}
-        // @ts-ignore
-        config={config}
-        {...rest}
-      />
+      {hasMounted && (
+        <Player
+          width="100%"
+          height="100%"
+          url={url}
+          controls={!autoplay}
+          // @ts-ignore
+          config={config}
+          {...rest}
+        />
+      )}
     </Wrapper>
   );
 };

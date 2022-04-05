@@ -1,9 +1,10 @@
 import Link from "../Link";
 import { StarOcticon, ForkOcticon } from "../Icons";
+import { useHasMounted } from "../../hooks/use-has-mounted";
 import { formatDateTZ, formatTimeAgo } from "../../lib/helpers/format-date";
 import { styled } from "../../lib/styles/stitches.config";
+import { siteLocale } from "../../lib/config";
 import type { RepositoryType } from "../../types";
-import { useHasMounted } from "../../hooks/use-has-mounted";
 
 const Wrapper = styled("div", {
   width: "100%",
@@ -102,12 +103,12 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/stargazers`}
-              title={`${stars.toLocaleString("en-US")} ${stars === 1 ? "star" : "stars"}`}
+              title={`${stars.toLocaleString(siteLocale)} ${stars === 1 ? "star" : "stars"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={StarOcticon} />
-              <span>{stars.toLocaleString("en-US")}</span>
+              <span>{stars.toLocaleString(siteLocale)}</span>
             </MetaLink>
           </MetaItem>
         )}
@@ -116,12 +117,12 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/network/members`}
-              title={`${forks.toLocaleString("en-US")} ${forks === 1 ? "fork" : "forks"}`}
+              title={`${forks.toLocaleString(siteLocale)} ${forks === 1 ? "fork" : "forks"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={ForkOcticon} />
-              <span>{forks.toLocaleString("en-US")}</span>
+              <span>{forks.toLocaleString(siteLocale)}</span>
             </MetaLink>
           </MetaItem>
         )}

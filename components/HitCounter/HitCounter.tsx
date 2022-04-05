@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Loading from "../Loading";
 import { fetcher } from "../../lib/helpers/fetcher";
+import { siteLocale } from "../../lib/config";
 
 export type HitCounterProps = {
   slug: string;
@@ -27,8 +28,11 @@ const HitCounter = ({ slug, className }: HitCounterProps) => {
 
     // we have data!
     return (
-      <span title={`${data.hits.toLocaleString("en-US")} ${data.hits === 1 ? "view" : "views"}`} className={className}>
-        {data.hits.toLocaleString("en-US")}
+      <span
+        title={`${data.hits.toLocaleString(siteLocale)} ${data.hits === 1 ? "view" : "views"}`}
+        className={className}
+      >
+        {data.hits.toLocaleString(siteLocale)}
       </span>
     );
   } catch (error) {

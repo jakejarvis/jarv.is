@@ -6,7 +6,7 @@ import * as config from "../lib/config";
 // https://nextjs.org/docs/advanced-features/custom-document
 const Document = () => {
   return (
-    <Html lang={config.siteLocale?.replace("_", "-")}>
+    <Html lang={config.siteLocale}>
       <Head>
         {/* inject a small script to set/restore the user's theme ASAP */}
         <ThemeScript />

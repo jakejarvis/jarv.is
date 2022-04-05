@@ -23,7 +23,7 @@ export const defaultSeo: DefaultSeoProps = {
   openGraph: {
     site_name: config.siteName,
     title: `${config.siteName} – ${config.shortDescription}`,
-    locale: config.siteLocale,
+    locale: config.siteLocale?.replace("-", "_"),
     type: "website",
     images: [
       {
@@ -133,7 +133,7 @@ export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherNa
   publisherLogo: `${config.baseUrl}${meJpg.src}`,
 };
 
-// re-export icons to use their static image data elsewhere
+// Re-export icons to use their static image data elsewhere
 export const favicons: Record<string, StaticImageData> = {
   faviconIco,
   faviconPng,
