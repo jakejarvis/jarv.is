@@ -11,10 +11,5 @@ export const formatDateTZ = (date: string | number | Date, formatStr = "PPp zzz"
 
 // returns "5 minutes ago", "1 year ago", etc.
 export const formatTimeAgo = (date: string | number | Date, options = {}) => {
-  return formatDistanceToNowStrict(new Date(date), {
-    addSuffix: true,
-    roundingMethod: "floor",
-    locale: enUS,
-    ...options,
-  });
+  return formatDistanceToNowStrict(new Date(date), { addSuffix: true, locale: enUS, ...options });
 };
