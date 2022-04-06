@@ -1,7 +1,6 @@
 import { memo } from "react";
 import Selfie from "../Selfie";
 import Menu from "../Menu";
-import Ukraine from "../Ukraine";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
@@ -58,15 +57,12 @@ export type HeaderProps = ComponentProps<typeof Wrapper> & {
 };
 
 const Header = ({ sticky, ...rest }: HeaderProps) => (
-  <>
-    <Ukraine />
-    <Wrapper sticky={sticky} {...rest}>
-      <Nav>
-        <Selfie />
-        <ResponsiveMenu />
-      </Nav>
-    </Wrapper>
-  </>
+  <Wrapper sticky={sticky} {...rest}>
+    <Nav>
+      <Selfie />
+      <ResponsiveMenu />
+    </Nav>
+  </Wrapper>
 );
 
 export default memo(Header);

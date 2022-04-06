@@ -33,6 +33,12 @@ const Icon = styled("svg", {
   marginRight: "0.6em",
 });
 
+const TagsList = styled("span", {
+  whiteSpace: "normal",
+  display: "inline-flex",
+  flexWrap: "wrap",
+});
+
 const Tag = styled("span", {
   textTransform: "lowercase",
   whiteSpace: "nowrap",
@@ -62,29 +68,27 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
           }}
           passHref={true}
         >
-          <MetaLink>
+          <MetaLink title={formatDateTZ(date)}>
             <span>
               <Icon as={DateIcon} />
             </span>
-            <span title={formatDateTZ(date)}>{formatDateTZ(date, "MMMM d, yyyy")}</span>
+            <span>{formatDateTZ(date, "MMMM d, yyyy")}</span>
           </MetaLink>
         </Link>
       </MetaItem>
 
       {tags.length > 0 && (
-        <MetaItem
-          css={{
-            whiteSpace: "normal",
-            display: "inline-flex",
-            flexWrap: "wrap",
-          }}
-        >
-          <span>
+        <MetaItem>
+          <span title="Tags">
             <Icon as={TagIcon} />
           </span>
-          {tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
+          <TagsList>
+            {tags.map((tag) => (
+              <Tag key={tag} title={tag}>
+                {tag}
+              </Tag>
+            ))}
+          </TagsList>
         </MetaItem>
       )}
 
