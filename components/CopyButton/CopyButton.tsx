@@ -1,6 +1,6 @@
 import { forwardRef, useState, useEffect } from "react";
-import copy from "copy-to-clipboard";
 import innerText from "react-innertext";
+import copy from "copy-to-clipboard";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref } from "react";
