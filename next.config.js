@@ -33,6 +33,13 @@ module.exports = (phase, { defaultConfig }) => {
       formats: ["image/avif", "image/webp"],
       minimumCacheTTL: 43200,
     },
+    experimental: {
+      reactRoot: true, // 18
+      images: {
+        // allow forgoing the mess of `<span>`s around statically imported images
+        layoutRaw: true,
+      },
+    },
     webpack: (config) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them
       config.module.rules.push({
@@ -98,6 +105,7 @@ module.exports = (phase, { defaultConfig }) => {
     ],
     rewrites: async () => [
       { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
+      { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
       { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
       { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
     ],

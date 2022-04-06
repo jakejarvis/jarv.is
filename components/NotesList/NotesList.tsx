@@ -1,5 +1,5 @@
-import { format } from "date-fns";
 import Link from "../Link";
+import { formatDateTZ } from "../../lib/helpers/format-date";
 import { styled } from "../../lib/styles/stitches.config";
 import type { NoteType } from "../../types";
 
@@ -67,7 +67,7 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
         <List>
           {notes.map(({ slug, date, htmlTitle }) => (
             <Post key={slug}>
-              <PostDate>{format(new Date(date), "MMM d")}</PostDate>
+              <PostDate title={formatDateTZ(date)}>{formatDateTZ(date, "MMM d")}</PostDate>
               <span>
                 <Link
                   href={{

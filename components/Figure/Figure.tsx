@@ -1,5 +1,5 @@
-import Image, { CustomImageProps } from "../Image";
 import innerText from "react-innertext";
+import Image, { CustomImageProps } from "../Image";
 import { styled } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 

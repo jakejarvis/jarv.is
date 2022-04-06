@@ -2,6 +2,7 @@ import { Feed } from "feed";
 import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
 import { RELEASE_DATE } from "../config/constants";
+import { favicons } from "../config/seo";
 import type { GetServerSidePropsContext, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -22,7 +23,7 @@ export const buildFeed = (
     description: config.longDescription,
     copyright: "https://creativecommons.org/licenses/by/4.0/",
     updated: new Date(RELEASE_DATE),
-    image: `${config.baseUrl}/static/images/me.jpg`,
+    image: `${config.baseUrl}${favicons.meJpg.src}`,
     feedLinks: {
       rss: `${config.baseUrl}/feed.xml`,
       atom: `${config.baseUrl}/feed.atom`,

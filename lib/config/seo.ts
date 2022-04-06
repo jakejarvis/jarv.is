@@ -1,10 +1,16 @@
 import * as config from ".";
 
+// favicons (some used here, some re-exported and used elsewhere)
 import faviconIco from "../../public/static/favicons/favicon.ico";
 import faviconPng from "../../public/static/favicons/favicon.png";
 import appleTouchIconPng from "../../public/static/favicons/apple-touch-icon.png";
+import chrome512Png from "../../public/static/favicons/android-chrome-512x512.png";
+import chrome192Png from "../../public/static/favicons/android-chrome-192x192.png";
+import maskable512Png from "../../public/static/favicons/maskable-512x512.png";
+import maskable192Png from "../../public/static/favicons/maskable-192x192.png";
 import meJpg from "../../public/static/images/me.jpg";
 
+import type { StaticImageData } from "next/image";
 import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
 // Most of this file simply takes the data already defined in ./config.js and translates it into objects that are
@@ -17,7 +23,7 @@ export const defaultSeo: DefaultSeoProps = {
   openGraph: {
     site_name: config.siteName,
     title: `${config.siteName} – ${config.shortDescription}`,
-    locale: config.siteLocale,
+    locale: config.siteLocale?.replace("-", "_"),
     type: "website",
     images: [
       {
@@ -125,4 +131,16 @@ export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherNa
   authorName: [config.authorName],
   publisherName: config.siteName,
   publisherLogo: `${config.baseUrl}${meJpg.src}`,
+};
+
+// Re-export icons to use their static image data elsewhere
+export const favicons: Record<string, StaticImageData> = {
+  faviconIco,
+  faviconPng,
+  appleTouchIconPng,
+  chrome512Png,
+  chrome192Png,
+  maskable512Png,
+  maskable192Png,
+  meJpg,
 };
