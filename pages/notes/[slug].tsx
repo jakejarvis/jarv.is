@@ -1,6 +1,7 @@
 import { InView } from "react-intersection-observer";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { MDXRemote } from "next-mdx-remote";
+import urlJoin from "url-join";
 import Content from "../../components/Content";
 import NoteMeta from "../../components/NoteMeta";
 import Comments from "../../components/Comments";
@@ -30,7 +31,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
           },
           images: frontMatter.image && [
             {
-              url: `${config.baseUrl}${frontMatter.image}`,
+              url: urlJoin(config.baseUrl, frontMatter.image),
               alt: frontMatter.title,
             },
           ],
@@ -45,7 +46,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
         description={frontMatter.description}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
+        images={frontMatter.image && [urlJoin(config.baseUrl, frontMatter.image)]}
         {...articleJsonLd}
       />
 

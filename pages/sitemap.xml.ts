@@ -1,4 +1,5 @@
 import { getServerSideSitemap } from "next-sitemap";
+import urlJoin from "url-join";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
 import { RELEASE_DATE } from "../lib/config/constants";
@@ -33,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const notes = getAllNotes();
   notes.map((note) =>
     pages.push({
-      loc: `/notes/${note.slug}/`,
+      loc: urlJoin("/notes/", note.slug, "/"),
       // pull lastMod from front matter date
       lastmod: new Date(note.date).toISOString(),
       priority: 0.7,
@@ -41,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   // make all relative URLs absolute
-  pages.map((page) => (page.loc = `${baseUrl}${page.loc}`));
+  pages.map((page) => (page.loc = urlJoin(baseUrl, page.loc)));
 
   // cache on edge for 12 hours
   const { res } = context;

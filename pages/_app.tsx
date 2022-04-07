@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
+import urlJoin from "url-join";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import * as config from "../lib/config";
@@ -24,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   // get this page's URL with full domain, and hack around query parameters and anchors
   // NOTE: this assumes trailing slashes are enabled in next.config.js
-  const canonical = `${config.baseUrl}${router.pathname === "/" ? "" : router.pathname}/`;
+  const canonical = urlJoin(config.baseUrl, router.pathname === "/" ? "" : router.pathname, "/");
 
   useEffect(() => {
     // https://usefathom.com/docs/integrations/next

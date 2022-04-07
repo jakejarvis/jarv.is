@@ -1,3 +1,7 @@
+import urlJoin from "url-join";
+import type { StaticImageData } from "next/image";
+import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
+
 import * as config from ".";
 
 // favicons (some used here, some re-exported and used elsewhere)
@@ -9,9 +13,6 @@ import chrome192Png from "../../public/static/favicons/android-chrome-192x192.pn
 import maskable512Png from "../../public/static/favicons/maskable-512x512.png";
 import maskable192Png from "../../public/static/favicons/maskable-192x192.png";
 import meJpg from "../../public/static/images/me.jpg";
-
-import type { StaticImageData } from "next/image";
-import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
 // Most of this file simply takes the data already defined in ./config.js and translates it into objects that are
 // compatible with next-seo's props:
@@ -27,7 +28,7 @@ export const defaultSeo: DefaultSeoProps = {
     type: "website",
     images: [
       {
-        url: `${config.baseUrl}${meJpg.src}`,
+        url: urlJoin(config.baseUrl, meJpg.src),
         alt: `${config.siteName} – ${config.shortDescription}`,
       },
     ],
@@ -112,9 +113,9 @@ export const defaultSeo: DefaultSeoProps = {
 export const socialProfileJsonLd: SocialProfileJsonLdProps = {
   type: "Person",
   name: config.authorName,
-  url: `${config.baseUrl}/`,
+  url: urlJoin(config.baseUrl, "/"),
   sameAs: [
-    `${config.baseUrl}/`,
+    urlJoin(config.baseUrl, "/"),
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
@@ -130,7 +131,7 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
 export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherName" | "publisherLogo"> = {
   authorName: [config.authorName],
   publisherName: config.siteName,
-  publisherLogo: `${config.baseUrl}${meJpg.src}`,
+  publisherLogo: urlJoin(config.baseUrl, meJpg.src),
 };
 
 // Re-export icons to use their static image data elsewhere

@@ -1,4 +1,5 @@
 import { Feed } from "feed";
+import urlJoin from "url-join";
 import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
 import { RELEASE_DATE } from "../config/constants";
@@ -17,20 +18,20 @@ export const buildFeed = (
 
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
-    id: `${config.baseUrl}/`,
-    link: `${config.baseUrl}/`,
+    id: urlJoin(config.baseUrl, "/"),
+    link: urlJoin(config.baseUrl, "/"),
     title: config.siteName,
     description: config.longDescription,
     copyright: "https://creativecommons.org/licenses/by/4.0/",
     updated: new Date(RELEASE_DATE),
-    image: `${config.baseUrl}${favicons.meJpg.src}`,
+    image: urlJoin(config.baseUrl, favicons.meJpg.src),
     feedLinks: {
-      rss: `${config.baseUrl}/feed.xml`,
-      atom: `${config.baseUrl}/feed.atom`,
+      rss: urlJoin(config.baseUrl, "feed.xml"),
+      atom: urlJoin(config.baseUrl, "feed.atom"),
     },
     author: {
       name: config.authorName,
-      link: `${config.baseUrl}/`,
+      link: urlJoin(config.baseUrl, "/"),
       email: config.authorEmail,
     },
   });
@@ -43,11 +44,11 @@ export const buildFeed = (
       link: note.permalink,
       title: note.title,
       description: note.description,
-      image: note.image ? `${config.baseUrl}${note.image}` : "",
+      image: note.image ? urlJoin(config.baseUrl, note.image) : "",
       author: [
         {
           name: config.authorName,
-          link: config.baseUrl,
+          link: urlJoin(config.baseUrl, "/"),
         },
       ],
       date: new Date(note.date),

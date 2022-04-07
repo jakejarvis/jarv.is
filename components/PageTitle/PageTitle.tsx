@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import urlJoin from "url-join";
 import { styled } from "../../lib/styles/stitches.config";
 import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
@@ -24,7 +25,7 @@ export type PageTitleProps = ComponentProps<typeof Title>;
 
 const PageTitle = ({ children, ...rest }: PageTitleProps) => {
   const router = useRouter();
-  const canonical = `${baseUrl}${router.pathname}/`;
+  const canonical = urlJoin(baseUrl, router.pathname, "/");
 
   return (
     <Title {...rest}>

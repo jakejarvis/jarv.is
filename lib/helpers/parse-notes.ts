@@ -3,6 +3,7 @@ import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
+import urlJoin from "url-join";
 import { minify } from "terser";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
@@ -54,7 +55,7 @@ export const getNoteData = (slug: string): Omit<NoteType, "source"> & { content:
       // parsed markdown title:
       htmlTitle,
       slug,
-      permalink: `${baseUrl}/notes/${slug}/`,
+      permalink: urlJoin(baseUrl, "notes", slug, "/"),
       date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter
       readingMins: Math.ceil(readingTime(content).minutes),
     },
