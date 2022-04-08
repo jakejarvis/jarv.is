@@ -15,12 +15,12 @@ const clientScript = () => {
       l = document.documentElement.classList;
     l.remove("__LIST_OF_CLASSES__");
 
-    if (!p || p === "system") {
+    if (p === "light" || p === "dark") {
+      l.add(c[p]);
+    } else {
       var q = "__MEDIA_QUERY__",
         m = window.matchMedia(q);
       m.media !== q || m.matches ? l.add(c["dark"]) : l.add(c["light"]);
-    } else {
-      l.add(c[p]);
     }
   } catch (e) {}
 };

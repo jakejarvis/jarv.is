@@ -1,110 +1,77 @@
-// forked & heavily modified from pacocoursey/next-themes as of v0.0.15:
-// https://github.com/pacocoursey/next-themes/blob/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a/index.tsx
-
 import { createContext, useCallback, useEffect, useState, useRef } from "react";
+import { useLocalStorage } from "../hooks/use-local-storage";
 import { darkModeQuery, themeStorageKey } from "../lib/styles/helpers/themes";
 import type { Context, PropsWithChildren } from "react";
 
 export const ThemeContext: Context<{
-  /** Update the theme */
+  /** Update the theme manually. */
   setTheme?: (theme: string) => void;
-  /** List of all available theme names (probably "light", "dark", and "system") */
-  themes?: string[];
-  /** Active theme name ("system" if unset) */
-  theme?: string;
-  /** If the active theme is "system", this returns whether the system preference resolved to "dark" or "light". Otherwise, identical to `theme` */
+  /** The user's website theme setting ("light" or "dark", or undefined if unset). */
+  preferredTheme?: string;
+  /**
+   * If the theme setting is undefined, this returns whether the system preference resolved to "light" or "dark". If the
+   * preference is set, the value is identical to `preferredTheme`.
+   *
+   * Note to self: you probably want this.
+   */
   resolvedTheme?: string;
 }> = createContext({});
 
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
   classNames,
-  enableColorScheme,
   children,
 }: PropsWithChildren<{
-  /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
+  /** Mapping of theme name ("light", "dark") to the corresponding `<html>`'s class names. */
   classNames: {
     [themeName: string]: string;
   };
-  /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
+  /** Optionally set `color-scheme` CSS property to change browser appearance. */
   enableColorScheme?: boolean;
 }>) => {
-  // possible themes are derived from given classNames (probably "light" and "dark")
-  const themes = Object.keys(classNames);
+  // keep track of if/when the user has set their theme *here*:
+  const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey);
+  // save the end result no matter how we got there (by preference or by system):
+  const [resolvedTheme, setResolvedTheme] = useState("");
+  // TODO: remove this and do related stuff more gracefully
+  const validThemes = Object.keys(classNames);
 
-  // get the user's saved theme preference
-  const getUserTheme = (key: string, fallback?: string) => {
-    if (typeof window === "undefined") return undefined;
+  // updates the DOM and optionally saves the new theme to local storage
+  const changeTheme = useCallback(
+    (theme: string, updateStorage: boolean) => {
+      if (updateStorage) {
+        setPreferredTheme(theme);
+      }
 
-    let theme: string;
-    try {
-      theme = localStorage.getItem(key) || undefined;
-    } catch (e) {} // eslint-disable-line no-empty
-
-    return theme || fallback;
-  };
-
-  // get the user's preferred theme via their OS/browser settings
-  const getSystemTheme = (e?: MediaQueryList) => {
-    if (!e) {
-      e = window.matchMedia(darkModeQuery);
-    }
-
-    return e.matches ? "dark" : "light";
-  };
-
-  const [currentTheme, setCurrentTheme] = useState(() => getUserTheme(themeStorageKey, "system"));
-  const [resolvedTheme, setResolvedTheme] = useState(() => getUserTheme(themeStorageKey));
-
-  const changeTheme = useCallback((theme, updateStorage = true, updateDOM = true) => {
-    let name = classNames?.[theme] || theme;
-
-    if (updateStorage) {
-      try {
-        localStorage.setItem(themeStorageKey, theme);
-      } catch (e) {} // eslint-disable-line no-empty
-    }
-
-    if (theme === "system") {
-      const resolved = getSystemTheme();
-      name = classNames?.[resolved] || resolved;
-    }
-
-    if (updateDOM) {
       // remove all theme classes first to start fresh
       const all = Object.values(classNames);
       const d = document.documentElement;
       d.classList.remove(...all);
-      d.classList.add(name);
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const setTheme = useCallback(
-    (newTheme) => {
-      changeTheme(newTheme);
-      setCurrentTheme(newTheme);
+      d.classList.add(classNames[theme]);
     },
     [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
+  // memoize browser media query handler
   const handleMediaQuery = useCallback(
-    (e?) => {
-      const systemTheme = getSystemTheme(e);
+    (e?: MediaQueryList) => {
+      // get the user's preferred theme via their OS/browser settings
+      const media = e || window.matchMedia(darkModeQuery);
+      const systemTheme = media.matches ? "dark" : "light";
       setResolvedTheme(systemTheme);
-      if (currentTheme === "system") changeTheme(systemTheme, false);
+      // only actually change the theme if preference is unset (and *don't* save new theme to storage)
+      if (!preferredTheme || !validThemes.includes(preferredTheme)) changeTheme(systemTheme, false);
     },
-    [currentTheme] // eslint-disable-line react-hooks/exhaustive-deps
+    [preferredTheme] // eslint-disable-line react-hooks/exhaustive-deps
   );
-
   // ref hack to avoid adding handleMediaQuery as a dependency
   const mediaListener = useRef(handleMediaQuery);
   mediaListener.current = handleMediaQuery;
 
+  // listen for changes in OS preference
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (...args: any) => mediaListener.current(...args);
-
-    // listen to system preference
     const media = window.matchMedia(darkModeQuery);
 
     // note: intentionally using deprecated listener methods to support older iOS/browsers
@@ -114,46 +81,26 @@ export const ThemeProvider = ({
     return () => media.removeListener(handler);
   }, []);
 
-  // localStorage event handling
+  // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
   useEffect(() => {
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key !== themeStorageKey) {
-        return;
-      }
+    // only "light" and "dark" are valid here
+    const colorScheme = ["light", "dark"].includes(preferredTheme) ? preferredTheme : resolvedTheme;
 
-      // use default theme if localstorage === null (happens on local storage manual deletion)
-      const theme = e.newValue || "system";
-      setTheme(theme);
-    };
-
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // color-scheme handling
-  useEffect(() => {
-    if (!enableColorScheme) return;
-
-    const colorScheme =
-      currentTheme && themes.includes(currentTheme) // light or dark
-        ? currentTheme
-        : // preference is unset, use the OS/browser setting
-        currentTheme === "system"
-        ? resolvedTheme || null
-        : null;
-
-    // color-scheme tells browser how to render built-in elements like forms, scrollbars, etc.
-    // if color-scheme is null, this will remove the property
     document.documentElement.style.setProperty("color-scheme", colorScheme);
-  }, [currentTheme, resolvedTheme]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [preferredTheme, resolvedTheme]);
 
   return (
     <ThemeContext.Provider
       value={{
-        setTheme,
-        themes: [...themes, "system"],
-        theme: currentTheme,
-        resolvedTheme: currentTheme === "system" ? resolvedTheme : currentTheme,
+        setTheme: useCallback(
+          (theme: string) => {
+            // force save to local storage
+            changeTheme(theme, true);
+          },
+          [] // eslint-disable-line react-hooks/exhaustive-deps
+        ),
+        preferredTheme: validThemes.includes(preferredTheme) ? preferredTheme : undefined,
+        resolvedTheme: validThemes.includes(preferredTheme) ? preferredTheme : resolvedTheme,
       }}
     >
       {children}

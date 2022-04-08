@@ -16,4 +16,4 @@ export const themeColors = {
 export const darkModeQuery = "(prefers-color-scheme: dark)";
 
 // local storage key
-export const themeStorageKey = "theme";
+export const themeStorageKey = "preferred-theme";
