@@ -2,53 +2,57 @@
 // https://github.com/pacocoursey/next-themes/blob/b5c2bad50de2d61ad7b52a9c5cdc801a78507d7a/index.tsx
 
 import { createContext, useCallback, useEffect, useState, useRef } from "react";
-import { darkModeQuery, colorSchemes, themeStorageKey } from "../lib/styles/helpers/themes";
-import type { PropsWithChildren } from "react";
-import type { UseThemeProps } from "../hooks/use-theme";
+import { darkModeQuery, themeStorageKey } from "../lib/styles/helpers/themes";
+import type { Context, PropsWithChildren } from "react";
 
-export interface ThemeProviderProps {
-  /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
-  classNames: { [themeName: string]: string };
-  /** List of all available theme names */
+export const ThemeContext: Context<{
+  /** Update the theme */
+  setTheme?: (theme: string) => void;
+  /** List of all available theme names (probably "light", "dark", and "system") */
   themes?: string[];
-  /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
-  enableColorScheme?: boolean;
-}
-
-// get the user's saved theme preference
-const getUserTheme = (key: string, fallback?: string) => {
-  if (typeof window === "undefined") return undefined;
-
-  let theme: string;
-  try {
-    theme = localStorage.getItem(key) || undefined;
-  } catch (e) {} // eslint-disable-line no-empty
-
-  return theme || fallback;
-};
-
-// get the user's preferred theme via their OS/browser settings
-const getSystemTheme = (e?: MediaQueryList) => {
-  if (!e) {
-    e = window.matchMedia(darkModeQuery);
-  }
-
-  return e.matches ? "dark" : "light";
-};
-
-export const ThemeContext = createContext<UseThemeProps>({
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  setTheme: (_) => {},
-  themes: [],
-});
+  /** Active theme name ("system" if unset) */
+  theme?: string;
+  /** If the active theme is "system", this returns whether the system preference resolved to "dark" or "light". Otherwise, identical to `theme` */
+  resolvedTheme?: string;
+}> = createContext({});
 
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
   classNames,
-  themes = [...colorSchemes],
-  enableColorScheme = true,
+  enableColorScheme,
   children,
-}: PropsWithChildren<ThemeProviderProps>) => {
+}: PropsWithChildren<{
+  /** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */
+  classNames: {
+    [themeName: string]: string;
+  };
+  /** Whether to indicate to browsers which color scheme is used (dark or light) for built-in UI like inputs and buttons */
+  enableColorScheme?: boolean;
+}>) => {
+  // possible themes are derived from given classNames (probably "light" and "dark")
+  const themes = Object.keys(classNames);
+
+  // get the user's saved theme preference
+  const getUserTheme = (key: string, fallback?: string) => {
+    if (typeof window === "undefined") return undefined;
+
+    let theme: string;
+    try {
+      theme = localStorage.getItem(key) || undefined;
+    } catch (e) {} // eslint-disable-line no-empty
+
+    return theme || fallback;
+  };
+
+  // get the user's preferred theme via their OS/browser settings
+  const getSystemTheme = (e?: MediaQueryList) => {
+    if (!e) {
+      e = window.matchMedia(darkModeQuery);
+    }
+
+    return e.matches ? "dark" : "light";
+  };
+
   const [currentTheme, setCurrentTheme] = useState(() => getUserTheme(themeStorageKey, "system"));
   const [resolvedTheme, setResolvedTheme] = useState(() => getUserTheme(themeStorageKey));
 
@@ -131,7 +135,7 @@ export const ThemeProvider = ({
     if (!enableColorScheme) return;
 
     const colorScheme =
-      currentTheme && colorSchemes.includes(currentTheme) // light or dark
+      currentTheme && themes.includes(currentTheme) // light or dark
         ? currentTheme
         : // preference is unset, use the OS/browser setting
         currentTheme === "system"
@@ -146,13 +150,18 @@ export const ThemeProvider = ({
   return (
     <ThemeContext.Provider
       value={{
+        setTheme,
         themes: [...themes, "system"],
         theme: currentTheme,
         resolvedTheme: currentTheme === "system" ? resolvedTheme : currentTheme,
-        setTheme,
       }}
     >
       {children}
     </ThemeContext.Provider>
   );
 };
+
+// debugging help pls
+if (process.env.NODE_ENV !== "production") {
+  ThemeContext.displayName = "ThemeContext";
+}

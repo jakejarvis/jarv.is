@@ -12,9 +12,6 @@ export const themeColors = {
   dark: darkTheme.colors.backgroundOuter?.value,
 };
 
-// default to a simple light or dark binary option
-export const colorSchemes = ["light", "dark"];
-
 // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
 export const darkModeQuery = "(prefers-color-scheme: dark)";
 

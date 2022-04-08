@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
-import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
+import matter from "gray-matter";
 import urlJoin from "url-join";
 import { minify } from "terser";
 import { compiler } from "markdown-to-jsx";

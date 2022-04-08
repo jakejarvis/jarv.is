@@ -57,7 +57,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
-    <ThemeProvider classNames={themeClassNames}>
+    <ThemeProvider classNames={themeClassNames} enableColorScheme={true}>
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}

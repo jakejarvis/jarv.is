@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import NextLink from "next/link";
-import urlJoin from "url-join";
 import { styled } from "../../lib/styles/stitches.config";
-import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
 
 const Title = styled("h1", {
@@ -25,11 +23,10 @@ export type PageTitleProps = ComponentProps<typeof Title>;
 
 const PageTitle = ({ children, ...rest }: PageTitleProps) => {
   const router = useRouter();
-  const canonical = urlJoin(baseUrl, router.pathname, "/");
 
   return (
     <Title {...rest}>
-      <NextLink href={canonical} passHref={true}>
+      <NextLink href={router.pathname} passHref={true}>
         <Link>{children}</Link>
       </NextLink>
     </Title>
