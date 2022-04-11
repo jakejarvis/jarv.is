@@ -1,39 +1,41 @@
+import Code from "../Code";
 import CopyButton from "../CopyButton";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
-const Code = styled("code", {
-  fontSize: "0.925em",
+const Block = styled("div", {
+  position: "relative",
+  width: "100%",
+  margin: "1em auto",
   color: "$codeText",
-  pageBreakInside: "avoid",
-  backgroundColor: "$codeBackground",
-  border: "1px solid $kindaLight",
-  borderRadius: "$rounded",
 
-  // light-dark theme switch fading
-  transition: "background 0.25s ease, border 0.25s ease",
+  [`& ${Code}`]: {
+    display: "block",
+    overflowX: "auto",
+    padding: "1em",
+    tabSize: 2,
+
+    // optional line numbers added at time of prism compilation
+    ".line-number::before": {
+      display: "inline-block",
+      width: "1.5em",
+      marginRight: "1.5em",
+      textAlign: "right",
+      color: "$codeComment",
+      content: "attr(line)", // added as spans by prism
+      userSelect: "none",
+    },
+
+    // leave room for clipboard button to the right of the first line
+    ".code-line:first-of-type": {
+      marginRight: "3em",
+    },
+  },
 
   variants: {
-    // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
-    showLineNumbers: {
-      true: {
-        ".line-number::before": {
-          display: "inline-block",
-          width: "1.5em",
-          marginRight: "1.5em",
-          textAlign: "right",
-          color: "$codeComment",
-          content: "attr(line)", // added to spans by prism
-          userSelect: "none",
-        },
-        // leave room for clipboard button to the right of the first line
-        ".code-line:first-of-type": {
-          marginRight: "3em",
-        },
-      },
-    },
     highlight: {
       true: {
+        // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
         ".token": {
           "&.comment, &.prolog, &.cdata": {
             color: "$codeComment",
@@ -69,27 +71,6 @@ const Code = styled("code", {
       },
     },
   },
-
-  defaultVariants: {
-    showLineNumbers: true,
-  },
-});
-
-const InlineCode = styled(Code, {
-  padding: "0.2em 0.3em",
-});
-
-const Block = styled("div", {
-  position: "relative",
-  width: "100%",
-  margin: "1em auto",
-
-  [`& ${Code}`]: {
-    display: "block",
-    overflowX: "auto",
-    padding: "1em",
-    tabSize: 2,
-  },
 });
 
 const CornerCopyButton = styled(CopyButton, {
@@ -107,32 +88,16 @@ const CornerCopyButton = styled(CopyButton, {
 });
 
 export type CodeBlockProps = ComponentProps<typeof Code> & {
-  forceBlock?: boolean;
+  highlight?: boolean;
 };
 
-const CodeBlock = ({ forceBlock, className, children, ...rest }: CodeBlockProps) => {
-  // detect if this input has already been touched by prism.js via rehype
-  const prismEnabled = className?.split(" ").includes("code-highlight");
-
-  if (prismEnabled || forceBlock) {
-    // full multi-line code blocks with copy-to-clipboard button
-    // automatic if highlighted by prism, otherwise can be forced (rather than inlined) with `forceBlock={true}`
-    return (
-      <Block>
-        <CornerCopyButton source={children} />
-        <Code highlight={prismEnabled} className={className?.replace("code-highlight", "").trim()} {...rest}>
-          {children}
-        </Code>
-      </Block>
-    );
-  } else {
-    // inline code in paragraphs, headings, etc. (not highlighted)
-    return (
-      <InlineCode className={className} {...rest}>
-        {children}
-      </InlineCode>
-    );
-  }
-};
+const CodeBlock = ({ highlight, className, children, ...rest }: CodeBlockProps) => (
+  <Block highlight={highlight}>
+    <CornerCopyButton source={children} />
+    <Code className={className?.replace("code-highlight", "").trim()} {...rest}>
+      {children}
+    </Code>
+  </Block>
+);
 
 export default CodeBlock;
