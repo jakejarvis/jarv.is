@@ -1,8 +1,8 @@
 import Link from "next/link";
+import Time from "../Time";
 import HitCounter from "../HitCounter";
 import NoteTitle from "../NoteTitle";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
-import { formatDateTZ } from "../../lib/helpers/format-date";
 import { styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { NoteType } from "../../types";
@@ -68,11 +68,11 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
           }}
           passHref={true}
         >
-          <MetaLink title={formatDateTZ(date)}>
+          <MetaLink>
             <span>
               <Icon as={DateIcon} />
             </span>
-            <span>{formatDateTZ(date, "MMMM d, yyyy")}</span>
+            <Time date={date} format="MMMM d, yyyy" />
           </MetaLink>
         </Link>
       </MetaItem>

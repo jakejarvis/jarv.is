@@ -1,5 +1,5 @@
 import Link from "../Link";
-import { formatDateTZ } from "../../lib/helpers/format-date";
+import Time from "../Time";
 import { styled } from "../../lib/styles/stitches.config";
 import type { NoteType } from "../../types";
 
@@ -47,7 +47,7 @@ const Post = styled("li", {
   },
 });
 
-const PostDate = styled("span", {
+const PostDate = styled(Time, {
   width: "5.25em",
   flexShrink: 0,
   color: "$medium",
@@ -67,7 +67,7 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
         <List>
           {notes.map(({ slug, date, htmlTitle }) => (
             <Post key={slug}>
-              <PostDate title={formatDateTZ(date)}>{formatDateTZ(date, "MMM d")}</PostDate>
+              <PostDate date={date} format="MMM d" />
               <span>
                 <Link
                   href={{

@@ -1,7 +1,6 @@
 import Link from "../Link";
+import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
-import { useHasMounted } from "../../hooks/use-has-mounted";
-import { formatDateTZ, formatTimeAgo } from "../../lib/helpers/format-date";
 import { styled } from "../../lib/styles/stitches.config";
 import { siteLocale } from "../../lib/config";
 import type { RepositoryType } from "../../types";
@@ -83,8 +82,6 @@ const RepositoryCard = ({
   updatedAt,
   className,
 }: RepositoryCardProps) => {
-  const hasMounted = useHasMounted();
-
   return (
     <Wrapper className={className}>
       <Name href={url}>{name}</Name>
@@ -128,8 +125,8 @@ const RepositoryCard = ({
         )}
 
         {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
-        <MetaItem title={formatDateTZ(updatedAt)}>
-          <span>Updated {hasMounted ? formatTimeAgo(updatedAt) : `on ${formatDateTZ(updatedAt, "PP")}`}</span>
+        <MetaItem>
+          <RelativeTime date={updatedAt} />
         </MetaItem>
       </Meta>
     </Wrapper>

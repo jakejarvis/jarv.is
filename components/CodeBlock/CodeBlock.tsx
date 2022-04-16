@@ -23,6 +23,7 @@ const Block = styled("div", {
       textAlign: "right",
       color: "$codeComment",
       content: "attr(line)", // added as spans by prism
+      fontVariantNumeric: "tabular-nums",
       userSelect: "none",
     },
 
