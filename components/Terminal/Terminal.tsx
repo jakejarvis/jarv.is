@@ -1,6 +1,5 @@
-import { forwardRef } from "react";
 import { keyframes, styled } from "../../lib/styles/stitches.config";
-import type { Ref, ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 const BlackBox = styled("div", {
   width: "100%",
@@ -25,7 +24,7 @@ const Underscore = styled("span", {
   display: "inline-block",
   verticalAlign: "text-bottom",
   width: "10px",
-  margin: "0 4px",
+  marginLeft: "6px",
   borderBottom: "2px solid #cccccc",
 
   // blink every second for 0.4s
@@ -35,12 +34,13 @@ const Underscore = styled("span", {
 export type TerminalProps = ComponentProps<typeof BlackBox>;
 
 // a DOS-style terminal box with dynamic text
-const Terminal = forwardRef(function Terminal({ ...rest }: TerminalProps, ref: Ref<HTMLPreElement>) {
+const Terminal = ({ children: message, ...rest }: TerminalProps) => {
   return (
     <BlackBox {...rest}>
-      <Monospace ref={ref} /> <Underscore />
+      {message && <Monospace>{message}</Monospace>}
+      <Underscore />
     </BlackBox>
   );
-});
+};
 
 export default Terminal;

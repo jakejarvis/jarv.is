@@ -47,36 +47,21 @@ const VNC = ({ server }: VNCProps) => {
 
   // we definitely do NOT want this page to connect more than once!
   const [loaded, setLoaded] = useState(false);
-
-  // DOS-style box for text
-  const terminalRef = useRef<HTMLPreElement>(null);
+  // keep track of current status of the connection
+  const [connected, setConnected] = useState(false);
+  // makes the console reappear with the given message if there's an error loading, or if the VM has gone poof for
+  // whatever reason (doesn't really matter).
+  const [message, setMessage] = useState({ message: "", anyKey: false });
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
   const rfbRef = useRef(null);
   const screenRef = useRef<HTMLDivElement>(null);
 
-  // makes the console reappear with the given message if there's an error loading, or if the VM has gone poof for
-  // whatever reason (doesn't really matter).
-  const showTerminalMessage = ({ message, anyKey = false }) => {
-    try {
-      screenRef.current.style.display = "none";
-      terminalRef.current.parentElement.style.display = null;
-      terminalRef.current.textContent = `${message}${
-        anyKey ? "\n\nPress the Any key or refresh the page to continue." : ""
-      }`;
-    } catch (error) {} // eslint-disable-line no-empty
-  };
-
-  // hides the console and show the screen when VM connects
-  const showScreen = () => {
-    terminalRef.current.parentElement.style.display = "none";
-    screenRef.current.style.display = null;
-  };
-
   // ends the session forcefully
   const disconnectVM = () => {
     try {
       rfbRef.current.disconnect();
+      setConnected(false);
     } catch (error) {} // eslint-disable-line no-empty
   };
 
@@ -96,12 +81,12 @@ const VNC = ({ server }: VNCProps) => {
       return;
     } else {
       // show loading indicator and continue
-      showTerminalMessage({ message: "Spinning up your very own personal computer, please wait!" });
+      setMessage({ message: "Spinning up your very own personal computer, please wait!", anyKey: false });
     }
 
     if (!window.WebSocket) {
       // browser doesn't support websockets
-      showTerminalMessage({ message: "WebSockets must be enabled to begin!", anyKey: true });
+      setMessage({ message: "WebSockets must be enabled to begin!", anyKey: true });
       return;
     }
 
@@ -118,8 +103,7 @@ const VNC = ({ server }: VNCProps) => {
       console.log("successfully connected to VM socket!");
 
       // finally hide the terminal and show the VNC canvas
-      showScreen();
-
+      setConnected(true);
       // this is the one and only time we're spinning up a VM (hopefully)
       setLoaded(true);
     });
@@ -128,19 +112,22 @@ const VNC = ({ server }: VNCProps) => {
     rfbRef.current.addEventListener("disconnect", (detail: unknown) => {
       console.warn("VM ended session remotely:", detail);
 
-      showTerminalMessage({
-        message: "Oh dear, it looks like something's gone very wrong. Sorry about that.",
-        anyKey: true,
-      });
+      // hide the display and show the terminal
+      setConnected(false);
+      // apologize :(
+      setMessage({ message: "Oh dear, it looks like something's gone very wrong. Sorry about that.", anyKey: true });
     });
   }, [loaded, server]);
 
   return (
     <>
-      <DOS ref={terminalRef} />
+      <DOS style={{ display: connected ? "none" : undefined }}>
+        {message.message}
+        {message.anyKey && "\n\nPress the Any key (refresh the page) to continue."}
+      </DOS>
 
       {/* the VNC canvas is hidden until we've successfully connected to the socket */}
-      <Display ref={screenRef} style={{ display: "none" }} />
+      <Display ref={screenRef} style={{ display: !connected ? "none" : undefined }} />
     </>
   );
 };
