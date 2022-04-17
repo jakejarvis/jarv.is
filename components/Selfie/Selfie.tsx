@@ -10,13 +10,13 @@ const Image = styled(NextImage, {
   display: "block",
   width: "50px",
   height: "50px",
-  border: "1px solid $light !important",
+  border: "1px solid $light",
   borderRadius: "50%",
 
   "@medium": {
     width: "70px",
     height: "70px",
-    borderWidth: "2px !important",
+    borderWidth: "2px",
   },
 });
 
@@ -31,7 +31,7 @@ const Link = styled("a", {
 
     "@medium": {
       [`${Image}`]: {
-        borderColor: "$linkUnderline !important",
+        borderColor: "$linkUnderline",
       },
     },
   },

@@ -20,7 +20,7 @@ const clientScript = () => {
     } else {
       var q = "__MEDIA_QUERY__",
         m = window.matchMedia(q);
-      m.media !== q || m.matches ? l.add(c["dark"]) : l.add(c["light"]);
+      l.add(c[m.media !== q || m.matches ? "dark" : "light"]);
     }
   } catch (e) {}
 };

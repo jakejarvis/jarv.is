@@ -1057,12 +1057,12 @@
   resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.5.tgz#cf80fc625d4fabe82ecb3661be19026e46c674cf"
   integrity sha512-krIslwmFMjDHtbSVKZLC6+PM6dOvw26OTm7rE7CrniJ4q5Lbfffx67RAlDI3ee0LsG6gIJd/JXBeUm+RgUsPqg==
 
-"@giscus/react@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.0.2.tgz#378371adb8fe0ca15115ab14ff59756f65c4f7b6"
-  integrity sha512-FWzfRKoVRWsQutS0lzb0iYtF5Wzbsqwmzi35dCi+k34R60ZcE30FagjwW0wu7BzQnug9WLIceK9htxHjjA2m7A==
+"@giscus/react@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.0.3.tgz#d80fb9a5a0c9d5a6364ba6711277ae64d9e4cbe2"
+  integrity sha512-ynywOgvvlPn7zmWXDWAPr3jqfYC43vwK1g5P8qr528GjyWKXVyxBLJIve/mBrl+aCpZurcaExtsoJ2z6gq+Xgg==
   dependencies:
-    giscus "^1.0.2"
+    giscus "^1.0.3"
 
 "@hcaptcha/react-hcaptcha@^1.1.1":
   version "1.1.1"
@@ -3139,12 +3139,12 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-giscus@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/giscus/-/giscus-1.0.2.tgz#ecf09cc9dc426406e1a445bee742098c0698680c"
-  integrity sha512-KJv8ZP3TB6C2zEXQsjfGMsVgJIqJgYgr8QuhvtbZ22v5X7Ic+XxstZuTvfO++08otutzT2JiYfv+yw4ADgjjRQ==
+giscus@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/giscus/-/giscus-1.0.3.tgz#7f6895325c197f9f1a8ff469f09729a2786564ba"
+  integrity sha512-SaytuVitbLN3f8VaVeClhRvZ8XEIvjy5H4sHfaQne0yb5oKy990F12cNQtgGcTjgC8NZcJdv2bDunqQGY6sr8g==
   dependencies:
-    lit "^2.2.1"
+    lit "^2.2.2"
 
 github-slugger@^1.1.1:
   version "1.4.0"
@@ -3808,7 +3808,7 @@ lit-html@^2.2.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.2.1:
+lit@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.2.2.tgz#b7f729d6ca7e17efbf2bf589df2d5eb04d9620ba"
   integrity sha512-eN3+2QRHn/erxYB88AXiiRgQA6RltE9MhzySCwX+ACOxA/MLWN3VdXvcbZD9PN09zmUwlgzDvW3T84YWj2Sa0A==
@@ -4945,10 +4945,10 @@ prettier@^2.6.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
   integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
 
-prismjs@~1.27.0:
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
-  integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
+prismjs@~1.28.0:
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.28.0.tgz#0d8f561fa0f7cf6ebca901747828b149147044b6"
+  integrity sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==
 
 prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
@@ -5067,15 +5067,15 @@ reading-time@^1.5.0:
   integrity sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==
 
 refractor@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/refractor/-/refractor-4.5.0.tgz#1568fc3a5d6e0c5e4b76caafba7afde0b747fd15"
-  integrity sha512-cN0XFpjsjAefSRddH6/Ov0k5NrJozG2O5cvSnuLy3j9FDbknf0HswfQq4C9rOrIkFfLcdtZ9cEpm7TOKe+YDjw==
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/refractor/-/refractor-4.6.0.tgz#79bc990305df36b1ccda99c9aa9ede29f7f975d1"
+  integrity sha512-+Px4DX1LmTUzuARW0zqjYLrsCd1/jtKIo4hLH0R7Hwod8joieyQrqf8wXx0wPt81k9+OVYusktapwBhk/CjvVw==
   dependencies:
     "@types/hast" "^2.0.0"
     "@types/prismjs" "^1.0.0"
     hastscript "^7.0.0"
     parse-entities "^4.0.0"
-    prismjs "~1.27.0"
+    prismjs "~1.28.0"
 
 regenerate-unicode-properties@^10.0.1:
   version "10.0.1"
@@ -5445,10 +5445,10 @@ simple-git-hooks@^2.7.0:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.7.0.tgz#121a5c3023663b8abcc5648c8bfe8619dc263705"
   integrity sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==
 
-simple-icons@^6.18.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.18.0.tgz#e36992353b800dcfd25f597cee2c95af3ecf4084"
-  integrity sha512-79Wf1RK7ir1FOu2lofayWDgrlR9sIhc0UXWQ/gZ6wtTW/fGtgFslcsFULL2l0c+WPW8lA1vM4HOWY/9VI5YMNw==
+simple-icons@^6.19.0:
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.19.0.tgz#98ed8cbb2649625813721a5c9a8eb0bcafd304e4"
+  integrity sha512-HI7X+Ibu9FbphEJZzkOGu820Mp9JhUEAGf3qjooQkBXSgASt3HCJlhVsKxLzPAaXiSSMWupsf+rB2DwFQbRrKg==
 
 sirv@^1.0.7:
   version "1.0.19"

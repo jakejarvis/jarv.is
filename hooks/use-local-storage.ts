@@ -6,7 +6,7 @@ export const useLocalStorage = (key: string, allowNull = false) => {
     let currentValue: any;
     try {
       currentValue = window.localStorage.getItem(key);
-    } catch (e) {} // eslint-disable-line no-empty
+    } catch (error) {} // eslint-disable-line no-empty
 
     return currentValue;
   });
