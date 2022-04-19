@@ -11,25 +11,20 @@ const Wrapper = styled("header", {
   borderBottom: "1px solid $kindaLight",
   backgroundColor: "$backgroundHeader",
 
+  // stick to the top of the page when scrolling
+  position: "sticky",
+  top: 0,
+
+  // blurry glass-like background effect (except on firefox...?)
+  backdropFilter: "saturate(180%) blur(5px)",
+  zIndex: 9999,
+
   // light-dark theme switch fading
   transition: "background 0.25s ease, border 0.25s ease",
 
   "@medium": {
     padding: "0.75em 1.25em",
     height: "5.9em",
-  },
-
-  variants: {
-    sticky: {
-      true: {
-        position: "sticky",
-        top: 0,
-
-        // blurry glass-like background effect (except on firefox)
-        backdropFilter: "saturate(180%) blur(5px)",
-        zIndex: 9999,
-      },
-    },
   },
 });
 
@@ -52,12 +47,10 @@ const ResponsiveMenu = styled(Menu, {
   },
 });
 
-export type HeaderProps = ComponentProps<typeof Wrapper> & {
-  sticky?: boolean;
-};
+export type HeaderProps = ComponentProps<typeof Wrapper>;
 
-const Header = ({ sticky, ...rest }: HeaderProps) => (
-  <Wrapper sticky={sticky} {...rest}>
+const Header = ({ ...rest }: HeaderProps) => (
+  <Wrapper {...rest}>
     <Nav>
       <Selfie />
       <ResponsiveMenu />

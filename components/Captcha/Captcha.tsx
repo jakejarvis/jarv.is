@@ -1,5 +1,4 @@
 import { memo } from "react";
-import Head from "next/head";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useHasMounted } from "../../hooks/use-has-mounted";
 import { useTheme } from "../../hooks/use-theme";
@@ -26,25 +25,18 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
   const { resolvedTheme } = useTheme();
 
   return (
-    <>
-      <Head>
-        <link rel="preconnect" href="https://js.hcaptcha.com" />
-        <link rel="preconnect" href="https://newassets.hcaptcha.com" />
-      </Head>
-
-      <div className={className}>
-        {hasMounted && (
-          <HCaptcha
-            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
-            reCaptchaCompat={false}
-            tabIndex={0}
-            size={size}
-            theme={theme || (resolvedTheme === "dark" ? "dark" : "light")}
-            {...rest}
-          />
-        )}
-      </div>
-    </>
+    <div className={className}>
+      {hasMounted && (
+        <HCaptcha
+          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+          reCaptchaCompat={false}
+          tabIndex={0}
+          size={size}
+          theme={theme || (resolvedTheme === "dark" ? "dark" : "light")}
+          {...rest}
+        />
+      )}
+    </div>
   );
 };
 

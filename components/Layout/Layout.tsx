@@ -28,12 +28,9 @@ const FlexedFooter = styled(Footer, {
   flex: 1,
 });
 
-export type LayoutProps = ComponentProps<typeof Flex> & {
-  container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
-  stickyHeader?: boolean; // pass false to override default stickiness of header when scrolling
-};
+export type LayoutProps = ComponentProps<typeof Flex>;
 
-const Layout = ({ container = true, stickyHeader = true, children, ...rest }: LayoutProps) => {
+const Layout = ({ children, ...rest }: LayoutProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -44,16 +41,11 @@ const Layout = ({ container = true, stickyHeader = true, children, ...rest }: La
       </Head>
 
       <Flex {...rest}>
-        <Header sticky={stickyHeader} />
+        <Header />
 
-        {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
-        {container ? (
-          <Default>
-            <Container>{children}</Container>
-          </Default>
-        ) : (
-          <>{children}</>
-        )}
+        <Default>
+          <Container>{children}</Container>
+        </Default>
 
         <FlexedFooter />
       </Flex>

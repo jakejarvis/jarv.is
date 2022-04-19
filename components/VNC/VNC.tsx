@@ -73,7 +73,7 @@ const VNC = ({ server }: VNCProps) => {
       // unassign event listener
       router.events.off("routeChangeStart", disconnectVM);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [router.events]);
 
   useEffect(() => {
     if (loaded) {
