@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import ThemeScript from "../components/ThemeScript/ThemeScript";
-import { getCssText, fonts } from "../lib/styles/stitches.config";
+import { getCssText, preloadUrls } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 
 // https://nextjs.org/docs/advanced-features/custom-document
@@ -12,7 +12,7 @@ const Document = () => {
         <ThemeScript />
 
         {/* preload highest priority fonts defined in ../lib/styles/fonts/ */}
-        {fonts.preloadUrls.map((relativeUrl, index) => (
+        {preloadUrls.map((relativeUrl, index) => (
           <link
             key={`font-${index}`}
             rel="preload"

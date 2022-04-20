@@ -1,4 +1,4 @@
-import { theme, darkTheme } from "../stitches.config";
+import { theme, darkTheme } from "../styles/stitches.config";
 
 // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
 export const themeClassNames = {

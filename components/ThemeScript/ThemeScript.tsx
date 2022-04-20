@@ -1,4 +1,4 @@
-import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/styles/helpers/themes";
+import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/config/themes";
 
 // comments are up here to avoid having them inside the actual client output:
 //  - `p` is the user's saved preference

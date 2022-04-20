@@ -3,7 +3,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
-import { themeColors } from "../../lib/styles/helpers/themes";
+import { themeColors } from "../../lib/config/themes";
 import type { ComponentProps } from "react";
 
 const Flex = styled("div", {

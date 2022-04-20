@@ -7,7 +7,7 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
-import { themeClassNames } from "../lib/styles/helpers/themes";
+import { themeClassNames } from "../lib/config/themes";
 import { globalStyles } from "../lib/styles/stitches.config";
 import type { AppProps as NextAppProps } from "next/app";
 

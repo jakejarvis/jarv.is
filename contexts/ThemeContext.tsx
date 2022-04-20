@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, useRef } from "react";
 import { useLocalStorage } from "../hooks/use-local-storage";
-import { darkModeQuery, themeStorageKey } from "../lib/styles/helpers/themes";
+import { darkModeQuery, themeStorageKey } from "../lib/config/themes";
 import type { Context, PropsWithChildren } from "react";
 
 export const ThemeContext: Context<{

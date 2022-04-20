@@ -4,11 +4,11 @@ import { createStitches, defaultThemeMap } from "@stitches/react";
 // https://github.com/jakejarvis/stitches-normalize/blob/main/src/index.ts
 import normalizeCss from "stitches-normalize";
 
-// web fonts
-import { Inter, RobotoMono, ComicNeue } from "./helpers/typography";
-
 // misc. helpers
-import hex2rgba from "./helpers/hex-to-rgba";
+import hexToRgba from "hex-to-rgba";
+
+// web fonts
+import { Inter, RobotoMono, ComicNeue } from "./fonts";
 
 export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme } = createStitches({
   theme: {
@@ -71,7 +71,7 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
   utils: {
     setUnderlineVar: ({ color, alpha = 0.4 }) => ({
       // allow both pre-set rgba stitches variables and hex values
-      $$underline: color.startsWith("#") ? hex2rgba(color, alpha) : color,
+      $$underline: color.startsWith("#") ? hexToRgba(color, alpha) : color,
     }),
   },
 
@@ -160,5 +160,5 @@ export const globalStyles = globalCss(
   }
 );
 
-// re-export all font data so we can do things like preloading them in pages/_document.tsx
-export * as fonts from "./helpers/typography";
+// re-export hashed URLs of the most important variable fonts so we can preload them in pages/_document.tsx
+export const preloadUrls = [...Inter.preloadUrls, ...RobotoMono.preloadUrls];
