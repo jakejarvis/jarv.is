@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
 import urlJoin from "url-join";
-import { minify } from "terser";
+import { minify } from "uglify-js";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
@@ -18,7 +18,6 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
-import type { MinifyOptions } from "terser";
 import type { NoteType } from "../../types";
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
@@ -77,21 +76,16 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 
   // HACK: next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
   // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
-  // ...so for now, let's do it manually (and conservatively) with terser when building for production.
-  const terserOptions: MinifyOptions = {
-    ecma: 2018,
-    module: true,
-    parse: {
-      bare_returns: true,
-    },
-    compress: {
-      defaults: true,
-    },
-    sourceMap: false,
-  };
+  // ...so for now, let's do it manually (and conservatively) with uglify-js when building for production.
   const compiledSource =
     process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-      ? (await minify(source.compiledSource, terserOptions)).code
+      ? minify(source.compiledSource, {
+          parse: {
+            bare_returns: true,
+          },
+          sourceMap: false,
+          toplevel: true,
+        }).code
       : source.compiledSource;
 
   return {
