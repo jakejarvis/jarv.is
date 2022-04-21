@@ -24,7 +24,7 @@ module.exports = (phase, { defaultConfig }) => {
     productionBrowserSourceMaps: true,
     env: {
       // freeze build timestamp for when serverless pages need a "last updated" date:
-      RELEASE_DATE: new Date().toISOString(),
+      NEXT_PUBLIC_RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
       IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER,
     },

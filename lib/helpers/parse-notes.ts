@@ -9,6 +9,7 @@ import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
 import readingTime from "reading-time";
+import { formatDateISO } from "./format-date";
 import { baseUrl } from "../config";
 import { NOTES_DIR } from "../config/constants";
 
@@ -56,7 +57,7 @@ export const getNoteData = (slug: string): Omit<NoteType, "source"> & { content:
       htmlTitle,
       slug,
       permalink: urlJoin(baseUrl, "notes", slug, "/"),
-      date: new Date(data.date).toISOString(), // validate/normalize the date string provided from front matter
+      date: formatDateISO(data.date), // validate/normalize the date string provided from front matter
       readingMins: Math.ceil(readingTime(content).minutes),
     },
     content,
