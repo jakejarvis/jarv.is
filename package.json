@@ -91,7 +91,7 @@
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-mdx": "~1.17.0",
     "eslint-plugin-prettier": "~4.0.0",
-    "lint-staged": "^12.3.8",
+    "lint-staged": "^12.4.0",
     "prettier": "^2.6.2",
     "simple-git-hooks": "^2.7.0",
     "terser": "^5.12.1",
