@@ -7,6 +7,7 @@ import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import Figure from "../components/Figure";
 import IFrame from "../components/IFrame";
+import Code from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
@@ -58,7 +59,7 @@ main > div > div strong {
   font-weight: 900;
 }
 main > div > div code {
-  font-size: 0.85em;
+  font-size: 0.85em !important;
   font-weight: 400;
 }
 main > div > div figure:last-of-type {
@@ -119,9 +120,9 @@ iframe {
 
       <p>
         🚨 <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
-        <code>
+        <Code>
           color: <span style={{ color: "#32cd32" }}>limegreen</span>
-        </code>
+        </Code>
         ...{" "}
         <Link href="/y2k/" prefetch={false}>
           Click for the{" "}

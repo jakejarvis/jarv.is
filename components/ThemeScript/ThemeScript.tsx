@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { minify } from "uglify-js";
 import { clientScript } from "./script";
 import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/config/themes";
@@ -41,4 +42,4 @@ const ThemeScript = () => {
   );
 };
 
-export default ThemeScript;
+export default memo(ThemeScript);

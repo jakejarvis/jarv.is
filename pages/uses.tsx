@@ -3,6 +3,7 @@ import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import Image from "../components/Image";
+import Code from "../components/CodeInline";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
 
@@ -137,7 +138,7 @@ const Uses = () => (
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/aliases.zsh">ZSH aliases</Link> and{" "}
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/functions.zsh">functions</Link> are in{" "}
               <Link href="https://github.com/jakejarvis/dotfiles">
-                my <code>.dotfiles</code> repository.
+                my <Code>.dotfiles</Code> repository.
               </Link>
             </ListItem>
             <ListItem>
@@ -257,7 +258,7 @@ const Uses = () => (
           <UnorderedList>
             <ListItem>
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/Brewfile">
-                View my messy <code>Brewfile</code> dump
+                View my messy <Code>Brewfile</Code> dump
               </Link>{" "}
               with all of my installed packages.
             </ListItem>
@@ -377,7 +378,7 @@ const Uses = () => (
           <UnorderedList>
             <ListItem>
               <Link href="https://github.com/jakejarvis/dotfiles/blob/main/firefox/user.js">
-                My default <code>user.js</code> settings.
+                My default <Code>user.js</Code> settings.
               </Link>
             </ListItem>
             <ListItem>

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useState, useRef } from "react";
-import { useLocalStorage } from "../hooks/use-local-storage";
+import { useLocalStorage } from "react-use";
 import { darkModeQuery, themeStorageKey } from "../lib/config/themes";
 import type { Context, PropsWithChildren } from "react";
 
@@ -30,7 +30,7 @@ export const ThemeProvider = ({
   enableColorScheme?: boolean;
 }>) => {
   // keep track of if/when the user has set their theme *here*:
-  const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey);
+  const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey, null, { raw: true });
   // save the end result no matter how we got there (by preference or by system):
   const [resolvedTheme, setResolvedTheme] = useState("");
   // TODO: remove this and do related stuff more gracefully
@@ -49,7 +49,7 @@ export const ThemeProvider = ({
       d.classList.remove(...all);
       d.classList.add(classNames[theme]);
     },
-    [] // eslint-disable-line react-hooks/exhaustive-deps
+    [classNames, setPreferredTheme]
   );
 
   // memoize browser media query handler
@@ -62,7 +62,7 @@ export const ThemeProvider = ({
       // only actually change the theme if preference is unset (and *don't* save new theme to storage)
       if (!preferredTheme || !validThemes.includes(preferredTheme)) changeTheme(systemTheme, false);
     },
-    [preferredTheme] // eslint-disable-line react-hooks/exhaustive-deps
+    [changeTheme, preferredTheme, validThemes]
   );
   // ref hack to avoid adding handleMediaQuery as a dependency
   const mediaListener = useRef(handleMediaQuery);
@@ -97,7 +97,7 @@ export const ThemeProvider = ({
             // force save to local storage
             changeTheme(theme, true);
           },
-          [] // eslint-disable-line react-hooks/exhaustive-deps
+          [changeTheme]
         ),
         preferredTheme: validThemes.includes(preferredTheme) ? preferredTheme : undefined,
         resolvedTheme: validThemes.includes(preferredTheme) ? preferredTheme : resolvedTheme,

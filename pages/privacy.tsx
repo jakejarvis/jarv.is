@@ -5,6 +5,7 @@ import Link from "../components/Link";
 import Image from "../components/Image";
 import IFrame from "../components/IFrame";
 import Blockquote from "../components/Blockquote";
+import Code from "../components/CodeInline";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
 
@@ -52,7 +53,7 @@ const Privacy = () => (
 
       <p>
         A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
-        <code>hits = hits + 1</code>) in a <Link href="https://fauna.com/">Fauna</Link> database. Individual views and
+        <Code>hits = hits + 1</Code>) in a <Link href="https://fauna.com/">Fauna</Link> database. Individual views and
         identifying (or non-identifying) details are <strong>never stored or logged</strong>.
       </p>
 

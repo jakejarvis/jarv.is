@@ -64,7 +64,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const validateCaptcha = async (formResponse) => {
+const validateCaptcha = async (formResponse: unknown) => {
   const response = await fetch(HCAPTCHA_API_ENDPOINT, {
     method: "POST",
     headers: {
@@ -80,10 +80,10 @@ const validateCaptcha = async (formResponse) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: any = await response.json();
 
-  return result.success;
+  return result.success as boolean;
 };
 
-const sendToAirtable = async (data) => {
+const sendToAirtable = async (data: unknown) => {
   const response = await fetch(`${AIRTABLE_API_ENDPOINT}${AIRTABLE_BASE}/Messages`, {
     method: "POST",
     headers: {

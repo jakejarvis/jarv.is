@@ -80,11 +80,10 @@ export const getNote = async (slug: string): Promise<NoteType> => {
   const compiledSource =
     process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
       ? minify(source.compiledSource, {
+          toplevel: true,
           parse: {
             bare_returns: true,
           },
-          sourceMap: false,
-          toplevel: true,
         }).code
       : source.compiledSource;
 
