@@ -134,26 +134,21 @@ const Index = () => (
 
     <Paragraph>
       I specialize in{" "}
-      <ColorfulLink
-        href="https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/"
-        title='"The Brutal Lifecycle of JavaScript Frameworks" by Ian Allen'
-        lightColor="#1091b3"
-        darkColor="#6fcbe3"
-      >
-        modern JS frameworks
+      <ColorfulLink href="https://reactjs.org/" title="React Official Website" lightColor="#1091b3" darkColor="#6fcbe3">
+        React
       </ColorfulLink>{" "}
       and{" "}
       <ColorfulLink
-        href="http://vanilla-js.com/"
-        title="The best JS framework in the world by Eric Wastl"
+        href="https://timkadlec.com/remembers/2020-04-21-the-cost-of-javascript-frameworks/"
+        title='"The Cost of Javascript Frameworks" by Tim Kadlec'
         lightColor="#f48024"
         darkColor="#e18431"
       >
         vanilla JavaScript
       </ColorfulLink>{" "}
       to make nifty{" "}
-      <ColorfulLink href="https://jamstack.wtf/" title="WTF is JAMstack?" lightColor="#04a699" darkColor="#08bbac">
-        JAMstack sites
+      <ColorfulLink href="https://jamstack.wtf/" title="WTF is Jamstack?" lightColor="#04a699" darkColor="#08bbac">
+        Jamstack sites
       </ColorfulLink>{" "}
       with dynamic{" "}
       <ColorfulLink
@@ -164,36 +159,23 @@ const Index = () => (
       >
         Node.js
       </ColorfulLink>{" "}
-      services. But I'm fluent in non-buzzwords like{" "}
+      services. But I still know my way around less buzzwordy stacks like{" "}
       <ColorfulLink
-        href="https://stitcher.io/blog/php-in-2020"
-        title='"PHP in 2020" by Brent Roose'
+        href="https://www.jetbrains.com/lp/php-25/"
+        title="25 Years of PHP History"
         lightColor="#8892bf"
         darkColor="#a4afe3"
       >
-        PHP
+        LAMP
       </ColorfulLink>
-      ,{" "}
-      <ColorfulLink
-        href="https://www.ruby-lang.org/en/"
-        title="Ruby Official Website"
-        lightColor="#d34135"
-        darkColor="#f95a4d"
-      >
-        Ruby
-      </ColorfulLink>
-      , and{" "}
-      <ColorfulLink href="https://golang.org/" title="Golang Official Website" lightColor="#00acd7" darkColor="#2ad1fb">
-        Go
-      </ColorfulLink>{" "}
-      too.
+      , too.
     </Paragraph>
 
     <Paragraph>
       Whenever possible, I also apply my experience in{" "}
       <ColorfulLink
-        href="https://github.com/jakejarvis/awesome-shodan-queries"
-        title="jakejarvis/awesome-shodan-queries on GitHub"
+        href="https://bugcrowd.com/jakejarvis"
+        title="Jake Jarvis on Bugcrowd"
         lightColor="#00b81a"
         darkColor="#57f06d"
       >
@@ -243,22 +225,22 @@ const Index = () => (
       >
         the Tooth Fairy
       </EasterEgg>
-      . <Quiet>I've improved a bit since then, I think...</Quiet>
+      . <Quiet>I've improved a bit since then, I think? 🤷</Quiet>
     </Paragraph>
 
     <Paragraph>
       Over the years, some of my side projects{" "}
       <ColorfulLink
-        href="https://tuftsdaily.com/news/2012/04/06/student-designs-iphone-joeytracker-app/"
-        title='"Student designs iPhone JoeyTracker app" on The Tufts Daily'
+        href="/leo/"
+        title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
         lightColor="#ff1b1b"
         darkColor="#f06060"
       >
         have
       </ColorfulLink>{" "}
       <ColorfulLink
-        href="/leo/"
-        title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
+        href="https://tuftsdaily.com/news/2012/04/06/student-designs-iphone-joeytracker-app/"
+        title='"Student designs iPhone JoeyTracker app" on The Tufts Daily'
         lightColor="#f78200"
         darkColor="#fd992a"
       >
