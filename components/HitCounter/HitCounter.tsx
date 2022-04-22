@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import Loading from "../Loading";
 import { fetcher } from "../../lib/helpers/fetcher";
-import { siteLocale } from "../../lib/config";
+import { commafy } from "../../lib/helpers/format-number";
 
 export type HitCounterProps = {
   slug: string;
@@ -15,29 +15,22 @@ const HitCounter = ({ slug, className }: HitCounterProps) => {
     revalidateOnFocus: false,
   });
 
-  try {
-    // show spinning loading indicator if data isn't fetched yet
-    if (!data) {
-      return <Loading boxes={3} width={20} />;
-    }
+  // show spinning loading indicator if data isn't fetched yet
+  if (!data) {
+    return <Loading boxes={3} width={20} />;
+  }
 
-    // fail secretly
-    if (error) {
-      return null;
-    }
-
-    // we have data!
-    return (
-      <span
-        title={`${data.hits.toLocaleString(siteLocale)} ${data.hits === 1 ? "view" : "views"}`}
-        className={className}
-      >
-        {data.hits.toLocaleString(siteLocale)}
-      </span>
-    );
-  } catch (error) {
+  // fail secretly
+  if (error) {
     return null;
   }
+
+  // we have data!
+  return (
+    <span title={`${commafy(data.hits)} ${data.hits === 1 ? "view" : "views"}`} className={className}>
+      {commafy(data.hits)}
+    </span>
+  );
 };
 
 export default HitCounter;

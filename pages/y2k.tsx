@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
+import Terminal from "../components/Terminal";
 import { styled } from "../lib/styles/stitches.config";
 
 // obviously, an interactive VNC display will not work even a little bit server-side
@@ -56,7 +58,11 @@ const Y2K = () => {
       />
 
       <Wallpaper style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : "" }}>
-        <VNC server={SOCKET_PROXY} />
+        <ErrorBoundary
+          fallback={<Terminal>Oh dear, it looks like something's gone VERY wrong. Sorry about that!</Terminal>}
+        >
+          <VNC server={SOCKET_PROXY} />
+        </ErrorBoundary>
       </Wallpaper>
     </>
   );

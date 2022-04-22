@@ -1,7 +1,7 @@
-/* eslint-disable no-var */
+/* eslint-disable no-empty, no-var, prefer-destructuring */
 
 // this function is converted to a string verbatim, substitutions are made to insert dynamic values, minified, and then
-// finally exported as an inline `<script>` tag in ThemeScript.tsx for pages/_document.tsx to use.
+// finally exported as an inline `<script>` tag in ThemeScript.tsx for _document.tsx to use.
 export const clientScript = () => {
   // `try/catch` in case I messed something up here bigly... (will default to light theme)
   try {
@@ -9,9 +9,9 @@ export const clientScript = () => {
     var pref = localStorage.getItem("__STORAGE_KEY__");
     // map of theme -> classname:
     var classNames = "__CLASS_NAMES__";
-    // the list of <html>'s current class(es), from which `classNames` are removed to start fresh
-    // eslint-disable-next-line prefer-destructuring
+    // the list of <html>'s current class(es)...
     var classList = document.documentElement.classList;
+    // ...from which `classNames` are removed to start fresh:
     classList.remove("__LIST_OF_CLASSES__");
 
     if (pref === "light" || pref === "dark") {
@@ -23,5 +23,5 @@ export const clientScript = () => {
       var prefersDark = window.matchMedia(darkQuery);
       classList.add(classNames[prefersDark.media !== darkQuery || prefersDark.matches ? "dark" : "light"]);
     }
-  } catch (error) {} // eslint-disable-line no-empty
+  } catch (error) {}
 };

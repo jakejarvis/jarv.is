@@ -42,6 +42,8 @@ const Loading = ({ width, boxes = 3, timing = 0.1, css, ...rest }: LoadingProps)
         key={i}
         css={{
           width: `${width / (boxes + 1)}px`,
+        }}
+        style={{
           animationDelay: `${i * timing}s`,
         }}
       />

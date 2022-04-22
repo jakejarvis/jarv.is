@@ -1,8 +1,8 @@
 import Link from "../Link";
 import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
+import { commafy } from "../../lib/helpers/format-number";
 import { styled } from "../../lib/styles/stitches.config";
-import { siteLocale } from "../../lib/config";
 import type { RepositoryType } from "../../types";
 
 const Wrapper = styled("div", {
@@ -100,12 +100,12 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/stargazers`}
-              title={`${stars.toLocaleString(siteLocale)} ${stars === 1 ? "star" : "stars"}`}
+              title={`${commafy(stars)} ${stars === 1 ? "star" : "stars"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={StarOcticon} />
-              <span>{stars.toLocaleString(siteLocale)}</span>
+              <span>{commafy(stars)}</span>
             </MetaLink>
           </MetaItem>
         )}
@@ -114,19 +114,19 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/network/members`}
-              title={`${forks.toLocaleString(siteLocale)} ${forks === 1 ? "fork" : "forks"}`}
+              title={`${commafy(forks)} ${forks === 1 ? "fork" : "forks"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={ForkOcticon} />
-              <span>{forks.toLocaleString(siteLocale)}</span>
+              <span>{commafy(forks)}</span>
             </MetaLink>
           </MetaItem>
         )}
 
         {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
         <MetaItem>
-          <RelativeTime date={updatedAt} />
+          <RelativeTime date={updatedAt} prefix="Updated" />
         </MetaItem>
       </Meta>
     </Wrapper>
