@@ -67,7 +67,7 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
         <List>
           {notes.map(({ slug, date, htmlTitle }) => (
             <Post key={slug}>
-              <PostDate date={date} format="MMM d" />
+              <PostDate date={date} format="MMM D" />
               <span>
                 <Link
                   href={{

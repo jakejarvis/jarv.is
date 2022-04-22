@@ -1,22 +1,22 @@
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { formatDateTZ, formatDateISO, formatTimeAgo, FlexibleDate } from "../../lib/helpers/format-date";
+import { formatDate, formatDateISO, formatTimeAgo } from "../../lib/helpers/format-date";
 
 export type RelativeTimeProps = {
-  date: FlexibleDate;
-  prefix?: string; // optional "Updated", "Published", "Created", etc.
-  staticFormat?: string; // full date (without timestamp)
+  date: string | number | Date;
+  verb?: string; // optional "Updated", "Published", "Created", etc.
+  staticFormat?: string; // format for the placeholder/fallback before client-side renders the relative time
   className?: string;
 };
 
-const RelativeTime = ({ date, prefix, staticFormat = "PP", className }: RelativeTimeProps) => {
+const RelativeTime = ({ date, verb, staticFormat, className }: RelativeTimeProps) => {
   // play nice with SSR -- only use relative time on the client, since it'll quickly become outdated on the server and
   // cause a react hydration mismatch error.
   const hasMounted = useHasMounted();
 
   return (
-    <time dateTime={formatDateISO(date)} title={formatDateTZ(date)} className={className}>
-      {prefix && `${prefix} `}
-      {hasMounted ? formatTimeAgo(date) : `on ${formatDateTZ(date, staticFormat)}`}
+    <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
+      {verb && `${verb} `}
+      {hasMounted ? formatTimeAgo(date, true) : `on ${formatDate(date, staticFormat)}`}
     </time>
   );
 };

@@ -126,7 +126,7 @@ const RepositoryCard = ({
 
         {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
         <MetaItem>
-          <RelativeTime date={updatedAt} prefix="Updated" />
+          <RelativeTime date={updatedAt} verb="Updated" />
         </MetaItem>
       </Meta>
     </Wrapper>

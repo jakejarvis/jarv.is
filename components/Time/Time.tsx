@@ -1,14 +1,14 @@
-import { formatDateTZ, formatDateISO, FlexibleDate } from "../../lib/helpers/format-date";
+import { formatDate, formatDateISO } from "../../lib/helpers/format-date";
 
 export type TimeProps = {
-  date: FlexibleDate;
+  date: string | number | Date;
   format?: string;
   className?: string;
 };
 
-const Time = ({ date, format = "MMM d", className }: TimeProps) => (
-  <time dateTime={formatDateISO(date)} title={formatDateTZ(date)} className={className}>
-    {formatDateTZ(date, format)}
+const Time = ({ date, format = "MMM D", className }: TimeProps) => (
+  <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
+    {formatDate(date, format)}
   </time>
 );
 

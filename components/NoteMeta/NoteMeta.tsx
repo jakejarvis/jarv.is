@@ -73,7 +73,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
             <span>
               <Icon as={DateIcon} />
             </span>
-            <Time date={date} format="MMMM d, yyyy" />
+            <Time date={date} format="MMMM D, YYYY" />
           </MetaLink>
         </Link>
       </MetaItem>
