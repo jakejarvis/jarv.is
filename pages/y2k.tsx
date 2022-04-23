@@ -22,6 +22,12 @@ const Wallpaper = styled("div", {
   backgroundPosition: "center",
 });
 
+const DOS = styled(Terminal, {
+  height: "400px",
+  width: "100%",
+  maxWidth: "700px",
+});
+
 const Y2K = () => {
   const [wallpaperUrl, setWallpaperUrl] = useState("");
 
@@ -58,9 +64,7 @@ const Y2K = () => {
       />
 
       <Wallpaper style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : "" }}>
-        <ErrorBoundary
-          fallback={<Terminal>Oh dear, it looks like something's gone VERY wrong. Sorry about that!</Terminal>}
-        >
+        <ErrorBoundary fallback={<DOS>Oh no, it looks like something's gone VERY wrong. Sorry about that!</DOS>}>
           <VNC server={SOCKET_PROXY} />
         </ErrorBoundary>
       </Wallpaper>

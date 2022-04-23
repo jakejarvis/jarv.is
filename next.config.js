@@ -112,7 +112,7 @@ module.exports = (phase, { defaultConfig }) => {
     redirects: async () => [
       // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
       // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
-      { source: "/:slug/amp.html", destination: "/:slug/", statusCode: 301 },
+      { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
 
       // remnants of previous sites/CMSes:
       { source: "/index.xml", destination: "/feed.xml", permanent: true },

@@ -203,8 +203,8 @@ iframe {
 
       <HorizontalRule />
 
-      <Figure src={img_2020_03} href="https://jarvis-git-v4-jakejarvis.vercel.app/" alt="March 2020">
-        <Link href="https://jarvis-git-v4-jakejarvis.vercel.app/">March 2020</Link> (
+      <Figure src={img_2020_03} href="https://quiet-truffle-92842d.netlify.app/" alt="March 2020">
+        <Link href="https://quiet-truffle-92842d.netlify.app/">March 2020</Link> (
         <Link href="https://github.com/jakejarvis/jarv.is-hugo">view source</Link>)
       </Figure>
     </Content>
