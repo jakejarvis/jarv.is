@@ -9,13 +9,7 @@ const ThemeScript = () => {
     const functionString = String(clientScript)
       .replace('"__MEDIA_QUERY__"', `"${darkModeQuery}"`)
       .replace('"__STORAGE_KEY__"', `"${themeStorageKey}"`)
-      .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames))
-      .replace(
-        '"__LIST_OF_CLASSES__"',
-        Object.values(themeClassNames)
-          .map((t) => `"${t}"`)
-          .join(",")
-      );
+      .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames));
 
     // minify the final code, a bit hacky but this is ONLY done at build-time, so uglify-js is never bundled or sent to
     // the browser to execute:

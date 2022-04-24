@@ -5,23 +5,29 @@
 export const clientScript = () => {
   // `try/catch` in case I messed something up here bigly... (will default to light theme)
   try {
-    // user's saved preference:
+    // help minifier minify
+    var light = "light";
+    var dark = "dark";
+    var newTheme;
+    // user's saved preference
     var pref = localStorage.getItem("__STORAGE_KEY__");
-    // map of theme -> classname:
+    // map of theme -> classname
     var classNames = "__CLASS_NAMES__";
     // the list of <html>'s current class(es)...
     var classList = document.documentElement.classList;
-    // ...from which `classNames` are removed to start fresh:
-    classList.remove("__LIST_OF_CLASSES__");
+    // ...from which `classNames` are removed to start fresh
+    classList.remove(classNames[light], classNames[dark]);
 
-    if (pref === "light" || pref === "dark") {
-      classList.add(classNames[pref]);
+    if (pref === light || pref === dark) {
+      // simply restore the local storage preference
+      newTheme = pref;
     } else {
-      // CSS media query for system dark mode preference:
-      var darkQuery = "__MEDIA_QUERY__";
-      // the listener which tests the above media query:
-      var prefersDark = window.matchMedia(darkQuery);
-      classList.add(classNames[prefersDark.media !== darkQuery || prefersDark.matches ? "dark" : "light"]);
+      // test CSS media query for system dark mode preference
+      // https://stackoverflow.com/a/57795495/1438024
+      newTheme = window.matchMedia("__MEDIA_QUERY__").matches ? dark : light;
     }
+
+    // FINALLY set the root class
+    classList.add(classNames[newTheme]);
   } catch (error) {}
 };
