@@ -74,11 +74,22 @@ export const ThemeProvider = ({
     const handler = (...args: any) => mediaListener.current(...args);
     const media = window.matchMedia(darkModeQuery);
 
-    // note: intentionally using deprecated listener methods to support older iOS/browsers
-    media.addListener(handler);
+    if (media.addEventListener) {
+      media.addEventListener("change", handler);
+    } else {
+      // support deprecated listener API
+      media.addListener(handler);
+    }
+
     handler(media);
 
-    return () => media.removeListener(handler);
+    return () => {
+      if (media.removeEventListener) {
+        media.removeEventListener("change", handler);
+      } else {
+        media.removeListener(handler);
+      }
+    };
   }, []);
 
   // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
