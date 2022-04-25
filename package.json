@@ -29,7 +29,7 @@
     "@react-spring/web": "^9.4.4",
     "@sentry/node": "^6.19.6",
     "@sentry/tracing": "^6.19.6",
-    "@stitches/react": "^1.2.7",
+    "@stitches/react": "^1.2.8",
     "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.11.1",
     "fathom-client": "^3.4.1",
