@@ -24,3 +24,4 @@ export { default as XOcticon } from "@primer/octicons/build/svg/x-16.svg";
 
 // simple icons: https://simpleicons.org/
 export { default as NextjsLogo } from "simple-icons/icons/nextdotjs.svg";
+export { default as FathomLogo } from "simple-icons/icons/fathom.svg";
