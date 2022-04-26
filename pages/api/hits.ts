@@ -32,6 +32,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         onFailedAttempt: (error) => {
           console.warn(`Attempt ${error.attemptNumber} failed, trying again...`);
         },
+        // TODO: figure this out
+        // https://github.com/DefinitelyTyped/DefinitelyTyped/commit/6f77b38130593a06e1988f1d3df162823ae186af
+        // @ts-ignore
         retries: 3,
       });
 
