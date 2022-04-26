@@ -8,6 +8,7 @@ import Blockquote from "../components/Blockquote";
 import Code from "../components/CodeInline";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
+import { fathomSiteId, siteDomain } from "../lib/config";
 
 import faunaImg from "../public/static/images/privacy/fauna_hits.png";
 
@@ -79,7 +80,12 @@ const Privacy = () => (
         is completely public, too!)
       </p>
 
-      <IFrame src="/stats/" title="Fathom Analytics dashboard" height={500} allowScripts />
+      <IFrame
+        src={`https://app.usefathom.com/share/${fathomSiteId}/${siteDomain}`}
+        title="Fathom Analytics dashboard"
+        height={500}
+        allowScripts
+      />
 
       <H2 id="third-party">Third-Party Content</H2>
 

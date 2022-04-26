@@ -26,6 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     { loc: "/previously/" },
     { loc: "/privacy/", priority: 0.1, changefreq: "yearly" },
     { loc: "/projects/", changefreq: "daily" },
+    { loc: "/stats/", priority: 0.1, changefreq: "yearly" },
     { loc: "/uses/" },
     { loc: "/y2k/" },
   ];
