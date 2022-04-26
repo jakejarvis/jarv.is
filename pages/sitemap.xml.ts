@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   ];
 
   // push notes separately and use their metadata
-  const notes = getAllNotes();
+  const notes = await getAllNotes();
   notes.map((note) =>
     pages.push({
       loc: urlJoin("/notes/", note.slug, "/"),

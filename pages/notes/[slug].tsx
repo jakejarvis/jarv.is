@@ -86,7 +86,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getNoteSlugs().map((slug) => ({ params: { slug } }));
+  const slugs = await getNoteSlugs();
+  const paths = slugs.map((slug) => ({ params: { slug } }));
 
   return {
     paths,

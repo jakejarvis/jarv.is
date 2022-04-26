@@ -98,7 +98,7 @@ const incrementPageHits = async (slug: string | string[], client: faunadb.Client
 };
 
 const getSiteStats = async (client: faunadb.Client) => {
-  const notes = getAllNotes();
+  const notes = await getAllNotes();
   const q = faunadb.query;
 
   const { data: pages }: { data: PageStats[] } = await client.query(

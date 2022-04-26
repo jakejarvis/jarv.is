@@ -9,11 +9,10 @@ import type { ParsedUrlQuery } from "querystring";
 
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
 // all the page needs to do is `return buildFeed(context, { format: "rss" })` from getServerSideProps.
-
-export const buildFeed = (
+export const buildFeed = async (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
   options?: { type: "rss" | "atom" }
-): { props: Record<string, unknown> } => {
+): Promise<{ props: Record<string, unknown> }> => {
   const { res } = context;
 
   // https://github.com/jpmonette/feed#example
@@ -37,7 +36,7 @@ export const buildFeed = (
   });
 
   // add notes separately using their frontmatter
-  const notes = getAllNotes();
+  const notes = await getAllNotes();
   notes.forEach((note) => {
     feed.addItem({
       guid: note.permalink,

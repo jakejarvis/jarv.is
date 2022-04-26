@@ -22,9 +22,10 @@ const Notes = ({ notesByYear }: NotesListProps) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   // parse the year of each note and group them together
+  const notes = await getAllNotes();
   const notesByYear: NotesListProps["notesByYear"] = {};
 
-  getAllNotes().map((note) => {
+  notes.map((note) => {
     const year = new Date(note.date).getUTCFullYear();
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });

@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { serialize } from "next-mdx-remote/serialize";
@@ -21,16 +21,17 @@ import rehypePrism from "rehype-prism-plus";
 import type { NoteType } from "../../types";
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
-export const getNoteSlugs = () =>
-  fs
-    .readdirSync(path.join(process.cwd(), NOTES_DIR))
-    .filter((file) => /\.mdx$/.test(file))
-    .map((noteFile) => noteFile.replace(/\.mdx$/, ""));
+export const getNoteSlugs = async () => {
+  // get all files in NOTES_DIR
+  const files = await fs.readdir(path.join(process.cwd(), NOTES_DIR));
+  // narrow to only the .mdx files and strip the .mdx extension
+  return files.filter((file) => /\.mdx$/.test(file)).map((noteFile) => noteFile.replace(/\.mdx$/, ""));
+};
 
 // returns front matter and/or *raw* markdown contents of a given slug
-export const getNoteData = (slug: string): Omit<NoteType, "source"> & { content: string } => {
+export const getNoteData = async (slug: string): Promise<Omit<NoteType, "source"> & { content: string }> => {
   const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
-  const rawContent = fs.readFileSync(fullPath, "utf8");
+  const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
   // carefully allow VERY limited markdown in post titles...
@@ -65,7 +66,7 @@ export const getNoteData = (slug: string): Omit<NoteType, "source"> & { content:
 
 // fully parses MDX into JS and returns *everything* about a note
 export const getNote = async (slug: string): Promise<NoteType> => {
-  const { frontMatter, content } = getNoteData(slug);
+  const { frontMatter, content } = await getNoteData(slug);
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
@@ -96,7 +97,15 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 };
 
 // returns the front matter of ALL notes, sorted reverse chronologically
-export const getAllNotes = () =>
-  getNoteSlugs()
-    .map((slug) => getNoteData(slug).frontMatter)
-    .sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) => (note1.date > note2.date ? -1 : 1));
+export const getAllNotes = async () => {
+  const slugs = await getNoteSlugs();
+
+  // for each slug, query its front matter
+  // https://stackoverflow.com/a/40140562/1438024
+  const data = await Promise.all(slugs.map(async (slug) => (await getNoteData(slug)).frontMatter));
+
+  // sort the results by date
+  return data.sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) =>
+    note1.date > note2.date ? -1 : 1
+  );
+};
