@@ -10,7 +10,7 @@ export const clientScript = () => {
     var dark = "dark";
     var newTheme;
     // user's saved preference
-    var pref = localStorage.getItem("__STORAGE_KEY__");
+    var pref = window.localStorage.getItem("__STORAGE_KEY__");
     // map of theme -> classname
     var classNames = "__CLASS_NAMES__";
     // the list of <html>'s current class(es)...

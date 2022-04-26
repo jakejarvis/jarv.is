@@ -19,20 +19,11 @@ export const usePrefersReducedMotion = (): boolean => {
     };
 
     const mediaQueryList = window.matchMedia(QUERY);
-    if (mediaQueryList.addEventListener) {
-      mediaQueryList.addEventListener("change", listener);
-    } else {
-      // support deprecated listener API
-      mediaQueryList.addListener(listener);
-    }
+    mediaQueryList.addEventListener("change", listener);
 
     // clean up the event listener
     return () => {
-      if (mediaQueryList.removeEventListener) {
-        mediaQueryList.removeEventListener("change", listener);
-      } else {
-        mediaQueryList.removeListener(listener);
-      }
+      mediaQueryList.removeEventListener("change", listener);
     };
   }, [setPrefersReducedMotion]);
 

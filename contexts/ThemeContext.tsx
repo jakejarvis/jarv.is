@@ -74,21 +74,12 @@ export const ThemeProvider = ({
     const handler = (...args: any) => mediaListener.current(...args);
     const media = window.matchMedia(darkModeQuery);
 
-    if (media.addEventListener) {
-      media.addEventListener("change", handler);
-    } else {
-      // support deprecated listener API
-      media.addListener(handler);
-    }
-
+    media.addEventListener("change", handler);
     handler(media);
 
+    // clean up the event listener
     return () => {
-      if (media.removeEventListener) {
-        media.removeEventListener("change", handler);
-      } else {
-        media.removeListener(handler);
-      }
+      media.removeEventListener("change", handler);
     };
   }, []);
 
