@@ -24,6 +24,7 @@ import type { NoteType } from "../../types";
 export const getNoteSlugs = async () => {
   // get all files in NOTES_DIR
   const files = await fs.readdir(path.join(process.cwd(), NOTES_DIR));
+
   // narrow to only the .mdx files and strip the .mdx extension
   return files.filter((file) => /\.mdx$/.test(file)).map((noteFile) => noteFile.replace(/\.mdx$/, ""));
 };
