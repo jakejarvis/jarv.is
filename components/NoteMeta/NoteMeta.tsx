@@ -1,5 +1,5 @@
 import { ErrorBoundary } from "react-error-boundary";
-import Link from "next/link";
+import NextLink from "next/link";
 import Time from "../Time";
 import HitCounter from "../HitCounter";
 import NoteTitle from "../NoteTitle";
@@ -62,7 +62,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
   <>
     <Wrapper>
       <MetaItem>
-        <Link
+        <NextLink
           href={{
             pathname: "/notes/[slug]/",
             query: { slug },
@@ -75,7 +75,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
             </span>
             <Time date={date} format="MMMM D, YYYY" />
           </MetaLink>
-        </Link>
+        </NextLink>
       </MetaItem>
 
       {tags.length > 0 && (

@@ -10,7 +10,7 @@ const FancyLink = styled("a", {
 
   variants: {
     // fancy animated link underline effect
-    fancy: {
+    underline: {
       true: {
         // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind the
         // local `$$underline` variable.
@@ -30,7 +30,7 @@ const FancyLink = styled("a", {
   },
 
   defaultVariants: {
-    fancy: true,
+    underline: true,
   },
 });
 

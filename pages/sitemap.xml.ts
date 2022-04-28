@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // push notes separately and use their metadata
   const notes = await getAllNotes();
-  notes.map((note) =>
+  notes.forEach((note) =>
     pages.push({
       loc: urlJoin("/notes/", note.slug, "/"),
       // pull lastMod from front matter date
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   // make all relative URLs absolute
-  pages.map((page) => (page.loc = urlJoin(baseUrl, page.loc)));
+  pages.forEach((page) => (page.loc = urlJoin(baseUrl, page.loc)));
 
   // cache on edge for 12 hours
   const { res } = context;

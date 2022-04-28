@@ -5,12 +5,10 @@ const ColorfulLink = ({
   lightColor,
   darkColor,
   css,
-  fancy = true,
   ...rest
 }: CustomLinkProps & {
   lightColor: string;
   darkColor: string;
-  fancy?: boolean;
 }) => {
   return (
     <Link
@@ -25,7 +23,6 @@ const ColorfulLink = ({
 
         ...css,
       }}
-      fancy={fancy}
       {...rest}
     />
   );
@@ -319,7 +316,7 @@ const Index = () => (
           title="My Public Key"
           lightColor="#757575"
           darkColor="#959595"
-          fancy={false}
+          underline={false}
           forceNewWindow
         >
           🔐 <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>

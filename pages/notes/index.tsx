@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const notes = await getAllNotes();
   const notesByYear: NotesListProps["notesByYear"] = {};
 
-  notes.map((note) => {
+  notes.forEach((note) => {
     const year = new Date(note.date).getUTCFullYear();
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });

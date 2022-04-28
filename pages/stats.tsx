@@ -35,7 +35,7 @@ const Stats = () => (
     <Content>
       <PoweredBy>
         Powered by{" "}
-        <Link href="https://usefathom.com/ref/ZEYG0O" fancy={false}>
+        <Link href="https://usefathom.com/ref/ZEYG0O" underline={false}>
           <FathomIcon /> Fathom Analytics
         </Link>
       </PoweredBy>

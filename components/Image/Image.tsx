@@ -63,7 +63,7 @@ const CustomImage = ({
   return (
     <Wrapper className={className}>
       {href ? (
-        <Link href={href} fancy={false}>
+        <Link href={href} underline={false}>
           {img}
         </Link>
       ) : (

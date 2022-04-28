@@ -113,7 +113,7 @@ const getSiteStats = async (client: faunadb.Client) => {
     pages,
   };
 
-  pages.map((page) => {
+  pages.forEach((page) => {
     // match URLs from RSS feed with db to populate some metadata
     const match = notes.find((note) => `notes/${note.slug}` === page.slug);
     if (match) {
