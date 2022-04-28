@@ -17,6 +17,7 @@ export { default as CheckOcticon } from "@primer/octicons/build/svg/check-16.svg
 export { default as ClipboardOcticon } from "@primer/octicons/build/svg/paste-16.svg";
 export { default as ForkOcticon } from "@primer/octicons/build/svg/repo-forked-16.svg";
 export { default as HeartIcon } from "@primer/octicons/build/svg/heart-fill-16.svg";
+export { default as LinkIcon } from "@primer/octicons/build/svg/link-16.svg";
 export { default as MarkdownIcon } from "@primer/octicons/build/svg/markdown-16.svg";
 export { default as OctocatOcticon } from "@primer/octicons/build/svg/mark-github-16.svg";
 export { default as StarOcticon } from "@primer/octicons/build/svg/star-16.svg";

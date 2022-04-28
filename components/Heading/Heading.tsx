@@ -4,8 +4,8 @@ import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Anchor = styled(HeadingAnchor, {
-  margin: "0 0.25em",
-  padding: "0 0.25em",
+  margin: "0 0.4em",
+  padding: "0 0.2em",
   color: "$mediumLight",
   fontWeight: 300,
   opacity: 0, // overridden on hover below (except on small screens)
@@ -14,8 +14,11 @@ const Anchor = styled(HeadingAnchor, {
     color: "$link",
   },
 
-  // don't require hover to show anchor link on small (likely touch) screens
   "@medium": {
+    margin: "0 0.2em",
+    padding: "0 0.4em",
+
+    // don't require hover to show anchor link on small (likely touch) screens
     opacity: 1,
   },
 });
