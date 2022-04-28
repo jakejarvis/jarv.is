@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
-    "@next/bundle-analyzer": "12.1.6-canary.9",
+    "@next/bundle-analyzer": "12.1.6-canary.12",
     "@svgr/webpack": "^6.2.1",
     "@types/node": "*",
     "@types/prop-types": "^15.7.5",
