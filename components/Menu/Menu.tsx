@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useRouter } from "next/router";
 import MenuItem from "../MenuItem";
+import ThemeToggle from "../ThemeToggle";
 import { styled } from "../../lib/styles/stitches.config";
 import { menuItems } from "../../lib/config/menu";
 import type { ComponentProps } from "react";
@@ -22,9 +23,9 @@ const Wrapper = styled("ul", {
 });
 
 const Item = styled("li", {
-  listStyle: "none",
   display: "inline-block",
   marginLeft: "1em",
+  listStyle: "none",
 
   "@medium": {
     marginLeft: 0,
@@ -51,6 +52,10 @@ const Menu = ({ ...rest }: MenuProps) => {
           <MenuItem {...item} current={item.href === `/${router.pathname.split("/")[1]}`} />
         </Item>
       ))}
+
+      <Item>
+        <MenuItem icon={ThemeToggle} />
+      </Item>
     </Wrapper>
   );
 };

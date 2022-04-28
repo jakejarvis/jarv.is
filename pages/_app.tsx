@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import urlJoin from "url-join";
@@ -8,7 +9,7 @@ import Layout from "../components/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import { themeClassNames } from "../lib/config/themes";
-import { globalStyles } from "../lib/styles/stitches.config";
+import { globalStyles, preloadUrls } from "../lib/styles/stitches.config";
 import type { AppProps as NextAppProps } from "next/app";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
@@ -46,7 +47,7 @@ const App = ({ Component, pageProps }: NextAppProps) => {
   globalStyles();
 
   return (
-    <ThemeProvider classNames={themeClassNames}>
+    <>
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
         {...defaultSeo}
@@ -61,10 +62,26 @@ const App = ({ Component, pageProps }: NextAppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+      {/* preload highest priority fonts defined in ../lib/styles/fonts/ */}
+      <Head>
+        {preloadUrls.map((relativeUrl, index) => (
+          <link
+            key={`font-${index}`}
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={relativeUrl}
+            crossOrigin="anonymous"
+          />
+        ))}
+      </Head>
+
+      <ThemeProvider classNames={themeClassNames}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </>
   );
 };
 

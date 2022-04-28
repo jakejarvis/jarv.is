@@ -56,17 +56,17 @@ const CopyButton = forwardRef(function CopyButton(
   };
 
   useEffect(() => {
-    // reset to original icon after given ms (defaults to 2 seconds)
-    if (copied) {
-      const reset = setTimeout(() => {
-        setCopied(false);
-      }, timeout);
-
-      return () => clearTimeout(reset);
+    if (!copied) {
+      return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    return () => {};
+    // reset to original icon after given ms (defaults to 2 seconds)
+    const reset = setTimeout(() => {
+      setCopied(false);
+    }, timeout);
+
+    // cancel timeout to avoid memory leaks if unmounted in the middle of this
+    return () => clearTimeout(reset);
   }, [timeout, copied]);
 
   return (

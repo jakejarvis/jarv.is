@@ -1,4 +1,3 @@
-import ThemeToggle from "../../components/ThemeToggle";
 import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../../components/Icons";
 import type { MenuItemProps } from "../../components/MenuItem";
 
@@ -22,8 +21,5 @@ export const menuItems: MenuItemProps[] = [
     icon: ContactIcon,
     text: "Contact",
     href: "/contact",
-  },
-  {
-    icon: ThemeToggle,
   },
 ];
