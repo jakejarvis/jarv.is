@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import ThemeScript from "../components/ThemeScript/ThemeScript";
-import { getCssText } from "../lib/styles/stitches.config";
+import { getCssText, preloadUrls } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
 
 // https://nextjs.org/docs/advanced-features/custom-document
@@ -10,6 +10,18 @@ const Document = () => {
       <Head>
         {/* inject a small script to set/restore the user's theme ASAP */}
         <ThemeScript />
+
+        {/* preload highest priority fonts defined in ../lib/styles/fonts/ */}
+        {preloadUrls.map((relativeUrl, index) => (
+          <link
+            key={`font-${index}`}
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={relativeUrl}
+            crossOrigin="anonymous"
+          />
+        ))}
 
         {/* stitches SSR: https://stitches.dev/blog/using-nextjs-with-stitches#step-3-ssr */}
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
