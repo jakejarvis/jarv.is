@@ -48,6 +48,7 @@
     "next-sitemap": "^2.5.20",
     "next-transpile-modules": "^9.0.0",
     "node-fetch": "^3.2.4",
+    "p-map": "^5.3.0",
     "p-retry": "^5.1.1",
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",

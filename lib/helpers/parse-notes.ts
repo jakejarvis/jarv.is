@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { serialize } from "next-mdx-remote/serialize";
+import pMap from "p-map";
 import matter from "gray-matter";
 import urlJoin from "url-join";
 import { minify } from "uglify-js";
@@ -21,7 +22,7 @@ import rehypePrism from "rehype-prism-plus";
 import type { NoteType } from "../../types";
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
-export const getNoteSlugs = async () => {
+export const getNoteSlugs = async (): Promise<string[]> => {
   // get all files in NOTES_DIR
   const files = await fs.readdir(path.join(process.cwd(), NOTES_DIR));
 
@@ -98,15 +99,18 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 };
 
 // returns the front matter of ALL notes, sorted reverse chronologically
-export const getAllNotes = async () => {
+export const getAllNotes = async (): Promise<NoteType["frontMatter"][]> => {
   const slugs = await getNoteSlugs();
 
   // for each slug, query its front matter
-  // https://stackoverflow.com/a/40140562/1438024
-  const data = await Promise.all(slugs.map(async (slug) => (await getNoteData(slug)).frontMatter));
+  const data = await pMap(slugs, async (slug) => (await getNoteData(slug)).frontMatter, {
+    stopOnError: true,
+  });
 
   // sort the results by date
-  return data.sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) =>
+  const sorted = data.sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) =>
     note1.date > note2.date ? -1 : 1
   );
+
+  return sorted;
 };
