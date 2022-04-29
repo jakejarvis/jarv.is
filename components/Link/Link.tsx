@@ -50,14 +50,21 @@ const CustomLink = ({
 }: CustomLinkProps) => {
   // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
   // can be overridden with `forceNewWindow={true}`.
-  if (forceNewWindow || isAbsoluteUrl(href.toString())) {
+  const isExternal = isAbsoluteUrl(href.toString());
+
+  if (forceNewWindow || isExternal) {
     return (
-      <FancyLink href={href.toString()} target={target || "_blank"} rel={rel || "noopener noreferrer"} {...rest} />
+      <FancyLink
+        href={href.toString()}
+        target={target ?? "_blank"}
+        rel={[rel, "noopener", isExternal ? "noreferrer" : ""].join(" ").trim()}
+        {...rest}
+      />
     );
   } else {
     return (
       <NextLink href={href} prefetch={prefetch} passHref={passHref}>
-        <FancyLink {...rest} />
+        <FancyLink target={target} rel={rel} {...rest} />
       </NextLink>
     );
   }

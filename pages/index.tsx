@@ -290,6 +290,7 @@ const Index = () => (
       You can find more of my work on{" "}
       <ColorfulLink
         href="https://github.com/jakejarvis"
+        rel="me"
         title="Jake Jarvis on GitHub"
         lightColor="#8d4eff"
         darkColor="#a379f0"
@@ -299,6 +300,7 @@ const Index = () => (
       and{" "}
       <ColorfulLink
         href="https://www.linkedin.com/in/jakejarvis/"
+        rel="me"
         title="Jake Jarvis on LinkedIn"
         lightColor="#0073b1"
         darkColor="#3b9dd2"
@@ -312,7 +314,7 @@ const Index = () => (
       <Sup>
         <ColorfulLink
           href="/pubkey.asc"
-          rel="pgpkey authn noopener"
+          rel="pgpkey authn"
           title="My Public Key"
           lightColor="#757575"
           darkColor="#959595"
@@ -325,6 +327,7 @@ const Index = () => (
       ,{" "}
       <ColorfulLink
         href="https://twitter.com/jakejarvis"
+        rel="me"
         title="Jake Jarvis on Twitter"
         lightColor="#00acee"
         darkColor="#3bc9ff"

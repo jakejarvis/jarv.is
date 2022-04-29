@@ -105,21 +105,14 @@ iframe {
         alt="Timeline of this website's past."
         priority
       >
-        ...the{" "}
-        <Link
-          href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Cringey Chronicles&trade;
-        </Link>{" "}
+        ...the <Link href="https://web.archive.org/web/20010501000000*/jakejarvis.com">Cringey Chronicles&trade;</Link>{" "}
         of this website's past.
       </Figure>
 
       <HorizontalRule />
 
       <p>
-        🚨 <strong>Trigger warning:</strong> marquees, Comic Sans MS, popups,{" "}
+        🚨 <strong>Trigger warning:</strong> marquees, Comic Sans, popups,{" "}
         <Code>
           color: <span style={{ color: "#32cd32" }}>limegreen</span>
         </Code>
@@ -140,11 +133,8 @@ iframe {
         allowScripts
       />
       <p className="iframe_caption">
-        November 2001 (
-        <Link href="https://github.com/jakejarvis/my-first-website" target="_blank" rel="noopener noreferrer">
-          view source
-        </Link>
-        )
+        <Link href="https://jakejarvis.github.io/my-first-website/">November 2001</Link> (
+        <Link href="https://github.com/jakejarvis/my-first-website">view source</Link>)
       </p>
 
       <HorizontalRule />

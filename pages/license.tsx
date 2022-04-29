@@ -36,11 +36,10 @@ const License = () => (
       <H2 id="full-text">Creative Commons Attribution 4.0 International Public License</H2>
 
       <p style={{ textAlign: "center", lineHeight: 0 }}>
-        <a
+        <Link
           href="https://creativecommons.org/licenses/by/4.0/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Creative Commons Attribution 4.0"
+          title="Creative Commons Attribution 4.0"
+          underline={false}
         >
           <svg width="120" height="42">
             <path d="M3.1.5l113.4.2c1.6 0 3-.2 3 3.2l-.1 37.3H.3V3.7C.3 2.1.4.5 3 .5z" fill="#aab2ab"></path>
@@ -61,7 +60,7 @@ const License = () => (
               ></path>
             </g>
           </svg>
-        </a>
+        </Link>
       </p>
 
       <Blockquote>

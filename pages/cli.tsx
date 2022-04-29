@@ -55,9 +55,7 @@ const CLI = () => (
         </ListItem>
       </UnorderedList>
       <p>
-        <Link href="https://github.com/jakejarvis/jakejarvis/tree/main/cli" target="_blank" rel="noreferrer">
-          View source on GitHub.
-        </Link>
+        <Link href="https://github.com/jakejarvis/jakejarvis/tree/main/cli">View source on GitHub.</Link>
       </p>
 
       <H2 id="license">License</H2>

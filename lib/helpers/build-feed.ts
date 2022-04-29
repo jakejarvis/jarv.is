@@ -7,11 +7,16 @@ import { favicons } from "../config/seo";
 import type { GetServerSidePropsContext, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
+export type BuildFeedOptions = {
+  type?: "rss" | "atom" | "json"; // defaults to rss
+  edgeCacheAge?: number; // defaults to 3600 (one hour)
+};
+
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
 // all the page needs to do is `return buildFeed(context, { format: "rss" })` from getServerSideProps.
 export const buildFeed = async (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
-  options?: { type: "rss" | "atom" }
+  options: BuildFeedOptions = {}
 ): Promise<{ props: Record<string, unknown> }> => {
   const { res } = context;
 
@@ -54,13 +59,18 @@ export const buildFeed = async (
     });
   });
 
-  // cache on edge for one hour
-  res.setHeader("cache-control", "s-maxage=3600, stale-while-revalidate");
+  // cache on edge for one hour by default
+  res.setHeader("cache-control", `s-maxage=${options.edgeCacheAge ?? 3600}, stale-while-revalidate`);
 
   // generates RSS by default
-  if (options?.type === "atom") {
+  if (options.type === "atom") {
     res.setHeader("content-type", "application/atom+xml; charset=utf-8");
     res.write(feed.atom1());
+  } else if (options.type === "json") {
+    // rare but including as an option because why not...
+    // https://www.jsonfeed.org/
+    res.setHeader("content-type", "application/feed+json; charset=utf-8");
+    res.write(feed.json1());
   } else {
     res.setHeader("content-type", "application/rss+xml; charset=utf-8");
     res.write(feed.rss2());

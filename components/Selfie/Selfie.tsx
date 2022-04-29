@@ -2,6 +2,7 @@ import { memo } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { styled } from "../../lib/styles/stitches.config";
+import { authorName } from "../../lib/config";
 import type { ComponentProps } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
@@ -52,9 +53,9 @@ export type SelfieProps = ComponentProps<typeof Link>;
 
 const Selfie = ({ ...rest }: SelfieProps) => (
   <NextLink href="/" passHref={true}>
-    <Link {...rest}>
-      <Image src={selfieJpg} alt="Photo of Jake Jarvis" width={50} height={50} quality={60} layout="raw" priority />
-      <Name>Jake Jarvis</Name>
+    <Link rel="author" title={authorName} {...rest}>
+      <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
+      <Name>{authorName}</Name>
     </Link>
   </NextLink>
 );
