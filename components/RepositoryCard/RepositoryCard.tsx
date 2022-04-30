@@ -3,7 +3,7 @@ import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
 import { commafy } from "../../lib/helpers/format-number";
 import { styled } from "../../lib/styles/stitches.config";
-import type { RepositoryType } from "../../types";
+import type { Repository } from "../../types";
 
 const Wrapper = styled("div", {
   width: "100%",
@@ -68,7 +68,7 @@ const LanguageCircle = styled("span", {
   verticalAlign: "text-top",
 });
 
-export type RepositoryCardProps = RepositoryType & {
+export type RepositoryCardProps = Repository & {
   className?: string;
 };
 

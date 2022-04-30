@@ -6,7 +6,7 @@ import NoteTitle from "../NoteTitle";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
-import type { NoteType } from "../../types";
+import type { NoteFrontMatter } from "../../types";
 
 const Wrapper = styled("div", {
   display: "inline-flex",
@@ -56,7 +56,7 @@ const Tag = styled("span", {
   },
 });
 
-export type NoteMetaProps = Pick<NoteType["frontMatter"], "slug" | "date" | "title" | "htmlTitle" | "tags">;
+export type NoteMetaProps = Pick<NoteFrontMatter, "slug" | "date" | "title" | "htmlTitle" | "tags">;
 
 const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) => (
   <>

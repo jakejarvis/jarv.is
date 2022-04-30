@@ -10,9 +10,9 @@ import { getNote, getNoteSlugs } from "../../lib/helpers/parse-notes";
 import * as config from "../../lib/config";
 import { articleJsonLd } from "../../lib/config/seo";
 import type { GetStaticProps, GetStaticPaths } from "next";
-import type { NoteType } from "../../types";
+import type { Note, NoteFrontMatter } from "../../types";
 
-const Note = ({ frontMatter, source }: NoteType) => {
+const Note = ({ frontMatter, source }: Note) => {
   return (
     <>
       <NextSeo
@@ -74,7 +74,7 @@ const Note = ({ frontMatter, source }: NoteType) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<NoteType["frontMatter"], "slug"> }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<NoteFrontMatter, "slug"> }) => {
   const { frontMatter, source } = await getNote(params.slug);
 
   return {

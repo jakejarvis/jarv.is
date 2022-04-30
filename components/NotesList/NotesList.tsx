@@ -1,7 +1,7 @@
 import Link from "../Link";
 import Time from "../Time";
 import { styled } from "../../lib/styles/stitches.config";
-import type { NoteType } from "../../types";
+import type { NoteFrontMatter } from "../../types";
 
 const Section = styled("section", {
   fontSize: "1.1em",
@@ -54,13 +54,13 @@ const PostDate = styled(Time, {
 });
 
 export type NotesListProps = {
-  notesByYear: Record<string, NoteType["frontMatter"][]>;
+  notesByYear: Record<string, NoteFrontMatter[]>;
 };
 
 const NotesList = ({ notesByYear }: NotesListProps) => {
   const sections = [];
 
-  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteType["frontMatter"][]]) => {
+  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteFrontMatter[]]) => {
     sections.push(
       <Section key={year}>
         <Year>{year}</Year>

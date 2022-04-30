@@ -19,20 +19,27 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
-import type { NoteType } from "../../types";
+import type { Note, NoteFrontMatter } from "../../types";
+
+const ABSOLUTE_NOTES_DIR = path.join(process.cwd(), NOTES_DIR);
 
 // returns all .mdx files in NOTES_DIR (without .mdx extension)
 export const getNoteSlugs = async (): Promise<string[]> => {
   // get all files in NOTES_DIR
-  const files = await fs.readdir(path.join(process.cwd(), NOTES_DIR));
+  const files = await fs.readdir(ABSOLUTE_NOTES_DIR);
 
   // narrow to only the .mdx files and strip the .mdx extension
   return files.filter((file) => /\.mdx$/.test(file)).map((noteFile) => noteFile.replace(/\.mdx$/, ""));
 };
 
 // returns front matter and/or *raw* markdown contents of a given slug
-export const getNoteData = async (slug: string): Promise<Omit<NoteType, "source"> & { content: string }> => {
-  const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
+export const getNoteData = async (
+  slug: string
+): Promise<{
+  frontMatter: NoteFrontMatter;
+  content: string;
+}> => {
+  const fullPath = path.join(ABSOLUTE_NOTES_DIR, `${slug}.mdx`);
   const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
@@ -52,7 +59,7 @@ export const getNoteData = async (slug: string): Promise<Omit<NoteType, "source"
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as Omit<NoteType["frontMatter"], "slug" | "title" | "htmlTitle" | "permalink" | "date" | "readingMins">),
+      ...(data as Partial<NoteFrontMatter>),
       // zero markdown title:
       title: removeMarkdown(data.title),
       // parsed markdown title:
@@ -67,7 +74,7 @@ export const getNoteData = async (slug: string): Promise<Omit<NoteType, "source"
 };
 
 // fully parses MDX into JS and returns *everything* about a note
-export const getNote = async (slug: string): Promise<NoteType> => {
+export const getNote = async (slug: string): Promise<Note> => {
   const { frontMatter, content } = await getNoteData(slug);
   const source = await serialize(content, {
     parseFrontmatter: false,
@@ -99,7 +106,7 @@ export const getNote = async (slug: string): Promise<NoteType> => {
 };
 
 // returns the front matter of ALL notes, sorted reverse chronologically
-export const getAllNotes = async (): Promise<NoteType["frontMatter"][]> => {
+export const getAllNotes = async (): Promise<NoteFrontMatter[]> => {
   const slugs = await getNoteSlugs();
 
   // for each slug, query its front matter
@@ -108,9 +115,7 @@ export const getAllNotes = async (): Promise<NoteType["frontMatter"][]> => {
   });
 
   // sort the results by date
-  const sorted = data.sort((note1: NoteType["frontMatter"], note2: NoteType["frontMatter"]) =>
-    note1.date > note2.date ? -1 : 1
-  );
+  const sorted = data.sort((note1, note2) => (note1.date > note2.date ? -1 : 1));
 
   return sorted;
 };

@@ -8,7 +8,7 @@ import { OctocatOcticon } from "../components/Icons";
 import { styled } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";
 import type { GetStaticProps } from "next";
-import type { RepositoryType } from "../types";
+import type { Repository } from "../types";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -54,7 +54,7 @@ const Projects = ({ repos }) => (
 
     <Content>
       <Wrapper>
-        {repos.map((repo: RepositoryType) => (
+        {repos.map((repo: Repository) => (
           <Card key={repo.name} {...repo} />
         ))}
       </Wrapper>
@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  const repos: RepositoryType[] = user.repositories.edges.map(({ node: repo }) => ({
+  const repos: Repository[] = user.repositories.edges.map(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
     description: repo.description,
