@@ -8,7 +8,6 @@ const AnchorLink = styled("a", {
 });
 
 const Icon = styled(LinkIcon, {
-  fill: "currentColor",
   width: "0.8em",
   height: "0.8em",
 });

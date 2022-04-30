@@ -7,6 +7,7 @@ export { default as ContactIcon } from "feather-icons/dist/icons/mail.svg";
 export { default as DateIcon } from "feather-icons/dist/icons/calendar.svg";
 export { default as EditIcon } from "feather-icons/dist/icons/edit.svg";
 export { default as HomeIcon } from "feather-icons/dist/icons/home.svg";
+export { default as LinkIcon } from "feather-icons/dist/icons/link.svg";
 export { default as NotesIcon } from "feather-icons/dist/icons/edit-3.svg";
 export { default as ProjectsIcon } from "feather-icons/dist/icons/code.svg";
 export { default as TagIcon } from "feather-icons/dist/icons/tag.svg";
@@ -17,7 +18,6 @@ export { default as CheckOcticon } from "@primer/octicons/build/svg/check-16.svg
 export { default as ClipboardOcticon } from "@primer/octicons/build/svg/paste-16.svg";
 export { default as ForkOcticon } from "@primer/octicons/build/svg/repo-forked-16.svg";
 export { default as HeartIcon } from "@primer/octicons/build/svg/heart-fill-16.svg";
-export { default as LinkIcon } from "@primer/octicons/build/svg/link-16.svg";
 export { default as MarkdownIcon } from "@primer/octicons/build/svg/markdown-16.svg";
 export { default as OctocatOcticon } from "@primer/octicons/build/svg/mark-github-16.svg";
 export { default as StarOcticon } from "@primer/octicons/build/svg/star-16.svg";
