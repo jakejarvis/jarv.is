@@ -9,10 +9,18 @@ import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import { themeClassNames } from "../lib/config/themes";
 import { globalStyles } from "../lib/styles/stitches.config";
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
-const App = ({ Component, pageProps }: NextAppProps) => {
+export type AppProps = NextAppProps & {
+  Component: NextPage & {
+    getLayout?: (page: ReactElement) => ReactNode;
+  };
+};
+
+const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   // get this page's URL with full domain, and hack around query parameters and anchors
@@ -45,6 +53,9 @@ const App = ({ Component, pageProps }: NextAppProps) => {
   // inject body styles defined in ../lib/styles/stitches.config.ts
   globalStyles();
 
+  // allow layout overrides per-page, but default to plain `<Layout />`
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+
   return (
     <>
       {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
@@ -61,11 +72,7 @@ const App = ({ Component, pageProps }: NextAppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <ThemeProvider classNames={themeClassNames}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <ThemeProvider classNames={themeClassNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };

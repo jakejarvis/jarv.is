@@ -28,9 +28,11 @@ const FlexedFooter = styled(Footer, {
   flex: 1,
 });
 
-export type LayoutProps = ComponentProps<typeof Flex>;
+export type LayoutProps = ComponentProps<typeof Flex> & {
+  container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
+};
 
-const Layout = ({ children, ...rest }: LayoutProps) => {
+const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -43,9 +45,14 @@ const Layout = ({ children, ...rest }: LayoutProps) => {
       <Flex {...rest}>
         <Header />
 
-        <Default>
-          <Container>{children}</Container>
-        </Default>
+        {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
+        {container ? (
+          <Default>
+            <Container>{children}</Container>
+          </Default>
+        ) : (
+          children
+        )}
 
         <FlexedFooter />
       </Flex>

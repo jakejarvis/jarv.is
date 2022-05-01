@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
+import Layout from "../components/Layout";
 import Terminal from "../components/Terminal";
 import { styled } from "../lib/styles/stitches.config";
+import type { ReactElement, ComponentProps } from "react";
 
 // obviously, an interactive VNC display will not work even a little bit server-side
 const VNC = dynamic(() => import("../components/VNC"), { ssr: false });
@@ -11,10 +13,10 @@ const VNC = dynamic(() => import("../components/VNC"), { ssr: false });
 // https://github.com/jakejarvis/y2k
 const SOCKET_PROXY = "wss://y2k.jrvs.io";
 
-const Wallpaper = styled("div", {
+const Wallpaper = styled("main", {
   display: "flex",
   width: "100%",
-  minHeight: "450px",
+  minHeight: "500px",
   padding: "1.5em 0",
   justifyContent: "center",
   alignItems: "center",
@@ -28,7 +30,7 @@ const DOS = styled(Terminal, {
   maxWidth: "700px",
 });
 
-const Y2K = () => {
+const Wrapper = ({ style, ...rest }: ComponentProps<typeof Wrapper>) => {
   const [wallpaperUrl, setWallpaperUrl] = useState("");
 
   // set a random retro Windows ME desktop tile for the entire content area
@@ -36,6 +38,10 @@ const Y2K = () => {
     setWallpaperUrl(`/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`);
   }, []);
 
+  return <Wallpaper style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : "", ...style }} {...rest} />;
+};
+
+const Y2K = () => {
   // print a fancy console message (in browser only) just for funsies
   useEffect(() => {
     console.log(
@@ -63,12 +69,19 @@ const Y2K = () => {
         }}
       />
 
-      <Wallpaper style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : "" }}>
-        <ErrorBoundary fallback={<DOS>Oh no, it looks like something's gone VERY wrong. Sorry about that!</DOS>}>
-          <VNC server={SOCKET_PROXY} />
-        </ErrorBoundary>
-      </Wallpaper>
+      <ErrorBoundary fallback={<DOS>Oh no, it looks like something's gone VERY wrong. Sorry about that!</DOS>}>
+        <VNC server={SOCKET_PROXY} />
+      </ErrorBoundary>
     </>
+  );
+};
+
+// disable layout's default styles so the wallpaper component can go edge-to-edge:
+Y2K.getLayout = (page: ReactElement) => {
+  return (
+    <Layout container={false}>
+      <Wrapper>{page}</Wrapper>
+    </Layout>
   );
 };
 
