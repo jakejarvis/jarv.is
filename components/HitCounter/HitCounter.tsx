@@ -10,10 +10,17 @@ export type HitCounterProps = {
 
 const HitCounter = ({ slug, className }: HitCounterProps) => {
   // start fetching repos from API immediately
-  const { data, error } = useSWR(`/api/hits/?slug=${encodeURIComponent(slug)}`, fetcher, {
-    // avoid double (or more) counting views
-    revalidateOnFocus: false,
-  });
+  const { data, error } = useSWR(
+    `/api/hits/?${new URLSearchParams({
+      slug,
+    })}`,
+    fetcher,
+    {
+      // avoid double (or more) counting views
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   // show spinning loading indicator if data isn't fetched yet
   if (!data) {

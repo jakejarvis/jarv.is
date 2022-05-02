@@ -66,7 +66,9 @@ const CopyButton = forwardRef(function CopyButton(
     }, timeout);
 
     // cancel timeout to avoid memory leaks if unmounted in the middle of this
-    return () => clearTimeout(reset);
+    return () => {
+      clearTimeout(reset);
+    };
   }, [timeout, copied]);
 
   return (

@@ -115,7 +115,7 @@ export const getAllNotes = async (): Promise<NoteFrontMatter[]> => {
   });
 
   // sort the results by date
-  const sorted = data.sort((note1, note2) => (note1.date > note2.date ? -1 : 1));
+  data.sort((note1, note2) => (note1.date > note2.date ? -1 : 1));
 
-  return sorted;
+  return data;
 };

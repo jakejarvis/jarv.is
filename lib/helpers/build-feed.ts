@@ -9,7 +9,7 @@ import type { ParsedUrlQuery } from "querystring";
 
 export type BuildFeedOptions = {
   type?: "rss" | "atom" | "json"; // defaults to rss
-  edgeCacheAge?: number; // defaults to 3600 (one hour)
+  edgeCacheAge?: number; // in seconds, defaults to 43200 (12 hours)
 };
 
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
@@ -59,8 +59,8 @@ export const buildFeed = async (
     });
   });
 
-  // cache on edge for one hour by default
-  res.setHeader("cache-control", `s-maxage=${options.edgeCacheAge ?? 3600}, stale-while-revalidate`);
+  // cache on edge for 12 hours by default
+  res.setHeader("cache-control", `s-maxage=${options.edgeCacheAge ?? 43200}, stale-while-revalidate=3600`);
 
   // generates RSS by default
   if (options.type === "atom") {
