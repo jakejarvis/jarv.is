@@ -87,7 +87,7 @@
     "@types/sanitize-html": "^2.6.2",
     "@types/uglify-js": "^3.13.2",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
+    "@typescript-eslint/parser": "^5.22.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.14.0",
     "eslint-config-next": "12.1.5",
