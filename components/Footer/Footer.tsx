@@ -67,16 +67,19 @@ const Icon = styled("svg", {
 const Heart = styled("span", {
   display: "inline-block",
   color: "$error", // somewhat ironically color the heart with the themed "error" red... </3
-  animation: `${keyframes({
-    "0%": { transform: "scale(1)" },
-    "2%": { transform: "scale(1.25)" },
-    "4%": { transform: "scale(1)" },
-    "6%": { transform: "scale(1.2)" },
-    "8%": { transform: "scale(1)" },
-    // pause for ~9 out of 10 seconds
-    "100%": { transform: "scale(1)" },
-  })} 10s ease 7.5s infinite`,
-  willChange: "transform",
+
+  "@media (prefers-reduced-motion: no-preference)": {
+    animation: `${keyframes({
+      "0%": { transform: "scale(1)" },
+      "2%": { transform: "scale(1.25)" },
+      "4%": { transform: "scale(1)" },
+      "6%": { transform: "scale(1.2)" },
+      "8%": { transform: "scale(1)" },
+      // pause for ~9 out of 10 seconds
+      "100%": { transform: "scale(1)" },
+    })} 10s ease 7.5s infinite`,
+    willChange: "transform",
+  },
 });
 
 export type FooterProps = ComponentProps<typeof Wrapper>;

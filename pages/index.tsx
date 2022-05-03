@@ -67,26 +67,26 @@ const Paragraph = styled("p", {
   },
 });
 
-const hello = keyframes({
-  "0%": { transform: "rotate(0deg)" },
-  "5%": { transform: "rotate(14deg)" },
-  "10%": { transform: "rotate(-8deg)" },
-  "15%": { transform: "rotate(14deg)" },
-  "20%": { transform: "rotate(-4deg)" },
-  "25%": { transform: "rotate(10deg)" },
-  "30%": { transform: "rotate(0deg)" },
-  // pause for ~9 out of 10 seconds
-  "100%": { transform: "rotate(0deg)" },
-});
-
 const Wave = styled("span", {
   display: "inline-block",
   marginLeft: "0.1em",
   fontSize: "1.2em",
-  animation: `${hello} 5s infinite`,
-  animationDelay: "1s",
-  transformOrigin: "65% 80%",
-  willChange: "transform",
+
+  "@media (prefers-reduced-motion: no-preference)": {
+    animation: `${keyframes({
+      "0%": { transform: "rotate(0deg)" },
+      "5%": { transform: "rotate(14deg)" },
+      "10%": { transform: "rotate(-8deg)" },
+      "15%": { transform: "rotate(14deg)" },
+      "20%": { transform: "rotate(-4deg)" },
+      "25%": { transform: "rotate(10deg)" },
+      "30%": { transform: "rotate(0deg)" },
+      // pause for ~9 out of 10 seconds
+      "100%": { transform: "rotate(0deg)" },
+    })} 5s ease 1s infinite`,
+    transformOrigin: "65% 80%",
+    willChange: "transform",
+  },
 });
 
 const Sup = styled("sup", {

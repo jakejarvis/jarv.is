@@ -1,8 +1,8 @@
 import { useEffect, memo } from "react";
+import { useMedia } from "react-use";
 import { useSpring, animated, Globals } from "@react-spring/web";
 import { useTheme } from "../../hooks/use-theme";
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { usePrefersReducedMotion } from "../../hooks/use-prefers-reduced-motion";
 import { styled } from "../../lib/styles/stitches.config";
 
 const Button = styled("button", {
@@ -25,7 +25,7 @@ export type ThemeToggleProps = {
 
 const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)", false);
   const { resolvedTheme, setTheme } = useTheme();
 
   // default to light since `resolvedTheme` might be undefined
@@ -34,7 +34,7 @@ const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
   // accessibility: skip animation if user prefers reduced motion
   useEffect(() => {
     Globals.assign({
-      skipAnimation: prefersReducedMotion,
+      skipAnimation: !!prefersReducedMotion,
     });
   }, [prefersReducedMotion]);
 

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { useLocalStorage } from "react-use";
+import { useLocalStorage, useMedia } from "react-use";
 import { darkModeQuery, themeStorageKey } from "../lib/config/themes";
 import type { Context, PropsWithChildren } from "react";
 
@@ -31,6 +31,9 @@ export const ThemeProvider = ({
   const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey, null, { raw: true });
   // save the end result no matter how we got there (by preference or by system):
   const [resolvedTheme, setResolvedTheme] = useState("");
+  // hook into system `prefers-dark-mode` setting
+  const isSystemDark = useMedia(darkModeQuery, false);
+
   // get the theme names (light, dark) via passed-in classnames' keys
   const themeNames = Object.keys(classNames);
 
@@ -49,34 +52,18 @@ export const ThemeProvider = ({
     [classNames, setPreferredTheme]
   );
 
-  // memoize browser media query handler
-  const handleMediaQuery = useCallback(
-    (e: MediaQueryListEvent | MediaQueryList) => {
-      // get the user's preferred theme via their OS/browser settings
-      const systemTheme = e.matches ? "dark" : "light";
-
-      // keep track of the resolved theme whether or not we change it below
-      setResolvedTheme(systemTheme);
-
-      // only actually change the theme if preference is unset (and *don't* save new theme to storage)
-      if (!preferredTheme || !themeNames.includes(preferredTheme)) {
-        changeTheme(systemTheme, false);
-      }
-    },
-    [changeTheme, preferredTheme, themeNames]
-  );
-
   // listen for changes in OS preference
   useEffect(() => {
-    const media = window.matchMedia(darkModeQuery);
-    media.addEventListener("change", handleMediaQuery);
-    handleMediaQuery(media);
+    const systemTheme = isSystemDark ? "dark" : "light";
 
-    // clean up the event listener
-    return () => {
-      media.removeEventListener("change", handleMediaQuery);
-    };
-  }, [handleMediaQuery]);
+    // keep track of the resolved theme whether or not we change it below
+    setResolvedTheme(systemTheme);
+
+    // only actually change the theme if preference is unset (and *don't* save new theme to storage)
+    if (!preferredTheme || !themeNames.includes(preferredTheme)) {
+      changeTheme(systemTheme, false);
+    }
+  }, [changeTheme, themeNames, preferredTheme, isSystemDark]);
 
   // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
   useEffect(() => {

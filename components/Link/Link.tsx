@@ -9,33 +9,34 @@ const FancyLink = styled("a", {
   textDecoration: "none",
 
   variants: {
-    // fancy animated link underline effect
     underline: {
+      // fancy animated link underline effect (on by default)
       true: {
-        // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind the
-        // local `$$underline` variable.
+        // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind
+        // the local `$$underline` variable.
         setUnderlineVar: { color: "$colors$linkUnderline" },
         backgroundImage: `linear-gradient($$underline, $$underline)`,
         backgroundPosition: "0% 100%",
         backgroundRepeat: "no-repeat",
         backgroundSize: "0% $underline",
-        transition: "background-size 0.25s ease-in-out",
         paddingBottom: "0.2rem",
+
+        "@media (prefers-reduced-motion: no-preference)": {
+          transition: "background-size 0.25s ease-in-out",
+        },
 
         "&:hover": {
           backgroundSize: "100% $underline",
         },
       },
+      false: {},
     },
-  },
-
-  defaultVariants: {
-    underline: true,
   },
 });
 
 export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &
   NextLinkProps & {
+    underline?: boolean;
     forceNewWindow?: boolean;
   };
 
@@ -45,6 +46,7 @@ const CustomLink = ({
   passHref = true,
   target,
   rel,
+  underline = true,
   forceNewWindow,
   ...rest
 }: CustomLinkProps) => {
@@ -58,13 +60,14 @@ const CustomLink = ({
         href={href.toString()}
         target={target ?? "_blank"}
         rel={[rel, "noopener", isExternal ? "noreferrer" : ""].join(" ").trim()}
+        underline={underline}
         {...rest}
       />
     );
   } else {
     return (
       <NextLink href={href} prefetch={prefetch} passHref={passHref}>
-        <FancyLink target={target} rel={rel} {...rest} />
+        <FancyLink target={target} rel={rel} underline={underline} {...rest} />
       </NextLink>
     );
   }
