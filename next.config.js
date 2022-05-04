@@ -83,7 +83,7 @@ module.exports = (phase, { defaultConfig }) => {
       {
         source: "/:path(.*)",
         headers: [
-          {
+          config.onionDomain && {
             key: "Onion-Location",
             value: `${config.onionDomain}/:path*`,
           },

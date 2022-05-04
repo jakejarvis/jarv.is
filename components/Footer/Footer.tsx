@@ -1,4 +1,3 @@
-import { memo } from "react";
 import NextLink from "next/link";
 import { HeartIcon, NextjsLogo } from "../Icons";
 import { keyframes, styled } from "../../lib/styles/stitches.config";
@@ -128,4 +127,4 @@ const Footer = ({ ...rest }: FooterProps) => (
   </Wrapper>
 );
 
-export default memo(Footer);
+export default Footer;

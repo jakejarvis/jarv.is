@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { styled, keyframes } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
@@ -64,4 +63,4 @@ const Loading = ({ width, boxes = 3, timing = 0.1, css, ...rest }: LoadingProps)
   );
 };
 
-export default memo(Loading);
+export default Loading;

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Selfie from "../Selfie";
 import Menu from "../Menu";
 import { styled } from "../../lib/styles/stitches.config";
@@ -58,4 +57,4 @@ const Header = ({ ...rest }: HeaderProps) => (
   </Wrapper>
 );
 
-export default memo(Header);
+export default Header;

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { useRouter } from "next/router";
 import MenuItem from "../MenuItem";
 import ThemeToggle from "../ThemeToggle";
@@ -60,4 +59,4 @@ const Menu = ({ ...rest }: MenuProps) => {
   );
 };
 
-export default memo(Menu);
+export default Menu;

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { styled } from "../../lib/styles/stitches.config";
@@ -60,4 +59,4 @@ const Selfie = ({ ...rest }: SelfieProps) => (
   </NextLink>
 );
 
-export default memo(Selfie);
+export default Selfie;
