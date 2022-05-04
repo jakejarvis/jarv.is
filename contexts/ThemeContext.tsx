@@ -1,20 +1,16 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import { useLocalStorage, useMedia } from "react-use";
-import { darkModeQuery, themeStorageKey } from "../lib/config/themes";
+import { themeStorageKey } from "../lib/config/themes";
 import type { Context, PropsWithChildren } from "react";
 
 export const ThemeContext: Context<{
-  /** Update the theme manually. */
-  setTheme?: (theme: string) => void;
-  /** The user's website theme setting ("light" or "dark", or undefined if unset). */
-  preferredTheme?: string;
   /**
-   * If the theme setting is undefined, this returns whether the system preference resolved to "light" or "dark". If the
-   * preference is set, the value is identical to `preferredTheme`.
-   *
-   * Note to self: you probably want this.
+   * If the user's theme preference is unset, this returns whether the system preference resolved to "light" or "dark".
+   * If the user's theme preference is set, the preference is returned instead, regardless of their system's theme.
    */
-  resolvedTheme?: string;
+  activeTheme?: "light" | "dark";
+  /** Update the theme manually and save to local storage. */
+  setTheme?: (theme: string) => void;
 }> = createContext({});
 
 // provider used once in _app.tsx to wrap entire app
@@ -27,12 +23,13 @@ export const ThemeProvider = ({
     [themeName: string]: string;
   };
 }>) => {
-  // keep track of if/when the user has set their theme *here*:
+  // keep track of if/when the user has set their theme *on this site*
   const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey, null, { raw: true });
-  // save the end result no matter how we got there (by preference or by system):
-  const [resolvedTheme, setResolvedTheme] = useState("");
+  // keep track of changes to the user's OS/browser dark mode setting
+  const [systemTheme, setSystemTheme] = useState("");
   // hook into system `prefers-dark-mode` setting
-  const isSystemDark = useMedia(darkModeQuery, false);
+  // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
+  const isSystemDark = useMedia("(prefers-color-scheme: dark)", false);
 
   // get the theme names (light, dark) via passed-in classnames' keys
   const themeNames = Object.keys(classNames);
@@ -54,28 +51,31 @@ export const ThemeProvider = ({
 
   // listen for changes in OS preference
   useEffect(() => {
-    const systemTheme = isSystemDark ? "dark" : "light";
+    // translate boolean to theme string
+    const systemResolved = isSystemDark ? "dark" : "light";
 
-    // keep track of the resolved theme whether or not we change it below
-    setResolvedTheme(systemTheme);
+    // keep track of the system theme whether or not we override it manually
+    setSystemTheme(systemResolved);
 
     // only actually change the theme if preference is unset (and *don't* save new theme to storage)
     if (!preferredTheme || !themeNames.includes(preferredTheme)) {
-      changeTheme(systemTheme, false);
+      changeTheme(systemResolved, false);
     }
   }, [changeTheme, themeNames, preferredTheme, isSystemDark]);
 
   // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
   useEffect(() => {
     // only "light" and "dark" are valid here
-    const colorScheme = ["light", "dark"].includes(preferredTheme) ? preferredTheme : resolvedTheme;
+    // https://web.dev/color-scheme/#the-color-scheme-css-property
+    const colorScheme = ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
 
     document.documentElement.style?.setProperty("color-scheme", colorScheme);
-  }, [preferredTheme, resolvedTheme]);
+  }, [preferredTheme, systemTheme]);
 
   return (
     <ThemeContext.Provider
       value={{
+        activeTheme: themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
         setTheme: useCallback(
           (theme: string) => {
             // force save to local storage
@@ -83,8 +83,6 @@ export const ThemeProvider = ({
           },
           [changeTheme]
         ),
-        preferredTheme: themeNames.includes(preferredTheme) ? preferredTheme : undefined,
-        resolvedTheme: themeNames.includes(preferredTheme) ? preferredTheme : resolvedTheme,
       }}
     >
       {children}

@@ -8,7 +8,7 @@ export type TweetEmbedProps = {
 };
 
 const TweetEmbed = ({ id, options }: TweetEmbedProps) => {
-  const { resolvedTheme } = useTheme();
+  const { activeTheme } = useTheme();
 
   return (
     <TwitterTweetEmbed
@@ -16,7 +16,7 @@ const TweetEmbed = ({ id, options }: TweetEmbedProps) => {
       options={{
         dnt: true,
         align: "center",
-        theme: resolvedTheme === "dark" ? "dark" : "light",
+        theme: activeTheme === "dark" ? "dark" : "light",
         ...options,
       }}
     />

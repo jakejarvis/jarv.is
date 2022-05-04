@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 import { minify } from "uglify-js";
 import { clientScript } from "./client";
-import { darkModeQuery, themeStorageKey, themeClassNames } from "../../lib/config/themes";
+import { themeClassNames, themeStorageKey } from "../../lib/config/themes";
 
 const ThemeScript = () => {
   const minified = useMemo(() => {
     // since the client function will end up being injected as a plain dumb string, we need to set dynamic values here:
     const functionString = String(clientScript)
-      .replace('"__MEDIA_QUERY__"', `"${darkModeQuery}"`)
+      .replace('"__MEDIA_QUERY__"', `"(prefers-color-scheme: dark)"`)
       .replace('"__STORAGE_KEY__"', `"${themeStorageKey}"`)
       .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames));
 

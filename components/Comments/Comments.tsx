@@ -18,7 +18,7 @@ export type CommentsProps = ComponentProps<typeof Wrapper> & {
 };
 
 const Comments = ({ title, ...rest }: CommentsProps) => {
-  const { resolvedTheme } = useTheme();
+  const { activeTheme } = useTheme();
 
   // TODO: use custom `<Loading />` spinner component during suspense
   return (
@@ -29,7 +29,7 @@ const Comments = ({ title, ...rest }: CommentsProps) => {
         mapping="specific"
         reactionsEnabled="1"
         emitMetadata="0"
-        theme={resolvedTheme === "dark" ? "dark" : "light"}
+        theme={activeTheme === "dark" ? "dark" : "light"}
       />
     </Wrapper>
   );

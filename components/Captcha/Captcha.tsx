@@ -22,7 +22,7 @@ export type CaptchaProps = {
 
 const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) => {
   const hasMounted = useHasMounted();
-  const { resolvedTheme } = useTheme();
+  const { activeTheme } = useTheme();
 
   return (
     <div className={className}>
@@ -32,7 +32,7 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
           reCaptchaCompat={false}
           tabIndex={0}
           size={size}
-          theme={theme || (resolvedTheme === "dark" ? "dark" : "light")}
+          theme={theme || (activeTheme === "dark" ? "dark" : "light")}
           {...rest}
         />
       )}

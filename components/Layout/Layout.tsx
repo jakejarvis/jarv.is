@@ -33,13 +33,13 @@ export type LayoutProps = ComponentProps<typeof Flex> & {
 };
 
 const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
-  const { resolvedTheme } = useTheme();
+  const { activeTheme } = useTheme();
 
   return (
     <>
       <Head>
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
-        <meta name="theme-color" content={themeColors[resolvedTheme === "dark" ? "dark" : "light"]} />
+        <meta name="theme-color" content={themeColors[activeTheme === "dark" ? "dark" : "light"]} />
       </Head>
 
       <Flex {...rest}>

@@ -12,8 +12,5 @@ export const themeColors = {
   dark: darkTheme.colors.backgroundOuter?.value,
 };
 
-// https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
-export const darkModeQuery = "(prefers-color-scheme: dark)";
-
 // local storage key
 export const themeStorageKey = "preferred-theme";

@@ -1,4 +1,4 @@
-import { useEffect, memo } from "react";
+import { useEffect, useId, memo } from "react";
 import { useMedia } from "react-use";
 import { useSpring, animated, Globals } from "@react-spring/web";
 import { useTheme } from "../../hooks/use-theme";
@@ -19,17 +19,17 @@ const Button = styled("button", {
 });
 
 export type ThemeToggleProps = {
-  id?: string;
   className?: string;
 };
 
-const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
+const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
+  const { activeTheme, setTheme } = useTheme();
   const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)", false);
-  const { resolvedTheme, setTheme } = useTheme();
+  const maskId = useId(); // SSR-safe ID to cross-reference areas of the SVG
 
-  // default to light since `resolvedTheme` might be undefined
-  const safeTheme = resolvedTheme === "dark" ? "dark" : "light";
+  // default to light since `activeTheme` might be undefined
+  const safeTheme = activeTheme === "dark" ? "dark" : "light";
 
   // accessibility: skip animation if user prefers reduced motion
   useEffect(() => {
@@ -120,7 +120,7 @@ const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
         }}
         className={className}
       >
-        <mask id={`moon-mask-${id}`}>
+        <mask id={`mask-${maskId}`}>
           <rect x="0" y="0" width="100%" height="100%" fill="white" />
           <animated.circle
             r="9"
@@ -135,7 +135,7 @@ const ThemeToggle = ({ id = "nav", className }: ThemeToggleProps) => {
           cx="12"
           cy="12"
           fill="currentColor"
-          mask={`url(#moon-mask-${id})`}
+          mask={`url(#mask-${maskId})`}
           // @ts-ignore
           style={centerCircleProps}
         />
