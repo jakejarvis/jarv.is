@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import Terminal from "../components/Terminal";
@@ -61,6 +62,15 @@ const Y2K = () => {
 
   return (
     <>
+      <Head>
+        {/* TODO: favicon doesn't change back to normal when navigating away from page */}
+        <link
+          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAA2tJREFUOE+Nk21sU2Ucxc/T3Xu73vXedl3fNtuCNm4oW9jY1M2hRAIBZCSGxMWFOWIMBDRGzNzQ+PJhvmCcgkSTLZioifIiBiQBNWo6Gdlw4AwMGFAyR8fWbuu6vt12W297+5hbM42RDz4f/yfn5OSX8xD8z+d+eMhqLi97mhJtFaGpi6NMaNNMZuI7cid/SfUgH7gvU6/h2HpVL8q3PcpruVXB6fDZ+cPL1uY8z5x0grUd/0+AfvuRtxLh2l3VrmyRU8NjPGKCssKHW2YLYjNKFCO+HkSVbnxV+zN2DLT+K6B45cD3ky524wubgc1uCd29bngVBybKIohpCpHvBtIzgHI+CPinKtQifweUGD2nAtWZhkP7gljPEzz7TQP6x1OwT09KU7ZiIdJgxbqVAHigbxBIfB26jIOWFbmAUtHz4E1m7Hzv5SAegRmV7Y3w6uVgKuN9Ap/V/6rqf2ziTrnb6q2vVBEMKcCBjiDQYSNEBRa54e8/+sW3lesfMuOx3e/ippbFrPBLJw6uaf8H8t73jW1b2rbtLYU+D3jn85iMnhsNuQa7nmuiu5sm8eqhLvTGlsEuyogzUlzVqFUish00NMnSrFBo0FfyICaAhoHEyetdpKPjqSqRuTDgDb/NHfM3QTacg4vWQJwhYEQWjD2MyF0J3DIJiE1pgWAS0NK/il3z7SftLzVdHA9ZK68Y9iMQPZG7lxi3wNv3w7H0pbFLesGgT0ixBJ+vm9awnJsxFeuUFM3maYkmyoydJc83r6JX8QYGsBqOK+8hUlEO2NZAo+DL0EemlkUG6hILXfJh6YHlnHrL+tP5o3OnD5CWxidj4/d0i2d6esBdGMHSxqUImFxYwtQhpBvxTBUc6dP7S/OWJGtfp0YbiFmHVBHgG/UgE0+4VIh0+ZsU/t+2e+Qzt2sEZ6vBUs1j1smBS9+dXogvsGbGBouWg5LDCoRlH4YLjm/Apy//SHZue234qLXl/mhnGbGWl9uUq/EPRefjq2ddGx20wgy9yGCeGlGSdCJPljCh6f8pQkf3qebcEnds3dl6Lrv1g+uG283FQ5+ckCVJjPKWYfHanC5pWKto3C6WKzAm045sVwL+vkXjIhviqKvTLcw275m3M3uS94bCmHZLwqDltM78YicnCPGs/HFuK4Hfa+bu9HP/BEU2W1FE/2aJAAAAAElFTkSuQmCC"
+          rel="icon"
+          type="image/png"
+        />
+      </Head>
+
       <NextSeo
         title="Y2K Sandbox: Powered by Windows Me™ 💾"
         description="My first website on a Windows Me-powered time machine. You've been warned."
@@ -79,7 +89,13 @@ const Y2K = () => {
 // disable layout's default styles so the wallpaper component can go edge-to-edge:
 Y2K.getLayout = (page: ReactElement) => {
   return (
-    <Layout container={false}>
+    <Layout
+      container={false}
+      css={{
+        // classic windows 9x cursor easter egg
+        cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto`,
+      }}
+    >
       <Wrapper>{page}</Wrapper>
     </Layout>
   );

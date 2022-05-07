@@ -32,7 +32,8 @@ const ThemeScript = () => {
     return result.code;
   }, []);
 
-  // the script tag injected manually into `<head>` in _document.tsx.
+  // the script tag injected manually into `<head>` in _document.tsx to prevent FARTing:
+  // https://css-tricks.com/flash-of-inaccurate-color-theme-fart/
   // even though it's the proper method, using next/script with `strategy="beforeInteractive"` still causes flash of
   // white on load. injecting a normal script tag lets us prioritize setting the `<html>` class even more urgently.
   // TODO: using next/script *might* be possible after https://github.com/vercel/next.js/pull/36364 is merged.

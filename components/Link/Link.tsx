@@ -34,13 +34,13 @@ const FancyLink = styled("a", {
   },
 });
 
-export type CustomLinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &
+export type LinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &
   NextLinkProps & {
     underline?: boolean;
     forceNewWindow?: boolean;
   };
 
-const CustomLink = ({
+const Link = ({
   href,
   prefetch = false,
   passHref = true,
@@ -49,7 +49,7 @@ const CustomLink = ({
   underline = true,
   forceNewWindow,
   ...rest
-}: CustomLinkProps) => {
+}: LinkProps) => {
   // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
   // can be overridden with `forceNewWindow={true}`.
   const isExternal = isAbsoluteUrl(href.toString());
@@ -73,4 +73,4 @@ const CustomLink = ({
   }
 };
 
-export default CustomLink;
+export default Link;

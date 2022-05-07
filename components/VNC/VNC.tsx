@@ -16,7 +16,7 @@ const Display = styled(
       background: "none !important",
 
       "& canvas": {
-        cursor: "default !important",
+        cursor: "inherit !important",
       },
     },
   },

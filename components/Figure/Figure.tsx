@@ -1,5 +1,5 @@
 import innerText from "react-innertext";
-import Image, { CustomImageProps } from "../Image";
+import Image, { ImageProps } from "../Image";
 import { styled } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 
@@ -20,7 +20,7 @@ const Caption = styled("figcaption", {
   },
 });
 
-export type FigureProps = Omit<CustomImageProps, "alt"> &
+export type FigureProps = Omit<ImageProps, "alt"> &
   PropsWithChildren<{
     alt?: string; // becomes optional -- pulled from plaintext-ified caption if missing
   }>;

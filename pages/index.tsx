@@ -1,4 +1,4 @@
-import Link, { CustomLinkProps } from "../components/Link";
+import Link, { LinkProps } from "../components/Link";
 import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
 
 const ColorfulLink = ({
@@ -6,7 +6,7 @@ const ColorfulLink = ({
   darkColor,
   css,
   ...rest
-}: CustomLinkProps & {
+}: LinkProps & {
   lightColor: string;
   darkColor: string;
 }) => {

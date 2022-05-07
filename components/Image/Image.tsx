@@ -16,12 +16,12 @@ const RoundedImage = styled(NextImage, {
   borderRadius: "$rounded",
 });
 
-export type CustomImageProps = NextImageProps &
+export type ImageProps = NextImageProps &
   ComponentProps<typeof RoundedImage> & {
     href?: string; // optionally wrap image in a link
   };
 
-const CustomImage = ({
+const Image = ({
   src,
   width,
   height,
@@ -33,7 +33,7 @@ const CustomImage = ({
   href,
   className,
   ...rest
-}: CustomImageProps) => {
+}: ImageProps) => {
   // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width: typeof width === "string" ? Number.parseInt(width.replace("px", "")) : width,
@@ -73,4 +73,4 @@ const CustomImage = ({
   );
 };
 
-export default CustomImage;
+export default Image;

@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import Image from "../components/Image";
 import Blockquote from "../components/Blockquote";
-import Code from "../components/CodeHybrid";
+import CodeBlock from "../components/CodeBlock";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
 
@@ -33,7 +33,7 @@ const CLI = () => (
       <Image src={cliImg} href="https://www.npmjs.com/package/@jakejarvis/cli" alt="Terminal Screenshot" priority />
 
       <H2 id="usage">Usage</H2>
-      <Code forceBlock>npx @jakejarvis/cli</Code>
+      <CodeBlock>npx @jakejarvis/cli</CodeBlock>
 
       <H2 id="inspired-by">Inspired by</H2>
       <UnorderedList>
