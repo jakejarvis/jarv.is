@@ -9,14 +9,12 @@ export const clientScript = () => {
     var light = "light";
     var dark = "dark";
     var newTheme;
-    // user's saved preference
-    var pref = window.localStorage.getItem("__STORAGE_KEY__");
-    // map of theme -> classname
-    var classNames = "__CLASS_NAMES__";
     // the list of <html>'s current class(es)...
     var classList = document.documentElement.classList;
-    // ...from which `classNames` are removed to start fresh
-    classList.remove(classNames[light], classNames[dark]);
+    // map of theme -> classname
+    var classNames = "__CLASS_NAMES__";
+    // user's saved preference
+    var pref = window.localStorage.getItem("__STORAGE_KEY__");
 
     if (pref === light || pref === dark) {
       // simply restore the local storage preference
@@ -27,7 +25,9 @@ export const clientScript = () => {
       newTheme = window.matchMedia("__MEDIA_QUERY__").matches ? dark : light;
     }
 
-    // FINALLY set the root class
+    // remove both `classNames` to start fresh...
+    classList.remove(classNames[light], classNames[dark]);
+    // ...and then FINALLY set the root class
     classList.add(classNames[newTheme]);
   } catch (error) {}
 };

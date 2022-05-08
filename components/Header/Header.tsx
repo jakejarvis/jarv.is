@@ -10,10 +10,6 @@ const Wrapper = styled("header", {
   borderBottom: "1px solid $kindaLight",
   backgroundColor: "$backgroundHeader",
 
-  // stick to the top of the page when scrolling
-  position: "sticky",
-  top: 0,
-
   // blurry glass-like background effect (except on firefox...?)
   backdropFilter: "saturate(180%) blur(5px)",
   zIndex: 9999,

@@ -13,4 +13,4 @@ export const themeColors = {
 };
 
 // local storage key
-export const themeStorageKey = "preferred-theme";
+export const themeStorageKey = "theme";

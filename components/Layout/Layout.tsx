@@ -23,6 +23,12 @@ const Container = styled("div", {
   display: "block",
 });
 
+// stick header to the top of the page when scrolling
+const StickyHeader = styled(Header, {
+  position: "sticky",
+  top: 0,
+});
+
 // footer needs to fill the remaining vertical screen space. doing it here to keep flex stuff together.
 const FlexedFooter = styled(Footer, {
   flex: 1,
@@ -43,7 +49,7 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
       </Head>
 
       <Flex {...rest}>
-        <Header />
+        <StickyHeader />
 
         {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
         {container ? (

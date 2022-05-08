@@ -1,56 +1,63 @@
-import { getServerSideSitemap } from "next-sitemap";
-import urlJoin from "url-join";
+import { SitemapStream, streamToPromise, SitemapItemLoose, EnumChangefreq } from "sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
 import { RELEASE_DATE } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
-import type { ISitemapField } from "next-sitemap";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const stream = new SitemapStream({ hostname: baseUrl });
+
   // TODO: make this not manual (serverless functions can't see filesystem at runtime)
-  const pages: ISitemapField[] = [
+  const pages: SitemapItemLoose[] = [
     {
       // homepage
-      loc: "/",
+      url: "/",
       priority: 1.0,
-      changefreq: "weekly",
+      changefreq: EnumChangefreq.WEEKLY,
       lastmod: RELEASE_DATE,
     },
-    { loc: "/notes/", changefreq: "weekly", lastmod: RELEASE_DATE },
-    { loc: "/birthday/" },
-    { loc: "/cli/" },
-    { loc: "/contact/" },
-    { loc: "/hillary/" },
-    { loc: "/leo/" },
-    { loc: "/license/", priority: 0.1, changefreq: "yearly" },
-    { loc: "/previously/" },
-    { loc: "/privacy/", priority: 0.1, changefreq: "yearly" },
-    { loc: "/projects/", changefreq: "daily" },
-    { loc: "/stats/", priority: 0.1, changefreq: "yearly" },
-    { loc: "/uses/" },
-    { loc: "/y2k/" },
+    { url: "/notes/", changefreq: EnumChangefreq.WEEKLY, lastmod: RELEASE_DATE },
+    { url: "/birthday/" },
+    { url: "/cli/" },
+    { url: "/contact/" },
+    { url: "/hillary/" },
+    { url: "/leo/" },
+    { url: "/license/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
+    { url: "/previously/" },
+    { url: "/privacy/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
+    { url: "/projects/", changefreq: EnumChangefreq.DAILY },
+    { url: "/stats/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
+    { url: "/uses/" },
+    { url: "/y2k/" },
   ];
 
   // push notes separately and use their metadata
   const notes = await getAllNotes();
   notes.forEach((note) =>
     pages.push({
-      loc: urlJoin("/notes/", note.slug, "/"),
+      url: `/notes/${note.slug}/`,
       // pull lastMod from front matter date
       lastmod: new Date(note.date).toISOString(),
-      priority: 0.7,
     })
   );
 
-  // make all relative URLs absolute
-  pages.forEach((page) => (page.loc = urlJoin(baseUrl, page.loc)));
+  // translate array of all pages to sitemap's stream
+  pages.forEach((page) => {
+    stream.write(page);
+  });
+  stream.end();
 
   // cache on edge for 12 hours
   const { res } = context;
   res.setHeader("cache-control", "s-maxage=43200, stale-while-revalidate=3600");
 
-  // next-sitemap takes care of the rest of the response for us
-  return getServerSideSitemap(context, pages);
+  // finally write the resulting XML
+  res.write(await streamToPromise(stream));
+  res.end();
+
+  return {
+    props: {},
+  };
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
