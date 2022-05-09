@@ -29,7 +29,7 @@ export const ThemeProvider = ({
   const [systemTheme, setSystemTheme] = useState("");
   // hook into system `prefers-dark-mode` setting
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
-  const isSystemDark = useMedia("(prefers-color-scheme: dark)", false);
+  const isSystemDark = useMedia("(prefers-color-scheme: dark)");
 
   // get the theme names (light, dark) via passed-in classnames' keys
   const themeNames = Object.keys(classNames);
