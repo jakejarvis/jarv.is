@@ -25,8 +25,8 @@ const CLI = () => (
     <Content>
       <Blockquote>
         <p>
-          The <Link href="https://jarv.is/">Jake Jarvis</Link> CLI (aka the most useless Node module ever published, in
-          history, by anyone, ever).
+          The <Link href="/">Jake Jarvis</Link> CLI (aka the most useless Node module ever published, in history, by
+          anyone, ever).
         </p>
       </Blockquote>
 
@@ -60,8 +60,7 @@ const CLI = () => (
 
       <H2 id="license">License</H2>
       <p>
-        MIT &copy; <Link href="https://jarv.is/">Jake Jarvis</Link>,{" "}
-        <Link href="https://sindresorhus.com">Sindre Sorhus</Link>
+        MIT &copy; <Link href="/">Jake Jarvis</Link>, <Link href="https://sindresorhus.com">Sindre Sorhus</Link>
       </p>
     </Content>
   </>
