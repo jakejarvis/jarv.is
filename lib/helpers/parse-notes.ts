@@ -16,6 +16,8 @@ import { NOTES_DIR } from "../config/constants";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
+import remarkSmartypants from "remark-smartypants";
+import remarkUnwrapImages from "remark-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
@@ -79,7 +81,19 @@ export const getNote = async (slug: string): Promise<Note> => {
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
-      remarkPlugins: [[remarkGfm, { singleTilde: false }]],
+      remarkPlugins: [
+        [remarkGfm, { singleTilde: false }],
+        [
+          remarkSmartypants,
+          {
+            quotes: true,
+            dashes: "oldschool",
+            backticks: false,
+            ellipses: false,
+          },
+        ],
+        [remarkUnwrapImages],
+      ],
       rehypePlugins: [[rehypeSlug], [rehypePrism, { ignoreMissing: true }]],
     },
   });

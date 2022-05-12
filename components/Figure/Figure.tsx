@@ -13,11 +13,6 @@ const Caption = styled("figcaption", {
   lineHeight: 1.5,
   color: "$medium",
   marginTop: "-0.4em",
-
-  /* some figcaptions contain paragraphs, some don't, so reset all of them */
-  "& p": {
-    margin: "0 !important",
-  },
 });
 
 export type FigureProps = Omit<ImageProps, "alt"> &
