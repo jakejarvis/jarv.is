@@ -1,3 +1,7 @@
+/**
+ * @typedef {import("next").NextConfig} NextConfig
+ */
+
 const path = require("path");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const withPlugins = require("next-compose-plugins");
@@ -15,7 +19,7 @@ module.exports = (phase, { defaultConfig }) => {
   ];
 
   /**
-   * @type {import("next").NextConfig}
+   * @type {NextConfig}
    */
   const nextConfig = {
     swcMinify: true,
