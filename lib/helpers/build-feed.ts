@@ -8,7 +8,7 @@ import type { GetServerSidePropsContext, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
 export type BuildFeedOptions = {
-  type?: "rss" | "atom" | "json"; // defaults to rss
+  type: "rss" | "atom" | "json";
   edgeCacheAge?: number; // in seconds, defaults to 43200 (12 hours)
 };
 
@@ -16,7 +16,7 @@ export type BuildFeedOptions = {
 // all the page needs to do is `return buildFeed(context, { format: "rss" })` from getServerSideProps.
 export const buildFeed = async (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
-  options: BuildFeedOptions = {}
+  options: BuildFeedOptions
 ): Promise<{ props: Record<string, unknown> }> => {
   const { res } = context;
 
@@ -63,7 +63,10 @@ export const buildFeed = async (
   res.setHeader("cache-control", `s-maxage=${options.edgeCacheAge ?? 43200}, stale-while-revalidate=3600`);
 
   // generates RSS by default
-  if (options.type === "atom") {
+  if (options.type === "rss") {
+    res.setHeader("content-type", "application/rss+xml; charset=utf-8");
+    res.write(feed.rss2());
+  } else if (options.type === "atom") {
     res.setHeader("content-type", "application/atom+xml; charset=utf-8");
     res.write(feed.atom1());
   } else if (options.type === "json") {
@@ -72,8 +75,7 @@ export const buildFeed = async (
     res.setHeader("content-type", "application/feed+json; charset=utf-8");
     res.write(feed.json1());
   } else {
-    res.setHeader("content-type", "application/rss+xml; charset=utf-8");
-    res.write(feed.rss2());
+    throw new TypeError("Invalid feed type, must be 'rss', 'atom', or 'json'.");
   }
 
   res.end();

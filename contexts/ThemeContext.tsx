@@ -8,10 +8,14 @@ export const ThemeContext: Context<{
    * If the user's theme preference is unset, this returns whether the system preference resolved to "light" or "dark".
    * If the user's theme preference is set, the preference is returned instead, regardless of their system's theme.
    */
-  activeTheme?: "light" | "dark";
+  activeTheme: "light" | "dark" | undefined;
   /** Update the theme manually and save to local storage. */
-  setTheme?: (theme: string) => void;
-}> = createContext({});
+  setTheme: (theme: string) => void;
+}> = createContext({
+  activeTheme: undefined,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  setTheme: (_) => {},
+});
 
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
