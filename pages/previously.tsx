@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 
-import Head from "next/head";
 import { NextSeo } from "next-seo";
-import dedent from "dedent";
+import Layout from "../components/Layout";
 import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
@@ -13,6 +12,7 @@ import HorizontalRule from "../components/HorizontalRule";
 import Marquee from "../components/Marquee";
 import { Windows95Logo } from "../components/Icons";
 import { styled } from "../lib/styles/stitches.config";
+import type { ReactElement } from "react";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
 import img_2002_02 from "../public/static/images/previously/2002_02.png";
@@ -39,70 +39,6 @@ const WindowsIcon = styled(Windows95Logo, {
 
 const Previously = () => (
   <>
-    <Head>
-      {/* a complete sh*tshow of overrides, mainly to compensate for font change */}
-      <style
-        dangerouslySetInnerHTML={{
-          __html: dedent`
-            body {
-              font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif !important;
-              font-weight: 600 !important;
-            }
-            em {
-              font-style: revert !important;
-            }
-            /* left header */
-            header nav > a:first-of-type span:last-of-type {
-              font-size: 1.4em !important;
-              font-weight: 700 !important;
-            }
-            /* right header */
-            header nav ul a span {
-              font-size: 1.1em !important;
-              font-weight: 700 !important;
-              line-height: 1.1;
-            }
-            /* content */
-            main > div > div {
-              font-size: 1.1em !important;
-              text-align: center;
-            }
-            main > div > div p {
-              font-size: 0.95em;
-            }
-            main > div > div strong {
-              font-weight: 900;
-            }
-            main > div > div code {
-              font-size: 0.85em !important;
-              font-weight: 400;
-            }
-            main > div > div figure:last-of-type {
-              margin-bottom: 0;
-            }
-            /* footer */
-            footer > div {
-              font-size: 0.95em !important;
-            }
-            /* components */
-            figcaption,
-            .iframe_caption {
-              margin-top: 0.2em;
-              font-size: 0.9em;
-              line-height: 1.5;
-              color: var(--colors-medium);
-              text-align: center;
-            }
-            hr {
-              margin: 1em auto !important;
-            }
-            iframe {
-              margin-bottom: 0.6em !important;
-            }`,
-        }}
-      />
-    </Head>
-
     <NextSeo
       title="Previously on..."
       description="An incredibly embarrassing and somewhat painful trip down this site's memory lane..."
@@ -153,16 +89,19 @@ const Previously = () => (
         </Link>
       </p>
 
-      <IFrame
-        src="https://jakejarvis.github.io/my-first-website/"
-        title="My Terrible, Horrible, No Good, Very Bad First Website"
-        height={500}
-        allowScripts
-      />
-      <p className="iframe_caption">
-        <Link href="https://jakejarvis.github.io/my-first-website/">November 2001</Link> (
-        <Link href="https://github.com/jakejarvis/my-first-website">view source</Link>)
-      </p>
+      <figure style={{ margin: 0 }}>
+        <IFrame
+          src="https://jakejarvis.github.io/my-first-website/"
+          title="My Terrible, Horrible, No Good, Very Bad First Website"
+          height={500}
+          allowScripts
+          css={{ margin: "0.6em 0" }}
+        />
+        <figcaption>
+          <Link href="https://jakejarvis.github.io/my-first-website/">November 2001</Link> (
+          <Link href="https://github.com/jakejarvis/my-first-website">view source</Link>)
+        </figcaption>
+      </figure>
 
       <HorizontalRule />
 
@@ -227,5 +166,68 @@ const Previously = () => (
     </Content>
   </>
 );
+
+// a complete sh*tshow of "global" overrides, mainly to compensate for font change
+Previously.getLayout = (page: ReactElement) => {
+  return (
+    <Layout
+      css={{
+        fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
+        fontWeight: 600,
+
+        header: {
+          // title text
+          "nav > a:first-of-type span:last-of-type": {
+            fontSize: "1.4em",
+            fontWeight: 700,
+          },
+          // menu item text
+          "nav ul a span": {
+            fontSize: "1.1em",
+            fontWeight: 700,
+            lineHeight: 1.1,
+          },
+        },
+
+        "main > div > div": {
+          fontSize: "1.1em",
+          textAlign: "center",
+
+          em: {
+            fontStyle: "revert !important",
+          },
+          p: {
+            fontSize: "0.95em",
+          },
+          strong: {
+            fontWeight: 900,
+          },
+          code: {
+            fontSize: "0.85em",
+            fontWeight: 400,
+          },
+          hr: {
+            margin: "1em auto",
+          },
+          figcaption: {
+            fontSize: "0.9em",
+            lineHeight: 1.5,
+            color: "$medium",
+            textAlign: "center",
+          },
+          "figure:last-of-type": {
+            marginBottom: 0,
+          },
+        },
+
+        "footer > div": {
+          fontSize: "0.95em",
+        },
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};
 
 export default Previously;
