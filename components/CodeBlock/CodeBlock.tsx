@@ -9,7 +9,7 @@ const Block = styled("div", {
   margin: "1em auto",
   color: "$codeText",
 
-  [`& ${Code}`]: {
+  [`${Code}`]: {
     display: "block",
     overflowX: "auto",
     padding: "1em",

@@ -13,7 +13,7 @@ const Player = styled(ReactPlayer, {
   top: 0,
   left: 0,
 
-  "& video": {
+  video: {
     borderRadius: "$rounded",
   },
 });

@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { serialize } from "next-mdx-remote/serialize";
+import glob from "fast-glob";
 import pMap from "p-map";
 import matter from "gray-matter";
 import urlJoin from "url-join";
@@ -9,7 +10,6 @@ import { minify } from "uglify-js";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
 import sanitizeHtml from "sanitize-html";
-import readingTime from "reading-time";
 import { formatDateISO } from "./format-date";
 import { baseUrl } from "../config";
 import { NOTES_DIR } from "../config/constants";
@@ -23,15 +23,14 @@ import rehypePrism from "rehype-prism-plus";
 
 import type { Note, NoteFrontMatter } from "../../types";
 
-const ABSOLUTE_NOTES_DIR = path.join(process.cwd(), NOTES_DIR);
-
-// returns all .mdx files in NOTES_DIR (without .mdx extension)
 export const getNoteSlugs = async (): Promise<string[]> => {
-  // get all files in NOTES_DIR
-  const files = await fs.readdir(ABSOLUTE_NOTES_DIR);
+  // list all .mdx files in NOTES_DIR
+  const mdxFiles = await glob("*.mdx", { cwd: NOTES_DIR });
 
-  // narrow to only the .mdx files and strip the .mdx extension
-  return files.filter((file) => /\.mdx$/.test(file)).map((noteFile) => noteFile.replace(/\.mdx$/, ""));
+  // strip the .mdx extensions from filenames
+  const slugs = mdxFiles.map((fileName) => fileName.replace(/\.mdx$/, ""));
+
+  return slugs;
 };
 
 // returns front matter and/or *raw* markdown contents of a given slug
@@ -41,7 +40,7 @@ export const getNoteData = async (
   frontMatter: NoteFrontMatter;
   content: string;
 }> => {
-  const fullPath = path.join(ABSOLUTE_NOTES_DIR, `${slug}.mdx`);
+  const fullPath = path.join(NOTES_DIR, `${slug}.mdx`);
   const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
@@ -69,7 +68,6 @@ export const getNoteData = async (
       slug,
       permalink: urlJoin(baseUrl, "notes", slug, "/"),
       date: formatDateISO(data.date), // validate/normalize the date string provided from front matter
-      readingMins: Math.ceil(readingTime(content).minutes),
     },
     content,
   };

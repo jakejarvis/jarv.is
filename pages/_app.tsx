@@ -28,10 +28,14 @@ const App = ({ Component, pageProps }: AppProps) => {
   const canonical = urlJoin(config.baseUrl, router.pathname === "/" ? "" : router.pathname, "/");
 
   useEffect(() => {
+    // don't track pageviews on branch/deploy previews and localhost
+    if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
+      return;
+    }
+
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
-      // don't track branch/deploy previews and localhost
       includedDomains: [config.siteDomain],
       // we trigger pageview sending manually below, don't also do it on script load
       auto: false,

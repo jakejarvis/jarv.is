@@ -9,7 +9,7 @@ const Title = styled("h1", {
   lineHeight: 1.3,
   fontWeight: 700,
 
-  "& code": {
+  code: {
     margin: "0 0.075em",
   },
 

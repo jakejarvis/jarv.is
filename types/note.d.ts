@@ -9,7 +9,6 @@ export type NoteFrontMatter = {
   description?: string;
   image?: string;
   tags?: string[];
-  readingMins?: number;
   noComments?: boolean;
 };
 
