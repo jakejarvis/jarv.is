@@ -24,10 +24,8 @@ const CLI = () => (
 
     <Content>
       <Blockquote>
-        <p>
-          The <Link href="/">Jake Jarvis</Link> CLI (aka the most useless Node module ever published, in history, by
-          anyone, ever).
-        </p>
+        The <Link href="/">Jake Jarvis</Link> CLI (aka the most useless Node module ever published, in history, by
+        anyone, ever).
       </Blockquote>
 
       <Image src={cliImg} href="https://www.npmjs.com/package/@jakejarvis/cli" alt="Terminal Screenshot" priority />
