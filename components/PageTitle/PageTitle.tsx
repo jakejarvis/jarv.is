@@ -14,7 +14,7 @@ const Title = styled("h1", {
   },
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   color: "$text",
   textDecoration: "none",
 });
@@ -26,9 +26,7 @@ const PageTitle = ({ children, ...rest }: PageTitleProps) => {
 
   return (
     <Title {...rest}>
-      <NextLink href={router.pathname} passHref={true}>
-        <Link>{children}</Link>
-      </NextLink>
+      <Link href={router.pathname}>{children}</Link>
     </Title>
   );
 };

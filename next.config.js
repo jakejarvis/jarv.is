@@ -43,6 +43,7 @@ module.exports = (phase, { defaultConfig }) => {
         // allow forgoing the mess of `<span>`s around statically imported images
         layoutRaw: true,
       },
+      newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
     },
     webpack: (config) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them

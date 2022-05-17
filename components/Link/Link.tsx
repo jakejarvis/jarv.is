@@ -4,7 +4,7 @@ import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 
-const FancyLink = styled("a", {
+const StyledLink = styled(NextLink, {
   color: "$link",
   textDecoration: "none",
 
@@ -34,29 +34,20 @@ const FancyLink = styled("a", {
   },
 });
 
-export type LinkProps = Omit<ComponentProps<typeof FancyLink>, "href"> &
+export type LinkProps = Omit<ComponentProps<typeof StyledLink>, "href"> &
   NextLinkProps & {
     underline?: boolean;
     forceNewWindow?: boolean;
   };
 
-const Link = ({
-  href,
-  prefetch = false,
-  passHref = true,
-  target,
-  rel,
-  underline = true,
-  forceNewWindow,
-  ...rest
-}: LinkProps) => {
+const Link = ({ href, prefetch = false, target, rel, underline = true, forceNewWindow, ...rest }: LinkProps) => {
   // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
   // can be overridden with `forceNewWindow={true}`.
   const isExternal = isAbsoluteUrl(href.toString());
 
   if (forceNewWindow || isExternal) {
     return (
-      <FancyLink
+      <StyledLink
         href={href.toString()}
         target={target ?? "_blank"}
         rel={[rel, "noopener", isExternal ? "noreferrer" : ""].join(" ").trim()}
@@ -64,13 +55,9 @@ const Link = ({
         {...rest}
       />
     );
-  } else {
-    return (
-      <NextLink href={href} prefetch={prefetch} passHref={passHref}>
-        <FancyLink target={target} rel={rel} underline={underline} {...rest} />
-      </NextLink>
-    );
   }
+
+  return <StyledLink {...{ href, prefetch, target, rel, underline, ...rest }} />;
 };
 
 export default Link;

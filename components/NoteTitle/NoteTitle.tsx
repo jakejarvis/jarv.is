@@ -18,7 +18,7 @@ const Title = styled("h1", {
   },
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   color: "$text",
   textDecoration: "none",
 });
@@ -27,15 +27,13 @@ export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "htmlTitle"> & Compo
 
 const NoteTitle = ({ slug, htmlTitle, ...rest }: NoteTitleProps) => (
   <Title {...rest}>
-    <NextLink
+    <Link
       href={{
         pathname: "/notes/[slug]/",
         query: { slug },
       }}
-      passHref={true}
-    >
-      <Link dangerouslySetInnerHTML={{ __html: htmlTitle }} />
-    </NextLink>
+      dangerouslySetInnerHTML={{ __html: htmlTitle }}
+    />
   </Title>
 );
 

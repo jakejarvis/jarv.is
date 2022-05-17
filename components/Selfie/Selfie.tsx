@@ -20,7 +20,7 @@ const Image = styled(NextImage, {
   },
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   display: "inline-flex",
   alignItems: "center",
   color: "$mediumDark",
@@ -48,15 +48,13 @@ const Name = styled("span", {
   },
 });
 
-export type SelfieProps = ComponentProps<typeof Link>;
+export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 
 const Selfie = ({ ...rest }: SelfieProps) => (
-  <NextLink href="/" passHref={true}>
-    <Link rel="author" title={authorName} {...rest}>
-      <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
-      <Name>{authorName}</Name>
-    </Link>
-  </NextLink>
+  <Link href="/" rel="author" title={authorName} {...rest}>
+    <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
+    <Name>{authorName}</Name>
+  </Link>
 );
 
 export default Selfie;

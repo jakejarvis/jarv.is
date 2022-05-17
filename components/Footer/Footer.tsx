@@ -35,7 +35,7 @@ const Row = styled("div", {
   },
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   color: "$mediumDark",
   textDecoration: "none",
 });
@@ -88,13 +88,13 @@ const Footer = ({ ...rest }: FooterProps) => (
     <Row>
       <div>
         Content{" "}
-        <NextLink href="/license/" prefetch={false} passHref={true}>
-          <Link title="Creative Commons Attribution 4.0 International">licensed under CC-BY-4.0</Link>
-        </NextLink>
+        <Link href="/license/" prefetch={false} title="Creative Commons Attribution 4.0 International">
+          licensed under CC-BY-4.0
+        </Link>
         ,{" "}
-        <NextLink href="/previously/" prefetch={false} passHref={true}>
-          <Link title="Previously on...">2001</Link>
-        </NextLink>{" "}
+        <Link href="/previously/" prefetch={false} title="Previously on...">
+          2001
+        </Link>{" "}
         – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE).getUTCFullYear()}.
       </div>
 

@@ -22,7 +22,7 @@ const MetaItem = styled("div", {
   whiteSpace: "nowrap",
 });
 
-const MetaLink = styled("a", {
+const MetaLink = styled(NextLink, {
   color: "inherit",
   textDecoration: "none",
 });
@@ -62,20 +62,17 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
   <>
     <Wrapper>
       <MetaItem>
-        <NextLink
+        <MetaLink
           href={{
             pathname: "/notes/[slug]/",
             query: { slug },
           }}
-          passHref={true}
         >
-          <MetaLink>
-            <span>
-              <Icon as={DateIcon} />
-            </span>
-            <Time date={date} format="MMMM D, YYYY" />
-          </MetaLink>
-        </NextLink>
+          <span>
+            <Icon as={DateIcon} />
+          </span>
+          <Time date={date} format="MMMM D, YYYY" />
+        </MetaLink>
       </MetaItem>
 
       {tags.length > 0 && (
