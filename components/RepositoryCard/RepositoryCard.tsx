@@ -1,7 +1,7 @@
+import commaNumber from "comma-number";
 import Link from "../Link";
 import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
-import { commafy } from "../../lib/helpers/format-number";
 import { styled } from "../../lib/styles/stitches.config";
 import type { Repository } from "../../types";
 
@@ -100,12 +100,12 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/stargazers`}
-              title={`${commafy(stars)} ${stars === 1 ? "star" : "stars"}`}
+              title={`${commaNumber(stars)} ${stars === 1 ? "star" : "stars"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={StarOcticon} />
-              <span>{commafy(stars)}</span>
+              <span>{commaNumber(stars)}</span>
             </MetaLink>
           </MetaItem>
         )}
@@ -114,12 +114,12 @@ const RepositoryCard = ({
           <MetaItem>
             <MetaLink
               href={`${url}/network/members`}
-              title={`${commafy(forks)} ${forks === 1 ? "fork" : "forks"}`}
+              title={`${commaNumber(forks)} ${forks === 1 ? "fork" : "forks"}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <MetaIcon as={ForkOcticon} />
-              <span>{commafy(forks)}</span>
+              <span>{commaNumber(forks)}</span>
             </MetaLink>
           </MetaItem>
         )}

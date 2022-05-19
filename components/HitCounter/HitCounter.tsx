@@ -1,7 +1,7 @@
 import useSWR from "swr";
+import commaNumber from "comma-number";
 import Loading from "../Loading";
 import { fetcher } from "../../lib/helpers/fetcher";
-import { commafy } from "../../lib/helpers/format-number";
 
 export type HitCounterProps = {
   slug: string;
@@ -34,8 +34,8 @@ const HitCounter = ({ slug, className }: HitCounterProps) => {
 
   // we have data!
   return (
-    <span title={`${commafy(data.hits)} ${data.hits === 1 ? "view" : "views"}`} className={className}>
-      {commafy(data.hits)}
+    <span title={`${commaNumber(data.hits)} ${data.hits === 1 ? "view" : "views"}`} className={className}>
+      {commaNumber(data.hits)}
     </span>
   );
 };
