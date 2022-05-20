@@ -319,7 +319,7 @@ const Index = () => (
           lightColor="#757575"
           darkColor="#959595"
           underline={false}
-          forceNewWindow
+          openInNewTab
         >
           🔐 <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
         </ColorfulLink>

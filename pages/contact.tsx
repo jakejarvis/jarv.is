@@ -35,7 +35,7 @@ const Contact = () => (
       </p>
       <p>
         🔐 You can grab my public key here:{" "}
-        <Link href="/pubkey.asc" title="My Public PGP Key" rel="pgpkey authn" forceNewWindow>
+        <Link href="/pubkey.asc" title="My Public PGP Key" rel="pgpkey authn" openInNewTab>
           <PGPKey>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</PGPKey>
         </Link>
         .

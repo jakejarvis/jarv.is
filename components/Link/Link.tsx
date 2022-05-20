@@ -1,5 +1,4 @@
 import NextLink from "next/link";
-import isAbsoluteUrl from "is-absolute-url";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
@@ -37,19 +36,19 @@ const StyledLink = styled(NextLink, {
 export type LinkProps = Omit<ComponentProps<typeof StyledLink>, "href"> &
   NextLinkProps & {
     underline?: boolean;
-    forceNewWindow?: boolean;
+    openInNewTab?: boolean;
   };
 
-const Link = ({ href, prefetch = false, target, rel, underline = true, forceNewWindow, ...rest }: LinkProps) => {
-  // this component auto-detects whether or not we should use a normal HTML anchor externally or next/link internally,
-  // can be overridden with `forceNewWindow={true}`.
-  const isExternal = isAbsoluteUrl(href.toString());
+const Link = ({ href, rel, target, prefetch = false, underline = true, openInNewTab, ...rest }: LinkProps) => {
+  // This component auto-detects whether or not this link should open in the same window (the default for internal
+  // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
+  const isExternal = typeof href === "string" ? href.charAt(0) !== "/" && href.charAt(0) !== "#" : false;
 
-  if (forceNewWindow || isExternal) {
+  if (openInNewTab || isExternal) {
     return (
       <StyledLink
-        href={href.toString()}
-        target={target ?? "_blank"}
+        href={href}
+        target={target || "_blank"}
         rel={[rel, "noopener", isExternal ? "noreferrer" : ""].join(" ").trim()}
         underline={underline}
         {...rest}
@@ -57,7 +56,8 @@ const Link = ({ href, prefetch = false, target, rel, underline = true, forceNewW
     );
   }
 
-  return <StyledLink {...{ href, prefetch, target, rel, underline, ...rest }} />;
+  // If link is to an internal page, simply pass *everything* along as-is to next/link.
+  return <StyledLink {...{ href, rel, target, prefetch, underline, ...rest }} />;
 };
 
 export default Link;
