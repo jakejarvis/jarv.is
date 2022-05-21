@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import { styled } from "../../lib/styles/stitches.config";
+import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
 import type { LinkProps as NextLinkProps } from "next/link";
 
@@ -42,7 +43,7 @@ export type LinkProps = Omit<ComponentProps<typeof StyledLink>, "href"> &
 const Link = ({ href, rel, target, prefetch = false, underline = true, openInNewTab, ...rest }: LinkProps) => {
   // This component auto-detects whether or not this link should open in the same window (the default for internal
   // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
-  const isExternal = typeof href === "string" ? href.charAt(0) !== "/" && href.charAt(0) !== "#" : false;
+  const isExternal = typeof href === "string" ? new URL(href as string, baseUrl).origin !== baseUrl : false;
 
   if (openInNewTab || isExternal) {
     return (
