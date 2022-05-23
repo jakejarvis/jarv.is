@@ -30,8 +30,4 @@ Most production steps are handled [automatically by Vercel](https://vercel.com/d
 
 ## 📜 License
 
-![Creative Commons Attribution 4.0 International License](https://raw.githubusercontent.com/creativecommons/cc-cert-core/master/images/cc-by-88x31.png "CC BY")
-
-Site **content** (everything in [`/notes`](notes/)) is published under the [**Creative Commons Attribution 4.0 International License**](LICENSE) (`CC-BY-4.0`), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
-
-All original **code** in this repository is published under the [**MIT License**](LICENSE).
+[MIT](LICENSE)
