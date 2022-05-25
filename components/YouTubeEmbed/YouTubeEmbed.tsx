@@ -14,7 +14,7 @@ const Player = styled(ReactPlayer, {
   left: 0,
 
   // target both the lazy thumbnail preview *and* the actual YouTube embed
-  ".react-player__preview, iframe": {
+  "& .react-player__preview, & iframe": {
     borderRadius: "$rounded",
   },
 });

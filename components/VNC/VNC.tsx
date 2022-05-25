@@ -12,10 +12,10 @@ const Display = styled(
     maxWidth: "800px",
 
     // these are injected by noVNC after connection, so we can't target them directly:
-    div: {
+    "& div": {
       background: "none !important",
 
-      canvas: {
+      "& canvas": {
         cursor: "inherit !important",
       },
     },

@@ -45,12 +45,16 @@ const Menu = ({ ...rest }: MenuProps) => {
 
   return (
     <Wrapper {...rest}>
-      {menuItems.map((item, index) => (
-        <Item key={index}>
-          {/* kinda weird/hacky way to determine if the *first part* of the current path matches this href */}
-          <MenuItem {...item} current={item.href === `/${router.pathname.split("/")[1]}`} />
-        </Item>
-      ))}
+      {menuItems.map((item, index) => {
+        // kinda weird/hacky way to determine if the *first part* of the current path matches this href
+        const isCurrent = item.href === `/${router.pathname.split("/")[1]}`;
+
+        return (
+          <Item key={index}>
+            <MenuItem {...item} current={isCurrent} />
+          </Item>
+        );
+      })}
 
       <Item>
         <MenuItem icon={ThemeToggle} />

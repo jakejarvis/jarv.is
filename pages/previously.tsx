@@ -177,12 +177,12 @@ Previously.getLayout = (page: ReactElement) => {
 
         header: {
           // title text
-          "nav > a:first-of-type span:last-of-type": {
+          "& > nav > a:first-of-type > span:last-of-type": {
             fontSize: "1.4em",
             fontWeight: 700,
           },
           // menu item text
-          "nav ul a span": {
+          "& > nav > ul > li > a > span": {
             fontSize: "1.1em",
             fontWeight: 700,
             lineHeight: 1.1,
@@ -193,29 +193,29 @@ Previously.getLayout = (page: ReactElement) => {
           fontSize: "1.1em",
           textAlign: "center",
 
-          em: {
+          "& em": {
             fontStyle: "revert !important",
           },
-          p: {
+          "& p": {
             fontSize: "0.95em",
           },
-          strong: {
+          "& strong": {
             fontWeight: 900,
           },
-          code: {
+          "& code": {
             fontSize: "0.85em",
             fontWeight: 400,
           },
-          hr: {
+          "& hr": {
             margin: "1em auto",
           },
-          figcaption: {
+          "& figcaption": {
             fontSize: "0.9em",
             lineHeight: 1.5,
             color: "$medium",
             textAlign: "center",
           },
-          "figure:last-of-type": {
+          "& figure:last-of-type": {
             marginBottom: 0,
           },
         },

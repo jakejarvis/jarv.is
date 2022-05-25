@@ -151,7 +151,7 @@ export const globalStyles = globalCss(
         fontVariationSettings: `"ital" 1, "slnt" -10`,
 
         // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-        "code, kbd, samp, pre": {
+        "& code, & kbd, & samp, & pre": {
           fontStyle: "italic !important",
           fontVariationSettings: "initial !important",
         },
