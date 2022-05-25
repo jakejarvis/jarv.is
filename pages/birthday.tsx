@@ -5,28 +5,30 @@ import Video from "../components/Video";
 
 import thumbnail from "../public/static/images/birthday/thumb.png";
 
-const Birthday = () => (
-  <>
-    <NextSeo
-      title="🎉 Cranky Birthday Boy on VHS Tape 📼"
-      description="The origin of my hatred for the Happy Birthday song."
-      openGraph={{
-        title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
-      }}
-    />
-
-    <PageTitle>📼 1996.MOV</PageTitle>
-
-    <Content>
-      <Video
-        src={{
-          webm: "/static/images/birthday/birthday.webm",
-          mp4: "/static/images/birthday/birthday.mp4",
+const Birthday = () => {
+  return (
+    <>
+      <NextSeo
+        title="🎉 Cranky Birthday Boy on VHS Tape 📼"
+        description="The origin of my hatred for the Happy Birthday song."
+        openGraph={{
+          title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
         }}
-        thumbnail={thumbnail.src}
       />
-    </Content>
-  </>
-);
+
+      <PageTitle>📼 1996.MOV</PageTitle>
+
+      <Content>
+        <Video
+          src={{
+            webm: "/static/images/birthday/birthday.webm",
+            mp4: "/static/images/birthday/birthday.mp4",
+          }}
+          thumbnail={thumbnail.src}
+        />
+      </Content>
+    </>
+  );
+};
 
 export default Birthday;

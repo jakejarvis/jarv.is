@@ -71,9 +71,9 @@ const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemPr
         {linkContent}
       </Link>
     );
-  } else {
-    return linkContent;
   }
+
+  return <>{linkContent}</>;
 };
 
 export default MenuItem;

@@ -6,10 +6,12 @@ export type TimeProps = {
   className?: string;
 };
 
-const Time = ({ date, format = "MMM D", className }: TimeProps) => (
-  <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
-    {formatDate(date, format)}
-  </time>
-);
+const Time = ({ date, format = "MMM D", className }: TimeProps) => {
+  return (
+    <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
+      {formatDate(date, format)}
+    </time>
+  );
+};
 
 export default Time;

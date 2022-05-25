@@ -17,20 +17,22 @@ export type IFrameProps = ComponentProps<typeof RoundedIFrame> & {
   noScroll?: boolean;
 };
 
-const IFrame = ({ src, title, height, width, allowScripts, noScroll, css, ...rest }: IFrameProps) => (
-  <RoundedIFrame
-    src={src}
-    title={title}
-    sandbox={allowScripts ? "allow-same-origin allow-scripts allow-popups" : undefined}
-    scrolling={noScroll ? "no" : undefined}
-    loading="lazy"
-    css={{
-      height: `${height}px`,
-      maxWidth: width ? `${width}px` : "100%",
-      ...css,
-    }}
-    {...rest}
-  />
-);
+const IFrame = ({ src, title, height, width, allowScripts, noScroll, css, ...rest }: IFrameProps) => {
+  return (
+    <RoundedIFrame
+      src={src}
+      title={title}
+      sandbox={allowScripts ? "allow-same-origin allow-scripts allow-popups" : undefined}
+      scrolling={noScroll ? "no" : undefined}
+      loading="lazy"
+      css={{
+        height: `${height}px`,
+        maxWidth: width ? `${width}px` : "100%",
+        ...css,
+      }}
+      {...rest}
+    />
+  );
+};
 
 export default IFrame;

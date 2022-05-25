@@ -41,32 +41,34 @@ const GitHubLogo = styled(OctocatOcticon, {
   fill: "$text",
 });
 
-const Projects = ({ repos }) => (
-  <>
-    <NextSeo
-      title="Projects"
-      openGraph={{
-        title: "Projects",
-      }}
-    />
+const Projects = ({ repos }) => {
+  return (
+    <>
+      <NextSeo
+        title="Projects"
+        openGraph={{
+          title: "Projects",
+        }}
+      />
 
-    <PageTitle>💾 Projects</PageTitle>
+      <PageTitle>💾 Projects</PageTitle>
 
-    <Content>
-      <Wrapper>
-        {repos.map((repo: Repository) => (
-          <Card key={repo.name} {...repo} />
-        ))}
-      </Wrapper>
+      <Content>
+        <Wrapper>
+          {repos.map((repo: Repository) => (
+            <Card key={repo.name} {...repo} />
+          ))}
+        </Wrapper>
 
-      <ViewMore>
-        <Link href={`https://github.com/${authorSocial.github}`}>
-          View more on <GitHubLogo /> GitHub...
-        </Link>
-      </ViewMore>
-    </Content>
-  </>
-);
+        <ViewMore>
+          <Link href={`https://github.com/${authorSocial.github}`}>
+            View more on <GitHubLogo /> GitHub...
+          </Link>
+        </ViewMore>
+      </Content>
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   // https://docs.github.com/en/graphql/reference/objects#repository

@@ -3,7 +3,7 @@ import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
-import type { ReactNode, Ref } from "react";
+import type { ReactNode, Ref, MouseEventHandler } from "react";
 
 const Button = styled("button", {
   lineHeight: 1,
@@ -44,9 +44,9 @@ const CopyButton = forwardRef(function CopyButton(
 ) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = (e) => {
+  const handleCopy: MouseEventHandler<HTMLButtonElement> = (e) => {
     // prevent unintentional double-clicks by unfocusing button
-    e.target.blur();
+    e.currentTarget.blur();
 
     // send plaintext to the clipboard
     const didCopy = copy(innerText(source));

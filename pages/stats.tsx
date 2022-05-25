@@ -21,33 +21,35 @@ const FathomIcon = styled(FathomLogo, {
   fill: "$text",
 });
 
-const Stats = () => (
-  <>
-    <NextSeo
-      title="Stats"
-      openGraph={{
-        title: "Stats",
-      }}
-    />
-
-    <PageTitle>📈 Stats</PageTitle>
-
-    <Content>
-      <PoweredBy>
-        Powered by{" "}
-        <Link href="https://usefathom.com/ref/ZEYG0O" underline={false}>
-          <FathomIcon /> Fathom Analytics
-        </Link>
-      </PoweredBy>
-
-      <IFrame
-        src={`https://app.usefathom.com/share/${fathomSiteId}/${siteDomain}`}
-        title="Fathom Analytics dashboard"
-        height={600}
-        allowScripts
+const Stats = () => {
+  return (
+    <>
+      <NextSeo
+        title="Stats"
+        openGraph={{
+          title: "Stats",
+        }}
       />
-    </Content>
-  </>
-);
+
+      <PageTitle>📈 Stats</PageTitle>
+
+      <Content>
+        <PoweredBy>
+          Powered by{" "}
+          <Link href="https://usefathom.com/ref/ZEYG0O" underline={false}>
+            <FathomIcon /> Fathom Analytics
+          </Link>
+        </PoweredBy>
+
+        <IFrame
+          src={`https://app.usefathom.com/share/${fathomSiteId}/${siteDomain}`}
+          title="Fathom Analytics dashboard"
+          height={600}
+          allowScripts
+        />
+      </Content>
+    </>
+  );
+};
 
 export default Stats;

@@ -26,14 +26,14 @@ const CodeHybrid = ({ forceBlock, className, children, ...rest }: CodeHybridProp
         {children}
       </CodeBlock>
     );
-  } else {
-    // inline code in paragraphs, headings, etc. (never highlighted)
-    return (
-      <CodeInline className={className} {...rest}>
-        {children}
-      </CodeInline>
-    );
   }
+
+  // simple inline code in paragraphs, headings, etc. (never highlighted)
+  return (
+    <CodeInline className={className} {...rest}>
+      {children}
+    </CodeInline>
+  );
 };
 
 export default CodeHybrid;

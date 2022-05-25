@@ -57,7 +57,7 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
             <Container>{children}</Container>
           </Default>
         ) : (
-          children
+          <>{children}</>
         )}
 
         <FlexedFooter />

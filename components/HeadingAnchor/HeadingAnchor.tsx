@@ -17,10 +17,12 @@ export type HeadingAnchorProps = ComponentProps<typeof AnchorLink> & {
   title: string;
 };
 
-const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => (
-  <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} tabIndex={-1} aria-hidden={true} {...rest}>
-    <Icon />
-  </AnchorLink>
-);
+const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => {
+  return (
+    <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} tabIndex={-1} aria-hidden={true} {...rest}>
+      <Icon />
+    </AnchorLink>
+  );
+};
 
 export default HeadingAnchor;

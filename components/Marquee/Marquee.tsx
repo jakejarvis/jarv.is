@@ -36,10 +36,12 @@ const Track = styled("div", {
 
 export type MarqueeProps = ComponentProps<typeof Wrapper>;
 
-const Marquee = ({ children, ...rest }: MarqueeProps) => (
-  <Wrapper {...rest}>
-    <Track>{children}</Track>
-  </Wrapper>
-);
+const Marquee = ({ children, ...rest }: MarqueeProps) => {
+  return (
+    <Wrapper {...rest}>
+      <Track>{children}</Track>
+    </Wrapper>
+  );
+};
 
 export default Marquee;

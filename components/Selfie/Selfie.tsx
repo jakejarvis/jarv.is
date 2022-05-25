@@ -50,11 +50,13 @@ const Name = styled("span", {
 
 export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 
-const Selfie = ({ ...rest }: SelfieProps) => (
-  <Link href="/" rel="author" title={authorName} {...rest}>
-    <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
-    <Name>{authorName}</Name>
-  </Link>
-);
+const Selfie = ({ ...rest }: SelfieProps) => {
+  return (
+    <Link href="/" rel="author" title={authorName} {...rest}>
+      <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
+      <Name>{authorName}</Name>
+    </Link>
+  );
+};
 
 export default Selfie;

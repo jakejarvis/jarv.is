@@ -83,48 +83,50 @@ const Heart = styled("span", {
 
 export type FooterProps = ComponentProps<typeof Wrapper>;
 
-const Footer = ({ ...rest }: FooterProps) => (
-  <Wrapper {...rest}>
-    <Row>
-      <div>
-        Content{" "}
-        <Link href="/license/" prefetch={false} title="Creative Commons Attribution 4.0 International">
-          licensed under CC-BY-4.0
-        </Link>
-        ,{" "}
-        <Link href="/previously/" prefetch={false} title="Previously on...">
-          2001
-        </Link>{" "}
-        – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE).getUTCFullYear()}.
-      </div>
+const Footer = ({ ...rest }: FooterProps) => {
+  return (
+    <Wrapper {...rest}>
+      <Row>
+        <div>
+          Content{" "}
+          <Link href="/license/" prefetch={false} title="Creative Commons Attribution 4.0 International">
+            licensed under CC-BY-4.0
+          </Link>
+          ,{" "}
+          <Link href="/previously/" prefetch={false} title="Previously on...">
+            2001
+          </Link>{" "}
+          – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE).getUTCFullYear()}.
+        </div>
 
-      <div>
-        Made with{" "}
-        <Heart title="Love">
-          <Icon as={HeartIcon} />
-        </Heart>{" "}
-        and{" "}
-        <NextjsLink
-          href="https://nextjs.org/"
-          title="Powered by Next.js"
-          aria-label="Next.js"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon as={NextjsLogo} />
-        </NextjsLink>
-        .{" "}
-        <ViewSourceLink
-          href={`https://github.com/${config.githubRepo}`}
-          title="View Source on GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View source.
-        </ViewSourceLink>
-      </div>
-    </Row>
-  </Wrapper>
-);
+        <div>
+          Made with{" "}
+          <Heart title="Love">
+            <Icon as={HeartIcon} />
+          </Heart>{" "}
+          and{" "}
+          <NextjsLink
+            href="https://nextjs.org/"
+            title="Powered by Next.js"
+            aria-label="Next.js"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon as={NextjsLogo} />
+          </NextjsLink>
+          .{" "}
+          <ViewSourceLink
+            href={`https://github.com/${config.githubRepo}`}
+            title="View Source on GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View source.
+          </ViewSourceLink>
+        </div>
+      </Row>
+    </Wrapper>
+  );
+};
 
 export default Footer;

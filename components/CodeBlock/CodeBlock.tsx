@@ -92,13 +92,15 @@ export type CodeBlockProps = ComponentProps<typeof Code> & {
   highlight?: boolean;
 };
 
-const CodeBlock = ({ highlight, className, children, ...rest }: CodeBlockProps) => (
-  <Block highlight={highlight}>
-    <CornerCopyButton source={children} />
-    <Code className={className?.replace("code-highlight", "").trim()} {...rest}>
-      {children}
-    </Code>
-  </Block>
-);
+const CodeBlock = ({ highlight, className, children, ...rest }: CodeBlockProps) => {
+  return (
+    <Block highlight={highlight}>
+      <CornerCopyButton source={children} />
+      <Code className={className?.replace("code-highlight", "").trim()} {...rest}>
+        {children}
+      </Code>
+    </Block>
+  );
+};
 
 export default CodeBlock;

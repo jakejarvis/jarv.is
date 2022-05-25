@@ -23,10 +23,12 @@ export type OctocatLinkProps = ComponentProps<typeof Link> & {
   repo: string;
 };
 
-const OctocatLink = ({ repo, className, ...rest }: OctocatLinkProps) => (
-  <Link href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer" {...rest}>
-    <Octocat className={className} />
-  </Link>
-);
+const OctocatLink = ({ repo, className, ...rest }: OctocatLinkProps) => {
+  return (
+    <Link href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer" {...rest}>
+      <Octocat className={className} />
+    </Link>
+  );
+};
 
 export default OctocatLink;

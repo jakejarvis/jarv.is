@@ -58,70 +58,72 @@ const Tag = styled("span", {
 
 export type NoteMetaProps = Pick<NoteFrontMatter, "slug" | "date" | "title" | "htmlTitle" | "tags">;
 
-const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) => (
-  <>
-    <Wrapper>
-      <MetaItem>
-        <MetaLink
-          href={{
-            pathname: "/notes/[slug]/",
-            query: { slug },
-          }}
-        >
-          <span>
-            <Icon as={DateIcon} />
-          </span>
-          <Time date={date} format="MMMM D, YYYY" />
-        </MetaLink>
-      </MetaItem>
-
-      {tags.length > 0 && (
+const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) => {
+  return (
+    <>
+      <Wrapper>
         <MetaItem>
-          <span title="Tags">
-            <Icon as={TagIcon} />
-          </span>
-          <TagsList>
-            {tags.map((tag) => (
-              <Tag key={tag} title={tag}>
-                {tag}
-              </Tag>
-            ))}
-          </TagsList>
-        </MetaItem>
-      )}
-
-      <MetaItem>
-        <MetaLink
-          href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
-          target="_blank"
-          rel="noopener noreferrer"
-          title={`Edit "${title}" on GitHub`}
-        >
-          <span>
-            <Icon as={EditIcon} />
-          </span>
-          <span>Improve This Post</span>
-        </MetaLink>
-      </MetaItem>
-
-      {/* only count hits on production site */}
-      {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
-        <ErrorBoundary fallback={null}>
-          <MetaItem
-            // fix potential layout shift when number of hits loads
-            css={{ minWidth: "7em", marginRight: 0 }}
+          <MetaLink
+            href={{
+              pathname: "/notes/[slug]/",
+              query: { slug },
+            }}
           >
             <span>
-              <Icon as={ViewsIcon} />
+              <Icon as={DateIcon} />
             </span>
-            <HitCounter slug={`notes/${slug}`} />
-          </MetaItem>
-        </ErrorBoundary>
-      )}
-    </Wrapper>
+            <Time date={date} format="MMMM D, YYYY" />
+          </MetaLink>
+        </MetaItem>
 
-    <NoteTitle slug={slug} htmlTitle={htmlTitle || title} />
-  </>
-);
+        {tags.length > 0 && (
+          <MetaItem>
+            <span title="Tags">
+              <Icon as={TagIcon} />
+            </span>
+            <TagsList>
+              {tags.map((tag) => (
+                <Tag key={tag} title={tag}>
+                  {tag}
+                </Tag>
+              ))}
+            </TagsList>
+          </MetaItem>
+        )}
+
+        <MetaItem>
+          <MetaLink
+            href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Edit "${title}" on GitHub`}
+          >
+            <span>
+              <Icon as={EditIcon} />
+            </span>
+            <span>Improve This Post</span>
+          </MetaLink>
+        </MetaItem>
+
+        {/* only count hits on production site */}
+        {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+          <ErrorBoundary fallback={null}>
+            <MetaItem
+              // fix potential layout shift when number of hits loads
+              css={{ minWidth: "7em", marginRight: 0 }}
+            >
+              <span>
+                <Icon as={ViewsIcon} />
+              </span>
+              <HitCounter slug={`notes/${slug}`} />
+            </MetaItem>
+          </ErrorBoundary>
+        )}
+      </Wrapper>
+
+      <NoteTitle slug={slug} htmlTitle={htmlTitle || title} />
+    </>
+  );
+};
 
 export default NoteMeta;

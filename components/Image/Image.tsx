@@ -67,7 +67,7 @@ const Image = ({
           {img}
         </Link>
       ) : (
-        img
+        <>{img}</>
       )}
     </Wrapper>
   );

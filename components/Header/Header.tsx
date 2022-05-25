@@ -44,13 +44,15 @@ const ResponsiveMenu = styled(Menu, {
 
 export type HeaderProps = ComponentProps<typeof Wrapper>;
 
-const Header = ({ ...rest }: HeaderProps) => (
-  <Wrapper {...rest}>
-    <Nav>
-      <Selfie />
-      <ResponsiveMenu />
-    </Nav>
-  </Wrapper>
-);
+const Header = ({ ...rest }: HeaderProps) => {
+  return (
+    <Wrapper {...rest}>
+      <Nav>
+        <Selfie />
+        <ResponsiveMenu />
+      </Nav>
+    </Wrapper>
+  );
+};
 
 export default Header;
