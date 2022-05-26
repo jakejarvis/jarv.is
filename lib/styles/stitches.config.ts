@@ -8,7 +8,7 @@ import normalizeCss from "stitches-normalize";
 import hexToRgba from "hex-to-rgba";
 
 // web fonts
-import { Inter, RobotoMono, ComicNeue } from "./fonts";
+import { Inter, RobotoMono } from "./fonts";
 
 export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme } = createStitches({
   theme: {
@@ -119,7 +119,7 @@ export const globalStyles = globalCss(
   // @ts-ignore
   ...normalizeCss({ systemFonts: false }),
   {
-    "@font-face": [...Inter.family, ...RobotoMono.family, ...ComicNeue.family],
+    "@font-face": [...Inter.family, ...RobotoMono.family],
 
     body: {
       backgroundColor: "$backgroundInner",
@@ -161,4 +161,4 @@ export const globalStyles = globalCss(
 );
 
 // re-export hashed URLs of the most important variable fonts so we can preload them in pages/_document.tsx
-export const preloadUrls = [...Inter.preloadUrls, ...RobotoMono.preloadUrls, ...ComicNeue.preloadUrls];
+export const preloadUrls = [...Inter.preloadUrls, ...RobotoMono.preloadUrls];

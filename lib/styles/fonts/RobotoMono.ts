@@ -1,3 +1,5 @@
+import type { AtRule } from "@stitches/react/types/css";
+
 // Legacy
 import robotoMonoLatin400NormalWoff from "@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff";
 import robotoMonoLatin400NormalWoff2 from "@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2";
@@ -22,7 +24,7 @@ export const name = {
 };
 // re-export hashed URL(s) of the most prominent file so we can preload it in head:
 export const preloadUrls = [robotoMonoLatinVarWghtOnlyNormalWoff2];
-export const family = [
+export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,
     fontStyle: "normal",

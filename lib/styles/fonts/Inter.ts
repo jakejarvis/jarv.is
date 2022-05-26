@@ -1,3 +1,5 @@
+import type { AtRule } from "@stitches/react/types/css";
+
 // Legacy
 import interLatin400NormalWoff from "@fontsource/inter/files/inter-latin-400-normal.woff";
 import interLatin400NormalWoff2 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
@@ -15,7 +17,7 @@ export const name = {
 };
 // re-export hashed URL(s) of the most prominent file so we can preload it in head:
 export const preloadUrls = [interLatinVarFullNormalWoff2];
-export const family = [
+export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,
     fontStyle: "normal",

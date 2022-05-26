@@ -1,3 +1,5 @@
+import type { AtRule } from "@stitches/react/types/css";
+
 // Legacy
 import comicNeueLatin400NormalWoff from "@fontsource/comic-neue/files/comic-neue-latin-400-normal.woff";
 import comicNeueLatin400NormalWoff2 from "@fontsource/comic-neue/files/comic-neue-latin-400-normal.woff2";
@@ -11,8 +13,7 @@ import comicNeueLatin700ItalicWoff2 from "@fontsource/comic-neue/files/comic-neu
 export const name = {
   regular: "Comic Neue",
 };
-export const preloadUrls = [];
-export const family = [
+export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,
     fontStyle: "normal",
