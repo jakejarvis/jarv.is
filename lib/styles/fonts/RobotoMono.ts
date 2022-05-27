@@ -23,7 +23,13 @@ export const name = {
   variable: "Roboto Mono var",
 };
 // re-export hashed URL(s) of the most prominent file so we can preload it in head:
-export const preloadUrls = [robotoMonoLatinVarWghtOnlyNormalWoff2];
+export const preloadFonts = [
+  {
+    key: "roboto-mono-var",
+    src: robotoMonoLatinVarWghtOnlyNormalWoff2,
+    type: "font/woff2",
+  },
+];
 export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,

@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 
+import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
@@ -200,42 +201,57 @@ Previously.getLayout = (page: ReactElement) => {
   })();
 
   return (
-    <Layout
-      css={{
-        fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
-        fontWeight: 600,
+    <>
+      <Head>
+        {ComicNeue.preloadFonts.map((font) => (
+          <link
+            key={`font-${font.key}`}
+            rel="preload"
+            as="font"
+            type={font.type}
+            href={font.src}
+            crossOrigin="anonymous"
+          />
+        ))}
+      </Head>
 
-        "& em": {
-          fontStyle: "revert !important",
-        },
+      <Layout
+        css={{
+          fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
+          fontWeight: 600,
 
-        "& header": {
-          // title text
-          "& > nav > a:first-of-type > span:last-of-type": {
-            fontSize: "1.4em",
-            fontWeight: 700,
+          "& em": {
+            fontStyle: "revert !important",
           },
 
-          // menu item text
-          "& > nav > ul > li > a > span": {
+          "& header": {
+            // title text
+            "& > nav > a:first-of-type > span:last-of-type": {
+              fontSize: "1.4em",
+              fontWeight: 700,
+            },
+
+            // menu item text
+            "& > nav > ul > li > a > span": {
+              fontSize: "1.1em",
+              fontWeight: 700,
+              lineHeight: 1.1,
+            },
+          },
+
+          "& main > div > div": {
             fontSize: "1.1em",
-            fontWeight: 700,
-            lineHeight: 1.1,
+            textAlign: "center",
           },
-        },
 
-        "& main > div > div": {
-          fontSize: "1.1em",
-          textAlign: "center",
-        },
-
-        "& footer > div": {
-          fontSize: "0.95em",
-        },
-      }}
-    >
-      {page}
-    </Layout>
+          "& footer > div": {
+            fontSize: "0.95em",
+          },
+        }}
+      >
+        {page}
+      </Layout>
+    </>
   );
 };
 

@@ -161,4 +161,4 @@ export const globalStyles = globalCss(
 );
 
 // re-export hashed URLs of the most important variable fonts so we can preload them in pages/_document.tsx
-export const preloadUrls = [...Inter.preloadUrls, ...RobotoMono.preloadUrls];
+export const preloadFonts = [...Inter.preloadFonts, ...RobotoMono.preloadFonts];

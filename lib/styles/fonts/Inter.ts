@@ -16,7 +16,13 @@ export const name = {
   variable: "Inter var",
 };
 // re-export hashed URL(s) of the most prominent file so we can preload it in head:
-export const preloadUrls = [interLatinVarFullNormalWoff2];
+export const preloadFonts = [
+  {
+    key: "inter-var",
+    src: interLatinVarFullNormalWoff2,
+    type: "font/woff2",
+  },
+];
 export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,
