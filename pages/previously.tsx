@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import Marquee from "react-fast-marquee";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
@@ -10,7 +11,6 @@ import Figure from "../components/Figure";
 import IFrame from "../components/IFrame";
 import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
-import Marquee from "../components/Marquee";
 import { Windows95Logo } from "../components/Icons";
 import { styled, globalCss } from "../lib/styles/stitches.config";
 import { ComicNeue } from "../lib/styles/fonts";
@@ -80,17 +80,19 @@ const Previously = () => {
 
         <Divider />
 
-        <Marquee>
-          🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
-          <CodeInline
-            css={{
-              fontSize: "0.85em",
-              fontWeight: 400,
-            }}
-          >
-            color: <span style={{ color: "#32cd32" }}>limegreen</span>
-          </CodeInline>{" "}
-          ahead...
+        <Marquee speed={70} gradient={false} style={{ marginBottom: "0.5em" }}>
+          <span style={{ marginLeft: 150 }}>
+            🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
+            <CodeInline
+              css={{
+                fontSize: "0.8em",
+                fontWeight: 400,
+              }}
+            >
+              color: <span style={{ color: "#32cd32" }}>limegreen</span>
+            </CodeInline>{" "}
+            ahead...
+          </span>
         </Marquee>
 
         <Link
