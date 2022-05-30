@@ -1,6 +1,5 @@
 import * as Sentry from "@sentry/node";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as Tracing from "@sentry/tracing";
+import "@sentry/tracing";
 
 const IsomorphicSentry = () => {
   // https://docs.sentry.io/platforms/node/configuration/options/
@@ -19,6 +18,7 @@ export const logServerError = async (error: string | Error) => {
 
     // log error to sentry
     sentryInstance.captureException(error);
+
     // give it 2 seconds to finish sending:
     // https://docs.sentry.io/platforms/node/configuration/draining/
     await sentryInstance.flush(2000);
