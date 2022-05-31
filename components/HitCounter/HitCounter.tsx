@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import commaNumber from "comma-number";
 import Loading from "../Loading";
-import { fetcher } from "../../lib/helpers/fetcher";
+import fetcher from "../../lib/helpers/fetcher";
 
 export type HitCounterProps = {
   slug: string;

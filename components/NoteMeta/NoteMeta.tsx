@@ -1,4 +1,3 @@
-import { ErrorBoundary } from "react-error-boundary";
 import NextLink from "next/link";
 import Time from "../Time";
 import HitCounter from "../HitCounter";
@@ -107,17 +106,15 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
 
         {/* only count hits on production site */}
         {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
-          <ErrorBoundary fallback={null}>
-            <MetaItem
-              // fix potential layout shift when number of hits loads
-              css={{ minWidth: "7em", marginRight: 0 }}
-            >
-              <span>
-                <Icon as={ViewsIcon} />
-              </span>
-              <HitCounter slug={`notes/${slug}`} />
-            </MetaItem>
-          </ErrorBoundary>
+          <MetaItem
+            // fix potential layout shift when number of hits loads
+            css={{ minWidth: "7em", marginRight: 0 }}
+          >
+            <span>
+              <Icon as={ViewsIcon} />
+            </span>
+            <HitCounter slug={`notes/${slug}`} />
+          </MetaItem>
         )}
       </Wrapper>
 
