@@ -1,11 +1,8 @@
 import { createStitches } from "@stitches/react";
 
-// modified modern-normalize.css in object form:
-// https://github.com/jakejarvis/stitches-normalize/blob/main/src/index.ts
-import normalizeCss from "stitches-normalize";
-
 // misc. helpers
 import hexToRgba from "hex-to-rgba";
+import normalizeStyles from "./helpers/normalize";
 
 // web fonts
 import { Inter, RobotoMono } from "./fonts";
@@ -111,7 +108,7 @@ export const darkTheme = createTheme({
 
 export const globalStyles = globalCss(
   // @ts-ignore
-  ...normalizeCss({ systemFonts: false }),
+  normalizeStyles,
   {
     "@font-face": [...Inter.family, ...RobotoMono.family],
 
