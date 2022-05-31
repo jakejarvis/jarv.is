@@ -14,11 +14,11 @@ const ColorfulLink = ({
     <Link
       css={{
         color: lightColor,
-        setUnderlineVar: { color: lightColor },
+        setUnderlineVars: { color: lightColor },
 
         [`.${darkTheme} &`]: {
           color: darkColor,
-          setUnderlineVar: { color: darkColor },
+          setUnderlineVars: { color: darkColor },
         },
 
         ...css,

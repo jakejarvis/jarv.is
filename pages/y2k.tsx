@@ -31,7 +31,7 @@ const DOS = styled(Terminal, {
   maxWidth: "700px",
 });
 
-const Wrapper = ({ style, ...rest }: ComponentProps<typeof Wrapper>) => {
+const RandomWallpaper = ({ style, ...rest }: ComponentProps<typeof Wallpaper>) => {
   const [wallpaperUrl, setWallpaperUrl] = useState("");
 
   // set a random retro Windows ME desktop tile for the entire content area
@@ -101,7 +101,7 @@ Y2K.getLayout = (page: ReactElement) => {
         },
       }}
     >
-      <Wrapper>{page}</Wrapper>
+      <RandomWallpaper>{page}</RandomWallpaper>
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import { createStitches, defaultThemeMap } from "@stitches/react";
+import { createStitches } from "@stitches/react";
 
 // modified modern-normalize.css in object form:
 // https://github.com/jakejarvis/stitches-normalize/blob/main/src/index.ts
@@ -51,10 +51,6 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
       codeDeletion: "#ff1b1b",
     },
 
-    borderWidths: {
-      underline: "calc(0.1em + 0.05rem)",
-    },
-
     radii: {
       rounded: "0.65em",
     },
@@ -65,19 +61,17 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
     medium: "(max-width: 768px)",
     // used rarely only for SUPER narrow windows:
     small: "(max-width: 380px)",
-    // ...note: things then COMPLETELY break at 300px.
+    // ...note: things then COMPLETELY break at 300px. but it's 2022 let's be real.
   },
 
   utils: {
-    setUnderlineVar: ({ color, alpha = 0.4 }) => ({
+    setUnderlineVars: ({
+      color = "$colors$linkUnderline", // see theme values below
+      alpha = 0.4,
+    }) => ({
       // allow both pre-set rgba stitches variables and hex values
-      $$underline: color.startsWith("#") ? hexToRgba(color, alpha) : color,
+      $$underlineColor: color.startsWith("#") ? hexToRgba(color, alpha) : color,
     }),
-  },
-
-  themeMap: {
-    ...defaultThemeMap,
-    backgroundSize: "borderWidths",
   },
 });
 

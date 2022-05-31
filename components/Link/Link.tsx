@@ -13,12 +13,15 @@ const StyledLink = styled(NextLink, {
       // fancy animated link underline effect (on by default)
       true: {
         // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind
-        // the local `$$underline` variable.
-        setUnderlineVar: { color: "$colors$linkUnderline" },
-        backgroundImage: `linear-gradient($$underline, $$underline)`,
+        // the local `$$underlineColor` variable.
+        setUnderlineVars: {},
+        // underline height is based on link's font size
+        $$underlineSize: "calc(0.1em + 0.05rem)",
+
+        backgroundImage: `linear-gradient($$underlineColor, $$underlineColor)`,
         backgroundPosition: "0% 100%",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "0% $underline",
+        backgroundSize: "0% $$underlineSize",
         paddingBottom: "0.2rem",
 
         "@media (prefers-reduced-motion: no-preference)": {
@@ -26,7 +29,7 @@ const StyledLink = styled(NextLink, {
         },
 
         "&:hover": {
-          backgroundSize: "100% $underline",
+          backgroundSize: "100% $$underlineSize",
         },
       },
       false: {},
