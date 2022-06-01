@@ -1,4 +1,3 @@
-import urlJoin from "url-join";
 import type { StaticImageData } from "next/image";
 import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
@@ -28,7 +27,7 @@ export const defaultSeo: DefaultSeoProps = {
     type: "website",
     images: [
       {
-        url: urlJoin(config.baseUrl, meJpg.src),
+        url: `${config.baseUrl}${meJpg.src}`,
         alt: `${config.siteName} – ${config.shortDescription}`,
       },
     ],
@@ -113,9 +112,9 @@ export const defaultSeo: DefaultSeoProps = {
 export const socialProfileJsonLd: SocialProfileJsonLdProps = {
   type: "Person",
   name: config.authorName,
-  url: urlJoin(config.baseUrl, "/"),
+  url: `${config.baseUrl}/`,
   sameAs: [
-    urlJoin(config.baseUrl, "/"),
+    `${config.baseUrl}/`,
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
@@ -131,7 +130,7 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
 export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherName" | "publisherLogo"> = {
   authorName: [config.authorName],
   publisherName: config.siteName,
-  publisherLogo: urlJoin(config.baseUrl, meJpg.src),
+  publisherLogo: `${config.baseUrl}${meJpg.src}`,
 };
 
 // Re-export icons to use their static image data elsewhere

@@ -19,7 +19,7 @@ export type HeadingAnchorProps = ComponentProps<typeof AnchorLink> & {
 
 const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => {
   return (
-    <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} tabIndex={-1} aria-hidden={true} {...rest}>
+    <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} aria-hidden={true} {...rest}>
       <Icon />
     </AnchorLink>
   );

@@ -15,7 +15,7 @@ export type CaptchaProps = {
   onClose?: () => any;
   onChalExpired?: () => any;
   onError?: (event: string) => any;
-  onVerify?: (token: string) => any;
+  onVerify?: (token: string, ekey: string) => any;
   onLoad?: () => any;
   /* eslint-enable @typescript-eslint/no-explicit-any */
 };
@@ -32,7 +32,7 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
           reCaptchaCompat={false}
           tabIndex={0}
           size={size}
-          theme={theme || (activeTheme === "dark" ? "dark" : "light")}
+          theme={theme || (activeTheme === "dark" ? activeTheme : "light")}
           {...rest}
         />
       )}

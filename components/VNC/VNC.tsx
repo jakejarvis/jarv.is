@@ -60,7 +60,7 @@ const VNC = ({ server }: VNCProps) => {
   // ends the session forcefully
   const disconnectVM = () => {
     try {
-      rfbRef.current.disconnect();
+      rfbRef.current?.disconnect();
       setConnected(false);
     } catch (error) {} // eslint-disable-line no-empty
   };

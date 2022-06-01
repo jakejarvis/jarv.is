@@ -29,7 +29,7 @@ const Comments = ({ title, ...rest }: CommentsProps) => {
         mapping="specific"
         reactionsEnabled="1"
         emitMetadata="0"
-        theme={activeTheme === "dark" ? "dark" : "light"}
+        theme={activeTheme === "dark" ? activeTheme : "light"}
       />
     </Wrapper>
   );

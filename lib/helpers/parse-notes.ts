@@ -5,7 +5,6 @@ import { serialize } from "next-mdx-remote/serialize";
 import glob from "fast-glob";
 import pMap from "p-map";
 import matter from "gray-matter";
-import urlJoin from "url-join";
 import { minify } from "uglify-js";
 import { compiler } from "markdown-to-jsx";
 import removeMarkdown from "remove-markdown";
@@ -66,7 +65,7 @@ export const getNoteData = async (
       // parsed markdown title:
       htmlTitle,
       slug,
-      permalink: urlJoin(baseUrl, "notes", slug, "/"),
+      permalink: `${baseUrl}/notes/${slug}/`,
       date: formatDateISO(data.date), // validate/normalize the date string provided from front matter
     },
     content,

@@ -46,14 +46,14 @@ export type LinkProps = Omit<ComponentProps<typeof StyledLink>, "href"> &
 const Link = ({ href, rel, target, prefetch = false, underline = true, openInNewTab, ...rest }: LinkProps) => {
   // This component auto-detects whether or not this link should open in the same window (the default for internal
   // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
-  const isExternal = typeof href === "string" ? new URL(href as string, baseUrl).origin !== baseUrl : false;
+  const isExternal = typeof href === "string" && !href.startsWith("/") && !href.startsWith(baseUrl);
 
   if (openInNewTab || isExternal) {
     return (
       <StyledLink
         href={href}
         target={target || "_blank"}
-        rel={[rel, "noopener", isExternal ? "noreferrer" : ""].join(" ").trim()}
+        rel={`${rel || ""} noopener ${isExternal ? "noreferrer" : ""}`.trim()}
         underline={underline}
         {...rest}
       />

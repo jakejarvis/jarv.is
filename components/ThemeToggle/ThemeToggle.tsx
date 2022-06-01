@@ -30,7 +30,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const maskId = useId(); // SSR-safe ID to cross-reference areas of the SVG
 
   // default to light since `activeTheme` might be undefined
-  const safeTheme = activeTheme === "dark" ? "dark" : "light";
+  const safeTheme = activeTheme === "dark" ? activeTheme : "light";
 
   // accessibility: skip animation if user prefers reduced motion
   useEffect(() => {

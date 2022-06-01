@@ -69,15 +69,16 @@ export type LayoutProps = ComponentProps<typeof Flex> & {
 
 const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
   const { activeTheme } = useTheme();
+  const skipNavId = "skip-nav";
 
   return (
     <>
       <Head>
         {/* dynamically set browser theme color to match the background color; default to light for SSR */}
-        <meta name="theme-color" content={themeColors[activeTheme === "dark" ? "dark" : "light"]} />
+        <meta name="theme-color" content={themeColors[activeTheme === "dark" ? activeTheme : "light"]} />
       </Head>
 
-      <SkipNavLink href="#skip-nav" role="link" tabIndex={0}>
+      <SkipNavLink href={`#${skipNavId}`} role="link" tabIndex={0}>
         Skip to content
       </SkipNavLink>
 
@@ -88,7 +89,7 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
         {container ? (
           <Default>
             <Container>
-              <div id="skip-nav" />
+              <div id={skipNavId} />
               {children}
             </Container>
           </Default>

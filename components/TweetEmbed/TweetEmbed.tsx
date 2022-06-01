@@ -16,7 +16,7 @@ const TweetEmbed = ({ id, options }: TweetEmbedProps) => {
       options={{
         dnt: true,
         align: "center",
-        theme: activeTheme === "dark" ? "dark" : "light",
+        theme: activeTheme === "dark" ? activeTheme : "light",
         ...options,
       }}
     />
