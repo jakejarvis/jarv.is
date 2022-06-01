@@ -47,7 +47,7 @@
     "next-mdx-remote": "^4.0.3",
     "next-seo": "^5.4.0",
     "next-transpile-modules": "^9.0.0",
-    "node-fetch": "^3.2.4",
+    "node-fetch": "^3.2.5",
     "p-map": "^5.4.0",
     "p-retry": "^5.1.1",
     "prop-types": "^15.8.1",
