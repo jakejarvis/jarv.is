@@ -41,7 +41,7 @@ const GitHubLogo = styled(OctocatOcticon, {
   fill: "$text",
 });
 
-const Projects = ({ repos }) => {
+const Projects = ({ repos }: { repos: Repository[] }) => {
   return (
     <>
       <NextSeo
@@ -55,7 +55,7 @@ const Projects = ({ repos }) => {
 
       <Content>
         <Wrapper>
-          {repos.map((repo: Repository) => (
+          {repos.map((repo) => (
             <Card key={repo.name} {...repo} />
           ))}
         </Wrapper>

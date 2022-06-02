@@ -14,9 +14,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       url: "/",
       priority: 1.0,
       changefreq: EnumChangefreq.WEEKLY,
-      lastmod: RELEASE_DATE,
+      lastmod: RELEASE_DATE, // timestamp frozen when a new build is deployed
     },
-    { url: "/notes/", changefreq: EnumChangefreq.WEEKLY, lastmod: RELEASE_DATE },
     { url: "/birthday/" },
     { url: "/cli/" },
     { url: "/contact/" },
@@ -40,6 +39,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       lastmod: new Date(note.date).toISOString(),
     })
   );
+
+  // set lastmod of /notes/ page to most recent post's date
+  pages.push({
+    url: "/notes/",
+    lastmod: new Date(notes[0].date).toISOString(),
+  });
+
+  // sort alphabetically by URL
+  pages.sort((a, b) => (a.url < b.url ? -1 : 1));
 
   // translate array of all pages to sitemap's stream
   pages.forEach((page) => {
