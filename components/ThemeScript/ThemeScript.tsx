@@ -1,9 +1,15 @@
 import { useMemo } from "react";
 import { minify } from "uglify-js";
 import { clientScript } from "./client";
-import { themeClassNames, themeStorageKey } from "../../lib/config/themes";
 
-const ThemeScript = () => {
+export type ThemeScriptProps = {
+  themeClassNames: {
+    [themeName: string]: string;
+  };
+  themeStorageKey: string;
+};
+
+const ThemeScript = ({ themeClassNames, themeStorageKey }: ThemeScriptProps) => {
   const minified = useMemo(() => {
     // since the client function will end up being injected as a plain dumb string, we need to set dynamic values here:
     const functionString = String(clientScript)
@@ -30,7 +36,7 @@ const ThemeScript = () => {
     }
 
     return result.code;
-  }, []);
+  }, [themeClassNames, themeStorageKey]);
 
   // the script tag injected manually into `<head>` in _document.tsx to prevent FARTing:
   // https://css-tricks.com/flash-of-inaccurate-color-theme-fart/

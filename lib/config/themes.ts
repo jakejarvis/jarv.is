@@ -12,5 +12,8 @@ export const themeColors = {
   dark: darkTheme.colors.backgroundOuter?.value,
 };
 
+// default/fallback theme
+export const themeDefault = "light";
+
 // local storage key
 export const themeStorageKey = "theme";

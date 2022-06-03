@@ -118,7 +118,7 @@ const Index = () => {
       </H1>
 
       <H2>
-        I'm a frontend web developer based in{" "}
+        I'm a frontend web developer based in the{" "}
         <ColorfulLink
           href="https://www.youtube-nocookie.com/embed/rLwbzGyC6t4?hl=en&amp;fs=1&amp;showinfo=1&amp;rel=0&amp;iv_load_policy=3"
           title='"Boston Accent Trailer - Late Night with Seth Meyers" on YouTube'
@@ -126,8 +126,8 @@ const Index = () => {
           darkColor="#ff5146"
         >
           Boston
-        </ColorfulLink>
-        .
+        </ColorfulLink>{" "}
+        area.
       </H2>
 
       <Paragraph>
