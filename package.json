@@ -82,7 +82,7 @@
     "@types/comma-number": "^2.1.0",
     "@types/node": "*",
     "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.0.10",
+    "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
