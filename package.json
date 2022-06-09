@@ -92,7 +92,7 @@
     "@typescript-eslint/parser": "^5.27.1",
     "cross-env": "^7.0.3",
     "eslint": "~8.17.0",
-    "eslint-config-next": "12.1.7-canary.31",
+    "eslint-config-next": "12.1.7-canary.33",
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-mdx": "~1.17.0",
     "eslint-plugin-prettier": "~4.0.0",
