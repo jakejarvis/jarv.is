@@ -12,6 +12,13 @@ type PageStats = {
   date?: string;
 };
 
+type SiteStats = {
+  total: {
+    hits: number;
+  };
+  pages: PageStats[];
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method !== "GET") {
@@ -28,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (slug) {
       // increment this page's hits. retry 3 times in case of Fauna "contended transaction" error:
       // https://sentry.io/share/issue/9c60a58211954ed7a8dfbe289bd107b5/
-      const pageStats = await pRetry(() => incrementPageHits(slug, client), {
+      const { hits } = await pRetry(() => incrementPageHits(slug, client), {
         onFailedAttempt: (error) => {
           console.warn(`Attempt ${error.attemptNumber} failed, trying again...`);
         },
@@ -40,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.setHeader("Pragma", "no-cache");
 
       // return in JSON format
-      return res.status(200).json(pageStats);
+      return res.status(200).json({ hits });
     } else {
       // return overall site stats if slug not specified
       const siteStats = await getSiteStats(client);
@@ -63,7 +70,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const incrementPageHits = async (slug: string | string[], client: faunadb.Client) => {
+const incrementPageHits = async (slug: string | string[], client: faunadb.Client): Promise<PageStats> => {
   const q = faunadb.query;
   const result: { data: PageStats } = await client.query(
     q.Let(
@@ -97,18 +104,18 @@ const incrementPageHits = async (slug: string | string[], client: faunadb.Client
   return result.data;
 };
 
-const getSiteStats = async (client: faunadb.Client) => {
+const getSiteStats = async (client: faunadb.Client): Promise<SiteStats> => {
   const notes = await getAllNotes();
   const q = faunadb.query;
 
-  const { data: pages }: { data: PageStats[] } = await client.query(
+  const { data: pages }: { data: SiteStats["pages"] } = await client.query(
     q.Map(
       q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
       q.Lambda((x) => q.Select("data", q.Get(x)))
     )
   );
 
-  const siteStats = {
+  const siteStats: SiteStats = {
     total: { hits: 0 },
     pages,
   };
