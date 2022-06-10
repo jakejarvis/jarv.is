@@ -117,9 +117,9 @@
       "eslint"
     ]
   },
-  "packageManager": "yarn@1.22.18",
+  "packageManager": "yarn@1.22.19",
   "volta": {
     "node": "16.15.1",
-    "yarn": "1.22.18"
+    "yarn": "1.22.19"
   }
 }

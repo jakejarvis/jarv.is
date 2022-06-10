@@ -4,6 +4,10 @@ import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
+// https://nextjs.org/docs/api-reference/next/image#optional-props
+const DEFAULT_QUALITY = 60;
+const DEFAULT_LAYOUT = "intrinsic";
+
 const Wrapper = styled("div", {
   lineHeight: 0,
 
@@ -25,24 +29,23 @@ const Image = ({
   src,
   width,
   height,
-  placeholder,
-  alt,
-  layout,
-  quality,
   priority,
+  alt = "",
+  quality = DEFAULT_QUALITY,
+  layout = DEFAULT_LAYOUT,
+  placeholder,
   href,
   className,
   ...rest
 }: ImageProps) => {
-  // passed directly into next/image: https://nextjs.org/docs/api-reference/next/image
   const imageProps: Partial<NextImageProps> = {
     width: typeof width === "string" ? Number.parseInt(width.replace("px", "")) : width,
     height: typeof height === "string" ? Number.parseInt(height.replace("px", "")) : height,
-    alt: alt || "",
-    layout: layout || "intrinsic",
-    quality: quality || 65,
     priority: !!priority,
-    loading: priority ? "eager" : "lazy",
+    alt,
+    quality,
+    layout,
+    placeholder,
   };
 
   if (typeof src === "object") {
@@ -50,10 +53,11 @@ const Image = ({
     const staticImg = src as StaticImageData;
 
     imageProps.src = staticImg;
-    // default to blur placeholder while loading
+    // default to blur placeholder while loading if it's been generated for us
     imageProps.placeholder = placeholder || (staticImg.blurDataURL ? "blur" : "empty");
   } else {
-    // regular path to jpg/png/etc. passed in, which makes explicit width and height required
+    // regular path to a file was passed in, which makes explicit width and height required.
+    // optionally prepending src with "/public" makes images resolve properly in GitHub markdown previews, etc.
     imageProps.src = (src as string).replace(/^\/public/g, "");
   }
 
