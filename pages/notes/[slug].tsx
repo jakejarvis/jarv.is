@@ -5,7 +5,8 @@ import Content from "../../components/Content";
 import NoteMeta from "../../components/NoteMeta";
 import Comments from "../../components/Comments";
 import * as mdxComponents from "../../lib/helpers/mdx-components";
-import { getNote, getNoteSlugs } from "../../lib/helpers/parse-notes";
+import { getNoteSlugs } from "../../lib/helpers/parse-notes";
+import { compileNote } from "../../lib/helpers/compile-note";
 import * as config from "../../lib/config";
 import { articleJsonLd } from "../../lib/config/seo";
 import type { GetStaticProps, GetStaticPaths } from "next";
@@ -74,7 +75,7 @@ const Note = ({ frontMatter, source }: Note) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<NoteFrontMatter, "slug"> }) => {
-  const { frontMatter, source } = await getNote(params.slug);
+  const { frontMatter, source } = await compileNote(params.slug);
 
   return {
     props: {
