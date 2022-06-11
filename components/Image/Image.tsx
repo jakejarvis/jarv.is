@@ -29,43 +29,47 @@ const Image = ({
   src,
   width,
   height,
-  priority,
-  alt = "",
   quality = DEFAULT_QUALITY,
   layout = DEFAULT_LAYOUT,
   placeholder,
   href,
-  className,
   ...rest
 }: ImageProps) => {
   const imageProps: Partial<NextImageProps> = {
-    width: typeof width === "string" ? Number.parseInt(width.replace("px", "")) : width,
-    height: typeof height === "string" ? Number.parseInt(height.replace("px", "")) : height,
-    priority: !!priority,
-    alt,
+    // strip "px" from dimensions: https://stackoverflow.com/a/4860249/1438024
+    width: typeof width === "string" ? Number.parseInt(width, 10) : width,
+    height: typeof height === "string" ? Number.parseInt(height, 10) : height,
     quality,
     layout,
     placeholder,
+    ...rest,
   };
 
-  if (typeof src === "object") {
-    // static image imports: extract variables from the src object
+  if (typeof src === "object" && (src as StaticImageData).src !== undefined) {
     const staticImg = src as StaticImageData;
 
+    // all data for statically imported images is extracted from the object itself.
     imageProps.src = staticImg;
-    // default to blur placeholder while loading if it's been generated for us
-    imageProps.placeholder = placeholder || (staticImg.blurDataURL ? "blur" : "empty");
-  } else {
+    // default to blur placeholder while loading if it's been generated for us.
+    imageProps.placeholder = placeholder || (staticImg.blurDataURL !== undefined ? "blur" : "empty");
+  } else if (typeof src === "string") {
     // regular path to a file was passed in, which makes explicit width and height required.
+    // https://nextjs.org/docs/api-reference/next/image#width
+    if (layout !== "fill" && (!width || !height)) {
+      throw new Error("'width' and 'height' are required for non-statically imported images.");
+    }
+
     // optionally prepending src with "/public" makes images resolve properly in GitHub markdown previews, etc.
-    imageProps.src = (src as string).replace(/^\/public/g, "");
+    imageProps.src = src.replace(/^\/public/g, "");
+  } else {
+    throw new TypeError("'src' should be a string or a valid StaticImageData object.");
   }
 
   // @ts-ignore
-  const img = <RoundedImage {...imageProps} {...rest} />;
+  const img = <RoundedImage {...imageProps} />;
 
   return (
-    <Wrapper className={className}>
+    <Wrapper>
       {href ? (
         <Link href={href} underline={false}>
           {img}
