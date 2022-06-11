@@ -31,6 +31,8 @@ module.exports = (phase, { defaultConfig }) => {
       NEXT_PUBLIC_RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
       IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER,
+      // https://nextjs.org/docs/api-reference/cli#development
+      NEXT_DEV_PORT: process.env.PORT || 3000,
     },
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920],
