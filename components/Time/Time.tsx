@@ -1,4 +1,4 @@
-import { formatDate, formatDateISO } from "../../lib/helpers/format-date";
+import { formatDate } from "../../lib/helpers/format-date";
 
 export type TimeProps = {
   date: string | number | Date;
@@ -8,7 +8,7 @@ export type TimeProps = {
 
 const Time = ({ date, format = "MMM D", className }: TimeProps) => {
   return (
-    <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
+    <time dateTime={formatDate(date)} title={formatDate(date, "MMM D, YYYY, h:mm A z")} className={className}>
       {formatDate(date, format)}
     </time>
   );

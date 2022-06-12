@@ -1,5 +1,5 @@
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { formatDate, formatDateISO, formatTimeAgo } from "../../lib/helpers/format-date";
+import { formatDate, formatTimeAgo } from "../../lib/helpers/format-date";
 
 export type RelativeTimeProps = {
   date: string | number | Date;
@@ -14,9 +14,9 @@ const RelativeTime = ({ date, verb, staticFormat, className }: RelativeTimeProps
   const hasMounted = useHasMounted();
 
   return (
-    <time dateTime={formatDateISO(date)} title={formatDate(date)} className={className}>
+    <time dateTime={formatDate(date)} title={formatDate(date, "MMM D, YYYY, h:mm A z")} className={className}>
       {verb && `${verb} `}
-      {hasMounted ? formatTimeAgo(date, true) : `on ${formatDate(date, staticFormat)}`}
+      {hasMounted ? formatTimeAgo(date, { suffix: true }) : `on ${formatDate(date, staticFormat)}`}
     </time>
   );
 };

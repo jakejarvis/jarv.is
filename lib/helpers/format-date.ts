@@ -7,6 +7,8 @@ import dayjsAdvancedFormat from "dayjs/plugin/advancedFormat";
 import "dayjs/locale/en";
 import { timeZone } from "../config";
 
+// normalize timezone and locale across the site, both server and client side, to prevent hydration errors by returning
+// an instance of dayjs with these defaults set.
 const IsomorphicDayJs = (date?: dayjs.ConfigType): dayjs.Dayjs => {
   // plugins
   dayjs.extend(dayjsUtc);
@@ -15,28 +17,19 @@ const IsomorphicDayJs = (date?: dayjs.ConfigType): dayjs.Dayjs => {
   dayjs.extend(dayjsLocalizedFormat);
   dayjs.extend(dayjsAdvancedFormat);
 
-  // defaults
-  dayjs.locale("en");
-  dayjs.tz.setDefault(timeZone);
-
-  return dayjs(date);
+  return dayjs.tz(date, timeZone).locale("en");
 };
 
-// normalize timezone across the site, both server and client side, to prevent hydration errors.
-// format defaults to "Apr 4, 2022, 3:04 PM EDT", see https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
-export const formatDate = (date?: dayjs.ConfigType, formatStr = "MMM D, YYYY, h:mm A z") => {
-  return IsomorphicDayJs(date).tz(timeZone).format(formatStr);
+// simple wrapper around dayjs.format()
+// date defaults to now, format defaults to ISO 8601 (e.g. 2022-04-07T21:53:33-04:00)
+export const formatDate = (date?: dayjs.ConfigType, formatStr?: string) => {
+  return IsomorphicDayJs(date).format(formatStr);
 };
 
-// returns a timezone-less, machine-readable string.
-export const formatDateISO = (date?: dayjs.ConfigType) => {
-  return IsomorphicDayJs(date).toISOString();
-};
-
-// returns "5 minutes ago", "1 year ago", "in 9 months", etc.
-// set `suffix = false` to exclude the "in" or "ago"
-export const formatTimeAgo = (date: dayjs.ConfigType, suffix = true) => {
+// returns the human-friendly difference between now and given date (e.g. "5 minutes", "9 months", etc.)
+// set `{ suffix: true }` to include the "... ago" or "in ..." for past/future
+export const formatTimeAgo = (date: dayjs.ConfigType, options?: { suffix?: boolean }) => {
   return IsomorphicDayJs().isBefore(date)
-    ? IsomorphicDayJs(date).toNow(!suffix)
-    : IsomorphicDayJs(date).fromNow(!suffix);
+    ? IsomorphicDayJs(date).toNow(!options?.suffix)
+    : IsomorphicDayJs(date).fromNow(!options?.suffix);
 };

@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import removeMarkdown from "remove-markdown";
 import pMap from "p-map";
-import { formatDateISO } from "./format-date";
+import { formatDate } from "./format-date";
 import { baseUrl } from "../config";
 import { NOTES_DIR } from "../config/constants";
 
@@ -45,7 +45,7 @@ export const getNoteData = async (
       }),
       slug,
       permalink: `${baseUrl}/notes/${slug}/`,
-      date: formatDateISO(data.date), // validate/normalize the date string provided from front matter
+      date: formatDate(data.date), // validate/normalize the date string provided from front matter
     },
     content,
   };
