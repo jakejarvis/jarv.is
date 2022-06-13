@@ -17,7 +17,7 @@ const Note = ({ frontMatter, source }: Note) => {
     <>
       <NextSeo
         title={frontMatter.title}
-        description={frontMatter.description}
+        description={frontMatter.description || config.longDescription}
         canonical={frontMatter.permalink}
         openGraph={{
           title: frontMatter.title,
@@ -29,6 +29,7 @@ const Note = ({ frontMatter, source }: Note) => {
             publishedTime: frontMatter.date,
             modifiedTime: frontMatter.date,
           },
+          // @ts-ignore
           images: frontMatter.image && [
             {
               url: `${config.baseUrl}${frontMatter.image}`,
@@ -43,9 +44,10 @@ const Note = ({ frontMatter, source }: Note) => {
       <ArticleJsonLd
         url={frontMatter.permalink}
         title={frontMatter.title}
-        description={frontMatter.description}
+        description={frontMatter.description || config.longDescription}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
+        // @ts-ignore
         images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
         {...articleJsonLd}
       />
@@ -74,8 +76,8 @@ const Note = ({ frontMatter, source }: Note) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: { params: Pick<NoteFrontMatter, "slug"> }) => {
-  const { frontMatter, source } = await compileNote(params.slug);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { frontMatter, source } = await compileNote((params as Pick<NoteFrontMatter, "slug">).slug);
 
   return {
     props: {

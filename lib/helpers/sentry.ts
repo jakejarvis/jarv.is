@@ -12,7 +12,7 @@ const IsomorphicSentry = () => {
   return Sentry;
 };
 
-export const logServerError = async (error: string | Error) => {
+export const logServerError = async (error: unknown) => {
   try {
     const sentryInstance = IsomorphicSentry();
 

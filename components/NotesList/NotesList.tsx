@@ -1,6 +1,7 @@
 import Link from "../Link";
 import Time from "../Time";
 import { styled } from "../../lib/styles/stitches.config";
+import type { ReactElement } from "react";
 import type { NoteFrontMatter } from "../../types";
 
 const Section = styled("section", {
@@ -54,18 +55,18 @@ const PostDate = styled(Time, {
 });
 
 export type NotesListProps = {
-  notesByYear: Record<string, NoteFrontMatter[]>;
+  notesByYear: { [key: string]: NoteFrontMatter[] };
 };
 
 const NotesList = ({ notesByYear }: NotesListProps) => {
-  const sections = [];
+  const sections: ReactElement[] = [];
 
   Object.entries(notesByYear).forEach(([year, notes]: [string, NoteFrontMatter[]]) => {
     sections.push(
       <Section key={year}>
         <Year>{year}</Year>
         <List>
-          {notes.map(({ slug, date, htmlTitle }) => (
+          {notes.map(({ slug, date, title, htmlTitle }) => (
             <Post key={slug}>
               <PostDate date={date} format="MMM D" />
               <span>
@@ -74,7 +75,7 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
                     pathname: "/notes/[slug]/",
                     query: { slug },
                   }}
-                  dangerouslySetInnerHTML={{ __html: htmlTitle }}
+                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                 />
               </span>
             </Post>

@@ -72,7 +72,8 @@ const Projects = ({ repos }: { repos: Repository[] }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   // https://docs.github.com/en/graphql/reference/objects#repository
-  const { user } = await graphql(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const response: any = await graphql(
     `
       query ($username: String!, $sort: RepositoryOrderField!, $limit: Int) {
         user(login: $username) {
@@ -113,7 +114,10 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  const repos: Repository[] = user.repositories.edges.map(({ node: repo }) => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const results: { node: { [key: string]: any } }[] = response.user.repositories.edges;
+
+  const repos = results.map<Repository>(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
     description: repo.description,

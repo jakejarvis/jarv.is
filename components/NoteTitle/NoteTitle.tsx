@@ -23,9 +23,9 @@ const Link = styled(NextLink, {
   textDecoration: "none",
 });
 
-export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "htmlTitle"> & ComponentProps<typeof Title>;
+export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle"> & ComponentProps<typeof Title>;
 
-const NoteTitle = ({ slug, htmlTitle, ...rest }: NoteTitleProps) => {
+const NoteTitle = ({ slug, title, htmlTitle, ...rest }: NoteTitleProps) => {
   return (
     <Title {...rest}>
       <Link
@@ -33,7 +33,7 @@ const NoteTitle = ({ slug, htmlTitle, ...rest }: NoteTitleProps) => {
           pathname: "/notes/[slug]/",
           query: { slug },
         }}
-        dangerouslySetInnerHTML={{ __html: htmlTitle }}
+        dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
       />
     </Title>
   );

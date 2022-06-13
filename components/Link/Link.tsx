@@ -2,7 +2,6 @@ import NextLink from "next/link";
 import { styled } from "../../lib/styles/stitches.config";
 import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
-import type { LinkProps as NextLinkProps } from "next/link";
 
 const StyledLink = styled(NextLink, {
   color: "$link",
@@ -37,11 +36,9 @@ const StyledLink = styled(NextLink, {
   },
 });
 
-export type LinkProps = Omit<ComponentProps<typeof StyledLink>, "href"> &
-  NextLinkProps & {
-    underline?: boolean;
-    openInNewTab?: boolean;
-  };
+export type LinkProps = ComponentProps<typeof StyledLink> & {
+  openInNewTab?: boolean;
+};
 
 const Link = ({ href, rel, target, prefetch = false, underline = true, openInNewTab, ...rest }: LinkProps) => {
   // This component auto-detects whether or not this link should open in the same window (the default for internal

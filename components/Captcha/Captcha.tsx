@@ -28,7 +28,7 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
     <div className={className}>
       {hasMounted && (
         <HCaptcha
-          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
           reCaptchaCompat={false}
           tabIndex={0}
           size={size}

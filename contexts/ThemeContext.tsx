@@ -8,11 +8,11 @@ export const ThemeContext: Context<{
    * If the user's theme preference is unset, this returns whether the system preference resolved to "light" or "dark".
    * If the user's theme preference is set, the preference is returned instead, regardless of their system's theme.
    */
-  activeTheme: "light" | "dark" | undefined;
+  activeTheme: string;
   /** Update the theme manually and save to local storage. */
   setTheme: (theme: string) => void;
 }> = createContext({
-  activeTheme: undefined,
+  activeTheme: "",
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   setTheme: (_) => {},
 });
@@ -28,7 +28,7 @@ export const ThemeProvider = ({
   };
 }>) => {
   // keep track of if/when the user has set their theme *on this site*
-  const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey, null, { raw: true });
+  const [preferredTheme, setPreferredTheme] = useLocalStorage<string>(themeStorageKey, undefined, { raw: true });
   // keep track of changes to the user's OS/browser dark mode setting
   const [systemTheme, setSystemTheme] = useState("");
   // hook into system `prefers-dark-mode` setting
@@ -71,7 +71,7 @@ export const ThemeProvider = ({
   useEffect(() => {
     // only "light" and "dark" are valid here
     // https://web.dev/color-scheme/#the-color-scheme-css-property
-    const colorScheme = ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
+    const colorScheme = preferredTheme && ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
 
     document.documentElement.style?.setProperty("color-scheme", colorScheme);
   }, [preferredTheme, systemTheme]);
@@ -79,7 +79,7 @@ export const ThemeProvider = ({
   return (
     <ThemeContext.Provider
       value={{
-        activeTheme: themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
+        activeTheme: preferredTheme && themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
         setTheme: useCallback(
           (theme: string) => {
             // force save to local storage

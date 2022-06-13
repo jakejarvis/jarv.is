@@ -134,7 +134,7 @@ export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherNa
 };
 
 // Re-export icons to use their static image data elsewhere
-export const favicons: Record<string, StaticImageData> = {
+export const favicons: { [key: string]: StaticImageData } = {
   faviconIco,
   faviconPng,
   appleTouchIconPng,

@@ -118,7 +118,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
         )}
       </Wrapper>
 
-      <NoteTitle slug={slug} htmlTitle={htmlTitle || title} />
+      <NoteTitle {...{ slug, title, htmlTitle }} />
     </>
   );
 };

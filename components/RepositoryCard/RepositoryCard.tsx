@@ -96,7 +96,7 @@ const RepositoryCard = ({
           </MetaItem>
         )}
 
-        {stars > 0 && (
+        {stars && stars > 0 && (
           <MetaItem>
             <MetaLink
               href={`${url}/stargazers`}
@@ -110,7 +110,7 @@ const RepositoryCard = ({
           </MetaItem>
         )}
 
-        {forks > 0 && (
+        {forks && forks > 0 && (
           <MetaItem>
             <MetaLink
               href={`${url}/network/members`}

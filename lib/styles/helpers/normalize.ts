@@ -3,7 +3,7 @@
 
 import type * as Stitches from "@stitches/react";
 
-const normalizeStyles: Record<string, Stitches.CSSProperties> = {
+const normalizeStyles: { [key: string]: Stitches.CSSProperties } = {
   "*, ::before, ::after": {
     boxSizing: "border-box",
   },

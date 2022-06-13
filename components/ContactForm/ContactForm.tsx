@@ -142,7 +142,7 @@ export type ContactFormProps = {
 const ContactForm = ({ className }: ContactFormProps) => {
   // status/feedback:
   const [submitted, setSubmitted] = useState(false);
-  const [success, setSuccess] = useState(null);
+  const [success, setSuccess] = useState(false);
   const [feedback, setFeedback] = useState("");
 
   const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
@@ -197,7 +197,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
         "h-captcha-response": "",
       }}
       validate={(values: Values) => {
-        const errors: { name?: boolean; email?: boolean; message?: boolean; "h-captcha-response"?: boolean } = {};
+        const errors: Partial<Record<keyof Values, boolean>> = {};
 
         errors.name = !values.name;
         errors.email = !values.email; // also loosely validated that it's email-like via browser (not foolproof)
@@ -206,7 +206,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
         if (!errors.name && !errors.email && !errors.message && !errors["h-captcha-response"]) {
           setFeedback("");
-          return null;
+          return {};
         } else {
           setSuccess(false);
           setFeedback("Please make sure that all fields are properly filled in.");
@@ -218,6 +218,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
       {({ setFieldValue, isSubmitting }) => (
         <Form className={className} name="contact">
           <Field name="name">
+            {/* @ts-ignore */}
             {({ field, meta }) => (
               <Input
                 type="text"
@@ -230,6 +231,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           </Field>
 
           <Field name="email">
+            {/* @ts-ignore */}
             {({ field, meta }) => (
               <Input
                 type="email"
@@ -243,6 +245,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           </Field>
 
           <Field name="message">
+            {/* @ts-ignore */}
             {({ field, meta }) => (
               <TextArea
                 placeholder="Write something..."

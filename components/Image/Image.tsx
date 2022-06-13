@@ -20,10 +20,9 @@ const RoundedImage = styled(NextImage, {
   borderRadius: "$rounded",
 });
 
-export type ImageProps = NextImageProps &
-  ComponentProps<typeof RoundedImage> & {
-    href?: string; // optionally wrap image in a link
-  };
+export type ImageProps = ComponentProps<typeof RoundedImage> & {
+  href?: string; // optionally wrap image in a link
+};
 
 const Image = ({
   src,

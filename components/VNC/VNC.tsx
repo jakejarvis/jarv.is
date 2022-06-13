@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, memo } from "react";
 import { useRouter } from "next/router";
+// @ts-ignore
 import RFB from "@novnc/novnc/core/rfb.js";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
@@ -54,7 +55,8 @@ const VNC = ({ server }: VNCProps) => {
   const [message, setMessage] = useState({ message: "", anyKey: false });
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
-  const rfbRef = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rfbRef = useRef<any>(null);
   const screenRef = useRef<HTMLDivElement>(null);
 
   // ends the session forcefully

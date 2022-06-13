@@ -96,7 +96,7 @@ const Footer = ({ ...rest }: FooterProps) => {
           <Link href="/previously/" prefetch={false} title="Previously on...">
             2001
           </Link>{" "}
-          – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE).getUTCFullYear()}.
+          – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE || Date.now()).getUTCFullYear()}.
         </div>
 
         <div>

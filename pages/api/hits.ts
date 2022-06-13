@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const client = new faunadb.Client({
-      secret: process.env.FAUNADB_SERVER_SECRET,
+      secret: process.env.FAUNADB_SERVER_SECRET || "",
       checkNewVersion: false, // https://github.com/fauna/faunadb-js/pull/504
     });
     const { slug } = req.query;
