@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState, memo } from "react";
 import { useRouter } from "next/router";
-// @ts-ignore
 import RFB from "@novnc/novnc/core/rfb.js";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
@@ -55,8 +54,7 @@ const VNC = ({ server }: VNCProps) => {
   const [message, setMessage] = useState({ message: "", anyKey: false });
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rfbRef = useRef<any>(null);
+  const rfbRef = useRef<RFB | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
 
   // ends the session forcefully
@@ -93,7 +91,7 @@ const VNC = ({ server }: VNCProps) => {
     }
 
     // https://github.com/novnc/noVNC/blob/master/docs/API.md
-    rfbRef.current = new RFB(screenRef.current, server, {
+    rfbRef.current = new RFB(screenRef.current as Element, server, {
       wsProtocols: ["binary", "base64"],
     });
 
@@ -101,7 +99,7 @@ const VNC = ({ server }: VNCProps) => {
     rfbRef.current.scaleViewport = true;
 
     // VM connected
-    rfbRef.current.addEventListener("connect", () => {
+    rfbRef.current?.addEventListener("connect", () => {
       console.log("successfully connected to VM socket!");
 
       // finally hide the terminal and show the VNC canvas
@@ -111,7 +109,7 @@ const VNC = ({ server }: VNCProps) => {
     });
 
     // VM disconnected (on either end)
-    rfbRef.current.addEventListener("disconnect", (detail: unknown) => {
+    rfbRef.current?.addEventListener("disconnect", (detail: unknown) => {
       console.warn("VM ended session remotely:", detail);
 
       // hide the display and show the terminal

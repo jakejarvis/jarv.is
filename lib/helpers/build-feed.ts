@@ -16,7 +16,7 @@ export type BuildFeedOptions = {
 export const buildFeed = async (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
   options: BuildFeedOptions
-): Promise<{ props: { [key: string]: unknown } }> => {
+): Promise<{ props: Record<string, unknown> }> => {
   const { res } = context;
 
   // https://github.com/jpmonette/feed#example

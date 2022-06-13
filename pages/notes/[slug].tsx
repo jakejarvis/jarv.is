@@ -8,11 +8,11 @@ import * as mdxComponents from "../../lib/helpers/mdx-components";
 import { getNoteSlugs } from "../../lib/helpers/parse-notes";
 import { compileNote } from "../../lib/helpers/compile-note";
 import * as config from "../../lib/config";
-import { articleJsonLd } from "../../lib/config/seo";
+import { articleJsonLd, favicons } from "../../lib/config/seo";
 import type { GetStaticProps, GetStaticPaths } from "next";
-import type { Note, NoteFrontMatter } from "../../types";
+import type { NoteWithSource, NoteFrontMatter } from "../../types";
 
-const Note = ({ frontMatter, source }: Note) => {
+const Note = ({ frontMatter, source }: NoteWithSource) => {
   return (
     <>
       <NextSeo
@@ -29,10 +29,9 @@ const Note = ({ frontMatter, source }: Note) => {
             publishedTime: frontMatter.date,
             modifiedTime: frontMatter.date,
           },
-          // @ts-ignore
-          images: frontMatter.image && [
+          images: [
             {
-              url: `${config.baseUrl}${frontMatter.image}`,
+              url: `${config.baseUrl}${frontMatter.image || favicons.meJpg.src}`,
               alt: frontMatter.title,
             },
           ],
@@ -47,8 +46,7 @@ const Note = ({ frontMatter, source }: Note) => {
         description={frontMatter.description || config.longDescription}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        // @ts-ignore
-        images={frontMatter.image && [`${config.baseUrl}${frontMatter.image}`]}
+        images={[`${config.baseUrl}${frontMatter.image || favicons.meJpg.src}`]}
         {...articleJsonLd}
       />
 
@@ -62,7 +60,6 @@ const Note = ({ frontMatter, source }: Note) => {
         />
       </Content>
 
-      {/* comments can be disabled for an individual post via `noComments: true` in its front matter */}
       {!frontMatter.noComments && (
         <InView rootMargin="140px" triggerOnce fallbackInView>
           {({ inView, ref }) => (

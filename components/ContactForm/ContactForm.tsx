@@ -5,7 +5,7 @@ import Link from "../Link";
 import Captcha from "../Captcha";
 import { CheckOcticon, XOcticon, MarkdownIcon } from "../Icons";
 import { styled, css } from "../../lib/styles/stitches.config";
-import type { FormikHelpers } from "formik";
+import type { FormikHelpers, FormikProps, FieldInputProps, FieldMetaProps } from "formik";
 
 // CSS applied to both `<input />` and `<textarea />`
 const InputStyles = css({
@@ -30,6 +30,7 @@ const InputStyles = css({
       true: {
         borderColor: "$error",
       },
+      false: {},
     },
   },
 });
@@ -89,6 +90,7 @@ const SubmitButton = styled("button", {
       true: {
         display: "none",
       },
+      false: {},
     },
   },
 });
@@ -117,6 +119,7 @@ const Result = styled("div", {
       true: {
         display: "none",
       },
+      false: {},
     },
   },
 });
@@ -128,7 +131,7 @@ const ResultIcon = styled("svg", {
   fill: "currentColor",
 });
 
-type Values = {
+type FormValues = {
   name: string;
   email: string;
   message: string;
@@ -145,7 +148,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
   const [success, setSuccess] = useState(false);
   const [feedback, setFeedback] = useState("");
 
-  const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+  const handleSubmit = (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     // once a user attempts a submission, this is true and stays true whether or not the next attempt(s) are successful
     setSubmitted(true);
 
@@ -196,8 +199,8 @@ const ContactForm = ({ className }: ContactFormProps) => {
         message: "",
         "h-captcha-response": "",
       }}
-      validate={(values: Values) => {
-        const errors: Partial<Record<keyof Values, boolean>> = {};
+      validate={(values: FormValues) => {
+        const errors: Partial<Record<keyof FormValues, boolean>> = {};
 
         errors.name = !values.name;
         errors.email = !values.email; // also loosely validated that it's email-like via browser (not foolproof)
@@ -215,43 +218,40 @@ const ContactForm = ({ className }: ContactFormProps) => {
         return errors;
       }}
     >
-      {({ setFieldValue, isSubmitting }) => (
+      {({ setFieldValue, isSubmitting }: FormikProps<FormValues>) => (
         <Form className={className} name="contact">
           <Field name="name">
-            {/* @ts-ignore */}
-            {({ field, meta }) => (
+            {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
               <Input
                 type="text"
                 placeholder="Name"
                 disabled={success}
-                missing={meta.error && meta.touched}
+                missing={!!(meta.error && meta.touched)}
                 {...field}
               />
             )}
           </Field>
 
           <Field name="email">
-            {/* @ts-ignore */}
-            {({ field, meta }) => (
+            {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
               <Input
                 type="email"
                 inputMode="email"
                 placeholder="Email"
                 disabled={success}
-                missing={meta.error && meta.touched}
+                missing={!!(meta.error && meta.touched)}
                 {...field}
               />
             )}
           </Field>
 
           <Field name="message">
-            {/* @ts-ignore */}
-            {({ field, meta }) => (
+            {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
               <TextArea
                 placeholder="Write something..."
                 minRows={5}
                 disabled={success}
-                missing={meta.error && meta.touched}
+                missing={!!(meta.error && meta.touched)}
                 {...field}
               />
             )}

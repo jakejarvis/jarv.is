@@ -12,7 +12,7 @@ export type NoteFrontMatter = {
   noComments?: boolean;
 };
 
-export type Note = {
+export type NoteWithSource = {
   // yaml metadata
   frontMatter: NoteFrontMatter;
 

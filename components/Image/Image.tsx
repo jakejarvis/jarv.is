@@ -64,8 +64,7 @@ const Image = ({
     throw new TypeError("'src' should be a string or a valid StaticImageData object.");
   }
 
-  // @ts-ignore
-  const img = <RoundedImage {...imageProps} />;
+  const img = <RoundedImage {...(imageProps as NextImageProps)} />;
 
   return (
     <Wrapper>

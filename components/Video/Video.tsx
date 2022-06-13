@@ -77,17 +77,7 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
 
   return (
     <Wrapper className={className}>
-      {hasMounted && (
-        <Player
-          width="100%"
-          height="100%"
-          url={url}
-          controls={!autoplay}
-          // @ts-ignore
-          config={config}
-          {...rest}
-        />
-      )}
+      {hasMounted && <Player width="100%" height="100%" url={url} controls={!autoplay} config={config} {...rest} />}
     </Wrapper>
   );
 };

@@ -9,10 +9,10 @@ import remarkUnwrapImages from "remark-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 
-import type { Note } from "../../types";
+import type { NoteWithSource } from "../../types";
 
 // fully parses MDX into JS and returns *everything* about a note
-export const compileNote = async (slug: string): Promise<Note> => {
+export const compileNote = async (slug: string): Promise<NoteWithSource> => {
   const { frontMatter, content } = await getNoteData(slug);
   const source = await serialize(content, {
     parseFrontmatter: false,

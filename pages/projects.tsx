@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const results: { node: { [key: string]: any } }[] = response.user.repositories.edges;
+  const results: Array<{ node: Record<string, any> }> = response.user.repositories.edges;
 
   const repos = results.map<Repository>(({ node: repo }) => ({
     name: repo.name,

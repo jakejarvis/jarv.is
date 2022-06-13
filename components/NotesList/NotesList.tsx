@@ -55,13 +55,15 @@ const PostDate = styled(Time, {
 });
 
 export type NotesListProps = {
-  notesByYear: { [key: string]: NoteFrontMatter[] };
+  notesByYear: {
+    [year: string]: NoteFrontMatter[];
+  };
 };
 
 const NotesList = ({ notesByYear }: NotesListProps) => {
   const sections: ReactElement[] = [];
 
-  Object.entries(notesByYear).forEach(([year, notes]: [string, NoteFrontMatter[]]) => {
+  Object.entries(notesByYear).forEach(([year, notes]) => {
     sections.push(
       <Section key={year}>
         <Year>{year}</Year>

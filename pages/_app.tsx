@@ -61,8 +61,8 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      {/* all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router */}
       <DefaultSeo
+        // all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router
         {...defaultSeo}
         canonical={canonical}
         openGraph={{
