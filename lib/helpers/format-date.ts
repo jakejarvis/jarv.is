@@ -7,8 +7,6 @@ import dayjsAdvancedFormat from "dayjs/plugin/advancedFormat";
 import "dayjs/locale/en";
 import { timeZone } from "../config";
 
-// normalize timezone and locale across the site, both server and client side, to prevent hydration errors by returning
-// an instance of dayjs with these defaults set.
 const IsomorphicDayJs = (date?: dayjs.ConfigType): dayjs.Dayjs => {
   // plugins
   dayjs.extend(dayjsUtc);
@@ -17,13 +15,14 @@ const IsomorphicDayJs = (date?: dayjs.ConfigType): dayjs.Dayjs => {
   dayjs.extend(dayjsLocalizedFormat);
   dayjs.extend(dayjsAdvancedFormat);
 
-  return dayjs.tz(date, timeZone).locale("en");
+  return dayjs(date).locale("en");
 };
 
-// simple wrapper around dayjs.format()
+// simple wrapper around dayjs.format() to normalize timezone across the site, both server and client side, to prevent
+// hydration errors by returning an instance of dayjs with these defaults set.
 // date defaults to now, format defaults to ISO 8601 (e.g. 2022-04-07T21:53:33-04:00)
 export const formatDate = (date?: dayjs.ConfigType, formatStr?: string) => {
-  return IsomorphicDayJs(date).format(formatStr);
+  return IsomorphicDayJs(date).tz(timeZone).format(formatStr);
 };
 
 // returns the human-friendly difference between now and given date (e.g. "5 minutes", "9 months", etc.)
