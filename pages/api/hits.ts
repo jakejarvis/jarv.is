@@ -53,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const siteStats = await getSiteStats(client);
 
       // let Vercel edge cache results for 15 mins
-      res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate=60");
+      res.setHeader("Cache-Control", "public, max-age=0, s-maxage=900, stale-while-revalidate");
 
       // return in JSON format
       return res.status(200).json(siteStats);

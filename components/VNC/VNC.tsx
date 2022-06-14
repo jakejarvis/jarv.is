@@ -54,7 +54,7 @@ const VNC = ({ server }: VNCProps) => {
   const [message, setMessage] = useState({ message: "", anyKey: false });
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
-  const rfbRef = useRef<RFB | null>(null);
+  const rfbRef = useRef<RFB>();
   const screenRef = useRef<HTMLDivElement>(null);
 
   // ends the session forcefully

@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // cache on edge for 12 hours
   const { res } = context;
-  res.setHeader("cache-control", "s-maxage=43200, stale-while-revalidate=3600");
+  res.setHeader("cache-control", "public, max-age=0, s-maxage=43200, stale-while-revalidate");
   res.setHeader("content-type", "application/xml; charset=utf-8");
 
   // finally write the resulting XML

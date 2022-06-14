@@ -47,7 +47,7 @@ export const buildFeed = async (
       link: note.permalink,
       title: note.title,
       description: note.description,
-      image: note.image ? `${config.baseUrl}${note.image}` : "",
+      image: note.image && `${config.baseUrl}${note.image}`,
       author: [
         {
           name: config.authorName,
@@ -59,7 +59,10 @@ export const buildFeed = async (
   });
 
   // cache on edge for 12 hours by default
-  res.setHeader("cache-control", `s-maxage=${options.edgeCacheAge ?? 43200}, stale-while-revalidate=3600`);
+  res.setHeader(
+    "cache-control",
+    `public, max-age=0, s-maxage=${options.edgeCacheAge ?? 86400}, stale-while-revalidate`
+  );
 
   // generates RSS by default
   if (options.type === "rss") {
@@ -74,7 +77,7 @@ export const buildFeed = async (
     res.setHeader("content-type", "application/feed+json; charset=utf-8");
     res.write(feed.json1());
   } else {
-    throw new TypeError("Invalid feed type, must be 'rss', 'atom', or 'json'.");
+    throw new TypeError(`Invalid feed type "${options.type}", must be "rss", "atom", or "json".`);
   }
 
   res.end();
