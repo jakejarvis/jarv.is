@@ -24,20 +24,20 @@ export type ThemeToggleProps = {
 
 const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
-  const isFirstMount = useFirstMountState();
   const { activeTheme, setTheme } = useTheme();
-  const hasNoMotionPreference = useMedia("(prefers-reduced-motion: no-preference)", false);
+  const isFirstMount = useFirstMountState();
+  const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)", false);
   const maskId = useId(); // SSR-safe ID to cross-reference areas of the SVG
 
   // default to light since `activeTheme` might be undefined
   const safeTheme = activeTheme === "dark" ? activeTheme : "light";
 
-  // accessibility: skip animation if user prefers reduced motion
+  // accessibility: disable animation if user prefers reduced motion
   useEffect(() => {
     Globals.assign({
-      skipAnimation: isFirstMount || !hasNoMotionPreference,
+      skipAnimation: !!isFirstMount || !!prefersReducedMotion,
     });
-  }, [isFirstMount, hasNoMotionPreference]);
+  }, [isFirstMount, prefersReducedMotion]);
 
   // modified from https://jfelix.info/blog/using-react-spring-to-animate-svg-icons-dark-mode-toggle
   const springProperties = {
