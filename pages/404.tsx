@@ -19,20 +19,22 @@ const H1 = styled("h1", {
   },
 });
 
-const fourOhFour = () => {
+const FourOhFour = () => {
   return (
     <>
       <NextSeo title="404 Not Found" />
 
       <Center>
-        <Image src={pandaGif} alt="404s make panda angry..." priority />
+        <Image src={pandaGif} alt="404s make panda angry..." quality={30} />
 
-        <H1>404: Page Not Found</H1>
+        <H1>404: Page Not Found 😢</H1>
 
-        <Link href="/">Go home?</Link>
+        <Link href="/" prefetch>
+          Go home?
+        </Link>
       </Center>
     </>
   );
 };
 
-export default fourOhFour;
+export default FourOhFour;

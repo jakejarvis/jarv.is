@@ -15,11 +15,6 @@ export const name = {
 };
 export const preloadFonts = [
   {
-    key: "comic-neue-400",
-    src: comicNeueLatin400NormalWoff2,
-    type: "font/woff2",
-  },
-  {
     key: "comic-neue-700",
     src: comicNeueLatin700NormalWoff2,
     type: "font/woff2",
