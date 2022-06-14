@@ -80,6 +80,7 @@
     "@types/comma-number": "^2.1.0",
     "@types/marked": "^4.0.3",
     "@types/node": "*",
+    "@types/novnc__novnc": "github:jakejarvis/novnc-types#v0.0.0",
     "@types/prop-types": "^15.7.5",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
