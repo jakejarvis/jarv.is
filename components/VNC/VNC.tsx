@@ -79,16 +79,19 @@ const VNC = ({ server }: VNCProps) => {
     if (loaded) {
       // don't do any of this more than once, the backend is pretty fragile
       return;
-    } else {
-      // show loading indicator and continue
-      setMessage({ message: "Spinning up your very own personal computer, please wait!", anyKey: false });
     }
 
-    if (!window.WebSocket) {
+    if (!("WebSocket" in window)) {
       // browser doesn't support websockets
       setMessage({ message: "WebSockets must be enabled to begin!", anyKey: true });
       return;
     }
+
+    // show loading indicator and continue
+    setMessage({ message: "Spinning up your very own personal computer, please wait!", anyKey: false });
+
+    // this is the one and only time we're spinning up a VM (hopefully)
+    setLoaded(true);
 
     // https://github.com/novnc/noVNC/blob/master/docs/API.md
     rfbRef.current = new RFB(screenRef.current as Element, server, {
@@ -104,8 +107,6 @@ const VNC = ({ server }: VNCProps) => {
 
       // finally hide the terminal and show the VNC canvas
       setConnected(true);
-      // this is the one and only time we're spinning up a VM (hopefully)
-      setLoaded(true);
     });
 
     // VM disconnected (on either end)
