@@ -91,8 +91,8 @@ const RepositoryCard = ({
       <Meta>
         {language && (
           <MetaItem>
-            <LanguageCircle css={{ backgroundColor: language.color }} />
-            <span>{language.name}</span>
+            {language.color && <LanguageCircle css={{ backgroundColor: language.color }} />}
+            {language.name}
           </MetaItem>
         )}
 
@@ -105,7 +105,7 @@ const RepositoryCard = ({
               rel="noopener noreferrer"
             >
               <MetaIcon as={StarOcticon} />
-              <span>{commaNumber(stars)}</span>
+              {commaNumber(stars)}
             </MetaLink>
           </MetaItem>
         )}
@@ -119,7 +119,7 @@ const RepositoryCard = ({
               rel="noopener noreferrer"
             >
               <MetaIcon as={ForkOcticon} />
-              <span>{commaNumber(forks)}</span>
+              {commaNumber(forks)}
             </MetaLink>
           </MetaItem>
         )}
