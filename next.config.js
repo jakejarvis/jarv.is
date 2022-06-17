@@ -47,7 +47,7 @@ module.exports = (phase, { defaultConfig }) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them
       config.module.rules.push({
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        issuer: { and: [/\.(js|ts|md)x?$/] },
+        issuer: { and: [/\.(js|ts)x?$/] },
         type: "asset/resource",
         generator: {
           filename: "static/media/[name].[hash:8][ext]",
@@ -59,7 +59,7 @@ module.exports = (phase, { defaultConfig }) => {
       // see: ./components/Icons/index.ts
       config.module.rules.push({
         test: /\.svg$/i,
-        issuer: { and: [/\.(js|ts|md)x?$/] },
+        issuer: { and: [/\.(js|ts)x?$/] },
         use: [
           {
             loader: "@svgr/webpack",
@@ -73,7 +73,6 @@ module.exports = (phase, { defaultConfig }) => {
           },
         ],
         include: [
-          path.resolve(__dirname, "components/Icons"),
           path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
           path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
           path.resolve(__dirname, "node_modules/simple-icons/icons"),
