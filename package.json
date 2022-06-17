@@ -82,7 +82,7 @@
     "@types/node": "*",
     "@types/novnc__novnc": "https://gist.github.com/jakejarvis/70b1d07881cbe0a0912e802861ce7171.git",
     "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.0.13",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
