@@ -12,10 +12,9 @@ module.exports = {
   ],
   plugins: ["@typescript-eslint", "prettier"],
   rules: {
-    "react/no-unescaped-entities": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-var-requires": "off",
+    "react/no-unescaped-entities": "off",
     "prettier/prettier": [
       "error",
       {
@@ -26,23 +25,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ["*.md", "*.mdx"],
-      extends: ["plugin:mdx/recommended"],
-      rules: {
-        "react/jsx-no-undef": "off",
-        "prettier/prettier": [
-          "error",
-          {
-            // normal .prettierrc config:
-            singleQuote: false,
-            tabWidth: 2,
-            printWidth: 120,
-          },
-        ],
-      },
-    },
-  ],
-  ignorePatterns: ["README.md"],
 };

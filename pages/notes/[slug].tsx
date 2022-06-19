@@ -1,6 +1,6 @@
 import { InView } from "react-intersection-observer";
 import { NextSeo, ArticleJsonLd } from "next-seo";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
 import Content from "../../components/Content";
 import NoteMeta from "../../components/NoteMeta";
 import Comments from "../../components/Comments";
@@ -53,11 +53,7 @@ const Note = ({ frontMatter, source }: NoteWithSource) => {
       <NoteMeta {...frontMatter} />
 
       <Content>
-        <MDXRemote
-          {...source}
-          // @ts-ignore
-          components={{ ...mdxComponents }}
-        />
+        <MDXRemote {...source} components={{ ...(mdxComponents as MDXRemoteProps["components"]) }} />
       </Content>
 
       {!frontMatter.noComments && (

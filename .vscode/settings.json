@@ -1,17 +1,18 @@
 {
-  "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
+  "editor.tabSize": 2,
+  "eslint.packageManager": "yarn",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "npm.packageManager": "yarn",
   "search.exclude": {
     "**/.next": true,
     "**/node_modules": true
   },
-  "prettier.requireConfig": true,
-  "prettier.configPath": ".prettierrc.json",
-  "npm.packageManager": "yarn",
-  "eslint.packageManager": "yarn",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.tsdk": "node_modules/typescript/lib"
 }

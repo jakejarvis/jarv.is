@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const withPlugins = require("next-compose-plugins");
