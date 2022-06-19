@@ -38,10 +38,7 @@ export type CopyButtonProps = {
   className?: string;
 };
 
-const CopyButton = forwardRef(function CopyButton(
-  { source, timeout = 2000, className }: CopyButtonProps,
-  ref: Ref<HTMLButtonElement>
-) {
+const CopyButton = ({ source, timeout = 2000, className }: CopyButtonProps, ref: Ref<HTMLButtonElement>) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -84,6 +81,6 @@ const CopyButton = forwardRef(function CopyButton(
       <Icon as={copied ? CheckOcticon : ClipboardOcticon} />
     </Button>
   );
-});
+};
 
-export default CopyButton;
+export default forwardRef(CopyButton);

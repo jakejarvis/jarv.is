@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -25,21 +25,18 @@ const Wallpaper = styled("main", {
   backgroundPosition: "center",
 });
 
-const DOS = styled(Terminal, {
-  height: "400px",
-  width: "100%",
-  maxWidth: "700px",
-});
-
-const RandomWallpaper = ({ style, ...rest }: ComponentProps<typeof Wallpaper>) => {
-  const [wallpaperUrl, setWallpaperUrl] = useState("");
+const RandomWallpaper = ({ ...rest }: ComponentProps<typeof Wallpaper>) => {
+  const wallpaperRef = useRef<HTMLDivElement>(null);
 
   // set a random retro Windows ME desktop tile for the entire content area
   useEffect(() => {
-    setWallpaperUrl(`/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`);
+    const wallpaperUrl = `/static/images/y2k/tiles/tile_${Math.floor(20 * Math.random())}.png`;
+    if (wallpaperRef.current) {
+      wallpaperRef.current.style.backgroundImage = `url(${wallpaperUrl})`;
+    }
   }, []);
 
-  return <Wallpaper style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : "", ...style }} {...rest} />;
+  return <Wallpaper ref={wallpaperRef} {...rest} />;
 };
 
 const Y2K = () => {
@@ -79,7 +76,19 @@ const Y2K = () => {
         }}
       />
 
-      <ErrorBoundary fallback={<DOS>Oh no, it looks like something's gone VERY wrong. Sorry about that!</DOS>}>
+      <ErrorBoundary
+        fallback={
+          <Terminal
+            css={{
+              height: "400px",
+              width: "100%",
+              maxWidth: "700px",
+            }}
+          >
+            Oh no, it looks like something's gone VERY wrong. Sorry about that!
+          </Terminal>
+        }
+      >
         <VNC server={SOCKET_PROXY} />
       </ErrorBoundary>
     </>

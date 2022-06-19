@@ -1,8 +1,9 @@
-import { useRef, useEffect, useState, memo } from "react";
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
+import type { Ref, CSSProperties } from "react";
 
 const Display = styled(
   "div",
@@ -32,17 +33,13 @@ const Display = styled(
   }
 );
 
-const DOS = styled(Terminal, {
-  height: "400px",
-  width: "100%",
-  maxWidth: "700px",
-});
-
 export type VNCProps = {
   server: string;
+  style?: CSSProperties;
+  className?: string;
 };
 
-const VNC = ({ server }: VNCProps) => {
+const VNC = ({ server, style, className }: VNCProps, ref: Ref<Partial<RFB>>) => {
   const router = useRouter();
 
   // we definitely do NOT want this page to connect more than once!
@@ -54,16 +51,48 @@ const VNC = ({ server }: VNCProps) => {
   const [message, setMessage] = useState({ message: "", anyKey: false });
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
-  const rfbRef = useRef<RFB>();
+  const rfbRef = useRef<RFB | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
 
   // ends the session forcefully
   const disconnectVM = () => {
     try {
-      rfbRef.current?.disconnect();
-      setConnected(false);
+      rfbRef?.current?.disconnect();
     } catch (error) {} // eslint-disable-line no-empty
+
+    rfbRef.current = null;
+    setConnected(false);
   };
+
+  // expose some of noVNC's functionality to the parent of this component
+  useImperativeHandle(ref, () => ({
+    rfb: rfbRef?.current,
+    disconnect: () => {
+      rfbRef.current?.disconnect();
+    },
+    focus: () => {
+      rfbRef.current?.focus();
+    },
+    blur: () => {
+      rfbRef.current?.blur();
+    },
+    sendCtrlAltDel: () => {
+      rfbRef.current?.sendCtrlAltDel();
+    },
+    machineShutdown: () => {
+      rfbRef.current?.machineShutdown();
+    },
+    machineReboot: () => {
+      rfbRef.current?.machineReboot();
+    },
+    machineReset: () => {
+      rfbRef.current?.machineReset();
+    },
+    clipboardPasteFrom: (text: string) => {
+      rfbRef.current?.clipboardPasteFrom(text);
+    },
+    connected,
+  }));
 
   // prepare for possible navigation away from this page, and disconnect if/when it happens
   useEffect(() => {
@@ -122,15 +151,30 @@ const VNC = ({ server }: VNCProps) => {
 
   return (
     <>
-      <DOS style={{ display: connected ? "none" : undefined }}>
-        {message.message}
-        {message.anyKey && "\n\nPress the Any key (refresh the page) to continue."}
-      </DOS>
+      {!connected && (
+        <Terminal
+          css={{
+            height: "400px",
+            width: "100%",
+            maxWidth: "700px",
+          }}
+        >
+          {message.message}
+          {message.anyKey && "\n\nPress the Any key (refresh the page) to continue."}
+        </Terminal>
+      )}
 
       {/* the VNC canvas is hidden until we've successfully connected to the socket */}
-      <Display ref={screenRef} style={{ display: !connected ? "none" : undefined }} />
+      <Display
+        ref={screenRef}
+        style={{
+          display: !connected ? "none" : undefined,
+          ...style,
+        }}
+        className={className}
+      />
     </>
   );
 };
 
-export default memo(VNC);
+export default forwardRef(VNC);
