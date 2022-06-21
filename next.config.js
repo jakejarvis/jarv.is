@@ -87,10 +87,12 @@ module.exports = (phase, { defaultConfig }) => {
         source: "/:path(.*)",
         headers: [
           config.onionDomain && {
+            // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
             key: "Onion-Location",
             value: `${config.onionDomain}/:path*`,
           },
           {
+            // 🥛
             key: "x-got-milk",
             value: "2%",
           },
@@ -142,12 +144,8 @@ module.exports = (phase, { defaultConfig }) => {
         destination: "/notes/cool-bash-tricks-for-your-terminal-dotfiles/",
         permanent: true,
       },
-
-      // misc. crap:
       { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
       { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
-      { source: "/jarvis.asc", destination: "/pubkey.asc", permanent: true },
-      { source: "/scrabble/:path*", destination: "https://jakejarvis.github.io/scrabble/:path*", permanent: false },
     ],
   };
 

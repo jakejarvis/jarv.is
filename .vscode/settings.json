@@ -4,7 +4,6 @@
     120
   ],
   "editor.tabSize": 2,
-  "eslint.packageManager": "yarn",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
