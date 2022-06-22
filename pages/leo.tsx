@@ -33,9 +33,9 @@ const Leo = () => {
           src={{
             webm: "/static/images/leo/leo.webm",
             mp4: "/static/images/leo/leo.mp4",
+            vtt: "/static/images/leo/subs.en.vtt",
+            image: thumbnail.src,
           }}
-          thumbnail={thumbnail.src}
-          subs="/static/images/leo/subs.en.vtt"
         />
 
         <Copyright>

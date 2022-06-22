@@ -1,4 +1,4 @@
-import { useEffect, useId, memo } from "react";
+import { useEffect, useId } from "react";
 import { useFirstMountState, useMedia } from "react-use";
 import { useSpring, animated, Globals } from "@react-spring/web";
 import { useTheme } from "../../hooks/use-theme";
@@ -157,4 +157,4 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   );
 };
 
-export default memo(ThemeToggle);
+export default ThemeToggle;

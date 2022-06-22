@@ -1,4 +1,3 @@
-import { memo } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useHasMounted } from "../../hooks/use-has-mounted";
 import { useTheme } from "../../hooks/use-theme";
@@ -40,4 +39,4 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
   );
 };
 
-export default memo(Captcha);
+export default Captcha;

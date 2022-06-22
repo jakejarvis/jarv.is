@@ -23,8 +23,8 @@ const Birthday = () => {
           src={{
             webm: "/static/images/birthday/birthday.webm",
             mp4: "/static/images/birthday/birthday.mp4",
+            image: thumbnail.src,
           }}
-          thumbnail={thumbnail.src}
         />
       </Content>
     </>

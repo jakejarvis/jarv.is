@@ -23,51 +23,48 @@ export type VideoProps = Partial<FilePlayerProps> & {
     // at least one is required:
     webm?: string;
     mp4?: string;
+    // optional:
+    vtt?: string;
+    image?: string;
   };
-  thumbnail?: string;
-  subs?: string;
   autoplay?: boolean;
   className?: string;
 };
 
-const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProps) => {
+const Video = ({ src, autoplay, className, ...rest }: VideoProps) => {
   // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
   const hasMounted = useHasMounted();
 
-  const url = [
+  const files: FilePlayerProps["url"] = [
+    // @ts-ignore
     src.webm && {
       src: src.webm,
       type: "video/webm",
     },
+    // @ts-ignore
     src.mp4 && {
       src: src.mp4,
       type: "video/mp4",
     },
   ];
 
-  const config = {
-    file: {
-      attributes: {
-        controlsList: "nodownload",
-        preload: "metadata",
-        autoPlay: !!autoplay,
-        muted: !!autoplay,
-        loop: !!autoplay,
-      },
+  const config: FilePlayerProps["config"] = {
+    attributes: {
+      controlsList: "nodownload",
+      preload: "metadata",
+      poster: src.image, // thumbnail
+      autoPlay: autoplay,
+      loop: !!autoplay,
+      muted: !!autoplay, // no sound when autoplaying
+      controls: !autoplay, // only show controls when not autoplaying
     },
   };
 
-  if (thumbnail) {
-    // @ts-ignore
-    config.file.attributes.poster = thumbnail;
-  }
-
-  if (subs) {
-    // @ts-ignore
-    config.file.tracks = [
+  if (src.vtt) {
+    config.tracks = [
       {
         kind: "subtitles",
-        src: subs,
+        src: src.vtt,
         srcLang: "en",
         label: "English",
         default: true,
@@ -77,7 +74,7 @@ const Video = ({ src, thumbnail, subs, autoplay, className, ...rest }: VideoProp
 
   return (
     <Wrapper className={className}>
-      {hasMounted && <Player width="100%" height="100%" url={url} controls={!autoplay} config={config} {...rest} />}
+      {hasMounted && <Player width="100%" height="100%" url={files} config={{ file: config }} {...rest} />}
     </Wrapper>
   );
 };

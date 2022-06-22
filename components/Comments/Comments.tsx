@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Giscus from "@giscus/react";
 import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
@@ -10,7 +9,7 @@ const Wrapper = styled("div", {
   marginTop: "2em",
   paddingTop: "2em",
   borderTop: "2px solid $light",
-  minHeight: "300px",
+  minHeight: "360px",
 });
 
 export type CommentsProps = ComponentProps<typeof Wrapper> & {
@@ -35,4 +34,4 @@ const Comments = ({ title, ...rest }: CommentsProps) => {
   );
 };
 
-export default memo(Comments);
+export default Comments;

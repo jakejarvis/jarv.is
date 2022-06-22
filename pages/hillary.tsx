@@ -32,9 +32,9 @@ const Hillary = () => {
           src={{
             webm: "/static/images/hillary/convention-720p.webm",
             mp4: "/static/images/hillary/convention-720p.mp4",
+            vtt: "/static/images/hillary/subs.en.vtt",
+            image: thumbnail.src,
           }}
-          thumbnail={thumbnail.src}
-          subs="/static/images/hillary/subs.en.vtt"
         />
 
         <Copyright>
