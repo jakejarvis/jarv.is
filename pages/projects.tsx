@@ -71,6 +71,17 @@ const Projects = ({ repos }: { repos: Repository[] }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  // don't fail the entire site build if the required API key for this page is missing
+  if (typeof process.env.GH_PUBLIC_TOKEN === "undefined" || process.env.GH_PUBLIC_TOKEN === "") {
+    console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
+
+    return {
+      props: {
+        repos: [],
+      },
+    };
+  }
+
   // https://docs.github.com/en/graphql/reference/objects#repository
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response: any = await graphql(
