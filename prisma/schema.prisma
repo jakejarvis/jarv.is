@@ -11,7 +11,5 @@ datasource db {
 
 model hits {
   slug String @id @db.VarChar(128)
-  hits BigInt @default(1)
-
-  @@index([slug])
+  hits Int    @default(1)
 }

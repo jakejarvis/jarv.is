@@ -5,7 +5,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 type PageStats = {
   slug: string;
-  hits: number | bigint;
+  hits: number;
   title?: string;
   url?: string;
   date?: string;
@@ -28,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { slug } = req.query;
 
     if (slug) {
-      const { hits } = await incrementPageHits(slug as string);
+      const hits = await incrementPageHits(slug as string);
 
       // disable caching on both ends
       res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
@@ -58,7 +58,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const incrementPageHits = async (slug: string): Promise<PageStats> => {
+const incrementPageHits = async (slug: string): Promise<number> => {
   const pageHits = await prisma.hits.upsert({
     where: {
       slug,
@@ -74,7 +74,7 @@ const incrementPageHits = async (slug: string): Promise<PageStats> => {
   });
 
   // send client the *new* hit count
-  return { slug, hits: Number(pageHits.hits) };
+  return pageHits.hits;
 };
 
 const getSiteStats = async (): Promise<SiteStats> => {
@@ -100,9 +100,6 @@ const getSiteStats = async (): Promise<SiteStats> => {
       page.url = match.permalink;
       page.date = match.date;
     }
-
-    // fixes "TypeError: Do not know how to serialize a BigInt"
-    page.hits = Number(page.hits);
 
     // add these hits to running tally
     siteStats.total.hits += page.hits;
