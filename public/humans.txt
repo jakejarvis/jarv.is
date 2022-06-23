@@ -31,7 +31,8 @@
   - Next.js & React
   - Vercel
   - Stitches
-  - Fauna
+  - Prisma
+  - PlanetScale
   - Giscus
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/

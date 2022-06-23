@@ -77,7 +77,13 @@ const incrementPageHits = async (slug: string): Promise<PageStats> => {
 
 const getSiteStats = async (): Promise<SiteStats> => {
   const notes = await getAllNotes();
-  const pages: SiteStats["pages"] = await prisma.hits.findMany();
+  const pages: SiteStats["pages"] = await prisma.hits.findMany({
+    orderBy: [
+      {
+        hits: "desc",
+      },
+    ],
+  });
 
   const siteStats: SiteStats = {
     total: { hits: 0 },
@@ -101,9 +107,6 @@ const getSiteStats = async (): Promise<SiteStats> => {
 
     return page;
   });
-
-  // sort by hits (descending)
-  siteStats.pages.sort((a, b) => (a.hits > b.hits ? -1 : 1));
 
   return siteStats;
 };

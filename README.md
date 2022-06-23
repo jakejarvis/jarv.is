@@ -6,7 +6,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
 [![Tor mirror uptime](https://img.shields.io/uptimerobot/ratio/m788172098-a4fcb769c8779f9a37a60775?color=7e4798&label=tor%20mirror&logo=tor-project&logoColor=white)](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/)
 
-My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Stitches](https://stitches.dev/), [Vercel](https://vercel.com/), [and more](https://jarv.is/humans.txt).
+My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Stitches](https://stitches.dev/), [PlanetScale](https://planetscale.com/), [Vercel](https://vercel.com/), [and more](https://jarv.is/humans.txt).
 
 I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/issues/1) and [coding to-dos](https://github.com/jakejarvis/jarv.is/issues/714) as issues in this repo. Outside contributions, improvements, and/or corrections are welcome too!
 
