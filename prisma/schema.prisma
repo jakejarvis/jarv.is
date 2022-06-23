@@ -1,0 +1,15 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("PLANETSCALE_PRISMA_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model hits {
+  slug String @id @db.VarChar(128)
+  hits Int    @default(1)
+}

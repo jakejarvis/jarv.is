@@ -26,6 +26,7 @@
     "@novnc/novnc": "github:novnc/novnc#cdfb33665195eb9a73fb00feb6ebaccd1068cd50",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons": "^17.3.0",
+    "@prisma/client": "^3.15.2",
     "@react-spring/web": "^9.4.5",
     "@sentry/node": "^7.2.0",
     "@sentry/tracing": "^7.2.0",
@@ -35,7 +36,6 @@
     "dayjs": "^1.11.3",
     "fast-glob": "^3.2.11",
     "fathom-client": "^3.5.0",
-    "faunadb": "^4.6.0",
     "feather-icons": "^4.29.0",
     "feed": "^4.2.2",
     "formik": "^2.2.9",
@@ -48,7 +48,6 @@
     "next-seo": "^5.4.0",
     "next-transpile-modules": "^9.0.0",
     "p-map": "^5.5.0",
-    "p-retry": "^5.1.1",
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react": "18.2.0",
@@ -96,6 +95,7 @@
     "eslint-plugin-prettier": "~4.0.0",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
+    "prisma": "^3.15.2",
     "simple-git-hooks": "^2.8.0",
     "typescript": "^4.7.4",
     "uglify-js": "^3.16.1"
@@ -111,7 +111,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint"
     ]
   },
