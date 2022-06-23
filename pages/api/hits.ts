@@ -60,7 +60,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const incrementPageHits = async (slug: string): Promise<PageStats> => {
   const pageHits = await prisma.hits.upsert({
-    where: { slug },
+    where: {
+      slug,
+    },
     create: {
       slug,
     },
