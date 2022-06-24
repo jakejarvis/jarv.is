@@ -37,7 +37,6 @@ module.exports = (phase, { defaultConfig }) => {
       minimumCacheTTL: 43200,
     },
     experimental: {
-      reactRoot: true, // 18
       images: {
         // allow forgoing the mess of `<span>`s around statically imported images
         layoutRaw: true,
