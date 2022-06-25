@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { NoteFrontMatter } from "../../types";
@@ -18,9 +18,8 @@ const Title = styled("h1", {
   },
 });
 
-const Link = styled(NextLink, {
+const TitleLink = styled(Link, {
   color: "$text",
-  textDecoration: "none",
 });
 
 export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle"> & ComponentProps<typeof Title>;
@@ -28,12 +27,13 @@ export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle
 const NoteTitle = ({ slug, title, htmlTitle, ...rest }: NoteTitleProps) => {
   return (
     <Title {...rest}>
-      <Link
+      <TitleLink
         href={{
           pathname: "/notes/[slug]/",
           query: { slug },
         }}
         dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+        underline={false}
       />
     </Title>
   );

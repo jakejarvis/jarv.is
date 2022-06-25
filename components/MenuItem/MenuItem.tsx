@@ -1,10 +1,9 @@
-import NextLink from "next/link";
+import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 
-const Link = styled(NextLink, {
+const MenuLink = styled(Link, {
   display: "inline-block",
   color: "$mediumDark",
-  textDecoration: "none",
   padding: "0.6em",
 
   variants: {
@@ -67,9 +66,17 @@ const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemPr
   // allow both navigational links and/or other interactive react components (e.g. the theme toggle)
   if (href) {
     return (
-      <Link href={href} prefetch={false} className={className} current={current} title={text} aria-label={text}>
+      <MenuLink
+        href={href}
+        prefetch={false}
+        className={className}
+        current={current}
+        title={text}
+        underline={false}
+        aria-label={text}
+      >
         {linkContent}
-      </Link>
+      </MenuLink>
     );
   }
 

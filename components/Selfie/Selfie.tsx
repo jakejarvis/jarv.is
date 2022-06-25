@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "../Link";
 import Image from "../Image";
 import { styled } from "../../lib/styles/stitches.config";
 import { authorName } from "../../lib/config";
@@ -19,11 +19,10 @@ const RoundedImage = styled(Image, {
   },
 });
 
-const Link = styled(NextLink, {
+const SelfieLink = styled(Link, {
   display: "inline-flex",
   alignItems: "center",
   color: "$mediumDark",
-  textDecoration: "none",
 
   "&:hover": {
     color: "$link",
@@ -51,7 +50,7 @@ export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (
-    <Link href="/" rel="author" title={authorName} {...rest}>
+    <SelfieLink href="/" rel="author" title={authorName} underline={false} {...rest}>
       <RoundedImage
         src={selfieJpg}
         alt={`Photo of ${authorName}`}
@@ -62,7 +61,7 @@ const Selfie = ({ ...rest }: SelfieProps) => {
         priority
       />
       <Name>{authorName}</Name>
-    </Link>
+    </SelfieLink>
   );
 };
 
