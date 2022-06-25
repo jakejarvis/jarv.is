@@ -7,7 +7,8 @@ import type { ImageProps as NextImageProps, StaticImageData } from "next/future/
 // https://nextjs.org/docs/api-reference/next/future/image#optional-props
 const DEFAULT_QUALITY = 60;
 
-const Wrapper = styled("div", {
+const Block = styled("div", {
+  display: "block",
   lineHeight: 0,
 
   // default to centering all images
@@ -15,23 +16,24 @@ const Wrapper = styled("div", {
   textAlign: "center",
 });
 
-const RoundedImage = styled(NextImage, {
+const StyledImage = styled(NextImage, {
   height: "auto",
   maxWidth: "100%",
   borderRadius: "$rounded",
 });
 
-export type ImageProps = ComponentProps<typeof RoundedImage> & {
+export type ImageProps = ComponentProps<typeof StyledImage> & {
   href?: string; // optionally wrap image in a link
-  inline?: boolean; // don't wrap in `<div>`
+  inline?: boolean; // don't wrap everything in a `<div>` block
 };
 
 const Image = ({ src, width, height, quality, placeholder, href, inline, ...rest }: ImageProps) => {
-  const imageProps: Partial<NextImageProps> = {
+  const imageProps: NextImageProps = {
     // strip "px" from dimensions: https://stackoverflow.com/a/4860249/1438024
     width: typeof width === "string" ? Number.parseInt(width, 10) : width,
     height: typeof height === "string" ? Number.parseInt(height, 10) : height,
     quality: quality ?? DEFAULT_QUALITY,
+    src,
     placeholder,
     ...rest,
   };
@@ -56,20 +58,20 @@ const Image = ({ src, width, height, quality, placeholder, href, inline, ...rest
     throw new TypeError("'src' should be a string or a valid StaticImageData object.");
   }
 
-  const img = <RoundedImage {...(imageProps as NextImageProps)} />;
+  const StyledImageWithProps = <StyledImage {...imageProps} />;
 
   return inline ? (
-    <>{img}</>
+    StyledImageWithProps
   ) : (
-    <Wrapper>
+    <Block>
       {href ? (
         <Link href={href} underline={false}>
-          {img}
+          {StyledImageWithProps}
         </Link>
       ) : (
-        <>{img}</>
+        StyledImageWithProps
       )}
-    </Wrapper>
+    </Block>
   );
 };
 
