@@ -28,7 +28,7 @@ const SelfieLink = styled(Link, {
     color: "$link",
 
     "@medium": {
-      [`${Image}`]: {
+      [`${RoundedImage}`]: {
         borderColor: "$linkUnderline",
       },
     },
