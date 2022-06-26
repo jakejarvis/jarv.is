@@ -88,14 +88,12 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
         {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
         {container ? (
           <Default>
-            <Container>
-              <div id={skipNavId} />
-              {children}
-            </Container>
+            <div id={skipNavId} />
+            <Container>{children}</Container>
           </Default>
         ) : (
           <>
-            <div id="skip-nav" />
+            <div id={skipNavId} />
             {children}
           </>
         )}
