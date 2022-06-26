@@ -8,7 +8,8 @@ import { OctocatOcticon } from "../components/Icons";
 import { styled } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";
 import type { GetStaticProps } from "next";
-import type { Repository } from "../types";
+import type { User, Repository } from "@octokit/graphql-schema";
+import type { Project } from "../types";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -41,7 +42,7 @@ const GitHubLogo = styled(OctocatOcticon, {
   fill: "$text",
 });
 
-const Projects = ({ repos }: { repos: Repository[] }) => {
+const Projects = ({ repos }: { repos: Project[] }) => {
   return (
     <>
       <NextSeo
@@ -83,8 +84,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   // https://docs.github.com/en/graphql/reference/objects#repository
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const response: any = await graphql(
+  const { user } = await graphql<{ user: User }>(
     `
       query ($username: String!, $sort: RepositoryOrderField!, $limit: Int) {
         user(login: $username) {
@@ -125,17 +125,16 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const results: Array<{ node: Record<string, any> }> = response.user.repositories.edges;
+  const results = user.repositories.edges as Array<{ node: Repository }>;
 
-  const repos = results.map<Repository>(({ node: repo }) => ({
+  const repos = results.map<Project>(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
-    description: repo.description,
+    description: repo.description as string | undefined,
     updatedAt: repo.pushedAt,
     stars: repo.stargazerCount,
     forks: repo.forkCount,
-    language: repo.primaryLanguage,
+    language: repo.primaryLanguage as Project["language"] | undefined,
   }));
 
   return {

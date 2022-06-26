@@ -3,7 +3,7 @@ import Link from "../Link";
 import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
-import type { Repository } from "../../types";
+import type { Project } from "../../types";
 
 const Wrapper = styled("div", {
   width: "100%",
@@ -68,7 +68,7 @@ const LanguageCircle = styled("span", {
   verticalAlign: "text-top",
 });
 
-export type RepositoryCardProps = Repository & {
+export type RepositoryCardProps = Project & {
   className?: string;
 };
 

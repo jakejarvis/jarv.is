@@ -1,3 +1,3 @@
 export * from "./note";
-export * from "./repository";
+export * from "./project";
 export * from "./webpack";
