@@ -1,9 +1,9 @@
-import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react";
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle, useCallback } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
-import type { Ref, CSSProperties } from "react";
+import type { Ref, ComponentProps } from "react";
 
 const Display = styled(
   "div",
@@ -33,13 +33,11 @@ const Display = styled(
   }
 );
 
-export type VNCProps = {
+export type VNCProps = ComponentProps<typeof Display> & {
   server: string;
-  style?: CSSProperties;
-  className?: string;
 };
 
-const VNC = ({ server, style, className }: VNCProps, ref: Ref<Partial<RFB>>) => {
+const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
   const router = useRouter();
 
   // we definitely do NOT want this page to connect more than once!
@@ -55,21 +53,21 @@ const VNC = ({ server, style, className }: VNCProps, ref: Ref<Partial<RFB>>) => 
   const screenRef = useRef<HTMLDivElement>(null);
 
   // ends the session forcefully
-  const disconnectVM = () => {
+  const disconnect = useCallback(() => {
     try {
-      rfbRef?.current?.disconnect();
+      if (connected) {
+        rfbRef.current?.disconnect();
+      }
     } catch (error) {} // eslint-disable-line no-empty
 
     rfbRef.current = null;
     setConnected(false);
-  };
+  }, [connected]);
 
   // expose some of noVNC's functionality to the parent of this component
   useImperativeHandle(ref, () => ({
     rfb: rfbRef?.current,
-    disconnect: () => {
-      rfbRef.current?.disconnect();
-    },
+    disconnect,
     focus: () => {
       rfbRef.current?.focus();
     },
@@ -96,13 +94,13 @@ const VNC = ({ server, style, className }: VNCProps, ref: Ref<Partial<RFB>>) => 
 
   // prepare for possible navigation away from this page, and disconnect if/when it happens
   useEffect(() => {
-    router.events.on("routeChangeStart", disconnectVM);
+    router.events.on("routeChangeStart", disconnect);
 
     return () => {
       // unassign event listener
-      router.events.off("routeChangeStart", disconnectVM);
+      router.events.off("routeChangeStart", disconnect);
     };
-  }, [router.events]);
+  }, [router.events, disconnect]);
 
   useEffect(() => {
     if (loaded) {
@@ -171,7 +169,7 @@ const VNC = ({ server, style, className }: VNCProps, ref: Ref<Partial<RFB>>) => 
           display: !connected ? "none" : undefined,
           ...style,
         }}
-        className={className}
+        {...rest}
       />
     </>
   );
