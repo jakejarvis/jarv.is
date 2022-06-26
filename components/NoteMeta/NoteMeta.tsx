@@ -93,8 +93,6 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
         <MetaItem>
           <MetaLink
             href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
-            target="_blank"
-            rel="noopener noreferrer"
             title={`Edit "${title}" on GitHub`}
             underline={false}
           >

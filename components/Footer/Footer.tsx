@@ -109,22 +109,13 @@ const Footer = ({ ...rest }: FooterProps) => {
             <Icon as={HeartIcon} />
           </Heart>{" "}
           and{" "}
-          <NextjsLink
-            href="https://nextjs.org/"
-            title="Powered by Next.js"
-            aria-label="Next.js"
-            target="_blank"
-            rel="noopener noreferrer"
-            underline={false}
-          >
+          <NextjsLink href="https://nextjs.org/" title="Powered by Next.js" aria-label="Next.js" underline={false}>
             <Icon as={NextjsLogo} />
           </NextjsLink>
           .{" "}
           <ViewSourceLink
             href={`https://github.com/${config.githubRepo}`}
             title="View Source on GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
             underline={false}
           >
             View source.
