@@ -1,5 +1,5 @@
-import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { prisma } from "../../lib/helpers/prisma";
+import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { logServerError } from "../../lib/helpers/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -26,26 +26,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const { slug } = req.query;
+    let data;
 
     if (slug) {
-      const hits = await incrementPageHits(slug as string);
+      // add one to this page's count and return the new number
+      data = await incrementPageHits(slug as string);
 
       // disable caching on both ends
       res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-      res.setHeader("Pragma", "no-cache");
-
-      // return in JSON format
-      return res.status(200).json({ hits });
     } else {
       // return overall site stats if slug not specified
-      const siteStats = await getSiteStats();
+      data = await getSiteStats();
 
       // let Vercel edge cache results for 15 mins
       res.setHeader("Cache-Control", "public, max-age=0, s-maxage=900, stale-while-revalidate");
-
-      // return in JSON format
-      return res.status(200).json(siteStats);
     }
+
+    // send result as JSON
+    return res.status(200).json(data);
   } catch (error) {
     // extract just the error message to send back to client
     const message = error instanceof Error ? error.message : "Unknown error.";
@@ -58,14 +56,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const incrementPageHits = async (slug: string): Promise<number> => {
-  const pageHits = await prisma.hits.upsert({
-    where: {
-      slug,
-    },
-    create: {
-      slug,
-    },
+const incrementPageHits = async (slug: string): Promise<Partial<PageStats>> => {
+  const { hits } = await prisma.hits.upsert({
+    where: { slug },
+    create: { slug },
     update: {
       hits: {
         increment: 1,
@@ -74,27 +68,27 @@ const incrementPageHits = async (slug: string): Promise<number> => {
   });
 
   // send client the *new* hit count
-  return pageHits.hits;
+  return { hits };
 };
 
 const getSiteStats = async (): Promise<SiteStats> => {
-  const notes = await getAllNotes();
-  const pages: SiteStats["pages"] = await prisma.hits.findMany({
-    orderBy: [
-      {
-        hits: "desc",
-      },
-    ],
-  });
+  const [pages, notes] = await Promise.all([
+    prisma.hits.findMany({
+      orderBy: [
+        {
+          hits: "desc",
+        },
+      ],
+    }),
+    getAllNotes(),
+  ]);
 
-  const siteStats: SiteStats = {
-    total: { hits: 0 },
-    pages,
-  };
+  const total = { hits: 0 };
 
-  pages.forEach((page) => {
+  pages.forEach((page: PageStats) => {
     // match URLs from RSS feed with db to populate some metadata
     const match = notes.find((note) => `notes/${note.slug}` === page.slug);
+
     if (match) {
       page.title = match.title;
       page.url = match.permalink;
@@ -102,12 +96,12 @@ const getSiteStats = async (): Promise<SiteStats> => {
     }
 
     // add these hits to running tally
-    siteStats.total.hits += page.hits;
+    total.hits += page.hits;
 
     return page;
   });
 
-  return siteStats;
+  return { total, pages };
 };
 
 export default handler;
