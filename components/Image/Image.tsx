@@ -1,14 +1,11 @@
-import NextImage from "next/image";
+import NextImage from "next/future/image";
 import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
-import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
+import type { ImageProps as NextImageProps, StaticImageData } from "next/future/image";
 
-// https://nextjs.org/docs/api-reference/next/image#optional-props
-const DEFAULT_QUALITY = 60;
-const DEFAULT_LAYOUT = "intrinsic";
-
-const Wrapper = styled("div", {
+const Block = styled("div", {
+  display: "block",
   lineHeight: 0,
 
   // default to centering all images
@@ -16,30 +13,24 @@ const Wrapper = styled("div", {
   textAlign: "center",
 });
 
-const RoundedImage = styled(NextImage, {
+const StyledImage = styled(NextImage, {
+  height: "auto",
+  maxWidth: "100%",
   borderRadius: "$rounded",
 });
 
-export type ImageProps = ComponentProps<typeof RoundedImage> & {
+export type ImageProps = ComponentProps<typeof StyledImage> & {
   href?: string; // optionally wrap image in a link
+  inline?: boolean; // don't wrap everything in a `<div>` block
 };
 
-const Image = ({
-  src,
-  width,
-  height,
-  quality = DEFAULT_QUALITY,
-  layout = DEFAULT_LAYOUT,
-  placeholder,
-  href,
-  ...rest
-}: ImageProps) => {
-  const imageProps: Partial<NextImageProps> = {
+const Image = ({ src, width, height, quality = 60, placeholder, href, inline, ...rest }: ImageProps) => {
+  const imageProps: NextImageProps = {
     // strip "px" from dimensions: https://stackoverflow.com/a/4860249/1438024
     width: typeof width === "string" ? Number.parseInt(width, 10) : width,
     height: typeof height === "string" ? Number.parseInt(height, 10) : height,
     quality,
-    layout,
+    src,
     placeholder,
     ...rest,
   };
@@ -53,8 +44,8 @@ const Image = ({
     imageProps.placeholder = placeholder || (staticImg.blurDataURL !== undefined ? "blur" : "empty");
   } else if (typeof src === "string") {
     // regular path to a file was passed in, which makes explicit width and height required.
-    // https://nextjs.org/docs/api-reference/next/image#width
-    if (layout !== "fill" && (!width || !height)) {
+    // https://nextjs.org/docs/api-reference/next/future/image#width
+    if (!(width && height)) {
       throw new Error("'width' and 'height' are required for non-statically imported images.");
     }
 
@@ -64,18 +55,20 @@ const Image = ({
     throw new TypeError("'src' should be a string or a valid StaticImageData object.");
   }
 
-  const img = <RoundedImage {...(imageProps as NextImageProps)} />;
+  const StyledImageWithProps = <StyledImage {...imageProps} />;
 
-  return (
-    <Wrapper>
+  return inline ? (
+    StyledImageWithProps
+  ) : (
+    <Block>
       {href ? (
         <Link href={href} underline={false}>
-          {img}
+          {StyledImageWithProps}
         </Link>
       ) : (
-        <>{img}</>
+        StyledImageWithProps
       )}
-    </Wrapper>
+    </Block>
   );
 };
 

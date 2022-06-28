@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "../Link";
 import Time from "../Time";
 import HitCounter from "../HitCounter";
 import NoteTitle from "../NoteTitle";
@@ -21,9 +21,8 @@ const MetaItem = styled("div", {
   whiteSpace: "nowrap",
 });
 
-const MetaLink = styled(NextLink, {
+const MetaLink = styled(Link, {
   color: "inherit",
-  textDecoration: "none",
 });
 
 const Icon = styled("svg", {
@@ -67,6 +66,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
               pathname: "/notes/[slug]/",
               query: { slug },
             }}
+            underline={false}
           >
             <span>
               <Icon as={DateIcon} />
@@ -93,9 +93,8 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
         <MetaItem>
           <MetaLink
             href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
-            target="_blank"
-            rel="noopener noreferrer"
             title={`Edit "${title}" on GitHub`}
+            underline={false}
           >
             <span>
               <Icon as={EditIcon} />

@@ -41,9 +41,8 @@ const MetaItem = styled("div", {
   color: "$medium",
 });
 
-const MetaLink = styled("a", {
+const MetaLink = styled(Link, {
   color: "inherit",
-  textDecoration: "none",
 
   "&:hover": {
     color: "$link",
@@ -101,8 +100,7 @@ const RepositoryCard = ({
             <MetaLink
               href={`${url}/stargazers`}
               title={`${commaNumber(stars)} ${stars === 1 ? "star" : "stars"}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              underline={false}
             >
               <MetaIcon as={StarOcticon} />
               {commaNumber(stars)}
@@ -115,8 +113,7 @@ const RepositoryCard = ({
             <MetaLink
               href={`${url}/network/members`}
               title={`${commaNumber(forks)} ${forks === 1 ? "fork" : "forks"}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              underline={false}
             >
               <MetaIcon as={ForkOcticon} />
               {commaNumber(forks)}

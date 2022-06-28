@@ -1,11 +1,11 @@
+import Link from "../Link";
 import { OctocatOcticon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
-const Link = styled("a", {
+const GitHubLink = styled(Link, {
   margin: "0 0.4em",
   color: "$text",
-  textDecoration: "none",
 
   "&:hover": {
     color: "$link",
@@ -19,15 +19,15 @@ const Octocat = styled(OctocatOcticon, {
   fill: "currentColor",
 });
 
-export type OctocatLinkProps = ComponentProps<typeof Link> & {
+export type OctocatLinkProps = Omit<ComponentProps<typeof GitHubLink>, "href"> & {
   repo: string;
 };
 
 const OctocatLink = ({ repo, className, ...rest }: OctocatLinkProps) => {
   return (
-    <Link href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer" {...rest}>
+    <GitHubLink href={`https://github.com/${repo}`} underline={false} {...rest}>
       <Octocat className={className} />
-    </Link>
+    </GitHubLink>
   );
 };
 

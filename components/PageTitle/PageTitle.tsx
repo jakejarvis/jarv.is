@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import NextLink from "next/link";
+import Link from "../Link";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
@@ -14,9 +14,8 @@ const Title = styled("h1", {
   },
 });
 
-const Link = styled(NextLink, {
+const TitleLink = styled(Link, {
   color: "$text",
-  textDecoration: "none",
 });
 
 export type PageTitleProps = ComponentProps<typeof Title>;
@@ -26,7 +25,9 @@ const PageTitle = ({ children, ...rest }: PageTitleProps) => {
 
   return (
     <Title {...rest}>
-      <Link href={router.pathname}>{children}</Link>
+      <TitleLink href={router.pathname} underline={false}>
+        {children}
+      </TitleLink>
     </Title>
   );
 };

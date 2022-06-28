@@ -34,12 +34,10 @@ module.exports = (phase, { defaultConfig }) => {
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920],
       formats: ["image/avif", "image/webp"],
-      minimumCacheTTL: 43200,
     },
     experimental: {
       images: {
-        // allow forgoing the mess of `<span>`s around statically imported images
-        layoutRaw: true,
+        allowFutureImage: true, // https://github.com/vercel/next.js/pull/37927
       },
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
     },

@@ -1,13 +1,12 @@
-import NextLink from "next/link";
-import NextImage from "next/image";
+import Link from "../Link";
+import Image from "../Image";
 import { styled } from "../../lib/styles/stitches.config";
 import { authorName } from "../../lib/config";
 import type { ComponentProps } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
-const Image = styled(NextImage, {
-  display: "block",
+const RoundedImage = styled(Image, {
   width: "50px",
   height: "50px",
   border: "1px solid $light",
@@ -20,17 +19,16 @@ const Image = styled(NextImage, {
   },
 });
 
-const Link = styled(NextLink, {
+const SelfieLink = styled(Link, {
   display: "inline-flex",
   alignItems: "center",
   color: "$mediumDark",
-  textDecoration: "none",
 
   "&:hover": {
     color: "$link",
 
     "@medium": {
-      [`${Image}`]: {
+      [`${RoundedImage}`]: {
         borderColor: "$linkUnderline",
       },
     },
@@ -52,10 +50,18 @@ export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (
-    <Link href="/" rel="author" title={authorName} {...rest}>
-      <Image src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} layout="raw" priority />
+    <SelfieLink href="/" rel="author" title={authorName} underline={false} {...rest}>
+      <RoundedImage
+        src={selfieJpg}
+        alt={`Photo of ${authorName}`}
+        width={50}
+        height={50}
+        quality={60}
+        inline
+        priority
+      />
       <Name>{authorName}</Name>
-    </Link>
+    </SelfieLink>
   );
 };
 

@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "../Link";
 import { HeartIcon, NextjsLogo } from "../Icons";
 import { keyframes, styled } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
@@ -35,18 +35,17 @@ const Row = styled("div", {
   },
 });
 
-const Link = styled(NextLink, {
+const PlainLink = styled(Link, {
   color: "$mediumDark",
-  textDecoration: "none",
 });
 
-const NextjsLink = styled(Link, {
+const NextjsLink = styled(PlainLink, {
   "&:hover": {
     color: "$medium",
   },
 });
 
-const ViewSourceLink = styled(Link, {
+const ViewSourceLink = styled(PlainLink, {
   paddingBottom: "2px",
   borderBottom: "1px solid $light",
 
@@ -89,13 +88,18 @@ const Footer = ({ ...rest }: FooterProps) => {
       <Row>
         <div>
           Content{" "}
-          <Link href="/license/" prefetch={false} title="Creative Commons Attribution 4.0 International">
+          <PlainLink
+            href="/license/"
+            prefetch={false}
+            title="Creative Commons Attribution 4.0 International"
+            underline={false}
+          >
             licensed under CC-BY-4.0
-          </Link>
+          </PlainLink>
           ,{" "}
-          <Link href="/previously/" prefetch={false} title="Previously on...">
+          <PlainLink href="/previously/" prefetch={false} title="Previously on..." underline={false}>
             2001
-          </Link>{" "}
+          </PlainLink>{" "}
           – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE || Date.now()).getUTCFullYear()}.
         </div>
 
@@ -105,21 +109,14 @@ const Footer = ({ ...rest }: FooterProps) => {
             <Icon as={HeartIcon} />
           </Heart>{" "}
           and{" "}
-          <NextjsLink
-            href="https://nextjs.org/"
-            title="Powered by Next.js"
-            aria-label="Next.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NextjsLink href="https://nextjs.org/" title="Powered by Next.js" aria-label="Next.js" underline={false}>
             <Icon as={NextjsLogo} />
           </NextjsLink>
           .{" "}
           <ViewSourceLink
             href={`https://github.com/${config.githubRepo}`}
             title="View Source on GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
+            underline={false}
           >
             View source.
           </ViewSourceLink>
