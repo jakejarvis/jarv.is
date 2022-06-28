@@ -1,6 +1,6 @@
 # next.js
 /.next/
-/out/
+/.swc/
 
 # node/npm/yarn
 node_modules/
