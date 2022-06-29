@@ -1,7 +1,8 @@
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import commaNumber from "comma-number";
 import Loading from "../Loading";
 import fetcher from "../../lib/helpers/fetcher";
+import type { PageStats } from "../../types";
 
 export type HitCounterProps = {
   slug: string;
@@ -9,27 +10,23 @@ export type HitCounterProps = {
 };
 
 const HitCounter = ({ slug, className }: HitCounterProps) => {
-  // start fetching repos from API immediately
-  const { data, error } = useSWR(
+  // use immutable SWR to avoid double (or more) counting views:
+  // https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations
+  const { data, error } = useSWRImmutable<PageStats>(
     `/api/hits/?${new URLSearchParams({
       slug,
     })}`,
-    fetcher,
-    {
-      // avoid double (or more) counting views
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
+    fetcher
   );
-
-  // show spinning loading indicator if data isn't fetched yet
-  if (!data) {
-    return <Loading boxes={3} width={20} />;
-  }
 
   // fail secretly
   if (error) {
     return null;
+  }
+
+  // show spinning loading indicator if data isn't fetched yet
+  if (!data) {
+    return <Loading boxes={3} width={20} />;
   }
 
   // we have data!
