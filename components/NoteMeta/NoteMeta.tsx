@@ -56,7 +56,7 @@ const Tag = styled("span", {
 
 export type NoteMetaProps = Pick<NoteFrontMatter, "slug" | "date" | "title" | "htmlTitle" | "tags">;
 
-const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) => {
+const NoteMeta = ({ slug, date, title, htmlTitle, tags }: NoteMetaProps) => {
   return (
     <>
       <Wrapper>
@@ -68,21 +68,17 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
             }}
             underline={false}
           >
-            <span>
-              <Icon as={DateIcon} />
-            </span>
+            <Icon as={DateIcon} />
             <Time date={date} format="MMMM D, YYYY" />
           </MetaLink>
         </MetaItem>
 
-        {tags.length > 0 && (
+        {tags && (
           <MetaItem>
-            <span title="Tags">
-              <Icon as={TagIcon} />
-            </span>
+            <Icon as={TagIcon} />
             <TagsList>
               {tags.map((tag) => (
-                <Tag key={tag} title={tag}>
+                <Tag key={tag} title={tag} aria-label={`Tagged with ${tag}`}>
                   {tag}
                 </Tag>
               ))}
@@ -96,9 +92,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
             title={`Edit "${title}" on GitHub`}
             underline={false}
           >
-            <span>
-              <Icon as={EditIcon} />
-            </span>
+            <Icon as={EditIcon} />
             <span>Improve This Post</span>
           </MetaLink>
         </MetaItem>
@@ -106,12 +100,13 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags = [] }: NoteMetaProps) =>
         {/* only count hits on production site */}
         {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
           <MetaItem
-            // fix potential layout shift when number of hits loads
-            css={{ minWidth: "7em", marginRight: 0 }}
+            css={{
+              // fix potential layout shift when number of hits loads
+              minWidth: "7em",
+              marginRight: 0,
+            }}
           >
-            <span>
-              <Icon as={ViewsIcon} />
-            </span>
+            <Icon as={ViewsIcon} />
             <HitCounter slug={`notes/${slug}`} />
           </MetaItem>
         )}

@@ -4,6 +4,7 @@
 import queryString from "query-string";
 import { logServerError } from "../../lib/helpers/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
+import type { Track } from "../../types";
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
 
@@ -13,14 +14,6 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
 // https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-top-artists-and-tracks
 const TOP_TRACKS_ENDPOINT = "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10";
-
-type Track = {
-  artist: string;
-  title: string;
-  album: string;
-  url: URL | string;
-  image?: URL | string;
-};
 
 type SpotifyTrackSchema = {
   name: string;

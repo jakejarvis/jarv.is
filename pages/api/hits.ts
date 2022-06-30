@@ -2,21 +2,7 @@ import { prisma } from "../../lib/helpers/prisma";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { logServerError } from "../../lib/helpers/sentry";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type PageStats = {
-  slug: string;
-  hits: number;
-  title?: string;
-  url?: string;
-  date?: string;
-};
-
-type SiteStats = {
-  total: {
-    hits: number;
-  };
-  pages: PageStats[];
-};
+import type { PageStats, DetailedPageStats, SiteStats } from "../../types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -56,7 +42,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const incrementPageHits = async (slug: string): Promise<Partial<PageStats>> => {
+const incrementPageHits = async (slug: string): Promise<PageStats> => {
   const { hits } = await prisma.hits.upsert({
     where: { slug },
     create: { slug },
@@ -85,7 +71,7 @@ const getSiteStats = async (): Promise<SiteStats> => {
 
   const total = { hits: 0 };
 
-  pages.forEach((page: PageStats) => {
+  pages.forEach((page: DetailedPageStats) => {
     // match URLs from RSS feed with db to populate some metadata
     const match = notes.find((note) => `notes/${note.slug}` === page.slug);
 
