@@ -36,8 +36,6 @@ const App = ({ Component, pageProps }: AppProps) => {
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
     Fathom.load(config.fathomSiteId, {
       includedDomains: [config.siteDomain],
-      // we trigger pageview sending manually below, don't also do it on script load
-      auto: false,
     });
 
     const onRouteChangeComplete = (url: string) => {
