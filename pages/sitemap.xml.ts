@@ -4,7 +4,7 @@ import { baseUrl } from "../lib/config";
 import { RELEASE_DATE } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
   const stream = new SitemapStream({ hostname: baseUrl });
 
   // TODO: make this not manual (serverless functions can't see filesystem at runtime)

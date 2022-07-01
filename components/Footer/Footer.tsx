@@ -88,19 +88,14 @@ const Footer = ({ ...rest }: FooterProps) => {
       <Row>
         <div>
           Content{" "}
-          <PlainLink
-            href="/license/"
-            prefetch={false}
-            title="Creative Commons Attribution 4.0 International"
-            underline={false}
-          >
-            licensed under CC-BY-4.0
+          <PlainLink href="/license/" prefetch={false} title={config.license} underline={false}>
+            licensed under {config.licenseAbbr}
           </PlainLink>
           ,{" "}
           <PlainLink href="/previously/" prefetch={false} title="Previously on..." underline={false}>
-            2001
+            {config.copyrightYearStart}
           </PlainLink>{" "}
-          – {new Date(process.env.NEXT_PUBLIC_RELEASE_DATE || Date.now()).getUTCFullYear()}.
+          – {new Date(process.env.RELEASE_DATE || Date.now()).getUTCFullYear()}.
         </div>
 
         <div>

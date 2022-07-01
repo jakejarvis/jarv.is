@@ -2,7 +2,7 @@ import Link from "../Link";
 import Time from "../Time";
 import { styled } from "../../lib/styles/stitches.config";
 import type { ReactElement } from "react";
-import type { NoteFrontMatter } from "../../types";
+import type { NotesByYear } from "../../types";
 
 const Section = styled("section", {
   fontSize: "1.1em",
@@ -55,9 +55,7 @@ const PostDate = styled(Time, {
 });
 
 export type NotesListProps = {
-  notesByYear: {
-    [year: string]: NoteFrontMatter[];
-  };
+  notesByYear: NotesByYear;
 };
 
 const NotesList = ({ notesByYear }: NotesListProps) => {

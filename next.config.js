@@ -24,8 +24,8 @@ module.exports = (phase, { defaultConfig }) => {
     trailingSlash: true,
     productionBrowserSourceMaps: true,
     env: {
-      // freeze build timestamp for when serverless pages need a "last updated" date:
-      NEXT_PUBLIC_RELEASE_DATE: new Date().toISOString(),
+      // freeze build timestamp for when server-side pages need a "last updated" date:
+      RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
       IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER,
       // https://nextjs.org/docs/api-reference/cli#development

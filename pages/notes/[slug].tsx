@@ -69,8 +69,14 @@ const Note = ({ frontMatter, source }: NoteWithSource) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { frontMatter, source } = await compileNote((params as Pick<NoteFrontMatter, "slug">).slug);
+export const getStaticProps: GetStaticProps<NoteWithSource, Pick<NoteFrontMatter, "slug">> = async ({ params }) => {
+  if (!params || !params.slug) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const { frontMatter, source } = await compileNote(params.slug);
 
   return {
     props: {

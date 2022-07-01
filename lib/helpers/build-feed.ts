@@ -3,7 +3,7 @@ import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
 import { RELEASE_DATE } from "../config/constants";
 import { favicons } from "../config/seo";
-import type { GetServerSidePropsContext, PreviewData } from "next";
+import type { GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
 export type BuildFeedOptions = {
@@ -11,12 +11,12 @@ export type BuildFeedOptions = {
 };
 
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
-// all the page needs to do is `return buildFeed(context, { format: "rss" })` from getServerSideProps.
+// all the page needs to do is `return buildFeed(context, "rss")` from getServerSideProps.
 export const buildFeed = async (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
   type: "rss" | "atom" | "json",
   options?: BuildFeedOptions
-): Promise<{ props: Record<string, unknown> }> => {
+): Promise<GetServerSidePropsResult<Record<string, never>>> => {
   const { res } = context;
 
   // https://github.com/jpmonette/feed#example
@@ -25,7 +25,7 @@ export const buildFeed = async (
     link: `${config.baseUrl}/`,
     title: config.siteName,
     description: config.longDescription,
-    copyright: "https://creativecommons.org/licenses/by/4.0/",
+    copyright: config.licenseUrl,
     updated: new Date(RELEASE_DATE),
     image: `${config.baseUrl}${favicons.meJpg.src}`,
     feedLinks: {

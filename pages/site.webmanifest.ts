@@ -2,7 +2,7 @@ import * as config from "../lib/config";
 import { favicons } from "../lib/config/seo";
 import type { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
   const manifest = {
     name: config.siteName,
     short_name: config.siteDomain,

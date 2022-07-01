@@ -42,7 +42,11 @@ const GitHubLogo = styled(OctocatOcticon, {
   fill: "$text",
 });
 
-const Projects = ({ repos }: { repos: Project[] }) => {
+type StaticProps = {
+  repos: Project[];
+};
+
+const Projects = ({ repos }: StaticProps) => {
   return (
     <>
       <NextSeo
@@ -71,7 +75,7 @@ const Projects = ({ repos }: { repos: Project[] }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   // don't fail the entire site build if the required API key for this page is missing
   if (typeof process.env.GH_PUBLIC_TOKEN === "undefined" || process.env.GH_PUBLIC_TOKEN === "") {
     console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
@@ -130,11 +134,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const repos = results.map<Project>(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
-    description: repo.description as string | undefined,
+    description: repo.description as string,
     updatedAt: repo.pushedAt,
     stars: repo.stargazerCount,
     forks: repo.forkCount,
-    language: repo.primaryLanguage as Project["language"] | undefined,
+    language: repo.primaryLanguage as Project["language"],
   }));
 
   return {

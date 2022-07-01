@@ -1,15 +1,21 @@
 import { NextSeo } from "next-seo";
 import Content from "../../components/Content";
-import NotesList, { NotesListProps } from "../../components/NotesList";
+import NotesList from "../../components/NotesList";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
+import { authorName } from "../../lib/config";
 import type { GetStaticProps } from "next";
+import type { NotesByYear } from "../../types";
 
-const Notes = ({ notesByYear }: NotesListProps) => {
+type StaticProps = {
+  notesByYear: NotesByYear;
+};
+
+const Notes = ({ notesByYear }: StaticProps) => {
   return (
     <>
       <NextSeo
         title="Notes"
-        description="Recent posts by Jake Jarvis."
+        description={`Recent posts by ${authorName}.`}
         openGraph={{
           title: "Notes",
         }}
@@ -22,10 +28,10 @@ const Notes = ({ notesByYear }: NotesListProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   // parse the year of each note and group them together
   const notes = await getAllNotes();
-  const notesByYear: NotesListProps["notesByYear"] = {};
+  const notesByYear: NotesByYear = {};
 
   notes.forEach((note) => {
     const year = new Date(note.date).getUTCFullYear();

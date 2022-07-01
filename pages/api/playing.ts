@@ -54,7 +54,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await logServerError(error);
 
     // 500 Internal Server Error
-    return res.status(500).json({ success: false, message });
+    return res.status(500).json({ message });
   }
 };
 
@@ -75,7 +75,7 @@ const getAccessToken = async () => {
 
   const { access_token: token } = await response.json();
 
-  return token as string;
+  return token;
 };
 
 const getNowPlaying = async (token: string): Promise<Track | false> => {
@@ -120,7 +120,7 @@ const getTopTracks = async (token: string): Promise<Track[]> => {
 
   const { items } = (await response.json()) as { items: SpotifyTrackSchema[] };
 
-  const tracks: Track[] = items.map((track: SpotifyTrackSchema) => ({
+  const tracks = items.map<Track>((track) => ({
     artist: track.artists.map((artist) => artist.name).join(", "),
     title: track.name,
     album: track.album.name,

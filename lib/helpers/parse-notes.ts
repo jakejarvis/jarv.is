@@ -13,7 +13,10 @@ import type { NoteFrontMatter } from "../../types";
 
 export const getNoteSlugs = async (): Promise<string[]> => {
   // list all .mdx files in NOTES_DIR
-  const mdxFiles = await glob("*.mdx", { cwd: NOTES_DIR });
+  const mdxFiles = await glob("*.mdx", {
+    cwd: NOTES_DIR,
+    dot: false,
+  });
 
   // strip the .mdx extensions from filenames
   const slugs = mdxFiles.map((fileName) => fileName.replace(/\.mdx$/, ""));
@@ -51,14 +54,12 @@ export const getNoteData = async (
   };
 };
 
-// returns the front matter of ALL notes, sorted reverse chronologically
+// returns the parsed front matter of ALL notes, sorted reverse chronologically
 export const getAllNotes = async (): Promise<NoteFrontMatter[]> => {
   const slugs = await getNoteSlugs();
 
   // for each slug, query its front matter
-  const data = await pMap(slugs, async (slug) => (await getNoteData(slug)).frontMatter, {
-    stopOnError: true,
-  });
+  const data = await pMap(slugs, async (slug) => (await getNoteData(slug)).frontMatter);
 
   // sort the results by date
   data.sort((note1, note2) => (note1.date > note2.date ? -1 : 1));

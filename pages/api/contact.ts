@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // these are both backups to client-side validations just in case someone squeezes through without them. the codes
     // are identical so they're caught in the same fashion.
-    if (!body || !body.name || !body.email || !body.message) {
+    if (!body.name || !body.email || !body.message) {
       // all fields are required
       throw new Error("USER_MISSING_DATA");
     }
@@ -63,7 +63,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const validateCaptcha = async (formResponse: unknown) => {
+const validateCaptcha = async (formResponse: unknown): Promise<unknown> => {
   const response = await fetch(HCAPTCHA_API_ENDPOINT, {
     method: "POST",
     headers: {
@@ -76,13 +76,12 @@ const validateCaptcha = async (formResponse: unknown) => {
     }),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const result: any = await response.json();
+  const result = await response.json();
 
-  return result.success as boolean;
+  return result.success;
 };
 
-const sendToAirtable = async (data: unknown) => {
+const sendToAirtable = async (data: unknown): Promise<boolean> => {
   const response = await fetch(`${AIRTABLE_API_ENDPOINT}${AIRTABLE_BASE}/Messages`, {
     method: "POST",
     headers: {
