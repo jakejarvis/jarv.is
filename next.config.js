@@ -79,6 +79,10 @@ module.exports = (phase, { defaultConfig }) => {
 
       return config;
     },
+    eslint: {
+      // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
+      dirs: ["components", "contexts", "hooks", "lib", "pages", "types"],
+    },
     headers: async () => [
       {
         source: "/:path(.*)",
