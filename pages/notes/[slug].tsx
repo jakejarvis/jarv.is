@@ -9,10 +9,10 @@ import { getNoteSlugs } from "../../lib/helpers/parse-notes";
 import { compileNote } from "../../lib/helpers/compile-note";
 import * as config from "../../lib/config";
 import { articleJsonLd, favicons } from "../../lib/config/seo";
-import type { GetStaticProps, GetStaticPaths } from "next";
+import type { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
 import type { NoteWithSource, NoteFrontMatter } from "../../types";
 
-const Note = ({ frontMatter, source }: NoteWithSource) => {
+const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <NextSeo

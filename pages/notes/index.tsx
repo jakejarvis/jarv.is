@@ -3,14 +3,10 @@ import Content from "../../components/Content";
 import NotesList from "../../components/NotesList";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { authorName } from "../../lib/config";
-import type { GetStaticProps } from "next";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NotesByYear } from "../../types";
 
-type StaticProps = {
-  notesByYear: NotesByYear;
-};
-
-const Notes = ({ notesByYear }: StaticProps) => {
+const Notes = ({ notesByYear }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <NextSeo
@@ -28,7 +24,9 @@ const Notes = ({ notesByYear }: StaticProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+export const getStaticProps: GetStaticProps<{
+  notesByYear: NotesByYear;
+}> = async () => {
   // parse the year of each note and group them together
   const notes = await getAllNotes();
   const notesByYear: NotesByYear = {};

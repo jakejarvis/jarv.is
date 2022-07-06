@@ -1,11 +1,19 @@
-import { SitemapStream, streamToPromise, SitemapItemLoose, EnumChangefreq } from "sitemap";
+import { SitemapStream, SitemapItemLoose, EnumChangefreq } from "sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
 import { RELEASE_DATE } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
+  const { res } = context;
   const stream = new SitemapStream({ hostname: baseUrl });
+
+  // cache on edge for 12 hours
+  res.setHeader("cache-control", "public, max-age=0, s-maxage=43200, stale-while-revalidate");
+  res.setHeader("content-type", "application/xml; charset=utf-8");
+
+  // related: https://github.com/vercel/next.js/discussions/15453
+  stream.pipe(res);
 
   // TODO: make this not manual (serverless functions can't see filesystem at runtime)
   const pages: SitemapItemLoose[] = [
@@ -32,13 +40,13 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
 
   // push notes separately and use their metadata
   const notes = await getAllNotes();
-  notes.forEach((note) =>
+  notes.forEach((note) => {
     pages.push({
       url: `/notes/${note.slug}/`,
       // pull lastMod from front matter date
       lastmod: new Date(note.date).toISOString(),
-    })
-  );
+    });
+  });
 
   // set lastmod of /notes/ page to most recent post's date
   pages.push({
@@ -53,16 +61,8 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
   pages.forEach((page) => {
     stream.write(page);
   });
+
   stream.end();
-
-  // cache on edge for 12 hours
-  const { res } = context;
-  res.setHeader("cache-control", "public, max-age=0, s-maxage=43200, stale-while-revalidate");
-  res.setHeader("content-type", "application/xml; charset=utf-8");
-
-  // finally write the resulting XML
-  res.write(await streamToPromise(stream));
-  res.end();
 
   return {
     props: {},

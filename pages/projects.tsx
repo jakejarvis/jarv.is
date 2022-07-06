@@ -7,7 +7,7 @@ import RepositoryCard from "../components/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
 import { styled } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";
-import type { GetStaticProps } from "next";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 import type { Project } from "../types";
 
@@ -42,11 +42,7 @@ const GitHubLogo = styled(OctocatOcticon, {
   fill: "$text",
 });
 
-type StaticProps = {
-  repos: Project[];
-};
-
-const Projects = ({ repos }: StaticProps) => {
+const Projects = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <NextSeo
@@ -75,7 +71,9 @@ const Projects = ({ repos }: StaticProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+export const getStaticProps: GetStaticProps<{
+  repos: Project[];
+}> = async () => {
   // don't fail the entire site build if the required API key for this page is missing
   if (typeof process.env.GH_PUBLIC_TOKEN === "undefined" || process.env.GH_PUBLIC_TOKEN === "") {
     console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
