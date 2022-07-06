@@ -38,7 +38,7 @@ export const compileNote = async (slug: string): Promise<NoteWithSource> => {
   // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
   // ...so for now, let's do it manually (and conservatively) with uglify-js when building for production.
   const compiledSource =
-    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+    process.env.IS_DEV_SERVER !== "true"
       ? minify(source.compiledSource, {
           toplevel: true,
           parse: {

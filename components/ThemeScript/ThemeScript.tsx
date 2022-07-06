@@ -17,9 +17,17 @@ const ThemeScript = ({ themeClassNames, themeStorageKey }: ThemeScriptProps) => 
       .replace('"__STORAGE_KEY__"', `"${themeStorageKey}"`)
       .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames));
 
+    // turn the raw function into an iife
+    const unminified = `(${functionString})()`;
+
+    // skip minification if running locally to save a few ms
+    if (process.env.IS_DEV_SERVER === "true") {
+      return unminified;
+    }
+
     // minify the final code, a bit hacky but this is ONLY done at build-time, so uglify-js is never bundled or sent to
     // the browser to execute.
-    const result = minify(`(${functionString})()`, {
+    const minified = minify(unminified, {
       toplevel: true,
       compress: {
         negate_iife: false,
@@ -29,13 +37,13 @@ const ThemeScript = ({ themeClassNames, themeStorageKey }: ThemeScriptProps) => 
       },
     });
 
-    // fail somewhat silenty
-    if (result.error) {
-      console.error(result.error);
-      return;
+    // fail somewhat silenty by returning the unminified version
+    if (!minified || minified.error) {
+      console.warn("Failed to minify inline theme script:", minified.error);
+      return unminified;
     }
 
-    return result.code;
+    return minified.code;
   }, [themeClassNames, themeStorageKey]);
 
   // the script tag injected manually into `<head>` in _document.tsx to prevent FARTing:

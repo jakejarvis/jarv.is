@@ -1,3 +1,4 @@
+// @ts-check
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
@@ -27,9 +28,9 @@ module.exports = (phase, { defaultConfig }) => {
       // freeze build timestamp for when server-side pages need a "last updated" date:
       RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
-      IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER,
+      IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER ? "true" : "false",
       // https://nextjs.org/docs/api-reference/cli#development
-      NEXT_DEV_PORT: process.env.PORT || 3000,
+      NEXT_DEV_PORT: process.env.PORT || "3000",
     },
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -87,10 +88,10 @@ module.exports = (phase, { defaultConfig }) => {
       {
         source: "/:path(.*)",
         headers: [
-          config.onionDomain && {
+          {
             // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
             key: "Onion-Location",
-            value: `${config.onionDomain}/:path*`,
+            value: config.onionDomain ? `${config.onionDomain}/:path*` : "",
           },
           {
             // 🥛

@@ -1,4 +1,5 @@
-/* eslint-disable no-empty, no-var, prefer-destructuring */
+// @ts-check
+/* eslint-disable no-var, no-empty */
 
 // this function is converted to a string verbatim, substitutions are made to insert dynamic values, minified, and then
 // finally exported as an inline `<script>` tag in ThemeScript.tsx for _document.tsx to use.
@@ -10,13 +11,14 @@ export const clientScript = () => {
     var dark = "dark";
     var newTheme;
     // the list of <html>'s current class(es)...
+    // eslint-disable-next-line prefer-destructuring
     var classList = document.documentElement.classList;
     // map of theme -> classname
     var classNames = "__CLASS_NAMES__";
     // user's saved preference
     var pref = window.localStorage.getItem("__STORAGE_KEY__");
 
-    if (pref === light || pref === dark) {
+    if (pref && (pref === light || pref === dark)) {
       // simply restore the local storage preference
       newTheme = pref;
     } else {
@@ -26,8 +28,11 @@ export const clientScript = () => {
     }
 
     // remove both `classNames` to start fresh...
+    // @ts-ignore
     classList.remove(classNames[light], classNames[dark]);
+
     // ...and then FINALLY set the root class
+    // @ts-ignore
     classList.add(classNames[newTheme]);
   } catch (error) {}
 };
