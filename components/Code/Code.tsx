@@ -5,9 +5,7 @@ const Code = styled("code", {
   backgroundColor: "$codeBackground",
   border: "1px solid $kindaLight",
   borderRadius: "$rounded",
-
-  // light-dark theme switch fading
-  transition: "background 0.25s ease, border 0.25s ease",
+  transition: "background $fade, border $fade",
 });
 
 export default Code;

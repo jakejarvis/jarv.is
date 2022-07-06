@@ -48,8 +48,20 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
       codeDeletion: "#ff1b1b",
     },
 
+    borderWidths: {
+      // underline height is based on link's font size
+      underline: "calc(0.1em + 0.05rem)",
+    },
+
     radii: {
       rounded: "0.65em",
+    },
+
+    transitions: {
+      // light <-> dark theme fade duration
+      fade: "0.25s ease",
+      // fancy underline animation
+      linkHover: "0.2s ease-in-out",
     },
   },
 
@@ -113,11 +125,9 @@ export const globalStyles = globalCss(
     "@font-face": [...Inter.family, ...RobotoMono.family],
 
     body: {
-      backgroundColor: "$backgroundInner",
       fontFamily: "$sans",
-
-      // light-dark theme switch fading
-      transition: "background 0.25s ease",
+      backgroundColor: "$backgroundInner",
+      transition: "background $fade",
     },
 
     "code, kbd, samp, pre": {

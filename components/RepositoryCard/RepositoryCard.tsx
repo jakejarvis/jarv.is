@@ -12,9 +12,7 @@ const Wrapper = styled("div", {
   borderRadius: "$rounded",
   fontSize: "0.85em",
   color: "$mediumDark",
-
-  // light-dark theme switch fading
-  transition: "border 0.25s ease",
+  transition: "border $fade",
 });
 
 const Name = styled(Link, {

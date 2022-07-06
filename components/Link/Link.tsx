@@ -14,21 +14,19 @@ const StyledLink = styled(NextLink, {
         // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind
         // the local `$$underlineColor` variable.
         setUnderlineVars: {},
-        // underline height is based on link's font size
-        $$underlineSize: "calc(0.1em + 0.05rem)",
 
         backgroundImage: `linear-gradient($$underlineColor, $$underlineColor)`,
         backgroundPosition: "0% 100%",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "0% $$underlineSize",
+        backgroundSize: "0% $borderWidths$underline",
         paddingBottom: "0.2rem",
 
         "@media (prefers-reduced-motion: no-preference)": {
-          transition: "background-size 0.25s ease-in-out",
+          transition: "background-size $linkHover",
         },
 
         "&:hover": {
-          backgroundSize: "100% $$underlineSize",
+          backgroundSize: "100% $borderWidths$underline",
         },
       },
       false: {},

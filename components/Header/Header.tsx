@@ -9,13 +9,11 @@ const Wrapper = styled("header", {
   padding: "0.7em 1.5em",
   borderBottom: "1px solid $kindaLight",
   backgroundColor: "$backgroundHeader",
+  transition: "background $fade, border $fade",
+  zIndex: 9999,
 
   // blurry glass-like background effect (except on firefox...?)
   backdropFilter: "saturate(180%) blur(5px)",
-  zIndex: 9999,
-
-  // light-dark theme switch fading
-  transition: "background 0.25s ease, border 0.25s ease",
 
   "@medium": {
     padding: "0.75em 1.25em",

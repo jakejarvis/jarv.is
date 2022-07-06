@@ -10,9 +10,7 @@ const Wrapper = styled("footer", {
   borderTop: "1px solid $kindaLight",
   backgroundColor: "$backgroundOuter",
   color: "$mediumDark",
-
-  // light-dark theme switch fading
-  transition: "background 0.25s ease, border 0.25s ease",
+  transition: "background $fade, border $fade",
 
   "@medium": {
     padding: "1em 1.25em",

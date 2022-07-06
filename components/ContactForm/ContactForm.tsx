@@ -16,9 +16,7 @@ const InputStyles = css({
   borderRadius: "$rounded",
   color: "$text",
   backgroundColor: "$superDuperLight",
-
-  // light-dark theme switch fading
-  transition: "background 0.25s ease",
+  transition: "background $fade",
 
   "&:focus": {
     outline: "none",
