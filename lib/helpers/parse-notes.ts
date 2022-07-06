@@ -14,7 +14,7 @@ import type { NoteFrontMatter } from "../../types";
 export const getNoteSlugs = async (): Promise<string[]> => {
   // list all .mdx files in NOTES_DIR
   const mdxFiles = await glob("*.mdx", {
-    cwd: NOTES_DIR,
+    cwd: path.join(process.cwd(), NOTES_DIR),
     dot: false,
   });
 
@@ -31,7 +31,7 @@ export const getNoteData = async (
   frontMatter: NoteFrontMatter;
   content: string;
 }> => {
-  const fullPath = path.join(NOTES_DIR, `${slug}.mdx`);
+  const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
   const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
@@ -47,7 +47,7 @@ export const getNoteData = async (
         smartypants: true,
       }),
       slug,
-      permalink: `${baseUrl}/notes/${slug}/`,
+      permalink: `${baseUrl}/${NOTES_DIR}/${slug}/`,
       date: formatDate(data.date), // validate/normalize the date string provided from front matter
     },
     content,

@@ -3,8 +3,7 @@ import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
 import { RELEASE_DATE } from "../config/constants";
 import { favicons } from "../config/seo";
-import type { GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from "next";
-import type { ParsedUrlQuery } from "querystring";
+import type { GetServerSideProps } from "next";
 
 export type BuildFeedOptions = {
   edgeCacheAge?: number; // in seconds, defaults to 43200 (12 hours)
@@ -13,10 +12,10 @@ export type BuildFeedOptions = {
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
 // all the page needs to do is `return buildFeed(context, "rss")` from getServerSideProps.
 export const buildFeed = async (
-  context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
+  context: Parameters<GetServerSideProps>[0],
   type: "rss" | "atom" | "json",
   options?: BuildFeedOptions
-): Promise<GetServerSidePropsResult<Record<string, never>>> => {
+): Promise<ReturnType<GetServerSideProps<Record<string, never>>>> => {
   const { res } = context;
 
   // https://github.com/jpmonette/feed#example

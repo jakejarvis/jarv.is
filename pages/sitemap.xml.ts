@@ -1,7 +1,7 @@
 import { SitemapStream, SitemapItemLoose, EnumChangefreq } from "sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import { baseUrl } from "../lib/config";
-import { RELEASE_DATE } from "../lib/config/constants";
+import { RELEASE_DATE, NOTES_DIR } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
@@ -42,16 +42,16 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
   const notes = await getAllNotes();
   notes.forEach((note) => {
     pages.push({
-      url: `/notes/${note.slug}/`,
+      url: `/${NOTES_DIR}/${note.slug}/`,
       // pull lastMod from front matter date
-      lastmod: new Date(note.date).toISOString(),
+      lastmod: note.date,
     });
   });
 
   // set lastmod of /notes/ page to most recent post's date
   pages.push({
-    url: "/notes/",
-    lastmod: new Date(notes[0].date).toISOString(),
+    url: `/${NOTES_DIR}/`,
+    lastmod: notes[0].date,
   });
 
   // sort alphabetically by URL

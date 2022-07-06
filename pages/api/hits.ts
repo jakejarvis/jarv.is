@@ -1,6 +1,7 @@
 import { prisma } from "../../lib/helpers/prisma";
 import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { logServerError } from "../../lib/helpers/sentry";
+import { NOTES_DIR } from "../../lib/config/constants";
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { PageStats, DetailedPageStats, SiteStats } from "../../types";
 
@@ -58,7 +59,8 @@ const incrementPageHits = async (slug: string): Promise<PageStats> => {
 };
 
 const getSiteStats = async (): Promise<SiteStats> => {
-  const [pages, notes] = await Promise.all([
+  // simultaneously fetch the entire hits db and notes from the filesystem
+  const [hits, notes] = await Promise.all([
     prisma.hits.findMany({
       orderBy: [
         {
@@ -69,22 +71,29 @@ const getSiteStats = async (): Promise<SiteStats> => {
     getAllNotes(),
   ]);
 
+  const pages: DetailedPageStats[] = [];
   const total = { hits: 0 };
 
-  pages.forEach((page: DetailedPageStats) => {
-    // match URLs from RSS feed with db to populate some metadata
-    const match = notes.find((note) => `notes/${note.slug}` === page.slug);
+  hits.forEach((record) => {
+    // match slugs from getAllNotes() with db results to populate some metadata
+    // TODO: add support for pages other than notes.
+    const match = notes.find((note) => `${NOTES_DIR}/${note.slug}` === record.slug);
 
-    if (match) {
-      page.title = match.title;
-      page.url = match.permalink;
-      page.date = match.date;
+    // don't reveal via API if the db entry doesn't belong to a valid page
+    if (!match) {
+      return;
     }
 
-    // add these hits to running tally
-    total.hits += page.hits;
+    // merge record with its matching front matter data
+    pages.push({
+      ...record,
+      title: match.title,
+      url: match.permalink,
+      date: match.date,
+    });
 
-    return page;
+    // add these hits to running tally
+    total.hits += record.hits;
   });
 
   return { total, pages };
