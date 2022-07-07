@@ -1,16 +1,17 @@
 import Link from "../Link";
 import Image from "../Image";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import { authorName } from "../../lib/config";
 import type { ComponentProps } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
-const RoundedImage = styled(Image, {
+const CircleImage = styled(Image, {
   width: "50px",
   height: "50px",
-  border: "1px solid $light",
+  border: `1px solid ${theme.colors.light}`,
   borderRadius: "50%",
+  transition: `border ${theme.transitions.fade}`,
 
   "@medium": {
     width: "70px",
@@ -22,14 +23,14 @@ const RoundedImage = styled(Image, {
 const SelfieLink = styled(Link, {
   display: "inline-flex",
   alignItems: "center",
-  color: "$mediumDark",
+  color: theme.colors.mediumDark,
 
   "&:hover": {
-    color: "$link",
+    color: theme.colors.link,
 
     "@medium": {
-      [`${RoundedImage}`]: {
-        borderColor: "$linkUnderline",
+      [`${CircleImage}`]: {
+        borderColor: theme.colors.linkUnderline,
       },
     },
   },
@@ -51,15 +52,7 @@ export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (
     <SelfieLink href="/" rel="author" title={authorName} underline={false} {...rest}>
-      <RoundedImage
-        src={selfieJpg}
-        alt={`Photo of ${authorName}`}
-        width={50}
-        height={50}
-        quality={60}
-        inline
-        priority
-      />
+      <CircleImage src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} inline priority />
       <Name>{authorName}</Name>
     </SelfieLink>
   );

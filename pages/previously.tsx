@@ -12,7 +12,7 @@ import IFrame from "../components/IFrame";
 import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
 import { Windows95Logo } from "../components/Icons";
-import { styled, globalCss } from "../lib/styles/stitches.config";
+import { styled, theme, globalCss } from "../lib/styles/stitches.config";
 import { ComicNeue } from "../lib/styles/fonts";
 import type { ReactElement } from "react";
 
@@ -37,7 +37,7 @@ const ScreenShot = styled(Figure, {
   "& figcaption": {
     fontSize: "0.9em",
     lineHeight: 1.5,
-    color: "$medium",
+    color: theme.colors.medium,
   },
 });
 

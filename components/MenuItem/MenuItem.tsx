@@ -1,9 +1,9 @@
 import Link from "../Link";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 
 const MenuLink = styled(Link, {
   display: "inline-block",
-  color: "$mediumDark",
+  color: theme.colors.mediumDark,
   padding: "0.6em",
 
   variants: {
@@ -11,12 +11,12 @@ const MenuLink = styled(Link, {
     current: {
       true: {
         marginBottom: "-0.2em",
-        borderBottom: "0.2em solid $linkUnderline",
+        borderBottom: `0.2em solid ${theme.colors.linkUnderline}`,
       },
       false: {
         "&:hover": {
           marginBottom: "-0.2em",
-          borderBottom: "0.2em solid $kindaLight",
+          borderBottom: `0.2em solid ${theme.colors.kindaLight}`,
         },
       },
     },

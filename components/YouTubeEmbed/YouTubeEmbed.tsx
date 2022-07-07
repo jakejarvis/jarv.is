@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player/youtube";
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { YouTubePlayerProps } from "react-player/youtube";
 
 const Wrapper = styled("div", {
@@ -15,7 +15,7 @@ const Player = styled(ReactPlayer, {
 
   // target both the lazy thumbnail preview *and* the actual YouTube embed
   "& .react-player__preview, & iframe": {
-    borderRadius: "$rounded",
+    borderRadius: theme.radii.rounded,
   },
 });
 

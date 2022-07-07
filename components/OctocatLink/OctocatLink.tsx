@@ -1,14 +1,14 @@
 import Link from "../Link";
 import { OctocatOcticon } from "../Icons";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const GitHubLink = styled(Link, {
   margin: "0 0.4em",
-  color: "$text",
+  color: theme.colors.text,
 
   "&:hover": {
-    color: "$link",
+    color: theme.colors.link,
   },
 });
 

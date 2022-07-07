@@ -4,7 +4,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link";
 import Captcha from "../Captcha";
 import { CheckOcticon, XOcticon, MarkdownIcon } from "../Icons";
-import { styled, css } from "../../lib/styles/stitches.config";
+import { styled, theme, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers, FormikProps, FieldInputProps, FieldMetaProps } from "formik";
 
 // CSS applied to both `<input />` and `<textarea />`
@@ -12,21 +12,21 @@ const InputStyles = css({
   width: "100%",
   padding: "0.8em",
   margin: "0.6em 0",
-  border: "2px solid $light",
-  borderRadius: "$rounded",
-  color: "$text",
-  backgroundColor: "$superDuperLight",
-  transition: "background $fade",
+  border: `2px solid ${theme.colors.light}`,
+  borderRadius: theme.radii.rounded,
+  color: theme.colors.text,
+  backgroundColor: theme.colors.superDuperLight,
+  transition: `background ${theme.transitions.fade}`,
 
   "&:focus": {
     outline: "none",
-    borderColor: "$link",
+    borderColor: theme.colors.link,
   },
 
   variants: {
     missing: {
       true: {
-        borderColor: "$error",
+        borderColor: theme.colors.error,
       },
       false: {},
     },
@@ -71,16 +71,16 @@ const SubmitButton = styled("button", {
   padding: "1em 1.25em",
   marginRight: "1.5em",
   border: 0,
-  borderRadius: "$rounded",
+  borderRadius: theme.radii.rounded,
   cursor: "pointer",
   userSelect: "none",
   fontWeight: 500,
-  color: "$text",
-  backgroundColor: "$kindaLight",
+  color: theme.colors.text,
+  backgroundColor: theme.colors.kindaLight,
 
   "&:hover": {
-    color: "$superDuperLight",
-    backgroundColor: "$link",
+    color: theme.colors.superDuperLight,
+    backgroundColor: theme.colors.link,
   },
 
   variants: {
@@ -106,10 +106,10 @@ const Result = styled("div", {
   variants: {
     status: {
       success: {
-        color: "$success",
+        color: theme.colors.success,
       },
       error: {
-        color: "$error",
+        color: theme.colors.error,
       },
     },
 

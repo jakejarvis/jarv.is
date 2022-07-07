@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "../Link";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Title = styled("h1", {
@@ -15,7 +15,7 @@ const Title = styled("h1", {
 });
 
 const TitleLink = styled(Link, {
-  color: "$text",
+  color: theme.colors.text,
 });
 
 export type PageTitleProps = ComponentProps<typeof Title>;

@@ -5,7 +5,7 @@ import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import RepositoryCard from "../components/RepositoryCard";
 import { OctocatOcticon } from "../components/Icons";
-import { styled } from "../lib/styles/stitches.config";
+import { styled, theme } from "../lib/styles/stitches.config";
 import { authorSocial } from "../lib/config";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
@@ -39,7 +39,7 @@ const GitHubLogo = styled(OctocatOcticon, {
   height: "1.2em",
   verticalAlign: "-0.2em",
   margin: "0 0.15em",
-  fill: "$text",
+  fill: theme.colors.text,
 });
 
 const Projects = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => {

@@ -2,17 +2,17 @@ import commaNumber from "comma-number";
 import Link from "../Link";
 import RelativeTime from "../RelativeTime";
 import { StarOcticon, ForkOcticon } from "../Icons";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { Project } from "../../types";
 
 const Wrapper = styled("div", {
   width: "100%",
   padding: "1.2em 1.2em 0.8em 1.2em",
-  border: "1px solid $kindaLight",
-  borderRadius: "$rounded",
+  border: `1px solid ${theme.colors.kindaLight}`,
+  borderRadius: theme.radii.rounded,
   fontSize: "0.85em",
-  color: "$mediumDark",
-  transition: "border $fade",
+  color: theme.colors.mediumDark,
+  transition: `border ${theme.transitions.fade}`,
 });
 
 const Name = styled(Link, {
@@ -36,14 +36,14 @@ const MetaItem = styled("div", {
   marginRight: "1.5em",
   fontSize: "0.875em",
   lineHeight: 2,
-  color: "$medium",
+  color: theme.colors.medium,
 });
 
 const MetaLink = styled(Link, {
   color: "inherit",
 
   "&:hover": {
-    color: "$link",
+    color: theme.colors.link,
   },
 });
 

@@ -1,10 +1,10 @@
 import NextLink from "next/link";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import { baseUrl } from "../../lib/config";
 import type { ComponentProps } from "react";
 
 const StyledLink = styled(NextLink, {
-  color: "$link",
+  color: theme.colors.link,
   textDecoration: "none",
 
   variants: {
@@ -18,15 +18,15 @@ const StyledLink = styled(NextLink, {
         backgroundImage: `linear-gradient($$underlineColor, $$underlineColor)`,
         backgroundPosition: "0% 100%",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "0% $borderWidths$underline",
+        backgroundSize: `0% ${theme.borderWidths.underline}`,
         paddingBottom: "0.2rem",
 
         "@media (prefers-reduced-motion: no-preference)": {
-          transition: "background-size $linkHover",
+          transition: `background-size ${theme.transitions.linkHover}`,
         },
 
         "&:hover": {
-          backgroundSize: "100% $borderWidths$underline",
+          backgroundSize: `100% ${theme.borderWidths.underline}`,
         },
       },
       false: {},

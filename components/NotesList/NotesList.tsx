@@ -1,6 +1,6 @@
 import Link from "../Link";
 import Time from "../Time";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ReactElement } from "react";
 import type { NotesByYear } from "../../types";
 
@@ -51,7 +51,7 @@ const Post = styled("li", {
 const PostDate = styled(Time, {
   width: "5.25em",
   flexShrink: 0,
-  color: "$medium",
+  color: theme.colors.medium,
 });
 
 export type NotesListProps = {

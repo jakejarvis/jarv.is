@@ -3,7 +3,7 @@ import Time from "../Time";
 import HitCounter from "../HitCounter";
 import NoteTitle from "../NoteTitle";
 import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { NoteFrontMatter } from "../../types";
 
@@ -13,7 +13,7 @@ const Wrapper = styled("div", {
   fontSize: "0.825em",
   lineHeight: 2.3,
   letterSpacing: "0.04em",
-  color: "$medium",
+  color: theme.colors.medium,
 });
 
 const MetaItem = styled("div", {
@@ -46,7 +46,7 @@ const Tag = styled("span", {
   "&::before": {
     content: "\\0023", // cosmetically hashtagify tags
     paddingRight: "0.125em",
-    color: "$light",
+    color: theme.colors.light,
   },
 
   "&:last-of-type": {

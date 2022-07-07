@@ -1,6 +1,6 @@
 import Giscus from "@giscus/react";
 import { useTheme } from "../../hooks/use-theme";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import { giscusConfig } from "../../lib/config";
 import type { ComponentProps } from "react";
 import type { GiscusProps } from "@giscus/react";
@@ -8,7 +8,7 @@ import type { GiscusProps } from "@giscus/react";
 const Wrapper = styled("div", {
   marginTop: "2em",
   paddingTop: "2em",
-  borderTop: "2px solid $light",
+  borderTop: `2px solid ${theme.colors.light}`,
   minHeight: "360px",
 });
 

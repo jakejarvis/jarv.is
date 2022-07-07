@@ -1,11 +1,11 @@
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 
 const Code = styled("code", {
   fontSize: "0.925em",
-  backgroundColor: "$codeBackground",
-  border: "1px solid $kindaLight",
-  borderRadius: "$rounded",
-  transition: "background $fade, border $fade",
+  backgroundColor: theme.colors.codeBackground,
+  border: `1px solid ${theme.colors.kindaLight}`,
+  borderRadius: theme.radii.rounded,
+  transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 });
 
 export default Code;

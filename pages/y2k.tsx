@@ -76,6 +76,17 @@ const Y2K = () => {
         }}
       />
 
+      <noscript>
+        <Terminal
+          css={{
+            height: "250px",
+            width: "600px",
+          }}
+        >
+          JavaScript must be enabled to experience Y2K!
+        </Terminal>
+      </noscript>
+
       <ErrorBoundary
         fallback={
           <Terminal

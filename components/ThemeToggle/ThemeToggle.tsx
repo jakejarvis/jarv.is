@@ -3,7 +3,7 @@ import { useFirstMountState, useMedia } from "react-use";
 import { useSpring, animated, Globals } from "@react-spring/web";
 import { useTheme } from "../../hooks/use-theme";
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 
 const Button = styled("button", {
   border: 0,
@@ -11,10 +11,10 @@ const Button = styled("button", {
   marginRight: "-0.6em",
   background: "none",
   cursor: "pointer",
-  color: "$mediumDark",
+  color: theme.colors.mediumDark,
 
   "&:hover": {
-    color: "$warning",
+    color: theme.colors.warning,
   },
 });
 

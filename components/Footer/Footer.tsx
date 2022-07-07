@@ -1,16 +1,16 @@
 import Link from "../Link";
 import { HeartIcon, NextjsLogo } from "../Icons";
-import { keyframes, styled } from "../../lib/styles/stitches.config";
+import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { ComponentProps } from "react";
 
 const Wrapper = styled("footer", {
   width: "100%",
   padding: "1.25em 1.5em",
-  borderTop: "1px solid $kindaLight",
-  backgroundColor: "$backgroundOuter",
-  color: "$mediumDark",
-  transition: "background $fade, border $fade",
+  borderTop: `1px solid ${theme.colors.kindaLight}`,
+  backgroundColor: theme.colors.backgroundOuter,
+  color: theme.colors.mediumDark,
+  transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 
   "@medium": {
     padding: "1em 1.25em",
@@ -20,7 +20,7 @@ const Wrapper = styled("footer", {
 const Row = styled("div", {
   display: "flex",
   width: "100%",
-  maxWidth: "865px",
+  maxWidth: theme.sizes.maxLayoutWidth,
   margin: "0 auto",
   justifyContent: "space-between",
   fontSize: "0.85em",
@@ -34,21 +34,21 @@ const Row = styled("div", {
 });
 
 const PlainLink = styled(Link, {
-  color: "$mediumDark",
+  color: theme.colors.mediumDark,
 });
 
 const NextjsLink = styled(PlainLink, {
   "&:hover": {
-    color: "$medium",
+    color: theme.colors.medium,
   },
 });
 
 const ViewSourceLink = styled(PlainLink, {
   paddingBottom: "2px",
-  borderBottom: "1px solid $light",
+  borderBottom: `1px solid ${theme.colors.light}`,
 
   "&:hover": {
-    borderColor: "$kindaLight",
+    borderColor: theme.colors.kindaLight,
   },
 });
 
@@ -62,7 +62,7 @@ const Icon = styled("svg", {
 
 const Heart = styled("span", {
   display: "inline-block",
-  color: "$error", // somewhat ironically color the heart with the themed "error" red... </3
+  color: theme.colors.error, // somewhat ironically color the heart with the themed "error" red... </3
 
   "@media (prefers-reduced-motion: no-preference)": {
     animation: `${keyframes({

@@ -7,7 +7,7 @@ import normalizeStyles from "./helpers/normalize";
 // web fonts
 import { Inter, RobotoMono } from "./fonts";
 
-export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme } = createStitches({
+export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config } = createStitches({
   theme: {
     fonts: {
       sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
@@ -48,6 +48,10 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
       codeDeletion: "#ff1b1b",
     },
 
+    sizes: {
+      maxLayoutWidth: "865px",
+    },
+
     borderWidths: {
       // underline height is based on link's font size
       underline: "calc(0.1em + 0.05rem)",
@@ -75,7 +79,7 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
 
   utils: {
     setUnderlineVars: ({
-      color = "$colors$linkUnderline", // see theme values below
+      color = "$colors$linkUnderline", // see theme tokens above
       alpha = 0.4,
     }) => ({
       // allow both pre-set rgba stitches variables and hex values
@@ -125,24 +129,24 @@ export const globalStyles = globalCss(
     "@font-face": [...Inter.family, ...RobotoMono.family],
 
     body: {
-      fontFamily: "$sans",
-      backgroundColor: "$backgroundInner",
-      transition: "background $fade",
+      fontFamily: theme.fonts.sans,
+      backgroundColor: theme.colors.backgroundInner,
+      transition: `background ${theme.transitions.fade}`,
     },
 
     "code, kbd, samp, pre": {
-      fontFamily: "$mono",
+      fontFamily: theme.fonts.mono,
     },
 
     // variable font support?
     "@supports (font-variation-settings: normal)": {
       body: {
-        fontFamily: "$sansVar",
+        fontFamily: theme.fonts.sansVar,
         fontOpticalSizing: "auto",
       },
 
       "code, kbd, samp, pre": {
-        fontFamily: "$monoVar",
+        fontFamily: theme.fonts.monoVar,
       },
 
       // Chrome doesn't automatically slant multi-axis Inter var, for some reason.

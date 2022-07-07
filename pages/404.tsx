@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import Image from "../components/Image";
 import Link from "../components/Link";
-import { styled } from "../lib/styles/stitches.config";
+import { styled, theme } from "../lib/styles/stitches.config";
 
 import pandaGif from "../public/static/images/angry-panda.gif";
 
@@ -12,7 +12,7 @@ const Center = styled("div", {
 const H1 = styled("h1", {
   fontSize: "1.8em",
   fontWeight: 500,
-  color: "$text",
+  color: theme.colors.text,
 
   "@medium": {
     fontSize: "1.6em",

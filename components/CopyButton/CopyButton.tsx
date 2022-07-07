@@ -2,7 +2,7 @@ import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref, MouseEventHandler } from "react";
 
 const Button = styled("button", {
@@ -12,13 +12,13 @@ const Button = styled("button", {
   variants: {
     copied: {
       true: {
-        color: "$success",
+        color: theme.colors.success,
       },
       false: {
-        color: "$mediumDark",
+        color: theme.colors.mediumDark,
 
         "&:hover": {
-          color: "$link",
+          color: theme.colors.link,
         },
       },
     },

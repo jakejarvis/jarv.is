@@ -3,7 +3,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../SkipToContent";
 import { useTheme } from "../../hooks/use-theme";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import { themeColors } from "../../lib/config/themes";
 import type { ComponentProps } from "react";
 
@@ -19,7 +19,7 @@ const Default = styled("main", {
 });
 
 const Container = styled("div", {
-  maxWidth: "865px",
+  maxWidth: theme.sizes.maxLayoutWidth,
   margin: "0 auto",
   display: "block",
 });

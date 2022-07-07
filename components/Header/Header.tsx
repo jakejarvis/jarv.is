@@ -1,15 +1,15 @@
 import Selfie from "../Selfie";
 import Menu from "../Menu";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Wrapper = styled("header", {
   width: "100%",
   height: "4.5em",
   padding: "0.7em 1.5em",
-  borderBottom: "1px solid $kindaLight",
-  backgroundColor: "$backgroundHeader",
-  transition: "background $fade, border $fade",
+  borderBottom: `1px solid ${theme.colors.kindaLight}`,
+  backgroundColor: theme.colors.backgroundHeader,
+  transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
   zIndex: 9999,
 
   // blurry glass-like background effect (except on firefox...?)
@@ -26,7 +26,7 @@ const Nav = styled("nav", {
   alignItems: "center",
   justifyContent: "space-between",
   width: "100%",
-  maxWidth: "865px",
+  maxWidth: theme.sizes.maxLayoutWidth,
   margin: "0 auto",
 });
 

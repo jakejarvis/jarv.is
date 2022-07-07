@@ -1,5 +1,5 @@
 import Link from "../Link";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { NoteFrontMatter } from "../../types";
 
@@ -19,7 +19,7 @@ const Title = styled("h1", {
 });
 
 const TitleLink = styled(Link, {
-  color: "$text",
+  color: theme.colors.text,
 });
 
 export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle"> & ComponentProps<typeof Title>;

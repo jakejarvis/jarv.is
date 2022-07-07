@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "../components/Link";
-import { styled, keyframes, darkTheme } from "../lib/styles/stitches.config";
+import { styled, theme, darkTheme, keyframes } from "../lib/styles/stitches.config";
 
 const ColorfulLink = ({
   lightColor,
@@ -33,7 +33,7 @@ const H1 = styled("h1", {
   fontSize: "1.8em",
   fontWeight: 500,
   lineHeight: 1.1,
-  color: "$text",
+  color: theme.colors.text,
 
   "@medium": {
     fontSize: "1.6em",
@@ -45,7 +45,7 @@ const H2 = styled("h2", {
   fontSize: "1.35em",
   fontWeight: 400,
   lineHeight: 1.4,
-  color: "$text",
+  color: theme.colors.text,
 
   "@medium": {
     fontSize: "1.25em",
@@ -55,7 +55,7 @@ const H2 = styled("h2", {
 const Paragraph = styled("p", {
   margin: "0.85em 0",
   lineHeight: 1.7,
-  color: "$text",
+  color: theme.colors.text,
 
   "&:last-of-type": {
     marginBottom: 0,
@@ -100,7 +100,7 @@ const PGPKey = styled("code", {
 });
 
 const Quiet = styled("span", {
-  color: "$mediumLight",
+  color: theme.colors.mediumLight,
 });
 
 const EasterEgg = styled(ColorfulLink, {

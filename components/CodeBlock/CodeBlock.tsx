@@ -1,13 +1,13 @@
 import Code from "../Code";
 import CopyButton from "../CopyButton";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Block = styled("div", {
   position: "relative",
   width: "100%",
   margin: "1em auto",
-  color: "$codeText",
+  color: theme.colors.codeText,
 
   [`& ${Code}`]: {
     display: "block",
@@ -21,7 +21,7 @@ const Block = styled("div", {
       width: "1.5em",
       marginRight: "1.5em",
       textAlign: "right",
-      color: "$codeComment",
+      color: theme.colors.codeComment,
       content: "attr(line)", // added as spans by prism
       fontVariantNumeric: "tabular-nums",
       userSelect: "none",
@@ -39,31 +39,31 @@ const Block = styled("div", {
         // the following sub-classes MUST be global -- the prism rehype plugin isn't aware of this file
         ".token": {
           "&.comment, &.prolog, &.cdata": {
-            color: "$codeComment",
+            color: theme.colors.codeComment,
           },
           "&.delimiter, &.boolean, &.keyword, &.selector, &.important, &.doctype, &.atrule, &.url": {
-            color: "$codeKeyword",
+            color: theme.colors.codeKeyword,
           },
           "&.tag, &.builtin, &.regex": {
-            color: "$codeNamespace",
+            color: theme.colors.codeNamespace,
           },
           "&.property, &.constant, &.variable, &.attr-value, &.class-name, &.string, &.char": {
-            color: "$codeVariable",
+            color: theme.colors.codeVariable,
           },
           "&.literal-property, &.attr-name": {
-            color: "$codeAttribute",
+            color: theme.colors.codeAttribute,
           },
           "&.function": {
-            color: "$codeLiteral",
+            color: theme.colors.codeLiteral,
           },
           "&.tag .punctuation, &.attr-value .punctuation": {
-            color: "$codePunctuation",
+            color: theme.colors.codePunctuation,
           },
           "&.inserted": {
-            color: "$codeAddition",
+            color: theme.colors.codeAddition,
           },
           "&.deleted": {
-            color: "$codeDeletion",
+            color: theme.colors.codeDeletion,
           },
           "&.url": { textDecoration: "underline" },
           "&.bold": { fontWeight: "bold" },
@@ -79,11 +79,11 @@ const CornerCopyButton = styled(CopyButton, {
   top: 0,
   right: 0,
   padding: "0.65em",
-  backgroundColor: "$backgroundInner",
-  border: "1px solid $kindaLight",
-  borderTopRightRadius: "$rounded",
-  borderBottomLeftRadius: "$rounded",
-  transition: "background $fade, border $fade",
+  backgroundColor: theme.colors.backgroundInner,
+  border: `1px solid ${theme.colors.kindaLight}`,
+  borderTopRightRadius: theme.radii.rounded,
+  borderBottomLeftRadius: theme.radii.rounded,
+  transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 });
 
 export type CodeBlockProps = ComponentProps<typeof Code> & {

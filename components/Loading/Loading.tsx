@@ -1,4 +1,4 @@
-import { styled, keyframes } from "../../lib/styles/stitches.config";
+import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const pulse = keyframes({
@@ -19,7 +19,7 @@ const Box = styled("div", {
   display: "inline-block",
   height: "100%",
   animation: `${pulse} 1.5s infinite ease-in-out both`,
-  backgroundColor: "$mediumLight",
+  backgroundColor: theme.colors.mediumLight,
 });
 
 export type LoadingProps = ComponentProps<typeof Wrapper> & {

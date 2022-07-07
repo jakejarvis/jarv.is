@@ -1,16 +1,16 @@
 import innerText from "react-innertext";
 import HeadingAnchor from "../HeadingAnchor";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Anchor = styled(HeadingAnchor, {
   margin: "0 0.4em",
   padding: "0 0.2em",
-  color: "$medium",
+  color: theme.colors.medium,
   opacity: 0, // overridden on hover below (except on small screens)
 
   "&:hover": {
-    color: "$link",
+    color: theme.colors.link,
   },
 
   "@medium": {
@@ -45,7 +45,7 @@ const H = styled("h1", {
     divider: {
       true: {
         paddingBottom: "0.25em",
-        borderBottom: "1px solid $kindaLight",
+        borderBottom: `1px solid ${theme.colors.kindaLight}`,
       },
       false: {},
     },

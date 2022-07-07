@@ -3,7 +3,7 @@ import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import Video from "../components/Video";
-import { styled } from "../lib/styles/stitches.config";
+import { styled, theme } from "../lib/styles/stitches.config";
 
 import thumbnail from "../public/static/images/leo/thumb.png";
 
@@ -12,7 +12,7 @@ const Copyright = styled("p", {
   fontSize: "0.9em",
   lineHeight: 1.8,
   margin: "1.25em 1em 0 1em",
-  color: "$mediumLight",
+  color: theme.colors.mediumLight,
 });
 
 const Leo = () => {

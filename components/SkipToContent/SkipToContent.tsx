@@ -1,4 +1,4 @@
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 
 const HiddenLink = styled("a", {
   // accessible invisibility stuff pulled from @reach/skip-nav:
@@ -21,10 +21,10 @@ const HiddenLink = styled("a", {
     width: "auto",
     height: "auto",
     clip: "auto",
-    background: "$superDuperLight",
-    color: "$link",
-    border: "2px solid $kindaLight",
-    borderRadius: "$rounded",
+    background: theme.colors.superDuperLight,
+    color: theme.colors.link,
+    border: `2px solid ${theme.colors.kindaLight}`,
+    borderRadius: theme.radii.rounded,
     textDecoration: "underline",
   },
 });

@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle";
 import Link from "../components/Link";
 import IFrame from "../components/IFrame";
 import { FathomLogo } from "../components/Icons";
-import { styled } from "../lib/styles/stitches.config";
+import { styled, theme } from "../lib/styles/stitches.config";
 import { fathomSiteId, siteDomain } from "../lib/config";
 
 const PoweredBy = styled("p", {
@@ -18,7 +18,7 @@ const FathomIcon = styled(FathomLogo, {
   height: "1.2em",
   verticalAlign: "-0.2em",
   margin: "0 0.15em",
-  fill: "$text",
+  fill: theme.colors.text,
 });
 
 const Stats = () => {

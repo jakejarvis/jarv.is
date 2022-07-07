@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player/file";
 import { useHasMounted } from "../../hooks/use-has-mounted";
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { FilePlayerProps } from "react-player/file";
 
 const Wrapper = styled("div", {
@@ -14,7 +14,7 @@ const Player = styled(ReactPlayer, {
   left: 0,
 
   "& video": {
-    borderRadius: "$rounded",
+    borderRadius: theme.radii.rounded,
   },
 });
 

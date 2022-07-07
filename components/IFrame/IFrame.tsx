@@ -1,12 +1,12 @@
-import { styled } from "../../lib/styles/stitches.config";
+import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const RoundedIFrame = styled("iframe", {
   width: "100%",
   display: "block",
   margin: "1em auto",
-  border: "2px solid $kindaLight",
-  borderRadius: "$rounded",
+  border: `2px solid ${theme.colors.kindaLight}`,
+  borderRadius: theme.radii.rounded,
 });
 
 export type IFrameProps = ComponentProps<typeof RoundedIFrame> & {
