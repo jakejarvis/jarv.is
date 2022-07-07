@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "../Header";
 import Footer from "../Footer";
+import { SkipToContentLink, SkipToContentTarget } from "../SkipToContent";
 import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
 import { themeColors } from "../../lib/config/themes";
@@ -34,42 +35,12 @@ const FlexedFooter = styled(Footer, {
   flex: 1,
 });
 
-const SkipNavLink = styled("a", {
-  // accessible invisibility stuff pulled from @reach/skip-nav:
-  // https://github.com/reach/reach-ui/blob/main/packages/skip-nav/styles.css
-  border: 0,
-  clip: "rect(0 0 0 0)",
-  height: "1px",
-  width: "1px",
-  margin: "-1px",
-  padding: 0,
-  overflow: "hidden",
-  position: "absolute",
-
-  "&:focus": {
-    padding: "1rem",
-    position: "fixed",
-    top: "10px",
-    left: "10px",
-    zIndex: 99999,
-    width: "auto",
-    height: "auto",
-    clip: "auto",
-    background: "$superDuperLight",
-    color: "$link",
-    border: "2px solid $kindaLight",
-    borderRadius: "$rounded",
-    textDecoration: "underline",
-  },
-});
-
 export type LayoutProps = ComponentProps<typeof Flex> & {
   container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
 };
 
 const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
   const { activeTheme } = useTheme();
-  const skipNavId = "skip-nav";
 
   return (
     <>
@@ -78,9 +49,7 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
         <meta name="theme-color" content={themeColors[activeTheme === "dark" ? activeTheme : "light"]} />
       </Head>
 
-      <SkipNavLink href={`#${skipNavId}`} role="link" tabIndex={0}>
-        Skip to content
-      </SkipNavLink>
+      <SkipToContentLink />
 
       <Flex {...rest}>
         <StickyHeader />
@@ -88,12 +57,12 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
         {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
         {container ? (
           <Default>
-            <div id={skipNavId} />
+            <SkipToContentTarget />
             <Container>{children}</Container>
           </Default>
         ) : (
           <>
-            <div id={skipNavId} />
+            <SkipToContentTarget />
             {children}
           </>
         )}
