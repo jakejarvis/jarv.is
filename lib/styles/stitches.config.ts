@@ -2,12 +2,12 @@ import { createStitches } from "@stitches/react";
 
 // misc. helpers
 import hexToRgba from "hex-to-rgba";
-import normalizeStyles from "./helpers/normalize";
+import normalizeStyles from "./utils/normalize";
 
 // web fonts
 import { Inter, RobotoMono } from "./fonts";
 
-export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config } = createStitches({
+export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config, reset } = createStitches({
   theme: {
     fonts: {
       sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
@@ -164,6 +164,15 @@ export const globalStyles = globalCss(
     },
   }
 );
+
+// theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from there
+export const themeClassNames = {
+  light: theme.className,
+  dark: darkTheme.className,
+};
+
+// local storage key
+export const themeStorageKey = "theme";
 
 // re-export hashed URLs of the most important variable fonts so we can preload them in pages/_document.tsx
 export const preloadFonts = [...Inter.preloadFonts, ...RobotoMono.preloadFonts];

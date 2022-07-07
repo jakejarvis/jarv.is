@@ -3,8 +3,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../SkipToContent";
 import { useTheme } from "../../hooks/use-theme";
-import { styled, theme } from "../../lib/styles/stitches.config";
-import { themeColors } from "../../lib/config/themes";
+import { styled, theme, darkTheme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
 const Flex = styled("div", {
@@ -45,8 +44,11 @@ const Layout = ({ container = true, children, ...rest }: LayoutProps) => {
   return (
     <>
       <Head>
-        {/* dynamically set browser theme color to match the background color; default to light for SSR */}
-        <meta name="theme-color" content={themeColors[activeTheme === "dark" ? activeTheme : "light"]} />
+        <meta
+          // dynamically set browser theme color to match the background color; default to light for SSR
+          name="theme-color"
+          content={(activeTheme === "dark" ? darkTheme : theme)?.colors?.backgroundOuter?.value}
+        />
       </Head>
 
       <SkipToContentLink />
