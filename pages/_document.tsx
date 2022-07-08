@@ -4,6 +4,7 @@ import { getCssText, reset, themeClassNames, themeStorageKey, preloadFonts } fro
 import * as config from "../lib/config";
 
 // ensure the server can handle multiple requests without accumulating previous visitors' stylesheets
+// https://stitches.dev/blog/using-nextjs-with-stitches#step-3-ssr
 const getCssAndReset = () => {
   const css = getCssText();
   reset();
@@ -30,7 +31,6 @@ const Document = () => {
           />
         ))}
 
-        {/* stitches SSR: https://stitches.dev/blog/using-nextjs-with-stitches#step-3-ssr */}
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssAndReset() }} />
       </Head>
       <body>

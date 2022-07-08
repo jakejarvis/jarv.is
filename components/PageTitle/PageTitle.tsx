@@ -7,6 +7,7 @@ const Title = styled("h1", {
   marginTop: 0,
   marginBottom: "0.6em",
   fontSize: "2em",
+  fontWeight: 600,
   textAlign: "center",
 
   "@medium": {

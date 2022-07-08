@@ -29,9 +29,7 @@ const FourOhFour = () => {
 
         <H1>404: Page Not Found 😢</H1>
 
-        <Link href="/" prefetch>
-          Go home?
-        </Link>
+        <Link href="/">Go home?</Link>
       </Center>
     </>
   );

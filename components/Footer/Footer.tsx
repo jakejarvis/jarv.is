@@ -86,11 +86,11 @@ const Footer = ({ ...rest }: FooterProps) => {
       <Row>
         <div>
           Content{" "}
-          <PlainLink href="/license/" prefetch={false} title={config.license} underline={false}>
+          <PlainLink href="/license/" title={config.license} underline={false}>
             licensed under {config.licenseAbbr}
           </PlainLink>
           ,{" "}
-          <PlainLink href="/previously/" prefetch={false} title="Previously on..." underline={false}>
+          <PlainLink href="/previously/" title="Previously on..." underline={false}>
             {config.copyrightYearStart}
           </PlainLink>{" "}
           – {new Date(process.env.RELEASE_DATE || Date.now()).getUTCFullYear()}.

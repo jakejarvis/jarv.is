@@ -97,7 +97,6 @@ const Previously = () => {
 
         <Link
           href="/y2k/"
-          prefetch={false}
           css={{
             fontSize: "0.95em",
           }}

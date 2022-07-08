@@ -52,7 +52,7 @@ export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (
     <SelfieLink href="/" rel="author" title={authorName} underline={false} {...rest}>
-      <CircleImage src={selfieJpg} alt={`Photo of ${authorName}`} width={50} height={50} quality={60} inline priority />
+      <CircleImage src={selfieJpg} alt={`Photo of ${authorName}`} width={70} height={70} quality={60} inline priority />
       <Name>{authorName}</Name>
     </SelfieLink>
   );

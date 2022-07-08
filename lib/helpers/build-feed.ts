@@ -5,6 +5,8 @@ import { RELEASE_DATE } from "../config/constants";
 import { favicons } from "../config/seo";
 import type { GetServerSideProps } from "next";
 
+export type GetServerSideFeedProps = GetServerSideProps<Record<string, never>>;
+
 export type BuildFeedOptions = {
   edgeCacheAge?: number; // in seconds, defaults to 43200 (12 hours)
 };
@@ -12,10 +14,10 @@ export type BuildFeedOptions = {
 // handles literally *everything* about building the server-side rss/atom feeds and writing the response.
 // all the page needs to do is `return buildFeed(context, "rss")` from getServerSideProps.
 export const buildFeed = async (
-  context: Parameters<GetServerSideProps>[0],
+  context: Parameters<GetServerSideFeedProps>[0],
   type: "rss" | "atom" | "json",
   options?: BuildFeedOptions
-): Promise<ReturnType<GetServerSideProps<Record<string, never>>>> => {
+): Promise<ReturnType<GetServerSideFeedProps>> => {
   const { res } = context;
 
   // https://github.com/jpmonette/feed#example

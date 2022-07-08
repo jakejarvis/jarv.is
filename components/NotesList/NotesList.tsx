@@ -24,6 +24,7 @@ const Section = styled("section", {
 
 const Year = styled("h2", {
   fontSize: "2.2em",
+  fontWeight: 700,
   marginTop: 0,
   marginBottom: "0.5em",
 

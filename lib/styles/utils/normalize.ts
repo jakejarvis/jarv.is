@@ -59,7 +59,6 @@ const normalizeStyles: Record<string, Stitches.CSSProperties> = {
   "button, select": {
     textTransform: "none",
   },
-  "button, [type='button'], [type='reset'], [type='submit']": {},
   legend: {
     padding: 0,
   },

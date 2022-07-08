@@ -1,7 +1,6 @@
-import { buildFeed } from "../lib/helpers/build-feed";
-import type { GetServerSideProps } from "next";
+import { buildFeed, GetServerSideFeedProps } from "../lib/helpers/build-feed";
 
-export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
+export const getServerSideProps: GetServerSideFeedProps = async (context) => {
   return buildFeed(context, "atom");
 };
 
