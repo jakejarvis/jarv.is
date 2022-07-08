@@ -1,15 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import ThemeScript from "../components/ThemeScript/ThemeScript";
-import { getCssText, reset, themeClassNames, themeStorageKey, preloadFonts } from "../lib/styles/stitches.config";
+import { getCssText, themeClassNames, themeStorageKey, preloadFonts } from "../lib/styles/stitches.config";
 import * as config from "../lib/config";
-
-// ensure the server can handle multiple requests without accumulating previous visitors' stylesheets
-// https://stitches.dev/blog/using-nextjs-with-stitches#step-3-ssr
-const getCssAndReset = () => {
-  const css = getCssText();
-  reset();
-  return css;
-};
 
 // https://nextjs.org/docs/advanced-features/custom-document
 const Document = () => {
@@ -31,7 +23,7 @@ const Document = () => {
           />
         ))}
 
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssAndReset() }} />
+        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>
       <body>
         <Main />
