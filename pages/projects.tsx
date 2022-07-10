@@ -79,9 +79,7 @@ export const getStaticProps: GetStaticProps<{
     console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
 
     return {
-      props: {
-        repos: [],
-      },
+      notFound: true,
     };
   }
 

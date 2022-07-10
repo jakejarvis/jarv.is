@@ -3,37 +3,21 @@ import { getAllNotes } from "../../lib/helpers/parse-notes";
 import { logServerError } from "../../lib/helpers/sentry";
 import { NOTES_DIR } from "../../lib/config/constants";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { PageStats, DetailedPageStats, SiteStats } from "../../types";
+import type { DetailedPageStats, SiteStats } from "../../types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    if (req.method !== "GET") {
-      // 405 Method Not Allowed
-      return res.status(405).end();
-    }
+    // return overall site stats if slug not specified
+    const result = await getSiteStats();
 
-    const { slug } = req.query;
-    let data;
-
-    if (slug) {
-      // add one to this page's count and return the new number
-      data = await incrementPageHits(slug as string);
-
-      // disable caching on both ends
-      res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-    } else {
-      // return overall site stats if slug not specified
-      data = await getSiteStats();
-
-      // let Vercel edge cache results for 15 mins
-      res.setHeader("Cache-Control", "public, max-age=0, s-maxage=900, stale-while-revalidate");
-    }
+    // let Vercel edge cache results for 15 mins
+    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=900, stale-while-revalidate");
 
     // send result as JSON
-    return res.status(200).json(data);
+    return res.status(200).json(result);
   } catch (error) {
     // extract just the error message to send back to client
-    const message = error instanceof Error ? error.message : "Unknown error.";
+    const message = error instanceof Error ? error.message : error;
 
     // log full error to console and sentry
     await logServerError(error);
@@ -41,21 +25,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // 500 Internal Server Error
     return res.status(500).json({ message });
   }
-};
-
-const incrementPageHits = async (slug: string): Promise<PageStats> => {
-  const { hits } = await prisma.hits.upsert({
-    where: { slug },
-    create: { slug },
-    update: {
-      hits: {
-        increment: 1,
-      },
-    },
-  });
-
-  // send client the *new* hit count
-  return { hits };
 };
 
 const getSiteStats = async (): Promise<SiteStats> => {

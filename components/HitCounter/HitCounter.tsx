@@ -12,7 +12,7 @@ const HitCounter = ({ slug }: HitCounterProps) => {
   // use immutable SWR to avoid double (or more) counting views:
   // https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations
   const { data, error } = useSWRImmutable<PageStats>(
-    `/api/hits/?${new URLSearchParams({
+    `/api/count/?${new URLSearchParams({
       slug,
     })}`,
     fetcher
