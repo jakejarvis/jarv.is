@@ -37,6 +37,8 @@ module.exports = (phase, { defaultConfig }) => {
       formats: ["image/avif", "image/webp"],
     },
     experimental: {
+      legacyBrowsers: false,
+      browsersListForSwc: true,
       images: {
         allowFutureImage: true, // https://github.com/vercel/next.js/pull/37927
       },
