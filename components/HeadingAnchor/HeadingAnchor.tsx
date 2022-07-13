@@ -19,7 +19,7 @@ export type HeadingAnchorProps = Omit<ComponentProps<typeof AnchorLink>, "href">
 
 const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => {
   return (
-    <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} aria-hidden={true} underline={false} {...rest}>
+    <AnchorLink href={`#${id}`} title={`Jump to "${title}"`} aria-hidden underline={false} {...rest}>
       <Icon />
     </AnchorLink>
   );

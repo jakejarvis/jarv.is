@@ -31,7 +31,7 @@ export const logServerError = async (error: unknown) => {
   console.error(error);
 
   // we really don't want to return *any* error from logging an error, so just keep it on the dl
-  return true;
+  return Promise.resolve();
 };
 
 export default IsomorphicSentry;

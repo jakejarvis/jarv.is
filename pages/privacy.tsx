@@ -57,7 +57,7 @@ const Privacy = () => {
 
         <p>
           The <Link href="https://github.com/jakejarvis/jarv.is/blob/main/prisma/schema.prisma">database schema</Link>,{" "}
-          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/hits.ts">serverless function</Link> and{" "}
+          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/count.ts">serverless function</Link> and{" "}
           <Link href="https://github.com/jakejarvis/jarv.is/blob/main/components/HitCounter/HitCounter.tsx">
             client script
           </Link>{" "}

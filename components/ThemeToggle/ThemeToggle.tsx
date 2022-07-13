@@ -96,7 +96,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   // render a blank div of the same size to avoid layout shifting until we're fully mounted and self-aware
   if (!hasMounted) {
     return (
-      <Button as="div" aria-hidden={true}>
+      <Button as="div">
         <div className={className} />
       </Button>
     );
@@ -110,6 +110,8 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
     >
       <animated.svg
         xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -120,6 +122,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
           ...svgContainerProps,
         }}
         className={className}
+        aria-hidden
       >
         <mask id={`mask-${maskId}`}>
           <rect x="0" y="0" width="100%" height="100%" fill="white" />

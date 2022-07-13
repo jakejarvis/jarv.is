@@ -1,4 +1,5 @@
 import { createStitches } from "@stitches/react";
+import type * as Stitches from "@stitches/react";
 
 // misc. helpers
 import hexToRgba from "hex-to-rgba";
@@ -7,7 +8,10 @@ import normalizeStyles from "./utils/normalize";
 // web fonts
 import { Inter, RobotoMono } from "./fonts";
 
-export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config, reset } = createStitches({
+// https://stitches.dev/docs/typescript#type-a-css-object
+export type CSS = Stitches.CSS<typeof config>;
+
+export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config } = createStitches({
   theme: {
     fonts: {
       sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,

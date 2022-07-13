@@ -28,7 +28,7 @@ module.exports = (phase, { defaultConfig }) => {
       // freeze build timestamp for when server-side pages need a "last updated" date:
       RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
-      IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER ? "true" : "false",
+      IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER ? "true" : "",
       // https://nextjs.org/docs/api-reference/cli#development
       NEXT_DEV_PORT: process.env.PORT || "3000",
     },

@@ -11,7 +11,6 @@ const CircleImage = styled(Image, {
   height: "50px",
   border: `1px solid ${theme.colors.light}`,
   borderRadius: "50%",
-  transition: `border ${theme.transitions.fade}`,
 
   "@medium": {
     width: "70px",

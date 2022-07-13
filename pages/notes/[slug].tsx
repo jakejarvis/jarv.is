@@ -70,7 +70,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
 };
 
 export const getStaticProps: GetStaticProps<NoteWithSource, Pick<NoteFrontMatter, "slug">> = async ({ params }) => {
-  if (!params || !params.slug) {
+  if (!params?.slug) {
     return {
       notFound: true,
     };

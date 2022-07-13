@@ -7,7 +7,7 @@ import type { DetailedPageStats, SiteStats } from "../../types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // return overall site stats if slug not specified
+    // return overall site stats
     const result = await getSiteStats();
 
     // let Vercel edge cache results for 15 mins
