@@ -6,7 +6,7 @@ const RoundedIFrame = styled("iframe", {
   display: "block",
   margin: "1em auto",
   border: `2px solid ${theme.colors.kindaLight}`,
-  borderRadius: theme.radii.rounded,
+  borderRadius: theme.radii.corner,
 });
 
 export type IFrameProps = ComponentProps<typeof RoundedIFrame> & {

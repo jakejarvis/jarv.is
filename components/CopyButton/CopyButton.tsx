@@ -3,7 +3,7 @@ import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import { ClipboardOcticon, CheckOcticon } from "../Icons";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ReactNode, Ref, MouseEventHandler } from "react";
+import type { ReactNode, Ref, ComponentPropsWithoutRef, MouseEventHandler } from "react";
 
 const Button = styled("button", {
   lineHeight: 1,
@@ -32,13 +32,12 @@ const Icon = styled("svg", {
   fill: "currentColor",
 });
 
-export type CopyButtonProps = {
-  source: ReactNode;
+export type CopyButtonProps = ComponentPropsWithoutRef<typeof Button> & {
+  source: string | ReactNode;
   timeout?: number;
-  className?: string;
 };
 
-const CopyButton = ({ source, timeout = 2000, className }: CopyButtonProps, ref: Ref<HTMLButtonElement>) => {
+const CopyButton = ({ source, timeout = 2000, ...rest }: CopyButtonProps, ref: Ref<HTMLButtonElement>) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -70,13 +69,13 @@ const CopyButton = ({ source, timeout = 2000, className }: CopyButtonProps, ref:
 
   return (
     <Button
-      className={className}
+      ref={ref}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}
-      disabled={!!copied}
+      disabled={copied}
       copied={copied}
-      ref={ref}
+      {...rest}
     >
       <Icon as={copied ? CheckOcticon : ClipboardOcticon} />
     </Button>

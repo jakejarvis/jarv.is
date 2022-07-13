@@ -24,7 +24,7 @@ const HiddenLink = styled("a", {
     background: theme.colors.superDuperLight,
     color: theme.colors.link,
     border: `2px solid ${theme.colors.kindaLight}`,
-    borderRadius: theme.radii.rounded,
+    borderRadius: theme.radii.corner,
     textDecoration: "underline",
   },
 });

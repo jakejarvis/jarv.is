@@ -4,7 +4,7 @@ const Code = styled("code", {
   fontSize: "0.925em",
   backgroundColor: theme.colors.codeBackground,
   border: `1px solid ${theme.colors.kindaLight}`,
-  borderRadius: theme.radii.rounded,
+  borderRadius: theme.radii.corner,
   transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 });
 

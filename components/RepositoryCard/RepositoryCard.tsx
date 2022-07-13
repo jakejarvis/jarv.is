@@ -9,7 +9,7 @@ const Wrapper = styled("div", {
   width: "100%",
   padding: "1.2em 1.2em 0.8em 1.2em",
   border: `1px solid ${theme.colors.kindaLight}`,
-  borderRadius: theme.radii.rounded,
+  borderRadius: theme.radii.corner,
   fontSize: "0.85em",
   color: theme.colors.mediumDark,
   transition: `border ${theme.transitions.fade}`,

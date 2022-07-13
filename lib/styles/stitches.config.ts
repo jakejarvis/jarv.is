@@ -62,7 +62,7 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
     },
 
     radii: {
-      rounded: "0.65em",
+      corner: "0.6rem",
     },
 
     transitions: {

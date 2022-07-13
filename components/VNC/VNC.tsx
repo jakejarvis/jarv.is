@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
-import type { Ref, ComponentProps } from "react";
+import type { Ref, ComponentPropsWithoutRef } from "react";
 
 const Display = styled(
   "div",
@@ -33,7 +33,7 @@ const Display = styled(
   }
 );
 
-export type VNCProps = ComponentProps<typeof Display> & {
+export type VNCProps = ComponentPropsWithoutRef<typeof Display> & {
   server: string;
 };
 

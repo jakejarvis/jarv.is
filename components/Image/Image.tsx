@@ -16,7 +16,7 @@ const Block = styled("div", {
 const StyledImage = styled(NextImage, {
   height: "auto",
   maxWidth: "100%",
-  borderRadius: theme.radii.rounded,
+  borderRadius: theme.radii.corner,
 });
 
 export type ImageProps = ComponentProps<typeof StyledImage> & {

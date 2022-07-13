@@ -81,8 +81,8 @@ const CornerCopyButton = styled(CopyButton, {
   padding: "0.65em",
   backgroundColor: theme.colors.backgroundInner,
   border: `1px solid ${theme.colors.kindaLight}`,
-  borderTopRightRadius: theme.radii.rounded,
-  borderBottomLeftRadius: theme.radii.rounded,
+  borderTopRightRadius: theme.radii.corner,
+  borderBottomLeftRadius: theme.radii.corner,
   transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 });
 
