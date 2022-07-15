@@ -33,7 +33,7 @@ const skipNavId = "skip-nav";
 
 export const SkipToContentLink = () => {
   return (
-    <HiddenLink href={`#${skipNavId}`} role="link" tabIndex={0}>
+    <HiddenLink href={`#${skipNavId}`} tabIndex={0}>
       Skip to content
     </HiddenLink>
   );

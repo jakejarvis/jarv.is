@@ -146,7 +146,6 @@ export const globalStyles = globalCss(
     "@supports (font-variation-settings: normal)": {
       body: {
         fontFamily: theme.fonts.sansVar,
-        fontOpticalSizing: "auto",
       },
 
       "code, kbd, samp, pre": {

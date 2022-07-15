@@ -2,20 +2,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-const withPlugins = require("next-compose-plugins");
 const config = require("./lib/config");
 
-module.exports = (phase, { defaultConfig }) => {
-  const nextPlugins = [
-    require("next-transpile-modules")([
-      // fixes some mystery issues in the noVNC library
-      "@novnc/novnc",
-    ]),
-    require("@next/bundle-analyzer")({
-      enabled: process.env.ANALYZE === "true",
-    }),
-  ];
-
+module.exports = (phase) => {
   /**
    * @type {import("next").NextConfig}
    */
@@ -153,5 +142,5 @@ module.exports = (phase, { defaultConfig }) => {
     ],
   };
 
-  return withPlugins(nextPlugins, nextConfig)(phase, { defaultConfig });
+  return nextConfig;
 };
