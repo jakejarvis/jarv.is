@@ -8,6 +8,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# typescript
+*.tsbuildinfo
+
 # here be secrets
 *.env*
 !.env.example

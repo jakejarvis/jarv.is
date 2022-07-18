@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import removeMarkdown from "remove-markdown";
 import pMap from "p-map";
+import pMemoize from "p-memoize";
 import { formatDate } from "./format-date";
 import { baseUrl } from "../config";
 import { NOTES_DIR } from "../config/constants";
@@ -55,7 +56,7 @@ export const getNoteData = async (
 };
 
 // returns the parsed front matter of ALL notes, sorted reverse chronologically
-export const getAllNotes = async (): Promise<NoteFrontMatter[]> => {
+export const getAllNotes = pMemoize(async (): Promise<NoteFrontMatter[]> => {
   const slugs = await getNoteSlugs();
 
   // for each slug, query its front matter
@@ -65,4 +66,4 @@ export const getAllNotes = async (): Promise<NoteFrontMatter[]> => {
   data.sort((note1, note2) => (note1.date > note2.date ? -1 : 1));
 
   return data;
-};
+});
