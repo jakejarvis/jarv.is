@@ -176,6 +176,3 @@ export const themeClassNames = {
 
 // local storage key
 export const themeStorageKey = "theme";
-
-// re-export hashed URLs of the most important variable fonts so we can preload them in pages/_document.tsx
-export const preloadFonts = [...Inter.preloadFonts, ...RobotoMono.preloadFonts];

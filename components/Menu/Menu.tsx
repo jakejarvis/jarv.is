@@ -50,7 +50,7 @@ const Menu = ({ ...rest }: MenuProps) => {
         const isCurrent = item.href === `/${router.pathname.split("/")[1]}`;
 
         return (
-          <Item key={index}>
+          <Item key={item.text || index}>
             <MenuItem {...item} current={isCurrent} />
           </Item>
         );

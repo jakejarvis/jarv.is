@@ -1,6 +1,4 @@
 /* eslint-disable camelcase */
-
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Marquee from "react-fast-marquee";
 import Layout from "../components/Layout";
@@ -198,65 +196,50 @@ Previously.getLayout = (page: ReactElement) => {
   })();
 
   return (
-    <>
-      <Head>
-        {ComicNeue.preloadFonts.map((font) => (
-          <link
-            key={`font-${font.key}`}
-            rel="preload"
-            as="font"
-            type={font.type}
-            href={font.src}
-            crossOrigin="anonymous"
-          />
-        ))}
-      </Head>
+    <Layout
+      css={{
+        fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
+        fontWeight: 600,
 
-      <Layout
-        css={{
-          fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
-          fontWeight: 600,
+        // classic windows 9x cursor easter egg
+        cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto`,
 
-          // classic windows 9x cursor easter egg
-          cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto`,
+        "a:hover, button": {
+          // windows 9x hand cursor
+          cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEVHcEwAAAD///8W1S+BAAAAAXRSTlMAQObYZgAAAEdJREFUeAFjoAVghTGkHIhghMAYmQEwxlIYYxlYlSiQMQEsELUKyli1ahWYwQZjMGIwGLKQGA4QA1EYEP0rGVAZrKGhSF4BAHw/HsVwshytAAAAAElFTkSuQmCC") 16 12, auto`,
+        },
 
-          "a:hover, button": {
-            // windows 9x hand cursor
-            cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEVHcEwAAAD///8W1S+BAAAAAXRSTlMAQObYZgAAAEdJREFUeAFjoAVghTGkHIhghMAYmQEwxlIYYxlYlSiQMQEsELUKyli1ahWYwQZjMGIwGLKQGA4QA1EYEP0rGVAZrKGhSF4BAHw/HsVwshytAAAAAElFTkSuQmCC") 16 12, auto`,
+        "& em": {
+          fontStyle: "revert !important",
+        },
+
+        "& header": {
+          // title text
+          "& > nav > a:first-of-type > span:last-of-type": {
+            fontSize: "1.4em",
+            fontWeight: 700,
           },
 
-          "& em": {
-            fontStyle: "revert !important",
-          },
-
-          "& header": {
-            // title text
-            "& > nav > a:first-of-type > span:last-of-type": {
-              fontSize: "1.4em",
-              fontWeight: 700,
-            },
-
-            // menu item text
-            "& > nav > ul > li > a > span": {
-              fontSize: "1.1em",
-              fontWeight: 700,
-              lineHeight: 1.1,
-            },
-          },
-
-          "& main > div > div": {
+          // menu item text
+          "& > nav > ul > li > a > span": {
             fontSize: "1.1em",
-            textAlign: "center",
+            fontWeight: 700,
+            lineHeight: 1.1,
           },
+        },
 
-          "& footer > div": {
-            fontSize: "0.95em",
-          },
-        }}
-      >
-        {page}
-      </Layout>
-    </>
+        "& main > div > div": {
+          fontSize: "1.1em",
+          textAlign: "center",
+        },
+
+        "& footer > div": {
+          fontSize: "0.95em",
+        },
+      }}
+    >
+      {page}
+    </Layout>
   );
 };
 

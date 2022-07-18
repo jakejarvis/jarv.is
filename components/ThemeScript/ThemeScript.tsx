@@ -2,14 +2,14 @@ import { useMemo } from "react";
 import { minify } from "uglify-js";
 import { clientScript } from "./client";
 
-export type ThemeScriptProps = {
+export type ThemeScriptProps = JSX.IntrinsicElements["script"] & {
   themeClassNames: {
     [themeName: string]: string;
   };
   themeStorageKey: string;
 };
 
-const ThemeScript = ({ themeClassNames, themeStorageKey }: ThemeScriptProps) => {
+const ThemeScript = ({ key, themeClassNames, themeStorageKey, ...rest }: ThemeScriptProps) => {
   const minified = useMemo(() => {
     // since the client function will end up being injected as a plain dumb string, we need to set dynamic values here:
     const functionString = String(clientScript)
@@ -53,8 +53,8 @@ const ThemeScript = ({ themeClassNames, themeStorageKey }: ThemeScriptProps) => 
   // TODO: using next/script *might* be possible after https://github.com/vercel/next.js/pull/36364 is merged.
   return (
     <script
-      key="restore-theme"
-      id="restore-theme"
+      key={key} // separate on purpose!
+      {...rest}
       dangerouslySetInnerHTML={{
         // make it an IIFE:
         __html: `(function(){${minified}})()`,

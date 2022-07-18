@@ -22,14 +22,15 @@ export const name = {
   regular: "Roboto Mono",
   variable: "Roboto Mono var",
 };
-// re-export hashed URL(s) of the most prominent file so we can preload it in head:
-export const preloadFonts = [
+
+// re-export hashed URL(s) of the most prominent files so we can preload them in `<head>` (see pages/_document.tsx):
+export const preloads = [
   {
-    key: "roboto-mono-var",
-    src: robotoMonoLatinVarWghtOnlyNormalWoff2,
+    href: robotoMonoLatinVarWghtOnlyNormalWoff2,
     type: "font/woff2",
   },
 ];
+
 export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,

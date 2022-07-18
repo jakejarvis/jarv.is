@@ -13,13 +13,9 @@ import comicNeueLatin700ItalicWoff2 from "@fontsource/comic-neue/files/comic-neu
 export const name = {
   regular: "Comic Neue",
 };
-export const preloadFonts = [
-  {
-    key: "comic-neue-700",
-    src: comicNeueLatin700NormalWoff2,
-    type: "font/woff2",
-  },
-];
+
+export const preloads = [];
+
 export const family: AtRule.FontFace[] = [
   {
     fontFamily: name.regular,
