@@ -189,7 +189,7 @@ const Previously = () => {
 // a complete sh*tshow of "global" overrides, mainly to compensate for font change
 Previously.getLayout = (page: ReactElement) => {
   // only declare Comic Neue typeface if/when this page is loaded.
-  // note: other "global" styles for this page are declared via the `css={{...}}` prop below instead, because these
+  // note: other "global" styles for this page are declared via the `css={{...}}` prop below instead, so they don't
   // persist when navigating away to a different page.
   globalCss({
     "@font-face": [...ComicNeue.family],
@@ -198,7 +198,7 @@ Previously.getLayout = (page: ReactElement) => {
   return (
     <Layout
       css={{
-        fontFamily: '"Comic Neue", "Comic Sans MS", "Comic Sans", sans-serif',
+        fontFamily: `"${ComicNeue.name.regular}", "Comic Sans MS", "Comic Sans", ${theme.fonts.sans.value}`,
         fontWeight: 600,
 
         // classic windows 9x cursor easter egg
