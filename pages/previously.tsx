@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { NextSeo } from "next-seo";
-import Marquee from "react-fast-marquee";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
@@ -78,20 +77,18 @@ const Previously = () => {
 
         <Divider />
 
-        <Marquee speed={70} gradient={false} style={{ marginBottom: "0.5em" }}>
-          <span style={{ marginLeft: 150 }}>
-            🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
-            <CodeInline
-              css={{
-                fontSize: "0.8em",
-                fontWeight: 400,
-              }}
-            >
-              color: <span style={{ color: "#32cd32" }}>limegreen</span>
-            </CodeInline>{" "}
-            ahead...
-          </span>
-        </Marquee>
+        <p style={{ marginBottom: "0.5em" }}>
+          🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
+          <CodeInline
+            css={{
+              fontSize: "0.8em",
+              fontWeight: 400,
+            }}
+          >
+            color: <span style={{ color: "#32cd32" }}>limegreen</span>
+          </CodeInline>{" "}
+          ahead...
+        </p>
 
         <Link
           href="/y2k/"
