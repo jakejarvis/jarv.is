@@ -42,7 +42,7 @@
     "gray-matter": "^4.0.3",
     "hex-to-rgba": "^2.0.1",
     "marked": "^4.0.18",
-    "next": "12.2.3-canary.14",
+    "next": "12.2.3",
     "next-mdx-remote": "^4.0.3",
     "next-seo": "^5.5.0",
     "p-map": "^5.5.0",
