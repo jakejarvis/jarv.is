@@ -1,5 +1,6 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { useLocalStorage, useMedia } from "react-use";
+import { useLocalStorage } from "react-use";
+import { useMedia } from "../hooks/use-media";
 import { themeStorageKey } from "../lib/styles/stitches.config";
 import type { Context, PropsWithChildren } from "react";
 

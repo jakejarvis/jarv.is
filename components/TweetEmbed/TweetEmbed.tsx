@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TwitterTweetEmbed } from "react-twitter-embed";
-import { useUpdateEffect } from "react-use";
+import { useUpdateEffect } from "../../hooks/use-update-effect";
 import { useTheme } from "../../hooks/use-theme";
 import { styled } from "../../lib/styles/stitches.config";
 

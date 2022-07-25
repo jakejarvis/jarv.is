@@ -1,6 +1,7 @@
 import { useEffect, useId } from "react";
-import { useFirstMountState, useMedia } from "react-use";
 import { useSpring, animated, Globals } from "@react-spring/web";
+import { useMedia } from "../../hooks/use-media";
+import { useFirstMountState } from "../../hooks/use-first-mount-state";
 import { useTheme } from "../../hooks/use-theme";
 import { useHasMounted } from "../../hooks/use-has-mounted";
 import { styled, theme } from "../../lib/styles/stitches.config";

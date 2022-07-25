@@ -20,14 +20,14 @@
     "@fontsource/comic-neue": "4.5.8",
     "@fontsource/inter": "4.5.11",
     "@fontsource/roboto-mono": "4.5.7",
-    "@giscus/react": "^2.0.6",
+    "@giscus/react": "^2.1.1",
     "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@novnc/novnc": "github:novnc/novnc#cdfb33665195eb9a73fb00feb6ebaccd1068cd50",
     "@octokit/graphql": "^5.0.0",
     "@octokit/graphql-schema": "^10.74.2",
     "@primer/octicons": "^17.3.0",
     "@prisma/client": "^4.1.0",
-    "@react-spring/web": "^9.5.1",
+    "@react-spring/web": "^9.5.2",
     "@sentry/node": "^7.7.0",
     "@sentry/tracing": "^7.7.0",
     "@stitches/react": "^1.2.8",
@@ -66,7 +66,7 @@
     "remark-smartypants": "^2.0.0",
     "remark-unwrap-images": "^3.0.1",
     "remove-markdown": "^0.5.0",
-    "simple-icons": "^7.4.0",
+    "simple-icons": "^7.5.0",
     "sitemap": "^7.1.1",
     "swr": "^1.3.0"
   },
@@ -95,7 +95,7 @@
     "prisma": "^4.1.0",
     "simple-git-hooks": "^2.8.0",
     "typescript": "^4.7.4",
-    "uglify-js": "^3.16.2"
+    "uglify-js": "^3.16.3"
   },
   "engines": {
     "node": ">=16.x"
