@@ -1,6 +1,6 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { useHasMounted } from "../../hooks/use-has-mounted";
-import { useTheme } from "../../hooks/use-theme";
+import useHasMounted from "../../hooks/useHasMounted";
+import useTheme from "../../hooks/useTheme";
 
 export type CaptchaProps = {
   size?: "normal" | "compact" | "invisible";

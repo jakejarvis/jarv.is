@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 // convenience hook to get access to ThemeContext's state/functions from pages/components/etc.
-export const useTheme = () => {
+const useTheme = () => {
   const context = useContext(ThemeContext);
 
   if (!context) {
@@ -11,3 +11,5 @@ export const useTheme = () => {
 
   return context;
 };
+
+export default useTheme;

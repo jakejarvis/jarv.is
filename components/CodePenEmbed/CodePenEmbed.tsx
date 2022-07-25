@@ -1,6 +1,6 @@
 import IFrame from "../IFrame";
-import { useHasMounted } from "../../hooks/use-has-mounted";
-import { useTheme } from "../../hooks/use-theme";
+import useHasMounted from "../../hooks/useHasMounted";
+import useTheme from "../../hooks/useTheme";
 import { styled } from "../../lib/styles/stitches.config";
 
 const Wrapper = styled("div", {

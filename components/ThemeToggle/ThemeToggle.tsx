@@ -1,9 +1,9 @@
 import { useEffect, useId } from "react";
 import { useSpring, animated, Globals } from "@react-spring/web";
-import { useMedia } from "../../hooks/use-media";
-import { useFirstMountState } from "../../hooks/use-first-mount-state";
-import { useTheme } from "../../hooks/use-theme";
-import { useHasMounted } from "../../hooks/use-has-mounted";
+import useMedia from "../../hooks/useMedia";
+import useFirstMountState from "../../hooks/useFirstMountState";
+import useTheme from "../../hooks/useTheme";
+import useHasMounted from "../../hooks/useHasMounted";
 import { styled, theme } from "../../lib/styles/stitches.config";
 
 const Button = styled("button", {

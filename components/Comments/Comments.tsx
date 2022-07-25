@@ -1,5 +1,5 @@
 import Giscus from "@giscus/react";
-import { useTheme } from "../../hooks/use-theme";
+import useTheme from "../../hooks/useTheme";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import { giscusConfig } from "../../lib/config";
 import type { ComponentProps } from "react";

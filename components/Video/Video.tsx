@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player/file";
-import { useHasMounted } from "../../hooks/use-has-mounted";
+import useHasMounted from "../../hooks/useHasMounted";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { FilePlayerProps } from "react-player/file";
 

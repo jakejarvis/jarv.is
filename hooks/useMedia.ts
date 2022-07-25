@@ -1,4 +1,4 @@
-// https://github.com/streamich/react-use/blob/e53ca94a0b1f20270b0f75dc2ca1fecf1e119dde/src/useMedia.ts
+// Modified from https://github.com/streamich/react-use/blob/e53ca94a0b1f20270b0f75dc2ca1fecf1e119dde/src/useMedia.ts
 
 import { useEffect, useState } from "react";
 
@@ -14,7 +14,7 @@ const getInitialState = (query: string, defaultState?: boolean): boolean => {
   return false;
 };
 
-export const useMedia = (query: string, defaultState?: boolean): boolean => {
+const useMedia = (query: string, defaultState?: boolean): boolean => {
   const [state, setState] = useState(getInitialState(query, defaultState));
 
   useEffect(() => {
@@ -39,3 +39,5 @@ export const useMedia = (query: string, defaultState?: boolean): boolean => {
 
   return state;
 };
+
+export default useMedia;

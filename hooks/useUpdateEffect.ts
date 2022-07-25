@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useFirstMountState } from "./use-first-mount-state";
+import useFirstMountState from "./useFirstMountState";
 
 // identical to `useEffect()` but ignores the first invocation
-export const useUpdateEffect: typeof useEffect = (effect, deps) => {
+const useUpdateEffect: typeof useEffect = (effect, deps) => {
   const isFirstMount = useFirstMountState();
 
   useEffect(() => {
@@ -11,3 +11,5 @@ export const useUpdateEffect: typeof useEffect = (effect, deps) => {
     }
   }, deps); // eslint-disable-line react-hooks/exhaustive-deps
 };
+
+export default useUpdateEffect;

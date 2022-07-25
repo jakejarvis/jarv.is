@@ -1,4 +1,4 @@
-import { useHasMounted } from "../../hooks/use-has-mounted";
+import useHasMounted from "../../hooks/useHasMounted";
 import { formatDate, formatTimeAgo } from "../../lib/helpers/format-date";
 
 export type RelativeTimeProps = {

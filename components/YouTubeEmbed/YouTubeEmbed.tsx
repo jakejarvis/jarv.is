@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player/youtube";
-import { useHasMounted } from "../../hooks/use-has-mounted";
+import useHasMounted from "../../hooks/useHasMounted";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { YouTubePlayerProps } from "react-player/youtube";
 

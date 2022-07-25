@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TwitterTweetEmbed } from "react-twitter-embed";
-import { useUpdateEffect } from "../../hooks/use-update-effect";
-import { useTheme } from "../../hooks/use-theme";
+import useUpdateEffect from "../../hooks/useUpdateEffect";
+import useTheme from "../../hooks/useTheme";
 import { styled } from "../../lib/styles/stitches.config";
 
 const Wrapper = styled("div", {
