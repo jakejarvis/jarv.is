@@ -1020,12 +1020,12 @@
   resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.7.tgz#69a89b679ab962ea3591438f35833b09f0f8980f"
   integrity sha512-1uBjM95BEz7zJlmmnpNAM5afMvIxx0wqr86eA76vRqZw8OF5wmsRqYfF3caHuVarBH9/AGN7t9h+3UXK8fjq/Q==
 
-"@giscus/react@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.0.6.tgz#66ace3761dddffe8da79c65c4c6af0b366f16aa3"
-  integrity sha512-Kdrz/Jx7XNwFMuaIXHWXeqISdYwilFhRp9blmUwkixR+HdFJe4+dzkorVNnyW0M/xbSfzhjb49Ng2YvJOB/28Q==
+"@giscus/react@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.1.1.tgz#8f0e07d1db5b7b1b9106c1c5c8b6f0a334d8b138"
+  integrity sha512-YTZBbOILVKkWg0kUy+SRlkM6InSRWG7mefVEDcHQmC2saD1Voci16hT7cUqZPie3O1IG9M4yXIU4LxKWvxxE5g==
   dependencies:
-    giscus "^1.0.6"
+    giscus "^1.1.1"
 
 "@hcaptcha/react-hcaptcha@^1.4.4":
   version "1.4.4"
@@ -3037,12 +3037,12 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-giscus@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/giscus/-/giscus-1.0.6.tgz#e1baaf01a2601b46c1cc03a1751229707713b208"
-  integrity sha512-YPqo3ZyefMdAJaadZdDjSqj6m+KTZC21SL1QxF85HZZkBEqICzrGHu8PQhWc1HPiZAQsDVH9guvjhI79w+XUeg==
+giscus@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/giscus/-/giscus-1.1.1.tgz#32e4d6a8d76b0a0eb312b8c9b1fe476115483a65"
+  integrity sha512-WE0cjvf/OZ58EpYzdX8c1minxroSIXRSUy6APNQeaSwQBHwL6DjLH0Cn9n/D/LPlE8d3jxzy3sBFE6A00q586g==
   dependencies:
-    lit "^2.2.6"
+    lit "^2.2.8"
 
 github-slugger@^1.1.1:
   version "1.4.0"
@@ -3679,7 +3679,7 @@ lit-html@^2.2.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.2.6:
+lit@^2.2.8:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.2.8.tgz#26bdf560042aa3ec9b788f5d48119f7138b2dcc1"
   integrity sha512-QjeNbi/H9LVIHR+u0OqsL+hs62a16m02JlJHYN48HcBuXyiPYR8JvzsTp5dYYS81l+b9Emp3UaGo82EheV0pog==
