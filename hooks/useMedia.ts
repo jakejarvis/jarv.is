@@ -2,20 +2,18 @@
 
 import { useEffect, useState } from "react";
 
-const getInitialState = (query: string, defaultState?: boolean): boolean => {
-  if (defaultState !== undefined) {
-    return defaultState;
-  }
-
-  if (typeof window !== "undefined") {
-    return window.matchMedia(query).matches;
-  }
-
-  return false;
-};
-
 const useMedia = (query: string, defaultState?: boolean): boolean => {
-  const [state, setState] = useState(getInitialState(query, defaultState));
+  const [state, setState] = useState(() => {
+    if (defaultState !== undefined) {
+      return defaultState;
+    }
+
+    if (typeof window !== "undefined") {
+      return window.matchMedia(query).matches;
+    }
+
+    return false;
+  });
 
   useEffect(() => {
     let mounted = true;
