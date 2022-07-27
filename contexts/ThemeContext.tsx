@@ -29,7 +29,7 @@ export const ThemeProvider = ({
   };
 }>) => {
   // keep track of if/when the user has set their theme *on this site*
-  const [preferredTheme, setPreferredTheme] = useLocalStorage<string>(themeStorageKey);
+  const [preferredTheme, setPreferredTheme] = useLocalStorage(themeStorageKey);
   // keep track of changes to the user's OS/browser dark mode setting
   const [systemTheme, setSystemTheme] = useState("");
   // hook into system `prefers-dark-mode` setting
