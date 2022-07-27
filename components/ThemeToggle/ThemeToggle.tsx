@@ -14,7 +14,7 @@ const Button = styled("button", {
   cursor: "pointer",
   color: theme.colors.mediumDark,
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.warning,
   },
 });

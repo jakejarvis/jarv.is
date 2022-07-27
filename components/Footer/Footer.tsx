@@ -38,7 +38,7 @@ const PlainLink = styled(Link, {
 });
 
 const NextjsLink = styled(PlainLink, {
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.medium,
   },
 });
@@ -47,7 +47,7 @@ const ViewSourceLink = styled(PlainLink, {
   paddingBottom: "2px",
   borderBottom: `1px solid ${theme.colors.light}`,
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     borderColor: theme.colors.kindaLight,
   },
 });

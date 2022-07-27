@@ -17,7 +17,7 @@ const Button = styled("button", {
       false: {
         color: theme.colors.mediumDark,
 
-        "&:hover": {
+        "&:hover, &:focus-visible": {
           color: theme.colors.link,
         },
       },

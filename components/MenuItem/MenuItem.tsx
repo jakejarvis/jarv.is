@@ -14,7 +14,7 @@ const MenuLink = styled(Link, {
         borderBottom: `0.2em solid ${theme.colors.linkUnderline}`,
       },
       false: {
-        "&:hover": {
+        "&:hover, &:focus-visible": {
           marginBottom: "-0.2em",
           borderBottom: `0.2em solid ${theme.colors.kindaLight}`,
         },

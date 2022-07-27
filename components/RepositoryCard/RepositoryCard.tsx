@@ -42,7 +42,7 @@ const MetaItem = styled("div", {
 const MetaLink = styled(Link, {
   color: "inherit",
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.link,
   },
 });

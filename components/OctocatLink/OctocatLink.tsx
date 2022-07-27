@@ -7,7 +7,7 @@ const GitHubLink = styled(Link, {
   margin: "0 0.4em",
   color: theme.colors.text,
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.link,
   },
 });

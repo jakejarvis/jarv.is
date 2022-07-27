@@ -9,7 +9,7 @@ const Anchor = styled(HeadingAnchor, {
   color: theme.colors.medium,
   opacity: 0, // overridden on hover below (except on small screens)
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.link,
   },
 

@@ -78,7 +78,7 @@ const SubmitButton = styled("button", {
   color: theme.colors.text,
   backgroundColor: theme.colors.kindaLight,
 
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     color: theme.colors.superDuperLight,
     backgroundColor: theme.colors.link,
   },

@@ -1,15 +1,6 @@
 import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 
-const pulse = keyframes({
-  "0%, 80%, 100%": {
-    transform: "scale(0)",
-  },
-  "40%": {
-    transform: "scale(0.6)",
-  },
-});
-
 const Wrapper = styled("div", {
   display: "inline-block",
   textAlign: "center",
@@ -18,7 +9,14 @@ const Wrapper = styled("div", {
 const Box = styled("div", {
   display: "inline-block",
   height: "100%",
-  animation: `${pulse} 1.5s infinite ease-in-out both`,
+  animation: `${keyframes({
+    "0%, 80%, 100%": {
+      transform: "scale(0)",
+    },
+    "40%": {
+      transform: "scale(0.6)",
+    },
+  })} 1.5s infinite ease-in-out both`,
   backgroundColor: theme.colors.mediumLight,
 });
 
