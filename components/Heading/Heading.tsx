@@ -35,8 +35,8 @@ const H = styled("h1", {
     scrollMarginTop: "6.5rem",
   },
 
-  // show anchor link when hovering anywhere over the heading line
-  [`&:hover ${Anchor}`]: {
+  // show anchor link when hovering anywhere over the heading line, or on keyboard tab focus
+  [`&:hover ${Anchor}, ${Anchor}:focus-visible`]: {
     opacity: 1,
   },
 
