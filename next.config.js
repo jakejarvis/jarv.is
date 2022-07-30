@@ -14,12 +14,16 @@ module.exports = (phase) => {
     trailingSlash: true,
     productionBrowserSourceMaps: true,
     env: {
+      BASE_URL:
+        process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" && process.env.NEXT_PUBLIC_VERCEL_URL !== undefined
+          ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` // https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
+          : phase === PHASE_DEVELOPMENT_SERVER
+          ? `http://localhost:${process.env.PORT || 3000}` // https://nextjs.org/docs/api-reference/cli#development
+          : `https://${config.siteDomain}`, // fallback to production url
       // freeze build timestamp for when server-side pages need a "last updated" date:
       RELEASE_DATE: new Date().toISOString(),
       // check if we're running locally via `next dev`:
       IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER ? "true" : "",
-      // https://nextjs.org/docs/api-reference/cli#development
-      NEXT_DEV_PORT: process.env.PORT || "3000",
     },
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920],
