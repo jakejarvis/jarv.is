@@ -9,9 +9,18 @@ import normalizeStyles from "./utils/normalize";
 import { Inter, RobotoMono } from "./fonts";
 
 // https://stitches.dev/docs/typescript#type-a-css-object
-export type CSS = Stitches.CSS<typeof config>;
+export type CSS = Stitches.CSS<typeof stitchesConfig>;
 
-export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme, config } = createStitches({
+export const {
+  styled,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  createTheme,
+  theme,
+  config: stitchesConfig,
+} = createStitches({
   theme: {
     fonts: {
       sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
@@ -56,11 +65,6 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
       maxLayoutWidth: "865px",
     },
 
-    borderWidths: {
-      // underline height is based on link's font size
-      underline: "calc(0.1em + 0.05rem)",
-    },
-
     radii: {
       corner: "0.6rem",
     },
@@ -82,9 +86,13 @@ export const { styled, css, getCssText, globalCss, keyframes, createTheme, theme
   },
 
   utils: {
-    setUnderlineVars: ({
-      color = "$colors$linkUnderline", // see theme tokens above
+    // sets locally scoped css variable for both light and dark themes' link hover underlines
+    setUnderlineColor: ({
+      color,
       alpha = 0.4,
+    }: {
+      color: string; // hex value or one of theme tokens above in stitches `$colors$token` format
+      alpha?: number;
     }) => ({
       // allow both pre-set rgba stitches variables and hex values
       $$underlineColor: color.startsWith("#") ? hexToRgba(color, alpha) : color,

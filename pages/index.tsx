@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "../components/Link";
-import { styled, theme, darkTheme, keyframes } from "../lib/styles/stitches.config";
+import { styled, theme, darkTheme, keyframes, stitchesConfig } from "../lib/styles/stitches.config";
 
 const ColorfulLink = ({
   lightColor,
@@ -14,11 +14,11 @@ const ColorfulLink = ({
     <Link
       css={{
         color: lightColor,
-        setUnderlineVars: { color: lightColor },
+        ...stitchesConfig.utils.setUnderlineColor({ color: lightColor }),
 
         [`.${darkTheme} &`]: {
           color: darkColor,
-          setUnderlineVars: { color: darkColor },
+          ...stitchesConfig.utils.setUnderlineColor({ color: darkColor }),
         },
 
         ...css,
