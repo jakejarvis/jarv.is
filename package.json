@@ -28,7 +28,7 @@
     "@primer/octicons": "^17.4.1",
     "@prisma/client": "^4.2.1",
     "@react-spring/web": "^9.5.2",
-    "@sentry/node": "^7.10.0",
+    "@sentry/node": "^7.11.1",
     "@sentry/tracing": "^7.10.0",
     "@stitches/react": "^1.2.8",
     "comma-number": "^2.1.0",
