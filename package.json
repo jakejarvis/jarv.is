@@ -24,7 +24,7 @@
     "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@novnc/novnc": "github:novnc/novnc#cdfb33665195eb9a73fb00feb6ebaccd1068cd50",
     "@octokit/graphql": "^5.0.0",
-    "@octokit/graphql-schema": "^10.74.2",
+    "@octokit/graphql-schema": "^11.1.0",
     "@primer/octicons": "^17.4.1",
     "@prisma/client": "^4.2.1",
     "@react-spring/web": "^9.5.2",
