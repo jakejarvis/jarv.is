@@ -5183,10 +5183,10 @@ simple-git-hooks@^2.8.0:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.8.0.tgz#291558785af6e17ca0c7a4f9d3d91e8635965a64"
   integrity sha512-ocmZQORwa6x9mxg+gVIAp5o4wXiWOHGXyrDBA0+UxGKIEKOyFtL4LWNKkP/2ornQPdlnlDGDteVeYP5FjhIoWA==
 
-simple-icons@^7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-7.6.0.tgz#2002e71490984df903b75fefa709934d506a3f16"
-  integrity sha512-wmXVhGW+DoSHPBbNgj8rp3cFsYuR3KZV5z7dFjaPgbJ0QURocf8Q+Li7y0stDhi1Tu1PPCmT8NSfndpvcHq+1g==
+simple-icons@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-7.8.0.tgz#da9167b6cdd55117b1d666c12337579266b1805e"
+  integrity sha512-OBg/5e+HRphOS3R/YmJI5tvMssot2DXwNlLoN1yWiVM23BzurDBprkLgIgHn7pG2PXE5zPZujT3QVPLQYdUGDQ==
 
 sitemap@^7.1.1:
   version "7.1.1"
