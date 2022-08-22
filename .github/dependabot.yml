@@ -8,8 +8,8 @@ updates:
     versioning-strategy: increase
     ignore:
       - dependency-name: "@fontsource/*"
+      - dependency-name: "@types/*"
       - dependency-name: "@jakejarvis/eslint-config"
-      - dependency-name: "@types/node"
     labels:
       - "📦 dependencies"
     commit-message:
