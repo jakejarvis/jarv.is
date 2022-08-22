@@ -60,7 +60,7 @@
     "react-player": "^2.10.1",
     "react-textarea-autosize": "^8.3.4",
     "react-twitter-embed": "^4.0.4",
-    "rehype-prism-plus": "^1.4.2",
+    "rehype-prism-plus": "^1.5.0",
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "remark-smartypants": "^2.0.0",
