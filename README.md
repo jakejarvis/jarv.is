@@ -10,13 +10,13 @@ My humble abode on the World Wide Web, created and deployed using [Next.js](http
 
 I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/issues/1) and [coding to-dos](https://github.com/jakejarvis/jarv.is/issues/714) as issues in this repo. Outside contributions, improvements, and/or corrections are welcome too!
 
-## 🧶 Getting Started
+## 🕹️ Getting Started
 
-Run `yarn install` to install the necessary dependencies and `yarn dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed.
+Run `npm install` to install the necessary dependencies and `npm run dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed.
 
-Most production steps are handled [automatically by Vercel](https://vercel.com/docs/concepts/next.js/overview#supported-next.js-features), but running `yarn build` locally will still generate an unoptimized, less-than-ideal static version.
+Most production steps are handled [automatically by Vercel](https://vercel.com/docs/concepts/next.js/overview#supported-next.js-features), but running `npm run build` locally will still generate an unoptimized, less-than-ideal static version.
 
-**⚡ Bonus tip:** [Volta](https://volta.sh/), a magical, blazing-fast alternative to [nvm](https://github.com/nvm-sh/nvm), is used to pin Node.js and Yarn versions for development but is completely optional.
+**⚡ Bonus tip:** [Volta](https://volta.sh/), a magical, blazing-fast alternative to [nvm](https://github.com/nvm-sh/nvm), is used to pin the exact Node.js version used for development. It's completely optional but I highly recommend it in general!
 
 ## 🌎 Related
 
