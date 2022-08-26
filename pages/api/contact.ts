@@ -17,9 +17,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
     res.setHeader("Pragma", "no-cache");
 
-    if (req.method !== "POST") {
-      // 405 Method Not Allowed
-      return res.status(405).end();
+    // redirect GET requests to this endpoint to the contact form itself
+    if (req.method === "GET") {
+      return res.redirect(302, "/contact/");
     }
 
     const { body } = req;

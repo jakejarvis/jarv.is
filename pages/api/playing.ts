@@ -34,11 +34,6 @@ type SpotifyTrackSchema = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    if (req.method !== "GET") {
-      // 405 Method Not Allowed
-      return res.status(405).end();
-    }
-
     // let Vercel edge cache results for 5 mins
     res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate");
 
