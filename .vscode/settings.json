@@ -4,6 +4,18 @@
     120
   ],
   "editor.tabSize": 2,
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".ts", ".tsx", ".md", ".mdx"]
+  },
+  "eslint.runtime": "node", // https://github.com/mdx-js/vscode-mdx#known-vscode-eslint-issues
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "mdx"
+  ],
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,

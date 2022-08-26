@@ -1,9 +1,8 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
     "prisma.prisma",
-    "silvenon.mdx",
+    "unifiedjs.vscode-mdx",
     "wix.vscode-import-cost"
   ]
 }

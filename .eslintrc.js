@@ -25,4 +25,23 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ["*.md", "*.mdx"],
+      extends: ["plugin:mdx/recommended"],
+      rules: {
+        "react/jsx-no-undef": "off",
+        "prettier/prettier": [
+          "error",
+          {
+            // normal .prettierrc config:
+            singleQuote: false,
+            tabWidth: 2,
+            printWidth: 120,
+          },
+        ],
+      },
+    },
+  ],
+  ignorePatterns: ["README.md"],
 };

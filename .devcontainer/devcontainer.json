@@ -17,15 +17,35 @@
 		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {
-				"telemetry.enableTelemetry": false,
+				"editor.insertSpaces": true,
+				"editor.tabSize": 2,
+				"eslint.options": {
+					"extensions": [".js", ".jsx", ".ts", ".tsx", ".md", ".mdx"]
+				},
+				"eslint.runtime": "node", // https://github.com/mdx-js/vscode-mdx#known-vscode-eslint-issues
+				"eslint.validate": [
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"markdown",
+					"mdx"
+				],
+				"files.eol": "\n",
+				"files.insertFinalNewline": true,
+				"files.trimTrailingWhitespace": true,
+				"search.exclude": {
+					"**/.next": true,
+					"**/node_modules": true
+				},
+				"typescript.preferences.importModuleSpecifierEnding": "minimal",
 				"typescript.tsdk": "node_modules/typescript/lib"
 			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"dbaeumer.vscode-eslint",
-				"editorconfig.editorconfig",
 				"prisma.prisma",
-				"silvenon.mdx",
+				"unifiedjs.vscode-mdx",
 				"wix.vscode-import-cost"
 			]
 		}
