@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
