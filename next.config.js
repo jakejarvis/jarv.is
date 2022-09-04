@@ -32,9 +32,6 @@ module.exports = (phase) => {
     experimental: {
       legacyBrowsers: false,
       browsersListForSwc: true,
-      images: {
-        allowFutureImage: true, // https://github.com/vercel/next.js/pull/37927
-      },
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
     },
     webpack: (config) => {
