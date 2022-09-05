@@ -55,21 +55,15 @@ const Image = ({ src, width, height, quality = 60, placeholder, href, inline, ..
     throw new TypeError("'src' should be a string or a valid StaticImageData object.");
   }
 
-  const StyledImageWithProps = <StyledImage {...imageProps} />;
-
-  return inline ? (
-    StyledImageWithProps
+  const StyledImageWithProps = href ? (
+    <Link href={href} underline={false}>
+      <StyledImage {...imageProps} />
+    </Link>
   ) : (
-    <Block>
-      {href ? (
-        <Link href={href} underline={false}>
-          {StyledImageWithProps}
-        </Link>
-      ) : (
-        StyledImageWithProps
-      )}
-    </Block>
+    <StyledImage {...imageProps} />
   );
+
+  return inline ? StyledImageWithProps : <Block>{StyledImageWithProps}</Block>;
 };
 
 export default Image;
