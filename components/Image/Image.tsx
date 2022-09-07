@@ -4,9 +4,6 @@ import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/future/image";
 
-const DEFAULT_WIDTH = Number.parseInt(theme.sizes.maxLayoutWidth.value, 10);
-const DEFAULT_QUALTIY = 60;
-
 const Block = styled("div", {
   display: "block",
   lineHeight: 0,
@@ -27,7 +24,7 @@ export type ImageProps = ComponentProps<typeof StyledImage> & {
   inline?: boolean; // don't wrap everything in a `<div>` block
 };
 
-const Image = ({ src, width, height, quality = DEFAULT_QUALTIY, placeholder, href, inline, ...rest }: ImageProps) => {
+const Image = ({ src, width, height, quality = 60, placeholder, href, inline, ...rest }: ImageProps) => {
   const imageProps: NextImageProps = {
     // strip "px" from dimensions: https://stackoverflow.com/a/4860249/1438024
     width: typeof width === "string" ? Number.parseInt(width, 10) : width,
@@ -43,7 +40,6 @@ const Image = ({ src, width, height, quality = DEFAULT_QUALTIY, placeholder, hre
 
     // all data for statically imported images is extracted from the object itself.
     imageProps.src = staticImg;
-    imageProps.width = imageProps.width || DEFAULT_WIDTH;
     // default to blur placeholder while loading if it's been generated for us.
     imageProps.placeholder = placeholder || (staticImg.blurDataURL !== undefined ? "blur" : "empty");
   } else if (typeof src === "string") {
