@@ -37,6 +37,7 @@ module.exports = {
       files: ["*.md", "*.mdx"],
       extends: ["plugin:mdx/recommended"],
       rules: {
+        "mdx/code-blocks": "off",
         "import/no-unresolved": "off",
         "react/jsx-no-undef": "off",
         "react/jsx-boolean-value": "off", // TODO: causes some inconsistent parser errors in mdx

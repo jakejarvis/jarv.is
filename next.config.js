@@ -33,6 +33,10 @@ module.exports = (phase) => {
       legacyBrowsers: false,
       browsersListForSwc: true,
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
+      optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
+      images: {
+        allowFutureImage: true,
+      },
     },
     webpack: (config) => {
       // this lets us statically import webfonts like we would images, allowing cool things like preloading them
