@@ -34,7 +34,7 @@
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.2",
     "dayjs": "^1.11.5",
-    "fast-glob": "^3.2.11",
+    "fast-glob": "^3.2.12",
     "fathom-client": "^3.5.0",
     "feather-icons": "^4.29.0",
     "feed": "^4.2.2",
