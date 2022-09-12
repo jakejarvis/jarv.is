@@ -1,6 +1,7 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { minify } from "uglify-js";
 import { getNoteData } from "./parse-notes";
+import { IS_DEV_SERVER } from "../config/constants";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
@@ -34,18 +35,17 @@ export const compileNote = async (slug: string): Promise<NoteWithSource> => {
     },
   });
 
-  // HACK: next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
+  // TODO: next-mdx-remote v4 doesn't (yet?) minify compiled JSX output, see:
   // https://github.com/hashicorp/next-mdx-remote/pull/211#issuecomment-1013658514
   // ...so for now, let's do it manually (and conservatively) with uglify-js when building for production.
-  const compiledSource =
-    process.env.IS_DEV_SERVER !== "true"
-      ? minify(source.compiledSource, {
-          toplevel: true,
-          parse: {
-            bare_returns: true,
-          },
-        }).code
-      : source.compiledSource;
+  const compiledSource = IS_DEV_SERVER
+    ? source.compiledSource
+    : minify(source.compiledSource, {
+        toplevel: true,
+        parse: {
+          bare_returns: true,
+        },
+      }).code;
 
   return {
     frontMatter,

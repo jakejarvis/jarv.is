@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { minify } from "uglify-js";
 import { clientScript } from "./client";
+import { IS_DEV_SERVER } from "../../lib/config/constants";
 
 export type ThemeScriptProps = JSX.IntrinsicElements["script"] & {
   themeClassNames: {
@@ -21,7 +22,7 @@ const ThemeScript = ({ key, themeClassNames, themeStorageKey, ...rest }: ThemeSc
     const unminified = `(${functionString})()`;
 
     // skip minification if running locally to save a few ms
-    if (process.env.IS_DEV_SERVER === "true") {
+    if (IS_DEV_SERVER) {
       return unminified;
     }
 

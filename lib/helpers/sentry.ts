@@ -1,11 +1,12 @@
 import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
+import { BUILD_ENV } from "../config/constants";
 
 const IsomorphicSentry = () => {
   // https://docs.sentry.io/platforms/node/configuration/options/
   Sentry.init({
     dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN || "",
-    environment: process.env.NODE_ENV || process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV || "",
+    environment: BUILD_ENV,
     tracesSampleRate: 1.0,
   });
 

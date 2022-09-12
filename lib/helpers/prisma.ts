@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { IS_DEV_SERVER } from "../config/constants";
 
 // PrismaClient is attached to the `global` object in development to prevent
 // exhausting your database connection limit.
@@ -18,4 +19,4 @@ export const prisma =
     log: ["query"],
   });
 
-if (process.env.IS_DEV_SERVER === "true") global.prisma = prisma;
+if (IS_DEV_SERVER) global.prisma = prisma;
