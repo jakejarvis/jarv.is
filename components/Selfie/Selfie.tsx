@@ -21,6 +21,7 @@ const CircleImage = styled(Image, {
 
 const SelfieLink = styled(Link, {
   display: "inline-flex",
+  flexShrink: 0,
   alignItems: "center",
   color: theme.colors.mediumDark,
 

@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import ThemeScript from "../components/ThemeScript/ThemeScript";
+import ThemeScript from "../components/ThemeScript";
 import { getCssText, themeClassNames, themeStorageKey } from "../lib/styles/stitches.config";
 import { Inter, RobotoMono } from "../lib/styles/fonts";
 import * as config from "../lib/config";
