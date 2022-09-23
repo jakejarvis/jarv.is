@@ -33,7 +33,6 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     { url: "/previously/" },
     { url: "/privacy/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
     { url: "/projects/", changefreq: EnumChangefreq.DAILY },
-    { url: "/stats/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
     { url: "/uses/" },
     { url: "/y2k/" },
   ];
