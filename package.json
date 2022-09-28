@@ -87,7 +87,7 @@
     "@typescript-eslint/parser": "^5.38.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.23.1",
-    "eslint-config-next": "12.3.2-canary.7",
+    "eslint-config-next": "12.3.2-canary.11",
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-mdx": "~2.0.5",
     "eslint-plugin-prettier": "~4.2.1",
