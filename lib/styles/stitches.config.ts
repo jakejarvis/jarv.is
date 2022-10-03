@@ -159,19 +159,6 @@ export const globalStyles = globalCss(
       "code, kbd, samp, pre": {
         fontFamily: theme.fonts.monoVar,
       },
-
-      // Chrome doesn't automatically slant multi-axis Inter var, for some reason.
-      // Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
-      em: {
-        fontStyle: "normal",
-        fontVariationSettings: `"ital" 1, "slnt" -10`,
-
-        // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-        "& code, & kbd, & samp, & pre": {
-          fontStyle: "italic !important",
-          fontVariationSettings: "initial !important",
-        },
-      },
     },
   }
 );
