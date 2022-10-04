@@ -9,7 +9,10 @@ import interLatin700NormalWoff from "@fontsource/inter/files/inter-latin-700-nor
 import interLatin700NormalWoff2 from "@fontsource/inter/files/inter-latin-700-normal.woff2";
 
 // Variable
-import interLatinVarFullNormalWoff2 from "@fontsource/inter/files/inter-latin-variable-full-normal.woff2";
+import interLatinVarWghtOnlyNormalWoff2 from "@fontsource/inter/files/inter-latin-variable-wghtOnly-normal.woff2";
+
+// note: inter does have italics, of course, but google fonts has refused to add them.
+// https://github.com/google/fonts/issues/2386
 
 export const name = {
   regular: "Inter",
@@ -19,7 +22,7 @@ export const name = {
 // re-export hashed URL(s) of the most prominent files so we can preload them in `<head>` (see pages/_document.tsx):
 export const preloads = [
   {
-    href: interLatinVarFullNormalWoff2,
+    href: interLatinVarWghtOnlyNormalWoff2,
     type: "font/woff2",
   },
 ];
@@ -48,9 +51,9 @@ export const family: AtRule.FontFace[] = [
   },
   {
     fontFamily: name.variable,
-    fontStyle: "oblique 0deg 10deg",
+    fontStyle: "normal",
     fontDisplay: "swap",
     fontWeight: "100 900",
-    src: `url(${interLatinVarFullNormalWoff2}) format("woff2")`,
+    src: `url(${interLatinVarWghtOnlyNormalWoff2}) format("woff2")`,
   },
 ];
