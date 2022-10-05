@@ -2,7 +2,7 @@ import { createStitches } from "@stitches/react";
 import type * as Stitches from "@stitches/react";
 
 // misc. helpers
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "./utils/hex-to-rgba";
 import normalizeStyles from "./utils/normalize";
 
 // web fonts
