@@ -43,7 +43,7 @@
     "hex-to-rgba": "^2.0.1",
     "marked": "^4.1.1",
     "mem": "^9.0.2",
-    "next": "12.3.2-canary.20",
+    "next": "12.3.2-canary.21",
     "next-mdx-remote": "^4.1.0",
     "next-seo": "^5.5.0",
     "obj-str": "^1.1.0",
