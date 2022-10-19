@@ -1,8 +1,8 @@
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 import Link from "../Link";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentProps } from "react";
-import type { ImageProps as NextImageProps, StaticImageData } from "next/future/image";
+import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
 const DEFAULT_QUALITY = 60;
 const DEFAULT_WIDTH = Number.parseInt(theme.sizes.maxLayoutWidth.value, 10); // see lib/styles/stitches.config.ts
