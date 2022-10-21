@@ -33,7 +33,7 @@
     "@stitches/react": "^1.2.8",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.2",
-    "dayjs": "^1.11.5",
+    "dayjs": "^1.11.6",
     "fast-glob": "^3.2.12",
     "fathom-client": "^3.5.0",
     "feather-icons": "^4.29.0",
