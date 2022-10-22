@@ -31,7 +31,6 @@ module.exports = (phase) => {
     },
     experimental: {
       legacyBrowsers: false,
-      browsersListForSwc: true,
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
       optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
     },

@@ -21,7 +21,7 @@ export const defaultSeo: DefaultSeoProps = {
   titleTemplate: `%s – ${config.siteName}`, // appends `– siteName` to title provided by each page (except home)
   description: config.longDescription,
   openGraph: {
-    site_name: config.siteName,
+    siteName: config.siteName,
     title: `${config.siteName} – ${config.shortDescription}`,
     locale: config.siteLocale?.replace("-", "_"),
     type: "website",
