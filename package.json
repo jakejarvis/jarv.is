@@ -25,7 +25,7 @@
     "@novnc/novnc": "github:novnc/novnc#cd94c2aed2582fd85ec5ecc444967fc7ec60a649",
     "@octokit/graphql": "^5.0.4",
     "@octokit/graphql-schema": "^12.21.0",
-    "@primer/octicons": "^17.7.0",
+    "@primer/octicons": "^17.8.0",
     "@prisma/client": "^4.5.0",
     "@react-spring/web": "^9.5.5",
     "@sentry/node": "^7.16.0",
