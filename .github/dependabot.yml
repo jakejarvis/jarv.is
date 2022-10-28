@@ -7,7 +7,6 @@ updates:
       interval: daily
     versioning-strategy: increase
     ignore:
-      - dependency-name: "@fontsource/*"
       - dependency-name: "@types/*"
       - dependency-name: "@jakejarvis/eslint-config"
     labels:
