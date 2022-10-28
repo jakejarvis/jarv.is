@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import { Comic_Neue } from "@next/font/google";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
@@ -8,8 +9,7 @@ import IFrame from "../components/IFrame";
 import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
 import { Windows95Logo } from "../components/Icons";
-import { styled, theme, globalCss } from "../lib/styles/stitches.config";
-import { ComicNeue } from "../lib/styles/fonts";
+import { styled, theme } from "../lib/styles/stitches.config";
 import type { ReactElement } from "react";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
@@ -182,20 +182,22 @@ const Previously = () => {
   );
 };
 
+const comicNeue = Comic_Neue({
+  weight: "700",
+  display: "swap",
+  fallback: ["'Comic Sans MS'", "'Comic Sans'"],
+  adjustFontFallback: false,
+  preload: false,
+});
+
 // a complete sh*tshow of "global" overrides, mainly to compensate for font change
 Previously.getLayout = (page: ReactElement) => {
-  // only declare Comic Neue typeface if/when this page is loaded.
-  // note: other "global" styles for this page are declared via the `css={{...}}` prop below instead, so they don't
-  // persist when navigating away to a different page.
-  globalCss({
-    "@font-face": [...ComicNeue.family],
-  })();
-
   return (
     <Layout
       css={{
-        fontFamily: `"${ComicNeue.name.regular}", "Comic Sans MS", "Comic Sans", ${theme.fonts.sans.value}`,
-        fontWeight: 600,
+        // only declare Comic Neue typeface if/when this page is loaded.
+        fontFamily: `${comicNeue.style.fontFamily}, ${theme.fonts.sans.value}`,
+        fontWeight: 700,
 
         // classic windows 9x cursor easter egg
         cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto`,

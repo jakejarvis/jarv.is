@@ -6,7 +6,17 @@ import hexToRgba from "./utils/hex-to-rgba";
 import normalizeStyles from "./utils/normalize";
 
 // web fonts
-import { Inter, RobotoMono } from "./fonts";
+import { Inter, Roboto_Mono } from "@next/font/google";
+export const inter = Inter({
+  weight: "variable",
+  display: "fallback",
+  preload: true,
+});
+export const robotoMono = Roboto_Mono({
+  weight: "variable",
+  display: "fallback",
+  preload: true,
+});
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof stitchesConfig>;
@@ -23,10 +33,8 @@ export const {
 } = createStitches({
   theme: {
     fonts: {
-      sans: `"${Inter.name.regular}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-      sansVar: `"${Inter.name.variable}", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-      mono: `"${RobotoMono.name.regular}", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
-      monoVar: `"${RobotoMono.name.variable}", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier`,
+      sans: `${inter.style.fontFamily}, sans-serif`,
+      mono: `${robotoMono.style.fontFamily}, monospace`,
     },
 
     colors: {
@@ -138,25 +146,14 @@ export const globalStyles = globalCss(
   // @ts-ignore
   normalizeStyles,
   {
-    "@font-face": [...Inter.family, ...RobotoMono.family],
-
     body: {
       fontFamily: theme.fonts.sans,
       backgroundColor: theme.colors.backgroundInner,
       transition: `background ${theme.transitions.fade}`,
-
-      // variable font support?
-      "@supports (font-variation-settings: normal)": {
-        fontFamily: theme.fonts.sansVar,
-      },
     },
 
     "code, kbd, samp, pre": {
       fontFamily: theme.fonts.mono,
-
-      "@supports (font-variation-settings: normal)": {
-        fontFamily: theme.fonts.monoVar,
-      },
     },
   }
 );

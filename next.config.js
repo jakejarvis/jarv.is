@@ -33,18 +33,15 @@ module.exports = (phase) => {
       legacyBrowsers: false,
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
       optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
+      fontLoaders: [
+        {
+          // https://beta.nextjs.org/docs/optimizing/fonts#specifying-a-subset
+          loader: "@next/font/google",
+          options: { subsets: ["latin"] },
+        },
+      ],
     },
     webpack: (config) => {
-      // this lets us statically import webfonts like we would images, allowing cool things like preloading them
-      config.module.rules.push({
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        issuer: { and: [/\.(js|ts)x?$/] },
-        type: "asset/resource",
-        generator: {
-          filename: "static/media/[name].[hash:8][ext]",
-        },
-      });
-
       // allow processing SVGs from the below packages directly instead of through their different exports, and leave
       // other static imports of SVGs alone.
       // see: ./components/Icons/index.ts
@@ -95,10 +92,6 @@ module.exports = (phase) => {
       {
         source: "/pubkey.asc",
         headers: [
-          {
-            key: "Cache-Control",
-            value: "private, no-cache, no-store, must-revalidate",
-          },
           {
             key: "Content-Type",
             value: "text/plain; charset=utf-8",
