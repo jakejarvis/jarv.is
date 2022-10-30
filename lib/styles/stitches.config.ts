@@ -6,17 +6,7 @@ import hexToRgba from "./utils/hex-to-rgba";
 import normalizeStyles from "./utils/normalize";
 
 // web fonts
-import { Inter, Roboto_Mono } from "@next/font/google";
-export const inter = Inter({
-  weight: "variable",
-  display: "fallback",
-  preload: true,
-});
-export const robotoMono = Roboto_Mono({
-  weight: "variable",
-  display: "fallback",
-  preload: true,
-});
+import { Inter, RobotoMono } from "./utils/fonts";
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof stitchesConfig>;
@@ -33,8 +23,8 @@ export const {
 } = createStitches({
   theme: {
     fonts: {
-      sans: `${inter.style.fontFamily}, sans-serif`,
-      mono: `${robotoMono.style.fontFamily}, monospace`,
+      sans: `${Inter.style.fontFamily}, sans-serif`,
+      mono: `${RobotoMono.style.fontFamily}, monospace`,
     },
 
     colors: {

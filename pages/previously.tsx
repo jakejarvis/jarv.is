@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import { Comic_Neue } from "@next/font/google";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
 import PageTitle from "../components/PageTitle";
@@ -10,6 +9,7 @@ import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
 import { Windows95Logo } from "../components/Icons";
 import { styled, theme } from "../lib/styles/stitches.config";
+import { ComicNeue } from "../lib/styles/utils/fonts";
 import type { ReactElement } from "react";
 
 import img_wayback from "../public/static/images/previously/wayback.png";
@@ -182,21 +182,13 @@ const Previously = () => {
   );
 };
 
-const comicNeue = Comic_Neue({
-  weight: "700",
-  display: "swap",
-  fallback: ["'Comic Sans MS'", "'Comic Sans'"],
-  adjustFontFallback: false,
-  preload: false,
-});
-
 // a complete sh*tshow of "global" overrides, mainly to compensate for font change
 Previously.getLayout = (page: ReactElement) => {
   return (
     <Layout
       css={{
         // only declare Comic Neue typeface if/when this page is loaded.
-        fontFamily: `${comicNeue.style.fontFamily}, ${theme.fonts.sans.value}`,
+        fontFamily: `${ComicNeue.style.fontFamily}, ${theme.fonts.sans.value}`,
         fontWeight: 700,
 
         // classic windows 9x cursor easter egg
