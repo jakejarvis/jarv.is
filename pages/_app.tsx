@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import { Analytics } from "@vercel/analytics/react";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
@@ -73,6 +74,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
       <ThemeProvider classNames={themeClassNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+
+      <Analytics />
     </>
   );
 };
