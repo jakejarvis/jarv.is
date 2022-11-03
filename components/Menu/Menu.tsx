@@ -41,7 +41,7 @@ const Item = styled("li", {
 export type MenuProps = ComponentProps<typeof Wrapper>;
 
 const Menu = ({ ...rest }: MenuProps) => {
-  const router = useRouter();
+  const router = useRouter(true);
 
   return (
     <Wrapper {...rest}>

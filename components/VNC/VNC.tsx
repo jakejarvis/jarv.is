@@ -38,7 +38,7 @@ export type VNCProps = ComponentPropsWithoutRef<typeof Display> & {
 };
 
 const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
-  const router = useRouter();
+  const router = useRouter(true);
 
   // we definitely do NOT want this page to connect more than once!
   const [loaded, setLoaded] = useState(false);

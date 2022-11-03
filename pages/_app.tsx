@@ -19,7 +19,7 @@ export type AppProps = NextAppProps & {
 };
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
+  const router = useRouter(true);
 
   // get this page's URL with full domain, and hack around query parameters and anchors
   // NOTE: this assumes trailing slashes are enabled in next.config.js

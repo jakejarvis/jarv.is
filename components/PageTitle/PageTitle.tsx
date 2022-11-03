@@ -22,7 +22,7 @@ const TitleLink = styled(Link, {
 export type PageTitleProps = ComponentProps<typeof Title>;
 
 const PageTitle = ({ children, ...rest }: PageTitleProps) => {
-  const router = useRouter();
+  const router = useRouter(true);
 
   return (
     <Title {...rest}>
