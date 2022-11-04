@@ -19,15 +19,15 @@
   "dependencies": {
     "@giscus/react": "^2.2.0",
     "@hcaptcha/react-hcaptcha": "^1.4.4",
-    "@next/font": "13.0.1",
+    "@next/font": "13.0.2",
     "@novnc/novnc": "github:novnc/novnc#cd94c2aed2582fd85ec5ecc444967fc7ec60a649",
     "@octokit/graphql": "^5.0.4",
     "@octokit/graphql-schema": "^12.22.0",
-    "@primer/octicons": "^17.8.0",
+    "@primer/octicons": "^17.9.0",
     "@prisma/client": "^4.5.0",
     "@react-spring/web": "^9.5.5",
-    "@sentry/node": "^7.17.3",
-    "@sentry/tracing": "^7.17.3",
+    "@sentry/node": "^7.17.4",
+    "@sentry/tracing": "^7.17.4",
     "@stitches/react": "^1.2.8",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.2",
@@ -40,7 +40,7 @@
     "gray-matter": "^4.0.3",
     "hex-to-rgba": "^2.0.1",
     "marked": "^4.2.1",
-    "next": "13.0.1",
+    "next": "13.0.2",
     "next-mdx-remote": "^4.1.0",
     "next-seo": "^5.13.0",
     "obj-str": "^1.1.0",
@@ -76,7 +76,7 @@
     "@types/node": "*",
     "@types/novnc__novnc": "^1.3.0",
     "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.0.24",
+    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/react-is": "^17.0.3",
     "@types/remove-markdown": "^0.3.1",
@@ -85,7 +85,7 @@
     "@typescript-eslint/parser": "^5.42.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.26.0",
-    "eslint-config-next": "13.0.1",
+    "eslint-config-next": "13.0.2",
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-mdx": "~2.0.5",
     "eslint-plugin-prettier": "~4.2.1",
@@ -97,7 +97,7 @@
     "uglify-js": "^3.17.4"
   },
   "optionalDependencies": {
-    "sharp": "^0.31.1"
+    "sharp": "^0.31.2"
   },
   "engines": {
     "node": ">=16.x"
@@ -115,7 +115,7 @@
     ]
   },
   "volta": {
-    "node": "16.18.0",
-    "npm": "8.19.2"
+    "node": "16.18.1",
+    "npm": "8.19.3"
   }
 }
