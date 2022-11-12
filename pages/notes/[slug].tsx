@@ -58,7 +58,11 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
 
       {!frontMatter.noComments && (
         <InView rootMargin="140px" triggerOnce fallbackInView>
-          {({ inView, ref }) => <div ref={ref}>{inView && <Comments title={frontMatter.title} />}</div>}
+          {({ inView, ref }) => (
+            <div ref={ref} id="comments">
+              {inView && <Comments title={frontMatter.title} />}
+            </div>
+          )}
         </InView>
       )}
     </>
