@@ -6,7 +6,7 @@ import hexToRgba from "./utils/hex-to-rgba";
 import normalizeStyles from "./utils/normalize";
 
 // web fonts
-import { Inter, RobotoMono } from "./utils/fonts";
+import { Inter, SourceCodePro } from "./utils/fonts";
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof stitchesConfig>;
@@ -24,7 +24,7 @@ export const {
   theme: {
     fonts: {
       sans: `${Inter.style.fontFamily}, sans-serif`,
-      mono: `${RobotoMono.style.fontFamily}, monospace`,
+      mono: `${SourceCodePro.style.fontFamily}, monospace`,
     },
 
     colors: {

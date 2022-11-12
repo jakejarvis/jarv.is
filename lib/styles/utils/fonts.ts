@@ -1,6 +1,6 @@
 import {
   Inter as InterLoader,
-  Roboto_Mono as RobotoMonoLoader,
+  Source_Code_Pro as SourceCodeProLoader,
   Comic_Neue as ComicNeueLoader,
 } from "@next/font/google";
 
@@ -13,7 +13,7 @@ export const Inter = InterLoader({
   preload: true,
 });
 
-export const RobotoMono = RobotoMonoLoader({
+export const SourceCodePro = SourceCodeProLoader({
   weight: "variable",
   display: "fallback",
   preload: true,

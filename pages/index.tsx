@@ -91,11 +91,13 @@ const Wave = styled("span", {
 
 const Sup = styled("sup", {
   margin: "0 0.15em",
-  fontSize: "0.65em",
+  fontSize: "0.6em",
 });
 
 const PGPKey = styled("code", {
   marginLeft: "0.15em",
+  fontSize: "1.1em",
+  fontWeight: 500,
   wordSpacing: "-0.4em",
 });
 
