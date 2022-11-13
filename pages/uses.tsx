@@ -7,7 +7,7 @@ import CodeInline from "../components/CodeInline";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
 
-import desktopImg from "../public/static/images/uses/bigsur.png";
+import desktopImg from "../public/static/images/uses/ventura.png";
 
 const Uses = () => {
   return (
@@ -178,7 +178,7 @@ const Uses = () => {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro font</Link>
+                    <Link href="https://developer.apple.com/fonts/">SF Mono font</Link>
                   </ListItem>
                 </UnorderedList>
               </ListItem>
@@ -290,17 +290,6 @@ const Uses = () => {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            <Link href="https://tailscale.com/">
-              <strong>Tailscale</strong>
-            </Link>
-            <UnorderedList>
-              <ListItem>
-                For connecting to remote servers and my <Link href="#home">"homelab"</Link> without exposing ports to
-                the world. Highly recommended!
-              </ListItem>
-            </UnorderedList>
-          </ListItem>
-          <ListItem>
             <Link href="https://www.sketch.com/">
               <strong>Sketch</strong>
             </Link>
@@ -395,25 +384,10 @@ const Uses = () => {
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/betterttv/">BetterTTV</Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/">Cookie Editor</Link>
+                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/darkreader/">Dark Reader</Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">Decentraleyes</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/facebook-container/">
-                      Facebook Container
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/">
-                      Firefox Multi-Account Containers
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/">
-                      HTTPS Everywhere
-                    </Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Mailvelope</Link>
@@ -515,11 +489,6 @@ const Uses = () => {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            <Link href="https://daisydiskapp.com/">
-              <strong>DaisyDisk</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link href="https://freemacsoft.net/appcleaner/">
               <strong>AppCleaner</strong>
             </Link>
@@ -560,16 +529,6 @@ const Uses = () => {
               <strong>The Unarchiver</strong>
             </Link>
           </ListItem>
-          <ListItem>
-            <Link href="https://www.intuitibits.com/products/wifi-explorer/">
-              <strong>WiFi Explorer</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://parsec.app/">
-              <strong>Parsec</strong>
-            </Link>
-          </ListItem>
         </UnorderedList>
 
         <H2 id="ios">📱 iOS</H2>
@@ -591,13 +550,8 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://apps.apple.com/app/id517329357">
-              <strong>Dark Sky</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://apps.apple.com/app/id731629156">
-              <strong>Xfinity Stream</strong>
+            <Link href="https://apps.apple.com/app/id1193350206">
+              <strong>YouTube TV</strong>
             </Link>
           </ListItem>
           <ListItem>
@@ -624,12 +578,6 @@ const Uses = () => {
             <Link href="https://apps.apple.com/app/id383457673">
               <strong>Plex</strong> (beta)
             </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://apps.apple.com/app/id1212616790">
-              <strong>Microsoft To-Do</strong>
-            </Link>{" "}
-            (RIP Wunderlist 🙏)
           </ListItem>
           <ListItem>
             <Link href="https://apps.apple.com/app/id985746746">
@@ -680,10 +628,10 @@ const Uses = () => {
           </ListItem>
           <ListItem>
             <del>Google Analytics</del> →{" "}
-            <Link href="https://www.netlify.com/products/analytics/">
-              <strong>Netlify Analytics</strong>
+            <Link href="https://usefathom.com/">
+              <strong>Fathom Analytics</strong>
             </Link>{" "}
-            <Link href="/notes/netlify-analytics-review/">(my review)</Link>
+            <Link href="https://usefathom.com/ref/ZEYG0O">(referral link)</Link>
           </ListItem>
           <ListItem>
             <del>Google Public DNS</del> →{" "}
@@ -704,43 +652,45 @@ const Uses = () => {
             for this domain, of course 🇮🇸)
           </ListItem>
         </UnorderedList>
+
         <p>Other geeky stuff:</p>
         <UnorderedList>
+          <ListItem>
+            <Link href="https://vercel.com/">
+              <strong>Vercel</strong>
+            </Link>{" "}
+            and{" "}
+            <Link href="https://www.netlify.com/">
+              <strong>Netlify</strong>
+            </Link>{" "}
+            for static sites.
+          </ListItem>
+          <ListItem>
+            <Link href="https://www.digitalocean.com/">
+              <strong>DigitalOcean</strong>
+            </Link>{" "}
+            <Link href="https://m.do.co/c/afcf288a7dac">(referral link)</Link> and{" "}
+            <Link href="https://www.linode.com/">
+              <strong>Linode</strong>
+            </Link>{" "}
+            <Link href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05">(referral link)</Link> for
+            virtual Linux servers.
+          </ListItem>
           <ListItem>
             <Link href="https://dnsimple.com/">
               <strong>DNSimple</strong>
             </Link>{" "}
-            <Link href="https://dnsimple.com/r/eb6ced548f1e0a">(referral link)</Link> &amp;{" "}
+            <Link href="https://dnsimple.com/r/eb6ced548f1e0a">(referral link)</Link> and{" "}
             <Link href="https://www.cloudflare.com/">
               <strong>Cloudflare</strong>
             </Link>{" "}
             for domain DNS.
           </ListItem>
           <ListItem>
-            <Link href="https://www.netlify.com/">
-              <strong>Netlify</strong>
-            </Link>{" "}
-            and{" "}
-            <Link href="https://vercel.com/">
-              <strong>Vercel</strong>
-            </Link>{" "}
-            for static sites.
-          </ListItem>
-          <ListItem>
-            <Link href="https://www.linode.com/">
-              <strong>Linode</strong>
-            </Link>{" "}
-            <Link href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05">(referral link)</Link> and{" "}
-            <Link href="https://www.digitalocean.com/">
-              <strong>DigitalOcean</strong>
-            </Link>{" "}
-            <Link href="https://m.do.co/c/afcf288a7dac">(referral link)</Link> for virtual Linux servers.
-          </ListItem>
-          <ListItem>
             <Link href="https://www.backblaze.com/">
               <strong>Backblaze</strong>
             </Link>{" "}
-            <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link> for off-site MacBook backups.
+            <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link> for off-site Mac backups.
           </ListItem>
           <ListItem>
             <Link href="https://gitea.io/en-us/">
@@ -749,17 +699,14 @@ const Uses = () => {
             as a <Link href="https://git.pipe.fail/">self-hosted</Link> Git backup/mirror.
           </ListItem>
           <ListItem>
-            <Link href="https://www.plex.tv/">
-              <strong>Plex</strong>
+            <Link href="https://tailscale.com/">
+              <strong>Tailscale</strong>
             </Link>{" "}
-            +{" "}
-            <Link href="https://sonarr.tv/">
-              <strong>Sonarr</strong>
+            and{" "}
+            <Link href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/">
+              <strong>Cloudflare Tunnel</strong>
             </Link>{" "}
-            +{" "}
-            <Link href="https://radarr.video/">
-              <strong>Radarr</strong>
-            </Link>
+            to access either my home network or VPSes from anywhere.
           </ListItem>
         </UnorderedList>
 
@@ -768,24 +715,39 @@ const Uses = () => {
         </H2>
         <UnorderedList>
           <ListItem>
-            <Link href="https://www.synology.com/en-us/products/RT2600ac">
-              <strong>Synology RT2600ac</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://www.synology.com/en-us/products/DS218+">
-              <strong>Synology DiskStation DS218+</strong>
+            <Link href="https://www.tp-link.com/us/home-networking/wifi-router/archer-ax90/">
+              <strong>TP-Link Archer AX90</strong>
             </Link>
           </ListItem>
           <ListItem>
             <Link href="https://www.amazon.com/dp/B00HWML468/">
               <strong>Dell Inspiron 3647</strong>
             </Link>
-            , slightly upgraded and running{" "}
+            , upgraded to a Core i7-4790S and 16 GB of memory to morph into a <em>really</em> crappy{" "}
             <Link href="https://www.vmware.com/products/esxi-and-esx.html">
               <strong>VMware ESXi</strong>
-            </Link>
-            , as a really, <em>really</em> crappy home server.
+            </Link>{" "}
+            server running a few VMs with:
+            <UnorderedList>
+              <ListItem>
+                <Link href="https://www.plex.tv/">Plex</Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://sonarr.tv/">Sonarr</Link>{" "}
+              </ListItem>
+              <ListItem>
+                <Link href="https://radarr.video/">Radarr</Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://transmissionbt.com/">Transmission</Link> (via web client)
+              </ListItem>
+              <ListItem>
+                <Link href="https://homebridge.io/">Homebridge</Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://www.wireguard.com/">WireGuard</Link>
+              </ListItem>
+            </UnorderedList>
           </ListItem>
           <ListItem>
             <Link href="https://www2.meethue.com/en-us">
@@ -808,10 +770,10 @@ const Uses = () => {
             (with Alexa turned off...allegedly.)
           </ListItem>
           <ListItem>
-            <Link href="https://petcube.com/play/">
-              <strong>Petcube Play</strong>
-            </Link>{" "}
-            😻
+            2x{" "}
+            <Link href="https://www.apple.com/apple-tv-4k/">
+              <strong>Apple TV 4K</strong> (2021)
+            </Link>
           </ListItem>
         </UnorderedList>
       </Content>
