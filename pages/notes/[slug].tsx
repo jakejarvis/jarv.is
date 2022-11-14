@@ -8,7 +8,8 @@ import * as mdxComponents from "../../lib/helpers/mdx-components";
 import { getNoteSlugs } from "../../lib/helpers/parse-notes";
 import { compileNote } from "../../lib/helpers/compile-note";
 import * as config from "../../lib/config";
-import { articleJsonLd, favicons } from "../../lib/config/seo";
+import { articleJsonLd } from "../../lib/config/seo";
+import { meJpg } from "../../lib/config/favicons";
 import type { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
 import type { NoteWithSource, NoteFrontMatter } from "../../types";
 
@@ -31,7 +32,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
           },
           images: [
             {
-              url: `${config.baseUrl}${frontMatter.image || favicons.meJpg.src}`,
+              url: `${config.baseUrl}${frontMatter.image || meJpg.src}`,
               alt: frontMatter.title,
             },
           ],
@@ -46,7 +47,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
         description={frontMatter.description || config.longDescription}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        images={[`${config.baseUrl}${frontMatter.image || favicons.meJpg.src}`]}
+        images={[`${config.baseUrl}${frontMatter.image || meJpg.src}`]}
         {...articleJsonLd}
       />
 

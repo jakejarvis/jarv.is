@@ -1,5 +1,5 @@
 import * as config from "../lib/config";
-import { favicons } from "../lib/config/seo";
+import { chrome512Png, chrome192Png, maskable512Png, maskable192Png } from "../lib/config/favicons";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
@@ -17,26 +17,26 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     lang: config.siteLocale,
     icons: [
       {
-        src: favicons.chrome512Png.src,
-        sizes: `${favicons.chrome512Png.width}x${favicons.chrome512Png.height}`,
+        src: chrome512Png.src,
+        sizes: `${chrome512Png.width}x${chrome512Png.height}`,
         type: "image/png",
         purpose: "any",
       },
       {
-        src: favicons.chrome192Png.src,
-        sizes: `${favicons.chrome192Png.width}x${favicons.chrome192Png.height}`,
+        src: chrome192Png.src,
+        sizes: `${chrome192Png.width}x${chrome192Png.height}`,
         type: "image/png",
         purpose: "any",
       },
       {
-        src: favicons.maskable512Png.src,
-        sizes: `${favicons.maskable512Png.width}x${favicons.maskable512Png.height}`,
+        src: maskable512Png.src,
+        sizes: `${maskable512Png.width}x${maskable512Png.height}`,
         type: "image/png",
         purpose: "maskable",
       },
       {
-        src: favicons.maskable192Png.src,
-        sizes: `${favicons.maskable192Png.width}x${favicons.maskable192Png.height}`,
+        src: maskable192Png.src,
+        sizes: `${maskable192Png.width}x${maskable192Png.height}`,
         type: "image/png",
         purpose: "maskable",
       },

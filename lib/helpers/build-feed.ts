@@ -1,8 +1,8 @@
 import { Feed } from "feed";
 import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
+import { meJpg } from "../config/favicons";
 import { RELEASE_DATE } from "../config/constants";
-import { favicons } from "../config/seo";
 import type { GetServerSideProps } from "next";
 
 export type GetServerSideFeedProps = GetServerSideProps<Record<string, never>>;
@@ -28,7 +28,7 @@ export const buildFeed = async (
     description: config.longDescription,
     copyright: config.licenseUrl,
     updated: new Date(RELEASE_DATE),
-    image: `${config.baseUrl}${favicons.meJpg.src}`,
+    image: `${config.baseUrl}${meJpg.src}`,
     feedLinks: {
       rss: `${config.baseUrl}/feed.xml`,
       atom: `${config.baseUrl}/feed.atom`,
