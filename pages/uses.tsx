@@ -186,27 +186,14 @@ const Uses = () => {
                 Extensions:
                 <UnorderedList>
                   <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml">
-                      Better TOML
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">
-                      Docker
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate">
-                      Duplicate action
-                    </Link>
-                  </ListItem>
-                  <ListItem>
                     <Link href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">
                       EditorConfig
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://copilot.github.com/">GitHub Copilot</Link>
+                    <Link href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">
+                      ESLint
+                    </Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">
@@ -219,17 +206,12 @@ const Uses = () => {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">
-                      Live Share
+                    <Link href="https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost">
+                      Import Cost
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">
-                      markdownlint
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script">npm</Link>
+                    <Link href="https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx">MDX</Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">
@@ -312,20 +294,6 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://www.getpostman.com/">
-              <strong>Postman</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://www.browserstack.com/">
-              <strong>BrowserStack</strong>
-            </Link>{" "}
-            &amp;{" "}
-            <Link href="https://percy.io/">
-              <strong>Percy</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link href="https://www.sequelpro.com/">
               <del>Sequel Pro</del>
             </Link>{" "}
@@ -364,7 +332,7 @@ const Uses = () => {
         <H2 id="browsing">🌎 Browsing</H2>
         <UnorderedList>
           <ListItem>
-            <Link href="https://www.mozilla.org/en-US/firefox/developer/">
+            <Link href="https://www.mozilla.org/en-US/firefox/new/">
               <strong>Firefox</strong>
             </Link>{" "}
             🦊
@@ -375,7 +343,7 @@ const Uses = () => {
                 </Link>
               </ListItem>
               <ListItem>
-                Add-ons:
+                Extensions:
                 <UnorderedList>
                   <ListItem>
                     <Link href="https://support.1password.com/cs/1password-classic-extension/">1Password Classic</Link>
@@ -420,7 +388,7 @@ const Uses = () => {
                 For testing only! See more of <Link href="#cloud">my de-Googling efforts below</Link>.
               </ListItem>
               <ListItem>
-                Add-ons:
+                Extensions:
                 <UnorderedList>
                   <ListItem>
                     <Link href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en">
@@ -477,18 +445,6 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://unshaky.nestederror.com/">
-              <strong>Unshaky</strong>
-            </Link>{" "}
-            ⌨️ (on my 2018 MBP)
-            <UnorderedList>
-              <ListItem>
-                Toooo &nbsp;lzy too vist &nbsp;&nbsp;the&nbsp; Aple Stre geeniusses oonce &nbsp;agin&nbsp; to fiix
-                tthe&nbsp; keeybbbboord. 😒🦋
-              </ListItem>
-            </UnorderedList>
-          </ListItem>
-          <ListItem>
             <Link href="https://freemacsoft.net/appcleaner/">
               <strong>AppCleaner</strong>
             </Link>
@@ -510,11 +466,6 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://www.paragon-software.com/us/home/ntfs-mac/#">
-              <strong>Paragon NTFS</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link href="https://roaringapps.com/app/amphetamine">
               <strong>Amphetamine</strong>
             </Link>
@@ -528,6 +479,18 @@ const Uses = () => {
             <Link href="https://theunarchiver.com/">
               <strong>The Unarchiver</strong>
             </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="https://unshaky.nestederror.com/">
+              <strong>Unshaky</strong>
+            </Link>{" "}
+            ⌨️ (on my 2018 MBP)
+            <UnorderedList>
+              <ListItem>
+                Toooo &nbsp;lzy too vist &nbsp;&nbsp;the&nbsp; Aple Stre geeniusses oonce &nbsp;agin&nbsp; to fiix
+                tthe&nbsp; keeybbbboord. 😒🦋
+              </ListItem>
+            </UnorderedList>
           </ListItem>
         </UnorderedList>
 
@@ -663,7 +626,7 @@ const Uses = () => {
             <Link href="https://www.netlify.com/">
               <strong>Netlify</strong>
             </Link>{" "}
-            for static sites.
+            for "serverless" sites.
           </ListItem>
           <ListItem>
             <Link href="https://www.digitalocean.com/">
@@ -706,7 +669,7 @@ const Uses = () => {
             <Link href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/">
               <strong>Cloudflare Tunnel</strong>
             </Link>{" "}
-            to access either my home network or VPSes from anywhere.
+            to access my home network and VPSes from anywhere.
           </ListItem>
         </UnorderedList>
 
@@ -723,11 +686,11 @@ const Uses = () => {
             <Link href="https://www.amazon.com/dp/B00HWML468/">
               <strong>Dell Inspiron 3647</strong>
             </Link>
-            , upgraded to a Core i7-4790S and 16 GB of memory to morph into a <em>really</em> crappy{" "}
+            , upgraded to a Core i7-4790S and 16 GB of memory to dress it up as a <em>really</em> crappy{" "}
             <Link href="https://www.vmware.com/products/esxi-and-esx.html">
               <strong>VMware ESXi</strong>
             </Link>{" "}
-            server running a few VMs with:
+            server, running a few Ubuntu VMs with:
             <UnorderedList>
               <ListItem>
                 <Link href="https://www.plex.tv/">Plex</Link>
