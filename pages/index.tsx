@@ -346,6 +346,16 @@ const Index = () => {
         >
           Twitter
         </ColorfulLink>
+        ,{" "}
+        <ColorfulLink
+          href="https://fosstodon.org/@jakejarvis"
+          rel="me"
+          title="Jake Jarvis on Mastodon"
+          lightColor="#6d6eff"
+          darkColor="#7b87ff"
+        >
+          Mastodon
+        </ColorfulLink>
         , or{" "}
         <ColorfulLink
           href="sms:+1-617-917-3737"
