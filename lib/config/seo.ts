@@ -79,6 +79,10 @@ export const defaultSeo: DefaultSeoProps = {
       title: `${config.siteName} (Atom)`,
     },
     {
+      rel: "me",
+      href: `https://${config.authorSocial?.mastodon}`,
+    },
+    {
       rel: "webmention",
       href: `https://webmention.io/${config.webmentionId}/webmention`,
     },

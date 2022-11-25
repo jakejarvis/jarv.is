@@ -348,11 +348,12 @@ const Index = () => {
         </ColorfulLink>
         ,{" "}
         <ColorfulLink
-          href="https://fosstodon.org/@jakejarvis"
+          href="https://jarv.is/@jake"
           rel="me"
           title="Jake Jarvis on Mastodon"
           lightColor="#6d6eff"
           darkColor="#7b87ff"
+          openInNewTab
         >
           Mastodon
         </ColorfulLink>

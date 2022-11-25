@@ -116,6 +116,29 @@ module.exports = (phase) => {
       // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
       { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
 
+      // mastodon via subdomain
+      // https://docs.joinmastodon.org/admin/config/#web_domain
+      {
+        source: "/.well-known/host-meta:path*",
+        destination: "https://fediverse.jarv.is/.well-known/host-meta:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/.well-known/webfinger:path*",
+        destination: "https://fediverse.jarv.is/.well-known/webfinger:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/.well-known/nodeinfo:path*",
+        destination: "https://fediverse.jarv.is/.well-known/nodeinfo:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/@jake/:path*",
+        destination: "https://fediverse.jarv.is/@jake/:path*",
+        statusCode: 301,
+      },
+
       // remnants of previous sites/CMSes:
       { source: "/index.xml", destination: "/feed.xml", permanent: true },
       { source: "/feed/", destination: "/feed.xml", permanent: true },
