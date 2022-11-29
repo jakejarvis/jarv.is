@@ -338,22 +338,11 @@ const Index = () => {
         </Sup>
         ,{" "}
         <ColorfulLink
-          href="https://twitter.com/jakejarvis"
-          rel="me"
-          title="Jake Jarvis on Twitter"
-          lightColor="#00acee"
-          darkColor="#3bc9ff"
-        >
-          Twitter
-        </ColorfulLink>
-        ,{" "}
-        <ColorfulLink
-          href="https://jarv.is/@jake"
+          href="https://fediverse.jarv.is/@jake"
           rel="me"
           title="Jake Jarvis on Mastodon"
           lightColor="#6d6eff"
           darkColor="#7b87ff"
-          openInNewTab
         >
           Mastodon
         </ColorfulLink>

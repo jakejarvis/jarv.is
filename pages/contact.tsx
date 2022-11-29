@@ -31,7 +31,7 @@ const Contact = () => {
         <p>
           Fill out this quick form and I'll get back to you as soon as I can! You can also{" "}
           <Link href="mailto:jake@jarv.is">email me directly</Link>, send me a{" "}
-          <Link href="https://twitter.com/messages/compose?recipient_id=229769022">direct message on Twitter</Link>, or{" "}
+          <Link href="https://fediverse.jarv.is/@jake">direct message on Mastodon</Link>, or{" "}
           <Link href="sms:+1-617-917-3737">text me</Link>.
         </p>
         <p>
