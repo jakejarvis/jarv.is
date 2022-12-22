@@ -659,7 +659,7 @@ const Uses = () => {
             <Link href="https://gitea.io/en-us/">
               <strong>Gitea</strong>
             </Link>{" "}
-            as a <Link href="https://git.pipe.fail/">self-hosted</Link> Git backup/mirror.
+            as a <Link href="https://git.jarv.is/">self-hosted</Link> Git backup/mirror.
           </ListItem>
           <ListItem>
             <Link href="https://tailscale.com/">
