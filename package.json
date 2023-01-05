@@ -27,7 +27,7 @@
     "@prisma/client": "^4.8.0",
     "@react-spring/web": "^9.6.1",
     "@sentry/node": "^7.28.1",
-    "@sentry/tracing": "^7.28.1",
+    "@sentry/tracing": "^7.29.0",
     "@stitches/react": "^1.2.8",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.3",
