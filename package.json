@@ -82,7 +82,7 @@
     "@types/remove-markdown": "^0.3.1",
     "@types/uglify-js": "^3.17.1",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.2",
     "cross-env": "^7.0.3",
     "eslint": "~8.31.0",
     "eslint-config-next": "13.1.1",
