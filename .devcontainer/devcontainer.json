@@ -1,48 +1,31 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/typescript-node
+// https://github.com/devcontainers/images/tree/main/src/base-ubuntu
 {
-	"name": "Node.js & TypeScript",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
-		// Append -bullseye or -buster to pin to an OS version.
-		// Use -bullseye variants on local on arm64/Apple Silicon.
-		"args": {
-			"VARIANT": "16-bullseye"
-		}
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+	"remoteUser": "vscode",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"upgradePackages": true,
+			"configureZshAsDefaultShell": true
+		},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/sshd:1": {},
+		"ghcr.io/jakejarvis/devcontainer-features/volta": {}
 	},
-
-	// Configure tool-specific properties.
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/devcontainers/features/common-utils"
+	],
+	"postCreateCommand": "npm install --legacy-peer-deps && npx prisma generate",
+	"forwardPorts": [
+		3000
+	],
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
-			"settings": {
-				"editor.insertSpaces": true,
-				"editor.tabSize": 2,
-				"eslint.options": {
-					"extensions": [".js", ".jsx", ".ts", ".tsx", ".md", ".mdx"]
-				},
-				"eslint.runtime": "node", // https://github.com/mdx-js/vscode-mdx#known-vscode-eslint-issues
-				"eslint.validate": [
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"typescriptreact",
-					"markdown",
-					"mdx"
-				],
-				"files.eol": "\n",
-				"files.insertFinalNewline": true,
-				"files.trimTrailingWhitespace": true,
-				"search.exclude": {
-					"**/.next": true,
-					"**/node_modules": true
-				},
-				"typescript.preferences.importModuleSpecifierEnding": "minimal",
-				"typescript.tsdk": "node_modules/typescript/lib"
-			},
-			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
+				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
 				"prisma.prisma",
 				"unifiedjs.vscode-mdx",
@@ -50,13 +33,16 @@
 			]
 		}
 	},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [3000],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install --legacy-peer-deps && ./node_modules/.bin/prisma generate",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node"
+	"portsAttributes": {
+		"3000": {
+			"label": "next dev",
+			"onAutoForward": "notify"
+		}
+	},
+	"otherPortsAttributes": {
+		"onAutoForward": "silent"
+	},
+	"containerEnv": {
+		"NEXT_TELEMETRY_DISABLED": "1"
+	}
 }
