@@ -89,7 +89,7 @@
     "eslint-config-prettier": "~8.6.0",
     "eslint-plugin-mdx": "~2.0.5",
     "eslint-plugin-prettier": "~4.2.1",
-    "lint-staged": "^13.1.0",
+    "lint-staged": "^13.1.1",
     "prettier": "^2.8.3",
     "prisma": "^4.9.0",
     "simple-git-hooks": "^2.8.1",
