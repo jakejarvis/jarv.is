@@ -19,7 +19,7 @@
   "dependencies": {
     "@giscus/react": "^2.2.6",
     "@hcaptcha/react-hcaptcha": "^1.4.4",
-    "@next/font": "13.1.6",
+    "@next/font": "13.2.2",
     "@novnc/novnc": "github:novnc/novnc#cd94c2aed2582fd85ec5ecc444967fc7ec60a649",
     "@octokit/graphql": "^5.0.5",
     "@octokit/graphql-schema": "^12.41.1",
