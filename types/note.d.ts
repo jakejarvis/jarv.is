@@ -17,7 +17,7 @@ export type NoteWithSource = {
   frontMatter: NoteFrontMatter;
 
   // the final, compiled JSX by next-mdx-remote; see lib/helpers/parse-notes.ts
-  source: MDXRemoteSerializeResult<Record<string, never>>;
+  source: Partial<Pick<MDXRemoteSerializeResult<Record<string, never>, Record<string, never>>>>;
 };
 
 export type NotesByYear = {

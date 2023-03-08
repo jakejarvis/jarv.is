@@ -190,8 +190,8 @@ const Index = () => {
         </ColorfulLink>
         , and{" "}
         <ColorfulLink
-          href="https://xkcd.com/1319/"
-          title='"Automation" on xkcd'
+          href="https://github.com/jakejarvis?tab=repositories&q=github-actions&type=source&language=&sort=stargazers"
+          title='My repositories tagged with "github-actions" on GitHub'
           lightColor="#ff6200"
           darkColor="#f46c16"
         >
