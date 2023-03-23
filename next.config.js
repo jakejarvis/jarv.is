@@ -33,13 +33,6 @@ module.exports = (phase) => {
       legacyBrowsers: false,
       newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
       optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
-      fontLoaders: [
-        {
-          // https://beta.nextjs.org/docs/optimizing/fonts#specifying-a-subset
-          loader: "@next/font/google",
-          options: { subsets: ["latin"] },
-        },
-      ],
     },
     webpack: (config) => {
       // allow processing SVGs from the below packages directly instead of through their different exports, and leave
