@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
-    "@svgr/webpack": "^6.5.1",
+    "@svgr/webpack": "^7.0.0",
     "@types/comma-number": "^2.1.0",
     "@types/marked": "^4.0.8",
     "@types/node": "*",
