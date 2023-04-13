@@ -3,18 +3,33 @@ import useHasMounted from "../../hooks/useHasMounted";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { FilePlayerProps } from "react-player/file";
 
-const Wrapper = styled("div", {
-  position: "relative",
-  paddingTop: "56.25%",
-});
-
 const Player = styled(ReactPlayer, {
-  position: "absolute",
-  top: 0,
-  left: 0,
-
   "& video": {
     borderRadius: theme.radii.corner,
+  },
+});
+
+const Wrapper = styled("div", {
+  variants: {
+    // determines placement of the player. true expands to full width while keeping the aspect ratio, false retains the
+    // video's native dimensions (but still shrinks if the parent is narrower than the video).
+    responsive: {
+      true: {
+        position: "relative",
+        paddingTop: "56.25%", // ratio of 1280x720
+
+        [`& ${Player}`]: {
+          position: "absolute",
+          top: 0,
+          left: 0,
+        },
+      },
+      false: {
+        [`& ${Player}`]: {
+          margin: "0 auto",
+        },
+      },
+    },
   },
 });
 
@@ -27,11 +42,13 @@ export type VideoProps = Partial<FilePlayerProps> & {
     vtt?: string;
     image?: string;
   };
+  title?: string;
   autoplay?: boolean;
+  responsive?: boolean;
   className?: string;
 };
 
-const Video = ({ src, autoplay = false, className, ...rest }: VideoProps) => {
+const Video = ({ src, title, autoplay = false, responsive = true, className, ...rest }: VideoProps) => {
   // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
   const hasMounted = useHasMounted();
 
@@ -42,6 +59,7 @@ const Video = ({ src, autoplay = false, className, ...rest }: VideoProps) => {
         controlsList: "nodownload",
         preload: "metadata",
         poster: src?.image, // thumbnail
+        title: title,
         autoPlay: autoplay,
         loop: autoplay,
         muted: autoplay, // no sound when autoplaying
@@ -76,7 +94,7 @@ const Video = ({ src, autoplay = false, className, ...rest }: VideoProps) => {
   }
 
   return (
-    <Wrapper className={className}>
+    <Wrapper responsive={responsive} className={className}>
       {hasMounted && <Player width="100%" height="100%" {...playerProps} {...rest} />}
     </Wrapper>
   );

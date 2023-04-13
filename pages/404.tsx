@@ -1,9 +1,7 @@
 import { NextSeo } from "next-seo";
-import Image from "../components/Image";
 import Link from "../components/Link";
+import Video from "../components/Video";
 import { styled, theme } from "../lib/styles/stitches.config";
-
-import pandaGif from "../public/static/images/angry-panda.gif";
 
 const Center = styled("div", {
   textAlign: "center",
@@ -25,7 +23,18 @@ const FourOhFour = () => {
       <NextSeo title="404 Not Found" />
 
       <Center>
-        <Image src={pandaGif} alt="404s make panda angry..." quality={30} />
+        <Video
+          src={{
+            webm: "/static/images/angry-panda.webm",
+            mp4: "/static/images/angry-panda.mp4",
+          }}
+          autoplay
+          title="404s make panda angry..."
+          responsive={false}
+          css={{
+            maxWidth: "400px",
+          }}
+        />
 
         <H1>404: Page Not Found 😢</H1>
 

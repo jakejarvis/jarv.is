@@ -2,7 +2,7 @@ import {
   Inter as InterLoader,
   Source_Code_Pro as SourceCodeProLoader,
   Comic_Neue as ComicNeueLoader,
-} from "@next/font/google";
+} from "next/font/google";
 
 const Inter = InterLoader({
   weight: "variable",
