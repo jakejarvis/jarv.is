@@ -43,7 +43,7 @@
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^5.15.0",
     "obj-str": "^1.1.0",
-    "p-map": "^5.5.0",
+    "p-map": "^6.0.0",
     "p-memoize": "^7.1.1",
     "prop-types": "^15.8.1",
     "query-string": "^8.1.0",
