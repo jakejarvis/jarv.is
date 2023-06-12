@@ -39,7 +39,7 @@
     "gray-matter": "^4.0.3",
     "hex-to-rgba": "^2.0.1",
     "marked": "^4.3.0",
-    "next": "13.3.0",
+    "next": "13.4.5",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^5.15.0",
     "obj-str": "^1.1.0",
