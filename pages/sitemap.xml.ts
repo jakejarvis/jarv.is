@@ -35,6 +35,7 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     { url: "/projects/", changefreq: EnumChangefreq.DAILY },
     { url: "/uses/" },
     { url: "/y2k/" },
+    { url: "/zip/" },
   ];
 
   // push notes separately and use their metadata
