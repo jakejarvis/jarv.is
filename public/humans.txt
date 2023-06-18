@@ -32,7 +32,6 @@
   - Vercel
   - Stitches
   - Prisma
-  - PlanetScale
   - Giscus
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/

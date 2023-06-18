@@ -48,9 +48,9 @@ const Privacy = () => {
 
         <p>
           A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
-          <CodeInline>hits = hits + 1</CodeInline>) in a <Link href="https://planetscale.com/">PlanetScale</Link> SQL
-          database. Individual views and identifying (or non-identifying) details are{" "}
-          <strong>never stored or logged</strong>.
+          <CodeInline>hits = hits + 1</CodeInline>) in a{" "}
+          <Link href="https://vercel.com/storage/postgres">Vercel Postgres</Link> database. Individual views and
+          identifying (or non-identifying) details are <strong>never stored or logged</strong>.
         </p>
 
         <p>
