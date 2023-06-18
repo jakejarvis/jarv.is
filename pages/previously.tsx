@@ -9,7 +9,7 @@ import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
 import { Windows95Logo } from "../components/Icons";
 import { styled, theme } from "../lib/styles/stitches.config";
-import { ComicNeue } from "../lib/styles/utils/fonts";
+import { ComicNeue } from "../lib/styles/fonts";
 import type { ReactElement } from "react";
 
 import img_wayback from "../public/static/images/previously/wayback.png";

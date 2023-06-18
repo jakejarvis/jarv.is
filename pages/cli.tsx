@@ -32,7 +32,7 @@ const CLI = () => {
         <Image src={cliImg} href="https://www.npmjs.com/package/@jakejarvis/cli" alt="Terminal Screenshot" priority />
 
         <H2 id="usage">Usage</H2>
-        <CodeBlock>npx @jakejarvis/cli</CodeBlock>
+        <CodeBlock withCopyButton>npx @jakejarvis/cli</CodeBlock>
 
         <H2 id="inspired-by">Inspired by</H2>
         <UnorderedList>

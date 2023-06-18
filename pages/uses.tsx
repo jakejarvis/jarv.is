@@ -666,8 +666,8 @@ const Uses = () => {
               <strong>Tailscale</strong>
             </Link>{" "}
             and{" "}
-            <Link href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/">
-              <strong>Cloudflare Tunnel</strong>
+            <Link href="https://developers.cloudflare.com/cloudflare-one/">
+              <strong>Cloudflare Zero Trust</strong>
             </Link>{" "}
             to access my home network and VPSes from anywhere.
           </ListItem>
@@ -678,38 +678,65 @@ const Uses = () => {
         </H2>
         <UnorderedList>
           <ListItem>
-            <Link href="https://www.tp-link.com/us/home-networking/wifi-router/archer-ax90/">
-              <strong>TP-Link Archer AX90</strong>
+            <Link href="https://store.ui.com/us/en/collections/unifi-dream-router/products/udr">
+              <strong>UniFi Dream Router</strong>
             </Link>
+            , plus:
+            <UnorderedList>
+              <ListItem>
+                2x{" "}
+                <Link href="https://store.ui.com/us/en/collections/unifi-switching-utility-mini/products/usw-flex-mini">
+                  Switch Flex Mini
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://store.ui.com/us/en/products/unifi-smart-power">SmartPower Plug</Link>{" "}
+                <em>
+                  (<Link href="https://www.youtube.com/watch?v=iW1tHr4Y_cI">It's Comcastic!™</Link>)
+                </em>
+              </ListItem>
+            </UnorderedList>
           </ListItem>
           <ListItem>
-            <Link href="https://www.amazon.com/dp/B00HWML468/">
-              <strong>Dell Inspiron 3647</strong>
+            <strong>An overpowered custom homelab server</strong>, powered by an{" "}
+            <Link href="https://www.asus.com/commercial-motherboard/q87me/">ASUS Q87M-E</Link> board,{" "}
+            <Link href="https://www.intel.com/content/www/us/en/products/sku/80808/intel-core-i74790s-processor-8m-cache-up-to-4-00-ghz/specifications.html">
+              i7-4790S
             </Link>
-            , upgraded to a Core i7-4790S and 16 GB of memory to dress it up as a <em>really</em> crappy{" "}
-            <Link href="https://www.vmware.com/products/esxi-and-esx.html">
-              <strong>VMware ESXi</strong>
+            , 32 GB of RAM, 3x recertified{" "}
+            <Link href="https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc550-hdd#0F38462">
+              16TB WD Ultrastar
             </Link>{" "}
-            server, running a few Ubuntu VMs with:
+            drives, and Ubuntu Server 22.04, in a cheap{" "}
+            <Link href="https://www.thermaltakeusa.com/versa-h22.html">Thermaltake Versa H22</Link> case with expensive{" "}
+            <Link href="https://noctua.at/en/nf-a12x25-pwm">Noctua 🤎</Link> fans. Used mainly for local file sharing
+            via Samba and running{" "}
+            <Link href="https://github.com/jakejarvis/dotfiles/tree/main/lab">a few Docker containers</Link>, including:
             <UnorderedList>
               <ListItem>
                 <Link href="https://www.plex.tv/">Plex</Link>
               </ListItem>
               <ListItem>
-                <Link href="https://sonarr.tv/">Sonarr</Link>{" "}
+                <Link href="https://sonarr.tv/">Sonarr</Link>, <Link href="https://radarr.video/">Radarr</Link>,{" "}
+                <Link href="https://www.bazarr.media/">Bazarr</Link>,{" "}
+                <Link href="https://github.com/Prowlarr/Prowlarr">Prowlarr</Link>
               </ListItem>
               <ListItem>
-                <Link href="https://radarr.video/">Radarr</Link>
+                <Link href="https://www.qbittorrent.org/">qBittorrent</Link> (web client)
               </ListItem>
               <ListItem>
-                <Link href="https://transmissionbt.com/">Transmission</Link> (via web client)
+                <Link href="https://tautulli.com/">Tautulli</Link>
               </ListItem>
               <ListItem>
-                <Link href="https://homebridge.io/">Homebridge</Link>
+                <Link href="https://www.home-assistant.io/">Home Assistant</Link>
               </ListItem>
               <ListItem>
                 <Link href="https://www.wireguard.com/">WireGuard</Link>
               </ListItem>
+              <ListItem>
+                <Link href="https://github.com/cloudflare/cloudflared">Cloudflare Tunnel</Link>
+              </ListItem>
+              <ListItem>Full post with more details coming soon!</ListItem>
             </UnorderedList>
           </ListItem>
           <ListItem>
@@ -722,15 +749,14 @@ const Uses = () => {
             2x{" "}
             <Link href="https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/">
               <strong>ecobee3 lite</strong>
-            </Link>{" "}
-            smart thermostats (HomeKit support was a must.)
+            </Link>
           </ListItem>
           <ListItem>
             2x{" "}
             <Link href="https://www.sonos.com/en-us/shop/one.html">
               <strong>Sonos One</strong>
             </Link>{" "}
-            (with Alexa turned off...allegedly.)
+            (with Alexa turned off...hopefully? 🤫)
           </ListItem>
           <ListItem>
             2x{" "}

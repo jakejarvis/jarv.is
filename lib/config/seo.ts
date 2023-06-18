@@ -1,7 +1,7 @@
-import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
-
 import * as config from ".";
 import { meJpg, faviconPng, faviconIco, appleTouchIconPng } from "./favicons";
+
+import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
 // Most of this file simply takes the data already defined in ./config.js and translates it into objects that are
 // compatible with next-seo's props:
@@ -49,6 +49,7 @@ export const defaultSeo: DefaultSeoProps = {
     {
       rel: "icon",
       href: faviconIco.src,
+      sizes: "any", // https://twitter.com/subzey/status/1417099064949235712
     },
     {
       rel: "icon",

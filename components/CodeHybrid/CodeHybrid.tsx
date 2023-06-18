@@ -20,6 +20,7 @@ const CodeHybrid = ({ forceBlock, className, children, ...rest }: CodeHybridProp
     return (
       <CodeBlock
         highlight={prismEnabled && !classNames?.includes("language-plaintext")}
+        withCopyButton
         className={className}
         {...rest}
       >

@@ -2,11 +2,11 @@ import { createStitches } from "@stitches/react";
 import type * as Stitches from "@stitches/react";
 
 // misc. helpers
-import hexToRgba from "./utils/hex-to-rgba";
-import normalizeStyles from "./utils/normalize";
+import { rgba } from "polished";
+import normalizeCss from "stitches-normalize";
 
 // web fonts
-import { Inter, SourceCodePro } from "./utils/fonts";
+import { Inter, SourceCodePro } from "./fonts";
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof stitchesConfig>;
@@ -30,7 +30,7 @@ export const {
     colors: {
       backgroundInner: "#ffffff",
       backgroundOuter: "#fcfcfc",
-      backgroundHeader: hexToRgba("#fcfcfc", 0.7),
+      backgroundHeader: rgba("#fcfcfc", 0.7),
       text: "#202020",
       mediumDark: "#515151",
       medium: "#5e5e5e",
@@ -40,7 +40,7 @@ export const {
       superLight: "#f4f4f4",
       superDuperLight: "#fbfbfb",
       link: "#0e6dc2",
-      linkUnderline: hexToRgba("#0e6dc2", 0.4),
+      linkUnderline: rgba("#0e6dc2", 0.4),
       success: "#44a248",
       error: "#ff1b1b",
       warning: "#f78200",
@@ -93,7 +93,7 @@ export const {
       alpha?: number;
     }) => ({
       // allow both pre-set rgba stitches variables and hex values
-      $$underlineColor: color.startsWith("#") ? hexToRgba(color, alpha) : color,
+      $$underlineColor: color.startsWith("#") ? rgba(color, alpha) : color,
     }),
   },
 });
@@ -102,7 +102,7 @@ export const darkTheme = createTheme({
   colors: {
     backgroundInner: "#1e1e1e",
     backgroundOuter: "#252525",
-    backgroundHeader: hexToRgba("#252525", 0.85),
+    backgroundHeader: rgba("#252525", 0.85),
     text: "#f1f1f1",
     mediumDark: "#d7d7d7",
     medium: "#b1b1b1",
@@ -112,7 +112,7 @@ export const darkTheme = createTheme({
     superLight: "#272727",
     superDuperLight: "#1f1f1f",
     link: "#88c7ff",
-    linkUnderline: hexToRgba("#88c7ff", 0.4),
+    linkUnderline: rgba("#88c7ff", 0.4),
     success: "#78df55",
     error: "#ff5151",
     warning: "#f2b702",
@@ -132,9 +132,12 @@ export const darkTheme = createTheme({
   },
 });
 
+// @ts-ignore
 export const globalStyles = globalCss(
   // @ts-ignore
-  normalizeStyles,
+  ...normalizeCss({
+    systemFonts: false,
+  }),
   {
     body: {
       fontFamily: theme.fonts.sans,

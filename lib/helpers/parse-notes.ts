@@ -1,11 +1,13 @@
 import fs from "fs/promises";
 import path from "path";
 import glob from "fast-glob";
-import matter from "gray-matter";
-import { marked } from "marked";
-import removeMarkdown from "remove-markdown";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
+import matter from "gray-matter";
+import removeMarkdown from "remove-markdown";
+import { marked } from "marked";
+// @ts-ignore
+import { markedSmartypants } from "marked-smartypants";
 import { formatDate } from "./format-date";
 import { baseUrl } from "../config";
 import { NOTES_DIR } from "../config/constants";
@@ -36,6 +38,10 @@ export const getNoteData = async (
   const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
+  // attach marked extensions:
+  // https://marked.js.org/using_advanced#extensions
+  marked.use(markedSmartypants());
+
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
@@ -45,7 +51,9 @@ export const getNoteData = async (
       // allow markdown formatting to appear in post titles in some places (rarely used):
       htmlTitle: marked.parseInline(data.title, {
         silent: true,
-        smartypants: true,
+        // these are deprecated and throw very noisy warnings but are still defaults, make it make sense...
+        mangle: false,
+        headerIds: false,
       }),
       slug,
       permalink: `${baseUrl}/${NOTES_DIR}/${slug}/`,

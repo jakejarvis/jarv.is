@@ -4,7 +4,7 @@ const path = require("path");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const config = require("./lib/config");
 
-module.exports = (phase) => {
+module.exports = (/** @type {string} */ phase) => {
   /**
    * @type {import("next").NextConfig}
    */
@@ -13,6 +13,7 @@ module.exports = (phase) => {
     reactStrictMode: true,
     trailingSlash: true,
     productionBrowserSourceMaps: true,
+    transpilePackages: ["@novnc/novnc"],
     env: {
       BASE_URL:
         process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" && process.env.NEXT_PUBLIC_VERCEL_URL !== undefined

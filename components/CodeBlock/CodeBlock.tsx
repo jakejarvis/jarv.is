@@ -89,12 +89,13 @@ const CornerCopyButton = styled(CopyButton, {
 
 export type CodeBlockProps = ComponentProps<typeof Code> & {
   highlight?: boolean;
+  withCopyButton?: boolean;
 };
 
-const CodeBlock = ({ highlight, className, children, ...rest }: CodeBlockProps) => {
+const CodeBlock = ({ highlight, withCopyButton, className, children, ...rest }: CodeBlockProps) => {
   return (
     <Block highlight={highlight}>
-      <CornerCopyButton source={children} />
+      {withCopyButton && <CornerCopyButton source={children} />}
       <Code className={className?.replace("code-highlight", "").trim()} {...rest}>
         {children}
       </Code>
