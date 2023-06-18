@@ -1,32 +1,30 @@
+import { NextResponse } from "next/server";
 import { prisma } from "../../lib/helpers/prisma";
-import { logServerError } from "../../lib/helpers/sentry";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextRequest } from "next/server";
 import type { PageStats } from "../../types";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  try {
-    if (!req.query?.slug) {
-      return res.status(400).json({ message: "Missing `slug` parameter." });
-    }
+export const config = {
+  runtime: "edge",
+  regions: ["iad1"], // the vercel postgres database lives in DC
+};
 
-    // add one to this page's count and return the new number
-    const result = await incrementPageHits(req.query.slug as string);
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async (req: NextRequest) => {
+  const slug = req.nextUrl.searchParams.get("slug");
 
-    // disable caching on both ends
-    res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-
-    // send result as JSON
-    return res.status(200).json(result);
-  } catch (error) {
-    // extract just the error message to send back to client
-    const message = error instanceof Error ? error.message : error;
-
-    // log full error to console and sentry
-    await logServerError(error);
-
-    // 500 Internal Server Error
-    return res.status(500).json({ message });
+  if (!slug) {
+    return NextResponse.json({ message: "Missing `slug` parameter." }, { status: 400 });
   }
+
+  // add one to this page's count and return the new number
+  return NextResponse.json(await incrementPageHits(slug), {
+    status: 200,
+    headers: {
+      // disable caching on both ends. see:
+      // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+    },
+  });
 };
 
 const incrementPageHits = async (slug: string): Promise<PageStats> => {
@@ -43,5 +41,3 @@ const incrementPageHits = async (slug: string): Promise<PageStats> => {
   // send client the *new* hit count
   return { hits };
 };
-
-export default handler;

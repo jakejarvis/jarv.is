@@ -2,8 +2,7 @@
 // Heavily inspired by @leerob: https://leerob.io/snippets/spotify
 
 import queryString from "query-string";
-import { logServerError } from "../../lib/helpers/sentry";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import type { Track } from "../../types";
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
@@ -32,25 +31,16 @@ type SpotifyTrackSchema = {
   };
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  try {
-    // let Vercel edge cache results for 5 mins
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate");
+export const config = {
+  runtime: "edge",
+};
 
-    const token = await getAccessToken();
-    const playing = await getNowPlaying(token);
-    const top = await getTopTracks(token);
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async () => {
+  const token = await getAccessToken();
+  const [playing, top] = await Promise.all([getNowPlaying(token), getTopTracks(token)]);
 
-    return res.status(200).json({ playing, top });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error.";
-
-    // log full error to console and sentry
-    await logServerError(error);
-
-    // 500 Internal Server Error
-    return res.status(500).json({ message });
-  }
+  return NextResponse.json({ playing, top }, { status: 200 });
 };
 
 const getAccessToken = async () => {
@@ -125,5 +115,3 @@ const getTopTracks = async (token: string): Promise<Track[]> => {
 
   return tracks;
 };
-
-export default handler;

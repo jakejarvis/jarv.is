@@ -15,7 +15,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext js,jsx,ts,tsx,md,mdx",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --data-proxy"
   },
   "dependencies": {
     "@giscus/react": "^2.2.8",
