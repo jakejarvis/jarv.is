@@ -24,7 +24,7 @@
     "@octokit/graphql": "^5.0.6",
     "@octokit/graphql-schema": "^14.11.0",
     "@primer/octicons": "^19.3.0",
-    "@prisma/client": "^4.15.0",
+    "@prisma/client": "^4.16.0",
     "@react-spring/web": "^9.7.2",
     "@sentry/node": "^7.55.2",
     "@sentry/tracing": "^7.55.2",
