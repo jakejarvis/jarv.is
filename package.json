@@ -43,7 +43,7 @@
     "marked-smartypants": "^1.0.2",
     "next": "13.4.6",
     "next-mdx-remote": "^4.4.1",
-    "next-seo": "^6.0.0",
+    "next-seo": "^6.1.0",
     "obj-str": "^1.1.0",
     "p-map": "^6.0.0",
     "p-memoize": "^7.1.1",
