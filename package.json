@@ -69,7 +69,7 @@
     "simple-icons": "^9.2.0",
     "sitemap": "^7.1.1",
     "stitches-normalize": "^2.0.0",
-    "swr": "^2.1.5"
+    "swr": "^2.2.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
