@@ -31,7 +31,7 @@
     "@vercel/postgres": "^0.4.0",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.3",
-    "dayjs": "^1.11.8",
+    "dayjs": "^1.11.9",
     "fast-glob": "^3.2.12",
     "fathom-client": "^3.5.0",
     "feather-icons": "^4.29.0",
