@@ -24,7 +24,7 @@
     "@octokit/graphql": "^6.0.1",
     "@octokit/graphql-schema": "^14.13.1",
     "@primer/octicons": "^19.4.0",
-    "@prisma/client": "^4.16.1",
+    "@prisma/client": "^4.16.2",
     "@react-spring/web": "^9.7.2",
     "@stitches/react": "^1.2.8",
     "@vercel/analytics": "^1.0.1",
