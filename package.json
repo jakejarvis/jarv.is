@@ -18,7 +18,7 @@
     "postinstall": "prisma generate --data-proxy"
   },
   "dependencies": {
-    "@giscus/react": "^2.2.8",
+    "@giscus/react": "^2.3.0",
     "@hcaptcha/react-hcaptcha": "^1.8.1",
     "@novnc/novnc": "git+https://git@github.com/novnc/novnc#e8ad466e45a21598debe81824744d85ff2323c7b",
     "@octokit/graphql": "^6.0.1",
