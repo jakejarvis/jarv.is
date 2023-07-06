@@ -54,11 +54,10 @@ module.exports = (/** @type {string} */ phase) => {
             },
           },
         ],
-        include: [
-          path.resolve(__dirname, "node_modules/@primer/octicons/build/svg"),
-          path.resolve(__dirname, "node_modules/feather-icons/dist/icons"),
-          path.resolve(__dirname, "node_modules/simple-icons/icons"),
-        ],
+        include: ["@primer/octicons", "feather-icons", "simple-icons"].map(
+          // pnpm uses symlinks extensively, so path.resolve(__dirname, "node_modules/...") won't cut it here.
+          (pkg) => path.dirname(require.resolve(pkg)) // => node_modules/.pnpm/feather-icons@4.29.0/node_modules/feather-icons/dist
+        ),
       });
 
       return config;

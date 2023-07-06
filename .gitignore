@@ -1,11 +1,14 @@
 # next.js
 /.next/
 
-# node/npm/yarn
+# node/npm/pnpm/yarn
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
 
 # typescript
 *.tsbuildinfo

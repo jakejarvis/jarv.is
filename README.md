@@ -11,9 +11,9 @@ I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/iss
 
 ## 🕹️ Getting Started
 
-Run `npm install` to install the necessary dependencies and `npm run dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed.
+Run `pnpm install` to install the necessary dependencies and `pnpm run dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed. ([pnpm is required!](https://pnpm.io/installation))
 
-Most production steps are handled [automatically by Vercel](https://vercel.com/docs/concepts/next.js/overview#supported-next.js-features), but running `npm run build` locally will still generate an unoptimized, less-than-ideal static version.
+Most production steps are handled [automatically by Vercel](https://vercel.com/docs/concepts/next.js/overview#supported-next.js-features), but running `pnpm build` locally will still generate an unoptimized, less-than-ideal static version.
 
 **⚡ Bonus tip:** [Volta](https://volta.sh/), a magical, blazing-fast alternative to [nvm](https://github.com/nvm-sh/nvm), is used to pin the exact Node.js version used for development. It's completely optional but I highly recommend it in general!
 
