@@ -2,7 +2,6 @@ import { Feed } from "feed";
 import { getAllNotes } from "./parse-notes";
 import * as config from "../config";
 import { meJpg } from "../config/favicons";
-import { RELEASE_DATE } from "../config/constants";
 import type { GetServerSideProps } from "next";
 
 export type GetServerSideFeedProps = GetServerSideProps<Record<string, never>>;
@@ -22,20 +21,20 @@ export const buildFeed = async (
 
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
-    id: `${config.baseUrl}/`,
-    link: `${config.baseUrl}/`,
+    id: `${process.env.BASE_URL}/`,
+    link: `${process.env.BASE_URL}/`,
     title: config.siteName,
     description: config.longDescription,
     copyright: config.licenseUrl,
-    updated: new Date(RELEASE_DATE),
-    image: `${config.baseUrl}${meJpg.src}`,
+    updated: new Date(process.env.RELEASE_DATE || Date.now()),
+    image: `${process.env.BASE_URL}${meJpg.src}`,
     feedLinks: {
-      rss: `${config.baseUrl}/feed.xml`,
-      atom: `${config.baseUrl}/feed.atom`,
+      rss: `${process.env.BASE_URL}/feed.xml`,
+      atom: `${process.env.BASE_URL}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: `${config.baseUrl}/`,
+      link: `${process.env.BASE_URL}/`,
       email: config.authorEmail,
     },
   });
@@ -48,11 +47,11 @@ export const buildFeed = async (
       link: note.permalink,
       title: note.title,
       description: note.description,
-      image: note.image && `${config.baseUrl}${note.image}`,
+      image: note.image && `${process.env.BASE_URL}${note.image}`,
       author: [
         {
           name: config.authorName,
-          link: `${config.baseUrl}/`,
+          link: `${process.env.BASE_URL}/`,
         },
       ],
       date: new Date(note.date),

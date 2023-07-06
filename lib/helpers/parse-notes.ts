@@ -5,19 +5,20 @@ import pMap from "p-map";
 import pMemoize from "p-memoize";
 import matter from "gray-matter";
 import removeMarkdown from "remove-markdown";
-import { marked } from "marked";
-// @ts-ignore
-import { markedSmartypants } from "marked-smartypants";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkSmartypants from "remark-smartypants";
 import { formatDate } from "./format-date";
-import { baseUrl } from "../config";
-import { NOTES_DIR } from "../config/constants";
 
 import type { NoteFrontMatter } from "../../types";
+import rehypeSanitize from "rehype-sanitize";
 
 export const getNoteSlugs = async (): Promise<string[]> => {
-  // list all .mdx files in NOTES_DIR
+  // list all .mdx files in "/notes"
   const mdxFiles = await glob("*.mdx", {
-    cwd: path.join(process.cwd(), NOTES_DIR),
+    cwd: path.join(process.cwd(), "notes"),
     dot: false,
   });
 
@@ -34,13 +35,25 @@ export const getNoteData = async (
   frontMatter: NoteFrontMatter;
   content: string;
 }> => {
-  const fullPath = path.join(process.cwd(), NOTES_DIR, `${slug}.mdx`);
+  const fullPath = path.join(process.cwd(), "notes", `${slug}.mdx`);
   const rawContent = await fs.readFile(fullPath, "utf8");
   const { data, content } = matter(rawContent);
 
-  // attach marked extensions:
-  // https://marked.js.org/using_advanced#extensions
-  marked.use(markedSmartypants());
+  // allow *very* limited markdown to be used in post titles
+  const htmlTitle = String(
+    await unified()
+      .use(remarkParse)
+      .use(remarkRehype)
+      .use(rehypeSanitize, { tagNames: ["code", "em", "strong"] })
+      .use(remarkSmartypants, {
+        quotes: true,
+        dashes: "oldschool",
+        backticks: false,
+        ellipses: false,
+      })
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .process(data.title)
+  );
 
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
@@ -48,15 +61,9 @@ export const getNoteData = async (
       ...(data as Partial<NoteFrontMatter>),
       // zero markdown title:
       title: removeMarkdown(data.title),
-      // allow markdown formatting to appear in post titles in some places (rarely used):
-      htmlTitle: marked.parseInline(data.title, {
-        silent: true,
-        // these are deprecated and throw very noisy warnings but are still defaults, make it make sense...
-        mangle: false,
-        headerIds: false,
-      }),
+      htmlTitle,
       slug,
-      permalink: `${baseUrl}/${NOTES_DIR}/${slug}/`,
+      permalink: `${process.env.BASE_URL}/notes/${slug}/`,
       date: formatDate(data.date), // validate/normalize the date string provided from front matter
     },
     content,

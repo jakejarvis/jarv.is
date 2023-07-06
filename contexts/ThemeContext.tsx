@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMedia from "../hooks/useMedia";
 import { themeStorageKey } from "../lib/styles/stitches.config";
@@ -77,22 +77,18 @@ export const ThemeProvider = ({
     document.documentElement.style?.setProperty("color-scheme", colorScheme);
   }, [preferredTheme, systemTheme]);
 
-  return (
-    <ThemeContext.Provider
-      value={{
-        activeTheme: preferredTheme && themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
-        setTheme: useCallback(
-          (theme: string) => {
-            // force save to local storage
-            changeTheme(theme, true);
-          },
-          [changeTheme]
-        ),
-      }}
-    >
-      {children}
-    </ThemeContext.Provider>
+  const providerValues = useMemo(
+    () => ({
+      activeTheme: preferredTheme && themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
+      setTheme: (theme: string) => {
+        // force save to local storage
+        changeTheme(theme, true);
+      },
+    }),
+    [changeTheme, preferredTheme, systemTheme, themeNames]
   );
+
+  return <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>;
 };
 
 // debugging help pls

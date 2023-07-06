@@ -17,7 +17,7 @@ export const defaultSeo: DefaultSeoProps = {
     type: "website",
     images: [
       {
-        url: `${config.baseUrl}${meJpg.src}`,
+        url: `${process.env.BASE_URL}${meJpg.src}`,
         alt: `${config.siteName} – ${config.shortDescription}`,
       },
     ],
@@ -103,9 +103,9 @@ export const defaultSeo: DefaultSeoProps = {
 export const socialProfileJsonLd: SocialProfileJsonLdProps = {
   type: "Person",
   name: config.authorName,
-  url: `${config.baseUrl}/`,
+  url: `${process.env.BASE_URL}/`,
   sameAs: [
-    `${config.baseUrl}/`,
+    `${process.env.BASE_URL}/`,
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
@@ -122,5 +122,5 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
 export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherName" | "publisherLogo"> = {
   authorName: [config.authorName],
   publisherName: config.siteName,
-  publisherLogo: `${config.baseUrl}${meJpg.src}`,
+  publisherLogo: `${process.env.BASE_URL}${meJpg.src}`,
 };

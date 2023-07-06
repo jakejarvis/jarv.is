@@ -8,8 +8,8 @@ const Document = () => {
   return (
     <Html lang={config.siteLocale} className={themeClassNames["light"]}>
       <Head>
-        {/* inject a small script to set/restore the user's theme ASAP */}
-        <ThemeScript id="restore-theme" {...{ themeClassNames, themeStorageKey }} />
+        {/* inject this script (generated at build-time) to prioritize setting/restoring the user's theme. */}
+        <ThemeScript key="restore-theme-js" {...{ themeClassNames, themeStorageKey }} />
 
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>

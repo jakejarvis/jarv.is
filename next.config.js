@@ -21,10 +21,9 @@ module.exports = (/** @type {string} */ phase) => {
           : phase === PHASE_DEVELOPMENT_SERVER
           ? `http://localhost:${process.env.PORT || 3000}` // https://nextjs.org/docs/api-reference/cli#development
           : `https://${config.siteDomain}`, // fallback to production url
-      // freeze build timestamp for when server-side pages need a "last updated" date:
+      // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
+      // pages using getServerSideProps will return the current(ish) time instead, which is usually not what we want.
       RELEASE_DATE: new Date().toISOString(),
-      // check if we're running locally via `next dev`:
-      IS_DEV_SERVER: phase === PHASE_DEVELOPMENT_SERVER ? "true" : "",
     },
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920],

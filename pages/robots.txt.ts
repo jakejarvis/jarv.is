@@ -1,4 +1,3 @@
-import { baseUrl } from "../lib/config";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
@@ -12,7 +11,7 @@ ${
     ? `Disallow: /`
     : `Allow: /
 
-Sitemap: ${baseUrl}/sitemap.xml`
+Sitemap: ${process.env.BASE_URL}/sitemap.xml`
 }
 `;
 

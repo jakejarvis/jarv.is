@@ -1,51 +1,57 @@
-import { useMemo } from "react";
+import { memo } from "react";
 import { minify } from "uglify-js";
-import { clientScript } from "./client";
-import { IS_DEV_SERVER } from "../../lib/config/constants";
+import type { MinifyOutput } from "uglify-js";
 
-export type ThemeScriptProps = JSX.IntrinsicElements["script"] & {
+import { clientScript } from "./client.js";
+
+export type ThemeScriptProps = {
   themeClassNames: {
     [themeName: string]: string;
   };
   themeStorageKey: string;
 };
 
-const ThemeScript = ({ key, themeClassNames, themeStorageKey, ...rest }: ThemeScriptProps) => {
-  const minified = useMemo(() => {
-    // since the client function will end up being injected as a plain dumb string, we need to set dynamic values here:
-    const functionString = String(clientScript)
-      .replace('"__MEDIA_QUERY__"', `"(prefers-color-scheme: dark)"`)
-      .replace('"__STORAGE_KEY__"', `"${themeStorageKey}"`)
-      .replace('"__CLASS_NAMES__"', JSON.stringify(themeClassNames));
+// eslint-disable-next-line react/display-name
+const ThemeScript = memo<ThemeScriptProps>(({ themeClassNames, themeStorageKey }) => {
+  const minified = (() => {
+    // since the client function will end up being injected as a static hard-coded string, we need to determine all of
+    // the dynamic values within it *before* generating the final script.
+    const source = String(clientScript)
+      .replace("__MEDIA_QUERY__", "(prefers-color-scheme: dark)")
+      .replace("__STORAGE_KEY__", themeStorageKey)
+      .replace("__CLASS_NAMES__", Object.values(themeClassNames).join('","'));
 
     // turn the raw function into an iife
-    const unminified = `(${functionString})()`;
+    const unminified = `(${source})()`;
 
-    // skip minification if running locally to save a few ms
-    if (IS_DEV_SERVER) {
+    // minify the final code. this approach is a bit janky but is ONLY used at build time, so there's essentially no
+    // risk of breaking the entire site and/or accidentally bundling uglify-js clientside (bad).
+    let minified: MinifyOutput | undefined;
+    try {
+      minified = minify(unminified, {
+        toplevel: true,
+        compress: {
+          negate_iife: false,
+        },
+        parse: {
+          bare_returns: true,
+        },
+      });
+    } catch (error) {
+      // fail somewhat silenty by returning the unminified version
+      console.warn("Failed to minify inline theme script:", error);
       return unminified;
     }
 
-    // minify the final code, a bit hacky but this is ONLY done at build-time, so uglify-js is never bundled or sent to
-    // the browser to execute.
-    const minified = minify(unminified, {
-      toplevel: true,
-      compress: {
-        negate_iife: false,
-      },
-      parse: {
-        bare_returns: true,
-      },
-    });
-
-    // fail somewhat silenty by returning the unminified version
+    // same as the catch block above, but in some cases (not really sure when), minify() doesn't throw an actual error
+    // and instead just returns undefined and an "error" string, so we need to check for both.
     if (!minified || minified.error) {
-      console.warn("Failed to minify inline theme script:", minified.error);
+      console.warn("Failed to minify inline theme script. uglify-js output:", minified.error);
       return unminified;
     }
 
     return minified.code;
-  }, [themeClassNames, themeStorageKey]);
+  })();
 
   // the script tag injected manually into `<head>` in _document.tsx to prevent FARTing:
   // https://css-tricks.com/flash-of-inaccurate-color-theme-fart/
@@ -54,14 +60,13 @@ const ThemeScript = ({ key, themeClassNames, themeStorageKey, ...rest }: ThemeSc
   // TODO: using next/script *might* be possible after https://github.com/vercel/next.js/pull/36364 is merged.
   return (
     <script
-      key={key} // separate on purpose!
-      {...rest}
+      id="restore-theme"
       dangerouslySetInnerHTML={{
         // make it an IIFE:
         __html: `(function(){${minified}})()`,
       }}
     />
   );
-};
+});
 
 export default ThemeScript;

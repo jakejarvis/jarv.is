@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import queryString from "query-string";
-import { baseUrl } from "../../lib/config";
 import type { NextRequest } from "next/server";
 
 // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
@@ -20,7 +19,7 @@ export const config = {
 export default async (req: NextRequest) => {
   // redirect GET requests to this endpoint to the contact form itself
   if (req.method === "GET") {
-    return NextResponse.redirect(`${baseUrl}/contact/`);
+    return NextResponse.redirect(`${process.env.BASE_URL}/contact/`);
   }
 
   // possible weirdness? https://github.com/orgs/vercel/discussions/78#discussioncomment-5089059

@@ -1,12 +1,10 @@
 import { SitemapStream, SitemapItemLoose, EnumChangefreq } from "sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
-import { baseUrl } from "../lib/config";
-import { RELEASE_DATE, NOTES_DIR } from "../lib/config/constants";
 import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
   const { res } = context;
-  const stream = new SitemapStream({ hostname: baseUrl });
+  const stream = new SitemapStream({ hostname: process.env.BASE_URL });
 
   // cache on edge for 12 hours
   res.setHeader("cache-control", "public, max-age=0, s-maxage=43200, stale-while-revalidate");
@@ -22,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
       url: "/",
       priority: 1.0,
       changefreq: EnumChangefreq.WEEKLY,
-      lastmod: RELEASE_DATE, // timestamp frozen when a new build is deployed
+      lastmod: process.env.RELEASE_DATE, // timestamp frozen when a new build is deployed
     },
     { url: "/birthday/" },
     { url: "/cli/" },
@@ -42,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
   const notes = await getAllNotes();
   notes.forEach((note) => {
     pages.push({
-      url: `/${NOTES_DIR}/${note.slug}/`,
+      url: `/notes/${note.slug}/`,
       // pull lastMod from front matter date
       lastmod: note.date,
     });
@@ -50,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
 
   // set lastmod of /notes/ page to most recent post's date
   pages.push({
-    url: `/${NOTES_DIR}/`,
+    url: `/notes/`,
     lastmod: notes[0].date,
   });
 
