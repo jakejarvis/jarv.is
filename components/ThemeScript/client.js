@@ -14,7 +14,7 @@ export const clientScript = () => {
 
     // restore the local storage preference if it's set, otherwise test CSS media query for browser dark mode preference
     // https://stackoverflow.com/a/57795495/1438024
-    const newTheme = (pref && pref === "dark") || window.matchMedia("__MEDIA_QUERY__").matches ? 1 : 0;
+    const newTheme = (pref && pref === "dark") ?? window.matchMedia("__MEDIA_QUERY__").matches ? 1 : 0;
 
     // remove both `classNames` to start fresh...
     classList.remove(classNames[0], classNames[1]);
