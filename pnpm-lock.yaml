@@ -13,7 +13,7 @@ dependencies:
     version: 1.8.1(react-dom@18.2.0)(react@18.2.0)
   '@novnc/novnc':
     specifier: github:novnc/novnc#ca6527c1bf7131adccfdcc5028964a1e67f9018c
-    version: github.com/novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c
+    version: git/github.com+novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c
   '@octokit/graphql':
     specifier: ^7.0.1
     version: 7.0.1
@@ -162,8 +162,8 @@ dependencies:
     specifier: ^2.2.2
     version: 2.2.2(react@18.2.0)
   unified:
-    specifier: ^10.1.2
-    version: 10.1.2
+    specifier: ^11.0.2
+    version: 11.0.2
 
 optionalDependencies:
   sharp:
@@ -173,7 +173,7 @@ optionalDependencies:
 devDependencies:
   '@jakejarvis/eslint-config':
     specifier: github:jakejarvis/eslint-config
-    version: github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0)
+    version: git/github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0)
   '@svgr/webpack':
     specifier: ^8.1.0
     version: 8.1.0
@@ -2290,6 +2290,10 @@ packages:
   /@types/unist@2.0.8:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
 
+  /@types/unist@3.0.0:
+    resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
+    dev: false
+
   /@typescript-eslint/eslint-plugin@6.5.0(@typescript-eslint/parser@6.5.0)(eslint@8.48.0)(typescript@5.2.2):
     resolution: {integrity: sha512-2pktILyjvMaScU6iK3925uvGU87E+N9rh372uGZgiMYwafaw9SXq86U04XPq3UH6tzRvNgBsub6x2DacHc33lw==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -2420,6 +2424,10 @@ packages:
       '@typescript-eslint/types': 6.5.0
       eslint-visitor-keys: 3.4.3
     dev: true
+
+  /@ungap/structured-clone@1.2.0:
+    resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+    dev: false
 
   /@vercel/postgres@0.4.1:
     resolution: {integrity: sha512-rYlNnaXrr2/NWK/OodhAUyed0bomaizKKC8XXjNYv8I1K3m75oocP4IGTcBpZe76VCrHuaKW5d6jLQnuRRoNKg==}
@@ -3144,6 +3152,12 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /devlop@1.1.0:
+    resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
+    dependencies:
+      dequal: 2.0.3
+    dev: false
 
   /diff@5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
@@ -7221,6 +7235,18 @@ packages:
       trough: 2.1.0
       vfile: 5.3.7
 
+  /unified@11.0.2:
+    resolution: {integrity: sha512-Zta++onvS/dJ6xUvXQOR5q8XJZOkiMCE5wQ8Yv9mLR25pxRS567EX0GO6HZRxxNV/lznwfsvRZ/1pqe9K9QLeQ==}
+    dependencies:
+      '@types/unist': 3.0.0
+      '@ungap/structured-clone': 1.2.0
+      bail: 2.0.2
+      devlop: 1.1.0
+      is-plain-obj: 4.1.0
+      trough: 2.1.0
+      vfile: 6.0.1
+    dev: false
+
   /unist-util-filter@4.0.1:
     resolution: {integrity: sha512-RynicUM/vbOSTSiUK+BnaK9XMfmQUh6gyi7L6taNgc7FIf84GukXVV3ucGzEN/PhUUkdP5hb1MmXc+3cvPUm5Q==}
     dependencies:
@@ -7278,6 +7304,12 @@ packages:
     resolution: {integrity: sha512-k5GzIBZ/QatR8N5X2y+drfpWG8IDBzdnVj6OInRNWm1oXrzydiaAT2OQiA8DPRRZyAKb9b6I2a6PxYklZD0gKg==}
     dependencies:
       '@types/unist': 2.0.8
+
+  /unist-util-stringify-position@4.0.0:
+    resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
+    dependencies:
+      '@types/unist': 3.0.0
+    dev: false
 
   /unist-util-visit-children@2.0.2:
     resolution: {integrity: sha512-+LWpMFqyUwLGpsQxpumsQ9o9DG2VGLFrpz+rpVXYIEdPy57GSy5HioC0g3bg/8WP9oCLlapQtklOzQ8uLS496Q==}
@@ -7409,6 +7441,13 @@ packages:
       '@types/unist': 2.0.8
       unist-util-stringify-position: 3.0.3
 
+  /vfile-message@4.0.2:
+    resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
+    dependencies:
+      '@types/unist': 3.0.0
+      unist-util-stringify-position: 4.0.0
+    dev: false
+
   /vfile-reporter@7.0.5:
     resolution: {integrity: sha512-NdWWXkv6gcd7AZMvDomlQbK3MqFWL1RlGzMn++/O2TI+68+nqxCPTvLugdOtfSzXmjh+xUyhp07HhlrbJjT+mw==}
     dependencies:
@@ -7443,6 +7482,14 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
+
+  /vfile@6.0.1:
+    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
+    dependencies:
+      '@types/unist': 3.0.0
+      unist-util-stringify-position: 4.0.0
+      vfile-message: 4.0.2
+    dev: false
 
   /walk-up-path@3.0.1:
     resolution: {integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==}
@@ -7593,9 +7640,9 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
-  github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0):
-    resolution: {tarball: https://codeload.github.com/jakejarvis/eslint-config/tar.gz/f97840fbd8909298fd2b020980db0c5d2f362263}
-    id: github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263
+  git/github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0):
+    resolution: {commit: f97840fbd8909298fd2b020980db0c5d2f362263, repo: git@github.com:jakejarvis/eslint-config.git, type: git}
+    id: git@github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263
     name: '@jakejarvis/eslint-config'
     version: 3.1.0
     peerDependencies:
@@ -7604,8 +7651,8 @@ packages:
       eslint: 8.48.0
     dev: true
 
-  github.com/novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c:
-    resolution: {tarball: https://codeload.github.com/novnc/novnc/tar.gz/ca6527c1bf7131adccfdcc5028964a1e67f9018c}
+  git/github.com+novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c:
+    resolution: {commit: ca6527c1bf7131adccfdcc5028964a1e67f9018c, repo: git@github.com:novnc/novnc.git, type: git}
     name: '@novnc/novnc'
     version: 1.4.0
     dev: false
