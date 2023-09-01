@@ -13,9 +13,13 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   transpilePackages: ["@novnc/novnc"],
   env: {
-    BASE_URL: process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : `http://localhost:${process.env.PORT || 3000}`,
+    BASE_URL:
+      // start with production check on Vercel, then see if this is a deploy preview, then fallback to local dev server.
+      process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+        ? `https://${config.siteDomain}`
+        : process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` // https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
+        : `http://localhost:${process.env.PORT || 3000}`, // https://nextjs.org/docs/api-reference/cli#development
     // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
     // pages using getServerSideProps will return the current(ish) time instead, which is usually not what we want.
     RELEASE_DATE: new Date().toISOString(),
