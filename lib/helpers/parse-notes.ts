@@ -8,12 +8,12 @@ import removeMarkdown from "remove-markdown";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import rehypeSanitize from "rehype-sanitize";
 import remarkSmartypants from "remark-smartypants";
+import rehypeStringify from "rehype-stringify";
 import { formatDate } from "./format-date";
 
 import type { NoteFrontMatter } from "../../types";
-import rehypeSanitize from "rehype-sanitize";
 
 export const getNoteSlugs = async (): Promise<string[]> => {
   // list all .mdx files in "/notes"
