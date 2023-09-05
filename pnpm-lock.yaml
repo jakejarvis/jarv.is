@@ -13,13 +13,13 @@ dependencies:
     version: 1.8.1(react-dom@18.2.0)(react@18.2.0)
   '@novnc/novnc':
     specifier: github:novnc/novnc#ca6527c1bf7131adccfdcc5028964a1e67f9018c
-    version: github.com/novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c
+    version: git/github.com+novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c
   '@octokit/graphql':
     specifier: ^7.0.1
     version: 7.0.1
   '@octokit/graphql-schema':
-    specifier: ^14.27.2
-    version: 14.27.2
+    specifier: ^14.27.3
+    version: 14.27.3
   '@primer/octicons':
     specifier: ^19.7.0
     version: 19.7.0
@@ -173,7 +173,7 @@ optionalDependencies:
 devDependencies:
   '@jakejarvis/eslint-config':
     specifier: github:jakejarvis/eslint-config
-    version: github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0)
+    version: git/github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0)
   '@svgr/webpack':
     specifier: ^8.1.0
     version: 8.1.0
@@ -1823,8 +1823,8 @@ packages:
       universal-user-agent: 6.0.0
     dev: false
 
-  /@octokit/graphql-schema@14.27.2:
-    resolution: {integrity: sha512-Iczh8dLseBPR4zOUnAZHVWZiHF85PoXy1fXgPzA5hsx72RGpCg78kSyReACOxpIJXTtnFU8rg95bdTPKQSX0Hg==}
+  /@octokit/graphql-schema@14.27.3:
+    resolution: {integrity: sha512-EkRpOOMUHPsiH7UBKDCUUU75ywTAx8nnkJ+kcB4AWTAKBIwmS/VfPMlmLukz6g9cZdk0UznLXQyD4M09qB/XbQ==}
     dependencies:
       graphql: 16.8.0
       graphql-tag: 2.12.6(graphql@16.8.0)
@@ -7593,9 +7593,9 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
-  github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0):
-    resolution: {tarball: https://codeload.github.com/jakejarvis/eslint-config/tar.gz/f97840fbd8909298fd2b020980db0c5d2f362263}
-    id: github.com/jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263
+  git/github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263(eslint@8.48.0):
+    resolution: {commit: f97840fbd8909298fd2b020980db0c5d2f362263, repo: git@github.com:jakejarvis/eslint-config.git, type: git}
+    id: git@github.com+jakejarvis/eslint-config/f97840fbd8909298fd2b020980db0c5d2f362263
     name: '@jakejarvis/eslint-config'
     version: 3.1.0
     peerDependencies:
@@ -7604,8 +7604,8 @@ packages:
       eslint: 8.48.0
     dev: true
 
-  github.com/novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c:
-    resolution: {tarball: https://codeload.github.com/novnc/novnc/tar.gz/ca6527c1bf7131adccfdcc5028964a1e67f9018c}
+  git/github.com+novnc/novnc/ca6527c1bf7131adccfdcc5028964a1e67f9018c:
+    resolution: {commit: ca6527c1bf7131adccfdcc5028964a1e67f9018c, repo: git@github.com:novnc/novnc.git, type: git}
     name: '@novnc/novnc'
     version: 1.4.0
     dev: false
