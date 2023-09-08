@@ -1,40 +1,47 @@
-import { useState } from "react";
-import { TwitterTweetEmbed } from "react-twitter-embed";
-import useUpdateEffect from "../../hooks/useUpdateEffect";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { Tweet } from "react-tweet";
 import useTheme from "../../hooks/useTheme";
 import { styled } from "../../lib/styles/stitches.config";
+import type { ComponentPropsWithoutRef, ElementRef } from "react";
 
 const Wrapper = styled("div", {
-  // reserve a moderate amount of space for the widget, it takes a while to load...
-  minHeight: "300px",
+  minHeight: "300px", // help with layout shift
+
+  "& .react-tweet-theme": {
+    "--tweet-container-margin": "1.5rem auto",
+  },
 });
 
-export type TweetEmbedProps = {
-  id: string;
-  options?: Record<string, unknown>;
+export type TweetEmbedProps = ComponentPropsWithoutRef<typeof Tweet> & {
   className?: string;
 };
 
-const TweetEmbed = ({ id, options, className }: TweetEmbedProps) => {
+const TweetEmbed = ({ id, className, ...rest }: TweetEmbedProps) => {
+  const containerRef = useRef<ElementRef<typeof Wrapper>>(null);
   const { activeTheme } = useTheme();
-  const [widgetTheme, setWidgetTheme] = useState(activeTheme);
 
-  useUpdateEffect(() => {
-    setWidgetTheme(activeTheme === "dark" ? activeTheme : "light");
+  useEffect(() => {
+    if (containerRef.current) {
+      // setting 'data-theme' attribute of parent div changes the tweet's theme (no re-render necessary)
+      containerRef.current.dataset.theme = activeTheme;
+    }
   }, [activeTheme]);
 
   return (
-    <Wrapper className={className}>
-      <TwitterTweetEmbed
-        tweetId={id}
-        options={{
-          dnt: true,
-          align: "center",
-          theme: widgetTheme,
-          ...options,
+    <Wrapper ref={containerRef} className={className}>
+      <Tweet
+        key={`tweet-${id}`}
+        id={id}
+        apiUrl={`/api/tweet/?id=${id}`} // edge function at pages/api/tweet.ts
+        components={{
+          // https://react-tweet.vercel.app/twitter-theme/api-reference#custom-tweet-components
+          // eslint-disable-next-line jsx-a11y/alt-text
+          AvatarImg: (props) => <Image {...props} />,
+          // eslint-disable-next-line jsx-a11y/alt-text
+          MediaImg: (props) => <Image {...props} fill />,
         }}
-        // changing this key forces the iframe URL to reformulate itself and update the theme:
-        key={`tweet-${id}-${widgetTheme}`}
+        {...rest}
       />
     </Wrapper>
   );

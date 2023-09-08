@@ -2,7 +2,7 @@ import Giscus from "@giscus/react";
 import useTheme from "../../hooks/useTheme";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import { giscusConfig } from "../../lib/config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import type { GiscusProps } from "@giscus/react";
 
 const Wrapper = styled("div", {
@@ -12,7 +12,7 @@ const Wrapper = styled("div", {
   minHeight: "360px",
 });
 
-export type CommentsProps = ComponentProps<typeof Wrapper> & {
+export type CommentsProps = ComponentPropsWithoutRef<typeof Wrapper> & {
   title: string;
 };
 

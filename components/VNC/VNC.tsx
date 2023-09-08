@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";
 import Terminal from "../Terminal";
 import { styled } from "../../lib/styles/stitches.config";
-import type { Ref, ComponentPropsWithoutRef } from "react";
+import type { Ref, ComponentPropsWithoutRef, ElementRef } from "react";
 
 const Display = styled(
   "div",
@@ -50,7 +50,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
   const rfbRef = useRef<RFB | null>(null);
-  const screenRef = useRef<HTMLDivElement>(null);
+  const displayRef = useRef<ElementRef<typeof Display>>(null);
 
   // ends the session forcefully
   const disconnect = useCallback(() => {
@@ -121,7 +121,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
     setLoaded(true);
 
     // https://github.com/novnc/noVNC/blob/master/docs/API.md
-    rfbRef.current = new RFB(screenRef.current as Element, server, {
+    rfbRef.current = new RFB(displayRef.current as Element, server, {
       wsProtocols: ["binary", "base64"],
     });
 
@@ -164,7 +164,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
 
       {/* the VNC canvas is hidden until we've successfully connected to the socket */}
       <Display
-        ref={screenRef}
+        ref={displayRef}
         style={{
           display: !connected ? "none" : undefined,
           ...style,

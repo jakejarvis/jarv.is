@@ -1,5 +1,5 @@
 import { keyframes, styled } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const BlackBox = styled("div", {
   width: "100%",
@@ -31,7 +31,7 @@ const Underscore = styled("span", {
   animation: `${keyframes({ "40%": { opacity: 0 } })} 1s step-end infinite`,
 });
 
-export type TerminalProps = ComponentProps<typeof BlackBox>;
+export type TerminalProps = ComponentPropsWithoutRef<typeof BlackBox>;
 
 // a DOS-style terminal box with dynamic text
 const Terminal = ({ children: message, ...rest }: TerminalProps) => {

@@ -2,7 +2,7 @@ import Link from "../Link";
 import { HeartIcon, NextjsLogo } from "../Icons";
 import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Wrapper = styled("footer", {
   width: "100%",
@@ -78,7 +78,7 @@ const Heart = styled("span", {
   },
 });
 
-export type FooterProps = ComponentProps<typeof Wrapper>;
+export type FooterProps = ComponentPropsWithoutRef<typeof Wrapper>;
 
 const Footer = ({ ...rest }: FooterProps) => {
   return (

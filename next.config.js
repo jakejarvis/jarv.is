@@ -11,7 +11,10 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   productionBrowserSourceMaps: true,
-  transpilePackages: ["@novnc/novnc"],
+  transpilePackages: [
+    "@novnc/novnc",
+    "react-tweet", // https://react-tweet.vercel.app/next#troubleshooting
+  ],
   env: {
     BASE_URL:
       // start with production check on Vercel, then see if this is a deploy preview, then fallback to local dev server.
@@ -27,6 +30,10 @@ const nextConfig = {
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      { protocol: "https", hostname: "pbs.twimg.com" },
+      { protocol: "https", hostname: "abs.twimg.com" },
+    ],
   },
   experimental: {
     legacyBrowsers: false,

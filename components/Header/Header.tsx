@@ -1,7 +1,7 @@
 import Selfie from "../Selfie";
 import Menu from "../Menu";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Wrapper = styled("header", {
   width: "100%",
@@ -40,7 +40,7 @@ const ResponsiveMenu = styled(Menu, {
   },
 });
 
-export type HeaderProps = ComponentProps<typeof Wrapper>;
+export type HeaderProps = ComponentPropsWithoutRef<typeof Wrapper>;
 
 const Header = ({ ...rest }: HeaderProps) => {
   return (

@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import Terminal from "../components/Terminal";
 import { styled } from "../lib/styles/stitches.config";
-import type { ReactElement, ComponentProps } from "react";
+import type { ReactElement, ComponentPropsWithoutRef, ElementRef } from "react";
 
 // obviously, an interactive VNC display will not work even a little bit server-side
 const VNC = dynamic(() => import("../components/VNC"), { ssr: false });
@@ -25,8 +25,8 @@ const Wallpaper = styled("main", {
   backgroundPosition: "center",
 });
 
-const RandomWallpaper = ({ ...rest }: ComponentProps<typeof Wallpaper>) => {
-  const wallpaperRef = useRef<HTMLDivElement>(null);
+const RandomWallpaper = ({ ...rest }: ComponentPropsWithoutRef<typeof Wallpaper>) => {
+  const wallpaperRef = useRef<ElementRef<typeof Wallpaper>>(null);
 
   // set a random retro Windows ME desktop tile for the entire content area
   useEffect(() => {

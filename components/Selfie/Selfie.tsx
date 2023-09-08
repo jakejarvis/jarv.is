@@ -2,7 +2,7 @@ import Link from "../Link";
 import Image from "../Image";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import { authorName } from "../../lib/config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import selfieJpg from "../../public/static/images/selfie.jpg";
 
@@ -47,7 +47,7 @@ const Name = styled("span", {
   },
 });
 
-export type SelfieProps = Omit<ComponentProps<typeof Link>, "href">;
+export type SelfieProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href">;
 
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (

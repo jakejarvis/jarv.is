@@ -1,7 +1,7 @@
 import Code from "../Code";
 import CopyButton from "../CopyButton";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Block = styled("div", {
   position: "relative",
@@ -87,7 +87,7 @@ const CornerCopyButton = styled(CopyButton, {
   transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
 });
 
-export type CodeBlockProps = ComponentProps<typeof Code> & {
+export type CodeBlockProps = ComponentPropsWithoutRef<typeof Code> & {
   highlight?: boolean;
   withCopyButton?: boolean;
 };

@@ -1,7 +1,7 @@
 import Link from "../Link";
 import { LinkIcon } from "../Icons";
 import { styled } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const AnchorLink = styled(Link, {
   lineHeight: 1,
@@ -12,7 +12,7 @@ const Icon = styled(LinkIcon, {
   height: "0.8em",
 });
 
-export type HeadingAnchorProps = Omit<ComponentProps<typeof AnchorLink>, "href"> & {
+export type HeadingAnchorProps = Omit<ComponentPropsWithoutRef<typeof AnchorLink>, "href"> & {
   id: string;
   title: string;
 };

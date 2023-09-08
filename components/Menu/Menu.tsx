@@ -3,7 +3,7 @@ import MenuItem from "../MenuItem";
 import ThemeToggle from "../ThemeToggle";
 import { styled } from "../../lib/styles/stitches.config";
 import { menuItems } from "../../lib/config/menu";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Wrapper = styled("ul", {
   display: "inline-flex",
@@ -38,7 +38,7 @@ const Item = styled("li", {
   },
 });
 
-export type MenuProps = ComponentProps<typeof Wrapper>;
+export type MenuProps = ComponentPropsWithoutRef<typeof Wrapper>;
 
 const Menu = ({ ...rest }: MenuProps) => {
   const router = useRouter();

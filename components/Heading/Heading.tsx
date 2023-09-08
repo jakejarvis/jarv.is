@@ -1,7 +1,7 @@
 import innerText from "react-innertext";
 import HeadingAnchor from "../HeadingAnchor";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Anchor = styled(HeadingAnchor, {
   margin: "0 0.4em",
@@ -52,7 +52,7 @@ const H = styled("h1", {
   },
 });
 
-export type HeadingProps = ComponentProps<typeof H> & {
+export type HeadingProps = ComponentPropsWithoutRef<typeof H> & {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   divider?: boolean;
 };

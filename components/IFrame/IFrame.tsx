@@ -1,5 +1,5 @@
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const RoundedIFrame = styled("iframe", {
   width: "100%",
@@ -9,7 +9,7 @@ const RoundedIFrame = styled("iframe", {
   borderRadius: theme.radii.corner,
 });
 
-export type IFrameProps = ComponentProps<typeof RoundedIFrame> & {
+export type IFrameProps = ComponentPropsWithoutRef<typeof RoundedIFrame> & {
   src: string;
   height: number;
   width?: number; // defaults to 100%

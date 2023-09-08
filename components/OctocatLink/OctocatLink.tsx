@@ -1,7 +1,7 @@
 import Link from "../Link";
 import { OctocatOcticon } from "../Icons";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const GitHubLink = styled(Link, {
   margin: "0 0.4em",
@@ -19,7 +19,7 @@ const Octocat = styled(OctocatOcticon, {
   fill: "currentColor",
 });
 
-export type OctocatLinkProps = Omit<ComponentProps<typeof GitHubLink>, "href"> & {
+export type OctocatLinkProps = Omit<ComponentPropsWithoutRef<typeof GitHubLink>, "href"> & {
   repo: string;
 };
 

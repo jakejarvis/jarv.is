@@ -1,7 +1,7 @@
 import NextImage from "next/image";
 import Link from "../Link";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
 const DEFAULT_QUALITY = 60;
@@ -22,7 +22,7 @@ const StyledImage = styled(NextImage, {
   borderRadius: theme.radii.corner,
 });
 
-export type ImageProps = ComponentProps<typeof StyledImage> & {
+export type ImageProps = ComponentPropsWithoutRef<typeof StyledImage> & {
   href?: string; // optionally wrap image in a link
   inline?: boolean; // don't wrap everything in a `<div>` block
 };

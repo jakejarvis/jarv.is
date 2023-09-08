@@ -1,5 +1,5 @@
 import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Wrapper = styled("div", {
   display: "inline-block",
@@ -20,7 +20,7 @@ const Box = styled("div", {
   backgroundColor: theme.colors.mediumLight,
 });
 
-export type LoadingProps = ComponentProps<typeof Wrapper> & {
+export type LoadingProps = ComponentPropsWithoutRef<typeof Wrapper> & {
   width: number; // of entire container, in pixels
   boxes?: number; // total number of boxes (default: 3)
   timing?: number; // staggered timing between each box's pulse, in seconds (default: 0.1s)

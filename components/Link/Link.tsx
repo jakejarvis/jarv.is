@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import objStr from "obj-str";
 import { styled, theme, stitchesConfig } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const StyledLink = styled(NextLink, {
   color: theme.colors.link,
@@ -34,7 +34,7 @@ const StyledLink = styled(NextLink, {
   },
 });
 
-export type LinkProps = ComponentProps<typeof StyledLink> & {
+export type LinkProps = ComponentPropsWithoutRef<typeof StyledLink> & {
   openInNewTab?: boolean;
 };
 

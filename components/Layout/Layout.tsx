@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../SkipToContent";
 import useTheme from "../../hooks/useTheme";
 import { styled, theme, darkTheme } from "../../lib/styles/stitches.config";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const Flex = styled("div", {
   display: "flex",
@@ -34,7 +34,7 @@ const FlexedFooter = styled(Footer, {
   flex: 1,
 });
 
-export type LayoutProps = ComponentProps<typeof Flex> & {
+export type LayoutProps = ComponentPropsWithoutRef<typeof Flex> & {
   container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
 };
 
