@@ -150,8 +150,8 @@ dependencies:
     specifier: ^0.5.0
     version: 0.5.0
   simple-icons:
-    specifier: ^9.13.0
-    version: 9.13.0
+    specifier: ^9.14.0
+    version: 9.14.0
   sitemap:
     specifier: ^7.1.1
     version: 7.1.1
@@ -6691,8 +6691,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /simple-icons@9.13.0:
-    resolution: {integrity: sha512-XpfRX8sX4kfizDW0SeD8ndy3twYndovdAmcIsJmJmwyLSOEP88emOVPBVj9zwb9apxRBqn+rHu4vMSPbbk8u5A==}
+  /simple-icons@9.14.0:
+    resolution: {integrity: sha512-8nBO/v1y2p4uQX0lpqrBqBAhbx0GlLVYUb904vrsLxLylYkFQMrlPjTYSFI7d9TaY5kUpoDlqC+/9ojyKDZI9g==}
     engines: {node: '>=0.12.18'}
     dev: false
 
