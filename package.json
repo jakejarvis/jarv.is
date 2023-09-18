@@ -94,7 +94,7 @@
     "eslint-plugin-prettier": "~4.2.1",
     "lint-staged": "^14.0.1",
     "prettier": "^2.8.8",
-    "prisma": "^5.2.0",
+    "prisma": "^5.3.1",
     "simple-git-hooks": "^2.9.0",
     "typescript": "^5.2.2",
     "uglify-js": "^3.17.4"
