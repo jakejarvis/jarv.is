@@ -21,8 +21,8 @@ dependencies:
     specifier: ^14.27.3
     version: 14.27.3
   '@primer/octicons':
-    specifier: ^19.7.0
-    version: 19.7.0
+    specifier: ^19.8.0
+    version: 19.8.0
   '@prisma/client':
     specifier: ^5.2.0
     version: 5.2.0(prisma@5.2.0)
@@ -1900,8 +1900,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@primer/octicons@19.7.0:
-    resolution: {integrity: sha512-24lel5MYOTXXdm2VPKAT2JIAJU7rnirVfa/1HGBjTvLdUpk789Lz/QA4o7klYhVdjIJW0rw5nOmU+bWSmfuNwg==}
+  /@primer/octicons@19.8.0:
+    resolution: {integrity: sha512-Imze/fyW41Io5fN+27T5EAeXJrgBjMbz6nzU+wYbRylXvIAjLPUvaJPVoStiFlgSU+TjTUJqg5A9rgMDzTyMCg==}
     dependencies:
       object-assign: 4.1.1
     dev: false
