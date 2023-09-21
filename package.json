@@ -37,7 +37,7 @@
     "feed": "^4.2.2",
     "formik": "^2.4.4",
     "gray-matter": "^4.0.3",
-    "next": "13.4.19",
+    "next": "13.5.2",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.1.0",
     "obj-str": "^1.1.0",
