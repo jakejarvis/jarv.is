@@ -18,8 +18,8 @@ dependencies:
     specifier: ^7.0.1
     version: 7.0.1
   '@octokit/graphql-schema':
-    specifier: ^14.27.3
-    version: 14.27.3
+    specifier: ^14.31.1
+    version: 14.31.1
   '@primer/octicons':
     specifier: ^19.7.0
     version: 19.7.0
@@ -1835,8 +1835,8 @@ packages:
       universal-user-agent: 6.0.0
     dev: false
 
-  /@octokit/graphql-schema@14.27.3:
-    resolution: {integrity: sha512-EkRpOOMUHPsiH7UBKDCUUU75ywTAx8nnkJ+kcB4AWTAKBIwmS/VfPMlmLukz6g9cZdk0UznLXQyD4M09qB/XbQ==}
+  /@octokit/graphql-schema@14.31.1:
+    resolution: {integrity: sha512-ZeXhIDmG4115K4VKXXiz+xNQag6ZlGSAmgpNyy+8GOkf/EBsHMyCZGWfN2z2Tn+ttZlp4aPht3E7OHRw6QTEFQ==}
     dependencies:
       graphql: 16.8.0
       graphql-tag: 2.12.6(graphql@16.8.0)
