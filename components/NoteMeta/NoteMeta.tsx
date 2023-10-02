@@ -2,7 +2,7 @@ import Link from "../Link";
 import Time from "../Time";
 import HitCounter from "../HitCounter";
 import NoteTitle from "../NoteTitle";
-import { DateIcon, TagIcon, EditIcon, ViewsIcon } from "../Icons";
+import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { NoteFrontMatter } from "../../types";
@@ -68,14 +68,14 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags }: NoteMetaProps) => {
             }}
             underline={false}
           >
-            <Icon as={DateIcon} />
+            <Icon as={FiCalendar} />
             <Time date={date} format="MMMM D, YYYY" />
           </MetaLink>
         </MetaItem>
 
         {tags && (
           <MetaItem>
-            <Icon as={TagIcon} />
+            <Icon as={FiTag} />
             <TagsList>
               {tags.map((tag) => (
                 <Tag key={tag} title={tag} aria-label={`Tagged with ${tag}`}>
@@ -92,7 +92,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags }: NoteMetaProps) => {
             title={`Edit "${title}" on GitHub`}
             underline={false}
           >
-            <Icon as={EditIcon} />
+            <Icon as={FiEdit} />
             <span>Improve This Post</span>
           </MetaLink>
         </MetaItem>
@@ -106,7 +106,7 @@ const NoteMeta = ({ slug, date, title, htmlTitle, tags }: NoteMetaProps) => {
               marginRight: 0,
             }}
           >
-            <Icon as={ViewsIcon} />
+            <Icon as={FiEye} />
             <HitCounter slug={`notes/${slug}`} />
           </MetaItem>
         )}

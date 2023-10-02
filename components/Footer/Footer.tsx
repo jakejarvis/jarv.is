@@ -1,5 +1,6 @@
 import Link from "../Link";
-import { HeartIcon, NextjsLogo } from "../Icons";
+import { GoHeartFill } from "react-icons/go";
+import { SiNextdotjs } from "react-icons/si";
 import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
 import * as config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
@@ -37,27 +38,11 @@ const PlainLink = styled(Link, {
   color: theme.colors.mediumDark,
 });
 
-const NextjsLink = styled(PlainLink, {
-  "&:hover, &:focus-visible": {
-    color: theme.colors.medium,
-  },
-});
-
-const ViewSourceLink = styled(PlainLink, {
-  paddingBottom: "2px",
-  borderBottom: `1px solid ${theme.colors.light}`,
-
-  "&:hover, &:focus-visible": {
-    borderColor: theme.colors.kindaLight,
-  },
-});
-
 const Icon = styled("svg", {
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.25em",
   margin: "0 0.075em",
-  fill: "currentColor",
 });
 
 const Heart = styled("span", {
@@ -99,20 +84,38 @@ const Footer = ({ ...rest }: FooterProps) => {
         <div>
           Made with{" "}
           <Heart title="Love">
-            <Icon as={HeartIcon} />
+            <Icon as={GoHeartFill} css={{ strokeWidth: 2 }} />
           </Heart>{" "}
           and{" "}
-          <NextjsLink href="https://nextjs.org/" title="Powered by Next.js" aria-label="Next.js" underline={false}>
-            <Icon as={NextjsLogo} />
-          </NextjsLink>
+          <PlainLink
+            href="https://nextjs.org/"
+            title="Powered by Next.js"
+            aria-label="Next.js"
+            underline={false}
+            css={{
+              "&:hover, &:focus-visible": {
+                color: theme.colors.medium,
+              },
+            }}
+          >
+            <Icon as={SiNextdotjs} />
+          </PlainLink>
           .{" "}
-          <ViewSourceLink
+          <PlainLink
             href={`https://github.com/${config.githubRepo}`}
             title="View Source on GitHub"
             underline={false}
+            css={{
+              paddingBottom: "2px",
+              borderBottom: `1px solid ${theme.colors.light}`,
+
+              "&:hover, &:focus-visible": {
+                borderColor: theme.colors.kindaLight,
+              },
+            }}
           >
             View source.
-          </ViewSourceLink>
+          </PlainLink>
         </div>
       </Row>
     </Wrapper>

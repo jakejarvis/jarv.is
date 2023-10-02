@@ -1,7 +1,7 @@
 import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
-import { ClipboardOcticon, CheckOcticon } from "../Icons";
+import { FiClipboard, FiCheck } from "react-icons/fi";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref, ComponentPropsWithoutRef, ElementRef, MouseEventHandler } from "react";
 
@@ -29,7 +29,6 @@ const Icon = styled("svg", {
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.3em",
-  fill: "currentColor",
 });
 
 export type CopyButtonProps = ComponentPropsWithoutRef<typeof Button> & {
@@ -77,7 +76,7 @@ const CopyButton = ({ source, timeout = 2000, ...rest }: CopyButtonProps, ref: R
       copied={copied}
       {...rest}
     >
-      <Icon as={copied ? CheckOcticon : ClipboardOcticon} />
+      <Icon as={copied ? FiCheck : FiClipboard} />
     </Button>
   );
 };

@@ -18,23 +18,20 @@ const Title = styled("h1", {
   },
 });
 
-const TitleLink = styled(Link, {
-  color: theme.colors.text,
-});
-
 export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle"> &
   ComponentPropsWithoutRef<typeof Title>;
 
 const NoteTitle = ({ slug, title, htmlTitle, ...rest }: NoteTitleProps) => {
   return (
     <Title {...rest}>
-      <TitleLink
+      <Link
         href={{
           pathname: "/notes/[slug]/",
           query: { slug },
         }}
         dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
         underline={false}
+        css={{ color: theme.colors.text }}
       />
     </Title>
   );

@@ -1,12 +1,14 @@
-import Link, { LinkProps } from "../components/Link";
+import Link from "../components/Link";
+import { GoLock } from "react-icons/go";
 import { styled, theme, darkTheme, keyframes, stitchesConfig } from "../lib/styles/stitches.config";
+import type { ComponentPropsWithoutRef } from "react";
 
 const ColorfulLink = ({
   lightColor,
   darkColor,
   css,
   ...rest
-}: LinkProps & {
+}: ComponentPropsWithoutRef<typeof Link> & {
   lightColor: string;
   darkColor: string;
 }) => {
@@ -333,7 +335,8 @@ const Index = () => {
             underline={false}
             openInNewTab
           >
-            🔐 <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
+            <GoLock size="1.25em" style={{ verticalAlign: "-0.25em", strokeWidth: 0.5 }} />{" "}
+            <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
           </ColorfulLink>
         </Sup>
         ,{" "}

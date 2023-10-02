@@ -5,11 +5,6 @@ import Link from "../components/Link";
 import ContactForm from "../components/ContactForm";
 import { styled } from "../lib/styles/stitches.config";
 
-const Wrapper = styled(Content, {
-  maxWidth: "600px",
-  margin: "0 auto",
-});
-
 const PGPKey = styled("code", {
   fontSize: "0.925em",
   wordSpacing: "-0.25em",
@@ -27,7 +22,12 @@ const Contact = () => {
 
       <PageTitle>📬 Contact Me</PageTitle>
 
-      <Wrapper>
+      <Content
+        css={{
+          maxWidth: "600px",
+          margin: "0 auto",
+        }}
+      >
         <p>
           Fill out this quick form and I'll get back to you as soon as I can! You can also{" "}
           <Link href="mailto:jake@jarv.is">email me directly</Link>, send me a{" "}
@@ -43,7 +43,7 @@ const Contact = () => {
         </p>
 
         <ContactForm />
-      </Wrapper>
+      </Content>
     </>
   );
 };

@@ -15,10 +15,6 @@ const Title = styled("h1", {
   },
 });
 
-const TitleLink = styled(Link, {
-  color: theme.colors.text,
-});
-
 export type PageTitleProps = ComponentPropsWithoutRef<typeof Title>;
 
 const PageTitle = ({ children, ...rest }: PageTitleProps) => {
@@ -26,9 +22,9 @@ const PageTitle = ({ children, ...rest }: PageTitleProps) => {
 
   return (
     <Title {...rest}>
-      <TitleLink href={router.pathname} underline={false}>
+      <Link href={router.pathname} underline={false} css={{ color: theme.colors.text }}>
         {children}
-      </TitleLink>
+      </Link>
     </Title>
   );
 };

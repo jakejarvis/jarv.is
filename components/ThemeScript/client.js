@@ -17,7 +17,7 @@ export const clientScript = () => {
     const newTheme = (pref && pref === "dark") ?? window.matchMedia("__MEDIA_QUERY__").matches ? 1 : 0;
 
     // remove both `classNames` to start fresh...
-    classList.remove(classNames[0], classNames[1]);
+    classList.remove(...classNames);
 
     // ...and then FINALLY set the root class
     classList.add(classNames[newTheme]);

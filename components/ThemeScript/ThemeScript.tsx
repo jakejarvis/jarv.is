@@ -17,9 +17,9 @@ const ThemeScript = memo<ThemeScriptProps>(({ themeClassNames, themeStorageKey }
     // since the client function will end up being injected as a static hard-coded string, we need to determine all of
     // the dynamic values within it *before* generating the final script.
     const source = String(clientScript)
-      .replace("__MEDIA_QUERY__", "(prefers-color-scheme: dark)")
-      .replace("__STORAGE_KEY__", themeStorageKey)
-      .replace("__CLASS_NAMES__", Object.values(themeClassNames).join('","'));
+      .replaceAll("__MEDIA_QUERY__", "(prefers-color-scheme: dark)")
+      .replaceAll("__STORAGE_KEY__", themeStorageKey)
+      .replaceAll("__CLASS_NAMES__", Object.values(themeClassNames).join('","'));
 
     // turn the raw function into an iife
     const unminified = `(${source})()`;

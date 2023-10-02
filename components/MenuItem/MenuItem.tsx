@@ -1,5 +1,6 @@
 import Link from "../Link";
 import { styled, theme } from "../../lib/styles/stitches.config";
+import type { IconType } from "react-icons";
 
 const MenuLink = styled(Link, {
   display: "inline-block",
@@ -45,20 +46,17 @@ const Label = styled("span", {
 });
 
 export type MenuItemProps = {
-  href?: string;
+  icon?: IconType;
   text?: string;
+  href?: string;
   current?: boolean;
   className?: string;
-
-  // `any` avoids conflicts with @svgr/webpack, see: node_modules/next/image-types/global.d.ts
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: any;
 };
 
-const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemProps) => {
-  const linkContent = (
+const MenuItem = ({ icon, text, href, current, className }: MenuItemProps) => {
+  const item = (
     <>
-      <Icon as={ItemIcon} />
+      {icon && <Icon as={icon} />}
       {text && <Label>{text}</Label>}
     </>
   );
@@ -67,12 +65,12 @@ const MenuItem = ({ icon: ItemIcon, href, text, current, className }: MenuItemPr
   if (href) {
     return (
       <MenuLink href={href} className={className} current={current} title={text} underline={false} aria-label={text}>
-        {linkContent}
+        {item}
       </MenuLink>
     );
   }
 
-  return linkContent;
+  return item;
 };
 
 export default MenuItem;

@@ -3,7 +3,8 @@ import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
 import Link from "../Link";
 import Captcha from "../Captcha";
-import { CheckOcticon, XOcticon, MarkdownIcon } from "../Icons";
+import { GoCheck, GoX } from "react-icons/go";
+import { SiMarkdown } from "react-icons/si";
 import { styled, theme, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers, FormikProps, FieldInputProps, FieldMetaProps } from "formik";
 
@@ -47,8 +48,7 @@ const MarkdownTip = styled("div", {
   lineHeight: 1.75,
 });
 
-const MarkdownTipIcon = styled(MarkdownIcon, {
-  fill: "currentColor",
+const MarkdownTipIcon = styled(SiMarkdown, {
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.25em",
@@ -288,7 +288,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             </SubmitButton>
 
             <Result status={success ? "success" : "error"} hidden={!submitted || !feedback || isSubmitting}>
-              <ResultIcon as={success ? CheckOcticon : XOcticon} /> {feedback}
+              <ResultIcon as={success ? GoCheck : GoX} /> {feedback}
             </Result>
           </ActionRow>
         </Form>

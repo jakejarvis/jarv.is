@@ -1,7 +1,7 @@
 import commaNumber from "comma-number";
 import Link from "../Link";
 import RelativeTime from "../RelativeTime";
-import { StarOcticon, ForkOcticon } from "../Icons";
+import { GoStar, GoRepoForked } from "react-icons/go";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { Project } from "../../types";
 
@@ -50,9 +50,9 @@ const MetaLink = styled(Link, {
 const MetaIcon = styled("svg", {
   width: "16px",
   height: "16px",
-  verticalAlign: "text-bottom",
+  verticalAlign: "-0.3em",
   marginRight: "0.5em",
-  fill: "currentColor",
+  strokeWidth: 0.75,
 });
 
 const LanguageCircle = styled("span", {
@@ -100,7 +100,7 @@ const RepositoryCard = ({
               title={`${commaNumber(stars)} ${stars === 1 ? "star" : "stars"}`}
               underline={false}
             >
-              <MetaIcon as={StarOcticon} />
+              <MetaIcon as={GoStar} />
               {commaNumber(stars)}
             </MetaLink>
           </MetaItem>
@@ -113,7 +113,7 @@ const RepositoryCard = ({
               title={`${commaNumber(forks)} ${forks === 1 ? "fork" : "forks"}`}
               underline={false}
             >
-              <MetaIcon as={ForkOcticon} />
+              <MetaIcon as={GoRepoForked} />
               {commaNumber(forks)}
             </MetaLink>
           </MetaItem>

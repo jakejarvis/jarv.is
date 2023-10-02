@@ -7,7 +7,7 @@ import Figure from "../components/Figure";
 import IFrame from "../components/IFrame";
 import CodeInline from "../components/CodeInline";
 import HorizontalRule from "../components/HorizontalRule";
-import { Windows95Logo } from "../components/Icons";
+import { SiWindows95 } from "react-icons/si";
 import { styled, theme } from "../lib/styles/stitches.config";
 import { ComicNeue } from "../lib/styles/fonts";
 import type { ReactElement } from "react";
@@ -41,11 +41,11 @@ const Divider = styled(HorizontalRule, {
   margin: "1em auto",
 });
 
-const Icon = styled("svg", {
+const WindowsLogo = styled(SiWindows95, {
   width: "1.2em",
   height: "1.2em",
   verticalAlign: "-0.15em",
-  marginRight: "0.15em",
+  marginRight: "0.1em",
   fill: "currentColor",
 });
 
@@ -95,7 +95,7 @@ const Previously = () => {
             fontSize: "0.95em",
           }}
         >
-          <Icon as={Windows95Logo} /> Click here for the <em>full</em> experience anyway.
+          <WindowsLogo /> Click here for the <em>full</em> experience anyway.
         </Link>
 
         <ScreenShot as="figure">

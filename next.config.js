@@ -1,6 +1,5 @@
 // @ts-check
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
 const config = require("./lib/config");
 
 /**
@@ -36,37 +35,8 @@ const nextConfig = {
     ],
   },
   experimental: {
-    legacyBrowsers: false,
-    newNextLinkBehavior: true, // https://github.com/vercel/next.js/pull/36436
+    largePageDataBytes: 512 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX will exceed the default.
     optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
-    largePageDataBytes: 128 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX might exceed this.
-  },
-  webpack: (config) => {
-    // allow processing SVGs from the below packages directly instead of through their different exports, and leave
-    // other static imports of SVGs alone.
-    // see: ./components/Icons/index.ts
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: { and: [/\.(js|ts)x?$/] },
-      use: [
-        {
-          loader: "@svgr/webpack",
-          options: {
-            icon: true,
-            typescript: true,
-            svgProps: {
-              "aria-hidden": true,
-            },
-          },
-        },
-      ],
-      include: ["@primer/octicons", "feather-icons", "simple-icons"].map(
-        // pnpm uses symlinks extensively, so path.resolve(__dirname, "node_modules/...") won't cut it here.
-        (pkg) => path.dirname(require.resolve(pkg)) // => node_modules/.pnpm/feather-icons@4.29.0/node_modules/feather-icons/dist
-      ),
-    });
-
-    return config;
   },
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files

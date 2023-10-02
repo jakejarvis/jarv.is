@@ -1,24 +1,24 @@
-import { HomeIcon, NotesIcon, ProjectsIcon, ContactIcon } from "../../components/Icons";
+import { FiHome, FiEdit3, FiCode, FiMail } from "react-icons/fi";
 import type { MenuItemProps } from "../../components/MenuItem";
 
 export const menuItems: MenuItemProps[] = [
   {
-    icon: HomeIcon,
+    icon: FiHome,
     text: "Home",
     href: "/",
   },
   {
-    icon: NotesIcon,
+    icon: FiEdit3,
     text: "Notes",
     href: "/notes",
   },
   {
-    icon: ProjectsIcon,
+    icon: FiCode,
     text: "Projects",
     href: "/projects",
   },
   {
-    icon: ContactIcon,
+    icon: FiMail,
     text: "Contact",
     href: "/contact",
   },
