@@ -68,7 +68,7 @@
     "sitemap": "^7.1.1",
     "stitches-normalize": "^2.0.0",
     "swr": "^2.2.4",
-    "unified": "^10.1.2"
+    "unified": "^11.0.3"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "^3.1.0",
