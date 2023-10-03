@@ -2,7 +2,7 @@ import { memo } from "react";
 import { minify } from "uglify-js";
 import type { MinifyOutput } from "uglify-js";
 
-import { clientScript } from "./client.js";
+import { restoreTheme as clientFn } from "./client.js";
 
 export type ThemeScriptProps = {
   themeClassNames: {
@@ -16,7 +16,7 @@ const ThemeScript = memo<ThemeScriptProps>(({ themeClassNames, themeStorageKey }
   const minified = (() => {
     // since the client function will end up being injected as a static hard-coded string, we need to determine all of
     // the dynamic values within it *before* generating the final script.
-    const source = String(clientScript)
+    const source = String(clientFn)
       .replaceAll("__MEDIA_QUERY__", "(prefers-color-scheme: dark)")
       .replaceAll("__STORAGE_KEY__", themeStorageKey)
       .replaceAll("__CLASS_NAMES__", Object.values(themeClassNames).join('","'));

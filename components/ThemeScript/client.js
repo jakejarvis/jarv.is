@@ -2,15 +2,16 @@
 
 // this function is converted to a string verbatim, substitutions are made to insert dynamic values, minified, and then
 // finally exported as an inline `<script>` tag in ThemeScript.tsx for _document.tsx to use.
-export const clientScript = () => {
+export const restoreTheme = () => {
   // `try/catch` in case I messed something up here bigly... (will default to light theme)
   try {
-    // the list of <html>'s current class(es)...
-    const { classList } = document.documentElement;
     // map of themes -> classnames ([0]=light, [1]=dark)
     const classNames = ["__CLASS_NAMES__"];
+    // the list of <html>'s current class(es)...
+    // eslint-disable-next-line prefer-destructuring
+    const classList = document.documentElement.classList;
     // user's saved preference
-    const pref = window.localStorage.getItem("__STORAGE_KEY__");
+    const pref = typeof Storage !== "undefined" ? window.localStorage.getItem("__STORAGE_KEY__") : null;
 
     // restore the local storage preference if it's set, otherwise test CSS media query for browser dark mode preference
     // https://stackoverflow.com/a/57795495/1438024
