@@ -15,6 +15,9 @@ export default async () => {
         hits: "desc",
       },
     ],
+    // cache db results for 5 minutes. prisma accelerate only:
+    // https://www.prisma.io/docs/data-platform/accelerate/concepts#cache-strategies
+    cacheStrategy: { swr: 300, ttl: 60 },
   });
 
   const total = { hits: 0 };

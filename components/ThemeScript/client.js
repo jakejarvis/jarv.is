@@ -5,11 +5,13 @@
 export const restoreTheme = () => {
   // `try/catch` in case I messed something up here bigly... (will default to light theme)
   try {
-    // map of themes -> classnames ([0]=light, [1]=dark)
-    const classNames = ["__CLASS_NAMES__"];
+    // help minifier minify
+    const htmlRoot = document.documentElement;
     // the list of <html>'s current class(es)...
     // eslint-disable-next-line prefer-destructuring
-    const classList = document.documentElement.classList;
+    const classList = htmlRoot.classList;
+    // map of themes -> classnames ([0]=light, [1]=dark)
+    const classNames = ["__CLASS_NAMES__"];
     // user's saved preference
     const pref = typeof Storage !== "undefined" ? window.localStorage.getItem("__STORAGE_KEY__") : null;
 
@@ -21,6 +23,9 @@ export const restoreTheme = () => {
     classList.remove(...classNames);
 
     // ...and then FINALLY set the root class
-    classList.add(classNames[newTheme]);
+    classList.add(classNames[newTheme] || "");
+
+    // set "color-scheme" inline css property
+    htmlRoot.style.colorScheme = newTheme === 1 ? "dark" : "light";
   } catch (error) {} // eslint-disable-line no-empty
 };
