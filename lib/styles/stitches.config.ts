@@ -139,14 +139,29 @@ export const globalStyles = globalCss(
     systemFonts: false,
   }),
   {
-    body: {
+    html: {
       fontFamily: theme.fonts.sans,
+    },
+
+    body: {
       backgroundColor: theme.colors.backgroundInner,
       transition: `background ${theme.transitions.fade}`,
     },
 
     "code, kbd, samp, pre": {
       fontFamily: theme.fonts.mono,
+    },
+
+    "em, i": {
+      // workaround for lack of italicized Inter on Google Fonts, see: https://github.com/google/fonts/issues/2386#issuecomment-691503098
+      fontStyle: "oblique 10deg",
+      fontVariationSettings: "'slnt' -10",
+
+      "& :where(code, kbd, samp, pre)": {
+        // unset workaround for well-behaving fonts
+        fontStyle: "italic",
+        fontVariationSettings: "initial",
+      },
     },
   }
 );
