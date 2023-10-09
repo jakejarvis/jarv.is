@@ -1,6 +1,7 @@
 import ReactPlayer from "react-player/file";
 import useHasMounted from "../../hooks/useHasMounted";
 import { styled, theme } from "../../lib/styles/stitches.config";
+import type { SourceProps } from "react-player/base";
 import type { FilePlayerProps } from "react-player/file";
 
 const Player = styled(ReactPlayer, {
@@ -52,13 +53,13 @@ const Video = ({ src, title, autoplay = false, responsive = true, className, ...
   // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
   const hasMounted = useHasMounted();
 
-  const playerProps: FilePlayerProps = {
+  const playerProps: Required<Pick<FilePlayerProps, "config">> & { url: SourceProps[] } = {
     url: [],
     config: {
       attributes: {
         controlsList: "nodownload",
         preload: "metadata",
-        poster: src?.image, // thumbnail
+        poster: src.image, // thumbnail
         title: title,
         autoPlay: autoplay,
         loop: autoplay,
@@ -69,22 +70,24 @@ const Video = ({ src, title, autoplay = false, responsive = true, className, ...
     },
   };
 
-  if (src?.webm) {
-    // @ts-ignore
-    playerProps.url?.push({
+  if (!src || (!src.mp4 && !src.webm)) {
+    throw new Error("'src' prop must include either 'mp4' or 'webm' URL.");
+  }
+
+  if (src.webm) {
+    playerProps.url.push({
       src: src.webm,
       type: "video/webm",
     });
   }
-  if (src?.mp4) {
-    // @ts-ignore
-    playerProps.url?.push({
+  if (src.mp4) {
+    playerProps.url.push({
       src: src.mp4,
       type: "video/mp4",
     });
   }
-  if (src?.vtt) {
-    playerProps.config?.tracks?.push({
+  if (src.vtt) {
+    playerProps.config.tracks?.push({
       kind: "subtitles",
       src: src.vtt,
       srcLang: "en",
