@@ -132,7 +132,6 @@ export const darkTheme = createTheme({
   },
 });
 
-// @ts-ignore
 export const globalStyles = globalCss(
   // @ts-ignore
   ...normalizeCss({

@@ -1,33 +1,16 @@
-import { NextResponse } from "next/server";
 import { prisma } from "../../lib/helpers/prisma";
-import type { NextRequest } from "next/server";
+import type { NextApiHandler } from "next";
 import type { PageStats } from "../../types";
 
-export const config = {
-  runtime: "edge",
-  regions: ["iad1"], // the vercel postgres database lives in DC
-};
+const handler: NextApiHandler<PageStats> = async (req, res) => {
+  const { slug } = req.query;
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req: NextRequest) => {
-  const slug = req.nextUrl.searchParams.get("slug");
-
-  if (!slug) {
-    return NextResponse.json({ message: "Missing `slug` parameter." }, { status: 400 });
+  if (typeof slug !== "string" || slug === "") {
+    // @ts-expect-error
+    return res.status(400).json({ message: "Missing `slug` parameter." });
   }
 
-  // add one to this page's count and return the new number
-  return NextResponse.json(await incrementPageHits(slug), {
-    status: 200,
-    headers: {
-      // disable caching on both ends. see:
-      // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
-      "Cache-Control": "private, no-cache, no-store, must-revalidate",
-    },
-  });
-};
-
-const incrementPageHits = async (slug: string): Promise<PageStats> => {
+  // +1 hit!
   const { hits } = await prisma.hits.upsert({
     where: { slug },
     create: { slug },
@@ -38,6 +21,12 @@ const incrementPageHits = async (slug: string): Promise<PageStats> => {
     },
   });
 
-  // send client the *new* hit count
-  return { hits };
+  // disable caching on both ends. see:
+  // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
+  res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
+
+  // add one to this page's count and return the new number
+  return res.status(200).json({ hits });
 };
+
+export default handler;

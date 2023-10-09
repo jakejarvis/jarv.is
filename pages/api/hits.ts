@@ -1,23 +1,15 @@
 import { prisma } from "../../lib/helpers/prisma";
-import { NextResponse } from "next/server";
+import type { NextApiHandler } from "next";
+import type { SiteStats } from "../../types";
 
-export const config = {
-  runtime: "edge",
-  regions: ["iad1"], // the vercel postgres database lives in DC
-};
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async () => {
-  // simultaneously fetch the entire hits db and notes from the filesystem
+const handler: NextApiHandler<SiteStats> = async (req, res) => {
+  // fetch all rows from db sorted by most hits
   const pages = await prisma.hits.findMany({
     orderBy: [
       {
         hits: "desc",
       },
     ],
-    // cache db results for 5 minutes. prisma accelerate only:
-    // https://www.prisma.io/docs/data-platform/accelerate/concepts#cache-strategies
-    cacheStrategy: { swr: 300, ttl: 60 },
   });
 
   const total = { hits: 0 };
@@ -28,5 +20,10 @@ export default async () => {
     total.hits += page.hits;
   });
 
-  return NextResponse.json({ total, pages }, { status: 200 });
+  // let Vercel edge cache results for 15 mins
+  res.setHeader("Cache-Control", "public, max-age=0, s-maxage=900, stale-while-revalidate");
+
+  return res.status(200).json({ total, pages });
 };
+
+export default handler;
