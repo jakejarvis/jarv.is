@@ -63,25 +63,12 @@ const Uses = () => {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            <strong>iPhone 13 Pro</strong>
+            <strong>iPhone 15 Pro</strong>
             <UnorderedList>
-              <ListItem>512 GB in Graphite 😎</ListItem>
+              <ListItem>512 GB in Natural Titanium</ListItem>
               <ListItem>
-                <Link href="https://www.apple.com/shop/product/MM2J3ZM/A/iphone-13-pro-silicone-case-with-magsafe-abyss-blue">
-                  Abyss Blue Silicone Case
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://www.apple.com/shop/product/MHLR3ZM/A/iphone-leather-wallet-with-magsafe-saddle-brown">
-                  Saddle Brown Leather "Wallet"
-                </Link>
-              </ListItem>
-              <ListItem>
-                Belkin's MagSafe{" "}
-                <Link href="https://www.apple.com/shop/product/HPBJ2ZM/A/belkin-car-vent-mount-pro-with-magsafe">
-                  Car Vent Mount Pro
-                </Link>{" "}
-                is awesome too, btw.
+                <Link href="https://a.co/d/5ixA4kx">TORRAS Magnetic Shockproof Case</Link> (surprisingly nice, also in
+                Natural Titanium)
               </ListItem>
             </UnorderedList>
           </ListItem>
