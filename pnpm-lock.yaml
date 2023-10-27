@@ -48,8 +48,8 @@ dependencies:
     specifier: ^3.3.1
     version: 3.3.1
   fathom-client:
-    specifier: ^3.5.0
-    version: 3.5.0
+    specifier: ^3.6.0
+    version: 3.6.0
   feed:
     specifier: ^4.2.2
     version: 4.2.2
@@ -2312,8 +2312,8 @@ packages:
     dependencies:
       reusify: 1.0.4
 
-  /fathom-client@3.5.0:
-    resolution: {integrity: sha512-BiRDS9Q9a8Zma0H717FWC5cvf545K/CsxBpxKT22TcSl1EbRhhlHWIJgrdeiQUfdorBK2ppy09TwMOhRsbos/A==}
+  /fathom-client@3.6.0:
+    resolution: {integrity: sha512-/mrgmVvpw4HqDCcqUfPulERhONKgnJGL74RAxfqKDuRQ+7w9lKoTHMzqBWE7WNBvmsgZEthQWJFOWOEjv+T3gA==}
     dev: false
 
   /fault@2.0.1:

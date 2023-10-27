@@ -32,7 +32,7 @@
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.10",
     "fast-glob": "^3.3.1",
-    "fathom-client": "^3.5.0",
+    "fathom-client": "^3.6.0",
     "feed": "^4.2.2",
     "formik": "^2.4.5",
     "gray-matter": "^4.0.3",
