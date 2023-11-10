@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0(react-dom@18.2.0)(react@18.2.0)
   '@hcaptcha/react-hcaptcha':
-    specifier: ^1.8.1
-    version: 1.8.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.9.0
+    version: 1.9.0(react-dom@18.2.0)(react@18.2.0)
   '@novnc/novnc':
     specifier: 1.4.0
     version: 1.4.0
@@ -318,13 +318,18 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@hcaptcha/react-hcaptcha@1.8.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-33tIl77HgeahiQ6R0+JPDA8cGBBv95cIVcdOcFVwiGCJhrOxyiOQetCdEUNTDS13xrkvIP29K/PrqLXXSbKl6Q==}
+  /@hcaptcha/loader@1.0.8:
+    resolution: {integrity: sha512-c22xMGeFZd3QBd7AVqISevjaXnXyyysQ1TCDvWgsdcsm4ImtxogU7Dc2txdqZ4f1ENNE272lL73XxgAH+V1GNQ==}
+    dev: false
+
+  /@hcaptcha/react-hcaptcha@1.9.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-SdgzcN+RpD/VrnoAsgKc5JPqt7xLi6PT3Iu3r/eFchBD+uQOishCUePQqkqSaoZ/tWdf9loteHL8apO4Ld3YEA==}
     peerDependencies:
       react: '>= 16.3.0'
       react-dom: '>= 16.3.0'
     dependencies:
       '@babel/runtime': 7.23.1
+      '@hcaptcha/loader': 1.0.8
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
