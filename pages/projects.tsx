@@ -17,7 +17,6 @@ const Wrapper = styled("div", {
   justifyContent: "space-between",
   alignItems: "flex-start",
   width: "100%",
-  fontSize: "1.1em",
   lineHeight: 1.1,
 });
 
@@ -30,7 +29,6 @@ const Card = styled(RepositoryCard, {
 const ViewMore = styled("p", {
   textAlign: "center",
   marginBottom: 0,
-  fontSize: "1.1em",
   fontWeight: 500,
 });
 

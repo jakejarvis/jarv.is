@@ -32,7 +32,7 @@ const ColorfulLink = ({
 
 const H1 = styled("h1", {
   margin: "0 0 0.5em -1px", // misaligned left margin, super nitpicky
-  fontSize: "1.8em",
+  fontSize: "1.75em",
   fontWeight: 500,
   lineHeight: 1.1,
   color: theme.colors.text,
@@ -44,7 +44,7 @@ const H1 = styled("h1", {
 
 const H2 = styled("h2", {
   margin: "0.5em 0 0.5em -1px", // misaligned left margin, super nitpicky
-  fontSize: "1.35em",
+  fontSize: "1.2em",
   fontWeight: 400,
   lineHeight: 1.4,
   color: theme.colors.text,
@@ -56,6 +56,7 @@ const H2 = styled("h2", {
 
 const Paragraph = styled("p", {
   margin: "0.85em 0",
+  fontSize: "0.95em",
   lineHeight: 1.7,
   color: theme.colors.text,
 
@@ -64,7 +65,7 @@ const Paragraph = styled("p", {
   },
 
   "@medium": {
-    fontSize: "0.95em",
+    fontSize: "0.925em",
     lineHeight: 1.825,
   },
 });
@@ -92,14 +93,13 @@ const Wave = styled("span", {
 });
 
 const Sup = styled("sup", {
-  margin: "0 0.15em",
+  margin: "0 0.1em",
   fontSize: "0.6em",
 });
 
 const PGPKey = styled("code", {
-  marginLeft: "0.15em",
-  fontSize: "1.1em",
-  fontWeight: 500,
+  margin: "0 0.15em",
+  letterSpacing: "0.075em",
   wordSpacing: "-0.4em",
 });
 
@@ -221,7 +221,7 @@ const Index = () => {
         >
           backend programming
         </ColorfulLink>{" "}
-        back when my only source of income was{" "}
+        when my only source of income was{" "}
         <ColorfulLink
           href="/birthday/"
           title="🎉 Cranky Birthday Boy on VHS Tape 📼"
@@ -301,7 +301,7 @@ const Index = () => {
       </Paragraph>
 
       <Paragraph>
-        You can find more of my work on{" "}
+        You can find my work on{" "}
         <ColorfulLink
           href="https://github.com/jakejarvis"
           rel="me"

@@ -38,8 +38,9 @@ const SelfieLink = styled(Link, {
 
 const Name = styled("span", {
   margin: "0 0.6em",
-  fontSize: "1.2em",
+  fontSize: "1.15em",
   fontWeight: 500,
+  letterSpacing: "0.01em",
   lineHeight: 1,
 
   "@medium": {
