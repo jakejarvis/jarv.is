@@ -6,7 +6,7 @@ import { rgba } from "polished";
 import normalizeCss from "stitches-normalize";
 
 // web fonts
-import { Inter, SourceCodePro } from "./fonts";
+import { GeistSans, GeistMono } from "./fonts";
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof stitchesConfig>;
@@ -23,8 +23,8 @@ export const {
 } = createStitches({
   theme: {
     fonts: {
-      sans: `${Inter.style.fontFamily}, sans-serif`,
-      mono: `${SourceCodePro.style.fontFamily}, monospace`,
+      sans: `${GeistSans.style.fontFamily}, sans-serif`,
+      mono: `${GeistMono.style.fontFamily}, monospace`,
     },
 
     colors: {
@@ -149,18 +149,6 @@ export const globalStyles = globalCss(
 
     "code, kbd, samp, pre": {
       fontFamily: theme.fonts.mono,
-    },
-
-    "em, i": {
-      // workaround for lack of italicized Inter on Google Fonts, see: https://github.com/google/fonts/issues/2386#issuecomment-691503098
-      fontStyle: "oblique 10deg",
-      fontVariationSettings: "'slnt' -10",
-
-      "& :where(code, kbd, samp, pre)": {
-        // unset workaround for well-behaving fonts
-        fontStyle: "italic",
-        fontVariationSettings: "initial",
-      },
     },
   }
 );
