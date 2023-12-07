@@ -28,7 +28,7 @@ dependencies:
     version: 5.6.0(@neondatabase/serverless@0.6.0)
   '@prisma/client':
     specifier: ^5.6.0
-    version: 5.6.0(prisma@5.6.0)
+    version: 5.6.0(prisma@5.7.0)
   '@react-spring/web':
     specifier: ^9.7.3
     version: 9.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -232,8 +232,8 @@ devDependencies:
     specifier: ^3.1.0
     version: 3.1.0
   prisma:
-    specifier: ^5.6.0
-    version: 5.6.0
+    specifier: ^5.7.0
+    version: 5.7.0
   simple-git-hooks:
     specifier: ^2.9.0
     version: 2.9.0
@@ -857,7 +857,7 @@ packages:
       - supports-color
     dev: false
 
-  /@prisma/client@5.6.0(prisma@5.6.0):
+  /@prisma/client@5.6.0(prisma@5.7.0):
     resolution: {integrity: sha512-mUDefQFa1wWqk4+JhKPYq8BdVoFk9NFMBXUI8jAkBfQTtgx8WPx02U2HB/XbAz3GSUJpeJOKJQtNvaAIDs6sug==}
     engines: {node: '>=16.13'}
     requiresBuild: true
@@ -868,8 +868,11 @@ packages:
         optional: true
     dependencies:
       '@prisma/engines-version': 5.6.0-32.e95e739751f42d8ca026f6b910f5a2dc5adeaeee
-      prisma: 5.6.0
+      prisma: 5.7.0
     dev: false
+
+  /@prisma/debug@5.7.0:
+    resolution: {integrity: sha512-tZ+MOjWlVvz1kOEhNYMa4QUGURY+kgOUBqLHYIV8jmCsMuvA1tWcn7qtIMLzYWCbDcQT4ZS8xDgK0R2gl6/0wA==}
 
   /@prisma/driver-adapter-utils@5.6.0:
     resolution: {integrity: sha512-/TSrfCGLAQghNf+bwg5/e8iKAgecCYU/gMN0IyNra3183/VTQJneLFgbacuSK9bBXiIRUmpbuUIrJ6dhENzfjA==}
@@ -883,9 +886,29 @@ packages:
     resolution: {integrity: sha512-UoFgbV1awGL/3wXuUK3GDaX2SolqczeeJ5b4FVec9tzeGbSWJboPSbT0psSrmgYAKiKnkOPFSLlH6+b+IyOwAw==}
     dev: false
 
-  /@prisma/engines@5.6.0:
-    resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
+  /@prisma/engines-version@5.7.0-41.79fb5193cf0a8fdbef536e4b4a159cad677ab1b9:
+    resolution: {integrity: sha512-V6tgRVi62jRwTm0Hglky3Scwjr/AKFBFtS+MdbsBr7UOuiu1TKLPc6xfPiyEN1+bYqjEtjxwGsHgahcJsd1rNg==}
+
+  /@prisma/engines@5.7.0:
+    resolution: {integrity: sha512-TkOMgMm60n5YgEKPn9erIvFX2/QuWnl3GBo6yTRyZKk5O5KQertXiNnrYgSLy0SpsKmhovEPQb+D4l0SzyE7XA==}
     requiresBuild: true
+    dependencies:
+      '@prisma/debug': 5.7.0
+      '@prisma/engines-version': 5.7.0-41.79fb5193cf0a8fdbef536e4b4a159cad677ab1b9
+      '@prisma/fetch-engine': 5.7.0
+      '@prisma/get-platform': 5.7.0
+
+  /@prisma/fetch-engine@5.7.0:
+    resolution: {integrity: sha512-zIn/qmO+N/3FYe7/L9o+yZseIU8ivh4NdPKSkQRIHfg2QVTVMnbhGoTcecbxfVubeTp+DjcbjS0H9fCuM4W04w==}
+    dependencies:
+      '@prisma/debug': 5.7.0
+      '@prisma/engines-version': 5.7.0-41.79fb5193cf0a8fdbef536e4b4a159cad677ab1b9
+      '@prisma/get-platform': 5.7.0
+
+  /@prisma/get-platform@5.7.0:
+    resolution: {integrity: sha512-ZeV/Op4bZsWXuw5Tg05WwRI8BlKiRFhsixPcAM+5BKYSiUZiMKIi713tfT3drBq8+T0E1arNZgYSA9QYcglWNA==}
+    dependencies:
+      '@prisma/debug': 5.7.0
 
   /@react-spring/animated@9.7.3(react@18.2.0):
     resolution: {integrity: sha512-5CWeNJt9pNgyvuSzQH+uy2pvTg8Y4/OisoscZIR8/ZNLIOI+CatFBhGZpDGTF/OzdNFsAoGk3wiUYTwoJ0YIvw==}
@@ -4543,13 +4566,13 @@ packages:
     hasBin: true
     dev: true
 
-  /prisma@5.6.0:
-    resolution: {integrity: sha512-EEaccku4ZGshdr2cthYHhf7iyvCcXqwJDvnoQRAJg5ge2Tzpv0e2BaMCp+CbbDUwoVTzwgOap9Zp+d4jFa2O9A==}
+  /prisma@5.7.0:
+    resolution: {integrity: sha512-0rcfXO2ErmGAtxnuTNHQT9ztL0zZheQjOI/VNJzdq87C3TlGPQtMqtM+KCwU6XtmkoEr7vbCQqA7HF9IY0ST+Q==}
     engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 5.6.0
+      '@prisma/engines': 5.7.0
 
   /proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}
