@@ -18,7 +18,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@giscus/react": "^2.3.0",
+    "@giscus/react": "^2.4.0",
     "@hcaptcha/react-hcaptcha": "^1.9.2",
     "@neondatabase/serverless": "^0.6.0",
     "@novnc/novnc": "1.4.0",
