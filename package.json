@@ -83,7 +83,7 @@
     "@types/react-is": "^18.2.4",
     "@types/uglify-js": "^3.17.4",
     "@types/ws": "^8.5.10",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.13.2",
     "cross-env": "^7.0.3",
     "eslint": "~8.55.0",
