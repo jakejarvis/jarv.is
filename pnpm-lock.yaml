@@ -75,8 +75,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   p-map:
-    specifier: ^7.0.0
-    version: 7.0.0
+    specifier: ^7.0.1
+    version: 7.0.1
   p-memoize:
     specifier: ^7.1.1
     version: 7.1.1
@@ -4335,8 +4335,8 @@ packages:
       p-limit: 3.1.0
     dev: true
 
-  /p-map@7.0.0:
-    resolution: {integrity: sha512-EZl03dLKv3RypkrjlevZoNwQMSy4bAblWcR18zhonktnN4fUs3asFQKSe0awn982omGxamvbejqQKQYDJYHCEg==}
+  /p-map@7.0.1:
+    resolution: {integrity: sha512-2wnaR0XL/FDOj+TgpDuRb2KTjLnu3Fma6b1ZUwGY7LcqenMcvP/YFpjpbPKY6WVGsbuJZRuoUz8iPrt8ORnAFw==}
     engines: {node: '>=18'}
     dev: false
 
