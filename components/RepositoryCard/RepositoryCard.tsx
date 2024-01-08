@@ -34,7 +34,6 @@ const Meta = styled("div", {
 
 const MetaItem = styled("div", {
   marginRight: "1.5em",
-  fontSize: "0.875em",
   lineHeight: 2,
   color: theme.colors.medium,
 });

@@ -12,6 +12,7 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   transpilePackages: [
     "@novnc/novnc",
+    "geist", // https://github.com/vercel/geist-font/issues/13#issuecomment-1798598309
     "react-tweet", // https://react-tweet.vercel.app/next#troubleshooting
   ],
   env: {

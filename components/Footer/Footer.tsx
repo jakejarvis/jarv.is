@@ -24,12 +24,11 @@ const Row = styled("div", {
   maxWidth: theme.sizes.maxLayoutWidth,
   margin: "0 auto",
   justifyContent: "space-between",
-  fontSize: "0.85em",
+  fontSize: "0.8em",
   lineHeight: 2.3,
 
   // stack columns on left instead of flexboxing across
   "@medium": {
-    fontSize: "0.8em",
     display: "block",
   },
 });

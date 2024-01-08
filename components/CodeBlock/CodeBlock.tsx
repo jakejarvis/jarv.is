@@ -13,7 +13,7 @@ const Block = styled("div", {
     display: "block",
     overflowX: "auto",
     padding: "1em",
-    fontSize: "0.925em",
+    fontSize: "0.9em",
     tabSize: 2,
 
     // optional line numbers added at time of prism compilation

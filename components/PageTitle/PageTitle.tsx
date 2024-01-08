@@ -6,7 +6,7 @@ import type { ComponentPropsWithoutRef } from "react";
 const Title = styled("h1", {
   marginTop: 0,
   marginBottom: "0.6em",
-  fontSize: "2em",
+  fontSize: "1.7em",
   fontWeight: 600,
   textAlign: "center",
 
