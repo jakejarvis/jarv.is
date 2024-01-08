@@ -6,6 +6,32 @@ updates:
     schedule:
       interval: daily
     versioning-strategy: increase
+    groups:
+      nextjs:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-is"
+          - "@types/react"
+          - "@types/react-dom"
+          - "@types/react-is"
+      prisma:
+        patterns:
+          - "@prisma/*"
+      remark-rehype:
+        patterns:
+          - "remark-*"
+          - "rehype-*"
+          - "unified"
+      eslint:
+        patterns:
+          - "eslint"
+          - "@typescript-eslint/eslint-plugin"
+          - "@typescript-eslint/parser"
     ignore:
       - dependency-name: "@types/*"
       - dependency-name: "@jakejarvis/eslint-config"

@@ -18,14 +18,14 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@giscus/react": "^2.3.0",
+    "@giscus/react": "^2.4.0",
     "@hcaptcha/react-hcaptcha": "^1.9.2",
-    "@neondatabase/serverless": "^0.6.0",
+    "@neondatabase/serverless": "^0.7.0",
     "@novnc/novnc": "1.4.0",
     "@octokit/graphql": "^7.0.2",
-    "@octokit/graphql-schema": "^14.45.0",
-    "@prisma/adapter-neon": "^5.6.0",
-    "@prisma/client": "^5.6.0",
+    "@octokit/graphql-schema": "^14.46.1",
+    "@prisma/adapter-neon": "^5.7.1",
+    "@prisma/client": "^5.7.1",
     "@react-spring/web": "^9.7.3",
     "@stitches/react": "1.3.1-1",
     "@vercel/edge": "^1.1.1",
@@ -37,26 +37,26 @@
     "feed": "^4.2.2",
     "formik": "^2.4.5",
     "gray-matter": "^4.0.3",
-    "next": "14.0.3",
+    "next": "14.0.4",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.4.0",
     "obj-str": "^1.1.0",
-    "p-map": "^7.0.0",
+    "p-map": "^7.0.1",
     "p-memoize": "^7.1.1",
     "polished": "^4.2.2",
     "prop-types": "^15.8.1",
     "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-error-boundary": "^4.0.11",
+    "react-error-boundary": "^4.0.12",
     "react-frame-component": "^5.2.6",
     "react-icons": "^4.12.0",
     "react-innertext": "^1.1.5",
     "react-intersection-observer": "^9.5.3",
     "react-is": "18.2.0",
-    "react-player": "^2.13.0",
+    "react-player": "^2.14.1",
     "react-textarea-autosize": "^8.5.3",
-    "react-tweet": "^3.1.1",
+    "react-tweet": "^3.2.0",
     "rehype-prism-plus": "^1.6.3",
     "rehype-sanitize": "^5.0.1",
     "rehype-slug": "^5.1.0",
@@ -70,39 +70,39 @@
     "stitches-normalize": "^3.0.1",
     "swr": "^2.2.4",
     "unified": "^10.1.2",
-    "ws": "^8.14.2"
+    "ws": "^8.16.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "^3.1.0",
     "@types/comma-number": "^2.1.2",
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.10.7",
     "@types/novnc__novnc": "^1.3.4",
     "@types/prop-types": "^15.7.11",
-    "@types/react": "^18.2.42",
-    "@types/react-dom": "^18.2.17",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
     "@types/react-is": "^18.2.4",
     "@types/uglify-js": "^3.17.4",
     "@types/ws": "^8.5.10",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
     "cross-env": "^7.0.3",
-    "eslint": "~8.55.0",
-    "eslint-config-next": "14.0.3",
+    "eslint": "~8.56.0",
+    "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "~9.1.0",
-    "eslint-plugin-mdx": "~2.2.0",
-    "eslint-plugin-prettier": "~5.0.1",
+    "eslint-plugin-mdx": "~3.0.0",
+    "eslint-plugin-prettier": "~5.1.2",
     "lint-staged": "^15.2.0",
-    "prettier": "^3.1.0",
-    "prisma": "^5.6.0",
+    "prettier": "^3.1.1",
+    "prisma": "^5.7.1",
     "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
     "uglify-js": "^3.17.4"
   },
   "optionalDependencies": {
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.1"
   },
   "engines": {
-    "node": ">=16.x"
+    "node": ">=20.x"
   },
   "cacheDirectories": [
     "node_modules",
@@ -116,9 +116,9 @@
       "eslint"
     ]
   },
-  "packageManager": "pnpm@8.11.0",
+  "packageManager": "pnpm@8.14.0",
   "volta": {
-    "node": "18.19.0",
-    "pnpm": "8.11.0"
+    "node": "20.10.0",
+    "pnpm": "8.14.0"
   }
 }
