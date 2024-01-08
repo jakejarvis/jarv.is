@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.9.2
     version: 1.9.2(react-dom@18.2.0)(react@18.2.0)
   '@neondatabase/serverless':
-    specifier: ^0.7.0
-    version: 0.7.0
+    specifier: ^0.6.1
+    version: 0.6.1
   '@novnc/novnc':
     specifier: 1.4.0
     version: 1.4.0
@@ -25,7 +25,7 @@ dependencies:
     version: 14.46.1
   '@prisma/adapter-neon':
     specifier: ^5.7.1
-    version: 5.7.1(@neondatabase/serverless@0.7.0)
+    version: 5.7.1(@neondatabase/serverless@0.6.1)
   '@prisma/client':
     specifier: ^5.7.1
     version: 5.7.1(prisma@5.7.1)
@@ -623,8 +623,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@neondatabase/serverless@0.7.0:
-    resolution: {integrity: sha512-93sBlhFVQWJM36WZVdwfeYnuov/fcjJzDnFJRcGeC8Ycn9YcP56sHcrdOO9SvKroJUCzxLjNGOgWbueylsBkrg==}
+  /@neondatabase/serverless@0.6.1:
+    resolution: {integrity: sha512-rZIyWf27WxH4eW0ZRDQT2PxUJH3AphNVEnO4x1AGjBW6XrguH3ChLokup0gNGrX8cxDbP0UyduI7qdy4OLos+A==}
     dependencies:
       '@types/pg': 8.6.6
     dev: false
@@ -838,12 +838,12 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@prisma/adapter-neon@5.7.1(@neondatabase/serverless@0.7.0):
+  /@prisma/adapter-neon@5.7.1(@neondatabase/serverless@0.6.1):
     resolution: {integrity: sha512-KbEv9olPVl/pVos6A4U0R4wwlIMhDPldZouptl+c2ZEkU9lYnEhfzA5oPN0/UYav4Mu9KS3Zt13JUbonR1hGbA==}
     peerDependencies:
       '@neondatabase/serverless': ^0.6.0
     dependencies:
-      '@neondatabase/serverless': 0.7.0
+      '@neondatabase/serverless': 0.6.1
       '@prisma/driver-adapter-utils': 5.7.1
       postgres-array: 3.0.2
     transitivePeerDependencies:
