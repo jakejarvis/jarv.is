@@ -7,7 +7,8 @@ import { styled } from "../lib/styles/stitches.config";
 
 const PGPKey = styled("code", {
   fontSize: "0.925em",
-  wordSpacing: "-0.25em",
+  letterSpacing: "0.075em",
+  wordSpacing: "-0.3em",
 });
 
 const Contact = () => {
