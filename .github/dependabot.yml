@@ -21,6 +21,7 @@ updates:
           - "@types/react-is"
       prisma:
         patterns:
+          - "prisma"
           - "@prisma/*"
       remark-rehype:
         patterns:
