@@ -5,9 +5,11 @@ import type { PageStats } from "../../types";
 const handler: NextApiHandler<PageStats> = async (req, res) => {
   const { slug } = req.query;
 
-  if (typeof slug !== "string" || slug === "") {
+  // extremely basic input validation.
+  // TODO: actually check if the note exists before continuing (and allow pages other than notes).
+  if (typeof slug !== "string" || !new RegExp(/^notes\/([A-Za-z0-9-]+)$/i).test(slug)) {
     // @ts-expect-error
-    return res.status(400).json({ message: "Missing `slug` parameter." });
+    return res.status(400).json({ error: "Missing or invalid 'slug' parameter." });
   }
 
   // +1 hit!
