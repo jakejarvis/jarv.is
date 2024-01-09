@@ -16,8 +16,10 @@ export const compileNote = async (slug: string): Promise<NoteWithSource> => {
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [
+        // @ts-ignore
         [remarkGfm, { singleTilde: false }],
         [
+          // @ts-ignore
           remarkSmartypants,
           {
             quotes: true,
@@ -26,9 +28,15 @@ export const compileNote = async (slug: string): Promise<NoteWithSource> => {
             ellipses: false,
           },
         ],
+        // @ts-ignore
         [remarkUnwrapImages],
       ],
-      rehypePlugins: [[rehypeSlug], [rehypePrism, { ignoreMissing: true }]],
+      rehypePlugins: [
+        // @ts-ignore
+        [rehypeSlug],
+        // @ts-ignore
+        [rehypePrism, { ignoreMissing: true }],
+      ],
     },
   });
 
