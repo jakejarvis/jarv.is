@@ -21,8 +21,8 @@ dependencies:
     specifier: ^7.0.2
     version: 7.0.2
   '@octokit/graphql-schema':
-    specifier: ^14.46.1
-    version: 14.46.1
+    specifier: ^14.47.0
+    version: 14.47.0
   '@prisma/adapter-neon':
     specifier: ^5.8.0
     version: 5.8.0(@neondatabase/serverless@0.6.1)
@@ -788,8 +788,8 @@ packages:
       universal-user-agent: 6.0.0
     dev: false
 
-  /@octokit/graphql-schema@14.46.1:
-    resolution: {integrity: sha512-oiIGvOOetiHzD61Soe/3vWcJnpfs/3K+K+iyhW8bcLdDMVsts/aqYw9C1Mb4R/RTWbnSFjvxLEV7izsPgNYNFA==}
+  /@octokit/graphql-schema@14.47.0:
+    resolution: {integrity: sha512-wephyUU/I84Q8vlM/6E7+tZd8I+zMuANIA12HuGwrKL/6akmuD/U8BqcN75rMWKKcm0FbW6ttbofO47d2g2QXA==}
     dependencies:
       graphql: 16.8.1
       graphql-tag: 2.12.6(graphql@16.8.1)
