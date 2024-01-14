@@ -100,7 +100,7 @@
     "uglify-js": "^3.17.4"
   },
   "optionalDependencies": {
-    "sharp": "^0.33.1"
+    "sharp": "^0.33.2"
   },
   "engines": {
     "node": ">=20.x"
