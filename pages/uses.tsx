@@ -7,7 +7,12 @@ import CodeInline from "../components/CodeInline";
 import { H2 } from "../components/Heading";
 import { UnorderedList, ListItem } from "../components/List";
 
-import desktopImg from "../public/static/images/uses/ventura.png";
+import desktopImg from "../public/static/images/uses/desktop.png";
+import { styled } from "../lib/styles/stitches.config";
+
+const Emoji = styled("span", {
+  marginRight: "0.45em",
+});
 
 const Uses = () => {
   return (
@@ -20,7 +25,7 @@ const Uses = () => {
         }}
       />
 
-      <PageTitle>/uses 💻</PageTitle>
+      <PageTitle>/uses</PageTitle>
 
       <Content>
         <p>
@@ -34,32 +39,20 @@ const Uses = () => {
 
         <Image src={desktopImg} href={desktopImg.src} alt="My mess of a desktop." priority />
 
-        <H2 id="hardware">🍎 Hardware</H2>
+        <H2 id="hardware">
+          <Emoji>🚘</Emoji>
+          Daily Drivers
+        </H2>
         <UnorderedList>
           <ListItem>
-            <Link href="https://browser.geekbench.com/v5/cpu/8124907">
-              <strong>MacBook Air</strong> (2020)
+            <Link href="https://browser.geekbench.com/v6/cpu/4493541">
+              <strong>MacBook Pro</strong> (14-inch)
             </Link>
             <UnorderedList>
-              <ListItem>Apple M1 (8‑core CPU, 8‑core GPU) 🏎️💨</ListItem>
-              <ListItem>16 GB RAM</ListItem>
+              <ListItem>Apple M3 Pro (12‑core CPU, 18‑core GPU) 🏎️💨</ListItem>
+              <ListItem>36 GB RAM</ListItem>
               <ListItem>1 TB SSD</ListItem>
-            </UnorderedList>
-          </ListItem>
-          <ListItem>
-            <Link href="https://browser.geekbench.com/v5/cpu/1074682">
-              <strong>MacBook Pro 15"</strong> (Mid-2018)
-            </Link>
-            <UnorderedList>
-              <ListItem>
-                Core i9 @ 2.9 GHZ, <Link href="https://www.youtube.com/watch?v=Dx8J125s4cg">theoretically 🔥🧯🚒</Link>
-              </ListItem>
-              <ListItem>32 GB RAM</ListItem>
-              <ListItem>1 TB SSD</ListItem>
-              <ListItem>Radeon Pro 560X – 4 GB</ListItem>
-              <ListItem>
-                Most importantly, I haven't touched it since M1 stole my heart (for a third of the price). 💔
-              </ListItem>
+              <ListItem>Space Black 🖤</ListItem>
             </UnorderedList>
           </ListItem>
           <ListItem>
@@ -106,7 +99,8 @@ const Uses = () => {
             <UnorderedList>
               <ListItem>For some recreational Android development and experimentation.</ListItem>
               <ListItem>
-                Activated on <Link href="https://fi.google.com/">Google Fi</Link> during rare trips.
+                Activated on <Link href="https://fi.google.com/">Google Fi</Link> (
+                <Link href="https://g.co/fi/r/4X38K6">referral link</Link>) during rare trips.
               </ListItem>
               <ListItem>
                 Really just putting this here in a futile effort to prove I'm not a <em>complete</em> Apple sheep. 🐑
@@ -115,7 +109,126 @@ const Uses = () => {
           </ListItem>
         </UnorderedList>
 
-        <H2 id="development">💾 Development</H2>
+        <H2 id="homelab">
+          <Emoji>🧪</Emoji>
+          Homelab
+        </H2>
+        <UnorderedList>
+          <ListItem>
+            <Link href="https://store.ui.com/us/en/collections/unifi-dream-router/products/udr">
+              <strong>UniFi Dream Router</strong>
+            </Link>
+            , plus:
+            <UnorderedList>
+              <ListItem>
+                2x{" "}
+                <Link href="https://store.ui.com/us/en/collections/unifi-switching-utility-mini/products/usw-flex-mini">
+                  Switch Flex Mini
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://store.ui.com/us/en/products/unifi-smart-power">SmartPower Plug</Link>{" "}
+                <em>
+                  (<Link href="https://www.youtube.com/watch?v=iW1tHr4Y_cI">It's Comcastic!™</Link>)
+                </em>
+              </ListItem>
+            </UnorderedList>
+          </ListItem>
+          <ListItem>
+            <Link href="https://www.synology.com/en-us/products/DS224+">
+              <strong>Synology DiskStation DS224+</strong>
+            </Link>
+            <UnorderedList>
+              <ListItem>
+                2x recertified{" "}
+                <Link href="https://serverpartdeals.com/products/western-digital-ultrastar-dc-hc550-wuh721816ale6l4-0f38462-16tb-7-2k-rpm-sata-6gb-s-512e-512mb-3-5-se-manufacturer-recertified-hdd">
+                  16TB WD Ultrastar
+                </Link>{" "}
+                drives
+              </ListItem>
+              <ListItem>
+                <Link href="">
+                  <strong>Plex</strong>
+                </Link>{" "}
+                (installed as a package via{" "}
+                <Link href="https://github.com/michealespinola/syno.plexupdate">
+                  <CodeInline>syno.plexupdate</CodeInline>
+                </Link>{" "}
+                for hardware encoding)
+              </ListItem>
+            </UnorderedList>
+          </ListItem>
+          <ListItem>
+            A <strong>🥧 Raspberry Pi</strong> <Link href="https://a.co/d/bmii52A">cluster</Link> with:
+            <UnorderedList>
+              <ListItem>
+                1x <Link href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">Raspberry Pi 4B</Link>, 8GB
+                RAM
+              </ListItem>
+              <UnorderedList>
+                <ListItem>
+                  Running <Link href="https://www.home-assistant.io/">Home Assistant OS</Link> with a{" "}
+                  <Link href="https://www.home-assistant.io/skyconnect/">SkyConnect USB Dongle</Link>
+                </ListItem>
+              </UnorderedList>
+              <ListItem>
+                2x <Link href="https://www.raspberrypi.com/products/raspberry-pi-5/">Raspberry Pi 5</Link>, 4GB RAM
+              </ListItem>
+              <UnorderedList>
+                <ListItem>
+                  Running{" "}
+                  <Link href="https://github.com/jakejarvis/dotfiles/tree/main/lab">a few Docker containers</Link>,
+                  including:
+                  <UnorderedList>
+                    <ListItem>
+                      <Link href="https://nextcloud.com/">Nextcloud</Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://sonarr.tv/">Sonarr</Link>, <Link href="https://radarr.video/">Radarr</Link>,{" "}
+                      <Link href="https://www.bazarr.media/">Bazarr</Link>,{" "}
+                      <Link href="https://github.com/Prowlarr/Prowlarr">Prowlarr</Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://www.qbittorrent.org/">qBittorrent</Link> (web client)
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://tautulli.com/">Tautulli</Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://www.wireguard.com/">WireGuard</Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://traefik.io/traefik/">Traefik</Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link href="https://www.authelia.com/">Authelia</Link>
+                    </ListItem>
+                  </UnorderedList>
+                </ListItem>
+                <ListItem>Full post with more details coming soon!</ListItem>
+              </UnorderedList>
+            </UnorderedList>
+          </ListItem>
+          <ListItem>
+            <strong>An overpowered custom homelab server</strong>, powered by an{" "}
+            <Link href="https://www.asus.com/commercial-motherboard/q87me/">ASUS Q87M-E</Link> board,{" "}
+            <Link href="https://www.intel.com/content/www/us/en/products/sku/80808/intel-core-i74790s-processor-8m-cache-up-to-4-00-ghz/specifications.html">
+              i7-4790S
+            </Link>
+            , 32 GB of RAM, 2x recertified{" "}
+            <Link href="https://serverpartdeals.com/products/hgst-ultrastar-he10-0f27612-huh721008ale604-8tb-7-2k-rpm-sata-6gb-s-512e-256mb-cache-3-5-se-manufacturer-recertified-hdd">
+              16TB WD Ultrastar
+            </Link>{" "}
+            drives, and <Link href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox VE</Link>,
+            in a cheap <Link href="https://www.thermaltakeusa.com/versa-h22.html">Thermaltake Versa H22</Link> case with
+            expensive <Link href="https://noctua.at/en/nf-a12x25-pwm">Noctua 🤎</Link> fans.
+          </ListItem>
+        </UnorderedList>
+
+        <H2 id="development">
+          <Emoji>💾</Emoji>
+          Development
+        </H2>
         <UnorderedList>
           <ListItem>
             <Link href="https://iterm2.com/">
@@ -316,7 +429,10 @@ const Uses = () => {
           </ListItem>
         </UnorderedList>
 
-        <H2 id="browsing">🌎 Browsing</H2>
+        <H2 id="browsing">
+          <Emoji>🌎</Emoji>
+          Browsing
+        </H2>
         <UnorderedList>
           <ListItem>
             <Link href="https://www.mozilla.org/en-US/firefox/new/">
@@ -398,7 +514,10 @@ const Uses = () => {
           </ListItem>
         </UnorderedList>
 
-        <H2 id="macos">💻 macOS</H2>
+        <H2 id="macos">
+          <Emoji>💻</Emoji>
+          macOS
+        </H2>
         <UnorderedList>
           <ListItem>
             <Link href="https://1password.com/">
@@ -419,7 +538,7 @@ const Uses = () => {
             <Link href="https://www.backblaze.com/">
               <strong>Backblaze</strong>
             </Link>{" "}
-            <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link>
+            (<Link href="https://secure.backblaze.com/r/00x84e">referral link</Link>)
           </ListItem>
           <ListItem>
             <Link href="https://github.com/billycastelli/Silicon-Info">
@@ -458,30 +577,31 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
+            <Link href="https://www.tunabellysoftware.com/tgpro/">
+              <strong>TG Pro</strong>
+            </Link>
+          </ListItem>
+          <ListItem>
             <Link href="https://coconut-flavour.com/coconutbattery/">
               <strong>coconutBattery</strong>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://theunarchiver.com/">
-              <strong>The Unarchiver</strong>
+            <Link href="https://www.keka.io/en/">
+              <strong>Keka</strong>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://unshaky.nestederror.com/">
-              <strong>Unshaky</strong>
-            </Link>{" "}
-            ⌨️ (on my 2018 MBP)
-            <UnorderedList>
-              <ListItem>
-                Toooo &nbsp;lzy too vist &nbsp;&nbsp;the&nbsp; Aple Stre geeniusses oonce &nbsp;agin&nbsp; to fiix
-                tthe&nbsp; keeybbbboord. 😒🦋
-              </ListItem>
-            </UnorderedList>
+            <Link href="https://tapbots.com/ivory/mac/">
+              <strong>Ivory</strong>
+            </Link>
           </ListItem>
         </UnorderedList>
 
-        <H2 id="ios">📱 iOS</H2>
+        <H2 id="ios">
+          <Emoji>📱</Emoji>
+          iOS
+        </H2>
         <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
         <UnorderedList>
           <ListItem>
@@ -495,33 +615,13 @@ const Uses = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://apps.apple.com/app/id585027354">
-              <strong>Google Maps</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://apps.apple.com/app/id1193350206">
-              <strong>YouTube TV</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://apps.apple.com/app/id317951436">
-              <strong>SiriusXM</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://apps.apple.com/app/id379693831">
-              <strong>Audible</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link href="https://apps.apple.com/app/id414834813">
               <strong>Pocket Casts</strong>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://apps.apple.com/app/id1488977981">
-              <strong>Sonos</strong>
+            <Link href="https://apps.apple.com/app/id945077360">
+              <strong>Sling TV</strong>
             </Link>
           </ListItem>
           <ListItem>
@@ -534,9 +634,21 @@ const Uses = () => {
               <strong>Discord</strong>
             </Link>
           </ListItem>
+          <ListItem>
+            <Link href="https://apps.apple.com/app/id1057750338">
+              <strong>UniFi</strong>
+            </Link>{" "}
+            and{" "}
+            <Link href="https://apps.apple.com/app/id1385561119">
+              <strong>WiFiman</strong>
+            </Link>
+          </ListItem>
         </UnorderedList>
 
-        <H2 id="cloud">☁️ Cloud</H2>
+        <H2 id="cloud">
+          <Emoji>☁️</Emoji>
+          Cloud
+        </H2>
         <p>
           I've been making recent efforts to <Link href="https://www.stallman.org/google.html">de-Google</Link> my life,
           with mixed results...
@@ -547,7 +659,7 @@ const Uses = () => {
             <Link href="https://www.fastmail.com/">
               <strong>Fastmail</strong>
             </Link>{" "}
-            <Link href="https://ref.fm/u20274504">(referral link)</Link> &amp;{" "}
+            (<Link href="https://ref.fm/u20274504">referral link</Link>) &amp;{" "}
             <Link href="https://en.wikipedia.org/wiki/Apple_Mail">
               <strong>Mail.app</strong>
             </Link>
@@ -581,7 +693,7 @@ const Uses = () => {
             <Link href="https://usefathom.com/">
               <strong>Fathom Analytics</strong>
             </Link>{" "}
-            <Link href="https://usefathom.com/ref/ZEYG0O">(referral link)</Link>
+            (<Link href="https://usefathom.com/ref/ZEYG0O">referral link</Link>)
           </ListItem>
           <ListItem>
             <del>Google Public DNS</del> →{" "}
@@ -619,18 +731,18 @@ const Uses = () => {
             <Link href="https://www.digitalocean.com/">
               <strong>DigitalOcean</strong>
             </Link>{" "}
-            <Link href="https://m.do.co/c/afcf288a7dac">(referral link)</Link> and{" "}
+            (<Link href="https://m.do.co/c/afcf288a7dac">referral link</Link>) and{" "}
             <Link href="https://www.linode.com/">
               <strong>Linode</strong>
             </Link>{" "}
-            <Link href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05">(referral link)</Link> for
+            (<Link href="https://www.linode.com/?r=0c5aeace9bd591be9fbf32f96f58470295f1ee05">referral link</Link>) for
             virtual Linux servers.
           </ListItem>
           <ListItem>
             <Link href="https://dnsimple.com/">
               <strong>DNSimple</strong>
             </Link>{" "}
-            <Link href="https://dnsimple.com/r/eb6ced548f1e0a">(referral link)</Link> and{" "}
+            (<Link href="https://dnsimple.com/r/eb6ced548f1e0a">referral link</Link>) and{" "}
             <Link href="https://www.cloudflare.com/">
               <strong>Cloudflare</strong>
             </Link>{" "}
@@ -640,7 +752,7 @@ const Uses = () => {
             <Link href="https://www.backblaze.com/">
               <strong>Backblaze</strong>
             </Link>{" "}
-            <Link href="https://secure.backblaze.com/r/00x84e">(referral link)</Link> for off-site Mac backups.
+            (<Link href="https://secure.backblaze.com/r/00x84e">referral link</Link>) for off-site Mac backups.
           </ListItem>
           <ListItem>
             <Link href="https://gitea.io/en-us/">
@@ -661,71 +773,10 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="iot">
-          🏠 Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
+          <Emoji>🏠</Emoji>
+          Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
         </H2>
         <UnorderedList>
-          <ListItem>
-            <Link href="https://store.ui.com/us/en/collections/unifi-dream-router/products/udr">
-              <strong>UniFi Dream Router</strong>
-            </Link>
-            , plus:
-            <UnorderedList>
-              <ListItem>
-                2x{" "}
-                <Link href="https://store.ui.com/us/en/collections/unifi-switching-utility-mini/products/usw-flex-mini">
-                  Switch Flex Mini
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://store.ui.com/us/en/products/unifi-smart-power">SmartPower Plug</Link>{" "}
-                <em>
-                  (<Link href="https://www.youtube.com/watch?v=iW1tHr4Y_cI">It's Comcastic!™</Link>)
-                </em>
-              </ListItem>
-            </UnorderedList>
-          </ListItem>
-          <ListItem>
-            <strong>An overpowered custom homelab server</strong>, powered by an{" "}
-            <Link href="https://www.asus.com/commercial-motherboard/q87me/">ASUS Q87M-E</Link> board,{" "}
-            <Link href="https://www.intel.com/content/www/us/en/products/sku/80808/intel-core-i74790s-processor-8m-cache-up-to-4-00-ghz/specifications.html">
-              i7-4790S
-            </Link>
-            , 32 GB of RAM, 3x recertified{" "}
-            <Link href="https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc550-hdd#0F38462">
-              16TB WD Ultrastar
-            </Link>{" "}
-            drives, and Ubuntu Server 22.04, in a cheap{" "}
-            <Link href="https://www.thermaltakeusa.com/versa-h22.html">Thermaltake Versa H22</Link> case with expensive{" "}
-            <Link href="https://noctua.at/en/nf-a12x25-pwm">Noctua 🤎</Link> fans. Used mainly for local file sharing
-            via Samba and running{" "}
-            <Link href="https://github.com/jakejarvis/dotfiles/tree/main/lab">a few Docker containers</Link>, including:
-            <UnorderedList>
-              <ListItem>
-                <Link href="https://www.plex.tv/">Plex</Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://sonarr.tv/">Sonarr</Link>, <Link href="https://radarr.video/">Radarr</Link>,{" "}
-                <Link href="https://www.bazarr.media/">Bazarr</Link>,{" "}
-                <Link href="https://github.com/Prowlarr/Prowlarr">Prowlarr</Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://www.qbittorrent.org/">qBittorrent</Link> (web client)
-              </ListItem>
-              <ListItem>
-                <Link href="https://tautulli.com/">Tautulli</Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://www.home-assistant.io/">Home Assistant</Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://www.wireguard.com/">WireGuard</Link>
-              </ListItem>
-              <ListItem>
-                <Link href="https://github.com/cloudflare/cloudflared">Cloudflare Tunnel</Link>
-              </ListItem>
-              <ListItem>Full post with more details coming soon!</ListItem>
-            </UnorderedList>
-          </ListItem>
           <ListItem>
             <Link href="https://www2.meethue.com/en-us">
               <strong>Philips Hue</strong>
