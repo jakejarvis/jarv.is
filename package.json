@@ -46,7 +46,7 @@
     "p-memoize": "^7.1.1",
     "polished": "^4.2.2",
     "prop-types": "^15.8.1",
-    "query-string": "^8.1.0",
+    "query-string": "^8.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "^4.0.12",
