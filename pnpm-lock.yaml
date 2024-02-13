@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.4.0
     version: 2.4.0(react-dom@18.2.0)(react@18.2.0)
   '@hcaptcha/react-hcaptcha':
-    specifier: ^1.9.3
-    version: 1.9.3(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.9.4
+    version: 1.9.4(react-dom@18.2.0)(react@18.2.0)
   '@novnc/novnc':
     specifier: 1.4.0
     version: 1.4.0
@@ -335,8 +335,8 @@ packages:
     resolution: {integrity: sha512-YEBXCGNUBpPJUd5UZg64jBU6YMOhDjGdzS6dUCI9P8uIJttuQz3P76wVmK9kdKOuvLUaB7HwVBBmNv/bkAaIEw==}
     dev: false
 
-  /@hcaptcha/react-hcaptcha@1.9.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3aaXKT2tEXr317eWYNXm7JGC9z6FkhuDX46uLSFAevtVB3grxgwVxcVQuZy/Y5p6+TeQ6iDTAD0Ca2xwe4Muvw==}
+  /@hcaptcha/react-hcaptcha@1.9.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tCgU1Zc9VG/JeVWhQGyVEYfatq9f/Kmlu52UY/j1rXAbHfGoW52zgM8ZRamb0gR36I2FYoUHMP8YvO+GP4SMLQ==}
     peerDependencies:
       react: '>= 16.3.0'
       react-dom: '>= 16.3.0'
