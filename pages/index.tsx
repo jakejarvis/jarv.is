@@ -97,6 +97,11 @@ const Sup = styled("sup", {
   fontSize: "0.6em",
 });
 
+const PGPIcon = styled(GoLock, {
+  verticalAlign: "-0.25em",
+  strokeWidth: 0.5,
+});
+
 const PGPKey = styled("code", {
   margin: "0 0.15em",
   letterSpacing: "0.075em",
@@ -335,8 +340,7 @@ const Index = () => {
             underline={false}
             openInNewTab
           >
-            <GoLock size="1.25em" style={{ verticalAlign: "-0.25em", strokeWidth: 0.5 }} />{" "}
-            <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
+            <PGPIcon size="1.25em" /> <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
           </ColorfulLink>
         </Sup>
         ,{" "}

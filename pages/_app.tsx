@@ -6,7 +6,7 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import * as config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
-import { globalStyles, themeClassNames } from "../lib/styles/stitches.config";
+import { globalStyles, classNames } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
@@ -72,7 +72,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <ThemeProvider classNames={themeClassNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      <ThemeProvider classNames={classNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };
