@@ -80,14 +80,6 @@ export const defaultSeo: DefaultSeoProps = {
       title: `${config.siteName} (Atom)`,
     },
     {
-      rel: "webmention",
-      href: `https://webmention.io/${config.webmentionId}/webmention`,
-    },
-    {
-      rel: "pingback",
-      href: `https://webmention.io/${config.webmentionId}/xmlrpc`,
-    },
-    {
       rel: "humans",
       href: "/humans.txt",
     },
