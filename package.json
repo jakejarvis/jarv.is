@@ -67,7 +67,7 @@
     "remark-unwrap-images": "^4.0.0",
     "sitemap": "^7.1.1",
     "stitches-normalize": "^3.0.1",
-    "swr": "^2.2.4",
+    "swr": "^2.2.5",
     "unified": "^11.0.4"
   },
   "devDependencies": {
