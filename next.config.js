@@ -74,6 +74,15 @@ const nextConfig = {
     { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
     { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
     { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
+    {
+      source: "/tweets/:path*/",
+      destination: "https://jakejarvis.github.io/tweets/:path*/",
+    },
+    {
+      // rationale for double entries: https://github.com/vercel/next.js/discussions/36219#discussioncomment-4167863
+      source: "/tweets/:path*",
+      destination: "https://jakejarvis.github.io/tweets/:path*",
+    },
   ],
   redirects: async () => [
     {
