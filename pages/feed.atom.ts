@@ -1,4 +1,5 @@
-import { buildFeed, GetServerSideFeedProps } from "../lib/helpers/build-feed";
+import { buildFeed } from "../lib/helpers/build-feed";
+import type { GetServerSideFeedProps } from "../lib/helpers/build-feed";
 
 export const getServerSideProps: GetServerSideFeedProps = async (context) => {
   return buildFeed(context, "atom");

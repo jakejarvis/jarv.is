@@ -69,78 +69,101 @@ const nextConfig = {
       ],
     },
   ],
-  rewrites: async () => [
-    { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
-    { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
-    { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
-    { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
-    {
-      source: "/tweets/:path*/",
-      destination: "https://jakejarvis.github.io/tweets/:path*/",
-    },
-    {
-      // rationale for double entries: https://github.com/vercel/next.js/discussions/36219#discussioncomment-4167863
-      source: "/tweets/:path*",
-      destination: "https://jakejarvis.github.io/tweets/:path*",
-    },
-  ],
+  rewrites: async () => ({
+    beforeFiles: [
+      { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
+      { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
+      { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
+      { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
+
+      // https://github.com/jakejarvis/tweets/deployments/github-pages
+      {
+        source: "/tweets/:path*/",
+        destination: "https://jakejarvis.github.io/tweets/:path*/",
+      },
+      {
+        // workaround for broken trailing slash redirects:
+        // https://github.com/vercel/next.js/discussions/36219#discussioncomment-4167863
+        source: "/tweets/:path*",
+        destination: "https://jakejarvis.github.io/tweets/:path*",
+      },
+    ],
+    afterFiles: [
+      {
+        // access security.txt, etc at both /security.txt and /.well-known/security.txt
+        source: "/.well-known/:slug.txt",
+        destination: "/:slug.txt",
+      },
+    ],
+    fallback: [],
+  }),
   redirects: async () => [
     {
-      source: "/stats/",
+      source: "/stats",
       destination: `https://app.usefathom.com/share/${config.fathomSiteId}/${config.siteDomain}`,
       permanent: false,
     },
 
     // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
     // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
-    { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", statusCode: 301 },
+    { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", permanent: true },
 
-    // mastodon via subdomain
+    // mastodon via subdomain:
     // https://docs.joinmastodon.org/admin/config/#web_domain
     {
       source: "/.well-known/host-meta:path*",
       destination: "https://fediverse.jarv.is/.well-known/host-meta:path*",
-      statusCode: 301,
+      permanent: true,
     },
     {
       source: "/.well-known/webfinger:path*",
       destination: "https://fediverse.jarv.is/.well-known/webfinger:path*",
-      statusCode: 301,
+      permanent: true,
     },
     {
       source: "/.well-known/nodeinfo:path*",
       destination: "https://fediverse.jarv.is/.well-known/nodeinfo:path*",
-      statusCode: 301,
+      permanent: true,
+    },
+    {
+      source: "/@jake",
+      destination: "https://fediverse.jarv.is/@jake",
+      permanent: true,
     },
     {
       source: "/@jake/:path*",
       destination: "https://fediverse.jarv.is/@jake/:path*",
-      statusCode: 301,
+      permanent: true,
     },
+
+    // google search console has tons of 404s for images prefixed with /public... why? no clue.
+    { source: "/public/static/:path*", destination: "/static/:path*", permanent: true },
 
     // remnants of previous sites/CMSes:
     { source: "/index.xml", destination: "/feed.xml", permanent: true },
-    { source: "/feed/", destination: "/feed.xml", permanent: true },
-    { source: "/rss/", destination: "/feed.xml", permanent: true },
+    { source: "/feed", destination: "/feed.xml", permanent: true },
+    { source: "/rss", destination: "/feed.xml", permanent: true },
     { source: "/blog/:path*", destination: "/notes/", permanent: true },
     { source: "/archives/:path*", destination: "/notes/", permanent: true },
+    { source: "/resume", destination: "/static/resume.pdf", permanent: false },
+    { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
+
+    // WordPress permalinks:
     {
-      source: "/2016/02/28/millenial-with-hillary-clinton/",
+      source: "/2016/02/28/millenial-with-hillary-clinton",
       destination: "/notes/millenial-with-hillary-clinton/",
       permanent: true,
     },
     {
-      source: "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware/",
+      source: "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware",
       destination: "/notes/how-to-shrink-linux-virtual-disk-vmware/",
       permanent: true,
     },
     {
-      source: "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles/",
+      source: "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles",
       destination: "/notes/cool-bash-tricks-for-your-terminal-dotfiles/",
       permanent: true,
     },
-    { source: "/resume/", destination: "/static/resume.pdf", permanent: false },
-    { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
   ],
 };
 

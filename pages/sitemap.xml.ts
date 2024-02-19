@@ -1,6 +1,7 @@
-import { SitemapStream, SitemapItemLoose, EnumChangefreq } from "sitemap";
+import { SitemapStream, EnumChangefreq } from "sitemap";
 import { getAllNotes } from "../lib/helpers/parse-notes";
 import type { GetServerSideProps } from "next";
+import type { SitemapItemLoose } from "sitemap";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
   const { res } = context;
@@ -31,6 +32,7 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     { url: "/previously/" },
     { url: "/privacy/", priority: 0.1, changefreq: EnumChangefreq.YEARLY },
     { url: "/projects/", changefreq: EnumChangefreq.DAILY },
+    { url: "/tweets/" },
     { url: "/uses/" },
     { url: "/y2k/" },
     { url: "/zip/" },
