@@ -18,23 +18,24 @@ export const buildFeed = async (
   options?: BuildFeedOptions
 ): Promise<ReturnType<GetServerSideFeedProps>> => {
   const { res } = context;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`;
 
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
-    id: `${process.env.BASE_URL}/`,
-    link: `${process.env.BASE_URL}/`,
+    id: `${baseUrl}/`,
+    link: `${baseUrl}/`,
     title: config.siteName,
     description: config.longDescription,
     copyright: config.licenseUrl,
     updated: new Date(process.env.RELEASE_DATE || Date.now()),
-    image: `${process.env.BASE_URL}${meJpg.src}`,
+    image: `${baseUrl}${meJpg.src}`,
     feedLinks: {
-      rss: `${process.env.BASE_URL}/feed.xml`,
-      atom: `${process.env.BASE_URL}/feed.atom`,
+      rss: `${baseUrl}/feed.xml`,
+      atom: `${baseUrl}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: `${process.env.BASE_URL}/`,
+      link: `${baseUrl}/`,
       email: config.authorEmail,
     },
   });
@@ -47,11 +48,11 @@ export const buildFeed = async (
       link: note.permalink,
       title: note.title,
       description: note.description,
-      image: note.image && `${process.env.BASE_URL}${note.image}`,
+      image: note.image && `${baseUrl}${note.image}`,
       author: [
         {
           name: config.authorName,
-          link: `${process.env.BASE_URL}/`,
+          link: `${baseUrl}/`,
         },
       ],
       date: new Date(note.date),

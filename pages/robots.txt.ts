@@ -11,7 +11,7 @@ ${
     ? `Disallow: /`
     : `Allow: /
 
-Sitemap: ${process.env.BASE_URL}/sitemap.xml`
+Sitemap: ${process.env.NEXT_PUBLIC_BASE_URL || ""}/sitemap.xml`
 }
 `;
 

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import queryString from "query-string";
+import { siteDomain, hcaptchaSiteKey } from "../../lib/config";
 import type { NextRequest } from "next/server";
 
 // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
-const HCAPTCHA_SITE_KEY =
-  process.env.HCAPTCHA_SITE_KEY || process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001";
+const HCAPTCHA_SITE_KEY = hcaptchaSiteKey || "10000000-ffff-ffff-ffff-000000000001";
 const HCAPTCHA_SECRET_KEY = process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000";
 const HCAPTCHA_API_ENDPOINT = "https://hcaptcha.com/siteverify";
 
@@ -19,7 +19,7 @@ export const config = {
 export default async (req: NextRequest) => {
   // redirect GET requests to this endpoint to the contact form itself
   if (req.method === "GET") {
-    return NextResponse.redirect(`${process.env.BASE_URL}/contact/`);
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_URL || `https://${siteDomain}`}/contact/`);
   }
 
   // possible weirdness? https://github.com/orgs/vercel/discussions/78#discussioncomment-5089059

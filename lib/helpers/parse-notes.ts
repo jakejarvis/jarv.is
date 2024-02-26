@@ -69,7 +69,7 @@ export const getNoteData = async (
       title,
       htmlTitle,
       slug,
-      permalink: `${process.env.BASE_URL}/notes/${slug}/`,
+      permalink: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/notes/${slug}/`,
       date: formatDate(data.date), // validate/normalize the date string provided from front matter
     },
     content,

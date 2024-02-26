@@ -43,7 +43,10 @@ const Link = ({ href, rel, target, prefetch = false, underline = true, openInNew
   // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
   const isExternal =
     typeof href === "string" &&
-    !(href[0] === "/" || href[0] === "#" || (process.env.BASE_URL && href.startsWith(process.env.BASE_URL)));
+    !(
+      ["/", "#"].includes(href[0]) ||
+      (process.env.NEXT_PUBLIC_BASE_URL && href.startsWith(process.env.NEXT_PUBLIC_BASE_URL))
+    );
 
   if (openInNewTab || isExternal) {
     return (

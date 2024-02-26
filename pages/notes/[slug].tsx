@@ -32,7 +32,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
           },
           images: [
             {
-              url: `${process.env.BASE_URL}${frontMatter.image || meJpg.src}`,
+              url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}${frontMatter.image || meJpg.src}`,
               alt: frontMatter.title,
             },
           ],
@@ -47,7 +47,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
         description={frontMatter.description || config.longDescription}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        images={[`${process.env.BASE_URL}${frontMatter.image || meJpg.src}`]}
+        images={[`${process.env.NEXT_PUBLIC_BASE_URL || ""}${frontMatter.image || meJpg.src}`]}
         {...articleJsonLd}
       />
 
