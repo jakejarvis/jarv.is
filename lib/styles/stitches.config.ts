@@ -23,8 +23,8 @@ export const {
 } = createStitches({
   theme: {
     fonts: {
-      sans: `${GeistSans.style.fontFamily}, sans-serif`,
-      mono: `${GeistMono.style.fontFamily}, monospace`,
+      sans: GeistSans.style.fontFamily,
+      mono: GeistMono.style.fontFamily,
     },
 
     colors: {
