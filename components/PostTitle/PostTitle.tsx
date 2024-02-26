@@ -1,7 +1,7 @@
 import Link from "../Link";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef } from "react";
-import type { NoteFrontMatter } from "../../types";
+import type { PostFrontMatter } from "../../types";
 
 const Title = styled("h1", {
   margin: "0.3em 0 0.5em -1px", // misaligned left margin, super nitpicky
@@ -18,10 +18,10 @@ const Title = styled("h1", {
   },
 });
 
-export type NoteTitleProps = Pick<NoteFrontMatter, "slug" | "title" | "htmlTitle"> &
+export type PostTitleProps = Pick<PostFrontMatter, "slug" | "title" | "htmlTitle"> &
   ComponentPropsWithoutRef<typeof Title>;
 
-const NoteTitle = ({ slug, title, htmlTitle, ...rest }: NoteTitleProps) => {
+const PostTitle = ({ slug, title, htmlTitle, ...rest }: PostTitleProps) => {
   return (
     <Title {...rest}>
       <Link
@@ -37,4 +37,4 @@ const NoteTitle = ({ slug, title, htmlTitle, ...rest }: NoteTitleProps) => {
   );
 };
 
-export default NoteTitle;
+export default PostTitle;

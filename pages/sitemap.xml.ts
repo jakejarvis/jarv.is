@@ -1,5 +1,5 @@
 import { SitemapStream, EnumChangefreq } from "sitemap";
-import { getAllNotes } from "../lib/helpers/parse-notes";
+import { getAllPosts } from "../lib/helpers/posts";
 import { siteDomain } from "../lib/config";
 import type { GetServerSideProps } from "next";
 import type { SitemapItemLoose } from "sitemap";
@@ -39,20 +39,20 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     { url: "/zip/" },
   ];
 
-  // push notes separately and use their metadata
-  const notes = await getAllNotes();
-  notes.forEach((note) => {
+  // push posts separately and use their metadata
+  const posts = await getAllPosts();
+  posts.forEach((post) => {
     pages.push({
-      url: `/notes/${note.slug}/`,
+      url: `/notes/${post.slug}/`,
       // pull lastMod from front matter date
-      lastmod: note.date,
+      lastmod: post.date,
     });
   });
 
   // set lastmod of /notes/ page to most recent post's date
   pages.push({
     url: `/notes/`,
-    lastmod: notes[0].date,
+    lastmod: posts[0].date,
   });
 
   // sort alphabetically by URL

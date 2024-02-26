@@ -2,7 +2,7 @@ import Link from "../Link";
 import Time from "../Time";
 import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ReactElement } from "react";
-import type { NotesByYear } from "../../types";
+import type { PostsByYear } from "../../types";
 
 const Section = styled("section", {
   fontSize: "1.1em",
@@ -55,19 +55,19 @@ const PostDate = styled(Time, {
   color: theme.colors.medium,
 });
 
-export type NotesListProps = {
-  notesByYear: NotesByYear;
+export type PostsListProps = {
+  postsByYear: PostsByYear;
 };
 
-const NotesList = ({ notesByYear }: NotesListProps) => {
+const PostsList = ({ postsByYear }: PostsListProps) => {
   const sections: ReactElement[] = [];
 
-  Object.entries(notesByYear).forEach(([year, notes]) => {
+  Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
       <Section key={year}>
         <Year>{year}</Year>
         <List>
-          {notes.map(({ slug, date, title, htmlTitle }) => (
+          {posts.map(({ slug, date, title, htmlTitle }) => (
             <Post key={slug}>
               <PostDate date={date} format="MMM D" />
               <span>
@@ -86,10 +86,10 @@ const NotesList = ({ notesByYear }: NotesListProps) => {
     );
   });
 
-  // grouped notes enter this component ordered chronologically -- we want reverse chronological
+  // grouped posts enter this component ordered chronologically -- we want reverse chronological
   const reversed = sections.reverse();
 
   return <>{reversed}</>;
 };
 
-export default NotesList;
+export default PostsList;

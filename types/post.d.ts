@@ -1,6 +1,6 @@
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-export type NoteFrontMatter = {
+export type PostFrontMatter = {
   slug: string;
   permalink: string;
   date: string;
@@ -12,14 +12,14 @@ export type NoteFrontMatter = {
   noComments?: boolean;
 };
 
-export type NoteWithSource = {
+export type PostWithSource = {
   // yaml metadata
-  frontMatter: NoteFrontMatter;
+  frontMatter: PostFrontMatter;
 
-  // the final, compiled JSX by next-mdx-remote; see lib/helpers/parse-notes.ts
+  // the final, compiled JSX by next-mdx-remote; see lib/helpers/posts.ts
   source: Partial<Pick<MDXRemoteSerializeResult<Record<string, never>, Record<string, never>>>>;
 };
 
-export type NotesByYear = {
-  [year: string]: NoteFrontMatter[];
+export type PostsByYear = {
+  [year: string]: PostFrontMatter[];
 };

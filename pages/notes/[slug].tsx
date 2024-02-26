@@ -2,16 +2,15 @@ import { InView } from "react-intersection-observer";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
 import Content from "../../components/Content";
-import NoteMeta from "../../components/NoteMeta";
+import PostMeta from "../../components/PostMeta";
 import Comments from "../../components/Comments";
 import * as mdxComponents from "../../lib/helpers/mdx-components";
-import { getNoteSlugs } from "../../lib/helpers/parse-notes";
-import { compileNote } from "../../lib/helpers/compile-note";
+import { getPostSlugs, compilePost } from "../../lib/helpers/posts";
 import * as config from "../../lib/config";
 import { articleJsonLd } from "../../lib/config/seo";
 import { meJpg } from "../../lib/config/favicons";
 import type { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
-import type { NoteWithSource, NoteFrontMatter } from "../../types";
+import type { PostWithSource, PostFrontMatter } from "../../types";
 
 const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -51,7 +50,7 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
         {...articleJsonLd}
       />
 
-      <NoteMeta {...frontMatter} />
+      <PostMeta {...frontMatter} />
 
       <Content>
         <MDXRemote {...source} components={{ ...(mdxComponents as MDXRemoteProps["components"]) }} />
@@ -70,14 +69,14 @@ const Note = ({ frontMatter, source }: InferGetStaticPropsType<typeof getStaticP
   );
 };
 
-export const getStaticProps: GetStaticProps<NoteWithSource, Pick<NoteFrontMatter, "slug">> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PostWithSource, Pick<PostFrontMatter, "slug">> = async ({ params }) => {
   if (!params?.slug) {
     return {
       notFound: true,
     };
   }
 
-  const { frontMatter, source } = await compileNote(params.slug);
+  const { frontMatter, source } = await compilePost(params.slug);
 
   return {
     props: {
@@ -88,7 +87,10 @@ export const getStaticProps: GetStaticProps<NoteWithSource, Pick<NoteFrontMatter
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getNoteSlugs();
+  // get the slug of each .mdx file in /notes
+  const slugs = await getPostSlugs();
+
+  // map slugs into a static paths object required by next.js
   const paths = slugs.map((slug) => ({ params: { slug } }));
 
   return {

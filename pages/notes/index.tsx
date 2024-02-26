@@ -1,10 +1,10 @@
 import { NextSeo } from "next-seo";
 import Content from "../../components/Content";
-import NotesList from "../../components/NotesList";
-import { getAllNotes } from "../../lib/helpers/parse-notes";
+import PostsList from "../../components/PostsList";
+import { getAllPosts } from "../../lib/helpers/posts";
 import { authorName } from "../../lib/config";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import type { NotesByYear } from "../../types";
+import type { PostsByYear } from "../../types";
 
 const Notes = ({ notesByYear }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -18,18 +18,18 @@ const Notes = ({ notesByYear }: InferGetStaticPropsType<typeof getStaticProps>) 
       />
 
       <Content>
-        <NotesList notesByYear={notesByYear} />
+        <PostsList postsByYear={notesByYear} />
       </Content>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps<{
-  notesByYear: NotesByYear;
+  notesByYear: PostsByYear;
 }> = async () => {
   // parse the year of each note and group them together
-  const notes = await getAllNotes();
-  const notesByYear: NotesByYear = {};
+  const notes = await getAllPosts();
+  const notesByYear: PostsByYear = {};
 
   notes.forEach((note) => {
     const year = new Date(note.date).getUTCFullYear();

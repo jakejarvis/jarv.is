@@ -21,7 +21,7 @@ const HitCounter = ({ slug }: HitCounterProps) => {
     fetcher
   );
 
-  // fail somewhat silently, see error boundary in NoteMeta component
+  // fail somewhat silently, see error boundary in PostMeta component
   if (error) {
     showBoundary(`${error}`);
     return null;
