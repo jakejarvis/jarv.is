@@ -48,7 +48,7 @@ const Privacy = () => {
 
         <p>
           A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
-          <CodeInline>hits = hits + 1</CodeInline>) in a <Link href="https://supabase.com/">Supabase Postgres</Link>{" "}
+          <CodeInline>hits = hits + 1</CodeInline>) in a <Link href="https://planetscale.com/">PlanetScale</Link>{" "}
           database. Individual views and identifying (or non-identifying) details are{" "}
           <strong>never stored or logged</strong>.
         </p>

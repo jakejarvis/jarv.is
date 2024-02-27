@@ -1,29 +1,17 @@
-import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import queryString from "query-string";
-import { siteDomain, hcaptchaSiteKey } from "../../lib/config";
-import type { NextRequest } from "next/server";
+import fetcher from "../../lib/helpers/fetcher";
+import { siteDomain, authorEmail, hcaptchaSiteKey } from "../../lib/config";
+import type { NextApiHandler } from "next";
 
-// fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
-const HCAPTCHA_SITE_KEY = hcaptchaSiteKey || "10000000-ffff-ffff-ffff-000000000001";
-const HCAPTCHA_SECRET_KEY = process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000";
-const HCAPTCHA_API_ENDPOINT = "https://hcaptcha.com/siteverify";
-
-const { AIRTABLE_API_KEY, AIRTABLE_BASE } = process.env;
-const AIRTABLE_API_ENDPOINT = "https://api.airtable.com/v0/";
-
-export const config = {
-  runtime: "edge",
-};
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req: NextRequest) => {
+const handler: NextApiHandler = async (req, res) => {
   // redirect GET requests to this endpoint to the contact form itself
   if (req.method === "GET") {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_URL || `https://${siteDomain}`}/contact/`);
+    return res.redirect(`${process.env.NEXT_PUBLIC_BASE_URL || `https://${siteDomain}`}/contact/`);
   }
 
   // possible weirdness? https://github.com/orgs/vercel/discussions/78#discussioncomment-5089059
-  const data = await req.json();
+  const data = req.body;
 
   // these are both backups to client-side validations just in case someone squeezes through without them. the codes
   // are identical so they're caught in the same fashion.
@@ -36,61 +24,61 @@ export default async (req: NextRequest) => {
     throw new Error("INVALID_CAPTCHA");
   }
 
-  // sent directly to airtable
-  const airtableResult = await sendToAirtable({
-    Name: data.name,
-    Email: data.email,
-    Message: data.message,
-  });
-
   // throw an internal error, not user's fault
-  if (airtableResult !== true) {
-    throw new Error("AIRTABLE_API_ERROR");
+  if (!(await sendMessage(data))) {
+    throw new Error("NODEMAILER_ERROR");
   }
 
+  // disable caching on both ends. see:
+  // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
+  res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
+
   // success! let the client know
-  return NextResponse.json(
-    { success: true },
-    {
-      status: 201,
-      headers: {
-        // disable caching on both ends. see:
-        // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
-        "Cache-Control": "private, no-cache, no-store, must-revalidate",
-      },
-    }
-  );
+  return res.status(201).json({ success: true });
 };
 
 const validateCaptcha = async (formResponse: unknown): Promise<unknown> => {
-  const response = await fetch(HCAPTCHA_API_ENDPOINT, {
+  const response = await fetcher("https://hcaptcha.com/siteverify", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: queryString.stringify({
       response: formResponse,
-      sitekey: HCAPTCHA_SITE_KEY,
-      secret: HCAPTCHA_SECRET_KEY,
+      // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
+      sitekey: hcaptchaSiteKey || "10000000-ffff-ffff-ffff-000000000001",
+      secret: process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000",
     }),
   });
 
-  const result = await response.json();
-
-  return result.success;
+  return response?.success;
 };
 
-const sendToAirtable = async (data: unknown): Promise<boolean> => {
-  const response = await fetch(`${AIRTABLE_API_ENDPOINT}${AIRTABLE_BASE}/Messages`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      fields: data,
-    }),
-  });
+const sendMessage = async (data: Record<string, unknown>): Promise<boolean> => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "mailgun",
+      auth: {
+        user: process.env.MAILGUN_SMTP_USER,
+        pass: process.env.MAILGUN_SMTP_PASS,
+      },
+    });
 
-  return response.ok;
+    await transporter.sendMail({
+      from: `${data.name} <${process.env.MAILGUN_SMTP_USER}>`,
+      sender: `nodemailer <${process.env.MAILGUN_SMTP_USER}>`,
+      replyTo: `${data.name} <${data.email}>`,
+      to: `<${authorEmail}>`,
+      subject: `[${siteDomain}] Contact Form Submission`,
+      // TODO: add markdown parsing as promised on the form.
+      text: `${data.message}`,
+    });
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
+  return true;
 };
+
+export default handler;

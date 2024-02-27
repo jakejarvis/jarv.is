@@ -4,9 +4,6 @@
 // https://nextjs.org/blog/next-9-1-7#new-built-in-polyfills-fetch-url-and-objectassign
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const fetcher = async (input: RequestInfo, init?: RequestInit): Promise<any> => {
-  const res = await fetch(input, init);
-  return res.json();
-};
+const fetcher = <T = any>(...args: Parameters<typeof fetch>): Promise<T> => fetch(...args).then((res) => res.json());
 
 export default fetcher;
