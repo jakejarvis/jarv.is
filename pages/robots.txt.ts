@@ -6,13 +6,33 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
   // this production check should be unnecessary because "noindex" and "nofollow" are also set in a meta tag (see
   // DefaultSeo's props in pages/_app.tsx), but it doesn't hurt...
   const robots = `User-agent: *
-${
-  process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"
-    ? `Disallow: /`
-    : `Allow: /
+${process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" ? `Disallow: /` : `Allow: /`}
 
-Sitemap: ${process.env.NEXT_PUBLIC_BASE_URL || ""}/sitemap.xml`
-}
+# Block CommonCrawl
+User-agent: CCBot
+Disallow: /
+
+# Block Google Bard
+User-agent: Google-Extended
+Disallow: /
+
+# Block OpenAI & ChatGPT
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+
+# Block Anthropic AI
+User-agent: anthropic-ai
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+
+# Block ByteDance
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: ${process.env.NEXT_PUBLIC_BASE_URL || ""}/sitemap.xml
 `;
 
   res.setHeader("content-type", "text/plain; charset=utf-8");
