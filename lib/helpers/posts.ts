@@ -6,6 +6,7 @@ import pMap from "p-map";
 import pMemoize from "p-memoize";
 import matter from "gray-matter";
 import { formatDate } from "./format-date";
+import { minifier } from "./minifier";
 import type { PostFrontMatter, PostWithSource } from "../../types";
 
 // path to directory with .mdx files, relative to project root
@@ -18,14 +19,14 @@ export const getPostData = async (
   frontMatter: PostFrontMatter;
   markdown: string;
 }> => {
-  const fullPath = path.join(process.cwd(), POSTS_DIR, `${slug}.mdx`);
-  const rawContent = await fs.readFile(fullPath, "utf8");
-  const { data, content } = matter(rawContent);
-
   const { unified } = await import("unified");
   const { remarkParse, remarkSmartypants, remarkRehype, rehypeSanitize, rehypeStringify } = await import(
     "./remark-rehype-plugins"
   );
+
+  const fullPath = path.join(process.cwd(), POSTS_DIR, `${slug}.mdx`);
+  const rawContent = await fs.readFile(fullPath, "utf8");
+  const { data, content } = matter(rawContent);
 
   // allow *very* limited markdown to be used in post titles
   const parseTitle = async (title: string, allowedTags: string[] = []): Promise<string> => {
@@ -68,11 +69,11 @@ export const getPostData = async (
 
 // fully parses MDX into JS and returns *everything* about a post
 export const compilePost = async (slug: string): Promise<PostWithSource> => {
-  const { frontMatter, markdown } = await getPostData(slug);
-
   const { remarkGfm, remarkSmartypants, remarkUnwrapImages, rehypeSlug, rehypePrism } = await import(
     "./remark-rehype-plugins"
   );
+
+  const { frontMatter, markdown } = await getPostData(slug);
 
   const { compiledSource } = await serialize(markdown, {
     parseFrontmatter: false,
@@ -105,7 +106,8 @@ export const compilePost = async (slug: string): Promise<PostWithSource> => {
   return {
     frontMatter,
     source: {
-      compiledSource,
+      // save some bytes
+      compiledSource: minifier(compiledSource),
     },
   };
 };
