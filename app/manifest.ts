@@ -1,16 +1,9 @@
 import * as config from "../lib/config";
 import { chrome512Png, chrome192Png, maskable512Png, maskable192Png } from "../lib/config/favicons";
-import type { GetServerSideProps } from "next";
+import type { MetadataRoute } from "next";
 
-export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
-  const { res } = context;
-
-  // https://developer.mozilla.org/en-US/docs/Web/Manifest#deploying_a_manifest
-  res.setHeader("content-type", "application/manifest+json; charset=utf-8");
-  // cache on edge for one week
-  res.setHeader("cache-control", "public, max-age=0, s-maxage=604800, stale-while-revalidate");
-
-  const manifest = {
+const manifest = (): MetadataRoute.Manifest => {
+  return {
     name: config.siteName,
     short_name: config.siteDomain,
     description: config.longDescription,
@@ -44,14 +37,6 @@ export const getServerSideProps: GetServerSideProps<Record<string, never>> = asy
     display: "browser",
     start_url: "/",
   };
-
-  res.write(JSON.stringify(manifest));
-  res.end();
-
-  return {
-    props: {},
-  };
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => null;
+export default manifest;
