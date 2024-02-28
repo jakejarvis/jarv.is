@@ -10,7 +10,7 @@ import { minifier } from "./minifier";
 import type { PostFrontMatter, PostWithSource } from "../../types";
 
 // path to directory with .mdx files, relative to project root
-export const POSTS_DIR = "./notes";
+export const POSTS_DIR = "notes";
 
 // returns front matter and the **raw & uncompiled** markdown of a given slug
 export const getPostData = async (
