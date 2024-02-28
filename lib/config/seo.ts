@@ -65,7 +65,7 @@ export const defaultSeo: DefaultSeoProps = {
     },
     {
       rel: "manifest",
-      href: "/site.webmanifest",
+      href: "/manifest.webmanifest",
     },
     {
       rel: "alternate",
