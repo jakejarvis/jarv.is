@@ -18,8 +18,8 @@ dependencies:
     specifier: ^8.0.1
     version: 8.0.1
   '@octokit/graphql-schema':
-    specifier: ^14.58.0
-    version: 14.58.0
+    specifier: ^15.1.0
+    version: 15.1.0
   '@prisma/client':
     specifier: ^5.10.2
     version: 5.10.2(prisma@5.10.2)
@@ -770,8 +770,8 @@ packages:
       universal-user-agent: 7.0.2
     dev: false
 
-  /@octokit/graphql-schema@14.58.0:
-    resolution: {integrity: sha512-89QSUV1Dgxzq90wqkv0Nmw7jHfFCAQ4K/fjp5ezvDEHqFFzMCn25TBQlm38WB8ams+hGxInRDbITCP0n7GTGlg==}
+  /@octokit/graphql-schema@15.1.0:
+    resolution: {integrity: sha512-Q4sAgTphHqFeMeKIR5fA6kJECpTsikvyBbRaZfFGcqVJ30WqcovI4MfyTMiGgE7TWHWHQhdAIc38QhvB08E/sg==}
     dependencies:
       graphql: 16.8.1
       graphql-tag: 2.12.6(graphql@16.8.1)
