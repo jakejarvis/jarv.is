@@ -95,7 +95,7 @@
     "prettier": "^3.2.5",
     "prisma": "^5.10.2",
     "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "optionalDependencies": {
     "sharp": "^0.33.2"
