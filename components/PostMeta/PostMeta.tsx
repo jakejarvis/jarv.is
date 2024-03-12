@@ -5,7 +5,7 @@ import HitCounter from "../HitCounter";
 import PostTitle from "../PostTitle";
 import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import * as config from "../../lib/config";
+import config from "../../lib/config";
 import type { PostFrontMatter } from "../../types";
 
 const Wrapper = styled("div", {

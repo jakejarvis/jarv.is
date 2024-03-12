@@ -34,6 +34,7 @@
   - Prisma
   - PlanetScale
   - Giscus
+  - Resend
   - Fathom Analytics
   - ...and more: https://jarv.is/uses/
 

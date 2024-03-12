@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import Content from "../../components/Content";
 import PostsList from "../../components/PostsList";
 import { getAllPosts } from "../../lib/helpers/posts";
-import { authorName } from "../../lib/config";
+import config from "../../lib/config";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { PostsByYear } from "../../types";
 
@@ -11,7 +11,7 @@ const Notes = ({ notesByYear }: InferGetStaticPropsType<typeof getStaticProps>) 
     <>
       <NextSeo
         title="Notes"
-        description={`Recent posts by ${authorName}.`}
+        description={`Recent posts by ${config.authorName}.`}
         openGraph={{
           title: "Notes",
         }}

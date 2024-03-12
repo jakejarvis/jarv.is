@@ -4,7 +4,7 @@ import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
-import * as config from "../lib/config";
+import config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import { globalStyles, classNames } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
@@ -26,6 +26,11 @@ const App = ({ Component, pageProps }: AppProps) => {
   const canonical = `${process.env.NEXT_PUBLIC_BASE_URL || ""}${router.pathname === "/" ? "" : router.pathname}/`;
 
   useEffect(() => {
+    // bail immediately if the site ID is not set
+    if (!process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
+      return;
+    }
+
     // don't track pageviews on branch/deploy previews and localhost
     if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
       return;
@@ -33,7 +38,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
     // https://usefathom.com/docs/integrations/next
     // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
-    Fathom.load(config.fathomSiteId, {
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
       includedDomains: [config.siteDomain],
     });
 

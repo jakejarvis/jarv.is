@@ -1,12 +1,12 @@
 import { SitemapStream, EnumChangefreq } from "sitemap";
 import { getAllPosts } from "../lib/helpers/posts";
-import { siteDomain } from "../lib/config";
+import config from "../lib/config";
 import type { GetServerSideProps } from "next";
 import type { SitemapItemLoose } from "sitemap";
 
 export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (context) => {
   const { res } = context;
-  const stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_BASE_URL || `https://${siteDomain}` });
+  const stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}` });
 
   // cache on edge for 12 hours
   res.setHeader("cache-control", "public, max-age=0, s-maxage=43200, stale-while-revalidate");

@@ -6,7 +6,7 @@ import PostMeta from "../../components/PostMeta";
 import Comments from "../../components/Comments";
 import * as mdxComponents from "../../lib/helpers/mdx-components";
 import { getPostSlugs, compilePost } from "../../lib/helpers/posts";
-import * as config from "../../lib/config";
+import config from "../../lib/config";
 import { articleJsonLd } from "../../lib/config/seo";
 import { meJpg } from "../../lib/config/favicons";
 import type { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";

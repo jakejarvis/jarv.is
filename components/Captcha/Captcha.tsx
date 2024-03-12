@@ -1,7 +1,6 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import useHasMounted from "../../hooks/useHasMounted";
 import useTheme from "../../hooks/useTheme";
-import { hcaptchaSiteKey } from "../../lib/config";
 
 export type CaptchaProps = {
   size?: "normal" | "compact" | "invisible";
@@ -28,7 +27,7 @@ const Captcha = ({ size = "normal", theme, className, ...rest }: CaptchaProps) =
     <div className={className}>
       {hasMounted && (
         <HCaptcha
-          sitekey={hcaptchaSiteKey || "10000000-ffff-ffff-ffff-000000000001"}
+          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001"}
           reCaptchaCompat={false}
           tabIndex={0}
           size={size}

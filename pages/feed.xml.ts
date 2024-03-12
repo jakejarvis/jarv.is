@@ -2,7 +2,7 @@ import { buildFeed } from "../lib/helpers/build-feed";
 import type { GetServerSideFeedProps } from "../lib/helpers/build-feed";
 
 export const getServerSideProps: GetServerSideFeedProps = async (context) => {
-  return buildFeed(context, "rss");
+  return buildFeed(context, { format: "rss" });
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export

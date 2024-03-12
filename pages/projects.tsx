@@ -6,7 +6,7 @@ import Link from "../components/Link";
 import RepositoryCard from "../components/RepositoryCard";
 import { SiGithub } from "react-icons/si";
 import { styled, theme } from "../lib/styles/stitches.config";
-import { authorSocial } from "../lib/config";
+import config from "../lib/config";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 import type { Project } from "../types";
@@ -60,7 +60,7 @@ const Projects = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => 
         </Wrapper>
 
         <ViewMore>
-          <Link href={`https://github.com/${authorSocial.github}`}>
+          <Link href={`https://github.com/${config.authorSocial.github}`}>
             View more on <GitHubLogo /> GitHub...
           </Link>
         </ViewMore>
@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps<{
   repos: Project[];
 }> = async () => {
   // don't fail the entire site build if the required API key for this page is missing
-  if (typeof process.env.GH_PUBLIC_TOKEN === "undefined" || process.env.GH_PUBLIC_TOKEN === "") {
+  if (!process.env.GH_PUBLIC_TOKEN || process.env.GH_PUBLIC_TOKEN === "") {
     console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
 
     return {
@@ -113,7 +113,7 @@ export const getStaticProps: GetStaticProps<{
       }
     `,
     {
-      username: authorSocial.github,
+      username: config.authorSocial.github,
       sort: "STARGAZERS",
       limit: 12,
       headers: {

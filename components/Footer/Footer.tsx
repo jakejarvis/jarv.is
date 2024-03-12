@@ -2,7 +2,7 @@ import Link from "../Link";
 import { GoHeartFill } from "react-icons/go";
 import { SiNextdotjs } from "react-icons/si";
 import { styled, theme, keyframes } from "../../lib/styles/stitches.config";
-import * as config from "../../lib/config";
+import config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 
 const Wrapper = styled("footer", {

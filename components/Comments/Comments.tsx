@@ -1,7 +1,7 @@
 import Giscus from "@giscus/react";
 import useTheme from "../../hooks/useTheme";
 import { styled, theme } from "../../lib/styles/stitches.config";
-import { giscusConfig } from "../../lib/config";
+import config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 import type { GiscusProps } from "@giscus/react";
 
@@ -23,7 +23,7 @@ const Comments = ({ title, ...rest }: CommentsProps) => {
   return (
     <Wrapper {...rest}>
       <Giscus
-        {...(giscusConfig as GiscusProps)}
+        {...(config.giscusConfig as GiscusProps)}
         term={title}
         mapping="specific"
         reactionsEnabled="1"
