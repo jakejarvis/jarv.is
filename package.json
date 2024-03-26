@@ -95,7 +95,7 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prisma": "^5.11.0",
-    "simple-git-hooks": "^2.10.0",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.2"
   },
   "optionalDependencies": {
