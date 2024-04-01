@@ -27,5 +27,9 @@ yarn.lock
 *.icloud
 .nosync
 
+# development database
+*.db
+*.db-journal
+
 # vercel
 .vercel

@@ -1,14 +1,14 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "sqlite"
+  url      = env("TURSO_DATABASE_URL")
 }
 
 model hits {
-  slug String @id @db.VarChar(128)
+  slug String @id
   hits Int    @default(1)
 }

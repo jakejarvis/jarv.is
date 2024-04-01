@@ -1,5 +1,5 @@
 // @ts-check
-// eslint-disable import/no-anonymous-default-export
+/* eslint-disable import/no-anonymous-default-export */
 
 import config from "./lib/config/index.js";
 

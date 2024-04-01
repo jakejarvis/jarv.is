@@ -32,7 +32,7 @@
   - Vercel
   - Stitches
   - Prisma
-  - PlanetScale
+  - Turso
   - Giscus
   - Resend
   - Fathom Analytics
