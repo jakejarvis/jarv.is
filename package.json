@@ -34,12 +34,12 @@
     "fathom-client": "^3.6.0",
     "feed": "^4.2.2",
     "formik": "^2.4.5",
-    "geist": "^1.2.2",
+    "geist": "^1.3.0",
     "gray-matter": "^4.0.3",
     "next": "14.1.3",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.5.0",
-    "nodemailer": "^6.9.12",
+    "nodemailer": "^6.9.13",
     "obj-str": "^1.1.0",
     "p-map": "^7.0.1",
     "p-memoize": "^7.1.1",
@@ -76,16 +76,16 @@
   "devDependencies": {
     "@jakejarvis/eslint-config": "^3.1.0",
     "@types/comma-number": "^2.1.2",
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.12.2",
     "@types/nodemailer": "^6.4.14",
     "@types/novnc__novnc": "^1.3.4",
-    "@types/prop-types": "^15.7.11",
-    "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.21",
+    "@types/prop-types": "^15.7.12",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
     "@types/react-is": "^18.2.4",
     "@types/strip-comments": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.57.0",
     "eslint-config-next": "14.1.3",
@@ -95,11 +95,11 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prisma": "^5.11.0",
-    "simple-git-hooks": "^2.10.0",
-    "typescript": "^5.4.2"
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.4.3"
   },
   "optionalDependencies": {
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.3"
   },
   "engines": {
     "node": ">=20.x"
