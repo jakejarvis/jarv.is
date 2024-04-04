@@ -18,8 +18,8 @@ dependencies:
     specifier: 1.4.0
     version: 1.4.0
   '@octokit/graphql':
-    specifier: ^8.0.1
-    version: 8.0.1
+    specifier: ^8.1.0
+    version: 8.1.0
   '@octokit/graphql-schema':
     specifier: ^15.3.0
     version: 15.3.0
@@ -895,17 +895,21 @@ packages:
       graphql-tag: 2.12.6(graphql@16.8.1)
     dev: false
 
-  /@octokit/graphql@8.0.1:
-    resolution: {integrity: sha512-lLDb6LhC1gBj2CxEDa5Xk10+H/boonhs+3Mi6jpRyetskDKNHe6crMeKmUE2efoLofMP8ruannLlCUgpTFmVzQ==}
+  /@octokit/graphql@8.1.0:
+    resolution: {integrity: sha512-XDvj6GcUnQYgbCLXElt3vZDzNIPGvGiwxQO2XzsvfVUjebGh0E5eCD/1My9zUGSNKaGVZitVuO8LMziGmoFryg==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/request': 9.0.1
-      '@octokit/types': 12.0.0
+      '@octokit/types': 13.0.0
       universal-user-agent: 7.0.2
     dev: false
 
   /@octokit/openapi-types@19.0.0:
     resolution: {integrity: sha512-PclQ6JGMTE9iUStpzMkwLCISFn/wDeRjkZFIKALpvJQNBGwDoYYi2fFvuHwssoQ1rXI5mfh6jgTgWuddeUzfWw==}
+    dev: false
+
+  /@octokit/openapi-types@21.2.0:
+    resolution: {integrity: sha512-xx+Xd6I7rYvul/hgUDqv6TeGX0IOGnhSg9IOeYgd/uI7IAqUy6DE2B6Ipv2M4mWoxaMcWjIzgTIcv8pMO3F3vw==}
     dev: false
 
   /@octokit/request-error@6.0.2:
@@ -929,6 +933,12 @@ packages:
     resolution: {integrity: sha512-EzD434aHTFifGudYAygnFlS1Tl6KhbTynEWELQXIbTY8Msvb5nEqTZIm7sbPEt4mQYLZwu3zPKVdeIrw0g7ovg==}
     dependencies:
       '@octokit/openapi-types': 19.0.0
+    dev: false
+
+  /@octokit/types@13.0.0:
+    resolution: {integrity: sha512-jSOgEoFZvjg78txlb7cuRTAEvyyQkIEB4Nujg5ZN7E1xaICsr8A0X045Nwb1wUWNrBUHBHZNtcsDIhk8d8ipCw==}
+    dependencies:
+      '@octokit/openapi-types': 21.2.0
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
