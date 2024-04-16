@@ -24,7 +24,7 @@
     "@hcaptcha/react-hcaptcha": "^1.10.1",
     "@libsql/client": "^0.6.0",
     "@novnc/novnc": "1.4.0",
-    "@octokit/graphql": "^8.0.1",
+    "@octokit/graphql": "^8.1.1",
     "@octokit/graphql-schema": "^15.3.0",
     "@prisma/adapter-libsql": "^5.11.0",
     "@prisma/client": "^5.11.0",
