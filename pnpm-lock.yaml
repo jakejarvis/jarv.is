@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.1
     version: 8.0.1
   '@octokit/graphql-schema':
-    specifier: ^15.3.0
-    version: 15.3.0
+    specifier: ^15.16.0
+    version: 15.16.0
   '@prisma/adapter-libsql':
     specifier: ^5.11.0
     version: 5.11.0(@libsql/client@0.6.0)
@@ -888,8 +888,8 @@ packages:
       universal-user-agent: 7.0.2
     dev: false
 
-  /@octokit/graphql-schema@15.3.0:
-    resolution: {integrity: sha512-yGj0haNZY1/4DZO72KpJdOzvKQFYPUkD5d6PdntPSbekABUoOdStAtEsOtuwZz52cPrbQEEoZ0wN7aemA1y8PA==}
+  /@octokit/graphql-schema@15.16.0:
+    resolution: {integrity: sha512-IXUM9qWm0W2mdTQ1Wmk4sgg/hWJI8/US7d//BtTzkCU8QlNs5VnroQ9toWnA+SgNUQ5/OgdyRUS0+Jg7SC41NA==}
     dependencies:
       graphql: 16.8.1
       graphql-tag: 2.12.6(graphql@16.8.1)
