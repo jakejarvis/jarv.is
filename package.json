@@ -69,7 +69,7 @@
     "remark-rehype": "^11.1.0",
     "remark-smartypants": "^2.1.0",
     "remark-unwrap-images": "^4.0.0",
-    "sitemap": "^7.1.1",
+    "sitemap": "^8.0.0",
     "stitches-normalize": "^3.0.1",
     "strip-comments": "^2.0.1",
     "swr": "^2.2.5",
