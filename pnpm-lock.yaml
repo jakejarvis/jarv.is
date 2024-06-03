@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.10.1
     version: 1.10.1(react-dom@18.2.0)(react@18.2.0)
   '@libsql/client':
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.6.2
+    version: 0.6.2
   '@novnc/novnc':
     specifier: 1.4.0
     version: 1.4.0
@@ -25,7 +25,7 @@ dependencies:
     version: 15.3.0
   '@prisma/adapter-libsql':
     specifier: ^5.11.0
-    version: 5.11.0(@libsql/client@0.6.0)
+    version: 5.11.0(@libsql/client@0.6.2)
   '@prisma/client':
     specifier: ^5.11.0
     version: 5.11.0(prisma@5.11.0)
@@ -590,10 +590,10 @@ packages:
       eslint: 8.57.0
     dev: true
 
-  /@libsql/client@0.6.0:
-    resolution: {integrity: sha512-qhQzTG/y2IEVbL3+9PULDvlQFWJ/RnjFXECr/Nc3nRngGiiMysDaOV5VUzYk7DulUX98EA4wi+z3FspKrUplUA==}
+  /@libsql/client@0.6.2:
+    resolution: {integrity: sha512-xRNfRLv/dOCbV4qd+M0baQwGmvuZpMd2wG2UAPs8XmcdaPvu5ErkcaeITkxlm3hDEJVabQM1cFhMBxsugWW9fQ==}
     dependencies:
-      '@libsql/core': 0.6.0
+      '@libsql/core': 0.6.2
       '@libsql/hrana-client': 0.6.0
       js-base64: 3.7.7
       libsql: 0.3.10
@@ -602,8 +602,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@libsql/core@0.6.0:
-    resolution: {integrity: sha512-affAB8vSqQwqI9NBDJ5uJCVaHoOAS2pOpbv1kWConh1SBbmJBnHHd4KG73RAJ2sgd2+NbT9WA+XJBqxgp28YSw==}
+  /@libsql/core@0.6.2:
+    resolution: {integrity: sha512-c2P4M+4u/4b2L02A0KjggO3UW51rGkhxr/7fzJO0fEAqsqrWGxuNj2YtRkina/oxfYvAof6xjp8RucNoIV/Odw==}
     dependencies:
       js-base64: 3.7.7
     dev: false
@@ -943,12 +943,12 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@prisma/adapter-libsql@5.11.0(@libsql/client@0.6.0):
+  /@prisma/adapter-libsql@5.11.0(@libsql/client@0.6.2):
     resolution: {integrity: sha512-Q2GxamPew8AviqO/6kQskqvuh4Y0bGj8hbMefjD2+3Q3geNfE/W6XbfH0tHLOK6gQgawoAONrRgbRfoJPzUvQA==}
     peerDependencies:
       '@libsql/client': ^0.3.5 || ^0.4.0 || ^0.5.0
     dependencies:
-      '@libsql/client': 0.6.0
+      '@libsql/client': 0.6.2
       '@prisma/driver-adapter-utils': 5.11.0
       async-mutex: 0.4.1
     dev: false
