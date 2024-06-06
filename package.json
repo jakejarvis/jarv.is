@@ -55,7 +55,7 @@
     "react-frame-component": "^5.2.6",
     "react-icons": "^5.0.1",
     "react-innertext": "^1.1.5",
-    "react-intersection-observer": "^9.8.1",
+    "react-intersection-observer": "^9.10.3",
     "react-is": "18.2.0",
     "react-player": "^2.15.1",
     "react-textarea-autosize": "^8.5.3",
