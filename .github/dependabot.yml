@@ -34,7 +34,6 @@ updates:
           - "@typescript-eslint/eslint-plugin"
           - "@typescript-eslint/parser"
     ignore:
-      - dependency-name: "@types/*"
       - dependency-name: "@jakejarvis/eslint-config"
     labels:
       - "📦 dependencies"
