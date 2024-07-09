@@ -25,7 +25,7 @@
     "@libsql/client": "^0.6.2",
     "@novnc/novnc": "1.4.0",
     "@octokit/graphql": "^8.1.1",
-    "@octokit/graphql-schema": "^15.22.0",
+    "@octokit/graphql-schema": "^15.25.0",
     "@prisma/adapter-libsql": "^5.15.1",
     "@prisma/client": "^5.15.1",
     "@react-spring/web": "^9.7.3",
