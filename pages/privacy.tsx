@@ -106,33 +106,26 @@ const Privacy = () => {
           </ListItem>
         </UnorderedList>
 
-        <H2 id="hcaptcha">Fighting Spam</H2>
+        <H2 id="spam">Fighting Spam</H2>
 
         <p>
           Using{" "}
-          <Link href="https://www.hcaptcha.com/">
-            <strong>hCaptcha</strong>
+          <Link href="https://www.cloudflare.com/products/turnstile/">
+            <strong>Cloudflare Turnstile</strong>
           </Link>{" "}
           to fight bot spam on the <Link href="/contact/">contact form</Link> was an easy choice over seemingly
           unavoidable alternatives like <Link href="https://developers.google.com/recaptcha/">reCAPTCHA</Link>.
         </p>
 
         <p>
-          You can refer to hCaptcha's <Link href="https://www.hcaptcha.com/privacy">privacy policy</Link> and{" "}
-          <Link href="https://www.hcaptcha.com/terms">terms of service</Link> for more details. While some information
-          is sent to the hCaptcha API about your behavior <strong>(on the contact page only)</strong>, at least you
-          won't be helping a certain internet conglomerate{" "}
+          You can refer to Cloudflare's <Link href="https://www.cloudflare.com/privacypolicy/">privacy policy</Link> and{" "}
+          <Link href="https://www.cloudflare.com/website-terms/">terms of service</Link> for more details. While some
+          information is sent to the Turnstile API about your behavior <strong>(on the contact page only)</strong>, at
+          least you won't be helping a certain internet conglomerate{" "}
           <Link href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">
             train their self-driving cars
           </Link>
           . 🚗
-        </p>
-
-        <p>
-          I also enabled the setting to donate 100% of my{" "}
-          <Link href="https://humanprotocol.org/?lng=en-US">HMT token</Link> earnings to the{" "}
-          <Link href="https://wikimediafoundation.org/">Wikimedia Foundation</Link>, for what it's worth. (A few cents,
-          probably... 💰)
         </p>
       </Content>
     </>

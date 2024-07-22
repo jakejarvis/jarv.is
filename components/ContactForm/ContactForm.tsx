@@ -55,7 +55,7 @@ const MarkdownTipIcon = styled(SiMarkdown, {
   marginRight: "0.25em",
 });
 
-const HCaptcha = styled(Captcha, {
+const Turnstile = styled(Captcha, {
   margin: "1em 0",
 });
 
@@ -133,7 +133,7 @@ type FormValues = {
   name: string;
   email: string;
   message: string;
-  "h-captcha-response": string;
+  "cf-turnstile-response": string;
 };
 
 export type ContactFormProps = {
@@ -195,7 +195,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
         name: "",
         email: "",
         message: "",
-        "h-captcha-response": "",
+        "cf-turnstile-response": "",
       }}
       validate={(values: FormValues) => {
         const errors: Partial<Record<keyof FormValues, boolean>> = {};
@@ -203,9 +203,9 @@ const ContactForm = ({ className }: ContactFormProps) => {
         errors.name = !values.name;
         errors.email = !values.email; // also loosely validated that it's email-like via browser (not foolproof)
         errors.message = !values.message;
-        errors["h-captcha-response"] = !values["h-captcha-response"];
+        errors["cf-turnstile-response"] = !values["cf-turnstile-response"];
 
-        if (!errors.name && !errors.email && !errors.message && !errors["h-captcha-response"]) {
+        if (!errors.name && !errors.email && !errors.message && !errors["cf-turnstile-response"]) {
           setFeedback("");
           return {};
         } else {
@@ -267,7 +267,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             ](https://jarv.is), and <code>`code`</code>.
           </MarkdownTip>
 
-          <HCaptcha onVerify={(token) => setFieldValue("h-captcha-response", token)} />
+          <Turnstile onVerify={(token) => setFieldValue("cf-turnstile-response", token)} />
 
           <ActionRow>
             <SubmitButton
