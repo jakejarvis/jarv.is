@@ -1,10 +1,15 @@
 import nodemailer from "nodemailer";
-import queryString from "query-string";
 import fetcher from "../../lib/helpers/fetcher";
 import config from "../../lib/config";
 import type { NextApiHandler } from "next";
 
-const handler: NextApiHandler = async (req, res) => {
+const handler: NextApiHandler<
+  {
+    success?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    error?: any;
+  } | null
+> = async (req, res) => {
   // only allow POST requests, otherwise return a 405 Method Not Allowed
   if (req.method !== "POST") {
     return res.status(405).send(null);
@@ -20,7 +25,13 @@ const handler: NextApiHandler = async (req, res) => {
       // all fields are required
       throw new Error("missing_data");
     }
-    if (!data["h-captcha-response"] || !(await validateCaptcha(data["h-captcha-response"]))) {
+    if (
+      !data["cf-turnstile-response"] ||
+      !(await validateCaptcha(
+        data["cf-turnstile-response"],
+        (req.headers["x-forwarded-for"] as string) || (req.headers["x-real-ip"] as string) || ""
+      ))
+    ) {
       // either the captcha is wrong or completely missing
       throw new Error("invalid_captcha");
     }
@@ -44,17 +55,17 @@ const handler: NextApiHandler = async (req, res) => {
   }
 };
 
-const validateCaptcha = async (formResponse: unknown): Promise<unknown> => {
-  const response = await fetcher("https://hcaptcha.com/siteverify", {
+const validateCaptcha = async (formResponse: unknown, ip: string): Promise<unknown> => {
+  const response = await fetcher("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
-    body: queryString.stringify({
+    body: JSON.stringify({
+      // fallback to dummy secret for testing: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+      secret: process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
       response: formResponse,
-      // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
-      sitekey: process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001",
-      secret: process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000",
+      remoteip: ip,
     }),
   });
 
