@@ -19,12 +19,21 @@ export type CommentsProps = ComponentPropsWithoutRef<typeof Wrapper> & {
 const Comments = ({ title, ...rest }: CommentsProps) => {
   const { activeTheme } = useTheme();
 
+  // fail silently if giscus isn't configured
+  if (!config.giscusConfig) {
+    console.warn("Giscus isn't configured in lib/config/index.js.");
+    return null;
+  }
+
   // TODO: use custom `<Loading />` spinner component during suspense
   return (
     <Wrapper {...rest}>
       <Giscus
-        {...(config.giscusConfig as GiscusProps)}
+        repo={config.githubRepo as GiscusProps["repo"]}
+        repoId={config.giscusConfig.repoId}
         term={title}
+        category="Comments"
+        categoryId={config.giscusConfig.categoryId}
         mapping="specific"
         reactionsEnabled="1"
         emitMetadata="0"
