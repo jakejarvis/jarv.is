@@ -20,7 +20,6 @@ Most production steps are handled [automatically by Vercel](https://vercel.com/d
 ## 🌎 Related
 
 - [💻 /uses](https://jarv.is/uses/) – Things and stuff I use.
-- [📈 /stats](https://jarv.is/stats/) – My [Fathom Analytics](https://usefathom.com/ref/ZEYG0O) dashboard.
 - [🕰️ /previously](https://jarv.is/previously/) – An embarrassing trip down this site's memory lane.
   - Visit [/y2k](https://jarv.is/y2k/) if you want to experience the _fully_ immersive time machine, but don't say I didn't warn you...
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.
