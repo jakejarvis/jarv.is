@@ -93,12 +93,6 @@ export default (phase, { defaultConfig }) => {
       fallback: [],
     }),
     redirects: async () => [
-      {
-        source: "/stats",
-        destination: `https://app.usefathom.com/share/${process.env.NEXT_PUBLIC_FATHOM_SITE_ID || ""}/${config.siteDomain}`,
-        permanent: false,
-      },
-
       // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
       // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
       { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", permanent: true },

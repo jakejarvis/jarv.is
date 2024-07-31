@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
-import * as Fathom from "fathom-client";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
-import config from "../lib/config";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
 import { globalStyles, classNames } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
@@ -24,36 +23,6 @@ const App = ({ Component, pageProps }: AppProps) => {
   // get this page's URL with full domain, and hack around query parameters and anchors
   // NOTE: this assumes trailing slashes are enabled in next.config.js
   const canonical = `${process.env.NEXT_PUBLIC_BASE_URL || ""}${router.pathname === "/" ? "" : router.pathname}/`;
-
-  useEffect(() => {
-    // bail immediately if the site ID is not set
-    if (!process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
-      return;
-    }
-
-    // don't track pageviews on branch/deploy previews and localhost
-    if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
-      return;
-    }
-
-    // https://usefathom.com/docs/integrations/next
-    // https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel
-    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-      includedDomains: [config.siteDomain],
-    });
-
-    const onRouteChangeComplete = (url: string) => {
-      Fathom.trackPageview({ url });
-    };
-
-    // needs to be triggered manually on link clicks (the page doesn't actually change)
-    router.events.on("routeChangeComplete", onRouteChangeComplete);
-
-    return () => {
-      // unassign event listener
-      router.events.off("routeChangeComplete", onRouteChangeComplete);
-    };
-  }, [router.events]);
 
   // inject body styles defined in ../lib/styles/stitches.config.ts
   globalStyles();
@@ -78,6 +47,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
       <ThemeProvider classNames={classNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 };
