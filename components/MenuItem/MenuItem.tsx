@@ -25,6 +25,7 @@ const MenuLink = styled(Link, {
 });
 
 const Icon = styled("svg", {
+  display: "inline",
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.3em",

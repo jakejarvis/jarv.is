@@ -4,6 +4,7 @@ import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef } from "react";
 
 const Octocat = styled(SiGithub, {
+  display: "inline",
   width: "1.2em",
   height: "1.2em",
   verticalAlign: "-0.2em",

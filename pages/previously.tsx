@@ -42,6 +42,7 @@ const Divider = styled(HorizontalRule, {
 });
 
 const WindowsLogo = styled(SiWindows95, {
+  display: "inline",
   width: "1.2em",
   height: "1.2em",
   verticalAlign: "-0.15em",

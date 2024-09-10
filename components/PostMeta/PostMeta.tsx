@@ -27,6 +27,7 @@ const MetaLink = styled(Link, {
 });
 
 const Icon = styled("svg", {
+  display: "inline",
   width: "1.2em",
   height: "1.2em",
   verticalAlign: "-0.2em",

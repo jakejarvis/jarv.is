@@ -49,6 +49,7 @@ const MarkdownTip = styled("div", {
 });
 
 const MarkdownTipIcon = styled(SiMarkdown, {
+  display: "inline",
   width: "1.25em",
   height: "1.25em",
   verticalAlign: "-0.25em",
@@ -123,6 +124,7 @@ const Result = styled("div", {
 });
 
 const ResultIcon = styled("svg", {
+  display: "inline",
   width: "1.3em",
   height: "1.3em",
   verticalAlign: "-0.3em",
