@@ -58,7 +58,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
       if (connected) {
         rfbRef.current?.disconnect();
       }
-    } catch (error) {} // eslint-disable-line no-empty
+    } catch (error) {} // eslint-disable-line no-empty, @typescript-eslint/no-unused-vars
 
     rfbRef.current = null;
     setConnected(false);

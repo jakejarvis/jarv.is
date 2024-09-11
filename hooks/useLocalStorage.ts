@@ -34,7 +34,9 @@ const useLocalStorage = <T = string>(
         window.localStorage.setItem(key, serializer(initialValue));
         return initialValue;
       }
-    } catch (error) {
+    } catch (
+      error // eslint-disable-line @typescript-eslint/no-unused-vars
+    ) {
       return initialValue;
     }
   });
@@ -63,7 +65,7 @@ const useLocalStorage = <T = string>(
     try {
       window.localStorage.removeItem(key);
       setState(undefined);
-    } catch (error) {} // eslint-disable-line no-empty
+    } catch (error) {} // eslint-disable-line no-empty, @typescript-eslint/no-unused-vars
   }, [key]);
 
   return [state, set, remove];
