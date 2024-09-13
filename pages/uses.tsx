@@ -237,8 +237,8 @@ const Uses = () => {
             <UnorderedList>
               <ListItem>
                 My various{" "}
-                <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/aliases.zsh">ZSH aliases</Link> and{" "}
-                <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/functions.zsh">functions</Link> are in{" "}
+                <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/custom/aliases.zsh">ZSH aliases</Link> and{" "}
+                <Link href="https://github.com/jakejarvis/dotfiles/blob/main/zsh/custom/functions.zsh">functions</Link> are in{" "}
                 <Link href="https://github.com/jakejarvis/dotfiles">
                   my <CodeInline>.dotfiles</CodeInline> repository.
                 </Link>
