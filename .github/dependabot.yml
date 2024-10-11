@@ -35,6 +35,8 @@ updates:
           - "@typescript-eslint/parser"
     ignore:
       - dependency-name: "@jakejarvis/eslint-config"
+      - dependency-name: "@types/node"
+      - dependency-name: "@types/prop-types"
     labels:
       - "📦 dependencies"
     commit-message:

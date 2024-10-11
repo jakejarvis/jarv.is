@@ -69,7 +69,7 @@ export const getPostData = async (
 
 // fully parses MDX into JS and returns *everything* about a post
 export const compilePost = async (slug: string): Promise<PostWithSource> => {
-  const { remarkGfm, remarkSmartypants, remarkUnwrapImages, rehypeSlug, rehypePrism } = await import(
+  const { remarkGfm, remarkSmartypants, rehypeSlug, rehypeUnwrapImages, rehypePrism } = await import(
     "./remark-rehype-plugins"
   );
 
@@ -79,10 +79,8 @@ export const compilePost = async (slug: string): Promise<PostWithSource> => {
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [
-        // @ts-ignore
         [remarkGfm, { singleTilde: false }],
         [
-          // @ts-ignore
           remarkSmartypants,
           {
             quotes: true,
@@ -91,15 +89,8 @@ export const compilePost = async (slug: string): Promise<PostWithSource> => {
             ellipses: false,
           },
         ],
-        // @ts-ignore
-        [remarkUnwrapImages],
       ],
-      rehypePlugins: [
-        // @ts-ignore
-        [rehypeSlug],
-        // @ts-ignore
-        [rehypePrism, { ignoreMissing: true }],
-      ],
+      rehypePlugins: [rehypeSlug, rehypeUnwrapImages, [rehypePrism, { ignoreMissing: true }]],
     },
   });
 

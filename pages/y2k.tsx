@@ -12,7 +12,7 @@ import type { ReactElement, ComponentPropsWithoutRef, ElementRef } from "react";
 const VNC = dynamic(() => import("../components/VNC"), { ssr: false });
 
 // https://github.com/jakejarvis/y2k
-const SOCKET_PROXY = "wss://y2k.pipe.fail";
+const SOCKET_PROXY = "wss://vnc.jarv.is";
 
 const Wallpaper = styled("main", {
   display: "flex",
