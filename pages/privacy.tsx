@@ -70,15 +70,7 @@ const Privacy = () => {
           <Link href="https://vercel.com/docs/analytics/privacy-policy#data-point-information">
             without collecting anything identifiable
           </Link>{" "}
-          about you. Likewise,{" "}
-          <Link href="">
-            <strong>Vercel Speed Insights</strong>
-          </Link>{" "}
-          is used to gather core web vitals{" "}
-          <Link href="https://vercel.com/docs/speed-insights/privacy-policy#vercel-speed-insights-privacy-&-compliance">
-            anonymously
-          </Link>
-          .
+          about you.
         </p>
 
         <H2 id="third-party">Third-Party Content</H2>

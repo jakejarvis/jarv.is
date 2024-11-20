@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
@@ -49,7 +48,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider classNames={classNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
 
       <Analytics />
-      <SpeedInsights />
     </>
   );
 };
