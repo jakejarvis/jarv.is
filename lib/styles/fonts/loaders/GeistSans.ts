@@ -1,9 +1,7 @@
-import localFont from "next/font/local";
+import { Geist as GeistSansLoader } from "next/font/google";
 
-const GeistSans = localFont({
-  src: "../../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
-  weight: "100 900",
-  style: "normal",
+const GeistSans = GeistSansLoader({
+  subsets: ["latin"],
   display: "swap",
   fallback: [
     // https://github.com/system-fonts/modern-font-stacks#system-ui

@@ -40,7 +40,7 @@ const Name = styled("span", {
   margin: "0 0.6em",
   fontSize: "1.15em",
   fontWeight: 500,
-  letterSpacing: "0.01em",
+  letterSpacing: "0.02em",
   lineHeight: 1,
 
   "@medium": {

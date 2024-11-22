@@ -39,7 +39,7 @@ const Icon = styled("svg", {
 const Label = styled("span", {
   fontSize: "0.925em",
   fontWeight: 500,
-  letterSpacing: "0.02em",
+  letterSpacing: "0.025em",
   marginLeft: "0.7em",
 
   "@medium": {
