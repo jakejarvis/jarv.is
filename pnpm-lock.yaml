@@ -117,8 +117,8 @@ importers:
         specifier: ^2.16.0
         version: 2.16.0(react@18.3.1)
       react-textarea-autosize:
-        specifier: ^8.5.5
-        version: 8.5.5(@types/react@18.3.12)(react@18.3.1)
+        specifier: ^8.5.6
+        version: 8.5.6(@types/react@18.3.12)(react@18.3.1)
       react-turnstile:
         specifier: ^1.1.4
         version: 1.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2609,11 +2609,11 @@ packages:
     peerDependencies:
       react: '>=16.6.0'
 
-  react-textarea-autosize@8.5.5:
-    resolution: {integrity: sha512-CVA94zmfp8m4bSHtWwmANaBR8EPsKy2aZ7KwqhoS4Ftib87F9Kvi7XQhOixypPLMc6kVYgOXvKFuuzZDpHGRPg==}
+  react-textarea-autosize@8.5.6:
+    resolution: {integrity: sha512-aT3ioKXMa8f6zHYGebhbdMD2L00tKeRX1zuVuDx9YQK/JLLRSaSxq3ugECEmUB9z2kvk6bFSIoRHLkkUv0RJiw==}
     engines: {node: '>=10'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react-turnstile@1.1.4:
     resolution: {integrity: sha512-oluyRWADdsufCt5eMqacW4gfw8/csr6Tk+fmuaMx0PWMKP1SX1iCviLvD2D5w92eAzIYDHi/krUWGHhlfzxTpQ==}
@@ -6216,7 +6216,7 @@ snapshots:
       react: 18.3.1
       react-fast-compare: 3.2.2
 
-  react-textarea-autosize@8.5.5(@types/react@18.3.12)(react@18.3.1):
+  react-textarea-autosize@8.5.6(@types/react@18.3.12)(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.26.0
       react: 18.3.1
