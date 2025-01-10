@@ -33,7 +33,7 @@
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.13",
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "feed": "^4.2.2",
     "formik": "^2.4.6",
     "gray-matter": "^4.0.3",
