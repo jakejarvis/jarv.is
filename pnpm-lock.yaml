@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@giscus/react':
-        specifier: ^3.0.0
-        version: 3.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^3.1.0
+        version: 3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@libsql/client':
         specifier: ^0.8.1
         version: 0.8.1
@@ -280,11 +280,11 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@giscus/react@3.0.0':
-    resolution: {integrity: sha512-hgCjLpg3Wgh8VbTF5p8ZLcIHI74wvDk1VIFv12+eKhenNVUDjgwNg2B1aq/3puyHOad47u/ZSyqiMtohjy/OOA==}
+  '@giscus/react@3.1.0':
+    resolution: {integrity: sha512-0TCO2TvL43+oOdyVVGHDItwxD1UMKP2ZYpT6gXmhFOqfAJtZxTzJ9hkn34iAF/b6YzyJ4Um89QIt9z/ajmAEeg==}
     peerDependencies:
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
+      react: ^16 || ^17 || ^18 || ^19
+      react-dom: ^16 || ^17 || ^18 || ^19
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -1586,8 +1586,8 @@ packages:
   get-tsconfig@4.8.1:
     resolution: {integrity: sha512-k9PN+cFBmaLWtVz29SkUoqU5O0slLuHJXt/2P+tMVFT+phsSGXGkp9t3rQIqdz0e+06EHNGs3oM6ZX1s2zHxRg==}
 
-  giscus@1.5.0:
-    resolution: {integrity: sha512-t3LL0qbSO3JXq3uyQeKpF5CegstGfKX/0gI6eDe1cmnI7D56R7j52yLdzw4pdKrg3VnufwCgCM3FDz7G1Qr6lg==}
+  giscus@1.6.0:
+    resolution: {integrity: sha512-Zrsi8r4t1LVW950keaWcsURuZUQwUaMKjvJgTCY125vkW6OiEBkatE7ScJDbpqKHdZwb///7FVC21SE3iFK3PQ==}
 
   github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
@@ -3320,9 +3320,9 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
-  '@giscus/react@3.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@giscus/react@3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      giscus: 1.5.0
+      giscus: 1.6.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -4831,7 +4831,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  giscus@1.5.0:
+  giscus@1.6.0:
     dependencies:
       lit: 3.2.1
 
