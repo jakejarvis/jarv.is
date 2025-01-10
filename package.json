@@ -23,7 +23,7 @@
     "@giscus/react": "^3.0.0",
     "@libsql/client": "^0.8.1",
     "@novnc/novnc": "1.4.0",
-    "@octokit/graphql": "^8.1.1",
+    "@octokit/graphql": "^8.1.2",
     "@octokit/graphql-schema": "^15.25.0",
     "@prisma/adapter-libsql": "^5.22.0",
     "@prisma/client": "^5.22.0",
