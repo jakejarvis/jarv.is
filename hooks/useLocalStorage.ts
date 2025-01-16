@@ -3,7 +3,6 @@
 import { useCallback, useState, useRef } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
 const useLocalStorage = <T = string>(

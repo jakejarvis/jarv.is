@@ -15,7 +15,7 @@ Run `pnpm install` to install the necessary dependencies and `pnpm dev` to start
 
 Most production steps are handled [automatically by Vercel](https://vercel.com/docs/frameworks/nextjs), but running `pnpm build` locally will still generate an unoptimized, less-than-ideal static version which can be served via `pnpm start`.
 
-**⚡ Bonus tip:** [Volta](https://volta.sh/), a magical, blazing-fast alternative to [nvm](https://github.com/nvm-sh/nvm), is used to pin the exact Node.js version used for development. It's completely optional but I highly recommend it in general!
+**☝️ Note:** [pnpm](https://pnpm.io/installation#using-corepack) is highly recommended (for [many reasons!](https://pnpm.io/benchmarks)) but this project should also work just fine with NPM or Yarn.
 
 ## 🌎 Related
 

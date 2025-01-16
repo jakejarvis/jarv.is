@@ -14,7 +14,7 @@ export const ThemeContext: Context<{
   setTheme: (theme: string) => void;
 }> = createContext({
   activeTheme: "",
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setTheme: (_) => {},
 });
 
