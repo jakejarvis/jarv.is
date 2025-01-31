@@ -39,15 +39,15 @@ const Hillary = () => {
 
         <Copyright>
           Video is property of{" "}
-          <Link href="https://www.hillaryclinton.com/" css={{ fontWeight: 700 }}>
+          <Link href="https://www.hillaryclinton.com/" style={{ fontWeight: 700 }}>
             Hillary for America
           </Link>
           , the{" "}
-          <Link href="https://democrats.org/" css={{ fontWeight: 700 }}>
+          <Link href="https://democrats.org/" style={{ fontWeight: 700 }}>
             Democratic National Committee
           </Link>
           , and{" "}
-          <Link href="https://cnnpressroom.blogs.cnn.com/" css={{ fontWeight: 700 }}>
+          <Link href="https://cnnpressroom.blogs.cnn.com/" style={{ fontWeight: 700 }}>
             CNN / WarnerMedia
           </Link>
           . &copy; 2016.

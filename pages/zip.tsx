@@ -39,8 +39,8 @@ const Zip = () => {
 
       <Content>
         <CodeBlock
-          css={{
-            backgroundColor: theme.colors.backgroundHeader,
+          style={{
+            backgroundColor: "var(--colors-backgroundHeader)",
             backdropFilter: "saturate(180%) blur(5px))",
           }}
         >

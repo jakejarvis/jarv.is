@@ -1,45 +1,17 @@
-import { keyframes, styled } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
 import type { ComponentPropsWithoutRef } from "react";
 
-const BlackBox = styled("div", {
-  width: "100%",
-  height: "100%",
-  padding: "1.25em",
-  backgroundColor: "#000000",
-  color: "#cccccc",
-});
+import styles from "./Terminal.module.css";
 
-const Monospace = styled("pre", {
-  display: "inline",
-  margin: 0,
-  lineHeight: 1.75,
-  fontSize: "0.925em",
-  fontWeight: 500,
-  whiteSpace: "pre-wrap",
-  userSelect: "none",
-});
-
-// flashing terminal cursor underscore-looking thingy
-const Underscore = styled("span", {
-  display: "inline-block",
-  verticalAlign: "text-bottom",
-  width: "10px",
-  marginLeft: "6px",
-  borderBottom: "2px solid #cccccc",
-
-  // blink every second for 0.4s
-  animation: `${keyframes({ "40%": { opacity: 0 } })} 1s step-end infinite`,
-});
-
-export type TerminalProps = ComponentPropsWithoutRef<typeof BlackBox>;
+export type TerminalProps = ComponentPropsWithoutRef<"div">;
 
 // a DOS-style terminal box with dynamic text
-const Terminal = ({ children: message, ...rest }: TerminalProps) => {
+const Terminal = ({ className, children: message, ...rest }: TerminalProps) => {
   return (
-    <BlackBox {...rest}>
-      {message && <Monospace>{message}</Monospace>}
-      <Underscore />
-    </BlackBox>
+    <div className={clsx(styles.blackBox, className)} {...rest}>
+      {message && <pre className={styles.monospace}>{message}</pre>}
+      <span className={styles.underscore} />
+    </div>
   );
 };
 

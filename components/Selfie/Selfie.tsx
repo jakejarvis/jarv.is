@@ -1,61 +1,21 @@
 import Link from "../Link";
 import Image from "../Image";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 
+import styles from "./Selfie.module.css";
+
 import selfieJpg from "../../public/static/images/selfie.jpg";
-
-const CircleImage = styled(Image, {
-  width: "50px",
-  height: "50px",
-  border: `1px solid ${theme.colors.light}`,
-  borderRadius: "50%",
-
-  "@medium": {
-    width: "70px",
-    height: "70px",
-    borderWidth: "2px",
-  },
-});
-
-const SelfieLink = styled(Link, {
-  display: "inline-flex",
-  flexShrink: 0,
-  alignItems: "center",
-  color: theme.colors.mediumDark,
-
-  "&:hover, &:focus-visible": {
-    color: theme.colors.link,
-
-    "@medium": {
-      [`${CircleImage}`]: {
-        borderColor: theme.colors.linkUnderline,
-      },
-    },
-  },
-});
-
-const Name = styled("span", {
-  margin: "0 0.6em",
-  fontSize: "1.15em",
-  fontWeight: 500,
-  letterSpacing: "0.02em",
-  lineHeight: 1,
-
-  "@medium": {
-    display: "none",
-  },
-});
 
 export type SelfieProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href">;
 
 const Selfie = ({ ...rest }: SelfieProps) => {
   return (
-    <SelfieLink href="/" rel="author" title={config.authorName} underline={false} {...rest}>
-      <CircleImage
+    <Link href="/" rel="author" title={config.authorName} underline={false} className={styles.link} {...rest}>
+      <Image
         src={selfieJpg}
         alt={`Photo of ${config.authorName}`}
+        className={styles.circleImage}
         width={70}
         height={70}
         quality={60}
@@ -63,8 +23,8 @@ const Selfie = ({ ...rest }: SelfieProps) => {
         inline
         priority
       />
-      <Name>{config.authorName}</Name>
-    </SelfieLink>
+      <span className={styles.name}>{config.authorName}</span>
+    </Link>
   );
 };
 

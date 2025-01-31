@@ -1,10 +1,11 @@
+import clsx from "clsx";
 import Code from "../Code";
-import { styled } from "../../lib/styles/stitches.config";
+import type { ComponentPropsWithoutRef } from "react";
 
-const CodeInline = styled(Code, {
-  padding: "0.175em 0.3em",
-  fontSize: "0.925em",
-  pageBreakInside: "avoid",
-});
+import styles from "./CodeInline.module.css";
+
+const CodeInline = ({ className, ...rest }: ComponentPropsWithoutRef<typeof Code>) => (
+  <Code className={clsx(styles.codeInline, className)} {...rest} />
+);
 
 export default CodeInline;

@@ -1,10 +1,10 @@
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import type { ComponentPropsWithoutRef } from "react";
 
-const Code = styled("code", {
-  backgroundColor: theme.colors.codeBackground,
-  border: `1px solid ${theme.colors.kindaLight}`,
-  borderRadius: theme.radii.corner,
-  transition: `background ${theme.transitions.fade}, border ${theme.transitions.fade}`,
-});
+import styles from "./Code.module.css";
+
+const Code = ({ className, ...rest }: ComponentPropsWithoutRef<"code">) => (
+  <code className={clsx(styles.code, className)} {...rest} />
+);
 
 export default Code;

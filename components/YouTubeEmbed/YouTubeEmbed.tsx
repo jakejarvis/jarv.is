@@ -1,23 +1,9 @@
 import ReactPlayer from "react-player/youtube";
+import clsx from "clsx";
 import useHasMounted from "../../hooks/useHasMounted";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import type { YouTubePlayerProps } from "react-player/youtube";
 
-const Wrapper = styled("div", {
-  position: "relative",
-  paddingTop: "56.25%",
-});
-
-const Player = styled(ReactPlayer, {
-  position: "absolute",
-  top: 0,
-  left: 0,
-
-  // target both the lazy thumbnail preview *and* the actual YouTube embed
-  "& .react-player__preview, & iframe": {
-    borderRadius: theme.radii.corner,
-  },
-});
+import styles from "./YouTubeEmbed.module.css";
 
 export type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
   id: string;
@@ -29,18 +15,19 @@ const YouTubeEmbed = ({ id, className, ...rest }: YouTubeEmbedProps) => {
   const hasMounted = useHasMounted();
 
   return (
-    <Wrapper className={className}>
+    <div className={clsx(styles.wrapper, className)}>
       {hasMounted && (
-        <Player
+        <ReactPlayer
           width="100%"
           height="100%"
+          className={styles.player}
           url={`https://www.youtube-nocookie.com/watch?v=${id}`}
           light={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
           controls
           {...rest}
         />
       )}
-    </Wrapper>
+    </div>
   );
 };
 

@@ -1,38 +1,10 @@
 import ReactPlayer from "react-player/file";
+import clsx from "clsx";
 import useHasMounted from "../../hooks/useHasMounted";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import type { SourceProps } from "react-player/base";
 import type { FilePlayerProps } from "react-player/file";
 
-const Player = styled(ReactPlayer, {
-  "& video": {
-    borderRadius: theme.radii.corner,
-  },
-});
-
-const Wrapper = styled("div", {
-  variants: {
-    // determines placement of the player. true expands to full width while keeping the aspect ratio, false retains the
-    // video's native dimensions (but still shrinks if the parent is narrower than the video).
-    responsive: {
-      true: {
-        position: "relative",
-        paddingTop: "56.25%", // ratio of 1280x720
-
-        [`& ${Player}`]: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-        },
-      },
-      false: {
-        [`& ${Player}`]: {
-          margin: "0 auto",
-        },
-      },
-    },
-  },
-});
+import styles from "./Video.module.css";
 
 export type VideoProps = Partial<FilePlayerProps> & {
   src: {
@@ -97,9 +69,9 @@ const Video = ({ src, title, autoplay = false, responsive = true, className, ...
   }
 
   return (
-    <Wrapper responsive={responsive} className={className}>
-      {hasMounted && <Player width="100%" height="100%" {...playerProps} {...rest} />}
-    </Wrapper>
+    <div className={clsx(styles.wrapper, responsive && styles.responsive, className)}>
+      {hasMounted && <ReactPlayer width="100%" height="100%" className={styles.player} {...playerProps} {...rest} />}
+    </div>
   );
 };
 

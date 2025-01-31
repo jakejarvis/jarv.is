@@ -24,7 +24,7 @@ const Contact = () => {
       <PageTitle>📬 Contact Me</PageTitle>
 
       <Content
-        css={{
+        style={{
           maxWidth: "600px",
           margin: "0 auto",
         }}

@@ -1,43 +1,17 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle, useCallback } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";
+import clsx from "clsx";
 import Terminal from "../Terminal";
-import { styled } from "../../lib/styles/stitches.config";
 import type { Ref, ComponentPropsWithoutRef, ElementRef } from "react";
 
-const Display = styled(
-  "div",
-  {
-    height: "600px",
-    width: "100%",
-    maxWidth: "800px",
+import styles from "./VNC.module.css";
 
-    // these are injected by noVNC after connection, so we can't target them directly:
-    "& div": {
-      background: "none !important",
-
-      "& canvas": {
-        cursor: "inherit !important",
-      },
-    },
-  },
-
-  // fix fuziness in different browsers: https://stackoverflow.com/a/13492784
-  // separate objects since these are duplicate properties: https://github.com/modulz/stitches/issues/758#issuecomment-913580518
-  {
-    imageRendering: "-webkit-optimize-contrast",
-  },
-  {
-    imageRendering: "pixelated",
-    MSInterpolationMode: "nearest-neighbor",
-  }
-);
-
-export type VNCProps = ComponentPropsWithoutRef<typeof Display> & {
+export type VNCProps = ComponentPropsWithoutRef<"div"> & {
   server: string;
 };
 
-const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
+const VNC = ({ server, className, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
   const router = useRouter();
 
   // we definitely do NOT want this page to connect more than once!
@@ -50,7 +24,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
 
   // the actual connection and virtual screen (injected by noVNC when it's ready)
   const rfbRef = useRef<RFB | null>(null);
-  const displayRef = useRef<ElementRef<typeof Display>>(null);
+  const displayRef = useRef<ElementRef<"div">>(null);
 
   // ends the session forcefully
   const disconnect = useCallback(() => {
@@ -151,7 +125,7 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
     <>
       {!connected && (
         <Terminal
-          css={{
+          style={{
             height: "400px",
             width: "100%",
             maxWidth: "700px",
@@ -163,8 +137,9 @@ const VNC = ({ server, style, ...rest }: VNCProps, ref: Ref<Partial<RFB>>) => {
       )}
 
       {/* the VNC canvas is hidden until we've successfully connected to the socket */}
-      <Display
+      <div
         ref={displayRef}
+        className={clsx(styles.display, className)}
         style={{
           display: !connected ? "none" : undefined,
           ...style,

@@ -1,11 +1,9 @@
+import clsx from "clsx";
 import IFrame from "../IFrame";
 import useHasMounted from "../../hooks/useHasMounted";
 import useTheme from "../../hooks/useTheme";
-import { styled } from "../../lib/styles/stitches.config";
 
-const Wrapper = styled("div", {
-  width: "100%",
-});
+import styles from "./CodePenEmbed.module.css";
 
 export type CodePenEmbedProps = {
   username: string;
@@ -30,7 +28,7 @@ const CodePenEmbed = ({
   const { activeTheme } = useTheme();
 
   return (
-    <Wrapper className={className} css={{ height }}>
+    <div className={clsx(styles.wrapper, className)} style={{ height }}>
       {hasMounted && (
         <IFrame
           src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
@@ -44,7 +42,7 @@ const CodePenEmbed = ({
           noScroll
         />
       )}
-    </Wrapper>
+    </div>
   );
 };
 

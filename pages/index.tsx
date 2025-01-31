@@ -1,32 +1,38 @@
+import css from "styled-jsx/css";
+import { rgba } from "polished";
 import Link from "../components/Link";
 import { GoLock } from "react-icons/go";
-import { styled, theme, darkTheme, keyframes, stitchesConfig } from "../lib/styles/stitches.config";
+import { styled, theme, keyframes } from "../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef } from "react";
+import clsx from "clsx";
 
 const ColorfulLink = ({
   lightColor,
   darkColor,
-  css,
+  className,
+  children,
   ...rest
 }: ComponentPropsWithoutRef<typeof Link> & {
   lightColor: string;
   darkColor: string;
 }) => {
+  const linkStyles = css.resolve`
+    a {
+      color: ${lightColor};
+      --colors-linkUnderline: ${rgba(lightColor, 0.4)};
+    }
+
+    :global(html[data-theme="dark"]) a {
+      color: ${darkColor};
+      --colors-linkUnderline: ${rgba(darkColor, 0.4)};
+    }
+  `;
+
   return (
-    <Link
-      css={{
-        color: lightColor,
-        ...stitchesConfig.utils.setUnderlineColor({ color: lightColor }),
-
-        [`.${darkTheme} &`]: {
-          color: darkColor,
-          ...stitchesConfig.utils.setUnderlineColor({ color: darkColor }),
-        },
-
-        ...css,
-      }}
-      {...rest}
-    />
+    <Link className={clsx(linkStyles.className, className)} {...rest}>
+      {children}
+      {linkStyles.styles}
+    </Link>
   );
 };
 
@@ -232,12 +238,12 @@ const Index = () => {
           title="🎉 Cranky Birthday Boy on VHS Tape 📼"
           lightColor="#e40088"
           darkColor="#fd40b1"
-          css={{
-            // rotated 🪄 emoji on hover
-            "&:hover": {
-              cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
-            },
-          }}
+          // css={{
+          //   // rotated 🪄 emoji on hover
+          //   "&:hover": {
+          //     cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
+          //   },
+          // }}
         >
           the Tooth Fairy
         </ColorfulLink>

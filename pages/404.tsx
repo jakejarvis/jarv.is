@@ -31,7 +31,7 @@ const FourOhFour = () => {
           autoplay
           title="404s make panda angry..."
           responsive={false}
-          css={{
+          style={{
             maxWidth: "400px",
           }}
         />

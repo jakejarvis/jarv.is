@@ -3,22 +3,22 @@ import type { MenuItemProps } from "../../components/MenuItem";
 
 export const menuItems: MenuItemProps[] = [
   {
-    icon: FiHome,
+    Icon: FiHome,
     text: "Home",
     href: "/",
   },
   {
-    icon: FiEdit3,
+    Icon: FiEdit3,
     text: "Notes",
     href: "/notes",
   },
   {
-    icon: FiCode,
+    Icon: FiCode,
     text: "Projects",
     href: "/projects",
   },
   {
-    icon: FiMail,
+    Icon: FiMail,
     text: "Contact",
     href: "/contact",
   },

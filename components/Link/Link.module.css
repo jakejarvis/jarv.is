@@ -1,0 +1,23 @@
+.link {
+  color: var(--colors-link);
+  text-decoration: none;
+}
+
+.link.underline {
+  background-image: linear-gradient(var(--colors-linkUnderline), var(--colors-linkUnderline));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  padding-bottom: 3px;
+}
+
+.link.underline:hover,
+.link.underline:focus-visible {
+  background-size: 100% 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .link.underline {
+    transition: background-size var(--transitions-linkHover);
+  }
+}

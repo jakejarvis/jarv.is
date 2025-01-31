@@ -1,0 +1,60 @@
+.card {
+  width: 100%;
+  padding: 1.2em 1.2em 0.8em 1.2em;
+  border: 1px solid var(--colors-kindaLight);
+  border-radius: var(--radii-corner);
+  font-size: 0.85em;
+  color: var(--colors-mediumDark);
+  transition: border var(--transitions-fade);
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 0.7em;
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.metaItem {
+  margin-right: 1.5em;
+  line-height: 2;
+  color: var(--colors-medium);
+}
+
+.metaLink {
+  color: inherit;
+}
+
+.metaLink:hover,
+.metaLink:focus-visible {
+  color: var(--colors-link);
+}
+
+.metaIcon {
+  display: inline;
+  width: 16px;
+  height: 16px;
+  vertical-align: -0.3em;
+  margin-right: 0.5em;
+  stroke-width: 0.75;
+}
+
+.metaLanguage {
+  display: inline-block;
+  position: relative;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  vertical-align: text-top;
+}

@@ -1,15 +1,18 @@
-import { styled, css } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import type { ComponentPropsWithoutRef } from "react";
 
-const ListStyles = css({
-  marginLeft: "1.5em",
-  paddingLeft: 0,
-});
+import styles from "./List.module.css";
 
-export const UnorderedList = styled("ul", ListStyles);
-export const OrderedList = styled("ol", ListStyles);
+export const UnorderedList = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => (
+  <ul className={clsx(styles.list, className)} {...rest} />
+);
 
-export const ListItem = styled("li", {
-  paddingLeft: "0.25em",
-});
+export const OrderedList = ({ className, ...rest }: ComponentPropsWithoutRef<"ol">) => (
+  <ol className={clsx(styles.list, className)} {...rest} />
+);
+
+export const ListItem = ({ className, ...rest }: ComponentPropsWithoutRef<"li">) => (
+  <li className={clsx(styles.listItem, className)} {...rest} />
+);
 
 export default UnorderedList;

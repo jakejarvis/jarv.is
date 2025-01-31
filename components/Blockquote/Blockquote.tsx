@@ -1,10 +1,10 @@
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import type { ComponentPropsWithoutRef } from "react";
 
-const Blockquote = styled("blockquote", {
-  marginLeft: 0,
-  paddingLeft: "1.25em",
-  borderLeft: `0.25em solid ${theme.colors.link}`,
-  color: theme.colors.mediumDark,
-});
+import styles from "./Blockquote.module.css";
+
+const Blockquote = ({ className, ...rest }: ComponentPropsWithoutRef<"blockquote">) => (
+  <blockquote className={clsx(styles.blockquote, className)} {...rest} />
+);
 
 export default Blockquote;

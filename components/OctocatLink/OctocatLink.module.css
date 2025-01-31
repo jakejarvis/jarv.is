@@ -1,0 +1,16 @@
+.octocatLink {
+  margin: 0 0.4em;
+  color: var(--colors-text);
+}
+
+.octocatLink:hover,
+.octocatLink:focus-visible {
+  color: var(--colors-link);
+}
+
+.octocat {
+  display: inline;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+}

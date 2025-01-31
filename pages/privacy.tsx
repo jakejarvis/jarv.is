@@ -38,7 +38,7 @@ const Privacy = () => {
           <Link href="https://www.torproject.org/">🧅 Tor network</Link> at:
         </p>
 
-        <Blockquote css={{ overflowWrap: "break-word" }}>
+        <Blockquote style={{ overflowWrap: "break-word" }}>
           <Link href="http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion">
             <strong>jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion</strong>
           </Link>

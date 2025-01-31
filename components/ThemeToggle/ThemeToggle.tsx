@@ -4,20 +4,8 @@ import useMedia from "../../hooks/useMedia";
 import useFirstMountState from "../../hooks/useFirstMountState";
 import useTheme from "../../hooks/useTheme";
 import useHasMounted from "../../hooks/useHasMounted";
-import { styled, theme } from "../../lib/styles/stitches.config";
 
-const Button = styled("button", {
-  border: 0,
-  padding: "0.6em",
-  marginRight: "-0.6em",
-  background: "none",
-  cursor: "pointer",
-  color: theme.colors.mediumDark,
-
-  "&:hover, &:focus-visible": {
-    color: theme.colors.warning,
-  },
-});
+import styles from "./ThemeToggle.module.css";
 
 export type ThemeToggleProps = {
   className?: string;
@@ -97,15 +85,16 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   // render a blank div of the same size to avoid layout shifting until we're fully mounted and self-aware
   if (!hasMounted) {
     return (
-      <Button as="div">
+      <div className={styles.toggle}>
         <div className={className} />
-      </Button>
+      </div>
     );
   }
 
   return (
-    <Button
+    <button
       onClick={() => setTheme(safeTheme === "light" ? "dark" : "light")}
+      className={styles.toggle}
       title={safeTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
       aria-label={safeTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
@@ -157,7 +146,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </animated.g>
       </animated.svg>
-    </Button>
+    </button>
   );
 };
 

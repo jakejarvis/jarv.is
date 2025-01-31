@@ -1,14 +1,11 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, theme } from "../lib/styles/stitches.config";
 import config from "../lib/config";
 
 // https://nextjs.org/docs/advanced-features/custom-document
 const Document = () => {
   return (
-    <Html lang={config.siteLocale} className={theme.className}>
-      <Head>
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
-      </Head>
+    <Html lang={config.siteLocale}>
+      <Head />
       <body>
         <Main />
         <NextScript />

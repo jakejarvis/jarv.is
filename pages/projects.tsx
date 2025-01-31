@@ -23,7 +23,7 @@ const Wrapper = styled("div", {
 const Card = styled(RepositoryCard, {
   flexGrow: 1,
   margin: "0.6em",
-  width: "370px",
+  width: "370px !important",
 });
 
 const ViewMore = styled("p", {

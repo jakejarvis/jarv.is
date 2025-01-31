@@ -1,24 +1,18 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Tweet } from "react-tweet";
+import clsx from "clsx";
 import useTheme from "../../hooks/useTheme";
-import { styled } from "../../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef, ElementRef } from "react";
 
-const Wrapper = styled("div", {
-  minHeight: "300px", // help with layout shift
-
-  "& .react-tweet-theme": {
-    "--tweet-container-margin": "1.5rem auto",
-  },
-});
+import styles from "./TweetEmbed.module.css";
 
 export type TweetEmbedProps = ComponentPropsWithoutRef<typeof Tweet> & {
   className?: string;
 };
 
 const TweetEmbed = ({ id, className, ...rest }: TweetEmbedProps) => {
-  const containerRef = useRef<ElementRef<typeof Wrapper>>(null);
+  const containerRef = useRef<ElementRef<"div">>(null);
   const { activeTheme } = useTheme();
 
   useEffect(() => {
@@ -29,7 +23,7 @@ const TweetEmbed = ({ id, className, ...rest }: TweetEmbedProps) => {
   }, [activeTheme]);
 
   return (
-    <Wrapper ref={containerRef} className={className}>
+    <div ref={containerRef} className={clsx(styles.tweet, className)}>
       <Tweet
         key={`tweet-${id}`}
         id={id}
@@ -43,7 +37,7 @@ const TweetEmbed = ({ id, className, ...rest }: TweetEmbedProps) => {
         }}
         {...rest}
       />
-    </Wrapper>
+    </div>
   );
 };
 

@@ -1,0 +1,95 @@
+.input {
+  width: 100%;
+  padding: 0.8em;
+  margin: 0.6em 0;
+  border: 2px solid var(--colors-light);
+  border-radius: var(--radii-corner);
+  color: var(--colors-text);
+  background-color: var(--colors-superDuperLight);
+  transition: background var(--transitions-fade);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--colors-link);
+}
+
+.input.missing {
+  border-color: var(--colors-error);
+}
+
+.input.textarea {
+  margin-bottom: 0;
+  line-height: 1.5;
+  min-height: 10em;
+  resize: vertical;
+}
+
+.markdownTip {
+  font-size: 0.825em;
+  line-height: 1.75;
+}
+
+.markdownIcon {
+  display: inline;
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.25em;
+  margin-right: 0.25em;
+}
+
+.captcha {
+  margin: 1em 0;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  min-height: 3.75em;
+}
+
+.submitButton {
+  flex-shrink: 0px;
+  height: 3.25em;
+  padding: 1em 1.25em;
+  margin-right: 1.5em;
+  border: 0;
+  border-radius: var(--radii-corner);
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  color: var(--colors-text);
+  background-color: var(--colors-kindaLight);
+}
+
+.submitButton:hover,
+.submitButton:focus-visible {
+  color: var(--colors-superDuperLight);
+  background-color: var(--colors-link);
+}
+
+.submitIcon {
+  font-size: 1.3em;
+  margin-right: 0.3em;
+  line-height: 1;
+}
+
+.result {
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.result.success {
+  color: var(--colors-success);
+}
+.result.error {
+  color: var(--colors-error);
+}
+
+.resultIcon {
+  display: inline;
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.3em;
+  fill: currentColor;
+}

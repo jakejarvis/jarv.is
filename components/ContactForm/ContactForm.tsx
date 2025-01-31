@@ -1,135 +1,14 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
+import clsx from "clsx";
 import Link from "../Link";
 import Captcha from "../Captcha";
 import { GoCheck, GoX } from "react-icons/go";
 import { SiMarkdown } from "react-icons/si";
-import { styled, theme, css } from "../../lib/styles/stitches.config";
 import type { FormikHelpers, FormikProps, FieldInputProps, FieldMetaProps } from "formik";
 
-// CSS applied to both `<input />` and `<textarea />`
-const InputStyles = css({
-  width: "100%",
-  padding: "0.8em",
-  margin: "0.6em 0",
-  border: `2px solid ${theme.colors.light}`,
-  borderRadius: theme.radii.corner,
-  color: theme.colors.text,
-  backgroundColor: theme.colors.superDuperLight,
-  transition: `background ${theme.transitions.fade}`,
-
-  "&:focus": {
-    outline: "none",
-    borderColor: theme.colors.link,
-  },
-
-  variants: {
-    missing: {
-      true: {
-        borderColor: theme.colors.error,
-      },
-      false: {},
-    },
-  },
-});
-
-const Input = styled("input", InputStyles);
-
-const TextArea = styled(TextareaAutosize, InputStyles, {
-  marginBottom: 0,
-  lineHeight: 1.5,
-  minHeight: "10em",
-  resize: "vertical",
-});
-
-const MarkdownTip = styled("div", {
-  fontSize: "0.825em",
-  lineHeight: 1.75,
-});
-
-const MarkdownTipIcon = styled(SiMarkdown, {
-  display: "inline",
-  width: "1.25em",
-  height: "1.25em",
-  verticalAlign: "-0.25em",
-  marginRight: "0.25em",
-});
-
-const Turnstile = styled(Captcha, {
-  margin: "1em 0",
-});
-
-const ActionRow = styled("div", {
-  display: "flex",
-  alignItems: "center",
-  minHeight: "3.75em",
-});
-
-const SubmitButton = styled("button", {
-  flexShrink: 0,
-  height: "3.25em",
-  padding: "1em 1.25em",
-  marginRight: "1.5em",
-  border: 0,
-  borderRadius: theme.radii.corner,
-  cursor: "pointer",
-  userSelect: "none",
-  fontWeight: 500,
-  color: theme.colors.text,
-  backgroundColor: theme.colors.kindaLight,
-
-  "&:hover, &:focus-visible": {
-    color: theme.colors.superDuperLight,
-    backgroundColor: theme.colors.link,
-  },
-
-  variants: {
-    hidden: {
-      true: {
-        display: "none",
-      },
-      false: {},
-    },
-  },
-});
-
-const SubmitIcon = styled("span", {
-  fontSize: "1.3em",
-  marginRight: "0.3em",
-  lineHeight: 1,
-});
-
-const Result = styled("div", {
-  fontWeight: 600,
-  lineHeight: 1.5,
-
-  variants: {
-    status: {
-      success: {
-        color: theme.colors.success,
-      },
-      error: {
-        color: theme.colors.error,
-      },
-    },
-
-    hidden: {
-      true: {
-        display: "none",
-      },
-      false: {},
-    },
-  },
-});
-
-const ResultIcon = styled("svg", {
-  display: "inline",
-  width: "1.3em",
-  height: "1.3em",
-  verticalAlign: "-0.3em",
-  fill: "currentColor",
-});
+import styles from "./ContactForm.module.css";
 
 type FormValues = {
   name: string;
@@ -222,11 +101,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
         <Form className={className} name="contact">
           <Field name="name">
             {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
-              <Input
+              <input
                 type="text"
                 placeholder="Name"
                 disabled={success}
-                missing={!!(meta.error && meta.touched)}
+                className={clsx(styles.input, { [styles.missing]: !!(meta.error && meta.touched) })}
                 {...field}
               />
             )}
@@ -234,12 +113,12 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <Field name="email">
             {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
-              <Input
+              <input
                 type="email"
                 inputMode="email"
                 placeholder="Email"
                 disabled={success}
-                missing={!!(meta.error && meta.touched)}
+                className={clsx(styles.input, { [styles.missing]: !!(meta.error && meta.touched) })}
                 {...field}
               />
             )}
@@ -247,19 +126,19 @@ const ContactForm = ({ className }: ContactFormProps) => {
 
           <Field name="message">
             {({ field, meta }: { field: FieldInputProps<string>; meta: FieldMetaProps<string> }) => (
-              <TextArea
+              <TextareaAutosize
                 placeholder="Write something..."
                 minRows={5}
                 disabled={success}
-                missing={!!(meta.error && meta.touched)}
+                className={clsx(styles.input, { [styles.missing]: !!(meta.error && meta.touched) })}
                 {...field}
               />
             )}
           </Field>
 
-          <MarkdownTip>
-            <MarkdownTipIcon /> Basic{" "}
-            <Link href="https://commonmark.org/help/" title="Markdown reference sheet" css={{ fontWeight: 600 }}>
+          <div className={styles.markdownTip}>
+            <SiMarkdown className={styles.markdownIcon} /> Basic{" "}
+            <Link href="https://commonmark.org/help/" title="Markdown reference sheet" style={{ fontWeight: 600 }}>
               Markdown syntax
             </Link>{" "}
             is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
@@ -267,32 +146,36 @@ const ContactForm = ({ className }: ContactFormProps) => {
               links
             </Link>
             ](https://jarv.is), and <code>`code`</code>.
-          </MarkdownTip>
+          </div>
 
-          <Turnstile onVerify={(token) => setFieldValue("cf-turnstile-response", token)} />
+          <Captcha className={styles.captcha} onVerify={(token) => setFieldValue("cf-turnstile-response", token)} />
 
-          <ActionRow>
-            <SubmitButton
+          <div className={styles.actionRow}>
+            <button
               type="submit"
               title="Send Message"
               aria-label="Send Message"
               onClick={() => setSubmitted(true)}
               disabled={isSubmitting}
-              hidden={success}
+              className={styles.submitButton}
+              style={{ display: success ? "none" : "inline-flex" }}
             >
               {isSubmitting ? (
                 <span>Sending...</span>
               ) : (
                 <>
-                  <SubmitIcon>📤</SubmitIcon> <span>Send</span>
+                  <span className={styles.submitIcon}>📤</span> <span>Send</span>
                 </>
               )}
-            </SubmitButton>
+            </button>
 
-            <Result status={success ? "success" : "error"} hidden={!submitted || !feedback || isSubmitting}>
-              <ResultIcon as={success ? GoCheck : GoX} /> {feedback}
-            </Result>
-          </ActionRow>
+            <div
+              className={clsx(styles.result, success ? styles.success : styles.error)}
+              style={{ display: submitted && feedback && !isSubmitting ? "block" : "none" }}
+            >
+              {success ? <GoCheck className={styles.resultIcon} /> : <GoX className={styles.resultIcon} />} {feedback}
+            </div>
+          </div>
         </Form>
       )}
     </Formik>

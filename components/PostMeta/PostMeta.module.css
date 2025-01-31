@@ -1,0 +1,46 @@
+.meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: 0.825em;
+  line-height: 2.3;
+  letter-spacing: 0.04em;
+  color: var(--colors-medium);
+}
+
+.item {
+  margin-right: 1.6em;
+  white-space: nowrap;
+}
+
+.link {
+  color: inherit;
+}
+
+.icon {
+  display: inline;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+  margin-right: 0.6em;
+}
+
+.tags {
+  white-space: normal;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  text-transform: lowercase;
+  white-space: nowrap;
+  margin-right: 0.75em;
+}
+
+.tag:before {
+  content: "\0023"; /* cosmetically hashtagify tags */
+  padding-right: 0.125em;
+  color: var(--colors-light);
+}
+.tag:last-of-type {
+  margin-right: 0;
+}

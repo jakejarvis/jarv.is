@@ -4,105 +4,61 @@ import Time from "../Time";
 import HitCounter from "../HitCounter";
 import PostTitle from "../PostTitle";
 import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import config from "../../lib/config";
 import type { PostFrontMatter } from "../../types";
 
-const Wrapper = styled("div", {
-  display: "inline-flex",
-  flexWrap: "wrap",
-  fontSize: "0.825em",
-  lineHeight: 2.3,
-  letterSpacing: "0.04em",
-  color: theme.colors.medium,
-});
-
-const MetaItem = styled("div", {
-  marginRight: "1.6em",
-  whiteSpace: "nowrap",
-});
-
-const MetaLink = styled(Link, {
-  color: "inherit",
-});
-
-const Icon = styled("svg", {
-  display: "inline",
-  width: "1.2em",
-  height: "1.2em",
-  verticalAlign: "-0.2em",
-  marginRight: "0.6em",
-});
-
-const TagsList = styled("span", {
-  whiteSpace: "normal",
-  display: "inline-flex",
-  flexWrap: "wrap",
-});
-
-const Tag = styled("span", {
-  textTransform: "lowercase",
-  whiteSpace: "nowrap",
-  marginRight: "0.75em",
-
-  "&::before": {
-    content: "\\0023", // cosmetically hashtagify tags
-    paddingRight: "0.125em",
-    color: theme.colors.light,
-  },
-
-  "&:last-of-type": {
-    marginRight: 0,
-  },
-});
+import styles from "./PostMeta.module.css";
 
 export type PostMetaProps = Pick<PostFrontMatter, "slug" | "date" | "title" | "htmlTitle" | "tags">;
 
 const PostMeta = ({ slug, date, title, htmlTitle, tags }: PostMetaProps) => {
   return (
     <>
-      <Wrapper>
-        <MetaItem>
-          <MetaLink
+      <div className={styles.meta}>
+        <div className={styles.item}>
+          <Link
             href={{
               pathname: "/notes/[slug]/",
               query: { slug },
             }}
             underline={false}
+            className={styles.link}
           >
-            <Icon as={FiCalendar} />
+            <FiCalendar className={styles.icon} />
             <Time date={date} format="MMMM D, YYYY" />
-          </MetaLink>
-        </MetaItem>
+          </Link>
+        </div>
 
         {tags && (
-          <MetaItem>
-            <Icon as={FiTag} />
-            <TagsList>
+          <div className={styles.item}>
+            <FiTag className={styles.icon} />
+            <span className={styles.tags}>
               {tags.map((tag) => (
-                <Tag key={tag} title={tag} aria-label={`Tagged with ${tag}`}>
+                <span key={tag} title={tag} className={styles.tag} aria-label={`Tagged with ${tag}`}>
                   {tag}
-                </Tag>
+                </span>
               ))}
-            </TagsList>
-          </MetaItem>
+            </span>
+          </div>
         )}
 
-        <MetaItem>
-          <MetaLink
+        <div className={styles.item}>
+          <Link
             href={`https://github.com/${config.githubRepo}/blob/main/notes/${slug}.mdx`}
             title={`Edit "${title}" on GitHub`}
             underline={false}
+            className={styles.link}
           >
-            <Icon as={FiEdit} />
+            <FiEdit className={styles.icon} />
             <span>Improve This Post</span>
-          </MetaLink>
-        </MetaItem>
+          </Link>
+        </div>
 
         {/* only count hits on production site */}
         {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
-          <MetaItem
-            css={{
+          <div
+            className={styles.item}
+            style={{
               // fix potential layout shift when number of hits loads
               minWidth: "7em",
               marginRight: 0,
@@ -110,12 +66,12 @@ const PostMeta = ({ slug, date, title, htmlTitle, tags }: PostMetaProps) => {
           >
             {/* completely hide this block if anything goes wrong on the backend */}
             <ErrorBoundary fallback={null}>
-              <Icon as={FiEye} />
+              <FiEye className={styles.icon} />
               <HitCounter slug={`notes/${slug}`} />
             </ErrorBoundary>
-          </MetaItem>
+          </div>
         )}
-      </Wrapper>
+      </div>
 
       <PostTitle {...{ slug, title, htmlTitle }} />
     </>

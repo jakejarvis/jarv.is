@@ -1,15 +1,9 @@
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
 import type { ComponentPropsWithoutRef } from "react";
 
-const RoundedIFrame = styled("iframe", {
-  width: "100%",
-  display: "block",
-  margin: "1em auto",
-  border: `2px solid ${theme.colors.kindaLight}`,
-  borderRadius: theme.radii.corner,
-});
+import styles from "./IFrame.module.css";
 
-export type IFrameProps = ComponentPropsWithoutRef<typeof RoundedIFrame> & {
+export type IFrameProps = ComponentPropsWithoutRef<"iframe"> & {
   src: string;
   height: number;
   width?: number; // defaults to 100%
@@ -17,18 +11,19 @@ export type IFrameProps = ComponentPropsWithoutRef<typeof RoundedIFrame> & {
   noScroll?: boolean;
 };
 
-const IFrame = ({ src, title, height, width, allowScripts, noScroll, css, ...rest }: IFrameProps) => {
+const IFrame = ({ src, title, height, width, allowScripts, noScroll, className, style, ...rest }: IFrameProps) => {
   return (
-    <RoundedIFrame
+    <iframe
       src={src}
       title={title}
       sandbox={allowScripts ? "allow-same-origin allow-scripts allow-popups" : undefined}
       scrolling={noScroll ? "no" : undefined}
       loading="lazy"
-      css={{
+      className={clsx(styles.iframe, className)}
+      style={{
         height: `${height}px`,
         maxWidth: width ? `${width}px` : "100%",
-        ...css,
+        ...style,
       }}
       {...rest}
     />

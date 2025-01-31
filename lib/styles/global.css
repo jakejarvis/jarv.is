@@ -1,0 +1,15 @@
+html {
+  font-family: var(--fonts-sans);
+}
+
+body {
+  background-color: var(--colors-backgroundInner);
+  transition: background var(--transitions-fade);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--fonts-mono);
+}

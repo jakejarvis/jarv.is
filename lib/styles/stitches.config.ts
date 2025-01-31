@@ -3,7 +3,6 @@ import type * as Stitches from "@stitches/react";
 
 // misc. helpers
 import { rgba } from "polished";
-import normalizeCss from "stitches-normalize";
 
 // web fonts
 import { GeistSans, GeistMono } from "./fonts";
@@ -83,78 +82,77 @@ export const {
     // ...note: things then COMPLETELY break at 300px. but it's 2022 let's be real.
   },
 
-  utils: {
-    // sets locally scoped css variable for both light and dark themes' link hover underlines
-    setUnderlineColor: ({
-      color,
-      alpha = 0.4,
-    }: {
-      color: string; // hex value or one of theme tokens above in stitches `$colors$token` format
-      alpha?: number;
-    }) => ({
-      // allow both pre-set rgba stitches variables and hex values
-      $$underlineColor: color.startsWith("#") ? rgba(color, alpha) : color,
-    }),
-  },
+  // utils: {
+  //   // sets locally scoped css variable for both light and dark themes' link hover underlines
+  //   setUnderlineColor: ({
+  //     color,
+  //     alpha = 0.4,
+  //   }: {
+  //     color: string; // hex value or one of theme tokens above in stitches `$colors$token` format
+  //     alpha?: number;
+  //   }) => ({
+  //     // allow both pre-set rgba stitches variables and hex values
+  //     $$underlineColor: color.startsWith("#") ? rgba(color, alpha) : color,
+  //   }),
+  // },
 });
 
-export const darkTheme = createTheme({
-  colors: {
-    backgroundInner: "#1e1e1e",
-    backgroundOuter: "#252525",
-    backgroundHeader: rgba("#252525", 0.85),
-    text: "#f1f1f1",
-    mediumDark: "#d7d7d7",
-    medium: "#b1b1b1",
-    mediumLight: "#959595",
-    light: "#646464",
-    kindaLight: "#535353",
-    superLight: "#272727",
-    superDuperLight: "#1f1f1f",
-    link: "#88c7ff",
-    linkUnderline: rgba("#88c7ff", 0.4),
-    success: "#78df55",
-    error: "#ff5151",
-    warning: "#f2b702",
+// export const darkTheme = createTheme({
+//   colors: {
+//     backgroundInner: "#1e1e1e",
+//     backgroundOuter: "#252525",
+//     backgroundHeader: rgba("#252525", 0.85),
+//     text: "#f1f1f1",
+//     mediumDark: "#d7d7d7",
+//     medium: "#b1b1b1",
+//     mediumLight: "#959595",
+//     light: "#646464",
+//     kindaLight: "#535353",
+//     superLight: "#272727",
+//     superDuperLight: "#1f1f1f",
+//     link: "#88c7ff",
+//     linkUnderline: rgba("#88c7ff", 0.4),
+//     success: "#78df55",
+//     error: "#ff5151",
+//     warning: "#f2b702",
 
-    // Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments
-    codeText: "#e4e4e4",
-    codeBackground: "#212121",
-    codeComment: "#929292",
-    codeKeyword: "#3b9dd2",
-    codeAttribute: "#78df55",
-    codeNamespace: "#f95757",
-    codeLiteral: "#d588fb",
-    codePunctuation: "#cccccc",
-    codeVariable: "#fd992a",
-    codeAddition: "#78df55",
-    codeDeletion: "#ff5151",
-  },
-});
+//     // Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments
+//     codeText: "#e4e4e4",
+//     codeBackground: "#212121",
+//     codeComment: "#929292",
+//     codeKeyword: "#3b9dd2",
+//     codeAttribute: "#78df55",
+//     codeNamespace: "#f95757",
+//     codeLiteral: "#d588fb",
+//     codePunctuation: "#cccccc",
+//     codeVariable: "#fd992a",
+//     codeAddition: "#78df55",
+//     codeDeletion: "#ff5151",
+//   },
+// });
 
-export const globalStyles = globalCss(
-  // @ts-ignore
-  ...normalizeCss({
-    systemFonts: false,
-  }),
-  {
-    html: {
-      fontFamily: theme.fonts.sans,
-    },
+export const globalStyles = globalCss();
+// @ts-ignore
+// ...normalizeCss({
+//   systemFonts: false,
+// }),
+// {
+//   html: {
+//     fontFamily: theme.fonts.sans,
+//   },
 
-    body: {
-      backgroundColor: theme.colors.backgroundInner,
-      transition: `background ${theme.transitions.fade}`,
-    },
+//   body: {
+//     backgroundColor: theme.colors.backgroundInner,
+//     transition: `background ${theme.transitions.fade}`,
+//   },
 
-    "code, kbd, samp, pre": {
-      fontFamily: theme.fonts.mono,
-    },
-  }
-);
+//   "code, kbd, samp, pre": {
+//     fontFamily: theme.fonts.mono,
+//   },
+// }
 
 // theme classnames are generated dynamically by stitches, so have ThemeProvider pull them from here
-export const classNames = {
-  light: theme.className,
-  dark: darkTheme.className,
-};
+// export const classNames = {
+//   light: theme.className,
+//   dark: darkTheme.className,
+// };

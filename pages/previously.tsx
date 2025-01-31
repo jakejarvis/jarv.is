@@ -80,7 +80,7 @@ const Previously = () => {
         <p style={{ marginBottom: "0.5em" }}>
           🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
           <CodeInline
-            css={{
+            style={{
               fontSize: "0.8em",
               fontWeight: 400,
             }}
@@ -92,7 +92,7 @@ const Previously = () => {
 
         <Link
           href="/y2k/"
-          css={{
+          style={{
             fontSize: "0.95em",
           }}
         >
@@ -105,7 +105,7 @@ const Previously = () => {
             title="My Terrible, Horrible, No Good, Very Bad First Website"
             height={500}
             allowScripts
-            css={{ margin: "0.6em 0" }}
+            style={{ margin: "0.6em 0" }}
           />
           <figcaption>
             <Link href="https://jakejarvis.github.io/my-first-website/">November 2001</Link> (
@@ -173,7 +173,7 @@ const Previously = () => {
           src={img_2020_03}
           href="https://quiet-truffle-92842d.netlify.app/"
           alt="March 2020"
-          css={{ marginBottom: 0 }}
+          style={{ marginBottom: 0 }}
         >
           <Link href="https://quiet-truffle-92842d.netlify.app/">March 2020</Link> (
           <Link href="https://github.com/jakejarvis/jarv.is-hugo">view source</Link>)
@@ -187,46 +187,46 @@ const Previously = () => {
 Previously.getLayout = (page: ReactElement) => {
   return (
     <Layout
-      css={{
+      style={{
         // only declare Comic Neue typeface if/when this page is loaded.
-        fontFamily: `${ComicNeue.style.fontFamily}, ${theme.fonts.sans.value}`,
+        fontFamily: `${ComicNeue.style.fontFamily}, var(--fonts-sans)`,
         fontWeight: 700,
 
         // classic windows 9x cursor easter egg
         cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto`,
 
-        "a:hover, button": {
-          // windows 9x hand cursor
-          cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEVHcEwAAAD///8W1S+BAAAAAXRSTlMAQObYZgAAAEdJREFUeAFjoAVghTGkHIhghMAYmQEwxlIYYxlYlSiQMQEsELUKyli1ahWYwQZjMGIwGLKQGA4QA1EYEP0rGVAZrKGhSF4BAHw/HsVwshytAAAAAElFTkSuQmCC") 16 12, auto`,
-        },
+        // "a:hover, button": {
+        //   // windows 9x hand cursor
+        //   cursor: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEVHcEwAAAD///8W1S+BAAAAAXRSTlMAQObYZgAAAEdJREFUeAFjoAVghTGkHIhghMAYmQEwxlIYYxlYlSiQMQEsELUKyli1ahWYwQZjMGIwGLKQGA4QA1EYEP0rGVAZrKGhSF4BAHw/HsVwshytAAAAAElFTkSuQmCC") 16 12, auto`,
+        // },
 
-        "& em": {
-          fontStyle: "revert !important",
-        },
+        // "& em": {
+        //   fontStyle: "revert !important",
+        // },
 
-        "& header": {
-          // title text
-          "& > nav > a:first-of-type > span:last-of-type": {
-            fontSize: "1.4em",
-            fontWeight: 700,
-          },
+        // "& header": {
+        //   // title text
+        //   "& > nav > a:first-of-type > span:last-of-type": {
+        //     fontSize: "1.4em",
+        //     fontWeight: 700,
+        //   },
 
-          // menu item text
-          "& > nav > ul > li > a > span": {
-            fontSize: "1.1em",
-            fontWeight: 700,
-            lineHeight: 1.1,
-          },
-        },
+        //   // menu item text
+        //   "& > nav > ul > li > a > span": {
+        //     fontSize: "1.1em",
+        //     fontWeight: 700,
+        //     lineHeight: 1.1,
+        //   },
+        // },
 
-        "& main > div > div": {
-          fontSize: "1.1em",
-          textAlign: "center",
-        },
+        // "& main > div > div": {
+        //   fontSize: "1.1em",
+        //   textAlign: "center",
+        // },
 
-        "& footer > div": {
-          fontSize: "0.95em",
-        },
+        // "& footer > div": {
+        //   fontSize: "0.95em",
+        // },
       }}
     >
       {page}

@@ -1,0 +1,18 @@
+.player {
+  margin: 0 auto;
+}
+
+.player video {
+  border-radius: var(--radii-corner);
+}
+
+.wrapper.responsive {
+  position: relative;
+  padding-top: 56.25%; /* ratio of 1280x720 */
+}
+
+.wrapper.responsive .player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

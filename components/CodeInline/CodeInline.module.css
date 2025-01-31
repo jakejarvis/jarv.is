@@ -1,0 +1,5 @@
+.codeInline {
+  padding: 0.175em 0.3em;
+  font-size: 0.925em;
+  page-break-inside: avoid;
+}

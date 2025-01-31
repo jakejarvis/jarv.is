@@ -4,10 +4,14 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import { defaultSeo, socialProfileJsonLd } from "../lib/config/seo";
-import { globalStyles, classNames } from "../lib/styles/stitches.config";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps as NextAppProps } from "next/app";
+
+import { GeistMono, GeistSans } from "../lib/styles/fonts";
+import "modern-normalize/modern-normalize.css";
+import "../lib/styles/theme.css";
+import "../lib/styles/global.css";
 
 // https://nextjs.org/docs/basic-features/layouts#with-typescript
 export type AppProps = NextAppProps & {
@@ -23,14 +27,20 @@ const App = ({ Component, pageProps }: AppProps) => {
   // NOTE: this assumes trailing slashes are enabled in next.config.js
   const canonical = `${process.env.NEXT_PUBLIC_BASE_URL || ""}${router.pathname === "/" ? "" : router.pathname}/`;
 
-  // inject body styles defined in ../lib/styles/stitches.config.ts
-  globalStyles();
-
   // allow layout overrides per-page, but default to plain `<Layout />`
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
   return (
     <>
+      <style jsx global>
+        {`
+          :root {
+            --fonts-sans: ${GeistSans.style.fontFamily};
+            --fonts-mono: ${GeistMono.style.fontFamily};
+          }
+        `}
+      </style>
+
       <DefaultSeo
         // all SEO config is in ../lib/config/seo.ts except for canonical URLs, which require access to next router
         {...defaultSeo}
@@ -45,7 +55,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <SocialProfileJsonLd {...socialProfileJsonLd} />
 
-      <ThemeProvider classNames={classNames}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
 
       <Analytics />
     </>

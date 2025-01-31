@@ -1,0 +1,18 @@
+.display {
+  height: 600px;
+  width: 100%;
+  max-width: 800px;
+
+  /* fix fuziness in different browsers: https://stackoverflow.com/a/13492784 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* these are injected by noVNC after connection, so we can't target them directly: */
+.display div {
+  background: none !important;
+}
+.display div canvas {
+  cursor: inherit !important;
+}
