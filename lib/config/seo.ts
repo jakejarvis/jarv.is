@@ -1,4 +1,4 @@
-import config from "./index.js";
+import config from ".";
 import { meJpg, faviconPng, faviconIco, appleTouchIconPng } from "./favicons";
 
 import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
@@ -65,7 +65,7 @@ export const defaultSeo: DefaultSeoProps = {
     },
     {
       rel: "manifest",
-      href: "/site.webmanifest",
+      href: "/manifest.webmanifest",
     },
     {
       rel: "alternate",
