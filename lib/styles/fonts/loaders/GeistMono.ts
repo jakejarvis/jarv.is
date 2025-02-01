@@ -15,6 +15,7 @@ const GeistMono = GeistMonoLoader({
   ],
   adjustFontFallback: false,
   preload: true,
+  variable: "--fonts-mono",
 });
 
 export default GeistMono;

@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import MenuItem from "../MenuItem";
 import ThemeToggle from "../ThemeToggle";
@@ -10,13 +12,13 @@ import styles from "./Menu.module.css";
 export type MenuProps = ComponentPropsWithoutRef<"ul">;
 
 const Menu = ({ className, ...rest }: MenuProps) => {
-  const router = useRouter();
+  const pathname = usePathname() || "";
 
   return (
     <ul className={clsx(styles.menu, className)} {...rest}>
       {menuItems.map((item, index) => {
         // kinda weird/hacky way to determine if the *first part* of the current path matches this href
-        const isCurrent = item.href === `/${router.pathname.split("/")[1]}`;
+        const isCurrent = item.href === `/${pathname.split("/")[1]}`;
 
         return (
           <li className={styles.menuItem} key={item.text || index}>

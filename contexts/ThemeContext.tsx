@@ -1,5 +1,6 @@
+"use client";
+
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import Script from "next/script";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMedia from "../hooks/useMedia";
 import type { Context, PropsWithChildren } from "react";
@@ -80,17 +81,7 @@ export const ThemeProvider = ({
     [changeTheme, preferredTheme, systemTheme]
   );
 
-  return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-      <Script id="restore-theme" strategy="beforeInteractive">
-        {/* unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0 */}
-        {`(()=>{try{const e=document.documentElement,t="undefined"!=typeof Storage?window.localStorage.getItem("${storageKey}"):null,a=(t&&"dark"===t)??window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e.dataset.theme=a,e.style.colorScheme=a}catch(e){}})()`}
-      </Script>
-
-      <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>
-    </>
-  );
+  return <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>;
 };
 
 // debugging help pls

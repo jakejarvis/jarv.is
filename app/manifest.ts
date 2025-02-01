@@ -1,4 +1,4 @@
-import * as config from "../lib/config";
+import config from "../lib/config";
 import { chrome512Png, chrome192Png, maskable512Png, maskable192Png } from "../lib/config/favicons";
 import type { MetadataRoute } from "next";
 

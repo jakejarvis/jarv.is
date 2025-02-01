@@ -1,131 +1,55 @@
-import css from "styled-jsx/css";
 import { rgba } from "polished";
 import Link from "../components/Link";
 import { GoLock } from "react-icons/go";
-import { styled, theme, keyframes } from "../lib/styles/stitches.config";
-import type { ComponentPropsWithoutRef } from "react";
-import clsx from "clsx";
+import { useId, type ComponentPropsWithoutRef } from "react";
+import type { Metadata } from "next";
+
+import styles from "./styles.module.css";
+
+export const metadata: Metadata = {
+  title: "My Page Title",
+};
 
 const ColorfulLink = ({
   lightColor,
   darkColor,
-  className,
   children,
   ...rest
 }: ComponentPropsWithoutRef<typeof Link> & {
   lightColor: string;
   darkColor: string;
 }) => {
-  const linkStyles = css.resolve`
-    a {
-      color: ${lightColor};
-      --colors-linkUnderline: ${rgba(lightColor, 0.4)};
-    }
-
-    :global(html[data-theme="dark"]) a {
-      color: ${darkColor};
-      --colors-linkUnderline: ${rgba(darkColor, 0.4)};
-    }
-  `;
+  const uniqueId = useId();
 
   return (
-    <Link className={clsx(linkStyles.className, className)} {...rest}>
-      {children}
-      {linkStyles.styles}
-    </Link>
+    <>
+      <Link id={uniqueId} {...rest}>
+        {children}
+      </Link>
+
+      <style>{`
+        .${styles.page} a[id="${uniqueId}"] {
+          color: ${lightColor};
+          --colors-linkUnderline: ${rgba(lightColor, 0.4)};
+        }
+
+        html[data-theme="dark"] .${styles.page} a[id="${uniqueId}"] {
+          color: ${darkColor};
+          --colors-linkUnderline: ${rgba(darkColor, 0.4)};
+        }
+      `}</style>
+    </>
   );
 };
 
-const H1 = styled("h1", {
-  margin: "0 0 0.5em -1px", // misaligned left margin, super nitpicky
-  fontSize: "1.75em",
-  fontWeight: 500,
-  lineHeight: 1.1,
-  color: theme.colors.text,
-
-  "@medium": {
-    fontSize: "1.6em",
-  },
-});
-
-const H2 = styled("h2", {
-  margin: "0.5em 0 0.5em -1px", // misaligned left margin, super nitpicky
-  fontSize: "1.2em",
-  fontWeight: 400,
-  lineHeight: 1.4,
-  color: theme.colors.text,
-
-  "@medium": {
-    fontSize: "1.25em",
-  },
-});
-
-const Paragraph = styled("p", {
-  margin: "0.85em 0",
-  fontSize: "0.95em",
-  lineHeight: 1.7,
-  color: theme.colors.text,
-
-  "&:last-of-type": {
-    marginBottom: 0,
-  },
-
-  "@medium": {
-    fontSize: "0.925em",
-    lineHeight: 1.825,
-  },
-});
-
-const Wave = styled("span", {
-  display: "inline-block",
-  marginLeft: "0.1em",
-  fontSize: "1.2em",
-
-  "@media (prefers-reduced-motion: no-preference)": {
-    animation: `${keyframes({
-      "0%": { transform: "rotate(0deg)" },
-      "5%": { transform: "rotate(14deg)" },
-      "10%": { transform: "rotate(-8deg)" },
-      "15%": { transform: "rotate(14deg)" },
-      "20%": { transform: "rotate(-4deg)" },
-      "25%": { transform: "rotate(10deg)" },
-      "30%": { transform: "rotate(0deg)" },
-      // pause for ~9 out of 10 seconds
-      "100%": { transform: "rotate(0deg)" },
-    })} 5s ease 1s infinite`,
-    transformOrigin: "65% 80%",
-    willChange: "transform",
-  },
-});
-
-const Sup = styled("sup", {
-  margin: "0 0.1em",
-  fontSize: "0.6em",
-});
-
-const PGPIcon = styled(GoLock, {
-  verticalAlign: "-0.25em",
-  strokeWidth: 0.5,
-});
-
-const PGPKey = styled("code", {
-  margin: "0 0.15em",
-  letterSpacing: "0.075em",
-  wordSpacing: "-0.4em",
-});
-
-const Quiet = styled("span", {
-  color: theme.colors.mediumLight,
-});
-
-const Index = () => {
+export default function Page() {
   return (
-    <>
-      <H1>
-        Hi there! I'm Jake. <Wave>👋</Wave>
-      </H1>
+    <div className={styles.page}>
+      <h1>
+        Hi there! I'm Jake. <span className={styles.wave}>👋</span>
+      </h1>
 
-      <H2>
+      <h2>
         I'm a frontend web developer based in the{" "}
         <ColorfulLink
           href="https://www.youtube-nocookie.com/embed/rLwbzGyC6t4?hl=en&amp;fs=1&amp;showinfo=1&amp;rel=0&amp;iv_load_policy=3"
@@ -136,9 +60,9 @@ const Index = () => {
           Boston
         </ColorfulLink>{" "}
         area.
-      </H2>
+      </h2>
 
-      <Paragraph>
+      <p>
         I specialize in{" "}
         <ColorfulLink
           href="https://reactjs.org/"
@@ -180,9 +104,9 @@ const Index = () => {
           LAMP
         </ColorfulLink>
         , too.
-      </Paragraph>
+      </p>
 
-      <Paragraph>
+      <p>
         Whenever possible, I also apply my experience in{" "}
         <ColorfulLink
           href="https://bugcrowd.com/jakejarvis"
@@ -211,9 +135,9 @@ const Index = () => {
           DevOps automation
         </ColorfulLink>
         .
-      </Paragraph>
+      </p>
 
-      <Paragraph>
+      <p>
         I fell in love with{" "}
         <ColorfulLink
           href="/previously/"
@@ -247,10 +171,10 @@ const Index = () => {
         >
           the Tooth Fairy
         </ColorfulLink>
-        . <Quiet>I've improved a bit since then, I think? 🤷</Quiet>
-      </Paragraph>
+        . <span style={{ color: "var(--colors-mediumLight)" }}>I've improved a bit since then, I think? 🤷</span>
+      </p>
 
-      <Paragraph>
+      <p>
         Over the years, some of my side projects{" "}
         <ColorfulLink
           href="/leo/"
@@ -309,9 +233,9 @@ const Index = () => {
           outlets
         </ColorfulLink>
         .
-      </Paragraph>
+      </p>
 
-      <Paragraph>
+      <p>
         You can find my work on{" "}
         <ColorfulLink
           href="https://github.com/jakejarvis"
@@ -336,7 +260,7 @@ const Index = () => {
         <ColorfulLink href="/contact/" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
           email
         </ColorfulLink>{" "}
-        <Sup>
+        <sup>
           <ColorfulLink
             href="/pubkey.asc"
             rel="pgpkey authn"
@@ -346,9 +270,10 @@ const Index = () => {
             underline={false}
             openInNewTab
           >
-            <PGPIcon size="1.25em" /> <PGPKey>2B0C 9CF2 51E6 9A39</PGPKey>
+            <GoLock size="1.25em" className={styles.pgpIcon} />{" "}
+            <span className={styles.pgpKey}>2B0C 9CF2 51E6 9A39</span>
           </ColorfulLink>
-        </Sup>
+        </sup>
         ,{" "}
         <ColorfulLink
           href="https://fediverse.jarv.is/@jake"
@@ -369,9 +294,7 @@ const Index = () => {
           SMS
         </ColorfulLink>{" "}
         as well!
-      </Paragraph>
-    </>
+      </p>
+    </div>
   );
-};
-
-export default Index;
+}
