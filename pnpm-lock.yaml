@@ -18,8 +18,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       '@octokit/graphql':
-        specifier: ^8.1.2
-        version: 8.1.2
+        specifier: ^8.2.0
+        version: 8.2.0
       '@octokit/graphql-schema':
         specifier: ^15.25.0
         version: 15.25.0
@@ -612,8 +612,8 @@ packages:
   '@octokit/graphql-schema@15.25.0':
     resolution: {integrity: sha512-aqz9WECtdxVWSqgKroUu9uu+CRt5KnfErWs0dBPKlTdrreAeWzS5NRu22ZVcGdPP7s3XDg2Gnf5iyoZPCRZWmQ==}
 
-  '@octokit/graphql@8.1.2':
-    resolution: {integrity: sha512-bdlj/CJVjpaz06NBpfHhp4kGJaRZfz7AzC+6EwUImRtrwIw8dIgJ63Xg0OzV9pRn3rIzrt5c2sa++BL0JJ8GLw==}
+  '@octokit/graphql@8.2.0':
+    resolution: {integrity: sha512-gejfDywEml/45SqbWTWrhfwvLBrcGYhOn50sPOjIeVvH6i7D16/9xcFA8dAJNp2HMcd+g4vru41g4E2RBiZvfQ==}
     engines: {node: '>= 18'}
 
   '@octokit/openapi-types@23.0.1':
@@ -623,12 +623,12 @@ packages:
     resolution: {integrity: sha512-pqnVKYo/at0NuOjinrgcQYpEbv4snvP3bKMRqHaD9kIsk9u1LCpb2smHZi8/qJfgeNqLo5hNW4Z7FezNdEo0xg==}
     engines: {node: '>= 18'}
 
-  '@octokit/request@9.1.4':
-    resolution: {integrity: sha512-tMbOwGm6wDII6vygP3wUVqFTw3Aoo0FnVQyhihh8vVq12uO3P+vQZeo2CKMpWtPSogpACD0yyZAlVlQnjW71DA==}
+  '@octokit/request@9.2.0':
+    resolution: {integrity: sha512-kXLfcxhC4ozCnAXy2ff+cSxpcF0A1UqxjvYMqNuPIeOAzJbVWQ+dy5G2fTylofB/gTbObT8O6JORab+5XtA1Kw==}
     engines: {node: '>= 18'}
 
-  '@octokit/types@13.7.0':
-    resolution: {integrity: sha512-BXfRP+3P3IN6fd4uF3SniaHKOO4UXWBfkdR3vA8mIvaoO/wLjGN5qivUtW0QRitBHHMcfC41SLhNVYIZZE+wkA==}
+  '@octokit/types@13.8.0':
+    resolution: {integrity: sha512-x7DjTIbEpEWXK99DMd01QfWy0hd5h4EN+Q7shkdKds3otGQP+oWE/y0A76i1OvH9fygo4ddvNf7ZvF0t78P98A==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -2020,6 +2020,7 @@ packages:
 
   libsql@0.3.19:
     resolution: {integrity: sha512-Aj5cQ5uk/6fHdmeW0TiXK42FqUlwx7ytmMLPSaUQPin5HKKKuUPD62MAbN4OEweGBBI7q1BekoEN4gPUEL6MZA==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@3.1.3:
@@ -3685,7 +3686,7 @@ snapshots:
 
   '@octokit/endpoint@10.1.2':
     dependencies:
-      '@octokit/types': 13.7.0
+      '@octokit/types': 13.8.0
       universal-user-agent: 7.0.2
 
   '@octokit/graphql-schema@15.25.0':
@@ -3693,27 +3694,27 @@ snapshots:
       graphql: 16.10.0
       graphql-tag: 2.12.6(graphql@16.10.0)
 
-  '@octokit/graphql@8.1.2':
+  '@octokit/graphql@8.2.0':
     dependencies:
-      '@octokit/request': 9.1.4
-      '@octokit/types': 13.7.0
+      '@octokit/request': 9.2.0
+      '@octokit/types': 13.8.0
       universal-user-agent: 7.0.2
 
   '@octokit/openapi-types@23.0.1': {}
 
   '@octokit/request-error@6.1.6':
     dependencies:
-      '@octokit/types': 13.7.0
+      '@octokit/types': 13.8.0
 
-  '@octokit/request@9.1.4':
+  '@octokit/request@9.2.0':
     dependencies:
       '@octokit/endpoint': 10.1.2
       '@octokit/request-error': 6.1.6
-      '@octokit/types': 13.7.0
+      '@octokit/types': 13.8.0
       fast-content-type-parse: 2.0.1
       universal-user-agent: 7.0.2
 
-  '@octokit/types@13.7.0':
+  '@octokit/types@13.8.0':
     dependencies:
       '@octokit/openapi-types': 23.0.1
 
