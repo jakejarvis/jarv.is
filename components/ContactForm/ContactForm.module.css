@@ -49,7 +49,7 @@
 }
 
 .submitButton {
-  flex-shrink: 0px;
+  flex-shrink: 0;
   height: 3.25em;
   padding: 1em 1.25em;
   margin-right: 1.5em;

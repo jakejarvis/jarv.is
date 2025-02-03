@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle, useCallback } from "react";
 import { useRouter } from "next/router";
 import RFB from "@novnc/novnc/core/rfb";

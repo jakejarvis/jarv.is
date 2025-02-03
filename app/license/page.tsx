@@ -1,22 +1,22 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import HorizontalRule from "../components/HorizontalRule";
-import Blockquote from "../components/Blockquote";
-import { H2, H3 } from "../components/Heading";
-import { UnorderedList, OrderedList, ListItem } from "../components/List";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import HorizontalRule from "../../components/HorizontalRule";
+import Blockquote from "../../components/Blockquote";
+import { H2, H3 } from "../../components/Heading";
+import { UnorderedList, OrderedList, ListItem } from "../../components/List";
+import type { Metadata } from "next";
 
-const License = () => {
+export const metadata: Metadata = {
+  title: "License",
+  openGraph: {
+    title: "License",
+  },
+};
+
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="License"
-        openGraph={{
-          title: "License",
-        }}
-      />
-
       <PageTitle>📜 License</PageTitle>
 
       <Content>
@@ -471,6 +471,4 @@ const License = () => {
       </Content>
     </>
   );
-};
-
-export default License;
+}

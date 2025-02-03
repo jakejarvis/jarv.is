@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";

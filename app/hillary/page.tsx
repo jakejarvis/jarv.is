@@ -1,32 +1,25 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import Video from "../components/Video";
-import { styled, theme } from "../lib/styles/stitches.config";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import Video from "../../components/Video";
+import type { Metadata } from "next";
 
-import thumbnail from "../public/static/images/hillary/thumb.png";
+import thumbnail from "../../public/static/images/hillary/thumb.png";
 
-const Copyright = styled("p", {
-  textAlign: "center",
-  fontSize: "0.9em",
-  lineHeight: 1.8,
-  margin: "1.25em 1em 0 1em",
-  color: theme.colors.mediumLight,
-});
+export const metadata: Metadata = {
+  title: "My Brief Apperance in Hillary Clinton's DNC Video",
+  description: "My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse.",
+  openGraph: {
+    title: "My Brief Apperance in Hillary Clinton's DNC Video",
+    images: [thumbnail.src],
+  },
+};
 
-const Hillary = () => {
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="My Brief Apperance in Hillary Clinton's DNC Video"
-        description="My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse."
-        openGraph={{
-          title: "My Brief Apperance in Hillary Clinton's DNC Video",
-        }}
-      />
-
       <PageTitle>My Brief Apperance in Hillary Clinton's DNC Video</PageTitle>
+
       <Content>
         <Video
           src={{
@@ -37,7 +30,15 @@ const Hillary = () => {
           }}
         />
 
-        <Copyright>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "0.9em",
+            lineHeight: 1.8,
+            margin: "1.25em 1em 0 1em",
+            color: "var(--colors-mediumLight)",
+          }}
+        >
           Video is property of{" "}
           <Link href="https://www.hillaryclinton.com/" style={{ fontWeight: 700 }}>
             Hillary for America
@@ -51,10 +52,8 @@ const Hillary = () => {
             CNN / WarnerMedia
           </Link>
           . &copy; 2016.
-        </Copyright>
+        </p>
       </Content>
     </>
   );
-};
-
-export default Hillary;
+}

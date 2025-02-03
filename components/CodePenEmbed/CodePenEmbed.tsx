@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import IFrame from "../IFrame";
 import useHasMounted from "../../hooks/useHasMounted";

@@ -1,26 +1,27 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import Image from "../components/Image";
-import Blockquote from "../components/Blockquote";
-import CodeBlock from "../components/CodeBlock";
-import { H2 } from "../components/Heading";
-import { UnorderedList, ListItem } from "../components/List";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import Image from "../../components/Image";
+import Blockquote from "../../components/Blockquote";
+import CodeBlock from "../../components/CodeBlock";
+import { H2 } from "../../components/Heading";
+import { UnorderedList, ListItem } from "../../components/List";
+import type { Metadata } from "next";
 
-import cliImg from "../public/static/images/cli/screenshot.png";
+import cliImg from "../../public/static/images/cli/screenshot.png";
 
-const CLI = () => {
+export const metadata: Metadata = {
+  title: "CLI",
+  description: "AKA, the most useless Node module ever published, in history, by anyone, ever.",
+  openGraph: {
+    title: "CLI",
+    images: [cliImg.src],
+  },
+};
+
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="CLI"
-        description="AKA, the most useless Node module ever published, in history, by anyone, ever."
-        openGraph={{
-          title: "CLI",
-        }}
-      />
-
       <PageTitle>🤖 CLI</PageTitle>
 
       <Content>
@@ -64,6 +65,4 @@ const CLI = () => {
       </Content>
     </>
   );
-};
-
-export default CLI;
+}

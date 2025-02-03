@@ -22,6 +22,9 @@
   "dependencies": {
     "@giscus/react": "^3.1.0",
     "@libsql/client": "^0.8.1",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.6",
     "@novnc/novnc": "1.4.0",
     "@octokit/graphql": "^8.2.0",
     "@octokit/graphql-schema": "^15.25.0",
@@ -29,6 +32,7 @@
     "@prisma/client": "^6.3.0",
     "@react-spring/web": "^9.7.5",
     "@stitches/react": "1.3.1-1",
+    "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "comma-number": "^2.1.0",

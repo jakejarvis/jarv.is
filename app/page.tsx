@@ -1,14 +1,10 @@
+import { useId } from "react";
+import { GoLock } from "react-icons/go";
 import { rgba } from "polished";
 import Link from "../components/Link";
-import { GoLock } from "react-icons/go";
-import { useId, type ComponentPropsWithoutRef } from "react";
-import type { Metadata } from "next";
+import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./styles.module.css";
-
-export const metadata: Metadata = {
-  title: "My Page Title",
-};
 
 const ColorfulLink = ({
   lightColor,

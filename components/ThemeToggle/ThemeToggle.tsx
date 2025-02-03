@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useId } from "react";
 import { useSpring, animated, Globals } from "@react-spring/web";
 import useMedia from "../../hooks/useMedia";

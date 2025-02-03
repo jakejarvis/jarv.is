@@ -1,22 +1,22 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import Blockquote from "../components/Blockquote";
-import CodeInline from "../components/CodeInline";
-import { H2 } from "../components/Heading";
-import { UnorderedList, ListItem } from "../components/List";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import Blockquote from "../../components/Blockquote";
+import CodeInline from "../../components/CodeInline";
+import { H2 } from "../../components/Heading";
+import { UnorderedList, ListItem } from "../../components/List";
+import type { Metadata } from "next";
 
-const Privacy = () => {
+export const metadata: Metadata = {
+  title: "Privacy",
+  openGraph: {
+    title: "Privacy",
+  },
+};
+
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="Privacy"
-        openGraph={{
-          title: "Privacy",
-        }}
-      />
-
       <PageTitle>🕵️ Privacy</PageTitle>
 
       <Content>
@@ -128,6 +128,4 @@ const Privacy = () => {
       </Content>
     </>
   );
-};
-
-export default Privacy;
+}

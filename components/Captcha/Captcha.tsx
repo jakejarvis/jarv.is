@@ -1,3 +1,5 @@
+"use client";
+
 import Turnstile from "react-turnstile";
 import useHasMounted from "../../hooks/useHasMounted";
 import useTheme from "../../hooks/useTheme";

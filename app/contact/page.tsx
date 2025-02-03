@@ -1,26 +1,19 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import ContactForm from "../components/ContactForm";
-import { styled } from "../lib/styles/stitches.config";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import ContactForm from "../../components/ContactForm";
+import type { Metadata } from "next";
 
-const PGPKey = styled("code", {
-  fontSize: "0.925em",
-  letterSpacing: "0.075em",
-  wordSpacing: "-0.3em",
-});
+export const metadata: Metadata = {
+  title: "Contact Me",
+  openGraph: {
+    title: "Contact Me",
+  },
+};
 
-const Contact = () => {
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="Contact Me"
-        openGraph={{
-          title: "Contact Me",
-        }}
-      />
-
       <PageTitle>📬 Contact Me</PageTitle>
 
       <Content
@@ -38,7 +31,9 @@ const Contact = () => {
         <p>
           🔐 You can grab my public key here:{" "}
           <Link href="/pubkey.asc" title="My Public PGP Key" rel="pgpkey authn" openInNewTab>
-            <PGPKey>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</PGPKey>
+            <code style={{ fontSize: "0.925em", letterSpacing: "0.075em", wordSpacing: "-0.3em" }}>
+              6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
+            </code>
           </Link>
           .
         </p>
@@ -47,6 +42,4 @@ const Contact = () => {
       </Content>
     </>
   );
-};
-
-export default Contact;
+}

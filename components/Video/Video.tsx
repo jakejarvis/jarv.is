@@ -1,3 +1,5 @@
+"use client";
+
 import ReactPlayer from "react-player/file";
 import clsx from "clsx";
 import useHasMounted from "../../hooks/useHasMounted";

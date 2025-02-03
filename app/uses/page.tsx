@@ -1,30 +1,26 @@
-import { NextSeo } from "next-seo";
-import Content from "../components/Content";
-import PageTitle from "../components/PageTitle";
-import Link from "../components/Link";
-import Image from "../components/Image";
-import CodeInline from "../components/CodeInline";
-import { H2 } from "../components/Heading";
-import { UnorderedList, ListItem } from "../components/List";
+import Content from "../../components/Content";
+import PageTitle from "../../components/PageTitle";
+import Link from "../../components/Link";
+import Image from "../../components/Image";
+import CodeInline from "../../components/CodeInline";
+import { H2 } from "../../components/Heading";
+import { UnorderedList, ListItem } from "../../components/List";
+import type { Metadata } from "next";
 
-import desktopImg from "../public/static/images/uses/desktop.png";
-import { styled } from "../lib/styles/stitches.config";
+import desktopImg from "../../public/static/images/uses/desktop.png";
 
-const Emoji = styled("span", {
-  marginRight: "0.45em",
-});
+export const metadata: Metadata = {
+  title: "/uses",
+  description: "Things I use daily.",
+  openGraph: {
+    title: "/uses",
+    images: [desktopImg.src],
+  },
+};
 
-const Uses = () => {
+export default function Page() {
   return (
     <>
-      <NextSeo
-        title="/uses"
-        description="Things I use daily."
-        openGraph={{
-          title: "/uses",
-        }}
-      />
-
       <PageTitle>/uses</PageTitle>
 
       <Content>
@@ -40,7 +36,7 @@ const Uses = () => {
         <Image src={desktopImg} href={desktopImg.src} alt="My mess of a desktop." priority />
 
         <H2 id="hardware">
-          <Emoji>🚘</Emoji>
+          <span style={{ marginRight: "0.45em" }}>🚘</span>
           Daily Drivers
         </H2>
         <UnorderedList>
@@ -110,7 +106,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="homelab">
-          <Emoji>🧪</Emoji>
+          <span style={{ marginRight: "0.45em" }}>🧪</span>
           Homelab
         </H2>
         <UnorderedList>
@@ -226,7 +222,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="development">
-          <Emoji>💾</Emoji>
+          <span style={{ marginRight: "0.45em" }}>💾</span>
           Development
         </H2>
         <UnorderedList>
@@ -430,7 +426,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="browsing">
-          <Emoji>🌎</Emoji>
+          <span style={{ marginRight: "0.45em" }}>🌎</span>
           Browsing
         </H2>
         <UnorderedList>
@@ -515,7 +511,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="macos">
-          <Emoji>💻</Emoji>
+          <span style={{ marginRight: "0.45em" }}>💻</span>
           macOS
         </H2>
         <UnorderedList>
@@ -599,7 +595,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="ios">
-          <Emoji>📱</Emoji>
+          <span style={{ marginRight: "0.45em" }}>📱</span>
           iOS
         </H2>
         <p>I have far too many apps to count, but here the essentials that have earned a spot on my home screen:</p>
@@ -646,7 +642,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="cloud">
-          <Emoji>☁️</Emoji>
+          <span style={{ marginRight: "0.45em" }}>☁️</span>
           Cloud
         </H2>
         <p>
@@ -773,7 +769,7 @@ const Uses = () => {
         </UnorderedList>
 
         <H2 id="iot">
-          <Emoji>🏠</Emoji>
+          <span style={{ marginRight: "0.45em" }}>🏠</span>
           Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
         </H2>
         <UnorderedList>
@@ -806,6 +802,4 @@ const Uses = () => {
       </Content>
     </>
   );
-};
-
-export default Uses;
+}

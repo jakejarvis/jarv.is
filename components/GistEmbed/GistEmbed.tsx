@@ -1,3 +1,5 @@
+"use client";
+
 import Frame from "react-frame-component";
 import useHasMounted from "../../hooks/useHasMounted";
 

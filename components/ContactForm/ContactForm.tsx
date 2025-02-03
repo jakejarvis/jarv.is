@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
