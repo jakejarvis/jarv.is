@@ -1,14 +1,13 @@
-import path from "path";
-import fs from "fs/promises";
 import * as runtime from "react/jsx-runtime";
 import { evaluate } from "@mdx-js/mdx";
-import matter from "gray-matter";
 import Content from "../../../components/Content";
 import PostMeta from "../../../components/PostMeta";
 import Comments from "../../../components/Comments";
-import { getPostSlugs } from "../../../lib/helpers/posts";
+import { getPostSlugs, getPostData } from "../../../lib/helpers/posts";
 import * as mdxComponents from "../../../lib/helpers/mdx-components";
-import type { PostFrontMatter } from "../../../types";
+import { metadata as defaultMetadata } from "../../layout";
+import config from "../../../lib/config";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
@@ -19,16 +18,41 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const { frontMatter } = await getPostData(slug);
+
+  return {
+    title: frontMatter.title,
+    description: frontMatter.description,
+    openGraph: {
+      ...defaultMetadata.openGraph,
+      title: frontMatter.title,
+      type: "article",
+      authors: [config.authorName],
+      tags: frontMatter.tags,
+      publishedTime: frontMatter.date,
+      modifiedTime: frontMatter.date,
+      images: frontMatter.image
+        ? [{ url: frontMatter.image, alt: frontMatter.title }]
+        : defaultMetadata.openGraph?.images,
+    },
+    alternates: {
+      ...defaultMetadata.alternates,
+      canonical: `/notes/${slug}`,
+    },
+  };
+}
+
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const fullPath = path.join(process.cwd(), "notes", `${(await params).slug}.mdx`);
-  const rawContent = await fs.readFile(fullPath, "utf8");
-  const { data, content } = matter(rawContent);
+  const { slug } = await params;
+  const { frontMatter, markdown } = await getPostData(slug);
 
   const { remarkGfm, remarkSmartypants, rehypeSlug, rehypeUnwrapImages, rehypePrism } = await import(
     "../../../lib/helpers/remark-rehype-plugins"
   );
 
-  const { default: MDXContent } = await evaluate(content, {
+  const { default: MDXContent } = await evaluate(markdown, {
     ...runtime,
     remarkPlugins: [
       [remarkGfm, { singleTilde: false }],
@@ -47,7 +71,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <PostMeta {...(data as PostFrontMatter)} />
+      <PostMeta {...frontMatter} />
 
       <Content>
         <MDXContent
@@ -57,7 +81,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </Content>
 
       <div id="comments">
-        <Comments title={data.title} />
+        <Comments title={frontMatter.title} />
       </div>
     </>
   );
