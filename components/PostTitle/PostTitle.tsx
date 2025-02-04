@@ -12,10 +12,7 @@ const PostTitle = ({ slug, title, htmlTitle, className, ...rest }: PostTitleProp
   return (
     <h1 className={clsx(styles.title, className)} {...rest}>
       <Link
-        href={{
-          pathname: "/notes/[slug]/" as Route,
-          query: { slug },
-        }}
+        href={`/notes/${slug}` as Route}
         dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
         underline={false}
         className={styles.link}

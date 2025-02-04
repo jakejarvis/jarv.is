@@ -5,6 +5,7 @@ import Link from "../../components/Link";
 import RepositoryCard from "../../components/RepositoryCard";
 import { SiGithub } from "react-icons/si";
 import config from "../../lib/config";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 import type { Project } from "../../types";
@@ -14,7 +15,12 @@ import styles from "./styles.module.css";
 export const metadata: Metadata = {
   title: "Projects",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "Projects",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/projects",
   },
 };
 

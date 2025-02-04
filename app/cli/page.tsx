@@ -6,6 +6,7 @@ import Blockquote from "../../components/Blockquote";
 import CodeBlock from "../../components/CodeBlock";
 import { H2 } from "../../components/Heading";
 import { UnorderedList, ListItem } from "../../components/List";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 import cliImg from "../../public/static/images/cli/screenshot.png";
@@ -14,8 +15,13 @@ export const metadata: Metadata = {
   title: "CLI",
   description: "AKA, the most useless Node module ever published, in history, by anyone, ever.",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "CLI",
     images: [cliImg.src],
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/cli",
   },
 };
 

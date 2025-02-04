@@ -12,10 +12,6 @@ export default (phase, { defaultConfig }) => {
     reactStrictMode: true,
     trailingSlash: true,
     productionBrowserSourceMaps: true,
-    transpilePackages: [
-      "@novnc/novnc",
-      "react-tweet", // https://react-tweet.vercel.app/next#troubleshooting
-    ],
     env: {
       // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
       // pages using getServerSideProps will return the current(ish) time instead, which is usually not what we want.
@@ -93,6 +89,8 @@ export default (phase, { defaultConfig }) => {
       fallback: [],
     }),
     redirects: async () => [
+      { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
+
       // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
       // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
       { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", permanent: true },

@@ -5,12 +5,18 @@ import Blockquote from "../../components/Blockquote";
 import CodeInline from "../../components/CodeInline";
 import { H2 } from "../../components/Heading";
 import { UnorderedList, ListItem } from "../../components/List";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "Privacy",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/privacy",
   },
 };
 

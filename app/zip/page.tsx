@@ -1,6 +1,7 @@
 import Content from "../../components/Content";
 import Link from "../../components/Link";
 import CodeBlock from "../../components/CodeBlock/CodeBlock";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 import backgroundImg from "../../public/static/images/zip/bg.jpg";
@@ -9,7 +10,12 @@ export const metadata: Metadata = {
   title: "fuckyougoogle.zip",
   description: "This is a horrible idea.",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "fuckyougoogle.zip",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/zip",
   },
 };
 

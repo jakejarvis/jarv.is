@@ -8,6 +8,7 @@ import CodeInline from "../../components/CodeInline";
 import HorizontalRule from "../../components/HorizontalRule";
 import { SiWindows95 } from "react-icons/si";
 import { ComicNeue } from "../../lib/styles/fonts";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 import styles from "./styles.module.css";
@@ -31,7 +32,12 @@ export const metadata: Metadata = {
   title: "Previously on...",
   description: "An incredibly embarrassing and somewhat painful trip down this site's memory lane...",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "Previously on...",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/previously",
   },
 };
 

@@ -17,14 +17,7 @@ const PostMeta = ({ slug, date, title, htmlTitle, tags }: PostMetaProps) => {
     <>
       <div className={styles.meta}>
         <div className={styles.item}>
-          <Link
-            href={{
-              pathname: "/notes/[slug]/" as Route,
-              query: { slug },
-            }}
-            underline={false}
-            className={styles.link}
-          >
+          <Link href={`/notes/${slug}` as Route} underline={false} className={styles.link}>
             <FiCalendar className={styles.icon} />
             <Time date={date} format="MMMM D, YYYY" />
           </Link>

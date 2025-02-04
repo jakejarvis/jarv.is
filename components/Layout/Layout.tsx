@@ -6,11 +6,9 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Layout.module.css";
 
-export type LayoutProps = ComponentPropsWithoutRef<"div"> & {
-  container?: boolean; // pass false to disable default `<main>` container styles with padding, etc.
-};
+export type LayoutProps = ComponentPropsWithoutRef<"div">;
 
-const Layout = ({ container = true, className, children, ...rest }: LayoutProps) => {
+const Layout = ({ className, children, ...rest }: LayoutProps) => {
   return (
     <>
       <SkipToContentLink />
@@ -18,18 +16,10 @@ const Layout = ({ container = true, className, children, ...rest }: LayoutProps)
       <div className={clsx(styles.flex, className)} {...rest}>
         <Header className={styles.stickyHeader} />
 
-        {/* passing `container={false}` to Layout allows 100% control of the content area on a per-page basis */}
-        {container ? (
-          <main className={styles.default}>
-            <SkipToContentTarget />
-            <div className={styles.container}>{children}</div>
-          </main>
-        ) : (
-          <>
-            <SkipToContentTarget />
-            {children}
-          </>
-        )}
+        <main className={styles.default}>
+          <SkipToContentTarget />
+          <div className={styles.container}>{children}</div>
+        </main>
 
         <Footer className={styles.flexedFooter} />
       </div>

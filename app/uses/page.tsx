@@ -5,6 +5,7 @@ import Image from "../../components/Image";
 import CodeInline from "../../components/CodeInline";
 import { H2 } from "../../components/Heading";
 import { UnorderedList, ListItem } from "../../components/List";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata, Route } from "next";
 
 import desktopImg from "../../public/static/images/uses/desktop.png";
@@ -13,8 +14,13 @@ export const metadata: Metadata = {
   title: "/uses",
   description: "Things I use daily.",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "/uses",
     images: [desktopImg.src],
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/uses",
   },
 };
 

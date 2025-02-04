@@ -2,12 +2,18 @@ import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import ContactForm from "../../components/ContactForm";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata, Route } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Me",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "Contact Me",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/contact",
   },
 };
 

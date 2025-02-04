@@ -1,3 +1,5 @@
+"use client";
+
 import Giscus from "@giscus/react";
 import clsx from "clsx";
 import useTheme from "../../hooks/useTheme";

@@ -8,25 +8,23 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <>
-      <div style={{ textAlign: "center" }}>
-        <Video
-          src={{
-            webm: "/static/images/angry-panda.webm",
-            mp4: "/static/images/angry-panda.mp4",
-          }}
-          autoplay
-          title="404s make panda angry..."
-          responsive={false}
-          style={{
-            maxWidth: "400px",
-          }}
-        />
+    <div style={{ textAlign: "center" }}>
+      <Video
+        src={{
+          webm: "/static/images/angry-panda.webm",
+          mp4: "/static/images/angry-panda.mp4",
+        }}
+        autoplay
+        title="404s make panda angry..."
+        responsive={false}
+        style={{
+          maxWidth: "400px",
+        }}
+      />
 
-        <h1>404: Page Not Found 😢</h1>
+      <h1>404: Page Not Found 😢</h1>
 
-        <Link href="/">Go home?</Link>
-      </div>
-    </>
+      <Link href="/">Go home?</Link>
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 import thumbnail from "../../public/static/images/leo/thumb.png";
@@ -10,8 +11,13 @@ export const metadata: Metadata = {
   title: 'Facebook App on "The Lab with Leo Laporte"',
   description: "Powncer app featured in Leo Laporte's TechTV show.",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: 'Facebook App on "The Lab with Leo Laporte"',
     images: [thumbnail.src],
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/leo",
   },
 };
 

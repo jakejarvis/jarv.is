@@ -22,13 +22,7 @@ const PostsList = ({ postsByYear }: PostsListProps) => {
             <li className={styles.post} key={slug}>
               <Time date={date} format="MMM D" className={styles.postDate} />
               <span>
-                <Link
-                  href={{
-                    pathname: "/notes/[slug]/" as Route,
-                    query: { slug },
-                  }}
-                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                />
+                <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
               </span>
             </li>
           ))}

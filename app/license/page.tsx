@@ -5,12 +5,18 @@ import HorizontalRule from "../../components/HorizontalRule";
 import Blockquote from "../../components/Blockquote";
 import { H2, H3 } from "../../components/Heading";
 import { UnorderedList, OrderedList, ListItem } from "../../components/List";
+import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "License",
   openGraph: {
+    ...defaultMetadata.openGraph,
     title: "License",
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: "/license",
   },
 };
 
