@@ -30,13 +30,7 @@ export default function Page() {
         </p>
         <p>
           🔐 You can grab my public key here:{" "}
-          <Link
-            href={"/pubkey.asc" as Route}
-            prefetch={false}
-            title="My Public PGP Key"
-            rel="pgpkey authn"
-            openInNewTab
-          >
+          <Link href={"/pubkey.asc" as Route} title="My Public PGP Key" rel="pgpkey authn" openInNewTab>
             <code style={{ fontSize: "0.925em", letterSpacing: "0.075em", wordSpacing: "-0.3em" }}>
               6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
             </code>
