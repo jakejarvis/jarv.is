@@ -26,6 +26,7 @@ const MenuItem = ({ Icon, text, href, current, className }: MenuItemProps) => {
     return (
       <Link
         href={href}
+        prefetch={false}
         className={clsx(styles.link, current && styles.current, className)}
         title={text}
         underline={false}

@@ -128,6 +128,7 @@ export default function Page() {
         I fell in love with{" "}
         <ColorfulLink
           href="/previously"
+          prefetch={false}
           title="My Terrible, Horrible, No Good, Very Bad First Websites"
           lightColor="#4169e1"
           darkColor="#8ca9ff"
@@ -137,6 +138,7 @@ export default function Page() {
         and{" "}
         <ColorfulLink
           href={"/notes/my-first-code" as Route}
+          prefetch={false}
           title="Jake's Bulletin Board, circa 2003"
           lightColor="#9932cc"
           darkColor="#d588fb"
@@ -146,6 +148,7 @@ export default function Page() {
         when my only source of income was{" "}
         <ColorfulLink
           href="/birthday"
+          prefetch={false}
           title="🎉 Cranky Birthday Boy on VHS Tape 📼"
           lightColor="#e40088"
           darkColor="#fd40b1"
@@ -162,6 +165,7 @@ export default function Page() {
         Over the years, some of my side projects{" "}
         <ColorfulLink
           href="/leo"
+          prefetch={false}
           title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
           lightColor="#ff1b1b"
           darkColor="#f06060"
@@ -241,12 +245,13 @@ export default function Page() {
           LinkedIn
         </ColorfulLink>
         . I'm always available to connect over{" "}
-        <ColorfulLink href="/contact" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
+        <ColorfulLink href="/contact" prefetch={false} title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
           email
         </ColorfulLink>{" "}
         <sup>
           <ColorfulLink
             href={"/pubkey.asc" as Route}
+            prefetch={false}
             rel="pgpkey authn"
             title="My Public Key"
             lightColor="#757575"
