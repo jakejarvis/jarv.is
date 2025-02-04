@@ -9,12 +9,12 @@
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  color: var(--colors-mediumDark);
+  color: var(--colors-mediumDark) !important;
 }
 
 .link:hover,
 .link:focus-visible {
-  color: var(--colors-link);
+  color: var(--colors-link) !important;
 }
 
 .name {

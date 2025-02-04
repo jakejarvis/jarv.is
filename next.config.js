@@ -32,7 +32,7 @@ export default (phase, { defaultConfig }) => {
     },
     eslint: {
       // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
-      dirs: ["components", "contexts", "hooks", "lib", "pages", "types"],
+      dirs: ["app", "components", "contexts", "hooks", "lib", "types"],
     },
     headers: async () => [
       {

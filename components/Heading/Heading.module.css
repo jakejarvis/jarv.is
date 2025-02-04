@@ -16,7 +16,7 @@
 .anchor {
   margin: 0 0.4em;
   padding: 0 0.2em;
-  color: var(--colors-medium);
+  color: var(--colors-medium) !important;
 
   /* overridden on hover below (except on small screens) */
   opacity: 0;
@@ -24,7 +24,7 @@
 
 /* show anchor link when hovering anywhere over the heading line, or on keyboard tab focus */
 .anchor:hover, .anchor:focus-visible {
-  color: var(--colors-link);
+  color: var(--colors-link) !important;
 }
 
 .h:hover .anchor, .h:focus-visible .anchor {

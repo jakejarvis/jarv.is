@@ -1,6 +1,6 @@
 .link {
   display: inline-block;
-  color: var(--colors-mediumDark);
+  color: var(--colors-mediumDark) !important;
   padding: 0.6em;
 }
 

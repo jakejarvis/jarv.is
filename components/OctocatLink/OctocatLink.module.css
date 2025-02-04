@@ -1,11 +1,11 @@
 .octocatLink {
   margin: 0 0.4em;
-  color: var(--colors-text);
+  color: var(--colors-text) !important;
 }
 
 .octocatLink:hover,
 .octocatLink:focus-visible {
-  color: var(--colors-link);
+  color: var(--colors-link) !important;
 }
 
 .octocat {

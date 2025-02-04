@@ -18,11 +18,11 @@
 }
 
 .link {
-  color: var(--colors-mediumDark);
+  color: var(--colors-mediumDark) !important;
 }
 
 .link.hover:hover, .link.hover:focus-visible {
-  color: var(--colors-medium);
+  color: var(--colors-medium) !important;
 }
 
 .link.underline {

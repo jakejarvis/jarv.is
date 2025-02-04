@@ -7,7 +7,7 @@
 }
 
 .link {
-  color: var(--colors-text);
+  color: var(--colors-text) !important;
 }
 
 @media (max-width: 768px) {
