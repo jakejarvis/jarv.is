@@ -39,6 +39,7 @@ const Link = ({
           noopener: true,
           noreferrer: isExternal, // don't add "noreferrer" if link isn't external, and only opening in a new tab
         })}
+        prefetch={false}
         className={clsx(styles.link, underline && styles.underline, className)}
         {...rest}
       />
