@@ -1,35 +1,32 @@
 import nodemailer from "nodemailer";
-import fetcher from "../../lib/helpers/fetcher";
-import config from "../../lib/config";
-import type { NextApiHandler } from "next";
+import fetcher from "../../../lib/helpers/fetcher";
+import config from "../../../lib/config";
+import { headers } from "next/headers";
+import { NextResponse, NextRequest } from "next/server";
 
-const handler: NextApiHandler<
-  {
+export async function POST(req: NextRequest): Promise<
+  NextResponse<{
     success?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     error?: any;
-  } | null
-> = async (req, res) => {
-  // only allow POST requests, otherwise return a 405 Method Not Allowed
-  if (req.method !== "POST") {
-    return res.status(405).send(null);
-  }
-
+  } | null>
+> {
   try {
     // possible weirdness? https://github.com/orgs/vercel/discussions/78#discussioncomment-5089059
-    const data = req.body;
+    const data = await req.formData();
+    const headersList = await headers();
 
     // these are both backups to client-side validations just in case someone squeezes through without them. the codes
     // are identical so they're caught in the same fashion.
-    if (!data.name || !data.email || !data.message) {
+    if (!data.get("name") || !data.get("email") || !data.get("message")) {
       // all fields are required
       throw new Error("missing_data");
     }
     if (
-      !data["cf-turnstile-response"] ||
+      !data.get("cf-turnstile-response") ||
       !(await validateCaptcha(
-        data["cf-turnstile-response"],
-        (req.headers["x-forwarded-for"] as string) || (req.headers["x-real-ip"] as string) || ""
+        data.get("cf-turnstile-response"),
+        headersList.get("x-forwarded-for") || headersList.get("x-real-ip") || ""
       ))
     ) {
       // either the captcha is wrong or completely missing
@@ -41,19 +38,15 @@ const handler: NextApiHandler<
       throw new Error("nodemailer_error");
     }
 
-    // disable caching on both ends. see:
-    // https://vercel.com/docs/concepts/functions/edge-functions/edge-caching
-    res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-
     // success! let the client know
-    return res.status(201).json({ success: true });
+    return NextResponse.json({ success: true }, { status: 201 });
   } catch (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     error: any
   ) {
-    return res.status(400).json({ error: error.message ?? "Bad request." });
+    return NextResponse.json({ error: error.message ?? "Bad request." }, { status: 400 });
   }
-};
+}
 
 const validateCaptcha = async (formResponse: unknown, ip: string): Promise<unknown> => {
   const response = await fetcher("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -72,7 +65,7 @@ const validateCaptcha = async (formResponse: unknown, ip: string): Promise<unkno
   return response?.success;
 };
 
-const sendMessage = async (data: Record<string, unknown>): Promise<boolean> => {
+const sendMessage = async (data: FormData): Promise<boolean> => {
   try {
     const transporter = nodemailer.createTransport({
       // https://resend.com/docs/send-with-nodemailer-smtp
@@ -86,13 +79,13 @@ const sendMessage = async (data: Record<string, unknown>): Promise<boolean> => {
     });
 
     await transporter.sendMail({
-      from: `${data.name} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
+      from: `${data.get("name")} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
       sender: `nodemailer <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
-      replyTo: `${data.name} <${data.email}>`,
+      replyTo: `${data.get("name")} <${data.get("email")}>`,
       to: `<${config.authorEmail}>`,
       subject: `[${config.siteDomain}] Contact Form Submission`,
       // TODO: add markdown parsing as promised on the form.
-      text: `${data.message}`,
+      text: `${data.get("message")}`,
     });
   } catch (error) {
     console.error(error);
@@ -101,5 +94,3 @@ const sendMessage = async (data: Record<string, unknown>): Promise<boolean> => {
 
   return true;
 };
-
-export default handler;

@@ -5,6 +5,7 @@ import HitCounter from "../HitCounter";
 import PostTitle from "../PostTitle";
 import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import config from "../../lib/config";
+import type { Route } from "next";
 import type { PostFrontMatter } from "../../types";
 
 import styles from "./PostMeta.module.css";
@@ -18,7 +19,7 @@ const PostMeta = ({ slug, date, title, htmlTitle, tags }: PostMetaProps) => {
         <div className={styles.item}>
           <Link
             href={{
-              pathname: "/notes/[slug]/",
+              pathname: "/notes/[slug]/" as Route,
               query: { slug },
             }}
             underline={false}

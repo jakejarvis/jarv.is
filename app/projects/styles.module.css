@@ -1,0 +1,29 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  line-height: 1.1;
+}
+
+.card {
+  flex-grow: 1;
+  margin: 0.6em;
+  width: 370px !important;
+}
+
+.viewMore {
+  text-align: center;
+  margin-bottom: 0;
+  font-weight: 500px;
+}
+
+.githubIcon {
+  display: inline;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+  margin: 0 0.15em;
+  fill: var(--colors-text);
+}

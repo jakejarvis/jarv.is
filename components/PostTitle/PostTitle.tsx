@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Link from "../Link";
 import type { ComponentPropsWithoutRef } from "react";
+import type { Route } from "next";
 import type { PostFrontMatter } from "../../types";
 
 import styles from "./PostTitle.module.css";
@@ -12,7 +13,7 @@ const PostTitle = ({ slug, title, htmlTitle, className, ...rest }: PostTitleProp
     <h1 className={clsx(styles.title, className)} {...rest}>
       <Link
         href={{
-          pathname: "/notes/[slug]/",
+          pathname: "/notes/[slug]/" as Route,
           query: { slug },
         }}
         dangerouslySetInnerHTML={{ __html: htmlTitle || title }}

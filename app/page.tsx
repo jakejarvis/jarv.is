@@ -3,6 +3,7 @@ import { GoLock } from "react-icons/go";
 import { rgba } from "polished";
 import Link from "../components/Link";
 import type { ComponentPropsWithoutRef } from "react";
+import type { Route } from "next";
 
 import styles from "./styles.module.css";
 
@@ -15,7 +16,7 @@ const ColorfulLink = ({
   lightColor: string;
   darkColor: string;
 }) => {
-  const uniqueId = useId();
+  const uniqueId = `Link_themed__${useId().replace(/\W/g, "")}`;
 
   return (
     <>
@@ -23,17 +24,7 @@ const ColorfulLink = ({
         {children}
       </Link>
 
-      <style>{`
-        .${styles.page} a[id="${uniqueId}"] {
-          color: ${lightColor};
-          --colors-linkUnderline: ${rgba(lightColor, 0.4)};
-        }
-
-        html[data-theme="dark"] .${styles.page} a[id="${uniqueId}"] {
-          color: ${darkColor};
-          --colors-linkUnderline: ${rgba(darkColor, 0.4)};
-        }
-      `}</style>
+      <style>{`.${styles.page} #${uniqueId}{color:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}html[data-theme="dark"] .${styles.page} #${uniqueId}{color:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
     </>
   );
 };
@@ -136,7 +127,7 @@ export default function Page() {
       <p>
         I fell in love with{" "}
         <ColorfulLink
-          href="/previously/"
+          href="/previously"
           title="My Terrible, Horrible, No Good, Very Bad First Websites"
           lightColor="#4169e1"
           darkColor="#8ca9ff"
@@ -145,7 +136,7 @@ export default function Page() {
         </ColorfulLink>{" "}
         and{" "}
         <ColorfulLink
-          href="/notes/my-first-code/"
+          href={"/notes/my-first-code" as Route}
           title="Jake's Bulletin Board, circa 2003"
           lightColor="#9932cc"
           darkColor="#d588fb"
@@ -154,16 +145,13 @@ export default function Page() {
         </ColorfulLink>{" "}
         when my only source of income was{" "}
         <ColorfulLink
-          href="/birthday/"
+          href="/birthday"
           title="🎉 Cranky Birthday Boy on VHS Tape 📼"
           lightColor="#e40088"
           darkColor="#fd40b1"
-          // css={{
-          //   // rotated 🪄 emoji on hover
-          //   "&:hover": {
-          //     cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
-          //   },
-          // }}
+          style={{
+            cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' style='font-size:24px'><text y='50%' transform='rotate(-70 0 0) translate(-20, 6)'>🪄</text></svg>") 5 5, auto`,
+          }}
         >
           the Tooth Fairy
         </ColorfulLink>
@@ -173,7 +161,7 @@ export default function Page() {
       <p>
         Over the years, some of my side projects{" "}
         <ColorfulLink
-          href="/leo/"
+          href="/leo"
           title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
           lightColor="#ff1b1b"
           darkColor="#f06060"
@@ -253,12 +241,12 @@ export default function Page() {
           LinkedIn
         </ColorfulLink>
         . I'm always available to connect over{" "}
-        <ColorfulLink href="/contact/" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
+        <ColorfulLink href="/contact" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
           email
         </ColorfulLink>{" "}
         <sup>
           <ColorfulLink
-            href="/pubkey.asc"
+            href={"/pubkey.asc" as Route}
             rel="pgpkey authn"
             title="My Public Key"
             lightColor="#757575"
@@ -270,6 +258,16 @@ export default function Page() {
             <span className={styles.pgpKey}>2B0C 9CF2 51E6 9A39</span>
           </ColorfulLink>
         </sup>
+        ,{" "}
+        <ColorfulLink
+          href="https://bsky.app/profile/jarv.is"
+          rel="me"
+          title="Jake Jarvis on Bluesky"
+          lightColor="#0085FF"
+          darkColor="#208BFE"
+        >
+          Bluesky
+        </ColorfulLink>
         ,{" "}
         <ColorfulLink
           href="https://fediverse.jarv.is/@jake"

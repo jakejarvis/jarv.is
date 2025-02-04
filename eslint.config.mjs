@@ -1,6 +1,5 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
-import typescriptEslint from "typescript-eslint";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
 import customConfig from "@jakejarvis/eslint-config";
 import * as mdx from "eslint-plugin-mdx";
@@ -13,8 +12,7 @@ const compat = new FlatCompat({
 export default [
   { ignores: ["README.md", ".next", ".vercel", "node_modules"] },
   js.configs.recommended,
-  ...typescriptEslint.configs.recommended,
-  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   prettierRecommended,
   ...customConfig,
   {

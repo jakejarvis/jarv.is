@@ -23,7 +23,11 @@ const RepositoryCard = ({
 }: RepositoryCardProps) => {
   return (
     <div className={clsx(styles.card, className)}>
-      <Link className={styles.name} href={url}>
+      <Link
+        // @ts-ignore
+        href={url}
+        className={styles.name}
+      >
         {name}
       </Link>
 
@@ -40,6 +44,7 @@ const RepositoryCard = ({
         {stars && stars > 0 && (
           <div className={styles.metaItem}>
             <Link
+              // @ts-ignore
               href={`${url}/stargazers`}
               title={`${commaNumber(stars)} ${stars === 1 ? "star" : "stars"}`}
               underline={false}
@@ -54,6 +59,7 @@ const RepositoryCard = ({
         {forks && forks > 0 && (
           <div className={styles.metaItem}>
             <Link
+              // @ts-ignore
               href={`${url}/network/members`}
               title={`${commaNumber(forks)} ${forks === 1 ? "fork" : "forks"}`}
               underline={false}

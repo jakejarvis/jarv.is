@@ -28,11 +28,10 @@
     "@novnc/novnc": "1.4.0",
     "@octokit/graphql": "^8.2.0",
     "@octokit/graphql-schema": "^15.25.0",
-    "@prisma/adapter-libsql": "^6.3.0",
-    "@prisma/client": "^6.3.0",
+    "@prisma/adapter-libsql": "^6.3.1",
+    "@prisma/client": "^6.3.1",
     "@react-spring/web": "^9.7.5",
     "@stitches/react": "1.3.1-1",
-    "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "comma-number": "^2.1.0",
@@ -86,7 +85,8 @@
     "@eslint/js": "^9.19.0",
     "@jakejarvis/eslint-config": "~4.0.7",
     "@types/comma-number": "^2.1.2",
-    "@types/node": "^22.13.0",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.13.1",
     "@types/nodemailer": "^6.4.17",
     "@types/novnc__novnc": "1.3.4",
     "@types/prop-types": "^15.7.14",
@@ -102,10 +102,9 @@
     "eslint-plugin-prettier": "~5.2.3",
     "lint-staged": "^15.4.3",
     "prettier": "^3.4.2",
-    "prisma": "^6.3.0",
+    "prisma": "^6.3.1",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0"
+    "typescript": "^5.7.3"
   },
   "optionalDependencies": {
     "sharp": "^0.33.5"

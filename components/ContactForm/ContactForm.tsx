@@ -33,14 +33,19 @@ const ContactForm = ({ className }: ContactFormProps) => {
     // once a user attempts a submission, this is true and stays true whether or not the next attempt(s) are successful
     setSubmitted(true);
 
+    // https://stackoverflow.com/a/68372184
+    const formData = new FormData();
+    for (const key in values) {
+      formData.append(key, values[key as keyof FormValues]);
+    }
+
     // if we've gotten here then all data is (or should be) valid and ready to post to API
     fetch("/api/contact/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(values),
+      body: formData,
     })
       .then((response) => response.json())
       .then((data) => {

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Link from "../Link";
+import type { Route } from "next";
 import type { IconType } from "react-icons";
 
 import styles from "./MenuItem.module.css";
@@ -7,7 +8,7 @@ import styles from "./MenuItem.module.css";
 export type MenuItemProps = {
   Icon?: IconType;
   text?: string;
-  href?: string;
+  href?: Route;
   current?: boolean;
   className?: string;
 };

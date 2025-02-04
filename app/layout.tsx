@@ -15,6 +15,7 @@ import { meJpg } from "../lib/config/favicons";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.shortDescription}`,
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: new URL(meJpg.src, baseUrl),
+        url: meJpg.src,
         alt: `${config.siteName} – ${config.shortDescription}`,
       },
     ],

@@ -30,6 +30,7 @@ export default (phase, { defaultConfig }) => {
       ],
     },
     experimental: {
+      typedRoutes: true,
       largePageDataBytes: 512 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX will exceed the default.
       optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
     },

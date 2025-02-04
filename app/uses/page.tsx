@@ -5,7 +5,7 @@ import Image from "../../components/Image";
 import CodeInline from "../../components/CodeInline";
 import { H2 } from "../../components/Heading";
 import { UnorderedList, ListItem } from "../../components/List";
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 
 import desktopImg from "../../public/static/images/uses/desktop.png";
 
@@ -33,7 +33,7 @@ export default function Page() {
           ❤️
         </p>
 
-        <Image src={desktopImg} href={desktopImg.src} alt="My mess of a desktop." priority />
+        <Image src={desktopImg} href={desktopImg.src as Route} alt="My mess of a desktop." priority />
 
         <H2 id="hardware">
           <span style={{ marginRight: "0.45em" }}>🚘</span>
@@ -143,7 +143,7 @@ export default function Page() {
                 drives
               </ListItem>
               <ListItem>
-                <Link href="">
+                <Link href="https://www.plex.tv/personal-media-server/">
                   <strong>Plex</strong>
                 </Link>{" "}
                 (installed as a package via{" "}
@@ -667,7 +667,7 @@ export default function Page() {
             </Link>
             <UnorderedList>
               <ListItem>
-                <Link href="/notes/dropping-dropbox/">Read why.</Link>
+                <Link href={"/notes/dropping-dropbox/" as Route}>Read why.</Link>
               </ListItem>
             </UnorderedList>
           </ListItem>
@@ -770,7 +770,7 @@ export default function Page() {
 
         <H2 id="iot">
           <span style={{ marginRight: "0.45em" }}>🏠</span>
-          Internet of <del>Things</del> <Link href="/notes/shodan-search-queries/">Crap</Link>
+          Internet of <del>Things</del> <Link href={"/notes/shodan-search-queries/" as Route}>Crap</Link>
         </H2>
         <UnorderedList>
           <ListItem>

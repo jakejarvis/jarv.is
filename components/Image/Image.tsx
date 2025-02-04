@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 import clsx from "clsx";
-import Link from "../Link";
+import Link, { LinkProps } from "../Link";
 import type { ComponentPropsWithoutRef } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
@@ -9,10 +9,10 @@ import styles from "./Image.module.css";
 const DEFAULT_QUALITY = 60;
 const DEFAULT_WIDTH = 865;
 
-export type ImageProps = ComponentPropsWithoutRef<typeof NextImage> & {
-  href?: string; // optionally wrap image in a link
-  inline?: boolean; // don't wrap everything in a `<div>` block
-};
+export type ImageProps = ComponentPropsWithoutRef<typeof NextImage> &
+  Partial<Pick<LinkProps, "href">> & {
+    inline?: boolean; // don't wrap everything in a `<div>` block
+  };
 
 const Image = ({
   src,

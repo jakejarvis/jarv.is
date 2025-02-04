@@ -111,7 +111,7 @@ export default function Page() {
           <Link href="https://www.cloudflare.com/products/turnstile/">
             <strong>Cloudflare Turnstile</strong>
           </Link>{" "}
-          to fight bot spam on the <Link href="/contact/">contact form</Link> was an easy choice over seemingly
+          to fight bot spam on the <Link href="/contact">contact form</Link> was an easy choice over seemingly
           unavoidable alternatives like <Link href="https://developers.google.com/recaptcha/">reCAPTCHA</Link>.
         </p>
 

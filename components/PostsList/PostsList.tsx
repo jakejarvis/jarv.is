@@ -1,6 +1,7 @@
 import Link from "../Link";
 import Time from "../Time";
 import type { ReactElement } from "react";
+import type { Route } from "next";
 import type { PostsByYear } from "../../types";
 
 import styles from "./PostsList.module.css";
@@ -23,7 +24,7 @@ const PostsList = ({ postsByYear }: PostsListProps) => {
               <span>
                 <Link
                   href={{
-                    pathname: "/notes/[slug]/",
+                    pathname: "/notes/[slug]/" as Route,
                     query: { slug },
                   }}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
