@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Projects",
+    url: "/projects",
   },
   alternates: {
     ...defaultMetadata.alternates,

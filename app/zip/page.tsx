@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "fuckyougoogle.zip",
+    url: "/zip",
   },
   alternates: {
     ...defaultMetadata.alternates,

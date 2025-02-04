@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     ...defaultMetadata.openGraph,
     title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
     images: [thumbnail.src],
+    url: "/birthday",
   },
   alternates: {
     ...defaultMetadata.alternates,

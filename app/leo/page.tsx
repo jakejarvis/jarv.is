@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     ...defaultMetadata.openGraph,
     title: 'Facebook App on "The Lab with Leo Laporte"',
     images: [thumbnail.src],
+    url: "/leo",
   },
   alternates: {
     ...defaultMetadata.alternates,

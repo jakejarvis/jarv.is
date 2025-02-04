@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       ...defaultMetadata.openGraph,
       title: frontMatter.title,
+      url: `/notes/${slug}`,
       type: "article",
       authors: [config.authorName],
       tags: frontMatter.tags,

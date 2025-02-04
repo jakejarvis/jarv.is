@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     ...defaultMetadata.openGraph,
     title: "/uses",
     images: [desktopImg.src],
+    url: "/uses",
   },
   alternates: {
     ...defaultMetadata.alternates,

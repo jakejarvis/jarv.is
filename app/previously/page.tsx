@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Previously on...",
+    url: "/previously",
   },
   alternates: {
     ...defaultMetadata.alternates,

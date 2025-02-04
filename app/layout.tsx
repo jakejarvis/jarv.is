@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       template: `%s – ${config.siteName}`,
       default: `${config.siteName} – ${config.shortDescription}`,
     },
+    url: "/",
     locale: config.siteLocale?.replace("-", "_"),
     type: "website",
     images: [
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
       "application/rss+xml": `${baseUrl}/feed.xml`,
       "application/atom+xml": `${baseUrl}/feed.atom`,
     },
+    canonical: "/",
   },
   verification: {
     google: config.verifyGoogle,

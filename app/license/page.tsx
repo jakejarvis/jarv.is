@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "License",
+    url: "/license",
   },
   alternates: {
     ...defaultMetadata.alternates,

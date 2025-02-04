@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     ...defaultMetadata.openGraph,
     title: "CLI",
     images: [cliImg.src],
+    url: "/cli",
   },
   alternates: {
     ...defaultMetadata.alternates,

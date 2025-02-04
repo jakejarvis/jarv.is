@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     ...defaultMetadata.openGraph,
     title: "My Brief Apperance in Hillary Clinton's DNC Video",
     images: [thumbnail.src],
+    url: "/hillary",
   },
   alternates: {
     ...defaultMetadata.alternates,

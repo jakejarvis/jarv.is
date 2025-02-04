@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Privacy",
+    url: "/privacy",
   },
   alternates: {
     ...defaultMetadata.alternates,
