@@ -83,9 +83,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         />
       </Content>
 
-      <div id="comments">
-        <Comments title={frontMatter.title} />
-      </div>
+      {!frontMatter.noComments && (
+        <div id="comments">
+          <Comments title={frontMatter.title} />
+        </div>
+      )}
     </>
   );
 }

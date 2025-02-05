@@ -35,7 +35,7 @@ const Comments = ({ title, className, ...rest }: CommentsProps) => {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        loading="eager" // still lazily loaded with react-intersection-observer
+        loading="lazy"
         theme={activeTheme === "dark" ? activeTheme : "light"}
       />
     </div>
