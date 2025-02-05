@@ -15,7 +15,6 @@ export default async function Page() {
           mp4: "/static/images/angry-panda.mp4",
         }}
         autoplay
-        title="404s make panda angry..."
         responsive={false}
         style={{
           maxWidth: "400px",

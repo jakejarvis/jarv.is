@@ -22,11 +22,13 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     },
   ];
 
-  // add each directory in the app folder as a route
+  // add each directory in the app folder as a route (excluding special routes)
   (
     await glob("*", {
       cwd: path.join(process.cwd(), "app"),
+      deep: 0,
       onlyDirectories: true,
+      markDirectories: true,
       ignore: [
         // don't include special routes, see: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
         "api",
@@ -37,7 +39,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ).forEach((route) => {
     routes.push({
       // make all URLs absolute
-      url: `/${route}/`,
+      url: route,
     });
   });
 

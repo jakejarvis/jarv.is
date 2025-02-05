@@ -66,11 +66,6 @@ export default async (phase, { defaultConfig }) => {
     ],
     rewrites: async () => ({
       beforeFiles: [
-        { source: "/favicon.ico", destination: "/static/favicons/favicon.ico" },
-        { source: "/favicon.png", destination: "/static/favicons/favicon.png" },
-        { source: "/apple-touch-icon.png", destination: "/static/favicons/apple-touch-icon.png" },
-        { source: "/apple-touch-icon-precomposed.png", destination: "/static/favicons/apple-touch-icon.png" },
-
         // https://github.com/jakejarvis/tweets/deployments/github-pages
         {
           source: "/tweets/:path*/",
