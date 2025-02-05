@@ -1,39 +1,79 @@
+import config from "../lib/config";
+import { metadata } from "./layout";
 import type { MetadataRoute } from "next";
 
-const robots = (): MetadataRoute.Robots => {
-  // this production check should be unnecessary because "noindex" and "nofollow" are also set in a meta tag (see
-  // DefaultSeo's props in pages/_app.tsx), but it doesn't hurt...
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
-    return {
-      rules: {
-        userAgent: "*",
-        disallow: "/",
-      },
-    };
-  }
+export const dynamic = "force-static";
 
+const robots = (): MetadataRoute.Robots => {
+  // I'm already _so_ over this shit...
+  // https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
   const naughtySpiders = [
-    "CCBot",
-    "Google-Extended",
-    "GPTBot",
-    "ChatGPT-User",
+    "AI2Bot",
+    "Ai2Bot-Dolma",
+    "Amazonbot",
     "anthropic-ai",
-    "ClaudeBot",
+    "Applebot",
+    "Applebot-Extended",
     "Bytespider",
+    "CCBot",
+    "ChatGPT-User",
+    "Claude-Web",
+    "ClaudeBot",
+    "cohere-ai",
+    "cohere-training-data-crawler",
+    "Crawlspace",
+    "Diffbot",
+    "DuckAssistBot",
+    "FacebookBot",
+    "FriendlyCrawler",
+    "Google-Extended",
+    "GoogleOther",
+    "GoogleOther-Image",
+    "GoogleOther-Video",
+    "GPTBot",
+    "iaskspider/2.0",
+    "ICC-Crawler",
+    "ImagesiftBot",
+    "img2dataset",
+    "ISSCyberRiskCrawler",
+    "Kangaroo Bot",
+    "Meta-ExternalAgent",
+    "Meta-ExternalFetcher",
+    "OAI-SearchBot",
+    "omgili",
+    "omgilibot",
+    "PanguBot",
+    "PerplexityBot",
+    "PetalBot",
+    "Scrapy",
+    "SemrushBot-OCOB",
+    "SemrushBot-SWA",
+    "Sidetrade indexer bot",
+    "Timpibot",
+    "VelenPublicWebCrawler",
+    "Webzio-Extended",
+    "YouBot",
+    "AhrefsBot",
+    "BLEXBot",
+    "DataForSeoBot",
+    "magpie-crawler",
+    "MJ12bot",
+    "TurnitinBot",
   ];
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        // block access to staging sites
+        [process.env.NEXT_PUBLIC_VERCEL_ENV === "production" ? "allow" : "disallow"]: "/",
       },
-      ...naughtySpiders.map((userAgent) => ({
-        userAgent,
+      {
+        userAgent: naughtySpiders,
         disallow: "/",
-      })),
+      },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/sitemap.xml`,
+    sitemap: new URL("sitemap.xml", metadata.metadataBase?.href || `https://${config.siteDomain}`).href,
   };
 };
 
