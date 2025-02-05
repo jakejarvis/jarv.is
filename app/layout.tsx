@@ -6,16 +6,14 @@ import config from "../lib/config";
 import type { Metadata } from "next";
 
 import { GeistMono, GeistSans } from "../lib/styles/fonts";
+import { meJpg } from "../lib/config/favicons";
 
 import "modern-normalize/modern-normalize.css";
 import "../lib/styles/theme.css";
 import "../lib/styles/global.css";
-import { meJpg } from "../lib/config/favicons";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`),
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.shortDescription}`,
@@ -39,8 +37,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     types: {
-      "application/rss+xml": `${baseUrl}/feed.xml`,
-      "application/atom+xml": `${baseUrl}/feed.atom`,
+      "application/rss+xml": "/feed.xml",
+      "application/atom+xml": "/feed.atom",
     },
     canonical: "/",
   },
@@ -48,7 +46,7 @@ export const metadata: Metadata = {
     google: config.verifyGoogle,
   },
   other: {
-    humans: `${baseUrl}/humans.txt`,
+    humans: "/humans.txt",
   },
 };
 
@@ -56,10 +54,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={config.siteLocale} className={clsx(GeistMono.variable, GeistSans.variable)} suppressHydrationWarning>
       <head>
-        <script>
-          {/* unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0 */}
-          {`(()=>{try{const e=document.documentElement,t="undefined"!=typeof Storage?window.localStorage.getItem("theme"):null,a=(t&&"dark"===t)??window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e.dataset.theme=a,e.style.colorScheme=a}catch(e){}})()`}
-        </script>
+        <script
+          // unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0
+          dangerouslySetInnerHTML={{
+            __html: `(()=>{try{const e=document.documentElement,t="undefined"!=typeof Storage?window.localStorage.getItem("theme"):null,a=(t&&"dark"===t)??window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e.dataset.theme=a,e.style.colorScheme=a}catch(e){}})()`,
+          }}
+        />
       </head>
       <body>
         <ThemeProvider>

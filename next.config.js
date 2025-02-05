@@ -4,7 +4,11 @@
 import config from "./lib/config/index.js";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default (phase, { defaultConfig }) => {
+export default async (phase, { defaultConfig }) => {
+  const withBundleAnalyzer = (await import("@next/bundle-analyzer")).default({
+    enabled: process.env.ANALYZE === "true",
+  });
+
   /**
    * @type {import('next').NextConfig}
    */
@@ -154,5 +158,5 @@ export default (phase, { defaultConfig }) => {
     ],
   };
 
-  return nextConfig;
+  return withBundleAnalyzer(nextConfig);
 };

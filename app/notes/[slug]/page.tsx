@@ -42,6 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ...defaultMetadata.alternates,
       canonical: `/notes/${slug}`,
     },
+
+    // TODO: re-add JSON-LD manually, see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld
   };
 }
 

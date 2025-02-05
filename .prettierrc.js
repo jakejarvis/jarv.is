@@ -1,7 +1,7 @@
 /**
  * @type {import("prettier").Config}
  */
-module.exports = {
+const config = {
   singleQuote: false,
   jsxSingleQuote: false,
   printWidth: 120,
@@ -10,3 +10,5 @@ module.exports = {
   quoteProps: "as-needed",
   trailingComma: "es5",
 };
+
+export default config;
