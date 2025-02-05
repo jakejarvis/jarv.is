@@ -5,7 +5,7 @@ import { meJpg } from "../config/favicons";
 import { metadata } from "../../app/layout";
 
 export const buildFeed = async (options: { type: "rss" | "atom" | "json" }): Promise<string> => {
-  const baseUrl = metadata.metadataBase?.href || `https://${config.siteDomain}`;
+  const baseUrl = metadata.metadataBase?.href || `https://${config.siteDomain}/`;
 
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({

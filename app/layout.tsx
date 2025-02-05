@@ -53,10 +53,10 @@ const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: config.authorName,
-  url: metadata.metadataBase?.href || `https://${config.siteDomain}`,
+  url: metadata.metadataBase?.href || `https://${config.siteDomain}/`,
   image: new URL(meJpg.src, metadata.metadataBase || `https://${config.siteDomain}`).href,
   sameAs: [
-    metadata.metadataBase?.href || `https://${config.siteDomain}`,
+    metadata.metadataBase?.href || `https://${config.siteDomain}/`,
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
