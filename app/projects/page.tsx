@@ -12,6 +12,8 @@ import type { Project } from "../../types";
 
 import styles from "./styles.module.css";
 
+export const revalidate = 600; // 10 minutes
+
 export const metadata: Metadata = {
   title: "Projects",
   openGraph: {

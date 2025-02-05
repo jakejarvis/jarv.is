@@ -1,34 +1,25 @@
-"use client";
-
-import ReactPlayer from "react-player/youtube";
 import clsx from "clsx";
-import useHasMounted from "../../hooks/useHasMounted";
-import type { YouTubePlayerProps } from "react-player/youtube";
+import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./YouTubeEmbed.module.css";
 
-export type YouTubeEmbedProps = Partial<YouTubePlayerProps> & {
+export type YouTubeEmbedProps = ComponentPropsWithoutRef<"div"> & {
   id: string;
-  className?: string;
 };
 
 const YouTubeEmbed = ({ id, className, ...rest }: YouTubeEmbedProps) => {
-  // fix hydration issues: https://github.com/cookpete/react-player/issues/1428
-  const hasMounted = useHasMounted();
-
   return (
-    <div className={clsx(styles.wrapper, className)}>
-      {hasMounted && (
-        <ReactPlayer
-          width="100%"
-          height="100%"
-          className={styles.player}
-          url={`https://www.youtube-nocookie.com/watch?v=${id}`}
-          light={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
-          controls
-          {...rest}
-        />
-      )}
+    <div className={clsx(styles.wrapper, className)} {...rest}>
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        className={styles.player}
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };

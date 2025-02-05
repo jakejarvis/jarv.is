@@ -1,9 +1,5 @@
-"use client";
-
 import clsx from "clsx";
 import IFrame from "../IFrame";
-import useHasMounted from "../../hooks/useHasMounted";
-import useTheme from "../../hooks/useTheme";
 
 import styles from "./CodePenEmbed.module.css";
 
@@ -26,24 +22,18 @@ const CodePenEmbed = ({
   editable = false,
   className,
 }: CodePenEmbedProps) => {
-  const hasMounted = useHasMounted();
-  const { activeTheme } = useTheme();
-
   return (
     <div className={clsx(styles.wrapper, className)} style={{ height }}>
-      {hasMounted && (
-        <IFrame
-          src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
-            "theme-id": activeTheme === "dark" ? activeTheme : "light",
-            "default-tab": `${defaultTab},result`,
-            preview: `${!!preview}`,
-            editable: `${!!editable}`,
-          })}`}
-          height={height}
-          allowScripts
-          noScroll
-        />
-      )}
+      <IFrame
+        src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
+          "default-tab": `${defaultTab},result`,
+          preview: `${!!preview}`,
+          editable: `${!!editable}`,
+        })}`}
+        height={height}
+        allowScripts
+        noScroll
+      />
     </div>
   );
 };
