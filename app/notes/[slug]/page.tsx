@@ -9,6 +9,9 @@ import { metadata as defaultMetadata } from "../../layout";
 import config from "../../../lib/config";
 import type { Metadata } from "next";
 
+// https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
 
