@@ -71,7 +71,7 @@
     "sitemap": "^8.0.0",
     "stitches-normalize": "^3.0.1",
     "strip-comments": "^2.0.1",
-    "swr": "^2.3.0",
+    "swr": "^2.3.2",
     "trim-lines": "^3.0.1",
     "unified": "^11.0.5"
   },
