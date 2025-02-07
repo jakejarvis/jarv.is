@@ -1,44 +1,25 @@
 import NextLink from "next/link";
+import clsx from "clsx";
 import objStr from "obj-str";
-import { styled, theme, stitchesConfig } from "../../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef } from "react";
 
-const StyledLink = styled(NextLink, {
-  color: theme.colors.link,
-  textDecoration: "none",
+import styles from "./Link.module.css";
 
-  variants: {
-    underline: {
-      // fancy animated link underline effect (on by default)
-      true: {
-        // sets psuedo linear-gradient() for the underline's color; see stitches config for the weird calculation behind
-        // the local `$$underlineColor` variable.
-        ...stitchesConfig.utils.setUnderlineColor({ color: "$colors$linkUnderline" }),
-
-        backgroundImage: "linear-gradient($$underlineColor, $$underlineColor)",
-        backgroundPosition: "0% 100%",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "0% 2px",
-        paddingBottom: "3px",
-
-        "@media (prefers-reduced-motion: no-preference)": {
-          transition: `background-size ${theme.transitions.linkHover}`,
-        },
-
-        "&:hover, &:focus-visible": {
-          backgroundSize: "100% 2px",
-        },
-      },
-      false: {},
-    },
-  },
-});
-
-export type LinkProps = ComponentPropsWithoutRef<typeof StyledLink> & {
+export type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
+  underline?: boolean;
   openInNewTab?: boolean;
 };
 
-const Link = ({ href, rel, target, prefetch = false, underline = true, openInNewTab, ...rest }: LinkProps) => {
+const Link = ({
+  href,
+  rel,
+  target,
+  prefetch = false,
+  underline = true,
+  openInNewTab,
+  className,
+  ...rest
+}: LinkProps) => {
   // This component auto-detects whether or not this link should open in the same window (the default for internal
   // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
   const isExternal =
@@ -50,7 +31,7 @@ const Link = ({ href, rel, target, prefetch = false, underline = true, openInNew
 
   if (openInNewTab || isExternal) {
     return (
-      <StyledLink
+      <NextLink
         href={href}
         target={target || "_blank"}
         rel={objStr({
@@ -58,14 +39,20 @@ const Link = ({ href, rel, target, prefetch = false, underline = true, openInNew
           noopener: true,
           noreferrer: isExternal, // don't add "noreferrer" if link isn't external, and only opening in a new tab
         })}
-        underline={underline}
+        prefetch={false}
+        className={clsx(styles.link, underline && styles.underline, className)}
         {...rest}
       />
     );
   }
 
   // If link is to an internal page, simply pass *everything* along as-is to next/link.
-  return <StyledLink {...{ href, rel, target, prefetch, underline, ...rest }} />;
+  return (
+    <NextLink
+      className={clsx(styles.link, underline && styles.underline, className)}
+      {...{ href, rel, target, prefetch, ...rest }}
+    />
+  );
 };
 
 export default Link;

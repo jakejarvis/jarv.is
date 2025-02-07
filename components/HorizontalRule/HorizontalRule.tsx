@@ -1,10 +1,10 @@
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import type { ComponentPropsWithoutRef } from "react";
 
-const HorizontalRule = styled("hr", {
-  margin: "1.5em auto",
-  height: "0.175em",
-  border: 0,
-  backgroundColor: theme.colors.light,
-});
+import styles from "./HorizontalRule.module.css";
+
+const HorizontalRule = ({ className, ...rest }: ComponentPropsWithoutRef<"hr">) => (
+  <hr className={clsx(styles.hr, className)} {...rest} />
+);
 
 export default HorizontalRule;

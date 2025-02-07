@@ -1,0 +1,34 @@
+.menu {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+}
+
+.menuItem {
+  display: inline-block;
+  margin-left: 1em;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 1em;
+  }
+
+  .menuItem {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .menu {
+    margin-left: 1.4em;
+  }
+
+  /* the home icon is kinda redundant when space is SUPER tight */
+  .menuItem:first-of-type {
+    display: none;
+  }
+}

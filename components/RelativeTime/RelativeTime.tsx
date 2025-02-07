@@ -1,3 +1,5 @@
+"use client";
+
 import useHasMounted from "../../hooks/useHasMounted";
 import { formatDate, formatTimeAgo } from "../../lib/helpers/format-date";
 

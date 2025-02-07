@@ -1,65 +1,36 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 import MenuItem from "../MenuItem";
 import ThemeToggle from "../ThemeToggle";
-import { styled } from "../../lib/styles/stitches.config";
 import { menuItems } from "../../lib/config/menu";
 import type { ComponentPropsWithoutRef } from "react";
 
-const Wrapper = styled("ul", {
-  display: "inline-flex",
-  padding: 0,
-  margin: 0,
+import styles from "./Menu.module.css";
 
-  "@medium": {
-    width: "100%",
-    justifyContent: "space-between",
-    marginLeft: "1em",
-  },
+export type MenuProps = ComponentPropsWithoutRef<"ul">;
 
-  "@small": {
-    marginLeft: "1.4em",
-  },
-});
-
-const Item = styled("li", {
-  display: "inline-block",
-  marginLeft: "1em",
-  listStyle: "none",
-
-  "@medium": {
-    marginLeft: 0,
-  },
-
-  "@small": {
-    // the home icon is kinda redundant when space is SUPER tight
-    "&:first-of-type": {
-      display: "none",
-    },
-  },
-});
-
-export type MenuProps = ComponentPropsWithoutRef<typeof Wrapper>;
-
-const Menu = ({ ...rest }: MenuProps) => {
-  const router = useRouter();
+const Menu = ({ className, ...rest }: MenuProps) => {
+  const pathname = usePathname() || "";
 
   return (
-    <Wrapper {...rest}>
+    <ul className={clsx(styles.menu, className)} {...rest}>
       {menuItems.map((item, index) => {
         // kinda weird/hacky way to determine if the *first part* of the current path matches this href
-        const isCurrent = item.href === `/${router.pathname.split("/")[1]}`;
+        const isCurrent = item.href === `/${pathname.split("/")[1]}`;
 
         return (
-          <Item key={item.text || index}>
+          <li className={styles.menuItem} key={item.text || index}>
             <MenuItem {...item} current={isCurrent} />
-          </Item>
+          </li>
         );
       })}
 
-      <Item>
-        <MenuItem icon={ThemeToggle} />
-      </Item>
-    </Wrapper>
+      <li className={styles.menuItem}>
+        <MenuItem Icon={ThemeToggle} />
+      </li>
+    </ul>
   );
 };
 

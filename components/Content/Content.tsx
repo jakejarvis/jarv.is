@@ -1,14 +1,10 @@
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import type { ComponentPropsWithoutRef } from "react";
 
-const Content = styled("div", {
-  fontSize: "0.9em",
-  lineHeight: 1.7,
-  color: theme.colors.text,
+import styles from "./Content.module.css";
 
-  "@medium": {
-    fontSize: "0.925em",
-    lineHeight: 1.85,
-  },
-});
+const Content = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => (
+  <div className={clsx(styles.content, className)} {...rest} />
+);
 
 export default Content;

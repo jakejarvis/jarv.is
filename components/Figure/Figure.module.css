@@ -1,0 +1,11 @@
+.figure {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.caption {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--colors-medium);
+  margin-top: -0.4em;
+}

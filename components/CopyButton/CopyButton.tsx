@@ -1,45 +1,26 @@
+"use client";
+
 import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
+import clsx from "clsx";
 import { FiClipboard, FiCheck } from "react-icons/fi";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ReactNode, Ref, ComponentPropsWithoutRef, ElementRef, MouseEventHandler } from "react";
 
-const Button = styled("button", {
-  lineHeight: 1,
-  cursor: "pointer",
+import styles from "./CopyButton.module.css";
 
-  variants: {
-    copied: {
-      true: {
-        color: theme.colors.success,
-      },
-      false: {
-        color: theme.colors.mediumDark,
-
-        "&:hover, &:focus-visible": {
-          color: theme.colors.link,
-        },
-      },
-    },
-  },
-});
-
-const Icon = styled("svg", {
-  width: "1.25em",
-  height: "1.25em",
-  verticalAlign: "-0.3em",
-});
-
-export type CopyButtonProps = ComponentPropsWithoutRef<typeof Button> & {
+export type CopyButtonProps = ComponentPropsWithoutRef<"button"> & {
   source: string | ReactNode;
   timeout?: number;
 };
 
-const CopyButton = ({ source, timeout = 2000, ...rest }: CopyButtonProps, ref: Ref<ElementRef<typeof Button>>) => {
+const CopyButton = (
+  { source, timeout = 2000, className, ...rest }: CopyButtonProps,
+  ref: Ref<ElementRef<"button">>
+) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy: MouseEventHandler<ElementRef<typeof Button>> = (e) => {
+  const handleCopy: MouseEventHandler<ElementRef<"button">> = (e) => {
     // prevent unintentional double-clicks by unfocusing button
     e.currentTarget.blur();
 
@@ -67,17 +48,17 @@ const CopyButton = ({ source, timeout = 2000, ...rest }: CopyButtonProps, ref: R
   }, [timeout, copied]);
 
   return (
-    <Button
+    <button
       ref={ref}
       title="Copy to clipboard"
       aria-label="Copy to clipboard"
       onClick={handleCopy}
       disabled={copied}
-      copied={copied}
+      className={clsx(styles.button, copied && styles.copied, className)}
       {...rest}
     >
-      <Icon as={copied ? FiCheck : FiClipboard} />
-    </Button>
+      {copied ? <FiCheck className={styles.icon} /> : <FiClipboard className={styles.icon} />}
+    </button>
   );
 };
 

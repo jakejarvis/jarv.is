@@ -1,19 +1,9 @@
 import innerText from "react-innertext";
+import clsx from "clsx";
 import Image from "../Image";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import type { PropsWithChildren, ComponentPropsWithoutRef } from "react";
 
-const Wrapper = styled("figure", {
-  margin: "1em auto",
-  textAlign: "center",
-});
-
-const Caption = styled("figcaption", {
-  fontSize: "0.9em",
-  lineHeight: 1.5,
-  color: theme.colors.medium,
-  marginTop: "-0.4em",
-});
+import styles from "./Figure.module.css";
 
 export type FigureProps = Omit<ComponentPropsWithoutRef<typeof Image>, "alt"> &
   PropsWithChildren<{
@@ -22,10 +12,10 @@ export type FigureProps = Omit<ComponentPropsWithoutRef<typeof Image>, "alt"> &
 
 const Figure = ({ children, alt, className, ...imageProps }: FigureProps) => {
   return (
-    <Wrapper className={className}>
+    <figure className={clsx(styles.figure, className)}>
       <Image alt={alt || innerText(children)} {...imageProps} />
-      <Caption>{children}</Caption>
-    </Wrapper>
+      <figcaption className={styles.caption}>{children}</figcaption>
+    </figure>
   );
 };
 

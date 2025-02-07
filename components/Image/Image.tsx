@@ -1,33 +1,30 @@
 import NextImage from "next/image";
-import Link from "../Link";
-import { styled, theme } from "../../lib/styles/stitches.config";
+import clsx from "clsx";
+import Link, { LinkProps } from "../Link";
 import type { ComponentPropsWithoutRef } from "react";
 import type { ImageProps as NextImageProps, StaticImageData } from "next/image";
 
+import styles from "./Image.module.css";
+
 const DEFAULT_QUALITY = 60;
-const DEFAULT_WIDTH = Number.parseInt(theme.sizes.maxLayoutWidth.value, 10); // see lib/styles/stitches.config.ts
+const DEFAULT_WIDTH = 865;
 
-const Block = styled("div", {
-  display: "block",
-  lineHeight: 0,
+export type ImageProps = ComponentPropsWithoutRef<typeof NextImage> &
+  Partial<Pick<LinkProps, "href">> & {
+    inline?: boolean; // don't wrap everything in a `<div>` block
+  };
 
-  // default to centering all images
-  margin: "1em auto",
-  textAlign: "center",
-});
-
-const StyledImage = styled(NextImage, {
-  height: "auto",
-  maxWidth: "100%",
-  borderRadius: theme.radii.corner,
-});
-
-export type ImageProps = ComponentPropsWithoutRef<typeof StyledImage> & {
-  href?: string; // optionally wrap image in a link
-  inline?: boolean; // don't wrap everything in a `<div>` block
-};
-
-const Image = ({ src, width, height, quality = DEFAULT_QUALITY, placeholder, href, inline, ...rest }: ImageProps) => {
+const Image = ({
+  src,
+  width,
+  height,
+  quality = DEFAULT_QUALITY,
+  placeholder,
+  href,
+  inline,
+  className,
+  ...rest
+}: ImageProps) => {
   const imageProps: NextImageProps = {
     // strip "px" from dimensions: https://stackoverflow.com/a/4860249/1438024
     width: typeof width === "string" ? Number.parseInt(width, 10) : width,
@@ -63,13 +60,13 @@ const Image = ({ src, width, height, quality = DEFAULT_QUALITY, placeholder, hre
 
   const StyledImageWithProps = href ? (
     <Link href={href} underline={false}>
-      <StyledImage {...imageProps} />
+      <NextImage className={clsx(styles.image, className)} {...imageProps} />
     </Link>
   ) : (
-    <StyledImage {...imageProps} />
+    <NextImage className={clsx(styles.image, className)} {...imageProps} />
   );
 
-  return inline ? StyledImageWithProps : <Block>{StyledImageWithProps}</Block>;
+  return inline ? StyledImageWithProps : <div className={styles.block}>{StyledImageWithProps}</div>;
 };
 
 export default Image;

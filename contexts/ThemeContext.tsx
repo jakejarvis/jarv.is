@@ -1,5 +1,6 @@
+"use client";
+
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import Script from "next/script";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMedia from "../hooks/useMedia";
 import type { Context, PropsWithChildren } from "react";
@@ -20,14 +21,9 @@ export const ThemeContext: Context<{
 
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({
-  classNames,
   storageKey = "theme",
   children,
 }: PropsWithChildren<{
-  /** Mapping of theme name ("light", "dark") to the corresponding `<html>`'s class names. */
-  classNames: {
-    [themeName: string]: string;
-  };
   /** Key to use when saving preferred theme to local storage. Defaults to "theme". */
   storageKey?: string;
 }>) => {
@@ -39,9 +35,6 @@ export const ThemeProvider = ({
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
   const isSystemDark = useMedia("(prefers-color-scheme: dark)");
 
-  // get the theme names (light, dark) via passed-in classnames' keys
-  const themeNames = Object.keys(classNames);
-
   // updates the DOM and optionally saves the new theme to local storage
   const changeTheme = useCallback(
     (theme: string, updateStorage?: boolean) => {
@@ -49,12 +42,9 @@ export const ThemeProvider = ({
         setPreferredTheme(theme);
       }
 
-      // remove all theme classes first to start fresh
-      const all = Object.values(classNames);
-      document.documentElement.classList.remove(...all);
-      document.documentElement.classList.add(classNames[theme]);
+      document.documentElement.dataset.theme = theme;
     },
-    [classNames, setPreferredTheme]
+    [setPreferredTheme]
   );
 
   // listen for changes in OS preference
@@ -66,10 +56,10 @@ export const ThemeProvider = ({
     setSystemTheme(systemResolved);
 
     // only actually change the theme if preference is unset (and *don't* save new theme to storage)
-    if (!preferredTheme || !themeNames.includes(preferredTheme)) {
+    if (!preferredTheme) {
       changeTheme(systemResolved, false);
     }
-  }, [changeTheme, themeNames, preferredTheme, isSystemDark]);
+  }, [changeTheme, preferredTheme, isSystemDark]);
 
   // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
   useEffect(() => {
@@ -82,30 +72,16 @@ export const ThemeProvider = ({
 
   const providerValues = useMemo(
     () => ({
-      activeTheme: preferredTheme && themeNames.includes(preferredTheme) ? preferredTheme : systemTheme,
+      activeTheme: preferredTheme ?? systemTheme,
       setTheme: (theme: string) => {
         // force save to local storage
         changeTheme(theme, true);
       },
     }),
-    [changeTheme, preferredTheme, systemTheme, themeNames]
+    [changeTheme, preferredTheme, systemTheme]
   );
 
-  return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-      <Script id="restore-theme" strategy="beforeInteractive">
-        {/* unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0 */}
-        {`(function(){try{var e=document.documentElement,t=e.classList,a=[${Object.values(classNames)
-          .map((cn) => `"${cn}"`)
-          .join(
-            ","
-          )}],o="undefined"!=typeof Storage?window.localStorage.getItem("${storageKey}"):null,c=(o&&"dark"===o)??window.matchMedia("(prefers-color-scheme: dark)").matches?1:0;t.remove(...a),t.add(a[c]||""),e.style.colorScheme=1==c?"dark":"light"}catch(e){}})()`}
-      </Script>
-
-      <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>
-    </>
-  );
+  return <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>;
 };
 
 // debugging help pls

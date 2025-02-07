@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+  padding-top: 56.25%; /* ratio of 1280x720 */
+}
+
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.player .react-player__preview,
+.player iframe {
+  border-radius: var(--radii-corner);
+}

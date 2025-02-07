@@ -1,13 +1,12 @@
 import path from "path";
 import fs from "fs/promises";
-import { serialize } from "next-mdx-remote/serialize";
 import glob from "fast-glob";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
 import matter from "gray-matter";
 import { formatDate } from "./format-date";
-import { minifier } from "./minifier";
-import type { PostFrontMatter, PostWithSource } from "../../types";
+import type { PostFrontMatter } from "../../types";
+import { metadata as defaultMetadata } from "../../app/layout";
 
 // path to directory with .mdx files, relative to project root
 export const POSTS_DIR = "notes";
@@ -60,46 +59,11 @@ export const getPostData = async (
       title,
       htmlTitle,
       slug,
-      permalink: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/${POSTS_DIR}/${slug}/`,
       date: formatDate(data.date), // validate/normalize the date string provided from front matter
+      permalink: new URL(`/${POSTS_DIR}/${slug}/`, defaultMetadata.metadataBase || "").href,
+      image: data.image ? new URL(data.image, defaultMetadata.metadataBase || "").href : undefined,
     },
     markdown: content,
-  };
-};
-
-// fully parses MDX into JS and returns *everything* about a post
-export const compilePost = async (slug: string): Promise<PostWithSource> => {
-  const { remarkGfm, remarkSmartypants, rehypeSlug, rehypeUnwrapImages, rehypePrism } = await import(
-    "./remark-rehype-plugins"
-  );
-
-  const { frontMatter, markdown } = await getPostData(slug);
-
-  const { compiledSource } = await serialize(markdown, {
-    parseFrontmatter: false,
-    mdxOptions: {
-      remarkPlugins: [
-        [remarkGfm, { singleTilde: false }],
-        [
-          remarkSmartypants,
-          {
-            quotes: true,
-            dashes: "oldschool",
-            backticks: false,
-            ellipses: false,
-          },
-        ],
-      ],
-      rehypePlugins: [rehypeSlug, rehypeUnwrapImages, [rehypePrism, { ignoreMissing: true }]],
-    },
-  });
-
-  return {
-    frontMatter,
-    source: {
-      // save some bytes
-      compiledSource: minifier(compiledSource),
-    },
   };
 };
 

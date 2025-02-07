@@ -1,0 +1,29 @@
+/* accessible invisibility stuff pulled from @reach/skip-nav:
+https://github.com/reach/reach-ui/blob/main/packages/skip-nav/styles.css */
+
+.hiddenLink {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.hiddenLink:focus {
+  padding: 1rem;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 99999;
+  width: auto;
+  height: auto;
+  clip: auto;
+  background: var(--colors-superDuperLight);
+  color: var(--colors-link);
+  border: 2px solid var(--colors-kindaLight);
+  border-radius: var(--radii-corner);
+  text-decoration: underline;
+}

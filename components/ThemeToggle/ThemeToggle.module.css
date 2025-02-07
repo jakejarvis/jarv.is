@@ -1,0 +1,13 @@
+.toggle {
+  border: 0;
+  padding: 0.6em;
+  margin-right: -0.6em;
+  background: none;
+  cursor: pointer;
+  color: var(--colors-mediumDark);
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  color: var(--colors-warning);
+}

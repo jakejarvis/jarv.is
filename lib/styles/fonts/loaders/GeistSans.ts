@@ -10,6 +10,7 @@ const GeistSans = GeistSansLoader({
   ],
   adjustFontFallback: false,
   preload: true,
+  variable: "--fonts-sans",
 });
 
 export default GeistSans;

@@ -1,3 +1,5 @@
+"use client";
+
 import useSWRImmutable from "swr/immutable";
 import { useErrorBoundary } from "react-error-boundary";
 import commaNumber from "comma-number";

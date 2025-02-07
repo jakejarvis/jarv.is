@@ -1,11 +1,7 @@
+import clsx from "clsx";
 import IFrame from "../IFrame";
-import useHasMounted from "../../hooks/useHasMounted";
-import useTheme from "../../hooks/useTheme";
-import { styled } from "../../lib/styles/stitches.config";
 
-const Wrapper = styled("div", {
-  width: "100%",
-});
+import styles from "./CodePenEmbed.module.css";
 
 export type CodePenEmbedProps = {
   username: string;
@@ -26,25 +22,19 @@ const CodePenEmbed = ({
   editable = false,
   className,
 }: CodePenEmbedProps) => {
-  const hasMounted = useHasMounted();
-  const { activeTheme } = useTheme();
-
   return (
-    <Wrapper className={className} css={{ height }}>
-      {hasMounted && (
-        <IFrame
-          src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
-            "theme-id": activeTheme === "dark" ? activeTheme : "light",
-            "default-tab": `${defaultTab},result`,
-            preview: `${!!preview}`,
-            editable: `${!!editable}`,
-          })}`}
-          height={height}
-          allowScripts
-          noScroll
-        />
-      )}
-    </Wrapper>
+    <div className={clsx(styles.wrapper, className)} style={{ height }}>
+      <IFrame
+        src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
+          "default-tab": `${defaultTab},result`,
+          preview: `${!!preview}`,
+          editable: `${!!editable}`,
+        })}`}
+        height={height}
+        allowScripts
+        noScroll
+      />
+    </div>
   );
 };
 

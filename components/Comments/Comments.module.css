@@ -1,0 +1,6 @@
+.comments {
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 2px solid var(--colors-light);
+  min-height: 360px;
+}

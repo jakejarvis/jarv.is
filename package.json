@@ -12,7 +12,7 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "dev": "next dev --turbopack -H 0.0.0.0",
+    "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --no-cache",
@@ -21,15 +21,16 @@
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
-    "@libsql/client": "^0.8.1",
-    "@novnc/novnc": "1.4.0",
-    "@octokit/graphql": "^8.1.2",
+    "@libsql/client": "0.15.0-pre.1",
+    "@mdx-js/mdx": "^3.1.0",
+    "@next/bundle-analyzer": "15.1.6",
+    "@octokit/graphql": "^8.2.0",
     "@octokit/graphql-schema": "^15.25.0",
-    "@prisma/adapter-libsql": "^6.2.1",
-    "@prisma/client": "^6.2.1",
+    "@prisma/adapter-libsql": "^6.3.1",
+    "@prisma/client": "^6.3.1",
     "@react-spring/web": "^9.7.5",
-    "@stitches/react": "1.3.1-1",
     "@vercel/analytics": "^1.4.1",
+    "clsx": "^2.1.1",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.13",
@@ -37,25 +38,21 @@
     "feed": "^4.2.2",
     "formik": "^2.4.6",
     "gray-matter": "^4.0.3",
-    "next": "15.1.4",
-    "next-mdx-remote": "^5.0.0",
-    "next-seo": "^6.6.0",
-    "nodemailer": "^6.9.16",
+    "modern-normalize": "^3.0.1",
+    "next": "15.1.6",
+    "nodemailer": "^6.10.0",
     "obj-str": "^1.1.0",
     "p-map": "^7.0.3",
     "p-memoize": "^7.1.1",
     "polished": "^4.3.1",
     "prop-types": "^15.8.1",
-    "query-string": "^9.1.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-error-boundary": "^5.0.0",
     "react-frame-component": "^5.2.7",
-    "react-icons": "~5.3.0",
+    "react-icons": "~5.4.0",
     "react-innertext": "^1.1.5",
-    "react-intersection-observer": "^9.15.0",
-    "react-is": "18.3.1",
-    "react-player": "^2.16.0",
+    "react-is": "19.0.0",
     "react-textarea-autosize": "^8.5.7",
     "react-turnstile": "^1.1.4",
     "react-tweet": "^3.2.1",
@@ -68,38 +65,32 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.1",
     "remark-smartypants": "^3.0.2",
-    "sitemap": "^8.0.0",
-    "stitches-normalize": "^3.0.1",
-    "strip-comments": "^2.0.1",
-    "swr": "^2.3.0",
-    "trim-lines": "^3.0.1",
+    "swr": "^2.3.2",
     "unified": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.18.0",
+    "@eslint/js": "^9.19.0",
     "@jakejarvis/eslint-config": "~4.0.7",
     "@types/comma-number": "^2.1.2",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.13.1",
     "@types/nodemailer": "^6.4.17",
-    "@types/novnc__novnc": "1.3.4",
     "@types/prop-types": "^15.7.14",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@types/react-is": "^18.3.0",
-    "@types/strip-comments": "^2.0.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@types/react-is": "^19.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "~9.18.0",
-    "eslint-config-next": "15.1.4",
+    "eslint": "~9.19.0",
+    "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "~10.0.1",
     "eslint-plugin-mdx": "~3.1.5",
-    "eslint-plugin-prettier": "~5.2.2",
-    "lint-staged": "^15.4.0",
+    "eslint-plugin-prettier": "~5.2.3",
+    "lint-staged": "^15.4.3",
     "prettier": "^3.4.2",
-    "prisma": "^6.2.1",
+    "prisma": "^6.3.1",
+    "schema-dts": "^1.1.2",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript": "^5.7.3"
   },
   "optionalDependencies": {
     "sharp": "^0.33.5"
@@ -107,7 +98,7 @@
   "engines": {
     "node": ">=20.x"
   },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"
@@ -116,8 +107,20 @@
     "pre-commit": "pnpm exec lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,mjs,ts,tsx,md,mdx}": [
+    "*.{js,jsx,ts,tsx,md,mdx}": [
       "eslint"
+    ],
+    "*.css": [
+      "prettier --check"
+    ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma",
+      "sharp",
+      "simple-git-hooks"
     ]
   }
 }

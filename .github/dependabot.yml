@@ -31,8 +31,8 @@ updates:
       eslint:
         patterns:
           - "eslint"
-          - "@typescript-eslint/eslint-plugin"
-          - "@typescript-eslint/parser"
+          - "@eslint/eslintrc"
+          - "@eslint/js"
     ignore:
       - dependency-name: "@jakejarvis/eslint-config"
       - dependency-name: "@types/node"

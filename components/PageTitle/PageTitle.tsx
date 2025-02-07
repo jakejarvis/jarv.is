@@ -1,31 +1,24 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 import Link from "../Link";
-import { styled, theme } from "../../lib/styles/stitches.config";
 import type { ComponentPropsWithoutRef } from "react";
+import type { Route } from "next";
 
-const Title = styled("h1", {
-  marginTop: 0,
-  marginBottom: "0.6em",
-  fontSize: "1.7em",
-  fontWeight: 600,
-  textAlign: "center",
+import styles from "./PageTitle.module.css";
 
-  "@medium": {
-    fontSize: "1.8em",
-  },
-});
+export type PageTitleProps = ComponentPropsWithoutRef<"h1">;
 
-export type PageTitleProps = ComponentPropsWithoutRef<typeof Title>;
-
-const PageTitle = ({ children, ...rest }: PageTitleProps) => {
-  const router = useRouter();
+const PageTitle = ({ className, children, ...rest }: PageTitleProps) => {
+  const pathname = usePathname() || "";
 
   return (
-    <Title {...rest}>
-      <Link href={router.pathname} underline={false} css={{ color: theme.colors.text }}>
+    <h1 className={clsx(styles.title, className)} {...rest}>
+      <Link href={pathname as Route} underline={false} className={styles.link}>
         {children}
       </Link>
-    </Title>
+    </h1>
   );
 };
 

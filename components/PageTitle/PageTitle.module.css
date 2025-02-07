@@ -1,0 +1,17 @@
+.title {
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  font-size: 1.7em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.link {
+  color: var(--colors-text) !important;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8em;
+  }
+}
