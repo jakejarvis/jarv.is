@@ -1,8 +1,5 @@
-html {
-  font-family: var(--fonts-sans) !important;
-}
-
 body {
+  font-family: var(--fonts-sans);
   background-color: var(--colors-backgroundInner);
   transition: background var(--transitions-fade);
 }
@@ -11,5 +8,5 @@ code,
 kbd,
 samp,
 pre {
-  font-family: var(--fonts-mono) !important;
+  font-family: var(--fonts-mono);
 }

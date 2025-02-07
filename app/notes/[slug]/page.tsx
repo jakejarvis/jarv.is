@@ -14,7 +14,7 @@ import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import type { Metadata, Route } from "next";
 import type { Article, WithContext } from "schema-dts";
 
-import styles from "./styles.module.css";
+import styles from "./page.module.css";
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
 export const dynamicParams = false;

@@ -161,6 +161,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           <Turnstile
             sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
             onVerify={(token) => setFieldValue("cf-turnstile-response", token)}
+            className={styles.captcha}
             theme={activeTheme === "dark" ? activeTheme : "light"}
           />
 

@@ -7,11 +7,11 @@ import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
 
 import { GeistMono, GeistSans } from "../lib/styles/fonts";
-import { meJpg } from "../lib/config/favicons";
+import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
+import "./themes.css";
+import "./global.css";
 
-import "modern-normalize/modern-normalize.css";
-import "../lib/styles/theme.css";
-import "../lib/styles/global.css";
+import { meJpg } from "../lib/config/favicons";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`),
@@ -71,7 +71,7 @@ const jsonLd: WithContext<Person> = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={config.siteLocale} className={clsx(GeistMono.variable, GeistSans.variable)} suppressHydrationWarning>
+    <html lang={config.siteLocale} suppressHydrationWarning>
       <head>
         <script
           // unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0
@@ -82,7 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body>
+
+      <body className={clsx(GeistMono.variable, GeistSans.variable)}>
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>

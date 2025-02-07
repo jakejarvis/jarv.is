@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 import type { Project } from "../../types";
 
-import styles from "./styles.module.css";
+import styles from "./page.module.css";
 
 export const revalidate = 600; // 10 minutes
 

@@ -8,7 +8,7 @@ import type { ReactElement } from "react";
 import type { Metadata, Route } from "next";
 import type { PostsByYear } from "../../types";
 
-import styles from "./styles.module.css";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Notes",

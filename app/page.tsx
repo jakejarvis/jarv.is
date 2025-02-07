@@ -5,7 +5,7 @@ import Link from "../components/Link";
 import type { ComponentPropsWithoutRef } from "react";
 import type { Route } from "next";
 
-import styles from "./styles.module.css";
+import styles from "./page.module.css";
 
 const ColorfulLink = ({
   lightColor,
@@ -24,7 +24,7 @@ const ColorfulLink = ({
         {children}
       </Link>
 
-      <style>{`.${styles.page} #${uniqueId}{color:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}html[data-theme="dark"] .${styles.page} #${uniqueId}{color:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
+      <style>{`.${styles.page} #${uniqueId}{color:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${styles.page} #${uniqueId}{color:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
     </>
   );
 };

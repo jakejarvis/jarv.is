@@ -7,11 +7,11 @@ import IFrame from "../../components/IFrame";
 import CodeInline from "../../components/CodeInline";
 import HorizontalRule from "../../components/HorizontalRule";
 import { SiWindows95 } from "react-icons/si";
-import { ComicNeue } from "../../lib/styles/fonts";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import styles from "./styles.module.css";
+import { ComicNeue } from "../../lib/styles/fonts";
+import styles from "./page.module.css";
 
 import img_wayback from "../../public/static/images/previously/wayback.png";
 import img_2002_02 from "../../public/static/images/previously/2002_02.png";
