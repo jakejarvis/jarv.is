@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Code from "../Code";
 import CopyButton from "../CopyButton";
 import type { ComponentPropsWithoutRef } from "react";
 
@@ -10,11 +9,13 @@ export type CodeBlockProps = ComponentPropsWithoutRef<"div"> & {
   withCopyButton?: boolean;
 };
 
-const CodeBlock = ({ highlight, withCopyButton, children, ...rest }: CodeBlockProps) => {
+const CodeBlock = ({ highlight, withCopyButton, className, children, ...rest }: CodeBlockProps) => {
   return (
     <div className={clsx(styles.codeBlock, highlight && styles.highlight)}>
       {withCopyButton && <CopyButton className={styles.cornerCopyButton} source={children} />}
-      <Code {...rest}>{children}</Code>
+      <code className={clsx(styles.code, className)} {...rest}>
+        {children}
+      </code>
     </div>
   );
 };

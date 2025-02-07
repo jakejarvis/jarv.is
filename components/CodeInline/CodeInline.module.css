@@ -2,4 +2,8 @@
   padding: 0.175em 0.3em;
   font-size: 0.925em;
   page-break-inside: avoid;
+  background-color: var(--colors-codeBackground);
+  border: 1px solid var(--colors-kindaLight);
+  border-radius: var(--radii-corner);
+  transition: background var(--transitions-fade), border var(--transitions-fade);
 }

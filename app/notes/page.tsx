@@ -1,10 +1,14 @@
 import Content from "../../components/Content";
-import PostsList from "../../components/PostsList";
+import Link from "../../components/Link";
+import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
 import config from "../../lib/config";
-import type { PostsByYear } from "../../types";
 import { metadata as defaultMetadata } from "../layout";
-import type { Metadata } from "next";
+import type { ReactElement } from "react";
+import type { Metadata, Route } from "next";
+import type { PostsByYear } from "../../types";
+
+import styles from "./styles.module.css";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -30,11 +34,32 @@ export default async function Page() {
     (notesByYear[year] || (notesByYear[year] = [])).push(note);
   });
 
+  const sections: ReactElement[] = [];
+
+  Object.entries(notesByYear).forEach(([year, posts]) => {
+    sections.push(
+      <section className={styles.section} key={year}>
+        <h2 className={styles.year}>{year}</h2>
+        <ul className={styles.list}>
+          {posts.map(({ slug, date, title, htmlTitle }) => (
+            <li className={styles.post} key={slug}>
+              <Time date={date} format="MMM D" className={styles.postDate} />
+              <span>
+                <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  });
+
+  // grouped posts enter this component ordered chronologically -- we want reverse chronological
+  const reversed = sections.reverse();
+
   return (
     <>
-      <Content>
-        <PostsList postsByYear={notesByYear} />
-      </Content>
+      <Content>{reversed}</Content>
     </>
   );
 }

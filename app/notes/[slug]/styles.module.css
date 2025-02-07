@@ -7,16 +7,16 @@
   color: var(--colors-medium);
 }
 
-.item {
+.meta .item {
   margin-right: 1.6em;
   white-space: nowrap;
 }
 
-.link {
+.meta .link {
   color: inherit !important;
 }
 
-.icon {
+.meta .icon {
   display: inline;
   width: 1.2em;
   height: 1.2em;
@@ -24,23 +24,44 @@
   margin-right: 0.6em;
 }
 
-.tags {
+.meta .tags {
   white-space: normal;
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-.tag {
+.meta .tag {
   text-transform: lowercase;
   white-space: nowrap;
   margin-right: 0.75em;
 }
 
-.tag:before {
+.meta .tag:before {
   content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;
   color: var(--colors-light);
 }
-.tag:last-of-type {
+.meta .tag:last-of-type {
   margin-right: 0;
+}
+
+.title {
+  margin: 0.3em 0 0.5em -1px; /* misaligned left margin, super nitpicky */
+  font-size: 2.1em;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.title code {
+  margin: 0 0.075em;
+}
+
+.title .link {
+  color: var(--colors-text) !important;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8em;
+  }
 }

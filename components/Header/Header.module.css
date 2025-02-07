@@ -11,6 +11,33 @@
   backdrop-filter: saturate(180%) blur(5px);
 }
 
+.selfieImage {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--colors-light);
+  border-radius: 50%;
+}
+
+.selfieLink {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--colors-mediumDark) !important;
+}
+
+.selfieLink:hover,
+.selfieLink:focus-visible {
+  color: var(--colors-link) !important;
+}
+
+.name {
+  margin: 0 0.6em;
+  font-size: 1.15em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -24,6 +51,21 @@
   .header {
     padding: 0.75em 1.25em;
     height: 5.9em;
+  }
+
+  .selfieImage {
+    width: 70px;
+    height: 70px;
+    border-width: 2px;
+  }
+
+  .selfieLink:hover .selfieImage,
+  .selfieLink:focus-visible .selfieImage {
+    borderColor: var(--colors-linkUnderline);
+  }
+
+  .name {
+    display: none;
   }
 
   .menu {

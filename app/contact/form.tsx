@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import TextareaAutosize from "react-textarea-autosize";
+import Turnstile from "react-turnstile";
 import clsx from "clsx";
-import Link from "../Link";
-import Captcha from "../Captcha";
+import Link from "../../components/Link";
+import useTheme from "../../hooks/useTheme";
 import { GoCheck, GoX } from "react-icons/go";
 import { SiMarkdown } from "react-icons/si";
 import type { FormikHelpers, FormikProps, FieldInputProps, FieldMetaProps } from "formik";
 
-import styles from "./ContactForm.module.css";
+import styles from "./form.module.css";
 
 type FormValues = {
   name: string;
@@ -24,6 +25,8 @@ export type ContactFormProps = {
 };
 
 const ContactForm = ({ className }: ContactFormProps) => {
+  const { activeTheme } = useTheme();
+
   // status/feedback:
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -155,7 +158,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
             ](https://jarv.is), and <code>`code`</code>.
           </div>
 
-          <Captcha className={styles.captcha} onVerify={(token) => setFieldValue("cf-turnstile-response", token)} />
+          <Turnstile
+            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
+            onVerify={(token) => setFieldValue("cf-turnstile-response", token)}
+            theme={activeTheme === "dark" ? activeTheme : "light"}
+          />
 
           <div className={styles.actionRow}>
             <button

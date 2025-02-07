@@ -1,7 +1,7 @@
 import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
-import ContactForm from "../../components/ContactForm";
+import ContactForm from "./form";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata, Route } from "next";
 

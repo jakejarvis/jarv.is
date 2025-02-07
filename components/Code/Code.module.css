@@ -1,6 +1,0 @@
-.code {
-  background-color: var(--colors-codeBackground);
-  border: 1px solid var(--colors-kindaLight);
-  border-radius: var(--radii-corner);
-  transition: background var(--transitions-fade), border var(--transitions-fade);
-}

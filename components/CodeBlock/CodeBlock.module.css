@@ -5,12 +5,16 @@
   color: var(--colors-codeText);
 }
 
-.codeBlock > code {
+.codeBlock .code {
   display: block;
   overflow-x: auto;
   padding: 1em;
   font-size: 0.9em;
   tab-size: 2px;
+  background-color: var(--colors-codeBackground);
+  border: 1px solid var(--colors-kindaLight);
+  border-radius: var(--radii-corner);
+  transition: background var(--transitions-fade), border var(--transitions-fade);
 }
 
 .codeBlock :global(.line-number)::before {
