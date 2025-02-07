@@ -3,7 +3,8 @@
   cursor: pointer;
 }
 
-.button:hover, .button:focus-visible {
+.button:hover,
+.button:focus-visible {
   color: var(--colors-link);
 }
 

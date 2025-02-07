@@ -1,7 +1,7 @@
 {
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
-  "eslint.runtime": "node", // https://github.com/mdx-js/vscode-mdx#known-vscode-eslint-issues
+  "eslint.runtime": "node",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -13,10 +13,6 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "search.exclude": {
-    "**/.next": true,
-    "**/node_modules": true
-  },
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.tsdk": "node_modules/typescript/lib"
 }

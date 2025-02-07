@@ -4,7 +4,9 @@
   padding: 0.7em 1.5em;
   border-bottom: 1px solid var(--colors-kindaLight);
   background-color: var(--colors-backgroundHeader);
-  transition: background var(--transitions-fade), border var(--transitions-fade);
+  transition:
+    background var(--transitions-fade),
+    border var(--transitions-fade);
   z-index: 9999px;
 
   /* blurry glass-like background effect (except on firefox...?) */
@@ -61,7 +63,7 @@
 
   .selfieLink:hover .selfieImage,
   .selfieLink:focus-visible .selfieImage {
-    borderColor: var(--colors-linkUnderline);
+    border-color: var(--colors-linkUnderline);
   }
 
   .name {

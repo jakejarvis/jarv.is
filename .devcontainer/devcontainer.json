@@ -1,29 +1,13 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/devcontainers/images/tree/main/src/base-ubuntu
 {
-	"name": "Ubuntu",
-	"image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
-	"remoteUser": "vscode",
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"upgradePackages": true,
-			"configureZshAsDefaultShell": true
-		},
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/git-lfs:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers/features/sshd:1": {},
-		"ghcr.io/jakejarvis/devcontainer-features/volta": {}
-	},
-	"overrideFeatureInstallOrder": [
-		"ghcr.io/devcontainers/features/common-utils"
-	],
-	"postCreateCommand": "pnpm install",
-	"forwardPorts": [
-		3000
-	],
+	"name": "Node.js & TypeScript",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+	"postCreateCommand": "bash -i -c 'rm -rf node_modules && nvm install $(cat .node-version) -y && nvm use $(cat .node-version) && npm install -g corepack@latest && corepack enable && CI=true pnpm install'",
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"typescript.tsdk": "node_modules/typescript/lib",
+				"telemetry.enableTelemetry": false
+			},
 			"extensions": [
 				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
@@ -33,6 +17,9 @@
 			]
 		}
 	},
+	"forwardPorts": [
+		3000
+	],
 	"portsAttributes": {
 		"3000": {
 			"label": "next dev",

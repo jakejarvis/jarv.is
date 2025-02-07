@@ -50,7 +50,7 @@
     "react-dom": "19.0.0",
     "react-error-boundary": "^5.0.0",
     "react-frame-component": "^5.2.7",
-    "react-icons": "~5.3.0",
+    "react-icons": "~5.4.0",
     "react-innertext": "^1.1.5",
     "react-is": "19.0.0",
     "react-textarea-autosize": "^8.5.7",
@@ -92,10 +92,13 @@
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.7.3"
   },
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
+  },
   "engines": {
     "node": ">=20.x"
   },
-  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001",
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"
@@ -104,8 +107,11 @@
     "pre-commit": "pnpm exec lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,mjs,ts,tsx,md,mdx}": [
+    "*.{js,jsx,ts,tsx,md,mdx}": [
       "eslint"
+    ],
+    "*.css": [
+      "prettier --check"
     ]
   },
   "pnpm": {
@@ -113,6 +119,7 @@
       "@prisma/client",
       "@prisma/engines",
       "prisma",
+      "sharp",
       "simple-git-hooks"
     ]
   }

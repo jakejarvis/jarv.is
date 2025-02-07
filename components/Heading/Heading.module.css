@@ -23,11 +23,13 @@
 }
 
 /* show anchor link when hovering anywhere over the heading line, or on keyboard tab focus */
-.anchor:hover, .anchor:focus-visible {
+.anchor:hover,
+.anchor:focus-visible {
   color: var(--colors-link) !important;
 }
 
-.h:hover .anchor, .h:focus-visible .anchor {
+.h:hover .anchor,
+.h:focus-visible .anchor {
   opacity: 1;
 }
 

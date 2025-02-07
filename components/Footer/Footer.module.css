@@ -4,7 +4,9 @@
   border-top: 1px solid var(--colors-kindaLight);
   background-color: var(--colors-backgroundOuter);
   color: var(--colors-mediumDark);
-  transition: background var(--transitions-fade), border var(--transitions-fade);
+  transition:
+    background var(--transitions-fade),
+    border var(--transitions-fade);
 }
 
 .row {
@@ -21,7 +23,8 @@
   color: var(--colors-mediumDark) !important;
 }
 
-.link.hover:hover, .link.hover:focus-visible {
+.link.hover:hover,
+.link.hover:focus-visible {
   color: var(--colors-medium) !important;
 }
 
@@ -30,7 +33,8 @@
   border-bottom: 1px solid var(--colors-light);
 }
 
-.link.underline:hover, .link.hover:focus-visible {
+.link.underline:hover,
+.link.hover:focus-visible {
   border-bottom-color: var(--colors-kindaLight);
 }
 
