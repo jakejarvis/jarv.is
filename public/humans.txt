@@ -28,11 +28,10 @@
 
 # TECHNOLOGY
 
-  - Next.js & React
+  - Next.js
   - Vercel
-  - Stitches
-  - Prisma
   - Turso
+  - Prisma
   - Giscus
   - Resend
   - ...and more: https://jarv.is/uses/

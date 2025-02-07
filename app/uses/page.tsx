@@ -63,8 +63,7 @@ export default function Page() {
             <UnorderedList>
               <ListItem>512 GB in Natural Titanium</ListItem>
               <ListItem>
-                <Link href="https://a.co/d/5ixA4kx">TORRAS Magnetic Shockproof Case</Link> (surprisingly nice, also in
-                Natural Titanium)
+                <Link href="https://a.co/d/75zuyyY">Anker MagGo Matte case</Link> (surprisingly nice!)
               </ListItem>
             </UnorderedList>
           </ListItem>
@@ -76,10 +75,10 @@ export default function Page() {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            <strong>Apple Watch Series 6</strong> (GPS)
+            <strong>Apple Watch Series 9</strong> (Cellular + GPS)
             <UnorderedList>
-              <ListItem>Aluminum – Space Gray</ListItem>
-              <ListItem>40mm (I have incredibly small wrists.)</ListItem>
+              <ListItem>Aluminum – Midnight</ListItem>
+              <ListItem>41mm (I have incredibly small wrists.)</ListItem>
               <ListItem>
                 Usually with the{" "}
                 <Link href="https://www.apple.com/shop/product/MLL02ZM/A/42mm-midnight-blue-sport-band-s-m-m-l">
@@ -97,19 +96,6 @@ export default function Page() {
               </ListItem>
             </UnorderedList>
           </ListItem>
-          <ListItem>
-            <strong>Google Pixel 4a</strong>
-            <UnorderedList>
-              <ListItem>For some recreational Android development and experimentation.</ListItem>
-              <ListItem>
-                Activated on <Link href="https://fi.google.com/">Google Fi</Link> (
-                <Link href="https://g.co/fi/r/4X38K6">referral link</Link>) during rare trips.
-              </ListItem>
-              <ListItem>
-                Really just putting this here in a futile effort to prove I'm not a <em>complete</em> Apple sheep. 🐑
-              </ListItem>
-            </UnorderedList>
-          </ListItem>
         </UnorderedList>
 
         <H2 id="homelab">
@@ -118,19 +104,22 @@ export default function Page() {
         </H2>
         <UnorderedList>
           <ListItem>
-            <Link href="https://store.ui.com/us/en/collections/unifi-dream-router/products/udr">
-              <strong>UniFi Dream Router</strong>
+            <Link href="https://store.ui.com/us/en/products/udm-se">
+              <strong>UniFi Dream Machine SE</strong>
             </Link>
             , plus:
             <UnorderedList>
               <ListItem>
-                2x{" "}
-                <Link href="https://store.ui.com/us/en/collections/unifi-switching-utility-mini/products/usw-flex-mini">
-                  Switch Flex Mini
-                </Link>
+                <Link href="https://store.ui.com/us/en/products/usw-enterprise-8-poe">Switch Enterprise 8 PoE</Link>
               </ListItem>
               <ListItem>
-                <Link href="https://store.ui.com/us/en/products/unifi-smart-power">SmartPower Plug</Link>{" "}
+                2x <Link href="https://store.ui.com/us/en/products/u7-pro">U7 Pro access points</Link>
+              </ListItem>
+              <ListItem>
+                2x <Link href="https://store.ui.com/us/en/products/usw-flex-2-5g-5">Switch Flex Mini 2.5G</Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://store.ui.com/us/en/products/uci">UCI modem</Link>{" "}
                 <em>
                   (<Link href="https://www.youtube.com/watch?v=iW1tHr4Y_cI">It's Comcastic!™</Link>)
                 </em>
@@ -162,69 +151,58 @@ export default function Page() {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            A <strong>🥧 Raspberry Pi</strong> <Link href="https://a.co/d/bmii52A">cluster</Link> with:
+            2x{" "}
+            <Link href="https://www.servethehome.com/dell-optiplex-7060-micro-tinyminimicro-at-65w-tdp-cpu-overview/">
+              <strong>Dell Optiplex 7060 Micro</strong>
+            </Link>{" "}
+            mini PCs
             <UnorderedList>
               <ListItem>
-                1x <Link href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">Raspberry Pi 4B</Link>, 8GB
-                RAM
+                Both are running{" "}
+                <Link href="https://www.proxmox.com/en/products/proxmox-virtual-environment/overview">
+                  <strong>Proxmox VE</strong>
+                </Link>{" "}
+                with various VMs and LXC containers spread between the two, including:
+                <UnorderedList>
+                  <ListItem>
+                    <Link href="https://www.home-assistant.io/">Home Assistant</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://homebridge.io/">Homebridge</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://www.scrypted.app/">Scrypted</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://gethomepage.dev/">Homepage</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://about.gitea.com/">Gitea</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://immich.app/">Immich</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://sonarr.tv/">Sonarr</Link>, <Link href="https://radarr.video/">Radarr</Link>,{" "}
+                    <Link href="https://www.bazarr.media/">Bazarr</Link>,{" "}
+                    <Link href="https://github.com/Prowlarr/Prowlarr">Prowlarr</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://www.qbittorrent.org/">qBittorrent</Link> (web client)
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://tautulli.com/">Tautulli</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://traefik.io/traefik/">Traefik</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://www.authelia.com/">Authelia</Link>
+                  </ListItem>
+                </UnorderedList>
               </ListItem>
-              <UnorderedList>
-                <ListItem>
-                  Running <Link href="https://www.home-assistant.io/">Home Assistant OS</Link> with a{" "}
-                  <Link href="https://www.home-assistant.io/skyconnect/">SkyConnect USB Dongle</Link>
-                </ListItem>
-              </UnorderedList>
-              <ListItem>
-                2x <Link href="https://www.raspberrypi.com/products/raspberry-pi-5/">Raspberry Pi 5</Link>, 4GB RAM
-              </ListItem>
-              <UnorderedList>
-                <ListItem>
-                  Running{" "}
-                  <Link href="https://github.com/jakejarvis/dotfiles/tree/main/lab">a few Docker containers</Link>,
-                  including:
-                  <UnorderedList>
-                    <ListItem>
-                      <Link href="https://nextcloud.com/">Nextcloud</Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://sonarr.tv/">Sonarr</Link>, <Link href="https://radarr.video/">Radarr</Link>,{" "}
-                      <Link href="https://www.bazarr.media/">Bazarr</Link>,{" "}
-                      <Link href="https://github.com/Prowlarr/Prowlarr">Prowlarr</Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://www.qbittorrent.org/">qBittorrent</Link> (web client)
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://tautulli.com/">Tautulli</Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://www.wireguard.com/">WireGuard</Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://traefik.io/traefik/">Traefik</Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link href="https://www.authelia.com/">Authelia</Link>
-                    </ListItem>
-                  </UnorderedList>
-                </ListItem>
-                <ListItem>Full post with more details coming soon!</ListItem>
-              </UnorderedList>
+              <ListItem>Full post with more details coming soon!</ListItem>
             </UnorderedList>
-          </ListItem>
-          <ListItem>
-            <strong>An overpowered custom homelab server</strong>, powered by an{" "}
-            <Link href="https://www.asus.com/commercial-motherboard/q87me/">ASUS Q87M-E</Link> board,{" "}
-            <Link href="https://www.intel.com/content/www/us/en/products/sku/80808/intel-core-i74790s-processor-8m-cache-up-to-4-00-ghz/specifications.html">
-              i7-4790S
-            </Link>
-            , 32 GB of RAM, 2x recertified{" "}
-            <Link href="https://serverpartdeals.com/products/hgst-ultrastar-he10-0f27612-huh721008ale604-8tb-7-2k-rpm-sata-6gb-s-512e-256mb-cache-3-5-se-manufacturer-recertified-hdd">
-              16TB WD Ultrastar
-            </Link>{" "}
-            drives, and <Link href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox VE</Link>,
-            in a cheap <Link href="https://www.thermaltakeusa.com/versa-h22.html">Thermaltake Versa H22</Link> case with
-            expensive <Link href="https://noctua.at/en/nf-a12x25-pwm">Noctua 🤎</Link> fans.
           </ListItem>
         </UnorderedList>
 
@@ -304,11 +282,6 @@ export default function Page() {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub">
-                      GitHub Repositories
-                    </Link>
-                  </ListItem>
-                  <ListItem>
                     <Link href="https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost">
                       Import Cost
                     </Link>
@@ -322,18 +295,8 @@ export default function Page() {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">
-                      Remote Development Pack
-                    </Link>
-                  </ListItem>
-                  <ListItem>
                     <Link href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">
                       Stylelint
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wordcount">
-                      Word Count
                     </Link>
                   </ListItem>
                 </UnorderedList>
@@ -452,19 +415,10 @@ export default function Page() {
                 Extensions:
                 <UnorderedList>
                   <ListItem>
-                    <Link href="https://support.1password.com/cs/1password-classic-extension/">1Password Classic</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/betterttv/">BetterTTV</Link>
+                    <Link href="https://1password.com/downloads/browser-extension">1Password</Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/darkreader/">Dark Reader</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">Decentraleyes</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Mailvelope</Link>
                   </ListItem>
                   <ListItem>
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">
@@ -478,38 +432,10 @@ export default function Page() {
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/">Privacy Badger</Link>
                   </ListItem>
                   <ListItem>
+                    <Link href="https://raindrop.io/">Raindrop.io</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</Link>
-                  </ListItem>
-                </UnorderedList>
-              </ListItem>
-            </UnorderedList>
-          </ListItem>
-          <ListItem>
-            <Link href="https://www.google.com/chrome/browser/?extra=devchannel">
-              <strong>Google Chrome</strong>
-            </Link>{" "}
-            😈
-            <UnorderedList>
-              <ListItem>
-                For testing only! See more of <Link href="#cloud">my de-Googling efforts below</Link>.
-              </ListItem>
-              <ListItem>
-                Extensions:
-                <UnorderedList>
-                  <ListItem>
-                    <Link href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en">
-                      AMP Validator
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en">
-                      Lighthouse
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">
-                      React Developer Tools
-                    </Link>
                   </ListItem>
                 </UnorderedList>
               </ListItem>
@@ -544,8 +470,8 @@ export default function Page() {
             (<Link href="https://secure.backblaze.com/r/00x84e">referral link</Link>)
           </ListItem>
           <ListItem>
-            <Link href="https://github.com/billycastelli/Silicon-Info">
-              <strong>Silicon Info</strong>
+            <Link href="https://raindrop.io/">
+              <strong>Raindrop.io</strong>
             </Link>
           </ListItem>
           <ListItem>
@@ -585,18 +511,8 @@ export default function Page() {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://coconut-flavour.com/coconutbattery/">
-              <strong>coconutBattery</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link href="https://www.keka.io/en/">
               <strong>Keka</strong>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://tapbots.com/ivory/mac/">
-              <strong>Ivory</strong>
             </Link>
           </ListItem>
         </UnorderedList>
@@ -623,8 +539,8 @@ export default function Page() {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://apps.apple.com/app/id945077360">
-              <strong>Sling TV</strong>
+            <Link href="https://apps.apple.com/app/id1021913807">
+              <strong>Raindrop.io</strong>
             </Link>
           </ListItem>
           <ListItem>
@@ -689,6 +605,10 @@ export default function Page() {
             <del>Google Photos</del> →{" "}
             <Link href="https://www.icloud.com/photos/">
               <strong>iCloud Photos</strong>
+            </Link>{" "}
+            and{" "}
+            <Link href="https://immich.app/">
+              <strong>Immich</strong>
             </Link>
           </ListItem>
           <ListItem>
@@ -761,15 +681,11 @@ export default function Page() {
             <Link href="https://gitea.io/en-us/">
               <strong>Gitea</strong>
             </Link>{" "}
-            as a <Link href="https://git.jarv.is/">self-hosted</Link> Git backup/mirror.
+            as a <Link href="https://git.jrvs.io/">self-hosted</Link> Git backup/mirror.
           </ListItem>
           <ListItem>
             <Link href="https://tailscale.com/">
               <strong>Tailscale</strong>
-            </Link>{" "}
-            and{" "}
-            <Link href="https://developers.cloudflare.com/cloudflare-one/">
-              <strong>Cloudflare Zero Trust</strong>
             </Link>{" "}
             to access my home network and VPSes from anywhere.
           </ListItem>
