@@ -10,3 +10,12 @@ samp,
 pre {
   font-family: var(--fonts-mono);
 }
+
+/* https://css-tricks.com/almanac/rules/m/media/prefers-reduced-motion/ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

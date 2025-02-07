@@ -1,7 +1,7 @@
 import innerText from "react-innertext";
 import clsx from "clsx";
 import HeadingAnchor from "../HeadingAnchor";
-import type { ComponentPropsWithoutRef } from "react";
+import type { JSX, ComponentPropsWithoutRef } from "react";
 
 import styles from "./Heading.module.css";
 

@@ -163,7 +163,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <Content>
         <MDXContent
-          // @ts-expect-error
+          // @ts-ignore
           components={{ ...mdxComponents }}
         />
       </Content>

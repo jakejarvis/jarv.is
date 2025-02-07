@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useId } from "react";
-import { useSpring, animated, Globals } from "@react-spring/web";
-import useMedia from "../../hooks/useMedia";
+import { animated, Globals, useSpring, useReducedMotion } from "@react-spring/web";
 import useFirstMountState from "../../hooks/useFirstMountState";
 import useTheme from "../../hooks/useTheme";
 import useHasMounted from "../../hooks/useHasMounted";
@@ -17,7 +16,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
   const { activeTheme, setTheme } = useTheme();
   const isFirstMount = useFirstMountState();
-  const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)", false);
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const maskId = useId(); // SSR-safe ID to cross-reference areas of the SVG
 
   // default to light since `activeTheme` might be undefined
@@ -26,7 +25,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   // accessibility: disable animation if user prefers reduced motion
   useEffect(() => {
     Globals.assign({
-      skipAnimation: !!isFirstMount || !!prefersReducedMotion,
+      skipAnimation: isFirstMount || prefersReducedMotion,
     });
   }, [isFirstMount, prefersReducedMotion]);
 
@@ -100,6 +99,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
       title={safeTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
       aria-label={safeTheme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
+      {/* @ts-ignore */}
       <animated.svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -137,6 +137,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
         />
 
         {/* sunrays pulled from https://github.com/feathericons/feather/blob/734f3f51144e383cfdc6d0916831be8d1ad2a749/icons/sun.svg?short_path=fea872c#L13 */}
+        {/* @ts-ignore */}
         <animated.g stroke="currentColor" style={linesProps}>
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
