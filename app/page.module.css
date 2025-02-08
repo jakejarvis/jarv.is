@@ -30,18 +30,6 @@
   font-size: 0.6em;
 }
 
-.pgpIcon {
-  vertical-align: -0.25em;
-  stroke-width: 0.5;
-}
-
-.pgpKey {
-  margin: 0 0.15em;
-  font-family: var(--fonts-mono);
-  letter-spacing: 0.075em;
-  word-spacing: -0.4em;
-}
-
 .wave {
   display: inline-block;
   margin-left: 0.1em;
@@ -85,15 +73,15 @@
 }
 
 @media (max-width: 768px) {
-  .h1 {
+  .page h1 {
     font-size: 1.6em;
   }
 
-  .h2 {
+  .page h2 {
     font-size: 1.25em;
   }
 
-  .paragraph {
+  .page p {
     font-size: 0.925em;
     line-height: 1.825;
   }

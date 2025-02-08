@@ -35,7 +35,6 @@
   white-space: nowrap;
   margin-right: 0.75em;
 }
-
 .meta .tag:before {
   content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;

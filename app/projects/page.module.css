@@ -69,18 +69,3 @@
   border-radius: 50%;
   vertical-align: text-top;
 }
-
-.viewMore {
-  text-align: center;
-  margin-bottom: 0;
-  font-weight: 500px;
-}
-
-.githubIcon {
-  display: inline;
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: -0.2em;
-  margin: 0 0.15em;
-  fill: var(--colors-text);
-}

@@ -1,6 +1,6 @@
 {
-	"name": "Node.js & TypeScript",
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+	"name": "Node.js",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
 	"postCreateCommand": "bash -i -c 'rm -rf node_modules && nvm install $(cat .node-version) -y && nvm use $(cat .node-version) && npm install -g corepack@latest && corepack enable && CI=true pnpm install'",
 	"customizations": {
 		"vscode": {

@@ -6,7 +6,7 @@ import config from "../../lib/config";
 import { metadata as defaultMetadata } from "../layout";
 import type { ReactElement } from "react";
 import type { Metadata, Route } from "next";
-import type { PostsByYear } from "../../types";
+import type { FrontMatter } from "../../lib/helpers/posts";
 
 import styles from "./page.module.css";
 
@@ -27,7 +27,9 @@ export const metadata: Metadata = {
 export default async function Page() {
   // parse the year of each note and group them together
   const notes = await getAllPosts();
-  const notesByYear: PostsByYear = {};
+  const notesByYear: {
+    [year: string]: FrontMatter[];
+  } = {};
 
   notes.forEach((note) => {
     const year = new Date(note.date).getUTCFullYear();
@@ -45,7 +47,11 @@ export default async function Page() {
             <li className={styles.post} key={slug}>
               <Time date={date} format="MMM D" className={styles.postDate} />
               <span>
-                <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
+                <Link
+                  href={`/notes/${slug}` as Route}
+                  prefetch={null}
+                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                />
               </span>
             </li>
           ))}

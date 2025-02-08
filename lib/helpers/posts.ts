@@ -5,17 +5,28 @@ import pMap from "p-map";
 import pMemoize from "p-memoize";
 import matter from "gray-matter";
 import { formatDate } from "./format-date";
-import type { PostFrontMatter } from "../../types";
 import { metadata as defaultMetadata } from "../../app/layout";
 
 // path to directory with .mdx files, relative to project root
-export const POSTS_DIR = "notes";
+const POSTS_DIR = "notes";
+
+export type FrontMatter = {
+  slug: string;
+  permalink: string;
+  date: string;
+  title: string;
+  htmlTitle?: string;
+  description?: string;
+  image?: string;
+  tags?: string[];
+  noComments?: boolean;
+};
 
 // returns front matter and the **raw & uncompiled** markdown of a given slug
 export const getPostData = async (
   slug: string
 ): Promise<{
-  frontMatter: PostFrontMatter;
+  frontMatter: FrontMatter;
   markdown: string;
 }> => {
   const { unified } = await import("unified");
@@ -54,7 +65,7 @@ export const getPostData = async (
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     frontMatter: {
-      ...(data as Partial<PostFrontMatter>),
+      ...(data as Partial<FrontMatter>),
       // zero markdown title:
       title,
       htmlTitle,
@@ -81,7 +92,7 @@ export const getPostSlugs = pMemoize(async (): Promise<string[]> => {
 });
 
 // returns the parsed front matter of ALL posts, sorted reverse chronologically
-export const getAllPosts = pMemoize(async (): Promise<PostFrontMatter[]> => {
+export const getAllPosts = pMemoize(async (): Promise<FrontMatter[]> => {
   // for each post, query its front matter
   const data = await pMap(await getPostSlugs(), async (slug) => (await getPostData(slug)).frontMatter);
 

@@ -254,8 +254,23 @@ export default function Page() {
             underline={false}
             openInNewTab
           >
-            <GoLock size="1.25em" className={styles.pgpIcon} />{" "}
-            <span className={styles.pgpKey}>2B0C 9CF2 51E6 9A39</span>
+            <GoLock
+              size="1.25em"
+              style={{
+                verticalAlign: "-0.25em",
+                strokeWidth: 0.5,
+              }}
+            />{" "}
+            <span
+              style={{
+                margin: "0 0.15em",
+                fontFamily: "var(--fonts-mono)",
+                letterSpacing: "0.075em",
+                wordSpacing: "-0.4em",
+              }}
+            >
+              2B0C 9CF2 51E6 9A39
+            </span>
           </ColorfulLink>
         </sup>
         ,{" "}

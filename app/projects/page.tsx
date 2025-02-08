@@ -10,7 +10,6 @@ import { GoStar, GoRepoForked } from "react-icons/go";
 import { SiGithub } from "react-icons/si";
 import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
-import type { Project } from "../../types";
 
 import styles from "./page.module.css";
 
@@ -27,6 +26,19 @@ export const metadata: Metadata = {
     ...defaultMetadata.alternates,
     canonical: "/projects",
   },
+};
+
+type Project = {
+  name: string;
+  url: string;
+  description?: string;
+  language?: {
+    name: string;
+    color?: string;
+  };
+  stars?: number;
+  forks?: number;
+  updatedAt: string;
 };
 
 async function getRepos(): Promise<Project[] | null> {
@@ -164,9 +176,26 @@ export default async function Page() {
           ))}
         </div>
 
-        <p className={styles.viewMore}>
+        <p
+          style={{
+            textAlign: "center",
+            marginBottom: 0,
+            fontWeight: 500,
+          }}
+        >
           <Link href={`https://github.com/${config.authorSocial.github}`}>
-            View more on <SiGithub className={styles.githubIcon} /> GitHub...
+            View more on{" "}
+            <SiGithub
+              style={{
+                display: "inline",
+                width: "1.2em",
+                height: "1.2em",
+                verticalAlign: "-0.2em",
+                margin: "0 0.15em",
+                fill: "var(--colors-text)",
+              }}
+            />{" "}
+            GitHub...
           </Link>
         </p>
       </Content>

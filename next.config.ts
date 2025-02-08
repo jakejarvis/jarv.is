@@ -19,13 +19,14 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
+    ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
+    cssChunking: true,
     typedRoutes: true,
     largePageDataBytes: 512 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX will exceed the default.
-    optimisticClientCache: false, // https://github.com/vercel/next.js/discussions/40268#discussioncomment-3572642
   },
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
-    dirs: ["app", "components", "contexts", "hooks", "lib", "types"],
+    dirs: ["app", "components", "contexts", "hooks", "lib"],
   },
   headers: async () => [
     {

@@ -1,11 +1,13 @@
+import { Suspense } from "react";
 import * as runtime from "react/jsx-runtime";
 import { ErrorBoundary } from "react-error-boundary";
 import { evaluate } from "@mdx-js/mdx";
 import Content from "../../../components/Content";
 import Link from "../../../components/Link";
 import Time from "../../../components/Time";
-import HitCounter from "../../../components/HitCounter";
 import Comments from "../../../components/Comments";
+import Loading from "../../../components/Loading";
+import HitCounter from "./counter";
 import { getPostSlugs, getPostData } from "../../../lib/helpers/posts";
 import * as mdxComponents from "../../../lib/helpers/mdx-components";
 import { metadata as defaultMetadata } from "../../layout";
@@ -18,6 +20,9 @@ import styles from "./page.module.css";
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
 export const dynamicParams = false;
+
+// https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
+export const experimental_ppr = true;
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
@@ -135,20 +140,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
         {/* only count hits on production site */}
         {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
-          <div
-            className={styles.item}
-            style={{
-              // fix potential layout shift when number of hits loads
-              minWidth: "7em",
-              marginRight: 0,
-            }}
-          >
-            {/* completely hide this block if anything goes wrong on the backend */}
-            <ErrorBoundary fallback={null}>
+          <ErrorBoundary fallback={null}>
+            <div
+              className={styles.item}
+              style={{
+                // fix potential layout shift when number of hits loads
+                minWidth: "7em",
+                marginRight: 0,
+              }}
+            >
               <FiEye className={styles.icon} />
-              <HitCounter slug={`notes/${frontMatter.slug}`} />
-            </ErrorBoundary>
-          </div>
+              <Suspense fallback={<Loading boxes={3} width={20} />}>
+                <HitCounter slug={`notes/${frontMatter.slug}`} />
+              </Suspense>
+            </div>
+          </ErrorBoundary>
         )}
       </div>
 
