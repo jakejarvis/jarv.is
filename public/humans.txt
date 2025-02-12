@@ -30,7 +30,6 @@
 
   - Next.js
   - Vercel
-  - Turso
   - Prisma
   - Giscus
   - Resend

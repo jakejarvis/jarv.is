@@ -55,14 +55,16 @@ export default function Page() {
 
         <p>
           A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e.{" "}
-          <CodeInline>hits = hits + 1</CodeInline>) in a <Link href="https://turso.tech/">Turso</Link> SQLite database.
-          Individual views and identifying (or non-identifying) details are <strong>never stored or logged</strong>.
+          <CodeInline>hits = hits + 1</CodeInline>) in a{" "}
+          <Link href="https://www.prisma.io/postgres">Prisma Postgres</Link> database. Individual views and identifying
+          (or non-identifying) details are <strong>never stored or logged</strong>.
         </p>
 
         <p>
           The <Link href="https://github.com/jakejarvis/jarv.is/blob/main/prisma/schema.prisma">database schema</Link>,{" "}
-          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/pages/api/count.ts">serverless function</Link> and{" "}
-          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/components/HitCounter/HitCounter.tsx">
+          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/app/api/hits/route.ts">serverless function</Link>{" "}
+          and{" "}
+          <Link href="https://github.com/jakejarvis/jarv.is/blob/main/app/notes/%5Bslug%5D/counter.tsx">
             client script
           </Link>{" "}
           are open source, and <Link href="https://github.com/jakejarvis/website-stats">snapshots of the database</Link>{" "}
