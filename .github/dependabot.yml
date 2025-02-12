@@ -10,6 +10,7 @@ updates:
       nextjs:
         patterns:
           - "next"
+          - "@next/*"
           - "eslint-config-next"
       react:
         patterns:
@@ -31,8 +32,7 @@ updates:
       eslint:
         patterns:
           - "eslint"
-          - "@eslint/eslintrc"
-          - "@eslint/js"
+          - "@eslint/*"
     ignore:
       - dependency-name: "@jakejarvis/eslint-config"
       - dependency-name: "@types/node"
