@@ -30,6 +30,7 @@
 
   - Next.js
   - Vercel
+  - Neon Postgres
   - Prisma
   - Giscus
   - Resend

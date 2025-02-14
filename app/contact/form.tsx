@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useActionState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Turnstile from "react-turnstile";
 import clsx from "clsx";
@@ -18,7 +18,6 @@ const ContactForm = () => {
     Partial<{ success: boolean; message: string; payload: FormData }>,
     FormData
   >(sendMessage, {});
-  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   return (
     <form action={formAction}>
@@ -81,12 +80,10 @@ const ContactForm = () => {
 
       <Turnstile
         sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
-        onVerify={(token) => setTurnstileToken(token)}
         style={{ margin: "1em 0" }}
         theme={activeTheme === "dark" ? activeTheme : "light"}
+        fixedSize
       />
-
-      <input type="hidden" name="cf-turnstile-response" value={turnstileToken} />
 
       <div className={styles.actionRow}>
         {!formState.success && (
