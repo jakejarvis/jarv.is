@@ -18,8 +18,8 @@ importers:
         specifier: 15.2.0-canary.60
         version: 15.2.0-canary.60
       '@octokit/graphql':
-        specifier: ^8.2.0
-        version: 8.2.0
+        specifier: ^8.2.1
+        version: 8.2.1
       '@octokit/graphql-schema':
         specifier: ^15.25.0
         version: 15.25.0
@@ -518,8 +518,8 @@ packages:
   '@octokit/graphql-schema@15.25.0':
     resolution: {integrity: sha512-aqz9WECtdxVWSqgKroUu9uu+CRt5KnfErWs0dBPKlTdrreAeWzS5NRu22ZVcGdPP7s3XDg2Gnf5iyoZPCRZWmQ==}
 
-  '@octokit/graphql@8.2.0':
-    resolution: {integrity: sha512-gejfDywEml/45SqbWTWrhfwvLBrcGYhOn50sPOjIeVvH6i7D16/9xcFA8dAJNp2HMcd+g4vru41g4E2RBiZvfQ==}
+  '@octokit/graphql@8.2.1':
+    resolution: {integrity: sha512-n57hXtOoHrhwTWdvhVkdJHdhTv0JstjDbDRhJfwIRNfFqmSo1DaK/mD2syoNUoLCyqSjBpGAKOG0BuwF392slw==}
     engines: {node: '>= 18'}
 
   '@octokit/openapi-types@23.0.1':
@@ -3534,7 +3534,7 @@ snapshots:
       graphql: 16.10.0
       graphql-tag: 2.12.6(graphql@16.10.0)
 
-  '@octokit/graphql@8.2.0':
+  '@octokit/graphql@8.2.1':
     dependencies:
       '@octokit/request': 9.2.2
       '@octokit/types': 13.8.0
