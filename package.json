@@ -46,7 +46,7 @@
     "react-dom": "19.0.0",
     "react-error-boundary": "^5.0.0",
     "react-frame-component": "^5.2.7",
-    "react-icons": "~5.4.0",
+    "react-icons": "~5.5.0",
     "react-innertext": "^1.1.5",
     "react-is": "19.0.0",
     "react-textarea-autosize": "^8.5.7",
