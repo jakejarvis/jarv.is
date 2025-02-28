@@ -21,8 +21,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1
       '@octokit/graphql-schema':
-        specifier: ^15.25.0
-        version: 15.25.0
+        specifier: ^15.26.0
+        version: 15.26.0
       '@prisma/client':
         specifier: ^6.4.1
         version: 6.4.1(prisma@6.4.1(typescript@5.7.3))(typescript@5.7.3)
@@ -661,8 +661,8 @@ packages:
     resolution: {integrity: sha512-nBRBMpKPhQUxCsQQeW+rCJ/OPSMcj3g0nfHn01zGYZXuNDvvXudF/TYY6APj5THlurerpFN4a/dQAIAaM6BYhA==}
     engines: {node: '>= 18'}
 
-  '@octokit/graphql-schema@15.25.0':
-    resolution: {integrity: sha512-aqz9WECtdxVWSqgKroUu9uu+CRt5KnfErWs0dBPKlTdrreAeWzS5NRu22ZVcGdPP7s3XDg2Gnf5iyoZPCRZWmQ==}
+  '@octokit/graphql-schema@15.26.0':
+    resolution: {integrity: sha512-SoVbh+sXe9nsoweFbLT3tAk3XWYbYLs5ku05wij1zhyQ2U3lewdrhjo5Tb7lfaOGWNHSkPZT4uuPZp8neF7P7A==}
 
   '@octokit/graphql@8.2.1':
     resolution: {integrity: sha512-n57hXtOoHrhwTWdvhVkdJHdhTv0JstjDbDRhJfwIRNfFqmSo1DaK/mD2syoNUoLCyqSjBpGAKOG0BuwF392slw==}
@@ -3772,7 +3772,7 @@ snapshots:
       '@octokit/types': 13.8.0
       universal-user-agent: 7.0.2
 
-  '@octokit/graphql-schema@15.25.0':
+  '@octokit/graphql-schema@15.26.0':
     dependencies:
       graphql: 16.10.0
       graphql-tag: 2.12.6(graphql@16.10.0)
