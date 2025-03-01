@@ -13,7 +13,7 @@ import { SiMarkdown } from "react-icons/si";
 import styles from "./form.module.css";
 
 const ContactForm = () => {
-  const { activeTheme } = useTheme();
+  const { theme } = useTheme();
   const [formState, formAction, pending] = useActionState<
     Partial<{ success: boolean; message: string; payload: FormData }>,
     FormData
@@ -81,7 +81,7 @@ const ContactForm = () => {
       <Turnstile
         sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
         style={{ margin: "1em 0" }}
-        theme={activeTheme === "dark" ? activeTheme : "light"}
+        theme={theme === "dark" ? theme : "light"}
         fixedSize
       />
 

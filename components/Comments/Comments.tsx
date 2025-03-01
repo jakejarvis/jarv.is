@@ -14,7 +14,7 @@ export type CommentsProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 const Comments = ({ title, className, ...rest }: CommentsProps) => {
-  const { activeTheme } = useTheme();
+  const { theme } = useTheme();
 
   // fail silently if giscus isn't configured
   if (!config.giscusConfig) {
@@ -36,7 +36,7 @@ const Comments = ({ title, className, ...rest }: CommentsProps) => {
         emitMetadata="0"
         inputPosition="top"
         loading="lazy"
-        theme={activeTheme === "dark" ? activeTheme : "light"}
+        theme={theme === "dark" ? theme : "light"}
       />
     </div>
   );

@@ -1,11 +1,10 @@
 import CodeBlock from "../CodeBlock";
 import CodeInline from "../CodeInline";
-import type { PropsWithChildren } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-export type CodeProps = PropsWithChildren<{
+export type CodeProps = ComponentPropsWithoutRef<"code"> & {
   forceBlock?: boolean;
-  className?: string;
-}>;
+};
 
 // a simple wrapper component that "intelligently" picks between inline code and code blocks (w/ optional syntax
 // highlighting & a clipboard button)

@@ -14,13 +14,13 @@ export type ThemeToggleProps = {
 
 const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
-  const { activeTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const isFirstMount = useFirstMountState();
   const prefersReducedMotion = useReducedMotion() ?? false;
   const maskId = useId(); // SSR-safe ID to cross-reference areas of the SVG
 
-  // default to light since `activeTheme` might be undefined
-  const safeTheme = activeTheme === "dark" ? activeTheme : "light";
+  // default to light since `theme` might be undefined
+  const safeTheme = theme === "dark" ? theme : "light";
 
   // accessibility: disable animation if user prefers reduced motion
   useEffect(() => {

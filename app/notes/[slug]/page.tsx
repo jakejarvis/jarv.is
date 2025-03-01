@@ -28,7 +28,7 @@ export async function generateStaticParams() {
   const slugs = await getPostSlugs();
 
   // map slugs into a static paths object required by next.js
-  return slugs.map((slug: string) => ({
+  return slugs.map((slug) => ({
     slug,
   }));
 }

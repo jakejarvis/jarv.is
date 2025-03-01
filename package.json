@@ -69,7 +69,7 @@
     "@eslint/js": "^9.21.0",
     "@jakejarvis/eslint-config": "~4.0.7",
     "@types/comma-number": "^2.1.2",
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.13.8",
     "@types/prop-types": "^15.7.14",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -83,9 +83,9 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.2",
     "prisma": "^6.4.1",
-    "schema-dts": "^1.1.2",
+    "schema-dts": "^1.1.5",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.8.2"
+    "typescript": "5.7.3"
   },
   "optionalDependencies": {
     "sharp": "^0.33.5"
@@ -93,7 +93,7 @@
   "engines": {
     "node": ">=20.x"
   },
-  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92",
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"

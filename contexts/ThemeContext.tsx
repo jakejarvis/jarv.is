@@ -1,43 +1,39 @@
 "use client";
 
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMedia from "../hooks/useMedia";
 import type { Context, PropsWithChildren } from "react";
+
+type Themes = "light" | "dark";
 
 export const ThemeContext: Context<{
   /**
    * If the user's theme preference is unset, this returns whether the system preference resolved to "light" or "dark".
    * If the user's theme preference is set, the preference is returned instead, regardless of their system's theme.
    */
-  activeTheme: string;
+  theme: Themes;
   /** Update the theme manually and save to local storage. */
-  setTheme: (theme: string) => void;
+  setTheme: (theme: Themes) => void;
 }> = createContext({
-  activeTheme: "",
+  theme: "" as Themes,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setTheme: (_) => {},
 });
 
 // provider used once in _app.tsx to wrap entire app
-export const ThemeProvider = ({
-  storageKey = "theme",
-  children,
-}: PropsWithChildren<{
-  /** Key to use when saving preferred theme to local storage. Defaults to "theme". */
-  storageKey?: string;
-}>) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
   // keep track of if/when the user has set their theme *on this site*
-  const [preferredTheme, setPreferredTheme] = useLocalStorage(storageKey);
+  const [preferredTheme, setPreferredTheme] = useLocalStorage<Themes>("theme");
   // keep track of changes to the user's OS/browser dark mode setting
-  const [systemTheme, setSystemTheme] = useState("");
+  const [systemTheme, setSystemTheme] = useState<Themes>("" as Themes);
   // hook into system `prefers-dark-mode` setting
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
   const isSystemDark = useMedia("(prefers-color-scheme: dark)");
 
   // updates the DOM and optionally saves the new theme to local storage
-  const changeTheme = useCallback(
-    (theme: string, updateStorage?: boolean) => {
+  const applyTheme = useCallback(
+    (theme: Themes, updateStorage?: boolean) => {
       if (updateStorage) {
         setPreferredTheme(theme);
       }
@@ -57,9 +53,9 @@ export const ThemeProvider = ({
 
     // only actually change the theme if preference is unset (and *don't* save new theme to storage)
     if (!preferredTheme) {
-      changeTheme(systemResolved, false);
+      applyTheme(systemResolved, false);
     }
-  }, [changeTheme, preferredTheme, isSystemDark]);
+  }, [applyTheme, preferredTheme, isSystemDark]);
 
   // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
   useEffect(() => {
@@ -70,16 +66,13 @@ export const ThemeProvider = ({
     document.documentElement.style?.setProperty("color-scheme", colorScheme);
   }, [preferredTheme, systemTheme]);
 
-  const providerValues = useMemo(
-    () => ({
-      activeTheme: preferredTheme ?? systemTheme,
-      setTheme: (theme: string) => {
-        // force save to local storage
-        changeTheme(theme, true);
-      },
-    }),
-    [changeTheme, preferredTheme, systemTheme]
-  );
+  const providerValues = {
+    theme: preferredTheme ?? systemTheme,
+    setTheme: (theme: Themes) => {
+      // force save to local storage
+      applyTheme(theme, true);
+    },
+  };
 
   return <ThemeContext.Provider value={providerValues}>{children}</ThemeContext.Provider>;
 };

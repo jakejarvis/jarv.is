@@ -283,7 +283,7 @@ export default function Page() {
         >
           Bluesky
         </ColorfulLink>
-        ,{" "}
+        , or{" "}
         <ColorfulLink
           href="https://fediverse.jarv.is/@jake"
           rel="me"
@@ -292,15 +292,6 @@ export default function Page() {
           darkColor="#7b87ff"
         >
           Mastodon
-        </ColorfulLink>
-        , or{" "}
-        <ColorfulLink
-          href="sms:+1-617-917-3737"
-          title="Send SMS to +1 (617) 917-3737"
-          lightColor="#6fcc01"
-          darkColor="#8edb34"
-        >
-          SMS
         </ColorfulLink>{" "}
         as well!
       </p>
