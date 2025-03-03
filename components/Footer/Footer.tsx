@@ -15,11 +15,11 @@ const Footer = ({ className, ...rest }: FooterProps) => {
       <div className={styles.row}>
         <div>
           Content{" "}
-          <Link href="/license" title={config.license} underline={false} className={styles.link}>
+          <Link href="/license" title={config.license} plain className={styles.link}>
             licensed under {config.licenseAbbr}
           </Link>
           ,{" "}
-          <Link href="/previously" title="Previously on..." underline={false} className={styles.link}>
+          <Link href="/previously" title="Previously on..." plain className={styles.link}>
             {config.copyrightYearStart}
           </Link>{" "}
           – {new Date(process.env.RELEASE_DATE || Date.now()).getUTCFullYear()}.
@@ -35,7 +35,7 @@ const Footer = ({ className, ...rest }: FooterProps) => {
             href="https://nextjs.org/"
             title="Powered by Next.js"
             aria-label="Next.js"
-            underline={false}
+            plain
             className={clsx(styles.link, styles.hover)}
           >
             <SiNextdotjs className={styles.icon} />
@@ -44,7 +44,7 @@ const Footer = ({ className, ...rest }: FooterProps) => {
           <Link
             href={`https://github.com/${config.githubRepo}`}
             title="View Source on GitHub"
-            underline={false}
+            plain
             className={clsx(styles.link, styles.underline)}
           >
             View source.

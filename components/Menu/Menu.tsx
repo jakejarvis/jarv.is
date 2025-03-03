@@ -28,7 +28,7 @@ const Menu = ({ className, ...rest }: MenuProps) => {
       })}
 
       <li className={styles.menuItem}>
-        <MenuItem Icon={ThemeToggle} />
+        <MenuItem icon={ThemeToggle} />
       </li>
     </ul>
   );

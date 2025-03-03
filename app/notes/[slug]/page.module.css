@@ -7,16 +7,16 @@
   color: var(--colors-medium);
 }
 
-.meta .item {
+.meta .metaItem {
   margin-right: 1.6em;
   white-space: nowrap;
 }
 
-.meta .link {
+.meta .metaLink {
   color: inherit !important;
 }
 
-.meta .icon {
+.meta .metaIcon {
   display: inline;
   width: 1.2em;
   height: 1.2em;
@@ -24,23 +24,23 @@
   margin-right: 0.6em;
 }
 
-.meta .tags {
+.meta .metaTags {
   white-space: normal;
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-.meta .tag {
+.meta .metaTag {
   text-transform: lowercase;
   white-space: nowrap;
   margin-right: 0.75em;
 }
-.meta .tag:before {
+.meta .metaTag:before {
   content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;
   color: var(--colors-light);
 }
-.meta .tag:last-of-type {
+.meta .metaTag:last-of-type {
   margin-right: 0;
 }
 

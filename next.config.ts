@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
+import createBundleAnalyzer from "@next/bundle-analyzer";
+import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -10,8 +13,8 @@ const nextConfig: NextConfig = {
     // pages using getServerSideProps will return the current(ish) time instead, which is usually not what we want.
     RELEASE_DATE: new Date().toISOString(),
   },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "pbs.twimg.com" },
@@ -20,8 +23,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
-    cssChunking: true,
-    typedRoutes: true,
     largePageDataBytes: 512 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX will exceed the default.
   },
   eslint: {
@@ -29,16 +30,6 @@ const nextConfig: NextConfig = {
     dirs: ["app", "components", "contexts", "hooks", "lib"],
   },
   headers: async () => [
-    {
-      source: "/:path(.*)",
-      headers: [
-        {
-          // 🥛
-          key: "x-got-milk",
-          value: "2%",
-        },
-      ],
-    },
     {
       source: "/pubkey.asc",
       headers: [
@@ -138,9 +129,32 @@ const nextConfig: NextConfig = {
   ],
 };
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-export default withBundleAnalyzer(nextConfig);
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [
+      mdxPlugins.remarkFrontmatter,
+      [mdxPlugins.remarkGfm, { singleTilde: false }],
+      [
+        mdxPlugins.remarkSmartypants,
+        {
+          quotes: true,
+          dashes: "oldschool",
+          backticks: false,
+          ellipses: false,
+        },
+      ],
+    ],
+    rehypePlugins: [
+      mdxPlugins.rehypeUnwrapImages,
+      mdxPlugins.rehypeSlug,
+      [mdxPlugins.rehypePrism, { ignoreMissing: true }],
+      mdxPlugins.rehypeMdxImportMedia,
+    ],
+  },
+});
+
+export default withBundleAnalyzer(withMDX(nextConfig));

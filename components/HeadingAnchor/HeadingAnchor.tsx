@@ -9,14 +9,7 @@ export type HeadingAnchorProps = Omit<ComponentPropsWithoutRef<typeof Link>, "hr
 
 const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => {
   return (
-    <Link
-      href={`#${id}`}
-      title={`Jump to "${title}"`}
-      aria-hidden
-      underline={false}
-      style={{ lineHeight: 1 }}
-      {...rest}
-    >
+    <Link href={`#${id}`} title={`Jump to "${title}"`} aria-hidden plain style={{ lineHeight: 1 }} {...rest}>
       <FiLink size="0.8em" />
     </Link>
   );

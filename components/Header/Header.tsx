@@ -15,7 +15,7 @@ const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={clsx(styles.header, className)} {...rest}>
       <nav className={styles.nav}>
-        <Link href="/" rel="author" title={config.authorName} underline={false} className={styles.selfieLink}>
+        <Link href="/" rel="author" title={config.authorName} plain className={styles.selfieLink}>
           <Image
             src={selfieJpg}
             alt={`Photo of ${config.authorName}`}

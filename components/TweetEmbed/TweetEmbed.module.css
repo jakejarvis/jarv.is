@@ -1,6 +1,6 @@
 .tweet {
   /* help with layout shift */
-  min-height: 300px;
+  min-height: 120px;
 }
 
 .tweet :global(.react-tweet-theme) {

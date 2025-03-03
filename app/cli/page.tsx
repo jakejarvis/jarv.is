@@ -37,7 +37,9 @@ export default function Page() {
           anyone, ever).
         </Blockquote>
 
-        <Image src={cliImg} href="https://www.npmjs.com/package/@jakejarvis/cli" alt="Terminal Screenshot" priority />
+        <Link href="https://www.npmjs.com/package/@jakejarvis/cli">
+          <Image src={cliImg} alt="Terminal Screenshot" priority />
+        </Link>
 
         <H2 id="usage">Usage</H2>
         <CodeBlock withCopyButton>npx @jakejarvis/cli</CodeBlock>

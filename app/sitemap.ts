@@ -1,7 +1,7 @@
 import path from "path";
 import glob from "fast-glob";
 import { getAllPosts } from "../lib/helpers/posts";
-import { metadata } from "./layout";
+import config from "../lib/config";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -11,21 +11,19 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: "/",
+      url: config.baseUrl,
       priority: 1.0,
       changeFrequency: "weekly",
       lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
     },
-    {
-      url: "/tweets/",
-      changeFrequency: "yearly",
-    },
+    { url: `${config.baseUrl}/tweets/` },
   ];
 
   // add each directory in the app folder as a route (excluding special routes)
+  const appDir = path.resolve(process.cwd(), "app");
   (
     await glob("*", {
-      cwd: path.join(process.cwd(), "app"),
+      cwd: appDir,
       deep: 0,
       onlyDirectories: true,
       markDirectories: true,
@@ -39,7 +37,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ).forEach((route) => {
     routes.push({
       // make all URLs absolute
-      url: route,
+      url: `${config.baseUrl}/${route}`,
     });
   });
 
@@ -50,9 +48,6 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       lastModified: new Date(post.date),
     });
   });
-
-  // make all URLs absolute
-  routes.forEach((page) => (page.url = new URL(page.url, metadata.metadataBase || "").href));
 
   return routes;
 };

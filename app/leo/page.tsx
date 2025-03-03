@@ -33,8 +33,8 @@ export default function Page() {
             webm: "/static/images/leo/leo.webm",
             mp4: "/static/images/leo/leo.mp4",
             vtt: "/static/images/leo/subs.en.vtt",
-            image: thumbnail.src,
           }}
+          poster={thumbnail.src}
         />
 
         <p

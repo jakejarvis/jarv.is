@@ -31,8 +31,8 @@ export default function Page() {
           src={{
             webm: "/static/images/birthday/birthday.webm",
             mp4: "/static/images/birthday/birthday.mp4",
-            image: thumbnail.src,
           }}
+          poster={thumbnail.src}
         />
       </Content>
     </>

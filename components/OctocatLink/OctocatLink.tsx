@@ -11,7 +11,7 @@ export type OctocatLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href
 
 const OctocatLink = ({ repo, className, ...rest }: OctocatLinkProps) => {
   return (
-    <Link href={`https://github.com/${repo}`} underline={false} className={styles.octocatLink} {...rest}>
+    <Link href={`https://github.com/${repo}`} plain className={styles.octocatLink} {...rest}>
       <SiGithub className={clsx(styles.octocat, className)} />
     </Link>
   );

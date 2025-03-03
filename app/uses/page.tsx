@@ -40,7 +40,9 @@ export default function Page() {
           ❤️
         </p>
 
-        <Image src={desktopImg} href={desktopImg.src as Route} alt="My mess of a desktop." priority />
+        <Link href={desktopImg.src as Route} openInNewTab>
+          <Image src={desktopImg} alt="My mess of a desktop." priority />
+        </Link>
 
         <H2 id="hardware">
           <span style={{ marginRight: "0.45em" }}>🚘</span>

@@ -251,7 +251,7 @@ export default function Page() {
             title="My Public Key"
             lightColor="#757575"
             darkColor="#959595"
-            underline={false}
+            plain
             openInNewTab
           >
             <GoLock

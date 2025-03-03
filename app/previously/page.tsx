@@ -52,13 +52,7 @@ export default async function Page() {
           fontFamily: `${ComicNeue.style.fontFamily}, var(--fonts-sans)`,
         }}
       >
-        <Figure
-          src={img_wayback}
-          href="https://web.archive.org/web/20010501000000*/jakejarvis.com"
-          alt="Timeline of this website's past."
-          priority
-          className={styles.screenshot}
-        >
+        <Figure src={img_wayback} alt="Timeline of this website's past." priority className={styles.screenshot}>
           ...the{" "}
           <Link href="https://web.archive.org/web/20010501000000*/jakejarvis.com">Cringey Chronicles&trade;</Link> of
           this website's past.
@@ -181,36 +175,21 @@ export default async function Page() {
 
         <HorizontalRule className={styles.divider} />
 
-        <Figure
-          src={img_2012_09}
-          href="https://focused-knuth-7bc10d.netlify.app/"
-          alt="September 2012"
-          className={styles.screenshot}
-        >
+        <Figure src={img_2012_09} alt="September 2012" className={styles.screenshot}>
           <Link href="https://focused-knuth-7bc10d.netlify.app/">September 2012</Link> (
           <Link href="https://github.com/jakejarvis/jarv.is/tree/v1">view source</Link>)
         </Figure>
 
         <HorizontalRule className={styles.divider} />
 
-        <Figure
-          src={img_2018_04}
-          href="https://hungry-mayer-40e790.netlify.app/"
-          alt="April 2018"
-          className={styles.screenshot}
-        >
+        <Figure src={img_2018_04} alt="April 2018" className={styles.screenshot}>
           <Link href="https://hungry-mayer-40e790.netlify.app/">April 2018</Link> (
           <Link href="https://github.com/jakejarvis/jarv.is/tree/v2">view source</Link>)
         </Figure>
 
         <HorizontalRule className={styles.divider} />
 
-        <Figure
-          src={img_2020_03}
-          href="https://quiet-truffle-92842d.netlify.app/"
-          alt="March 2020"
-          className={styles.screenshot}
-        >
+        <Figure src={img_2020_03} alt="March 2020" className={styles.screenshot}>
           <Link href="https://quiet-truffle-92842d.netlify.app/">March 2020</Link> (
           <Link href="https://github.com/jakejarvis/jarv.is-hugo">view source</Link>)
         </Figure>

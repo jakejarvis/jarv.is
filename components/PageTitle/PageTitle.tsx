@@ -15,7 +15,7 @@ const PageTitle = ({ className, children, ...rest }: PageTitleProps) => {
 
   return (
     <h1 className={clsx(styles.title, className)} {...rest}>
-      <Link href={pathname as Route} underline={false} className={styles.link}>
+      <Link href={pathname as Route} plain className={styles.link}>
         {children}
       </Link>
     </h1>

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Layout from "../components/Layout";
 import config from "../lib/config";
@@ -11,10 +11,10 @@ import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorh
 import "./themes.css";
 import "./global.css";
 
-import { meJpg } from "../lib/config/favicons";
+import meJpg from "../public/static/images/me.jpg";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || `https://${config.siteDomain}`),
+  metadataBase: new URL(config.baseUrl),
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.shortDescription}`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: config.siteName,
     title: {
-      template: `%s – ${config.siteName}`,
+      template: "%s",
       default: `${config.siteName} – ${config.shortDescription}`,
     },
     url: "/",
@@ -37,11 +37,21 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    types: {
-      "application/rss+xml": "/feed.xml",
-      "application/atom+xml": "/feed.atom",
-    },
     canonical: "/",
+    types: {
+      "application/rss+xml": [
+        {
+          title: `${config.siteName} (RSS)`,
+          url: "/feed.xml",
+        },
+      ],
+      "application/atom+xml": [
+        {
+          title: `${config.siteName} (Atom)`,
+          url: "/feed.atom",
+        },
+      ],
+    },
   },
   other: {
     humans: "/humans.txt",
@@ -53,10 +63,10 @@ const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: config.authorName,
-  url: metadata.metadataBase?.href || `https://${config.siteDomain}/`,
-  image: new URL(meJpg.src, metadata.metadataBase || `https://${config.siteDomain}`).href,
+  url: config.baseUrl,
+  image: `${config.baseUrl}${meJpg.src}`,
   sameAs: [
-    metadata.metadataBase?.href || `https://${config.siteDomain}/`,
+    config.baseUrl,
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
@@ -73,13 +83,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={config.siteLocale} suppressHydrationWarning>
       <head>
-        <script
-          // unminified: https://gist.github.com/jakejarvis/79b0ec8506bc843023546d0d29861bf0
-          dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const e=document.documentElement,t="undefined"!=typeof Storage?window.localStorage.getItem("theme"):null,a=(t&&"dark"===t)??window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e.dataset.theme=a,e.style.colorScheme=a}catch(e){}})()`,
-          }}
-        />
-
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
 

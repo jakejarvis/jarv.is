@@ -11,14 +11,7 @@ tags:
 image: "/static/images/notes/hugo-to-nextjs/web-vitals.png"
 ---
 
-<Image
-  src="/public/static/images/notes/hugo-to-nextjs/pr.png"
-  width="865"
-  height="47"
-  alt="Pull Request #711"
-  href="https://github.com/jakejarvis/jarv.is/pull/711/files"
-  priority
-/>
+![Pull Request #711](../public/static/images/notes/hugo-to-nextjs/pr.png)
 
 I'll say right off the bat: this website has a _loooong_ history of going overboard with its tech stack. I use this domain as a vehicle to [learn new things](https://www.jvt.me/talks/overengineering-your-personal-website/), and given [how frequently](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) the tides turn in the frontend development waters these days, things can (and did) get messy pretty quickly.
 
@@ -37,12 +30,7 @@ Enter [**Next.js**](https://nextjs.org/), which caught my eye over other JS-cent
 - **Fewer `devDependencies` and consolidated build tooling.** I don't want to look at another Gulp task for as long as possible. Next's [built-in](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config) Webpack and Babel support has come in clutch here.
 - **Same (or better) [Lighthouse scores](https://web.dev/learn/#lighthouse).** The heavier load of JS has certainly affected performance a bit, but any modern browser can easily keep up with any React code I'll be using at this scale. And because of Next's static page generation (and [next-seo](https://github.com/garmeeh/next-seo)) nothing has changed in the realm of SEO.
 
-<Image
-  src="/public/static/images/notes/hugo-to-nextjs/web-vitals.png"
-  width="865"
-  height="385"
-  alt="Vercel web vitals analytics"
-/>
+![Vercel web vitals analytics](../public/static/images/notes/hugo-to-nextjs/web-vitals.png)
 
 ## Things I still miss from Hugo
 

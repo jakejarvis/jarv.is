@@ -1,23 +1,28 @@
 .link {
   color: var(--colors-link);
   text-decoration: none;
-}
 
-.link.underline {
+  /* fancy underline */
   background-image: linear-gradient(var(--colors-linkUnderline), var(--colors-linkUnderline));
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
+  transition: background-size 0.2s ease-in-out;
   padding-bottom: 3px;
 }
 
-.link.underline:hover,
-.link.underline:focus-visible {
+.link:hover,
+.link:focus-visible {
   background-size: 100% 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .link.underline {
-    transition: background-size var(--transitions-linkHover);
+.link.plain {
+  background: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none !important;
   }
 }

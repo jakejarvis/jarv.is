@@ -40,7 +40,7 @@ export default async function Page() {
         <span style={{ color: "var(--colors-codeKeyword)" }}>google</span>:
         <span style={{ color: "var(--colors-codeAttribute)" }}>~</span>${" "}
         <span style={{ color: "var(--colors-codeLiteral)" }}>mv</span> /root
-        <Link href="https://killedbygoogle.com/" style={{ color: "inherit" }} underline={false}>
+        <Link href="https://killedbygoogle.com/" style={{ color: "inherit" }} plain>
           /stable_products_that_people_rely_on/
         </Link>
         googledomains.zip /tmp/
@@ -62,7 +62,7 @@ export default async function Page() {
         <span style={{ color: "var(--colors-codeAttribute)" }}>@monthly</span>&nbsp;&nbsp;&nbsp;&nbsp;
         <span style={{ color: "var(--colors-codeLiteral)" }}>rm</span>{" "}
         <span style={{ color: "var(--colors-codeVariable )" }}>-f</span> /tmp/
-        <Link href="https://fuckyougoogle.zip/" style={{ color: "inherit" }} underline={false}>
+        <Link href="https://fuckyougoogle.zip/" style={{ color: "inherit" }} plain>
           *.zip
         </Link>
         <br />

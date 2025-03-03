@@ -143,7 +143,7 @@ export default async function Page() {
                       // @ts-ignore
                       href={`${repo.url}/stargazers`}
                       title={`${commaNumber(repo.stars)} ${repo.stars === 1 ? "star" : "stars"}`}
-                      underline={false}
+                      plain
                       className={styles.metaLink}
                     >
                       <GoStar className={styles.metaIcon} />
@@ -158,7 +158,7 @@ export default async function Page() {
                       // @ts-ignore
                       href={`${repo.url}/network/members`}
                       title={`${commaNumber(repo.forks)} ${repo.forks === 1 ? "fork" : "forks"}`}
-                      underline={false}
+                      plain
                       className={styles.metaLink}
                     >
                       <GoRepoForked className={styles.metaIcon} />

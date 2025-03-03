@@ -6,14 +6,16 @@ import type { IconType } from "react-icons";
 import styles from "./MenuItem.module.css";
 
 export type MenuItemProps = {
-  Icon?: IconType;
   text?: string;
   href?: Route;
+  icon?: IconType;
   current?: boolean;
   className?: string;
 };
 
-const MenuItem = ({ Icon, text, href, current, className }: MenuItemProps) => {
+const MenuItem = ({ text, href, icon, current, className }: MenuItemProps) => {
+  const Icon = icon;
+
   const item = (
     <>
       {Icon && <Icon className={styles.icon} />}
@@ -28,7 +30,7 @@ const MenuItem = ({ Icon, text, href, current, className }: MenuItemProps) => {
         href={href}
         className={clsx(styles.link, current && styles.current, className)}
         title={text}
-        underline={false}
+        plain
         aria-label={text}
       >
         {item}

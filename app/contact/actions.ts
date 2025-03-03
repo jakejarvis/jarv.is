@@ -15,7 +15,7 @@ export async function sendMessage(
   try {
     // these are both backups to client-side validations just in case someone squeezes through without them. the codes
     // are identical so they're caught in the same fashion.
-    if (!formData.get("name") || !formData.get("email") || !formData.get("message")) {
+    if (!formData || !formData.get("name") || !formData.get("email") || !formData.get("message")) {
       return { success: false, message: "Please make sure that all fields are properly filled in.", payload: formData };
     }
 
@@ -30,7 +30,7 @@ export async function sendMessage(
     });
     const turnstileData = await turnstileResponse.json();
 
-    if (!turnstileData.success) {
+    if (!turnstileData || !turnstileData.success) {
       return {
         success: false,
         message: "Did you complete the CAPTCHA? (If you're human, that is...)",
@@ -44,13 +44,14 @@ export async function sendMessage(
       from: `${formData.get("name")} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
       replyTo: `${formData.get("name")} <${formData.get("email")}>`,
       to: [config.authorEmail],
-      subject: `[${config.siteDomain}] Contact Form Submission`,
+      subject: `[${config.siteName}] Contact Form Submission`,
       text: formData.get("message") as string,
     });
 
     return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
   } catch (error) {
     console.error(error);
+
     return {
       success: false,
       message: "Internal server error... Try again later or shoot me an old-fashioned email?",

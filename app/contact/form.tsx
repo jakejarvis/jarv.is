@@ -27,8 +27,8 @@ const ContactForm = () => {
         placeholder="Name"
         required
         className={styles.input}
-        defaultValue={(formState.payload?.get("name") || "") as string}
-        disabled={formState.success}
+        defaultValue={(formState?.payload?.get("name") || "") as string}
+        disabled={formState?.success}
       />
 
       <input
@@ -38,8 +38,8 @@ const ContactForm = () => {
         required
         inputMode="email"
         className={styles.input}
-        defaultValue={(formState.payload?.get("email") || "") as string}
-        disabled={formState.success}
+        defaultValue={(formState?.payload?.get("email") || "") as string}
+        disabled={formState?.success}
       />
 
       <TextareaAutosize
@@ -48,8 +48,8 @@ const ContactForm = () => {
         minRows={5}
         required
         className={styles.input}
-        defaultValue={(formState.payload?.get("message") || "") as string}
-        disabled={formState.success}
+        defaultValue={(formState?.payload?.get("message") || "") as string}
+        disabled={formState?.success}
       />
 
       <div
@@ -72,7 +72,7 @@ const ContactForm = () => {
           Markdown syntax
         </Link>{" "}
         is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-        <Link href="https://jarv.is" underline={false} openInNewTab>
+        <Link href="https://jarv.is" plain>
           links
         </Link>
         ](https://jarv.is), and <code>`code`</code>.
@@ -86,7 +86,7 @@ const ContactForm = () => {
       />
 
       <div className={styles.actionRow}>
-        {!formState.success && (
+        {!formState?.success && (
           <button type="submit" disabled={pending} className={styles.submitButton}>
             {pending ? (
               <span>Sending...</span>
@@ -98,10 +98,10 @@ const ContactForm = () => {
           </button>
         )}
 
-        {formState.message && (
-          <div className={clsx(styles.result, formState.success ? styles.success : styles.error)}>
-            {formState.success ? <GoCheck className={styles.resultIcon} /> : <GoX className={styles.resultIcon} />}{" "}
-            {formState.message}
+        {formState?.message && (
+          <div className={clsx(styles.result, formState?.success ? styles.success : styles.error)}>
+            {formState?.success ? <GoCheck className={styles.resultIcon} /> : <GoX className={styles.resultIcon} />}{" "}
+            {formState?.message}
           </div>
         )}
       </div>

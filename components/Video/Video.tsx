@@ -10,14 +10,14 @@ export type VideoProps = Omit<Partial<ComponentPropsWithoutRef<"video">>, "src">
     mp4?: string;
     // optional:
     vtt?: string;
-    image?: string;
   };
+  poster?: string;
   autoplay?: boolean;
   responsive?: boolean;
   className?: string;
 };
 
-const Video = ({ src, autoplay = false, responsive = true, className, ...rest }: VideoProps) => {
+const Video = ({ src, poster, autoplay = false, responsive = true, className, ...rest }: VideoProps) => {
   if (!src || (!src.mp4 && !src.webm)) {
     throw new Error("'src' prop must include either 'mp4' or 'webm' URL.");
   }
@@ -34,7 +34,7 @@ const Video = ({ src, autoplay = false, responsive = true, className, ...rest }:
         playsInline={autoplay} // safari autoplay workaround
         loop={autoplay || undefined}
         muted={autoplay || undefined}
-        poster={src.image}
+        poster={poster}
         {...rest}
       >
         {src.webm && <source key={src.webm} src={src.webm} type="video/webm" />}

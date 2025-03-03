@@ -31,9 +31,8 @@ export default function Page() {
       >
         <p>
           Fill out this quick form and I'll get back to you as soon as I can! You can also{" "}
-          <Link href="mailto:jake@jarv.is">email me directly</Link>, send me a{" "}
-          <Link href="https://fediverse.jarv.is/@jake">direct message on Mastodon</Link>, or{" "}
-          <Link href="sms:+1-617-917-3737">text me</Link>.
+          <Link href="mailto:jake@jarv.is">email me directly</Link> or send me a{" "}
+          <Link href="https://fediverse.jarv.is/@jake">direct message on Mastodon</Link>.
         </p>
         <p>
           🔐 You can grab my public key here:{" "}

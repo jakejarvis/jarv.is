@@ -5,7 +5,7 @@ import pMap from "p-map";
 import pMemoize from "p-memoize";
 import matter from "gray-matter";
 import { formatDate } from "./format-date";
-import { metadata as defaultMetadata } from "../../app/layout";
+import config from "../config";
 
 // path to directory with .mdx files, relative to project root
 const POSTS_DIR = "notes";
@@ -71,8 +71,8 @@ export const getPostData = async (
       htmlTitle,
       slug,
       date: formatDate(data.date), // validate/normalize the date string provided from front matter
-      permalink: new URL(`/${POSTS_DIR}/${slug}/`, defaultMetadata.metadataBase || "").href,
-      image: data.image ? new URL(data.image, defaultMetadata.metadataBase || "").href : undefined,
+      permalink: `${config.baseUrl}/${POSTS_DIR}/${slug}/`,
+      image: data.image ? `${config.baseUrl}${data.image}` : undefined,
     },
     markdown: content,
   };

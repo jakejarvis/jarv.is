@@ -33,8 +33,8 @@ export default function Page() {
             webm: "/static/images/hillary/convention-720p.webm",
             mp4: "/static/images/hillary/convention-720p.mp4",
             vtt: "/static/images/hillary/subs.en.vtt",
-            image: thumbnail.src,
           }}
+          poster={thumbnail.src}
         />
 
         <p

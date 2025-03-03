@@ -14,15 +14,7 @@ A few months ago, I stumbled upon [my first website ever](https://jakejarvis.git
 
 Introducing the [**Y2K Sandbox**](/y2k/) — with fully-featured, fully-isolated, on-demand [**Windows Millennium Edition®**](https://www.youtube.com/watch?v=CaNDeyYP98A) virtual machines, simply to experience my first website in its natural Internet Explorer 5 habitat. And maybe play some [3D Pinball: Space Cadet](https://en.wikipedia.org/wiki/Full_Tilt!_Pinball#3D_Pinball_for_Windows_%E2%80%93_Space_Cadet). Oh, and [Microsoft Bob](https://en.wikipedia.org/wiki/Microsoft_Bob) is there too if you want to say hello and catch up. 🤓
 
-<Figure
-  src="/public/static/images/notes/y2k-sandbox/screenshot.png"
-  width="865"
-  height="649"
-  href="/y2k/"
-  priority={true}
->
-  [**Play in the Y2K Sandbox, at your own risk.**](/y2k/)
-</Figure>
+![Play in the Y2K Sandbox, at your own risk.](../public/static/images/notes/y2k-sandbox/screenshot.png)
 
 The backend is powered by [**QEMU**](https://www.qemu.org/) (as a Pentium III emulator) inside isolated **Docker** containers, [**websocketd**](https://github.com/joewalnes/websocketd) (an **_awesome_** lightweight WebSockets server written in Go), and [**Cloudflare Tunnels**](https://www.cloudflare.com/products/tunnel/) (for some protection), all tied together with some [Ruby code](https://github.com/jakejarvis/y2k/blob/main/container/bin/boot.rb) and [shell scripts](https://github.com/jakejarvis/y2k/tree/main/host). ~~I'll push the backend scripts up to GitHub once I have a chance to untangle the spaghetti code. 🍝~~
 
@@ -32,9 +24,7 @@ The frontend is _much_ simpler with [a few lines of JavaScript](https://github.c
 
 I must give credit to both [charlie.bz](https://charlie.bz/) and [benjojo.co.uk](https://benjojo.co.uk/), similar websites I was enamored with when they were posted on Hacker News a few years ago. Think we'll see some websites like these with Windows 29 in a decade?
 
-<Figure src="/public/static/images/notes/y2k-sandbox/windows-me.png" width="320" height="92">
-  **@microsoft** Please don't sue me.
-</Figure>
+![@microsoft Please don't sue me.](../public/static/images/notes/y2k-sandbox/windows-me.png)
 
 Feel free to [open an issue on GitHub](https://github.com/jakejarvis/y2k/issues) if you run into connection glitches or have any nostalgic inspiration for software you think would be cool to install persistently on the OS image. I certainly can't help with any actual Windows Me crashes, though — it was beyond help a long, long time ago. Like, [the day it came out](https://books.google.com/books?id=Jbft8HXJZwQC&lpg=PP1&pg=PA76#v=onepage&q&f=false). But it will always have a soft spot in my heart.
 

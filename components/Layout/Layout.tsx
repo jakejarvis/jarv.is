@@ -14,14 +14,14 @@ const Layout = ({ className, children, ...rest }: LayoutProps) => {
       <SkipToContentLink />
 
       <div className={clsx(styles.flex, className)} {...rest}>
-        <Header className={styles.stickyHeader} />
+        <Header />
 
         <main className={styles.default}>
           <SkipToContentTarget />
           <div className={styles.container}>{children}</div>
         </main>
 
-        <Footer className={styles.flexedFooter} />
+        <Footer />
       </div>
     </>
   );

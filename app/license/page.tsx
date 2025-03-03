@@ -45,11 +45,7 @@ export default function Page() {
         <H2 id="full-text">Creative Commons Attribution 4.0 International Public License</H2>
 
         <p style={{ textAlign: "center", lineHeight: 0 }}>
-          <Link
-            href="https://creativecommons.org/licenses/by/4.0/"
-            title="Creative Commons Attribution 4.0"
-            underline={false}
-          >
+          <Link href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution 4.0" plain>
             <svg width="120" height="42">
               <path d="M3.1.5l113.4.2c1.6 0 3-.2 3 3.2l-.1 37.3H.3V3.7C.3 2.1.4.5 3 .5z" fill="#aab2ab"></path>
               <path d="M117.8 0H2.2C1 0 0 1 0 2.2v39.3c0 .3.2.5.5.5h119c.3 0 .5-.2.5-.5V2.2c0-1.2-1-2.2-2.2-2.2zM2.2 1h115.6c.6 0 1.2.6 1.2 1.2v27.3H36.2a17.8 17.8 0 01-31.1 0H1V2.2C1 1.6 1.5 1 2.1 1z"></path>

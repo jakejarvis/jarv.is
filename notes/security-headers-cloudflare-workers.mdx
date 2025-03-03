@@ -11,26 +11,13 @@ tags:
 image: "/static/images/notes/security-headers-cloudflare-workers/security-headers.png"
 ---
 
-<Figure
-  src="/public/static/images/notes/security-headers-cloudflare-workers/security-headers.png"
-  width="700"
-  height="275"
-  href="https://securityheaders.com/?q=jarv.is&followRedirects=on"
-  priority
->
-  An [A+ security grade](https://securityheaders.com/?q=jarv.is&followRedirects=on) for this website!
-</Figure>
+![An A+ security grade for this website!](../public/static/images/notes/security-headers-cloudflare-workers/security-headers.png)
 
 In 2019, it's becoming more and more important to harden websites via HTTP response headers, which all modern browsers parse and enforce. Multiple standards have been introduced over the past few years to protect users from various attack vectors, including `Content-Security-Policy` for injection protection, `Strict-Transport-Security` for HTTPS enforcement, `X-XSS-Protection` for cross-site scripting prevention, `X-Content-Type-Options` to enforce correct MIME types, `Referrer-Policy` to limit information sent with external links, [and many, many more](https://www.netsparker.com/whitepaper-http-security-headers/).
 
 [Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/) are a great feature of [Cloudflare](https://www.cloudflare.com/) that allows you to modify responses on-the-fly between your origin server and the user, similar to [AWS Lambda](https://aws.amazon.com/lambda/) (but much simpler). We'll use a Worker to add the headers.
 
-<Image
-  src="/public/static/images/notes/security-headers-cloudflare-workers/cf-workers.png"
-  width="650"
-  height="325"
-  alt="Cloudflare Workers"
-/>
+![Cloudflare Workers](../public/static/images/notes/security-headers-cloudflare-workers/cf-workers.png)
 
 Workers can be enabled for $5/month via the [Cloudflare Dashboard](https://dash.cloudflare.com/). (It's worth noting, once enabled, Workers can be used on _any zone_ on your account, not just one website!).
 

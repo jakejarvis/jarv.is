@@ -1,11 +1,15 @@
 import config from "../lib/config";
-import { chrome512Png, chrome192Png, maskable512Png, maskable192Png } from "../lib/config/favicons";
 import type { MetadataRoute } from "next";
+
+import chrome512Png from "../public/static/favicons/android-chrome-512x512.png";
+import chrome192Png from "../public/static/favicons/android-chrome-192x192.png";
+import maskable512Png from "../public/static/favicons/maskable-512x512.png";
+import maskable192Png from "../public/static/favicons/maskable-192x192.png";
 
 const manifest = (): MetadataRoute.Manifest => {
   return {
     name: config.siteName,
-    short_name: config.siteDomain,
+    short_name: config.siteName,
     description: config.longDescription,
     lang: config.siteLocale,
     icons: [

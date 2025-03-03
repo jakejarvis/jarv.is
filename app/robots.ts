@@ -1,5 +1,4 @@
 import config from "../lib/config";
-import { metadata } from "./layout";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -73,7 +72,7 @@ const robots = (): MetadataRoute.Robots => {
         disallow: "/",
       },
     ],
-    sitemap: new URL("sitemap.xml", metadata.metadataBase?.href || `https://${config.siteDomain}`).href,
+    sitemap: `${config.baseUrl}/sitemap.xml`,
   };
 };
 

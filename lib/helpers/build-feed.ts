@@ -1,28 +1,26 @@
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
 import config from "../config";
-import { meJpg } from "../config/favicons";
-import { metadata } from "../../app/layout";
+
+import meJpg from "../../public/static/images/me.jpg";
 
 export const buildFeed = async (options: { type: "rss" | "atom" | "json" }): Promise<string> => {
-  const baseUrl = metadata.metadataBase?.href || `https://${config.siteDomain}/`;
-
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
-    id: baseUrl,
-    link: baseUrl,
+    id: config.baseUrl,
+    link: config.baseUrl,
     title: config.siteName,
     description: config.longDescription,
     copyright: config.licenseUrl,
     updated: new Date(process.env.RELEASE_DATE || Date.now()),
-    image: new URL(meJpg.src, baseUrl).href,
+    image: `${config.baseUrl}${meJpg.src}`,
     feedLinks: {
-      rss: new URL("feed.xml", baseUrl).href,
-      atom: new URL("feed.atom", baseUrl).href,
+      rss: `${config.baseUrl}/feed.xml`,
+      atom: `${config.baseUrl}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: baseUrl,
+      link: config.baseUrl,
       email: config.authorEmail,
     },
   });
@@ -38,7 +36,7 @@ export const buildFeed = async (options: { type: "rss" | "atom" | "json" }): Pro
       author: [
         {
           name: config.authorName,
-          link: baseUrl,
+          link: config.baseUrl,
         },
       ],
       date: new Date(post.date),

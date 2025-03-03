@@ -13,15 +13,7 @@ image: "/static/images/notes/shodan-search-queries/shodan.png"
 
 Over time, I've collected an assortment of interesting, funny, and depressing search queries to plug into [Shodan](https://www.shodan.io/), the ([literal](https://www.vice.com/en_uk/article/9bvxmd/shodan-exposes-the-dark-side-of-the-net)) internet search engine. Some return facepalm-inducing results, while others return serious and/or ancient vulnerabilities in the wild.
 
-<Figure
-  src="/public/static/images/notes/shodan-search-queries/shodan.png"
-  width="865"
-  height="248"
-  href="https://www.shodan.io/"
-  priority
->
-  [**Most search filters require a Shodan account.**](https://account.shodan.io/register)
-</Figure>
+![Most search filters require a Shodan account.](../public/static/images/notes/shodan-search-queries/shodan.png)
 
 You can assume these queries only return unsecured/open instances when possible. For your own legal benefit, do not attempt to login (even with default passwords) if they aren't! Narrow down results by adding filters like `country:US` or `org:"Harvard University"` or `hostname:"nasa.gov"` to the end.
 
@@ -52,12 +44,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 "Server: Prismview Player"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/billboard3.png"
-  width="450"
-  height="329"
-  alt="Example: Electronic Billboards"
-/>
+![Example: Electronic Billboards](../public/static/images/notes/shodan-search-queries/billboard3.png)
 
 ### Gas Station Pump Controllers [🔎 →](https://www.shodan.io/search?query=%22in-tank+inventory%22+port%3A10001)
 
@@ -65,12 +52,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 "in-tank inventory" port:10001
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/7-11.png"
-  width="600"
-  height="226"
-  alt="Example: Gas Station Pump Inventories"
-/>
+![Example: Gas Station Pump Inventories](../public/static/images/notes/shodan-search-queries/7-11.png)
 
 ### Automatic License Plate Readers [🔎 →](https://www.shodan.io/search?query=P372+%22ANPR+enabled%22)
 
@@ -78,12 +60,7 @@ The world and its devices are quickly becoming more connected through the shiny 
 P372 "ANPR enabled"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/plate-reader.png"
-  width="680"
-  height="284"
-  alt="Example: Automatic License Plate Reader"
-/>
+![Example: Automatic License Plate Reader](../public/static/images/notes/shodan-search-queries/plate-reader.png)
 
 ### Traffic Light Controllers / Red Light Cameras [🔎 →](https://www.shodan.io/search?query=mikrotik+streetlight)
 
@@ -119,12 +96,7 @@ Wiretapping mechanism outlined by Cisco in [RFC 3924](https://tools.ietf.org/htm
 http.title:"Tesla PowerPack System" http.component:"d3" -ga3ca4f2
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/tesla.png"
-  width="865"
-  height="543"
-  alt="Example: Tesla PowerPack Charging Status"
-/>
+![Example: Tesla PowerPack Charging Status](../public/static/images/notes/shodan-search-queries/tesla.png)
 
 ### Electric Vehicle Chargers [🔎 →](https://www.shodan.io/search?query=%22Server%3A+gSOAP%2F2.8%22+%22Content-Length%3A+583%22)
 
@@ -140,12 +112,7 @@ Shodan made a pretty sweet [Ship Tracker](https://shiptracker.shodan.io/) that m
 "Cobham SATCOM" OR ("Sailor" "VSAT")
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/sailor-vsat.png"
-  width="700"
-  height="361"
-  alt="Example: Maritime Satellites"
-/>
+![Example: Maritime Satellites](../public/static/images/notes/shodan-search-queries/sailor-vsat.png)
 
 ### Submarine Mission Control Dashboards [🔎 →](https://www.shodan.io/search?query=title%3A%22Slocum+Fleet+Mission+Control%22)
 
@@ -159,12 +126,7 @@ title:"Slocum Fleet Mission Control"
 "Server: CarelDataServer" "200 Document follows"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/refrigeration.png"
-  width="865"
-  height="456"
-  alt="Example: CAREL PlantVisor Refrigeration Units"
-/>
+![Example: CAREL PlantVisor Refrigeration Units](../public/static/images/notes/shodan-search-queries/refrigeration.png)
 
 ### [Nordex Wind Turbine](https://www.nordex-online.com/en/products-services/wind-turbines.html) Farms [🔎 →](https://www.shodan.io/search?query=http.title%3A%22Nordex+Control%22+%22Windows+2000+5.0+x86%22+%22Jetty%2F3.1+%28JSP+1.1%3B+Servlet+2.2%3B+java+1.6.0_14%29%22)
 
@@ -178,12 +140,7 @@ http.title:"Nordex Control" "Windows 2000 5.0 x86" "Jetty/3.1 (JSP 1.1; Servlet 
 "[1m[35mWelcome on console"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/c4max.png"
-  width="865"
-  height="171"
-  alt="Example: C4 Max Vehicle GPS"
-/>
+![Example: C4 Max Vehicle GPS](../public/static/images/notes/shodan-search-queries/c4max.png)
 
 ### [DICOM](https://www.dicomstandard.org/about/) Medical X-Ray Machines [🔎 →](https://www.shodan.io/search?query=%22DICOM+Server+Response%22+port%3A104)
 
@@ -199,12 +156,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 "Server: EIG Embedded Web Server" "200 Document follows"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/power-gaugetech.png"
-  width="500"
-  height="246"
-  alt="Example: GaugeTech Electricity Meters"
-/>
+![Example: GaugeTech Electricity Meters](../public/static/images/notes/shodan-search-queries/power-gaugetech.png)
 
 ### Siemens Industrial Automation [🔎 →](https://www.shodan.io/search?query=%22Siemens%2C+SIMATIC%22+port%3A161)
 
@@ -242,9 +194,7 @@ Secured by default, thankfully, but these 1,700+ machines still [have no busines
 
 [Shodan Images](https://images.shodan.io/) is a great supplementary tool to browse screenshots, by the way! [🔎 →](https://images.shodan.io/?query=%22authentication+disabled%22+%21screenshot.label%3Ablank)
 
-<Figure src="/public/static/images/notes/shodan-search-queries/vnc.png" width="500" height="375">
-  The first result right now. 😞
-</Figure>
+![The first result right now. 😞](../public/static/images/notes/shodan-search-queries/vnc.png)
 
 ### Windows RDP [🔎 →](https://www.shodan.io/search?query=%22%5Cx03%5Cx00%5Cx00%5Cx0b%5Cx06%5Cxd0%5Cx00%5Cx00%5Cx124%5Cx00%22)
 
@@ -266,12 +216,7 @@ Command-line access inside Kubernetes pods and Docker containers, and real-time 
 title:"Weave Scope" http.favicon.hash:567176827
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/weavescope.png"
-  width="865"
-  height="465"
-  alt="Example: Weave Scope Dashboards"
-/>
+![Example: Weave Scope Dashboards](../public/static/images/notes/shodan-search-queries/weavescope.png)
 
 ### MongoDB [🔎 →](https://www.shodan.io/search?query=product%3AMongoDB+-authentication)
 
@@ -281,12 +226,7 @@ Older versions were insecure by default. [Very scary.](https://krebsonsecurity.c
 "MongoDB Server Information" port:27017 -authentication
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/mongo.png"
-  width="500"
-  height="238"
-  alt="Example: MongoDB"
-/>
+![Example: MongoDB](../public/static/images/notes/shodan-search-queries/mongo.png)
 
 ### [Mongo Express](https://github.com/mongo-express/mongo-express) Web GUI [🔎 →](https://www.shodan.io/search?query=%22Set-Cookie%3A+mongo-express%3D%22+%22200+OK%22)
 
@@ -296,12 +236,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 "Set-Cookie: mongo-express=" "200 OK"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/mongo-express.png"
-  width="700"
-  height="395"
-  alt="Example: Mongo Express GUI"
-/>
+![Example: Mongo Express GUI](../public/static/images/notes/shodan-search-queries/mongo-express.png)
 
 ### Jenkins CI [🔎 →](https://www.shodan.io/search?query=%22X-Jenkins%22+%22Set-Cookie%3A+JSESSIONID%22+http.title%3A%22Dashboard%22)
 
@@ -309,12 +244,7 @@ Like the [infamous phpMyAdmin](https://www.cvedetails.com/vulnerability-list/ven
 "X-Jenkins" "Set-Cookie: JSESSIONID" http.title:"Dashboard"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/jenkins.png"
-  width="700"
-  height="225"
-  alt="Example: Jenkins CI"
-/>
+![Example: Jenkins CI](../public/static/images/notes/shodan-search-queries/jenkins.png)
 
 ### Docker APIs [🔎 →](https://www.shodan.io/search?query=%22Docker+Containers%3A%22+port%3A2375)
 
@@ -360,12 +290,7 @@ Lantronix password port:30718 -secured
 "Citrix Applications:" port:1604
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/citrix.png"
-  width="700"
-  height="273"
-  alt="Example: Citrix Virtual Apps"
-/>
+![Example: Citrix Virtual Apps](../public/static/images/notes/shodan-search-queries/citrix.png)
 
 ### Cisco Smart Install [🔎 →](https://www.shodan.io/search?query=%22smart+install+client+active%22)
 
@@ -393,12 +318,7 @@ Telnet Configuration: [🔎 →](https://www.shodan.io/search?query=%22Polycom+C
 "Polycom Command Shell" -failed port:23
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/polycom.png"
-  width="550"
-  height="251"
-  alt="Example: Polycom Video Conferencing"
-/>
+![Example: Polycom Video Conferencing](../public/static/images/notes/shodan-search-queries/polycom.png)
 
 ### [Bomgar Help Desk](https://www.beyondtrust.com/remote-support/integrations) Portal [🔎 →](https://www.shodan.io/search?query=%22Server%3A+Bomgar%22+%22200+OK%22)
 
@@ -426,12 +346,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "x-owa-version" "IE=EmulateIE7" "Server: Microsoft-IIS/7.0"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/owa2007.png"
-  width="450"
-  height="494"
-  alt="Example: OWA for Exchange 2007"
-/>
+![Example: OWA for Exchange 2007](../public/static/images/notes/shodan-search-queries/owa2007.png)
 
 #### Exchange 2010 [🔎 →](https://www.shodan.io/search?query=%22x-owa-version%22+%22IE%3DEmulateIE7%22+http.favicon.hash%3A442749392)
 
@@ -439,12 +354,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "x-owa-version" "IE=EmulateIE7" http.favicon.hash:442749392
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/owa2010.png"
-  width="450"
-  height="429"
-  alt="Example: OWA for Exchange 2010"
-/>
+![Example: OWA for Exchange 2010](../public/static/images/notes/shodan-search-queries/owa2010.png)
 
 #### Exchange 2013 / 2016 [🔎 →](https://www.shodan.io/search?query=%22X-AspNet-Version%22+http.title%3A%22Outlook%22+-%22x-owa-version%22)
 
@@ -452,12 +362,7 @@ HP-ILO-4 !"HP-ILO-4/2.53" !"HP-ILO-4/2.54" !"HP-ILO-4/2.55" !"HP-ILO-4/2.60" !"H
 "X-AspNet-Version" http.title:"Outlook" -"x-owa-version"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/owa2013.png"
-  width="580"
-  height="230"
-  alt="Example: OWA for Exchange 2013/2016"
-/>
+![Example: OWA for Exchange 2013/2016](../public/static/images/notes/shodan-search-queries/owa2013.png)
 
 ### Lync / Skype for Business [🔎 →](https://www.shodan.io/search?query=%22X-MS-Server-Fqdn%22)
 
@@ -501,12 +406,7 @@ Concerning [default network shares of QuickBooks](https://quickbooks.intuit.com/
 "Set-Cookie: iomega=" -"manage/login.html" -http.title:"Log In"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/iomega.png"
-  width="600"
-  height="215"
-  alt="Example: Iomega / LenovoEMC NAS Drives"
-/>
+![Example: Iomega / LenovoEMC NAS Drives](../public/static/images/notes/shodan-search-queries/iomega.png)
 
 ### Buffalo TeraStation NAS Drives [🔎 →](https://www.shodan.io/search?query=Redirecting+sencha+port%3A9000)
 
@@ -514,12 +414,7 @@ Concerning [default network shares of QuickBooks](https://quickbooks.intuit.com/
 Redirecting sencha port:9000
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/buffalo.png"
-  width="580"
-  height="140"
-  alt="Example: Buffalo TeraStation NAS Drives"
-/>
+![Example: Buffalo TeraStation NAS Drives](../public/static/images/notes/shodan-search-queries/buffalo.png)
 
 ### Logitech Media Servers [🔎 →](https://www.shodan.io/search?query=%22Server%3A+Logitech+Media+Server%22+%22200+OK%22)
 
@@ -527,12 +422,7 @@ Redirecting sencha port:9000
 "Server: Logitech Media Server" "200 OK"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/logitech.png"
-  width="500"
-  height="224"
-  alt="Example: Logitech Media Servers"
-/>
+![Example: Logitech Media Servers](../public/static/images/notes/shodan-search-queries/logitech.png)
 
 ### [Plex](https://www.plex.tv/) Media Servers [🔎 →](https://www.shodan.io/search?query=%22X-Plex-Protocol%22+%22200+OK%22+port%3A32400)
 
@@ -546,12 +436,7 @@ Redirecting sencha port:9000
 "CherryPy/5.1.0" "/home"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/plexpy.png"
-  width="560"
-  height="266"
-  alt="Example: PlexPy / Tautulli Dashboards"
-/>
+![Example: PlexPy / Tautulli Dashboards](../public/static/images/notes/shodan-search-queries/plexpy.png)
 
 ---
 
@@ -593,12 +478,7 @@ html:"DVR_H264 ActiveX"
 "Serial Number:" "Built:" "Server: HP HTTP"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/hp.png"
-  width="700"
-  height="272"
-  alt="Example: HP Printers"
-/>
+![Example: HP Printers](../public/static/images/notes/shodan-search-queries/hp.png)
 
 ### Xerox Copiers/Printers [🔎 →](https://www.shodan.io/search?query=ssl%3A%22Xerox+Generic+Root%22)
 
@@ -606,12 +486,7 @@ html:"DVR_H264 ActiveX"
 ssl:"Xerox Generic Root"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/xerox.png"
-  width="620"
-  height="263"
-  alt="Example: Xerox Copiers/Printers"
-/>
+![Example: Xerox Copiers/Printers](../public/static/images/notes/shodan-search-queries/xerox.png)
 
 ### Epson Printers [🔎 →](https://www.shodan.io/search?query=%22SERVER%3A+EPSON_Linux+UPnP%22+%22200+OK%22)
 
@@ -623,12 +498,7 @@ ssl:"Xerox Generic Root"
 "Server: EPSON-HTTP" "200 OK"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/epson.png"
-  width="550"
-  height="308"
-  alt="Example: Epson Printers"
-/>
+![Example: Epson Printers](../public/static/images/notes/shodan-search-queries/epson.png)
 
 ### Canon Printers [🔎 →](https://www.shodan.io/search?query=%22Server%3A+KS_HTTP%22+%22200+OK%22)
 
@@ -640,12 +510,7 @@ ssl:"Xerox Generic Root"
 "Server: CANON HTTP Server"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/canon.png"
-  width="550"
-  height="195"
-  alt="Example: Canon Printers"
-/>
+![Example: Canon Printers](../public/static/images/notes/shodan-search-queries/canon.png)
 
 ---
 
@@ -657,12 +522,7 @@ ssl:"Xerox Generic Root"
 "Server: AV_Receiver" "HTTP/1.1 406"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/yamaha.png"
-  width="550"
-  height="349"
-  alt="Example: Yamaha Stereos"
-/>
+![Example: Yamaha Stereos](../public/static/images/notes/shodan-search-queries/yamaha.png)
 
 ### Apple AirPlay Receivers [🔎 →](https://www.shodan.io/search?query=%22%5Cx08_airplay%22+port%3A5353)
 
@@ -694,12 +554,7 @@ Apple TVs, HomePods, etc.
 title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/octoprint.png"
-  width="700"
-  height="335"
-  alt="Example: OctoPrint 3D Printers"
-/>
+![Example: OctoPrint 3D Printers](../public/static/images/notes/shodan-search-queries/octoprint.png)
 
 ### Etherium Miners [🔎 →](https://www.shodan.io/search?query=%22ETH+-+Total+speed%22)
 
@@ -707,12 +562,7 @@ title:"OctoPrint" -title:"Login" http.favicon.hash:1307375944
 "ETH - Total speed"
 ```
 
-<Image
-  src="/public/static/images/notes/shodan-search-queries/eth.png"
-  width="800"
-  height="141"
-  alt="Example: Etherium Miners"
-/>
+![Example: Etherium Miners](../public/static/images/notes/shodan-search-queries/eth.png)
 
 ### Apache Directory Listings [🔎 →](https://www.shodan.io/search?query=http.title%3A%22Index+of+%2F%22+http.html%3A%22.pem%22)
 
