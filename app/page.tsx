@@ -1,4 +1,3 @@
-import { useId } from "react";
 import { GoLock } from "react-icons/go";
 import { rgba } from "polished";
 import Link from "../components/Link";
@@ -16,15 +15,15 @@ const ColorfulLink = ({
   lightColor: string;
   darkColor: string;
 }) => {
-  const uniqueId = `Link_themed__${useId().replace(/\W/g, "")}`;
+  const uniqueId = `Link_themed__${lightColor.replace("#", "")}_${darkColor.replace("#", "")}`;
 
   return (
     <>
-      <Link id={uniqueId} {...rest}>
+      <Link className={uniqueId} {...rest}>
         {children}
       </Link>
 
-      <style>{`.${styles.page} #${uniqueId}{color:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${styles.page} #${uniqueId}{color:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
+      <style>{`.${styles.page} .${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${styles.page} .${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
     </>
   );
 };
@@ -278,8 +277,8 @@ export default function Page() {
           href="https://bsky.app/profile/jarv.is"
           rel="me"
           title="Jake Jarvis on Bluesky"
-          lightColor="#0085FF"
-          darkColor="#208BFE"
+          lightColor="#0085ff"
+          darkColor="#208bfe"
         >
           Bluesky
         </ColorfulLink>

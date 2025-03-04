@@ -28,6 +28,7 @@
     "@octokit/graphql-schema": "^15.26.0",
     "@prisma/client": "^6.4.1",
     "@react-spring/web": "^9.7.5",
+    "@sentry/nextjs": "^9.3.0",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "comma-number": "^2.1.0",
