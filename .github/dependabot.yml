@@ -24,11 +24,12 @@ updates:
         patterns:
           - "prisma"
           - "@prisma/*"
-      remark-rehype:
+      mdx:
         patterns:
           - "remark-*"
           - "rehype-*"
           - "unified"
+          - "@mdx-js/*"
       eslint:
         patterns:
           - "eslint"

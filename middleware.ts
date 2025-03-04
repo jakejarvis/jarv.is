@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import config from "./lib/config";
+import siteConfig from "./lib/config";
 
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
-  if (config.onionDomain) {
-    response.headers.set("Onion-Location", `${config.onionDomain}${request.nextUrl.pathname}`);
+  if (siteConfig.onionDomain) {
+    response.headers.set("Onion-Location", `${siteConfig.onionDomain}${request.nextUrl.pathname}`);
   }
 
   // debugging 🥛
@@ -16,3 +16,8 @@ export function middleware(request: NextRequest) {
 
   return response;
 }
+
+export const config = {
+  // save compute time by skipping middleware for static and metadata files
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest).*)"],
+};

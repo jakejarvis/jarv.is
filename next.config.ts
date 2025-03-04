@@ -6,7 +6,6 @@ import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  skipMiddlewareUrlNormalize: true,
   productionBrowserSourceMaps: true,
   env: {
     // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
@@ -23,7 +22,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
-    largePageDataBytes: 512 * 1000, // raise getStaticProps limit to 512 kB since compiled MDX will exceed the default.
   },
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
