@@ -22,13 +22,13 @@
     "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/bundle-analyzer": "15.2.2-canary.0",
-    "@next/mdx": "15.2.2-canary.0",
+    "@next/bundle-analyzer": "15.2.2-canary.1",
+    "@next/mdx": "15.2.2-canary.1",
     "@octokit/graphql": "^8.2.1",
     "@octokit/graphql-schema": "^15.26.0",
     "@prisma/client": "^6.4.1",
     "@react-spring/web": "^9.7.5",
-    "@sentry/nextjs": "^9.3.0",
+    "@sentry/nextjs": "^9.4.0",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "comma-number": "^2.1.0",
@@ -38,7 +38,7 @@
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "modern-normalize": "^3.0.1",
-    "next": "15.2.2-canary.0",
+    "next": "15.2.2-canary.1",
     "obj-str": "^1.1.0",
     "p-map": "^7.0.3",
     "p-memoize": "^7.1.1",
@@ -66,7 +66,8 @@
     "remark-rehype": "^11.1.1",
     "remark-smartypants": "^3.0.2",
     "resend": "^4.1.2",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
@@ -81,7 +82,7 @@
     "@types/react-is": "^19.0.0",
     "cross-env": "^7.0.3",
     "eslint": "~9.21.0",
-    "eslint-config-next": "15.2.2-canary.0",
+    "eslint-config-next": "15.2.2-canary.1",
     "eslint-config-prettier": "~10.0.2",
     "eslint-plugin-mdx": "~3.1.5",
     "eslint-plugin-prettier": "~5.2.3",
@@ -118,6 +119,8 @@
     "onlyBuiltDependencies": [
       "@prisma/client",
       "@prisma/engines",
+      "@sentry/cli",
+      "esbuild",
       "prisma",
       "sharp",
       "simple-git-hooks"

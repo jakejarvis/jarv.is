@@ -1,7 +1,16 @@
 "use server";
 
+import { headers } from "next/headers";
+import { z } from "zod";
 import { Resend } from "resend";
 import config from "../../lib/config";
+
+const schema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  message: z.string().min(1, { message: "Message is required" }),
+  ["cf-turnstile-response"]: z.string().min(1, { message: "CAPTCHA not completed" }),
+});
 
 export async function sendMessage(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,13 +19,22 @@ export async function sendMessage(
 ): Promise<{
   success: boolean;
   message: string;
+  errors?: z.inferFormattedError<typeof schema>;
   payload: FormData;
 }> {
   try {
-    // these are both backups to client-side validations just in case someone squeezes through without them. the codes
-    // are identical so they're caught in the same fashion.
-    if (!formData || !formData.get("name") || !formData.get("email") || !formData.get("message")) {
-      return { success: false, message: "Please make sure that all fields are properly filled in.", payload: formData };
+    const validatedFields = schema.safeParse({ ...formData });
+
+    // backup to client-side validations just in case someone squeezes through without them
+    if (!validatedFields.success) {
+      console.error(validatedFields.error.flatten());
+
+      return {
+        success: false,
+        message: "Please make sure that all fields are properly filled in.",
+        errors: validatedFields.error.format(),
+        payload: formData,
+      };
     }
 
     // validate captcha
@@ -25,12 +43,14 @@ export async function sendMessage(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         secret: process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
-        response: formData.get("cf-turnstile-response"),
+        response: validatedFields.data["cf-turnstile-response"],
+        remoteip: (await headers()).get("x-forwarded-for") || "",
       }),
+      cache: "no-store",
     });
-    const turnstileData = await turnstileResponse.json();
+    const turnstileData = await turnstileResponse?.json();
 
-    if (!turnstileData || !turnstileData.success) {
+    if (!turnstileData?.success) {
       return {
         success: false,
         message: "Did you complete the CAPTCHA? (If you're human, that is...)",
@@ -41,11 +61,11 @@ export async function sendMessage(
     // send email
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: `${formData.get("name")} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
-      replyTo: `${formData.get("name")} <${formData.get("email")}>`,
+      from: `${validatedFields.data.name} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
+      replyTo: `${validatedFields.data.name} <${validatedFields.data.email}>`,
       to: [config.authorEmail],
       subject: `[${config.siteName}] Contact Form Submission`,
-      text: formData.get("message") as string,
+      text: validatedFields.data.message,
     });
 
     return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
@@ -55,6 +75,7 @@ export async function sendMessage(
     return {
       success: false,
       message: "Internal server error... Try again later or shoot me an old-fashioned email?",
+      errors: error instanceof z.ZodError ? error.format() : undefined,
       payload: formData,
     };
   }

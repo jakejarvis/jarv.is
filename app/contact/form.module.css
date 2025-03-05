@@ -14,15 +14,15 @@
   border-color: var(--colors-link);
 }
 
-.input.missing {
-  border-color: var(--colors-error);
-}
-
 .input.textarea {
   margin-bottom: 0;
   line-height: 1.5;
-  min-height: 10em;
+  min-height: 136px; /* approx 5 lines, to avoid severe layout shifting */
   resize: vertical;
+}
+
+.input.invalid {
+  border-color: var(--colors-error);
 }
 
 .actionRow {

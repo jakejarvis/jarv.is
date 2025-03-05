@@ -23,7 +23,7 @@ const ColorfulLink = ({
         {children}
       </Link>
 
-      <style>{`.${styles.page} .${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${styles.page} .${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
+      <style>{`.${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
     </>
   );
 };
