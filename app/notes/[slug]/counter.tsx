@@ -19,7 +19,8 @@ const HitCounter = async ({ slug }: { slug: string }) => {
     // we have data!
     return <span title={`${commaNumber(hits)} ${hits === 1 ? "view" : "views"}`}>{commaNumber(hits)}</span>;
   } catch (error) {
-    console.error(error);
+    console.error("[hit counter] fatal error:", error);
+
     throw new Error();
   }
 };

@@ -117,7 +117,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </div>
 
         {/* only count hits on production site */}
-        {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+        {process.env.NEXT_PUBLIC_VERCEL_ENV !== "development" && process.env.NODE_ENV !== "development" ? (
           <ErrorBoundary fallback={null}>
             <div
               className={styles.metaItem}
@@ -133,7 +133,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               </Suspense>
             </div>
           </ErrorBoundary>
-        )}
+        ) : null}
       </div>
 
       <h1 className={styles.title}>

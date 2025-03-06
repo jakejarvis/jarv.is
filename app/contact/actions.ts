@@ -27,7 +27,7 @@ export async function sendMessage(
 
     // backup to client-side validations just in case someone squeezes through without them
     if (!validatedFields.success) {
-      console.error(validatedFields.error.flatten());
+      console.error("[contact form] validation error:", validatedFields.error.flatten());
 
       return {
         success: false,
@@ -51,7 +51,7 @@ export async function sendMessage(
     });
 
     if (!turnstileResponse.ok) {
-      throw new Error(`Turnstile validation failed: ${turnstileResponse.status}`);
+      throw new Error(`[contact form] turnstile validation failed: ${turnstileResponse.status}`);
     }
 
     const turnstileData = await turnstileResponse?.json();
@@ -76,7 +76,7 @@ export async function sendMessage(
 
     return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("[contact form] fatal error:", error);
 
     return {
       success: false,
