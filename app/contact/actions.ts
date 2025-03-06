@@ -20,10 +20,10 @@ export async function sendMessage(
   success: boolean;
   message: string;
   errors?: z.inferFormattedError<typeof schema>;
-  payload: FormData;
+  payload?: FormData;
 }> {
   try {
-    const validatedFields = schema.safeParse({ ...formData });
+    const validatedFields = schema.safeParse(Object.fromEntries(formData));
 
     // backup to client-side validations just in case someone squeezes through without them
     if (!validatedFields.success) {
@@ -47,7 +47,13 @@ export async function sendMessage(
         remoteip: (await headers()).get("x-forwarded-for") || "",
       }),
       cache: "no-store",
+      signal: AbortSignal.timeout(5000), // 5 second timeout
     });
+
+    if (!turnstileResponse.ok) {
+      throw new Error(`Turnstile validation failed: ${turnstileResponse.status}`);
+    }
+
     const turnstileData = await turnstileResponse?.json();
 
     if (!turnstileData?.success) {
@@ -70,7 +76,7 @@ export async function sendMessage(
 
     return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
   } catch (error) {
-    console.error(error);
+    console.error("Contact form error:", error);
 
     return {
       success: false,

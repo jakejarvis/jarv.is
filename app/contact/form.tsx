@@ -12,9 +12,9 @@ import { SiMarkdown } from "react-icons/si";
 import styles from "./form.module.css";
 
 const ContactForm = () => {
-  const [formState, formAction, pending] = useActionState<Partial<Awaited<ReturnType<typeof sendMessage>>>, FormData>(
+  const [formState, formAction, pending] = useActionState<Awaited<ReturnType<typeof sendMessage>>, FormData>(
     sendMessage,
-    {}
+    { success: false, message: "" }
   );
 
   return (
