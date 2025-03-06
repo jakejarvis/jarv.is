@@ -19,7 +19,5 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // save compute time by skipping middleware for static and metadata files
-  matcher: [
-    "/((?!_next/static|_next/image|_vercel|_instrument|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest).*)",
-  ],
+  matcher: ["/((?!_next/static|_next/image|_vercel|static|favicon.ico).*)"],
 };

@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import createBundleAnalyzer from "@next/bundle-analyzer";
-import { withSentryConfig } from "@sentry/nextjs";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 
 const nextConfig: NextConfig = {
@@ -159,17 +158,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withSentryConfig(withBundleAnalyzer(withMDX(nextConfig)), {
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/build/
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
-  silent: !process.env.CI,
-  widenClientFileUpload: true,
-  autoInstrumentAppDirectory: true,
-  autoInstrumentMiddleware: false,
-  autoInstrumentServerFunctions: true,
-  tunnelRoute: "/_instrument/",
-  disableLogger: true,
-  automaticVercelMonitors: true,
-  telemetry: false,
-});
+export default withBundleAnalyzer(withMDX(nextConfig));
