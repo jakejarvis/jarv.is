@@ -4,7 +4,7 @@ import Video from "../../components/Video";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import thumbnail from "../../public/static/images/birthday/thumb.png";
+import thumbnail from "./thumbnail.png";
 
 export const metadata: Metadata = {
   title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
@@ -29,8 +29,8 @@ export default function Page() {
       <Content>
         <Video
           src={{
-            webm: "/static/images/birthday/birthday.webm",
-            mp4: "/static/images/birthday/birthday.mp4",
+            webm: "/static/birthday/birthday.webm",
+            mp4: "/static/birthday/birthday.mp4",
           }}
           poster={thumbnail.src}
         />

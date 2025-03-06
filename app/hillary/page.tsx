@@ -5,7 +5,7 @@ import Video from "../../components/Video";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import thumbnail from "../../public/static/images/hillary/thumb.png";
+import thumbnail from "./thumbnail.png";
 
 export const metadata: Metadata = {
   title: "My Brief Apperance in Hillary Clinton's DNC Video",
@@ -30,9 +30,9 @@ export default function Page() {
       <Content>
         <Video
           src={{
-            webm: "/static/images/hillary/convention-720p.webm",
-            mp4: "/static/images/hillary/convention-720p.mp4",
-            vtt: "/static/images/hillary/subs.en.vtt",
+            webm: "/static/hillary/convention-720p.webm",
+            mp4: "/static/hillary/convention-720p.mp4",
+            vtt: "/static/hillary/subs.en.vtt",
           }}
           poster={thumbnail.src}
         />

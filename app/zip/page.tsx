@@ -4,7 +4,7 @@ import CodeBlock from "../../components/CodeBlock/CodeBlock";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import backgroundImg from "../../public/static/images/zip/bg.jpg";
+import backgroundImg from "./images/sundar.jpg";
 
 export const metadata: Metadata = {
   title: "fuckyougoogle.zip",

@@ -137,7 +137,6 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const withMDX = createMDX({
   options: {
     remarkPlugins: [
-      mdxPlugins.remarkFrontmatter,
       [mdxPlugins.remarkGfm, { singleTilde: false }],
       [
         mdxPlugins.remarkSmartypants,

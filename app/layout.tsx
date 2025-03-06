@@ -11,7 +11,7 @@ import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorh
 import "./themes.css";
 import "./global.css";
 
-import meJpg from "../public/static/images/me.jpg";
+import meJpg from "./me.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),

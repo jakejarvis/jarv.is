@@ -8,7 +8,7 @@ import { UnorderedList, ListItem } from "../../components/List";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata, Route } from "next";
 
-import desktopImg from "../../public/static/images/uses/desktop.png";
+import desktopImg from "./images/desktop.png";
 
 export const metadata: Metadata = {
   title: "/uses",

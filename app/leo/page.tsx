@@ -5,7 +5,7 @@ import Video from "../../components/Video";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import thumbnail from "../../public/static/images/leo/thumb.png";
+import thumbnail from "./thumbnail.png";
 
 export const metadata: Metadata = {
   title: 'Facebook App on "The Lab with Leo Laporte"',
@@ -30,9 +30,9 @@ export default function Page() {
       <Content>
         <Video
           src={{
-            webm: "/static/images/leo/leo.webm",
-            mp4: "/static/images/leo/leo.mp4",
-            vtt: "/static/images/leo/subs.en.vtt",
+            webm: "/static/leo/leo.webm",
+            mp4: "/static/leo/leo.mp4",
+            vtt: "/static/leo/subs.en.vtt",
           }}
           poster={thumbnail.src}
         />

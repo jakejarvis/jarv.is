@@ -12,20 +12,20 @@ import type { Metadata } from "next";
 import { ComicNeue } from "../../lib/styles/fonts";
 import styles from "./page.module.css";
 
-import img_wayback from "../../public/static/images/previously/wayback.png";
-import img_2002_02 from "../../public/static/images/previously/2002_02.png";
-import img_2002_10 from "../../public/static/images/previously/2002_10.png";
-import img_2003_08 from "../../public/static/images/previously/2003_08.png";
-import img_2004_11 from "../../public/static/images/previously/2004_11.png";
-import img_2006_04 from "../../public/static/images/previously/2006_04.png";
-import img_2006_05 from "../../public/static/images/previously/2006_05.png";
-import img_2007_01 from "../../public/static/images/previously/2007_01.png";
-import img_2007_04 from "../../public/static/images/previously/2007_04.png";
-import img_2007_05 from "../../public/static/images/previously/2007_05.png";
-import img_2009_07 from "../../public/static/images/previously/2009_07.png";
-import img_2012_09 from "../../public/static/images/previously/2012_09.png";
-import img_2018_04 from "../../public/static/images/previously/2018_04.png";
-import img_2020_03 from "../../public/static/images/previously/2020_03.png";
+import img_wayback from "./images/wayback.png";
+import img_2002_02 from "./images/2002_02.png";
+import img_2002_10 from "./images/2002_10.png";
+import img_2003_08 from "./images/2003_08.png";
+import img_2004_11 from "./images/2004_11.png";
+import img_2006_04 from "./images/2006_04.png";
+import img_2006_05 from "./images/2006_05.png";
+import img_2007_01 from "./images/2007_01.png";
+import img_2007_04 from "./images/2007_04.png";
+import img_2007_05 from "./images/2007_05.png";
+import img_2009_07 from "./images/2009_07.png";
+import img_2012_09 from "./images/2012_09.png";
+import img_2018_04 from "./images/2018_04.png";
+import img_2020_03 from "./images/2020_03.png";
 
 export const metadata: Metadata = {
   title: "Previously on...",

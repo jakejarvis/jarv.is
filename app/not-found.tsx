@@ -11,8 +11,8 @@ export default async function Page() {
     <div style={{ textAlign: "center" }}>
       <Video
         src={{
-          webm: "/static/images/angry-panda.webm",
-          mp4: "/static/images/angry-panda.mp4",
+          webm: "/static/not-found/angry-panda.webm",
+          mp4: "/static/not-found/angry-panda.mp4",
         }}
         autoplay
         responsive={false}

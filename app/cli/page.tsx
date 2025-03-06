@@ -9,7 +9,7 @@ import { UnorderedList, ListItem } from "../../components/List";
 import { metadata as defaultMetadata } from "../layout";
 import type { Metadata } from "next";
 
-import cliImg from "../../public/static/images/cli/screenshot.png";
+import cliImg from "./images/screenshot.png";
 
 export const metadata: Metadata = {
   title: "CLI",

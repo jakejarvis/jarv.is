@@ -6,7 +6,7 @@ import Time from "../../../components/Time";
 import Comments from "../../../components/Comments";
 import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
-import { getPostSlugs, getPostData } from "../../../lib/helpers/posts";
+import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { metadata as defaultMetadata } from "../../layout";
 import config from "../../../lib/config";
 import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
@@ -32,22 +32,22 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const { frontMatter } = await getPostData(slug);
+  const frontmatter = await getFrontMatter(slug);
 
   return {
-    title: frontMatter.title,
-    description: frontMatter.description,
+    title: frontmatter.title,
+    description: frontmatter.description,
     openGraph: {
       ...defaultMetadata.openGraph,
-      title: frontMatter.title,
+      title: frontmatter.title,
       url: `/notes/${slug}`,
       type: "article",
       authors: [config.authorName],
-      tags: frontMatter.tags,
-      publishedTime: frontMatter.date,
-      modifiedTime: frontMatter.date,
-      images: frontMatter.image
-        ? [{ url: frontMatter.image, alt: frontMatter.title }]
+      tags: frontmatter.tags,
+      publishedTime: frontmatter.date,
+      modifiedTime: frontmatter.date,
+      images: frontmatter.image
+        ? [{ url: frontmatter.image, alt: frontmatter.title }]
         : defaultMetadata.openGraph?.images,
     },
     alternates: {
@@ -59,17 +59,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const { frontMatter } = await getPostData(slug);
+  const frontmatter = await getFrontMatter(slug);
 
   const jsonLd: WithContext<Article> = {
     "@context": "https://schema.org",
     "@type": "Article",
-    name: frontMatter.title,
-    description: frontMatter.description || config.longDescription,
-    url: frontMatter.permalink,
-    image: frontMatter.image,
-    datePublished: frontMatter.date,
-    dateModified: frontMatter.date,
+    name: frontmatter.title,
+    description: frontmatter.description || config.longDescription,
+    url: frontmatter.permalink,
+    image: frontmatter.image,
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
     author: {
       "@type": "Person",
       name: config.authorName,
@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     },
   };
 
-  const { default: MDXContent } = await import(`../../../notes/${slug}.mdx`);
+  const { default: MDXContent } = await import(`../../../notes/${slug}/index.mdx`);
 
   return (
     <>
@@ -85,17 +85,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <div className={styles.meta}>
         <div className={styles.metaItem}>
-          <Link href={`/notes/${frontMatter.slug}` as Route} plain className={styles.metaLink}>
+          <Link href={`/notes/${frontmatter.slug}` as Route} plain className={styles.metaLink}>
             <FiCalendar className={styles.metaIcon} />
-            <Time date={frontMatter.date} format="MMMM D, YYYY" />
+            <Time date={frontmatter.date} format="MMMM D, YYYY" />
           </Link>
         </div>
 
-        {frontMatter.tags && (
+        {frontmatter.tags && (
           <div className={styles.metaItem}>
             <FiTag className={styles.metaIcon} />
             <span className={styles.metaTags}>
-              {frontMatter.tags.map((tag) => (
+              {frontmatter.tags.map((tag) => (
                 <span key={tag} title={tag} className={styles.metaTag} aria-label={`Tagged with ${tag}`}>
                   {tag}
                 </span>
@@ -106,8 +106,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
         <div className={styles.metaItem}>
           <Link
-            href={`https://github.com/${config.githubRepo}/blob/main/notes/${frontMatter.slug}.mdx`}
-            title={`Edit "${frontMatter.title}" on GitHub`}
+            href={`https://github.com/${config.githubRepo}/blob/main/notes/${frontmatter.slug}/index.mdx`}
+            title={`Edit "${frontmatter.title}" on GitHub`}
             plain
             className={styles.metaLink}
           >
@@ -129,7 +129,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             >
               <FiEye className={styles.metaIcon} />
               <Suspense fallback={<Loading boxes={3} width={20} />}>
-                <HitCounter slug={`notes/${frontMatter.slug}`} />
+                <HitCounter slug={`notes/${frontmatter.slug}`} />
               </Suspense>
             </div>
           </ErrorBoundary>
@@ -138,8 +138,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <h1 className={styles.title}>
         <Link
-          href={`/notes/${frontMatter.slug}` as Route}
-          dangerouslySetInnerHTML={{ __html: frontMatter.htmlTitle || frontMatter.title }}
+          href={`/notes/${frontmatter.slug}` as Route}
+          dangerouslySetInnerHTML={{ __html: frontmatter.htmlTitle || frontmatter.title }}
           plain
           className={styles.link}
         />
@@ -149,9 +149,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <MDXContent />
       </Content>
 
-      {!frontMatter.noComments && (
+      {!frontmatter.noComments && (
         <div id="comments">
-          <Comments title={frontMatter.title} />
+          <Comments title={frontmatter.title} />
         </div>
       )}
     </>
