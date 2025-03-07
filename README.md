@@ -11,6 +11,8 @@ I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/iss
 
 ## 🕹️ Getting Started
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jakejarvis/jarv.is)
+
 Run `pnpm install` to install the necessary dependencies and `pnpm dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed.
 
 Most production steps are handled [automatically by Vercel](https://vercel.com/docs/frameworks/nextjs), but running `pnpm build` locally will still generate an unoptimized, less-than-ideal static version which can be served via `pnpm start`.
