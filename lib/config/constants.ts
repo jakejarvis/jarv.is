@@ -1,6 +1,4 @@
-// @ts-check
-
-const config = {
+const constants = {
   // Site info
   siteName: "Jake Jarvis",
   siteLocale: "en-US",
@@ -20,11 +18,6 @@ const config = {
   licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
   copyrightYearStart: 2001,
   githubRepo: "jakejarvis/jarv.is",
-  giscusConfig: {
-    // https://github.com/giscus/giscus-component/tree/main/packages/react#readme
-    repoId: "MDEwOlJlcG9zaXRvcnk1MzM0MDgxMQ==",
-    categoryId: "DIC_kwDOAy3qi84CAsjS",
-  },
 
   // Me info
   authorName: "Jake Jarvis",
@@ -42,4 +35,4 @@ const config = {
   },
 };
 
-export default config;
+export default constants;

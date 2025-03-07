@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "../Link";
 import { GoHeartFill } from "react-icons/go";
 import { SiNextdotjs } from "react-icons/si";
-import config from "../../lib/config";
+import config from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Footer.module.css";

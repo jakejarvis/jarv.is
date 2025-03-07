@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
   },
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
-    dirs: ["app", "components", "contexts", "hooks", "lib"],
+    dirs: ["app", "components", "contexts", "hooks", "lib", "notes"],
   },
   headers: async () => [
     {

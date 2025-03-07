@@ -8,7 +8,7 @@ import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { metadata as defaultMetadata } from "../../layout";
-import config from "../../../lib/config";
+import config from "../../../lib/config/constants";
 import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import type { Metadata, Route } from "next";
 import type { Article, WithContext } from "schema-dts";

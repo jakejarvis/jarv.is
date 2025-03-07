@@ -1,7 +1,7 @@
 import path from "path";
 import glob from "fast-glob";
 import { getAllPosts } from "../lib/helpers/posts";
-import config from "../lib/config";
+import config from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";

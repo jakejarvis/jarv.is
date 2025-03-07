@@ -35,10 +35,11 @@ const Video = ({ src, poster, autoplay = false, responsive = true, className, ..
       >
         {src.map((file) => {
           const extension = file.split(".").pop();
+
           if (extension === "vtt") {
             return <track key={file} kind="subtitles" src={file} srcLang="en" label="English" default />;
           } else {
-            return <source key={file} src={file} type={`video/${file.split(".").pop()}`} />;
+            return <source key={file} src={file} type={`video/${extension}`} />;
           }
         })}
       </video>

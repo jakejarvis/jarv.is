@@ -2,7 +2,7 @@ import Content from "../../components/Content";
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
-import config from "../../lib/config";
+import config from "../../lib/config/constants";
 import { metadata as defaultMetadata } from "../layout";
 import type { ReactElement } from "react";
 import type { Metadata, Route } from "next";

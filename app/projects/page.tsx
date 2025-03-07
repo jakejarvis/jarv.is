@@ -4,7 +4,7 @@ import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
 import commaNumber from "comma-number";
-import config from "../../lib/config";
+import config from "../../lib/config/constants";
 import { metadata as defaultMetadata } from "../layout";
 import { GoStar, GoRepoForked } from "react-icons/go";
 import { SiGithub } from "react-icons/si";
@@ -43,8 +43,8 @@ type Project = {
 
 async function getRepos(): Promise<Project[] | null> {
   // don't fail the entire site build if the required API key for this page is missing
-  if (!process.env.GH_PUBLIC_TOKEN || process.env.GH_PUBLIC_TOKEN === "") {
-    console.warn(`ERROR: I can't fetch any GitHub projects without "GH_PUBLIC_TOKEN" set! Skipping for now...`);
+  if (!process.env.GITHUB_TOKEN || process.env.GITHUB_TOKEN === "") {
+    console.warn(`ERROR: I can't fetch any GitHub projects without "GITHUB_TOKEN" set! Skipping for now...`);
 
     return null;
   }
@@ -86,7 +86,7 @@ async function getRepos(): Promise<Project[] | null> {
       limit: 12,
       headers: {
         accept: "application/vnd.github.v3+json",
-        authorization: `token ${process.env.GH_PUBLIC_TOKEN}`,
+        authorization: `token ${process.env.GITHUB_TOKEN}`,
       },
     }
   );

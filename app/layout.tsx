@@ -4,7 +4,7 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
-import config from "../lib/config";
+import config from "../lib/config/constants";
 import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
 

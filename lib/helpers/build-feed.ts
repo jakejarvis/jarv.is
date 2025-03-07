@@ -1,10 +1,10 @@
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
-import config from "../config";
+import config from "../config/constants";
 
 import meJpg from "../../app/me.jpg";
 
-export const buildFeed = async (options: { type: "rss" | "atom" | "json" }): Promise<string> => {
+export const buildFeed = async (): Promise<Feed> => {
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
     id: config.baseUrl,
@@ -43,15 +43,5 @@ export const buildFeed = async (options: { type: "rss" | "atom" | "json" }): Pro
     });
   });
 
-  if (options.type === "rss") {
-    return feed.rss2();
-  } else if (options.type === "atom") {
-    return feed.atom1();
-  } else if (options.type === "json") {
-    // rare but including as an option because why not...
-    // https://www.jsonfeed.org/
-    return feed.json1();
-  } else {
-    throw new TypeError(`Invalid feed type "${options.type}", must be "rss", "atom", or "json".`);
-  }
+  return feed;
 };
