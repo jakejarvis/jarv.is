@@ -5,14 +5,14 @@ import { getTweet } from "react-tweet/api";
 import clsx from "clsx";
 import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./TweetEmbed.module.css";
+import styles from "./Tweet.module.css";
 
-export type TweetEmbedProps = Omit<ComponentPropsWithoutRef<typeof EmbeddedTweet>, "tweet"> & {
+export type TweetProps = Omit<ComponentPropsWithoutRef<typeof EmbeddedTweet>, "tweet"> & {
   id: string;
   className?: string;
 };
 
-const TweetEmbed = async ({ id, className, ...rest }: TweetEmbedProps) => {
+const Tweet = async ({ id, className, ...rest }: TweetProps) => {
   try {
     const tweet = await getTweet(id);
 
@@ -40,8 +40,12 @@ const TweetEmbed = async ({ id, className, ...rest }: TweetEmbedProps) => {
   } catch (
     error // eslint-disable-line @typescript-eslint/no-unused-vars
   ) {
-    return <TweetNotFound />;
+    return (
+      <div className={clsx(styles.tweet, className)}>
+        <TweetNotFound />
+      </div>
+    );
   }
 };
 
-export default TweetEmbed;
+export default Tweet;

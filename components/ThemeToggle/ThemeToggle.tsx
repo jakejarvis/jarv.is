@@ -2,9 +2,7 @@
 
 import { useEffect, useId } from "react";
 import { animated, Globals, useSpring, useReducedMotion } from "@react-spring/web";
-import useFirstMountState from "../../hooks/useFirstMountState";
-import useTheme from "../../hooks/useTheme";
-import useHasMounted from "../../hooks/useHasMounted";
+import { useFirstMountState, useHasMounted, useTheme } from "../../hooks";
 
 import styles from "./ThemeToggle.module.css";
 

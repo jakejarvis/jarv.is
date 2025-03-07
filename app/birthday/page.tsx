@@ -27,13 +27,7 @@ export default function Page() {
       <PageTitle>📼 1996.MOV</PageTitle>
 
       <Content>
-        <Video
-          src={{
-            webm: "/static/birthday/birthday.webm",
-            mp4: "/static/birthday/birthday.mp4",
-          }}
-          poster={thumbnail.src}
-        />
+        <Video src={["/static/birthday/birthday.webm", "/static/birthday/birthday.mp4"]} poster={thumbnail.src} />
       </Content>
     </>
   );

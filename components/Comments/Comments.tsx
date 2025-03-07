@@ -1,44 +1,37 @@
 "use client";
 
 import Giscus from "@giscus/react";
-import clsx from "clsx";
-import useTheme from "../../hooks/useTheme";
 import config from "../../lib/config";
-import type { ComponentPropsWithoutRef } from "react";
 import type { GiscusProps } from "@giscus/react";
 
-import styles from "./Comments.module.css";
-
-export type CommentsProps = ComponentPropsWithoutRef<"div"> & {
+export type CommentsProps = {
   title: string;
 };
 
-const Comments = ({ title, className, ...rest }: CommentsProps) => {
-  const { theme } = useTheme();
-
+const Comments = ({ title }: CommentsProps) => {
   // fail silently if giscus isn't configured
   if (!config.giscusConfig) {
-    console.warn("Giscus isn't configured in lib/config/index.js.");
+    console.warn(
+      "[giscus] not configured, ensure giscusConfig.repoId and giscusConfig.categoryId are set in lib/config/index.js"
+    );
+
     return null;
   }
 
   // TODO: use custom `<Loading />` spinner component during suspense
   return (
-    <div className={clsx(styles.comments, className)} {...rest}>
-      <Giscus
-        repo={config.githubRepo as GiscusProps["repo"]}
-        repoId={config.giscusConfig.repoId}
-        term={title}
-        category="Comments"
-        categoryId={config.giscusConfig.categoryId}
-        mapping="specific"
-        reactionsEnabled="1"
-        emitMetadata="0"
-        inputPosition="top"
-        loading="lazy"
-        theme={theme === "dark" ? theme : "light"}
-      />
-    </div>
+    <Giscus
+      repo={config.githubRepo as GiscusProps["repo"]}
+      repoId={config.giscusConfig.repoId}
+      term={title}
+      category="Comments"
+      categoryId={config.giscusConfig.categoryId}
+      mapping="specific"
+      reactionsEnabled="1"
+      emitMetadata="0"
+      inputPosition="top"
+      loading="lazy"
+    />
   );
 };
 

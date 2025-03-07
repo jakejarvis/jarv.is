@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "../contexts/ThemeContext";
-import Layout from "../components/Layout";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
 import config from "../lib/config";
 import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
@@ -10,6 +12,8 @@ import { GeistMono, GeistSans } from "../lib/styles/fonts";
 import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
 import "./themes.css";
 import "./global.css";
+
+import styles from "./layout.module.css";
 
 import meJpg from "./me.jpg";
 
@@ -88,7 +92,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className={clsx(GeistMono.variable, GeistSans.variable)}>
         <ThemeProvider>
-          <Layout>{children}</Layout>
+          <SkipToContentLink />
+
+          <div className={styles.flex}>
+            <Header />
+
+            <main className={styles.default}>
+              <SkipToContentTarget />
+              <div className={styles.container}>{children}</div>
+            </main>
+
+            <Footer />
+          </div>
         </ThemeProvider>
 
         <Analytics />

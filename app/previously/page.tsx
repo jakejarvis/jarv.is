@@ -1,9 +1,7 @@
-// import Layout from "../../components/Layout";
 import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Figure from "../../components/Figure";
-import IFrame from "../../components/IFrame";
 import CodeInline from "../../components/CodeInline";
 import HorizontalRule from "../../components/HorizontalRule";
 import { metadata as defaultMetadata } from "../layout";
@@ -100,12 +98,12 @@ export default async function Page() {
         </p>
 
         <figure className={styles.screenshot}>
-          <IFrame
+          <iframe
             src="https://jakejarvis.github.io/my-first-website/"
             title="My Terrible, Horrible, No Good, Very Bad First Website"
-            height={500}
-            allowScripts
-            style={{ margin: "0.6em 0" }}
+            sandbox="allow-same-origin allow-scripts allow-popups"
+            className={styles.iframe}
+            style={{ height: "500px" }}
           />
           <figcaption>
             <Link href="https://jakejarvis.github.io/my-first-website/">November 2001</Link> (

@@ -1,8 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useEffect, useState } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
-import useMedia from "../hooks/useMedia";
+import { useLocalStorage, useMediaQuery } from "../hooks";
 import type { Context, PropsWithChildren } from "react";
 
 type Themes = "light" | "dark";
@@ -29,7 +28,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [systemTheme, setSystemTheme] = useState<Themes>("" as Themes);
   // hook into system `prefers-dark-mode` setting
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
-  const isSystemDark = useMedia("(prefers-color-scheme: dark)");
+  const isSystemDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   // updates the DOM and optionally saves the new theme to local storage
   const applyTheme = useCallback(

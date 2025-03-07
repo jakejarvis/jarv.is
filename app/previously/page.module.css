@@ -18,6 +18,14 @@
     auto;
 }
 
+.iframe {
+  width: 100%;
+  display: block;
+  margin: 0.6em 0;
+  border: 2px solid var(--colors-kindaLight);
+  border-radius: var(--radii-corner);
+}
+
 .screenshot,
 .divider {
   margin: 1em auto;

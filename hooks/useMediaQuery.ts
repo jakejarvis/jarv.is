@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const useMedia = (query: string, defaultState?: boolean): boolean => {
+const useMediaQuery = (query: string, defaultState?: boolean): boolean => {
   const [state, setState] = useState(() => {
     if (defaultState !== undefined) {
       return defaultState;
@@ -38,4 +38,4 @@ const useMedia = (query: string, defaultState?: boolean): boolean => {
   return state;
 };
 
-export default useMedia;
+export default useMediaQuery;

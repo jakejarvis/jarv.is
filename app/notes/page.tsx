@@ -47,11 +47,7 @@ export default async function Page() {
             <li className={styles.post} key={slug}>
               <Time date={date} format="MMM D" className={styles.postDate} />
               <span>
-                <Link
-                  href={`/notes/${slug}` as Route}
-                  prefetch={null}
-                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                />
+                <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
               </span>
             </li>
           ))}
@@ -63,9 +59,5 @@ export default async function Page() {
   // grouped posts enter this component ordered chronologically -- we want reverse chronological
   const reversed = sections.reverse();
 
-  return (
-    <>
-      <Content>{reversed}</Content>
-    </>
-  );
+  return <Content>{reversed}</Content>;
 }

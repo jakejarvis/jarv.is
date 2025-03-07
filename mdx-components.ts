@@ -1,20 +1,18 @@
 import type { MDXComponents } from "mdx/types";
 
 import Image from "./components/Image";
-import Figure from "./components/Figure";
 import Link from "./components/Link";
 import Code from "./components/Code";
 import Blockquote from "./components/Blockquote";
 import HorizontalRule from "./components/HorizontalRule";
 import * as Heading from "./components/Heading";
 import * as List from "./components/List";
-import Tweet from "./components/TweetEmbed";
-import IFrame from "./components/IFrame";
+import Figure from "./components/Figure";
 import Video from "./components/Video";
-import YouTube from "./components/YouTubeEmbed";
-import Gist from "./components/GistEmbed";
-import CodePen from "./components/CodePenEmbed";
-import OctocatLink from "./components/OctocatLink";
+import Tweet from "./components/Tweet";
+import YouTube from "./components/YouTube";
+import Gist from "./components/Gist";
+import CodePen from "./components/CodePen";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -36,14 +34,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ol: List.OrderedList,
     li: List.ListItem,
 
-    // non-native components:
+    // html components with custom props:
     Figure,
-    IFrame,
     Video,
-    YouTube,
+
+    // third-party embeds:
     Tweet,
+    YouTube,
     Gist,
     CodePen,
-    OctocatLink,
   };
 }

@@ -1,3 +1,5 @@
+import Link from "../../components/Link";
+import { SiGithub } from "react-icons/si";
 import featuredImage from "./covid19dashboards.png";
 
 export const frontmatter = {
@@ -7,6 +9,18 @@ export const frontmatter = {
     "The open source community is rallying together like no other to provide coronavirus information to the public in innovative ways.",
   tags: ["Open Source", "COVID-19", "Coronavirus", "Public Health", "GitHub"],
   image: featuredImage.src,
+};
+
+export const OctocatLink = ({ repo }) => {
+  return (
+    <Link
+      href={`https://github.com/${repo}`}
+      plain
+      style={{ margin: "0 0.4em", color: "var(--colors-text) !important" }}
+    >
+      <SiGithub style={{ display: "inline", height: "1.2em", width: "1.2em", verticalAlign: "-0.2em" }} />
+    </Link>
+  );
 };
 
 We're all quickly learning that worldwide pandemics can bring out both [the best](https://www.vox.com/culture/2020/3/13/21179293/coronavirus-italy-covid19-music-balconies-sing) and [the worst](https://twitter.com/9NewsAUS/status/1236088663093608448) of humanity. But one thing has become readily apparent to me — outside of the large teams of medical professionals risking their lives right this minute, the open source community stands alone in its ability to rapidly organize in the midst of chaos to give back to the world and, in this case, make it safer for all of us.
@@ -90,10 +104,7 @@ You can [download their software here](https://foldingathome.org/start-folding/)
 **Fun fact:** The team behind Folding@home has seen a [**huge** spike in computational power](https://www.reddit.com/r/pcmasterrace/comments/flgm7q/ama_with_the_team_behind_foldinghome_coronavirus/) this month after cryptominers started mining coronavirus proteins instead of boring, old Ethereum with their insanely overpowered GPUs! 👏
 
 <Video
-  src={{
-    webm: "/static/coronavirus-open-source/folding.webm",
-    mp4: "/static/coronavirus-open-source/folding.mp4",
-  }}
+  src={["/static/coronavirus-open-source/folding.webm", "/static/coronavirus-open-source/folding.mp4"]}
   poster="/static/coronavirus-open-source/folding-thumb.png"
   autoplay
 />

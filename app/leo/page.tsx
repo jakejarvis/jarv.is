@@ -29,11 +29,7 @@ export default function Page() {
 
       <Content>
         <Video
-          src={{
-            webm: "/static/leo/leo.webm",
-            mp4: "/static/leo/leo.mp4",
-            vtt: "/static/leo/subs.en.vtt",
-          }}
+          src={["/static/leo/leo.webm", "/static/leo/leo.mp4", "/static/leo/subs.en.vtt"]}
           poster={thumbnail.src}
         />
 

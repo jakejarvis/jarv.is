@@ -1,5 +1,5 @@
 body {
-  font-family: var(--fonts-sans);
+  font-family: var(--fonts-sans) !important;
   background-color: var(--colors-backgroundInner);
   transition: background var(--transitions-fade);
 }
@@ -8,7 +8,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: var(--fonts-mono);
+  font-family: var(--fonts-mono) !important;
 }
 
 /* https://css-tricks.com/almanac/rules/m/media/prefers-reduced-motion/ */

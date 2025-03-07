@@ -1,7 +1,0 @@
-.iframe {
-  width: 100%;
-  display: block;
-  margin: 1em auto;
-  border: 2px solid var(--colors-kindaLight);
-  border-radius: var(--radii-corner);
-}

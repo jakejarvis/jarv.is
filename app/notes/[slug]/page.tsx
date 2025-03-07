@@ -150,7 +150,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </Content>
 
       {!frontmatter.noComments && (
-        <div id="comments">
+        <div id="comments" className={styles.comments}>
           <Comments title={frontmatter.title} />
         </div>
       )}
