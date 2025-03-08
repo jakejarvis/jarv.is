@@ -1,5 +1,4 @@
 import { graphql } from "@octokit/graphql";
-import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
@@ -111,94 +110,92 @@ export default async function Page() {
 
   return (
     <>
-      <PageTitle>💾 Projects</PageTitle>
+      <PageTitle canonical="/projects">Projects</PageTitle>
 
-      <Content>
-        <div className={styles.grid}>
-          {repos?.map((repo) => (
-            <div key={repo.name} className={styles.card}>
-              <Link
-                // @ts-ignore
-                href={repo.url}
-                className={styles.name}
-              >
-                {repo.name}
-              </Link>
+      <div className={styles.grid}>
+        {repos?.map((repo) => (
+          <div key={repo.name} className={styles.card}>
+            <Link
+              // @ts-ignore
+              href={repo.url}
+              className={styles.name}
+            >
+              {repo.name}
+            </Link>
 
-              {repo.description && <p className={styles.description}>{repo.description}</p>}
+            {repo.description && <p className={styles.description}>{repo.description}</p>}
 
-              <div className={styles.meta}>
-                {repo.language && (
-                  <div className={styles.metaItem}>
-                    {repo.language.color && (
-                      <span className={styles.metaLanguage} style={{ backgroundColor: repo.language.color }} />
-                    )}
-                    {repo.language.name}
-                  </div>
-                )}
-
-                {repo.stars && repo.stars > 0 && (
-                  <div className={styles.metaItem}>
-                    <Link
-                      // @ts-ignore
-                      href={`${repo.url}/stargazers`}
-                      title={`${commaNumber(repo.stars)} ${repo.stars === 1 ? "star" : "stars"}`}
-                      plain
-                      className={styles.metaLink}
-                    >
-                      <GoStar className={styles.metaIcon} />
-                      {commaNumber(repo.stars)}
-                    </Link>
-                  </div>
-                )}
-
-                {repo.forks && repo.forks > 0 && (
-                  <div className={styles.metaItem}>
-                    <Link
-                      // @ts-ignore
-                      href={`${repo.url}/network/members`}
-                      title={`${commaNumber(repo.forks)} ${repo.forks === 1 ? "fork" : "forks"}`}
-                      plain
-                      className={styles.metaLink}
-                    >
-                      <GoRepoForked className={styles.metaIcon} />
-                      {commaNumber(repo.forks)}
-                    </Link>
-                  </div>
-                )}
-
-                {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
+            <div className={styles.meta}>
+              {repo.language && (
                 <div className={styles.metaItem}>
-                  <RelativeTime date={repo.updatedAt} verb="Updated" staticFormat="MMM D, YYYY" />
+                  {repo.language.color && (
+                    <span className={styles.metaLanguage} style={{ backgroundColor: repo.language.color }} />
+                  )}
+                  {repo.language.name}
                 </div>
+              )}
+
+              {repo.stars && repo.stars > 0 && (
+                <div className={styles.metaItem}>
+                  <Link
+                    // @ts-ignore
+                    href={`${repo.url}/stargazers`}
+                    title={`${commaNumber(repo.stars)} ${repo.stars === 1 ? "star" : "stars"}`}
+                    plain
+                    className={styles.metaLink}
+                  >
+                    <GoStar className={styles.metaIcon} />
+                    {commaNumber(repo.stars)}
+                  </Link>
+                </div>
+              )}
+
+              {repo.forks && repo.forks > 0 && (
+                <div className={styles.metaItem}>
+                  <Link
+                    // @ts-ignore
+                    href={`${repo.url}/network/members`}
+                    title={`${commaNumber(repo.forks)} ${repo.forks === 1 ? "fork" : "forks"}`}
+                    plain
+                    className={styles.metaLink}
+                  >
+                    <GoRepoForked className={styles.metaIcon} />
+                    {commaNumber(repo.forks)}
+                  </Link>
+                </div>
+              )}
+
+              {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
+              <div className={styles.metaItem}>
+                <RelativeTime date={repo.updatedAt} verb="Updated" staticFormat="MMM D, YYYY" />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
-        <p
-          style={{
-            textAlign: "center",
-            marginBottom: 0,
-            fontWeight: 500,
-          }}
-        >
-          <Link href={`https://github.com/${config.authorSocial.github}`}>
-            View more on{" "}
-            <SiGithub
-              style={{
-                display: "inline",
-                width: "1.2em",
-                height: "1.2em",
-                verticalAlign: "-0.2em",
-                margin: "0 0.15em",
-                fill: "var(--colors-text)",
-              }}
-            />{" "}
-            GitHub...
-          </Link>
-        </p>
-      </Content>
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: 0,
+          fontWeight: 500,
+        }}
+      >
+        <Link href={`https://github.com/${config.authorSocial.github}`}>
+          View more on{" "}
+          <SiGithub
+            style={{
+              display: "inline",
+              width: "1.2em",
+              height: "1.2em",
+              verticalAlign: "-0.2em",
+              margin: "0 0.15em",
+              fill: "var(--colors-text)",
+            }}
+          />{" "}
+          GitHub...
+        </Link>
+      </p>
     </>
   );
 }

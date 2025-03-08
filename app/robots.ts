@@ -6,6 +6,7 @@ export const dynamic = "force-static";
 const robots = (): MetadataRoute.Robots => {
   // I'm already _so_ over this shit...
   // https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
+  // TODO: dynamically fetch this list from the above repo.
   const naughtySpiders = [
     "AI2Bot",
     "Ai2Bot-Dolma",
@@ -13,6 +14,7 @@ const robots = (): MetadataRoute.Robots => {
     "anthropic-ai",
     "Applebot",
     "Applebot-Extended",
+    "Brightbot 1.0",
     "Bytespider",
     "CCBot",
     "ChatGPT-User",

@@ -1,4 +1,3 @@
-import Content from "../../components/Content";
 import PageTitle from "../../components/PageTitle";
 import Video from "../../components/Video";
 import { metadata as defaultMetadata } from "../layout";
@@ -24,11 +23,9 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <PageTitle>📼 1996.MOV</PageTitle>
+      <PageTitle canonical="/birthday">1996.mov</PageTitle>
 
-      <Content>
-        <Video src={["/static/birthday/birthday.webm", "/static/birthday/birthday.mp4"]} poster={thumbnail.src} />
-      </Content>
+      <Video src={["/static/birthday/birthday.webm", "/static/birthday/birthday.mp4"]} poster={thumbnail.src} />
     </>
   );
 }

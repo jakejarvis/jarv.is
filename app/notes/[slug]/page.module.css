@@ -1,7 +1,7 @@
 .meta {
   display: inline-flex;
   flex-wrap: wrap;
-  font-size: 0.825em;
+  font-size: 0.925em;
   line-height: 2.3;
   letter-spacing: 0.04em;
   color: var(--colors-medium);
@@ -46,7 +46,7 @@
 
 .title {
   margin: 0.3em 0 0.5em -1px; /* misaligned left margin, super nitpicky */
-  font-size: 2.1em;
+  font-size: 2.3em;
   line-height: 1.3;
   font-weight: 700;
 }
@@ -68,6 +68,6 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.8em;
+    font-size: 1.9em;
   }
 }

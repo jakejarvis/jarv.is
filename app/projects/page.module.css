@@ -5,16 +5,16 @@
   align-items: flex-start;
   width: 100%;
   line-height: 1.1;
+  gap: 1em;
 }
 
 .card {
   flex-grow: 1;
-  margin: 0.6em;
   width: 370px;
   padding: 1.2em 1.2em 0.8em 1.2em;
   border: 1px solid var(--colors-kindaLight);
   border-radius: var(--radii-corner);
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: var(--colors-mediumDark);
   transition: border var(--transitions-fade);
 }

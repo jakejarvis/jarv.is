@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Content from "../../../components/Content";
 import Link from "../../../components/Link";
 import Time from "../../../components/Time";
 import Comments from "../../../components/Comments";
@@ -145,9 +144,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         />
       </h1>
 
-      <Content>
-        <MDXContent />
-      </Content>
+      <MDXContent />
 
       {!frontmatter.noComments && (
         <div id="comments" className={styles.comments}>

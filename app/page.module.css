@@ -1,22 +1,22 @@
 .page h1 {
   margin: 0 0 0.5em -1px; /* misaligned left margin, super nitpicky */
-  font-size: 1.75em;
+  font-size: 1.925em;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.2;
   color: var(--colors-text);
 }
 
 .page h2 {
   margin: 0.5em 0 0.5em -1px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--colors-text);
 }
 
 .page p {
   margin: 0.85em 0;
-  font-size: 0.95em;
+  font-size: 1.05em;
   line-height: 1.7;
   color: var(--colors-text);
 }
@@ -74,15 +74,15 @@
 
 @media (max-width: 768px) {
   .page h1 {
-    font-size: 1.6em;
+    font-size: 1.8em;
   }
 
   .page h2 {
-    font-size: 1.25em;
+    font-size: 1.3em;
   }
 
   .page p {
-    font-size: 0.925em;
-    line-height: 1.825;
+    font-size: 1em;
+    line-height: 1.9;
   }
 }

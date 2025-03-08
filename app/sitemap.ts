@@ -11,33 +11,30 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: config.baseUrl,
+      url: `${config.baseUrl}/`,
       priority: 1.0,
-      changeFrequency: "weekly",
       lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
     },
     { url: `${config.baseUrl}/tweets/` },
+    { url: `${config.baseUrl}/y2k/` },
   ];
 
   // add each directory in the app folder as a route (excluding special routes)
   const appDir = path.resolve(process.cwd(), "app");
   (
-    await glob("*", {
+    await glob("**/page.{tsx,mdx}", {
       cwd: appDir,
-      deep: 0,
-      onlyDirectories: true,
-      markDirectories: true,
       ignore: [
-        // don't include special routes, see: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
-        "api",
-        "feed.atom",
-        "feed.xml",
+        // homepage already included manually above
+        "page.tsx",
+        // don't include dynamic routes
+        "notes/[slug]/page.tsx",
       ],
     })
   ).forEach((route) => {
     routes.push({
-      // make all URLs absolute
-      url: `${config.baseUrl}/${route}`,
+      // remove matching page.(tsx|mdx) file and make all URLs absolute
+      url: `${config.baseUrl}/${route.replace(/page\.(tsx|mdx)$/, "")}`,
     });
   });
 
@@ -49,7 +46,10 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     });
   });
 
-  return routes;
+  // sort alphabetically by URL, sometimes fast-glob returns results in a different order
+  routes.sort((a, b) => (a.url < b.url ? -1 : 1));
+
+  return [...routes];
 };
 
 export default sitemap;

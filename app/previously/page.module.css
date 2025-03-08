@@ -1,8 +1,9 @@
 .wackyWrapper {
   font-weight: 700;
-  font-size: 1em;
-  text-align: center;
+  font-size: 1.15em;
+}
 
+body:has(.wackyWrapper) {
   /* classic windows 9x cursor easter egg */
   cursor:
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC")
@@ -10,7 +11,7 @@
     auto;
 }
 
-.wackyWrapper a {
+body:has(.wackyWrapper) a {
   /* windows 9x hand cursor */
   cursor:
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEVHcEwAAAD///8W1S+BAAAAAXRSTlMAQObYZgAAAEdJREFUeAFjoAVghTGkHIhghMAYmQEwxlIYYxlYlSiQMQEsELUKyli1ahWYwQZjMGIwGLKQGA4QA1EYEP0rGVAZrKGhSF4BAHw/HsVwshytAAAAAElFTkSuQmCC")

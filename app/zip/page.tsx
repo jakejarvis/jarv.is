@@ -1,4 +1,3 @@
-import Content from "../../components/Content";
 import Link from "../../components/Link";
 import CodeBlock from "../../components/CodeBlock/CodeBlock";
 import { metadata as defaultMetadata } from "../layout";
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <Content
+    <div
       style={{
         backgroundImage: `url(${backgroundImg.src})`,
         backgroundRepeat: "repeat",
@@ -72,6 +71,6 @@ export default async function Page() {
         <span style={{ color: "var(--colors-codeAttribute)" }}>~</span>${" "}
         <span style={{ color: "var(--colors-codeLiteral)" }}>reboot</span> 0
       </CodeBlock>
-    </Content>
+    </div>
   );
 }

@@ -1,17 +1,21 @@
 .title {
   margin-top: 0;
   margin-bottom: 0.6em;
-  font-size: 1.7em;
+  font-size: 1.9em;
   font-weight: 600;
-  text-align: center;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
 }
 
-.link {
-  color: var(--colors-text) !important;
+.slug::before {
+  content: "\002E\002F"; /* "./" */
+  letter-spacing: 0.1em;
+  color: var(--colors-mediumLight) !important;
+  margin-right: -0.1em;
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.8em;
+    font-size: 2em;
   }
 }

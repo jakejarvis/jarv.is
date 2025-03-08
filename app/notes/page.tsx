@@ -1,4 +1,3 @@
-import Content from "../../components/Content";
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
@@ -59,5 +58,5 @@ export default async function Page() {
   // grouped posts enter this component ordered chronologically -- we want reverse chronological
   const reversed = sections.reverse();
 
-  return <Content>{reversed}</Content>;
+  return <>{reversed}</>;
 }
