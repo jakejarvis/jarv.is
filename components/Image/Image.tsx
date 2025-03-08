@@ -11,18 +11,19 @@ export type ImageProps = ComponentPropsWithoutRef<typeof NextImage> & {
   inline?: boolean; // don't wrap everything in a `<div>` block
 };
 
-const Image = ({ src, height, width, quality, inline, className, ...rest }: ImageProps) => {
+const Image = ({ src, height, width, quality, placeholder, inline, className, ...rest }: ImageProps) => {
   const constrainWidth = (width?: number | `${number}`) => {
     if (!width) return MAX_WIDTH;
 
     return Math.min(typeof width === "string" ? parseInt(width, 10) : width, MAX_WIDTH);
   };
 
-  const imageProps = {
+  const imageProps: ImageProps = {
     src,
     height,
     width: constrainWidth(width || (src as StaticImageData).width),
     quality: quality || 75,
+    placeholder: placeholder || (typeof src === "string" ? "empty" : "blur"),
     ...rest,
   };
 
