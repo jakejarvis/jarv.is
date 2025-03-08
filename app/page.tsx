@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { GoLock } from "react-icons/go";
 import { rgba } from "polished";
 import Link from "../components/Link";
@@ -15,15 +16,22 @@ const ColorfulLink = ({
   lightColor: string;
   darkColor: string;
 }) => {
-  const uniqueId = `Link_themed__${lightColor.replace("#", "")}_${darkColor.replace("#", "")}`;
+  const uniqueId = `styled_${useId().replaceAll(":", "")}`;
 
   return (
     <>
-      <Link className={uniqueId} {...rest}>
+      <Link id={uniqueId} {...rest}>
         {children}
       </Link>
 
-      <style>{`.${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}</style>
+      <style
+        // workaround to have react combine all of the inline styles into a single <style> tag in the <head>, see:
+        // https://react.dev/reference/react-dom/components/style#rendering-an-inline-css-stylesheet
+        href={uniqueId}
+        precedence={styles.page}
+      >
+        {`.${styles.page} #${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .${styles.page} #${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}
+      </style>
     </>
   );
 };
