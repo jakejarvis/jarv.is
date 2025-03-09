@@ -16,7 +16,6 @@
   border-radius: var(--radii-corner);
   font-size: 0.9em;
   color: var(--colors-mediumDark);
-  transition: border var(--transitions-fade);
 }
 
 .card .name {

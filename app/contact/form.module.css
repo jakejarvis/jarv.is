@@ -6,7 +6,6 @@
   border-radius: var(--radii-corner);
   color: var(--colors-text);
   background-color: var(--colors-superDuperLight);
-  transition: background var(--transitions-fade);
 }
 
 .input:focus {

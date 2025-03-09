@@ -20,9 +20,3 @@
   background: none !important;
   transition: none !important;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .link {
-    transition: none !important;
-  }
-}

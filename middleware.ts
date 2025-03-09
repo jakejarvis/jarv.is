@@ -20,6 +20,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   // save compute time by skipping middleware for static and metadata files
   matcher: [
-    "/((?!_next/static|_next/image|_vercel/|static|.well-known|favicon.ico|icon.png|apple-icon.png|manifest.webmanifest).*)",
+    "/((?!_next/static|_next/image|_vercel|static|.well-known|favicon.ico|icon.png|apple-icon.png|manifest.webmanifest).*)",
   ],
 };

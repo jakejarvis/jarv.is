@@ -28,7 +28,6 @@
   --colors-codeDeletion: #ff1b1b;
   --sizes-maxLayoutWidth: 865px;
   --radii-corner: 0.6rem;
-  --transitions-fade: 0.25s ease;
 }
 
 [data-theme="dark"] {

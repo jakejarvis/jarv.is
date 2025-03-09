@@ -5,9 +5,6 @@
   border-top: 1px solid var(--colors-kindaLight);
   background-color: var(--colors-backgroundOuter);
   color: var(--colors-mediumDark);
-  transition:
-    background var(--transitions-fade),
-    border var(--transitions-fade);
 }
 
 .row {
@@ -50,34 +47,28 @@
 .heart {
   display: inline-block;
   color: var(--colors-error);
+  animation: pulse 10s ease 7.5s infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .heart {
-    animation: pulse 10s ease 7.5s infinite;
-    will-change: transform;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    2% {
-      transform: scale(1.25);
-    }
-    4% {
-      transform: scale(1);
-    }
-    6% {
-      transform: scale(1.2);
-    }
-    8% {
-      transform: scale(1);
-    }
-    /* pause for ~9 out of 10 seconds */
-    100% {
-      transform: scale(1);
-    }
+  2% {
+    transform: scale(1.25);
+  }
+  4% {
+    transform: scale(1);
+  }
+  6% {
+    transform: scale(1.2);
+  }
+  8% {
+    transform: scale(1);
+  }
+  /* pause for ~9 out of 10 seconds */
+  100% {
+    transform: scale(1);
   }
 }
 
