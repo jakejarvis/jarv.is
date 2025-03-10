@@ -1,35 +1,41 @@
 {
 	"name": "Node.js",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
-	"postCreateCommand": "bash -i -c 'rm -rf node_modules && nvm install $(cat .node-version) -y && nvm use $(cat .node-version) && npm install -g corepack@latest && corepack enable && CI=true pnpm install'",
+	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install $(cat .node-version) && nvm use $(cat .node-version) && corepack enable && pnpm install --frozen-lockfile",
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"typescript.tsdk": "node_modules/typescript/lib",
-				"telemetry.enableTelemetry": false
+				"editor.rulers": [
+						120
+				],
+				"extensions.ignoreRecommendations": true,
+				"git.allowForcePush": true,
+				"git.autofetch": true,
+				"git.autoStash": true,
+				"git.enableCommitSigning": true,
+				"git.fetchOnPull": true,
+				"git.rebaseWhenSync": true,
+				"telemetry.telemetryLevel": "off",
+				"typescript.preferences.importModuleSpecifierEnding": "minimal",
+				"typescript.tsdk": "node_modules/typescript/lib"
 			},
 			"extensions": [
 				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
 				"prisma.prisma",
-				"unifiedjs.vscode-mdx",
-				"wix.vscode-import-cost"
+				"unifiedjs.vscode-mdx"
 			]
 		}
+	},
+	"tasks": {
+		"build": "pnpm install --frozen-lockfile && pnpm build"
 	},
 	"forwardPorts": [
 		3000
 	],
-	"portsAttributes": {
-		"3000": {
-			"label": "next dev",
-			"onAutoForward": "notify"
-		}
-	},
-	"otherPortsAttributes": {
-		"onAutoForward": "silent"
-	},
 	"containerEnv": {
+		"CHECKPOINT_DISABLE": "1",
+		"COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
 		"NEXT_TELEMETRY_DISABLED": "1"
 	}
 }

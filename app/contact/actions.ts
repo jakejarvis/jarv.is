@@ -27,7 +27,7 @@ export async function sendMessage(
 
     // backup to client-side validations just in case someone squeezes through without them
     if (!validatedFields.success) {
-      console.error("[contact form] validation error:", validatedFields.error.flatten());
+      console.debug("[contact form] validation error:", validatedFields.error.flatten());
 
       return {
         success: false,

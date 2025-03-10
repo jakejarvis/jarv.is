@@ -42,7 +42,7 @@ type Project = {
 
 async function getRepos(): Promise<Project[] | null> {
   // don't fail the entire site build if the required API key for this page is missing
-  if (!process.env.GITHUB_TOKEN || process.env.GITHUB_TOKEN === "") {
+  if (!process.env.GITHUB_TOKEN) {
     console.warn(`ERROR: I can't fetch any GitHub projects without "GITHUB_TOKEN" set! Skipping for now...`);
 
     return null;

@@ -61,7 +61,7 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
     htmlTitle,
     slug,
     date: formatDate(frontmatter.date), // validate/normalize the date string provided from front matter
-    permalink: `${config.baseUrl}/${POSTS_DIR}/${slug}/`,
+    permalink: `${config.baseUrl}/${POSTS_DIR}/${slug}`,
     image: frontmatter.image ? `${config.baseUrl}${frontmatter.image}` : undefined,
   };
 };

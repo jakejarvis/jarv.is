@@ -32,6 +32,7 @@
   - Vercel
   - Neon Postgres
   - Prisma
+  - Umami
   - Giscus
   - Resend
   - ...and more: https://jarv.is/uses/
