@@ -5,7 +5,6 @@ import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  trailingSlash: true,
   productionBrowserSourceMaps: true,
   env: {
     // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
@@ -43,16 +42,20 @@ const nextConfig: NextConfig = {
   ],
   rewrites: async () => ({
     beforeFiles: [
-      // https://github.com/jakejarvis/tweets/deployments/github-pages
+      // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
       {
-        source: "/tweets/:path*/",
-        destination: "https://jakejarvis.github.io/tweets/:path*/",
+        source: "/_stream/u/script.js",
+        destination: `${process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"}/script.js`,
       },
       {
-        // workaround for broken trailing slash redirects:
-        // https://github.com/vercel/next.js/discussions/36219#discussioncomment-4167863
+        source: "/_stream/u/api/:path*",
+        destination: `${process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"}/api/:path*`,
+      },
+
+      // https://github.com/jakejarvis/tweets
+      {
         source: "/tweets/:path*",
-        destination: "https://jakejarvis.github.io/tweets/:path*",
+        destination: "https://tweets-khaki.vercel.app/:path*",
       },
     ],
     afterFiles: [
@@ -66,6 +69,11 @@ const nextConfig: NextConfig = {
   }),
   redirects: async () => [
     { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
+    {
+      source: "/stats",
+      destination: "https://umami-wine-eight.vercel.app/share/wwTaTpLgC6gP9VyX/jarv.is",
+      permanent: false,
+    },
 
     // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
     // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp

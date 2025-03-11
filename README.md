@@ -5,7 +5,7 @@
 [![Licensed under CC-BY-4.0](https://img.shields.io/badge/license-CC--BY--4.0-fb7828?logo=creative-commons&logoColor=white)](LICENSE)
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
 
-My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Neon Postgres](https://neon.tech/), [Prisma](https://www.prisma.io/postgres), [and more](https://jarv.is/humans.txt).
+My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Neon Postgres](https://neon.tech/), [Prisma](https://www.prisma.io/postgres), [Umami](https://umami.is/), [and more](https://jarv.is/humans.txt).
 
 I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/issues/1) and [coding to-dos](https://github.com/jakejarvis/jarv.is/issues/714) as issues in this repo. Outside contributions, improvements, and/or corrections are welcome too!
 
@@ -21,12 +21,12 @@ Most production steps are handled [automatically by Vercel](https://vercel.com/d
 
 ## 🌎 Related
 
-- [💻 /uses](https://jarv.is/uses/) – Things and stuff I use.
-- [🕰️ /previously](https://jarv.is/previously/) – An embarrassing trip down this site's memory lane.
-  - Visit [/y2k](https://jarv.is/y2k/) if you want to experience the _fully_ immersive time machine, but don't say I didn't warn you...
+- [📈 /stats](https://jarv.is/stats) - Public [Umami](https://umami.is/) dashboard.
+- [💻 /uses](https://jarv.is/uses) – Things and stuff I use.
+- [🕰️ /previously](https://jarv.is/previously) – An embarrassing trip down this site's memory lane.
+  - Visit [/y2k](https://jarv.is/y2k) if you want to experience the _fully_ immersive time machine, but don't say I didn't warn you...
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.
 - [🧮 jakejarvis/website-stats](https://github.com/jakejarvis/website-stats) – Daily raw snapshots of the [hit counter](app/api/hits/route.ts) database.
-- [🔗 jakejarvis/jrvs.io](https://github.com/jakejarvis/jrvs.io) – Personal link shortener.
 
 ## 📜 License
 

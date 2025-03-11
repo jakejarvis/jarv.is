@@ -11,12 +11,13 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: `${config.baseUrl}/`,
+      url: config.baseUrl,
       priority: 1.0,
       lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
     },
-    { url: `${config.baseUrl}/tweets/` },
-    { url: `${config.baseUrl}/y2k/` },
+    { url: `${config.baseUrl}/stats` },
+    { url: `${config.baseUrl}/tweets` },
+    { url: `${config.baseUrl}/y2k` },
   ];
 
   // add each directory in the app folder as a route (excluding special routes)
@@ -34,7 +35,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ).forEach((route) => {
     routes.push({
       // remove matching page.(tsx|mdx) file and make all URLs absolute
-      url: `${config.baseUrl}/${route.replace(/page\.(tsx|mdx)$/, "")}`,
+      url: `${config.baseUrl}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
     });
   });
 

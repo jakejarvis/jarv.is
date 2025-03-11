@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Analytics } from "@vercel/analytics/next";
+import Analytics from "./analytics";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";

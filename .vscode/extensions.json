@@ -1,8 +1,0 @@
-{
-  "recommendations": [
-    "EditorConfig.EditorConfig",
-    "dbaeumer.vscode-eslint",
-    "prisma.prisma",
-    "unifiedjs.vscode-mdx"
-  ]
-}
