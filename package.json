@@ -28,7 +28,7 @@
     "@next/third-parties": "15.2.2-canary.7",
     "@octokit/graphql": "^8.2.1",
     "@octokit/graphql-schema": "^15.26.0",
-    "@prisma/client": "^6.4.1",
+    "@prisma/client": "^6.5.0",
     "clsx": "^2.1.1",
     "comma-number": "^2.1.0",
     "copy-to-clipboard": "^3.3.3",
@@ -88,7 +88,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.3",
-    "prisma": "^6.4.1",
+    "prisma": "^6.5.0",
     "schema-dts": "^1.1.5",
     "simple-git-hooks": "^2.11.1",
     "typescript": "5.8.2"
