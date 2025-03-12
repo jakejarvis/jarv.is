@@ -3,24 +3,18 @@
 import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
-import clsx from "clsx";
 import { ClipboardIcon, CheckIcon } from "lucide-react";
-import type { ReactNode, Ref, ComponentPropsWithoutRef, ElementRef, MouseEventHandler } from "react";
-
-import styles from "./CopyButton.module.css";
+import type { ReactNode, Ref, ComponentPropsWithoutRef, ComponentRef, MouseEventHandler } from "react";
 
 export type CopyButtonProps = ComponentPropsWithoutRef<"button"> & {
   source: string | ReactNode;
   timeout?: number;
 };
 
-const CopyButton = (
-  { source, timeout = 2000, className, ...rest }: CopyButtonProps,
-  ref: Ref<ElementRef<"button">>
-) => {
+const CopyButton = ({ source, timeout = 2000, style, ...rest }: CopyButtonProps, ref: Ref<ComponentRef<"button">>) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy: MouseEventHandler<ElementRef<"button">> = (e) => {
+  const handleCopy: MouseEventHandler<ComponentRef<"button">> = (e) => {
     // prevent unintentional double-clicks by unfocusing button
     e.currentTarget.blur();
 
@@ -54,13 +48,13 @@ const CopyButton = (
       aria-label="Copy to clipboard"
       onClick={handleCopy}
       disabled={copied}
-      className={clsx(styles.button, copied && styles.copied, className)}
+      style={{ cursor: copied ? "default" : "pointer", ...style }}
       {...rest}
     >
       {copied ? (
-        <CheckIcon size="1.25em" className={styles.icon} />
+        <CheckIcon size="1.25em" style={{ stroke: "var(--colors-success)" }} />
       ) : (
-        <ClipboardIcon size="1.25em" className={styles.icon} />
+        <ClipboardIcon size="1.25em" />
       )}
     </button>
   );

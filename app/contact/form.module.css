@@ -58,6 +58,7 @@
 .result.success {
   color: var(--colors-success);
 }
+
 .result.error {
   color: var(--colors-error);
 }

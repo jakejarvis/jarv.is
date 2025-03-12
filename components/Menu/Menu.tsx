@@ -6,7 +6,6 @@ import MenuItem from "../MenuItem";
 import ThemeToggle from "../ThemeToggle";
 import { menuItems } from "../../lib/config/menu";
 import type { ComponentPropsWithoutRef } from "react";
-import type { LucideIcon } from "lucide-react";
 
 import styles from "./Menu.module.css";
 
@@ -29,7 +28,10 @@ const Menu = ({ className, ...rest }: MenuProps) => {
       })}
 
       <li className={styles.menuItem}>
-        <MenuItem icon={ThemeToggle as LucideIcon} />
+        <MenuItem
+          // @ts-expect-error
+          icon={ThemeToggle}
+        />
       </li>
     </ul>
   );

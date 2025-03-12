@@ -114,11 +114,7 @@ export default async function Page() {
       <div className={styles.grid}>
         {repos?.map((repo) => (
           <div key={repo.name} className={styles.card}>
-            <Link
-              // @ts-ignore
-              href={repo.url}
-              className={styles.name}
-            >
+            <Link href={repo.url} className={styles.name}>
               {repo.name}
             </Link>
 
@@ -137,7 +133,6 @@ export default async function Page() {
               {repo.stars && repo.stars > 0 && (
                 <div className={styles.metaItem}>
                   <Link
-                    // @ts-ignore
                     href={`${repo.url}/stargazers`}
                     title={`${commaNumber(repo.stars)} ${repo.stars === 1 ? "star" : "stars"}`}
                     plain
@@ -152,7 +147,6 @@ export default async function Page() {
               {repo.forks && repo.forks > 0 && (
                 <div className={styles.metaItem}>
                   <Link
-                    // @ts-ignore
                     href={`${repo.url}/network/members`}
                     title={`${commaNumber(repo.forks)} ${repo.forks === 1 ? "fork" : "forks"}`}
                     plain

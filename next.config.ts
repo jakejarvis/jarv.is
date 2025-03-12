@@ -77,7 +77,7 @@ const nextConfig: NextConfig = {
 
     // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
     // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
-    { source: "/notes/:slug/amp.html", destination: "/notes/:slug/", permanent: true },
+    { source: "/notes/:slug/amp.html", destination: "/notes/:slug", permanent: true },
 
     // mastodon via subdomain:
     // https://docs.joinmastodon.org/admin/config/#web_domain
@@ -107,32 +107,29 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
 
-    // google search console has tons of 404s for images prefixed with /public... why? no clue.
-    { source: "/public/static/:path*", destination: "/static/:path*", permanent: true },
-
     // remnants of previous sites/CMSes:
     { source: "/index.xml", destination: "/feed.xml", permanent: true },
     { source: "/feed", destination: "/feed.xml", permanent: true },
     { source: "/rss", destination: "/feed.xml", permanent: true },
-    { source: "/blog/:path*", destination: "/notes/", permanent: true },
-    { source: "/archives/:path*", destination: "/notes/", permanent: true },
+    { source: "/blog/:path*", destination: "/notes", permanent: true },
+    { source: "/archives/:path*", destination: "/notes", permanent: true },
     { source: "/resume", destination: "/static/resume.pdf", permanent: false },
     { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
 
     // WordPress permalinks:
     {
       source: "/2016/02/28/millenial-with-hillary-clinton",
-      destination: "/notes/millenial-with-hillary-clinton/",
+      destination: "/notes/millenial-with-hillary-clinton",
       permanent: true,
     },
     {
       source: "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware",
-      destination: "/notes/how-to-shrink-linux-virtual-disk-vmware/",
+      destination: "/notes/how-to-shrink-linux-virtual-disk-vmware",
       permanent: true,
     },
     {
       source: "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles",
-      destination: "/notes/cool-bash-tricks-for-your-terminal-dotfiles/",
+      destination: "/notes/cool-bash-tricks-for-your-terminal-dotfiles",
       permanent: true,
     },
   ],

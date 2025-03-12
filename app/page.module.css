@@ -60,6 +60,7 @@
   30% {
     transform: rotate(0deg);
   }
+
   /* pause for ~9 out of 10 seconds */
   100% {
     transform: rotate(0deg);

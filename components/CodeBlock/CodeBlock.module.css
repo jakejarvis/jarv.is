@@ -36,6 +36,7 @@
 .codeBlock.highlight :global(.token.cdata) {
   color: var(--colors-codeComment);
 }
+
 .codeBlock.highlight :global(.token.delimiter),
 .codeBlock.highlight :global(.token.boolean),
 .codeBlock.highlight :global(.token.keyword),
@@ -46,11 +47,13 @@
 .codeBlock.highlight :global(.token.url) {
   color: var(--colors-codeKeyword);
 }
+
 .codeBlock.highlight :global(.token.tag),
 .codeBlock.highlight :global(.token.builtin),
 .codeBlock.highlight :global(.token.regex) {
   color: var(--colors-codeNamespace);
 }
+
 .codeBlock.highlight :global(.token.property),
 .codeBlock.highlight :global(.token.constant),
 .codeBlock.highlight :global(.token.variable),
@@ -60,29 +63,37 @@
 .codeBlock.highlight :global(.token.char) {
   color: var(--colors-codeVariable);
 }
+
 .codeBlock.highlight :global(.token.literal-property),
 .codeBlock.highlight :global(.token.attr-name) {
   color: var(--colors-codeAttribute);
 }
+
 .codeBlock.highlight :global(.token.function) {
   color: var(--colors-codeLiteral);
 }
+
 .codeBlock.highlight :global(.token.tag .punctuation),
 .codeBlock.highlight :global(.token.attr-value .punctuation) {
   color: var(--colors-codePunctuation);
 }
+
 .codeBlock.highlight :global(.token.inserted) {
   color: var(--colors-codeAddition);
 }
+
 .codeBlock.highlight :global(.token.deleted) {
   color: var(--colors-codeDeletion);
 }
+
 .codeBlock.highlight :global(.token.url) {
   text-decoration: underline;
 }
+
 .codeBlock.highlight :global(.token.bold) {
   font-weight: bold;
 }
+
 .codeBlock.highlight :global(.token.italic) {
   font-style: italic;
 }
@@ -91,9 +102,21 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.65em;
-  background-color: var(--colors-backgroundInner);
+  height: 3em;
+  width: 3em;
+  color: var(--colors-mediumDark);
   border: 1px solid var(--colors-kindaLight);
   border-top-right-radius: var(--radii-corner);
   border-bottom-left-radius: var(--radii-corner);
+  background-color: var(--colors-backgroundHeader);
+  backdrop-filter: saturate(180%) blur(5px);
+}
+
+.cornerCopyButton > svg {
+  vertical-align: middle;
+}
+
+.cornerCopyButton:hover,
+.cornerCopyButton:focus-visible {
+  color: var(--colors-link);
 }

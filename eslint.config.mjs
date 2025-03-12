@@ -16,7 +16,8 @@ const compat = new FlatCompat({
 export default [
   { ignores: ["README.md", ".next", ".vercel", "node_modules"] },
   ...compat.config({
-    extends: ["eslint:recommended", "next/core-web-vitals", "next/typescript"],
+    plugins: ["css-modules"],
+    extends: ["eslint:recommended", "next/core-web-vitals", "next/typescript", "plugin:css-modules/recommended"],
   }),
   ...eslintCustomConfig,
   eslintPluginPrettierRecommended,

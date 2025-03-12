@@ -11,7 +11,7 @@
 .card {
   flex-grow: 1;
   width: 370px;
-  padding: 1.2em 1.2em 0.8em 1.2em;
+  padding: 1.2em 1.2em 0.8em;
   border: 1px solid var(--colors-kindaLight);
   border-radius: var(--radii-corner);
   font-size: 0.9em;
@@ -32,7 +32,6 @@
 .card .meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
 }
 
 .card .metaItem {
@@ -51,7 +50,7 @@
 }
 
 .card .metaIcon {
-  display: inline;
+  display: inline-block;
   width: 1.25em;
   height: 1.25em;
   vertical-align: -0.25em;
@@ -61,9 +60,10 @@
 .card .metaLanguage {
   display: inline-block;
   position: relative;
-  width: 1.15em;
-  height: 1.15em;
+  width: 1.1em;
+  height: 1.1em;
+  line-height: 1;
   margin-right: 0.5em;
   border-radius: 50%;
-  vertical-align: text-top;
+  vertical-align: -0.2em;
 }

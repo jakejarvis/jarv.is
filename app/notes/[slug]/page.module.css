@@ -35,11 +35,13 @@
   white-space: nowrap;
   margin-right: 0.75em;
 }
-.meta .metaTag:before {
+
+.meta .metaTag::before {
   content: "\0023"; /* cosmetically hashtagify tags */
   padding-right: 0.125em;
   color: var(--colors-light);
 }
+
 .meta .metaTag:last-of-type {
   margin-right: 0;
 }

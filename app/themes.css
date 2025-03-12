@@ -1,7 +1,7 @@
 :root {
   --colors-backgroundInner: #ffffff;
   --colors-backgroundOuter: #fcfcfc;
-  --colors-backgroundHeader: rgba(252, 252, 252, 0.7);
+  --colors-backgroundHeader: rgb(252 252 252 / 70%);
   --colors-text: #202020;
   --colors-mediumDark: #515151;
   --colors-medium: #5e5e5e;
@@ -11,7 +11,7 @@
   --colors-superLight: #f4f4f4;
   --colors-superDuperLight: #fbfbfb;
   --colors-link: #0e6dc2;
-  --colors-linkUnderline: rgba(14, 109, 194, 0.4);
+  --colors-linkUnderline: rgb(14 109 194 / 40%);
   --colors-success: #44a248;
   --colors-error: #ff1b1b;
   --colors-warning: #f78200;
@@ -33,7 +33,7 @@
 [data-theme="dark"] {
   --colors-backgroundInner: #1e1e1e;
   --colors-backgroundOuter: #252525;
-  --colors-backgroundHeader: rgba(37, 37, 37, 0.85);
+  --colors-backgroundHeader: rgb(37 37 37 / 85%);
   --colors-text: #f1f1f1;
   --colors-mediumDark: #d7d7d7;
   --colors-medium: #b1b1b1;
@@ -43,7 +43,7 @@
   --colors-superLight: #272727;
   --colors-superDuperLight: #1f1f1f;
   --colors-link: #88c7ff;
-  --colors-linkUnderline: rgba(136, 199, 255, 0.4);
+  --colors-linkUnderline: rgb(136 199 255 / 40%);
   --colors-success: #78df55;
   --colors-error: #ff5151;
   --colors-warning: #f2b702;

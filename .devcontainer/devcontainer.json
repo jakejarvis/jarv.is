@@ -20,10 +20,12 @@
 				"typescript.tsdk": "node_modules/typescript/lib"
 			},
 			"extensions": [
-				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
+				"EditorConfig.EditorConfig",
 				"prisma.prisma",
-				"unifiedjs.vscode-mdx"
+				"unifiedjs.vscode-mdx",
+				"esbenp.prettier-vscode",
+				"stylelint.vscode-stylelint"
 			]
 		}
 	},
