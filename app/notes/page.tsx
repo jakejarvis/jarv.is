@@ -1,7 +1,7 @@
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
-import config from "../../lib/config/constants";
+import config from "../../lib/config";
 import { metadata as defaultMetadata } from "../layout";
 import type { ReactElement } from "react";
 import type { Metadata, Route } from "next";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
+const Page = async () => {
   // parse the year of each note and group them together
   const notes = await getAllPosts();
   const notesByYear: {
@@ -58,5 +58,7 @@ export default async function Page() {
   // grouped posts enter this component ordered chronologically -- we want reverse chronological
   const reversed = sections.reverse();
 
-  return <>{reversed}</>;
-}
+  return reversed;
+};
+
+export default Page;

@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import clsx from "clsx";
 import objStr from "obj-str";
-import config from "../../lib/config/constants";
+import config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Link.module.css";

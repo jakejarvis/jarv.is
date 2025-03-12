@@ -22,9 +22,7 @@ const CodePen = ({
         preview: `${!!preview}`,
         editable: `${!!editable}`,
       })}`}
-      scrolling="no"
-      sandbox="allow-same-origin allow-scripts allow-popups allow-top-navigation-by-user-activation"
-      style={{ height: `${height}px`, width: "100%", border: "0" }}
+      style={{ height: `${height}px`, width: "100%", border: "0", overflow: "hidden" }}
     />
   );
 };

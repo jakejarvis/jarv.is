@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { Resend } from "resend";
-import config from "../../lib/config/constants";
+import config from "../../lib/config";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -12,7 +12,7 @@ const schema = z.object({
   ["cf-turnstile-response"]: z.string().min(1, { message: "CAPTCHA not completed" }),
 });
 
-export async function sendMessage(
+export const sendMessage = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   prevState: any,
   formData: FormData
@@ -21,7 +21,7 @@ export async function sendMessage(
   message: string;
   errors?: z.inferFormattedError<typeof schema>;
   payload?: FormData;
-}> {
+}> => {
   try {
     const validatedFields = schema.safeParse(Object.fromEntries(formData));
 
@@ -85,4 +85,4 @@ export async function sendMessage(
       payload: formData,
     };
   }
-}
+};

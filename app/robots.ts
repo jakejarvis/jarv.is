@@ -1,4 +1,4 @@
-import config from "../lib/config/constants";
+import config from "../lib/config";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";

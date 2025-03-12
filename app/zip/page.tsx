@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
+const Page = () => {
   return (
     <div
       style={{
@@ -73,4 +73,6 @@ export default async function Page() {
       </CodeBlock>
     </div>
   );
-}
+};
+
+export default Page;

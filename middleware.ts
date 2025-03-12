@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import siteConfig from "./lib/config/constants";
+import siteConfig from "./lib/config";
 
 // assign "short codes" to approved reverse proxy destinations. for example:
-//   ["abc", "https://jakejarvis.github.io/blah"] => /_stream/abc/123.html -> https://jakejarvis.github.io/blah/123.html
+//   ["abc", "https://jakejarvis.github.io"] => /_stream/abc/123.html -> https://jakejarvis.github.io/123.html
 const rewritePrefix = "/_stream/";
 const rewrites = new Map([
   // umami backend, see https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
-  ["u", process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"],
+  ["u", process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"],
 ]);
 
-export function middleware(request: NextRequest) {
+export const middleware = (request: NextRequest) => {
   const headers = new Headers();
 
   // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
@@ -31,9 +31,6 @@ export function middleware(request: NextRequest) {
     // search the rewrite map for the short code
     const proxiedOrigin = rewrites.get(key);
 
-    // TODO: remove debugging headers
-    headers.set("x-middleware-proxy-key", key);
-
     // return a 400 error if a rewrite was requested but the short code isn't found
     if (!proxiedOrigin) {
       return NextResponse.json(
@@ -50,7 +47,7 @@ export function middleware(request: NextRequest) {
     const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
 
     // TODO: remove debugging headers
-    headers.set("x-middleware-proxy-to", proxiedUrl.toString());
+    headers.set("x-middleware-rewrite", proxiedUrl.toString());
 
     // finally do the rewriting
     return NextResponse.rewrite(proxiedUrl, {
@@ -64,7 +61,7 @@ export function middleware(request: NextRequest) {
     request,
     headers,
   });
-}
+};
 
 export const config = {
   // save compute time by skipping middleware for static and metadata files

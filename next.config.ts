@@ -40,23 +40,13 @@ const nextConfig: NextConfig = {
       ],
     },
   ],
-  rewrites: async () => ({
-    beforeFiles: [
-      {
-        // https://github.com/jakejarvis/tweets
-        source: "/tweets/:path*",
-        destination: "https://tweets-khaki.vercel.app/:path*",
-      },
-    ],
-    afterFiles: [
-      {
-        // access security.txt, etc at both /security.txt and /.well-known/security.txt
-        source: "/.well-known/:slug.txt",
-        destination: "/:slug.txt",
-      },
-    ],
-    fallback: [],
-  }),
+  rewrites: async () => [
+    {
+      // https://github.com/jakejarvis/tweets
+      source: "/tweets/:path*",
+      destination: "https://tweets-khaki.vercel.app/:path*",
+    },
+  ],
   redirects: async () => [
     { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
     {

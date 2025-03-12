@@ -1,6 +1,6 @@
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
-import config from "../config/constants";
+import config from "../config";
 
 import meJpg from "../../app/me.jpg";
 

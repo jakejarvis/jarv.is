@@ -1,7 +1,7 @@
 "use client";
 
 import Giscus from "@giscus/react";
-import config from "../../lib/config/constants";
+import config from "../../lib/config";
 import type { GiscusProps } from "@giscus/react";
 
 export type CommentsProps = {

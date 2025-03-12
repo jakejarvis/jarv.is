@@ -12,7 +12,7 @@ const Gist = async ({ id, file }: GistProps) => {
   const scriptResponse = await fetch(scriptUrl);
 
   if (!scriptResponse.ok) {
-    console.warn(`[gist] fetching js for https://gist.github.com/${id} failed:`, scriptResponse.statusText);
+    console.warn(`[gist] failed to fetch js:`, scriptResponse.statusText);
 
     return (
       <p style={{ textAlign: "center" }}>
@@ -33,10 +33,9 @@ const Gist = async ({ id, file }: GistProps) => {
       scrolling="no"
       id={iframeId}
       srcDoc={iframeHtml}
-      sandbox="allow-same-origin allow-scripts allow-popups allow-top-navigation-by-user-activation"
       style={{ border: "0", overflow: "hidden" }}
       suppressHydrationWarning
-    ></iframe>
+    />
   );
 };
 

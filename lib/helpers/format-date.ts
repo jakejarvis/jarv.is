@@ -5,7 +5,7 @@ import dayjsRelativeTime from "dayjs/plugin/relativeTime";
 import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat";
 import dayjsAdvancedFormat from "dayjs/plugin/advancedFormat";
 import "dayjs/locale/en";
-import config from "../config/constants";
+import config from "../config";
 
 const IsomorphicDayJs = (date?: dayjs.ConfigType): dayjs.Dayjs => {
   // plugins

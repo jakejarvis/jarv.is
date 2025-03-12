@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
+const Page = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Video
@@ -28,4 +28,6 @@ export default async function Page() {
       <Link href="/">Go home?</Link>
     </div>
   );
-}
+};
+
+export default Page;

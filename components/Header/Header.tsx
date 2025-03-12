@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "../Link";
 import Image from "../Image";
 import Menu from "../Menu";
-import config from "../../lib/config/constants";
+import config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Header.module.css";

@@ -35,7 +35,7 @@
   - Umami
   - Giscus
   - Resend
-  - ...and more: https://jarv.is/uses/
+  - ...and more: https://jarv.is/uses
 
 # VIEW SOURCE
 
@@ -43,7 +43,7 @@
 
 # PRIVACY POLICY
 
-    https://jarv.is/privacy/
+    https://jarv.is/privacy
 
 # TOR MIRROR
 
@@ -54,4 +54,4 @@
     All content is licensed under CC-BY-4.0, an
     open & permissive Creative Commons license:
 
-    https://jarv.is/license/
+    https://jarv.is/license

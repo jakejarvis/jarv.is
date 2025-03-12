@@ -3,7 +3,7 @@ import glob from "fast-glob";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
 import { formatDate } from "./format-date";
-import config from "../config/constants";
+import config from "../config";
 
 // path to directory with .mdx files, relative to project root
 const POSTS_DIR = "notes";

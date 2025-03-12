@@ -4,12 +4,12 @@ import type { hits as Hits } from "@prisma/client";
 
 export const revalidate = 900; // 15 mins
 
-export async function GET(): Promise<
+export const GET = async (): Promise<
   NextResponse<{
     total: Pick<Hits, "hits">;
     pages: Hits[];
   }>
-> {
+> => {
   // fetch all rows from db sorted by most hits
   const pages = await prisma.hits.findMany({
     orderBy: [
@@ -28,4 +28,4 @@ export async function GET(): Promise<
   });
 
   return NextResponse.json({ total, pages });
-}
+};

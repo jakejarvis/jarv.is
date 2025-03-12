@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <>
       <PageTitle canonical="/leo">TheLab.mov</PageTitle>
@@ -49,4 +49,6 @@ export default function Page() {
       </p>
     </>
   );
-}
+};
+
+export default Page;

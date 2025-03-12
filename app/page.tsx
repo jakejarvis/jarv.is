@@ -34,7 +34,7 @@ const Link = ({
   );
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <div className={styles.page}>
       <h1>
@@ -286,4 +286,6 @@ export default function Page() {
       </p>
     </div>
   );
-}
+};
+
+export default Page;

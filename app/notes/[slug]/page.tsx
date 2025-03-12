@@ -8,7 +8,7 @@ import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { metadata as defaultMetadata } from "../../layout";
-import config from "../../../lib/config/constants";
+import config from "../../../lib/config";
 import type { Metadata, Route } from "next";
 import type { Article, WithContext } from "schema-dts";
 
@@ -20,16 +20,16 @@ export const dynamicParams = false;
 // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
 export const experimental_ppr = true;
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const slugs = await getPostSlugs();
 
   // map slugs into a static paths object required by next.js
   return slugs.map((slug) => ({
     slug,
   }));
-}
+};
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `/notes/${slug}`,
     },
   };
-}
+};
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
@@ -153,4 +153,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       )}
     </>
   );
-}
+};
+
+export default Page;

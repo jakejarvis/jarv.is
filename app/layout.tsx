@@ -4,7 +4,7 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
-import config from "../lib/config/constants";
+import config from "../lib/config";
 import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
 
@@ -37,8 +37,13 @@ export const metadata: Metadata = {
       {
         url: meJpg.src,
         alt: `${config.siteName} – ${config.shortDescription}`,
+        width: meJpg.width,
+        height: meJpg.height,
       },
     ],
+  },
+  twitter: {
+    creator: `@${config.authorSocial?.twitter}`,
   },
   alternates: {
     canonical: "/",
@@ -83,7 +88,7 @@ const jsonLd: WithContext<Person> = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang={config.siteLocale} suppressHydrationWarning>
       <head>
@@ -110,4 +115,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

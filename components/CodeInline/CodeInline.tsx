@@ -3,7 +3,9 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./CodeInline.module.css";
 
-const CodeInline = ({ className, ...rest }: ComponentPropsWithoutRef<"code">) => (
+export type CodeInlineProps = ComponentPropsWithoutRef<"code">;
+
+const CodeInline = ({ className, ...rest }: CodeInlineProps) => (
   <code className={clsx(styles.codeInline, className)} {...rest} />
 );
 

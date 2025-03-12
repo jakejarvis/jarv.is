@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <div
       style={{
@@ -46,4 +46,6 @@ export default function Page() {
       <ContactForm />
     </div>
   );
-}
+};
+
+export default Page;

@@ -14,7 +14,7 @@ import YouTube from "./components/YouTube";
 import Gist from "./components/Gist";
 import CodePen from "./components/CodePen";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export const useMDXComponents = (components: MDXComponents): MDXComponents => {
   return {
     ...components,
 
@@ -44,4 +44,4 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Gist,
     CodePen,
   };
-}
+};

@@ -3,7 +3,9 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Blockquote.module.css";
 
-const Blockquote = ({ className, ...rest }: ComponentPropsWithoutRef<"blockquote">) => (
+export type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
+
+const Blockquote = ({ className, ...rest }: BlockquoteProps) => (
   <blockquote className={clsx(styles.blockquote, className)} {...rest} />
 );
 

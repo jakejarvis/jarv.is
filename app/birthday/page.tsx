@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <>
       <PageTitle canonical="/birthday">1996.mov</PageTitle>
@@ -28,4 +28,6 @@ export default function Page() {
       <Video src={["/static/birthday/birthday.webm", "/static/birthday/birthday.mp4"]} poster={thumbnail.src} />
     </>
   );
-}
+};
+
+export default Page;
