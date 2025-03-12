@@ -3,23 +3,72 @@ import type { NextRequest } from "next/server";
 
 import siteConfig from "./lib/config/constants";
 
+// assign "short codes" to approved reverse proxy destinations. for example:
+//   ["abc", "https://jakejarvis.github.io/blah"] => /_stream/abc/123.html -> https://jakejarvis.github.io/blah/123.html
+const rewritePrefix = "/_stream/";
+const rewrites = new Map([
+  // umami backend, see https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
+  ["u", process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"],
+]);
+
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+  const headers = new Headers();
 
   // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
   if (siteConfig.onionDomain) {
-    response.headers.set("Onion-Location", `${siteConfig.onionDomain}${request.nextUrl.pathname}`);
+    headers.set("Onion-Location", `${siteConfig.onionDomain}${request.nextUrl.pathname}${request.nextUrl.search}`);
   }
 
   // debugging 🥛
-  response.headers.set("x-got-milk", "2%");
+  headers.set("x-got-milk", "2%");
 
-  return response;
+  if (request.nextUrl.pathname.startsWith(rewritePrefix)) {
+    // extract the short code
+    const pathAfterPrefix = request.nextUrl.pathname.slice(rewritePrefix.length);
+    const slashIndex = pathAfterPrefix.indexOf("/");
+    const key = slashIndex === -1 ? pathAfterPrefix : pathAfterPrefix.slice(0, slashIndex);
+
+    // search the rewrite map for the short code
+    const proxiedOrigin = rewrites.get(key);
+
+    // TODO: remove debugging headers
+    headers.set("x-middleware-proxy-key", key);
+
+    // return a 400 error if a rewrite was requested but the short code isn't found
+    if (!proxiedOrigin) {
+      return NextResponse.json(
+        { error: "Unknown proxy key" },
+        {
+          status: 400,
+          headers,
+        }
+      );
+    }
+
+    // it's now safe to build the rewritten URL
+    const proxiedPath = slashIndex === -1 ? "/" : pathAfterPrefix.slice(slashIndex);
+    const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
+
+    // TODO: remove debugging headers
+    headers.set("x-middleware-proxy-to", proxiedUrl.toString());
+
+    // finally do the rewriting
+    return NextResponse.rewrite(proxiedUrl, {
+      request,
+      headers,
+    });
+  }
+
+  // if we've gotten this far, continue normally to next.js
+  return NextResponse.next({
+    request,
+    headers,
+  });
 }
 
 export const config = {
   // save compute time by skipping middleware for static and metadata files
   matcher: [
-    "/((?!_next/static|_next/image|_stream|_vercel|static|.well-known|favicon.ico|icon.png|apple-icon.png|manifest.webmanifest).*)",
+    "/((?!_next/static|_next/image|_vercel|static|.well-known|favicon.ico|icon.png|apple-icon.png|manifest.webmanifest).*)",
   ],
 };

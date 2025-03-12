@@ -42,18 +42,8 @@ const nextConfig: NextConfig = {
   ],
   rewrites: async () => ({
     beforeFiles: [
-      // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
       {
-        source: "/_stream/u/script.js",
-        destination: `${process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"}/script.js`,
-      },
-      {
-        source: "/_stream/u/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_UMAMI_HOST || "https://cloud.umami.is"}/api/:path*`,
-      },
-
-      // https://github.com/jakejarvis/tweets
-      {
+        // https://github.com/jakejarvis/tweets
         source: "/tweets/:path*",
         destination: "https://tweets-khaki.vercel.app/:path*",
       },
