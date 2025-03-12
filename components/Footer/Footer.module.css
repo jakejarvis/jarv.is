@@ -21,8 +21,8 @@
   color: var(--colors-mediumDark) !important;
 }
 
-.link.hover:hover,
-.link.hover:focus-visible {
+.link:has(.icon):hover,
+.link:has(.icon):focus-visible {
   color: var(--colors-medium) !important;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .link.underline:hover,
-.link.hover:focus-visible {
+.link.underline:focus-visible {
   border-bottom-color: var(--colors-kindaLight);
 }
 
@@ -41,7 +41,7 @@
   width: 1.25em;
   height: 1.25em;
   vertical-align: -0.25em;
-  margin: 0 0.075em;
+  margin: 0 0.1em;
 }
 
 .heart {

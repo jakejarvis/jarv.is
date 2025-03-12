@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import Link from "../Link";
 import type { Route } from "next";
-import type { IconType } from "react-icons";
 import type { ComponentPropsWithoutRef } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import styles from "./MenuItem.module.css";
 
 export type MenuItemProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
   text?: string;
   href?: Route;
-  icon?: IconType;
+  icon?: LucideIcon;
   current?: boolean;
 };
 
@@ -18,7 +18,7 @@ const MenuItem = ({ text, href, icon, current, className, ...rest }: MenuItemPro
 
   const item = (
     <>
-      {Icon && <Icon className={styles.icon} />}
+      {Icon && <Icon size="1.25em" className={styles.icon} />}
       {text && <span className={styles.label}>{text}</span>}
     </>
   );

@@ -50,12 +50,6 @@
   background-color: var(--colors-link);
 }
 
-.submitIcon {
-  font-size: 1.3em;
-  margin-right: 0.3em;
-  line-height: 1;
-}
-
 .result {
   font-weight: 600;
   line-height: 1.5;
@@ -73,5 +67,4 @@
   width: 1.3em;
   height: 1.3em;
   vertical-align: -0.3em;
-  fill: currentColor;
 }

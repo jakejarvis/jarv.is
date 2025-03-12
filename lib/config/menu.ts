@@ -1,25 +1,25 @@
-import { FiHome, FiEdit3, FiCode, FiMail } from "react-icons/fi";
+import { CodeIcon, HomeIcon, MailIcon, PencilLineIcon } from "lucide-react";
 import type { MenuItemProps } from "../../components/MenuItem";
 
 export const menuItems: MenuItemProps[] = [
   {
     text: "Home",
     href: "/",
-    icon: FiHome,
+    icon: HomeIcon,
   },
   {
     text: "Notes",
     href: "/notes",
-    icon: FiEdit3,
+    icon: PencilLineIcon,
   },
   {
     text: "Projects",
     href: "/projects",
-    icon: FiCode,
+    icon: CodeIcon,
   },
   {
     text: "Contact",
     href: "/contact",
-    icon: FiMail,
+    icon: MailIcon,
   },
 ];

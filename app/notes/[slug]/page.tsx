@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { CalendarIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "../../../components/Link";
 import Time from "../../../components/Time";
 import Comments from "../../../components/Comments";
@@ -8,7 +9,6 @@ import HitCounter from "./counter";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { metadata as defaultMetadata } from "../../layout";
 import config from "../../../lib/config/constants";
-import { FiCalendar, FiTag, FiEdit, FiEye } from "react-icons/fi";
 import type { Metadata, Route } from "next";
 import type { Article, WithContext } from "schema-dts";
 
@@ -85,14 +85,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <div className={styles.meta}>
         <div className={styles.metaItem}>
           <Link href={`/notes/${frontmatter.slug}` as Route} plain className={styles.metaLink}>
-            <FiCalendar className={styles.metaIcon} />
+            <CalendarIcon size="1.2em" className={styles.metaIcon} />
             <Time date={frontmatter.date} format="MMMM D, YYYY" />
           </Link>
         </div>
 
         {frontmatter.tags && (
           <div className={styles.metaItem}>
-            <FiTag className={styles.metaIcon} />
+            <TagIcon size="1.2em" className={styles.metaIcon} />
             <span className={styles.metaTags}>
               {frontmatter.tags.map((tag) => (
                 <span key={tag} title={tag} className={styles.metaTag} aria-label={`Tagged with ${tag}`}>
@@ -110,7 +110,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             plain
             className={styles.metaLink}
           >
-            <FiEdit className={styles.metaIcon} />
+            <SquarePenIcon size="1.2em" className={styles.metaIcon} />
             <span>Improve This Post</span>
           </Link>
         </div>
@@ -126,7 +126,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 marginRight: 0,
               }}
             >
-              <FiEye className={styles.metaIcon} />
+              <EyeIcon size="1.2em" className={styles.metaIcon} />
               <Suspense fallback={<Loading boxes={3} width={20} />}>
                 <HitCounter slug={`notes/${frontmatter.slug}`} />
               </Suspense>

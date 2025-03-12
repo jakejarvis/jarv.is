@@ -4,7 +4,7 @@ import { forwardRef, useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import clsx from "clsx";
-import { FiClipboard, FiCheck } from "react-icons/fi";
+import { ClipboardIcon, CheckIcon } from "lucide-react";
 import type { ReactNode, Ref, ComponentPropsWithoutRef, ElementRef, MouseEventHandler } from "react";
 
 import styles from "./CopyButton.module.css";
@@ -57,7 +57,11 @@ const CopyButton = (
       className={clsx(styles.button, copied && styles.copied, className)}
       {...rest}
     >
-      {copied ? <FiCheck className={styles.icon} /> : <FiClipboard className={styles.icon} />}
+      {copied ? (
+        <CheckIcon size="1.25em" className={styles.icon} />
+      ) : (
+        <ClipboardIcon size="1.25em" className={styles.icon} />
+      )}
     </button>
   );
 };

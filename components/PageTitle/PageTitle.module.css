@@ -1,21 +1,14 @@
 .title {
   margin-top: 0;
   margin-bottom: 0.6em;
-  font-size: 1.9em;
-  font-weight: 600;
+  font-size: 2em;
+  font-weight: 500;
   text-transform: lowercase;
-  letter-spacing: 0.02em;
 }
 
 .slug::before {
   content: "\002E\002F"; /* "./" */
   letter-spacing: 0.1em;
-  color: var(--colors-mediumLight) !important;
+  color: var(--colors-mediumLight);
   margin-right: -0.1em;
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2em;
-  }
 }

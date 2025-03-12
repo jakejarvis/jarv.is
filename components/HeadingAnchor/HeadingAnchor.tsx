@@ -1,5 +1,5 @@
 import Link from "../Link";
-import { FiLink } from "react-icons/fi";
+import { LinkIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
 
 export type HeadingAnchorProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
@@ -9,8 +9,8 @@ export type HeadingAnchorProps = Omit<ComponentPropsWithoutRef<typeof Link>, "hr
 
 const HeadingAnchor = ({ id, title, ...rest }: HeadingAnchorProps) => {
   return (
-    <Link href={`#${id}`} title={`Jump to "${title}"`} aria-hidden plain style={{ lineHeight: 1 }} {...rest}>
-      <FiLink size="0.8em" />
+    <Link href={`#${id}`} title={`Jump to "${title}"`} aria-hidden plain {...rest}>
+      <LinkIcon size="0.8em" />
     </Link>
   );
 };

@@ -4,10 +4,9 @@ import { useActionState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Turnstile from "react-turnstile";
 import clsx from "clsx";
+import { CheckIcon, XIcon } from "lucide-react";
 import Link from "../../components/Link";
 import { sendMessage } from "./actions";
-import { GoCheck, GoX } from "react-icons/go";
-import { SiMarkdown } from "react-icons/si";
 
 import styles from "./form.module.css";
 
@@ -56,7 +55,13 @@ const ContactForm = () => {
           lineHeight: 1.75,
         }}
       >
-        <SiMarkdown
+        <svg
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth="0"
+          viewBox="0 0 24 24"
+          height="1.25em"
+          width="1.25em"
           style={{
             display: "inline",
             width: "1.25em",
@@ -64,7 +69,10 @@ const ContactForm = () => {
             verticalAlign: "-0.25em",
             marginRight: "0.25em",
           }}
-        />{" "}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M22.27 19.385H1.73A1.73 1.73 0 010 17.655V6.345a1.73 1.73 0 011.73-1.73h20.54A1.73 1.73 0 0124 6.345v11.308a1.73 1.73 0 01-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"></path>
+        </svg>{" "}
         Basic{" "}
         <Link href="https://commonmark.org/help/" title="Markdown reference sheet" style={{ fontWeight: 600 }}>
           Markdown syntax
@@ -87,15 +95,27 @@ const ContactForm = () => {
               <span>Sending...</span>
             ) : (
               <>
-                <span className={styles.submitIcon}>📤</span> <span>Send</span>
+                <span
+                  style={{
+                    fontSize: "1.3em",
+                    marginRight: "0.3em",
+                    lineHeight: "1",
+                  }}
+                >
+                  📤
+                </span>{" "}
+                <span>Send</span>
               </>
             )}
           </button>
         )}
-
         {formState?.message && (
           <div className={clsx(styles.result, formState?.success ? styles.success : styles.error)}>
-            {formState?.success ? <GoCheck className={styles.resultIcon} /> : <GoX className={styles.resultIcon} />}{" "}
+            {formState?.success ? (
+              <CheckIcon size="1.3em" className={styles.resultIcon} />
+            ) : (
+              <XIcon size="1.3em" className={styles.resultIcon} />
+            )}{" "}
             {formState?.message}
           </div>
         )}

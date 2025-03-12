@@ -1,4 +1,5 @@
 .button {
+  color: var(--colors-mediumDark);
   line-height: 1px;
   cursor: pointer;
 }

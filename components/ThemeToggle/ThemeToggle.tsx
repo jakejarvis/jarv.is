@@ -1,16 +1,15 @@
 "use client";
 
 import { useHasMounted, useTheme } from "../../hooks";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { BsThreeDots } from "react-icons/bs";
+import { EllipsisIcon, MoonIcon, SunIcon } from "lucide-react";
+import type { ComponentPropsWithoutRef } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import styles from "./ThemeToggle.module.css";
 
-export type ThemeToggleProps = {
-  className?: string;
-};
+export type ThemeToggleProps = ComponentPropsWithoutRef<LucideIcon>;
 
-const ThemeToggle = ({ className }: ThemeToggleProps) => {
+const ThemeToggle = ({ ...rest }: ThemeToggleProps) => {
   const hasMounted = useHasMounted();
   const { theme, setTheme } = useTheme();
 
@@ -18,7 +17,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   if (!hasMounted) {
     return (
       <div className={styles.toggle}>
-        <BsThreeDots className={className} style={{ fill: "var(--colors-mediumLight)" }} />
+        <EllipsisIcon style={{ stroke: "var(--colors-mediumLight)" }} {...rest} />
       </div>
     );
   }
@@ -30,7 +29,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
       title={theme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
       aria-label={theme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
-      {theme === "light" ? <FiSun className={className} /> : <FiMoon className={className} />}
+      {theme === "light" ? <SunIcon {...rest} /> : <MoonIcon {...rest} />}
     </button>
   );
 };

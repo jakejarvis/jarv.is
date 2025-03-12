@@ -1,6 +1,6 @@
 import hash from "@emotion/hash";
 import { rgba } from "polished";
-import { GoLock } from "react-icons/go";
+import { LockIcon } from "lucide-react";
 import UnstyledLink from "../components/Link";
 import type { ComponentPropsWithoutRef } from "react";
 import type { Route } from "next";
@@ -249,13 +249,7 @@ export default function Page() {
             plain
             openInNewTab
           >
-            <GoLock
-              size="1.25em"
-              style={{
-                verticalAlign: "-0.25em",
-                strokeWidth: 0.5,
-              }}
-            />{" "}
+            <LockIcon size="1.25em" style={{ verticalAlign: "-0.25em" }} />{" "}
             <span
               style={{
                 margin: "0 0.15em",
