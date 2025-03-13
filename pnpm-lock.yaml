@@ -99,8 +99,8 @@ importers:
         specifier: 19.0.0
         version: 19.0.0
       react-textarea-autosize:
-        specifier: ^8.5.7
-        version: 8.5.7(@types/react@19.0.10)(react@19.0.0)
+        specifier: ^8.5.8
+        version: 8.5.8(@types/react@19.0.10)(react@19.0.0)
       react-turnstile:
         specifier: ^1.1.4
         version: 1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2866,8 +2866,8 @@ packages:
   react-promise-suspense@0.3.4:
     resolution: {integrity: sha512-I42jl7L3Ze6kZaq+7zXWSunBa3b1on5yfvUW6Eo/3fFOj6dZ5Bqmcd264nJbTK/gn1HjjILAjSwnZbV4RpSaNQ==}
 
-  react-textarea-autosize@8.5.7:
-    resolution: {integrity: sha512-2MqJ3p0Jh69yt9ktFIaZmORHXw4c4bxSIhCeWiFwmJ9EYKgLmuNII3e9c9b2UO+ijl4StnpZdqpxNIhTdHvqtQ==}
+  react-textarea-autosize@8.5.8:
+    resolution: {integrity: sha512-iUiIj70JefrTuSJ4LbVFiSqWiHHss5L63L717bqaWHMgkm9sz6eEvro4vZ3uQfGJbevzwT6rHOszHKA8RkhRMg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6718,7 +6718,7 @@ snapshots:
     dependencies:
       fast-deep-equal: 2.0.1
 
-  react-textarea-autosize@8.5.7(@types/react@19.0.10)(react@19.0.0):
+  react-textarea-autosize@8.5.8(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.26.10
       react: 19.0.0

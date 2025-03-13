@@ -48,7 +48,7 @@
     "react-error-boundary": "^5.0.0",
     "react-innertext": "^1.1.5",
     "react-is": "19.0.0",
-    "react-textarea-autosize": "^8.5.7",
+    "react-textarea-autosize": "^8.5.8",
     "react-turnstile": "^1.1.4",
     "react-tweet": "^3.2.2",
     "rehype-mdx-import-media": "^1.2.0",
