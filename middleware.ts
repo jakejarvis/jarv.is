@@ -47,7 +47,7 @@ export const middleware = (request: NextRequest) => {
     const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
 
     // TODO: remove debugging headers
-    headers.set("x-middleware-rewrite", proxiedUrl.toString());
+    headers.set("x-rewrite-url", proxiedUrl.toString());
 
     // finally do the rewriting
     return NextResponse.rewrite(proxiedUrl, {
