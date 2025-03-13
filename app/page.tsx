@@ -2,10 +2,26 @@ import hash from "@emotion/hash";
 import { rgba } from "polished";
 import { LockIcon } from "lucide-react";
 import UnstyledLink from "../components/Link";
+import { metadata as defaultMetadata } from "./layout";
 import type { ComponentPropsWithoutRef } from "react";
-import type { Route } from "next";
+import type { Route, Metadata } from "next";
 
 import styles from "./page.module.css";
+
+import meJpg from "../public/static/me.jpg";
+
+export const metadata: Metadata = {
+  openGraph: {
+    ...defaultMetadata.openGraph,
+    images: [
+      {
+        url: meJpg.src,
+        width: meJpg.width,
+        height: meJpg.height,
+      },
+    ],
+  },
+};
 
 const Link = ({
   lightColor,

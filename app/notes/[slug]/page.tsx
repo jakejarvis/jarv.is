@@ -45,9 +45,10 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
       tags: frontmatter.tags,
       publishedTime: frontmatter.date,
       modifiedTime: frontmatter.date,
-      images: frontmatter.image
-        ? [{ url: frontmatter.image, alt: frontmatter.title }]
-        : defaultMetadata.openGraph?.images,
+    },
+    twitter: {
+      ...defaultMetadata.twitter,
+      card: "summary_large_image",
     },
     alternates: {
       ...defaultMetadata.alternates,
@@ -66,7 +67,6 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     name: frontmatter.title,
     description: frontmatter.description || config.longDescription,
     url: frontmatter.permalink,
-    image: frontmatter.image,
     datePublished: frontmatter.date,
     dateModified: frontmatter.date,
     author: {

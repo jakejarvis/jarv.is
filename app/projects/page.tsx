@@ -1,11 +1,11 @@
 import { graphql } from "@octokit/graphql";
+import commaNumber from "comma-number";
 import { GitForkIcon, StarIcon } from "lucide-react";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
-import commaNumber from "comma-number";
-import config from "../../lib/config";
 import { metadata as defaultMetadata } from "../layout";
+import config from "../../lib/config";
 import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 

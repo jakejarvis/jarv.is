@@ -24,7 +24,6 @@ const Header = ({ className, ...rest }: HeaderProps) => {
             height={70}
             quality={60}
             placeholder="empty"
-            inline
             priority
           />
           <span className={styles.name}>{config.authorName}</span>
