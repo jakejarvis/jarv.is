@@ -3,12 +3,3 @@
   max-width: 100%;
   border-radius: var(--radii-corner);
 }
-
-.block {
-  display: block;
-  line-height: 0;
-
-  /* default to centering all images */
-  margin: 1em auto;
-  text-align: center;
-}

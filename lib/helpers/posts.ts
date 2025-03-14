@@ -15,13 +15,17 @@ export type FrontMatter = {
   title: string;
   htmlTitle?: string;
   description?: string;
-  image?: string;
   tags?: string[];
+  image?: string;
   noComments?: boolean;
 };
 
 // returns front matter and the **raw & uncompiled** markdown of a given slug
 export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
+  if (!(await getPostSlugs()).includes(slug)) {
+    throw new Error(`No post found for slug: ${slug}`);
+  }
+
   const { frontmatter } = await import(`../../${POSTS_DIR}/${slug}/index.mdx`);
 
   const { unified } = await import("unified");
@@ -62,7 +66,6 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
     slug,
     date: formatDate(frontmatter.date), // validate/normalize the date string provided from front matter
     permalink: `${config.baseUrl}/${POSTS_DIR}/${slug}`,
-    image: frontmatter.image ? `${config.baseUrl}${frontmatter.image}` : undefined,
   };
 };
 

@@ -15,7 +15,7 @@ import "./global.css";
 
 import styles from "./layout.module.css";
 
-import meJpg from "./me.jpg";
+import meJpg from "../public/static/me.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
@@ -33,14 +33,6 @@ export const metadata: Metadata = {
     url: "/",
     locale: config.siteLocale?.replace("-", "_"),
     type: "website",
-    images: [
-      {
-        url: meJpg.src,
-        alt: `${config.siteName} – ${config.shortDescription}`,
-        width: meJpg.width,
-        height: meJpg.height,
-      },
-    ],
   },
   twitter: {
     creator: `@${config.authorSocial?.twitter}`,

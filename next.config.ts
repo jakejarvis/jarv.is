@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "abs.twimg.com" },
     ],
   },
+  outputFileTracingIncludes: {
+    "/notes/[slug]/opengraph-image": [
+      "./notes/**/*",
+      "./public/static/me.jpg",
+      "./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
+    ],
+  },
   experimental: {
     serverActions: {
       allowedOrigins: ["jarv.is", "jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"],

@@ -7,11 +7,9 @@ import styles from "./Image.module.css";
 
 const MAX_WIDTH = 865;
 
-export type ImageProps = ComponentPropsWithoutRef<typeof NextImage> & {
-  inline?: boolean; // don't wrap everything in a `<div>` block
-};
+export type ImageProps = ComponentPropsWithoutRef<typeof NextImage>;
 
-const Image = ({ src, height, width, quality, placeholder, inline, className, ...rest }: ImageProps) => {
+const Image = ({ src, height, width, quality, placeholder, className, ...rest }: ImageProps) => {
   const constrainWidth = (width?: number | `${number}`) => {
     if (!width) return MAX_WIDTH;
 
@@ -27,9 +25,7 @@ const Image = ({ src, height, width, quality, placeholder, inline, className, ..
     ...rest,
   };
 
-  const StyledImageWithProps = <NextImage className={clsx(styles.image, className)} {...imageProps} />;
-
-  return inline ? StyledImageWithProps : <div className={styles.block}>{StyledImageWithProps}</div>;
+  return <NextImage className={clsx(styles.image, className)} {...imageProps} />;
 };
 
 export default Image;

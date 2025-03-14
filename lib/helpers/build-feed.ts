@@ -2,7 +2,7 @@ import { Feed } from "feed";
 import { getAllPosts } from "./posts";
 import config from "../config";
 
-import meJpg from "../../app/me.jpg";
+import meJpg from "../../public/static/me.jpg";
 
 export const buildFeed = async (): Promise<Feed> => {
   // https://github.com/jpmonette/feed#example
@@ -32,7 +32,6 @@ export const buildFeed = async (): Promise<Feed> => {
       link: post.permalink,
       title: post.title,
       description: post.description,
-      image: post.image || undefined,
       author: [
         {
           name: config.authorName,
