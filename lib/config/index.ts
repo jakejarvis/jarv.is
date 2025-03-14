@@ -3,7 +3,7 @@ export const siteName = "Jake Jarvis";
 export const siteLocale = "en-US";
 export const timeZone = "America/New_York"; // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 export const onionDomain = "jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion";
-export const shortDescription = "Front-End Web Developer in Boston; MA";
+export const shortDescription = "Front-End Web Developer in Boston, MA";
 export const longDescription =
   "Hi there! I'm a frontend web developer based in Boston, Massachusetts specializing in the JAMstack, modern JavaScript frameworks, and progressive web apps.";
 export const license = "Creative Commons Attribution 4.0 International";

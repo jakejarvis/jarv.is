@@ -1,6 +1,6 @@
+import Image from "next/image";
 import clsx from "clsx";
 import Link from "../Link";
-import Image from "../Image";
 import Menu from "../Menu";
 import * as config from "../../lib/config";
 import { MAX_WIDTH } from "../../lib/config/constants";

@@ -2,6 +2,7 @@ import path from "path";
 import glob from "fast-glob";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
+import { decode } from "html-entities";
 import { formatDate } from "./format-date";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
 
@@ -32,7 +33,7 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
 
   // allow *very* limited markdown to be used in post titles
   const parseTitle = async (title: string, allowedTags: string[] = []): Promise<string> => {
-    return String(
+    const newTitle = (
       await unified()
         .use(remarkParse)
         .use(remarkSmartypants, {
@@ -45,7 +46,10 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
         .use(rehypeSanitize, { tagNames: allowedTags })
         .use(rehypeStringify)
         .process(title)
-    );
+    ).toString();
+
+    // assume if we don't want any html titles then we don't want encoded html entities either
+    return allowedTags.length === 0 ? decode(newTitle) : newTitle;
   };
 
   // process title as both plain and stylized
@@ -57,8 +61,9 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {
     ...(frontmatter as Partial<FrontMatter>),
-    // zero markdown title:
+    // plain title without html or markdown syntax:
     title,
+    // stylized title with limited html tags:
     htmlTitle,
     slug,
     date: formatDate(frontmatter.date), // validate/normalize the date string provided from front matter
