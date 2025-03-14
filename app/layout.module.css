@@ -13,7 +13,6 @@
 }
 
 .container {
-  max-width: var(--sizes-maxLayoutWidth);
   margin: 0 auto;
   display: block;
 }

@@ -3,7 +3,7 @@
   padding: 0.8em;
   margin: 0.6em 0;
   border: 2px solid var(--colors-light);
-  border-radius: var(--radii-corner);
+  border-radius: 0.6em;
   color: var(--colors-text);
   background-color: var(--colors-superDuperLight);
 }
@@ -36,7 +36,7 @@
   padding: 1em 1.25em;
   margin-right: 1.5em;
   border: 0;
-  border-radius: var(--radii-corner);
+  border-radius: 0.6em;
   cursor: pointer;
   user-select: none;
   font-weight: 500;

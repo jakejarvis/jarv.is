@@ -4,7 +4,7 @@ const skipNavId = "skip-nav";
 
 export const SkipToContentLink = () => {
   return (
-    <a href={`#${skipNavId}`} tabIndex={0} className={styles.hiddenLink}>
+    <a href={`#${skipNavId}`} tabIndex={0} className={styles.skipNav}>
       Skip to content
     </a>
   );

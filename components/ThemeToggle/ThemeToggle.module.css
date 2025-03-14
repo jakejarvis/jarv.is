@@ -11,3 +11,15 @@
 .toggle:focus-visible {
   color: var(--colors-warning);
 }
+
+/* hacky way to avoid flashing icon for a few milliseconds on initial render */
+.toggle > .sun,
+[data-theme="dark"] .toggle > .moon {
+  display: inline-block;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.toggle > .moon,
+[data-theme="dark"] .toggle > .sun {
+  display: none;
+}

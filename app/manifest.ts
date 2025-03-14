@@ -1,4 +1,4 @@
-import config from "../lib/config";
+import * as config from "../lib/config";
 import type { MetadataRoute } from "next";
 
 const manifest = (): MetadataRoute.Manifest => {

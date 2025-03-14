@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { Resend } from "resend";
-import config from "../../lib/config";
+import * as config from "../../lib/config";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),

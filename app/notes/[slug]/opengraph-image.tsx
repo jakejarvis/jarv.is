@@ -1,19 +1,21 @@
-/* eslint-disable jsx-a11y/alt-text */
-
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
-import path from "path";
-import fs from "fs/promises";
-import glob from "fast-glob";
+import { join } from "path";
+import { existsSync } from "fs";
+import { readFile } from "fs/promises";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
+import { POSTS_DIR, AVATAR_PATH } from "../../../lib/config/constants";
 
-export const dynamicParams = false;
 export const contentType = "image/png";
 export const size = {
   // https://developers.facebook.com/docs/sharing/webmasters/images/
   width: 1200,
   height: 630,
 };
+
+// generate and cache these images at build-time for each slug, since doing this on-demand is mega slow...
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
   const slugs = await getPostSlugs();
@@ -24,29 +26,35 @@ export const generateStaticParams = async () => {
   }));
 };
 
-const getLocalImage = async (src: string) => {
-  const imagePath = await glob(src);
-  if (imagePath.length > 0) {
-    const imageData = await fs.readFile(path.join(process.cwd(), imagePath[0]));
-    return Uint8Array.from(imageData).buffer;
-  }
+const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
+  // https://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src/14115340#14115340
+  const NO_IMAGE = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 
-  // image doesn't exist
-  return null;
+  const imagePath = join(process.cwd(), src);
+
+  try {
+    if (!existsSync(imagePath)) {
+      console.error(`[og-image] couldn't find an image file located at "${imagePath}"`);
+
+      // return a 1x1 transparent gif if the image doesn't exist instead of crashing
+      return NO_IMAGE;
+    }
+
+    // return the raw image data as a buffer
+    return Uint8Array.from(await readFile(imagePath)).buffer;
+  } catch (error) {
+    // fail silently and return a 1x1 transparent gif instead of crashing
+    console.error(`[og-image] found "${imagePath}" but couldn't read it:`, error);
+    return NO_IMAGE;
+  }
 };
 
 const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
   try {
     const { slug } = await params;
 
-    // get the note's title and image filename from its frontmatter
-    const { title, image } = await getFrontMatter(slug);
-
-    // load the image specified in the note's frontmatter from its directory
-    const imageSrc = await getLocalImage(`notes/${slug}/${image}`);
-
-    // load the author avatar
-    const avatarSrc = await getLocalImage("public/static/me.jpg");
+    // get the post's title and image filename from its frontmatter
+    const { title, image: imagePath } = await getFrontMatter(slug);
 
     return new ImageResponse(
       (
@@ -59,7 +67,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
             background: "linear-gradient(0deg, hsla(197, 14%, 57%, 1) 0%, hsla(192, 17%, 94%, 1) 100%)",
           }}
         >
-          {imageSrc && (
+          {imagePath && (
             <div
               style={{
                 display: "flex",
@@ -67,14 +75,15 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 width: "100%",
               }}
             >
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img
                 // @ts-expect-error
-                src={imageSrc}
+                src={await getLocalImage(`${POSTS_DIR}/${slug}/${imagePath}`)}
                 style={{ objectFit: "cover", height: "100%", width: "100%" }}
               />
             </div>
           )}
-          {avatarSrc && (
+          {AVATAR_PATH && (
             <div
               style={{
                 display: "flex",
@@ -83,9 +92,10 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 top: 42,
               }}
             >
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img
                 // @ts-expect-error
-                src={avatarSrc}
+                src={await getLocalImage(AVATAR_PATH)}
                 style={{ height: 96, width: 96, borderRadius: "100%" }}
               />
             </div>
@@ -117,9 +127,8 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
           {
             name: "Geist",
             // load the Geist font directly from its npm package
-            data: await fs.readFile(
-              path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf")
-            ),
+            // IMPORTANT: include this exact path in next.config.ts under "outputFileTracingIncludes"
+            data: await readFile(join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf")),
             style: "normal",
             weight: 600,
           },
@@ -127,7 +136,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
       }
     );
   } catch (error) {
-    console.error("[og-image] Error generating image:", error);
+    console.error("[og-image] error generating image:", error);
     notFound();
   }
 };

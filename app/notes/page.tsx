@@ -1,7 +1,7 @@
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
-import config from "../../lib/config";
+import * as config from "../../lib/config";
 import { metadata as defaultMetadata } from "../layout";
 import type { ReactElement } from "react";
 import type { Metadata, Route } from "next";

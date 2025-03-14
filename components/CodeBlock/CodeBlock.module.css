@@ -13,7 +13,7 @@
   tab-size: 2px;
   background-color: var(--colors-codeBackground);
   border: 1px solid var(--colors-kindaLight);
-  border-radius: var(--radii-corner);
+  border-radius: 0.6em;
 }
 
 .codeBlock :global(.line-number)::before {
@@ -106,8 +106,8 @@
   width: 3em;
   color: var(--colors-mediumDark);
   border: 1px solid var(--colors-kindaLight);
-  border-top-right-radius: var(--radii-corner);
-  border-bottom-left-radius: var(--radii-corner);
+  border-top-right-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
   background-color: var(--colors-backgroundHeader);
   backdrop-filter: saturate(180%) blur(5px);
 }

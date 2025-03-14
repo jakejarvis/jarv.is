@@ -4,7 +4,8 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
-import config from "../lib/config";
+import * as config from "../lib/config";
+import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
 import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
 
@@ -15,10 +16,10 @@ import "./global.css";
 
 import styles from "./layout.module.css";
 
-import meJpg from "../public/static/me.jpg";
+import ogImage from "./opengraph-image.jpg";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(config.baseUrl),
+  metadataBase: new URL(BASE_URL),
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.shortDescription}`,
@@ -64,10 +65,10 @@ const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: config.authorName,
-  url: config.baseUrl,
-  image: `${config.baseUrl}${meJpg.src}`,
+  url: BASE_URL,
+  image: `${BASE_URL}${ogImage.src}`,
   sameAs: [
-    config.baseUrl,
+    BASE_URL,
     `https://github.com/${config.authorSocial?.github}`,
     `https://keybase.io/${config.authorSocial?.keybase}`,
     `https://twitter.com/${config.authorSocial?.twitter}`,
@@ -96,7 +97,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
             <main className={styles.default}>
               <SkipToContentTarget />
-              <div className={styles.container}>{children}</div>
+              <div className={styles.container} style={{ maxWidth: MAX_WIDTH }}>
+                {children}
+              </div>
             </main>
 
             <Footer />

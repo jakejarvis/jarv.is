@@ -5,7 +5,7 @@ import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
 import { metadata as defaultMetadata } from "../layout";
-import config from "../../lib/config";
+import * as config from "../../lib/config";
 import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 

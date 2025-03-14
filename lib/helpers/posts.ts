@@ -3,10 +3,7 @@ import glob from "fast-glob";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
 import { formatDate } from "./format-date";
-import config from "../config";
-
-// path to directory with .mdx files, relative to project root
-const POSTS_DIR = "notes";
+import { BASE_URL, POSTS_DIR } from "../config/constants";
 
 export type FrontMatter = {
   slug: string;
@@ -65,7 +62,7 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
     htmlTitle,
     slug,
     date: formatDate(frontmatter.date), // validate/normalize the date string provided from front matter
-    permalink: `${config.baseUrl}/${POSTS_DIR}/${slug}`,
+    permalink: `${BASE_URL}/${POSTS_DIR}/${slug}`,
   };
 };
 

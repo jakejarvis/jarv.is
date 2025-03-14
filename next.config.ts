@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",
-      "./public/static/me.jpg",
+      "./app/opengraph-image.jpg",
       "./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
     ],
   },

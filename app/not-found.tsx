@@ -3,7 +3,7 @@ import Video from "../components/Video";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 Not Found",
+  title: "Page Not Found",
   description: null,
   openGraph: {},
   alternates: {
@@ -23,7 +23,7 @@ const Page = () => {
         }}
       />
 
-      <h1>404: Page Not Found 😢</h1>
+      <h1 style={{ margin: "0.2em auto" }}>Page Not Found 😢</h1>
 
       <Link href="/">Go home?</Link>
     </div>

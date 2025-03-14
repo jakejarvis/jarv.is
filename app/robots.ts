@@ -1,4 +1,4 @@
-import config from "../lib/config";
+import { BASE_URL } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -74,7 +74,7 @@ const robots = (): MetadataRoute.Robots => {
         disallow: "/",
       },
     ],
-    sitemap: `${config.baseUrl}/sitemap.xml`,
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 };
 

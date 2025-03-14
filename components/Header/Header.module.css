@@ -14,22 +14,22 @@
   backdrop-filter: saturate(180%) blur(5px);
 }
 
-.selfieImage {
+.homeImage {
   width: 50px;
   height: 50px;
   border: 1px solid var(--colors-light);
   border-radius: 50%;
 }
 
-.selfieLink {
+.homeLink {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   color: var(--colors-mediumDark) !important;
 }
 
-.selfieLink:hover,
-.selfieLink:focus-visible {
+.homeLink:hover,
+.homeLink:focus-visible {
   color: var(--colors-link) !important;
 }
 
@@ -46,7 +46,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--sizes-maxLayoutWidth);
   margin: 0 auto;
 }
 
@@ -56,14 +55,14 @@
     height: 5.9em;
   }
 
-  .selfieImage {
+  .homeImage {
     width: 70px;
     height: 70px;
     border-width: 2px;
   }
 
-  .selfieLink:hover .selfieImage,
-  .selfieLink:focus-visible .selfieImage {
+  .homeLink:hover .homeImage,
+  .homeLink:focus-visible .homeImage {
     border-color: var(--colors-linkUnderline);
   }
 

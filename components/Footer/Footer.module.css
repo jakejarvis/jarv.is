@@ -10,7 +10,6 @@
 .row {
   display: flex;
   width: 100%;
-  max-width: var(--sizes-maxLayoutWidth);
   margin: 0 auto;
   justify-content: space-between;
   font-size: 0.8em;

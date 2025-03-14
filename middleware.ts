@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import siteConfig from "./lib/config";
+import * as siteConfig from "./lib/config";
 
 // assign "short codes" to approved reverse proxy destinations. for example:
 //   ["abc", "https://jakejarvis.github.io"] => /_stream/abc/123.html -> https://jakejarvis.github.io/123.html
@@ -16,7 +16,12 @@ export const middleware = (request: NextRequest) => {
 
   // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
   if (siteConfig.onionDomain) {
-    headers.set("Onion-Location", `${siteConfig.onionDomain}${request.nextUrl.pathname}${request.nextUrl.search}`);
+    const onionUrl = request.nextUrl.clone();
+    onionUrl.hostname = siteConfig.onionDomain;
+    onionUrl.protocol = "http";
+    onionUrl.port = "";
+
+    headers.set("onion-location", onionUrl.toString());
   }
 
   // debugging 🥛

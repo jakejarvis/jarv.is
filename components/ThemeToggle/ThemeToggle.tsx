@@ -1,7 +1,8 @@
 "use client";
 
-import { useHasMounted, useTheme } from "../../hooks";
-import { EllipsisIcon, MoonIcon, SunIcon } from "lucide-react";
+import clsx from "clsx";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "../../hooks";
 import type { ComponentPropsWithoutRef } from "react";
 import type { LucideIcon } from "lucide-react";
 
@@ -9,27 +10,17 @@ import styles from "./ThemeToggle.module.css";
 
 export type ThemeToggleProps = ComponentPropsWithoutRef<LucideIcon>;
 
-const ThemeToggle = ({ ...rest }: ThemeToggleProps) => {
-  const hasMounted = useHasMounted();
+const ThemeToggle = ({ className, ...rest }: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
-
-  // render a placeholder icon to avoid layout shifting until we're fully mounted and self-aware
-  if (!hasMounted) {
-    return (
-      <div className={styles.toggle}>
-        <EllipsisIcon style={{ stroke: "var(--colors-mediumLight)" }} {...rest} />
-      </div>
-    );
-  }
 
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      aria-label="Toggle Theme"
       className={styles.toggle}
-      title={theme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
-      aria-label={theme === "light" ? "Toggle Dark Mode" : "Toggle Light Mode"}
     >
-      {theme === "light" ? <SunIcon {...rest} /> : <MoonIcon {...rest} />}
+      <SunIcon className={clsx(styles.sun, className)} {...rest} />
+      <MoonIcon className={clsx(styles.moon, className)} {...rest} />
     </button>
   );
 };

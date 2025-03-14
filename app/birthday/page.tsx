@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
-    images: [thumbnail.src],
     url: "/birthday",
   },
   alternates: {

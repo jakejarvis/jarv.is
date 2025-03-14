@@ -13,7 +13,7 @@
   width: 370px;
   padding: 1.2em 1.2em 0.8em;
   border: 1px solid var(--colors-kindaLight);
-  border-radius: var(--radii-corner);
+  border-radius: 1em;
   font-size: 0.9em;
   color: var(--colors-mediumDark);
 }

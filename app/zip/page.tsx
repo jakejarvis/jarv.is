@@ -26,7 +26,7 @@ const Page = () => {
         backgroundImage: `url(${backgroundImg.src})`,
         backgroundRepeat: "repeat",
         backgroundPosition: "center",
-        borderRadius: "var(--radii-corner)",
+        borderRadius: "0.6em",
       }}
     >
       <CodeBlock

@@ -26,8 +26,6 @@
   --colors-codeVariable: #d88200;
   --colors-codeAddition: #44a248;
   --colors-codeDeletion: #ff1b1b;
-  --sizes-maxLayoutWidth: 865px;
-  --radii-corner: 0.6rem;
 }
 
 [data-theme="dark"] {

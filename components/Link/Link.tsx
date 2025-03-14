@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import clsx from "clsx";
 import objStr from "obj-str";
-import config from "../../lib/config";
+import { BASE_URL } from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Link.module.css";
@@ -14,7 +14,7 @@ export type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
 const Link = ({ href, rel, target, prefetch = false, plain, openInNewTab, className, ...rest }: LinkProps) => {
   // This component auto-detects whether or not this link should open in the same window (the default for internal
   // links) or a new tab (the default for external links). Defaults can be overridden with `openInNewTab={true}`.
-  const isExternal = typeof href === "string" && !(["/", "#"].includes(href[0]) || href.startsWith(config.baseUrl));
+  const isExternal = typeof href === "string" && !(["/", "#"].includes(href[0]) || href.startsWith(BASE_URL));
 
   if (openInNewTab || isExternal) {
     return (

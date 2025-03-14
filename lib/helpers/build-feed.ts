@@ -1,26 +1,27 @@
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
-import config from "../config";
+import * as config from "../config";
+import { BASE_URL } from "../config/constants";
 
-import meJpg from "../../public/static/me.jpg";
+import ogImage from "../../app/opengraph-image.jpg";
 
 export const buildFeed = async (): Promise<Feed> => {
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
-    id: config.baseUrl,
-    link: config.baseUrl,
+    id: BASE_URL,
+    link: BASE_URL,
     title: config.siteName,
     description: config.longDescription,
     copyright: config.licenseUrl,
     updated: new Date(process.env.RELEASE_DATE || Date.now()),
-    image: `${config.baseUrl}${meJpg.src}`,
+    image: `${BASE_URL}${ogImage.src}`,
     feedLinks: {
-      rss: `${config.baseUrl}/feed.xml`,
-      atom: `${config.baseUrl}/feed.atom`,
+      rss: `${BASE_URL}/feed.xml`,
+      atom: `${BASE_URL}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: config.baseUrl,
+      link: BASE_URL,
       email: config.authorEmail,
     },
   });
@@ -35,7 +36,7 @@ export const buildFeed = async (): Promise<Feed> => {
       author: [
         {
           name: config.authorName,
-          link: config.baseUrl,
+          link: BASE_URL,
         },
       ],
       date: new Date(post.date),

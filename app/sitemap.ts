@@ -1,7 +1,7 @@
 import path from "path";
 import glob from "fast-glob";
 import { getAllPosts } from "../lib/helpers/posts";
-import config from "../lib/config";
+import { BASE_URL } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -11,13 +11,13 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: config.baseUrl,
+      url: BASE_URL,
       priority: 1.0,
       lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
     },
-    { url: `${config.baseUrl}/stats` },
-    { url: `${config.baseUrl}/tweets` },
-    { url: `${config.baseUrl}/y2k` },
+    { url: `${BASE_URL}/stats` },
+    { url: `${BASE_URL}/tweets` },
+    { url: `${BASE_URL}/y2k` },
   ];
 
   // add each directory in the app folder as a route (excluding special routes)
@@ -35,7 +35,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ).forEach((route) => {
     routes.push({
       // remove matching page.(tsx|mdx) file and make all URLs absolute
-      url: `${config.baseUrl}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
+      url: `${BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
     });
   });
 

@@ -8,7 +8,8 @@ import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { metadata as defaultMetadata } from "../../layout";
-import config from "../../../lib/config";
+import * as config from "../../../lib/config";
+import { BASE_URL } from "../../../lib/config/constants";
 import type { Metadata, Route } from "next";
 import type { Article, WithContext } from "schema-dts";
 
@@ -72,7 +73,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     author: {
       "@type": "Person",
       name: config.authorName,
-      url: config.baseUrl,
+      url: BASE_URL,
     },
   };
 
