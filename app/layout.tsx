@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
 import * as config from "../lib/config";
 import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
+import defaultMetadata from "../lib/config/metadata";
 import type { Metadata } from "next";
 import type { Person, WithContext } from "schema-dts";
 
@@ -18,47 +19,7 @@ import styles from "./layout.module.css";
 
 import ogImage from "./opengraph-image.jpg";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    template: `%s – ${config.siteName}`,
-    default: `${config.siteName} – ${config.shortDescription}`,
-  },
-  description: config.longDescription,
-  openGraph: {
-    siteName: config.siteName,
-    title: {
-      template: "%s",
-      default: `${config.siteName} – ${config.shortDescription}`,
-    },
-    url: "/",
-    locale: config.siteLocale?.replace("-", "_"),
-    type: "website",
-  },
-  twitter: {
-    creator: `@${config.authorSocial?.twitter}`,
-  },
-  alternates: {
-    canonical: "/",
-    types: {
-      "application/rss+xml": [
-        {
-          title: `${config.siteName} (RSS)`,
-          url: "/feed.xml",
-        },
-      ],
-      "application/atom+xml": [
-        {
-          title: `${config.siteName} (Atom)`,
-          url: "/feed.atom",
-        },
-      ],
-    },
-  },
-  other: {
-    humans: "/humans.txt",
-  },
-};
+export const metadata: Metadata = defaultMetadata;
 
 // https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld
 const jsonLd: WithContext<Person> = {

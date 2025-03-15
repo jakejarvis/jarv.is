@@ -1,0 +1,11 @@
+# pnpm
+node_modules/
+pnpm-lock.yaml
+.pnpm-store/
+
+# next.js
+.next/
+.vercel/
+
+# other
+.devcontainer/devcontainer.json

@@ -4,27 +4,21 @@ import { GitForkIcon, StarIcon } from "lucide-react";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
-import { metadata as defaultMetadata } from "../layout";
+import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
-import type { Metadata } from "next";
 import type { User, Repository } from "@octokit/graphql-schema";
 
 import styles from "./page.module.css";
 
 export const revalidate = 600; // 10 minutes
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "Projects",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "Projects",
-    url: "/projects",
-  },
+  description: `Most-starred repositories by @${config.authorSocial?.github} on GitHub`,
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/projects",
   },
-};
+});
 
 type Project = {
   name: string;

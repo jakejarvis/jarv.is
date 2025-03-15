@@ -1,19 +1,13 @@
 import PageTitle from "../../components/PageTitle";
-import { metadata as defaultMetadata } from "../layout";
+import { addMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = {
+export const metadata = addMetadata({
   title: "/uses",
   description: "Things I use daily.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "/uses",
-    url: "/uses",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/uses",
   },
-};
+});
 
 <PageTitle canonical="/uses">Uses</PageTitle>
 

@@ -1,23 +1,16 @@
 import PageTitle from "../../components/PageTitle";
 import Video from "../../components/Video";
-import { metadata as defaultMetadata } from "../layout";
-import type { Metadata } from "next";
+import { addMetadata } from "../../lib/helpers/metadata";
 
 import thumbnail from "./thumbnail.png";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
   description: "The origin of my hatred for the Happy Birthday song.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
-    url: "/birthday",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/birthday",
   },
-};
+});
 
 const Page = () => {
   return (

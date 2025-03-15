@@ -1,18 +1,12 @@
 import PageTitle from "../../components/PageTitle";
-import { metadata as defaultMetadata } from "../layout";
+import { addMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = {
+export const metadata = addMetadata({
   title: "Privacy",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "Privacy",
-    url: "/privacy",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/privacy",
   },
-};
+});
 
 <PageTitle canonical="/privacy">Privacy</PageTitle>
 

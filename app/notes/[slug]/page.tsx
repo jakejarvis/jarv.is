@@ -7,7 +7,7 @@ import Comments from "../../../components/Comments";
 import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
 import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
-import { metadata as defaultMetadata } from "../../layout";
+import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
 import { BASE_URL } from "../../../lib/config/constants";
 import type { Metadata, Route } from "next";
@@ -34,13 +34,10 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
-  return {
+  return addMetadata({
     title: frontmatter.title,
     description: frontmatter.description,
     openGraph: {
-      ...defaultMetadata.openGraph,
-      title: frontmatter.title,
-      url: `/notes/${slug}`,
       type: "article",
       authors: [config.authorName],
       tags: frontmatter.tags,
@@ -48,14 +45,12 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
       modifiedTime: frontmatter.date,
     },
     twitter: {
-      ...defaultMetadata.twitter,
       card: "summary_large_image",
     },
     alternates: {
-      ...defaultMetadata.alternates,
       canonical: `/notes/${slug}`,
     },
-  };
+  });
 };
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {

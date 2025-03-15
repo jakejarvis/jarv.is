@@ -1,19 +1,13 @@
 import PageTitle from "../../components/PageTitle";
-import { metadata as defaultMetadata } from "../layout";
+import { addMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = {
+export const metadata = addMetadata({
   title: "CLI",
   description: "AKA, the most useless Node module ever published, in history, by anyone, ever.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "CLI",
-    url: "/cli",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/cli",
   },
-};
+});
 
 <PageTitle canonical="/cli">CLI</PageTitle>
 

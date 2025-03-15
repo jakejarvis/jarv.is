@@ -1,27 +1,21 @@
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getAllPosts } from "../../lib/helpers/posts";
+import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
-import { metadata as defaultMetadata } from "../layout";
 import type { ReactElement } from "react";
-import type { Metadata, Route } from "next";
+import type { Route } from "next";
 import type { FrontMatter } from "../../lib/helpers/posts";
 
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "Notes",
   description: `Recent posts by ${config.authorName}.`,
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "Notes",
-    url: "/notes",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/notes",
   },
-};
+});
 
 const Page = async () => {
   // parse the year of each note and group them together

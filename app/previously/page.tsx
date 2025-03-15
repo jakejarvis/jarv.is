@@ -3,8 +3,7 @@ import Link from "../../components/Link";
 import Figure from "../../components/Figure";
 import CodeInline from "../../components/CodeInline";
 import HorizontalRule from "../../components/HorizontalRule";
-import { metadata as defaultMetadata } from "../layout";
-import type { Metadata } from "next";
+import { addMetadata } from "../../lib/helpers/metadata";
 
 import { ComicNeue } from "../../lib/styles/fonts";
 import styles from "./page.module.css";
@@ -24,19 +23,13 @@ import img_2012_09 from "./images/2012_09.png";
 import img_2018_04 from "./images/2018_04.png";
 import img_2020_03 from "./images/2020_03.png";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "Previously on...",
   description: "An incredibly embarrassing and somewhat painful trip down this site's memory lane...",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "Previously on...",
-    url: "/previously",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/previously",
   },
-};
+});
 
 const Page = () => {
   return (

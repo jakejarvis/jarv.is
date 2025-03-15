@@ -1,24 +1,17 @@
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
-import { metadata as defaultMetadata } from "../layout";
-import type { Metadata } from "next";
+import { addMetadata } from "../../lib/helpers/metadata";
 
 import thumbnail from "./thumbnail.png";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "My Brief Apperance in Hillary Clinton's DNC Video",
   description: "My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "My Brief Apperance in Hillary Clinton's DNC Video",
-    url: "/hillary",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/hillary",
   },
-};
+});
 
 const Page = () => {
   return (

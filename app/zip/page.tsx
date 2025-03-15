@@ -1,23 +1,16 @@
 import Link from "../../components/Link";
 import CodeBlock from "../../components/CodeBlock/CodeBlock";
-import { metadata as defaultMetadata } from "../layout";
-import type { Metadata } from "next";
+import { addMetadata } from "../../lib/helpers/metadata";
 
 import backgroundImg from "./sundar.jpg";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "fuckyougoogle.zip",
   description: "This is a horrible idea.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "fuckyougoogle.zip",
-    url: "/zip",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/zip",
   },
-};
+});
 
 const Page = () => {
   return (

@@ -1,22 +1,16 @@
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import ContactForm from "./form";
-import { metadata as defaultMetadata } from "../layout";
-import type { Metadata, Route } from "next";
+import { addMetadata } from "../../lib/helpers/metadata";
+import type { Route } from "next";
 
-export const metadata: Metadata = {
+export const metadata = addMetadata({
   title: "Contact Me",
   description: "Fill out this quick form and I'll get back to you as soon as I can.",
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: "Contact Me",
-    url: "/contact",
-  },
   alternates: {
-    ...defaultMetadata.alternates,
     canonical: "/contact",
   },
-};
+});
 
 const Page = () => {
   return (
