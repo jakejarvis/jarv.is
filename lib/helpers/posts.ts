@@ -1,7 +1,6 @@
+import { cache } from "react";
 import path from "path";
 import glob from "fast-glob";
-import pMap from "p-map";
-import pMemoize from "p-memoize";
 import { decode } from "html-entities";
 import { formatDate } from "./format-date";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
@@ -71,7 +70,8 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
   };
 };
 
-export const getPostSlugs = pMemoize(async (): Promise<string[]> => {
+// use filesystem to get a simple list of all post slugs
+export const getPostSlugs = cache(async (): Promise<string[]> => {
   // list all .mdx files in POSTS_DIR
   const mdxFiles = await glob("**/*.mdx", {
     cwd: path.join(process.cwd(), POSTS_DIR),
@@ -85,9 +85,10 @@ export const getPostSlugs = pMemoize(async (): Promise<string[]> => {
 });
 
 // returns the parsed front matter of ALL posts, sorted reverse chronologically
-export const getAllPosts = pMemoize(async (): Promise<FrontMatter[]> => {
-  // for each post, query its front matter
-  const data = await pMap(await getPostSlugs(), async (slug) => await getFrontMatter(slug));
+export const getAllPosts = cache(async (): Promise<FrontMatter[]> => {
+  // concurrently fetch the front matter of each post
+  const slugs = await getPostSlugs();
+  const data = await Promise.all(slugs.map(async (slug) => await getFrontMatter(slug)));
 
   // sort the results by date
   data.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
