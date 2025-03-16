@@ -28,7 +28,7 @@ const Link = ({
         href={uniqueId}
         precedence={styles.page}
       >
-        {`.t_${uniqueId}{--colors-link:${lightColor};--colors-linkUnderline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .t_${uniqueId}{--colors-link:${darkColor};--colors-linkUnderline:${rgba(darkColor, 0.4)}}`}
+        {`.t_${uniqueId}{--colors-link:${lightColor};--colors-link-underline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .t_${uniqueId}{--colors-link:${darkColor};--colors-link-underline:${rgba(darkColor, 0.4)}}`}
       </style>
     </UnstyledLink>
   );
@@ -150,7 +150,7 @@ const Page = () => {
         >
           the Tooth Fairy
         </Link>
-        . <span style={{ color: "var(--colors-mediumLight)" }}>I've improved a bit since then, I think? 🤷</span>
+        . <span style={{ color: "var(--colors-medium-light)" }}>I've improved a bit since then, I think? 🤷</span>
       </p>
 
       <p>

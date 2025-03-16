@@ -1,5 +1,4 @@
 import Link from "../../components/Link";
-import CodeBlock from "../../components/CodeBlock/CodeBlock";
 import { addMetadata } from "../../lib/helpers/metadata";
 
 import backgroundImg from "./sundar.jpg";
@@ -16,54 +15,57 @@ const Page = () => {
   return (
     <div
       style={{
+        position: "relative",
+        width: "100%",
+        margin: "1em auto",
         backgroundImage: `url(${backgroundImg.src})`,
         backgroundRepeat: "repeat",
         backgroundPosition: "center",
         borderRadius: "0.6em",
       }}
     >
-      <CodeBlock
+      <code
         style={{
-          backgroundColor: "var(--colors-backgroundHeader)",
+          backgroundColor: "var(--colors-background-header)",
           backdropFilter: "saturate(180%) blur(5px))",
+          display: "block",
+          overflowX: "auto",
+          padding: "1em",
+          fontSize: "0.9em",
+          tabSize: 2,
+          border: "1px solid var(--colors-kinda-light)",
+          borderRadius: "0.6em",
         }}
       >
-        <span style={{ color: "var(--colors-codeNamespace)" }}>sundar</span>@
-        <span style={{ color: "var(--colors-codeKeyword)" }}>google</span>:
-        <span style={{ color: "var(--colors-codeAttribute)" }}>~</span>${" "}
-        <span style={{ color: "var(--colors-codeLiteral)" }}>mv</span> /root
+        <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+        <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>mv</span> /root
         <Link href="https://killedbygoogle.com/" style={{ color: "inherit" }} plain>
           /stable_products_that_people_rely_on/
         </Link>
         googledomains.zip /tmp/
         <br />
-        <span style={{ color: "var(--colors-codeNamespace)" }}>sundar</span>@
-        <span style={{ color: "var(--colors-codeKeyword)" }}>google</span>:
-        <span style={{ color: "var(--colors-codeAttribute)" }}>~</span>${" "}
-        <span style={{ color: "var(--colors-codeLiteral)" }}>crontab</span>{" "}
-        <span style={{ color: "var(--colors-codeVariable)" }}>-l</span>
+        <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+        <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>crontab</span>{" "}
+        <span style={{ color: "#fd992a" }}>-l</span>
         <br />
         <br />
-        <span style={{ color: "var(--colors-codeComment)" }}>
+        <span style={{ color: "#929292" }}>
           # TODO(someone else): make super duper sure this only deletes actual zip files and *NOT* the sketchy domains
           ending with file extensions released by us & purchased on our registrar (which i just yeeted btw cuz i'm bored
           & also my evil superpowers are fueled by my reckless disregard for the greater good of the internet). - xoxo
-          sundar <span style={{ color: "var(--colors-codeNamespace)" }}>&lt;3</span>
+          sundar <span style={{ color: "#f95757" }}>&lt;3</span>
         </span>
         <br />
-        <span style={{ color: "var(--colors-codeAttribute)" }}>@monthly</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style={{ color: "var(--colors-codeLiteral)" }}>rm</span>{" "}
-        <span style={{ color: "var(--colors-codeVariable )" }}>-f</span> /tmp/
+        <span style={{ color: "#78df55" }}>@monthly</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style={{ color: "#d588fb" }}>rm</span> <span style={{ color: "#fd992a" }}>-f</span> /tmp/
         <Link href="https://fuckyougoogle.zip/" style={{ color: "inherit" }} plain>
           *.zip
         </Link>
         <br />
         <br />
-        <span style={{ color: "var(--colors-codeNamespace)" }}>sundar</span>@
-        <span style={{ color: "var(--colors-codeKeyword)" }}>google</span>:
-        <span style={{ color: "var(--colors-codeAttribute)" }}>~</span>${" "}
-        <span style={{ color: "var(--colors-codeLiteral)" }}>reboot</span> 0
-      </CodeBlock>
+        <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+        <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>reboot</span> 0
+      </code>
     </div>
   );
 };

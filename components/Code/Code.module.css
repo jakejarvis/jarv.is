@@ -1,0 +1,85 @@
+figure:has(.highlighted) {
+  margin: 1em auto;
+  position: relative;
+  width: 100%;
+  background-color: var(--colors-background-header);
+}
+
+.highlighted {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  font-size: 0.9em;
+  tab-size: 2px;
+  border: 1px solid var(--colors-kinda-light);
+  border-radius: 0.6em;
+}
+
+.highlighted span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+[data-theme="dark"] .highlighted span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+.highlighted[data-line-numbers] {
+  counter-reset: line;
+}
+
+.highlighted[data-line-numbers] > [data-line]::before {
+  display: inline-block;
+  width: 1em;
+  margin-right: 1.5em;
+  text-align: right;
+  color: var(--colors-medium-light);
+  counter-increment: line;
+  content: counter(line);
+  user-select: none;
+}
+
+.highlighted[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 1.25rem;
+}
+
+.highlighted[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 1.75rem;
+}
+
+.inline {
+  padding: 0.2em 0.3em;
+  font-size: 0.925em;
+  page-break-inside: avoid;
+  background-color: var(--colors-background-outer);
+  border: 1px solid var(--colors-kinda-light);
+  border-radius: 0.6em;
+}
+
+.copyButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 3em;
+  width: 3em;
+  color: var(--colors-medium-dark);
+  border: 1px solid var(--colors-kinda-light);
+  border-top-right-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
+  background-color: var(--colors-background-header);
+  backdrop-filter: saturate(180%) blur(5px);
+}
+
+.copyButton > svg {
+  vertical-align: middle;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  color: var(--colors-link);
+}

@@ -23,7 +23,7 @@ body:has(.wackyWrapper) a {
   width: 100%;
   display: block;
   margin: 0.6em 0;
-  border: 2px solid var(--colors-kindaLight);
+  border: 2px solid var(--colors-kinda-light);
 }
 
 .screenshot,

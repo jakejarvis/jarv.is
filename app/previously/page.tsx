@@ -1,7 +1,6 @@
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Figure from "../../components/Figure";
-import CodeInline from "../../components/CodeInline";
 import HorizontalRule from "../../components/HorizontalRule";
 import { addMetadata } from "../../lib/helpers/metadata";
 
@@ -50,14 +49,14 @@ const Page = () => {
 
       <p style={{ textAlign: "center", margin: "0.5em 0" }}>
         🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
-        <CodeInline
+        <code
           style={{
-            fontSize: "0.8em",
+            fontSize: "0.9em",
             fontWeight: 400,
           }}
         >
           color: <span style={{ color: "#32cd32" }}>limegreen</span>
-        </CodeInline>{" "}
+        </code>{" "}
         ahead...
       </p>
 

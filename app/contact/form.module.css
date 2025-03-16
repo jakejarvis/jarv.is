@@ -5,7 +5,7 @@
   border: 2px solid var(--colors-light);
   border-radius: 0.6em;
   color: var(--colors-text);
-  background-color: var(--colors-superDuperLight);
+  background-color: var(--colors-super-duper-light);
 }
 
 .input:focus {
@@ -41,12 +41,12 @@
   user-select: none;
   font-weight: 500;
   color: var(--colors-text);
-  background-color: var(--colors-kindaLight);
+  background-color: var(--colors-kinda-light);
 }
 
 .submitButton:hover,
 .submitButton:focus-visible {
-  color: var(--colors-superDuperLight);
+  color: var(--colors-super-duper-light);
   background-color: var(--colors-link);
 }
 

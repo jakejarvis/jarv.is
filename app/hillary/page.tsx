@@ -33,7 +33,7 @@ const Page = () => {
           fontSize: "0.9em",
           lineHeight: 1.8,
           margin: "1.25em 1em 0 1em",
-          color: "var(--colors-mediumLight)",
+          color: "var(--colors-medium-light)",
         }}
       >
         Video is property of{" "}

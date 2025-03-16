@@ -1,5 +1,5 @@
 export { default as rehypeMdxImportMedia } from "rehype-mdx-import-media";
-export { default as rehypePrism } from "rehype-prism-plus";
+export { default as rehypePrettyCode } from "rehype-pretty-code";
 export { default as rehypeSanitize } from "rehype-sanitize";
 export { default as rehypeSlug } from "rehype-slug";
 export { default as rehypeStringify } from "rehype-stringify";

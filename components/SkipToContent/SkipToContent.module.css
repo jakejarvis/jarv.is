@@ -21,8 +21,8 @@ https://github.com/reach/reach-ui/blob/main/packages/skip-nav/styles.css */
   width: auto;
   height: auto;
   clip: auto;
-  background: var(--colors-superDuperLight);
+  background: var(--colors-super-duper-light);
   color: var(--colors-link);
-  border: 2px solid var(--colors-kindaLight);
+  border: 2px solid var(--colors-kinda-light);
   text-decoration: underline;
 }

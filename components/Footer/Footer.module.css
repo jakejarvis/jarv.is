@@ -2,9 +2,9 @@
   flex: 1;
   width: 100%;
   padding: 1.25em 1.5em;
-  border-top: 1px solid var(--colors-kindaLight);
-  background-color: var(--colors-backgroundOuter);
-  color: var(--colors-mediumDark);
+  border-top: 1px solid var(--colors-kinda-light);
+  background-color: var(--colors-background-outer);
+  color: var(--colors-medium-dark);
 }
 
 .row {
@@ -17,7 +17,7 @@
 }
 
 .link {
-  color: var(--colors-mediumDark) !important;
+  color: var(--colors-medium-dark) !important;
 }
 
 .link:has(.icon):hover,
@@ -32,7 +32,7 @@
 
 .link.underline:hover,
 .link.underline:focus-visible {
-  border-bottom-color: var(--colors-kindaLight);
+  border-bottom-color: var(--colors-kinda-light);
 }
 
 .icon {

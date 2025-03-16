@@ -7,7 +7,7 @@
   display: inline-block;
   height: 100%;
   animation: loading 1.5s infinite ease-in-out both;
-  background-color: var(--colors-mediumLight);
+  background-color: var(--colors-medium-light);
 }
 
 @keyframes loading {

@@ -143,7 +143,19 @@ const withMDX = createMDX({
     rehypePlugins: [
       mdxPlugins.rehypeUnwrapImages,
       mdxPlugins.rehypeSlug,
-      [mdxPlugins.rehypePrism, { ignoreMissing: true }],
+      [
+        mdxPlugins.rehypePrettyCode,
+        {
+          theme: {
+            light: "material-theme-lighter",
+            dark: "material-theme-darker",
+          },
+          bypassInlineCode: true,
+          defaultLang: "plaintext",
+          grid: false,
+          keepBackground: false,
+        },
+      ],
       mdxPlugins.rehypeMdxImportMedia,
     ],
   },

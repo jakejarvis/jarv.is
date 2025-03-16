@@ -4,7 +4,7 @@
   margin-right: -0.6em;
   background: none;
   cursor: pointer;
-  color: var(--colors-mediumDark);
+  color: var(--colors-medium-dark);
 }
 
 .toggle:hover,

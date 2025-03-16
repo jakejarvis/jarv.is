@@ -1,19 +1,19 @@
 .link {
   display: inline-block;
-  color: var(--colors-mediumDark) !important;
+  color: var(--colors-medium-dark) !important;
   padding: 0.6em;
 }
 
 /* indicate active page/section */
 .link.current {
   margin-bottom: -0.2em;
-  border-bottom: 0.2em solid var(--colors-linkUnderline);
+  border-bottom: 0.2em solid var(--colors-link-underline);
 }
 
 .link:not(.current):hover,
 .link:not(.current):focus-visible {
   margin-bottom: -0.2em;
-  border-bottom: 0.2em solid var(--colors-kindaLight);
+  border-bottom: 0.2em solid var(--colors-kinda-light);
 }
 
 .icon {

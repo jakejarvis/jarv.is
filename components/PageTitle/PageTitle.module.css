@@ -9,6 +9,6 @@
 .slug::before {
   content: "\002E\002F"; /* "./" */
   letter-spacing: 0.1em;
-  color: var(--colors-mediumLight);
+  color: var(--colors-medium-light);
   margin-right: -0.1em;
 }

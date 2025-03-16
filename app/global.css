@@ -1,6 +1,6 @@
 body {
   font-family: var(--fonts-sans) !important;
-  background-color: var(--colors-backgroundInner);
+  background-color: var(--colors-background-inner);
 }
 
 code,

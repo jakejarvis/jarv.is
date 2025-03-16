@@ -3,7 +3,7 @@
   text-decoration: none;
 
   /* fancy underline */
-  background-image: linear-gradient(var(--colors-linkUnderline), var(--colors-linkUnderline));
+  background-image: linear-gradient(var(--colors-link-underline), var(--colors-link-underline));
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
