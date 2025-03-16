@@ -67,6 +67,7 @@ figure:has(.highlighted) {
   right: 0;
   height: 3em;
   width: 3em;
+  padding: 0; /* iOS safari fix */
   color: var(--colors-medium-dark);
   border: 1px solid var(--colors-kinda-light);
   border-top-right-radius: 0.6em;
@@ -76,6 +77,8 @@ figure:has(.highlighted) {
 }
 
 .copyButton > svg {
+  display: inline-block;
+  margin: 0 auto;
   vertical-align: middle;
 }
 
