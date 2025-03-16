@@ -1,6 +1,8 @@
 import { cache } from "react";
 import path from "path";
 import glob from "fast-glob";
+import { unified } from "unified";
+import { remarkParse, remarkSmartypants, remarkRehype, rehypeSanitize, rehypeStringify } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
 import { formatDate } from "./format-date";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
@@ -19,42 +21,36 @@ export type FrontMatter = {
 
 // returns front matter and the **raw & uncompiled** markdown of a given slug
 export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
-  if (!(await getPostSlugs()).includes(slug)) {
-    throw new Error(`No post found for slug: ${slug}`);
-  }
-
   const { frontmatter } = await import(`../../${POSTS_DIR}/${slug}/index.mdx`);
 
-  const { unified } = await import("unified");
-  const { remarkParse, remarkSmartypants, remarkRehype, rehypeSanitize, rehypeStringify } = await import(
-    "./remark-rehype-plugins"
-  );
-
-  // allow *very* limited markdown to be used in post titles
-  const parseTitle = async (title: string, allowedTags: string[] = []): Promise<string> => {
-    const newTitle = (
-      await unified()
-        .use(remarkParse)
-        .use(remarkSmartypants, {
-          quotes: true,
-          dashes: "oldschool",
-          backticks: false,
-          ellipses: false,
-        })
-        .use(remarkRehype)
-        .use(rehypeSanitize, { tagNames: allowedTags })
-        .use(rehypeStringify)
-        .process(title)
-    ).toString();
-
-    // assume if we don't want any html titles then we don't want encoded html entities either
-    return allowedTags.length === 0 ? decode(newTitle) : newTitle;
-  };
+  // create a reusable processor for titles
+  const titleProcessor = unified()
+    .use(remarkParse)
+    .use(remarkSmartypants, {
+      quotes: true,
+      dashes: "oldschool",
+      backticks: false,
+      ellipses: false,
+    })
+    .use(remarkRehype)
+    .use(rehypeStringify);
 
   // process title as both plain and stylized
   const [title, htmlTitle] = await Promise.all([
-    parseTitle(frontmatter.title),
-    parseTitle(frontmatter.title, ["code", "em", "strong"]),
+    titleProcessor()
+      .use(rehypeSanitize, {
+        // strip all resulting html tags from the markdown title
+        tagNames: [],
+      })
+      .process(frontmatter.title)
+      .then((result) => decode(String(result))),
+    titleProcessor()
+      .use(rehypeSanitize, {
+        // allow *very* limited markdown to be used in post titles
+        tagNames: ["code", "em", "strong"],
+      })
+      .process(frontmatter.title)
+      .then((result) => String(result)),
   ]);
 
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
@@ -73,7 +69,7 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
 // use filesystem to get a simple list of all post slugs
 export const getPostSlugs = cache(async (): Promise<string[]> => {
   // list all .mdx files in POSTS_DIR
-  const mdxFiles = await glob("**/*.mdx", {
+  const mdxFiles = await glob("*/index.mdx", {
     cwd: path.join(process.cwd(), POSTS_DIR),
     dot: false,
   });
@@ -88,10 +84,8 @@ export const getPostSlugs = cache(async (): Promise<string[]> => {
 export const getAllPosts = cache(async (): Promise<FrontMatter[]> => {
   // concurrently fetch the front matter of each post
   const slugs = await getPostSlugs();
-  const data = await Promise.all(slugs.map(async (slug) => await getFrontMatter(slug)));
+  const posts = await Promise.all(slugs.map(getFrontMatter));
 
-  // sort the results by date
-  data.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-
-  return data;
+  // sort the results reverse chronologically and return
+  return posts.sort((post1, post2) => new Date(post1.date).getTime() - new Date(post2.date).getTime());
 });
