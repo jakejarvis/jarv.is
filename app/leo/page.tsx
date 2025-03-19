@@ -18,7 +18,15 @@ const Page = () => {
     <>
       <PageTitle canonical="/leo">TheLab.mov</PageTitle>
 
-      <Video src={["/static/leo/leo.webm", "/static/leo/leo.mp4", "/static/leo/subs.en.vtt"]} poster={thumbnail.src} />
+      <Video
+        src={[
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/leo-lVkSAtUWCqQaDCMqo3SGcuBiSlNWod.webm",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/leo-x4E4eG4YPo22KSTJuZwAk6fpNF1NgG.mp4",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/subs.en-HRGnRBH8w8CEyM644OV3qmCdm9Aj61.vtt",
+        ]}
+        poster={thumbnail.src}
+        crossOrigin="anonymous"
+      />
 
       <p
         style={{

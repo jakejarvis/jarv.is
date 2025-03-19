@@ -42,7 +42,7 @@ const jsonLd: WithContext<Person> = {
   ],
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang={config.siteLocale} suppressHydrationWarning>
       <head>

@@ -1,6 +1,8 @@
+import Image from "../components/Image";
 import Link from "../components/Link";
-import Video from "../components/Video";
 import type { Metadata } from "next";
+
+import notFoundGif from "./not-found.gif";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -14,14 +16,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <Video
-        src={["/static/not-found/angry-panda.webm", "/static/not-found/angry-panda.mp4"]}
-        autoplay
-        responsive={false}
-        style={{
-          maxWidth: "400px",
-        }}
-      />
+      <Image src={notFoundGif} alt="Angry panda" placeholder="empty" unoptimized />
 
       <h1 style={{ margin: "0.2em auto" }}>Page Not Found 😢</h1>
 

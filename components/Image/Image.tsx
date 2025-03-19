@@ -19,7 +19,7 @@ const Image = ({ src, height, width, placeholder, className, ...rest }: ImagePro
     src,
     height,
     width: constrainWidth(width || (src as StaticImageData).width),
-    placeholder: placeholder || (typeof src === "string" ? "empty" : "blur"),
+    placeholder: placeholder || (typeof src === "object" && "blurDataURL" in src ? "blur" : "empty"),
     ...rest,
   };
 

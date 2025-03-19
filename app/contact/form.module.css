@@ -16,7 +16,7 @@
 .input.textarea {
   margin-bottom: 0;
   line-height: 1.5;
-  min-height: 136px; /* approx 5 lines, to avoid severe layout shifting */
+  min-height: calc(5 * 1.5rem + 1.5em); /* avoid layout shift when textarea-autosize loads */
   resize: vertical;
 }
 

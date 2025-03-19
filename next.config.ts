@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
-import createBundleAnalyzer from "@next/bundle-analyzer";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+import withMDX from "@next/mdx";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 
 const nextConfig: NextConfig = {
@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
+      { protocol: "https", hostname: "bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com" },
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "abs.twimg.com" },
     ],
@@ -122,45 +123,50 @@ const nextConfig: NextConfig = {
   ],
 };
 
-const withBundleAnalyzer = createBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
-
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [
-      mdxPlugins.remarkFrontmatter,
-      mdxPlugins.remarkMdxFrontmatter,
-      [mdxPlugins.remarkGfm, { singleTilde: false }],
-      [
-        mdxPlugins.remarkSmartypants,
-        {
-          quotes: true,
-          dashes: "oldschool",
-          backticks: false,
-          ellipses: false,
-        },
-      ],
-    ],
-    rehypePlugins: [
-      mdxPlugins.rehypeUnwrapImages,
-      mdxPlugins.rehypeSlug,
-      [
-        mdxPlugins.rehypePrettyCode,
-        {
-          theme: {
-            light: "material-theme-lighter",
-            dark: "material-theme-darker",
+const nextPlugins = [
+  withBundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+  }),
+  withMDX({
+    options: {
+      remarkPlugins: [
+        mdxPlugins.remarkFrontmatter,
+        mdxPlugins.remarkMdxFrontmatter,
+        [mdxPlugins.remarkGfm, { singleTilde: false }],
+        [
+          mdxPlugins.remarkSmartypants,
+          {
+            quotes: true,
+            dashes: "oldschool",
+            backticks: false,
+            ellipses: false,
           },
-          bypassInlineCode: true,
-          defaultLang: "plaintext",
-          grid: false,
-          keepBackground: false,
-        },
+        ],
       ],
-      mdxPlugins.rehypeMdxImportMedia,
-    ],
-  },
-});
+      rehypePlugins: [
+        mdxPlugins.rehypeUnwrapImages,
+        mdxPlugins.rehypeSlug,
+        [
+          mdxPlugins.rehypePrettyCode,
+          {
+            theme: {
+              light: "material-theme-lighter",
+              dark: "material-theme-darker",
+            },
+            bypassInlineCode: true,
+            defaultLang: "plaintext",
+            grid: false,
+            keepBackground: false,
+          },
+        ],
+        mdxPlugins.rehypeMdxImportMedia,
+      ],
+    },
+  }),
+];
 
-export default withBundleAnalyzer(withMDX(nextConfig));
+// my own macgyvered version of next-compose-plugins (RIP)
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+  return nextPlugins.reduce((acc, plugin) => plugin(acc), { ...nextConfig });
+};
