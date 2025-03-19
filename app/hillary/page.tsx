@@ -20,11 +20,12 @@ const Page = () => {
 
       <Video
         src={[
-          "/static/hillary/convention-720p.webm",
-          "/static/hillary/convention-720p.mp4",
-          "/static/hillary/subs.en.vtt",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-JbNlxyfqE3nz4ACjtfbpbjcR2gOY89.webm",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-YLGreYE59PzmPo4epB21HQG6jXgYL5.mp4",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/subs.en-k2txNECkQvwxWP8DjfP6GPBPo20vnO.vtt",
         ]}
         poster={thumbnail.src}
+        crossOrigin="anonymous"
       />
 
       <p

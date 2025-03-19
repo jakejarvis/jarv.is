@@ -17,7 +17,14 @@ const Page = () => {
     <>
       <PageTitle canonical="/birthday">1996.mov</PageTitle>
 
-      <Video src={["/static/birthday/birthday.webm", "/static/birthday/birthday.mp4"]} poster={thumbnail.src} />
+      <Video
+        src={[
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/birthday/birthday-9HG65MrSNWJjzg679VtirX7MLPpAaV.webm",
+          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/birthday/birthday-8iayCEy1jfEHpNGZkdBPvxPFOuGz0g.mp4",
+        ]}
+        poster={thumbnail.src}
+        crossOrigin="anonymous"
+      />
     </>
   );
 };
