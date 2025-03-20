@@ -51,7 +51,7 @@ const Page = () => {
         <br />
         <span style={{ color: "#929292" }}>
           # TODO(someone else): make super duper sure this only deletes actual zip files and *NOT* the sketchy domains
-          ending with file extensions released by us & purchased on our registrar (which i just yeeted btw cuz i'm bored
+          ending with file extensions released by us & purchased on our registrar (which i just yeeted btw cuz i&apos;m
           & also my evil superpowers are fueled by my reckless disregard for the greater good of the internet). - xoxo
           sundar <span style={{ color: "#f95757" }}>&lt;3</span>
         </span>

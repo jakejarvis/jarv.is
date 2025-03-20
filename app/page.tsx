@@ -38,11 +38,11 @@ const Page = () => {
   return (
     <div className={styles.page}>
       <h1>
-        Hi there! I'm Jake. <span className={styles.wave}>👋</span>
+        Hi there! I&rsquo;m Jake. <span className={styles.wave}>👋</span>
       </h1>
 
       <h2>
-        I'm a frontend web developer based in the{" "}
+        I&rsquo;m a frontend web developer based in the{" "}
         <Link
           href="https://www.youtube-nocookie.com/embed/rLwbzGyC6t4?hl=en&amp;fs=1&amp;showinfo=1&amp;rel=0&amp;iv_load_policy=3"
           title='"Boston Accent Trailer - Late Night with Seth Meyers" on YouTube'
@@ -150,7 +150,7 @@ const Page = () => {
         >
           the Tooth Fairy
         </Link>
-        . <span style={{ color: "var(--colors-medium-light)" }}>I've improved a bit since then, I think? 🤷</span>
+        . <span style={{ color: "var(--colors-medium-light)" }}>I&rsquo;ve improved a bit since then, I think? 🤷</span>
       </p>
 
       <p>
@@ -235,7 +235,7 @@ const Page = () => {
         >
           LinkedIn
         </Link>
-        . I'm always available to connect over{" "}
+        . I&rsquo;m always available to connect over{" "}
         <Link href="/contact" title="Send an email" lightColor="#de0c0c" darkColor="#ff5050">
           email
         </Link>{" "}

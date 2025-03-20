@@ -23,7 +23,7 @@ const Page = () => {
       <PageTitle canonical="/contact">Contact</PageTitle>
 
       <p>
-        Fill out this quick form and I'll get back to you as soon as I can! You can also{" "}
+        Fill out this quick form and I&rsquo;ll get back to you as soon as I can! You can also{" "}
         <Link href="mailto:jake@jarv.is">email me directly</Link> or send me a{" "}
         <Link href="https://fediverse.jarv.is/@jake">direct message on Mastodon</Link>.
       </p>
