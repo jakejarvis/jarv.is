@@ -13,22 +13,22 @@ importers:
         version: 0.9.2
       '@giscus/react':
         specifier: ^3.1.0
-        version: 3.1.0(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 3.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.1)
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+        version: 3.1.0(@types/react@19.0.12)(react@19.0.0)
       '@next/bundle-analyzer':
         specifier: 15.3.0-canary.14
         version: 15.3.0-canary.14
       '@next/mdx':
         specifier: 15.3.0-canary.14
-        version: 15.3.0-canary.14(@mdx-js/loader@3.1.0(acorn@8.14.1))(@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514))
+        version: 15.3.0-canary.14(@mdx-js/loader@3.1.0(acorn@8.14.1))(@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0))
       '@next/third-parties':
         specifier: 15.3.0-canary.14
-        version: 15.3.0-canary.14(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 15.3.0-canary.14(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@octokit/graphql':
         specifier: ^8.2.1
         version: 8.2.1
@@ -58,19 +58,19 @@ importers:
         version: 4.2.2
       geist:
         specifier: ^1.3.1
-        version: 1.3.1(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514))
+        version: 1.3.1(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       html-entities:
         specifier: ^2.5.2
         version: 2.5.2
       lucide-react:
         specifier: 0.483.0
-        version: 0.483.0(react@19.0.0-beta-26f2496093-20240514)
+        version: 0.483.0(react@19.0.0)
       modern-normalize:
         specifier: ^3.0.1
         version: 3.0.1
       next:
         specifier: 15.3.0-canary.14
-        version: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       obj-str:
         specifier: ^1.1.0
         version: 1.1.0
@@ -81,29 +81,29 @@ importers:
         specifier: ^15.8.1
         version: 15.8.1
       react:
-        specifier: 19.0.0-beta-26f2496093-20240514
-        version: 19.0.0-beta-26f2496093-20240514
+        specifier: 19.0.0
+        version: 19.0.0
       react-dom:
-        specifier: 19.0.0-beta-26f2496093-20240514
-        version: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
+        specifier: 19.0.0
+        version: 19.0.0(react@19.0.0)
       react-error-boundary:
         specifier: ^5.0.0
-        version: 5.0.0(react@19.0.0-beta-26f2496093-20240514)
+        version: 5.0.0(react@19.0.0)
       react-innertext:
         specifier: ^1.1.5
-        version: 1.1.5(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+        version: 1.1.5(@types/react@19.0.12)(react@19.0.0)
       react-is:
-        specifier: 19.0.0-beta-26f2496093-20240514
-        version: 19.0.0-beta-26f2496093-20240514
+        specifier: 19.0.0
+        version: 19.0.0
       react-textarea-autosize:
         specifier: ^8.5.8
-        version: 8.5.8(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+        version: 8.5.8(@types/react@19.0.12)(react@19.0.0)
       react-turnstile:
         specifier: ^1.1.4
-        version: 1.1.4(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-tweet:
         specifier: ^3.2.2
-        version: 3.2.2(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 3.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       rehype-mdx-import-media:
         specifier: ^1.2.0
         version: 1.2.0
@@ -142,7 +142,7 @@ importers:
         version: 3.0.2
       resend:
         specifier: ^4.1.2
-        version: 4.1.2(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+        version: 4.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       shiki:
         specifier: ^3.2.1
         version: 3.2.1
@@ -3106,10 +3106,10 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-dom@19.0.0-beta-26f2496093-20240514:
-    resolution: {integrity: sha512-UvQ+K1l3DFQ34LDgfFSNuUGi9EC+yfE9tS6MdpNTd5fx7qC7KLfepfC/KpxWMQZ7JfE3axD4ZO6H4cBSpAZpqw==}
+  react-dom@19.0.0:
+    resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
-      react: 19.0.0-beta-26f2496093-20240514
+      react: ^19.0.0
 
   react-error-boundary@5.0.0:
     resolution: {integrity: sha512-tnjAxG+IkpLephNcePNA7v6F/QpWLH8He65+DmedchDwg162JZqx4NmbXj0mlAYVVEd81OW7aFhmbsScYfiAFQ==}
@@ -3125,8 +3125,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-is@19.0.0-beta-26f2496093-20240514:
-    resolution: {integrity: sha512-w5VsWOdq06F29cxg6oQy+GcGbLEd7gFOkkN9BLHWNnPIUuIo86/rGYbReTdnx5PxkHggTiFGZI+9Zy2nbRyAkQ==}
+  react-is@19.0.0:
+    resolution: {integrity: sha512-H91OHcwjZsbq3ClIDHMzBShc1rotbfACdWENsmEf0IFvZ3FgGPtdHMcsv45bQ1hAbgdfiA8SnxTKfDS+x/8m2g==}
 
   react-promise-suspense@0.3.4:
     resolution: {integrity: sha512-I42jl7L3Ze6kZaq+7zXWSunBa3b1on5yfvUW6Eo/3fFOj6dZ5Bqmcd264nJbTK/gn1HjjILAjSwnZbV4RpSaNQ==}
@@ -3149,8 +3149,8 @@ packages:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  react@19.0.0-beta-26f2496093-20240514:
-    resolution: {integrity: sha512-ZsU/WjNZ6GfzMWsq2DcGjElpV9it8JmETHm9mAJuOJNhuJcWJxt8ltCJabONFRpDFq1A/DP0d0KFj9CTJVM4VA==}
+  react@19.0.0:
+    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
     engines: {node: '>=0.10.0'}
 
   read-package-json-fast@3.0.2:
@@ -3328,8 +3328,8 @@ packages:
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
 
-  scheduler@0.25.0-beta-26f2496093-20240514:
-    resolution: {integrity: sha512-vDwOytLHFnA3SW2B1lNcbO+/qKVyLCX+KLpm+tRGNDsXpyxzRgkIaYGWmX+S70AJGchUHCtuqQ50GFeFgDbXUw==}
+  scheduler@0.25.0:
+    resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
   schema-dts@1.1.5:
     resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
@@ -4206,11 +4206,11 @@ snapshots:
       '@eslint/core': 0.12.0
       levn: 0.4.1
 
-  '@giscus/react@3.1.0(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)':
+  '@giscus/react@3.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       giscus: 1.6.0
-      react: 19.0.0-beta-26f2496093-20240514
-      react-dom: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   '@humanfs/core@0.19.1': {}
 
@@ -4378,11 +4378,11 @@ snapshots:
       - acorn
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)':
+  '@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 19.0.12
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
 
   '@napi-rs/wasm-runtime@0.2.7':
     dependencies:
@@ -4404,12 +4404,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.3.0-canary.14(@mdx-js/loader@3.1.0(acorn@8.14.1))(@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514))':
+  '@next/mdx@15.3.0-canary.14(@mdx-js/loader@3.1.0(acorn@8.14.1))(@mdx-js/react@3.1.0(@types/react@19.0.12)(react@19.0.0))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.1.0(acorn@8.14.1)
-      '@mdx-js/react': 3.1.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+      '@mdx-js/react': 3.1.0(@types/react@19.0.12)(react@19.0.0)
 
   '@next/swc-darwin-arm64@15.3.0-canary.14':
     optional: true
@@ -4435,10 +4435,10 @@ snapshots:
   '@next/swc-win32-x64-msvc@15.3.0-canary.14':
     optional: true
 
-  '@next/third-parties@15.3.0-canary.14(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)':
+  '@next/third-parties@15.3.0-canary.14(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
-      next: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
-      react: 19.0.0-beta-26f2496093-20240514
+      next: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
       third-party-capital: 1.0.20
 
   '@nodelib/fs.scandir@2.1.5':
@@ -4583,12 +4583,12 @@ snapshots:
     dependencies:
       '@prisma/debug': 6.5.0
 
-  '@react-email/render@1.0.1(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)':
+  '@react-email/render@1.0.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       html-to-text: 9.0.5
       js-beautify: 1.15.4
-      react: 19.0.0-beta-26f2496093-20240514
-      react-dom: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
       react-promise-suspense: 0.3.4
 
   '@rtsao/scc@1.1.0': {}
@@ -5848,9 +5848,9 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  geist@1.3.1(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)):
+  geist@1.3.1(next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
     dependencies:
-      next: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+      next: 15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   gensync@1.0.0-beta.2: {}
 
@@ -6490,9 +6490,9 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@0.483.0(react@19.0.0-beta-26f2496093-20240514):
+  lucide-react@0.483.0(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
 
   markdown-extensions@2.0.0: {}
 
@@ -6997,7 +6997,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514):
+  next@15.3.0-canary.14(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-3229e95-20250315)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@next/env': 15.3.0-canary.14
       '@swc/counter': 0.1.3
@@ -7005,9 +7005,9 @@ snapshots:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001706
       postcss: 8.4.31
-      react: 19.0.0-beta-26f2496093-20240514
-      react-dom: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
-      styled-jsx: 5.1.6(@babel/core@7.26.10)(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      styled-jsx: 5.1.6(@babel/core@7.26.10)(react@19.0.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.3.0-canary.14
       '@next/swc-darwin-x64': 15.3.0-canary.14
@@ -7304,52 +7304,52 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514):
+  react-dom@19.0.0(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
-      scheduler: 0.25.0-beta-26f2496093-20240514
+      react: 19.0.0
+      scheduler: 0.25.0
 
-  react-error-boundary@5.0.0(react@19.0.0-beta-26f2496093-20240514):
+  react-error-boundary@5.0.0(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.26.10
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
 
-  react-innertext@1.1.5(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514):
+  react-innertext@1.1.5(@types/react@19.0.12)(react@19.0.0):
     dependencies:
       '@types/react': 19.0.12
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
 
   react-is@16.13.1: {}
 
-  react-is@19.0.0-beta-26f2496093-20240514: {}
+  react-is@19.0.0: {}
 
   react-promise-suspense@0.3.4:
     dependencies:
       fast-deep-equal: 2.0.1
 
-  react-textarea-autosize@8.5.8(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514):
+  react-textarea-autosize@8.5.8(@types/react@19.0.12)(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.26.10
-      react: 19.0.0-beta-26f2496093-20240514
-      use-composed-ref: 1.4.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
-      use-latest: 1.3.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      use-composed-ref: 1.4.0(@types/react@19.0.12)(react@19.0.0)
+      use-latest: 1.3.0(@types/react@19.0.12)(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  react-turnstile@1.1.4(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514):
+  react-turnstile@1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
-      react-dom: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
-  react-tweet@3.2.2(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514):
+  react-tweet@3.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@swc/helpers': 0.5.15
       clsx: 2.1.1
-      react: 19.0.0-beta-26f2496093-20240514
-      react-dom: 19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514)
-      swr: 2.3.3(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      swr: 2.3.3(react@19.0.0)
 
-  react@19.0.0-beta-26f2496093-20240514: {}
+  react@19.0.0: {}
 
   read-package-json-fast@3.0.2:
     dependencies:
@@ -7552,9 +7552,9 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  resend@4.1.2(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514):
+  resend@4.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      '@react-email/render': 1.0.1(react-dom@19.0.0-beta-26f2496093-20240514(react@19.0.0-beta-26f2496093-20240514))(react@19.0.0-beta-26f2496093-20240514)
+      '@react-email/render': 1.0.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     transitivePeerDependencies:
       - react
       - react-dom
@@ -7658,7 +7658,7 @@ snapshots:
 
   sax@1.4.1: {}
 
-  scheduler@0.25.0-beta-26f2496093-20240514: {}
+  scheduler@0.25.0: {}
 
   schema-dts@1.1.5: {}
 
@@ -7928,10 +7928,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.6(@babel/core@7.26.10)(react@19.0.0-beta-26f2496093-20240514):
+  styled-jsx@5.1.6(@babel/core@7.26.10)(react@19.0.0):
     dependencies:
       client-only: 0.0.1
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
     optionalDependencies:
       '@babel/core': 7.26.10
 
@@ -8022,11 +8022,11 @@ snapshots:
 
   svg-tags@1.0.0: {}
 
-  swr@2.3.3(react@19.0.0-beta-26f2496093-20240514):
+  swr@2.3.3(react@19.0.0):
     dependencies:
       dequal: 2.0.3
-      react: 19.0.0-beta-26f2496093-20240514
-      use-sync-external-store: 1.4.0(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      use-sync-external-store: 1.4.0(react@19.0.0)
 
   synckit@0.9.2:
     dependencies:
@@ -8216,28 +8216,28 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-composed-ref@1.4.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514):
+  use-composed-ref@1.4.0(@types/react@19.0.12)(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
     optionalDependencies:
       '@types/react': 19.0.12
 
-  use-isomorphic-layout-effect@1.2.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514):
+  use-isomorphic-layout-effect@1.2.0(@types/react@19.0.12)(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
     optionalDependencies:
       '@types/react': 19.0.12
 
-  use-latest@1.3.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514):
+  use-latest@1.3.0(@types/react@19.0.12)(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
-      use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.12)(react@19.0.0-beta-26f2496093-20240514)
+      react: 19.0.0
+      use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.12)(react@19.0.0)
     optionalDependencies:
       '@types/react': 19.0.12
 
-  use-sync-external-store@1.4.0(react@19.0.0-beta-26f2496093-20240514):
+  use-sync-external-store@1.4.0(react@19.0.0):
     dependencies:
-      react: 19.0.0-beta-26f2496093-20240514
+      react: 19.0.0
 
   util-deprecate@1.0.2: {}
 
