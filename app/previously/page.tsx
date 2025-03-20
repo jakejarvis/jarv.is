@@ -42,7 +42,7 @@ const Page = () => {
 
       <Figure src={img_wayback} alt="Timeline of this website's past." priority className={styles.screenshot}>
         ...the <Link href="https://web.archive.org/web/20010501000000*/jakejarvis.com">Cringey Chronicles&trade;</Link>{" "}
-        of this website's past.
+        of this website&rsquo;s past.
       </Figure>
 
       <HorizontalRule className={styles.divider} />

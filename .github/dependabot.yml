@@ -20,6 +20,8 @@ updates:
           - "@types/react"
           - "@types/react-dom"
           - "@types/react-is"
+          - "babel-plugin-react-compiler"
+          - "eslint-plugin-react-compiler"
       prisma:
         patterns:
           - "prisma"

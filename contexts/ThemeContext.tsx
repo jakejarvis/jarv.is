@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useLocalStorage, useMediaQuery } from "../hooks";
 import type { Context, PropsWithChildren } from "react";
 
@@ -30,47 +30,26 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
   const isSystemDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-  // updates the DOM and optionally saves the new theme to local storage
-  const applyTheme = useCallback(
-    (theme: Themes, updateStorage?: boolean) => {
-      if (updateStorage) {
-        setPreferredTheme(theme);
-      }
-
-      document.documentElement.dataset.theme = theme;
-    },
-    [setPreferredTheme]
-  );
-
-  // listen for changes in OS preference
+  // listen for changes in OS preference, but don't save it as a website preference to local storage
   useEffect(() => {
-    // translate boolean to theme string
-    const systemResolved = isSystemDark ? "dark" : "light";
+    setSystemTheme(isSystemDark ? "dark" : "light");
+  }, [isSystemDark]);
 
-    // keep track of the system theme whether or not we override it manually
-    setSystemTheme(systemResolved);
-
-    // only actually change the theme if preference is unset (and *don't* save new theme to storage)
-    if (!preferredTheme) {
-      applyTheme(systemResolved, false);
-    }
-  }, [applyTheme, preferredTheme, isSystemDark]);
-
-  // color-scheme handling (tells browser how to render built-in elements like forms, scrollbars, etc.)
+  // actual DOM updates must be done in useEffect
   useEffect(() => {
-    // only "light" and "dark" are valid here
-    // https://web.dev/color-scheme/#the-color-scheme-css-property
-    const colorScheme = preferredTheme && ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
+    // only "light" and "dark" are valid themes
+    const resolvedTheme = preferredTheme && ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
 
-    document.documentElement.style?.setProperty("color-scheme", colorScheme);
+    // this is what actually changes the CSS variables
+    document.documentElement.dataset.theme = preferredTheme ?? systemTheme;
+
+    // less important, but tells the browser how to render built-in elements like forms, scrollbars, etc.
+    document.documentElement.style?.setProperty("color-scheme", resolvedTheme);
   }, [preferredTheme, systemTheme]);
 
   const providerValues = {
     theme: preferredTheme ?? systemTheme,
-    setTheme: (theme: Themes) => {
-      // force save to local storage
-      applyTheme(theme, true);
-    },
+    setTheme: setPreferredTheme,
   };
 
   return (
