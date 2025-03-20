@@ -55,11 +55,46 @@ const Page = () => {
       </h2>
 
       <p>
-        I specialize in{" "}
+        I specialize in using{" "}
+        <Link
+          href="https://www.typescriptlang.org/"
+          title="TypeScript Official Website"
+          lightColor="#235a97"
+          darkColor="#59a8ff"
+        >
+          TypeScript
+        </Link>
+        ,{" "}
         <Link href="https://reactjs.org/" title="React Official Website" lightColor="#1091b3" darkColor="#6fcbe3">
           React
+        </Link>
+        , and{" "}
+        <Link href="https://nextjs.org/" title="Next.js Official Website" lightColor="#5e7693" darkColor="#a8b9c0">
+          Next.js
         </Link>{" "}
-        and{" "}
+        to make lightweight{" "}
+        <Link
+          href="https://jamstack.org/glossary/jamstack/"
+          title="Jamstack Glossary"
+          lightColor="#04a699"
+          darkColor="#08bbac"
+        >
+          Jamstack sites
+        </Link>{" "}
+        with dynamic and powerful{" "}
+        <Link href="https://nodejs.org/en/" title="Node.js Official Website" lightColor="#6fbc4e" darkColor="#84d95f">
+          Node
+        </Link>{" "}
+        backends. But I still know my way around{" "}
+        <Link
+          href="https://www.jetbrains.com/lp/php-25/"
+          title="25 Years of PHP History"
+          lightColor="#8892bf"
+          darkColor="#a4afe3"
+        >
+          less buzzwordy
+        </Link>{" "}
+        stacks (and{" "}
         <Link
           href="https://timkadlec.com/remembers/2020-04-21-the-cost-of-javascript-frameworks/"
           title='"The Cost of Javascript Frameworks" by Tim Kadlec'
@@ -67,25 +102,8 @@ const Page = () => {
           darkColor="#e18431"
         >
           vanilla JavaScript
-        </Link>{" "}
-        to make nifty{" "}
-        <Link href="https://jamstack.wtf/" title="WTF is Jamstack?" lightColor="#04a699" darkColor="#08bbac">
-          Jamstack sites
-        </Link>{" "}
-        with dynamic{" "}
-        <Link href="https://nodejs.org/en/" title="Node.js Official Website" lightColor="#6fbc4e" darkColor="#84d95f">
-          Node.js
-        </Link>{" "}
-        services. But I still know my way around less buzzwordy stacks like{" "}
-        <Link
-          href="https://www.jetbrains.com/lp/php-25/"
-          title="25 Years of PHP History"
-          lightColor="#8892bf"
-          darkColor="#a4afe3"
-        >
-          LAMP
         </Link>
-        , too.
+        ), too.
       </p>
 
       <p>

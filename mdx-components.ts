@@ -7,7 +7,6 @@ import Blockquote from "./components/Blockquote";
 import HorizontalRule from "./components/HorizontalRule";
 import * as Heading from "./components/Heading";
 import * as List from "./components/List";
-import Figure from "./components/Figure";
 import Video from "./components/Video";
 import Tweet from "./components/Tweet";
 import YouTube from "./components/YouTube";
@@ -34,8 +33,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     ol: List.OrderedList,
     li: List.ListItem,
 
-    // html components with custom props:
-    Figure,
+    // html components with a slight twist:
     Video,
 
     // third-party embeds:

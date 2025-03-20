@@ -19,6 +19,7 @@ import styles from "./page.module.css";
 export const dynamicParams = false;
 
 // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
+// eslint-disable-next-line camelcase
 export const experimental_ppr = true;
 
 export const generateStaticParams = async () => {

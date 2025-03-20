@@ -8,5 +8,5 @@ pnpm-lock.yaml
 .vercel/
 
 # other
+public/
 .devcontainer/devcontainer.json
-public/.well-known/

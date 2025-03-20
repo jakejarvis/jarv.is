@@ -4,3 +4,14 @@
   max-width: 100%;
   height: auto;
 }
+
+/* weird hack to enable image captions in markdown */
+.image + em {
+  display: block;
+  text-align: center;
+  margin-top: -0.4em;
+  font-style: normal;
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: var(--colors-medium);
+}

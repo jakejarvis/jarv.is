@@ -28,11 +28,12 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
+    reactCompiler: true, // https://react.dev/learn/react-compiler
+    ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
     serverActions: {
       allowedOrigins: ["jarv.is", "jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"],
     },
-    reactCompiler: true, // https://react.dev/learn/react-compiler
-    ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
+    serverSourceMaps: true,
   },
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
