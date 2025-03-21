@@ -152,9 +152,8 @@ const Page = async () => {
                 </div>
               )}
 
-              {/* only use relative "time ago" on client side, since it'll be outdated via SSG and cause hydration errors */}
               <div className={styles.metaItem}>
-                <RelativeTime date={repo.updatedAt} verb="Updated" staticFormat="MMM D, YYYY" />
+                Updated <RelativeTime date={repo.updatedAt} />
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@ const Page = async () => {
         <ul className={styles.list}>
           {posts.map(({ slug, date, title, htmlTitle }) => (
             <li className={styles.post} key={slug}>
-              <Time date={date} format="MMM D" className={styles.postDate} />
+              <Time date={date} format="MMM d" className={styles.postDate} />
               <span>
                 <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
               </span>

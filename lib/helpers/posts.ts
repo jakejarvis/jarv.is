@@ -4,7 +4,6 @@ import glob from "fast-glob";
 import { unified } from "unified";
 import { remarkHtml, remarkParse, remarkSmartypants } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
-import { formatDate } from "./format-date";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
 
 export type FrontMatter = {
@@ -48,7 +47,7 @@ export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
     // stylized title with limited html tags:
     htmlTitle,
     slug,
-    date: formatDate(frontmatter.date), // validate/normalize the date string provided from front matter
+    date: new Date(frontmatter.date).toISOString(), // validate/normalize the date string provided from front matter
     permalink: `${BASE_URL}/${POSTS_DIR}/${slug}`,
   };
 };

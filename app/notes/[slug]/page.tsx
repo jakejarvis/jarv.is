@@ -87,7 +87,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <div className={styles.metaItem}>
           <Link href={`/notes/${frontmatter.slug}` as Route} plain className={styles.metaLink}>
             <CalendarIcon size="1.2em" className={styles.metaIcon} />
-            <Time date={frontmatter.date} format="MMMM D, YYYY" />
+            <Time date={frontmatter.date} format="MMMM d, y" />
           </Link>
         </div>
 
