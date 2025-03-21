@@ -95,7 +95,7 @@
     "prettier": "^3.5.3",
     "prisma": "^6.5.0",
     "schema-dts": "^1.1.5",
-    "simple-git-hooks": "^2.11.1",
+    "simple-git-hooks": "^2.12.1",
     "stylelint": "^16.16.0",
     "stylelint-config-css-modules": "^4.4.0",
     "stylelint-config-recommended": "^15.0.0",

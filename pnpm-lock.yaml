@@ -235,8 +235,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5
       simple-git-hooks:
-        specifier: ^2.11.1
-        version: 2.11.1
+        specifier: ^2.12.1
+        version: 2.12.1
       stylelint:
         specifier: ^16.16.0
         version: 16.16.0(typescript@5.8.2)
@@ -843,13 +843,13 @@ packages:
     os: [linux]
 
   '@next/swc-win32-arm64-msvc@15.3.0-canary.15':
-    resolution: {integrity: sha512-5I7jL1aFTSwTnitdYn/dMTnrmnZSI41vvKcg4qcQwotRv/H4Ro9+qSISSqXAEimvGwTDUA9d0CN4RkvLsxJriA==}
+    resolution: {integrity: sha512-dTDNkRwg2+vie6H+dItyrPoL2tkOuvaz/efuxrQ8NgYKQD0ZtFm2sQVoeFdzcb5lsxuehxtBW+BR0Q+iFYdgQQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
   '@next/swc-win32-x64-msvc@15.3.0-canary.15':
-    resolution: {integrity: sha512-t4gUHjefzDlevhPTk1/1s7fi4GiVXAgnF4/FhNQHND1eLLXoj5s8Uud2WLdifDprqSClRi6J3TASLf1fuwWXtA==}
+    resolution: {integrity: sha512-p9u1a82dqUUIwyG9qemjTCMj8S0Q3/cf1tG85rG9ZlceJnRoXm0hkLnAljHJ6PCFuwIqMYcjl9WVN5JG2bbt3A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3393,8 +3393,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  simple-git-hooks@2.11.1:
-    resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
+  simple-git-hooks@2.12.1:
+    resolution: {integrity: sha512-NB3V4XyCOrWTIhjh85DyEoVlM3adHWwqQXKYHmuegy/108bJPP6YxuPGm4ZKBq1+GVKRbKJuzNY//09cMJYp+A==}
     hasBin: true
 
   simple-swizzle@0.2.2:
@@ -7766,7 +7766,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-git-hooks@2.11.1: {}
+  simple-git-hooks@2.12.1: {}
 
   simple-swizzle@0.2.2:
     dependencies:
