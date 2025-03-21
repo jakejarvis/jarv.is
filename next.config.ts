@@ -134,16 +134,8 @@ const nextPlugins = [
       remarkPlugins: [
         mdxPlugins.remarkFrontmatter,
         mdxPlugins.remarkMdxFrontmatter,
-        [mdxPlugins.remarkGfm, { singleTilde: false }],
-        [
-          mdxPlugins.remarkSmartypants,
-          {
-            quotes: true,
-            dashes: "oldschool",
-            backticks: false,
-            ellipses: false,
-          },
-        ],
+        mdxPlugins.remarkGfm,
+        mdxPlugins.remarkSmartypants,
       ],
       rehypePlugins: [
         mdxPlugins.rehypeUnwrapImages,

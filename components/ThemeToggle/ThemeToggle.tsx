@@ -11,7 +11,7 @@ import styles from "./ThemeToggle.module.css";
 export type ThemeToggleProps = ComponentPropsWithoutRef<LucideIcon>;
 
 const ThemeToggle = ({ className, ...rest }: ThemeToggleProps) => {
-  const { theme, setTheme } = useTheme();
+  const [theme, setTheme] = useTheme();
 
   return (
     <button

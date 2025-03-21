@@ -1,7 +1,10 @@
+import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
 import { addMetadata } from "../../lib/helpers/metadata";
+import { BASE_URL } from "../../lib/config/constants";
+import type { VideoObject } from "schema-dts";
 
 import thumbnail from "./thumbnail.png";
 
@@ -16,6 +19,20 @@ export const metadata = addMetadata({
 const Page = () => {
   return (
     <>
+      <JsonLd<VideoObject>
+        item={{
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: metadata.title as string,
+          description: metadata.description as string,
+          thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
+          contentUrl:
+            "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-YLGreYE59PzmPo4epB21HQG6jXgYL5.mp4",
+          uploadDate: "2016-07-25T00:00:00Z",
+          duration: "PT1M51S",
+        }}
+      />
+
       <PageTitle canonical="/hillary">HRC.mov</PageTitle>
 
       <Video

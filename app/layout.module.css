@@ -13,8 +13,10 @@
 }
 
 .container {
-  margin: 0 auto;
   display: block;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {

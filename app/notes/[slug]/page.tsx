@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { JsonLd } from "react-schemaorg";
 import { CalendarIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "../../../components/Link";
 import Time from "../../../components/Time";
@@ -11,7 +12,7 @@ import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
 import { BASE_URL } from "../../../lib/config/constants";
 import type { Metadata, Route } from "next";
-import type { Article, WithContext } from "schema-dts";
+import type { Article } from "schema-dts";
 
 import styles from "./page.module.css";
 
@@ -58,26 +59,29 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
-  const jsonLd: WithContext<Article> = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    name: frontmatter.title,
-    description: frontmatter.description || config.longDescription,
-    url: frontmatter.permalink,
-    datePublished: frontmatter.date,
-    dateModified: frontmatter.date,
-    author: {
-      "@type": "Person",
-      name: config.authorName,
-      url: BASE_URL,
-    },
-  };
-
   const { default: MDXContent } = await import(`../../../notes/${slug}/index.mdx`);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd<Article>
+        item={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: frontmatter.title,
+          description: frontmatter.description,
+          url: frontmatter.permalink,
+          image: [`${BASE_URL}/notes/${slug}/opengraph-image`],
+          keywords: frontmatter.tags,
+          datePublished: frontmatter.date,
+          dateModified: frontmatter.date,
+          inLanguage: config.siteLocale,
+          license: config.licenseUrl,
+          author: {
+            // defined in app/layout.tsx
+            "@id": `${BASE_URL}/#person`,
+          },
+        }}
+      />
 
       <div className={styles.meta}>
         <div className={styles.metaItem}>

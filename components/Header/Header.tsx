@@ -3,7 +3,6 @@ import clsx from "clsx";
 import Link from "../Link";
 import Menu from "../Menu";
 import * as config from "../../lib/config";
-import { MAX_WIDTH } from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Header.module.css";
@@ -15,7 +14,7 @@ export type HeaderProps = ComponentPropsWithoutRef<"header">;
 const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={clsx(styles.header, className)} {...rest}>
-      <nav className={styles.nav} style={{ maxWidth: MAX_WIDTH }}>
+      <nav className={styles.nav}>
         <Link href="/" rel="author" title={config.authorName} plain className={styles.homeLink}>
           <Image
             src={selfieJpg}

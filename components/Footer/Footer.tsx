@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { HeartIcon } from "lucide-react";
 import Link from "../Link";
 import * as config from "../../lib/config";
-import { MAX_WIDTH } from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Footer.module.css";
@@ -12,7 +11,7 @@ export type FooterProps = ComponentPropsWithoutRef<"footer">;
 const Footer = ({ className, ...rest }: FooterProps) => {
   return (
     <footer className={clsx(styles.footer, className)} {...rest}>
-      <div className={styles.row} style={{ maxWidth: MAX_WIDTH }}>
+      <div className={styles.row}>
         <div>
           Content{" "}
           <Link href="/license" title={config.license} plain className={styles.link}>

@@ -2,7 +2,7 @@ import { cache } from "react";
 import path from "path";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkParse, remarkSmartypants, remarkRehype, rehypeSanitize, rehypeStringify } from "./remark-rehype-plugins";
+import { remarkHtml, remarkParse, remarkSmartypants } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
 import { formatDate } from "./format-date";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
@@ -23,35 +23,22 @@ export type FrontMatter = {
 export const getFrontMatter = async (slug: string): Promise<FrontMatter> => {
   const { frontmatter } = await import(`../../${POSTS_DIR}/${slug}/index.mdx`);
 
-  // create a reusable processor for titles
-  const titleProcessor = unified()
+  // process markdown title to html...
+  const htmlTitle = await unified()
     .use(remarkParse)
-    .use(remarkSmartypants, {
-      quotes: true,
-      dashes: "oldschool",
-      backticks: false,
-      ellipses: false,
-    })
-    .use(remarkRehype)
-    .use(rehypeStringify);
-
-  // process title as both plain and stylized
-  const [title, htmlTitle] = await Promise.all([
-    titleProcessor()
-      .use(rehypeSanitize, {
-        // strip all resulting html tags from the markdown title
-        tagNames: [],
-      })
-      .process(frontmatter.title)
-      .then((result) => decode(String(result))),
-    titleProcessor()
-      .use(rehypeSanitize, {
+    .use(remarkSmartypants)
+    .use(remarkHtml, {
+      sanitize: {
         // allow *very* limited markdown to be used in post titles
         tagNames: ["code", "em", "strong"],
-      })
-      .process(frontmatter.title)
-      .then((result) => String(result)),
-  ]);
+      },
+    })
+    .process(frontmatter.title)
+    .then((result) => result.toString().trim());
+
+  // ...and then (sketchily) remove said html for a plaintext version:
+  // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
+  const title = decode(htmlTitle.replace(/<[^>]*>/g, ""));
 
   // return both the parsed YAML front matter (with a few amendments) and the raw, unparsed markdown content
   return {

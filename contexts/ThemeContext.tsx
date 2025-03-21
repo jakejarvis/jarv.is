@@ -2,20 +2,18 @@
 
 import { createContext, useEffect, useState } from "react";
 import { useLocalStorage, useMediaQuery } from "../hooks";
-import type { Context, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
-type Themes = "light" | "dark";
-
-export const ThemeContext: Context<{
+export const ThemeContext = createContext<{
   /**
    * If the user's theme preference is unset, this returns whether the system preference resolved to "light" or "dark".
    * If the user's theme preference is set, the preference is returned instead, regardless of their system's theme.
    */
-  theme: Themes;
+  theme: string;
   /** Update the theme manually and save to local storage. */
-  setTheme: (theme: Themes) => void;
-}> = createContext({
-  theme: "" as Themes,
+  setTheme: (theme: string) => void;
+}>({
+  theme: "",
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setTheme: (_) => {},
 });
@@ -23,9 +21,9 @@ export const ThemeContext: Context<{
 // provider used once in _app.tsx to wrap entire app
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   // keep track of if/when the user has set their theme *on this site*
-  const [preferredTheme, setPreferredTheme] = useLocalStorage<Themes>("theme");
+  const [preferredTheme, setPreferredTheme] = useLocalStorage("theme");
   // keep track of changes to the user's OS/browser dark mode setting
-  const [systemTheme, setSystemTheme] = useState<Themes>("" as Themes);
+  const [systemTheme, setSystemTheme] = useState("");
   // hook into system `prefers-dark-mode` setting
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
   const isSystemDark = useMediaQuery("(prefers-color-scheme: dark)");
@@ -41,7 +39,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     const resolvedTheme = preferredTheme && ["light", "dark"].includes(preferredTheme) ? preferredTheme : systemTheme;
 
     // this is what actually changes the CSS variables
-    document.documentElement.dataset.theme = preferredTheme ?? systemTheme;
+    document.documentElement.dataset.theme = resolvedTheme;
 
     // less important, but tells the browser how to render built-in elements like forms, scrollbars, etc.
     document.documentElement.style?.setProperty("color-scheme", resolvedTheme);
