@@ -54,9 +54,9 @@ export const sendMessage = async (
       throw new Error(`[contact form] turnstile validation failed: ${turnstileResponse.status}`);
     }
 
-    const turnstileData = await turnstileResponse?.json();
+    const turnstileData = (await turnstileResponse.json()) as { success: boolean };
 
-    if (!turnstileData?.success) {
+    if (!turnstileData.success) {
       return {
         success: false,
         message: "Did you complete the CAPTCHA? (If you're human, that is...)",

@@ -65,7 +65,7 @@
   margin-top: 2em;
   padding-top: 2em;
   border-top: 2px solid var(--colors-light);
-  min-height: 360px;
+  min-height: 140px;
 }
 
 @media (max-width: 768px) {

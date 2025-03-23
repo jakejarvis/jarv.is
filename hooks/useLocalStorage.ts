@@ -7,7 +7,6 @@ const useLocalStorage = <T = string>(
   key: string,
   initialValue?: T
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
-  // TODO: make these customizable (e.g. `JSON.stringify()` and `JSON.parse()`)
   const serializer = (value: T | undefined) => String(value);
   const deserializer = (value: string) => value as unknown as T;
 

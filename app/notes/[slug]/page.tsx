@@ -149,7 +149,9 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       {!frontmatter.noComments && (
         <div id="comments" className={styles.comments}>
-          <Comments title={frontmatter.title} />
+          <Suspense fallback={<Loading boxes={3} width={40} style={{ display: "block", margin: "2em auto" }} />}>
+            <Comments title={frontmatter.title} />
+          </Suspense>
         </div>
       )}
     </>

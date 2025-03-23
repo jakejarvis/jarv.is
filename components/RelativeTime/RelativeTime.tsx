@@ -1,11 +1,8 @@
 "use client";
 
+import TimeAgo from "react-timeago";
+import Time from "../Time";
 import { useHasMounted } from "../../hooks";
-import { format, formatISO, formatDistanceToNowStrict } from "date-fns";
-import { enUS } from "date-fns/locale";
-import { tz } from "@date-fns/tz";
-import { utc } from "@date-fns/utc";
-import * as config from "../../lib/config";
 import type { ComponentPropsWithoutRef } from "react";
 
 export type RelativeTimeProps = ComponentPropsWithoutRef<"time"> & {
@@ -17,17 +14,11 @@ const RelativeTime = ({ date, ...rest }: RelativeTimeProps) => {
   // cause a react hydration mismatch error.
   const hasMounted = useHasMounted();
 
-  return (
-    <time
-      dateTime={formatISO(date, { in: utc })}
-      title={format(date, "MMM d, y, h:mm a O", { in: tz(config.timeZone), locale: enUS })}
-      {...rest}
-    >
-      {hasMounted
-        ? formatDistanceToNowStrict(date, { locale: enUS, addSuffix: true })
-        : `on ${format(date, "MMM d, y", { in: tz(config.timeZone), locale: enUS })}`}
-    </time>
-  );
+  if (!hasMounted) {
+    return <Time date={date} format="MMM d, y" {...rest} />;
+  }
+
+  return <TimeAgo date={date} {...rest} />;
 };
 
 export default RelativeTime;
