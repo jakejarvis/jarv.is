@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",
       "./app/opengraph-image.jpg",
+      "./node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
       "./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
     ],
   },
