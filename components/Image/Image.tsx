@@ -12,6 +12,7 @@ const Image = ({ src, height, width, placeholder, className, ...rest }: ImagePro
   const constrainWidth = (width?: number | `${number}`) => {
     if (!width) return MAX_WIDTH;
 
+    // ensure that the image width is not greater than the global maximum width
     return Math.min(typeof width === "string" ? parseInt(width, 10) : width, MAX_WIDTH);
   };
 

@@ -54,7 +54,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
 
     // get the post's title and image filename from its frontmatter
-    const { title, image: imagePath } = await getFrontMatter(slug);
+    const frontmatter = await getFrontMatter(slug);
 
     return new ImageResponse(
       (
@@ -67,7 +67,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
             background: "linear-gradient(0deg, hsla(197, 14%, 57%, 1) 0%, hsla(192, 17%, 94%, 1) 100%)",
           }}
         >
-          {imagePath && (
+          {frontmatter!.image && (
             <div
               style={{
                 display: "flex",
@@ -78,7 +78,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
               {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img
                 // @ts-expect-error
-                src={await getLocalImage(`${POSTS_DIR}/${slug}/${imagePath}`)}
+                src={await getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter!.image}`)}
                 style={{ objectFit: "cover", height: "100%", width: "100%" }}
               />
             </div>
@@ -117,7 +117,7 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
               color: "#fefefe",
             }}
           >
-            {title}
+            {frontmatter!.title}
           </div>
         </div>
       ),

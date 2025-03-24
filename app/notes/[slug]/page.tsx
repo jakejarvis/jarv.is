@@ -37,14 +37,14 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   const frontmatter = await getFrontMatter(slug);
 
   return addMetadata({
-    title: frontmatter.title,
-    description: frontmatter.description,
+    title: frontmatter!.title,
+    description: frontmatter!.description,
     openGraph: {
       type: "article",
       authors: [config.authorName],
-      tags: frontmatter.tags,
-      publishedTime: frontmatter.date,
-      modifiedTime: frontmatter.date,
+      tags: frontmatter!.tags,
+      publishedTime: frontmatter!.date,
+      modifiedTime: frontmatter!.date,
     },
     twitter: {
       card: "summary_large_image",
@@ -67,13 +67,13 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         item={{
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: frontmatter.title,
-          description: frontmatter.description,
-          url: frontmatter.permalink,
+          headline: frontmatter!.title,
+          description: frontmatter!.description,
+          url: frontmatter!.permalink,
           image: [`${BASE_URL}/notes/${slug}/opengraph-image`],
-          keywords: frontmatter.tags,
-          datePublished: frontmatter.date,
-          dateModified: frontmatter.date,
+          keywords: frontmatter!.tags,
+          datePublished: frontmatter!.date,
+          dateModified: frontmatter!.date,
           inLanguage: config.siteLocale,
           license: config.licenseUrl,
           author: {
@@ -85,17 +85,17 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <div className={styles.meta}>
         <div className={styles.metaItem}>
-          <Link href={`/notes/${frontmatter.slug}` as Route} plain className={styles.metaLink}>
+          <Link href={`/notes/${frontmatter!.slug}` as Route} plain className={styles.metaLink}>
             <CalendarIcon size="1.2em" className={styles.metaIcon} />
-            <Time date={frontmatter.date} format="MMMM d, y" />
+            <Time date={frontmatter!.date} format="MMMM d, y" />
           </Link>
         </div>
 
-        {frontmatter.tags && (
+        {frontmatter!.tags && (
           <div className={styles.metaItem}>
             <TagIcon size="1.2em" className={styles.metaIcon} />
             <span className={styles.metaTags}>
-              {frontmatter.tags.map((tag) => (
+              {frontmatter!.tags.map((tag) => (
                 <span key={tag} title={tag} className={styles.metaTag} aria-label={`Tagged with ${tag}`}>
                   {tag}
                 </span>
@@ -106,8 +106,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <div className={styles.metaItem}>
           <Link
-            href={`https://github.com/${config.githubRepo}/blob/main/notes/${frontmatter.slug}/index.mdx`}
-            title={`Edit "${frontmatter.title}" on GitHub`}
+            href={`https://github.com/${config.githubRepo}/blob/main/notes/${frontmatter!.slug}/index.mdx`}
+            title={`Edit "${frontmatter!.title}" on GitHub`}
             plain
             className={styles.metaLink}
           >
@@ -129,7 +129,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             >
               <EyeIcon size="1.2em" className={styles.metaIcon} />
               <Suspense fallback={<Loading boxes={3} width={20} />}>
-                <HitCounter slug={`notes/${frontmatter.slug}`} />
+                <HitCounter slug={`notes/${frontmatter!.slug}`} />
               </Suspense>
             </div>
           </ErrorBoundary>
@@ -138,8 +138,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <h1 className={styles.title}>
         <Link
-          href={`/notes/${frontmatter.slug}` as Route}
-          dangerouslySetInnerHTML={{ __html: frontmatter.htmlTitle || frontmatter.title }}
+          href={`/notes/${frontmatter!.slug}` as Route}
+          dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}
           plain
           className={styles.link}
         />
@@ -147,9 +147,11 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <MDXContent />
 
-      {!frontmatter.noComments && (
+      {!frontmatter!.noComments && (
         <div id="comments" className={styles.comments}>
-          <Comments title={frontmatter.title} />
+          <Suspense fallback={<Loading boxes={3} width={40} style={{ display: "block", margin: "2em auto" }} />}>
+            <Comments title={frontmatter!.title} />
+          </Suspense>
         </div>
       )}
     </>

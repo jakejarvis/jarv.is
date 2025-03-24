@@ -18,7 +18,6 @@ const Comments = ({ title }: CommentsProps) => {
     return null;
   }
 
-  // TODO: use custom `<Loading />` spinner component during suspense
   return (
     <Giscus
       repo={config.githubRepo as GiscusProps["repo"]}

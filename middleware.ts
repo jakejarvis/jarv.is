@@ -1,23 +1,23 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import * as siteConfig from "./lib/config";
-
 // assign "short codes" to approved reverse proxy destinations. for example:
 //   ["abc", "https://jakejarvis.github.io"] => /_stream/abc/123.html -> https://jakejarvis.github.io/123.html
 const rewritePrefix = "/_stream/";
-const rewrites = new Map([
-  // umami backend, see https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
-  ["u", process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"],
-]);
+const rewrites = new Map();
+
+// umami backend, see https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
+if (process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) {
+  rewrites.set("u", process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is");
+}
 
 export const middleware = (request: NextRequest) => {
   const headers = new Headers();
 
-  // https://gitweb.torproject.org/tor-browser-spec.git/tree/proposals/100-onion-location-header.txt
-  if (siteConfig.onionDomain) {
+  // https://community.torproject.org/onion-services/advanced/onion-location/
+  if (process.env.NEXT_PUBLIC_ONION_DOMAIN) {
     const onionUrl = request.nextUrl.clone();
-    onionUrl.hostname = siteConfig.onionDomain;
+    onionUrl.hostname = process.env.NEXT_PUBLIC_ONION_DOMAIN;
     onionUrl.protocol = "http";
     onionUrl.port = "";
 
@@ -51,7 +51,6 @@ export const middleware = (request: NextRequest) => {
     const proxiedPath = slashIndex === -1 ? "/" : pathAfterPrefix.slice(slashIndex);
     const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
 
-    // TODO: remove debugging headers
     headers.set("x-rewrite-url", proxiedUrl.toString());
 
     // finally do the rewriting
