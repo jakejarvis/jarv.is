@@ -70,6 +70,6 @@ export const middleware = (request: NextRequest) => {
 export const config = {
   // save compute time by skipping middleware for static and metadata files
   matcher: [
-    "/((?!_next/static|_next/image|_vercel|static|\\.well-known|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest|feed.xml|feed.atom).*)",
+    "/((?!_next/static|_next/image|_vercel|api|static|\\.well-known|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest|feed.xml|feed.atom).*)",
   ],
 };
