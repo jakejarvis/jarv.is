@@ -1,7 +1,11 @@
 import Script from "next/script";
 
 const Analytics = () => {
-  if (!process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
+  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
+    return null;
+  }
+
+  if (!process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) {
     return null;
   }
 

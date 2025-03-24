@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import type { NextRequest, MiddlewareConfig } from "next/server";
 
 // assign "short codes" to approved reverse proxy destinations. for example:
 //   ["abc", "https://jakejarvis.github.io"] => /_stream/abc/123.html -> https://jakejarvis.github.io/123.html
@@ -67,7 +67,7 @@ export const middleware = (request: NextRequest) => {
   });
 };
 
-export const config = {
+export const config: MiddlewareConfig = {
   // save compute time by skipping middleware for static and metadata files
   matcher: [
     "/((?!_next/static|_next/image|_vercel|api|static|\\.well-known|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest|feed.xml|feed.atom).*)",

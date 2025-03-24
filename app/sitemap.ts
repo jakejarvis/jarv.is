@@ -15,9 +15,6 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       priority: 1.0,
       lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
     },
-    { url: `${BASE_URL}/stats` },
-    { url: `${BASE_URL}/tweets` },
-    { url: `${BASE_URL}/y2k` },
   ];
 
   // add each directory in the app folder as a route (excluding special routes)

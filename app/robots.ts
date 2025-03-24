@@ -7,8 +7,7 @@ const robots = (): MetadataRoute.Robots => ({
   rules: [
     {
       userAgent: "*",
-      // block access to staging sites
-      [process.env.NEXT_PUBLIC_VERCEL_ENV === "production" ? "allow" : "disallow"]: "/",
+      disallow: ["/_stream/", "/api/", "/stats/", "/tweets/", "/404", "/500"],
     },
   ],
   sitemap: `${BASE_URL}/sitemap.xml`,
