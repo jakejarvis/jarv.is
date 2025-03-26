@@ -6,6 +6,9 @@ import { addMetadata } from "../../lib/helpers/metadata";
 import { BASE_URL } from "../../lib/config/constants";
 import type { VideoObject } from "schema-dts";
 
+import mp4 from "./leo.mp4";
+import webm from "./leo.webm";
+import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = addMetadata({
@@ -26,8 +29,7 @@ const Page = () => {
           name: metadata.title as string,
           description: metadata.description as string,
           thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
-          contentUrl:
-            "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/leo-x4E4eG4YPo22KSTJuZwAk6fpNF1NgG.mp4",
+          contentUrl: `${BASE_URL}${webm}`,
           uploadDate: "2007-05-10T00:00:00Z",
           duration: "PT1M48S",
         }}
@@ -35,15 +37,7 @@ const Page = () => {
 
       <PageTitle canonical="/leo">TheLab.mov</PageTitle>
 
-      <Video
-        src={[
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/leo-lVkSAtUWCqQaDCMqo3SGcuBiSlNWod.webm",
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/leo-x4E4eG4YPo22KSTJuZwAk6fpNF1NgG.mp4",
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/leo/subs.en-HRGnRBH8w8CEyM644OV3qmCdm9Aj61.vtt",
-        ]}
-        poster={thumbnail.src}
-        crossOrigin="anonymous"
-      />
+      <Video src={[webm, mp4, subtitles]} poster={thumbnail.src} />
 
       <p
         style={{

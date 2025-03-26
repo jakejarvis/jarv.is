@@ -6,6 +6,9 @@ import { addMetadata } from "../../lib/helpers/metadata";
 import { BASE_URL } from "../../lib/config/constants";
 import type { VideoObject } from "schema-dts";
 
+import webm from "./convention.webm";
+import mp4 from "./convention.mp4";
+import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = addMetadata({
@@ -26,8 +29,7 @@ const Page = () => {
           name: metadata.title as string,
           description: metadata.description as string,
           thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
-          contentUrl:
-            "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-YLGreYE59PzmPo4epB21HQG6jXgYL5.mp4",
+          contentUrl: `${BASE_URL}${webm}`,
           uploadDate: "2016-07-25T00:00:00Z",
           duration: "PT1M51S",
         }}
@@ -35,15 +37,7 @@ const Page = () => {
 
       <PageTitle canonical="/hillary">HRC.mov</PageTitle>
 
-      <Video
-        src={[
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-JbNlxyfqE3nz4ACjtfbpbjcR2gOY89.webm",
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/convention-720p-YLGreYE59PzmPo4epB21HQG6jXgYL5.mp4",
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/hillary/subs.en-k2txNECkQvwxWP8DjfP6GPBPo20vnO.vtt",
-        ]}
-        poster={thumbnail.src}
-        crossOrigin="anonymous"
-      />
+      <Video src={[webm, mp4, subtitles]} poster={thumbnail.src} />
 
       <p
         style={{

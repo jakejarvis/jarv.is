@@ -64,17 +64,19 @@ export const sendMessage = async (
       };
     }
 
+    if (!process.env.RESEND_FROM_EMAIL) {
+      console.warn("[contact form] RESEND_FROM_EMAIL not set, falling back to onboarding@resend.dev.");
+    }
+
     // send email
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: `${validatedFields.data.name} <${process.env.RESEND_DOMAIN ? `noreply@${process.env.RESEND_DOMAIN}` : "onboarding@resend.dev"}>`,
+      from: `${validatedFields.data.name} <${process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev"}>`,
       replyTo: `${validatedFields.data.name} <${validatedFields.data.email}>`,
       to: [config.authorEmail],
       subject: `[${config.siteName}] Contact Form Submission`,
       text: validatedFields.data.message,
     });
-
-    return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
   } catch (error) {
     console.error("[contact form] fatal error:", error);
 
@@ -85,4 +87,6 @@ export const sendMessage = async (
       payload: formData,
     };
   }
+
+  return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
 };

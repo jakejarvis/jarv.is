@@ -5,6 +5,8 @@ import { addMetadata } from "../../lib/helpers/metadata";
 import { BASE_URL } from "../../lib/config/constants";
 import type { VideoObject } from "schema-dts";
 
+import mp4 from "./birthday.mp4";
+import webm from "./birthday.webm";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = addMetadata({
@@ -25,8 +27,7 @@ const Page = () => {
           name: metadata.title as string,
           description: metadata.description as string,
           thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
-          contentUrl:
-            "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/birthday/birthday-8iayCEy1jfEHpNGZkdBPvxPFOuGz0g.mp4",
+          contentUrl: `${BASE_URL}${webm}`,
           uploadDate: "1996-02-06T00:00:00Z",
           duration: "PT6M10S",
         }}
@@ -34,14 +35,7 @@ const Page = () => {
 
       <PageTitle canonical="/birthday">1996.mov</PageTitle>
 
-      <Video
-        src={[
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/birthday/birthday-9HG65MrSNWJjzg679VtirX7MLPpAaV.webm",
-          "https://bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com/videos/birthday/birthday-8iayCEy1jfEHpNGZkdBPvxPFOuGz0g.mp4",
-        ]}
-        poster={thumbnail.src}
-        crossOrigin="anonymous"
-      />
+      <Video src={[webm, mp4]} poster={thumbnail.src} />
     </>
   );
 };

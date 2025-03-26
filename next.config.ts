@@ -1,6 +1,8 @@
+import path from "path";
 import type { NextConfig } from "next";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import withMDX from "@next/mdx";
+import { visit } from "unist-util-visit";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 
 const nextConfig: NextConfig = {
@@ -15,9 +17,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      { protocol: "https", hostname: "bcm6wnmyyzj1p5ls.public.blob.vercel-storage.com" },
-      { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "abs.twimg.com" },
+      { protocol: "https", hostname: "pbs.twimg.com" },
     ],
   },
   outputFileTracingIncludes: {
@@ -27,6 +28,22 @@ const nextConfig: NextConfig = {
       "./node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
       "./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
     ],
+  },
+  outputFileTracingExcludes: {
+    "*": ["./public/**/*", "**/*.mp4", "**/*.webm"],
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(mp4|webm|vtt)$/i,
+      type: "asset/resource",
+      generator: {
+        // https://github.com/vercel/next.js/blob/4447ea402a50113490103abe14255e95dcc8cf69/packages/next/src/build/webpack-config.ts#L1231
+        // https://github.com/vercel/next.js/discussions/18852#discussioncomment-10752440
+        outputPath: path.relative(config.output.path, path.resolve(process.cwd(), ".next/")),
+      },
+    });
+
+    return config;
   },
   experimental: {
     reactCompiler: true, // https://react.dev/learn/react-compiler
@@ -137,6 +154,22 @@ const nextPlugins = [
         mdxPlugins.remarkMdxFrontmatter,
         mdxPlugins.remarkGfm,
         mdxPlugins.remarkSmartypants,
+        // workaround for rehype-mdx-import-media not applying to `<video>` tags:
+        // https://github.com/Chailotl/remark-videos/blob/851c332993210e6f091453f7ed887be24492bcee/index.js
+        () => (tree) => {
+          visit(tree, "image", (node) => {
+            if (node.url.match(/\.(mp4|webm)$/i)) {
+              node.type = "element";
+              node.data = {
+                hName: "video",
+                hProperties: {
+                  src: node.url,
+                  // TODO: make this even hackier and pass an autoplay option in the alt text or something
+                },
+              };
+            }
+          });
+        },
       ],
       rehypePlugins: [
         mdxPlugins.rehypeUnwrapImages,

@@ -22,6 +22,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     a: Link,
     code: Code,
     blockquote: Blockquote,
+    video: Video,
     hr: HorizontalRule,
     h1: Heading.H1,
     h2: Heading.H2,
@@ -32,9 +33,6 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     ul: List.UnorderedList,
     ol: List.OrderedList,
     li: List.ListItem,
-
-    // html components with a slight twist:
-    Video,
 
     // third-party embeds:
     Tweet,

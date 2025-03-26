@@ -4,17 +4,14 @@ import type { ComponentPropsWithoutRef } from "react";
 import styles from "./Video.module.css";
 
 export type VideoProps = Omit<Partial<ComponentPropsWithoutRef<"video">>, "src"> & {
-  src: string[];
-  poster?: string;
-  autoplay?: boolean;
+  src: string | string[] | undefined;
 };
 
-const Video = ({ src, poster, autoplay = false, className, ...rest }: VideoProps) => {
+const Video = ({ src, autoPlay, className, ...rest }: VideoProps) => {
   return (
     <video
-      className={clsx(styles.player, className)}
-      poster={poster}
-      {...(autoplay
+      {...(typeof src === "string" ? { src } : {})}
+      {...(autoPlay
         ? {
             preload: "auto",
             controls: false,
@@ -27,17 +24,19 @@ const Video = ({ src, poster, autoplay = false, className, ...rest }: VideoProps
             preload: "metadata",
             controls: true,
           })}
+      className={clsx(styles.player, className)}
       {...rest}
     >
-      {src.map((file) => {
-        const extension = file.split(".").pop();
+      {Array.isArray(src) &&
+        src.map((file) => {
+          const extension = file.split(".").pop();
 
-        if (extension === "vtt") {
-          return <track key={file} kind="subtitles" src={file} srcLang="en" label="English" default />;
-        } else {
-          return <source key={file} src={file} type={`video/${extension}`} />;
-        }
-      })}
+          if (extension === "vtt") {
+            return <track key={file} kind="subtitles" src={file} srcLang="en" label="English" default />;
+          } else {
+            return <source key={file} src={file} type={`video/${extension}`} />;
+          }
+        })}
     </video>
   );
 };
