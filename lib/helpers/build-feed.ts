@@ -1,11 +1,12 @@
+import { cache } from "react";
 import { Feed } from "feed";
-import { getAllPosts } from "./posts";
+import { getAllPosts, getPostContent } from "./posts";
 import * as config from "../config";
 import { BASE_URL } from "../config/constants";
 
 import ogImage from "../../app/opengraph-image.jpg";
 
-export const buildFeed = async (): Promise<Feed> => {
+export const buildFeed = cache(async (): Promise<Feed> => {
   // https://github.com/jpmonette/feed#example
   const feed = new Feed({
     id: BASE_URL,
@@ -27,7 +28,8 @@ export const buildFeed = async (): Promise<Feed> => {
   });
 
   // add posts separately using their frontmatter
-  (await getAllPosts()).forEach((post) => {
+  const posts = await getAllPosts();
+  for (const post of posts.reverse()) {
     feed.addItem({
       guid: post.permalink,
       link: post.permalink,
@@ -40,8 +42,9 @@ export const buildFeed = async (): Promise<Feed> => {
         },
       ],
       date: new Date(post.date),
+      content: `${await getPostContent(post.slug)}\n\n<p><a href="${post.permalink}"><strong>Continue reading...</strong></a></p>`,
     });
-  });
+  }
 
   return feed;
-};
+});

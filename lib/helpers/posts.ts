@@ -2,7 +2,8 @@ import { cache } from "react";
 import path from "path";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkHtml, remarkParse, remarkSmartypants } from "./remark-rehype-plugins";
+import { read } from "to-vfile";
+import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
 
@@ -19,7 +20,7 @@ export type FrontMatter = {
 };
 
 // returns front matter and the **raw & uncompiled** markdown of a given slug
-export const getFrontMatter = cache(async (slug: string): Promise<FrontMatter | null> => {
+export const getFrontMatter = cache(async (slug: string): Promise<FrontMatter | undefined> => {
   try {
     const { frontmatter } = await import(`../../${POSTS_DIR}/${slug}/index.mdx`);
 
@@ -52,7 +53,7 @@ export const getFrontMatter = cache(async (slug: string): Promise<FrontMatter | 
     };
   } catch (error) {
     console.error(`Failed to load front matter for post with slug "${slug}":`, error);
-    return null;
+    return undefined;
   }
 });
 
@@ -68,6 +69,47 @@ export const getPostSlugs = cache(async (): Promise<string[]> => {
   const slugs = mdxFiles.map((fileName) => fileName.replace(/\/index\.mdx$/, ""));
 
   return slugs;
+});
+
+// returns the content of a post with very limited processing to include in RSS feeds
+// TODO: also remove MDX-related syntax (e.g. import/export statements)
+export const getPostContent = cache(async (slug: string): Promise<string | undefined> => {
+  try {
+    const content = await unified()
+      .use(remarkParse)
+      .use(remarkFrontmatter)
+      .use(remarkSmartypants)
+      .use(remarkHtml, {
+        sanitize: {
+          tagNames: [
+            "p",
+            "a",
+            "em",
+            "strong",
+            "code",
+            "pre",
+            "blockquote",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "ul",
+            "ol",
+            "li",
+            "hr",
+          ],
+        },
+      })
+      .process(await read(path.resolve(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
+
+    // convert the parsed content to a string
+    return content.toString().trim();
+  } catch (error) {
+    console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
+    return undefined;
+  }
 });
 
 // returns the parsed front matter of ALL posts, sorted reverse chronologically
