@@ -4,6 +4,7 @@
 [![Next.js version](https://img.shields.io/github/package-json/dependency-version/jakejarvis/jarv.is/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![Licensed under CC-BY-4.0](https://img.shields.io/badge/license-CC--BY--4.0-fb7828?logo=creative-commons&logoColor=white)](LICENSE)
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
+[![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fjarv.is%2Fapi%2Fhits&query=%24.total.hits&logo=googleanalytics&logoColor=white&label=hits&color=salmon&cacheSeconds=1800)](https://jarv.is/api/hits)
 
 My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Upstash Redis](https://upstash.com/), [Giscus](https://giscus.app/), [Umami](https://umami.is/), [and more](https://jarv.is/humans.txt).
 

@@ -128,7 +128,11 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               }}
             >
               <EyeIcon size="1.2em" className={styles.metaIcon} />
-              <Suspense fallback={<Loading boxes={3} width={20} />}>
+              <Suspense
+                // when this loads, the component will count up from zero to the actual number of hits, so we can simply
+                // show a zero here as a "loading indicator"
+                fallback={<span>0</span>}
+              >
                 <HitCounter slug={`notes/${frontmatter!.slug}`} />
               </Suspense>
             </div>
