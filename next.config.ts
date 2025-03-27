@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
     ],
   },
   outputFileTracingExcludes: {
-    "*": ["./public/**/*", "**/*.mp4", "**/*.webm"],
+    "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
   },
   webpack: (config) => {
     config.module.rules.push({
