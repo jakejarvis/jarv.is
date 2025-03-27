@@ -8,7 +8,7 @@ CORE EXPERTISE:
 - Server Actions
 - Parallel and Intercepting Routes
 - CSS Modules
-- Prisma as a Database ORM
+- Redis for KV storage
 - MDX for blog content
 - Zod for runtime type validation
 
@@ -23,8 +23,7 @@ CODE ARCHITECTURE:
    │   ├── config/    # Configuration constants
    │   ├── helpers/   # Utility functions
    ├── notes/         # Blog posts in markdown/MDX format
-   ├── static/        # Static files such as images and videos
-   └── prisma/        # Database schema in Prisma format
+   └── static/        # Static files such as images and videos
 
 2. Component Organization:
    - Keep reusable components in ./components/.

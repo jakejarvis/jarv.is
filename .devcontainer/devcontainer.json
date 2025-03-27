@@ -22,7 +22,6 @@
 			"extensions": [
 				"dbaeumer.vscode-eslint",
 				"EditorConfig.EditorConfig",
-				"prisma.prisma",
 				"unifiedjs.vscode-mdx",
 				"esbenp.prettier-vscode",
 				"stylelint.vscode-stylelint"

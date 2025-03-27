@@ -22,10 +22,6 @@ updates:
           - "@types/react-is"
           - "babel-plugin-react-compiler"
           - "eslint-plugin-react-compiler"
-      prisma:
-        patterns:
-          - "prisma"
-          - "@prisma/*"
       mdx:
         patterns:
           - "remark-*"
