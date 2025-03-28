@@ -22,18 +22,16 @@ export const GET = async (): Promise<
     count: 99,
   });
 
-  // get the value (number of hits) for each key (the slug of the page) and pair them together
-  const pages = await Promise.all(
-    slugs[1].map(async (slug) => {
-      const hits = (await redis.get(slug)) as number;
-      return {
-        slug,
-        hits,
-      };
-    })
-  );
+  // get the value (number of hits) for each key (the slug of the page)
+  const values = await redis.mget<string[]>(...slugs[1]);
 
-  // sort by hits
+  // pair the slugs with their hit values
+  const pages = slugs[1].map((slug, index) => ({
+    slug,
+    hits: parseInt(values[index], 10),
+  }));
+
+  // sort descending by hits
   pages.sort((a, b) => b.hits - a.hits);
 
   // calculate total hits
