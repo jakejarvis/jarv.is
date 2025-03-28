@@ -68,8 +68,8 @@ export const middleware = (request: NextRequest) => {
 };
 
 export const config: MiddlewareConfig = {
-  // save compute time by skipping middleware for static and metadata files
+  // save compute time by skipping middleware for next.js internals and static files
   matcher: [
-    "/((?!_next/static|_next/image|_vercel|api|static|\\.well-known|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest|feed.xml|feed.atom).*)",
+    "/((?!_next/|_vercel/|api/|\\.well-known/|[^?]*\\.(?:png|jpe?g|gif|webp|avif|svg|ico|webm|mp4|ttf|woff2?|xml|atom|txt|pdf|webmanifest)).*)",
   ],
 };
