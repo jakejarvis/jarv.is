@@ -19,51 +19,42 @@
 }
 
 .card .name {
+  display: inline-block;
+  margin-bottom: 0.4em;
   font-size: 1.2em;
   font-weight: 600;
 }
 
 .card .description {
-  margin-top: 0.7em;
-  margin-bottom: 0.5em;
+  margin: 0;
   line-height: 1.7;
 }
 
 .card .meta {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 0.4em;
 }
 
 .card .metaItem {
-  margin-right: 1.5em;
-  line-height: 2;
+  margin: 0.3em 1.5em 0.3em 0;
   color: var(--colors-medium);
+  white-space: nowrap;
 }
 
 .card .metaLink {
-  color: inherit !important;
+  color: inherit;
 }
 
 .card .metaLink:hover,
 .card .metaLink:focus-visible {
-  color: var(--colors-link) !important;
+  color: var(--colors-link);
 }
 
 .card .metaIcon {
   display: inline-block;
   width: 1.25em;
   height: 1.25em;
-  vertical-align: -0.25em;
   margin-right: 0.5em;
-}
-
-.card .metaLanguage {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-  height: 1.1em;
-  line-height: 1;
-  margin-right: 0.5em;
-  border-radius: 50%;
-  vertical-align: -0.2em;
+  vertical-align: text-top;
 }

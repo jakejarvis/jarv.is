@@ -118,9 +118,12 @@ const Page = async () => {
               {repo.language && (
                 <div className={styles.metaItem}>
                   {repo.language.color && (
-                    <span className={styles.metaLanguage} style={{ backgroundColor: repo.language.color }} />
+                    <span
+                      className={styles.metaIcon}
+                      style={{ backgroundColor: repo.language.color, borderRadius: "50%" }}
+                    />
                   )}
-                  {repo.language.name}
+                  <span>{repo.language.name}</span>
                 </div>
               )}
 
@@ -133,7 +136,7 @@ const Page = async () => {
                     className={styles.metaLink}
                   >
                     <StarIcon size="1.25em" className={styles.metaIcon} />
-                    {commaNumber(repo.stars)}
+                    <span>{commaNumber(repo.stars)}</span>
                   </Link>
                 </div>
               )}
@@ -147,13 +150,23 @@ const Page = async () => {
                     className={styles.metaLink}
                   >
                     <GitForkIcon size="1.25em" className={styles.metaIcon} />
-                    {commaNumber(repo.forks)}
+                    <span>{commaNumber(repo.forks)}</span>
                   </Link>
                 </div>
               )}
 
               <div className={styles.metaItem}>
-                Updated <RelativeTime date={repo.updatedAt} />
+                <span
+                  className={styles.metaIcon}
+                  style={{
+                    // invisible icon hack to fix line height
+                    width: 0,
+                    marginRight: 0,
+                  }}
+                />
+                <span>
+                  Updated <RelativeTime date={repo.updatedAt} />
+                </span>
               </div>
             </div>
           </div>

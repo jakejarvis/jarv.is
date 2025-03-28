@@ -13,7 +13,7 @@
 }
 
 .meta .metaLink {
-  color: inherit !important;
+  color: inherit;
 }
 
 .meta .metaIcon {
@@ -58,7 +58,7 @@
 }
 
 .title .link {
-  color: var(--colors-text) !important;
+  color: var(--colors-text);
 }
 
 .comments {
