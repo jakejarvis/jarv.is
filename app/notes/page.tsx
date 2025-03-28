@@ -1,6 +1,6 @@
 import Link from "../../components/Link";
 import Time from "../../components/Time";
-import { getAllPosts } from "../../lib/helpers/posts";
+import { getFrontMatter } from "../../lib/helpers/posts";
 import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
 import type { ReactElement } from "react";
@@ -19,7 +19,7 @@ export const metadata = addMetadata({
 
 const Page = async () => {
   // parse the year of each note and group them together
-  const notes = await getAllPosts();
+  const notes = await getFrontMatter();
   const notesByYear: {
     [year: string]: FrontMatter[];
   } = {};

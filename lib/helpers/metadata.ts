@@ -1,7 +1,10 @@
 import defaultMetadata from "../config/metadata";
 import type { Metadata } from "next";
 
-// helper function to deep merge a page's metadata into the default site metadata
+/**
+ * Helper function to deep merge a page's metadata into the default site metadata
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+ */
 export const addMetadata = (metadata: Metadata): Metadata => {
   return {
     ...defaultMetadata,

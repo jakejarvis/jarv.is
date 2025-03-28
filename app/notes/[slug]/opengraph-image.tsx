@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { join } from "path";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
-import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
+import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { POSTS_DIR, AVATAR_PATH } from "../../../lib/config/constants";
 
 export const contentType = "image/png";
@@ -18,7 +18,7 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
-  const slugs = await getPostSlugs();
+  const slugs = await getSlugs();
 
   // map slugs into a static paths object required by next.js
   return slugs.map((slug) => ({

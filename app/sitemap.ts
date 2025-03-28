@@ -1,6 +1,6 @@
 import path from "path";
 import glob from "fast-glob";
-import { getAllPosts } from "../lib/helpers/posts";
+import { getFrontMatter } from "../lib/helpers/posts";
 import { BASE_URL } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
@@ -36,7 +36,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     });
   });
 
-  (await getAllPosts()).forEach((post) => {
+  (await getFrontMatter()).forEach((post) => {
     routes.push({
       url: post.permalink,
       // pull lastModified from front matter date

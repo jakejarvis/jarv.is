@@ -7,7 +7,7 @@ import Time from "../../../components/Time";
 import Comments from "../../../components/Comments";
 import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
-import { getPostSlugs, getFrontMatter } from "../../../lib/helpers/posts";
+import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
 import { BASE_URL } from "../../../lib/config/constants";
@@ -24,7 +24,7 @@ export const dynamicParams = false;
 export const experimental_ppr = true;
 
 export const generateStaticParams = async () => {
-  const slugs = await getPostSlugs();
+  const slugs = await getSlugs();
 
   // map slugs into a static paths object required by next.js
   return slugs.map((slug) => ({
