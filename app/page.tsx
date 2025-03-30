@@ -3,7 +3,6 @@ import { rgba } from "polished";
 import { LockIcon } from "lucide-react";
 import UnstyledLink from "../components/Link";
 import type { ComponentPropsWithoutRef } from "react";
-import type { Route } from "next";
 
 import styles from "./page.module.css";
 
@@ -149,7 +148,7 @@ const Page = () => {
         </Link>{" "}
         and{" "}
         <Link
-          href={"/notes/my-first-code" as Route}
+          href="/notes/my-first-code"
           title="Jake's Bulletin Board, circa 2003"
           lightColor="#9932cc"
           darkColor="#d588fb"
@@ -259,7 +258,7 @@ const Page = () => {
         </Link>{" "}
         <sup>
           <Link
-            href={"/pubkey.asc" as Route}
+            href="/pubkey.asc"
             rel="pgpkey authn"
             title="My Public Key"
             lightColor="#757575"

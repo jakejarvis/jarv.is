@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Link from "../Link";
-import type { Route } from "next";
 import type { ComponentPropsWithoutRef } from "react";
 import type { LucideIcon } from "lucide-react";
 
@@ -8,7 +7,7 @@ import styles from "./MenuItem.module.css";
 
 export type MenuItemProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
   text?: string;
-  href?: Route;
+  href?: string;
   icon?: LucideIcon;
   current?: boolean;
 };

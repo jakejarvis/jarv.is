@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import path from "path";
-import type { NextConfig } from "next";
-import withBundleAnalyzer from "@next/bundle-analyzer";
-import withMDX from "@next/mdx";
 import { visit } from "unist-util-visit";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
+import type { NextConfig } from "next";
+
+type NextPlugin = (
+  config: NextConfig,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  options?: any
+) => NextConfig;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -143,11 +149,13 @@ const nextConfig: NextConfig = {
   ],
 };
 
-const nextPlugins = [
-  withBundleAnalyzer({
-    enabled: process.env.ANALYZE === "true",
+// my own macgyvered version of next-compose-plugins (RIP)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const nextPlugins: Array<NextPlugin | [NextPlugin, any]> = [
+  require("@next/bundle-analyzer")({
+    enabled: !!process.env.ANALYZE,
   }),
-  withMDX({
+  require("@next/mdx")({
     options: {
       remarkPlugins: [
         mdxPlugins.remarkFrontmatter,
@@ -156,7 +164,8 @@ const nextPlugins = [
         mdxPlugins.remarkSmartypants,
         // workaround for rehype-mdx-import-media not applying to `<video>` tags:
         // https://github.com/Chailotl/remark-videos/blob/851c332993210e6f091453f7ed887be24492bcee/index.js
-        () => (tree) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        () => (tree: any) => {
           visit(tree, "image", (node) => {
             if (node.url.match(/\.(mp4|webm)$/i)) {
               node.type = "element";
@@ -191,10 +200,31 @@ const nextPlugins = [
       ],
     },
   }),
+  [
+    require("@sentry/nextjs").withSentryConfig,
+    {
+      // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/build/
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      silent: !process.env.CI,
+      tunnelRoute: "/_otel", // ensure this path is included in middleware's negative config.matcher expression
+      widenClientFileUpload: true,
+      disableLogger: true,
+      telemetry: false,
+      bundleSizeOptimizations: {
+        excludeDebugStatements: true,
+      },
+    },
+  ],
 ];
 
-// my own macgyvered version of next-compose-plugins (RIP)
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
-  return nextPlugins.reduce((acc, plugin) => plugin(acc), { ...nextConfig });
-};
+export default (): NextConfig =>
+  nextPlugins.reduce((acc, next) => {
+    if (Array.isArray(next)) {
+      return (next[0] as NextPlugin)(acc, next[1]);
+    }
+
+    return (next as NextPlugin)(acc);
+  }, nextConfig);

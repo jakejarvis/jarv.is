@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
 import { JsonLd } from "react-schemaorg";
 import { CalendarIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "../../../components/Link";
@@ -10,8 +9,8 @@ import HitCounter from "./counter";
 import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
-import { BASE_URL } from "../../../lib/config/constants";
-import type { Metadata, Route } from "next";
+import { BASE_URL, POSTS_DIR } from "../../../lib/config/constants";
+import type { Metadata } from "next";
 import type { Article } from "schema-dts";
 
 import styles from "./page.module.css";
@@ -50,7 +49,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
     },
     alternates: {
-      canonical: `/notes/${slug}`,
+      canonical: `/${POSTS_DIR}/${slug}`,
     },
   });
 };
@@ -59,7 +58,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
-  const { default: MDXContent } = await import(`../../../notes/${slug}/index.mdx`);
+  const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
   return (
     <>
@@ -70,7 +69,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           headline: frontmatter!.title,
           description: frontmatter!.description,
           url: frontmatter!.permalink,
-          image: [`${BASE_URL}/notes/${slug}/opengraph-image`],
+          image: [`${BASE_URL}/${POSTS_DIR}/${frontmatter!.slug}/opengraph-image`],
           keywords: frontmatter!.tags,
           datePublished: frontmatter!.date,
           dateModified: frontmatter!.date,
@@ -85,7 +84,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <div className={styles.meta}>
         <div className={styles.metaItem}>
-          <Link href={`/notes/${frontmatter!.slug}` as Route} plain className={styles.metaLink}>
+          <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} plain className={styles.metaLink}>
             <CalendarIcon size="1.2em" className={styles.metaIcon} />
             <Time date={frontmatter!.date} format="MMMM d, y" />
           </Link>
@@ -106,7 +105,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <div className={styles.metaItem}>
           <Link
-            href={`https://github.com/${config.githubRepo}/blob/main/notes/${frontmatter!.slug}/index.mdx`}
+            href={`https://github.com/${config.githubRepo}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
             title={`Edit "${frontmatter!.title}" on GitHub`}
             plain
             className={styles.metaLink}
@@ -118,31 +117,29 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         {/* only count hits on production site */}
         {process.env.NEXT_PUBLIC_VERCEL_ENV !== "development" && process.env.NODE_ENV !== "development" ? (
-          <ErrorBoundary fallback={null}>
-            <div
-              className={styles.metaItem}
-              style={{
-                // fix potential layout shift when number of hits loads
-                minWidth: "7em",
-                marginRight: 0,
-              }}
+          <div
+            className={styles.metaItem}
+            style={{
+              // fix potential layout shift when number of hits loads
+              minWidth: "7em",
+              marginRight: 0,
+            }}
+          >
+            <EyeIcon size="1.2em" className={styles.metaIcon} />
+            <Suspense
+              // when this loads, the component will count up from zero to the actual number of hits, so we can simply
+              // show a zero here as a "loading indicator"
+              fallback={<span>0</span>}
             >
-              <EyeIcon size="1.2em" className={styles.metaIcon} />
-              <Suspense
-                // when this loads, the component will count up from zero to the actual number of hits, so we can simply
-                // show a zero here as a "loading indicator"
-                fallback={<span>0</span>}
-              >
-                <HitCounter slug={`notes/${frontmatter!.slug}`} />
-              </Suspense>
-            </div>
-          </ErrorBoundary>
+              <HitCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+            </Suspense>
+          </div>
         ) : null}
       </div>
 
       <h1 className={styles.title}>
         <Link
-          href={`/notes/${frontmatter!.slug}` as Route}
+          href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}
           plain
           className={styles.link}

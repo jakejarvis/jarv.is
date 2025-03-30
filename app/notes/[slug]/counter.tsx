@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import commaNumber from "comma-number";
 import CountUp from "../../../components/CountUp";
 import redis from "../../../lib/helpers/redis";
@@ -21,9 +22,7 @@ const HitCounter = async ({ slug }: { slug: string }) => {
       </span>
     );
   } catch (error) {
-    console.error("[hit counter] fatal error:", error);
-
-    throw new Error();
+    Sentry.captureException(error);
   }
 };
 

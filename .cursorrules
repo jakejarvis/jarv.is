@@ -23,7 +23,7 @@ CODE ARCHITECTURE:
    │   ├── config/    # Configuration constants
    │   ├── helpers/   # Utility functions
    ├── notes/         # Blog posts in markdown/MDX format
-   └── static/        # Static files such as images and videos
+   └── public/        # Static files
 
 2. Component Organization:
    - Keep reusable components in ./components/.

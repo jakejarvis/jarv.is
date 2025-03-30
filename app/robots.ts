@@ -7,7 +7,7 @@ const robots = (): MetadataRoute.Robots => ({
   rules: [
     {
       userAgent: "*",
-      disallow: ["/_stream/", "/api/", "/stats/", "/tweets/", "/404", "/500"],
+      disallow: ["/_stream/", "/_otel/", "/api/", "/404", "/500"],
     },
   ],
   sitemap: `${BASE_URL}/sitemap.xml`,

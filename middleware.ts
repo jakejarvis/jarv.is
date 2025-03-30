@@ -36,28 +36,19 @@ export const middleware = (request: NextRequest) => {
     // search the rewrite map for the short code
     const proxiedOrigin = rewrites.get(key);
 
-    // return a 400 error if a rewrite was requested but the short code isn't found
-    if (!proxiedOrigin) {
-      return NextResponse.json(
-        { error: "Unknown proxy key" },
-        {
-          status: 400,
-          headers,
-        }
-      );
+    if (proxiedOrigin) {
+      // it's now safe to build the rewritten URL
+      const proxiedPath = slashIndex === -1 ? "/" : pathAfterPrefix.slice(slashIndex);
+      const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
+
+      headers.set("x-rewrite-url", proxiedUrl.toString());
+
+      // finally do the rewriting
+      return NextResponse.rewrite(proxiedUrl, {
+        request,
+        headers,
+      });
     }
-
-    // it's now safe to build the rewritten URL
-    const proxiedPath = slashIndex === -1 ? "/" : pathAfterPrefix.slice(slashIndex);
-    const proxiedUrl = new URL(`${proxiedPath}${request.nextUrl.search}`, proxiedOrigin);
-
-    headers.set("x-rewrite-url", proxiedUrl.toString());
-
-    // finally do the rewriting
-    return NextResponse.rewrite(proxiedUrl, {
-      request,
-      headers,
-    });
   }
 
   // if we've gotten this far, continue normally to next.js
@@ -70,6 +61,6 @@ export const middleware = (request: NextRequest) => {
 export const config: MiddlewareConfig = {
   // save compute time by skipping middleware for next.js internals and static files
   matcher: [
-    "/((?!_next/|_vercel/|api/|\\.well-known/|[^?]*\\.(?:png|jpe?g|gif|webp|avif|svg|ico|webm|mp4|ttf|woff2?|xml|atom|txt|pdf|webmanifest)).*)",
+    "/((?!_next/static|_next/image|_vercel|_otel|api|\\.well-known|[^?]*\\.(?:png|jpe?g|gif|webp|avif|svg|ico|webm|mp4|ttf|woff2?|xml|atom|txt|pdf|webmanifest)).*)",
   ],
 };

@@ -3,8 +3,8 @@ import Time from "../../components/Time";
 import { getFrontMatter } from "../../lib/helpers/posts";
 import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
+import { POSTS_DIR } from "../../lib/config/constants";
 import type { ReactElement } from "react";
-import type { Route } from "next";
 import type { FrontMatter } from "../../lib/helpers/posts";
 
 import styles from "./page.module.css";
@@ -13,25 +13,25 @@ export const metadata = addMetadata({
   title: "Notes",
   description: `Recent posts by ${config.authorName}.`,
   alternates: {
-    canonical: "/notes",
+    canonical: `/${POSTS_DIR}`,
   },
 });
 
 const Page = async () => {
-  // parse the year of each note and group them together
-  const notes = await getFrontMatter();
-  const notesByYear: {
+  // parse the year of each post and group them together
+  const posts = await getFrontMatter();
+  const postsByYear: {
     [year: string]: FrontMatter[];
   } = {};
 
-  notes.forEach((note) => {
-    const year = new Date(note.date).getUTCFullYear();
-    (notesByYear[year] || (notesByYear[year] = [])).push(note);
+  posts.forEach((post) => {
+    const year = new Date(post.date).getUTCFullYear();
+    (postsByYear[year] || (postsByYear[year] = [])).push(post);
   });
 
   const sections: ReactElement[] = [];
 
-  Object.entries(notesByYear).forEach(([year, posts]) => {
+  Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
       <section className={styles.section} key={year}>
         <h2 className={styles.year}>{year}</h2>
@@ -40,7 +40,7 @@ const Page = async () => {
             <li className={styles.post} key={slug}>
               <Time date={date} format="MMM d" className={styles.postDate} />
               <span>
-                <Link href={`/notes/${slug}` as Route} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
+                <Link href={`/${POSTS_DIR}/${slug}`} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
               </span>
             </li>
           ))}
