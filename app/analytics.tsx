@@ -11,7 +11,7 @@ const Analytics = () => {
 
   return (
     <Script
-      src="/_stream/u/script.js" // see middleware rewrite
+      src="/_stream/u/script.js" // see next.config.ts rewrite
       id="umami-js"
       strategy="afterInteractive"
       data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}

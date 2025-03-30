@@ -33,9 +33,6 @@ export const sendMessage = async (prevState: ContactState, formData: FormData): 
       try {
         const data = v.safeParse(ContactSchema, Object.fromEntries(formData));
 
-        // send raw valibot result to Sentry for debugging
-        Sentry.captureMessage(JSON.stringify(data), "debug");
-
         if (!data.success) {
           return {
             success: false,

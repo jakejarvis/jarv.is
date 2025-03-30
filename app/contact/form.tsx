@@ -16,11 +16,11 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [formFields, setFormFields] = useState<ContactInput>({
+  // keep track of input so we can repopulate the fields if the form fails
+  const [formFields, setFormFields] = useState<Partial<ContactInput>>({
     name: "",
     email: "",
     message: "",
-    "cf-turnstile-response": "",
   });
 
   return (
@@ -29,44 +29,43 @@ const ContactForm = () => {
         type="text"
         name="name"
         placeholder="Name"
-        // required
         value={formFields.name}
         onChange={(e) => {
           setFormFields({ ...formFields, name: e.target.value });
         }}
         disabled={pending || formState.success}
-        className={clsx(styles.input, formState.errors?.name && styles.invalid)}
+        className={clsx(styles.input, !pending && formState.errors?.name && styles.invalid)}
       />
-      {formState.errors?.name && <span className={styles.fieldError}>{formState.errors.name[0]}</span>}
+      {!pending && formState.errors?.name && <span className={styles.fieldError}>{formState.errors.name[0]}</span>}
 
       <input
         type="email"
         name="email"
         placeholder="Email"
-        // required
         inputMode="email"
         value={formFields.email}
         onChange={(e) => {
           setFormFields({ ...formFields, email: e.target.value });
         }}
         disabled={pending || formState.success}
-        className={clsx(styles.input, formState.errors?.email && styles.invalid)}
+        className={clsx(styles.input, !pending && formState.errors?.email && styles.invalid)}
       />
-      {formState.errors?.email && <span className={styles.fieldError}>{formState.errors.email[0]}</span>}
+      {!pending && formState.errors?.email && <span className={styles.fieldError}>{formState.errors.email[0]}</span>}
 
       <TextareaAutosize
         name="message"
         placeholder="Write something..."
         minRows={5}
-        // required
         value={formFields.message}
         onChange={(e) => {
           setFormFields({ ...formFields, message: e.target.value });
         }}
         disabled={pending || formState.success}
-        className={clsx(styles.input, styles.textarea, formState.errors?.message && styles.invalid)}
+        className={clsx(styles.input, styles.textarea, !pending && formState.errors?.message && styles.invalid)}
       />
-      {formState.errors?.message && <span className={styles.fieldError}>{formState.errors.message[0]}</span>}
+      {!pending && formState.errors?.message && (
+        <span className={styles.fieldError}>{formState.errors.message[0]}</span>
+      )}
 
       <div
         style={{
@@ -106,12 +105,12 @@ const ContactForm = () => {
       <div style={{ margin: "1em 0" }}>
         <Turnstile sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} fixedSize />
       </div>
-      {formState.errors?.["cf-turnstile-response"] && (
+      {!pending && formState.errors?.["cf-turnstile-response"] && (
         <span className={styles.fieldError}>{formState.errors["cf-turnstile-response"][0]}</span>
       )}
 
       <div className={styles.actionRow}>
-        {!formState?.success && (
+        {!formState.success && (
           <button type="submit" disabled={pending} className={styles.submitButton}>
             {pending ? (
               <span>Sending...</span>
@@ -131,7 +130,7 @@ const ContactForm = () => {
             )}
           </button>
         )}
-        {formState.message && (
+        {!pending && formState.message && (
           <div className={clsx(styles.result, formState.success ? styles.success : styles.error)}>
             {formState.success ? (
               <CheckIcon size="1.3em" className={styles.resultIcon} />

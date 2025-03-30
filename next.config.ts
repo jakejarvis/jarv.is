@@ -5,12 +5,6 @@ import { visit } from "unist-util-visit";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 import type { NextConfig } from "next";
 
-type NextPlugin = (
-  config: NextConfig,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  options?: any
-) => NextConfig;
-
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
@@ -60,10 +54,19 @@ const nextConfig: NextConfig = {
     serverSourceMaps: true,
   },
   eslint: {
-    // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
     dirs: ["app", "components", "contexts", "hooks", "lib", "notes"],
   },
   headers: async () => [
+    {
+      // matches any path without a file extension (aka period) or an underscore (e.g. /_next/image)
+      source: "/:path([^._]*)",
+      headers: [
+        {
+          key: "onion-location",
+          value: `http://${process.env.NEXT_PUBLIC_ONION_DOMAIN}/:path`,
+        },
+      ],
+    },
     {
       source: "/pubkey.asc",
       headers: [
@@ -75,6 +78,11 @@ const nextConfig: NextConfig = {
     },
   ],
   rewrites: async () => [
+    {
+      // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
+      source: "/_stream/u/:path*",
+      destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path*`,
+    },
     {
       // https://github.com/jakejarvis/tweets
       source: "/tweets/:path*",
@@ -150,8 +158,10 @@ const nextConfig: NextConfig = {
 };
 
 // my own macgyvered version of next-compose-plugins (RIP)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const nextPlugins: Array<NextPlugin | [NextPlugin, any]> = [
+const nextPlugins: Array<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
+> = [
   require("@next/bundle-analyzer")({
     enabled: !!process.env.ANALYZE,
   }),
@@ -208,13 +218,10 @@ const nextPlugins: Array<NextPlugin | [NextPlugin, any]> = [
       project: process.env.SENTRY_PROJECT,
       authToken: process.env.SENTRY_AUTH_TOKEN,
       silent: !process.env.CI,
-      tunnelRoute: "/_otel", // ensure this path is included in middleware's negative config.matcher expression
+      tunnelRoute: "/_stream/otel",
       widenClientFileUpload: true,
       disableLogger: true,
       telemetry: false,
-      autoInstrumentAppDirectory: true,
-      autoInstrumentServerFunctions: true,
-      autoInstrumentMiddleware: false,
       bundleSizeOptimizations: {
         excludeDebugStatements: true,
       },
@@ -226,8 +233,8 @@ const nextPlugins: Array<NextPlugin | [NextPlugin, any]> = [
 export default (): NextConfig =>
   nextPlugins.reduce((acc, next) => {
     if (Array.isArray(next)) {
-      return (next[0] as NextPlugin)(acc, next[1]);
+      return next[0](acc, next[1]);
     }
 
-    return (next as NextPlugin)(acc);
+    return next(acc);
   }, nextConfig);
