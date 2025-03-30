@@ -1,20 +1,27 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Turnstile from "react-turnstile";
 import clsx from "clsx";
 import { CheckIcon, XIcon } from "lucide-react";
 import Link from "../../components/Link";
-import { sendMessage } from "./actions";
+import { sendMessage, type ContactInput, type ContactState } from "./actions";
 
 import styles from "./form.module.css";
 
 const ContactForm = () => {
-  const [formState, formAction, pending] = useActionState<Awaited<ReturnType<typeof sendMessage>>, FormData>(
-    sendMessage,
-    { success: false, message: "" }
-  );
+  const [formState, formAction, pending] = useActionState<ContactState, FormData>(sendMessage, {
+    success: false,
+    message: "",
+  });
+
+  const [formFields, setFormFields] = useState<ContactInput>({
+    name: "",
+    email: "",
+    message: "",
+    "cf-turnstile-response": "",
+  });
 
   return (
     <form action={formAction}>
@@ -22,32 +29,44 @@ const ContactForm = () => {
         type="text"
         name="name"
         placeholder="Name"
-        required
-        className={clsx(styles.input, formState?.errors?.name && styles.invalid)}
-        defaultValue={(formState?.payload?.get("name") || "") as string}
-        disabled={formState?.success}
+        // required
+        value={formFields.name}
+        onChange={(e) => {
+          setFormFields({ ...formFields, name: e.target.value });
+        }}
+        disabled={pending || formState.success}
+        className={clsx(styles.input, formState.errors?.name && styles.invalid)}
       />
+      {formState.errors?.name && <span className={styles.fieldError}>{formState.errors.name[0]}</span>}
 
       <input
         type="email"
         name="email"
         placeholder="Email"
-        required
+        // required
         inputMode="email"
-        className={clsx(styles.input, formState?.errors?.email && styles.invalid)}
-        defaultValue={(formState?.payload?.get("email") || "") as string}
-        disabled={formState?.success}
+        value={formFields.email}
+        onChange={(e) => {
+          setFormFields({ ...formFields, email: e.target.value });
+        }}
+        disabled={pending || formState.success}
+        className={clsx(styles.input, formState.errors?.email && styles.invalid)}
       />
+      {formState.errors?.email && <span className={styles.fieldError}>{formState.errors.email[0]}</span>}
 
       <TextareaAutosize
         name="message"
         placeholder="Write something..."
         minRows={5}
-        required
-        className={clsx(styles.input, styles.textarea, formState?.errors?.message && styles.invalid)}
-        defaultValue={(formState?.payload?.get("message") || "") as string}
-        disabled={formState?.success}
+        // required
+        value={formFields.message}
+        onChange={(e) => {
+          setFormFields({ ...formFields, message: e.target.value });
+        }}
+        disabled={pending || formState.success}
+        className={clsx(styles.input, styles.textarea, formState.errors?.message && styles.invalid)}
       />
+      {formState.errors?.message && <span className={styles.fieldError}>{formState.errors.message[0]}</span>}
 
       <div
         style={{
@@ -78,7 +97,7 @@ const ContactForm = () => {
           Markdown syntax
         </Link>{" "}
         is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-        <Link href="https://jarv.is" plain>
+        <Link href="https://jarv.is" plain openInNewTab>
           links
         </Link>
         ](https://jarv.is), and <code>`code`</code>.
@@ -87,6 +106,9 @@ const ContactForm = () => {
       <div style={{ margin: "1em 0" }}>
         <Turnstile sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} fixedSize />
       </div>
+      {formState.errors?.["cf-turnstile-response"] && (
+        <span className={styles.fieldError}>{formState.errors["cf-turnstile-response"][0]}</span>
+      )}
 
       <div className={styles.actionRow}>
         {!formState?.success && (
@@ -109,14 +131,14 @@ const ContactForm = () => {
             )}
           </button>
         )}
-        {formState?.message && (
-          <div className={clsx(styles.result, formState?.success ? styles.success : styles.error)}>
-            {formState?.success ? (
+        {formState.message && (
+          <div className={clsx(styles.result, formState.success ? styles.success : styles.error)}>
+            {formState.success ? (
               <CheckIcon size="1.3em" className={styles.resultIcon} />
             ) : (
               <XIcon size="1.3em" className={styles.resultIcon} />
             )}{" "}
-            {formState?.message}
+            {formState.message}
           </div>
         )}
       </div>

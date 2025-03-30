@@ -164,9 +164,9 @@ importers:
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
-      zod:
-        specifier: ^3.24.2
-        version: 3.24.2
+      valibot:
+        specifier: ^1.0.0
+        version: 1.0.0(typescript@5.8.2)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.1
@@ -177,6 +177,9 @@ importers:
       '@jakejarvis/eslint-config':
         specifier: ^4.0.7
         version: 4.0.7(eslint@9.23.0)
+      '@sentry/cli':
+        specifier: ^2.43.0
+        version: 2.43.0
       '@types/comma-number':
         specifier: ^2.1.2
         version: 2.1.2
@@ -1168,8 +1171,19 @@ packages:
     engines: {node: '>=10'}
     os: [darwin]
 
+  '@sentry/cli-darwin@2.43.0':
+    resolution: {integrity: sha512-0MYvRHJowXOMNY5W6XF4p9GQNH3LuQ+IHAQwVbZOsfwnEv8e20rf9BiPPzmJ9sIjZSWYR4yIqm6dBp6ABJFbGQ==}
+    engines: {node: '>=10'}
+    os: [darwin]
+
   '@sentry/cli-linux-arm64@2.42.2':
     resolution: {integrity: sha512-BOxzI7sgEU5Dhq3o4SblFXdE9zScpz6EXc5Zwr1UDZvzgXZGosUtKVc7d1LmkrHP8Q2o18HcDWtF3WvJRb5Zpw==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux, freebsd]
+
+  '@sentry/cli-linux-arm64@2.43.0':
+    resolution: {integrity: sha512-7URSaNjbEJQZyYJ33XK3pVKl6PU2oO9ETF6R/4Cz2FmU3fecACLKVldv7+OuNl9aspLZ62mnPMDvT732/Fp2Ug==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux, freebsd]
@@ -1180,8 +1194,20 @@ packages:
     cpu: [arm]
     os: [linux, freebsd]
 
+  '@sentry/cli-linux-arm@2.43.0':
+    resolution: {integrity: sha512-c2Fwb6HrFL1nbaGV4uRhHC1wEJPR+wfpKN5y06PgSNNbd10YrECAB3tqBHXC8CEmhuDyFR+ORGZ7VbswfCWEEQ==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux, freebsd]
+
   '@sentry/cli-linux-i686@2.42.2':
     resolution: {integrity: sha512-Sw/dQp5ZPvKnq3/y7wIJyxTUJYPGoTX/YeMbDs8BzDlu9to2LWV3K3r7hE7W1Lpbaw4tSquUHiQjP5QHCOS7aQ==}
+    engines: {node: '>=10'}
+    cpu: [x86, ia32]
+    os: [linux, freebsd]
+
+  '@sentry/cli-linux-i686@2.43.0':
+    resolution: {integrity: sha512-bFo/tpMZeMJ275HPGmAENREchnBxhALOOpZAphSyalUu3pGZ+EETEtlSLrKyVNJo26Dye5W7GlrYUV9+rkyCtg==}
     engines: {node: '>=10'}
     cpu: [x86, ia32]
     os: [linux, freebsd]
@@ -1192,8 +1218,26 @@ packages:
     cpu: [x64]
     os: [linux, freebsd]
 
+  '@sentry/cli-linux-x64@2.43.0':
+    resolution: {integrity: sha512-EbAmKXUNU/Ii4pNGVRCepU6ks1M43wStMKx3pibrUTllrrCwqYKyPxRRdoFYySHkduwCxnoKZcLEg9vWZ3qS6A==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux, freebsd]
+
+  '@sentry/cli-win32-arm64@2.43.0':
+    resolution: {integrity: sha512-KmJRCdQQGLSErJvrcGcN+yWo68m+5OdluhyJHsVYMOQknwu8YMOWLm12EIa+4t4GclDvwg5xcxLccCuiWMJUZw==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
   '@sentry/cli-win32-i686@2.42.2':
     resolution: {integrity: sha512-iHvFHPGqgJMNqXJoQpqttfsv2GI3cGodeTq4aoVLU/BT3+hXzbV0x1VpvvEhncJkDgDicJpFLM8sEPHb3b8abw==}
+    engines: {node: '>=10'}
+    cpu: [x86, ia32]
+    os: [win32]
+
+  '@sentry/cli-win32-i686@2.43.0':
+    resolution: {integrity: sha512-ZWxZdOyZX7NJ/CTskzg+dJ2xTpobFLXVNMOMq0HiwdhqXP2zYYJzKnIt3mHNJYA40zYFODGSgxIamodjpB8BuA==}
     engines: {node: '>=10'}
     cpu: [x86, ia32]
     os: [win32]
@@ -1204,8 +1248,19 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@sentry/cli-win32-x64@2.43.0':
+    resolution: {integrity: sha512-S/IRQYAziEnjpyROhnqzTqShDq3m8jcevXx+q5f49uQnFbfYcTgS1sdrEPqqao/K2boOWbffxYtTkvBiB/piQQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
   '@sentry/cli@2.42.2':
     resolution: {integrity: sha512-spb7S/RUumCGyiSTg8DlrCX4bivCNmU/A1hcfkwuciTFGu8l5CDc2I6jJWWZw8/0enDGxuj5XujgXvU5tr4bxg==}
+    engines: {node: '>= 10'}
+    hasBin: true
+
+  '@sentry/cli@2.43.0':
+    resolution: {integrity: sha512-gBE3bkx+PBJxopTrzIJLX4xHe5S0w87q5frIveWKDZ5ulVIU6YWnVumay0y07RIEweUEj3IYva1qH6HG2abfiA==}
     engines: {node: '>= 10'}
     hasBin: true
 
@@ -4377,6 +4432,14 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
+  valibot@1.0.0:
+    resolution: {integrity: sha512-1Hc0ihzWxBar6NGeZv7fPLY0QuxFMyxwYR2sF1Blu7Wq7EnremwY2W02tit2ij2VJT8HcSkHAQqmFfl77f73Yw==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
@@ -5528,22 +5591,46 @@ snapshots:
   '@sentry/cli-darwin@2.42.2':
     optional: true
 
+  '@sentry/cli-darwin@2.43.0':
+    optional: true
+
   '@sentry/cli-linux-arm64@2.42.2':
+    optional: true
+
+  '@sentry/cli-linux-arm64@2.43.0':
     optional: true
 
   '@sentry/cli-linux-arm@2.42.2':
     optional: true
 
+  '@sentry/cli-linux-arm@2.43.0':
+    optional: true
+
   '@sentry/cli-linux-i686@2.42.2':
+    optional: true
+
+  '@sentry/cli-linux-i686@2.43.0':
     optional: true
 
   '@sentry/cli-linux-x64@2.42.2':
     optional: true
 
+  '@sentry/cli-linux-x64@2.43.0':
+    optional: true
+
+  '@sentry/cli-win32-arm64@2.43.0':
+    optional: true
+
   '@sentry/cli-win32-i686@2.42.2':
     optional: true
 
+  '@sentry/cli-win32-i686@2.43.0':
+    optional: true
+
   '@sentry/cli-win32-x64@2.42.2':
+    optional: true
+
+  '@sentry/cli-win32-x64@2.43.0':
     optional: true
 
   '@sentry/cli@2.42.2':
@@ -5561,6 +5648,26 @@ snapshots:
       '@sentry/cli-linux-x64': 2.42.2
       '@sentry/cli-win32-i686': 2.42.2
       '@sentry/cli-win32-x64': 2.42.2
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
+  '@sentry/cli@2.43.0':
+    dependencies:
+      https-proxy-agent: 5.0.1
+      node-fetch: 2.7.0
+      progress: 2.0.3
+      proxy-from-env: 1.1.0
+      which: 2.0.2
+    optionalDependencies:
+      '@sentry/cli-darwin': 2.43.0
+      '@sentry/cli-linux-arm': 2.43.0
+      '@sentry/cli-linux-arm64': 2.43.0
+      '@sentry/cli-linux-i686': 2.43.0
+      '@sentry/cli-linux-x64': 2.43.0
+      '@sentry/cli-win32-arm64': 2.43.0
+      '@sentry/cli-win32-i686': 2.43.0
+      '@sentry/cli-win32-x64': 2.43.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -9671,6 +9778,10 @@ snapshots:
       diff: 5.2.0
       kleur: 4.1.5
       sade: 1.8.1
+
+  valibot@1.0.0(typescript@5.8.2):
+    optionalDependencies:
+      typescript: 5.8.2
 
   validate-npm-package-license@3.0.4:
     dependencies:

@@ -212,6 +212,9 @@ const nextPlugins: Array<NextPlugin | [NextPlugin, any]> = [
       widenClientFileUpload: true,
       disableLogger: true,
       telemetry: false,
+      autoInstrumentAppDirectory: true,
+      autoInstrumentServerFunctions: true,
+      autoInstrumentMiddleware: false,
       bundleSizeOptimizations: {
         excludeDebugStatements: true,
       },

@@ -69,12 +69,13 @@
     "to-vfile": "^8.0.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "zod": "^3.24.2"
+    "valibot": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.23.0",
     "@jakejarvis/eslint-config": "^4.0.7",
+    "@sentry/cli": "^2.43.0",
     "@types/comma-number": "^2.1.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.13.14",

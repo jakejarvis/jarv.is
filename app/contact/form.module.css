@@ -24,9 +24,15 @@
   border-color: var(--colors-error);
 }
 
+.fieldError {
+  font-size: 0.9em;
+  color: var(--colors-error);
+}
+
 .actionRow {
   display: flex;
   align-items: center;
+  margin-top: 0.6em;
   min-height: 3.75em;
 }
 

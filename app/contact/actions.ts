@@ -1,28 +1,27 @@
 "use server";
 
 import { headers } from "next/headers";
-import { z } from "zod";
+import * as v from "valibot";
 import { Resend } from "resend";
 import * as Sentry from "@sentry/nextjs";
 import * as config from "../../lib/config";
 
-const schema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  message: z.string().min(1, { message: "Message is required" }),
-  ["cf-turnstile-response"]: z.string().min(1, { message: "CAPTCHA not completed" }),
+const ContactSchema = v.object({
+  name: v.pipe(v.string(), v.nonEmpty("Your name is required.")),
+  email: v.pipe(v.string(), v.nonEmpty("Your email address is required."), v.email("Invalid email address.")),
+  message: v.pipe(v.string(), v.nonEmpty("A message is required.")),
+  "cf-turnstile-response": v.pipe(v.string(), v.nonEmpty("Just do the stinkin CAPTCHA! 🤖")),
 });
 
-export const sendMessage = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  prevState: any,
-  formData: FormData
-): Promise<{
+export type ContactInput = v.InferInput<typeof ContactSchema>;
+
+export type ContactState = {
   success: boolean;
   message: string;
-  errors?: z.inferFormattedError<typeof schema>;
-  payload?: FormData;
-}> => {
+  errors?: v.FlatErrors<typeof ContactSchema>["nested"];
+};
+
+export const sendMessage = async (prevState: ContactState, formData: FormData): Promise<ContactState> => {
   return await Sentry.withServerActionInstrumentation(
     "sendMessage",
     {
@@ -32,17 +31,16 @@ export const sendMessage = async (
     },
     async () => {
       try {
-        const validatedFields = schema.safeParse(Object.fromEntries(formData));
+        const data = v.safeParse(ContactSchema, Object.fromEntries(formData));
 
-        // backup to client-side validations just in case someone squeezes through without them
-        if (!validatedFields.success) {
-          console.debug("[contact form] validation error:", validatedFields.error.flatten());
+        // send raw valibot result to Sentry for debugging
+        Sentry.captureMessage(JSON.stringify(data), "debug");
 
+        if (!data.success) {
           return {
             success: false,
-            message: "Please make sure that all fields are properly filled in.",
-            errors: validatedFields.error.format(),
-            payload: formData,
+            message: "Please make sure all fields are filled in.",
+            errors: v.flatten(data.issues).nested,
           };
         }
 
@@ -52,14 +50,14 @@ export const sendMessage = async (
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             secret: process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
-            response: validatedFields.data["cf-turnstile-response"],
+            response: data.output["cf-turnstile-response"],
             remoteip: (await headers()).get("x-forwarded-for") || "",
           }),
           cache: "no-store",
           signal: AbortSignal.timeout(5000), // 5 second timeout
         });
 
-        if (!turnstileResponse.ok) {
+        if (!turnstileResponse || !turnstileResponse.ok) {
           throw new Error(`[contact form] turnstile validation failed: ${turnstileResponse.status}`);
         }
 
@@ -69,7 +67,6 @@ export const sendMessage = async (
           return {
             success: false,
             message: "Did you complete the CAPTCHA? (If you're human, that is...)",
-            payload: formData,
           };
         }
 
@@ -80,22 +77,20 @@ export const sendMessage = async (
         // send email
         const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
-          from: `${validatedFields.data.name} <${process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev"}>`,
-          replyTo: `${validatedFields.data.name} <${validatedFields.data.email}>`,
+          from: `${data.output.name} <${process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev"}>`,
+          replyTo: `${data.output.name} <${data.output.email}>`,
           to: [config.authorEmail],
           subject: `[${config.siteName}] Contact Form Submission`,
-          text: validatedFields.data.message,
+          text: data.output.message,
         });
 
-        return { success: true, message: "Thanks! You should hear from me soon.", payload: formData };
+        return { success: true, message: "Thanks! You should hear from me soon." };
       } catch (error) {
         Sentry.captureException(error);
 
         return {
           success: false,
-          message: "Internal server error... Try again later or shoot me an old-fashioned email?",
-          errors: error instanceof z.ZodError ? error.format() : undefined,
-          payload: formData,
+          message: "Internal server error. Please try again later or shoot me an email.",
         };
       }
     }
