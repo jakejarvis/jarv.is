@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { JsonLd } from "react-schemaorg";
 import Analytics from "./analytics";
-import { ThemeProvider } from "../contexts/ThemeContext";
+import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
@@ -26,6 +26,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang={config.siteLocale} suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <JsonLd<Person>
           item={{
             "@context": "https://schema.org",

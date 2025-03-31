@@ -14,7 +14,12 @@ export type TweetProps = Omit<ComponentPropsWithoutRef<typeof EmbeddedTweet>, "t
 
 const Tweet = async ({ id, className, ...rest }: TweetProps) => {
   try {
-    const tweet = await getTweet(id);
+    const tweet = await getTweet(id, {
+      next: {
+        // cache for 12 hours
+        revalidate: 43200,
+      },
+    });
 
     return (
       <div className={clsx(styles.tweet, className)}>
