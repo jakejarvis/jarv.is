@@ -9,7 +9,13 @@ const Gist = async ({ id, file }: GistProps) => {
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
-  const scriptResponse = await fetch(scriptUrl);
+  const scriptResponse = await fetch(scriptUrl, {
+    cache: "force-cache",
+    next: {
+      // cache indefinitely in data store
+      revalidate: 0,
+    },
+  });
 
   if (!scriptResponse.ok) {
     console.warn(`[gist] failed to fetch js:`, scriptResponse.statusText);

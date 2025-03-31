@@ -1,17 +1,14 @@
-import { YouTubeEmbed } from "@next/third-parties/google";
+"use client";
 
-import styles from "./YouTube.module.css";
+import YouTubeEmbed from "react-lite-youtube-embed";
+import type { ComponentPropsWithoutRef } from "react";
 
-export type YouTubeProps = {
-  id: string;
-};
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
-const YouTube = ({ id }: YouTubeProps) => {
-  return (
-    <div className={styles.wrapper}>
-      <YouTubeEmbed videoid={id} />
-    </div>
-  );
+export type YouTubeProps = Omit<ComponentPropsWithoutRef<typeof YouTubeEmbed>, "title">;
+
+const YouTube = ({ ...rest }: YouTubeProps) => {
+  return <YouTubeEmbed cookie={false} containerElement="div" title="" {...rest} />;
 };
 
 export default YouTube;

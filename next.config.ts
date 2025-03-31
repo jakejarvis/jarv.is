@@ -58,21 +58,28 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
-      // matches any path without a file extension (aka period) or an underscore (e.g. /_next/image)
+      // matches any path
+      source: "/(.*)",
+      headers: [
+        {
+          key: "strict-transport-security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+        {
+          key: "x-got-milk",
+          value: "2%",
+        },
+      ],
+    },
+    {
+      // https://community.torproject.org/onion-services/advanced/onion-location/
+      // only needed on actual pages, not static assets, so make a best effort by matching any path **without** a file
+      // extension (aka a period) and/or an underscore (e.g. /_next/image).
       source: "/:path([^._]*)",
       headers: [
         {
           key: "onion-location",
           value: `http://${process.env.NEXT_PUBLIC_ONION_DOMAIN}/:path`,
-        },
-      ],
-    },
-    {
-      source: "/pubkey.asc",
-      headers: [
-        {
-          key: "Content-Type",
-          value: "text/plain; charset=utf-8",
         },
       ],
     },
@@ -87,6 +94,11 @@ const nextConfig: NextConfig = {
       // https://github.com/jakejarvis/tweets
       source: "/tweets/:path*",
       destination: "https://tweets-khaki.vercel.app/:path*",
+    },
+    {
+      source: "/pubkey.asc",
+      destination:
+        "https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x3bc6e5776bf379d36f6714802b0c9cf251e69a39",
     },
   ],
   redirects: async () => [
@@ -231,10 +243,4 @@ const nextPlugins: Array<
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (): NextConfig =>
-  nextPlugins.reduce((acc, next) => {
-    if (Array.isArray(next)) {
-      return next[0](acc, next[1]);
-    }
-
-    return next(acc);
-  }, nextConfig);
+  nextPlugins.reduce((acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)), nextConfig);

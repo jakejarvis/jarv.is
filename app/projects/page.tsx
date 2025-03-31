@@ -10,8 +10,6 @@ import type { User, Repository } from "@octokit/graphql-schema";
 
 import styles from "./page.module.css";
 
-export const revalidate = 600; // 10 minutes
-
 export const metadata = addMetadata({
   title: "Projects",
   description: `Most-starred repositories by @${config.authorSocial?.github} on GitHub`,
@@ -79,6 +77,20 @@ const getRepos = async (): Promise<Project[] | null> => {
       headers: {
         accept: "application/vnd.github.v3+json",
         authorization: `token ${process.env.GITHUB_TOKEN}`,
+      },
+      request: {
+        // override fetch() to use next's extension to cache the response
+        // https://nextjs.org/docs/app/api-reference/functions/fetch#fetchurl-options
+        fetch: (url: string | URL | Request, options?: RequestInit) => {
+          return fetch(url, {
+            ...options,
+            cache: "force-cache",
+            next: {
+              // 10 minutes
+              revalidate: 600,
+            },
+          });
+        },
       },
     }
   );

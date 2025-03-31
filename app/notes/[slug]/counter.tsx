@@ -23,6 +23,8 @@ const HitCounter = async ({ slug }: { slug: string }) => {
     );
   } catch (error) {
     Sentry.captureException(error);
+
+    return <span title="Error getting views! :(">?</span>;
   }
 };
 

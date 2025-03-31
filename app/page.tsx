@@ -258,13 +258,12 @@ const Page = () => {
         </Link>{" "}
         <sup>
           <Link
-            href="/pubkey.asc"
-            rel="pgpkey authn"
+            href="https://jrvs.io/pgp"
+            rel="pgpkey"
             title="My Public Key"
             lightColor="#757575"
             darkColor="#959595"
             plain
-            openInNewTab
           >
             <LockIcon size="1.25em" style={{ verticalAlign: "-0.25em" }} />{" "}
             <span
