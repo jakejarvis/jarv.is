@@ -108,8 +108,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(react@19.1.0)(schema-dts@1.1.5)(typescript@5.8.2)
       react-textarea-autosize:
-        specifier: ^8.5.8
-        version: 8.5.8(@types/react@19.0.12)(react@19.1.0)
+        specifier: ^8.5.9
+        version: 8.5.9(@types/react@19.0.12)(react@19.1.0)
       react-timeago:
         specifier: ^8.0.0
         version: 8.0.0(react@19.1.0)
@@ -3713,8 +3713,8 @@ packages:
       schema-dts: '>=0.7.4'
       typescript: '>=3.1.6'
 
-  react-textarea-autosize@8.5.8:
-    resolution: {integrity: sha512-iUiIj70JefrTuSJ4LbVFiSqWiHHss5L63L717bqaWHMgkm9sz6eEvro4vZ3uQfGJbevzwT6rHOszHKA8RkhRMg==}
+  react-textarea-autosize@8.5.9:
+    resolution: {integrity: sha512-U1DGlIQN5AwgjTyOEnI1oCcMuEr1pv1qOtklB2l4nyMGbHzWrI0eFsYK0zos2YWqAolJyG0IWJaqWmWj5ETh0A==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -8737,7 +8737,7 @@ snapshots:
       schema-dts: 1.1.5
       typescript: 5.8.2
 
-  react-textarea-autosize@8.5.8(@types/react@19.0.12)(react@19.1.0):
+  react-textarea-autosize@8.5.9(@types/react@19.0.12)(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.27.0
       react: 19.1.0

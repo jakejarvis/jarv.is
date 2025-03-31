@@ -50,7 +50,7 @@
     "react-innertext": "^1.1.5",
     "react-is": "19.1.0",
     "react-schemaorg": "^2.0.0",
-    "react-textarea-autosize": "^8.5.8",
+    "react-textarea-autosize": "^8.5.9",
     "react-timeago": "^8.0.0",
     "react-turnstile": "^1.1.4",
     "react-tweet": "^3.2.2",
