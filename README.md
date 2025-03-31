@@ -8,8 +8,6 @@
 
 My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Upstash Redis](https://upstash.com/), [Giscus](https://giscus.app/), [Umami](https://umami.is/), [and more](https://jarv.is/humans.txt).
 
-I keep an ongoing list of [post ideas](https://github.com/jakejarvis/jarv.is/issues/1) and [coding to-dos](https://github.com/jakejarvis/jarv.is/issues/714) as issues in this repo. Outside contributions, improvements, and/or corrections are welcome too!
-
 ## 🕹️ Getting Started
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jakejarvis/jarv.is)
