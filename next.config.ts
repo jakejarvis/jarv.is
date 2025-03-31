@@ -83,6 +83,15 @@ const nextConfig: NextConfig = {
         },
       ],
     },
+    {
+      source: "/tweets(|/.*)",
+      headers: [
+        {
+          key: "X-Robots-Tag",
+          value: "noindex, nofollow, nosnippet",
+        },
+      ],
+    },
   ],
   rewrites: async () => [
     {
