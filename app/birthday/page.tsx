@@ -26,8 +26,9 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
           contentUrl: `${BASE_URL}${webm}`,
+          thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
+          embedUrl: `${BASE_URL}/birthday`,
           uploadDate: "1996-02-06T00:00:00Z",
           duration: "PT6M10S",
         }}

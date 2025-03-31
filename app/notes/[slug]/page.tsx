@@ -10,8 +10,9 @@ import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
 import { BASE_URL, POSTS_DIR } from "../../../lib/config/constants";
+import { size as ogImageSize } from "./opengraph-image";
 import type { Metadata } from "next";
-import type { Article } from "schema-dts";
+import type { BlogPosting } from "schema-dts";
 
 import styles from "./page.module.css";
 
@@ -62,15 +63,20 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <>
-      <JsonLd<Article>
+      <JsonLd<BlogPosting>
         item={{
           "@context": "https://schema.org",
-          "@type": "Article",
+          "@type": "BlogPosting",
           headline: frontmatter!.title,
           description: frontmatter!.description,
           url: frontmatter!.permalink,
-          image: [`${BASE_URL}/${POSTS_DIR}/${frontmatter!.slug}/opengraph-image`],
-          keywords: frontmatter!.tags,
+          image: {
+            "@type": "ImageObject",
+            contentUrl: `${BASE_URL}/${POSTS_DIR}/${frontmatter!.slug}/opengraph-image`,
+            width: `${ogImageSize.width}`,
+            height: `${ogImageSize.height}`,
+          },
+          keywords: frontmatter!.tags?.join(", "),
           datePublished: frontmatter!.date,
           dateModified: frontmatter!.date,
           inLanguage: config.siteLocale,

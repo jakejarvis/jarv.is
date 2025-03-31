@@ -18,7 +18,6 @@ export const authorSocial = {
   github: "jakejarvis",
   twitter: "jakejarvis",
   facebook: "jakejarvis",
-  keybase: "jakejarvis",
   medium: "jakejarvis",
   linkedin: "jakejarvis",
   instagram: "jakejarvis",
