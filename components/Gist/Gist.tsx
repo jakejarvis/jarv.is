@@ -13,7 +13,7 @@ const Gist = async ({ id, file }: GistProps) => {
     cache: "force-cache",
     next: {
       // cache indefinitely in data store
-      revalidate: 0,
+      revalidate: false,
     },
   });
 

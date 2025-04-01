@@ -1,7 +1,7 @@
 {
 	"name": "Node.js",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
-	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install $(cat .node-version) && nvm use $(cat .node-version) && corepack enable && pnpm install --frozen-lockfile",
+	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install && corepack enable && CI=true pnpm install",
 	"customizations": {
 		"vscode": {
 			"settings": {

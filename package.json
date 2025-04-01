@@ -23,8 +23,8 @@
     "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/bundle-analyzer": "15.3.0-canary.26",
-    "@next/mdx": "15.3.0-canary.26",
+    "@next/bundle-analyzer": "15.3.0-canary.27",
+    "@next/mdx": "15.3.0-canary.27",
     "@octokit/graphql": "^8.2.1",
     "@octokit/graphql-schema": "^15.26.0",
     "@sentry/nextjs": "^9.10.1",
@@ -39,7 +39,7 @@
     "html-entities": "^2.6.0",
     "lucide-react": "0.486.0",
     "modern-normalize": "^3.0.1",
-    "next": "15.3.0-canary.26",
+    "next": "15.3.0-canary.27",
     "obj-str": "^1.1.0",
     "polished": "^4.3.1",
     "prop-types": "^15.8.1",
@@ -78,7 +78,7 @@
     "@sentry/cli": "^2.43.0",
     "@types/comma-number": "^2.1.2",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.13.16",
     "@types/prop-types": "^15.7.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
@@ -86,7 +86,7 @@
     "babel-plugin-react-compiler": "19.0.0-beta-e993439-20250328",
     "cross-env": "^7.0.3",
     "eslint": "^9.23.0",
-    "eslint-config-next": "15.3.0-canary.26",
+    "eslint-config-next": "15.3.0-canary.27",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-css-modules": "^2.12.0",
     "eslint-plugin-import": "^2.31.0",
@@ -112,7 +112,7 @@
   "engines": {
     "node": ">=20.x"
   },
-  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
+  "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"

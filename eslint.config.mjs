@@ -23,6 +23,12 @@ export default [
   eslintPluginPrettierRecommended,
   {
     rules: {
+      camelcase: [
+        "error",
+        {
+          allow: ["^unstable_"],
+        },
+      ],
       "prettier/prettier": [
         "error",
         {},
