@@ -87,7 +87,7 @@ const nextConfig: NextConfig = {
       source: "/tweets(|/.*)",
       headers: [
         {
-          key: "X-Robots-Tag",
+          key: "x-robots-tag",
           value: "noindex, nofollow, nosnippet",
         },
       ],
@@ -96,8 +96,8 @@ const nextConfig: NextConfig = {
   rewrites: async () => [
     {
       // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
-      source: "/_stream/u/:path*",
-      destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path*`,
+      source: "/_stream/u/:path(script.js|api/send)",
+      destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path`,
     },
     {
       // https://github.com/jakejarvis/tweets
@@ -125,28 +125,13 @@ const nextConfig: NextConfig = {
     // mastodon via subdomain:
     // https://docs.joinmastodon.org/admin/config/#web_domain
     {
-      source: "/.well-known/host-meta:path*",
-      destination: "https://fediverse.jarv.is/.well-known/host-meta:path*",
+      source: "/.well-known/:path(host-meta|webfinger|nodeinfo)",
+      destination: "https://fediverse.jarv.is/.well-known/:path",
       permanent: true,
     },
     {
-      source: "/.well-known/webfinger:path*",
-      destination: "https://fediverse.jarv.is/.well-known/webfinger:path*",
-      permanent: true,
-    },
-    {
-      source: "/.well-known/nodeinfo:path*",
-      destination: "https://fediverse.jarv.is/.well-known/nodeinfo:path*",
-      permanent: true,
-    },
-    {
-      source: "/@jake",
-      destination: "https://fediverse.jarv.is/@jake",
-      permanent: true,
-    },
-    {
-      source: "/@jake/:path*",
-      destination: "https://fediverse.jarv.is/@jake/:path*",
+      source: "/@jake:path(/?|/.*)",
+      destination: "https://fediverse.jarv.is/@jake:path",
       permanent: true,
     },
 
@@ -154,8 +139,8 @@ const nextConfig: NextConfig = {
     { source: "/index.xml", destination: "/feed.xml", permanent: true },
     { source: "/feed", destination: "/feed.xml", permanent: true },
     { source: "/rss", destination: "/feed.xml", permanent: true },
-    { source: "/blog/:path*", destination: "/notes", permanent: true },
-    { source: "/archives/:path*", destination: "/notes", permanent: true },
+    { source: "/blog/(.*)", destination: "/notes", permanent: true },
+    { source: "/archives/(.*)", destination: "/notes", permanent: true },
     { source: "/resume", destination: "/static/resume.pdf", permanent: false },
     { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
 
