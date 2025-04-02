@@ -44,7 +44,6 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins: ["jarv.is", "jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"],
     },
-    serverSourceMaps: true,
   },
   eslint: {
     dirs: ["app", "components", "contexts", "hooks", "lib", "notes"],
@@ -210,23 +209,6 @@ const nextPlugins: Array<
       ],
     },
   }),
-  [
-    require("@sentry/nextjs").withSentryConfig,
-    {
-      // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/build/
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      silent: !process.env.CI,
-      tunnelRoute: "/_stream/otel",
-      widenClientFileUpload: true,
-      disableLogger: true,
-      telemetry: false,
-      bundleSizeOptimizations: {
-        excludeDebugStatements: true,
-      },
-    },
-  ],
 ];
 
 // eslint-disable-next-line import/no-anonymous-default-export

@@ -34,7 +34,6 @@
   - Giscus
   - Resend
   - Umami
-  - Sentry
   - ...and more: https://jarv.is/uses
 
 # VIEW SOURCE
