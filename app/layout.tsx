@@ -1,20 +1,19 @@
-import clsx from "clsx";
 import { JsonLd } from "react-schemaorg";
 import Analytics from "./analytics";
 import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
+import { setRootCssVariables } from "../lib/helpers/styles";
 import * as config from "../lib/config";
 import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
 import defaultMetadata from "../lib/config/metadata";
 import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
-import { GeistMono, GeistSans } from "../lib/styles/fonts";
+import { GeistMono, GeistSans } from "./fonts";
 import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
 import "./themes.css";
-import "./global.css";
 
 import styles from "./layout.module.css";
 
@@ -70,14 +69,20 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         />
       </head>
 
-      <body
-        className={clsx(GeistMono.variable, GeistSans.variable)}
-        style={{ ["--max-width" as string]: `${MAX_WIDTH}px` }}
-      >
+      <body className={styles.body}>
+        <style
+          precedence={styles.layout}
+          {...setRootCssVariables({
+            "fonts-sans": GeistSans.style.fontFamily,
+            "fonts-mono": GeistMono.style.fontFamily,
+            "max-width": `${MAX_WIDTH}px`,
+          })}
+        />
+
         <ThemeProvider>
           <SkipToContentLink />
 
-          <div className={styles.flex}>
+          <div className={styles.layout}>
             <Header />
 
             <main className={styles.default}>

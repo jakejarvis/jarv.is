@@ -29,9 +29,9 @@ const Tweet = async ({ id, className, ...rest }: TweetProps) => {
             components={{
               // https://react-tweet.vercel.app/twitter-theme/api-reference#custom-tweet-components
               // eslint-disable-next-line jsx-a11y/alt-text
-              AvatarImg: (props) => <Image {...props} />,
+              AvatarImg: (props) => <Image {...props} unoptimized />,
               // eslint-disable-next-line jsx-a11y/alt-text
-              MediaImg: (props) => <Image {...props} fill sizes="640w" />,
+              MediaImg: (props) => <Image {...props} fill unoptimized />,
             }}
             {...rest}
           />

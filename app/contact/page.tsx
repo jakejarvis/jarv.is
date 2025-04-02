@@ -29,7 +29,14 @@ const Page = () => {
       <p>
         🔐 You can grab my public key here:{" "}
         <Link href="https://jrvs.io/pgp" title="My Public Key">
-          <code style={{ fontSize: "0.925em", letterSpacing: "0.075em", wordSpacing: "-0.3em" }}>
+          <code
+            style={{
+              fontFamily: "var(--fonts-mono)",
+              fontSize: "0.925em",
+              letterSpacing: "0.075em",
+              wordSpacing: "-0.3em",
+            }}
+          >
             6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
           </code>
         </Link>

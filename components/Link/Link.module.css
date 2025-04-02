@@ -17,6 +17,12 @@
 }
 
 .link.plain {
-  background: none !important;
-  transition: none !important;
+  background: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none !important;
+  }
 }

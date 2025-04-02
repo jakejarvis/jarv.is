@@ -14,13 +14,6 @@ const nextConfig: NextConfig = {
     RELEASE_DATE: new Date().toISOString(),
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  images: {
-    formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "abs.twimg.com" },
-      { protocol: "https", hostname: "pbs.twimg.com" },
-    ],
-  },
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",
@@ -66,6 +59,7 @@ const nextConfig: NextConfig = {
           value: "max-age=63072000; includeSubDomains; preload",
         },
         {
+          // 🥛 debugging
           key: "x-got-milk",
           value: "2%",
         },

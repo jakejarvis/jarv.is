@@ -3,7 +3,6 @@
   font-size: 1.925em;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--colors-text);
 }
 
 .page h2 {
@@ -11,14 +10,12 @@
   font-size: 1.3em;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--colors-text);
 }
 
 .page p {
   margin: 0.85em 0;
   font-size: 1.05em;
   line-height: 1.7;
-  color: var(--colors-text);
 }
 
 .page p:last-of-type {
@@ -34,36 +31,41 @@
   display: inline-block;
   margin-left: 0.1em;
   font-size: 1.2em;
-  animation: wave 5s ease 1s infinite;
-  transform-origin: 65% 80%;
 }
 
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-  5% {
-    transform: rotate(14deg);
-  }
-  10% {
-    transform: rotate(-8deg);
-  }
-  15% {
-    transform: rotate(14deg);
-  }
-  20% {
-    transform: rotate(-4deg);
-  }
-  25% {
-    transform: rotate(10deg);
-  }
-  30% {
-    transform: rotate(0deg);
+@media (prefers-reduced-motion: no-preference) {
+  .wave {
+    animation: wave 5s ease 1s infinite;
+    transform-origin: 65% 80%;
   }
 
-  /* pause for ~9 out of 10 seconds */
-  100% {
-    transform: rotate(0deg);
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    5% {
+      transform: rotate(14deg);
+    }
+    10% {
+      transform: rotate(-8deg);
+    }
+    15% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-4deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    30% {
+      transform: rotate(0deg);
+    }
+
+    /* pause for ~9 out of 10 seconds */
+    100% {
+      transform: rotate(0deg);
+    }
   }
 }
 

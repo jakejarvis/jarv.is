@@ -47,29 +47,34 @@
 .heart {
   display: inline-block;
   color: var(--colors-error);
-  animation: pulse 10s ease 7.5s infinite;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  2% {
-    transform: scale(1.25);
-  }
-  4% {
-    transform: scale(1);
-  }
-  6% {
-    transform: scale(1.2);
-  }
-  8% {
-    transform: scale(1);
+@media (prefers-reduced-motion: no-preference) {
+  .heart {
+    animation: pulse 10s ease 7.5s infinite;
   }
 
-  /* pause for ~9 out of 10 seconds */
-  100% {
-    transform: scale(1);
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    2% {
+      transform: scale(1.25);
+    }
+    4% {
+      transform: scale(1);
+    }
+    6% {
+      transform: scale(1.2);
+    }
+    8% {
+      transform: scale(1);
+    }
+
+    /* pause for ~9 out of 10 seconds */
+    100% {
+      transform: scale(1);
+    }
   }
 }
 

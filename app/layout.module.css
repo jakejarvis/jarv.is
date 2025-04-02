@@ -1,4 +1,9 @@
-.flex {
+.body {
+  font-family: var(--fonts-sans);
+  background-color: var(--colors-background-inner);
+}
+
+.layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;

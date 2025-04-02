@@ -32,6 +32,7 @@ const Page = () => {
           overflowX: "auto",
           padding: "1em",
           fontSize: "0.9em",
+          fontFamily: "var(--fonts-mono)",
           tabSize: 2,
           border: "1px solid var(--colors-kinda-light)",
           borderRadius: "0.6em",

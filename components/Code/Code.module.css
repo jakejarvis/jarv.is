@@ -1,3 +1,18 @@
+.inline,
+.highlighted {
+  font-family: var(--fonts-mono);
+  font-variant-ligatures: none; /* i hate them. fwiw. */
+}
+
+.inline {
+  padding: 0.2em 0.3em;
+  font-size: 0.925em;
+  page-break-inside: avoid;
+  background-color: var(--colors-background-outer);
+  border: 1px solid var(--colors-kinda-light);
+  border-radius: 0.6em;
+}
+
 figure:has(.highlighted) {
   margin: 1em auto;
   position: relative;
@@ -15,14 +30,14 @@ figure:has(.highlighted) {
   border-radius: 0.6em;
 }
 
-.highlighted span {
+.highlighted [style*="--shiki"] {
   color: var(--shiki-light);
   font-style: var(--shiki-light-font-style);
   font-weight: var(--shiki-light-font-weight);
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-[data-theme="dark"] .highlighted span {
+[data-theme="dark"] .highlighted [style*="--shiki"] {
   color: var(--shiki-dark);
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
@@ -56,15 +71,6 @@ figure:has(.highlighted) {
 
 .highlighted[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 1.75rem;
-}
-
-.inline {
-  padding: 0.2em 0.3em;
-  font-size: 0.925em;
-  page-break-inside: avoid;
-  background-color: var(--colors-background-outer);
-  border: 1px solid var(--colors-kinda-light);
-  border-radius: 0.6em;
 }
 
 .copyButton {
