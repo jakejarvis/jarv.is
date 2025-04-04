@@ -2,7 +2,7 @@
 
 /** @type {import("stylelint").Config} */
 export default {
-  extends: ["stylelint-config-standard", "stylelint-config-css-modules"],
+  extends: ["stylelint-config-standard", "stylelint-config-css-modules", "stylelint-prettier/recommended"],
   rules: {
     "selector-class-pattern": null,
     "custom-property-pattern": null,

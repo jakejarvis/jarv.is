@@ -1,8 +1,0 @@
-onlyBuiltDependencies:
-  - sharp
-  - simple-git-hooks
-
-peerDependencyRules:
-  allowedVersions:
-    react: "^19"
-    react-dom: "^19"

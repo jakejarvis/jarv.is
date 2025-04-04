@@ -14,7 +14,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc"
+    "prepare": "husky"
   },
   "dependencies": {
     "@date-fns/tz": "^1.2.0",
@@ -93,18 +93,18 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-compiler": "19.0.0-beta-e993439-20250328",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "schema-dts": "^1.1.5",
-    "simple-git-hooks": "^2.12.1",
     "stylelint": "^16.17.0",
     "stylelint-config-css-modules": "^4.4.0",
-    "stylelint-config-recommended": "^15.0.0",
     "stylelint-config-standard": "^37.0.0",
+    "stylelint-prettier": "^5.0.3",
     "typescript": "5.8.2"
   },
   "optionalDependencies": {
-    "sharp": "^0.33.5"
+    "sharp": "^0.34.0"
   },
   "engines": {
     "node": ">=20.x"
@@ -114,16 +114,12 @@
     "node_modules",
     ".next/cache"
   ],
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged"
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,mdx}": [
       "eslint"
     ],
     "*.css": [
-      "stylelint",
-      "prettier --check"
+      "stylelint"
     ]
   }
 }
