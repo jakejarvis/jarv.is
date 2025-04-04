@@ -24,7 +24,7 @@
   border-color: var(--colors-error);
 }
 
-.fieldError {
+.errorMessage {
   font-size: 0.9em;
   color: var(--colors-error);
 }

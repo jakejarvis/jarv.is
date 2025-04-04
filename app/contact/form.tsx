@@ -6,12 +6,16 @@ import Turnstile from "react-turnstile";
 import clsx from "clsx";
 import { CheckIcon, XIcon } from "lucide-react";
 import Link from "../../components/Link";
-import { sendMessage, type ContactInput, type ContactState } from "./actions";
+import type { ContactInput, ContactState } from "./schema";
 
 import styles from "./form.module.css";
 
-const ContactForm = () => {
-  const [formState, formAction, pending] = useActionState<ContactState, FormData>(sendMessage, {
+const ContactForm = ({
+  serverAction,
+}: {
+  serverAction: (state: ContactState, payload: FormData) => Promise<ContactState>;
+}) => {
+  const [formState, formAction, pending] = useActionState<ContactState, FormData>(serverAction, {
     success: false,
     message: "",
   });
@@ -36,7 +40,7 @@ const ContactForm = () => {
         disabled={pending || formState.success}
         className={clsx(styles.input, !pending && formState.errors?.name && styles.invalid)}
       />
-      {!pending && formState.errors?.name && <span className={styles.fieldError}>{formState.errors.name[0]}</span>}
+      {!pending && formState.errors?.name && <span className={styles.errorMessage}>{formState.errors.name[0]}</span>}
 
       <input
         type="email"
@@ -50,7 +54,7 @@ const ContactForm = () => {
         disabled={pending || formState.success}
         className={clsx(styles.input, !pending && formState.errors?.email && styles.invalid)}
       />
-      {!pending && formState.errors?.email && <span className={styles.fieldError}>{formState.errors.email[0]}</span>}
+      {!pending && formState.errors?.email && <span className={styles.errorMessage}>{formState.errors.email[0]}</span>}
 
       <TextareaAutosize
         name="message"
@@ -64,7 +68,7 @@ const ContactForm = () => {
         className={clsx(styles.input, styles.textarea, !pending && formState.errors?.message && styles.invalid)}
       />
       {!pending && formState.errors?.message && (
-        <span className={styles.fieldError}>{formState.errors.message[0]}</span>
+        <span className={styles.errorMessage}>{formState.errors.message[0]}</span>
       )}
 
       <div
@@ -106,7 +110,7 @@ const ContactForm = () => {
         <Turnstile sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} fixedSize />
       </div>
       {!pending && formState.errors?.["cf-turnstile-response"] && (
-        <span className={styles.fieldError}>{formState.errors["cf-turnstile-response"][0]}</span>
+        <span className={styles.errorMessage}>{formState.errors["cf-turnstile-response"][0]}</span>
       )}
 
       <div className={styles.actionRow}>
