@@ -64,18 +64,22 @@ const nextConfig: NextConfig = {
         },
       ],
     },
-    {
-      // https://community.torproject.org/onion-services/advanced/onion-location/
-      // only needed on actual pages, not static assets, so make a best effort by matching any path **without** a file
-      // extension (aka a period) and/or an underscore (e.g. /_next/image).
-      source: "/:path([^._]*)",
-      headers: [
-        {
-          key: "onion-location",
-          value: `http://${process.env.NEXT_PUBLIC_ONION_DOMAIN}/:path`,
-        },
-      ],
-    },
+    ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
+      ? [
+          {
+            // https://community.torproject.org/onion-services/advanced/onion-location/
+            // only needed on actual pages, not static assets, so make a best effort by matching any path **without** a file
+            // extension (aka a period) and/or an underscore (e.g. /_next/image).
+            source: "/:path([^._]*)",
+            headers: [
+              {
+                key: "onion-location",
+                value: `http://${process.env.NEXT_PUBLIC_ONION_DOMAIN}/:path`,
+              },
+            ],
+          },
+        ]
+      : []),
     {
       source: "/tweets(|/.*)",
       headers: [
@@ -87,11 +91,15 @@ const nextConfig: NextConfig = {
     },
   ],
   rewrites: async () => [
-    {
-      // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
-      source: "/_stream/u/:path(script.js|api/send)",
-      destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path`,
-    },
+    ...(process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+      ? [
+          {
+            // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
+            source: "/_stream/u/:path(script.js|api/send)",
+            destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path`,
+          },
+        ]
+      : []),
     {
       // https://github.com/jakejarvis/tweets
       source: "/tweets/:path*",

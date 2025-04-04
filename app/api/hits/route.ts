@@ -17,6 +17,7 @@ export const GET = async (): Promise<
 > => {
   // get all keys (aka slugs)
   const slugs = await redis.scan(0, {
+    match: "hits:*",
     type: "string",
     // set an arbitrary yet generous upper limit, just in case...
     count: 99,
@@ -27,7 +28,7 @@ export const GET = async (): Promise<
 
   // pair the slugs with their hit values
   const pages = slugs[1].map((slug, index) => ({
-    slug,
+    slug: slug.split(":").pop() as string, // remove the "hits:" prefix
     hits: parseInt(values[index], 10),
   }));
 

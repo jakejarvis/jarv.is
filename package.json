@@ -39,7 +39,6 @@
     "lucide-react": "0.487.0",
     "modern-normalize": "^3.0.1",
     "next": "15.3.0-canary.29",
-    "obj-str": "^1.1.0",
     "polished": "^4.3.1",
     "prop-types": "^15.8.1",
     "react": "19.1.0",
@@ -126,17 +125,5 @@
       "stylelint",
       "prettier --check"
     ]
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp",
-      "simple-git-hooks"
-    ],
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "react": "^19",
-        "react-dom": "^19"
-      }
-    }
   }
 }

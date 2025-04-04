@@ -12,7 +12,7 @@ const HitCounter = async ({ slug }: { slug: string }) => {
     // TODO: maybe don't allow this? or maybe it's fine? kinda unclear how secure this is:
     // https://nextjs.org/blog/security-nextjs-server-components-actions
     // https://nextjs.org/docs/app/building-your-application/rendering/server-components
-    const hits = await redis.incr(slug);
+    const hits = await redis.incr(`hits:${slug}`);
 
     // we have data!
     return (

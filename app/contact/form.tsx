@@ -96,7 +96,7 @@ const ContactForm = () => {
           Markdown syntax
         </Link>{" "}
         is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-        <Link href="https://jarv.is" plain openInNewTab>
+        <Link href="https://jarv.is" plain>
           links
         </Link>
         ](https://jarv.is), and <code style={{ fontFamily: "var(--fonts-mono)" }}>`code`</code>.

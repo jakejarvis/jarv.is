@@ -54,7 +54,7 @@ const Page = () => {
           G4techTV Canada
         </Link>{" "}
         &amp;{" "}
-        <Link href="https://leolaporte.com/" style={{ fontWeight: 700 }}>
+        <Link href="https://leo.fm/" style={{ fontWeight: 700 }}>
           Leo Laporte
         </Link>
         . &copy; 2007 G4 Media, Inc.
