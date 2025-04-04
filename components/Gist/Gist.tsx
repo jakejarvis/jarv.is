@@ -12,8 +12,8 @@ const Gist = async ({ id, file }: GistProps) => {
   const scriptResponse = await fetch(scriptUrl, {
     cache: "force-cache",
     next: {
-      // cache indefinitely in data store
-      revalidate: false,
+      revalidate: false, // cache indefinitely in data store
+      tags: ["gist"],
     },
   });
 

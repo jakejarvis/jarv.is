@@ -1,4 +1,4 @@
-import { unstable_cache } from "next/cache";
+import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 import { EmbeddedTweet, TweetNotFound } from "react-tweet";
 import { fetchTweet as _fetchTweet } from "react-tweet/api";
@@ -12,9 +12,9 @@ export type TweetProps = Omit<ComponentPropsWithoutRef<typeof EmbeddedTweet>, "t
   className?: string;
 };
 
-const fetchTweet = unstable_cache(async (id: string) => _fetchTweet(id), [], {
-  // cache indefinitely
-  revalidate: false,
+const fetchTweet = cache(async (id: string) => _fetchTweet(id), undefined, {
+  revalidate: false, // cache indefinitely
+  tags: ["tweet"],
 });
 
 const Tweet = async ({ id, className, ...rest }: TweetProps) => {

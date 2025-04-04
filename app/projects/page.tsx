@@ -86,8 +86,8 @@ const getRepos = async (): Promise<Project[] | null> => {
             ...options,
             cache: "force-cache",
             next: {
-              // 10 minutes
-              revalidate: 600,
+              revalidate: 600, // 10 minutes
+              tags: ["github-api"],
             },
           });
         },
