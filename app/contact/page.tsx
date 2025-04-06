@@ -17,18 +17,18 @@ export const metadata = addMetadata({
   },
 });
 
-const send = async (prevState: ContactState, formData: FormData): Promise<ContactState> => {
+const send = async (state: ContactState, payload: FormData): Promise<ContactState> => {
   "use server";
 
   // TODO: remove after debugging why automated spam entries are causing 500 errors
-  console.debug("[contact form] received data:", formData);
+  console.debug("[contact form] received payload:", payload);
 
   if (!process.env.RESEND_API_KEY) {
     throw new Error("[contact form] 'RESEND_API_KEY' is not set.");
   }
 
   try {
-    const data = v.safeParse(ContactSchema, Object.fromEntries(formData));
+    const data = v.safeParse(ContactSchema, Object.fromEntries(payload));
 
     if (!data.success) {
       return {
