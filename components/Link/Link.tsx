@@ -19,7 +19,12 @@ const Link = ({ href, rel, target, prefetch = false, plain, className, ...rest }
       prefetch={prefetch}
       target={target || (isExternal ? "_blank" : undefined)}
       rel={`${rel ? `${rel} ` : ""}${target === "_blank" || isExternal ? "noopener noreferrer" : ""}` || undefined}
-      className={clsx(styles.link, plain && styles.plain, className)}
+      className={clsx(
+        styles.link,
+        // eslint-disable-next-line css-modules/no-undef-class
+        plain && styles.plain,
+        className
+      )}
       {...rest}
     />
   );

@@ -3,6 +3,7 @@ import { Feed } from "feed";
 import { getFrontMatter, getContent } from "./posts";
 import * as config from "../config";
 import { BASE_URL } from "../config/constants";
+import type { Item as FeedItem } from "feed";
 
 import ogImage from "../../app/opengraph-image.jpg";
 
@@ -30,10 +31,10 @@ export const buildFeed = cache(async (): Promise<Feed> => {
     },
   });
 
-  // add posts separately using their frontmatter
-  const posts = await getFrontMatter();
-  for (const post of posts) {
-    feed.addItem({
+  // parse posts into feed items
+  const frontmatter = await getFrontMatter();
+  const posts: FeedItem[] = await Promise.all(
+    frontmatter.map(async (post) => ({
       guid: post.permalink,
       link: post.permalink,
       title: post.title,
@@ -49,8 +50,16 @@ export const buildFeed = cache(async (): Promise<Feed> => {
         ${await getContent(post.slug)}
         <p><a href="${post.permalink}"><strong>Continue reading...</strong></a></p>
       `.trim(),
-    });
-  }
+    }))
+  );
+
+  // sort posts reverse chronologically in case the promises resolved out of order
+  posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
+
+  // officially add each post to the feed
+  posts.forEach((post) => {
+    feed.addItem(post);
+  });
 
   return feed;
 });

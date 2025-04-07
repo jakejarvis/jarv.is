@@ -7,7 +7,7 @@ export type VideoProps = Omit<Partial<ComponentPropsWithoutRef<"video">>, "src">
   src: string | string[] | undefined;
 };
 
-const Video = ({ src, autoPlay, className, ...rest }: VideoProps) => {
+const Video = ({ src, autoPlay, className, children, ...rest }: VideoProps) => {
   return (
     <video
       {...(typeof src === "string" ? { src } : {})}
@@ -37,6 +37,8 @@ const Video = ({ src, autoPlay, className, ...rest }: VideoProps) => {
             return <source key={file} src={file} type={`video/${extension}`} />;
           }
         })}
+
+      {children}
     </video>
   );
 };

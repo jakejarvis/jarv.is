@@ -1,8 +1,8 @@
 import { cache } from "react";
 import path from "path";
+import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { read } from "to-vfile";
 import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
 import { BASE_URL, POSTS_DIR } from "../config/constants";
@@ -130,7 +130,7 @@ export const getContent = cache(async (slug: string): Promise<string | undefined
           ],
         },
       })
-      .process(await read(path.resolve(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
+      .process(await fs.readFile(path.resolve(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
 
     // convert the parsed content to a string with "safe" HTML
     return content.toString().replaceAll("<p></p>", "").trim();

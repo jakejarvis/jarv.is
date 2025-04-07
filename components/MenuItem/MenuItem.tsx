@@ -27,10 +27,9 @@ const MenuItem = ({ text, href, icon, current, className, ...rest }: MenuItemPro
     return (
       <Link
         href={href}
-        className={clsx(styles.link, current && styles.current, className)}
-        title={text}
-        plain
         aria-label={text}
+        plain
+        className={clsx(styles.link, current && styles.current, className)}
         {...rest}
       >
         {item}

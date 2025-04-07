@@ -1,7 +1,3 @@
-/**
- * @module global
- */
-
 /// <reference types="webpack/module" />
 
 // see nextConfig.webpack in next.config.ts for non-standard "asset/resource" module rules.

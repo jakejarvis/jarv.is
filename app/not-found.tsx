@@ -15,13 +15,17 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <Video src={notFoundVideo} autoPlay style={{ maxWidth: 480, height: "auto" }} />
+    <>
+      <Video src={notFoundVideo} autoPlay style={{ maxWidth: 480, aspectRatio: "16/11" }} />
 
-      <h1 style={{ margin: "0.6em auto 0.2em" }}>Page Not Found 😢</h1>
+      <div style={{ textAlign: "center", marginTop: "1.5em" }}>
+        <h1 style={{ margin: "0.5em 0", fontSize: "2.2em", fontWeight: 500, lineHeight: 1 }}>Page Not Found</h1>
 
-      <Link href="/">Go home?</Link>
-    </div>
+        <Link href="/" style={{ fontSize: "1.2em", fontWeight: 500 }}>
+          Go home?
+        </Link>
+      </div>
+    </>
   );
 };
 

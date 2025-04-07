@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-require-imports, import/no-anonymous-default-export */
 
 import path from "path";
 import { visit } from "unist-util-visit";
@@ -219,6 +219,5 @@ const nextPlugins: Array<
   }),
 ];
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (): NextConfig =>
   nextPlugins.reduce((acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)), nextConfig);

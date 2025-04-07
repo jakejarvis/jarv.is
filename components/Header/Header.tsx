@@ -15,15 +15,14 @@ const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={clsx(styles.header, className)} {...rest}>
       <nav className={styles.nav}>
-        <Link href="/" rel="author" title={config.authorName} plain className={styles.homeLink}>
+        <Link href="/" rel="author" aria-label={config.authorName} plain className={styles.homeLink}>
           <Image
             src={selfieJpg}
             alt={`Photo of ${config.authorName}`}
             className={styles.homeImage}
             width={70}
             height={70}
-            quality={60}
-            placeholder="empty"
+            quality={50}
             priority
           />
           <span className={styles.name}>{config.authorName}</span>

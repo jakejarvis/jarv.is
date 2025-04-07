@@ -1,8 +1,10 @@
 .link {
   color: var(--colors-link);
   text-decoration: none;
+}
 
-  /* fancy underline */
+/* fancy underline effect on hover */
+.link:not(.plain) {
   background-image: linear-gradient(var(--colors-link-underline), var(--colors-link-underline));
   background-position: 0% 100%;
   background-repeat: no-repeat;
@@ -11,18 +13,13 @@
   padding-bottom: 3px;
 }
 
-.link:hover,
-.link:focus-visible {
+.link:not(.plain):hover,
+.link:not(.plain):focus-visible {
   background-size: 100% 2px;
 }
 
-.link.plain {
-  background: none;
-  transition: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .link {
+  .link:not(.plain) {
     transition: none !important;
   }
 }

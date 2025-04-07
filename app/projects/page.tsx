@@ -1,12 +1,12 @@
+import { notFound } from "next/navigation";
 import { graphql } from "@octokit/graphql";
-import commaNumber from "comma-number";
 import { GitForkIcon, StarIcon } from "lucide-react";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
 import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
-import type { User, Repository } from "@octokit/graphql-schema";
+import type { User } from "@octokit/graphql-schema";
 
 import styles from "./page.module.css";
 
@@ -18,25 +18,13 @@ export const metadata = addMetadata({
   },
 });
 
-type Project = {
-  name: string;
-  url: string;
-  description?: string;
-  language?: {
-    name: string;
-    color?: string;
-  };
-  stars?: number;
-  forks?: number;
-  updatedAt: string;
-};
-
-const getRepos = async (): Promise<Project[] | null> => {
+const getRepos = async () => {
   // don't fail the entire site build if the required API key for this page is missing
   if (!process.env.GITHUB_TOKEN) {
-    console.warn(`ERROR: I can't fetch any GitHub projects without "GITHUB_TOKEN" set! Skipping for now...`);
+    console.warn(`ERROR: I can't fetch any GitHub projects without "GITHUB_TOKEN" set! Disabling projects page.`);
 
-    return null;
+    // just return a 404 since this page would be blank anyways
+    notFound();
   }
 
   // https://docs.github.com/en/graphql/reference/objects#repository
@@ -95,19 +83,7 @@ const getRepos = async (): Promise<Project[] | null> => {
     }
   );
 
-  const results = user.repositories.edges as Array<{ node: Repository }>;
-
-  const repos = results.map<Project>(({ node: repo }) => ({
-    name: repo.name,
-    url: repo.url,
-    description: repo.description as string,
-    updatedAt: repo.pushedAt,
-    stars: repo.stargazerCount,
-    forks: repo.forkCount,
-    language: repo.primaryLanguage as Project["language"],
-  }));
-
-  return repos;
+  return user.repositories.edges?.map((edge) => edge!.node);
 };
 
 const Page = async () => {
@@ -119,50 +95,50 @@ const Page = async () => {
 
       <div className={styles.grid}>
         {repos?.map((repo) => (
-          <div key={repo.name} className={styles.card}>
-            <Link href={repo.url} className={styles.name}>
-              {repo.name}
+          <div key={repo!.name} className={styles.card}>
+            <Link href={repo!.url} className={styles.name}>
+              {repo!.name}
             </Link>
 
-            {repo.description && <p className={styles.description}>{repo.description}</p>}
+            {repo!.description && <p className={styles.description}>{repo!.description}</p>}
 
             <div className={styles.meta}>
-              {repo.language && (
+              {repo!.primaryLanguage && (
                 <div className={styles.metaItem}>
-                  {repo.language.color && (
+                  {repo!.primaryLanguage.color && (
                     <span
                       className={styles.metaIcon}
-                      style={{ backgroundColor: repo.language.color, borderRadius: "50%" }}
+                      style={{ backgroundColor: repo!.primaryLanguage.color, borderRadius: "50%" }}
                     />
                   )}
-                  <span>{repo.language.name}</span>
+                  <span>{repo!.primaryLanguage.name}</span>
                 </div>
               )}
 
-              {repo.stars && repo.stars > 0 && (
+              {repo!.stargazerCount > 0 && (
                 <div className={styles.metaItem}>
                   <Link
-                    href={`${repo.url}/stargazers`}
-                    title={`${commaNumber(repo.stars)} ${repo.stars === 1 ? "star" : "stars"}`}
+                    href={`${repo!.url}/stargazers`}
+                    title={`${Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
                     plain
                     className={styles.metaLink}
                   >
                     <StarIcon size="1.25em" className={styles.metaIcon} />
-                    <span>{commaNumber(repo.stars)}</span>
+                    <span>{Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.stargazerCount)}</span>
                   </Link>
                 </div>
               )}
 
-              {repo.forks && repo.forks > 0 && (
+              {repo!.forkCount > 0 && (
                 <div className={styles.metaItem}>
                   <Link
-                    href={`${repo.url}/network/members`}
-                    title={`${commaNumber(repo.forks)} ${repo.forks === 1 ? "fork" : "forks"}`}
+                    href={`${repo!.url}/network/members`}
+                    title={`${Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
                     plain
                     className={styles.metaLink}
                   >
                     <GitForkIcon size="1.25em" className={styles.metaIcon} />
-                    <span>{commaNumber(repo.forks)}</span>
+                    <span>{Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.forkCount)}</span>
                   </Link>
                 </div>
               )}
@@ -177,7 +153,7 @@ const Page = async () => {
                   }}
                 />
                 <span>
-                  Updated <RelativeTime date={repo.updatedAt} />
+                  Updated <RelativeTime date={repo!.pushedAt} />
                 </span>
               </div>
             </div>
