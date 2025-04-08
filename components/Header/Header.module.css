@@ -14,22 +14,22 @@
   backdrop-filter: saturate(180%) blur(5px);
 }
 
-.homeImage {
+.avatar {
   width: 50px;
   height: 50px;
   border: 1px solid var(--colors-light);
   border-radius: 50%;
 }
 
-.homeLink {
+.home {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   color: var(--colors-medium-dark) !important;
 }
 
-.homeLink:hover,
-.homeLink:focus-visible {
+.home:hover,
+.home:focus-visible {
   color: var(--colors-link) !important;
 }
 
@@ -56,14 +56,14 @@
     height: 5.9em;
   }
 
-  .homeImage {
+  .avatar {
     width: 70px;
     height: 70px;
     border-width: 2px;
   }
 
-  .homeLink:hover .homeImage,
-  .homeLink:focus-visible .homeImage {
+  .home:hover .avatar,
+  .home:focus-visible .avatar {
     border-color: var(--colors-link-underline);
   }
 

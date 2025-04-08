@@ -35,7 +35,7 @@
   margin-bottom: 0;
 }
 
-.postDate {
+.date {
   width: 5.25em;
   flex-shrink: 0;
   color: var(--colors-medium);

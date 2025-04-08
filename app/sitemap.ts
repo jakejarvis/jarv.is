@@ -4,8 +4,6 @@ import { getFrontMatter } from "../lib/helpers/posts";
 import { BASE_URL } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
-export const dynamic = "force-static";
-
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   // start with manual routes
   const routes: MetadataRoute.Sitemap = [

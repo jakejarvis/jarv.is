@@ -7,7 +7,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Header.module.css";
 
-import selfieJpg from "./selfie.jpg";
+import avatarImg from "../../app/avatar.jpg";
 
 export type HeaderProps = ComponentPropsWithoutRef<"header">;
 
@@ -15,11 +15,11 @@ const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={clsx(styles.header, className)} {...rest}>
       <nav className={styles.nav}>
-        <Link href="/" rel="author" aria-label={config.authorName} plain className={styles.homeLink}>
+        <Link href="/" rel="author" aria-label={config.authorName} plain className={styles.home}>
           <Image
-            src={selfieJpg}
+            src={avatarImg}
             alt={`Photo of ${config.authorName}`}
-            className={styles.homeImage}
+            className={styles.avatar}
             width={70}
             height={70}
             quality={50}

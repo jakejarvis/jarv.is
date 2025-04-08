@@ -100,7 +100,7 @@ const ContactForm = () => {
         <Link href="https://jarv.is" plain>
           links
         </Link>
-        ](https://jarv.is), and <code style={{ fontFamily: "var(--fonts-mono)" }}>`code`</code>.
+        ](https://jarv.is), and <code>`code`</code>.
       </div>
 
       <div style={{ margin: "1em 0" }}>

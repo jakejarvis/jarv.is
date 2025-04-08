@@ -14,7 +14,6 @@ export const size = {
 };
 
 // generate and cache these images at build-time for each slug, since doing this on-demand is mega slow...
-export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {

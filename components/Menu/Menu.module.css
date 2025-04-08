@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.menuItem {
+.item {
   display: inline-block;
   margin-left: 1em;
   list-style: none;
@@ -17,7 +17,7 @@
     margin-left: 1em;
   }
 
-  .menuItem {
+  .item {
     margin-left: 0;
   }
 }
@@ -28,7 +28,7 @@
   }
 
   /* the home icon is kinda redundant when space is SUPER tight */
-  .menuItem:first-of-type {
+  .item:first-of-type {
     display: none;
   }
 }

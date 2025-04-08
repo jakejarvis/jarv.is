@@ -3,7 +3,7 @@ export const POSTS_DIR = "notes";
 
 // path to an image used in various places to represent the site, relative to project root
 // IMPORTANT: must be included in next.config.ts under "outputFileTracingIncludes"
-export const AVATAR_PATH = "app/opengraph-image.jpg";
+export const AVATAR_PATH = "app/avatar.jpg";
 
 // maximum width of content wrapper (e.g. for images) in pixels
 export const MAX_WIDTH = 865;

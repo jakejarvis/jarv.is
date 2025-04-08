@@ -32,7 +32,6 @@ const Page = () => {
         <Link href="https://jrvs.io/pgp" title="My Public Key">
           <code
             style={{
-              fontFamily: "var(--fonts-mono)",
               fontSize: "0.925em",
               letterSpacing: "0.075em",
               wordSpacing: "-0.3em",

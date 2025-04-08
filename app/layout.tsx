@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
 import { GeistMono, GeistSans } from "./fonts";
-import "modern-normalize/modern-normalize.css"; // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css
+import "./global.css";
 import "./themes.css";
 
 import styles from "./layout.module.css";

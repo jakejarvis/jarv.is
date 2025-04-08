@@ -21,13 +21,13 @@ const Menu = ({ className, ...rest }: MenuProps) => {
         const isCurrent = item.href === `/${pathname.split("/")[1]}`;
 
         return (
-          <li className={styles.menuItem} key={item.text || index}>
+          <li className={styles.item} key={item.text || index}>
             <MenuItem {...item} current={isCurrent} />
           </li>
         );
       })}
 
-      <li className={styles.menuItem}>
+      <li className={styles.item}>
         <MenuItem
           // @ts-expect-error
           icon={ThemeToggle}

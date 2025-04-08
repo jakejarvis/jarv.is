@@ -28,7 +28,7 @@ const Link = ({
           // workaround to have react combine all of these inline styles into a single <style> tag up top, see:
           // https://react.dev/reference/react-dom/components/style#rendering-an-inline-css-stylesheet
           href={uniqueId}
-          precedence={styles.page}
+          precedence={styles.index}
         >
           {`.t_${uniqueId}{--colors-link:${lightColor};--colors-link-underline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .t_${uniqueId}{--colors-link:${darkColor};--colors-link-underline:${rgba(darkColor, 0.4)}}`}
         </style>
@@ -45,7 +45,7 @@ const Link = ({
 
 const Page = () => {
   return (
-    <div className={styles.page}>
+    <div className={styles.index}>
       <h1>
         Hi there! I&rsquo;m Jake. <span className={styles.wave}>👋</span>
       </h1>
@@ -276,16 +276,15 @@ const Page = () => {
             plain
           >
             <LockIcon size="1.25em" style={{ verticalAlign: "-0.25em" }} />{" "}
-            <span
+            <code
               style={{
                 margin: "0 0.15em",
-                fontFamily: "var(--fonts-mono)",
                 letterSpacing: "0.075em",
                 wordSpacing: "-0.4em",
               }}
             >
               2B0C 9CF2 51E6 9A39
-            </span>
+            </code>
           </Link>
         </sup>
         ,{" "}
