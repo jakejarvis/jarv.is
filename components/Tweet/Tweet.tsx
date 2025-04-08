@@ -12,7 +12,7 @@ export type TweetProps = Omit<ComponentPropsWithoutRef<typeof EmbeddedTweet>, "t
   className?: string;
 };
 
-const fetchTweet = cache(async (id: string) => _fetchTweet(id), undefined, {
+const fetchTweet = cache(_fetchTweet, undefined, {
   revalidate: false, // cache indefinitely
   tags: ["tweet"],
 });

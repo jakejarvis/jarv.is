@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import hash from "@emotion/hash";
 import { rgba } from "polished";
 import { LockIcon } from "lucide-react";
@@ -9,26 +10,35 @@ import styles from "./page.module.css";
 const Link = ({
   lightColor,
   darkColor,
+  className,
   children,
   ...rest
 }: ComponentPropsWithoutRef<typeof UnstyledLink> & {
-  lightColor: string;
-  darkColor: string;
+  lightColor?: string;
+  darkColor?: string;
 }) => {
-  const uniqueId = hash(`${lightColor},${darkColor}`);
+  if (lightColor && darkColor) {
+    const uniqueId = hash(`${lightColor},${darkColor}`);
+
+    return (
+      <UnstyledLink className={clsx(`t_${uniqueId}`, className)} {...rest}>
+        {children}
+
+        <style
+          // workaround to have react combine all of these inline styles into a single <style> tag up top, see:
+          // https://react.dev/reference/react-dom/components/style#rendering-an-inline-css-stylesheet
+          href={uniqueId}
+          precedence={styles.page}
+        >
+          {`.t_${uniqueId}{--colors-link:${lightColor};--colors-link-underline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .t_${uniqueId}{--colors-link:${darkColor};--colors-link-underline:${rgba(darkColor, 0.4)}}`}
+        </style>
+      </UnstyledLink>
+    );
+  }
 
   return (
-    <UnstyledLink className={`t_${uniqueId}`} {...rest}>
+    <UnstyledLink className={className} {...rest}>
       {children}
-
-      <style
-        // workaround to have react combine all of these inline styles into a single <style> tag up top, see:
-        // https://react.dev/reference/react-dom/components/style#rendering-an-inline-css-stylesheet
-        href={uniqueId}
-        precedence={styles.page}
-      >
-        {`.t_${uniqueId}{--colors-link:${lightColor};--colors-link-underline:${rgba(lightColor, 0.4)}}[data-theme="dark"] .t_${uniqueId}{--colors-link:${darkColor};--colors-link-underline:${rgba(darkColor, 0.4)}}`}
-      </style>
     </UnstyledLink>
   );
 };

@@ -6,16 +6,13 @@ import Turnstile from "react-turnstile";
 import clsx from "clsx";
 import { CheckIcon, XIcon } from "lucide-react";
 import Link from "../../components/Link";
-import type { ContactInput, ContactState } from "./schema";
+
+import { send, type ContactState, type ContactInput } from "./action";
 
 import styles from "./form.module.css";
 
-const ContactForm = ({
-  serverAction,
-}: {
-  serverAction: (state: ContactState, payload: FormData) => Promise<ContactState>;
-}) => {
-  const [formState, formAction, pending] = useActionState<ContactState, FormData>(serverAction, {
+const ContactForm = () => {
+  const [formState, formAction, pending] = useActionState<ContactState, FormData>(send, {
     success: false,
     message: "",
   });

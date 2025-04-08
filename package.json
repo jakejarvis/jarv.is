@@ -23,8 +23,8 @@
     "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/bundle-analyzer": "15.3.0-canary.41",
-    "@next/mdx": "15.3.0-canary.41",
+    "@next/bundle-analyzer": "15.3.0-canary.43",
+    "@next/mdx": "15.3.0-canary.43",
     "@octokit/graphql": "^8.2.1",
     "@octokit/graphql-schema": "^15.26.0",
     "@upstash/redis": "^1.34.7",
@@ -37,7 +37,7 @@
     "html-entities": "^2.6.0",
     "lucide-react": "0.487.0",
     "modern-normalize": "^3.0.1",
-    "next": "15.3.0-canary.41",
+    "next": "15.3.0-canary.43",
     "polished": "^4.3.1",
     "prop-types": "^15.8.1",
     "react": "19.1.0",
@@ -80,7 +80,7 @@
     "babel-plugin-react-compiler": "19.0.0-beta-e993439-20250405",
     "cross-env": "^7.0.3",
     "eslint": "^9.24.0",
-    "eslint-config-next": "15.3.0-canary.41",
+    "eslint-config-next": "15.3.0-canary.43",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-css-modules": "^2.12.0",
     "eslint-plugin-import": "^2.31.0",
@@ -101,12 +101,12 @@
     "typescript": "5.8.3"
   },
   "optionalDependencies": {
-    "sharp": "^0.34.0"
+    "sharp": "^0.34.1"
   },
   "engines": {
     "node": ">=20.x"
   },
-  "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808",
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"

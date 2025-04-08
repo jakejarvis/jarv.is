@@ -1,6 +1,8 @@
 import * as config from "../lib/config";
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const manifest = (): MetadataRoute.Manifest => {
   return {
     name: config.siteName,

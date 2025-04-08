@@ -36,7 +36,8 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     });
   });
 
-  (await getFrontMatter()).forEach((post) => {
+  const frontmatter = await getFrontMatter();
+  frontmatter.forEach((post) => {
     routes.push({
       url: post.permalink,
       // pull lastModified from front matter date

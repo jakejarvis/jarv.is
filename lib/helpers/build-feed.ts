@@ -1,4 +1,3 @@
-import { cache } from "react";
 import { Feed } from "feed";
 import { getFrontMatter, getContent } from "./posts";
 import * as config from "../config";
@@ -11,7 +10,7 @@ import ogImage from "../../app/opengraph-image.jpg";
  * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.
  * @see https://github.com/jpmonette/feed#example
  */
-export const buildFeed = cache(async (): Promise<Feed> => {
+export const buildFeed = async (): Promise<Feed> => {
   const feed = new Feed({
     id: BASE_URL,
     link: BASE_URL,
@@ -62,4 +61,4 @@ export const buildFeed = cache(async (): Promise<Feed> => {
   });
 
   return feed;
-});
+};
