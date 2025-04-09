@@ -1,3 +1,4 @@
+import { env } from "../../lib/env";
 import { notFound } from "next/navigation";
 import { graphql } from "@octokit/graphql";
 import { GitForkIcon, StarIcon } from "lucide-react";
@@ -20,7 +21,7 @@ export const metadata = addMetadata({
 
 const getRepos = async () => {
   // don't fail the entire site build if the required API key for this page is missing
-  if (!process.env.GITHUB_TOKEN) {
+  if (!env.GITHUB_TOKEN) {
     console.warn(`ERROR: I can't fetch any GitHub projects without "GITHUB_TOKEN" set! Disabling projects page.`);
 
     // just return a 404 since this page would be blank anyways
@@ -64,7 +65,7 @@ const getRepos = async () => {
       limit: 12,
       headers: {
         accept: "application/vnd.github.v3+json",
-        authorization: `token ${process.env.GITHUB_TOKEN}`,
+        authorization: `token ${env.GITHUB_TOKEN}`,
       },
       request: {
         // override fetch() to use next's extension to cache the response

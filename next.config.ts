@@ -5,13 +5,27 @@ import { visit } from "unist-util-visit";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 import type { NextConfig } from "next";
 
+// check environment variables at build time
+// https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
+import "./lib/env";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   env: {
+    // same logic as metadataBase: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#default-value
+    NEXT_PUBLIC_BASE_URL:
+      process.env.VERCEL_ENV === "production" && process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL
+          ? `https://${process.env.VERCEL_BRANCH_URL}`
+          : process.env.VERCEL_URL
+            ? `https://${process.env.VERCEL_URL}`
+            : `http://localhost:${process.env.PORT || 3000}`,
+
     // freeze timestamp at build time for when server-side pages need a "last updated" date. calling Date.now() from
     // pages using getServerSideProps will return the current(ish) time instead, which is usually not what we want.
-    RELEASE_DATE: new Date().toISOString(),
+    NEXT_PUBLIC_RELEASE_TIMESTAMP: new Date().toISOString(),
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   outputFileTracingIncludes: {
@@ -25,6 +39,7 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
   },
+  transpilePackages: ["@t3-oss/env-nextjs", "@t3-oss/env-core"],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm|vtt)$/i,

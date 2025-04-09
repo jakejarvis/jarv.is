@@ -65,8 +65,3 @@ export const ThemeScript = () => (
     }}
   />
 );
-
-// debugging help pls
-if (process.env.NODE_ENV !== "production") {
-  ThemeContext.displayName = "ThemeContext";
-}

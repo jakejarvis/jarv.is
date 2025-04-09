@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import redis from "../../../lib/helpers/redis";
+import redis from "../../../lib/redis";
 
 // cache response from the db
 const getData = cache(

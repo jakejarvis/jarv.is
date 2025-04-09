@@ -1,7 +1,7 @@
 import { Feed } from "feed";
 import { getFrontMatter, getContent } from "./posts";
 import * as config from "../config";
-import { BASE_URL } from "../config/constants";
+import { BASE_URL, RELEASE_TIMESTAMP } from "../config/constants";
 import type { Item as FeedItem } from "feed";
 
 import ogImage from "../../app/opengraph-image.jpg";
@@ -12,12 +12,12 @@ import ogImage from "../../app/opengraph-image.jpg";
  */
 export const buildFeed = async (): Promise<Feed> => {
   const feed = new Feed({
-    id: BASE_URL,
-    link: BASE_URL,
+    id: `${BASE_URL}`,
+    link: `${BASE_URL}`,
     title: config.siteName,
     description: config.longDescription,
     copyright: config.licenseUrl,
-    updated: new Date(process.env.RELEASE_DATE || Date.now()),
+    updated: new Date(RELEASE_TIMESTAMP),
     image: `${BASE_URL}${ogImage.src}`,
     feedLinks: {
       rss: `${BASE_URL}/feed.xml`,
@@ -41,7 +41,7 @@ export const buildFeed = async (): Promise<Feed> => {
       author: [
         {
           name: config.authorName,
-          link: BASE_URL,
+          link: `${BASE_URL}`,
         },
       ],
       date: new Date(post.date),

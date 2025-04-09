@@ -7,7 +7,7 @@ import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToCont
 import { setRootCssVariables } from "../lib/helpers/styles";
 import * as config from "../lib/config";
 import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
-import defaultMetadata from "../lib/config/metadata";
+import defaultMetadata from "../lib/config/seo";
 import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
@@ -41,7 +41,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
               height: `${ogImage.height}`,
             },
             sameAs: [
-              BASE_URL,
+              `${BASE_URL}`,
               `https://${config.authorSocial?.mastodon}`,
               `https://github.com/${config.authorSocial?.github}`,
               `https://bsky.app/profile/${config.authorSocial?.bluesky}`,

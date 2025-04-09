@@ -26,7 +26,7 @@ export default [
       camelcase: [
         "error",
         {
-          allow: ["^unstable_"],
+          allow: ["^experimental_", "^unstable_"],
         },
       ],
       "prettier/prettier": [

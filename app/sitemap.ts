@@ -1,7 +1,7 @@
 import path from "path";
 import glob from "fast-glob";
 import { getFrontMatter } from "../lib/helpers/posts";
-import { BASE_URL } from "../lib/config/constants";
+import { BASE_URL, RELEASE_TIMESTAMP } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
@@ -9,9 +9,9 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: BASE_URL,
+      url: `${BASE_URL}`,
       priority: 1.0,
-      lastModified: new Date(process.env.RELEASE_DATE || Date.now()), // timestamp frozen when a new build is deployed
+      lastModified: new Date(RELEASE_TIMESTAMP), // timestamp frozen when a new build is deployed
     },
   ];
 

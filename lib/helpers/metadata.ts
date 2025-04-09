@@ -1,4 +1,4 @@
-import defaultMetadata from "../config/metadata";
+import defaultMetadata from "../config/seo";
 import type { Metadata } from "next";
 
 /**

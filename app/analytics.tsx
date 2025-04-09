@@ -1,11 +1,12 @@
+import { env } from "../lib/env";
 import Script from "next/script";
 
 const Analytics = () => {
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
+  if (env.VERCEL_ENV !== "production") {
     return null;
   }
 
-  if (!process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) {
+  if (!env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) {
     return null;
   }
 
@@ -14,8 +15,8 @@ const Analytics = () => {
       src="/_stream/u/script.js" // see next.config.ts rewrite
       id="umami-js"
       strategy="afterInteractive"
-      data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-      data-domains={process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
+      data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+      data-domains={env.VERCEL_PROJECT_PRODUCTION_URL}
     />
   );
 };

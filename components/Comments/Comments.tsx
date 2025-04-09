@@ -1,5 +1,6 @@
 "use client";
 
+import { env } from "../../lib/env";
 import Giscus from "@giscus/react";
 import * as config from "../../lib/config";
 import type { GiscusProps } from "@giscus/react";
@@ -10,7 +11,7 @@ export type CommentsProps = {
 
 const Comments = ({ title }: CommentsProps) => {
   // fail silently if giscus isn't configured
-  if (!process.env.NEXT_PUBLIC_GISCUS_REPO_ID || !process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID) {
+  if (!env.NEXT_PUBLIC_GISCUS_REPO_ID || !env.NEXT_PUBLIC_GISCUS_CATEGORY_ID) {
     console.warn(
       "[giscus] not configured, ensure 'NEXT_PUBLIC_GISCUS_REPO_ID' and 'NEXT_PUBLIC_GISCUS_CATEGORY_ID' environment variables are set."
     );
@@ -21,10 +22,10 @@ const Comments = ({ title }: CommentsProps) => {
   return (
     <Giscus
       repo={config.githubRepo as GiscusProps["repo"]}
-      repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID}
+      repoId={env.NEXT_PUBLIC_GISCUS_REPO_ID}
       term={title}
       category="Comments"
-      categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
+      categoryId={env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
       mapping="specific"
       reactionsEnabled="1"
       emitMetadata="0"

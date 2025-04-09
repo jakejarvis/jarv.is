@@ -1,5 +1,6 @@
 "use server";
 
+import { env } from "../../lib/env";
 import { headers } from "next/headers";
 import * as v from "valibot";
 import { Resend } from "resend";
@@ -49,10 +50,6 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
   // TODO: remove after debugging why automated spam entries are causing 500 errors
   console.debug("[contact form] received payload:", payload);
 
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error("[contact form] 'RESEND_API_KEY' is not set.");
-  }
-
   try {
     const data = v.safeParse(ContactSchema, Object.fromEntries(payload));
 
@@ -75,7 +72,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        secret: process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
+        secret: env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
         response: data.output["cf-turnstile-response"],
         remoteip,
       }),
@@ -95,17 +92,17 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       };
     }
 
-    if (!process.env.RESEND_FROM_EMAIL) {
+    if (!env.RESEND_FROM_EMAIL) {
       // https://resend.com/docs/api-reference/emails/send-email
       console.warn("[contact form] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
     }
 
     // send email
-    const resend = new Resend(process.env.RESEND_API_KEY!);
+    const resend = new Resend(env.RESEND_API_KEY);
     await resend.emails.send({
-      from: `${data.output.name} <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
+      from: `${data.output.name} <${env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
       replyTo: `${data.output.name} <${data.output.email}>`,
-      to: [config.authorEmail],
+      to: [env.RESEND_TO_EMAIL],
       subject: `[${config.siteName}] Contact Form Submission`,
       text: data.output.message,
     });

@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { HeartIcon } from "lucide-react";
 import Link from "../Link";
 import * as config from "../../lib/config";
+import { RELEASE_TIMESTAMP } from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Footer.module.css";
@@ -21,7 +22,7 @@ const Footer = ({ className, ...rest }: FooterProps) => {
           <Link href="/previously" title="Previously on..." plain className={styles.link}>
             {config.copyrightYearStart}
           </Link>{" "}
-          – {new Date(process.env.RELEASE_DATE || Date.now()).getUTCFullYear()}.
+          – {new Date(RELEASE_TIMESTAMP).getUTCFullYear()}.
         </div>
 
         <div>

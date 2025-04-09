@@ -2,7 +2,7 @@ import * as config from ".";
 import { BASE_URL } from "./constants";
 import type { Metadata } from "next";
 
-const metadata: Metadata = {
+const defaultMetadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     template: `%s – ${config.siteName}`,
@@ -44,4 +44,4 @@ const metadata: Metadata = {
   },
 };
 
-export default metadata;
+export default defaultMetadata;

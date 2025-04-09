@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import CountUp from "../../../components/CountUp";
-import redis from "../../../lib/helpers/redis";
+import redis from "../../../lib/redis";
 import { siteLocale } from "../../../lib/config";
 
 const HitCounter = async ({ slug }: { slug: string }) => {

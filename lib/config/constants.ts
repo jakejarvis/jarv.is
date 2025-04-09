@@ -8,10 +8,6 @@ export const AVATAR_PATH = "app/avatar.jpg";
 // maximum width of content wrapper (e.g. for images) in pixels
 export const MAX_WIDTH = 865;
 
-// same logic as metadataBase: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#default-value
-export const BASE_URL =
-  process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
-    : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview" && process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : `http://localhost:${process.env.PORT || 3000}`;
+// defined in next.config.ts
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
+export const RELEASE_TIMESTAMP = process.env.NEXT_PUBLIC_RELEASE_TIMESTAMP!;
