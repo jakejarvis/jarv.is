@@ -39,7 +39,11 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
   },
-  transpilePackages: ["@t3-oss/env-nextjs", "@t3-oss/env-core"],
+  transpilePackages: [
+    // https://env.t3.gg/docs/nextjs#create-your-schema
+    "@t3-oss/env-core",
+    "@t3-oss/env-nextjs",
+  ],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm|vtt)$/i,

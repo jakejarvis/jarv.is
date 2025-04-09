@@ -4,10 +4,10 @@ import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
+import { defaultMetadata } from "../lib/helpers/metadata";
 import { setRootCssVariables } from "../lib/helpers/styles";
 import * as config from "../lib/config";
 import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
-import defaultMetadata from "../lib/config/seo";
 import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
