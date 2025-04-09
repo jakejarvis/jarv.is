@@ -32,6 +32,10 @@ updates:
         patterns:
           - "eslint"
           - "@eslint/*"
+      open-telemetry:
+        patterns:
+          - "@opentelemetry/*"
+          - "@vercel/otel"
     ignore:
       - dependency-name: "@jakejarvis/eslint-config"
       - dependency-name: "@types/node"
