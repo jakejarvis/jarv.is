@@ -17,9 +17,6 @@
         "react",
         "react-dom",
         "react-is",
-        "@types/react",
-        "@types/react-dom",
-        "@types/react-is",
         "babel-plugin-react-compiler",
         "eslint-plugin-react-compiler"
       ],
@@ -43,6 +40,10 @@
       "groupName": "opentelemetry"
     },
     {
+      "matchPackageNames": ["typescript"],
+      "rangeStrategy": "pin"
+    },
+    {
       "matchPackageNames": ["node"],
       "matchDepTypes": ["engines"],
       "enabled": false
@@ -53,8 +54,14 @@
       "rangeStrategy": "pin"
     }
   ],
-  "postUpdateOptions": [
-    "pnpmDedupe"
-  ],
-  "ignoreDeps": ["@jakejarvis/eslint-config", "@types/node", "@types/prop-types", "lucide-react"]
+  "postUpdateOptions": ["pnpmDedupe"],
+  "ignoreDeps": [
+    "@jakejarvis/eslint-config",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "@types/react-is",
+    "@types/prop-types",
+    "lucide-react"
+  ]
 }
