@@ -68,7 +68,7 @@
     "remark-parse": "^11.0.0",
     "remark-smartypants": "^3.0.2",
     "resend": "^4.2.0",
-    "shiki": "^3.2.1",
+    "shiki": "^3.2.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "valibot": "^1.0.0"
