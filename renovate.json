@@ -41,7 +41,20 @@
     {
       "matchPackageNames": ["@opentelemetry/*", "@vercel/otel"],
       "groupName": "opentelemetry"
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchManagers": ["nvm"],
+      "rangeStrategy": "pin"
     }
+  ],
+  "postUpdateOptions": [
+    "pnpmDedupe"
   ],
   "ignoreDeps": ["@jakejarvis/eslint-config", "@types/node", "@types/prop-types", "lucide-react"]
 }
