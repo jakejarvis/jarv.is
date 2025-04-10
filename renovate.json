@@ -1,6 +1,47 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ]
+  "extends": ["config:recommended"],
+  "labels": ["📦 dependencies"],
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchPackageNames": ["next", "@next/*", "eslint-config-next"],
+      "groupName": "next.js",
+      "followTag": "canary",
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "react-is",
+        "@types/react",
+        "@types/react-dom",
+        "@types/react-is",
+        "babel-plugin-react-compiler",
+        "eslint-plugin-react-compiler"
+      ],
+      "groupName": "react",
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchPackageNames": ["@mdx-js/*", "remark-*", "rehype-*", "unified", "unist-*", "@types/mdx"],
+      "groupName": "mdx"
+    },
+    {
+      "matchPackageNames": ["eslint", "eslint-*", "@eslint/*", "!eslint-config-next", "!eslint-plugin-react-compiler"],
+      "groupName": "eslint"
+    },
+    {
+      "matchPackageNames": ["stylelint", "stylelint-*"],
+      "groupName": "stylelint"
+    },
+    {
+      "matchPackageNames": ["@opentelemetry/*", "@vercel/otel"],
+      "groupName": "opentelemetry"
+    }
+  ],
+  "ignoreDeps": ["@jakejarvis/eslint-config", "@types/node", "@types/prop-types", "lucide-react"]
 }
