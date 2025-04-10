@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "labels": ["📦 dependencies"],
-  "semanticCommits": "enabled",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "rangeStrategy": "bump",
