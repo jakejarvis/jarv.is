@@ -74,7 +74,7 @@ const nextConfig: NextConfig = {
       headers: [
         {
           key: "strict-transport-security",
-          value: "max-age=63072000; includeSubDomains; preload",
+          value: "max-age=63072000",
         },
         {
           // 🥛 debugging
@@ -83,6 +83,33 @@ const nextConfig: NextConfig = {
         },
       ],
     },
+    {
+      source: "/_stream/(.*)",
+      headers: [
+        {
+          // https://vercel.com/docs/rewrites#caching-rewrites
+          key: "x-vercel-enable-rewrite-caching",
+          value: "1",
+        },
+      ],
+    },
+    ...(process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+      ? [
+          {
+            source: "/_stream/u/api/send",
+            headers: [
+              {
+                key: "cache-control",
+                value: "no-cache, no-store",
+              },
+              {
+                key: "x-vercel-enable-rewrite-caching",
+                value: "0",
+              },
+            ],
+          },
+        ]
+      : []),
     ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
       ? [
           {
@@ -99,15 +126,6 @@ const nextConfig: NextConfig = {
           },
         ]
       : []),
-    {
-      source: "/tweets(|/.*)",
-      headers: [
-        {
-          key: "x-robots-tag",
-          value: "noindex, nofollow, nosnippet",
-        },
-      ],
-    },
   ],
   rewrites: async () => [
     ...(process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
@@ -124,17 +142,18 @@ const nextConfig: NextConfig = {
       source: "/tweets/:path*",
       destination: "https://tweets-khaki.vercel.app/:path*",
     },
-    {
-      source: "/pubkey.asc",
-      destination:
-        "https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x3bc6e5776bf379d36f6714802b0c9cf251e69a39",
-    },
   ],
   redirects: async () => [
     { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
     {
       source: "/stats",
       destination: "https://umami-wine-eight.vercel.app/share/wwTaTpLgC6gP9VyX/jarv.is",
+      permanent: false,
+    },
+    {
+      source: "/pubkey.asc",
+      destination:
+        "https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x3bc6e5776bf379d36f6714802b0c9cf251e69a39",
       permanent: false,
     },
 
