@@ -91,7 +91,7 @@
     "eslint-plugin-react-compiler": "19.0.0-beta-e993439-20250405",
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.0",
+    "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "schema-dts": "^1.1.5",
     "stylelint": "^16.18.0",
