@@ -7,7 +7,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import styles from "./Header.module.css";
 
-import avatarImg from "../../app/selfie.jpg";
+import avatarImg from "../../app/avatar.jpg";
 
 export type HeaderProps = ComponentPropsWithoutRef<"header">;
 
