@@ -12,16 +12,16 @@ My humble abode on the World Wide Web, created and deployed using [Next.js](http
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jakejarvis/jarv.is)
 
-Run `pnpm install` to install the necessary dependencies and `pnpm dev` to start the local server, and then open [http://localhost:3000/](http://localhost:3000/). Pages will live-refresh when source files are changed.
+I highly recommend spinning up a [Codespace](https://github.com/features/codespaces) with the button above to start inside of a preconfigured and tested environment. But you can also clone this repository locally, run `pnpm install` to pull down the necessary dependencies and `pnpm dev` to start the local server, and then open [localhost:3000](http://localhost:3000/) in a browser. Pages will live-refresh when source files are changed.
 
-Most production steps are handled [automatically by Vercel](https://vercel.com/docs/frameworks/nextjs), but running `pnpm build` locally will still generate an unoptimized, less-than-ideal static version which can be served via `pnpm start`.
+**Be sure to populate the required environment variables!** Refer to [`lib/env.ts`](lib/env.ts), which documents (and strictly [type-checks](https://env.t3.gg/docs/introduction)) these variables. [`.env.example`](.env.example) should be copied and used as a template for a new `.env.local` file, which the local development server will then ingest.
 
-**☝️ Note:** [pnpm](https://pnpm.io/installation#using-corepack) is highly recommended (for [many reasons!](https://pnpm.io/benchmarks)) but this project should also work just fine with NPM or Yarn.
+> ⚠️ **Currently, there are a few assumptions [sprinkled](https://github.com/search?q=repo%3Ajakejarvis%2Fjarv.is%20VERCEL_&type=code) throughout the repository that this code will be deployed to [Vercel](https://nextjs.org/docs/app/building-your-application/deploying#managed-nextjs-with-vercel) and _only_ Vercel.** If this is not the case, do a quick Command+F for `VERCEL_` and update [their variables](https://vercel.com/docs/environment-variables/system-environment-variables#system-environment-variables) to more appropriate versions. I'll correct this soon™ now that some escape hatches (namely [OpenNext](https://opennext.js.org/)) actually exist...
 
 ## 🌎 Related
 
-- [📈 /stats](https://jarv.is/stats) - Public [Umami](https://umami.is/) dashboard.
 - [💻 /uses](https://jarv.is/uses) – Things and stuff I use.
+- [📈 /stats](https://jarv.is/stats) - Public [Umami](https://umami.is/) dashboard.
 - [🕰️ /previously](https://jarv.is/previously) – An embarrassing trip down this site's memory lane.
   - Visit [/y2k](https://jarv.is/y2k) if you want to experience the _fully_ immersive time machine, but don't say I didn't warn you...
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.
