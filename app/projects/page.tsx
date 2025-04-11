@@ -7,6 +7,7 @@ import Link from "../../components/Link";
 import RelativeTime from "../../components/RelativeTime";
 import { addMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
+import { SITE_LOCALE } from "../../lib/config/constants";
 import type { User } from "@octokit/graphql-schema";
 
 import styles from "./page.module.css";
@@ -120,12 +121,12 @@ const Page = async () => {
                 <div className={styles.metaItem}>
                   <Link
                     href={`${repo!.url}/stargazers`}
-                    title={`${Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
+                    title={`${Intl.NumberFormat(SITE_LOCALE || "en-US").format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
                     plain
                     className={styles.metaLink}
                   >
                     <StarIcon size="1.25em" className={styles.metaIcon} />
-                    <span>{Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.stargazerCount)}</span>
+                    <span>{Intl.NumberFormat(SITE_LOCALE || "en-US").format(repo!.stargazerCount)}</span>
                   </Link>
                 </div>
               )}
@@ -134,12 +135,12 @@ const Page = async () => {
                 <div className={styles.metaItem}>
                   <Link
                     href={`${repo!.url}/network/members`}
-                    title={`${Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
+                    title={`${Intl.NumberFormat(SITE_LOCALE || "en-US").format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
                     plain
                     className={styles.metaLink}
                   >
                     <GitForkIcon size="1.25em" className={styles.metaIcon} />
-                    <span>{Intl.NumberFormat(config.siteLocale || "en-US").format(repo!.forkCount)}</span>
+                    <span>{Intl.NumberFormat(SITE_LOCALE || "en-US").format(repo!.forkCount)}</span>
                   </Link>
                 </div>
               )}

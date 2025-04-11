@@ -15,7 +15,7 @@ export const buildFeed = async (): Promise<Feed> => {
     id: `${BASE_URL}`,
     link: `${BASE_URL}`,
     title: config.siteName,
-    description: config.longDescription,
+    description: config.description,
     copyright: config.licenseUrl,
     updated: new Date(RELEASE_TIMESTAMP),
     image: `${BASE_URL}${ogImage.src}`,

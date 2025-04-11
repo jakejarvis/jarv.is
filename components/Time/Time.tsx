@@ -2,7 +2,7 @@ import { format, formatISO } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { tz } from "@date-fns/tz";
 import { utc } from "@date-fns/utc";
-import * as config from "../../lib/config";
+import { SITE_TZ } from "../../lib/config/constants";
 import type { ComponentPropsWithoutRef } from "react";
 
 export type TimeProps = ComponentPropsWithoutRef<"time"> & {
@@ -14,10 +14,10 @@ const Time = ({ date, format: formatStr = "PPpp", ...rest }: TimeProps) => {
   return (
     <time
       dateTime={formatISO(date, { in: utc })}
-      title={format(date, "MMM d, y, h:mm a O", { in: tz(config.timeZone), locale: enUS })}
+      title={format(date, "MMM d, y, h:mm a O", { in: tz(SITE_TZ), locale: enUS })}
       {...rest}
     >
-      {format(date, formatStr, { in: tz(config.timeZone), locale: enUS })}
+      {format(date, formatStr, { in: tz(SITE_TZ), locale: enUS })}
     </time>
   );
 };

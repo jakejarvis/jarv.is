@@ -1,22 +1,22 @@
 import * as config from "../config";
-import { BASE_URL } from "../config/constants";
+import { BASE_URL, SITE_LOCALE } from "../config/constants";
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     template: `%s – ${config.siteName}`,
-    default: `${config.siteName} – ${config.shortDescription}`,
+    default: `${config.siteName} – ${config.tagline}`,
   },
-  description: config.longDescription,
+  description: config.description,
   openGraph: {
     siteName: config.siteName,
     title: {
       template: "%s",
-      default: `${config.siteName} – ${config.shortDescription}`,
+      default: `${config.siteName} – ${config.tagline}`,
     },
     url: "/",
-    locale: config.siteLocale?.replace("-", "_"),
+    locale: SITE_LOCALE?.replace("-", "_"),
     type: "website",
   },
   twitter: {

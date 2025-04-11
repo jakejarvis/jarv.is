@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { SkipNavLink, SkipNavTarget } from "../components/SkipNav";
 import { defaultMetadata } from "../lib/helpers/metadata";
 import * as config from "../lib/config";
-import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
+import { BASE_URL, MAX_WIDTH, SITE_LOCALE } from "../lib/config/constants";
 import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <html lang={config.siteLocale} suppressHydrationWarning>
+    <html lang={SITE_LOCALE || "en-US"} suppressHydrationWarning>
       <head>
         <ThemeScript />
 
@@ -55,8 +55,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             name: config.siteName,
             url: BASE_URL,
             author: config.authorName,
-            description: config.longDescription,
-            inLanguage: config.siteLocale,
+            description: config.description,
+            inLanguage: SITE_LOCALE,
             license: config.licenseUrl,
           }}
         />

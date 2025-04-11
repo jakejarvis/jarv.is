@@ -10,7 +10,7 @@ import HitCounter from "./counter";
 import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
-import { BASE_URL, POSTS_DIR } from "../../../lib/config/constants";
+import { BASE_URL, POSTS_DIR, SITE_LOCALE } from "../../../lib/config/constants";
 import { size as ogImageSize } from "./opengraph-image";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
@@ -79,7 +79,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           keywords: frontmatter!.tags?.join(", "),
           datePublished: frontmatter!.date,
           dateModified: frontmatter!.date,
-          inLanguage: config.siteLocale,
+          inLanguage: SITE_LOCALE,
           license: config.licenseUrl,
           author: {
             // defined in app/layout.tsx

@@ -11,15 +11,15 @@ export const env = createEnv({
   ],
   server: {
     /**
-     * Required. GitHub API token used for /projects grid. Only needs the `public_repo` scope since we don't need/want
-     * to change anything, obviously.
+     * Required. GitHub API token used for [/projects](../app/projects/page.tsx) grid. Only needs the `public_repo`
+     * scope since we don't need/want to change anything, obviously.
      *
      * @see https://github.com/settings/tokens/new?scopes=public_repo
      */
     GITHUB_TOKEN: v.optional(v.pipe(v.string(), v.startsWith("ghp_"))),
 
     /**
-     * Required. Redis storage credentials for hit counter's server component (app/notes/[slug]/counter.tsx) and API
+     * Required. Redis storage credentials for hit counter's [server component](../app/notes/[slug]/counter.tsx) and API
      * endpoint. Currently set automatically by Vercel's Upstash integration.
      *
      * @see https://upstash.com/docs/redis/sdks/ts/getstarted
@@ -27,7 +27,7 @@ export const env = createEnv({
      */
     KV_REST_API_TOKEN: v.string(),
     /**
-     * Required. Redis storage credentials for hit counter's server component (app/notes/[slug]/counter.tsx) and API
+     * Required. Redis storage credentials for hit counter's [server component](../app/notes/[slug]/counter.tsx) and API
      * endpoint. Currently set automatically by Vercel's Upstash integration.
      *
      * @see https://upstash.com/docs/redis/sdks/ts/getstarted
@@ -36,7 +36,7 @@ export const env = createEnv({
     KV_REST_API_URL: v.pipe(v.string(), v.url(), v.startsWith("https://"), v.endsWith(".upstash.io")),
 
     /**
-     * Required. Uses Resend API to send contact form submissions via a server action (see app/contact/actions.ts). May
+     * Required. Uses Resend API to send contact form submissions via a [server action](../app/contact/action.ts). May
      * be set automatically by Vercel's Resend integration.
      *
      * @see https://resend.com/api-keys

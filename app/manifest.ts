@@ -1,4 +1,5 @@
 import * as config from "../lib/config";
+import { SITE_LOCALE } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 const manifest = (): MetadataRoute.Manifest => {
@@ -6,8 +7,8 @@ const manifest = (): MetadataRoute.Manifest => {
     name: config.siteName,
     // eslint-disable-next-line camelcase
     short_name: config.siteName,
-    description: config.longDescription,
-    lang: config.siteLocale,
+    description: config.description,
+    lang: SITE_LOCALE,
     icons: [
       {
         src: "/icon.png",
