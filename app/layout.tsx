@@ -17,8 +17,6 @@ import "./themes.css";
 
 import styles from "./layout.module.css";
 
-import ogImage from "./opengraph-image.jpg";
-
 export const metadata: Metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
@@ -34,12 +32,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             "@id": `${BASE_URL}/#person`,
             name: config.authorName,
             url: BASE_URL,
-            image: {
-              "@type": "ImageObject",
-              contentUrl: `${BASE_URL}${ogImage.src}`,
-              width: `${ogImage.width}`,
-              height: `${ogImage.height}`,
-            },
+            image: [`${BASE_URL}/opengraph-image.jpg`],
             sameAs: [
               `${BASE_URL}`,
               `https://${config.authorSocial?.mastodon}`,

@@ -42,13 +42,14 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
     // return the raw image data as a buffer
     return Uint8Array.from(await readFile(imagePath)).buffer;
   } catch (error) {
-    // fail silently and return a 1x1 transparent gif instead of crashing
     console.error(`[og-image] found "${imagePath}" but couldn't read it:`, error);
+
+    // fail silently and return a 1x1 transparent gif instead of crashing
     return NO_IMAGE;
   }
 };
 
-const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   try {
     const { slug } = await params;
 
@@ -233,4 +234,4 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
   }
 };
 
-export default Image;
+export default OpenGraphImage;
