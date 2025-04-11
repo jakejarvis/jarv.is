@@ -36,10 +36,6 @@
       "groupName": "stylelint"
     },
     {
-      "matchPackageNames": ["@opentelemetry/*", "@vercel/otel"],
-      "groupName": "opentelemetry"
-    },
-    {
       "matchPackageNames": ["typescript"],
       "rangeStrategy": "pin"
     },
