@@ -1,11 +1,11 @@
 import { JsonLd } from "react-schemaorg";
+import clsx from "clsx";
 import Analytics from "./analytics";
 import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { SkipToContentLink, SkipToContentTarget } from "../components/SkipToContent";
+import { SkipNavLink, SkipNavTarget } from "../components/SkipNav";
 import { defaultMetadata } from "../lib/helpers/metadata";
-import { setRootCssVariables } from "../lib/helpers/styles";
 import * as config from "../lib/config";
 import { BASE_URL, MAX_WIDTH } from "../lib/config/constants";
 import type { Metadata } from "next";
@@ -69,25 +69,21 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         />
       </head>
 
-      <body className={styles.body}>
-        <style
-          precedence={styles.layout}
-          {...setRootCssVariables({
-            "fonts-sans": GeistSans.style.fontFamily,
-            "fonts-mono": GeistMono.style.fontFamily,
-            "max-width": `${MAX_WIDTH}px`,
-          })}
-        />
-
+      <body
+        className={clsx(GeistSans.variable, GeistMono.variable)}
+        style={{ ["--max-width" as string]: `${MAX_WIDTH}px` }}
+      >
         <ThemeProvider>
-          <SkipToContentLink />
+          <SkipNavLink />
 
           <div className={styles.layout}>
             <Header />
 
             <main className={styles.default}>
-              <SkipToContentTarget />
-              <div className={styles.container}>{children}</div>
+              <div className={styles.container}>
+                <SkipNavTarget />
+                {children}
+              </div>
             </main>
 
             <Footer />

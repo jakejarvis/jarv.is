@@ -1,4 +1,7 @@
-/*! Adapted from modern-normalize.css | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*!
+ * modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize/tree/v3.0.1
+ */
+
 *,
 ::before,
 ::after {
@@ -15,6 +18,7 @@ html {
 body {
   margin: 0;
   font-family: var(--fonts-sans);
+  background-color: var(--colors-background-inner);
 }
 
 code,

@@ -1,8 +1,8 @@
-import styles from "./SkipToContent.module.css";
+import styles from "./SkipNav.module.css";
 
 const skipNavId = "skip-nav";
 
-export const SkipToContentLink = () => {
+export const SkipNavLink = () => {
   return (
     <a href={`#${skipNavId}`} tabIndex={0} className={styles.hidden}>
       Skip to content
@@ -10,8 +10,8 @@ export const SkipToContentLink = () => {
   );
 };
 
-export const SkipToContentTarget = () => {
+export const SkipNavTarget = () => {
   return <div id={skipNavId} />;
 };
 
-export default SkipToContentLink;
+export default SkipNavLink;

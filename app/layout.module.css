@@ -1,7 +1,3 @@
-.body {
-  background-color: var(--colors-background-inner);
-}
-
 .layout {
   display: flex;
   flex-direction: column;

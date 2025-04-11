@@ -3,8 +3,10 @@
   margin-bottom: 0.5em;
   line-height: 1.5;
 
-  /* offset (approximately) with sticky header so jumped-to content isn't hiding behind it.
-     note: use rem so it isn't based on the heading's font size. */
+  /*
+   * offset (approximately) with sticky header so jumped-to content isn't hiding behind it.
+   * note: use rem so it isn't based on the heading's font size.
+   */
   scroll-margin-top: 5.5rem;
 }
 

@@ -1,5 +1,6 @@
-/* accessible invisibility stuff pulled from @reach/skip-nav:
-https://github.com/reach/reach-ui/blob/main/packages/skip-nav/styles.css */
+/*
+ * Pulled from @reach/skip-nav: https://github.com/reach/reach-ui/blob/main/packages/skip-nav/styles.css
+ */
 
 .hidden {
   border: 0;
