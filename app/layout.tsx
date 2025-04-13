@@ -1,6 +1,6 @@
 import { JsonLd } from "react-schemaorg";
+import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
-import Analytics from "./analytics";
 import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";

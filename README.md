@@ -6,7 +6,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
 [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fjarv.is%2Fapi%2Fhits&query=%24.total.hits&logo=googleanalytics&logoColor=white&label=hits&color=salmon&cacheSeconds=1800)](https://jarv.is/api/hits)
 
-My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Upstash Redis](https://upstash.com/), [Giscus](https://giscus.app/), [Umami](https://umami.is/), [and more](https://jarv.is/humans.txt).
+My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Upstash Redis](https://upstash.com/), [Giscus](https://giscus.app/), [and more](https://jarv.is/humans.txt).
 
 ## 🕹️ Getting Started
 
@@ -21,7 +21,6 @@ I highly recommend spinning up a [Codespace](https://github.com/features/codespa
 ## 🌎 Related
 
 - [💻 /uses](https://jarv.is/uses) – Things and stuff I use.
-- [📈 /stats](https://jarv.is/stats) - Public [Umami](https://umami.is/) dashboard.
 - [🕰️ /previously](https://jarv.is/previously) – An embarrassing trip down this site's memory lane.
   - Visit [/y2k](https://jarv.is/y2k) if you want to experience the _fully_ immersive time machine, but don't say I didn't warn you...
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.

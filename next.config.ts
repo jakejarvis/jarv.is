@@ -83,37 +83,11 @@ const nextConfig: NextConfig = {
         },
       ],
     },
-    {
-      source: "/_stream/(.*)",
-      headers: [
-        {
-          // https://vercel.com/docs/rewrites#caching-rewrites
-          key: "x-vercel-enable-rewrite-caching",
-          value: "1",
-        },
-      ],
-    },
-    ...(process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
-      ? [
-          {
-            source: "/_stream/u/api/send",
-            headers: [
-              {
-                key: "cache-control",
-                value: "no-cache, no-store",
-              },
-              {
-                key: "x-vercel-enable-rewrite-caching",
-                value: "0",
-              },
-            ],
-          },
-        ]
-      : []),
+
+    // https://community.torproject.org/onion-services/advanced/onion-location/
     ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
       ? [
           {
-            // https://community.torproject.org/onion-services/advanced/onion-location/
             // only needed on actual pages, not static assets, so make a best effort by matching any path **without** a file
             // extension (aka a period) and/or an underscore (e.g. /_next/image).
             source: "/:path([^._]*)",
@@ -128,15 +102,6 @@ const nextConfig: NextConfig = {
       : []),
   ],
   rewrites: async () => [
-    ...(process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
-      ? [
-          {
-            // https://umami.is/docs/guides/running-on-vercel#proxy-umami-analytics-via-vercel
-            source: "/_stream/u/:path(script.js|api/send)",
-            destination: `${process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is"}/:path`,
-          },
-        ]
-      : []),
     {
       // https://github.com/jakejarvis/tweets
       source: "/tweets/:path*",
@@ -145,11 +110,6 @@ const nextConfig: NextConfig = {
   ],
   redirects: async () => [
     { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
-    {
-      source: "/stats",
-      destination: "https://umami-wine-eight.vercel.app/share/wwTaTpLgC6gP9VyX/jarv.is",
-      permanent: false,
-    },
     {
       source: "/pubkey.asc",
       destination:

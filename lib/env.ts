@@ -93,29 +93,12 @@ export const env = createEnv({
      * @see https://developers.cloudflare.com/turnstile/troubleshooting/testing/
      */
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "XXXX.DUMMY.TOKEN.XXXX"),
-
-    /**
-     * Optional. The base URL of a self-hosted Umami instance (including https://) to proxy requests to. If the website
-     * ID is set but this isn't, the managed Umami Cloud endpoint at https://cloud.umami.is is used.
-     *
-     * @see https://umami.is/docs/bypass-ad-blockers
-     */
-    NEXT_PUBLIC_UMAMI_URL: v.optional(v.pipe(v.string(), v.startsWith("https://"), v.url()), "https://cloud.umami.is"),
-    /**
-     * Optional. Enables privacy-friendly tracking via Umami, either managed or self-hosted. This ID can be found in the
-     * dashboard under Settings > Websites > Edit > Details.
-     *
-     * @see https://umami.is/docs/collect-data
-     */
-    NEXT_PUBLIC_UMAMI_WEBSITE_ID: v.optional(v.string()),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
     NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
-    NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
-    NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
   },
   emptyStringAsUndefined: true,
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
