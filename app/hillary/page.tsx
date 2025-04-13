@@ -1,9 +1,9 @@
+import { env } from "../../lib/env";
 import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
 import { addMetadata } from "../../lib/helpers/metadata";
-import { BASE_URL } from "../../lib/config/constants";
 import type { VideoObject } from "schema-dts";
 
 import webm from "./convention.webm";
@@ -28,9 +28,9 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          contentUrl: `${BASE_URL}${webm}`,
-          thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
-          embedUrl: `${BASE_URL}/hillary`,
+          contentUrl: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+          thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
+          embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/hillary`,
           uploadDate: "2016-07-25T00:00:00Z",
           duration: "PT1M51S",
         }}

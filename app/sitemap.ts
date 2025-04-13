@@ -1,7 +1,7 @@
+import { env } from "../lib/env";
 import path from "path";
 import glob from "fast-glob";
 import { getFrontMatter } from "../lib/helpers/posts";
-import { BASE_URL, RELEASE_TIMESTAMP } from "../lib/config/constants";
 import type { MetadataRoute } from "next";
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
@@ -9,9 +9,9 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: `${BASE_URL}`,
+      url: `${env.NEXT_PUBLIC_BASE_URL}`,
       priority: 1.0,
-      lastModified: new Date(RELEASE_TIMESTAMP), // timestamp frozen when a new build is deployed
+      lastModified: new Date(),
     },
   ];
 
@@ -30,7 +30,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ).forEach((route) => {
     routes.push({
       // remove matching page.(tsx|mdx) file and make all URLs absolute
-      url: `${BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
+      url: `${env.NEXT_PUBLIC_BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
     });
   });
 

@@ -2,7 +2,6 @@
 
 import { env } from "../../lib/env";
 import Giscus from "@giscus/react";
-import * as config from "../../lib/config";
 import type { GiscusProps } from "@giscus/react";
 
 export type CommentsProps = {
@@ -21,7 +20,7 @@ const Comments = ({ title }: CommentsProps) => {
 
   return (
     <Giscus
-      repo={config.githubRepo as GiscusProps["repo"]}
+      repo={env.NEXT_PUBLIC_GITHUB_REPO as GiscusProps["repo"]}
       repoId={env.NEXT_PUBLIC_GISCUS_REPO_ID}
       term={title}
       category="Comments"

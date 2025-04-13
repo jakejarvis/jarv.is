@@ -7,7 +7,6 @@ export const license = "Creative Commons Attribution 4.0 International";
 export const licenseAbbr = "CC-BY-4.0";
 export const licenseUrl = "https://creativecommons.org/licenses/by/4.0/";
 export const copyrightYearStart = 2001;
-export const githubRepo = "jakejarvis/jarv.is";
 
 // Me info
 export const authorName = "Jake Jarvis";

@@ -1,9 +1,9 @@
+import { env } from "../env";
 import * as config from "../config";
-import { BASE_URL, SITE_LOCALE } from "../config/constants";
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: env.NEXT_PUBLIC_BASE_URL ? new URL(env.NEXT_PUBLIC_BASE_URL) : undefined,
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.tagline}`,
@@ -16,7 +16,7 @@ export const defaultMetadata: Metadata = {
       default: `${config.siteName} – ${config.tagline}`,
     },
     url: "/",
-    locale: SITE_LOCALE?.replace("-", "_"),
+    locale: env.NEXT_PUBLIC_SITE_LOCALE.replace("-", "_"),
     type: "website",
   },
   twitter: {

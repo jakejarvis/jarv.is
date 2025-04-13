@@ -1,7 +1,7 @@
+import { env } from "../../../lib/env";
 import { connection } from "next/server";
 import CountUp from "../../../components/CountUp";
 import redis from "../../../lib/redis";
-import { SITE_LOCALE } from "../../../lib/config/constants";
 
 const HitCounter = async ({ slug }: { slug: string }) => {
   await connection();
@@ -16,7 +16,7 @@ const HitCounter = async ({ slug }: { slug: string }) => {
 
     // we have data!
     return (
-      <span title={`${Intl.NumberFormat(SITE_LOCALE || "en-US").format(hits)} ${hits === 1 ? "view" : "views"}`}>
+      <span title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(hits)} ${hits === 1 ? "view" : "views"}`}>
         <CountUp start={0} end={hits} delay={0} duration={1.5} />
       </span>
     );

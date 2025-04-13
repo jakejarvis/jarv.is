@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/config/constants";
+import { env } from "../lib/env";
 import type { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => ({
@@ -8,7 +8,7 @@ const robots = (): MetadataRoute.Robots => ({
       disallow: ["/api/", "/404", "/500"],
     },
   ],
-  sitemap: `${BASE_URL}/sitemap.xml`,
+  sitemap: `${env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
 });
 
 export default robots;

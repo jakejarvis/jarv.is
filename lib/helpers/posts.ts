@@ -1,10 +1,11 @@
+import { env } from "../../lib/env";
 import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
 import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./remark-rehype-plugins";
 import { decode } from "html-entities";
-import { BASE_URL, POSTS_DIR } from "../config/constants";
+import { POSTS_DIR } from "../config/constants";
 
 export type FrontMatter = {
   slug: string;
@@ -77,7 +78,7 @@ Promise<any> => {
         slug,
         // validate/normalize the date string provided from front matter
         date: new Date(frontmatter.date).toISOString(),
-        permalink: `${BASE_URL}/${POSTS_DIR}/${slug}`,
+        permalink: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
       } as FrontMatter;
     } catch (error) {
       console.error(`Failed to load front matter for post with slug "${slug}":`, error);

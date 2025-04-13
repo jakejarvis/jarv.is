@@ -10,7 +10,7 @@ import HitCounter from "./counter";
 import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
 import { addMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
-import { BASE_URL, POSTS_DIR, SITE_LOCALE } from "../../../lib/config/constants";
+import { POSTS_DIR } from "../../../lib/config/constants";
 import { size as ogImageSize } from "./opengraph-image";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
@@ -72,18 +72,18 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           url: frontmatter!.permalink,
           image: {
             "@type": "ImageObject",
-            contentUrl: `${BASE_URL}/${POSTS_DIR}/${frontmatter!.slug}/opengraph-image`,
+            contentUrl: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${frontmatter!.slug}/opengraph-image`,
             width: `${ogImageSize.width}`,
             height: `${ogImageSize.height}`,
           },
           keywords: frontmatter!.tags?.join(", "),
           datePublished: frontmatter!.date,
           dateModified: frontmatter!.date,
-          inLanguage: SITE_LOCALE,
+          inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
           license: config.licenseUrl,
           author: {
             // defined in app/layout.tsx
-            "@id": `${BASE_URL}/#person`,
+            "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
           },
         }}
       />
@@ -111,7 +111,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <div className={styles.metaItem}>
           <Link
-            href={`https://github.com/${config.githubRepo}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
+            href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
             title={`Edit "${frontmatter!.title}" on GitHub`}
             plain
             className={styles.metaLink}
@@ -121,26 +121,23 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </Link>
         </div>
 
-        {/* only count hits on production site */}
-        {env.VERCEL_ENV === "production" ? (
-          <div
-            className={styles.metaItem}
-            style={{
-              // fix potential layout shift when number of hits loads
-              minWidth: "7em",
-              marginRight: 0,
-            }}
+        <div
+          className={styles.metaItem}
+          style={{
+            // fix potential layout shift when number of hits loads
+            minWidth: "7em",
+            marginRight: 0,
+          }}
+        >
+          <EyeIcon size="1.2em" className={styles.metaIcon} />
+          <Suspense
+            // when this loads, the component will count up from zero to the actual number of hits, so we can simply
+            // show a zero here as a "loading indicator"
+            fallback={<span>0</span>}
           >
-            <EyeIcon size="1.2em" className={styles.metaIcon} />
-            <Suspense
-              // when this loads, the component will count up from zero to the actual number of hits, so we can simply
-              // show a zero here as a "loading indicator"
-              fallback={<span>0</span>}
-            >
-              <HitCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-            </Suspense>
-          </div>
-        ) : null}
+            <HitCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+          </Suspense>
+        </div>
       </div>
 
       <h1 className={styles.title}>

@@ -1,7 +1,7 @@
+import { env } from "../../lib/env";
 import { Feed } from "feed";
 import { getFrontMatter, getContent } from "./posts";
 import * as config from "../config";
-import { BASE_URL, RELEASE_TIMESTAMP } from "../config/constants";
 import type { Item as FeedItem } from "feed";
 
 import ogImage from "../../app/opengraph-image.jpg";
@@ -12,20 +12,20 @@ import ogImage from "../../app/opengraph-image.jpg";
  */
 export const buildFeed = async (): Promise<Feed> => {
   const feed = new Feed({
-    id: `${BASE_URL}`,
-    link: `${BASE_URL}`,
+    id: `${env.NEXT_PUBLIC_BASE_URL}`,
+    link: `${env.NEXT_PUBLIC_BASE_URL}`,
     title: config.siteName,
     description: config.description,
     copyright: config.licenseUrl,
-    updated: new Date(RELEASE_TIMESTAMP),
-    image: `${BASE_URL}${ogImage.src}`,
+    updated: new Date(),
+    image: `${env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
     feedLinks: {
-      rss: `${BASE_URL}/feed.xml`,
-      atom: `${BASE_URL}/feed.atom`,
+      rss: `${env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
+      atom: `${env.NEXT_PUBLIC_BASE_URL}/feed.atom`,
     },
     author: {
       name: config.authorName,
-      link: BASE_URL,
+      link: env.NEXT_PUBLIC_BASE_URL,
       email: config.authorEmail,
     },
   });
@@ -41,7 +41,7 @@ export const buildFeed = async (): Promise<Feed> => {
       author: [
         {
           name: config.authorName,
-          link: `${BASE_URL}`,
+          link: `${env.NEXT_PUBLIC_BASE_URL}`,
         },
       ],
       date: new Date(post.date),

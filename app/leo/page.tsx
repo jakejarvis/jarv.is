@@ -1,9 +1,9 @@
+import { env } from "../../lib/env";
 import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
 import { addMetadata } from "../../lib/helpers/metadata";
-import { BASE_URL } from "../../lib/config/constants";
 import type { VideoObject } from "schema-dts";
 
 import mp4 from "./leo.mp4";
@@ -28,9 +28,9 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          contentUrl: `${BASE_URL}${webm}`,
-          thumbnailUrl: `${BASE_URL}${thumbnail.src}`,
-          embedUrl: `${BASE_URL}/leo`,
+          contentUrl: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+          thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
+          embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/leo`,
           uploadDate: "2007-05-10T00:00:00Z",
           duration: "PT1M48S",
         }}

@@ -65,6 +65,13 @@ export const env = createEnv({
   },
   client: {
     /**
+     * Optional. Overrides the most appropriate default URL for the current deployment.
+     *
+     * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#default-value
+     */
+    NEXT_PUBLIC_BASE_URL: v.optional(v.pipe(v.string(), v.url())),
+
+    /**
      * Optional. Enables comments on blog posts via GitHub discussions.
      *
      * @see https://giscus.app/
@@ -78,6 +85,11 @@ export const env = createEnv({
     NEXT_PUBLIC_GISCUS_REPO_ID: v.optional(v.string()),
 
     /**
+     * Required. GitHub repository for the site in the format of `{username}/{repo}`.
+     */
+    NEXT_PUBLIC_GITHUB_REPO: v.string(),
+
+    /**
      * Optional. Sets an `Onion-Location` header in responses to advertise a URL for the same page but hosted on a
      * hidden service on the Tor network. Browsers like Brave and Tor Browser will automatically pick this up and offer
      * to redirect users to it.
@@ -85,6 +97,21 @@ export const env = createEnv({
      * @see https://community.torproject.org/onion-services/advanced/onion-location/
      */
     NEXT_PUBLIC_ONION_DOMAIN: v.optional(v.pipe(v.string(), v.endsWith(".onion"))),
+
+    /**
+     * Optional. Locale code to define the site's language in ISO-639 format. Defaults to `en-US`.
+     *
+     * @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes#Table
+     */
+    NEXT_PUBLIC_SITE_LOCALE: v.optional(v.string(), "en-US"),
+
+    /**
+     * Optional. Consistent timezone for the site. Doesn't really matter what it is, as long as it's the same everywhere
+     * to avoid hydration complaints.
+     *
+     * @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+     */
+    NEXT_PUBLIC_SITE_TZ: v.optional(v.string(), "America/New_York"),
 
     /**
      * Required. Site key must be prefixed with NEXT_PUBLIC_ since it is used to embed the captcha widget. Falls back to
@@ -95,9 +122,36 @@ export const env = createEnv({
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "XXXX.DUMMY.TOKEN.XXXX"),
   },
   experimental__runtimeEnv: {
+    NEXT_PUBLIC_BASE_URL:
+      process.env.NEXT_PUBLIC_BASE_URL ||
+      // Vercel: https://vercel.com/docs/environment-variables/system-environment-variables
+      (process.env.VERCEL
+        ? process.env.VERCEL_ENV === "production" && process.env.VERCEL_PROJECT_PRODUCTION_URL
+          ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+          : process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL
+            ? `https://${process.env.VERCEL_BRANCH_URL}`
+            : process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}`
+              : undefined
+        : undefined) ||
+      // Netlify: https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
+      (process.env.NETLIFY
+        ? process.env.CONTEXT === "production" && process.env.URL
+          ? `${process.env.URL}`
+          : process.env.DEPLOY_PRIME_URL
+            ? `${process.env.DEPLOY_PRIME_URL}`
+            : process.env.DEPLOY_URL
+              ? `${process.env.DEPLOY_URL}`
+              : undefined
+        : undefined) ||
+      // next dev
+      `http://localhost:${process.env.PORT || 3000}`,
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
     NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
+    NEXT_PUBLIC_GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
+    NEXT_PUBLIC_SITE_LOCALE: process.env.NEXT_PUBLIC_SITE_LOCALE,
+    NEXT_PUBLIC_SITE_TZ: process.env.NEXT_PUBLIC_SITE_TZ,
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
   },
   emptyStringAsUndefined: true,

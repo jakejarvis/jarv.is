@@ -1,3 +1,4 @@
+import { env } from "../lib/env";
 import { JsonLd } from "react-schemaorg";
 import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
@@ -7,7 +8,7 @@ import Footer from "../components/Footer";
 import { SkipNavLink, SkipNavTarget } from "../components/SkipNav";
 import { defaultMetadata } from "../lib/helpers/metadata";
 import * as config from "../lib/config";
-import { BASE_URL, MAX_WIDTH, SITE_LOCALE } from "../lib/config/constants";
+import { MAX_WIDTH } from "../lib/config/constants";
 import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <html lang={SITE_LOCALE || "en-US"} suppressHydrationWarning>
+    <html lang={env.NEXT_PUBLIC_SITE_LOCALE} suppressHydrationWarning>
       <head>
         <ThemeScript />
 
@@ -29,12 +30,12 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           item={{
             "@context": "https://schema.org",
             "@type": "Person",
-            "@id": `${BASE_URL}/#person`,
+            "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
             name: config.authorName,
-            url: BASE_URL,
-            image: [`${BASE_URL}/opengraph-image.jpg`],
+            url: env.NEXT_PUBLIC_BASE_URL,
+            image: [`${env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
             sameAs: [
-              `${BASE_URL}`,
+              env.NEXT_PUBLIC_BASE_URL!,
               `https://${config.authorSocial?.mastodon}`,
               `https://github.com/${config.authorSocial?.github}`,
               `https://bsky.app/profile/${config.authorSocial?.bluesky}`,
@@ -51,12 +52,12 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           item={{
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "@id": `${BASE_URL}/#website`,
+            "@id": `${env.NEXT_PUBLIC_BASE_URL}/#website`,
             name: config.siteName,
-            url: BASE_URL,
+            url: env.NEXT_PUBLIC_BASE_URL,
             author: config.authorName,
             description: config.description,
-            inLanguage: SITE_LOCALE,
+            inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
             license: config.licenseUrl,
           }}
         />
