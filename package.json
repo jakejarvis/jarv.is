@@ -49,7 +49,7 @@
     "react-lite-youtube-embed": "^2.4.0",
     "react-schemaorg": "^2.0.0",
     "react-textarea-autosize": "^8.5.9",
-    "react-timeago": "^8.0.0",
+    "react-timeago": "^8.2.0",
     "react-turnstile": "^1.1.4",
     "react-tweet": "^3.2.2",
     "rehype-mdx-import-media": "^1.2.0",
