@@ -14,9 +14,9 @@ My humble abode on the World Wide Web, created and deployed using [Next.js](http
 
 I highly recommend spinning up a [Codespace](https://github.com/features/codespaces) with the button above to start inside of a preconfigured and tested environment. But you can also clone this repository locally, run `pnpm install` to pull down the necessary dependencies and `pnpm dev` to start the local server, and then open [localhost:3000](http://localhost:3000/) in a browser. Pages will live-refresh when source files are changed.
 
-**Be sure to populate the required environment variables!** Refer to [`lib/env.ts`](lib/env.ts), which documents (and strictly [type-checks](https://env.t3.gg/docs/introduction)) these variables. [`.env.example`](.env.example) should be copied and used as a template for a new `.env.local` file, which the local development server will then ingest.
+**Be sure to populate the required environment variables!** Refer to [`lib/env.ts`](lib/env.ts), which documents (and strictly [type-checks](https://env.t3.gg/docs/introduction)) these variables. The included [`.env.example`](.env.example) file should be copied and used as a template for a new `.env.local` file, which the local `next dev` server will then ingest.
 
-> ⚠️ **Currently, there are a few assumptions [sprinkled](https://github.com/search?q=repo%3Ajakejarvis%2Fjarv.is%20VERCEL_&type=code) throughout the repository that this code will be deployed to [Vercel](https://nextjs.org/docs/app/building-your-application/deploying#managed-nextjs-with-vercel) and _only_ Vercel.** If this is not the case, do a quick Command+F for `VERCEL_` and update [their variables](https://vercel.com/docs/environment-variables/system-environment-variables#system-environment-variables) to more appropriate versions. I'll correct this soon™ now that some escape hatches (namely [OpenNext](https://opennext.js.org/)) actually exist...
+> ⚠️ **Currently, there are a few assumptions sprinkled throughout the code that this repo will be deployed to [Vercel](https://nextjs.org/docs/app/building-your-application/deploying#managed-nextjs-with-vercel) and _only_ Vercel.** I'll correct this soon™ now that some escape hatches (namely [OpenNext](https://opennext.js.org/)) actually exist...
 
 ## 🌎 Related
 

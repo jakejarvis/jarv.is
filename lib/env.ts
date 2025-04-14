@@ -1,14 +1,7 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import { vercel } from "@t3-oss/env-nextjs/presets-valibot";
 import * as v from "valibot";
 
 export const env = createEnv({
-  extends: [
-    // NOTE: Some assumptions are sprinkled throughout the code that this site is being deployed on Vercel. If not, find
-    // and replace `env.VERCEL_` (especially `VERCEL_ENV` and `VERCEL_PROJECT_PRODUCTION_URL`) with more appropriate
-    // variables.
-    vercel(),
-  ],
   server: {
     /**
      * Required. GitHub API token used for [/projects](../app/projects/page.tsx) grid. Only needs the `public_repo`
