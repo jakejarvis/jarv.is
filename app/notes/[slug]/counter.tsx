@@ -4,6 +4,7 @@ import CountUp from "../../../components/CountUp";
 import redis from "../../../lib/redis";
 
 const HitCounter = async ({ slug }: { slug: string }) => {
+  // ensure this component isn't triggered by prerenders and/or preloads
   await connection();
 
   try {

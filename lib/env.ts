@@ -94,7 +94,7 @@ export const env = createEnv({
     /**
      * Optional. Locale code to define the site's language in ISO-639 format. Defaults to `en-US`.
      *
-     * @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes#Table
+     * @see https://www.loc.gov/standards/iso639-2/php/code_list.php
      */
     NEXT_PUBLIC_SITE_LOCALE: v.optional(v.string(), "en-US"),
 

@@ -40,7 +40,11 @@ const Page = async () => {
             <li className={styles.post} key={slug}>
               <Time date={date} format="MMM d" className={styles.date} />
               <span>
-                <Link href={`/${POSTS_DIR}/${slug}`} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
+                <Link
+                  dynamicOnHover
+                  href={`/${POSTS_DIR}/${slug}`}
+                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                />
               </span>
             </li>
           ))}

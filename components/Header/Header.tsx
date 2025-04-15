@@ -15,7 +15,7 @@ const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={clsx(styles.header, className)} {...rest}>
       <nav className={styles.nav}>
-        <Link href="/" rel="author" aria-label={config.authorName} plain className={styles.home}>
+        <Link dynamicOnHover href="/" rel="author" aria-label={config.authorName} plain className={styles.home}>
           <Image
             src={avatarImg}
             alt={`Photo of ${config.authorName}`}

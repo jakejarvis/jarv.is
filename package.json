@@ -75,7 +75,7 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.14.1",
     "@types/prop-types": "^15.7.14",
-    "@types/react": "^19.1.1",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@types/react-is": "^19.0.0",
     "babel-plugin-react-compiler": "19.0.0-beta-ebf51a3-20250411",

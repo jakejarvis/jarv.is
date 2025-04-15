@@ -26,6 +26,7 @@ const MenuItem = ({ text, href, icon, current, className, ...rest }: MenuItemPro
   if (href) {
     return (
       <Link
+        dynamicOnHover
         href={href}
         aria-label={text}
         plain

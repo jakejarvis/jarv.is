@@ -125,7 +125,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           className={styles.metaItem}
           style={{
             // fix potential layout shift when number of hits loads
-            minWidth: "7em",
+            minWidth: "6em",
             marginRight: 0,
           }}
         >
