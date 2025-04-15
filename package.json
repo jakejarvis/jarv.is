@@ -28,7 +28,7 @@
     "@octokit/graphql": "^8.2.2",
     "@octokit/graphql-schema": "^15.26.0",
     "@t3-oss/env-nextjs": "^0.12.0",
-    "@upstash/redis": "^1.34.7",
+    "@upstash/redis": "^1.34.8",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "copy-to-clipboard": "^3.3.3",
