@@ -24,11 +24,6 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
   },
-  transpilePackages: [
-    // https://env.t3.gg/docs/nextjs#create-your-schema
-    "@t3-oss/env-core",
-    "@t3-oss/env-nextjs",
-  ],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm|vtt)$/i,
@@ -36,7 +31,7 @@ const nextConfig: NextConfig = {
       generator: {
         // https://github.com/vercel/next.js/blob/4447ea402a50113490103abe14255e95dcc8cf69/packages/next/src/build/webpack-config.ts#L1231
         // https://github.com/vercel/next.js/discussions/18852#discussioncomment-10752440
-        outputPath: path.relative(config.output.path, path.resolve(process.cwd(), ".next/")),
+        outputPath: path.relative(config.output.path, path.join(process.cwd(), ".next/")),
       },
     });
 
@@ -46,9 +41,13 @@ const nextConfig: NextConfig = {
     reactCompiler: true, // https://react.dev/learn/react-compiler
     ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
     dynamicOnHover: true,
-    scrollRestoration: true,
     serverActions: {
-      allowedOrigins: ["jarv.is", "jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion"],
+      // fix CSRF errors from tor reverse proxy
+      // https://nextjs.org/docs/app/building-your-application/deploying/multi-zones#server-actions
+      allowedOrigins: [
+        "jarv.is",
+        ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
+      ],
     },
   },
   eslint: {

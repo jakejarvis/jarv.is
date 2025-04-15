@@ -131,7 +131,7 @@ export const getContent = async (slug: string): Promise<string | undefined> => {
           ],
         },
       })
-      .process(await fs.readFile(path.resolve(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
+      .process(await fs.readFile(path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
 
     // convert the parsed content to a string with "safe" HTML
     return content.toString().replaceAll("<p></p>", "").trim();

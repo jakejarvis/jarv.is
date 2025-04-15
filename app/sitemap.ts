@@ -16,15 +16,14 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   ];
 
   // add each directory in the app folder as a route (excluding special routes)
-  const appDir = path.resolve(process.cwd(), "app");
   (
     await glob("**/page.{tsx,mdx}", {
-      cwd: appDir,
+      cwd: path.join(process.cwd(), "app"),
       ignore: [
-        // homepage already included manually above
-        "page.tsx",
+        // homepage is already included manually above
+        "./page.tsx",
         // don't include dynamic routes
-        "notes/[slug]/page.tsx",
+        "**/\\[*\\]/page.tsx",
       ],
     })
   ).forEach((route) => {
