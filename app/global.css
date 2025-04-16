@@ -27,6 +27,7 @@ samp,
 pre {
   font-size: 1em;
   font-family: var(--fonts-mono);
+  font-variant-ligatures: none; /* i hate them. fwiw. */
 }
 
 small {

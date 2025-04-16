@@ -1,10 +1,8 @@
-.inline,
-.highlighted {
-  font-family: var(--fonts-mono);
-  font-variant-ligatures: none; /* i hate them. fwiw. */
-}
+/**
+ * Inline code
+ **/
 
-.inline {
+:not([data-rehype-pretty-code-figure]) .code {
   padding: 0.2em 0.3em;
   font-size: 0.925em;
   page-break-inside: avoid;
@@ -13,14 +11,18 @@
   border-radius: 0.6em;
 }
 
-figure:has(.highlighted) {
+/**
+ * Syntax-highlighted code blocks
+ **/
+
+[data-rehype-pretty-code-figure]:has(.code) {
   margin: 1em auto;
   position: relative;
   width: 100%;
   background-color: var(--colors-background-header);
 }
 
-.highlighted {
+[data-rehype-pretty-code-figure] .code {
   display: block;
   overflow-x: auto;
   padding: 1em;
@@ -28,48 +30,45 @@ figure:has(.highlighted) {
   tab-size: 2px;
   border: 1px solid var(--colors-kinda-light);
   border-radius: 0.6em;
+  counter-reset: line;
 }
 
-.highlighted [style*="--shiki"] {
+[data-rehype-pretty-code-figure] .code [style*="--shiki"] {
   color: var(--shiki-light);
   font-style: var(--shiki-light-font-style);
   font-weight: var(--shiki-light-font-weight);
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-[data-theme="dark"] .highlighted [style*="--shiki"] {
+[data-theme="dark"] [data-rehype-pretty-code-figure] .code [style*="--shiki"] {
   color: var(--shiki-dark);
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
   text-decoration: var(--shiki-dark-text-decoration);
 }
 
-.highlighted > [data-line]:nth-of-type(1),
-.highlighted > [data-line]:nth-of-type(2) {
+[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]:nth-of-type(1),
+[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]:nth-of-type(2) {
   /* excessive right padding to prevent copy button from covering the first two lines of code */
   padding-right: 4em;
 }
 
-.highlighted[data-line-numbers] {
-  counter-reset: line;
-}
-
-.highlighted[data-line-numbers] > [data-line]::before {
+[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]::before {
   display: inline-block;
   width: 1em;
   margin-right: 1.5em;
   text-align: right;
   color: var(--colors-medium-light);
+  user-select: none;
   counter-increment: line;
   content: counter(line);
-  user-select: none;
 }
 
-.highlighted[data-line-numbers-max-digits="2"] > [data-line]::before {
+[data-rehype-pretty-code-figure] .code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 1.25rem;
 }
 
-.highlighted[data-line-numbers-max-digits="3"] > [data-line]::before {
+[data-rehype-pretty-code-figure] .code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 1.75rem;
 }
 
