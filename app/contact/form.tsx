@@ -105,7 +105,7 @@ const ContactForm = () => {
       </div>
 
       <div style={{ margin: "1em 0" }}>
-        <Turnstile sitekey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} fixedSize />
+        <Turnstile sitekey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} fixedSize />
       </div>
       {!pending && formState.errors?.["cf-turnstile-response"] && (
         <span className={styles.errorMessage}>{formState.errors["cf-turnstile-response"][0]}</span>

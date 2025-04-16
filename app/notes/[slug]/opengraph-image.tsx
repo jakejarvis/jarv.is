@@ -1,10 +1,11 @@
+import { env } from "../../../lib/env";
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
-import { join } from "path";
-import { existsSync } from "fs";
-import { readFile } from "fs/promises";
+import path from "path";
+import fs from "fs";
 import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
-import { POSTS_DIR, AVATAR_PATH } from "../../../lib/config/constants";
+import * as config from "../../../lib/config";
+import { POSTS_DIR } from "../../../lib/config/constants";
 
 export const contentType = "image/png";
 export const size = {
@@ -29,10 +30,10 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
   // https://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src/14115340#14115340
   const NO_IMAGE = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 
-  const imagePath = join(process.cwd(), src);
+  const imagePath = path.join(process.cwd(), src);
 
   try {
-    if (!existsSync(imagePath)) {
+    if (!fs.existsSync(imagePath)) {
       console.error(`[og-image] couldn't find an image file located at "${imagePath}"`);
 
       // return a 1x1 transparent gif if the image doesn't exist instead of crashing
@@ -40,7 +41,7 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
     }
 
     // return the raw image data as a buffer
-    return Uint8Array.from(await readFile(imagePath)).buffer;
+    return Uint8Array.from(await fs.promises.readFile(imagePath)).buffer;
   } catch (error) {
     console.error(`[og-image] found "${imagePath}" but couldn't read it:`, error);
 
@@ -55,6 +56,16 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
 
     // get the post's title and image filename from its frontmatter
     const frontmatter = await getFrontMatter(slug);
+
+    const [postImg, avatarImg, fontRegular, fontSemiBold] = await Promise.all([
+      frontmatter!.image ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter!.image}`) : null,
+
+      // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
+      getLocalImage("app/avatar.jpg"),
+      // load the Geist font directly from its npm package
+      fs.promises.readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf")),
+      fs.promises.readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf")),
+    ]);
 
     // template is HEAVILY inspired by https://og-new.clerkstage.dev/
     return new ImageResponse(
@@ -94,25 +105,6 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
           <div
             style={{
               display: "flex",
-              paddingTop: "2rem",
-              paddingLeft: "2rem",
-            }}
-          >
-            <img
-              // @ts-expect-error
-              src={await getLocalImage(AVATAR_PATH)}
-              alt=""
-              style={{
-                width: "3rem",
-                height: "3rem",
-                borderRadius: "0.75rem",
-              }}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
               width: "100%",
               gap: "1.5rem",
               paddingLeft: "2rem",
@@ -124,33 +116,41 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                 flexDirection: "column",
                 rowGap: "1.5rem",
                 flexShrink: 0,
-                paddingTop: "2.5rem",
-                // don't wrap the title text at 50% if there's no image to leave room for
-                width: frontmatter!.image ? "50%" : "100%",
+                paddingTop: "2rem",
+                // don't wrap the title text if there's no image to leave room for
+                width: postImg ? "35%" : "100%",
+                marginRight: "0.75rem",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  flexGrow: 0,
+                  marginBottom: "0.75rem",
                 }}
               >
+                {avatarImg && (
+                  <img
+                    // @ts-expect-error
+                    src={avatarImg}
+                    alt=""
+                    style={{
+                      width: "3rem",
+                      height: "3rem",
+                      borderRadius: "50%",
+                    }}
+                  />
+                )}
                 <span
                   style={{
-                    fontFamily: "Geist-Regular",
-                    fontWeight: 400,
-                    fontSize: "20px",
-                    color: "#030712",
-                    border: "solid",
-                    borderRadius: "100",
-                    borderWidth: "2px",
-                    paddingRight: "16px",
-                    paddingLeft: "16px",
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
+                    fontSize: "1.825rem",
+                    fontFamily: "Geist-SemiBold",
+                    fontWeight: 700,
+                    lineHeight: "3rem",
+                    letterSpacing: "-0.015em",
+                    marginLeft: "0.75rem",
                   }}
                 >
-                  Notes
+                  {config.siteName}
                 </span>
               </div>
 
@@ -173,6 +173,31 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                 style={{
                   display: "flex",
                   flexGrow: 0,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "Geist-Regular",
+                    fontWeight: 400,
+                    fontSize: "20px",
+                    color: "#030712",
+                    border: "solid",
+                    borderRadius: "100",
+                    borderWidth: "2px",
+                    paddingRight: "16px",
+                    paddingLeft: "16px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  {POSTS_DIR.charAt(0).toUpperCase() + POSTS_DIR.slice(1)}
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexGrow: 0,
                   fontFamily: "Geist-Regular",
                   fontWeight: 400,
                   fontSize: "24px",
@@ -181,7 +206,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                   lineHeight: "1.2",
                 }}
               >
-                {new Date(frontmatter!.date).toLocaleDateString("en-US", {
+                {new Date(frontmatter!.date).toLocaleDateString(env.NEXT_PUBLIC_SITE_LOCALE, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -189,19 +214,23 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               </div>
             </div>
 
-            {frontmatter!.image && (
+            {postImg && (
               <div
                 style={{
                   display: "flex",
-                  width: "100%", // only 50% in reality, but this gives the image the overflow look
+                  width: "100%", // less than half in reality, but this gives the image the overflow look
                   flexGrow: 0,
                 }}
               >
                 <img
                   // @ts-expect-error
-                  src={await getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter!.image}`)}
+                  src={postImg}
                   alt=""
-                  style={{ borderRadius: "0.75rem" }}
+                  style={{
+                    maxHeight: "100%",
+                    minHeight: 630,
+                    width: "auto",
+                  }}
                 />
               </div>
             )}
@@ -213,15 +242,13 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
         fonts: [
           {
             name: "Geist-Regular",
-            // load the Geist font directly from its npm package
-            // IMPORTANT: include this exact path in next.config.ts under "outputFileTracingIncludes"
-            data: await readFile(join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf")),
+            data: fontRegular,
             style: "normal",
             weight: 400,
           },
           {
             name: "Geist-SemiBold",
-            data: await readFile(join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf")),
+            data: fontSemiBold,
             style: "normal",
             weight: 700,
           },

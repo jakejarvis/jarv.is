@@ -2,11 +2,12 @@
  * Inline code
  **/
 
-:not([data-rehype-pretty-code-figure]) .code {
+.code {
   padding: 0.2em 0.3em;
   font-size: 0.925em;
+  tab-size: 2px;
   page-break-inside: avoid;
-  background-color: var(--colors-background-outer);
+  background-color: var(--colors-background-header);
   border: 1px solid var(--colors-kinda-light);
   border-radius: 0.6em;
 }
@@ -15,45 +16,41 @@
  * Syntax-highlighted code blocks
  **/
 
-[data-rehype-pretty-code-figure]:has(.code) {
-  margin: 1em auto;
+figure:has(.code) {
+  margin: 1em 0;
   position: relative;
   width: 100%;
-  background-color: var(--colors-background-header);
+  border-radius: 0.6em;
 }
 
-[data-rehype-pretty-code-figure] .code {
+figure .code {
   display: block;
   overflow-x: auto;
   padding: 1em;
-  font-size: 0.9em;
-  tab-size: 2px;
-  border: 1px solid var(--colors-kinda-light);
-  border-radius: 0.6em;
   counter-reset: line;
 }
 
-[data-rehype-pretty-code-figure] .code [style*="--shiki"] {
+figure .code [style*="--shiki"] {
   color: var(--shiki-light);
   font-style: var(--shiki-light-font-style);
   font-weight: var(--shiki-light-font-weight);
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-[data-theme="dark"] [data-rehype-pretty-code-figure] .code [style*="--shiki"] {
+[data-theme="dark"] figure .code [style*="--shiki"] {
   color: var(--shiki-dark);
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
   text-decoration: var(--shiki-dark-text-decoration);
 }
 
-[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]:nth-of-type(1),
-[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]:nth-of-type(2) {
+figure .code > [data-line]:nth-of-type(1),
+figure .code > [data-line]:nth-of-type(2) {
   /* excessive right padding to prevent copy button from covering the first two lines of code */
   padding-right: 4em;
 }
 
-[data-rehype-pretty-code-figure] .code[data-line-numbers] > [data-line]::before {
+figure .code[data-line-numbers] > [data-line]::before {
   display: inline-block;
   width: 1em;
   margin-right: 1.5em;
@@ -64,11 +61,11 @@
   content: counter(line);
 }
 
-[data-rehype-pretty-code-figure] .code[data-line-numbers-max-digits="2"] > [data-line]::before {
+figure .code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 1.25rem;
 }
 
-[data-rehype-pretty-code-figure] .code[data-line-numbers-max-digits="3"] > [data-line]::before {
+figure .code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 1.75rem;
 }
 

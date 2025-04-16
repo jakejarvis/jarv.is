@@ -72,7 +72,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        secret: env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA",
+        secret: env.TURNSTILE_SECRET_KEY,
         response: data.output["cf-turnstile-response"],
         remoteip,
       }),

@@ -112,16 +112,16 @@ export const env = createEnv({
      *
      * @see https://developers.cloudflare.com/turnstile/troubleshooting/testing/
      */
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "XXXX.DUMMY.TOKEN.XXXX"),
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "1x00000000000000000000AA"),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL:
       process.env.NEXT_PUBLIC_BASE_URL ||
       // Vercel: https://vercel.com/docs/environment-variables/system-environment-variables
       (process.env.VERCEL
-        ? process.env.VERCEL_ENV === "production" && process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? process.env.VERCEL_ENV === "production"
           ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-          : process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL
+          : process.env.VERCEL_ENV === "preview"
             ? `https://${process.env.VERCEL_BRANCH_URL}`
             : process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}`
@@ -129,7 +129,7 @@ export const env = createEnv({
         : undefined) ||
       // Netlify: https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
       (process.env.NETLIFY
-        ? process.env.CONTEXT === "production" && process.env.URL
+        ? process.env.CONTEXT === "production"
           ? `${process.env.URL}`
           : process.env.DEPLOY_PRIME_URL
             ? `${process.env.DEPLOY_PRIME_URL}`

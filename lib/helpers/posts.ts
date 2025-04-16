@@ -97,7 +97,7 @@ Promise<any> => {
     ) as FrontMatter[];
   }
 
-  throw new Error(`getFrontMatter() called with invalid argument.`);
+  throw new Error("getFrontMatter() called with invalid argument.");
 };
 
 /** Returns the content of a post with very limited processing to include in RSS feeds */
