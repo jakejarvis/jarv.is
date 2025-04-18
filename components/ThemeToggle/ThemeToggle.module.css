@@ -1,4 +1,5 @@
 .toggle {
+  display: block;
   border: 0;
   padding: 0.6em;
   margin-right: -0.6em;
@@ -15,7 +16,7 @@
 /* hacky way to avoid flashing icon for a few milliseconds on initial render */
 .toggle > .sun,
 [data-theme="dark"] .toggle > .moon {
-  display: inline-block;
+  display: inherit;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */

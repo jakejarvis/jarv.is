@@ -1,7 +1,8 @@
 import { env } from "../../../lib/env";
 import { Suspense } from "react";
 import { JsonLd } from "react-schemaorg";
-import { CalendarIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
+import clsx from "clsx";
+import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "../../../components/Link";
 import Time from "../../../components/Time";
 import Comments from "../../../components/Comments";
@@ -89,16 +90,14 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       />
 
       <div className={styles.meta}>
-        <div className={styles.metaItem}>
-          <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} plain className={styles.metaLink}>
-            <CalendarIcon size="1.2em" className={styles.metaIcon} />
-            <Time date={frontmatter!.date} format="MMMM d, y" />
-          </Link>
-        </div>
+        <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} plain className={clsx(styles.metaItem, styles.metaLink)}>
+          <CalendarDaysIcon size="1.25em" className={styles.metaIcon} />
+          <Time date={frontmatter!.date} format="MMMM d, y" />
+        </Link>
 
         {frontmatter!.tags && (
           <div className={styles.metaItem}>
-            <TagIcon size="1.2em" className={styles.metaIcon} />
+            <TagIcon size="1.25em" className={styles.metaIcon} />
             <span className={styles.metaTags}>
               {frontmatter!.tags.map((tag) => (
                 <span key={tag} title={tag} className={styles.metaTag} aria-label={`Tagged with ${tag}`}>
@@ -109,17 +108,15 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </div>
         )}
 
-        <div className={styles.metaItem}>
-          <Link
-            href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
-            title={`Edit "${frontmatter!.title}" on GitHub`}
-            plain
-            className={styles.metaLink}
-          >
-            <SquarePenIcon size="1.2em" className={styles.metaIcon} />
-            <span>Improve This Post</span>
-          </Link>
-        </div>
+        <Link
+          href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
+          title={`Edit "${frontmatter!.title}" on GitHub`}
+          plain
+          className={clsx(styles.metaItem, styles.metaLink)}
+        >
+          <SquarePenIcon size="1.25em" className={styles.metaIcon} />
+          <span>Improve This Post</span>
+        </Link>
 
         <div
           className={styles.metaItem}
@@ -129,7 +126,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             marginRight: 0,
           }}
         >
-          <EyeIcon size="1.2em" className={styles.metaIcon} />
+          <EyeIcon size="1.25em" className={styles.metaIcon} />
           <Suspense
             // when this loads, the component will count up from zero to the actual number of hits, so we can simply
             // show a zero here as a "loading indicator"

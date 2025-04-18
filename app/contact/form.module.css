@@ -37,7 +37,8 @@
 }
 
 .submitButton {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
   height: 3.25em;
   padding: 1em 1.25em;
   margin-right: 1.5em;
@@ -56,9 +57,16 @@
   background-color: var(--colors-link);
 }
 
+.submitIcon {
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 0.5em;
+}
+
 .result {
+  display: flex;
+  align-items: center;
   font-weight: 600;
-  line-height: 1.5;
 }
 
 .result.success {
@@ -70,8 +78,7 @@
 }
 
 .resultIcon {
-  display: inline;
   width: 1.3em;
   height: 1.3em;
-  vertical-align: -0.3em;
+  margin-right: 0.25em;
 }

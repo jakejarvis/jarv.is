@@ -5,7 +5,7 @@ import { useActionState, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Turnstile from "react-turnstile";
 import clsx from "clsx";
-import { CheckIcon, XIcon } from "lucide-react";
+import { SendIcon, LoaderIcon, CheckIcon, XIcon } from "lucide-react";
 import Link from "../../components/Link";
 
 import { send, type ContactState, type ContactInput } from "./action";
@@ -80,13 +80,12 @@ const ContactForm = () => {
           stroke="currentColor"
           strokeWidth="0"
           viewBox="0 0 24 24"
-          height="1.25em"
           width="1.25em"
+          height="1.25em"
           style={{
-            display: "inline",
             width: "1.25em",
             height: "1.25em",
-            verticalAlign: "-0.25em",
+            verticalAlign: "text-top",
             marginRight: "0.25em",
           }}
           xmlns="http://www.w3.org/2000/svg"
@@ -115,19 +114,12 @@ const ContactForm = () => {
         {!formState.success && (
           <button type="submit" disabled={pending} className={styles.submitButton}>
             {pending ? (
-              <span>Sending...</span>
+              <>
+                <LoaderIcon size="1.3em" className={styles.submitIcon} /> <span>Sending...</span>
+              </>
             ) : (
               <>
-                <span
-                  style={{
-                    fontSize: "1.3em",
-                    marginRight: "0.3em",
-                    lineHeight: "1",
-                  }}
-                >
-                  📤
-                </span>{" "}
-                <span>Send</span>
+                <SendIcon size="1.3em" className={styles.submitIcon} /> <span>Send</span>
               </>
             )}
           </button>

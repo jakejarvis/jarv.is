@@ -22,7 +22,7 @@
 }
 
 .home {
-  display: inline-flex;
+  display: flex;
   flex-shrink: 0;
   align-items: center;
   color: var(--colors-medium-dark) !important;

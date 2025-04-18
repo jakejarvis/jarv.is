@@ -15,6 +15,14 @@ export const metadata = addMetadata({
   alternates: {
     canonical: "/birthday",
   },
+  openGraph: {
+    videos: [
+      {
+        url: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+        type: "video/webm",
+      },
+    ],
+  },
 });
 
 const Page = () => {

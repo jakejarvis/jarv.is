@@ -27,7 +27,13 @@ const Menu = ({ className, ...rest }: MenuProps) => {
         );
       })}
 
-      <li className={styles.item}>
+      <li
+        className={styles.item}
+        style={{
+          // manually align the theme toggle with the rest of the menu icons
+          paddingTop: "0.2em",
+        }}
+      >
         <MenuItem
           // @ts-expect-error
           icon={ThemeToggle}

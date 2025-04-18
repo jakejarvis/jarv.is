@@ -17,6 +17,14 @@ export const metadata = addMetadata({
   alternates: {
     canonical: "/hillary",
   },
+  openGraph: {
+    videos: [
+      {
+        url: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+        type: "video/webm",
+      },
+    ],
+  },
 });
 
 const Page = () => {

@@ -13,8 +13,9 @@
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "test -d node_modules/husky && husky || echo \"skipping husky\""
   },
   "dependencies": {
     "@date-fns/tz": "^1.2.0",
@@ -37,7 +38,7 @@
     "feed": "^4.2.2",
     "geist": "^1.3.1",
     "html-entities": "^2.6.0",
-    "lucide-react": "0.488.0",
+    "lucide-react": "0.501.0",
     "next": "15.3.1-canary.13",
     "polished": "^4.3.1",
     "prop-types": "^15.8.1",

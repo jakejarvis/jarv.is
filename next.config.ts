@@ -11,8 +11,13 @@ import "./lib/env";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  productionBrowserSourceMaps: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",
@@ -24,6 +29,7 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
   },
+  productionBrowserSourceMaps: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm|vtt)$/i,
@@ -49,9 +55,6 @@ const nextConfig: NextConfig = {
         ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
       ],
     },
-  },
-  eslint: {
-    dirs: ["app", "components", "contexts", "hooks", "lib", "notes"],
   },
   headers: async () => [
     {

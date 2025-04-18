@@ -275,7 +275,7 @@ const Page = () => {
             darkColor="#959595"
             plain
           >
-            <LockIcon size="1.25em" style={{ verticalAlign: "-0.25em" }} />{" "}
+            <LockIcon size="1.25em" style={{ verticalAlign: "text-top" }} />{" "}
             <code
               style={{
                 margin: "0 0.15em",

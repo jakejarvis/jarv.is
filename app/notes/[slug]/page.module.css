@@ -1,5 +1,6 @@
 .meta {
-  display: inline-flex;
+  display: flex;
+  justify-items: flex-start;
   flex-wrap: wrap;
   font-size: 0.925em;
   line-height: 2.3;
@@ -8,6 +9,8 @@
 }
 
 .meta .metaItem {
+  display: inline-flex;
+  align-items: center;
   margin-right: 1.6em;
   white-space: nowrap;
 }
@@ -17,17 +20,16 @@
 }
 
 .meta .metaIcon {
-  display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: -0.225em;
+  width: 1.25em;
+  height: 1.25em;
   margin-right: 0.6em;
+  flex-shrink: 0;
 }
 
 .meta .metaTags {
-  white-space: normal;
   display: inline-flex;
   flex-wrap: wrap;
+  white-space: normal;
 }
 
 .meta .metaTag {

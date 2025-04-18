@@ -1,6 +1,8 @@
 .link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 0.6em;
+  margin-top: 0.2em;
   color: var(--colors-medium-dark) !important;
 }
 
@@ -17,17 +19,16 @@
 }
 
 .icon {
-  display: inline-block;
+  display: block;
   width: 1.25em;
   height: 1.25em;
-  vertical-align: -0.3em;
 }
 
 .label {
+  margin-left: 0.7em;
   font-size: 0.925em;
   font-weight: 500;
   letter-spacing: 0.025em;
-  margin-left: 0.7em;
 }
 
 @media (max-width: 768px) {

@@ -1,3 +1,4 @@
+import { LockIcon } from "lucide-react";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import { addMetadata } from "../../lib/helpers/metadata";
@@ -28,7 +29,15 @@ const Page = () => {
         <Link href="https://fediverse.jarv.is/@jake">direct message on Mastodon</Link>.
       </p>
       <p>
-        🔐 You can grab my public key here:{" "}
+        <LockIcon
+          size="0.975em"
+          style={{
+            marginRight: "0.15em",
+            stroke: "var(--colors-warning)",
+            verticalAlign: "middle",
+          }}
+        />{" "}
+        You can grab my public key here:{" "}
         <Link href="https://jrvs.io/pgp" title="My Public Key">
           <code
             style={{
