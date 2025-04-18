@@ -22,7 +22,7 @@ const HitCounter = async ({ slug }: { slug: string }) => {
       </span>
     );
   } catch (error) {
-    console.error("[hit counter] fatal error:", error);
+    console.error("[/notes/[slug]/counter] fatal error:", error);
 
     return <span title="Error getting views! :(">?</span>;
   }

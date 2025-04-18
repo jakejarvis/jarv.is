@@ -30,8 +30,6 @@ const ContactSchema = v.object({
     v.nonEmpty("Just do the stinkin CAPTCHA, human! 🤖"),
     // very rudimentary length check based on Cloudflare's docs
     // https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-    v.minLength("XXXX.DUMMY.TOKEN.XXXX".length),
-    // "A Turnstile token can have up to 2048 characters."
     // https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
     v.maxLength(2048),
     v.readonly()
@@ -48,7 +46,7 @@ export type ContactState = {
 
 export const send = async (state: ContactState, payload: FormData): Promise<ContactState> => {
   // TODO: remove after debugging why automated spam entries are causing 500 errors
-  console.debug("[contact form] received payload:", payload);
+  console.debug("[/contact] received payload:", payload);
 
   try {
     const data = v.safeParse(ContactSchema, Object.fromEntries(payload));
@@ -80,7 +78,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
     });
 
     if (!turnstileResponse || !turnstileResponse.ok) {
-      throw new Error(`[contact form] turnstile validation failed: ${turnstileResponse.status}`);
+      throw new Error(`[/contact] turnstile validation failed: ${turnstileResponse.status}`);
     }
 
     const turnstileData = (await turnstileResponse.json()) as { success: boolean };
@@ -92,9 +90,9 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       };
     }
 
-    if (!env.RESEND_FROM_EMAIL) {
+    if (env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
       // https://resend.com/docs/api-reference/emails/send-email
-      console.warn("[contact form] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
+      console.warn("[/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
     }
 
     // send email
@@ -109,7 +107,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
 
     return { success: true, message: "Thanks! You should hear from me soon." };
   } catch (error) {
-    console.error("[contact form] fatal error:", error);
+    console.error("[/contact] fatal error:", error);
 
     return {
       success: false,

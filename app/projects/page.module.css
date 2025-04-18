@@ -1,3 +1,8 @@
+.heading {
+  font-weight: 400;
+  font-size: 1.4em;
+}
+
 .grid {
   display: flex;
   flex-flow: row wrap;

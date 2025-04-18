@@ -34,7 +34,7 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
 
   try {
     if (!fs.existsSync(imagePath)) {
-      console.error(`[og-image] couldn't find an image file located at "${imagePath}"`);
+      console.error(`[/notes/[slug]/opengraph-image] couldn't find an image file located at "${imagePath}"`);
 
       // return a 1x1 transparent gif if the image doesn't exist instead of crashing
       return NO_IMAGE;
@@ -43,7 +43,7 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
     // return the raw image data as a buffer
     return Uint8Array.from(await fs.promises.readFile(imagePath)).buffer;
   } catch (error) {
-    console.error(`[og-image] found "${imagePath}" but couldn't read it:`, error);
+    console.error(`[/notes/[slug]/opengraph-image] found "${imagePath}" but couldn't read it:`, error);
 
     // fail silently and return a 1x1 transparent gif instead of crashing
     return NO_IMAGE;
@@ -256,7 +256,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
       }
     );
   } catch (error) {
-    console.error("[og-image] error generating image:", error);
+    console.error("[/notes/[slug]/opengraph-image] error generating open graph image:", error);
     notFound();
   }
 };

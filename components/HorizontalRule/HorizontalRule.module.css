@@ -1,6 +1,7 @@
 .hr {
   margin: 1.5em auto;
-  height: 0.175em;
+  max-width: calc(var(--max-width) - 1.5em);
+  height: 1px;
   border: 0;
   background-color: var(--colors-light);
 }
