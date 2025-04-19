@@ -33,21 +33,15 @@ const Calendar = ({ data, className, ...rest }: CalendarProps) => {
           ],
         }}
         labels={{
-          totalCount: `{{count}} contributions in the last year`,
+          totalCount: "{{count}} contributions in the last year",
         }}
         maxLevel={4}
-        renderBlock={(block, activity) => (
-          <a
-            href={`https://github.com/jakejarvis?tab=overview&from=${activity.date}&to=${activity.date}`}
-            target="_blank"
-            rel="noopener"
-          >
-            {cloneElement(block, {
-              "data-tooltip-id": "activity-tooltip",
-              "data-tooltip-html": `${activity.count === 0 ? "No" : activity.count} contribution${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`,
-            })}
-          </a>
-        )}
+        renderBlock={(block, activity) =>
+          cloneElement(block, {
+            "data-tooltip-id": "activity-tooltip",
+            "data-tooltip-html": `${activity.count === 0 ? "No" : activity.count} contribution${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`,
+          })
+        }
         fontSize={13}
       />
 
