@@ -5,8 +5,6 @@ import Video from "../../components/Video";
 import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
-import mp4 from "./birthday.mp4";
-import webm from "./birthday.webm";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = createMetadata({
@@ -16,7 +14,7 @@ export const metadata = createMetadata({
   openGraph: {
     videos: [
       {
-        url: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+        url: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/birthday-pavk1LBK4H6xF8ZWeR0oTcaabGuQ8T.webm",
         type: "video/webm",
       },
     ],
@@ -32,7 +30,8 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          contentUrl: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+          contentUrl:
+            "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/birthday-pavk1LBK4H6xF8ZWeR0oTcaabGuQ8T.webm",
           thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
           embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/birthday`,
           uploadDate: "1996-02-06T00:00:00Z",
@@ -42,7 +41,13 @@ const Page = () => {
 
       <PageTitle canonical="/birthday">1996.mov</PageTitle>
 
-      <Video src={[webm, mp4]} poster={thumbnail.src} />
+      <Video
+        src={[
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/birthday-pavk1LBK4H6xF8ZWeR0oTcaabGuQ8T.webm",
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/birthday-EkbYbrKY8reheQ4UPcP22ipzpMZ2MC.mp4",
+        ]}
+        poster={thumbnail.src}
+      />
     </>
   );
 };

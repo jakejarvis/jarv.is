@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports, import/no-anonymous-default-export */
 
-import path from "path";
-import { visit } from "unist-util-visit";
 import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
 import type { NextConfig } from "next";
 
@@ -18,6 +16,17 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ijyxfbpcm3itvdly.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
+    ],
+  },
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",
@@ -26,23 +35,7 @@ const nextConfig: NextConfig = {
       "./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
     ],
   },
-  outputFileTracingExcludes: {
-    "*": ["./public/**/*", "**/*.mp4", "**/*.webm", "**/*.vtt"],
-  },
   productionBrowserSourceMaps: true,
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(mp4|webm|vtt)$/i,
-      type: "asset/resource",
-      generator: {
-        // https://github.com/vercel/next.js/blob/4447ea402a50113490103abe14255e95dcc8cf69/packages/next/src/build/webpack-config.ts#L1231
-        // https://github.com/vercel/next.js/discussions/18852#discussioncomment-10752440
-        outputPath: path.relative(config.output.path, path.join(process.cwd(), ".next/")),
-      },
-    });
-
-    return config;
-  },
   experimental: {
     reactCompiler: true, // https://react.dev/learn/react-compiler
     ppr: "incremental", // https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
@@ -129,8 +122,11 @@ const nextConfig: NextConfig = {
     { source: "/rss", destination: "/feed.xml", permanent: true },
     { source: "/blog/(.*)", destination: "/notes", permanent: true },
     { source: "/archives/(.*)", destination: "/notes", permanent: true },
-    { source: "/resume", destination: "/static/resume.pdf", permanent: false },
-    { source: "/resume.pdf", destination: "/static/resume.pdf", permanent: false },
+    {
+      source: "/static/daily.pdf",
+      destination: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/daily-C0dPhAyjDegAgsFDXUwOu5WAAgGdqP.pdf",
+      permanent: false,
+    },
 
     // WordPress permalinks:
     {
@@ -166,23 +162,6 @@ const nextPlugins: Array<
         mdxPlugins.remarkMdxFrontmatter,
         mdxPlugins.remarkGfm,
         mdxPlugins.remarkSmartypants,
-        // workaround for rehype-mdx-import-media not applying to `<video>` tags:
-        // https://github.com/Chailotl/remark-videos/blob/851c332993210e6f091453f7ed887be24492bcee/index.js
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        () => (tree: any) => {
-          visit(tree, "image", (node) => {
-            if (node.url.match(/\.(mp4|webm)$/i)) {
-              node.type = "element";
-              node.data = {
-                hName: "video",
-                hProperties: {
-                  src: node.url,
-                  // TODO: make this even hackier and pass an autoplay option in the alt text or something
-                },
-              };
-            }
-          });
-        },
       ],
       rehypePlugins: [
         mdxPlugins.rehypeUnwrapImages,

@@ -24,6 +24,7 @@ const Video = ({ src, autoPlay, className, children, ...rest }: VideoProps) => {
             preload: "metadata",
             controls: true,
           })}
+      crossOrigin="anonymous"
       className={clsx(styles.player, className)}
       {...rest}
     >

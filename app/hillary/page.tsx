@@ -6,9 +6,6 @@ import Video from "../../components/Video";
 import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
-import webm from "./convention.webm";
-import mp4 from "./convention.mp4";
-import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = createMetadata({
@@ -18,7 +15,7 @@ export const metadata = createMetadata({
   openGraph: {
     videos: [
       {
-        url: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+        url: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention-ZTUBLwMcmOE8EJ4tNAhpCli4NAHKcG.webm",
         type: "video/webm",
       },
     ],
@@ -34,7 +31,8 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          contentUrl: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+          contentUrl:
+            "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention-ZTUBLwMcmOE8EJ4tNAhpCli4NAHKcG.webm",
           thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
           embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/hillary`,
           uploadDate: "2016-07-25T00:00:00Z",
@@ -44,7 +42,14 @@ const Page = () => {
 
       <PageTitle canonical="/hillary">HRC.mov</PageTitle>
 
-      <Video src={[webm, mp4, subtitles]} poster={thumbnail.src} />
+      <Video
+        src={[
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention-ZTUBLwMcmOE8EJ4tNAhpCli4NAHKcG.webm",
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention-T6klrrArGL0IO4QPaloIiIH164UqUC.mp4",
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention.en-uHnecgVCrT9xA8EkzdEaeIwB0rHFC9.vtt",
+        ]}
+        poster={thumbnail.src}
+      />
 
       <p
         style={{

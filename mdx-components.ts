@@ -22,7 +22,6 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     a: Link,
     code: Code,
     blockquote: Blockquote,
-    video: Video,
     hr: HorizontalRule,
     h1: Heading.H1,
     h2: Heading.H2,
@@ -35,6 +34,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     li: List.ListItem,
 
     // third-party embeds:
+    Video,
     Tweet,
     YouTube,
     Gist,

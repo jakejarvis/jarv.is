@@ -6,9 +6,6 @@ import Video from "../../components/Video";
 import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
-import mp4 from "./leo.mp4";
-import webm from "./leo.webm";
-import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
 export const metadata = createMetadata({
@@ -18,7 +15,7 @@ export const metadata = createMetadata({
   openGraph: {
     videos: [
       {
-        url: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+        url: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo-uoCXHS9gViyRnQhr8CEGXFvj4VGh5Y.webm",
         type: "video/webm",
       },
     ],
@@ -34,7 +31,7 @@ const Page = () => {
           "@type": "VideoObject",
           name: metadata.title as string,
           description: metadata.description as string,
-          contentUrl: `${env.NEXT_PUBLIC_BASE_URL}${webm}`,
+          contentUrl: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo-uoCXHS9gViyRnQhr8CEGXFvj4VGh5Y.webm",
           thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
           embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/leo`,
           uploadDate: "2007-05-10T00:00:00Z",
@@ -44,7 +41,14 @@ const Page = () => {
 
       <PageTitle canonical="/leo">TheLab.mov</PageTitle>
 
-      <Video src={[webm, mp4, subtitles]} poster={thumbnail.src} />
+      <Video
+        src={[
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo-uoCXHS9gViyRnQhr8CEGXFvj4VGh5Y.webm",
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo-Blp1bsf872vuY05LuSw7fjZBHURWT1.mp4",
+          "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo.en-TsoyI7XMA10Uaj8EFZV1bQ65At35gz.vtt",
+        ]}
+        poster={thumbnail.src}
+      />
 
       <p
         style={{

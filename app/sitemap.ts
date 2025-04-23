@@ -10,8 +10,8 @@ const excludedRoutes = [
   // homepage is already included manually
   "./",
   // other excluded pages
-  "./license",
-  "./privacy",
+  // "./license",
+  // "./privacy",
 ];
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {

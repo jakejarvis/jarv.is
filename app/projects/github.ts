@@ -2,8 +2,8 @@
 import "server-only";
 
 import { env } from "../../lib/env";
-import { graphql } from "@octokit/graphql";
 import * as cheerio from "cheerio";
+import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
 
 export const getContributions = async (): Promise<
