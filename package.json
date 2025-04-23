@@ -49,7 +49,7 @@
     "react-dom": "19.1.0",
     "react-innertext": "^1.1.5",
     "react-is": "19.1.0",
-    "react-lite-youtube-embed": "^2.5.0",
+    "react-lite-youtube-embed": "^2.5.1",
     "react-schemaorg": "^2.0.0",
     "react-textarea-autosize": "^8.5.9",
     "react-timeago": "^8.2.0",
