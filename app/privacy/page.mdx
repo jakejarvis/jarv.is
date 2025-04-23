@@ -1,11 +1,10 @@
 import PageTitle from "../../components/PageTitle";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "Privacy",
-  alternates: {
-    canonical: "/privacy",
-  },
+  description: "This website's extremely simple privacy policy.",
+  canonical: "/privacy",
 });
 
 <PageTitle canonical="/privacy">Privacy</PageTitle>

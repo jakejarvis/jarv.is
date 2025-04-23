@@ -9,16 +9,15 @@ import { SkipNavLink, SkipNavTarget } from "../components/SkipNav";
 import { defaultMetadata } from "../lib/helpers/metadata";
 import * as config from "../lib/config";
 import { MAX_WIDTH } from "../lib/config/constants";
-import type { Metadata } from "next";
 import type { Person, WebSite } from "schema-dts";
 
 import { GeistMono, GeistSans } from "./fonts";
-import "./global.css";
+import "./globals.css";
 import "./themes.css";
 
 import styles from "./layout.module.css";
 
-export const metadata: Metadata = defaultMetadata;
+export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
@@ -35,7 +34,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             url: env.NEXT_PUBLIC_BASE_URL,
             image: [`${env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
             sameAs: [
-              env.NEXT_PUBLIC_BASE_URL!,
+              env.NEXT_PUBLIC_BASE_URL,
               `https://${config.authorSocial?.mastodon}`,
               `https://github.com/${config.authorSocial?.github}`,
               `https://bsky.app/profile/${config.authorSocial?.bluesky}`,

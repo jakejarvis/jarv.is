@@ -3,7 +3,7 @@ import * as config from "../config";
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
-  metadataBase: env.NEXT_PUBLIC_BASE_URL ? new URL(env.NEXT_PUBLIC_BASE_URL) : undefined,
+  metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   title: {
     template: `%s – ${config.siteName}`,
     default: `${config.siteName} – ${config.tagline}`,
@@ -48,15 +48,15 @@ export const defaultMetadata: Metadata = {
  * Helper function to deep merge a page's metadata into the default site metadata
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
  */
-export const addMetadata = (metadata: Metadata): Metadata => {
+export const createMetadata = (metadata: Metadata & { canonical: string }): Metadata => {
   return {
     ...defaultMetadata,
     ...metadata,
     openGraph: {
       ...defaultMetadata.openGraph,
-      title: metadata.title as string,
-      description: metadata.description as string,
-      url: metadata.alternates?.canonical as string,
+      title: metadata.title!,
+      description: metadata.description!,
+      url: metadata.canonical,
       ...metadata.openGraph,
     },
     twitter: {
@@ -65,6 +65,7 @@ export const addMetadata = (metadata: Metadata): Metadata => {
     },
     alternates: {
       ...defaultMetadata.alternates,
+      canonical: metadata.canonical,
       ...metadata.alternates,
     },
     other: {

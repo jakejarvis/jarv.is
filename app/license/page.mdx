@@ -1,11 +1,10 @@
 import PageTitle from "../../components/PageTitle";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "License",
-  alternates: {
-    canonical: "/license",
-  },
+  description: "This site's content is licensed under CC-BY-4.0.",
+  canonical: "/license",
 });
 
 <PageTitle canonical="/license">License</PageTitle>

@@ -1,6 +1,35 @@
 .heading {
-  font-weight: 400;
   font-size: 1.4em;
+  font-weight: 400;
+}
+
+.calendar {
+  --activity-0: #ebedf0;
+  --activity-1: #9be9a8;
+  --activity-2: #40c463;
+  --activity-3: #30a14e;
+  --activity-4: #216e39;
+}
+
+[data-theme="dark"] .calendar {
+  --activity-0: #252525;
+  --activity-1: #033a16;
+  --activity-2: #196c2e;
+  --activity-3: #2ea043;
+  --activity-4: #56d364;
+}
+
+.calendar :global(.react-activity-calendar) {
+  margin: 1em auto 2em;
+}
+
+.calendar :global(.react-activity-calendar__count),
+.calendar :global(.react-activity-calendar__legend-month) {
+  color: var(--colors-medium);
+}
+
+.calendar :global(.react-activity-calendar__legend-colors) {
+  color: var(--colors-medium-light);
 }
 
 .grid {

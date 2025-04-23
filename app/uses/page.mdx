@@ -1,12 +1,10 @@
 import PageTitle from "../../components/PageTitle";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "/uses",
   description: "Things I use daily.",
-  alternates: {
-    canonical: "/uses",
-  },
+  canonical: "/uses",
 });
 
 <PageTitle canonical="/uses">Uses</PageTitle>

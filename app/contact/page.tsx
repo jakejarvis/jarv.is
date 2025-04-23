@@ -1,16 +1,14 @@
 import { LockIcon } from "lucide-react";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
 import ContactForm from "./form";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "Contact Me",
   description: "Fill out this quick form and I'll get back to you as soon as I can.",
-  alternates: {
-    canonical: "/contact",
-  },
+  canonical: "/contact",
 });
 
 const Page = () => {

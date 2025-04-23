@@ -9,7 +9,7 @@ import Comments from "../../../components/Comments";
 import Loading from "../../../components/Loading";
 import HitCounter from "./counter";
 import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
-import { addMetadata } from "../../../lib/helpers/metadata";
+import { createMetadata } from "../../../lib/helpers/metadata";
 import * as config from "../../../lib/config";
 import { POSTS_DIR } from "../../../lib/config/constants";
 import { size as ogImageSize } from "./opengraph-image";
@@ -37,9 +37,10 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
 
-  return addMetadata({
+  return createMetadata({
     title: frontmatter!.title,
     description: frontmatter!.description,
+    canonical: `/${POSTS_DIR}/${slug}`,
     openGraph: {
       type: "article",
       authors: [config.authorName],
@@ -49,9 +50,6 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: "summary_large_image",
-    },
-    alternates: {
-      canonical: `/${POSTS_DIR}/${slug}`,
     },
   });
 };
@@ -63,7 +61,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
   return (
-    <>
+    <article>
       <JsonLd<BlogPosting>
         item={{
           "@context": "https://schema.org",
@@ -155,7 +153,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </Suspense>
         </div>
       )}
-    </>
+    </article>
   );
 };
 

@@ -3,22 +3,20 @@
 import { cloneElement } from "react";
 import { ActivityCalendar } from "react-activity-calendar";
 import { Tooltip } from "react-tooltip";
-import clsx from "clsx";
 import { format } from "date-fns";
 import type { ComponentPropsWithoutRef } from "react";
 import type { Activity } from "react-activity-calendar";
 
-import styles from "./calendar.module.css";
 import "react-tooltip/dist/react-tooltip.css";
 
 export type CalendarProps = ComponentPropsWithoutRef<"div"> & {
   data: Activity[];
 };
 
-const Calendar = ({ data, className, ...rest }: CalendarProps) => {
+const Calendar = ({ data, ...rest }: CalendarProps) => {
   // heavily inspired by https://github.com/grubersjoe/react-github-calendar
   return (
-    <div className={clsx(styles.calendar, className)} {...rest}>
+    <div {...rest}>
       <ActivityCalendar
         data={data}
         colorScheme="dark"
@@ -45,7 +43,7 @@ const Calendar = ({ data, className, ...rest }: CalendarProps) => {
         fontSize={13}
       />
 
-      <Tooltip id="activity-tooltip" className={styles.tooltip} />
+      <Tooltip id="activity-tooltip" />
     </div>
   );
 };

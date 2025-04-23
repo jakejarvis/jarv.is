@@ -4,36 +4,50 @@ import glob from "fast-glob";
 import { getFrontMatter } from "../lib/helpers/posts";
 import type { MetadataRoute } from "next";
 
+// routes in /app (in other words, directories containing a page.tsx/mdx file) are automatically included; add a route
+// here to exclude it.
+const excludedRoutes = [
+  // homepage is already included manually
+  "./",
+  // other excluded pages
+  "./license",
+  "./privacy",
+];
+
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   // start with manual routes
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: `${env.NEXT_PUBLIC_BASE_URL}`,
+      url: env.NEXT_PUBLIC_BASE_URL,
       priority: 1.0,
       lastModified: new Date(),
     },
   ];
 
-  // add each directory in the app folder as a route (excluding special routes)
-  (
-    await glob("**/page.{tsx,mdx}", {
+  const [staticRoutes, frontmatter] = await Promise.all([
+    // static routes in app directory
+    glob("**/page.{tsx,mdx}", {
       cwd: path.join(process.cwd(), "app"),
       ignore: [
-        // homepage is already included manually above
-        "./page.tsx",
+        ...excludedRoutes.map((route) => `${route}/page.{tsx,mdx}`),
         // don't include dynamic routes
-        "**/\\[*\\]/page.tsx",
+        "**/\\[*\\]/page.{tsx,mdx}",
       ],
-    })
-  ).forEach((route) => {
+    }),
+
+    // blog posts
+    getFrontMatter(),
+  ]);
+
+  // add each directory in the app folder as a route (excluding special routes)
+  staticRoutes.forEach((route) => {
     routes.push({
       // remove matching page.(tsx|mdx) file and make all URLs absolute
       url: `${env.NEXT_PUBLIC_BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
     });
   });
 
-  const frontmatter = await getFrontMatter();
   frontmatter.forEach((post) => {
     routes.push({
       url: post.permalink,
@@ -45,7 +59,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   // sort alphabetically by URL, sometimes fast-glob returns results in a different order
   routes.sort((a, b) => (a.url < b.url ? -1 : 1));
 
-  return [...routes];
+  return routes;
 };
 
 export default sitemap;

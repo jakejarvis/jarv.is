@@ -3,7 +3,7 @@ import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
 import webm from "./convention.webm";
@@ -11,12 +11,10 @@ import mp4 from "./convention.mp4";
 import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "My Brief Apperance in Hillary Clinton's DNC Video",
   description: "My brief apperance in one of Hillary Clinton's 2016 DNC convention videos on substance abuse.",
-  alternates: {
-    canonical: "/hillary",
-  },
+  canonical: "/hillary",
   openGraph: {
     videos: [
       {

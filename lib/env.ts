@@ -19,6 +19,7 @@ export const env = createEnv({
      * @see https://vercel.com/marketplace/upstash
      */
     KV_REST_API_TOKEN: v.string(),
+
     /**
      * Required. Redis storage credentials for hit counter's [server component](../app/notes/[slug]/counter.tsx) and API
      * endpoint. Currently set automatically by Vercel's Upstash integration.
@@ -36,6 +37,7 @@ export const env = createEnv({
      * @see https://vercel.com/integrations/resend
      */
     RESEND_API_KEY: v.pipe(v.string(), v.startsWith("re_")),
+
     /**
      * Optional, but will throw a warning if unset. Use an approved domain (or subdomain) on the Resend account to send
      * submissions from. Sender's real email is passed via a Reply-To header, so setting this makes zero difference to
@@ -43,10 +45,9 @@ export const env = createEnv({
      *
      * @see https://resend.com/domains
      */
-    RESEND_FROM_EMAIL: v.optional(v.pipe(v.string(), v.email()), "onboarding@resend.dev"),
-    /**
-     * Required. The destination email for contact form submissions.
-     */
+    RESEND_FROM_EMAIL: v.fallback(v.pipe(v.string(), v.email()), "onboarding@resend.dev"),
+
+    /** Required. The destination email for contact form submissions. */
     RESEND_TO_EMAIL: v.pipe(v.string(), v.email()),
 
     /**
@@ -58,11 +59,38 @@ export const env = createEnv({
   },
   client: {
     /**
-     * Optional. Overrides the most appropriate default URL for the current deployment.
+     * Optional. We try to make an educated guess for the most appropriate URL based on the current deployment's
+     * environment and platform (if Vercel or Netlify), but you can override it by simply setting this manually. Must be
+     * a fully-qualified URL if set beginning with `http(s)://`, and should not end with a trailing slash.
      *
      * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#default-value
      */
-    NEXT_PUBLIC_BASE_URL: v.optional(v.pipe(v.string(), v.url())),
+    NEXT_PUBLIC_BASE_URL: v.fallback(
+      v.pipe(v.string(), v.url()),
+      () =>
+        // Vercel: https://vercel.com/docs/environment-variables/system-environment-variables
+        (process.env.VERCEL
+          ? process.env.VERCEL_ENV === "production"
+            ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+            : process.env.VERCEL_ENV === "preview"
+              ? `https://${process.env.VERCEL_BRANCH_URL}`
+              : process.env.VERCEL_URL
+                ? `https://${process.env.VERCEL_URL}`
+                : undefined
+          : undefined) ||
+        // Netlify: https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
+        (process.env.NETLIFY
+          ? process.env.CONTEXT === "production"
+            ? `${process.env.URL}`
+            : process.env.DEPLOY_PRIME_URL
+              ? `${process.env.DEPLOY_PRIME_URL}`
+              : process.env.DEPLOY_URL
+                ? `${process.env.DEPLOY_URL}`
+                : undefined
+          : undefined) ||
+        // next dev
+        `http://localhost:${process.env.PORT || 3000}`
+    ),
 
     /**
      * Optional. Enables comments on blog posts via GitHub discussions.
@@ -70,6 +98,7 @@ export const env = createEnv({
      * @see https://giscus.app/
      */
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: v.optional(v.string()),
+
     /**
      * Optional. Enables comments on blog posts via GitHub discussions.
      *
@@ -77,10 +106,11 @@ export const env = createEnv({
      */
     NEXT_PUBLIC_GISCUS_REPO_ID: v.optional(v.string()),
 
-    /**
-     * Required. GitHub repository for the site in the format of `{username}/{repo}`.
-     */
-    NEXT_PUBLIC_GITHUB_REPO: v.string(),
+    /** Required. GitHub repository for the site in the format of `{username}/{repo}`. */
+    NEXT_PUBLIC_GITHUB_REPO: v.pipe(v.string(), v.includes("/")),
+
+    /** Required. GitHub username of the author, used to generate [/projects](../app/projects/page.tsx). */
+    NEXT_PUBLIC_GITHUB_USERNAME: v.string(),
 
     /**
      * Optional. Sets an `Onion-Location` header in responses to advertise a URL for the same page but hosted on a
@@ -115,33 +145,11 @@ export const env = createEnv({
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "1x00000000000000000000AA"),
   },
   experimental__runtimeEnv: {
-    NEXT_PUBLIC_BASE_URL:
-      process.env.NEXT_PUBLIC_BASE_URL ||
-      // Vercel: https://vercel.com/docs/environment-variables/system-environment-variables
-      (process.env.VERCEL
-        ? process.env.VERCEL_ENV === "production"
-          ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-          : process.env.VERCEL_ENV === "preview"
-            ? `https://${process.env.VERCEL_BRANCH_URL}`
-            : process.env.VERCEL_URL
-              ? `https://${process.env.VERCEL_URL}`
-              : undefined
-        : undefined) ||
-      // Netlify: https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
-      (process.env.NETLIFY
-        ? process.env.CONTEXT === "production"
-          ? `${process.env.URL}`
-          : process.env.DEPLOY_PRIME_URL
-            ? `${process.env.DEPLOY_PRIME_URL}`
-            : process.env.DEPLOY_URL
-              ? `${process.env.DEPLOY_URL}`
-              : undefined
-        : undefined) ||
-      // next dev
-      `http://localhost:${process.env.PORT || 3000}`,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
     NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
     NEXT_PUBLIC_GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO,
+    NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
     NEXT_PUBLIC_SITE_LOCALE: process.env.NEXT_PUBLIC_SITE_LOCALE,
     NEXT_PUBLIC_SITE_TZ: process.env.NEXT_PUBLIC_SITE_TZ,

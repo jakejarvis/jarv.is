@@ -3,7 +3,7 @@ import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Link from "../../components/Link";
 import Video from "../../components/Video";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
 import mp4 from "./leo.mp4";
@@ -11,12 +11,10 @@ import webm from "./leo.webm";
 import subtitles from "./subs.en.vtt";
 import thumbnail from "./thumbnail.png";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: 'Facebook App on "The Lab with Leo Laporte"',
   description: "Powncer app featured in Leo Laporte's TechTV show.",
-  alternates: {
-    canonical: "/leo",
-  },
+  canonical: "/leo",
   openGraph: {
     videos: [
       {

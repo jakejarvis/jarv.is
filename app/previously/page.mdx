@@ -1,13 +1,11 @@
 import { Comic_Neue as ComicNeueLoader } from "next/font/google";
 import PageTitle from "../../components/PageTitle";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "Previously on...",
   description: "An incredibly embarrassing and somewhat painful trip down this site's memory lane...",
-  alternates: {
-    canonical: "/previously",
-  },
+  canonical: "/previously",
 });
 
 export const ComicNeue = ComicNeueLoader({

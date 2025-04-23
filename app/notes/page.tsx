@@ -1,7 +1,7 @@
 import Link from "../../components/Link";
 import Time from "../../components/Time";
 import { getFrontMatter } from "../../lib/helpers/posts";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 import * as config from "../../lib/config";
 import { POSTS_DIR } from "../../lib/config/constants";
 import type { ReactElement } from "react";
@@ -9,12 +9,10 @@ import type { FrontMatter } from "../../lib/helpers/posts";
 
 import styles from "./page.module.css";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "Notes",
   description: `Recent posts by ${config.authorName}.`,
-  alternates: {
-    canonical: `/${POSTS_DIR}`,
-  },
+  canonical: `/${POSTS_DIR}`,
 });
 
 const Page = async () => {

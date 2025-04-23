@@ -1,12 +1,10 @@
 import PageTitle from "../../components/PageTitle";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "CLI",
   description: "AKA, the most useless Node module ever published, in history, by anyone, ever.",
-  alternates: {
-    canonical: "/cli",
-  },
+  canonical: "/cli",
 });
 
 <PageTitle canonical="/cli">CLI</PageTitle>

@@ -2,19 +2,17 @@ import { env } from "../../lib/env";
 import { JsonLd } from "react-schemaorg";
 import PageTitle from "../../components/PageTitle";
 import Video from "../../components/Video";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
 import mp4 from "./birthday.mp4";
 import webm from "./birthday.webm";
 import thumbnail from "./thumbnail.png";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "🎉 Cranky Birthday Boy on VHS Tape 📼",
   description: "The origin of my hatred for the Happy Birthday song.",
-  alternates: {
-    canonical: "/birthday",
-  },
+  canonical: "/birthday",
   openGraph: {
     videos: [
       {

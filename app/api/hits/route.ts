@@ -44,7 +44,7 @@ const getData = cache(
   },
   undefined,
   {
-    revalidate: 900, // 15 minutes
+    revalidate: 300, // 5 minutes
     tags: ["hits"],
   }
 );

@@ -1,14 +1,12 @@
 import Link from "../../components/Link";
-import { addMetadata } from "../../lib/helpers/metadata";
+import { createMetadata } from "../../lib/helpers/metadata";
 
 import backgroundImg from "./sundar.jpg";
 
-export const metadata = addMetadata({
+export const metadata = createMetadata({
   title: "fuckyougoogle.zip",
   description: "This is a horrible idea.",
-  alternates: {
-    canonical: "/zip",
-  },
+  canonical: "/zip",
 });
 
 const Page = () => {
