@@ -23,6 +23,8 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       priority: 1.0,
       lastModified: new Date(),
     },
+    { url: `${env.NEXT_PUBLIC_BASE_URL}/tweets` },
+    { url: `${env.NEXT_PUBLIC_BASE_URL}/y2k` },
   ];
 
   const [staticRoutes, frontmatter] = await Promise.all([

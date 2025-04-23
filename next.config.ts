@@ -122,11 +122,6 @@ const nextConfig: NextConfig = {
     { source: "/rss", destination: "/feed.xml", permanent: true },
     { source: "/blog/(.*)", destination: "/notes", permanent: true },
     { source: "/archives/(.*)", destination: "/notes", permanent: true },
-    {
-      source: "/static/daily.pdf",
-      destination: "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/daily-C0dPhAyjDegAgsFDXUwOu5WAAgGdqP.pdf",
-      permanent: false,
-    },
 
     // WordPress permalinks:
     {
