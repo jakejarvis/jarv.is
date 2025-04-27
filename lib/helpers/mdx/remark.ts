@@ -1,7 +1,3 @@
-export { default as rehypeMdxImportMedia } from "rehype-mdx-import-media";
-export { default as rehypePrettyCode } from "rehype-pretty-code";
-export { default as rehypeSlug } from "rehype-slug";
-export { default as rehypeUnwrapImages } from "rehype-unwrap-images";
 export { default as remarkFrontmatter } from "remark-frontmatter";
 export { default as remarkGfm } from "remark-gfm";
 export { default as remarkHtml } from "remark-html";

@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./remark-rehype-plugins";
+import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./mdx/remark";
 import { decode } from "html-entities";
 import { POSTS_DIR } from "../config/constants";
 
@@ -106,7 +106,6 @@ export const getFrontMatter: {
 /** Returns the content of a post with very limited processing to include in RSS feeds */
 export const getContent = cache(async (slug: string): Promise<string | undefined> => {
   try {
-    // TODO: also remove MDX-related syntax (e.g. import/export statements)
     const content = await unified()
       .use(remarkParse)
       .use(remarkFrontmatter)
@@ -137,7 +136,7 @@ export const getContent = cache(async (slug: string): Promise<string | undefined
       .process(await fs.readFile(path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
 
     // convert the parsed content to a string with "safe" HTML
-    return content.toString().replaceAll("<p></p>", "").trim();
+    return content.toString().replaceAll("<p></p>\n", "").replaceAll("<p>{/* prettier-ignore */}</p>\n", "").trim();
   } catch (error) {
     console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
     return undefined;

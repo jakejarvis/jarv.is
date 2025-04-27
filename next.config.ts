@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-require-imports, import/no-anonymous-default-export */
-
-import * as mdxPlugins from "./lib/helpers/remark-rehype-plugins";
+import * as remarkPlugins from "./lib/helpers/mdx/remark";
+import * as rehypePlugins from "./lib/helpers/mdx/rehype";
+import * as recmaPlugins from "./lib/helpers/mdx/recma";
 import type { NextConfig } from "next";
 
 // check environment variables at build time
 // https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
 import "./lib/env";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   eslint: {
@@ -140,29 +140,32 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
   ],
-};
+} satisfies NextConfig;
 
 // my own macgyvered version of next-compose-plugins (RIP)
 const nextPlugins: Array<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/bundle-analyzer")({
     enabled: !!process.env.ANALYZE,
   }),
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/mdx")({
     options: {
+      recmaPlugins: [recmaPlugins.recmaMdxEscapeMissingComponents],
       remarkPlugins: [
-        mdxPlugins.remarkFrontmatter,
-        mdxPlugins.remarkMdxFrontmatter,
-        mdxPlugins.remarkGfm,
-        mdxPlugins.remarkSmartypants,
+        remarkPlugins.remarkFrontmatter,
+        remarkPlugins.remarkMdxFrontmatter,
+        remarkPlugins.remarkGfm,
+        remarkPlugins.remarkSmartypants,
       ],
       rehypePlugins: [
-        mdxPlugins.rehypeUnwrapImages,
-        mdxPlugins.rehypeSlug,
+        rehypePlugins.rehypeUnwrapImages,
+        rehypePlugins.rehypeSlug,
         [
-          mdxPlugins.rehypePrettyCode,
+          rehypePlugins.rehypePrettyCode,
           {
             theme: {
               light: "material-theme-lighter",
@@ -174,11 +177,12 @@ const nextPlugins: Array<
             keepBackground: false,
           },
         ],
-        mdxPlugins.rehypeMdxImportMedia,
+        rehypePlugins.rehypeMdxImportMedia,
       ],
     },
   }),
 ];
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (): NextConfig =>
   nextPlugins.reduce((acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)), nextConfig);
