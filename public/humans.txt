@@ -30,6 +30,7 @@
 
   - Next.js
   - Vercel
+  - Tailwind CSS
   - Upstash Redis
   - Giscus
   - Resend

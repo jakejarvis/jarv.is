@@ -10,3 +10,4 @@ pnpm-lock.yaml
 # other
 public/
 .devcontainer/devcontainer.json
+.vscode/

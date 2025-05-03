@@ -24,7 +24,22 @@
       "rangeStrategy": "pin"
     },
     {
-      "matchPackageNames": ["@mdx-js/*", "remark-*", "rehype-*", "unified", "unist-*", "@types/mdx"],
+      "matchPackageNames": ["tailwindcss", "@tailwindcss/*", "tailwind-merge", "prettier-plugin-tailwindcss"],
+      "groupName": "tailwindcss"
+    },
+    {
+      "matchPackageNames": [
+        "@mdx-js/*",
+        "rehype-*",
+        "remark-*",
+        "unified",
+        "unist-*",
+        "hast-*",
+        "hastscript",
+        "@types/mdx",
+        "@types/unist",
+        "@types/hast"
+      ],
       "groupName": "mdx"
     },
     {
@@ -32,8 +47,8 @@
       "groupName": "eslint"
     },
     {
-      "matchPackageNames": ["stylelint", "stylelint-*"],
-      "groupName": "stylelint"
+      "matchPackageNames": ["prettier", "prettier-*", "!prettier-plugin-tailwindcss"],
+      "groupName": "prettier"
     },
     {
       "matchPackageNames": ["typescript"],

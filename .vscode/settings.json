@@ -1,0 +1,16 @@
+{
+	"editor.tabSize": 2,
+	"editor.rulers": [
+			120
+	],
+	"files.associations": {
+			"*.css": "tailwindcss",
+			"*.mdx": "markdown"
+	},
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.preferences.importModuleSpecifierEnding": "minimal",
+	"typescript.surveys.enabled": false,
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.tsserver.log": "off",
+	"typescript.updateImportsOnFileMove.enabled": "always"
+}

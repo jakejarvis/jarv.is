@@ -1,17 +1,15 @@
-import Link from "../../components/Link";
-import Time from "../../components/Time";
-import { getFrontMatter } from "../../lib/helpers/posts";
-import { createMetadata } from "../../lib/helpers/metadata";
-import * as config from "../../lib/config";
-import { POSTS_DIR } from "../../lib/config/constants";
+import Link from "@/components/link";
+import Time from "@/components/time";
+import { getFrontMatter } from "@/lib/helpers/posts";
+import { createMetadata } from "@/lib/helpers/metadata";
+import authorConfig from "@/lib/config/author";
+import { POSTS_DIR } from "@/lib/config/constants";
 import type { ReactElement } from "react";
-import type { FrontMatter } from "../../lib/helpers/posts";
-
-import styles from "./page.module.css";
+import type { FrontMatter } from "@/lib/helpers/posts";
 
 export const metadata = createMetadata({
   title: "Notes",
-  description: `Recent posts by ${config.authorName}.`,
+  description: `Recent posts by ${authorConfig.name}.`,
   canonical: `/${POSTS_DIR}`,
 });
 
@@ -31,12 +29,12 @@ const Page = async () => {
 
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
-      <section className={styles.section} key={year}>
-        <h2 className={styles.year}>{year}</h2>
-        <ul className={styles.list}>
+      <section className="my-8 first-of-type:mt-0" key={year}>
+        <h2 className="mt-0 mb-4 text-3xl font-bold md:text-4xl">{year}</h2>
+        <ul>
           {posts.map(({ slug, date, title, htmlTitle }) => (
-            <li className={styles.post} key={slug}>
-              <Time date={date} format="MMM d" className={styles.date} />
+            <li className="mb-4 flex text-base leading-relaxed last-of-type:mb-0" key={slug}>
+              <Time date={date} format="MMM d" className="text-muted-foreground w-22 shrink-0" />
               <span>
                 <Link
                   dynamicOnHover
@@ -54,7 +52,7 @@ const Page = async () => {
   // grouped posts enter this component ordered chronologically -- we want reverse chronological
   const reversed = sections.reverse();
 
-  return reversed;
+  return <>{reversed}</>;
 };
 
 export default Page;

@@ -1,9 +1,9 @@
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import PageTitle from "../../components/PageTitle";
-import Link from "../../components/Link";
-import Video from "../../components/Video";
-import { createMetadata } from "../../lib/helpers/metadata";
+import PageTitle from "@/components/page-title";
+import Link from "@/components/link";
+import Video from "@/components/video";
+import { createMetadata } from "@/lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
 import thumbnail from "./thumbnail.png";
@@ -50,21 +50,13 @@ const Page = () => {
         poster={thumbnail.src}
       />
 
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: "0.9em",
-          lineHeight: 1.8,
-          margin: "1.25em 1em 0 1em",
-          color: "var(--colors-medium-light)",
-        }}
-      >
+      <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
         Video is property of{" "}
-        <Link href="https://web.archive.org/web/20070511004304/www.g4techtv.ca" style={{ fontWeight: 700 }}>
+        <Link href="https://web.archive.org/web/20070511004304/www.g4techtv.ca" className="font-bold">
           G4techTV Canada
         </Link>{" "}
         &amp;{" "}
-        <Link href="https://leo.fm/" style={{ fontWeight: 700 }}>
+        <Link href="https://leo.fm/" className="font-bold">
           Leo Laporte
         </Link>
         . &copy; 2007 G4 Media, Inc.

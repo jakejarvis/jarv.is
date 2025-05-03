@@ -16,15 +16,18 @@
 				"git.fetchOnPull": true,
 				"git.rebaseWhenSync": true,
 				"telemetry.telemetryLevel": "off",
+				"javascript.updateImportsOnFileMove.enabled": "always",
 				"typescript.preferences.importModuleSpecifierEnding": "minimal",
-				"typescript.tsdk": "node_modules/typescript/lib"
+				"typescript.surveys.enabled": false,
+				"typescript.tsdk": "node_modules/typescript/lib",
+				"typescript.tsserver.log": "off",
+				"typescript.updateImportsOnFileMove.enabled": "always"
 			},
 			"extensions": [
+				"bradlc.vscode-tailwindcss",
 				"dbaeumer.vscode-eslint",
-				"EditorConfig.EditorConfig",
-				"unifiedjs.vscode-mdx",
 				"esbenp.prettier-vscode",
-				"stylelint.vscode-stylelint"
+				"unifiedjs.vscode-mdx"
 			]
 		}
 	},

@@ -1,39 +1,41 @@
-import { env } from "../env";
-import * as config from "../config";
+import { env } from "@/lib/env";
+import siteConfig from "@/lib/config/site";
+import authorConfig from "@/lib/config/author";
+
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   title: {
-    template: `%s – ${config.siteName}`,
-    default: `${config.siteName} – ${config.tagline}`,
+    template: `%s – ${siteConfig.name}`,
+    default: `${siteConfig.name} – ${siteConfig.tagline}`,
   },
-  description: config.description,
+  description: siteConfig.description,
   openGraph: {
-    siteName: config.siteName,
+    siteName: siteConfig.name,
     title: {
       template: "%s",
-      default: `${config.siteName} – ${config.tagline}`,
+      default: `${siteConfig.name} – ${siteConfig.tagline}`,
     },
     url: "/",
     locale: env.NEXT_PUBLIC_SITE_LOCALE.replace("-", "_"),
     type: "website",
   },
   twitter: {
-    creator: `@${config.authorSocial?.twitter}`,
+    creator: `@${authorConfig.social?.twitter}`,
   },
   alternates: {
     canonical: "/",
     types: {
       "application/rss+xml": [
         {
-          title: `${config.siteName} (RSS)`,
+          title: `${siteConfig.name} (RSS)`,
           url: "/feed.xml",
         },
       ],
       "application/atom+xml": [
         {
-          title: `${config.siteName} (Atom)`,
+          title: `${siteConfig.name} (Atom)`,
           url: "/feed.atom",
         },
       ],

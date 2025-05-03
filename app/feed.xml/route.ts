@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildFeed } from "../../lib/helpers/build-feed";
+import { buildFeed } from "@/lib/helpers/build-feed";
 
 export const dynamic = "force-static";
 

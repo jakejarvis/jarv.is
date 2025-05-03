@@ -1,11 +1,11 @@
-import * as remarkPlugins from "./lib/helpers/mdx/remark";
-import * as rehypePlugins from "./lib/helpers/mdx/rehype";
-import * as recmaPlugins from "./lib/helpers/mdx/recma";
+import * as remarkPlugins from "@/lib/helpers/mdx/remark";
+import * as rehypePlugins from "@/lib/helpers/mdx/rehype";
+import anchor from "@/lib/helpers/mdx/heading-anchor";
 import type { NextConfig } from "next";
 
 // check environment variables at build time
 // https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
-import "./lib/env";
+import "@/lib/env";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -154,7 +154,6 @@ const nextPlugins: Array<
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/mdx")({
     options: {
-      recmaPlugins: [recmaPlugins.recmaMdxEscapeMissingComponents],
       remarkPlugins: [
         remarkPlugins.remarkFrontmatter,
         remarkPlugins.remarkMdxFrontmatter,
@@ -164,19 +163,9 @@ const nextPlugins: Array<
       rehypePlugins: [
         rehypePlugins.rehypeUnwrapImages,
         rehypePlugins.rehypeSlug,
-        [
-          rehypePlugins.rehypePrettyCode,
-          {
-            theme: {
-              light: "material-theme-lighter",
-              dark: "material-theme-darker",
-            },
-            bypassInlineCode: true,
-            defaultLang: "plaintext",
-            grid: false,
-            keepBackground: false,
-          },
-        ],
+        [rehypePlugins.rehypeAutolinkHeadings, { behavior: "append", content: anchor }],
+        [rehypePlugins.rehypeWrapper, { className: "markdown" }],
+        rehypePlugins.rehypeMdxCodeProps,
         rehypePlugins.rehypeMdxImportMedia,
       ],
     },

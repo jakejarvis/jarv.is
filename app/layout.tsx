@@ -1,27 +1,28 @@
-import { env } from "../lib/env";
+import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import { Analytics } from "@vercel/analytics/next";
-import clsx from "clsx";
-import { ThemeProvider, ThemeScript } from "../contexts/ThemeContext";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { SkipNavLink, SkipNavTarget } from "../components/SkipNav";
-import { defaultMetadata } from "../lib/helpers/metadata";
-import * as config from "../lib/config";
-import { MAX_WIDTH } from "../lib/config/constants";
+import { ThemeProvider, ThemeScript } from "@/components/ui/theme-context";
+import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
+import { SkipNavLink, SkipNavTarget } from "@/components/ui/skip-nav";
+import { cn } from "@/lib/utils";
+import { defaultMetadata } from "@/lib/helpers/metadata";
+import siteConfig from "@/lib/config/site";
+import authorConfig from "@/lib/config/author";
 import type { Person, WebSite } from "schema-dts";
 
 import { GeistMono, GeistSans } from "./fonts";
 import "./globals.css";
-import "./themes.css";
-
-import styles from "./layout.module.css";
 
 export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <html lang={env.NEXT_PUBLIC_SITE_LOCALE} suppressHydrationWarning>
+    <html
+      lang={env.NEXT_PUBLIC_SITE_LOCALE}
+      className={cn(GeistSans.variable, GeistMono.variable)}
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
 
@@ -30,19 +31,19 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             "@context": "https://schema.org",
             "@type": "Person",
             "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
-            name: config.authorName,
+            name: authorConfig.name,
             url: env.NEXT_PUBLIC_BASE_URL,
             image: [`${env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
             sameAs: [
               env.NEXT_PUBLIC_BASE_URL,
-              `https://${config.authorSocial?.mastodon}`,
-              `https://github.com/${config.authorSocial?.github}`,
-              `https://bsky.app/profile/${config.authorSocial?.bluesky}`,
-              `https://twitter.com/${config.authorSocial?.twitter}`,
-              `https://medium.com/@${config.authorSocial?.medium}`,
-              `https://www.linkedin.com/in/${config.authorSocial?.linkedin}/`,
-              `https://www.facebook.com/${config.authorSocial?.facebook}`,
-              `https://www.instagram.com/${config.authorSocial?.instagram}/`,
+              `https://${authorConfig.social?.mastodon}`,
+              `https://github.com/${authorConfig.social?.github}`,
+              `https://bsky.app/profile/${authorConfig.social?.bluesky}`,
+              `https://twitter.com/${authorConfig.social?.twitter}`,
+              `https://medium.com/@${authorConfig.social?.medium}`,
+              `https://www.linkedin.com/in/${authorConfig.social?.linkedin}/`,
+              `https://www.facebook.com/${authorConfig.social?.facebook}`,
+              `https://www.instagram.com/${authorConfig.social?.instagram}/`,
             ],
           }}
         />
@@ -52,34 +53,29 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "@id": `${env.NEXT_PUBLIC_BASE_URL}/#website`,
-            name: config.siteName,
+            name: siteConfig.name,
             url: env.NEXT_PUBLIC_BASE_URL,
-            author: config.authorName,
-            description: config.description,
+            author: authorConfig.name,
+            description: siteConfig.description,
             inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
-            license: config.licenseUrl,
+            license: `https://spdx.org/licenses/${siteConfig.license}.html`,
           }}
         />
       </head>
 
-      <body
-        className={clsx(GeistSans.variable, GeistMono.variable)}
-        style={{ ["--max-width" as string]: `${MAX_WIDTH}px` }}
-      >
+      <body className="bg-background text-foreground font-sans antialiased">
         <ThemeProvider>
           <SkipNavLink />
 
-          <div className={styles.layout}>
-            <Header />
+          <div className="max-w-default mx-auto w-full px-5 pt-2 pb-6">
+            <Header className="mb-4 h-24 w-full md:h-18" />
 
-            <main className={styles.default}>
-              <div className={styles.container}>
-                <SkipNavTarget />
-                {children}
-              </div>
+            <main>
+              <SkipNavTarget />
+              {children}
             </main>
 
-            <Footer />
+            <Footer className="mt-6 w-full" />
           </div>
         </ThemeProvider>
 

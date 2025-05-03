@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import redis from "../../../lib/redis";
+import { kv } from "@vercel/kv";
 
 // cache response from the db
 const getData = cache(
@@ -14,7 +14,7 @@ const getData = cache(
     }>;
   }> => {
     // get all keys (aka slugs)
-    const slugs = await redis.scan(0, {
+    const slugs = await kv.scan(0, {
       match: "hits:*",
       type: "string",
       // set an arbitrary yet generous upper limit, just in case...
@@ -22,7 +22,7 @@ const getData = cache(
     });
 
     // get the value (number of hits) for each key (the slug of the page)
-    const values = await redis.mget<string[]>(...slugs[1]);
+    const values = await kv.mget<string[]>(...slugs[1]);
 
     // pair the slugs with their hit values
     const pages = slugs[1].map((slug, index) => ({

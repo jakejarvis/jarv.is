@@ -1,7 +1,7 @@
 // https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#keeping-server-only-code-out-of-the-client-environment
 import "server-only";
 
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import * as cheerio from "cheerio";
 import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";

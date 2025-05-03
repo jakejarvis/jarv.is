@@ -1,10 +1,10 @@
 "use server";
 
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import { headers } from "next/headers";
 import * as v from "valibot";
 import { Resend } from "resend";
-import * as config from "../../lib/config";
+import siteConfig from "@/lib/config/site";
 
 const ContactSchema = v.object({
   // TODO: replace duplicate error messages with v.message() when released. see:
@@ -101,7 +101,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       from: `${data.output.name} <${env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
       replyTo: `${data.output.name} <${data.output.email}>`,
       to: [env.RESEND_TO_EMAIL],
-      subject: `[${config.siteName}] Contact Form Submission`,
+      subject: `[${siteConfig.name}] Contact Form Submission`,
       text: data.output.message,
     });
 

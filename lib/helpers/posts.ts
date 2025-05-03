@@ -1,12 +1,12 @@
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import { cache } from "react";
 import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "./mdx/remark";
+import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "@/lib/helpers/mdx/remark";
 import { decode } from "html-entities";
-import { POSTS_DIR } from "../config/constants";
+import { POSTS_DIR } from "@/lib/config/constants";
 
 export type FrontMatter = {
   slug: string;

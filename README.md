@@ -6,7 +6,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
 [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fjarv.is%2Fapi%2Fhits&query=%24.total.hits&logo=googleanalytics&logoColor=white&label=hits&color=salmon&cacheSeconds=1800)](https://jarv.is/api/hits)
 
-My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), [Upstash Redis](https://upstash.com/), [Giscus](https://giscus.app/), [and more](https://jarv.is/humans.txt).
+My humble abode on the World Wide Web, created and deployed using [Next.js](https://nextjs.org/), [Tailwind CSS](https://github.com/user-attachments/assets/dfe99976-c73d-46f1-8a50-f26338463ad8), [Upstash](https://upstash.com/), [Giscus](https://giscus.app/), [and more](https://jarv.is/humans.txt).
 
 ## 🕹️ Getting Started
 

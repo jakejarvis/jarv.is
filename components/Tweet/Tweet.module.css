@@ -1,8 +1,0 @@
-.tweet {
-  /* help with layout shift */
-  min-height: 120px;
-}
-
-.tweet :global(.react-tweet-theme) {
-  --tweet-container-margin: 1.5rem auto;
-}
