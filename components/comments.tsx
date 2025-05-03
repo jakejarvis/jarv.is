@@ -4,11 +4,7 @@ import { env } from "@/lib/env";
 import Giscus from "@giscus/react";
 import type { GiscusProps } from "@giscus/react";
 
-export type CommentsProps = {
-  title: string;
-};
-
-const Comments = ({ title }: CommentsProps) => {
+const Comments = ({ title }: { title: string }) => {
   // fail silently if giscus isn't configured
   if (!env.NEXT_PUBLIC_GISCUS_REPO_ID || !env.NEXT_PUBLIC_GISCUS_CATEGORY_ID) {
     console.warn(

@@ -1,6 +1,6 @@
 import PageTitle from "@/components/page-title";
 import Link from "@/components/link";
-import { createMetadata } from "@/lib/helpers/metadata";
+import { createMetadata } from "@/lib/metadata";
 
 import ContactForm from "./form";
 
@@ -23,7 +23,10 @@ const Page = () => {
       </p>
       <p className="my-5 text-[0.925rem] leading-relaxed md:text-base">
         You can grab my public key here:{" "}
-        <Link href="https://jrvs.io/pgp" className="font-mono text-sm tracking-wider [word-spacing:-0.3em]">
+        <Link
+          href="https://jrvs.io/pgp"
+          className="bg-muted relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium tracking-wider [word-spacing:-0.3em]"
+        >
           6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
         </Link>
         .

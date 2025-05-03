@@ -5,12 +5,14 @@ import { tz } from "@date-fns/tz";
 import { utc } from "@date-fns/utc";
 import type { ComponentPropsWithoutRef } from "react";
 
-export type TimeProps = ComponentPropsWithoutRef<"time"> & {
+const Time = ({
+  date,
+  format: formatStr = "PPpp",
+  ...rest
+}: ComponentPropsWithoutRef<"time"> & {
   date: string;
   format?: string;
-};
-
-const Time = ({ date, format: formatStr = "PPpp", ...rest }: TimeProps) => {
+}) => {
   return (
     <time
       dateTime={formatISO(date, { in: utc })}

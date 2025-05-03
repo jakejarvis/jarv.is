@@ -35,6 +35,9 @@ importers:
       '@octokit/graphql-schema':
         specifier: ^15.26.0
         version: 15.26.0
+      '@radix-ui/react-slot':
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0(typescript@5.8.3))(zod@3.24.3)
@@ -71,12 +74,12 @@ importers:
       geist:
         specifier: ^1.4.1
         version: 1.4.1(next@15.4.0-canary.19(@babel/core@7.26.10)(babel-plugin-react-compiler@19.0.0-beta-af1b7da-20250417)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+      hast-util-from-html:
+        specifier: ^2.0.3
+        version: 2.0.3
       hast-util-to-string:
         specifier: ^3.0.1
         version: 3.0.1
-      hastscript:
-        specifier: ^9.0.1
-        version: 9.0.1
       html-entities:
         specifier: ^2.6.0
         version: 2.6.0
@@ -808,6 +811,24 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@radix-ui/react-compose-refs@1.1.2':
+    resolution: {integrity: sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@radix-ui/react-slot@1.2.0':
+    resolution: {integrity: sha512-ujc+V6r0HNDviYqIK3rW4ffgYiZ8g5DEHrGJVk4x7kTlLXRDILnKX9vAUYeIsLOoDpDJ0ujpqMkjH4w2ofuo6w==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@react-email/render@1.0.6':
     resolution: {integrity: sha512-zNueW5Wn/4jNC1c5LFgXzbUdv5Lhms+FWjOvWAhal7gx5YVf0q6dPJ0dnR70+ifo59gcMLwCZEaTS9EEuUhKvQ==}
@@ -2174,6 +2195,12 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  hast-util-from-html@2.0.3:
+    resolution: {integrity: sha512-CUSRHXyKjzHov8yKsQjGOElXy/3EKpyX56ELnkHH34vDVw1N1XSQ1ZcAvTyAPtGqLTuKP/uxM+aLkSPqF/EtMw==}
+
+  hast-util-from-parse5@8.0.3:
+    resolution: {integrity: sha512-3kxEVkEKt0zvcZ3hCRYI8rqrgwtlIOFMWkbclACvjlDw8Li9S2hk/d51OI0nr/gIpdMHNepwgOKqZ/sy0Clpyg==}
 
   hast-util-has-property@3.0.0:
     resolution: {integrity: sha512-MNilsvEKLFpV604hwfhVStK0usFY/QmM5zX16bo7EjnAEGofr5YyI37kzopBlZJkHD4t887i+q/C8/tr5Q94cA==}
@@ -3951,6 +3978,9 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
+  vfile-location@5.0.3:
+    resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
+
   vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
 
@@ -3968,6 +3998,9 @@ packages:
 
   walk-up-path@3.0.1:
     resolution: {integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==}
+
+  web-namespaces@2.0.1:
+    resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
 
   webpack-bundle-analyzer@4.10.1:
     resolution: {integrity: sha512-s3P7pgexgT/HTUSYgxJyn28A+99mmLq4HsJepMPzu0R8ImJc52QNqaFYW1Z2z2uIb1/J3eYgaAWVpaC+v/1aAQ==}
@@ -4667,6 +4700,19 @@ snapshots:
   '@pkgr/core@0.2.4': {}
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@radix-ui/react-compose-refs@1.1.2(@types/react@19.1.2)(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+    optionalDependencies:
+      '@types/react': 19.1.2
+
+  '@radix-ui/react-slot@1.2.0(@types/react@19.1.2)(react@19.1.0)':
+    dependencies:
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.2)(react@19.1.0)
+      react: 19.1.0
+    optionalDependencies:
+      '@types/react': 19.1.2
 
   '@react-email/render@1.0.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -6219,6 +6265,26 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  hast-util-from-html@2.0.3:
+    dependencies:
+      '@types/hast': 3.0.4
+      devlop: 1.1.0
+      hast-util-from-parse5: 8.0.3
+      parse5: 7.2.1
+      vfile: 6.0.3
+      vfile-message: 4.0.2
+
+  hast-util-from-parse5@8.0.3:
+    dependencies:
+      '@types/hast': 3.0.4
+      '@types/unist': 3.0.3
+      devlop: 1.1.0
+      hastscript: 9.0.1
+      property-information: 7.0.0
+      vfile: 6.0.3
+      vfile-location: 5.0.3
+      web-namespaces: 2.0.1
 
   hast-util-has-property@3.0.0:
     dependencies:
@@ -8568,6 +8634,11 @@ snapshots:
 
   vary@1.1.2: {}
 
+  vfile-location@5.0.3:
+    dependencies:
+      '@types/unist': 3.0.3
+      vfile: 6.0.3
+
   vfile-message@4.0.2:
     dependencies:
       '@types/unist': 3.0.3
@@ -8600,6 +8671,8 @@ snapshots:
       vfile-message: 4.0.2
 
   walk-up-path@3.0.1: {}
+
+  web-namespaces@2.0.1: {}
 
   webpack-bundle-analyzer@4.10.1:
     dependencies:

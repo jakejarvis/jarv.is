@@ -5,9 +5,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
-export type YouTubeProps = Omit<ComponentPropsWithoutRef<typeof YouTubeEmbed>, "title">;
-
-const YouTube = ({ ...rest }: YouTubeProps) => {
+const YouTube = ({ ...rest }: Omit<ComponentPropsWithoutRef<typeof YouTubeEmbed>, "title">) => {
   return <YouTubeEmbed cookie={false} containerElement="div" title="" {...rest} />;
 };
 

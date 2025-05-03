@@ -37,7 +37,7 @@ const ContactForm = () => {
             setFormFields({ ...formFields, name: e.target.value });
           }}
           disabled={pending || formState.success}
-          className={cn(!pending && formState.errors?.name && "border-destructive")}
+          aria-invalid={!pending && formState.errors?.name ? "true" : undefined}
         />
         {!pending && formState.errors?.name && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.name[0]}</span>
@@ -55,7 +55,7 @@ const ContactForm = () => {
             setFormFields({ ...formFields, email: e.target.value });
           }}
           disabled={pending || formState.success}
-          className={cn(!pending && formState.errors?.email && "border-destructive")}
+          aria-invalid={!pending && formState.errors?.email ? "true" : undefined}
         />
         {!pending && formState.errors?.email && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.email[0]}</span>
@@ -71,13 +71,14 @@ const ContactForm = () => {
             setFormFields({ ...formFields, message: e.target.value });
           }}
           disabled={pending || formState.success}
-          className={cn("min-h-24", !pending && formState.errors?.message && "border-destructive")}
+          aria-invalid={!pending && formState.errors?.message ? "true" : undefined}
+          className="min-h-24"
         />
         {!pending && formState.errors?.message && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.message[0]}</span>
         )}
 
-        <div className="text-muted-foreground mt-2 text-[0.8rem] leading-relaxed">
+        <div className="text-foreground/85 mt-2 text-[0.8rem] leading-relaxed">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -113,7 +114,7 @@ const ContactForm = () => {
 
       <div className="mt-[0.6em] flex min-h-[3.75em] items-center">
         {!formState.success && (
-          <Button type="submit" disabled={pending}>
+          <Button type="submit" size="lg" disabled={pending}>
             {pending ? (
               <>
                 <Loader2Icon className="animate-spin" /> Sending...

@@ -3,7 +3,7 @@ import { JsonLd } from "react-schemaorg";
 import PageTitle from "@/components/page-title";
 import Link from "@/components/link";
 import Video from "@/components/video";
-import { createMetadata } from "@/lib/helpers/metadata";
+import { createMetadata } from "@/lib/metadata";
 import type { VideoObject } from "schema-dts";
 
 import thumbnail from "./thumbnail.png";

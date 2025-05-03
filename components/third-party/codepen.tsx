@@ -1,12 +1,3 @@
-export type CodePenProps = {
-  username: string;
-  id: string;
-  height?: number;
-  defaultTab?: string;
-  preview?: boolean;
-  editable?: boolean;
-};
-
 const CodePen = ({
   username,
   id,
@@ -14,7 +5,14 @@ const CodePen = ({
   defaultTab = "html",
   preview = true,
   editable = false,
-}: CodePenProps) => {
+}: {
+  username: string;
+  id: string;
+  height?: number;
+  defaultTab?: string;
+  preview?: boolean;
+  editable?: boolean;
+}) => {
   return (
     <iframe
       src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({

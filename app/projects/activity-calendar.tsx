@@ -9,11 +9,12 @@ import type { Activity } from "react-activity-calendar";
 
 import "react-tooltip/dist/react-tooltip.css";
 
-export type CalendarProps = ComponentPropsWithoutRef<"div"> & {
+const Calendar = ({
+  data,
+  ...rest
+}: ComponentPropsWithoutRef<"div"> & {
   data: Activity[];
-};
-
-const Calendar = ({ data, ...rest }: CalendarProps) => {
+}) => {
   // heavily inspired by https://github.com/grubersjoe/react-github-calendar
   return (
     <div {...rest}>
@@ -31,7 +32,7 @@ const Calendar = ({ data, ...rest }: CalendarProps) => {
           ],
         }}
         labels={{
-          totalCount: `{{count}} contributions in the last year`,
+          totalCount: "{{count}} contributions in the last year",
         }}
         maxLevel={4}
         renderBlock={(block, activity) =>

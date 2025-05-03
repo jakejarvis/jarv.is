@@ -5,7 +5,8 @@ const Page = () => {
   return (
     <>
       <h1 className="mt-0 mb-2 text-3xl leading-relaxed font-medium">
-        Hi there! I&rsquo;m Jake. <span className="animate-wave ml-0.5 inline-block origin-[65%_80%] text-3xl">👋</span>
+        Hi there! I&rsquo;m Jake.{" "}
+        <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-3xl">👋</span>
       </h1>
 
       <h2 className="my-2 text-xl leading-relaxed font-normal">
@@ -67,7 +68,7 @@ const Page = () => {
           title="Jake Jarvis on Bugcrowd"
           className="[--primary:#00b81a] dark:[--primary:#57f06d]"
         >
-          application security
+          information security
         </Link>
         ,{" "}
         <Link
@@ -75,11 +76,11 @@ const Page = () => {
           title='"What is serverless computing?" on Cloudflare'
           className="[--primary:#0098ec] dark:[--primary:#43b9fb]"
         >
-          serverless stacks
+          serverless architecture
         </Link>
         , and{" "}
         <Link
-          href="https://github.com/jakejarvis?tab=repositories&q=github-actions&type=source&language=&sort=stargazers"
+          href="https://github.com/jakejarvis?tab=repositories&q=github-actions&type=&language=&sort=stargazers"
           title='My repositories tagged with "github-actions" on GitHub'
           className="[--primary:#ff6200] dark:[--primary:#f46c16]"
         >

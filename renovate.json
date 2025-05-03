@@ -35,7 +35,6 @@
         "unified",
         "unist-*",
         "hast-*",
-        "hastscript",
         "@types/mdx",
         "@types/unist",
         "@types/hast"

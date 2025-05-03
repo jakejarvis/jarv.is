@@ -1,13 +1,18 @@
 import { cn } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 
-export type LoadingProps = ComponentPropsWithoutRef<"div"> & {
+const Loading = ({
+  width,
+  boxes = 3,
+  timing = 0.1,
+  className,
+  style,
+  ...rest
+}: ComponentPropsWithoutRef<"div"> & {
   width: number; // of entire container, in pixels
   boxes?: number; // total number of boxes (default: 3)
   timing?: number; // staggered timing between each box's pulse, in seconds (default: 0.1s)
-};
-
-const Loading = ({ width, boxes = 3, timing = 0.1, className, style, ...rest }: LoadingProps) => {
+}) => {
   // each box is just an empty div
   const divs = [];
 

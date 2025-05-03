@@ -1,11 +1,6 @@
 import Link from "@/components/link";
 
-export type GistProps = {
-  id: string;
-  file?: string;
-};
-
-const Gist = async ({ id, file }: GistProps) => {
+const Gist = async ({ id, file }: { id: string; file?: string }) => {
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;

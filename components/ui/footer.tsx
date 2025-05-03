@@ -5,9 +5,7 @@ import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
 import type { ComponentPropsWithoutRef } from "react";
 
-export type FooterProps = ComponentPropsWithoutRef<"footer">;
-
-const Footer = ({ className, ...rest }: FooterProps) => {
+const Footer = ({ className, ...rest }: ComponentPropsWithoutRef<"footer">) => {
   return (
     <footer
       className={cn("text-foreground/85 text-[0.8rem] leading-loose md:flex md:flex-row md:justify-between", className)}
