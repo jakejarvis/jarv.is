@@ -1,0 +1,80 @@
+import PageTitle from "@/components/page-title";
+import Comments from "@/components/comments";
+import { createMetadata } from "@/lib/helpers/metadata";
+
+import backgroundImg from "./sundar.jpg";
+
+export const metadata = createMetadata({
+  title: "fuckyougoogle.zip 🖕",
+  description: "This is a horrible idea.",
+  canonical: "/zip",
+});
+
+export const Terminal = () => (
+  <div
+    className="relative mx-auto my-4 w-full rounded-lg"
+    style={{
+      backgroundImage: `url(${backgroundImg.src})`,
+      backgroundRepeat: "repeat",
+      backgroundPosition: "center",
+    }}
+  >
+    <code className="border-ring block overflow-x-auto rounded-lg border border-solid bg-black/60 p-4 text-sm text-white/90 backdrop-blur-xs backdrop-saturate-150">
+      <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+      <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>mv</span> /root
+      <a href="https://killedbygoogle.com/" style={{ color: "inherit" }} className="hover:no-underline">
+        /stable_products_that_people_rely_on/
+      </a>
+      googledomains.zip /tmp/
+      <br />
+      <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+      <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>crontab</span>{" "}
+      <span style={{ color: "#fd992a" }}>-l</span>
+      <br />
+      <br />
+      <span style={{ color: "#929292" }}>
+        # TODO(someone else): make super duper sure this only deletes actual zip files and *NOT* the sketchy domains
+        ending with file extensions released by us & purchased on our registrar (which i just yeeted btw cuz i&apos;m &
+        also my evil superpowers are fueled by my reckless disregard for the greater good of the internet). - xoxo
+        sundar <span style={{ color: "#f95757" }}>&lt;3</span>
+      </span>
+      <br />
+      <span style={{ color: "#78df55" }}>@monthly</span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span style={{ color: "#d588fb" }}>rm</span> <span style={{ color: "#fd992a" }}>-f</span> /tmp/
+      <a href="https://fuckyougoogle.zip/" style={{ color: "inherit" }} className="hover:no-underline">
+        *.zip
+      </a>
+      <br />
+      <br />
+      <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
+      <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>reboot</span> 0
+    </code>
+  </div>
+);
+
+<PageTitle canonical="https://fuckyougoogle.zip">fuckyougoogle.zip 🖕</PageTitle>
+
+<Terminal />
+
+---
+
+### This reaction seems a little extreme?
+
+A little-known monopolistic internet conglomorate simply unleashed [multiple](https://blog.google/products/registry/8-new-top-level-domains-for-dads-grads-tech/) TLDs with coincidentally matching binary file extentions onto the web and then abruptly [exited the consumer domain registrar business](https://newsroom.squarespace.com/blog/squarespace-domains-updates), what's the big deal?
+
+- **Bobby Rauch:** [The Dangers of Google's .zip TLD](https://medium.com/@bobbyrsec/the-dangers-of-googles-zip-tld-5e1e675e59a5)
+- **Fortinet:** [Threat Actors Add .zip Domains to Their Phishing Arsenals](https://www.fortinet.com/blog/industry-trends/threat-actors-add-zip-domains-to-phishing-arsenals)
+- **Cisco Talos:** [.Zip top-level domains draw potential for information leaks](https://blog.talosintelligence.com/zip-tld-information-leak/)
+- **Ars Technica:** [Google pushes .zip and .mov domains onto the Internet, and the Internet pushes back](https://arstechnica.com/information-technology/2023/05/critics-say-googles-new-zip-and-mov-domains-will-be-a-boon-to-scammers/)
+- **Malwarebytes:** [Zip domains, a bad idea nobody asked for](https://www.threatdown.com/blog/zip-domains-a-bad-idea-nobody-asked-for/)
+- **Wired:** [The Real Risks in Google's New .Zip and .Mov Domains](https://www.wired.com/story/google-zip-mov-domains-phishing-risks/)
+- **Netcraft:** [Phishing attacks already using the .zip TLD](https://www.netcraft.com/blog/phishing-attacks-already-using-the-zip-tld/)
+- **Bleeping Computer:** [New ZIP domains spark debate among cybersecurity experts](https://www.bleepingcomputer.com/news/security/new-zip-domains-spark-debate-among-cybersecurity-experts/)
+- **Red Canary:** [Broken zippers: Detecting deception with Google's new ZIP domains](https://redcanary.com/blog/threat-detection/google-zip-domains/)
+- **Kaspersky:** [Beware the .zip and .mov domains!](https://usa.kaspersky.com/blog/zip-mov-domain-extension-confusion/28351/)
+- **Palo Alto Networks:** [New Top Level Domains .zip and .mov open the door for new attacks](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000g1wOCAQ)
+- **Google, twenty years ago:** ["Don't be evil"](https://web.archive.org/web/20050204181615/http://investor.google.com/conduct.html)
+
+---
+
+<Comments title="fuckyougoogle.zip" />

@@ -1,4 +1,4 @@
-import { env } from "../lib/env";
+import { env } from "@/lib/env";
 import type { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => ({

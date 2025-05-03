@@ -1,10 +1,11 @@
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import { Feed } from "feed";
-import { getFrontMatter, getContent } from "./posts";
-import * as config from "../config";
+import { getFrontMatter, getContent } from "@/lib/helpers/posts";
+import siteConfig from "@/lib/config/site";
+import authorConfig from "@/lib/config/author";
 import type { Item as FeedItem } from "feed";
 
-import ogImage from "../../app/opengraph-image.jpg";
+import ogImage from "@/app/opengraph-image.jpg";
 
 /**
  * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.
@@ -14,9 +15,9 @@ export const buildFeed = async (): Promise<Feed> => {
   const feed = new Feed({
     id: `${env.NEXT_PUBLIC_BASE_URL}`,
     link: `${env.NEXT_PUBLIC_BASE_URL}`,
-    title: config.siteName,
-    description: config.description,
-    copyright: config.licenseUrl,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    copyright: `https://spdx.org/licenses/${siteConfig.license}.html`,
     updated: new Date(),
     image: `${env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
     feedLinks: {
@@ -24,9 +25,9 @@ export const buildFeed = async (): Promise<Feed> => {
       atom: `${env.NEXT_PUBLIC_BASE_URL}/feed.atom`,
     },
     author: {
-      name: config.authorName,
+      name: authorConfig.name,
       link: env.NEXT_PUBLIC_BASE_URL,
-      email: config.authorEmail,
+      email: authorConfig.email,
     },
   });
 
@@ -40,7 +41,7 @@ export const buildFeed = async (): Promise<Feed> => {
       description: post.description,
       author: [
         {
-          name: config.authorName,
+          name: authorConfig.name,
           link: `${env.NEXT_PUBLIC_BASE_URL}`,
         },
       ],

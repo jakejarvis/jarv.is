@@ -1,22 +1,20 @@
-import { env } from "../../../lib/env";
+import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { JsonLd } from "react-schemaorg";
-import clsx from "clsx";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
-import Link from "../../../components/Link";
-import Time from "../../../components/Time";
-import Comments from "../../../components/Comments";
-import Loading from "../../../components/Loading";
-import HitCounter from "./counter";
-import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
-import { createMetadata } from "../../../lib/helpers/metadata";
-import * as config from "../../../lib/config";
-import { POSTS_DIR } from "../../../lib/config/constants";
+import Link from "@/components/link";
+import Time from "@/components/time";
+import Comments from "@/components/comments";
+import Loading from "@/components/loading";
+import ViewCounter from "@/components/view-counter";
+import { getSlugs, getFrontMatter } from "@/lib/helpers/posts";
+import { createMetadata } from "@/lib/helpers/metadata";
+import siteConfig from "@/lib/config/site";
+import authorConfig from "@/lib/config/author";
+import { POSTS_DIR } from "@/lib/config/constants";
 import { size as ogImageSize } from "./opengraph-image";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
-
-import styles from "./page.module.css";
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
 export const dynamicParams = false;
@@ -43,7 +41,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
     canonical: `/${POSTS_DIR}/${slug}`,
     openGraph: {
       type: "article",
-      authors: [config.authorName],
+      authors: [authorConfig.name],
       tags: frontmatter!.tags,
       publishedTime: frontmatter!.date,
       modifiedTime: frontmatter!.date,
@@ -61,7 +59,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
   return (
-    <article>
+    <>
       <JsonLd<BlogPosting>
         item={{
           "@context": "https://schema.org",
@@ -79,7 +77,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           datePublished: frontmatter!.date,
           dateModified: frontmatter!.date,
           inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
-          license: config.licenseUrl,
+          license: `https://spdx.org/licenses/${siteConfig.license}.html`,
           author: {
             // defined in app/layout.tsx
             "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
@@ -87,73 +85,67 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className={styles.meta}>
-        <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} plain className={clsx(styles.metaItem, styles.metaLink)}>
-          <CalendarDaysIcon size="1.25em" className={styles.metaIcon} />
+      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
+        <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} className={"text-foreground/70 mr-4 whitespace-nowrap"}>
+          <CalendarDaysIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
           <Time date={frontmatter!.date} format="MMMM d, y" />
         </Link>
 
         {frontmatter!.tags && (
-          <div className={styles.metaItem}>
-            <TagIcon size="1.25em" className={styles.metaIcon} />
-            <span className={styles.metaTags}>
-              {frontmatter!.tags.map((tag) => (
-                <span key={tag} title={tag} className={styles.metaTag} aria-label={`Tagged with ${tag}`}>
-                  {tag}
-                </span>
-              ))}
-            </span>
+          <div className="mr-4">
+            <TagIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
+            {frontmatter!.tags.map((tag) => (
+              <span
+                key={tag}
+                title={tag}
+                className="before:text-foreground/40 mr-2 lowercase before:pr-0.5 before:content-['\0023'] last-of-type:mr-0"
+                aria-label={`Tagged with ${tag}`}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         )}
 
         <Link
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
           title={`Edit "${frontmatter!.title}" on GitHub`}
-          plain
-          className={clsx(styles.metaItem, styles.metaLink)}
+          className={"text-foreground/70 mr-4 whitespace-nowrap"}
         >
-          <SquarePenIcon size="1.25em" className={styles.metaIcon} />
+          <SquarePenIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
           <span>Improve This Post</span>
         </Link>
 
-        <div
-          className={styles.metaItem}
-          style={{
-            // fix potential layout shift when number of hits loads
-            minWidth: "6em",
-            marginRight: 0,
-          }}
-        >
-          <EyeIcon size="1.25em" className={styles.metaIcon} />
+        <div className="mr-0 min-w-10 whitespace-nowrap">
+          <EyeIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
           <Suspense
             // when this loads, the component will count up from zero to the actual number of hits, so we can simply
             // show a zero here as a "loading indicator"
             fallback={<span>0</span>}
           >
-            <HitCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
           </Suspense>
         </div>
       </div>
 
-      <h1 className={styles.title}>
+      <h1 className="mt-2 mb-3 text-3xl/10 font-bold md:text-4xl/12">
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}
-          plain
-          className={styles.link}
+          className="text-foreground hover:no-underline"
         />
       </h1>
 
       <MDXContent />
 
       {!frontmatter!.noComments && (
-        <div id="comments" className={styles.comments}>
-          <Suspense fallback={<Loading boxes={3} width={40} style={{ display: "block", margin: "2em auto" }} />}>
+        <div id="comments" className="border-ring mt-8 min-h-36 border-t-2 pt-8">
+          <Suspense fallback={<Loading boxes={3} width={40} className="mx-auto my-8 block" />}>
             <Comments title={frontmatter!.title} />
           </Suspense>
         </div>
       )}
-    </article>
+    </>
   );
 };
 

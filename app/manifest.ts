@@ -1,13 +1,13 @@
-import { env } from "../lib/env";
-import * as config from "../lib/config";
+import { env } from "@/lib/env";
+import siteConfig from "@/lib/config/site";
 import type { MetadataRoute } from "next";
 
 const manifest = (): MetadataRoute.Manifest => {
   return {
-    name: config.siteName,
+    name: siteConfig.name,
     // eslint-disable-next-line camelcase
-    short_name: config.siteName,
-    description: config.description,
+    short_name: siteConfig.name,
+    description: siteConfig.description,
     lang: env.NEXT_PUBLIC_SITE_LOCALE,
     icons: [
       {

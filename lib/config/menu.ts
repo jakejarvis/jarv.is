@@ -1,5 +1,5 @@
 import { CodeIcon, HomeIcon, MailIcon, PencilLineIcon } from "lucide-react";
-import type { MenuItemProps } from "../../components/MenuItem";
+import type { MenuItemProps } from "@/components/ui/menu-item";
 
 export const menuItems: MenuItemProps[] = [
   {

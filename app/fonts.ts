@@ -11,7 +11,7 @@ export const GeistSans = GeistSansLoader({
     "system-ui",
     "sans-serif",
   ],
-  variable: "--fonts-sans",
+  variable: "--font-geist-sans",
   preload: true,
 });
 
@@ -29,6 +29,6 @@ export const GeistMono = GeistMonoLoader({
     "monospace",
   ],
   adjustFontFallback: false,
-  variable: "--fonts-mono",
+  variable: "--font-geist-mono",
   preload: true,
 });

@@ -1,12 +1,13 @@
 /** @type {import("prettier").Config} */
 const config = {
-  singleQuote: false,
+  plugins: ["prettier-plugin-tailwindcss"],
   jsxSingleQuote: false,
   printWidth: 120,
-  tabWidth: 2,
-  useTabs: false,
   quoteProps: "as-needed",
+  singleQuote: false,
+  tabWidth: 2,
   trailingComma: "es5",
+  useTabs: false,
 };
 
 export default config;

@@ -1,11 +1,11 @@
-import { env } from "../../../lib/env";
-import { ImageResponse } from "next/og";
-import { notFound } from "next/navigation";
+import { env } from "@/lib/env";
 import path from "path";
 import fs from "fs";
-import { getSlugs, getFrontMatter } from "../../../lib/helpers/posts";
-import * as config from "../../../lib/config";
-import { POSTS_DIR } from "../../../lib/config/constants";
+import { ImageResponse } from "next/og";
+import { notFound } from "next/navigation";
+import { getSlugs, getFrontMatter } from "@/lib/helpers/posts";
+import siteConfig from "@/lib/config/site";
+import { POSTS_DIR } from "@/lib/config/constants";
 
 export const contentType = "image/png";
 export const size = {
@@ -150,7 +150,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                     marginLeft: "0.75rem",
                   }}
                 >
-                  {config.siteName}
+                  {siteConfig.name}
                 </span>
               </div>
 

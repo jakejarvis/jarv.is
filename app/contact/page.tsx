@@ -1,7 +1,6 @@
-import { LockIcon } from "lucide-react";
-import PageTitle from "../../components/PageTitle";
-import Link from "../../components/Link";
-import { createMetadata } from "../../lib/helpers/metadata";
+import PageTitle from "@/components/page-title";
+import Link from "@/components/link";
+import { createMetadata } from "@/lib/helpers/metadata";
 
 import ContactForm from "./form";
 
@@ -13,40 +12,19 @@ export const metadata = createMetadata({
 
 const Page = () => {
   return (
-    <div
-      style={{
-        maxWidth: "600px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="w-full md:mx-auto md:w-2/3">
       <PageTitle canonical="/contact">Contact</PageTitle>
 
-      <p>
+      <p className="my-5 text-[0.925rem] leading-relaxed md:text-base">
         Fill out this quick form and I&rsquo;ll get back to you as soon as I can! You can also{" "}
         <Link href="mailto:jake@jarv.is">email me directly</Link> or send me a direct message on{" "}
         <Link href="https://bsky.app/profile/jarv.is">🦋 Bluesky</Link> or{" "}
         <Link href="https://fediverse.jarv.is/@jake">🦣 Mastodon</Link>.
       </p>
-      <p>
-        <LockIcon
-          size="0.975em"
-          style={{
-            marginRight: "0.15em",
-            stroke: "var(--colors-warning)",
-            verticalAlign: "middle",
-          }}
-        />{" "}
+      <p className="my-5 text-[0.925rem] leading-relaxed md:text-base">
         You can grab my public key here:{" "}
-        <Link href="https://jrvs.io/pgp" title="My Public Key">
-          <code
-            style={{
-              fontSize: "0.925em",
-              letterSpacing: "0.075em",
-              wordSpacing: "-0.3em",
-            }}
-          >
-            6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
-          </code>
+        <Link href="https://jrvs.io/pgp" className="font-mono text-sm tracking-wider [word-spacing:-0.3em]">
+          6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
         </Link>
         .
       </p>

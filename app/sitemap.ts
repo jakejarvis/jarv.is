@@ -1,7 +1,7 @@
-import { env } from "../lib/env";
+import { env } from "@/lib/env";
 import path from "path";
 import glob from "fast-glob";
-import { getFrontMatter } from "../lib/helpers/posts";
+import { getFrontMatter } from "@/lib/helpers/posts";
 import type { MetadataRoute } from "next";
 
 // routes in /app (in other words, directories containing a page.tsx/mdx file) are automatically included; add a route

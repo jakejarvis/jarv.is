@@ -1,9 +1,9 @@
-import { env } from "../../lib/env";
+import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import PageTitle from "../../components/PageTitle";
-import Link from "../../components/Link";
-import Video from "../../components/Video";
-import { createMetadata } from "../../lib/helpers/metadata";
+import PageTitle from "@/components/page-title";
+import Link from "@/components/link";
+import Video from "@/components/video";
+import { createMetadata } from "@/lib/helpers/metadata";
 import type { VideoObject } from "schema-dts";
 
 import thumbnail from "./thumbnail.png";
@@ -51,25 +51,17 @@ const Page = () => {
         poster={thumbnail.src}
       />
 
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: "0.9em",
-          lineHeight: 1.8,
-          margin: "1.25em 1em 0 1em",
-          color: "var(--colors-medium-light)",
-        }}
-      >
+      <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
         Video is property of{" "}
-        <Link href="https://www.hillaryclinton.com/" style={{ fontWeight: 700 }}>
+        <Link href="https://www.hillaryclinton.com/" className="font-bold">
           Hillary for America
         </Link>
         , the{" "}
-        <Link href="https://democrats.org/" style={{ fontWeight: 700 }}>
+        <Link href="https://democrats.org/" className="font-bold">
           Democratic National Committee
         </Link>
         , and{" "}
-        <Link href="https://cnnpressroom.blogs.cnn.com/" style={{ fontWeight: 700 }}>
+        <Link href="https://cnnpressroom.blogs.cnn.com/" className="font-bold">
           CNN / WarnerMedia
         </Link>
         . &copy; 2016.
