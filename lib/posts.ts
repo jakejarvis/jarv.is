@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "@/lib/helpers/mdx/remark";
+import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "@/lib/remark";
 import { decode } from "html-entities";
 import { POSTS_DIR } from "@/lib/config/constants";
 
@@ -52,7 +52,7 @@ export const getFrontMatter: {
   Promise<any> => {
     if (typeof slug === "string") {
       try {
-        const { frontmatter } = await import(`../../${POSTS_DIR}/${slug}/index.mdx`);
+        const { frontmatter } = await import(`../${POSTS_DIR}/${slug}/index.mdx`);
 
         // process markdown title to html...
         const htmlTitle = await unified()

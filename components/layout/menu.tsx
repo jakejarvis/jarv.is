@@ -1,15 +1,13 @@
 "use client";
 
 import { useSelectedLayoutSegment } from "next/navigation";
-import MenuItem from "@/components/ui/menu-item";
-import ThemeToggle from "@/components/ui/theme-toggle";
+import MenuItem from "@/components/layout/menu-item";
+import ThemeToggle from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
 import { menuItems } from "@/lib/config/menu";
 import type { ComponentPropsWithoutRef } from "react";
 
-export type MenuProps = ComponentPropsWithoutRef<"ul">;
-
-const Menu = ({ className, ...rest }: MenuProps) => {
+const Menu = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => {
   const segment = useSelectedLayoutSegment() || "";
 
   return (
@@ -24,7 +22,7 @@ const Menu = ({ className, ...rest }: MenuProps) => {
         );
       })}
 
-      <li className="-mr-2.5 md:ml-4 not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden">
+      <li className="-mr-2.5 md:ml-4">
         <MenuItem
           // @ts-ignore
           icon={ThemeToggle}

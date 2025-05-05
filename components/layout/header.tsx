@@ -1,15 +1,13 @@
 import Image from "next/image";
 import Link from "@/components/link";
-import Menu from "@/components/ui/menu";
+import Menu from "@/components/layout/menu";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
 import type { ComponentPropsWithoutRef } from "react";
 
 import avatarImg from "@/app/avatar.jpg";
 
-export type HeaderProps = ComponentPropsWithoutRef<"header">;
-
-const Header = ({ className, ...rest }: HeaderProps) => {
+const Header = ({ className, ...rest }: ComponentPropsWithoutRef<"header">) => {
   return (
     <header className={cn("flex items-center justify-between", className)} {...rest}>
       <Link
@@ -22,9 +20,9 @@ const Header = ({ className, ...rest }: HeaderProps) => {
         <Image
           src={avatarImg}
           alt={`Photo of ${siteConfig.name}`}
-          className="border-ring/80 size-[70px] rounded-full border-2 md:size-[48px] md:border-1"
-          width={70}
-          height={70}
+          className="border-ring/80 size-[64px] rounded-full border-2 md:size-[48px] md:border-1"
+          width={64}
+          height={64}
           quality={50}
           priority
         />

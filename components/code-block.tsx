@@ -3,17 +3,24 @@ import CopyButton from "@/components/copy-button";
 import { cn } from "@/lib/utils";
 import type { JSX } from "react";
 
-export type CodeBlockProps = JSX.IntrinsicElements["pre"] & {
+const CodeBlock = async ({
+  lineNumbers,
+  className,
+  children,
+  ...rest
+}: JSX.IntrinsicElements["pre"] & {
   lineNumbers?: boolean;
-};
-
-const CodeBlock = async (props: CodeBlockProps) => {
+}) => {
   // escape hatch if this code wasn't meant to be highlighted
-  if (!props.children || typeof props.children !== "object" || !("props" in props.children)) {
-    return <code {...props} />;
+  if (!children || typeof children !== "object" || !("props" in children)) {
+    return (
+      <pre className={className} {...rest}>
+        {children}
+      </pre>
+    );
   }
 
-  const codeProps = props.children.props as JSX.IntrinsicElements["code"];
+  const codeProps = children.props as JSX.IntrinsicElements["code"];
   const codeRaw = String(codeProps.children).trim();
   const lang = codeProps.className?.split("language-")[1] ?? "";
 
@@ -29,13 +36,13 @@ const CodeBlock = async (props: CodeBlockProps) => {
     <div
       className={cn(
         "bg-muted/35 border-border relative my-4 w-full rounded-lg border-2 font-mono [font-variant-ligatures:none]",
-        props.className
+        className
       )}
     >
       <div
         className={cn(
           "grid w-full overflow-x-auto p-4 text-sm leading-none [counter-reset:line] dark:**:text-[var(--shiki-dark)]! [&_.line]:inline-block [&_.line]:min-w-full [&_.line]:py-1 [&_.line]:whitespace-pre [&_.line]:after:hidden [&>pre]:bg-transparent! [&>pre]:whitespace-normal",
-          props.lineNumbers &&
+          lineNumbers &&
             "[&_.line]:before:text-muted-foreground [&_.line]:before:mr-4 [&_.line]:before:inline-block [&_.line]:before:w-5 [&_.line]:before:text-right [&_.line]:before:content-[counter(line)] [&_.line]:before:[counter-increment:line]"
         )}
         data-language={lang}

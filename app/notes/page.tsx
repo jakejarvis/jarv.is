@@ -1,11 +1,11 @@
 import Link from "@/components/link";
 import Time from "@/components/time";
-import { getFrontMatter } from "@/lib/helpers/posts";
-import { createMetadata } from "@/lib/helpers/metadata";
+import { getFrontMatter } from "@/lib/posts";
+import { createMetadata } from "@/lib/metadata";
 import authorConfig from "@/lib/config/author";
 import { POSTS_DIR } from "@/lib/config/constants";
 import type { ReactElement } from "react";
-import type { FrontMatter } from "@/lib/helpers/posts";
+import type { FrontMatter } from "@/lib/posts";
 
 export const metadata = createMetadata({
   title: "Notes",

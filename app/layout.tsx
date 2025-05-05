@@ -1,12 +1,12 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import { Analytics } from "@vercel/analytics/next";
-import { ThemeProvider, ThemeScript } from "@/components/ui/theme-context";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
-import { SkipNavLink, SkipNavTarget } from "@/components/ui/skip-nav";
+import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import { SkipNavLink, SkipNavTarget } from "@/components/layout/skip-nav";
 import { cn } from "@/lib/utils";
-import { defaultMetadata } from "@/lib/helpers/metadata";
+import { defaultMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import type { Person, WebSite } from "schema-dts";
@@ -67,15 +67,15 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         <ThemeProvider>
           <SkipNavLink />
 
-          <div className="max-w-default mx-auto w-full px-5 pt-2 pb-6">
-            <Header className="mb-4 h-24 w-full md:h-18" />
+          <div className="max-w-default mx-auto w-full px-5">
+            <Header className="mt-4 mb-6 w-full" />
 
             <main>
               <SkipNavTarget />
               {children}
             </main>
 
-            <Footer className="mt-6 w-full" />
+            <Footer className="my-6 w-full" />
           </div>
         </ThemeProvider>
 

@@ -5,12 +5,18 @@ import copy from "copy-to-clipboard";
 import { ClipboardIcon, CheckIcon } from "lucide-react";
 import type { Ref, ComponentPropsWithoutRef, ComponentRef, MouseEventHandler } from "react";
 
-export type CopyButtonProps = ComponentPropsWithoutRef<"button"> & {
-  source: string;
-  timeout?: number;
-};
-
-const CopyButton = ({ source, timeout = 2000, style, ...rest }: CopyButtonProps, ref: Ref<ComponentRef<"button">>) => {
+const CopyButton = (
+  {
+    source,
+    timeout = 2000,
+    style,
+    ...rest
+  }: ComponentPropsWithoutRef<"button"> & {
+    source: string;
+    timeout?: number;
+  },
+  ref: Ref<ComponentRef<"button">>
+) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy: MouseEventHandler<ComponentRef<"button">> = (e) => {

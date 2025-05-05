@@ -1,11 +1,15 @@
 import { cn } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 
-export type VideoProps = Omit<Partial<ComponentPropsWithoutRef<"video">>, "src"> & {
+const Video = ({
+  src,
+  autoPlay,
+  className,
+  children,
+  ...rest
+}: Omit<Partial<ComponentPropsWithoutRef<"video">>, "src"> & {
   src: string | string[] | undefined;
-};
-
-const Video = ({ src, autoPlay, className, children, ...rest }: VideoProps) => {
+}) => {
   return (
     <video
       {...(typeof src === "string" ? { src } : {})}

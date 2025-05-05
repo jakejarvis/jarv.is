@@ -3,14 +3,19 @@ import { cn } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 import type { LucideIcon } from "lucide-react";
 
-export type MenuItemProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
+const MenuItem = ({
+  text,
+  href,
+  icon,
+  current,
+  className,
+  ...rest
+}: Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
   text?: string;
   href?: string;
   icon?: LucideIcon;
   current?: boolean;
-};
-
-const MenuItem = ({ text, href, icon, current, className, ...rest }: MenuItemProps) => {
+}) => {
   const Icon = icon;
 
   const item = (

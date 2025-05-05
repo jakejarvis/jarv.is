@@ -4,17 +4,12 @@ import { EmbeddedTweet, TweetNotFound } from "react-tweet";
 import { fetchTweet as _fetchTweet } from "react-tweet/api";
 import { cn } from "@/lib/utils";
 
-export type TweetProps = {
-  id: string;
-  className?: string;
-};
-
 const fetchTweet = cache(_fetchTweet, undefined, {
   revalidate: false, // cache indefinitely
   tags: ["tweet"],
 });
 
-const Tweet = async ({ id, className }: TweetProps) => {
+const Tweet = async ({ id, className }: { id: string; className?: string }) => {
   try {
     const { data } = await fetchTweet(id);
 
