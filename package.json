@@ -47,7 +47,7 @@
     "next": "15.4.0-canary.19",
     "prop-types": "^15.8.1",
     "react": "19.1.0",
-    "react-activity-calendar": "^2.7.10",
+    "react-activity-calendar": "^2.7.11",
     "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
     "react-is": "19.1.0",
