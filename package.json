@@ -27,7 +27,7 @@
     "@next/mdx": "15.4.0-canary.19",
     "@octokit/graphql": "^8.2.2",
     "@octokit/graphql-schema": "^15.26.0",
-    "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-slot": "^1.2.1",
     "@t3-oss/env-nextjs": "^0.13.4",
     "@vercel/analytics": "^1.5.0",
     "@vercel/kv": "^3.0.0",
