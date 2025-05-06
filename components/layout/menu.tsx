@@ -11,18 +11,21 @@ const Menu = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => {
   const segment = useSelectedLayoutSegment() || "";
 
   return (
-    <ul className={cn("flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end", className)} {...rest}>
+    <ul
+      className={cn("flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:space-x-4", className)}
+      {...rest}
+    >
       {menuItems.map((item) => {
-        const isCurrent = item.href === `/${segment}`;
+        const isCurrent = item.href?.split("/")[1] === segment;
 
         return (
-          <li className="max-sm:first-of-type:hidden md:ml-4" key={item.href}>
+          <li className="inline-block max-sm:first-of-type:hidden" key={item.href}>
             <MenuItem {...item} current={isCurrent} />
           </li>
         );
       })}
 
-      <li className="-mr-2.5 md:ml-4">
+      <li className="-mr-2.5 inline-block">
         <MenuItem
           // @ts-ignore
           icon={ThemeToggle}

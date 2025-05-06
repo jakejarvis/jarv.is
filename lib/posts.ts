@@ -4,9 +4,18 @@ import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
-import { remarkHtml, remarkParse, remarkSmartypants, remarkFrontmatter } from "@/lib/remark";
+import {
+  remarkParse,
+  remarkSmartypants,
+  remarkFrontmatter,
+  remarkRehype,
+  remarkMdx,
+  remarkStripMdxImportsExports,
+} from "@/lib/remark";
 import { decode } from "html-entities";
 import { POSTS_DIR } from "@/lib/config/constants";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
 
 export type FrontMatter = {
   slug: string;
@@ -58,12 +67,12 @@ export const getFrontMatter: {
         const htmlTitle = await unified()
           .use(remarkParse)
           .use(remarkSmartypants)
-          .use(remarkHtml, {
-            sanitize: {
-              // allow *very* limited markdown to be used in post titles
-              tagNames: ["code", "em", "strong"],
-            },
+          .use(remarkRehype)
+          .use(rehypeSanitize, {
+            // allow *very* limited markdown to be used in post titles
+            tagNames: ["code", "em", "strong"],
           })
+          .use(rehypeStringify)
           .process(frontmatter.title)
           .then((result) => result.toString().trim());
 
@@ -108,35 +117,37 @@ export const getContent = cache(async (slug: string): Promise<string | undefined
   try {
     const content = await unified()
       .use(remarkParse)
+      .use(remarkMdx)
+      .use(remarkStripMdxImportsExports)
       .use(remarkFrontmatter)
       .use(remarkSmartypants)
-      .use(remarkHtml, {
-        sanitize: {
-          tagNames: [
-            "p",
-            "a",
-            "em",
-            "strong",
-            "code",
-            "pre",
-            "blockquote",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "ul",
-            "ol",
-            "li",
-            "hr",
-          ],
-        },
+      .use(remarkRehype)
+      .use(rehypeSanitize, {
+        tagNames: [
+          "p",
+          "a",
+          "em",
+          "strong",
+          "code",
+          "pre",
+          "blockquote",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "ul",
+          "ol",
+          "li",
+          "hr",
+        ],
       })
+      .use(rehypeStringify)
       .process(await fs.readFile(path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
 
     // convert the parsed content to a string with "safe" HTML
-    return content.toString().replaceAll("<p></p>\n", "").replaceAll("<p>{/* prettier-ignore */}</p>\n", "").trim();
+    return content.toString().replaceAll("/* prettier-ignore */", "").replaceAll("<p></p>", "").trim();
   } catch (error) {
     console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
     return undefined;

@@ -34,10 +34,8 @@
         "remark-*",
         "unified",
         "unist-*",
-        "hast-*",
         "@types/mdx",
-        "@types/unist",
-        "@types/hast"
+        "@types/unist"
       ],
       "groupName": "mdx"
     },

@@ -1,6 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import PageTitle from "@/components/page-title";
+import PageTitle from "@/components/layout/page-title";
 import Link from "@/components/link";
 import Video from "@/components/video";
 import { createMetadata } from "@/lib/metadata";

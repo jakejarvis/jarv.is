@@ -130,7 +130,7 @@ export const env = createEnv({
 
     /**
      * Optional. Consistent timezone for the site. Doesn't really matter what it is, as long as it's the same everywhere
-     * to avoid hydration complaints.
+     * to avoid hydration complaints. Defaults to `America/New_York`.
      *
      * @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */

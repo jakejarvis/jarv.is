@@ -1,6 +1,13 @@
 import Link from "@/components/link";
+import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef } from "react";
 
-const Gist = async ({ id, file }: { id: string; file?: string }) => {
+const Gist = async ({
+  id,
+  file,
+  className,
+  ...rest
+}: { id: string; file?: string } & ComponentPropsWithoutRef<"iframe">) => {
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
@@ -34,7 +41,8 @@ const Gist = async ({ id, file }: { id: string; file?: string }) => {
       scrolling="no"
       id={iframeId}
       srcDoc={iframeHtml}
-      className="overflow-hidden border-none"
+      className={cn("overflow-hidden border-none", className)}
+      {...rest}
       suppressHydrationWarning
     />
   );

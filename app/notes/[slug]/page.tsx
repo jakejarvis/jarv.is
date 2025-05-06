@@ -85,20 +85,23 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
-        <Link href={`/${POSTS_DIR}/${frontmatter!.slug}`} className={"text-foreground/70 mr-4 whitespace-nowrap"}>
-          <CalendarDaysIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
+      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start space-x-4 text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
+        <Link
+          href={`/${POSTS_DIR}/${frontmatter!.slug}`}
+          className={"text-foreground/70 space-x-2 whitespace-nowrap hover:no-underline"}
+        >
+          <CalendarDaysIcon className="inline size-4 shrink-0 align-text-bottom" />
           <Time date={frontmatter!.date} format="MMMM d, y" />
         </Link>
 
         {frontmatter!.tags && (
-          <div className="mr-4">
-            <TagIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
+          <div className="space-x-2">
+            <TagIcon className="inline size-4 shrink-0 align-text-bottom" />
             {frontmatter!.tags.map((tag) => (
               <span
                 key={tag}
                 title={tag}
-                className="before:text-foreground/40 mr-2 lowercase before:pr-0.5 before:content-['\0023'] last-of-type:mr-0"
+                className="before:text-foreground/40 lowercase before:pr-0.5 before:content-['\0023'] last-of-type:mr-0"
                 aria-label={`Tagged with ${tag}`}
               >
                 {tag}
@@ -110,14 +113,14 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <Link
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
           title={`Edit "${frontmatter!.title}" on GitHub`}
-          className={"text-foreground/70 mr-4 whitespace-nowrap"}
+          className={"text-foreground/70 space-x-2 whitespace-nowrap hover:no-underline"}
         >
-          <SquarePenIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
+          <SquarePenIcon className="inline size-4 shrink-0 align-text-bottom" />
           <span>Improve This Post</span>
         </Link>
 
-        <div className="mr-0 min-w-10 whitespace-nowrap">
-          <EyeIcon className="mr-2 inline size-[16px] shrink-0 align-text-bottom" />
+        <div className="min-w-14 space-x-2 whitespace-nowrap">
+          <EyeIcon className="inline size-4 shrink-0 align-text-bottom" />
           <Suspense
             // when this loads, the component will count up from zero to the actual number of hits, so we can simply
             // show a zero here as a "loading indicator"

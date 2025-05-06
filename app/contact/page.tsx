@@ -1,4 +1,4 @@
-import PageTitle from "@/components/page-title";
+import PageTitle from "@/components/layout/page-title";
 import Link from "@/components/link";
 import { createMetadata } from "@/lib/metadata";
 

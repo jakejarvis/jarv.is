@@ -1,8 +1,12 @@
-import { CodeIcon, HomeIcon, MailIcon, PencilLineIcon } from "lucide-react";
-import MenuItem from "@/components/layout/menu-item";
-import { ComponentPropsWithoutRef } from "react";
+import { CodeIcon, HomeIcon, MailIcon, PencilLineIcon, type LucideIcon } from "lucide-react";
 
-export const menuItems: Array<ComponentPropsWithoutRef<typeof MenuItem>> = [
+export type MenuItemConfig = {
+  text?: string;
+  href?: `/${string}`;
+  icon?: LucideIcon;
+};
+
+export const menuItems: MenuItemConfig[] = [
   {
     text: "Home",
     href: "/",

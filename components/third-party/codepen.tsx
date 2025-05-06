@@ -1,3 +1,6 @@
+import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef } from "react";
+
 const CodePen = ({
   username,
   id,
@@ -5,6 +8,9 @@ const CodePen = ({
   defaultTab = "html",
   preview = true,
   editable = false,
+  style,
+  className,
+  ...rest
 }: {
   username: string;
   id: string;
@@ -12,7 +18,7 @@ const CodePen = ({
   defaultTab?: string;
   preview?: boolean;
   editable?: boolean;
-}) => {
+} & ComponentPropsWithoutRef<"iframe">) => {
   return (
     <iframe
       src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
@@ -20,7 +26,9 @@ const CodePen = ({
         preview: `${!!preview}`,
         editable: `${!!editable}`,
       })}`}
-      style={{ height: `${height}px`, width: "100%", border: "0", overflow: "hidden" }}
+      style={{ height: `${height}px`, ...style }}
+      className={cn("w-full overflow-hidden border-none", className)}
+      {...rest}
     />
   );
 };

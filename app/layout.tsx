@@ -5,26 +5,23 @@ import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { SkipNavLink, SkipNavTarget } from "@/components/layout/skip-nav";
-import { cn } from "@/lib/utils";
 import { defaultMetadata } from "@/lib/metadata";
+import { GeistMono, GeistSans } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import type { Person, WebSite } from "schema-dts";
 
-import { GeistMono, GeistSans } from "./fonts";
 import "./globals.css";
 
 export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <html
-      lang={env.NEXT_PUBLIC_SITE_LOCALE}
-      className={cn(GeistSans.variable, GeistMono.variable)}
-      suppressHydrationWarning
-    >
+    <html lang={env.NEXT_PUBLIC_SITE_LOCALE} suppressHydrationWarning>
       <head>
         <ThemeScript />
+
+        <style id="geist-font">{`:root{--font-geist-sans:${GeistSans.style.fontFamily};--font-geist-mono:${GeistMono.style.fontFamily};}`}</style>
 
         <JsonLd<Person>
           item={{
@@ -67,7 +64,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         <ThemeProvider>
           <SkipNavLink />
 
-          <div className="max-w-default mx-auto w-full px-5">
+          <div className="mx-auto w-full max-w-4xl px-5">
             <Header className="mt-4 mb-6 w-full" />
 
             <main>

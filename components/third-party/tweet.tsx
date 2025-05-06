@@ -14,7 +14,7 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
     const { data } = await fetchTweet(id);
 
     return (
-      <div className={cn("min-h-[120px] [&_.react-tweet-theme]:![--tweet-container-margin:1.5rem_auto]", className)}>
+      <div className={cn("min-h-30 *:mx-auto! *:font-sans!", className)}>
         {data ? (
           <EmbeddedTweet
             tweet={data}
@@ -35,7 +35,7 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
     console.error(error);
 
     return (
-      <div className={cn("min-h-[120px] [&_.react-tweet-theme]:![--tweet-container-margin:1.5rem_auto]", className)}>
+      <div className={cn("min-h-30 *:mx-auto! *:font-sans!", className)}>
         <TweetNotFound />
       </div>
     );

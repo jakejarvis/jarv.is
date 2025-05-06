@@ -19,27 +19,27 @@ const Link = ({
   const isExternal = typeof href === "string" && !["/", "#"].includes(href[0]);
 
   const linkProps = {
+    href,
     target: target || (isExternal ? "_blank" : undefined),
     rel: `${rel ? `${rel} ` : ""}${target === "_blank" || isExternal ? "noopener noreferrer" : ""}`.trim() || undefined,
     className: cn(
       "text-primary hover:decoration-primary/40 hover:underline hover:decoration-2 hover:underline-offset-4",
       className
     ),
-  } satisfies ComponentPropsWithoutRef<"a">;
+    ...rest,
+  } as ComponentPropsWithoutRef<"a">;
 
   // don't waste time with next's component if it's just an external link
   if (isExternal) {
-    return <a href={href} {...linkProps} {...rest} />;
+    return <a {...linkProps} />;
   }
 
   return (
     <NextLink
-      href={href}
+      {...linkProps}
       prefetch={dynamicOnHover ? null : prefetch}
       // @ts-expect-error
       unstable_dynamicOnHover={dynamicOnHover}
-      {...linkProps}
-      {...rest}
     />
   );
 };

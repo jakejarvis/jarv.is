@@ -1,7 +1,7 @@
 import Link from "@/components/link";
 import { cn } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
-import type { LucideIcon } from "lucide-react";
+import type { MenuItemConfig } from "@/lib/config/menu";
 
 const MenuItem = ({
   text,
@@ -10,17 +10,15 @@ const MenuItem = ({
   current,
   className,
   ...rest
-}: Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
-  text?: string;
-  href?: string;
-  icon?: LucideIcon;
-  current?: boolean;
-}) => {
+}: Omit<ComponentPropsWithoutRef<typeof Link>, "href"> &
+  MenuItemConfig & {
+    current?: boolean;
+  }) => {
   const Icon = icon;
 
   const item = (
     <>
-      {Icon && <Icon className="stroke-foreground/85 block size-[28px] md:size-[20px]" />}
+      {Icon && <Icon className="stroke-foreground/85 block h-7 w-7 md:h-5 md:w-5" />}
       {text && <span className="ml-3 text-sm leading-none font-medium tracking-wide max-md:sr-only">{text}</span>}
     </>
   );

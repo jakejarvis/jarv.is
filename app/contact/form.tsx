@@ -72,20 +72,20 @@ const ContactForm = () => {
           }}
           disabled={pending || formState.success}
           aria-invalid={!pending && formState.errors?.message ? "true" : undefined}
-          className="min-h-24"
+          className="min-h-[6lh] resize-y"
         />
         {!pending && formState.errors?.message && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.message[0]}</span>
         )}
 
-        <div className="text-foreground/85 mt-2 text-[0.8rem] leading-relaxed">
+        <div className="text-foreground/85 my-2 text-[0.8rem] leading-relaxed">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             stroke="currentColor"
             strokeWidth="0"
             viewBox="0 0 24 24"
-            className="mr-1 inline-block size-[16px] align-text-top"
+            className="mr-1 inline-block size-4 align-text-top"
           >
             <path d="M22.27 19.385H1.73A1.73 1.73 0 010 17.655V6.345a1.73 1.73 0 011.73-1.73h20.54A1.73 1.73 0 0124 6.345v11.308a1.73 1.73 0 01-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z" />
           </svg>{" "}
@@ -102,9 +102,7 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <div className="my-4">
-          <Turnstile sitekey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} fixedSize />
-        </div>
+        <Turnstile sitekey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} fixedSize />
         {!pending && formState.errors?.["cf-turnstile-response"] && (
           <span className="text-destructive text-[0.8rem] font-semibold">
             {formState.errors["cf-turnstile-response"][0]}
@@ -112,7 +110,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div className="mt-[0.6em] flex min-h-[3.75em] items-center">
+      <div className="flex min-h-16 items-center">
         {!formState.success && (
           <Button type="submit" size="lg" disabled={pending}>
             {pending ? (
@@ -126,16 +124,16 @@ const ContactForm = () => {
             )}
           </Button>
         )}
+
         {!pending && formState.message && (
           <div
-            className={cn("ml-4 text-[0.9rem] font-semibold", formState.success ? "text-success" : "text-destructive")}
+            className={cn(
+              "ml-4 space-x-[2px] text-[0.9rem] font-semibold",
+              formState.success ? "text-success" : "text-destructive"
+            )}
           >
-            {formState.success ? (
-              <CheckIcon className="inline size-[16px]" />
-            ) : (
-              <XIcon className="inline size-[16px]" />
-            )}{" "}
-            <span className="ml-[2px]">{formState.message}</span>
+            {formState.success ? <CheckIcon className="inline size-4" /> : <XIcon className="inline size-4" />}{" "}
+            <span>{formState.message}</span>
           </div>
         )}
       </div>
