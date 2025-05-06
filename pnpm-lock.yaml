@@ -144,8 +144,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       rehype-wrapper:
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.1.0
+        version: 1.1.0
       remark-frontmatter:
         specifier: ^5.0.0
         version: 5.0.0
@@ -3407,8 +3407,8 @@ packages:
   rehype-unwrap-images@1.0.0:
     resolution: {integrity: sha512-wzW5Mk9IlVF2UwXC5NtIZsx1aHYbV8+bLWjJnlZaaamz5QU52RppWtq1uEZJqGo8d9Y4RuDqidB6r9RFpKugIg==}
 
-  rehype-wrapper@1.0.1:
-    resolution: {integrity: sha512-YYjm7xwqC9ULuuM0Gtx4CaE3D2Pwhy/mCMNGU6CbMbXMcseF0QxzvdQ79IemkWAwJFbRbR5YXEkGv8qwDupUCQ==}
+  rehype-wrapper@1.1.0:
+    resolution: {integrity: sha512-mb0wIW/vASR21okOsjQJikEx9JYEGGCNqXaHfgcvXHyD5nMZBgxlmHXlr/HUXAvjNu9p+wC0sXg9P/ydaMlBCQ==}
 
   remark-frontmatter@5.0.0:
     resolution: {integrity: sha512-XTFYvNASMe5iPN0719nPrdItC9aU0ssC4v14mH1BCi1u0n1gAocqcujWUrByftZTbLhRtiKRyjYTSIOcr69UVQ==}
@@ -7857,7 +7857,7 @@ snapshots:
       hast-util-whitespace: 3.0.0
       unist-util-visit: 5.0.0
 
-  rehype-wrapper@1.0.1: {}
+  rehype-wrapper@1.1.0: {}
 
   remark-frontmatter@5.0.0:
     dependencies:
