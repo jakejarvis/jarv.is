@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import { kv } from "@vercel/kv";
+import { getViews as _getViews } from "@/lib/posts";
+import { POSTS_DIR } from "@/lib/config/constants";
 
-// cache response from the db
-const getData = cache(
-  async (): Promise<{
+const getViews = cache(_getViews, undefined, {
+  revalidate: 300, // 5 minutes
+  tags: ["hits"],
+});
+
+export const GET = async (): Promise<
+  NextResponse<{
     total: {
       hits: number;
     };
@@ -12,42 +17,20 @@ const getData = cache(
       slug: string;
       hits: number;
     }>;
-  }> => {
-    // get all keys (aka slugs)
-    const slugs = await kv.scan(0, {
-      match: "hits:*",
-      type: "string",
-      // set an arbitrary yet generous upper limit, just in case...
-      count: 99,
-    });
+  }>
+> => {
+  // note: while hits have been renamed to views in most places, this API shouldn't change due to it being snapshotted
+  const views = await getViews();
 
-    // get the value (number of hits) for each key (the slug of the page)
-    const values = await kv.mget<string[]>(...slugs[1]);
+  const total = {
+    hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
+  };
+  const pages = Object.entries(views).map(([slug, hits]) => ({
+    slug: `${POSTS_DIR}/${slug}`,
+    hits,
+  }));
 
-    // pair the slugs with their hit values
-    const pages = slugs[1].map((slug, index) => ({
-      slug: slug.split(":").pop() as string, // remove the "hits:" prefix
-      hits: parseInt(values[index], 10),
-    }));
+  pages.sort((a, b) => b.hits - a.hits);
 
-    // sort descending by hits
-    pages.sort((a, b) => b.hits - a.hits);
-
-    // calculate total hits
-    const total = { hits: 0 };
-    pages.forEach((page) => {
-      // add these hits to running tally
-      total.hits += page.hits;
-    });
-
-    return { total, pages };
-  },
-  undefined,
-  {
-    revalidate: 300, // 5 minutes
-    tags: ["hits"],
-  }
-);
-
-export const GET = async (): Promise<NextResponse<Awaited<ReturnType<typeof getData>>>> =>
-  NextResponse.json(await getData());
+  return NextResponse.json({ total, pages });
+};

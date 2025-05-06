@@ -1,5 +1,6 @@
 import { env } from "@/lib/env";
 import { cache } from "react";
+import { kv } from "@vercel/kv";
 import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
@@ -43,7 +44,6 @@ export const getSlugs = cache(async (): Promise<string[]> => {
   return slugs;
 });
 
-// overloaded to return either the front matter of a single post or ALL posts
 export const getFrontMatter: {
   /**
    * Parses and returns the front matter of ALL posts, sorted reverse chronologically
@@ -109,6 +109,51 @@ export const getFrontMatter: {
     }
 
     throw new Error("getFrontMatter() called with invalid argument.");
+  }
+);
+
+export const getViews: {
+  /**
+   * Retrieves the number of views for ALL posts
+   */
+  (): Promise<Record<string, number>>;
+  /**
+   * Retrieves the number of views for a given slug, or undefined if the slug does not exist
+   */
+  (slug: string): Promise<number | undefined>;
+} = cache(
+  async (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    slug?: any
+  ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Promise<any> => {
+    if (typeof slug === "string") {
+      const views = await kv.get<string>(`hits:${slug}`);
+
+      return views ? parseInt(views, 10) : undefined;
+    }
+
+    if (!slug) {
+      const slugs = await kv.scan(0, {
+        match: "hits:*",
+        type: "string",
+        // set an arbitrary yet generous upper limit, just in case...
+        count: 99,
+      });
+
+      // get the value (number of hits) for each key (the slug of the page)
+      const values = await kv.mget<string[]>(...slugs[1]);
+
+      const pages: Record<string, number> = {};
+
+      // pair the slugs with their hit values
+      slugs[1].forEach(
+        (slug, index) =>
+          (pages[slug.split(":").pop()?.replace(`${POSTS_DIR}/`, "") as string] = parseInt(values[index], 10))
+      );
+
+      return pages;
+    }
   }
 );
 
