@@ -39,7 +39,7 @@
     "date-fns": "^4.1.0",
     "fast-glob": "^3.3.3",
     "feed": "^4.2.2",
-    "geist": "^1.4.1",
+    "geist": "^1.4.2",
     "html-entities": "^2.6.0",
     "lucide-react": "0.507.0",
     "next": "15.4.0-canary.23",
