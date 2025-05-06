@@ -199,7 +199,7 @@ const Page = () => {
             className="text-muted-foreground hover:decoration-muted-foreground/40 text-nowrap hover:decoration-1 hover:underline-offset-4"
           >
             <LockIcon className="mr-0.5 inline size-3 align-text-top" />
-            <code className="mx-0.5 tracking-wider text-wrap [word-spacing:-4px]">2B0C 9CF2 51E6 9A39</code>
+            <code className="mx-0.5 tracking-wider text-wrap [word-spacing:-0.4em]">2B0C 9CF2 51E6 9A39</code>
           </Link>
         </sup>
         ,{" "}

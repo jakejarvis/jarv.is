@@ -36,7 +36,7 @@ const CodeBlock = async ({
   });
 
   return (
-    <div className={cn("bg-muted/35 relative rounded-lg border-2 font-mono", className)}>
+    <div className={cn("bg-muted/35 relative isolate rounded-lg border-2 font-mono", className)}>
       <div
         className={cn(
           "grid max-h-[500px] w-full overflow-x-auto p-4 **:bg-transparent! md:max-h-[650px] dark:**:text-[var(--shiki-dark)]! [&_pre]:whitespace-normal",

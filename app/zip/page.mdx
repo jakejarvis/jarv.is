@@ -12,14 +12,14 @@ export const metadata = createMetadata({
 
 export const Terminal = () => (
   <div
-    className="relative mx-auto my-4 w-full rounded-lg"
+    className="relative mx-auto my-6 w-full rounded-lg"
     style={{
       backgroundImage: `url(${backgroundImg.src})`,
       backgroundRepeat: "repeat",
       backgroundPosition: "center",
     }}
   >
-    <code className="border-ring block overflow-x-auto rounded-lg border border-solid bg-black/60 p-4 text-sm text-white/90 backdrop-blur-xs backdrop-saturate-150">
+    <code className="border-ring block rounded-lg border border-solid bg-black/60 p-4 text-sm break-all text-white/90 backdrop-blur-xs backdrop-saturate-150">
       <span style={{ color: "#f95757" }}>sundar</span>@<span style={{ color: "#3b9dd2" }}>google</span>:
       <span style={{ color: "#78df55" }}>~</span>$ <span style={{ color: "#d588fb" }}>mv</span> /root
       <a href="https://killedbygoogle.com/" style={{ color: "inherit" }} className="hover:no-underline">

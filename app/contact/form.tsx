@@ -110,7 +110,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div className="flex min-h-16 items-center">
+      <div className="flex min-h-16 items-center space-x-4">
         {!formState.success && (
           <Button type="submit" size="lg" disabled={pending}>
             {pending ? (
@@ -128,7 +128,7 @@ const ContactForm = () => {
         {!pending && formState.message && (
           <div
             className={cn(
-              "ml-4 space-x-[2px] text-[0.9rem] font-semibold",
+              "space-x-0.5 text-[0.9rem] font-semibold",
               formState.success ? "text-success" : "text-destructive"
             )}
           >
