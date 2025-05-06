@@ -105,7 +105,7 @@
     "eslint-plugin-react-compiler": "19.0.0-beta-af1b7da-20250417",
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.1",
+    "lint-staged": "^15.5.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
