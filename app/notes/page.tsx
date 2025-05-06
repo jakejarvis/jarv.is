@@ -50,7 +50,7 @@ const Page = async () => {
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                 />
                 {views > 0 && (
-                  <span className="bg-muted text-muted-foreground inline-flex h-5 flex-nowrap items-center space-x-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap select-none">
+                  <span className="bg-muted text-muted-foreground inline-flex h-5 flex-nowrap items-center space-x-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
                     <EyeIcon className="inline-block size-4 shrink-0" />
                     <span className="inline-block leading-5">
                       {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(views)}

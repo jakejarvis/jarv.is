@@ -17,11 +17,13 @@ export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <html lang={env.NEXT_PUBLIC_SITE_LOCALE} suppressHydrationWarning>
+    <html
+      lang={env.NEXT_PUBLIC_SITE_LOCALE}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
-
-        <style id="geist-font">{`:root{--font-geist-sans:${GeistSans.style.fontFamily};--font-geist-mono:${GeistMono.style.fontFamily};}`}</style>
 
         <JsonLd<Person>
           item={{

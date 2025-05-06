@@ -18,8 +18,14 @@ const Page = () => {
       <p className="my-5 text-[0.925rem] leading-relaxed md:text-base">
         Fill out this quick form and I&rsquo;ll get back to you as soon as I can! You can also{" "}
         <Link href="mailto:jake@jarv.is">email me directly</Link> or send me a direct message on{" "}
-        <Link href="https://bsky.app/profile/jarv.is">🦋 Bluesky</Link> or{" "}
-        <Link href="https://fediverse.jarv.is/@jake">🦣 Mastodon</Link>.
+        <Link href="https://bsky.app/profile/jarv.is" className="text-nowrap">
+          🦋 Bluesky
+        </Link>{" "}
+        or{" "}
+        <Link href="https://fediverse.jarv.is/@jake" className="text-nowrap">
+          🦣 Mastodon
+        </Link>
+        .
       </p>
       <p className="my-5 text-[0.925rem] leading-relaxed md:text-base">
         You can grab my public key here:{" "}

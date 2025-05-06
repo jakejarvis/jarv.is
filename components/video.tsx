@@ -15,16 +15,18 @@ const Video = ({
       {...(typeof src === "string" ? { src } : {})}
       {...(autoPlay
         ? {
+            autoPlay: true,
             preload: "auto",
             controls: false,
-            autoPlay: true,
             playsInline: true, // safari autoplay workaround
             loop: true,
             muted: true,
           }
         : {
+            autoPlay: false,
             preload: "metadata",
             controls: true,
+            playsInline: true,
           })}
       crossOrigin="anonymous"
       className={cn("mx-auto block h-auto max-h-[500px] w-full", className)}
