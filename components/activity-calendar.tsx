@@ -1,11 +1,10 @@
 "use client";
 
-import { cloneElement } from "react";
 import { ActivityCalendar } from "react-activity-calendar";
-import { Tooltip } from "react-tooltip";
 import { format } from "date-fns";
 import type { ComponentPropsWithoutRef } from "react";
 import type { Activity } from "react-activity-calendar";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 const Calendar = ({
@@ -45,16 +44,16 @@ const Calendar = ({
           totalCount: `{{count}} ${noun}s in the last year`,
         }}
         maxLevel={4}
-        renderBlock={(block, activity) =>
-          cloneElement(block, {
-            "data-tooltip-id": "activity-tooltip",
-            "data-tooltip-html": `${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`,
-          })
-        }
+        renderBlock={(block, activity) => (
+          <Tooltip>
+            <TooltipTrigger asChild>{block}</TooltipTrigger>
+            <TooltipContent>
+              <span>{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`}</span>
+            </TooltipContent>
+          </Tooltip>
+        )}
         fontSize={13}
       />
-
-      <Tooltip id="activity-tooltip" />
     </div>
   );
 };

@@ -28,6 +28,10 @@
       "groupName": "tailwindcss"
     },
     {
+      "matchPackageNames": ["@radix-ui/*"],
+      "groupName": "radix-ui"
+    },
+    {
       "matchPackageNames": [
         "@mdx-js/*",
         "rehype-*",
