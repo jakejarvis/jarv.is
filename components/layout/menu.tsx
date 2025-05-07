@@ -12,14 +12,17 @@ const Menu = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => {
 
   return (
     <ul
-      className={cn("flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:space-x-4", className)}
+      className={cn(
+        "flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:space-x-4 max-sm:[&>li]:first-of-type:hidden",
+        className
+      )}
       {...rest}
     >
       {menuItems.map((item) => {
         const isCurrent = item.href?.split("/")[1] === segment;
 
         return (
-          <li className="inline-block max-sm:first-of-type:hidden" key={item.href}>
+          <li className="inline-block" key={item.href}>
             <MenuItem {...item} current={isCurrent} />
           </li>
         );

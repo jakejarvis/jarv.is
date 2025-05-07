@@ -128,32 +128,37 @@ export const getViews: {
   ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Promise<any> => {
     if (typeof slug === "string") {
-      const views = await kv.get<string>(`hits:${slug}`);
+      try {
+        const views = await kv.get<string>(`hits:${POSTS_DIR}/${slug}`);
 
-      return views ? parseInt(views, 10) : undefined;
+        return views ? parseInt(views, 10) : undefined;
+      } catch (error) {
+        console.error(`Failed to retrieve view count for post with slug "${slug}":`, error);
+        return undefined;
+      }
     }
 
     if (!slug) {
-      const slugs = await kv.scan(0, {
-        match: "hits:*",
-        type: "string",
-        // set an arbitrary yet generous upper limit, just in case...
-        count: 99,
-      });
+      try {
+        const allSlugs = await getSlugs();
+        const pages: Record<string, number> = {};
 
-      // get the value (number of hits) for each key (the slug of the page)
-      const values = await kv.mget<string[]>(...slugs[1]);
+        // get the value (number of views) for each key (the slug of the page)
+        const values = await kv.mget<string[]>(...allSlugs.map((slug) => `hits:${POSTS_DIR}/${slug}`));
 
-      const pages: Record<string, number> = {};
+        // pair the slugs with their view counts
+        allSlugs.forEach(
+          (slug, index) => (pages[slug.replace(`hits:${POSTS_DIR}/`, "")] = parseInt(values[index], 10))
+        );
 
-      // pair the slugs with their hit values
-      slugs[1].forEach(
-        (slug, index) =>
-          (pages[slug.split(":").pop()?.replace(`${POSTS_DIR}/`, "") as string] = parseInt(values[index], 10))
-      );
-
-      return pages;
+        return pages;
+      } catch (error) {
+        console.error("Failed to retrieve view counts:", error);
+        return undefined;
+      }
     }
+
+    throw new Error("getViews() called with invalid argument.");
   }
 );
 

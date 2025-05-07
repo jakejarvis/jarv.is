@@ -104,7 +104,7 @@ const Page = () => {
           title="Jake's Bulletin Board, circa 2003"
           className="[--primary:#9932cc] dark:[--primary:#d588fb]"
         >
-          backend programming
+          backend coding
         </Link>{" "}
         when my only source of income was{" "}
         <Link
@@ -117,7 +117,7 @@ const Page = () => {
         >
           the Tooth Fairy
         </Link>
-        . <span className="text-muted-foreground">I&rsquo;ve improved a bit since then, I think? 🤷</span>
+        . <span className="text-muted-foreground">I&rsquo;ve improved a bit since then, I think?</span>
       </p>
 
       <p className="my-3 text-base leading-relaxed md:text-[0.975rem]">
