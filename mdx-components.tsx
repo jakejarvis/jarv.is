@@ -24,8 +24,10 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
         {...rest}
       />
     ),
-    img: ({ className, ...rest }) => (
+    img: ({ src, className, ...rest }) => (
       <NextImage
+        src={src}
+        width={typeof src === "object" && "width" in src && src.width > 896 ? 896 : undefined} // => var(--container-4xl)
         className={cn(
           "mx-auto my-8 block h-auto max-w-full rounded-md",
           "[&+em]:text-muted-foreground [&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:text-[0.875em] [&+em]:leading-normal [&+em]:font-medium [&+em]:not-italic",

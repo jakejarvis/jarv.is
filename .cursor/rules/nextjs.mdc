@@ -1,0 +1,18 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+This rule provides standards for using Next.js features:
+
+- Project uses latest Next.js features like App Router, Partial Prerendering. See [next.config.ts](mdc:next.config.ts).
+- Always choose React Server Components (RSC) when possible, use Client Components only when necessary (minimize `use client`, `useEffect`, and `setState`).
+- Always prefer Server Actions over API routes.
+- Environment variables must be validated and imported from [env.ts](mdc:lib/env.ts). Never use `process.env` directly; always from [env.ts](mdc:lib/env.ts).
+- Use MDX for content-heavy pages. Also supports third-party embeds like YouTube videos, Tweets, etc; see [mdx-components.tsx](mdc:mdx-components.tsx).
+- Always use Next.js' optimized `<Image />` tag for images, never `<img>`.
+- Performance optimization is a priority (bundle sizes, image optimization, etc.)
+- Use Next.js caching and revalidation strategies (`revalidate`, `tags`) for all data fetching.
+- Store and retrieve data from Upstash Redis as the primary data store.
+- Ensure all features and APIs are compatible with Vercel's serverless environment.
+- Accessibility is important. Maintain proper heading levels, skip links, etc.
