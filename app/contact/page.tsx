@@ -31,7 +31,7 @@ const Page = () => {
         You can grab my public key here:{" "}
         <Link
           href="https://jrvs.io/pgp"
-          className="bg-muted relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium tracking-wider [word-spacing:-0.3em]"
+          className="bg-muted relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium tracking-wider [word-spacing:-0.25em]"
         >
           6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39
         </Link>

@@ -196,10 +196,10 @@ const Page = () => {
             href="https://jrvs.io/pgp"
             rel="pgpkey"
             title="My Public Key"
-            className="text-muted-foreground hover:decoration-muted-foreground/40 text-nowrap hover:decoration-1 hover:underline-offset-4"
+            className="text-nowrap decoration-1 [--primary:var(--muted-foreground)]"
           >
             <LockIcon className="mr-0.5 inline size-3 align-text-top" />
-            <code className="mx-0.5 tracking-wider text-wrap [word-spacing:-0.4em]">2B0C 9CF2 51E6 9A39</code>
+            <code className="mx-0.5 tracking-wider text-wrap [word-spacing:-0.25em]">2B0C 9CF2 51E6 9A39</code>
           </Link>
         </sup>
         ,{" "}

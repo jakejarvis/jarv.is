@@ -32,8 +32,7 @@ const MenuItem = ({
         aria-label={text}
         data-current={current || undefined}
         className={cn(
-          "text-foreground/85 hover:border-ring -mb-[3px] inline-flex items-center p-2.5 hover:border-b-[3px] hover:no-underline",
-          current && "border-primary/40 hover:border-primary/40 border-b-[3px]",
+          "text-foreground/85 hover:border-ring data-current:border-primary/40! -mb-[3px] inline-flex items-center p-2.5 hover:border-b-[3px] hover:no-underline data-current:border-b-[3px]",
           className
         )}
         {...rest}

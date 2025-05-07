@@ -23,7 +23,7 @@ const Link = ({
     target: target || (isExternal ? "_blank" : undefined),
     rel: `${rel ? `${rel} ` : ""}${target === "_blank" || isExternal ? "noopener noreferrer" : ""}`.trim() || undefined,
     className: cn(
-      "text-primary hover:decoration-primary/40 hover:underline hover:decoration-2 hover:underline-offset-4",
+      "text-primary decoration-primary/40 no-underline decoration-2 underline-offset-4 hover:underline",
       className
     ),
     ...rest,

@@ -41,15 +41,15 @@ const CodeBlock = async ({
         className={cn(
           "grid max-h-[500px] w-full overflow-x-auto p-4 **:bg-transparent! md:max-h-[650px] dark:**:text-[var(--shiki-dark)]! [&_pre]:whitespace-normal",
           "[&_.line]:inline-block [&_.line]:min-w-full [&_.line]:py-1 [&_.line]:leading-none [&_.line]:whitespace-pre [&_.line]:after:hidden",
-          lineNumbers &&
-            "[&_.line]:before:text-muted-foreground [counter-reset:line] [&_.line]:before:mr-5 [&_.line]:before:inline-block [&_.line]:before:w-5 [&_.line]:before:text-right [&_.line]:before:content-[counter(line)] [&_.line]:before:[counter-increment:line]"
+          "data-line-numbers:[&_.line]:before:text-muted-foreground data-line-numbers:[counter-reset:line] data-line-numbers:[&_.line]:[counter-increment:line] data-line-numbers:[&_.line]:before:mr-5 data-line-numbers:[&_.line]:before:inline-block data-line-numbers:[&_.line]:before:w-5 data-line-numbers:[&_.line]:before:text-right data-line-numbers:[&_.line]:before:content-[counter(line)]"
         )}
         data-language={lang}
+        data-line-numbers={lineNumbers || undefined}
         dangerouslySetInnerHTML={{ __html: codeHighlighted }}
       />
       <CopyButton
         source={codeString}
-        className="text-foreground/85 hover:text-primary bg-muted/10 absolute top-0 right-0 size-10 rounded-tr-lg rounded-bl-lg border-b-2 border-l-2 p-0 backdrop-blur-xs *:[svg]:my-auto *:[svg]:inline-block *:[svg]:size-4.5 *:[svg]:align-text-bottom"
+        className="text-foreground/85 hover:text-primary bg-muted/10 absolute top-0 right-0 size-10 rounded-tr-lg rounded-bl-lg border-b-2 border-l-2 p-0 backdrop-blur-xs [&_svg]:my-auto [&_svg]:inline-block [&_svg]:size-4.5 [&_svg]:align-text-bottom"
       />
     </div>
   );
