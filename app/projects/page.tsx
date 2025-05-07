@@ -57,20 +57,20 @@ const Page = async () => {
 
       <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
         {repos?.map((repo) => (
-          <div key={repo!.name} className="border-ring/65 h-fit rounded-2xl border-1 p-4">
-            <Link href={repo!.url} className="mb-2 inline-block text-base font-semibold">
+          <div key={repo!.name} className="border-ring/65 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3">
+            <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
               {repo!.name}
             </Link>
 
-            {repo!.description && <p className="text-foreground/85 m-0 text-sm leading-relaxed">{repo!.description}</p>}
+            {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
 
-            <div className="text-muted-foreground mt-2 flex flex-wrap space-x-4 text-[0.825rem]">
+            <div className="flex flex-wrap space-x-4 *:inline-flex *:flex-nowrap *:items-center *:text-[0.825rem] *:leading-loose *:whitespace-nowrap">
               {repo!.primaryLanguage && (
-                <div className="mt-1 whitespace-nowrap">
+                <div className="text-muted-foreground space-x-2">
                   {repo!.primaryLanguage.color && (
                     <span
-                      className="mr-2 inline-block size-4 align-text-top"
-                      style={{ backgroundColor: repo!.primaryLanguage.color, borderRadius: "50%" }}
+                      className="inline-block size-4 rounded-full"
+                      style={{ backgroundColor: repo!.primaryLanguage.color }}
                     />
                   )}
                   <span>{repo!.primaryLanguage.name}</span>
@@ -78,36 +78,28 @@ const Page = async () => {
               )}
 
               {repo!.stargazerCount > 0 && (
-                <div className="mt-1 whitespace-nowrap">
-                  <Link
-                    href={`${repo!.url}/stargazers`}
-                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
-                    className="hover:text-primary text-muted-foreground hover:no-underline"
-                  >
-                    <StarIcon className="mr-2 inline-block size-4 align-text-top" />
-                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
-                  </Link>
-                </div>
+                <Link
+                  href={`${repo!.url}/stargazers`}
+                  title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
+                  className="text-muted-foreground hover:text-primary space-x-2 hover:no-underline"
+                >
+                  <StarIcon className="inline-block size-4 shrink-0" />
+                  <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
+                </Link>
               )}
 
               {repo!.forkCount > 0 && (
-                <div className="mt-1 whitespace-nowrap">
-                  <Link
-                    href={`${repo!.url}/network/members`}
-                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
-                    className="hover:text-primary text-muted-foreground hover:no-underline"
-                  >
-                    <GitForkIcon className="mr-2 inline-block size-4 align-text-top" />
-                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
-                  </Link>
-                </div>
+                <Link
+                  href={`${repo!.url}/network/members`}
+                  title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
+                  className="text-muted-foreground hover:text-primary space-x-2 hover:no-underline"
+                >
+                  <GitForkIcon className="inline-block size-4" />
+                  <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
+                </Link>
               )}
 
-              <div className="mt-1 whitespace-nowrap">
-                <span
-                  // invisible icon hack to fix line height
-                  className="mr-0 inline-block h-4 w-0 align-text-top"
-                />
+              <div className="text-muted-foreground whitespace-nowrap">
                 <span>
                   Updated <RelativeTime date={repo!.pushedAt} />
                 </span>
