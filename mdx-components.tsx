@@ -3,6 +3,7 @@ import Link from "@/components/link";
 import CodeBlock from "@/components/code-block";
 import HeadingAnchor from "@/components/heading-anchor";
 import Video from "@/components/video";
+import ImageDiff from "./components/image-diff";
 import Tweet from "@/components/third-party/tweet";
 import YouTube from "@/components/third-party/youtube";
 import Gist from "@/components/third-party/gist";
@@ -115,8 +116,9 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       <hr className={cn("mx-auto my-6 w-11/12 border-t-2 [&+*]:mt-0", className)} {...rest} />
     ),
 
-    // third-party embeds:
+    // react components and embeds:
     Video,
+    ImageDiff,
     Tweet,
     YouTube,
     Gist,

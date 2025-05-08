@@ -53,7 +53,9 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
+  --font-sans--font-feature-settings: "rlig" 1, "calt" 0;
   --font-mono: var(--font-geist-mono);
+  --font-mono--font-feature-settings: "liga" 0;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -154,9 +156,6 @@
 
   body {
     @apply bg-background text-foreground;
-    font-synthesis-weight: none;
-    font-variant-ligatures: none;
-    text-rendering: optimizeLegibility;
   }
 
   ::-webkit-scrollbar {

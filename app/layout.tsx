@@ -69,9 +69,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           <div className="mx-auto w-full max-w-4xl px-5">
             <Header className="mt-4 mb-6 w-full" />
 
-            <main id={SKIP_NAV_ID} tabIndex={-1}>
-              {children}
-            </main>
+            <main id={SKIP_NAV_ID}>{children}</main>
 
             <Footer className="my-6 w-full" />
           </div>

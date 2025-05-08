@@ -93,6 +93,16 @@ export const env = createEnv({
     ),
 
     /**
+     * Optional. Set this to override the best guess as to the environment the site is running in.
+     */
+    NEXT_PUBLIC_ENV: v.fallback(v.picklist(["production", "development"]), () =>
+      (process.env.VERCEL && process.env.VERCEL_ENV === "production") ||
+      (process.env.NETLIFY && process.env.CONTEXT === "production")
+        ? "production"
+        : "development"
+    ),
+
+    /**
      * Optional. Enables comments on blog posts via GitHub discussions.
      *
      * @see https://giscus.app/
@@ -146,6 +156,7 @@ export const env = createEnv({
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+    NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
     NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
     NEXT_PUBLIC_GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO,
