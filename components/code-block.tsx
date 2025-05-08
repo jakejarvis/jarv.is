@@ -33,8 +33,8 @@ const CodeBlock = async ({
   const codeHighlighted = await codeToHtml(codeString, {
     lang,
     themes: {
-      light: "material-theme-lighter",
-      dark: "material-theme-darker",
+      light: "github-light",
+      dark: "github-dark",
     },
   });
 
@@ -64,8 +64,6 @@ const CodeBlock = async ({
     }
   };
 
-  const fullLang = getFullLang(lang);
-
   return (
     <div className={cn("bg-muted/35 relative isolate rounded-lg border-2 font-mono", className)}>
       <div
@@ -78,9 +76,10 @@ const CodeBlock = async ({
         data-line-numbers={showLineNumbers || undefined}
         dangerouslySetInnerHTML={{ __html: codeHighlighted }}
       />
-      {fullLang && (
+      {lang && (
         <span className="text-foreground/75 bg-muted/40 absolute top-0 left-0 flex items-center rounded-tl-md rounded-br-lg border-r-2 border-b-2 py-[5px] pr-[10px] font-mono text-xs font-medium tracking-wide uppercase backdrop-blur-xs select-none">
-          <CodeIcon className="stroke-primary/90 mr-[8px] ml-[10px] inline-block size-[14px]" /> <span>{fullLang}</span>
+          <CodeIcon className="stroke-primary/90 mr-[8px] ml-[10px] inline-block size-[14px]" />
+          <span>{getFullLang(lang)}</span>
         </span>
       )}
       {showCopyButton && (
