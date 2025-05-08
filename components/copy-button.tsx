@@ -3,13 +3,14 @@
 import { forwardRef, useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import { ClipboardIcon, CheckIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { Ref, ComponentPropsWithoutRef, ComponentRef, MouseEventHandler } from "react";
 
 const CopyButton = (
   {
     source,
     timeout = 2000,
-    style,
+    className,
     ...rest
   }: ComponentPropsWithoutRef<"button"> & {
     source: string;
@@ -51,7 +52,7 @@ const CopyButton = (
       ref={ref}
       onClick={handleCopy}
       disabled={copied}
-      style={{ cursor: copied ? "default" : "pointer", ...style }}
+      className={cn("cursor-pointer disabled:cursor-default", className)}
       {...rest}
     >
       {copied ? <CheckIcon className="stroke-success" /> : <ClipboardIcon />}

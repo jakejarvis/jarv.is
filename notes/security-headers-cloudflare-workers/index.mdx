@@ -28,7 +28,7 @@ If you run your own server, these can be added by way of your Apache or nginx co
 
 The following script can be added as a Worker and customized to your needs. Some can be extremely picky with syntax, so be sure to [read the documentation](https://www.netsparker.com/whitepaper-http-security-headers/) carefully. You can fiddle with it in [the playground](https://cloudflareworkers.com/), too. Simply modify the current headers to your needs, or add new ones to the `newHeaders` or `removeHeaders` arrays.
 
-```js lineNumbers
+```js showLineNumbers
 let addHeaders = {
   "Content-Security-Policy": "default-src 'self'; upgrade-insecure-requests",
   "Strict-Transport-Security": "max-age=1000",

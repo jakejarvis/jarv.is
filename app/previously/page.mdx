@@ -11,9 +11,9 @@ export const metadata = createMetadata({
 
 export const WarningMarquee = () => (
   <Marquee>
-    <span>
+    <span className="leading-none select-none">
       🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
-      <code style={{ fontWeight: "normal", fontSize: "0.9em" }}>
+      <code className="text-[0.9rem] font-normal">
         color: <span style={{ color: "#32cd32" }}>limegreen</span>
       </code>{" "}
       ahead...
@@ -23,7 +23,8 @@ export const WarningMarquee = () => (
 
 export const PageStyles = () => (
   <style>
-    {`body {
+    {`
+      body {
         cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4AWIAgn/uBT6A9uoAAwAQiIJo97/0Rgy0ANoJH8MPeEgtqwPQEACqCoQHAKECQKgAECoAhAoAoQJAqAAQxh1oPQfcW3kJpxHtL1AAHAwEwwdYiH8BIEgBTBRAAAEEEEAAG7mRt30hEhoLAAAAAElFTkSuQmCC") 2 1, auto;
       }
       a, button {
@@ -78,8 +79,7 @@ _Previously on the [Cringey Chronicles&trade;](https://web.archive.org/web/20010
 <iframe
   src="https://jakejarvis.github.io/my-first-website/"
   title="My Terrible, Horrible, No Good, Very Bad First Website"
-  className="border-ring w-full border-2"
-  style={{ height: "500px" }}
+  className="border-ring h-[500px] w-full border-2"
 />
 _[November 2001](https://jakejarvis.github.io/my-first-website/) ([view
 source](https://github.com/jakejarvis/my-first-website))_

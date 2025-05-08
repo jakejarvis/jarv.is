@@ -176,7 +176,5 @@
 }
 
 @layer components {
-  .youtube-embed {
-    @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-  }
+  @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 }

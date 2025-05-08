@@ -34,8 +34,7 @@ I've written a simple implementation below, which...
 <iframe
   src="https://jakejarvis.github.io/dark-mode-example/"
   title="Dark Mode Example"
-  className="border-ring w-full border-2"
-  style={{ height: "190px" }}
+  className="border-ring h-[190px] w-full border-2"
 ></iframe>
 
 A _very_ barebones example is embedded above ([view the source here](https://github.com/jakejarvis/dark-mode-example), or [open in a new window](https://jakejarvis.github.io/dark-mode-example/) if your browser is blocking the frame) and you can try it out on this site by clicking the 💡 lightbulb in the upper right corner of this page. You'll notice that the dark theme sticks when refreshing this page, navigating between other pages, or if you were to return to this example weeks from now.
@@ -46,7 +45,7 @@ A _very_ barebones example is embedded above ([view the source here](https://git
 
 I have cleaned up this code a bit, added a few features, and packaged it as an [📦 NPM module](https://www.npmjs.com/package/dark-mode-switcheroo) (zero dependencies and still [only ~500 bytes](https://bundlephobia.com/package/dark-mode-switcheroo) minified and gzipped!). Here's a small snippet of the updated method for the browser (pulling the module from [UNPKG](https://unpkg.com/browse/dark-mode-switcheroo/)), but definitely [read the readme](https://github.com/jakejarvis/dark-mode#readme) for much more detail on the API.
 
-```html lineNumbers
+```html showLineNumbers
 <button class="dark-mode-toggle" style="visibility: hidden;">💡 Click to see the light... or not.</button>
 
 <script src="https://unpkg.com/dark-mode-switcheroo/dist/dark-mode.min.js"></script>
@@ -94,7 +93,7 @@ The [example HTML and CSS below](#html-css) is still helpful for reference.
 ### Full JS:
 
 {/* prettier-ignore */}
-```js lineNumbers
+```js showLineNumbers
 /*! Dark mode switcheroo | MIT License | jrvs.io/darkmode */
 
 (function () {
@@ -177,7 +176,7 @@ The [example HTML and CSS below](#html-css) is still helpful for reference.
 ### HTML & CSS Example:
 
 {/* prettier-ignore */}
-```html lineNumbers
+```html showLineNumbers
 <!doctype html>
 <html>
 <head>

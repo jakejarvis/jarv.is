@@ -72,7 +72,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     h3: ({ className, id, children, ...rest }) => (
       <h3
         className={cn(
-          "group mt-6 mb-2.5 scroll-m-4 text-lg leading-relaxed font-semibold md:text-xl [&_code]:text-[0.9em] [&_strong]:font-bold [&+*]:mt-0",
+          "group mt-6 mb-4 scroll-m-4 text-lg leading-relaxed font-semibold md:text-xl [&_code]:text-[0.9em] [&_strong]:font-bold [&+*]:mt-0",
           className
         )}
         id={id}

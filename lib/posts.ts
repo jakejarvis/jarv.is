@@ -127,9 +127,12 @@ export const getViews: {
     slug?: any
   ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Promise<any> => {
+    // ensure the prefix is consistent for all keys in the KV store
+    const KEY_PREFIX = `hits:${POSTS_DIR}/`;
+
     if (typeof slug === "string") {
       try {
-        const views = await kv.get<string>(`hits:${POSTS_DIR}/${slug}`);
+        const views = await kv.get<string>(`${KEY_PREFIX}${slug}`);
 
         return views ? parseInt(views, 10) : undefined;
       } catch (error) {
@@ -144,12 +147,10 @@ export const getViews: {
         const pages: Record<string, number> = {};
 
         // get the value (number of views) for each key (the slug of the page)
-        const values = await kv.mget<string[]>(...allSlugs.map((slug) => `hits:${POSTS_DIR}/${slug}`));
+        const values = await kv.mget<string[]>(...allSlugs.map((slug) => `${KEY_PREFIX}${slug}`));
 
         // pair the slugs with their view counts
-        allSlugs.forEach(
-          (slug, index) => (pages[slug.replace(`hits:${POSTS_DIR}/`, "")] = parseInt(values[index], 10))
-        );
+        allSlugs.forEach((slug, index) => (pages[slug.replace(KEY_PREFIX, "")] = parseInt(values[index], 10)));
 
         return pages;
       } catch (error) {
