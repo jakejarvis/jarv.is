@@ -57,16 +57,16 @@ const Page = async () => {
 
       <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
         {repos?.map((repo) => (
-          <div key={repo!.name} className="border-ring/65 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3">
+          <div key={repo!.name} className="border-ring/65 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
             <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
               {repo!.name}
             </Link>
 
             {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
 
-            <div className="flex flex-wrap space-x-4 *:inline-flex *:flex-nowrap *:items-center *:text-[0.825rem] *:leading-loose *:whitespace-nowrap">
+            <div className="flex flex-wrap gap-x-4 text-[0.825rem] leading-loose whitespace-nowrap">
               {repo!.primaryLanguage && (
-                <div className="text-muted-foreground space-x-2">
+                <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-2">
                   {repo!.primaryLanguage.color && (
                     <span
                       className="inline-block size-4 rounded-full"
@@ -81,7 +81,7 @@ const Page = async () => {
                 <Link
                   href={`${repo!.url}/stargazers`}
                   title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
-                  className="text-muted-foreground hover:text-primary space-x-2 hover:no-underline"
+                  className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                 >
                   <StarIcon className="inline-block size-4 shrink-0" />
                   <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
@@ -92,7 +92,7 @@ const Page = async () => {
                 <Link
                   href={`${repo!.url}/network/members`}
                   title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
-                  className="text-muted-foreground hover:text-primary space-x-2 hover:no-underline"
+                  className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                 >
                   <GitForkIcon className="inline-block size-4" />
                   <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>

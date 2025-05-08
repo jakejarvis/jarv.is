@@ -16,9 +16,10 @@
       "matchPackageNames": [
         "react",
         "react-dom",
-        "react-is",
         "babel-plugin-react-compiler",
-        "eslint-plugin-react-compiler"
+        "eslint-plugin-react-compiler",
+        "@types/react",
+        "@types/react-dom"
       ],
       "groupName": "react",
       "rangeStrategy": "pin"
@@ -70,10 +71,6 @@
   "ignoreDeps": [
     "@jakejarvis/eslint-config",
     "@types/node",
-    "@types/react",
-    "@types/react-dom",
-    "@types/react-is",
-    "@types/prop-types",
     "lucide-react"
   ]
 }

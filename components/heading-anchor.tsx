@@ -13,7 +13,7 @@ const HeadingAnchor = ({ id, title, className }: { id: string; title: string; cl
       aria-hidden="true"
       tabIndex={-1}
     >
-      <LinkIcon className="inline-block size-4 align-baseline" />
+      <LinkIcon className="inline-block size-[0.75em] align-baseline" />
       <span className="sr-only">Permalink to &ldquo;{reactToText(title)}&rdquo;</span>
     </a>
   );

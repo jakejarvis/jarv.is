@@ -1,5 +1,6 @@
 import PageTitle from "@/components/layout/page-title";
 import Marquee from "@/components/marquee";
+import Comments from "@/components/comments";
 import { createMetadata } from "@/lib/metadata";
 import { ComicNeue } from "@/lib/fonts";
 
@@ -11,7 +12,7 @@ export const metadata = createMetadata({
 
 export const WarningMarquee = () => (
   <Marquee>
-    <span className="leading-none select-none">
+    <span className="leading-none">
       🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
       <code className="text-[0.9rem] font-normal">
         color: <span style={{ color: "#32cd32" }}>limegreen</span>
@@ -148,3 +149,7 @@ _[April 2018](https://hungry-mayer-40e790.netlify.app/) ([view source](https://g
 
 ![March 2020](./images/2020_03.png)
 _[March 2020](https://quiet-truffle-92842d.netlify.app/) ([view source](https://github.com/jakejarvis/jarv.is-hugo))_
+
+---
+
+<Comments title="Previously on..." />

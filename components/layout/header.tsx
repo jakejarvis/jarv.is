@@ -31,7 +31,7 @@ const Header = ({ className, ...rest }: ComponentPropsWithoutRef<"header">) => {
         </span>
       </Link>
 
-      <Menu className="ml-6 w-full max-w-64 sm:ml-4 sm:max-w-96 md:ml-0 md:max-w-none" />
+      <Menu className="w-full max-w-64 sm:max-w-96 md:ml-0 md:max-w-none" />
     </header>
   );
 };

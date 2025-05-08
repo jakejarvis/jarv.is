@@ -41,15 +41,16 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       <figcaption className={cn("text-muted-foreground mt-3.5 text-[0.875em] leading-snug", className)} {...rest} />
     ),
     blockquote: ({ className, ...rest }) => (
-      <blockquote className={cn("border-border text-muted-foreground mt-6 border-l-4 pl-4", className)} {...rest} />
+      <blockquote className={cn("text-muted-foreground mt-6 border-l-4 pl-4", className)} {...rest} />
     ),
     h1: ({ className, id, children, ...rest }) => (
       <h1
         className={cn(
-          "group mt-6 mb-4 scroll-m-4 text-3xl leading-snug font-extrabold md:text-4xl [&_strong]:font-black [&+*]:mt-0",
+          "group mt-6 mb-4 scroll-mt-4 text-3xl leading-snug font-extrabold md:text-4xl [&_strong]:font-black [&+*]:mt-0",
           className
         )}
         id={id}
+        tabIndex={-1}
         {...rest}
       >
         {children}
@@ -59,10 +60,11 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     h2: ({ className, id, children, ...rest }) => (
       <h2
         className={cn(
-          "group mt-6 mb-4 scroll-m-4 text-xl leading-snug font-bold first:mt-0 md:text-2xl [&_code]:text-[0.875em] [&_strong]:font-extrabold [&+*]:mt-0",
+          "group mt-6 mb-4 scroll-mt-4 text-xl leading-snug font-bold first:mt-0 md:text-2xl [&_code]:text-[0.875em] [&_strong]:font-extrabold [&+*]:mt-0",
           className
         )}
         id={id}
+        tabIndex={-1}
         {...rest}
       >
         {children}
@@ -72,10 +74,11 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     h3: ({ className, id, children, ...rest }) => (
       <h3
         className={cn(
-          "group mt-6 mb-4 scroll-m-4 text-lg leading-relaxed font-semibold md:text-xl [&_code]:text-[0.9em] [&_strong]:font-bold [&+*]:mt-0",
+          "group mt-6 mb-4 scroll-mt-4 text-lg leading-relaxed font-semibold md:text-xl [&_code]:text-[0.9em] [&_strong]:font-bold [&+*]:mt-0",
           className
         )}
         id={id}
+        tabIndex={-1}
         {...rest}
       >
         {children}
@@ -84,12 +87,19 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     ),
     h4: ({ className, ...rest }) => (
       <h4
-        className={cn("mt-6 mb-2 scroll-m-4 leading-normal font-semibold [&_strong]:font-bold [&+*]:mt-0", className)}
+        className={cn(
+          "mt-6 mb-2 scroll-mt-4 text-base leading-normal font-semibold [&_strong]:font-bold [&+*]:mt-0",
+          className
+        )}
         {...rest}
       />
     ),
-    h5: ({ className, ...rest }) => <h5 className={cn("mt-6 mb-2 scroll-m-4 leading-normal", className)} {...rest} />,
-    h6: ({ className, ...rest }) => <h6 className={cn("mt-6 mb-2 scroll-m-4 leading-normal", className)} {...rest} />,
+    h5: ({ className, ...rest }) => (
+      <h5 className={cn("mt-6 mb-2 scroll-mt-4 text-base leading-normal font-medium", className)} {...rest} />
+    ),
+    h6: ({ className, ...rest }) => (
+      <h6 className={cn("mt-6 mb-2 scroll-mt-4 text-sm leading-normal font-normal", className)} {...rest} />
+    ),
     ul: ({ className, ...rest }) => <ul className={cn("my-5 list-disc pl-7 [&>li]:pl-1.5", className)} {...rest} />,
     ol: ({ className, ...rest }) => <ol className={cn("my-5 list-decimal pl-7 [&>li]:pl-1.5", className)} {...rest} />,
     li: ({ className, ...rest }) => (
@@ -102,7 +112,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       />
     ),
     hr: ({ className, ...rest }) => (
-      <hr className={cn("border-border mx-auto my-6 w-11/12 border-t-2 [&+*]:mt-0", className)} {...rest} />
+      <hr className={cn("mx-auto my-6 w-11/12 border-t-2 [&+*]:mt-0", className)} {...rest} />
     ),
 
     // third-party embeds:

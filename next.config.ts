@@ -36,15 +36,6 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   experimental: {
-    optimizePackageImports: [
-      "date-fns",
-      "@date-fns/tz",
-      "@date-fns/utc",
-      "lucide-react",
-      "@radix-ui/react-label",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-tooltip",
-    ],
     reactCompiler: true,
     ppr: "incremental",
     dynamicOnHover: true,
