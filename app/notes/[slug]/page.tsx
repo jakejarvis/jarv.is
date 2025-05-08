@@ -85,17 +85,17 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start space-x-4 text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
+      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start gap-x-4 text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
-          className={"text-foreground/70 flex items-center space-x-2 whitespace-nowrap hover:no-underline"}
+          className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
           <CalendarDaysIcon className="inline size-4 shrink-0" />
           <Time date={frontmatter!.date} format="MMMM d, y" />
         </Link>
 
         {frontmatter!.tags && (
-          <div className="flex flex-wrap items-center space-x-2 whitespace-nowrap">
+          <div className="flex flex-wrap items-center gap-x-2 whitespace-nowrap">
             <TagIcon className="inline size-4 shrink-0" />
             {frontmatter!.tags.map((tag) => (
               <span
@@ -113,13 +113,13 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <Link
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
           title={`Edit "${frontmatter!.title}" on GitHub`}
-          className={"text-foreground/70 flex items-center space-x-2 whitespace-nowrap hover:no-underline"}
+          className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
           <SquarePenIcon className="inline size-4 shrink-0" />
           <span>Improve This Post</span>
         </Link>
 
-        <div className="flex min-w-14 items-center space-x-2 whitespace-nowrap">
+        <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
           <EyeIcon className="inline size-4 shrink-0" />
           <Suspense
             // when this loads, the component will count up from zero to the actual number of hits, so we can simply

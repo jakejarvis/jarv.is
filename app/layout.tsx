@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { SkipNavLink, SkipNavTarget } from "@/components/layout/skip-nav";
+import SkipNavButton, { SKIP_NAV_ID } from "@/components/layout/skip-nav";
 import { defaultMetadata } from "@/lib/metadata";
 import { GeistMono, GeistSans } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
@@ -64,13 +64,12 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
       <body className="bg-background text-foreground font-sans antialiased">
         <ThemeProvider>
-          <SkipNavLink />
+          <SkipNavButton />
 
           <div className="mx-auto w-full max-w-4xl px-5">
             <Header className="mt-4 mb-6 w-full" />
 
-            <main>
-              <SkipNavTarget />
+            <main id={SKIP_NAV_ID} tabIndex={-1} className="scroll-mt-4">
               {children}
             </main>
 

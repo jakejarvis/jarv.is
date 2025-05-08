@@ -48,7 +48,7 @@ const Calendar = ({
           <Tooltip>
             <TooltipTrigger asChild>{block}</TooltipTrigger>
             <TooltipContent>
-              <span className="text-xs font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`}</span>
+              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`}</span>
             </TooltipContent>
           </Tooltip>
         )}

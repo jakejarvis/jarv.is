@@ -13,7 +13,7 @@ const Menu = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => {
   return (
     <ul
       className={cn(
-        "flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:space-x-4 max-sm:[&>li]:first-of-type:hidden",
+        "flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:gap-4 max-sm:[&>li]:first-of-type:hidden",
         className
       )}
       {...rest}

@@ -1,8 +1,8 @@
 import Button from "@/components/ui/button";
 
-const SKIP_NAV_ID = "skip-nav";
+export const SKIP_NAV_ID = "skip-nav";
 
-export const SkipNavLink = () => {
+const SkipNavButton = () => {
   return (
     <Button
       asChild
@@ -14,8 +14,4 @@ export const SkipNavLink = () => {
   );
 };
 
-export const SkipNavTarget = () => {
-  return <div id={SKIP_NAV_ID} />;
-};
-
-export default SkipNavLink;
+export default SkipNavButton;
