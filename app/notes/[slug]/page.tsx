@@ -4,9 +4,8 @@ import { JsonLd } from "react-schemaorg";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "@/components/link";
 import Time from "@/components/time";
-import Comments from "@/components/comments";
-import Loading from "@/components/loading";
 import ViewCounter from "@/components/view-counter";
+import Comments from "@/components/comments/comments";
 import { getSlugs, getFrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
@@ -143,16 +142,18 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <MDXContent />
 
-      {env.NEXT_PUBLIC_ENV === "production" && (
-        <div id="comments" className="mt-8 min-h-36 border-t-2 pt-8">
-          {!frontmatter!.noComments ? (
-            <Suspense fallback={<Loading boxes={3} width={40} className="mx-auto my-8 block" />}>
-              <Comments title={frontmatter!.title} />
-            </Suspense>
-          ) : (
-            <div className="text-foreground/85 text-center font-medium">Comments are disabled for this post.</div>
-          )}
-        </div>
+      {!frontmatter!.noComments ? (
+        <Suspense fallback={null}>
+          <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+        </Suspense>
+      ) : (
+        <section id="comments" className="mt-8 w-full border-t-2 pt-8">
+          <div className="mx-auto w-full max-w-3xl">
+            <div className="bg-muted/40 flex min-h-32 items-center justify-center rounded-lg p-6">
+              <p className="text-center font-medium">Comments are disabled for this post.</p>
+            </div>
+          </div>
+        </section>
       )}
     </>
   );

@@ -31,8 +31,8 @@
   - Next.js
   - Vercel
   - Tailwind CSS
+  - Supabase
   - Upstash Redis
-  - Giscus
   - Resend
   - ...and more: https://jarv.is/uses
 
