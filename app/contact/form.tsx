@@ -2,7 +2,7 @@
 
 import { env } from "@/lib/env";
 import { useActionState, useState } from "react";
-import Turnstile from "react-turnstile";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Link from "@/components/link";
 import Input from "@/components/ui/input";
@@ -37,9 +37,9 @@ const ContactForm = () => {
             setFormFields({ ...formFields, name: e.target.value });
           }}
           disabled={pending || formState.success}
-          aria-invalid={!pending && formState.errors?.name ? "true" : undefined}
+          aria-invalid={formState.errors?.name ? "true" : undefined}
         />
-        {!pending && formState.errors?.name && (
+        {formState.errors?.name && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.name[0]}</span>
         )}
       </div>
@@ -55,9 +55,9 @@ const ContactForm = () => {
             setFormFields({ ...formFields, email: e.target.value });
           }}
           disabled={pending || formState.success}
-          aria-invalid={!pending && formState.errors?.email ? "true" : undefined}
+          aria-invalid={formState.errors?.email ? "true" : undefined}
         />
-        {!pending && formState.errors?.email && (
+        {formState.errors?.email && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.email[0]}</span>
         )}
       </div>
@@ -71,10 +71,10 @@ const ContactForm = () => {
             setFormFields({ ...formFields, message: e.target.value });
           }}
           disabled={pending || formState.success}
-          aria-invalid={!pending && formState.errors?.message ? "true" : undefined}
+          aria-invalid={formState.errors?.message ? "true" : undefined}
           className="min-h-[6lh] resize-y"
         />
-        {!pending && formState.errors?.message && (
+        {formState.errors?.message && (
           <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.message[0]}</span>
         )}
 
@@ -102,8 +102,8 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <Turnstile sitekey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} fixedSize />
-        {!pending && formState.errors?.["cf-turnstile-response"] && (
+        <Turnstile siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
+        {formState.errors?.["cf-turnstile-response"] && (
           <span className="text-destructive text-[0.8rem] font-semibold">
             {formState.errors["cf-turnstile-response"][0]}
           </span>

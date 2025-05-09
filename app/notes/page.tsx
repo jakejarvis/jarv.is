@@ -38,7 +38,9 @@ const Page = async () => {
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
       <section className="my-8 first-of-type:mt-6 last-of-type:mb-6" key={year}>
-        <h2 className="mt-0 mb-4 text-3xl font-bold md:text-4xl">{year}</h2>
+        <h2 id={year} className="mt-0 mb-4 text-3xl font-bold md:text-4xl">
+          {year}
+        </h2>
         <ul className="space-y-4">
           {posts.map(({ slug, date, title, htmlTitle, views }) => (
             <li className="flex text-base leading-relaxed" key={slug}>
@@ -52,7 +54,7 @@ const Page = async () => {
                 {views > 0 && (
                   <span className="bg-muted text-muted-foreground inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
                     <EyeIcon className="inline-block size-4 shrink-0" />
-                    <span className="inline-block leading-5">
+                    <span className="inline-block leading-none">
                       {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(views)}
                     </span>
                   </span>
