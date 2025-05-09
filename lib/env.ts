@@ -102,20 +102,6 @@ export const env = createEnv({
         : "development"
     ),
 
-    /**
-     * Optional. Enables comments on blog posts via GitHub discussions.
-     *
-     * @see https://giscus.app/
-     */
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: v.optional(v.string()),
-
-    /**
-     * Optional. Enables comments on blog posts via GitHub discussions.
-     *
-     * @see https://giscus.app/
-     */
-    NEXT_PUBLIC_GISCUS_REPO_ID: v.optional(v.string()),
-
     /** Required. GitHub repository for the site in the format of `{username}/{repo}`. */
     NEXT_PUBLIC_GITHUB_REPO: v.pipe(v.string(), v.includes("/")),
 
@@ -147,6 +133,24 @@ export const env = createEnv({
     NEXT_PUBLIC_SITE_TZ: v.optional(v.string(), "America/New_York"),
 
     /**
+     * Required. Public Supabase API key for auth and database. Currently set automatically by Vercel's Supabase
+     * integration.
+     *
+     * @see https://supabase.com/docs/guides/auth/server-side/nextjs
+     * @see https://vercel.com/marketplace/supabase
+     */
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: v.string(),
+
+    /**
+     * Required. Public Supabase URL for auth and database. Currently set automatically by Vercel's Supabase
+     * integration.
+     *
+     * @see https://supabase.com/docs/guides/auth/server-side/nextjs
+     * @see https://vercel.com/marketplace/supabase
+     */
+    NEXT_PUBLIC_SUPABASE_URL: v.pipe(v.string(), v.url()),
+
+    /**
      * Required. Site key must be prefixed with NEXT_PUBLIC_ since it is used to embed the captcha widget. Falls back to
      * testing keys if not set or in dev environment.
      *
@@ -157,13 +161,13 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
-    NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
     NEXT_PUBLIC_GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO,
     NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
     NEXT_PUBLIC_SITE_LOCALE: process.env.NEXT_PUBLIC_SITE_LOCALE,
     NEXT_PUBLIC_SITE_TZ: process.env.NEXT_PUBLIC_SITE_TZ,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
   },
   emptyStringAsUndefined: true,
