@@ -40,7 +40,7 @@
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^4.1.0",
     "fast-glob": "^3.3.3",
-    "feed": "^4.2.2",
+    "feed": "^5.0.1",
     "geist": "^1.4.2",
     "html-entities": "^2.6.0",
     "lucide-react": "0.509.0",
