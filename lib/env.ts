@@ -4,30 +4,41 @@ import * as v from "valibot";
 export const env = createEnv({
   server: {
     /**
+     * Required. A random value used for authentication encryption.
+     *
+     * @see https://www.better-auth.com/docs/installation#set-environment-variables
+     */
+    AUTH_SECRET: v.string(),
+
+    /**
+     * Required. The client ID from the GitHub Developer Portal for this site's OAuth App.
+     *
+     * @see https://www.better-auth.com/docs/authentication/github
+     */
+    AUTH_GITHUB_CLIENT_ID: v.string(),
+
+    /**
+     * Required. A client secret from the GitHub Developer Portal for this site's OAuth App.
+     *
+     * @see https://www.better-auth.com/docs/authentication/github
+     */
+    AUTH_GITHUB_CLIENT_SECRET: v.string(),
+
+    /**
+     * Required. Database connection string for a Postgres database. May be set automatically by Vercel's Neon
+     * integration.
+     *
+     * @see https://vercel.com/integrations/neon
+     */
+    DATABASE_URL: v.pipe(v.string(), v.startsWith("postgres://")),
+
+    /**
      * Required. GitHub API token used for [/projects](../app/projects/page.tsx) grid. Only needs the `public_repo`
      * scope since we don't need/want to change anything, obviously.
      *
      * @see https://github.com/settings/tokens/new?scopes=public_repo
      */
     GITHUB_TOKEN: v.optional(v.pipe(v.string(), v.startsWith("ghp_"))),
-
-    /**
-     * Required. Redis storage credentials for hit counter's [server component](../app/notes/[slug]/counter.tsx) and API
-     * endpoint. Currently set automatically by Vercel's Upstash integration.
-     *
-     * @see https://upstash.com/docs/redis/sdks/ts/getstarted
-     * @see https://vercel.com/marketplace/upstash
-     */
-    KV_REST_API_TOKEN: v.string(),
-
-    /**
-     * Required. Redis storage credentials for hit counter's [server component](../app/notes/[slug]/counter.tsx) and API
-     * endpoint. Currently set automatically by Vercel's Upstash integration.
-     *
-     * @see https://upstash.com/docs/redis/sdks/ts/getstarted
-     * @see https://vercel.com/marketplace/upstash
-     */
-    KV_REST_API_URL: v.pipe(v.string(), v.url(), v.startsWith("https://"), v.endsWith(".upstash.io")),
 
     /**
      * Required. Uses Resend API to send contact form submissions via a [server action](../app/contact/action.ts). May
@@ -102,20 +113,6 @@ export const env = createEnv({
         : "development"
     ),
 
-    /**
-     * Optional. Enables comments on blog posts via GitHub discussions.
-     *
-     * @see https://giscus.app/
-     */
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: v.optional(v.string()),
-
-    /**
-     * Optional. Enables comments on blog posts via GitHub discussions.
-     *
-     * @see https://giscus.app/
-     */
-    NEXT_PUBLIC_GISCUS_REPO_ID: v.optional(v.string()),
-
     /** Required. GitHub repository for the site in the format of `{username}/{repo}`. */
     NEXT_PUBLIC_GITHUB_REPO: v.pipe(v.string(), v.includes("/")),
 
@@ -157,8 +154,6 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
-    NEXT_PUBLIC_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_GISCUS_REPO_ID,
     NEXT_PUBLIC_GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO,
     NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import { getViews as _getViews } from "@/lib/posts";
-import { POSTS_DIR } from "@/lib/config/constants";
+import { getViews as _getViews } from "@/lib/server/views";
 
 const getViews = cache(_getViews, undefined, {
   revalidate: 300, // 5 minutes
@@ -25,9 +24,9 @@ export const GET = async (): Promise<
   const total = {
     hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
   };
-  const pages = Object.entries(views).map(([slug, hits]) => ({
-    slug: `${POSTS_DIR}/${slug}`,
-    hits,
+  const pages = Object.entries(views).map(([slug, views]) => ({
+    slug,
+    hits: views,
   }));
 
   pages.sort((a, b) => b.hits - a.hits);

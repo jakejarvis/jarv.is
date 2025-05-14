@@ -1,8 +1,7 @@
 import PageTitle from "@/components/layout/page-title";
 import Link from "@/components/link";
+import ContactForm from "@/components/contact-form";
 import { createMetadata } from "@/lib/metadata";
-
-import ContactForm from "./form";
 
 export const metadata = createMetadata({
   title: "Contact Me",

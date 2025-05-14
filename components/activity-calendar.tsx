@@ -1,7 +1,7 @@
 "use client";
 
 import { ActivityCalendar } from "react-activity-calendar";
-import { format } from "date-fns";
+import { formatDate } from "@/lib/date";
 import type { ComponentPropsWithoutRef } from "react";
 import type { Activity } from "react-activity-calendar";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
@@ -48,7 +48,7 @@ const Calendar = ({
           <Tooltip>
             <TooltipTrigger asChild>{block}</TooltipTrigger>
             <TooltipContent>
-              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${format(activity.date, "MMMM do")}`}</span>
+              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${formatDate(activity.date, "MMMM do")}`}</span>
             </TooltipContent>
           </Tooltip>
         )}

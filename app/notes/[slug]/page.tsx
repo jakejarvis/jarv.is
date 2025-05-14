@@ -1,12 +1,12 @@
 import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { JsonLd } from "react-schemaorg";
+import { formatDate, formatDateISO } from "@/lib/date";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
 import Link from "@/components/link";
-import Time from "@/components/time";
-import Comments from "@/components/comments";
-import Loading from "@/components/loading";
 import ViewCounter from "@/components/view-counter";
+import Comments from "@/components/comments/comments";
+import CommentsSkeleton from "@/components/comments/comments-skeleton";
 import { getSlugs, getFrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
@@ -91,7 +91,9 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
           <CalendarDaysIcon className="inline size-4 shrink-0" />
-          <Time date={frontmatter!.date} format="MMMM d, y" />
+          <time dateTime={formatDateISO(frontmatter!.date)} title={formatDate(frontmatter!.date, "MMM d, y, h:mm a O")}>
+            {formatDate(frontmatter!.date, "MMMM d, y")}
+          </time>
         </Link>
 
         {frontmatter!.tags && (
@@ -119,18 +121,16 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <span>Improve This Post</span>
         </Link>
 
-        {env.NEXT_PUBLIC_ENV === "production" && (
-          <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
-            <EyeIcon className="inline size-4 shrink-0" />
-            <Suspense
-              // when this loads, the component will count up from zero to the actual number of hits, so we can simply
-              // show a zero here as a "loading indicator"
-              fallback={<span>0</span>}
-            >
-              <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-            </Suspense>
-          </div>
-        )}
+        <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
+          <EyeIcon className="inline size-4 shrink-0" />
+          <Suspense
+            // when this loads, the component will count up from zero to the actual number of hits, so we can simply
+            // show a zero here as a "loading indicator"
+            fallback={<span>0</span>}
+          >
+            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+          </Suspense>
+        </div>
       </div>
 
       <h1 className="mt-2 mb-3 text-3xl/10 font-bold md:text-4xl/12">
@@ -143,17 +143,13 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <MDXContent />
 
-      {env.NEXT_PUBLIC_ENV === "production" && (
-        <div id="comments" className="mt-8 min-h-36 border-t-2 pt-8">
-          {!frontmatter!.noComments ? (
-            <Suspense fallback={<Loading boxes={3} width={40} className="mx-auto my-8 block" />}>
-              <Comments title={frontmatter!.title} />
-            </Suspense>
-          ) : (
-            <div className="text-foreground/85 text-center font-medium">Comments are disabled for this post.</div>
-          )}
+      <section id="comments" className="isolate mt-8 mb-10 min-h-36 w-full border-t-2 pt-8">
+        <div className="mx-auto w-full max-w-3xl">
+          <Suspense fallback={<CommentsSkeleton />}>
+            <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} closed={frontmatter!.noComments} />
+          </Suspense>
         </div>
-      )}
+      </section>
     </>
   );
 };

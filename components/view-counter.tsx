@@ -1,19 +1,14 @@
 import { env } from "@/lib/env";
 import { connection } from "next/server";
-import { kv } from "@vercel/kv";
 import CountUp from "@/components/count-up";
+import { incrementViews } from "@/lib/server/views";
 
 const ViewCounter = async ({ slug }: { slug: string }) => {
   // ensure this component isn't triggered by prerenders and/or preloads
   await connection();
 
   try {
-    // if this is a new slug, redis will automatically create a new key and set its value to 0 (and then 1, obviously)
-    // https://upstash.com/docs/redis/sdks/ts/commands/string/incr
-    // TODO: maybe don't allow this? or maybe it's fine? kinda unclear how secure this is:
-    // https://nextjs.org/blog/security-nextjs-server-components-actions
-    // https://nextjs.org/docs/app/building-your-application/rendering/server-components
-    const hits = await kv.incr(`hits:${slug}`);
+    const hits = await incrementViews(slug);
 
     // we have data!
     return (
