@@ -1,25 +1,14 @@
 "use client";
 
-import { useMountedState } from "react-use";
 import TimeAgo from "react-timeago";
-import Time from "@/components/time";
-import type { ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef } from "react";
 
-const RelativeTime = ({
-  date,
-  ...rest
-}: ComponentPropsWithoutRef<"time"> & {
-  date: string;
-}) => {
-  // play nice with SSR -- only use relative time on the client, since it'll quickly become outdated on the server and
-  // cause a react hydration mismatch error.
-  const isMounted = useMountedState();
-
-  if (!isMounted) {
-    return <Time date={date} format="MMM d, y" {...rest} />;
-  }
-
-  return <TimeAgo date={date} {...rest} />;
+const RelativeTime = ({ ...rest }: ComponentPropsWithoutRef<typeof TimeAgo>) => {
+  return (
+    <span suppressHydrationWarning>
+      <TimeAgo {...rest} />
+    </span>
+  );
 };
 
 export default RelativeTime;

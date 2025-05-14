@@ -1,4 +1,3 @@
-// https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#keeping-server-only-code-out-of-the-client-environment
 import "server-only";
 
 import { env } from "@/lib/env";
@@ -73,7 +72,7 @@ export const getContributions = async (): Promise<
       };
     });
   } catch (error) {
-    console.error("[/projects] Failed to fetch contributions:", error);
+    console.error("[server/github] Failed to fetch contributions:", error);
     return [];
   }
 };
@@ -138,7 +137,7 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
 
     return user.repositories.edges?.map((edge) => edge!.node as Repository);
   } catch (error) {
-    console.error("[/projects] Failed to fetch repositories:", error);
+    console.error("[server/github] Failed to fetch repositories:", error);
     return [];
   }
 };

@@ -5,6 +5,7 @@ import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SkipNavButton, { SKIP_NAV_ID } from "@/components/layout/skip-nav";
+import Toaster from "@/components/ui/sonner";
 import { defaultMetadata } from "@/lib/metadata";
 import { GeistMono, GeistSans } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
@@ -73,6 +74,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
             <Footer className="my-6 w-full" />
           </div>
+
+          <Toaster position="bottom-center" />
         </ThemeProvider>
 
         <Analytics />

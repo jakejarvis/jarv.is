@@ -36,7 +36,7 @@ export type ContactState = {
 
 export const send = async (state: ContactState, payload: FormData): Promise<ContactState> => {
   // TODO: remove after debugging why automated spam entries are causing 500 errors
-  console.debug("[/contact] received payload:", payload);
+  console.debug("[server/resend] received payload:", payload);
 
   try {
     const data = v.safeParse(ContactSchema, Object.fromEntries(payload));
@@ -68,7 +68,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
     });
 
     if (!turnstileResponse || !turnstileResponse.ok) {
-      throw new Error(`[/contact] turnstile validation failed: ${turnstileResponse.status}`);
+      throw new Error(`[server/resend] turnstile validation failed: ${turnstileResponse.status}`);
     }
 
     const turnstileData = (await turnstileResponse.json()) as { success: boolean };
@@ -82,7 +82,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
 
     if (env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
       // https://resend.com/docs/api-reference/emails/send-email
-      console.warn("[/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
+      console.warn("[server/resend] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
     }
 
     // send email
@@ -97,7 +97,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
 
     return { success: true, message: "Thanks! You should hear from me soon." };
   } catch (error) {
-    console.error("[/contact] fatal error:", error);
+    console.error("[server/resend] fatal error:", error);
 
     return {
       success: false,

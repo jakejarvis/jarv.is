@@ -31,8 +31,9 @@
   - Next.js
   - Vercel
   - Tailwind CSS
-  - Upstash Redis
-  - Giscus
+  - Neon Postgres
+  - Drizzle ORM
+  - Better Auth
   - Resend
   - ...and more: https://jarv.is/uses
 

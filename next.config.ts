@@ -20,9 +20,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "ijyxfbpcm3itvdly.public.blob.vercel-storage.com",
-        port: "",
-        pathname: "/**",
-        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
       },
     ],
   },

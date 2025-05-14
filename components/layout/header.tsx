@@ -15,7 +15,7 @@ const Header = ({ className, ...rest }: ComponentPropsWithoutRef<"header">) => {
         href="/"
         rel="author"
         aria-label={siteConfig.name}
-        className="hover:text-primary text-foreground/85 flex flex-shrink-0 items-center hover:no-underline"
+        className="hover:text-primary text-foreground/85 flex shrink-0 items-center hover:no-underline"
       >
         <Image
           src={avatarImg}

@@ -21,11 +21,15 @@ For a likely excessive level of privacy and security, this website is also mirro
 
 ## Analytics
 
-A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e. `hits = hits + 1`) in a [Upstash Redis](https://upstash.com/) database. Individual views and identifying (or non-identifying) details are **never stored or logged**.
+A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e. `hits = hits + 1`) in a [Neon Postgres](https://neon.tech/) database. Individual views and identifying (or non-identifying) details are **never stored or logged**.
 
-The [server component](https://github.com/jakejarvis/jarv.is/blob/main/app/notes/%5Bslug%5D/counter.tsx) and [API endpoint](https://github.com/jakejarvis/jarv.is/blob/main/app/api/hits/route.ts) are open source, and [snapshots of the database](https://github.com/jakejarvis/website-stats) are public.
+The [server component](https://github.com/jakejarvis/jarv.is/blob/main/components/view-counter.tsx) and [API endpoint](https://github.com/jakejarvis/jarv.is/blob/main/app/api/hits/route.ts) are open source, and [snapshots of the database](https://github.com/jakejarvis/website-stats) are public.
 
 [**Vercel Analytics**](https://vercel.com/docs/analytics) is also used to gain insights into referrers, search terms, etc. [without collecting anything identifiable](https://vercel.com/docs/analytics/privacy-policy) about you.
+
+## Comments
+
+Post comments are similarly stored in a Postgres database. Authentication is provided via GitHub, from which the account's username, email, and avatar URL are stored.
 
 ## Third-Party Content
 

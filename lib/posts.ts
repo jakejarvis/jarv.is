@@ -1,10 +1,10 @@
 import { env } from "@/lib/env";
 import { cache } from "react";
-import { kv } from "@vercel/kv";
 import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
 import { unified } from "unified";
+import { decode } from "html-entities";
 import {
   remarkParse,
   remarkSmartypants,
@@ -13,10 +13,8 @@ import {
   remarkMdx,
   remarkStripMdxImportsExports,
 } from "@/lib/remark";
-import { decode } from "html-entities";
+import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
 import { POSTS_DIR } from "@/lib/config/constants";
-import rehypeSanitize from "rehype-sanitize";
-import rehypeStringify from "rehype-stringify";
 
 export type FrontMatter = {
   slug: string;
@@ -112,57 +110,6 @@ export const getFrontMatter: {
   }
 );
 
-export const getViews: {
-  /**
-   * Retrieves the number of views for ALL posts
-   */
-  (): Promise<Record<string, number>>;
-  /**
-   * Retrieves the number of views for a given slug, or undefined if the slug does not exist
-   */
-  (slug: string): Promise<number | undefined>;
-} = cache(
-  async (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    slug?: any
-  ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Promise<any> => {
-    // ensure the prefix is consistent for all keys in the KV store
-    const KEY_PREFIX = `hits:${POSTS_DIR}/`;
-
-    if (typeof slug === "string") {
-      try {
-        const views = await kv.get<string>(`${KEY_PREFIX}${slug}`);
-
-        return views ? parseInt(views, 10) : undefined;
-      } catch (error) {
-        console.error(`Failed to retrieve view count for post with slug "${slug}":`, error);
-        return undefined;
-      }
-    }
-
-    if (!slug) {
-      try {
-        const allSlugs = await getSlugs();
-        const pages: Record<string, number> = {};
-
-        // get the value (number of views) for each key (the slug of the page)
-        const values = await kv.mget<string[]>(...allSlugs.map((slug) => `${KEY_PREFIX}${slug}`));
-
-        // pair the slugs with their view counts
-        allSlugs.forEach((slug, index) => (pages[slug.replace(KEY_PREFIX, "")] = parseInt(values[index], 10)));
-
-        return pages;
-      } catch (error) {
-        console.error("Failed to retrieve view counts:", error);
-        return undefined;
-      }
-    }
-
-    throw new Error("getViews() called with invalid argument.");
-  }
-);
-
 /** Returns the content of a post with very limited processing to include in RSS feeds */
 export const getContent = cache(async (slug: string): Promise<string | undefined> => {
   try {
@@ -182,6 +129,7 @@ export const getContent = cache(async (slug: string): Promise<string | undefined
           "code",
           "pre",
           "blockquote",
+          "del",
           "h1",
           "h2",
           "h3",

@@ -14,10 +14,16 @@ const compat = new FlatCompat({
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  { ignores: ["README.md", ".next", ".vercel", "node_modules"] },
+  { ignores: ["README.md", ".next", ".vercel", "node_modules", "lib/db/migrations"] },
   ...compat.config({
     plugins: ["react-compiler", "css-modules"],
-    extends: ["eslint:recommended", "next/core-web-vitals", "next/typescript", "plugin:css-modules/recommended"],
+    extends: [
+      "eslint:recommended",
+      "next/core-web-vitals",
+      "next/typescript",
+      "plugin:css-modules/recommended",
+      "plugin:drizzle/recommended",
+    ],
   }),
   ...eslintCustomConfig,
   eslintPluginPrettierRecommended,

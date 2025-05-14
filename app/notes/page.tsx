@@ -1,11 +1,12 @@
 import { env } from "@/lib/env";
 import { EyeIcon } from "lucide-react";
 import Link from "@/components/link";
-import Time from "@/components/time";
-import { getFrontMatter, getViews } from "@/lib/posts";
+import { getFrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
+import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
 import { POSTS_DIR } from "@/lib/config/constants";
+import { getViews } from "@/lib/server/views";
 import type { ReactElement } from "react";
 import type { FrontMatter } from "@/lib/posts";
 
@@ -29,7 +30,7 @@ const Page = async () => {
     const year = new Date(post.date).getUTCFullYear();
     (postsByYear[year] || (postsByYear[year] = [])).push({
       ...post,
-      views: views[post.slug] || 0,
+      views: views[`${POSTS_DIR}/${post.slug}`] || 0,
     });
   });
 
@@ -44,13 +45,18 @@ const Page = async () => {
         <ul className="space-y-4">
           {posts.map(({ slug, date, title, htmlTitle, views }) => (
             <li className="flex text-base leading-relaxed" key={slug}>
-              <Time date={date} format="MMM d" className="text-muted-foreground w-18 shrink-0 md:w-22" />
+              <span className="text-muted-foreground w-18 shrink-0 md:w-22">
+                <time dateTime={formatDateISO(date)} title={formatDate(date, "MMM d, y, h:mm a O")}>
+                  {formatDate(date, "MMM d")}
+                </time>
+              </span>
               <div className="space-x-2.5">
                 <Link
                   dynamicOnHover
                   href={`/${POSTS_DIR}/${slug}`}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                 />
+
                 {views > 0 && (
                   <span className="bg-muted text-muted-foreground inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
                     <EyeIcon className="inline-block size-4 shrink-0" />
