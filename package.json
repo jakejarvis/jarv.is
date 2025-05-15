@@ -84,7 +84,7 @@
     "shiki": "^3.4.1",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.6",
+    "tailwindcss": "^4.1.7",
     "unified": "^11.0.5",
     "valibot": "^1.1.0"
   },
@@ -92,7 +92,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.26.0",
     "@jakejarvis/eslint-config": "^4.0.7",
-    "@tailwindcss/postcss": "^4.1.6",
+    "@tailwindcss/postcss": "^4.1.7",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.15.18",
     "@types/react": "19.1.4",
