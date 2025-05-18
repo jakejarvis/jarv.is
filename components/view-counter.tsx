@@ -1,7 +1,7 @@
 import { env } from "@/lib/env";
 import { connection } from "next/server";
 import CountUp from "@/components/count-up";
-import { incrementViews } from "@/lib/server/views";
+import { incrementViews } from "@/lib/views";
 
 const ViewCounter = async ({ slug }: { slug: string }) => {
   // ensure this component isn't triggered by prerenders and/or preloads

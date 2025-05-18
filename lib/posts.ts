@@ -14,7 +14,6 @@ import {
   remarkStripMdxImportsExports,
 } from "@/lib/remark";
 import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
-import { POSTS_DIR } from "@/lib/config/constants";
 
 export type FrontMatter = {
   slug: string;
@@ -27,6 +26,9 @@ export type FrontMatter = {
   image?: string;
   noComments?: boolean;
 };
+
+/** Path to directory with .mdx files, relative to project root. */
+export const POSTS_DIR = "notes" as const;
 
 /** Use filesystem to get a simple list of all post slugs */
 export const getSlugs = cache(async (): Promise<string[]> => {

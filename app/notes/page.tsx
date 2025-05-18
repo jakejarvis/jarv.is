@@ -1,16 +1,15 @@
 import { env } from "@/lib/env";
 import { EyeIcon } from "lucide-react";
 import Link from "@/components/link";
-import { getFrontMatter } from "@/lib/posts";
+import { getFrontMatter, POSTS_DIR } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
-import { POSTS_DIR } from "@/lib/config/constants";
-import { getViews } from "@/lib/server/views";
+import { getViews } from "@/lib/views";
 import type { ReactElement } from "react";
 import type { FrontMatter } from "@/lib/posts";
 
-export const revalidate = 600; // 10 minutes
+export const revalidate = 300; // 5 minutes
 
 export const metadata = createMetadata({
   title: "Notes",

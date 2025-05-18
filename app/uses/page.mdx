@@ -1,4 +1,7 @@
+import { Suspense } from "react";
 import PageTitle from "@/components/layout/page-title";
+import Comments from "@/components/comments/comments";
+import CommentsSkeleton from "@/components/comments/comments-skeleton";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -6,6 +9,8 @@ export const metadata = createMetadata({
   description: "Things I use daily.",
   canonical: "/uses",
 });
+
+export const experimental_ppr = true;
 
 <PageTitle canonical="/uses">Uses</PageTitle>
 
@@ -164,3 +169,7 @@ Other geeky stuff:
 - 2x [**ecobee3 lite**](https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/)
 - 2x [**Sonos One**](https://www.sonos.com/en-us/shop/one.html) (with Alexa turned off...hopefully? 🤫)
 - 2x [**Apple TV 4K** (2021)](https://www.apple.com/apple-tv-4k/)
+
+<Suspense fallback={<CommentsSkeleton />}>
+  <Comments slug="uses" />
+</Suspense>

@@ -3,9 +3,8 @@ import path from "path";
 import fs from "fs";
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
-import { getSlugs, getFrontMatter } from "@/lib/posts";
+import { getSlugs, getFrontMatter, POSTS_DIR } from "@/lib/posts";
 import siteConfig from "@/lib/config/site";
-import { POSTS_DIR } from "@/lib/config/constants";
 
 export const contentType = "image/png";
 export const size = {

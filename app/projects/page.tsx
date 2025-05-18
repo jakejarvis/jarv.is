@@ -9,7 +9,7 @@ import ActivityCalendar from "@/components/activity-calendar";
 import { GitHubIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { createMetadata } from "@/lib/metadata";
-import { getContributions, getRepos } from "@/lib/server/github";
+import { getContributions, getRepos } from "./github";
 
 export const metadata = createMetadata({
   title: "Projects",

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import { getViews as _getViews } from "@/lib/server/views";
+import { getViews as _getViews } from "@/lib/views";
 
 const getViews = cache(_getViews, undefined, {
   revalidate: 300, // 5 minutes

@@ -21,7 +21,7 @@ export const getContributions = async (): Promise<
       },
       cache: "force-cache",
       next: {
-        revalidate: 3600, // 1 hour
+        revalidate: 900, // 15 minutes
         tags: ["github-contributions"],
       },
     });
@@ -126,7 +126,7 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
               ...options,
               cache: "force-cache",
               next: {
-                revalidate: 3600, // 1 hour
+                revalidate: 900, // 15 minutes
                 tags: ["github-repos"],
               },
             });

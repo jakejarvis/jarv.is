@@ -1,4 +1,7 @@
+import { Suspense } from "react";
 import PageTitle from "@/components/layout/page-title";
+import Comments from "@/components/comments/comments";
+import CommentsSkeleton from "@/components/comments/comments-skeleton";
 import { createMetadata } from "@/lib/metadata";
 
 import backgroundImg from "./sundar.jpg";
@@ -8,6 +11,8 @@ export const metadata = createMetadata({
   description: "This is a horrible idea.",
   canonical: "/zip",
 });
+
+export const experimental_ppr = true;
 
 export const Terminal = () => (
   <div
@@ -71,3 +76,7 @@ A little-known monopolistic internet conglomorate simply unleashed [multiple](ht
 - **Kaspersky:** [Beware the .zip and .mov domains!](https://usa.kaspersky.com/blog/zip-mov-domain-extension-confusion/28351/)
 - **Palo Alto Networks:** [New Top Level Domains .zip and .mov open the door for new attacks](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000g1wOCAQ)
 - **Google, twenty years ago:** ["Don't be evil"](https://web.archive.org/web/20050204181615/http://investor.google.com/conduct.html)
+
+<Suspense fallback={<CommentsSkeleton />}>
+  <Comments slug="zip" />
+</Suspense>

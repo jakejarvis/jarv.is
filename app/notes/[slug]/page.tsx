@@ -7,11 +7,10 @@ import Link from "@/components/link";
 import ViewCounter from "@/components/view-counter";
 import Comments from "@/components/comments/comments";
 import CommentsSkeleton from "@/components/comments/comments-skeleton";
-import { getSlugs, getFrontMatter } from "@/lib/posts";
+import { getSlugs, getFrontMatter, POSTS_DIR } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
-import { POSTS_DIR } from "@/lib/config/constants";
 import { size as ogImageSize } from "./opengraph-image";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
@@ -143,13 +142,9 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <MDXContent />
 
-      <section id="comments" className="isolate mt-8 mb-10 min-h-36 w-full border-t-2 pt-8">
-        <div className="mx-auto w-full max-w-3xl">
-          <Suspense fallback={<CommentsSkeleton />}>
-            <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} closed={frontmatter!.noComments} />
-          </Suspense>
-        </div>
-      </section>
+      <Suspense fallback={<CommentsSkeleton />}>
+        <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} closed={frontmatter!.noComments} />
+      </Suspense>
     </>
   );
 };

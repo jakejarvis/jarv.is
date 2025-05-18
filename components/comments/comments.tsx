@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import Wrapper from "./comments-wrapper";
 import Form from "./comment-form";
 import Thread from "./comment-thread";
 import SignIn from "./sign-in";
@@ -27,14 +28,14 @@ const Comments = async ({ slug, closed = false }: { slug: string; closed?: boole
   const rootComments = commentsByParentId["root"] || [];
 
   return (
-    <div className="space-y-6">
+    <Wrapper>
       {closed ? (
         <div className="bg-muted/40 flex min-h-32 items-center justify-center rounded-lg p-6">
           <p className="text-center font-medium">Comments are closed for this post.</p>
         </div>
       ) : !session ? (
-        <div className="bg-muted/40 flex flex-col items-center justify-center rounded-lg p-6">
-          <p className="mb-4 text-center font-medium">Join the discussion by signing in:</p>
+        <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
+          <p className="text-center font-medium">Join the discussion by signing in:</p>
           <SignIn callbackPath={`/${slug}#comments`} />
         </div>
       ) : (
@@ -57,7 +58,7 @@ const Comments = async ({ slug, closed = false }: { slug: string; closed?: boole
           ))}
         </div>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

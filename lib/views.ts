@@ -1,6 +1,5 @@
 import "server-only";
 
-import { cache } from "react";
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
@@ -43,43 +42,41 @@ export const getViews: {
    * Retrieves the numbers of views for ALL slugs
    */
   (): Promise<Record<string, number>>;
-} = cache(
-  async (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    slug?: any
-  ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Promise<any> => {
-    try {
-      // return one page
-      if (typeof slug === "string") {
-        const pages = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
-        return pages[0].views;
-      }
+} = async (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  slug?: any
+): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+Promise<any> => {
+  try {
+    // return one page
+    if (typeof slug === "string") {
+      const pages = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
+      return pages[0].views;
+    }
 
-      // return multiple pages
-      if (Array.isArray(slug)) {
-        const pages = await db.select().from(page).where(inArray(page.slug, slug));
-        return pages.reduce(
-          (acc, page, index) => {
-            acc[slug[index]] = page.views;
-            return acc;
-          },
-          {} as Record<string, number | null>
-        );
-      }
-
-      // return ALL pages
-      const pages = await db.select().from(page);
+    // return multiple pages
+    if (Array.isArray(slug)) {
+      const pages = await db.select().from(page).where(inArray(page.slug, slug));
       return pages.reduce(
-        (acc, page) => {
-          acc[page.slug] = page.views;
+        (acc, page, index) => {
+          acc[slug[index]] = page.views;
           return acc;
         },
-        {} as Record<string, number>
+        {} as Record<string, number | null>
       );
-    } catch (error) {
-      console.error("[server/views] fatal error:", error);
-      throw new Error("Failed to get views");
     }
+
+    // return ALL pages
+    const pages = await db.select().from(page);
+    return pages.reduce(
+      (acc, page) => {
+        acc[page.slug] = page.views;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
+  } catch (error) {
+    console.error("[server/views] fatal error:", error);
+    throw new Error("Failed to get views");
   }
-);
+};

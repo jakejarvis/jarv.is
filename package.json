@@ -56,7 +56,7 @@
     "lucide-react": "0.511.0",
     "next": "15.4.0-canary.38",
     "react": "19.1.0",
-    "react-activity-calendar": "^2.7.11",
+    "react-activity-calendar": "^2.7.12",
     "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
     "react-lite-youtube-embed": "^2.5.1",
@@ -89,7 +89,7 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
     "unified": "^11.0.5",
-    "zod": "3.25.0-beta.20250516T005923"
+    "zod": "3.24.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
