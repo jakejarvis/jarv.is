@@ -75,7 +75,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             <Footer className="my-6 w-full" />
           </div>
 
-          <Toaster position="bottom-center" />
+          <Toaster position="bottom-center" hotkey={[]} />
         </ThemeProvider>
 
         <Analytics />

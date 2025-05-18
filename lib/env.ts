@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import * as v from "valibot";
+import { z } from "zod";
 
 export const env = createEnv({
   server: {
@@ -8,21 +8,21 @@ export const env = createEnv({
      *
      * @see https://www.better-auth.com/docs/installation#set-environment-variables
      */
-    AUTH_SECRET: v.string(),
+    AUTH_SECRET: z.string().min(1),
 
     /**
      * Required. The client ID from the GitHub Developer Portal for this site's OAuth App.
      *
      * @see https://www.better-auth.com/docs/authentication/github
      */
-    AUTH_GITHUB_CLIENT_ID: v.string(),
+    AUTH_GITHUB_CLIENT_ID: z.string().min(1),
 
     /**
      * Required. A client secret from the GitHub Developer Portal for this site's OAuth App.
      *
      * @see https://www.better-auth.com/docs/authentication/github
      */
-    AUTH_GITHUB_CLIENT_SECRET: v.string(),
+    AUTH_GITHUB_CLIENT_SECRET: z.string().min(1),
 
     /**
      * Required. Database connection string for a Postgres database. May be set automatically by Vercel's Neon
@@ -30,7 +30,7 @@ export const env = createEnv({
      *
      * @see https://vercel.com/integrations/neon
      */
-    DATABASE_URL: v.pipe(v.string(), v.startsWith("postgres://")),
+    DATABASE_URL: z.string().startsWith("postgres://"),
 
     /**
      * Required. GitHub API token used for [/projects](../app/projects/page.tsx) grid. Only needs the `public_repo`
@@ -38,7 +38,7 @@ export const env = createEnv({
      *
      * @see https://github.com/settings/tokens/new?scopes=public_repo
      */
-    GITHUB_TOKEN: v.optional(v.pipe(v.string(), v.startsWith("ghp_"))),
+    GITHUB_TOKEN: z.string().startsWith("ghp_").optional(),
 
     /**
      * Required. Uses Resend API to send contact form submissions via a [server action](../app/contact/action.ts). May
@@ -47,7 +47,7 @@ export const env = createEnv({
      * @see https://resend.com/api-keys
      * @see https://vercel.com/integrations/resend
      */
-    RESEND_API_KEY: v.pipe(v.string(), v.startsWith("re_")),
+    RESEND_API_KEY: z.string().startsWith("re_"),
 
     /**
      * Optional, but will throw a warning if unset. Use an approved domain (or subdomain) on the Resend account to send
@@ -56,17 +56,17 @@ export const env = createEnv({
      *
      * @see https://resend.com/domains
      */
-    RESEND_FROM_EMAIL: v.fallback(v.pipe(v.string(), v.email()), "onboarding@resend.dev"),
+    RESEND_FROM_EMAIL: z.string().email().default("onboarding@resend.dev"),
 
     /** Required. The destination email for contact form submissions. */
-    RESEND_TO_EMAIL: v.pipe(v.string(), v.email()),
+    RESEND_TO_EMAIL: z.string().email(),
 
     /**
      * Required. Secret for Cloudflare `siteverify` API to validate a form's turnstile result on the backend.
      *
      * @see https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
      */
-    TURNSTILE_SECRET_KEY: v.optional(v.string(), "1x0000000000000000000000000000000AA"),
+    TURNSTILE_SECRET_KEY: z.string().default("1x0000000000000000000000000000000AA"),
   },
   client: {
     /**
@@ -76,48 +76,52 @@ export const env = createEnv({
      *
      * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#default-value
      */
-    NEXT_PUBLIC_BASE_URL: v.fallback(
-      v.pipe(v.string(), v.url()),
-      () =>
-        // Vercel: https://vercel.com/docs/environment-variables/system-environment-variables
-        (process.env.VERCEL
-          ? process.env.VERCEL_ENV === "production"
-            ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-            : process.env.VERCEL_ENV === "preview"
-              ? `https://${process.env.VERCEL_BRANCH_URL}`
-              : process.env.VERCEL_URL
-                ? `https://${process.env.VERCEL_URL}`
-                : undefined
-          : undefined) ||
-        // Netlify: https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
-        (process.env.NETLIFY
-          ? process.env.CONTEXT === "production"
-            ? `${process.env.URL}`
-            : process.env.DEPLOY_PRIME_URL
-              ? `${process.env.DEPLOY_PRIME_URL}`
-              : process.env.DEPLOY_URL
-                ? `${process.env.DEPLOY_URL}`
-                : undefined
-          : undefined) ||
-        // next dev
-        `http://localhost:${process.env.PORT || 3000}`
-    ),
+    NEXT_PUBLIC_BASE_URL: z
+      .string()
+      .url()
+      .default(
+        ((): string =>
+          (process.env.VERCEL
+            ? process.env.VERCEL_ENV === "production"
+              ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+              : process.env.VERCEL_ENV === "preview"
+                ? `https://${process.env.VERCEL_BRANCH_URL}`
+                : process.env.VERCEL_URL
+                  ? `https://${process.env.VERCEL_URL}`
+                  : undefined
+            : undefined) ||
+          (process.env.NETLIFY
+            ? process.env.CONTEXT === "production"
+              ? `${process.env.URL}`
+              : process.env.DEPLOY_PRIME_URL
+                ? `${process.env.DEPLOY_PRIME_URL}`
+                : process.env.DEPLOY_URL
+                  ? `${process.env.DEPLOY_URL}`
+                  : undefined
+            : undefined) ||
+          `http://localhost:${process.env.PORT || 3000}`)()
+      ),
 
     /**
      * Optional. Set this to override the best guess as to the environment the site is running in.
      */
-    NEXT_PUBLIC_ENV: v.fallback(v.picklist(["production", "development"]), () =>
-      (process.env.VERCEL && process.env.VERCEL_ENV === "production") ||
-      (process.env.NETLIFY && process.env.CONTEXT === "production")
-        ? "production"
-        : "development"
-    ),
+    NEXT_PUBLIC_ENV: z
+      .enum(["production", "development"])
+      .default(
+        ((): "production" | "development" =>
+          (process.env.VERCEL && process.env.VERCEL_ENV === "production") ||
+          (process.env.NETLIFY && process.env.CONTEXT === "production")
+            ? "production"
+            : "development")()
+      ),
 
     /** Required. GitHub repository for the site in the format of `{username}/{repo}`. */
-    NEXT_PUBLIC_GITHUB_REPO: v.pipe(v.string(), v.includes("/")),
+    NEXT_PUBLIC_GITHUB_REPO: z.string().refine((val) => val.includes("/"), {
+      message: "Must be in the format {username}/{repo}",
+    }),
 
     /** Required. GitHub username of the author, used to generate [/projects](../app/projects/page.tsx). */
-    NEXT_PUBLIC_GITHUB_USERNAME: v.string(),
+    NEXT_PUBLIC_GITHUB_USERNAME: z.string().min(1),
 
     /**
      * Optional. Sets an `Onion-Location` header in responses to advertise a URL for the same page but hosted on a
@@ -126,14 +130,14 @@ export const env = createEnv({
      *
      * @see https://community.torproject.org/onion-services/advanced/onion-location/
      */
-    NEXT_PUBLIC_ONION_DOMAIN: v.optional(v.pipe(v.string(), v.endsWith(".onion"))),
+    NEXT_PUBLIC_ONION_DOMAIN: z.string().endsWith(".onion").optional(),
 
     /**
      * Optional. Locale code to define the site's language in ISO-639 format. Defaults to `en-US`.
      *
      * @see https://www.loc.gov/standards/iso639-2/php/code_list.php
      */
-    NEXT_PUBLIC_SITE_LOCALE: v.optional(v.string(), "en-US"),
+    NEXT_PUBLIC_SITE_LOCALE: z.string().default("en-US"),
 
     /**
      * Optional. Consistent timezone for the site. Doesn't really matter what it is, as long as it's the same everywhere
@@ -141,7 +145,7 @@ export const env = createEnv({
      *
      * @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */
-    NEXT_PUBLIC_SITE_TZ: v.optional(v.string(), "America/New_York"),
+    NEXT_PUBLIC_SITE_TZ: z.string().default("America/New_York"),
 
     /**
      * Required. Site key must be prefixed with NEXT_PUBLIC_ since it is used to embed the captcha widget. Falls back to
@@ -149,7 +153,7 @@ export const env = createEnv({
      *
      * @see https://developers.cloudflare.com/turnstile/troubleshooting/testing/
      */
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY: v.optional(v.string(), "1x00000000000000000000AA"),
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().default("1x00000000000000000000AA"),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,

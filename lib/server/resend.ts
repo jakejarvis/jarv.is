@@ -2,36 +2,25 @@
 
 import { env } from "@/lib/env";
 import { headers } from "next/headers";
-import * as v from "valibot";
 import { Resend } from "resend";
+import { z } from "zod";
 import siteConfig from "@/lib/config/site";
 
-const ContactSchema = v.object({
-  name: v.message(v.pipe(v.string(), v.trim(), v.nonEmpty()), "Your name is required."),
-  email: v.message(v.pipe(v.string(), v.trim(), v.nonEmpty(), v.email()), "Your email address is required."),
-  message: v.message(v.pipe(v.string(), v.trim(), v.minLength(15)), "Your message must be at least 15 characters."),
-  "cf-turnstile-response": v.message(
-    v.pipe(
-      // token wasn't submitted at _all_, most likely a direct POST request by a spam bot
-      v.string(),
-      // form submitted properly but token was missing, might be a forgetful human
-      v.nonEmpty(),
-      // very rudimentary length check based on Cloudflare's docs
-      // https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-      // https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
-      v.maxLength(2048),
-      v.readonly()
-    ),
-    "Are you sure you're not a robot...? 🤖"
-  ),
-});
+const ContactSchema = z
+  .object({
+    name: z.string().trim().min(1, { message: "Your name is required." }),
+    email: z.string().email({ message: "Your email address is required." }),
+    message: z.string().trim().min(15, { message: "Your message must be at least 15 characters." }),
+    "cf-turnstile-response": z.string().min(1, { message: "Are you sure you're not a robot...? 🤖" }),
+  })
+  .readonly();
 
-export type ContactInput = v.InferInput<typeof ContactSchema>;
+export type ContactInput = z.infer<typeof ContactSchema>;
 
 export type ContactState = {
   success: boolean;
   message: string;
-  errors?: v.FlatErrors<typeof ContactSchema>["nested"];
+  errors?: Record<string, string[]>;
 };
 
 export const send = async (state: ContactState, payload: FormData): Promise<ContactState> => {
@@ -39,13 +28,13 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
   console.debug("[server/resend] received payload:", payload);
 
   try {
-    const data = v.safeParse(ContactSchema, Object.fromEntries(payload));
+    const data = ContactSchema.safeParse(Object.fromEntries(payload));
 
     if (!data.success) {
       return {
         success: false,
         message: "Please make sure all fields are filled in.",
-        errors: v.flatten(data.issues).nested,
+        errors: data.error.flatten().fieldErrors,
       };
     }
 
@@ -61,7 +50,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         secret: env.TURNSTILE_SECRET_KEY,
-        response: data.output["cf-turnstile-response"],
+        response: data.data["cf-turnstile-response"],
         remoteip,
       }),
       cache: "no-store",
@@ -88,11 +77,11 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
     // send email
     const resend = new Resend(env.RESEND_API_KEY);
     await resend.emails.send({
-      from: `${data.output.name} <${env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
-      replyTo: `${data.output.name} <${data.output.email}>`,
+      from: `${data.data.name} <${env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
+      replyTo: `${data.data.name} <${data.data.email}>`,
       to: [env.RESEND_TO_EMAIL],
       subject: `[${siteConfig.name}] Contact Form Submission`,
-      text: data.output.message,
+      text: data.data.message,
     });
 
     return { success: true, message: "Thanks! You should hear from me soon." };
