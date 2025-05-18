@@ -1,6 +1,7 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -79,6 +80,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         </ThemeProvider>
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
