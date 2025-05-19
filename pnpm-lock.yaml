@@ -73,7 +73,7 @@ importers:
         version: 1.2.6(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
-        version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.24.4)
+        version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.25.6)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.4.0-canary.41(@babel/core@7.26.10)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -222,8 +222,8 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
       zod:
-        specifier: 3.24.4
-        version: 3.24.4
+        specifier: 3.25.6
+        version: 3.25.6
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.1
@@ -2377,10 +2377,6 @@ packages:
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
-
-  detect-libc@2.0.3:
-    resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
-    engines: {node: '>=8'}
 
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
@@ -4919,8 +4915,8 @@ packages:
     peerDependencies:
       zod: ^3.18.0
 
-  zod@3.24.4:
-    resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
+  zod@3.25.6:
+    resolution: {integrity: sha512-kA1wikWvfsP+z3L6mzUJJRQz1Y28BR0Bu/MTWeYbfaFJ8c+OLOt1Bb8d4V3Mk1480H+poPYG6BjS/I4kJ1U8WA==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -6203,21 +6199,21 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.24.4)':
+  '@t3-oss/env-core@0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.25.6)':
     dependencies:
       arktype: 2.1.20
     optionalDependencies:
       typescript: 5.8.3
       valibot: 1.1.0(typescript@5.8.3)
-      zod: 3.24.4
+      zod: 3.25.6
 
-  '@t3-oss/env-nextjs@0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.24.4)':
+  '@t3-oss/env-nextjs@0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.25.6)':
     dependencies:
-      '@t3-oss/env-core': 0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.24.4)
+      '@t3-oss/env-core': 0.13.4(arktype@2.1.20)(typescript@5.8.3)(valibot@1.1.0(typescript@5.8.3))(zod@3.25.6)
     optionalDependencies:
       typescript: 5.8.3
       valibot: 1.1.0(typescript@5.8.3)
-      zod: 3.24.4
+      zod: 3.25.6
     transitivePeerDependencies:
       - arktype
 
@@ -6655,7 +6651,7 @@ snapshots:
       jose: 5.10.0
       kysely: 0.28.2
       nanostores: 0.11.4
-      zod: 3.24.4
+      zod: 3.25.6
 
   better-call@1.0.9:
     dependencies:
@@ -6901,9 +6897,6 @@ snapshots:
   defu@6.1.4: {}
 
   dequal@2.0.3: {}
-
-  detect-libc@2.0.3:
-    optional: true
 
   detect-libc@2.0.4: {}
 
@@ -7346,8 +7339,8 @@ snapshots:
       '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.26.10)
       eslint: 9.27.0(jiti@2.4.2)
       hermes-parser: 0.25.1
-      zod: 3.24.4
-      zod-validation-error: 3.4.0(zod@3.24.4)
+      zod: 3.25.6
+      zod-validation-error: 3.4.0(zod@3.25.6)
     transitivePeerDependencies:
       - supports-color
 
@@ -9476,7 +9469,7 @@ snapshots:
   sharp@0.34.1:
     dependencies:
       color: 4.2.3
-      detect-libc: 2.0.3
+      detect-libc: 2.0.4
       semver: 7.7.1
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.1
@@ -10161,10 +10154,10 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-validation-error@3.4.0(zod@3.24.4):
+  zod-validation-error@3.4.0(zod@3.25.6):
     dependencies:
-      zod: 3.24.4
+      zod: 3.25.6
 
-  zod@3.24.4: {}
+  zod@3.25.6: {}
 
   zwitch@2.0.4: {}
