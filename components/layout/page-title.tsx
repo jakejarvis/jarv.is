@@ -1,13 +1,12 @@
 import Link from "@/components/link";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const PageTitle = ({
   canonical,
   className,
   children,
   ...rest
-}: ComponentPropsWithoutRef<"h1"> & {
+}: React.ComponentProps<"h1"> & {
   canonical: string;
 }) => {
   return (

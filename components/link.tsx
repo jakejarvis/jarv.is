@@ -1,6 +1,5 @@
 import NextLink from "next/link";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const Link = ({
   href,
@@ -10,7 +9,7 @@ const Link = ({
   dynamicOnHover,
   className,
   ...rest
-}: ComponentPropsWithoutRef<typeof NextLink> & {
+}: React.ComponentProps<typeof NextLink> & {
   // https://github.com/vercel/next.js/pull/77866/files#diff-040f76a8f302dd3a8ec7de0867048475271f052b094cd73d2d0751b495c02f7dR30
   dynamicOnHover?: boolean;
 }) => {
@@ -27,7 +26,7 @@ const Link = ({
       className
     ),
     ...rest,
-  } as ComponentPropsWithoutRef<"a">;
+  } as React.ComponentProps<"a">;
 
   // don't waste time with next's component if it's just an external link
   if (isExternal) {

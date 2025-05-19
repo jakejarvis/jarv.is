@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const Video = ({
   src,
@@ -7,7 +6,7 @@ const Video = ({
   className,
   children,
   ...rest
-}: Omit<Partial<ComponentPropsWithoutRef<"video">>, "src"> & {
+}: Omit<Partial<React.ComponentProps<"video">>, "src"> & {
   src: string | string[] | undefined;
 }) => {
   return (

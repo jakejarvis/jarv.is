@@ -1,9 +1,8 @@
 "use client";
 
 import TimeAgo from "react-timeago";
-import { type ComponentPropsWithoutRef } from "react";
 
-const RelativeTime = ({ ...rest }: ComponentPropsWithoutRef<typeof TimeAgo>) => {
+const RelativeTime = ({ ...rest }: React.ComponentProps<typeof TimeAgo>) => {
   return (
     <span suppressHydrationWarning>
       <TimeAgo {...rest} />

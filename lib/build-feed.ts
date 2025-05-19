@@ -1,9 +1,8 @@
 import { env } from "@/lib/env";
-import { Feed } from "feed";
+import { Feed, type Item as FeedItem } from "feed";
 import { getFrontMatter, getContent } from "@/lib/posts";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
-import type { Item as FeedItem } from "feed";
 
 import ogImage from "@/app/opengraph-image.jpg";
 

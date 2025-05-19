@@ -2,13 +2,12 @@
 
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const Popover = ({ ...rest }: ComponentPropsWithoutRef<typeof PopoverPrimitive.Root>) => {
+const Popover = ({ ...rest }: React.ComponentProps<typeof PopoverPrimitive.Root>) => {
   return <PopoverPrimitive.Root data-slot="popover" {...rest} />;
 };
 
-const PopoverTrigger = ({ ...rest }: ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger>) => {
+const PopoverTrigger = ({ ...rest }: React.ComponentProps<typeof PopoverPrimitive.Trigger>) => {
   return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...rest} />;
 };
 
@@ -17,7 +16,7 @@ const PopoverContent = ({
   align = "center",
   sideOffset = 4,
   ...rest
-}: ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>) => {
+}: React.ComponentProps<typeof PopoverPrimitive.Content>) => {
   return (
     <PopoverPrimitive.Portal>
       <PopoverPrimitive.Content
@@ -34,7 +33,7 @@ const PopoverContent = ({
   );
 };
 
-const PopoverAnchor = ({ ...rest }: ComponentPropsWithoutRef<typeof PopoverPrimitive.Anchor>) => {
+const PopoverAnchor = ({ ...rest }: React.ComponentProps<typeof PopoverPrimitive.Anchor>) => {
   return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...rest} />;
 };
 

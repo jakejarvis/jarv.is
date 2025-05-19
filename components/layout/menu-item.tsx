@@ -1,7 +1,6 @@
+import { isValidElement } from "react";
 import Link from "@/components/link";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
-import type { MenuItemConfig } from "@/lib/config/menu";
 
 const MenuItem = ({
   text,
@@ -10,17 +9,17 @@ const MenuItem = ({
   current,
   className,
   ...rest
-}: Omit<ComponentPropsWithoutRef<typeof Link>, "href"> &
-  MenuItemConfig & {
-    current?: boolean;
-  }) => {
-  const Icon = icon;
-
+}: Omit<React.ComponentProps<typeof Link>, "href"> & {
+  text?: string;
+  href?: `/${string}`;
+  icon?: React.ReactNode;
+  current?: boolean;
+}) => {
   const item = (
-    <>
-      {Icon && <Icon className="stroke-foreground/85 block h-7 w-7 md:h-5 md:w-5" />}
+    <div className="[&_svg]:stroke-foreground/85 inline-flex items-center [&_svg]:size-7 [&_svg]:md:size-5">
+      {isValidElement(icon) && icon}
       {text && <span className="ml-3 text-sm leading-none font-medium tracking-wide max-md:sr-only">{text}</span>}
-    </>
+    </div>
   );
 
   // allow both navigational links and/or other interactive react components (e.g. the theme toggle)
@@ -32,7 +31,7 @@ const MenuItem = ({
         aria-label={text}
         data-current={current || undefined}
         className={cn(
-          "text-foreground/85 hover:border-ring data-current:border-primary/40! mb-[-3px] inline-flex items-center p-2.5 hover:border-b-[3px] hover:no-underline data-current:border-b-[3px]",
+          "text-foreground/85 hover:border-ring data-current:border-primary/40! inline-flex items-center p-2.5 hover:border-b-[3px] hover:no-underline data-current:border-b-[3px]",
           className
         )}
         {...rest}

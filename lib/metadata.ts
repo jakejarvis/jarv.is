@@ -1,7 +1,6 @@
 import { env } from "@/lib/env";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
-
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {

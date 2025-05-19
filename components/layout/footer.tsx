@@ -4,9 +4,8 @@ import Link from "@/components/link";
 import { NextjsIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
-import type { ComponentPropsWithoutRef } from "react";
 
-const Footer = ({ className, ...rest }: ComponentPropsWithoutRef<"footer">) => {
+const Footer = ({ className, ...rest }: React.ComponentProps<"footer">) => {
   return (
     <footer
       className={cn("text-foreground/85 text-[0.8rem] leading-loose md:flex md:flex-row md:justify-between", className)}

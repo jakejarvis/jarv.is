@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text, @next/next/no-img-element */
 "use client";
 
-import { ReactElement, Children, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Children } from "react";
 import { getImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { ChevronsLeftRightIcon } from "lucide-react";
 
-const ImageDiff = ({ children, className }: { children: ReactElement[]; className?: string }) => {
+const ImageDiff = ({ children, className }: { children: React.ReactElement[]; className?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);

@@ -8,9 +8,7 @@ import Tweet from "@/components/third-party/tweet";
 import YouTube from "@/components/third-party/youtube";
 import Gist from "@/components/third-party/gist";
 import CodePen from "@/components/third-party/codepen";
-
 import { cn } from "@/lib/utils";
-
 import type { MDXComponents } from "mdx/types";
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {

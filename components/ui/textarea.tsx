@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const Textarea = ({ className, ...props }: ComponentPropsWithoutRef<"textarea">) => {
+const Textarea = ({ className, ...props }: React.ComponentProps<"textarea">) => {
   return (
     <textarea
       data-slot="textarea"

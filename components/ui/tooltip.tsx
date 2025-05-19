@@ -2,16 +2,12 @@
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const TooltipProvider = ({
-  delayDuration = 0,
-  ...rest
-}: ComponentPropsWithoutRef<typeof TooltipPrimitive.Provider>) => {
+const TooltipProvider = ({ delayDuration = 0, ...rest }: React.ComponentProps<typeof TooltipPrimitive.Provider>) => {
   return <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...rest} />;
 };
 
-const Tooltip = ({ ...rest }: ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>) => {
+const Tooltip = ({ ...rest }: React.ComponentProps<typeof TooltipPrimitive.Root>) => {
   return (
     <TooltipProvider>
       <TooltipPrimitive.Root data-slot="tooltip" {...rest} />
@@ -19,7 +15,7 @@ const Tooltip = ({ ...rest }: ComponentPropsWithoutRef<typeof TooltipPrimitive.R
   );
 };
 
-const TooltipTrigger = ({ ...rest }: ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>) => {
+const TooltipTrigger = ({ ...rest }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) => {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...rest} />;
 };
 
@@ -28,7 +24,7 @@ const TooltipContent = ({
   sideOffset = 0,
   children,
   ...rest
-}: ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>) => {
+}: React.ComponentProps<typeof TooltipPrimitive.Content>) => {
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content

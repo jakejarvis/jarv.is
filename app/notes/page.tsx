@@ -1,13 +1,11 @@
 import { env } from "@/lib/env";
 import { EyeIcon } from "lucide-react";
 import Link from "@/components/link";
-import { getFrontMatter, POSTS_DIR } from "@/lib/posts";
+import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
 import { getViews } from "@/lib/views";
-import type { ReactElement } from "react";
-import type { FrontMatter } from "@/lib/posts";
 
 export const revalidate = 300; // 5 minutes
 
@@ -33,7 +31,7 @@ const Page = async () => {
     });
   });
 
-  const sections: ReactElement[] = [];
+  const sections: React.ReactNode[] = [];
 
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(

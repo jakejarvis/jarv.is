@@ -4,37 +4,52 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import MenuItem from "@/components/layout/menu-item";
 import ThemeToggle from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
-import { menuItems } from "@/lib/config/menu";
-import type { ComponentPropsWithoutRef } from "react";
+import { HomeIcon, PencilLineIcon, CodeXmlIcon, MailIcon } from "lucide-react";
 
-const Menu = ({ className, ...rest }: ComponentPropsWithoutRef<"ul">) => {
+const menuItems: React.ComponentProps<typeof MenuItem>[] = [
+  {
+    text: "Home",
+    href: "/",
+    icon: <HomeIcon />,
+  },
+  {
+    text: "Notes",
+    href: "/notes",
+    icon: <PencilLineIcon />,
+  },
+  {
+    text: "Projects",
+    href: "/projects",
+    icon: <CodeXmlIcon />,
+  },
+  {
+    text: "Contact",
+    href: "/contact",
+    icon: <MailIcon />,
+  },
+  {
+    icon: <ThemeToggle />,
+  },
+];
+
+const Menu = ({ className, ...rest }: React.ComponentProps<"div">) => {
   const segment = useSelectedLayoutSegment() || "";
 
   return (
-    <ul
-      className={cn(
-        "flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:gap-4 max-sm:[&>li]:first-of-type:hidden",
-        className
-      )}
+    <div
+      className={cn("flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:gap-4", className)}
       {...rest}
     >
-      {menuItems.map((item) => {
+      {menuItems.map((item, index) => {
         const isCurrent = item.href?.split("/")[1] === segment;
 
         return (
-          <li className="inline-block" key={item.href}>
+          <div className="mt-[3px] inline-block last:-mr-2.5 max-sm:first:hidden" key={index}>
             <MenuItem {...item} current={isCurrent} />
-          </li>
+          </div>
         );
       })}
-
-      <li className="-mr-2.5 inline-block">
-        <MenuItem
-          // @ts-ignore
-          icon={ThemeToggle}
-        />
-      </li>
-    </ul>
+    </div>
   );
 };
 

@@ -2,14 +2,13 @@
 
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const Separator = ({
   className,
   orientation = "horizontal",
   decorative = true,
   ...rest
-}: ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>) => {
+}: React.ComponentProps<typeof SeparatorPrimitive.Root>) => {
   return (
     <SeparatorPrimitive.Root
       data-slot="separator-root"

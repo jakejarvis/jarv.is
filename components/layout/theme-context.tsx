@@ -2,7 +2,6 @@
 
 import { createContext, useEffect, useState } from "react";
 import { useLocalStorage, useMedia } from "react-use";
-import type { PropsWithChildren } from "react";
 
 export const ThemeContext = createContext<{
   /**
@@ -19,7 +18,7 @@ export const ThemeContext = createContext<{
 });
 
 // provider used once in _app.tsx to wrap entire app
-export const ThemeProvider = ({ children }: PropsWithChildren) => {
+export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
   // keep track of if/when the user has set their theme *on this site*
   const [preferredTheme, setPreferredTheme] = useLocalStorage<string>("theme", undefined, { raw: true });
   // keep track of changes to the user's OS/browser dark mode setting

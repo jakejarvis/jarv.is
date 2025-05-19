@@ -3,11 +3,10 @@ import Link from "@/components/link";
 import Menu from "@/components/layout/menu";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
-import type { ComponentPropsWithoutRef } from "react";
 
 import avatarImg from "@/app/avatar.jpg";
 
-const Header = ({ className, ...rest }: ComponentPropsWithoutRef<"header">) => {
+const Header = ({ className, ...rest }: React.ComponentProps<"header">) => {
   return (
     <header className={cn("flex items-center justify-between", className)} {...rest}>
       <Link

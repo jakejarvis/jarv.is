@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const Card = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const Card = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="card"
@@ -11,7 +10,7 @@ const Card = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
   );
 };
 
-const CardHeader = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardHeader = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="card-header"
@@ -24,15 +23,15 @@ const CardHeader = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => 
   );
 };
 
-const CardTitle = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardTitle = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return <div data-slot="card-title" className={cn("leading-none font-semibold", className)} {...rest} />;
 };
 
-const CardDescription = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardDescription = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return <div data-slot="card-description" className={cn("text-muted-foreground text-sm", className)} {...rest} />;
 };
 
-const CardAction = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardAction = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="card-action"
@@ -42,11 +41,11 @@ const CardAction = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => 
   );
 };
 
-const CardContent = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardContent = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return <div data-slot="card-content" className={cn("px-6", className)} {...rest} />;
 };
 
-const CardFooter = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const CardFooter = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return <div data-slot="card-footer" className={cn("flex items-center px-6 [.border-t]:pt-6", className)} {...rest} />;
 };
 

@@ -1,9 +1,7 @@
 "use client";
 
-import { ActivityCalendar } from "react-activity-calendar";
+import { ActivityCalendar, type Activity } from "react-activity-calendar";
 import { formatDate } from "@/lib/date";
-import type { ComponentPropsWithoutRef } from "react";
-import type { Activity } from "react-activity-calendar";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +10,7 @@ const Calendar = ({
   noun = "thing",
   className,
   ...rest
-}: ComponentPropsWithoutRef<"div"> & {
+}: React.ComponentProps<"div"> & {
   data: Activity[];
   noun?: string;
 }) => {

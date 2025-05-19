@@ -4,7 +4,6 @@ import { forwardRef, useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import { ClipboardIcon, CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Ref, ComponentPropsWithoutRef, ComponentRef, MouseEventHandler } from "react";
 
 const CopyButton = (
   {
@@ -12,15 +11,15 @@ const CopyButton = (
     timeout = 2000,
     className,
     ...rest
-  }: ComponentPropsWithoutRef<"button"> & {
+  }: React.ComponentProps<"button"> & {
     source: string;
     timeout?: number;
   },
-  ref: Ref<ComponentRef<"button">>
+  ref: React.Ref<React.ComponentRef<"button">>
 ) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy: MouseEventHandler<ComponentRef<"button">> = (e) => {
+  const handleCopy: React.MouseEventHandler<React.ComponentRef<"button">> = (e) => {
     // prevent unintentional double-clicks by unfocusing button
     e.currentTarget.blur();
 

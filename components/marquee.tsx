@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 // https://magicui.design/docs/components/marquee
 const Marquee = ({
@@ -7,7 +6,7 @@ const Marquee = ({
   className,
   children,
   ...rest
-}: ComponentPropsWithoutRef<"div"> & {
+}: React.ComponentProps<"div"> & {
   reverse?: boolean;
   pauseOnHover?: boolean;
   repeat?: number;

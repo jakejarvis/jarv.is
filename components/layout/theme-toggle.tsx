@@ -3,20 +3,23 @@
 import { useContext } from "react";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { ThemeContext } from "@/components/layout/theme-context";
-import type { ComponentPropsWithoutRef } from "react";
-import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const ThemeToggle = ({ ...rest }: ComponentPropsWithoutRef<LucideIcon>) => {
+const ThemeToggle = ({ className, ...rest }: React.ComponentProps<"button">) => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       aria-label="Toggle theme"
-      className="hover:*:stroke-warning block cursor-pointer bg-transparent p-2.5 not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden"
+      className={cn(
+        "hover:*:stroke-warning block cursor-pointer bg-transparent p-2.5 not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden",
+        className
+      )}
+      {...rest}
     >
-      <SunIcon {...rest} />
-      <MoonIcon {...rest} />
+      <SunIcon />
+      <MoonIcon />
       <span className="sr-only">Toggle theme</span>
     </button>
   );

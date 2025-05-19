@@ -12,7 +12,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { MarkdownIcon } from "@/components/icons";
 import { useSession } from "@/lib/auth-client";
 import { createComment, updateComment } from "@/lib/server/comments";
-import type { FormEvent } from "react";
 
 const CommentForm = ({
   slug,
@@ -36,7 +35,7 @@ const CommentForm = ({
 
   const { data: session } = useSession();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!content.trim()) {

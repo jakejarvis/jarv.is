@@ -2,9 +2,8 @@
 
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const Avatar = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>) => {
+const Avatar = ({ className, ...rest }: React.ComponentProps<typeof AvatarPrimitive.Root>) => {
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"
@@ -14,13 +13,13 @@ const Avatar = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AvatarPr
   );
 };
 
-const AvatarImage = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>) => {
+const AvatarImage = ({ className, ...rest }: React.ComponentProps<typeof AvatarPrimitive.Image>) => {
   return (
     <AvatarPrimitive.Image data-slot="avatar-image" className={cn("aspect-square size-full", className)} {...rest} />
   );
 };
 
-const AvatarFallback = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>) => {
+const AvatarFallback = ({ className, ...rest }: React.ComponentProps<typeof AvatarPrimitive.Fallback>) => {
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"

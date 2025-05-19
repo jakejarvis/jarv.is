@@ -3,21 +3,20 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
-const AlertDialog = ({ ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root>) => {
+const AlertDialog = ({ ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Root>) => {
   return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...rest} />;
 };
 
-const AlertDialogTrigger = ({ ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Trigger>) => {
+const AlertDialogTrigger = ({ ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Trigger>) => {
   return <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...rest} />;
 };
 
-const AlertDialogPortal = ({ ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Portal>) => {
+const AlertDialogPortal = ({ ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) => {
   return <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...rest} />;
 };
 
-const AlertDialogOverlay = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>) => {
+const AlertDialogOverlay = ({ className, ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>) => {
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
@@ -30,7 +29,7 @@ const AlertDialogOverlay = ({ className, ...rest }: ComponentPropsWithoutRef<typ
   );
 };
 
-const AlertDialogContent = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>) => {
+const AlertDialogContent = ({ className, ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Content>) => {
   return (
     <AlertDialogPortal>
       <AlertDialogOverlay />
@@ -46,7 +45,7 @@ const AlertDialogContent = ({ className, ...rest }: ComponentPropsWithoutRef<typ
   );
 };
 
-const AlertDialogHeader = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const AlertDialogHeader = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="alert-dialog-header"
@@ -56,7 +55,7 @@ const AlertDialogHeader = ({ className, ...rest }: ComponentPropsWithoutRef<"div
   );
 };
 
-const AlertDialogFooter = ({ className, ...rest }: ComponentPropsWithoutRef<"div">) => {
+const AlertDialogFooter = ({ className, ...rest }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="alert-dialog-footer"
@@ -66,7 +65,7 @@ const AlertDialogFooter = ({ className, ...rest }: ComponentPropsWithoutRef<"div
   );
 };
 
-const AlertDialogTitle = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>) => {
+const AlertDialogTitle = ({ className, ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Title>) => {
   return (
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
@@ -79,7 +78,7 @@ const AlertDialogTitle = ({ className, ...rest }: ComponentPropsWithoutRef<typeo
 const AlertDialogDescription = ({
   className,
   ...rest
-}: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>) => {
+}: React.ComponentProps<typeof AlertDialogPrimitive.Description>) => {
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
@@ -89,11 +88,11 @@ const AlertDialogDescription = ({
   );
 };
 
-const AlertDialogAction = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>) => {
+const AlertDialogAction = ({ className, ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Action>) => {
   return <AlertDialogPrimitive.Action className={cn(buttonVariants(), className)} {...rest} />;
 };
 
-const AlertDialogCancel = ({ className, ...rest }: ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>) => {
+const AlertDialogCancel = ({ className, ...rest }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel>) => {
   return <AlertDialogPrimitive.Cancel className={cn(buttonVariants({ variant: "outline" }), className)} {...rest} />;
 };
 

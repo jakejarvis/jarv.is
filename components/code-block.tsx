@@ -3,7 +3,6 @@ import reactToText from "react-to-text";
 import { CodeIcon, TerminalIcon } from "lucide-react";
 import CopyButton from "@/components/copy-button";
 import { cn } from "@/lib/utils";
-import type { ComponentProps, ComponentPropsWithoutRef } from "react";
 
 const CodeBlock = async ({
   showLineNumbers = false,
@@ -11,7 +10,7 @@ const CodeBlock = async ({
   className,
   children,
   ...rest
-}: ComponentPropsWithoutRef<"pre"> & {
+}: React.ComponentProps<"pre"> & {
   showLineNumbers?: boolean;
   showCopyButton?: boolean;
 }) => {
@@ -24,7 +23,7 @@ const CodeBlock = async ({
     );
   }
 
-  const codeProps = children.props as ComponentProps<"code">;
+  const codeProps = children.props as React.ComponentProps<"code">;
   const codeString = reactToText(codeProps.children).trim();
 
   // the language set in the markdown is passed as a className
@@ -51,7 +50,7 @@ const CodeBlock = async ({
         dangerouslySetInnerHTML={{ __html: codeHighlighted }}
       />
       {lang && (
-        <span className="[&_svg]:stroke-primary/90 text-foreground/75 bg-muted/40 absolute top-0 left-0 z-10 flex items-center gap-[8px] rounded-tl-md rounded-br-lg border-r-2 border-b-2 px-[10px] py-[5px] font-mono text-xs font-medium tracking-wide uppercase backdrop-blur-xs select-none [&_svg]:size-[14px] [&_svg]:shrink-0">
+        <span className="[&_svg]:stroke-primary/90 text-foreground/75 bg-muted/40 absolute top-0 left-0 z-10 flex items-center gap-[8px] rounded-tl-md rounded-br-lg border-r-2 border-b-2 px-[10px] py-[5px] font-mono text-xs font-medium tracking-wide uppercase backdrop-blur-sm select-none [&_svg]:size-[14px] [&_svg]:shrink-0">
           {["sh", "bash", "zsh"].includes(lang) ? (
             <>
               <TerminalIcon />
@@ -68,7 +67,7 @@ const CodeBlock = async ({
       {showCopyButton && (
         <CopyButton
           source={codeString}
-          className="text-foreground/75 hover:text-primary bg-muted/40 absolute top-0 right-0 z-10 size-10 rounded-tr-md rounded-bl-lg border-b-2 border-l-2 p-0 backdrop-blur-xs select-none [&_svg]:my-auto [&_svg]:inline-block [&_svg]:size-4.5 [&_svg]:align-text-bottom"
+          className="text-foreground/75 hover:text-primary bg-muted/40 absolute top-0 right-0 z-10 size-10 rounded-tr-md rounded-bl-lg border-b-2 border-l-2 p-0 backdrop-blur-sm select-none [&_svg]:my-auto [&_svg]:inline-block [&_svg]:size-4.5 [&_svg]:align-text-bottom"
         />
       )}
     </div>

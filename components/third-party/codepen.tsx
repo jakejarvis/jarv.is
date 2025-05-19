@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const CodePen = ({
   username,
@@ -15,7 +14,7 @@ const CodePen = ({
   defaultTab?: string;
   preview?: boolean;
   editable?: boolean;
-} & ComponentPropsWithoutRef<"iframe">) => {
+} & React.ComponentProps<"iframe">) => {
   return (
     <iframe
       src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({

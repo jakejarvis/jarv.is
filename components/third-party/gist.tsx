@@ -1,13 +1,12 @@
 import Link from "@/components/link";
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
 
 const Gist = async ({
   id,
   file,
   className,
   ...rest
-}: { id: string; file?: string } & ComponentPropsWithoutRef<"iframe">) => {
+}: { id: string; file?: string } & React.ComponentProps<"iframe">) => {
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
