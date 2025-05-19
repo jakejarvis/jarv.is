@@ -92,6 +92,7 @@ const ImageDiff = ({ children, className }: { children: ReactElement[]; classNam
       onTouchMove={handleTouchMove}
       onKeyDown={handleKeyDown}
       className={cn("relative isolate w-full max-w-full overflow-hidden select-none", className)}
+      style={{ ["--slider-position" as string]: `${sliderPosition}%` }}
       role="slider"
       aria-label="Image comparison slider"
       aria-valuemin={0}
@@ -105,23 +106,19 @@ const ImageDiff = ({ children, className }: { children: ReactElement[]; classNam
       </div>
 
       {/* Before image (clipped with width based on slider position) */}
-      <div className="absolute top-0 left-0 h-full overflow-hidden" style={{ width: `${sliderPosition}%` }}>
+      <div className="absolute top-0 left-0 h-full w-[var(--slider-position)] overflow-hidden">
         <img {...beforeImageProps} className="h-full w-full object-cover object-top-left" />
       </div>
 
       {/* Divider line */}
-      <div
-        className="bg-muted-foreground absolute top-0 bottom-0 w-1 -translate-x-1/2 drop-shadow-md"
-        style={{ left: `${sliderPosition}%` }}
-      />
+      <div className="bg-muted-foreground absolute top-0 bottom-0 left-[var(--slider-position)] w-1 -translate-x-1/2 drop-shadow-md" />
 
       {/* Slider handle */}
       <div
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
         onTouchEnd={handleMouseUp}
-        className="bg-muted absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize touch-none items-center justify-center rounded-full border-2 drop-shadow-md"
-        style={{ left: `${sliderPosition}%` }}
+        className="bg-muted absolute top-1/2 left-[var(--slider-position)] flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize touch-none items-center justify-center rounded-full border-2 drop-shadow-md"
         aria-hidden="true"
       >
         <ChevronsLeftRightIcon className="text-foreground/70 size-6" />

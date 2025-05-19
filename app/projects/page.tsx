@@ -70,8 +70,8 @@ const Page = async () => {
                 <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-2">
                   {repo!.primaryLanguage.color && (
                     <span
-                      className="inline-block size-4 rounded-full"
-                      style={{ backgroundColor: repo!.primaryLanguage.color }}
+                      className="inline-block size-4 rounded-full bg-[var(--language-color)]"
+                      style={{ ["--language-color" as string]: repo!.primaryLanguage.color }}
                     />
                   )}
                   <span>{repo!.primaryLanguage.name}</span>

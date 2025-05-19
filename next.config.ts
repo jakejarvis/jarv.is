@@ -40,6 +40,7 @@ const nextConfig = {
     reactCompiler: true,
     ppr: "incremental",
     dynamicOnHover: true,
+    inlineCss: true,
     serverActions: {
       // fix CSRF errors from tor reverse proxy
       allowedOrigins: [

@@ -26,7 +26,7 @@ const Footer = ({ className, ...rest }: ComponentPropsWithoutRef<"footer">) => {
 
       <div>
         Made with{" "}
-        <HeartIcon className="animate-heartbeat stroke-destructive fill-destructive mx-[1px] inline size-4 align-text-top" />{" "}
+        <HeartIcon className="animate-heartbeat stroke-destructive fill-destructive mx-px inline size-4 align-text-top" />{" "}
         and{" "}
         <Link
           href="https://nextjs.org/"
@@ -34,7 +34,7 @@ const Footer = ({ className, ...rest }: ComponentPropsWithoutRef<"footer">) => {
           aria-label="Next.js"
           className="text-foreground/85 hover:text-foreground/60 hover:no-underline"
         >
-          <NextjsIcon className="mx-[1px] inline size-4 align-text-top" />
+          <NextjsIcon className="mx-px inline size-4 align-text-top" />
         </Link>
         .{" "}
         <Link
