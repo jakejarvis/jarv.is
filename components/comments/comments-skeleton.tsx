@@ -1,9 +1,8 @@
 import Skeleton from "@/components/ui/skeleton";
-import Wrapper from "./comments-wrapper";
 
 const CommentsSkeleton = () => {
   return (
-    <Wrapper>
+    <>
       <Skeleton className="h-32 w-full" />
 
       <div className="flex gap-4">
@@ -20,7 +19,7 @@ const CommentsSkeleton = () => {
           </div>
         </div>
       </div>
-    </Wrapper>
+    </>
   );
 };
 

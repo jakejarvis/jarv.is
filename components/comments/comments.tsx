@@ -1,12 +1,11 @@
 import { headers } from "next/headers";
-import Wrapper from "./comments-wrapper";
 import Form from "./comment-form";
 import Thread from "./comment-thread";
 import SignIn from "./sign-in";
 import { auth } from "@/lib/auth";
 import { getComments, type CommentWithUser } from "@/lib/server/comments";
 
-const Comments = async ({ slug, closed = false }: { slug: string; closed?: boolean }) => {
+const Comments = async ({ slug }: { slug: string }) => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -28,25 +27,17 @@ const Comments = async ({ slug, closed = false }: { slug: string; closed?: boole
   const rootComments = commentsByParentId["root"] || [];
 
   return (
-    <Wrapper>
-      {closed ? (
-        <div className="bg-muted/40 flex min-h-32 items-center justify-center rounded-lg p-6">
-          <p className="text-center font-medium">Comments are closed for this post.</p>
-        </div>
-      ) : !session ? (
+    <>
+      {session ? (
+        <Form slug={slug} />
+      ) : (
         <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
           <p className="text-center font-medium">Join the discussion by signing in:</p>
           <SignIn callbackPath={`/${slug}#comments`} />
         </div>
-      ) : (
-        <Form slug={slug} />
       )}
 
-      {!closed && rootComments.length === 0 ? (
-        <div className="text-foreground/80 py-8 text-center text-lg font-medium tracking-tight">
-          Be the first to comment!
-        </div>
-      ) : (
+      {rootComments.length > 0 ? (
         <div className="space-y-6">
           {rootComments.map((comment: CommentWithUser) => (
             <Thread
@@ -57,8 +48,12 @@ const Comments = async ({ slug, closed = false }: { slug: string; closed?: boole
             />
           ))}
         </div>
+      ) : (
+        <div className="text-foreground/80 py-8 text-center text-lg font-medium tracking-tight">
+          Be the first to comment!
+        </div>
       )}
-    </Wrapper>
+    </>
   );
 };
 

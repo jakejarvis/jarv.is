@@ -142,9 +142,19 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <MDXContent />
 
-      <Suspense fallback={<CommentsSkeleton />}>
-        <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} closed={frontmatter!.noComments} />
-      </Suspense>
+      <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
+        <div className="mx-auto w-full max-w-3xl space-y-6">
+          {frontmatter!.noComments ? (
+            <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
+              <p className="text-center text-lg font-medium">Comments are closed.</p>
+            </div>
+          ) : (
+            <Suspense fallback={<CommentsSkeleton />}>
+              <Comments slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+            </Suspense>
+          )}
+        </div>
+      </section>
     </>
   );
 };

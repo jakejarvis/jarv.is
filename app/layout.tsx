@@ -5,7 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import SkipNavButton, { SKIP_NAV_ID } from "@/components/layout/skip-nav";
 import Toaster from "@/components/ui/sonner";
 import { defaultMetadata } from "@/lib/metadata";
 import { GeistMono, GeistSans } from "@/lib/fonts";
@@ -66,12 +65,10 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
       <body className="bg-background text-foreground font-sans antialiased">
         <ThemeProvider>
-          <SkipNavButton />
-
           <div className="mx-auto w-full max-w-4xl px-5">
             <Header className="mt-4 mb-6 w-full" />
 
-            <main id={SKIP_NAV_ID}>{children}</main>
+            <main>{children}</main>
 
             <Footer className="my-6 w-full" />
           </div>

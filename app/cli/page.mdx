@@ -1,7 +1,4 @@
-import { Suspense } from "react";
 import PageTitle from "@/components/layout/page-title";
-import Comments from "@/components/comments/comments";
-import CommentsSkeleton from "@/components/comments/comments-skeleton";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -9,8 +6,6 @@ export const metadata = createMetadata({
   description: "AKA, the most useless Node module ever published, in history, by anyone, ever.",
   canonical: "/cli",
 });
-
-export const experimental_ppr = true;
 
 <PageTitle canonical="/cli">CLI</PageTitle>
 
@@ -39,7 +34,3 @@ npx @jakejarvis/cli
 ## License
 
 MIT &copy; [Jake Jarvis](https://jarv.is/), [Sindre Sorhus](https://sindresorhus.com/)
-
-<Suspense fallback={<CommentsSkeleton />}>
-  <Comments slug="uses" />
-</Suspense>
