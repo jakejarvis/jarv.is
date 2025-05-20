@@ -15,6 +15,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "prepare": "test -d node_modules/husky && husky || echo \"skipping husky\""
   },
   "dependencies": {
@@ -26,19 +28,19 @@
     "@neondatabase/serverless": "^1.0.0",
     "@next/bundle-analyzer": "15.4.0-canary.41",
     "@next/mdx": "15.4.0-canary.41",
-    "@octokit/graphql": "^8.2.2",
+    "@octokit/graphql": "^9.0.1",
     "@octokit/graphql-schema": "^15.26.0",
-    "@radix-ui/react-alert-dialog": "^1.1.13",
-    "@radix-ui/react-aspect-ratio": "^1.1.6",
-    "@radix-ui/react-avatar": "^1.1.9",
-    "@radix-ui/react-dropdown-menu": "^2.1.14",
-    "@radix-ui/react-label": "^2.1.6",
-    "@radix-ui/react-popover": "^1.1.13",
-    "@radix-ui/react-scroll-area": "^1.2.8",
-    "@radix-ui/react-separator": "^1.1.6",
-    "@radix-ui/react-slot": "^1.2.2",
-    "@radix-ui/react-toast": "^1.2.13",
-    "@radix-ui/react-tooltip": "^1.2.6",
+    "@radix-ui/react-alert-dialog": "^1.1.14",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-toast": "^1.2.14",
+    "@radix-ui/react-tooltip": "^1.2.7",
     "@t3-oss/env-nextjs": "^0.13.4",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
@@ -89,7 +91,7 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
     "unified": "^11.0.5",
-    "zod": "3.25.6"
+    "zod": "3.25.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -97,7 +99,7 @@
     "@jakejarvis/eslint-config": "^4.0.7",
     "@tailwindcss/postcss": "^4.1.7",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.20",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
@@ -125,7 +127,7 @@
     "typescript": "5.8.3"
   },
   "optionalDependencies": {
-    "sharp": "^0.34.1"
+    "sharp": "^0.34.2"
   },
   "engines": {
     "node": ">=22.x"
@@ -152,11 +154,11 @@
       "@prisma/client"
     ],
     "ignoredBuiltDependencies": [
+      "@vercel/speed-insights",
       "unrs-resolver"
     ],
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
-      "@vercel/speed-insights",
       "esbuild",
       "sharp"
     ]

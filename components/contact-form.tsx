@@ -105,11 +105,13 @@ const ContactForm = () => {
           <Button type="submit" size="lg" disabled={pending}>
             {pending ? (
               <>
-                <Loader2Icon className="animate-spin" /> Sending...
+                <Loader2Icon className="animate-spin" />
+                Sending...
               </>
             ) : (
               <>
-                <SendIcon /> Send
+                <SendIcon />
+                Send
               </>
             )}
           </Button>

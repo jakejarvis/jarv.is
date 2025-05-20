@@ -26,6 +26,6 @@ export const ComicNeue = ComicNeueLoader({
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
-  fallback: ["'Comic Sans MS'", "'Comic Sans'"],
+  fallback: ["'Comic Sans MS'", "'Comic Sans'", "cursive"],
   preload: false,
 });

@@ -13,7 +13,7 @@ const ThemeToggle = ({ className, ...rest }: React.ComponentProps<"button">) => 
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       aria-label="Toggle theme"
       className={cn(
-        "hover:*:stroke-warning block cursor-pointer bg-transparent p-2.5 not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden",
+        "hover:*:stroke-warning block cursor-pointer bg-transparent not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden",
         className
       )}
       {...rest}

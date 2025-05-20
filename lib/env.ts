@@ -81,13 +81,13 @@ export const env = createEnv({
       .url()
       .default(
         ((): string =>
-          (process.env.VERCEL
-            ? process.env.VERCEL_ENV === "production"
-              ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-              : process.env.VERCEL_ENV === "preview"
-                ? `https://${process.env.VERCEL_BRANCH_URL}`
-                : process.env.VERCEL_URL
-                  ? `https://${process.env.VERCEL_URL}`
+          (process.env.VERCEL || process.env.NEXT_PUBLIC_VERCEL
+            ? process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+              ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+              : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
+                ? `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`
+                : process.env.NEXT_PUBLIC_VERCEL_URL
+                  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
                   : undefined
             : undefined) ||
           (process.env.NETLIFY

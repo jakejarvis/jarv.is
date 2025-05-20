@@ -171,7 +171,7 @@ const CommentForm = ({
               <Button type="submit" disabled={isPending || !content.trim()}>
                 {isPending ? (
                   <>
-                    <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2Icon className="animate-spin" />
                     {isEditing ? "Updating..." : "Posting..."}
                   </>
                 ) : isEditing ? (

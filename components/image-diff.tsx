@@ -118,7 +118,7 @@ const ImageDiff = ({ children, className }: { children: React.ReactElement[]; cl
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
         onTouchEnd={handleMouseUp}
-        className="bg-muted absolute top-1/2 left-[var(--slider-position)] flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize touch-none items-center justify-center rounded-full border-2 drop-shadow-md"
+        className="bg-muted absolute top-1/2 left-[var(--slider-position)] flex size-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize touch-none items-center justify-center rounded-full border-2 drop-shadow-md"
         aria-hidden="true"
       >
         <ChevronsLeftRightIcon className="text-foreground/70 size-6" />

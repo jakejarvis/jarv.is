@@ -51,15 +51,15 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
         />
       ) : (
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={() => setIsReplying(!isReplying)} className="h-8 px-2">
-            <ReplyIcon className="mr-1 h-3.5 w-3.5" />
+          <Button variant="outline" size="sm" onClick={() => setIsReplying(!isReplying)}>
+            <ReplyIcon />
             Reply
           </Button>
 
           {session.user.id === comment.user.id && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="h-8 px-2 text-xs">
+                <Button variant="outline" size="sm">
                   <EllipsisIcon />
                   <span className="sr-only">Actions Menu</span>
                 </Button>
