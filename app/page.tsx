@@ -191,14 +191,14 @@ const Page = () => {
         <Link href="/contact" title="Send an email" className="[--primary:#de0c0c] dark:[--primary:#ff5050]">
           email
         </Link>{" "}
-        <sup className="mx-[3px] text-[0.6rem]">
+        <sup className="mr-0.5 text-[0.6rem]">
           <Link
             href="https://jrvs.io/pgp"
             rel="pgpkey"
-            title="My Public Key"
-            className="text-nowrap decoration-1 [--primary:var(--muted-foreground)]"
+            title="3BC6 E577 6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39"
+            className="space-x-0.5 px-0.5 text-nowrap [--primary:var(--muted-foreground)] hover:no-underline"
           >
-            <LockIcon className="mr-[5px] inline size-3 align-text-top" />
+            <LockIcon className="inline size-3 align-text-top" />{" "}
             <code className="tracking-wider text-wrap [word-spacing:-3px]">2B0C 9CF2 51E6 9A39</code>
           </Link>
         </sup>
