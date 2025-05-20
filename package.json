@@ -26,7 +26,7 @@
     "@neondatabase/serverless": "^1.0.0",
     "@next/bundle-analyzer": "15.4.0-canary.41",
     "@next/mdx": "15.4.0-canary.41",
-    "@octokit/graphql": "^8.2.2",
+    "@octokit/graphql": "^9.0.1",
     "@octokit/graphql-schema": "^15.26.0",
     "@radix-ui/react-alert-dialog": "^1.1.13",
     "@radix-ui/react-aspect-ratio": "^1.1.6",
