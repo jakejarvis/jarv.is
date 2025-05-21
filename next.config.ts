@@ -65,7 +65,15 @@ const nextConfig = {
         },
       ],
     },
-
+    {
+      source: "/api/auth/(.*)",
+      headers: [
+        {
+          key: "cache-control",
+          value: "private, max-age=0",
+        },
+      ],
+    },
     // https://community.torproject.org/onion-services/advanced/onion-location/
     ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
       ? [
