@@ -19,7 +19,7 @@ const Header = ({ className, ...rest }: React.ComponentProps<"header">) => {
         <Image
           src={avatarImg}
           alt={`Photo of ${siteConfig.name}`}
-          className="border-ring/80 size-[64px] rounded-full border-2 md:size-[48px] md:border-1"
+          className="border-ring/40 size-[64px] rounded-full border-2 md:size-[48px] md:border-1"
           width={64}
           height={64}
           quality={50}
@@ -30,7 +30,7 @@ const Header = ({ className, ...rest }: React.ComponentProps<"header">) => {
         </span>
       </Link>
 
-      <Menu className="w-full max-w-64 sm:max-w-96 md:ml-0 md:max-w-none" />
+      <Menu className="w-full max-w-64 sm:max-w-96 md:max-w-none" />
     </header>
   );
 };

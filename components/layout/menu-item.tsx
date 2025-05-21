@@ -1,4 +1,3 @@
-import { isValidElement } from "react";
 import Link from "@/components/link";
 import { cn } from "@/lib/utils";
 
@@ -9,15 +8,21 @@ const MenuItem = ({
   current,
   className,
   ...rest
-}: Omit<React.ComponentProps<typeof Link>, "href"> & {
+}: React.ComponentProps<"div"> & {
   text?: string;
   href?: `/${string}`;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   current?: boolean;
 }) => {
   const item = (
-    <div className="[&_svg]:stroke-foreground/85 inline-flex items-center [&_svg]:size-7 [&_svg]:md:size-5">
-      {isValidElement(icon) && icon}
+    <div
+      className={cn(
+        "[&_svg]:stroke-foreground/85 inline-flex items-center [&_svg]:size-7 [&_svg]:md:size-5",
+        className
+      )}
+      {...rest}
+    >
+      {icon}
       {text && <span className="ml-3 text-sm leading-none font-medium tracking-wide max-md:sr-only">{text}</span>}
     </div>
   );
@@ -30,11 +35,7 @@ const MenuItem = ({
         href={href}
         aria-label={text}
         data-current={current || undefined}
-        className={cn(
-          "text-foreground/85 hover:border-ring data-current:border-primary/40! inline-flex items-center border-b-3 border-b-transparent hover:no-underline",
-          className
-        )}
-        {...rest}
+        className="text-foreground/85 hover:border-ring/80 data-current:border-primary/60! inline-flex items-center border-b-3 border-b-transparent hover:no-underline"
       >
         {item}
       </Link>

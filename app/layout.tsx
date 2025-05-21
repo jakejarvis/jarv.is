@@ -1,11 +1,11 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ThemeProvider, ThemeScript } from "@/components/layout/theme-context";
+import { ThemeProvider } from "@/components/layout/theme-context";
+import { ThemeScript } from "@/components/layout/theme-script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Toaster from "@/components/ui/sonner";
+import Analytics from "@/app/analytics";
 import { defaultMetadata } from "@/lib/metadata";
 import { GeistMono, GeistSans } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
@@ -77,7 +77,6 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         </ThemeProvider>
 
         <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

@@ -44,10 +44,7 @@ const Menu = ({ className, ...rest }: React.ComponentProps<"div">) => {
         const isCurrent = item.href?.split("/")[1] === segment;
 
         return (
-          <div
-            className="inline-block border-t-3 border-t-transparent last:-mr-2.5 max-sm:first:hidden [&_a,&_button]:p-2.5"
-            key={index}
-          >
+          <div className="mt-[3px] inline-block last:-mr-2.5 max-sm:first:hidden **:[a,button]:p-2.5" key={index}>
             <MenuItem {...item} current={isCurrent} />
           </div>
         );

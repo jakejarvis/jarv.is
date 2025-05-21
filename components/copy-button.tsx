@@ -1,22 +1,19 @@
 "use client";
 
-import { forwardRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import { ClipboardIcon, CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const CopyButton = (
-  {
-    source,
-    timeout = 2000,
-    className,
-    ...rest
-  }: React.ComponentProps<"button"> & {
-    source: string;
-    timeout?: number;
-  },
-  ref: React.Ref<React.ComponentRef<"button">>
-) => {
+const CopyButton = ({
+  source,
+  timeout = 2000,
+  className,
+  ...rest
+}: React.ComponentProps<"button"> & {
+  source: string;
+  timeout?: number;
+}) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy: React.MouseEventHandler<React.ComponentRef<"button">> = (e) => {
@@ -48,7 +45,6 @@ const CopyButton = (
 
   return (
     <button
-      ref={ref}
       onClick={handleCopy}
       disabled={copied}
       className={cn("cursor-pointer disabled:cursor-default", className)}
@@ -60,4 +56,4 @@ const CopyButton = (
   );
 };
 
-export default forwardRef(CopyButton);
+export default CopyButton;

@@ -58,7 +58,7 @@ const Page = async () => {
 
       <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
         {repos?.map((repo) => (
-          <div key={repo!.name} className="border-ring/65 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
+          <div key={repo!.name} className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
             <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
               {repo!.name}
             </Link>
