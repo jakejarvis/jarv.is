@@ -2,8 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { getImageProps } from "next/image";
-import { InfoIcon, Loader2Icon } from "lucide-react";
 import { toast } from "sonner";
+import { InfoIcon, Loader2Icon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Button from "@/components/ui/button";
 import Textarea from "@/components/ui/textarea";

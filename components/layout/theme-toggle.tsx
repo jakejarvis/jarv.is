@@ -12,14 +12,11 @@ const ThemeToggle = ({ className, ...rest }: React.ComponentProps<"button">) => 
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       aria-label="Toggle theme"
-      className={cn(
-        "hover:[&_svg]:stroke-warning block cursor-pointer bg-transparent not-dark:[&_.lucide-moon]:hidden dark:[&_.lucide-sun]:hidden",
-        className
-      )}
+      className={cn("hover:[&_svg]:stroke-warning block cursor-pointer bg-transparent", className)}
       {...rest}
     >
-      <SunIcon />
-      <MoonIcon />
+      <SunIcon className="dark:hidden" />
+      <MoonIcon className="not-dark:hidden" />
       <span className="sr-only">Toggle theme</span>
     </button>
   );

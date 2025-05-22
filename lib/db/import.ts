@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { env } from "@/lib/env";
 import { eq } from "drizzle-orm";
 import { graphql } from "@octokit/graphql";
 import { db } from "@/lib/db";
@@ -8,7 +7,7 @@ import * as schema from "@/lib/db/schema";
 // GitHub GraphQL API authentication
 const graphqlWithAuth = graphql.defaults({
   headers: {
-    authorization: `token ${env.GITHUB_TOKEN}`,
+    authorization: `token ${process.env.GITHUB_TOKEN}`,
   },
 });
 

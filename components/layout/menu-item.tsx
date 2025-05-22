@@ -35,7 +35,7 @@ const MenuItem = ({
         href={href}
         aria-label={text}
         data-current={current || undefined}
-        className="text-foreground/85 hover:border-ring/80 data-current:border-primary/60! inline-flex items-center border-b-3 border-b-transparent hover:no-underline"
+        className="text-foreground/85 hover:border-b-ring/80 data-current:border-b-primary/60 inline-flex items-center hover:no-underline"
       >
         {item}
       </Link>

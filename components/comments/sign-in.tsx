@@ -2,6 +2,7 @@
 
 import { env } from "@/lib/env";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Loader2Icon } from "lucide-react";
 import Button from "@/components/ui/button";
 import { GitHubIcon } from "@/components/icons";
@@ -20,6 +21,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
       });
     } catch (error) {
       console.error("Error signing in:", error);
+      toast.error("There was a problem signing in.");
       setIsLoading(false);
     }
   };

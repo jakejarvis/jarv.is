@@ -37,14 +37,20 @@ const Menu = ({ className, ...rest }: React.ComponentProps<"div">) => {
 
   return (
     <div
-      className={cn("flex max-w-2/3 flex-row justify-between md:max-w-none md:justify-end md:gap-4", className)}
+      className={cn(
+        "flex max-w-2/3 flex-row items-center justify-between md:max-w-none md:justify-end md:gap-4",
+        className
+      )}
       {...rest}
     >
       {menuItems.map((item, index) => {
         const isCurrent = item.href?.split("/")[1] === segment;
 
         return (
-          <div className="mt-[3px] inline-block last:-mr-2.5 max-sm:first:hidden **:[a,button]:p-2.5" key={index}>
+          <div
+            className="inline-flex items-center last:-mr-2.5 max-sm:first:hidden **:[a,button]:border-y-3 **:[a,button]:border-y-transparent **:[a,button]:p-2.5"
+            key={index}
+          >
             <MenuItem {...item} current={isCurrent} />
           </div>
         );
