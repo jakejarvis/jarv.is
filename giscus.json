@@ -1,4 +1,0 @@
-{
-  "origins": ["https://jarv.is"],
-  "originsRegex": ["https://jarvis-git-([A-z0-9]|-)*jakejarvis\\.vercel\\.app"]
-}
