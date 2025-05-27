@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, integer, uuid, type AnyPgColumn } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, integer, uuid, type AnyPgColumn, pgEnum } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -65,6 +65,22 @@ export const comment = pgTable("comment", {
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
+  upvotes: integer("upvotes").notNull().default(0),
+  downvotes: integer("downvotes").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const voteTypeEnum = pgEnum("vote_type_enum", ["upvote", "downvote"]);
+
+export const commentVote = pgTable("comment_vote", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  commentId: uuid("comment_id")
+    .notNull()
+    .references(() => comment.id, { onDelete: "cascade" }),
+  userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  ipAddress: text("ip_address"),
+  voteType: voteTypeEnum("vote_type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

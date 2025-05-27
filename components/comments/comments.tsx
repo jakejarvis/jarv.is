@@ -1,16 +1,33 @@
 import { headers } from "next/headers";
+import Link from "next/link"; // Import Link for navigation
+import { ListFilter } from "lucide-react"; // Icon for dropdown trigger
 import Form from "./comment-form";
 import Thread from "./comment-thread";
 import SignIn from "./sign-in";
 import { auth } from "@/lib/auth";
-import { getComments, type CommentWithUser } from "@/lib/server/comments";
+import { getComments, type CommentWithUser, type SortByType } from "@/lib/server/comments";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Button from "@/components/ui/button"; // Corrected: default import
 
-const Comments = async ({ slug }: { slug: string }) => {
+interface CommentsProps {
+  slug: string;
+  searchParams?: {
+    sortBy?: SortByType;
+  };
+}
+
+const Comments = async ({ slug, searchParams }: CommentsProps) => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  const comments = await getComments(slug);
+  const sortBy = searchParams?.sortBy || "newest";
+  const comments = await getComments(slug, sortBy);
 
   const commentsByParentId = comments.reduce(
     (acc, comment) => {
@@ -28,6 +45,29 @@ const Comments = async ({ slug }: { slug: string }) => {
 
   return (
     <>
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-2xl font-semibold tracking-tight">Comments ({comments.length})</h2>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <ListFilter className="mr-2 size-4" />
+              Sort by: {sortBy.charAt(0).toUpperCase() + sortBy.slice(1)}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href={`/${slug}?sortBy=newest#comments`} className={sortBy === "newest" ? "font-bold" : ""}>Newest</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href={`/${slug}?sortBy=oldest#comments`} className={sortBy === "oldest" ? "font-bold" : ""}>Oldest</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href={`/${slug}?sortBy=mostLiked#comments`} className={sortBy === "mostLiked" ? "font-bold" : ""}>Most Liked</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
       {session ? (
         <Form slug={slug} />
       ) : (
@@ -58,3 +98,8 @@ const Comments = async ({ slug }: { slug: string }) => {
 };
 
 export default Comments;
+
+// Helper to ensure the anchor tag #comments is part of the URL for Link components
+// This might not be strictly necessary if page structure keeps comments in view,
+// but good for UX if sorting causes a full page reload/navigation.
+// Note: The Link components above directly include #comments in the href.

@@ -2,37 +2,197 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, asc, sql, and } from "drizzle-orm";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
 import { auth } from "@/lib/auth";
 
 export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
+  // upvotes and downvotes are already part of schema.comment.$inferSelect
 };
 
-export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
+export type SortByType = "newest" | "oldest" | "mostLiked";
+
+export const getComments = async (pageSlug: string, sortBy: SortByType = "newest"): Promise<CommentWithUser[]> => {
   try {
+    let orderByClause;
+    switch (sortBy) {
+      case "oldest":
+        orderByClause = asc(schema.comment.createdAt);
+        break;
+      case "mostLiked":
+        // Sort by net upvotes (upvotes - downvotes)
+        orderByClause = desc(sql`${schema.comment.upvotes} - ${schema.comment.downvotes}`);
+        break;
+      case "newest":
+      default:
+        orderByClause = desc(schema.comment.createdAt);
+        break;
+    }
+
     // Fetch all comments for the page with user details
     const commentsWithUsers = await db
-      .select()
+      .select({
+        // explicitly list fields from comment to ensure upvotes/downvotes are included
+        id: schema.comment.id,
+        content: schema.comment.content,
+        pageSlug: schema.comment.pageSlug,
+        parentId: schema.comment.parentId,
+        userId: schema.comment.userId,
+        createdAt: schema.comment.createdAt,
+        updatedAt: schema.comment.updatedAt,
+        upvotes: schema.comment.upvotes,
+        downvotes: schema.comment.downvotes,
+        user: { // select specific user fields
+          id: schema.user.id,
+          name: schema.user.name,
+          image: schema.user.image,
+        }
+      })
       .from(schema.comment)
       .innerJoin(schema.user, eq(schema.comment.userId, schema.user.id))
       .where(eq(schema.comment.pageSlug, pageSlug))
-      .orderBy(desc(schema.comment.createdAt));
+      .orderBy(orderByClause);
 
-    return commentsWithUsers.map(({ comment, user }) => ({
-      ...comment,
-      user: {
-        // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
-        id: user.id,
-        name: user.name,
-        image: user.image,
-      },
-    }));
+    // The structure is now flat due to explicit select, adjust mapping if necessary
+    // However, the explicit select above shapes it correctly with a nested user object.
+    return commentsWithUsers as CommentWithUser[];
   } catch (error) {
-    console.error("[server/comments] error fetching comments:", error);
+    console.error(`[server/comments] error fetching comments (slug: ${pageSlug}, sort: ${sortBy}):`, error);
     throw new Error("Failed to fetch comments");
+  }
+};
+
+// Define the type for voteType based on the enum
+export type VoteType = typeof schema.voteTypeEnum.enumValues[number];
+
+export interface AddCommentVoteData {
+  commentId: string;
+  voteType: VoteType;
+  userId?: string; // User ID if logged in
+  pageSlug: string; // pageSlug for revalidation
+}
+
+export interface AddCommentVoteResponse {
+  success: boolean;
+  message?: string;
+  upvotes?: number;
+  downvotes?: number;
+}
+
+export const addCommentVote = async (data: AddCommentVoteData): Promise<AddCommentVoteResponse> => {
+  const { commentId, voteType, userId, pageSlug } = data;
+
+  const headerList = headers();
+  const ipAddress = (headerList.get("x-forwarded-for") ?? "127.0.0.1").split(",")[0].trim();
+
+  const session = await auth.api.getSession({ headers: headerList });
+
+  // Validate userId if provided
+  if (userId && (!session || session.user?.id !== userId)) {
+    return { success: false, message: "User ID mismatch or not authenticated." };
+  }
+  const effectiveUserId = session?.user?.id; // Use session's user ID if available
+
+  try {
+    const result = await db.transaction(async (tx) => {
+      // Check for existing comment
+      const comment = await tx
+        .select({ id: schema.comment.id, upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
+        .from(schema.comment)
+        .where(eq(schema.comment.id, commentId))
+        .then((res) => res[0]);
+
+      if (!comment) {
+        throw new Error("Comment not found");
+      }
+
+      // Determine query conditions for existing vote
+      const voteConditions = [eq(schema.commentVote.commentId, commentId)];
+      if (effectiveUserId) {
+        voteConditions.push(eq(schema.commentVote.userId, effectiveUserId));
+      } else {
+        // For anonymous users, ensure userId is null in the vote table and match IP
+        voteConditions.push(sql`${schema.commentVote.userId} IS NULL`);
+        voteConditions.push(eq(schema.commentVote.ipAddress, ipAddress));
+      }
+
+      const existingVote = await tx
+        .select()
+        .from(schema.commentVote)
+        .where(and(...voteConditions))
+        .then((res) => res[0]);
+
+      let upvoteChange = 0;
+      let downvoteChange = 0;
+
+      if (existingVote) {
+        if (existingVote.voteType === voteType) {
+          // Same vote type, so toggle off (delete the vote)
+          await tx.delete(schema.commentVote).where(eq(schema.commentVote.id, existingVote.id));
+          if (voteType === "upvote") upvoteChange = -1;
+          else downvoteChange = -1;
+        } else {
+          // Different vote type, so update the vote
+          await tx
+            .update(schema.commentVote)
+            .set({ voteType: voteType, updatedAt: new Date(), ipAddress: effectiveUserId ? null : ipAddress, userId: effectiveUserId }) // ensure ip/userId is updated if user logs in/out
+            .where(eq(schema.commentVote.id, existingVote.id));
+          if (voteType === "upvote") {
+            upvoteChange = 1;
+            downvoteChange = -1; // previous was downvote
+          } else {
+            upvoteChange = -1; // previous was upvote
+            downvoteChange = 1;
+          }
+        }
+      } else {
+        // No existing vote, so insert a new one
+        await tx.insert(schema.commentVote).values({
+          commentId,
+          voteType,
+          userId: effectiveUserId,
+          ipAddress: effectiveUserId ? null : ipAddress, // Store IP only for anonymous
+        });
+        if (voteType === "upvote") upvoteChange = 1;
+        else downvoteChange = 1;
+      }
+
+      // Update comment upvotes/downvotes if there's any change
+      if (upvoteChange !== 0 || downvoteChange !== 0) {
+        await tx
+          .update(schema.comment)
+          .set({
+            upvotes: sql`${schema.comment.upvotes} + ${upvoteChange}`,
+            downvotes: sql`${schema.comment.downvotes} + ${downvoteChange}`,
+          })
+          .where(eq(schema.comment.id, commentId));
+      }
+      
+      // Fetch the updated comment counts
+      const updatedComment = await tx
+        .select({ upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
+        .from(schema.comment)
+        .where(eq(schema.comment.id, commentId))
+        .then(res => res[0]);
+
+      return {
+        success: true,
+        upvotes: updatedComment?.upvotes,
+        downvotes: updatedComment?.downvotes,
+      };
+    });
+
+    if (result.success) {
+      revalidatePath(`/${pageSlug}`); // Revalidate the page
+      revalidatePath(`/`); // Also revalidate home page if it lists comments or something similar
+    }
+    return result;
+
+  } catch (error: any) {
+    console.error("[server/comments] error in addCommentVote:", error);
+    return { success: false, message: error.message || "Failed to process vote." };
   }
 };
 

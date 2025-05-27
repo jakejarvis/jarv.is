@@ -3,14 +3,17 @@ import Markdown from "react-markdown";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "@/components/link";
 import RelativeTime from "@/components/relative-time";
-import Actions from "./comment-actions";
+import Actions from "./comment-actions"; // Existing actions (edit/delete)
+import CommentVoteButtons from "./comment-vote-buttons"; // Import the new component
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import { rehypeExternalLinks } from "@/lib/rehype";
 import { cn } from "@/lib/utils";
-import type { CommentWithUser } from "@/lib/server/comments";
+import { type CommentWithUser } from "@/lib/server/comments";
+
 
 const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
   const divId = `comment-${comment.id.substring(0, 8)}`;
+  // Note: useSession and voting logic is now in CommentVoteButtons
 
   return (
     <div className="group scroll-mt-4" id={divId}>
@@ -61,7 +64,16 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
             </Markdown>
           </div>
 
-          <Actions comment={comment} />
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
+            <CommentVoteButtons
+              commentId={comment.id}
+              pageSlug={comment.pageSlug} // Ensure pageSlug is available on comment object
+              initialUpvotes={comment.upvotes}
+              initialDownvotes={comment.downvotes}
+              // currentUserVoteInitial={comment.currentUserVote} // Pass this if available in CommentWithUser type
+            />
+            <Actions comment={comment} /> {/* Existing actions: edit, delete etc */}
+          </div>
         </div>
       </div>
     </div>
