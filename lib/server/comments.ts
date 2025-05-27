@@ -96,99 +96,97 @@ export const addCommentVote = async (data: AddCommentVoteData): Promise<AddComme
   const effectiveUserId = session?.user?.id; // Use session's user ID if available
 
   try {
-    const result = await db.transaction(async (tx) => {
-      // Check for existing comment
-      const comment = await tx
-        .select({ id: schema.comment.id, upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
-        .from(schema.comment)
-        .where(eq(schema.comment.id, commentId))
-        .then((res) => res[0]);
+    // Check for existing comment
+    const comment = await db
+      .select({ id: schema.comment.id, upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
+      .from(schema.comment)
+      .where(eq(schema.comment.id, commentId))
+      .then((res) => res[0]);
 
-      if (!comment) {
-        throw new Error("Comment not found");
-      }
-
-      // Determine query conditions for existing vote
-      const voteConditions = [eq(schema.commentVote.commentId, commentId)];
-      if (effectiveUserId) {
-        voteConditions.push(eq(schema.commentVote.userId, effectiveUserId));
-      } else {
-        // For anonymous users, ensure userId is null in the vote table and match IP
-        voteConditions.push(sql`${schema.commentVote.userId} IS NULL`);
-        voteConditions.push(eq(schema.commentVote.ipAddress, ipAddress));
-      }
-
-      const existingVote = await tx
-        .select()
-        .from(schema.commentVote)
-        .where(and(...voteConditions))
-        .then((res) => res[0]);
-
-      let upvoteChange = 0;
-      let downvoteChange = 0;
-
-      if (existingVote) {
-        if (existingVote.voteType === voteType) {
-          // Same vote type, so toggle off (delete the vote)
-          await tx.delete(schema.commentVote).where(eq(schema.commentVote.id, existingVote.id));
-          if (voteType === "upvote") upvoteChange = -1;
-          else downvoteChange = -1;
-        } else {
-          // Different vote type, so update the vote
-          await tx
-            .update(schema.commentVote)
-            .set({ voteType: voteType, updatedAt: new Date(), ipAddress: effectiveUserId ? null : ipAddress, userId: effectiveUserId }) // ensure ip/userId is updated if user logs in/out
-            .where(eq(schema.commentVote.id, existingVote.id));
-          if (voteType === "upvote") {
-            upvoteChange = 1;
-            downvoteChange = -1; // previous was downvote
-          } else {
-            upvoteChange = -1; // previous was upvote
-            downvoteChange = 1;
-          }
-        }
-      } else {
-        // No existing vote, so insert a new one
-        await tx.insert(schema.commentVote).values({
-          commentId,
-          voteType,
-          userId: effectiveUserId,
-          ipAddress: effectiveUserId ? null : ipAddress, // Store IP only for anonymous
-        });
-        if (voteType === "upvote") upvoteChange = 1;
-        else downvoteChange = 1;
-      }
-
-      // Update comment upvotes/downvotes if there's any change
-      if (upvoteChange !== 0 || downvoteChange !== 0) {
-        await tx
-          .update(schema.comment)
-          .set({
-            upvotes: sql`${schema.comment.upvotes} + ${upvoteChange}`,
-            downvotes: sql`${schema.comment.downvotes} + ${downvoteChange}`,
-          })
-          .where(eq(schema.comment.id, commentId));
-      }
-      
-      // Fetch the updated comment counts
-      const updatedComment = await tx
-        .select({ upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
-        .from(schema.comment)
-        .where(eq(schema.comment.id, commentId))
-        .then(res => res[0]);
-
-      return {
-        success: true,
-        upvotes: updatedComment?.upvotes,
-        downvotes: updatedComment?.downvotes,
-      };
-    });
-
-    if (result.success) {
-      revalidatePath(`/${pageSlug}`); // Revalidate the page
-      revalidatePath(`/`); // Also revalidate home page if it lists comments or something similar
+    if (!comment) {
+      // It's important to return here, or throw, to prevent further execution.
+      // Matching the original structure, we'll let the catch block handle it if we throw.
+      throw new Error("Comment not found");
     }
-    return result;
+
+    // Determine query conditions for existing vote
+    const voteConditions = [eq(schema.commentVote.commentId, commentId)];
+    if (effectiveUserId) {
+      voteConditions.push(eq(schema.commentVote.userId, effectiveUserId));
+    } else {
+      // For anonymous users, ensure userId is null in the vote table and match IP
+      voteConditions.push(sql`${schema.commentVote.userId} IS NULL`);
+      voteConditions.push(eq(schema.commentVote.ipAddress, ipAddress));
+    }
+
+    const existingVote = await db
+      .select()
+      .from(schema.commentVote)
+      .where(and(...voteConditions))
+      .then((res) => res[0]);
+
+    let upvoteChange = 0;
+    let downvoteChange = 0;
+
+    if (existingVote) {
+      if (existingVote.voteType === voteType) {
+        // Same vote type, so toggle off (delete the vote)
+        await db.delete(schema.commentVote).where(eq(schema.commentVote.id, existingVote.id));
+        if (voteType === "upvote") upvoteChange = -1;
+        else downvoteChange = -1;
+      } else {
+        // Different vote type, so update the vote
+        await db
+          .update(schema.commentVote)
+          .set({ voteType: voteType, updatedAt: new Date(), ipAddress: effectiveUserId ? null : ipAddress, userId: effectiveUserId }) // ensure ip/userId is updated if user logs in/out
+          .where(eq(schema.commentVote.id, existingVote.id));
+        if (voteType === "upvote") {
+          upvoteChange = 1;
+          downvoteChange = -1; // previous was downvote
+        } else {
+          upvoteChange = -1; // previous was upvote
+          downvoteChange = 1;
+        }
+      }
+    } else {
+      // No existing vote, so insert a new one
+      await db.insert(schema.commentVote).values({
+        commentId,
+        voteType,
+        userId: effectiveUserId,
+        ipAddress: effectiveUserId ? null : ipAddress, // Store IP only for anonymous
+      });
+      if (voteType === "upvote") upvoteChange = 1;
+      else downvoteChange = 1;
+    }
+
+    // Update comment upvotes/downvotes if there's any change
+    if (upvoteChange !== 0 || downvoteChange !== 0) {
+      await db
+        .update(schema.comment)
+        .set({
+          upvotes: sql`${schema.comment.upvotes} + ${upvoteChange}`,
+          downvotes: sql`${schema.comment.downvotes} + ${downvoteChange}`,
+        })
+        .where(eq(schema.comment.id, commentId));
+    }
+    
+    // Fetch the updated comment counts
+    const updatedComment = await db
+      .select({ upvotes: schema.comment.upvotes, downvotes: schema.comment.downvotes })
+      .from(schema.comment)
+      .where(eq(schema.comment.id, commentId))
+      .then(res => res[0]);
+
+    // Revalidate paths since operations were successful up to this point
+    revalidatePath(`/${pageSlug}`); // Revalidate the page
+    revalidatePath(`/`); // Also revalidate home page if it lists comments or something similar
+
+    return {
+      success: true,
+      upvotes: updatedComment?.upvotes,
+      downvotes: updatedComment?.downvotes,
+    };
 
   } catch (error: any) {
     console.error("[server/comments] error in addCommentVote:", error);
