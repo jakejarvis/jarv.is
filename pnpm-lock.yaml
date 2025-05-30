@@ -84,8 +84,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(next@15.4.0-canary.50(@babel/core@7.26.10)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       better-auth:
-        specifier: 1.2.9-beta.1
-        version: 1.2.9-beta.1
+        specifier: 1.2.9-beta.6
+        version: 1.2.9-beta.6
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -2152,8 +2152,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  better-auth@1.2.9-beta.1:
-    resolution: {integrity: sha512-5UFPnWfo2e5INJbl2yalaRX+u0Ub807DiNgoc6vDIK+/XqrQM9u9r+VH1xI54+6XpH3/lXW3vXoEoBNs3ehKYg==}
+  better-auth@1.2.9-beta.6:
+    resolution: {integrity: sha512-dFl7/YpaiIN1sJlRS2IPJkHZ7VIdEJTIerVBCah4H9f0W0VXvS5WIstNusDYHXD02sniGruiaaGgfVnUPe/vLw==}
 
   better-call@1.0.9:
     resolution: {integrity: sha512-Qfm0gjk0XQz0oI7qvTK1hbqTsBY4xV2hsHAxF8LZfUYl3RaECCIifXuVqtPpZJWvlCCMlQSvkvhhyuApGUba6g==}
@@ -6656,7 +6656,7 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  better-auth@1.2.9-beta.1:
+  better-auth@1.2.9-beta.6:
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18
