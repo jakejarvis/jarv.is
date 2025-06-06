@@ -24,8 +24,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.1.5)(react@19.1.0)
       '@neondatabase/serverless':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@next/bundle-analyzer':
         specifier: 15.4.0-canary.50
         version: 15.4.0-canary.50
@@ -103,7 +103,7 @@ importers:
         version: 4.1.0
       drizzle-orm:
         specifier: ^0.43.1
-        version: 0.43.1(@neondatabase/serverless@1.0.0)(@types/pg@8.15.1)(kysely@0.28.2)
+        version: 0.43.1(@neondatabase/serverless@1.0.1)(@types/pg@8.15.1)(kysely@0.28.2)
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
@@ -248,7 +248,7 @@ importers:
         version: 2.0.13
       '@types/node':
         specifier: ^22.15.21
-        version: 22.15.21
+        version: 22.15.30
       '@types/react':
         specifier: 19.1.5
         version: 19.1.5
@@ -1021,8 +1021,8 @@ packages:
   '@napi-rs/wasm-runtime@0.2.9':
     resolution: {integrity: sha512-OKRBiajrrxB9ATokgEQoG87Z25c67pCpYcCwmXYX8PBftC9pBfN18gnm/fh1wurSLEKIAt+QRFLFCQISrb66Jg==}
 
-  '@neondatabase/serverless@1.0.0':
-    resolution: {integrity: sha512-XWmEeWpBXIoksZSDN74kftfTnXFEGZ3iX8jbANWBc+ag6dsiQuvuR4LgB0WdCOKMb5AQgjqgufc0TgAsZubUYw==}
+  '@neondatabase/serverless@1.0.1':
+    resolution: {integrity: sha512-O6yC5TT0jbw86VZVkmnzCZJB0hfxBl0JJz6f+3KHoZabjb/X08r9eFA+vuY06z1/qaovykvdkrXYq3SPUuvogA==}
     engines: {node: '>=19.0.0'}
 
   '@next/bundle-analyzer@15.4.0-canary.50':
@@ -1821,8 +1821,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@22.15.21':
-    resolution: {integrity: sha512-EV/37Td6c+MgKAbkcLG6vqZ2zEYHD7bvSrzqqs2RIhbA6w3x+Dqz8MZM3sP6kGTeLrdoOgKZe+Xja7tUB2DNkQ==}
+  '@types/node@22.15.30':
+    resolution: {integrity: sha512-6Q7lr06bEHdlfplU6YRbgG1SFBdlsfNC4/lX+SkhiTs0cpJkOElmWls8PxDFv4yY/xKb8Y6SO0OmSX4wgqTZbA==}
 
   '@types/pg@8.15.1':
     resolution: {integrity: sha512-YKHrkGWBX5+ivzvOQ66I0fdqsQTsvxqM0AGP2i0XrVZ9DP5VA/deEbTf7VuLPGpY7fJB9uGbkZ6KjVhuHcrTkQ==}
@@ -5540,9 +5540,9 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
     optional: true
 
-  '@neondatabase/serverless@1.0.0':
+  '@neondatabase/serverless@1.0.1':
     dependencies:
-      '@types/node': 22.15.21
+      '@types/node': 22.15.30
       '@types/pg': 8.15.1
 
   '@next/bundle-analyzer@15.4.0-canary.50':
@@ -6314,7 +6314,7 @@ snapshots:
 
   '@types/concat-stream@2.0.3':
     dependencies:
-      '@types/node': 22.15.21
+      '@types/node': 22.15.30
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6350,13 +6350,13 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@22.15.21':
+  '@types/node@22.15.30':
     dependencies:
       undici-types: 6.21.0
 
   '@types/pg@8.15.1':
     dependencies:
-      '@types/node': 22.15.21
+      '@types/node': 22.15.30
       pg-protocol: 1.10.0
       pg-types: 4.0.2
 
@@ -6959,9 +6959,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(@types/pg@8.15.1)(kysely@0.28.2):
+  drizzle-orm@0.43.1(@neondatabase/serverless@1.0.1)(@types/pg@8.15.1)(kysely@0.28.2):
     optionalDependencies:
-      '@neondatabase/serverless': 1.0.0
+      '@neondatabase/serverless': 1.0.1
       '@types/pg': 8.15.1
       kysely: 0.28.2
 
@@ -9881,7 +9881,7 @@ snapshots:
       '@types/concat-stream': 2.0.3
       '@types/debug': 4.1.12
       '@types/is-empty': 1.2.3
-      '@types/node': 22.15.21
+      '@types/node': 22.15.30
       '@types/unist': 3.0.3
       concat-stream: 2.0.0
       debug: 4.4.0
