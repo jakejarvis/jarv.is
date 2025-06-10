@@ -2,7 +2,7 @@
 
 import { useSelectedLayoutSegment } from "next/navigation";
 import MenuItem from "@/components/layout/menu-item";
-import ThemeToggle from "@/components/layout/theme-toggle";
+import ThemeToggle from "@/components/theme/theme-toggle";
 import { cn } from "@/lib/utils";
 import { HomeIcon, PencilLineIcon, CodeXmlIcon, MailIcon } from "lucide-react";
 

@@ -125,7 +125,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <Suspense
             // when this loads, the component will count up from zero to the actual number of hits, so we can simply
             // show a zero here as a "loading indicator"
-            fallback={<span>0</span>}
+            fallback={<span className="motion-safe:animate-pulse">0</span>}
           >
             <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
           </Suspense>

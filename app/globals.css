@@ -18,6 +18,8 @@
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.98 0 0);
   --accent-foreground: oklch(0.33 0 0);
+  --highlight: oklch(0.50 0.13 245.46);
+  --highlight-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.62 0.21 25.77);
   --warning: oklch(0.67 0.179 58.318);
   --success: oklch(0.63 0.194 149.214);
@@ -26,15 +28,6 @@
   --ring: oklch(0.708 0 0);
 
   --radius: 0.625rem;
-
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 }
 
 [data-theme="dark"] {
@@ -52,6 +45,8 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.27 0.01 286.03);
   --accent-foreground: oklch(0.98 0 0);
+  --highlight: oklch(0.81 0.10 251.81);
+  --highlight-foreground: oklch(0.21 0.01 285.88);
   --destructive: oklch(0.70 0.19 22.23);
   --warning: oklch(0.8 0.184 86.047);
   --success: oklch(0.79 0.209 151.711);
@@ -80,6 +75,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
   --color-destructive: var(--destructive);
   --color-warning: var(--warning);
   --color-success: var(--success);
@@ -91,15 +88,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);
 }
 
 @theme {
@@ -161,7 +149,7 @@
   }
 
   body {
-    @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground selection:bg-highlight selection:text-highlight-foreground;
   }
 
   ::-webkit-scrollbar {

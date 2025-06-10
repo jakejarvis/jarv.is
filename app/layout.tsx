@@ -1,13 +1,13 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import { ThemeProvider } from "@/components/layout/theme-context";
-import { ThemeScript } from "@/components/layout/theme-script";
+import { ThemeProvider } from "@/components/theme/theme-context";
+import { ThemeScript } from "@/components/theme/theme-script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Toaster from "@/components/ui/sonner";
 import Analytics from "@/app/analytics";
 import { defaultMetadata } from "@/lib/metadata";
-import { GeistMono, GeistSans } from "@/lib/fonts";
+import { GeistSans, GeistMono } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import type { Person, WebSite } from "schema-dts";
