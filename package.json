@@ -93,7 +93,7 @@
     "tailwindcss": "^4.1.8",
     "tw-animate-css": "^1.3.4",
     "unified": "^11.0.5",
-    "zod": "3.25.56"
+    "zod": "3.25.67"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
