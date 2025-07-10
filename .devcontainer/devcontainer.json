@@ -1,6 +1,6 @@
 {
 	"name": "Node.js",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
 	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install && corepack enable && CI=true pnpm install",
 	"customizations": {
 		"vscode": {
