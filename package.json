@@ -106,7 +106,7 @@
     "@types/react-dom": "19.1.6",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
     "cross-env": "^7.0.3",
-    "dotenv": "^17.0.0",
+    "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9.30.0",
     "eslint-config-next": "15.4.0-canary.102",
