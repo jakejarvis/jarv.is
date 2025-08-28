@@ -1,17 +1,16 @@
 "use server";
 
 import { env } from "@/lib/env";
-import { headers } from "next/headers";
 import { Resend } from "resend";
 import { z } from "zod";
 import siteConfig from "@/lib/config/site";
+import { checkBotId } from "botid/server";
 
 const ContactSchema = z
   .object({
     name: z.string().trim().min(1, { message: "Your name is required." }),
     email: z.string().email({ message: "Your email address is required." }),
     message: z.string().trim().min(15, { message: "Your message must be at least 15 characters." }),
-    "cf-turnstile-response": z.string().min(1, { message: "Are you sure you're not a robot...? 🤖" }),
   })
   .readonly();
 
@@ -28,6 +27,12 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
   console.debug("[server/resend] received payload:", payload);
 
   try {
+    // BotID server-side verification
+    const verification = await checkBotId();
+    if (verification.isBot) {
+      return { success: false, message: "Bot detection failed. 🤖" };
+    }
+
     const data = ContactSchema.safeParse(Object.fromEntries(payload));
 
     if (!data.success) {
@@ -35,37 +40,6 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
         success: false,
         message: "Please make sure all fields are filled in.",
         errors: data.error.flatten().fieldErrors,
-      };
-    }
-
-    // try to get the client IP (for turnstile accuracy, not logging!) but no biggie if we can't
-    let remoteip;
-    try {
-      remoteip = (await headers()).get("x-forwarded-for");
-    } catch {} // eslint-disable-line no-empty
-
-    // validate captcha
-    const turnstileResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        secret: env.TURNSTILE_SECRET_KEY,
-        response: data.data["cf-turnstile-response"],
-        remoteip,
-      }),
-      cache: "no-store",
-    });
-
-    if (!turnstileResponse || !turnstileResponse.ok) {
-      throw new Error(`[server/resend] turnstile validation failed: ${turnstileResponse.status}`);
-    }
-
-    const turnstileData = (await turnstileResponse.json()) as { success: boolean };
-
-    if (!turnstileData.success) {
-      return {
-        success: false,
-        message: "Did you complete the CAPTCHA? (If you're human, that is...)",
       };
     }
 

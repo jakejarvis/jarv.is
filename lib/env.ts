@@ -60,13 +60,6 @@ export const env = createEnv({
 
     /** Required. The destination email for contact form submissions. */
     RESEND_TO_EMAIL: z.string().email(),
-
-    /**
-     * Required. Secret for Cloudflare `siteverify` API to validate a form's turnstile result on the backend.
-     *
-     * @see https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
-     */
-    TURNSTILE_SECRET_KEY: z.string().default("1x0000000000000000000000000000000AA"),
   },
   client: {
     /**
@@ -146,14 +139,6 @@ export const env = createEnv({
      * @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */
     NEXT_PUBLIC_SITE_TZ: z.string().default("America/New_York"),
-
-    /**
-     * Required. Site key must be prefixed with NEXT_PUBLIC_ since it is used to embed the captcha widget. Falls back to
-     * testing keys if not set or in dev environment.
-     *
-     * @see https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-     */
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().default("1x00000000000000000000AA"),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -163,7 +148,6 @@ export const env = createEnv({
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
     NEXT_PUBLIC_SITE_LOCALE: process.env.NEXT_PUBLIC_SITE_LOCALE,
     NEXT_PUBLIC_SITE_TZ: process.env.NEXT_PUBLIC_SITE_TZ,
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
   },
   emptyStringAsUndefined: true,
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

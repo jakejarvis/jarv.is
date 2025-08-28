@@ -42,13 +42,11 @@ Required server environment variables:
 - `GITHUB_TOKEN`: GitHub API token for projects page
 - `RESEND_API_KEY`: Resend API key for contact form
 - `RESEND_TO_EMAIL`: Destination email for contact form
-- `TURNSTILE_SECRET_KEY`: Cloudflare Turnstile secret key
 
 Required client environment variables:
 
 - `NEXT_PUBLIC_GITHUB_REPO`: Repository in format "username/repo"
 - `NEXT_PUBLIC_GITHUB_USERNAME`: GitHub username
-- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: Cloudflare Turnstile site key
 
 ## Architecture
 

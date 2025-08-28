@@ -1,8 +1,6 @@
 "use client";
 
-import { env } from "@/lib/env";
 import { useActionState, useState } from "react";
-import { Turnstile } from "@marsidev/react-turnstile";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Link from "@/components/link";
 import Input from "@/components/ui/input";
@@ -89,15 +87,6 @@ const ContactForm = () => {
           </Link>
           ](https://jarv.is), and <code>`code`</code>.
         </div>
-      </div>
-
-      <div>
-        <Turnstile siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
-        {formState.errors?.["cf-turnstile-response"] && (
-          <span className="text-destructive text-[0.8rem] font-semibold">
-            {formState.errors["cf-turnstile-response"][0]}
-          </span>
-        )}
       </div>
 
       <div className="flex min-h-16 items-center space-x-4">

@@ -182,6 +182,8 @@ const nextPlugins: Array<
       ],
     },
   }),
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require("botid/next/config").withBotId,
 ];
 
 // eslint-disable-next-line import/no-anonymous-default-export

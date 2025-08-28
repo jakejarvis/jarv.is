@@ -14,7 +14,9 @@ const compat = new FlatCompat({
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  { ignores: ["README.md", ".next", ".vercel", "node_modules", "lib/db/migrations"] },
+  {
+    ignores: ["README.md", "next-env.d.ts", ".next", ".vercel", "node_modules", "lib/db/migrations"],
+  },
   ...compat.config({
     plugins: ["react-compiler", "css-modules"],
     extends: [
