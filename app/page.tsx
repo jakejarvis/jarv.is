@@ -121,7 +121,15 @@ const Page = () => {
       </p>
 
       <p className="my-3 text-base leading-relaxed md:text-[0.975rem]">
-        Over the years, some of my side projects{" "}
+        I&rsquo;m currently building{" "}
+        <Link
+          href="https://snoozle.ai"
+          title="Snoozle: AI-powered bedtime stories for children"
+          className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text font-semibold text-transparent [--primary:#a855f7] dark:from-purple-400 dark:to-pink-400 dark:[--primary:#c084fc]"
+        >
+          Snoozle
+        </Link>
+        , an AI-powered bedtime story generator. Over the years, some of my other side projects{" "}
         <Link
           href="/leo"
           title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
