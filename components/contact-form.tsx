@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useDebounce } from "react-use";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
+import Form from "next/form";
 import Link from "@/components/link";
 import Input from "@/components/ui/input";
 import Textarea from "@/components/ui/textarea";
@@ -47,10 +48,10 @@ const ContactForm = () => {
   const hasClientErrors = Object.values(clientErrors).some((errs) => (errs?.length || 0) > 0);
 
   const getErrorForField = (field: keyof ContactInput): string | undefined => {
-    const ce = clientErrors[field]?.[0];
-    if (ce) return ce;
-    if (!touched[field]) return formState.errors?.[field]?.[0];
-    return undefined;
+    if (touched[field]) {
+      return clientErrors[field]?.[0];
+    }
+    return formState.errors?.[field]?.[0];
   };
 
   const nameError = getErrorForField("name");
@@ -58,7 +59,7 @@ const ContactForm = () => {
   const messageError = getErrorForField("message");
 
   return (
-    <form action={formAction} className="my-6 space-y-4">
+    <Form action={formAction} className="my-6 space-y-4">
       <div>
         <Input
           type="text"
@@ -152,7 +153,7 @@ const ContactForm = () => {
           </div>
         )}
       </div>
-    </form>
+    </Form>
   );
 };
 
