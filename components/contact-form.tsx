@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
+import { useDebounce } from "react-use";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Link from "@/components/link";
 import Input from "@/components/ui/input";
@@ -8,8 +9,8 @@ import Textarea from "@/components/ui/textarea";
 import Button from "@/components/ui/button";
 import { MarkdownIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { send, type ContactState } from "@/lib/server/resend";
-import { ContactSchema, type ContactInput } from "@/lib/validation/contact";
+import { send, type ContactState } from "@/lib/server/contact";
+import { ContactSchema, type ContactInput } from "@/lib/schemas/contact";
 
 const ContactForm = () => {
   const [formState, formAction, pending] = useActionState<ContactState, FormData>(send, {
@@ -24,27 +25,37 @@ const ContactForm = () => {
     message: "",
   });
 
-  // client-side validation using shared schema
-  const [clientErrors, setClientErrors] = useState<Partial<Record<keyof ContactInput, string[]>>>({});
-  const [touched, setTouched] = useState<{ name: boolean; email: boolean; message: boolean }>({
+  // keep track of which fields have been touched
+  const [touched, setTouched] = useState<Record<keyof ContactInput, boolean>>({
     name: false,
     email: false,
     message: false,
   });
 
-  useEffect(() => {
-    const id = setTimeout(() => {
+  // client-side validation using shared schema
+  const [clientErrors, setClientErrors] = useState<Partial<Record<keyof ContactInput, string[]>>>({});
+
+  useDebounce(
+    () => {
       const result = ContactSchema.safeParse(formFields);
       setClientErrors(result.success ? {} : result.error.flatten().fieldErrors);
-    }, 200);
-    return () => clearTimeout(id);
-  }, [formFields]);
+    },
+    150,
+    [formFields]
+  );
 
   const hasClientErrors = Object.values(clientErrors).some((errs) => (errs?.length || 0) > 0);
 
-  const nameError = (touched.name ? clientErrors.name?.[0] : undefined) ?? formState.errors?.name?.[0];
-  const emailError = (touched.email ? clientErrors.email?.[0] : undefined) ?? formState.errors?.email?.[0];
-  const messageError = (touched.message ? clientErrors.message?.[0] : undefined) ?? formState.errors?.message?.[0];
+  const getErrorForField = (field: keyof ContactInput): string | undefined => {
+    const ce = clientErrors[field]?.[0];
+    if (ce) return ce;
+    if (!touched[field]) return formState.errors?.[field]?.[0];
+    return undefined;
+  };
+
+  const nameError = getErrorForField("name");
+  const emailError = getErrorForField("email");
+  const messageError = getErrorForField("message");
 
   return (
     <form action={formAction} className="my-6 space-y-4">
@@ -56,6 +67,7 @@ const ContactForm = () => {
           value={formFields.name}
           onChange={(e) => {
             setFormFields({ ...formFields, name: e.target.value });
+            setTouched((t) => ({ ...t, name: true }));
           }}
           onBlur={() => setTouched((t) => ({ ...t, name: true }))}
           disabled={pending || formState.success}
@@ -73,6 +85,7 @@ const ContactForm = () => {
           value={formFields.email}
           onChange={(e) => {
             setFormFields({ ...formFields, email: e.target.value });
+            setTouched((t) => ({ ...t, email: true }));
           }}
           onBlur={() => setTouched((t) => ({ ...t, email: true }))}
           disabled={pending || formState.success}
@@ -88,6 +101,7 @@ const ContactForm = () => {
           value={formFields.message}
           onChange={(e) => {
             setFormFields({ ...formFields, message: e.target.value });
+            setTouched((t) => ({ ...t, message: true }));
           }}
           onBlur={() => setTouched((t) => ({ ...t, message: true }))}
           disabled={pending || formState.success}

@@ -2,7 +2,7 @@
 
 import { env } from "@/lib/env";
 import { Resend } from "resend";
-import { ContactSchema } from "@/lib/validation/contact";
+import { ContactSchema } from "@/lib/schemas/contact";
 import siteConfig from "@/lib/config/site";
 import { checkBotId } from "botid/server";
 
