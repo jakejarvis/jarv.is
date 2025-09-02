@@ -16,6 +16,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    qualities: [50, 75, 100],
     remotePatterns: [
       {
         protocol: "https",
@@ -47,6 +48,9 @@ const nextConfig = {
         "jarv.is",
         ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
       ],
+    },
+    staleTimes: {
+      dynamic: 0, // disable client-side router cache for dynamic pages
     },
   },
   headers: async () => [
