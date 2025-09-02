@@ -2,19 +2,11 @@
 
 import { env } from "@/lib/env";
 import { Resend } from "resend";
-import { z } from "zod";
+import { ContactSchema } from "@/lib/validation/contact";
 import siteConfig from "@/lib/config/site";
 import { checkBotId } from "botid/server";
 
-const ContactSchema = z
-  .object({
-    name: z.string().trim().min(1, { message: "Your name is required." }),
-    email: z.string().email({ message: "Your email address is required." }),
-    message: z.string().trim().min(15, { message: "Your message must be at least 15 characters." }),
-  })
-  .readonly();
-
-export type ContactInput = z.infer<typeof ContactSchema>;
+// Schema and type now imported from shared validation module
 
 export type ContactState = {
   success: boolean;

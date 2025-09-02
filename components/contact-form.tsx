@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Link from "@/components/link";
 import Input from "@/components/ui/input";
@@ -8,7 +8,8 @@ import Textarea from "@/components/ui/textarea";
 import Button from "@/components/ui/button";
 import { MarkdownIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { send, type ContactState, type ContactInput } from "@/lib/server/resend";
+import { send, type ContactState } from "@/lib/server/resend";
+import { ContactSchema, type ContactInput } from "@/lib/validation/contact";
 
 const ContactForm = () => {
   const [formState, formAction, pending] = useActionState<ContactState, FormData>(send, {
@@ -17,11 +18,33 @@ const ContactForm = () => {
   });
 
   // keep track of input so we can repopulate the fields if the form fails
-  const [formFields, setFormFields] = useState<Partial<ContactInput>>({
+  const [formFields, setFormFields] = useState<ContactInput>({
     name: "",
     email: "",
     message: "",
   });
+
+  // client-side validation using shared schema
+  const [clientErrors, setClientErrors] = useState<Partial<Record<keyof ContactInput, string[]>>>({});
+  const [touched, setTouched] = useState<{ name: boolean; email: boolean; message: boolean }>({
+    name: false,
+    email: false,
+    message: false,
+  });
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      const result = ContactSchema.safeParse(formFields);
+      setClientErrors(result.success ? {} : result.error.flatten().fieldErrors);
+    }, 200);
+    return () => clearTimeout(id);
+  }, [formFields]);
+
+  const hasClientErrors = Object.values(clientErrors).some((errs) => (errs?.length || 0) > 0);
+
+  const nameError = (touched.name ? clientErrors.name?.[0] : undefined) ?? formState.errors?.name?.[0];
+  const emailError = (touched.email ? clientErrors.email?.[0] : undefined) ?? formState.errors?.email?.[0];
+  const messageError = (touched.message ? clientErrors.message?.[0] : undefined) ?? formState.errors?.message?.[0];
 
   return (
     <form action={formAction} className="my-6 space-y-4">
@@ -34,12 +57,11 @@ const ContactForm = () => {
           onChange={(e) => {
             setFormFields({ ...formFields, name: e.target.value });
           }}
+          onBlur={() => setTouched((t) => ({ ...t, name: true }))}
           disabled={pending || formState.success}
-          aria-invalid={formState.errors?.name ? "true" : undefined}
+          aria-invalid={nameError ? "true" : undefined}
         />
-        {formState.errors?.name && (
-          <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.name[0]}</span>
-        )}
+        {nameError && <span className="text-destructive text-[0.8rem] font-semibold">{nameError}</span>}
       </div>
 
       <div>
@@ -52,12 +74,11 @@ const ContactForm = () => {
           onChange={(e) => {
             setFormFields({ ...formFields, email: e.target.value });
           }}
+          onBlur={() => setTouched((t) => ({ ...t, email: true }))}
           disabled={pending || formState.success}
-          aria-invalid={formState.errors?.email ? "true" : undefined}
+          aria-invalid={emailError ? "true" : undefined}
         />
-        {formState.errors?.email && (
-          <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.email[0]}</span>
-        )}
+        {emailError && <span className="text-destructive text-[0.8rem] font-semibold">{emailError}</span>}
       </div>
 
       <div>
@@ -68,13 +89,12 @@ const ContactForm = () => {
           onChange={(e) => {
             setFormFields({ ...formFields, message: e.target.value });
           }}
+          onBlur={() => setTouched((t) => ({ ...t, message: true }))}
           disabled={pending || formState.success}
-          aria-invalid={formState.errors?.message ? "true" : undefined}
+          aria-invalid={messageError ? "true" : undefined}
           className="min-h-[6lh] resize-y"
         />
-        {formState.errors?.message && (
-          <span className="text-destructive text-[0.8rem] font-semibold">{formState.errors.message[0]}</span>
-        )}
+        {messageError && <span className="text-destructive text-[0.8rem] font-semibold">{messageError}</span>}
 
         <div className="text-foreground/85 my-2 text-[0.8rem] leading-relaxed">
           <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" /> Basic{" "}
@@ -91,7 +111,7 @@ const ContactForm = () => {
 
       <div className="flex min-h-16 items-center space-x-4">
         {!formState.success && (
-          <Button type="submit" size="lg" disabled={pending}>
+          <Button type="submit" size="lg" disabled={pending || hasClientErrors}>
             {pending ? (
               <>
                 <Loader2Icon className="animate-spin" />
