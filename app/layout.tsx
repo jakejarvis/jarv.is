@@ -1,6 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import { ThemeProvider } from "@/components/theme/theme-context";
+import Providers from "@/components/providers";
 import { ThemeScript } from "@/components/theme/theme-script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -64,8 +64,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
       </head>
 
       <body className="bg-background text-foreground font-sans antialiased">
-        <ThemeProvider>
-          <div className="mx-auto w-full max-w-4xl px-5">
+        <Providers>
+          <div className="mx-auto w-full max-w-4xl px-5 py-1">
             <Header className="mt-4 mb-6 w-full" />
 
             <main>{children}</main>
@@ -74,9 +74,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           </div>
 
           <Toaster position="bottom-center" hotkey={[]} />
-        </ThemeProvider>
-
-        <Analytics />
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );

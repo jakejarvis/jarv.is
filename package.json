@@ -20,6 +20,7 @@
     "prepare": "test -d node_modules/husky && husky || echo \"skipping husky\""
   },
   "dependencies": {
+    "@bprogress/next": "^3.2.12",
     "@date-fns/tz": "^1.4.1",
     "@date-fns/utc": "^2.1.1",
     "@mdx-js/loader": "^3.1.1",
