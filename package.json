@@ -88,7 +88,7 @@
     "remark-strip-mdx-imports-exports": "^1.0.1",
     "resend": "^6.0.2",
     "server-only": "0.0.1",
-    "shiki": "^3.12.1",
+    "shiki": "^3.12.2",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12",
