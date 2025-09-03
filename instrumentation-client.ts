@@ -6,5 +6,9 @@ initBotId({
       path: "/contact",
       method: "POST",
     },
+    {
+      path: "/notes/*",
+      method: "POST",
+    },
   ],
 });

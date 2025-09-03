@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { eq, desc } from "drizzle-orm";
+import { checkBotId } from "botid/server";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
 import { auth } from "@/lib/auth";
@@ -37,6 +38,13 @@ export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> 
 };
 
 export const createComment = async (data: { content: string; pageSlug: string; parentId?: string }) => {
+  // BotID server-side verification
+  const verification = await checkBotId();
+  if (verification.isBot) {
+    console.warn("[server/comments] botid verification failed:", verification);
+    throw new Error("Bot check failed 🤖");
+  }
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -63,6 +71,13 @@ export const createComment = async (data: { content: string; pageSlug: string; p
 };
 
 export const updateComment = async (commentId: string, content: string) => {
+  // BotID server-side verification
+  const verification = await checkBotId();
+  if (verification.isBot) {
+    console.warn("[server/comments] botid verification failed:", verification);
+    throw new Error("Bot check failed 🤖");
+  }
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -106,6 +121,13 @@ export const updateComment = async (commentId: string, content: string) => {
 };
 
 export const deleteComment = async (commentId: string) => {
+  // BotID server-side verification
+  const verification = await checkBotId();
+  if (verification.isBot) {
+    console.warn("[server/comments] botid verification failed:", verification);
+    throw new Error("Bot check failed 🤖");
+  }
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
