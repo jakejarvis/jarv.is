@@ -16,15 +16,16 @@ export type ContactState = {
 
 export const send = async (state: ContactState, payload: FormData): Promise<ContactState> => {
   // TODO: remove after debugging why automated spam entries are causing 500 errors
-  console.debug("[server/resend] received payload:", payload);
+  console.debug("[server/contact] received payload:", payload);
+
+  // BotID server-side verification
+  const verification = await checkBotId();
+  if (verification.isBot) {
+    console.warn("[server/contact] botid verification failed:", verification);
+    throw new Error("Bot check failed");
+  }
 
   try {
-    // BotID server-side verification
-    const verification = await checkBotId();
-    if (verification.isBot) {
-      return { success: false, message: "Bot detection failed. 🤖" };
-    }
-
     const data = ContactSchema.safeParse(Object.fromEntries(payload));
 
     if (!data.success) {
@@ -37,7 +38,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
 
     if (env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
       // https://resend.com/docs/api-reference/emails/send-email
-      console.warn("[server/resend] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
+      console.warn("[server/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
     }
 
     // send email
@@ -52,7 +53,7 @@ export const send = async (state: ContactState, payload: FormData): Promise<Cont
 
     return { success: true, message: "Thanks! You should hear from me soon." };
   } catch (error) {
-    console.error("[server/resend] fatal error:", error);
+    console.error("[server/contact] fatal error:", error);
 
     return {
       success: false,
