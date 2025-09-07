@@ -2,7 +2,7 @@ import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { JsonLd } from "react-schemaorg";
 import { formatDate, formatDateISO } from "@/lib/date";
-import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon } from "lucide-react";
+import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon, MessagesSquareIcon } from "lucide-react";
 import Link from "@/components/link";
 import ViewCounter from "@/components/view-counter";
 import Comments from "@/components/comments/comments";
@@ -12,6 +12,7 @@ import { createMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import { size as ogImageSize } from "./opengraph-image";
+import { getCommentCounts } from "@/lib/server/comments";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
 
@@ -54,6 +55,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
+  const commentCount = await getCommentCounts(`${POSTS_DIR}/${slug}`);
 
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
@@ -118,6 +120,15 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         >
           <SquarePenIcon className="inline size-4 shrink-0" />
           <span>Improve This Post</span>
+        </Link>
+
+        <Link
+          href={`/${POSTS_DIR}/${frontmatter!.slug}#comments`}
+          title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)} ${commentCount === 1 ? "comment" : "comments"}`}
+          className="text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"
+        >
+          <MessagesSquareIcon className="inline size-4 shrink-0" />
+          <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)}</span>
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">

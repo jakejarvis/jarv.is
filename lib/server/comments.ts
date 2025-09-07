@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, inArray, sql } from "drizzle-orm";
 import { checkBotId } from "botid/server";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
@@ -37,6 +37,75 @@ export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> 
   }
 };
 
+export const getCommentCounts: {
+  /**
+   * Retrieves the number of comments for a given slug
+   */
+  (slug: string): Promise<number>;
+  /**
+   * Retrieves the numbers of comments for an array of slugs
+   */
+  (slug: string[]): Promise<Record<string, number>>;
+  /**
+   * Retrieves the numbers of comments for ALL slugs
+   */
+  (): Promise<Record<string, number>>;
+} = async (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  slug?: any
+): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+Promise<any> => {
+  try {
+    // return one page
+    if (typeof slug === "string") {
+      const result = await db
+        .select({
+          count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+        })
+        .from(schema.comment)
+        .where(eq(schema.comment.pageSlug, slug));
+
+      return Number(result[0]?.count ?? 0);
+    }
+
+    // return multiple pages
+    if (Array.isArray(slug)) {
+      const rows = await db
+        .select({
+          pageSlug: schema.comment.pageSlug,
+          count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+        })
+        .from(schema.comment)
+        .where(inArray(schema.comment.pageSlug, slug))
+        .groupBy(schema.comment.pageSlug);
+
+      const map: Record<string, number> = Object.fromEntries(slug.map((s: string) => [s, 0]));
+      for (const row of rows) {
+        map[row.pageSlug] = Number(row.count ?? 0);
+      }
+      return map;
+    }
+
+    // return ALL pages
+    const rows = await db
+      .select({
+        pageSlug: schema.comment.pageSlug,
+        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+      })
+      .from(schema.comment)
+      .groupBy(schema.comment.pageSlug);
+
+    const map: Record<string, number> = {};
+    for (const row of rows) {
+      map[row.pageSlug] = Number(row.count ?? 0);
+    }
+    return map;
+  } catch (error) {
+    console.error("[server/comments] error fetching comment counts:", error);
+    throw new Error("Failed to fetch comment counts");
+  }
+};
+
 export const createComment = async (data: { content: string; pageSlug: string; parentId?: string }) => {
   // BotID server-side verification
   const verification = await checkBotId();
@@ -64,6 +133,8 @@ export const createComment = async (data: { content: string; pageSlug: string; p
 
     // Revalidate the page to show the new comment
     revalidatePath(`/${data.pageSlug}`);
+    // Also revalidate the notes listing to update comment count badges
+    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment");
@@ -114,6 +185,9 @@ export const updateComment = async (commentId: string, content: string) => {
 
     // Revalidate the page to show the updated comment
     revalidatePath(`/${comment.pageSlug}`);
+    // Also revalidate the notes listing to update comment count badges
+    // TODO: make this more generic in case we want to add comments to non-note pages
+    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error updating comment:", error);
     throw new Error("Failed to update comment");
@@ -158,6 +232,9 @@ export const deleteComment = async (commentId: string) => {
 
     // Revalidate the page to update the comments list
     revalidatePath(`/${comment.pageSlug}`);
+    // Also revalidate the notes listing to update comment count badges
+    // TODO: make this more generic in case we want to add comments to non-note pages
+    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error deleting comment:", error);
     throw new Error("Failed to delete comment");

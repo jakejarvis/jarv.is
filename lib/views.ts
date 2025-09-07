@@ -29,7 +29,7 @@ export const incrementViews = async (slug: string): Promise<number> => {
   }
 };
 
-export const getViews: {
+export const getViewCounts: {
   /**
    * Retrieves the number of views for a given slug, or null if the slug does not exist
    */

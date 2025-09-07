@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { unstable_cache as cache } from "next/cache";
-import { getViews as _getViews } from "@/lib/views";
+import { getViewCounts as _getViewCounts } from "@/lib/views";
 
-const getViews = cache(_getViews, undefined, {
+const getViewCounts = cache(_getViewCounts, undefined, {
   revalidate: 300, // 5 minutes
   tags: ["hits"],
 });
@@ -19,7 +19,7 @@ export const GET = async (): Promise<
   }>
 > => {
   // note: while hits have been renamed to views in most places, this API shouldn't change due to it being snapshotted
-  const views = await getViews();
+  const views = await getViewCounts();
 
   const total = {
     hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
