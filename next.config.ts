@@ -1,10 +1,10 @@
-import * as remarkPlugins from "@/lib/remark";
-import * as rehypePlugins from "@/lib/rehype";
+import * as remarkPlugins from "./lib/remark";
+import * as rehypePlugins from "./lib/rehype";
 import type { NextConfig } from "next";
 
 // check environment variables at build time
 // https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
-import "@/lib/env";
+import "./lib/env";
 
 const nextConfig = {
   reactStrictMode: true,
