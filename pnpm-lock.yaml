@@ -207,8 +207,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       resend:
-        specifier: ^6.0.2
-        version: 6.0.2(@react-email/render@1.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+        specifier: ^6.1.0
+        version: 6.1.0(@react-email/render@1.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       server-only:
         specifier: 0.0.1
         version: 0.0.1
@@ -4364,8 +4364,8 @@ packages:
   remark-strip-mdx-imports-exports@1.0.1:
     resolution: {integrity: sha512-N6YR9Tnib79WUg6Xjy1YRQ3q5/3SLsl8jCyyFSLRbERdL8KHLnWiWhLEzfKw5z/037iWs9sBr9UK7YDgagzzeA==}
 
-  resend@6.0.2:
-    resolution: {integrity: sha512-um08qWpSVvEVqAePEy/bsa7pqtnJK+qTCZ0Et7YE7xuqM46J0C9gnSbIJKR3LIcRVMgO9jUeot8rH0UI84eqMQ==}
+  resend@6.1.0:
+    resolution: {integrity: sha512-H0cJI2pcLk5/dGwyvZUHu+O7X/q6arvc40EWm+pRPuy+PSWojH5utZtmDBUZ2L0+gVwYZiWs6y2lw6GQA1z1rg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@react-email/render': ^1.1.0
@@ -9518,7 +9518,7 @@ snapshots:
 
   remark-strip-mdx-imports-exports@1.0.1: {}
 
-  resend@6.0.2(@react-email/render@1.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
+  resend@6.1.0(@react-email/render@1.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
     optionalDependencies:
       '@react-email/render': 1.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
 
