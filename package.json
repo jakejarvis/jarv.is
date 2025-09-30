@@ -25,7 +25,7 @@
     "@date-fns/utc": "^2.1.1",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@neondatabase/serverless": "^1.0.1",
+    "@neondatabase/serverless": "^1.0.2",
     "@next/bundle-analyzer": "15.5.1-canary.31",
     "@next/mdx": "15.5.1-canary.31",
     "@octokit/graphql": "^9.0.1",
