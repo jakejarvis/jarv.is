@@ -129,8 +129,8 @@ importers:
         specifier: 19.1.1
         version: 19.1.1
       react-activity-calendar:
-        specifier: ^2.7.13
-        version: 2.7.13(react@19.1.1)
+        specifier: ^2.7.15
+        version: 2.7.15(react@19.1.1)
       react-countup:
         specifier: ^6.5.3
         version: 6.5.3(react@19.1.1)
@@ -4166,8 +4166,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-activity-calendar@2.7.13:
-    resolution: {integrity: sha512-1ZHVgK8QJxtwG52EmcQrxhUQyN1Bv+819IPTTDAGp7Hme3h9IX2thDZJG+KnVbNQ3cjh8DQdfX4wWsTHIw75ug==}
+  react-activity-calendar@2.7.15:
+    resolution: {integrity: sha512-sPO4tDJp+sRbV8F/LhUZ/woHmi4dg0Phd+Kt1Jw0orSfGfEqGCm7fFXiTIAvuuAwpwxqPEYEnfNzOLEfUrdg1A==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
@@ -9192,7 +9192,7 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-activity-calendar@2.7.13(react@19.1.1):
+  react-activity-calendar@2.7.15(react@19.1.1):
     dependencies:
       date-fns: 4.1.0
       react: 19.1.1
