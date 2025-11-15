@@ -138,8 +138,8 @@ importers:
         specifier: 19.1.1
         version: 19.1.1(react@19.1.1)
       react-lite-youtube-embed:
-        specifier: ^2.5.6
-        version: 2.5.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^2.6.0
+        version: 2.6.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.1.12)(react@19.1.1)
@@ -4184,8 +4184,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-lite-youtube-embed@2.5.6:
-    resolution: {integrity: sha512-gbV2SCpAqZOJ/p8wsIbXahONtX3ofh7WZfOR9pCK5kXEbDhTh+bFTOT/fyE+v3ZP4loQkZRqfp8H67gEcGz74w==}
+  react-lite-youtube-embed@2.6.0:
+    resolution: {integrity: sha512-IOz67PY67a/2hlEkiUIBJ9D6TYX7RQnJgCa5J2xgDWd9yhGxEacuamo4c3b5nV6+CwssyL6OCLtgFh2guaKsmw==}
     peerDependencies:
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
@@ -9209,7 +9209,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-lite-youtube-embed@2.5.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  react-lite-youtube-embed@2.6.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
