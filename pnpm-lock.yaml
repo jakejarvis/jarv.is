@@ -129,8 +129,8 @@ importers:
         specifier: 19.1.1
         version: 19.1.1
       react-activity-calendar:
-        specifier: ^2.7.13
-        version: 2.7.13(react@19.1.1)
+        specifier: ^3.0.1
+        version: 3.0.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-countup:
         specifier: ^6.5.3
         version: 6.5.3(react@19.1.1)
@@ -846,6 +846,12 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+
+  '@floating-ui/react@0.27.16':
+    resolution: {integrity: sha512-9O8N4SeG2z++TSM8QA/KTeKFBVCNEz/AGS7gWPJf6KFRzmRWixFRnCnkPHRDwSVZW6QPDO6uT0P2SpWNKCc9/g==}
+    peerDependencies:
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
@@ -4166,8 +4172,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-activity-calendar@2.7.13:
-    resolution: {integrity: sha512-1ZHVgK8QJxtwG52EmcQrxhUQyN1Bv+819IPTTDAGp7Hme3h9IX2thDZJG+KnVbNQ3cjh8DQdfX4wWsTHIw75ug==}
+  react-activity-calendar@3.0.1:
+    resolution: {integrity: sha512-vyZ7tiJeRJ80hi9BEE4sf4kuFzEFZ8NywUnwtguqITr+7Uow5mxNcMJHHV/Ycj0Qv5iq7PV7xCqRzmdlSNkUMw==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
@@ -4713,6 +4719,9 @@ packages:
   synckit@0.11.11:
     resolution: {integrity: sha512-MeQTA1r0litLUf0Rp/iisCaL8761lKAZHaimlbGK4j0HysC4PLfqygQj9srcs0m2RdtDYnF8UuYyKpbjHYp7Jw==}
     engines: {node: ^14.18.0 || >=16.0.0}
+
+  tabbable@6.3.0:
+    resolution: {integrity: sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==}
 
   tailwind-merge@3.3.1:
     resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
@@ -5478,6 +5487,14 @@ snapshots:
       '@floating-ui/dom': 1.7.4
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
+
+  '@floating-ui/react@0.27.16(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@floating-ui/utils': 0.2.10
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      tabbable: 6.3.0
 
   '@floating-ui/utils@0.2.10': {}
 
@@ -9192,10 +9209,13 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-activity-calendar@2.7.13(react@19.1.1):
+  react-activity-calendar@3.0.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
+      '@floating-ui/react': 0.27.16(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       date-fns: 4.1.0
       react: 19.1.1
+    transitivePeerDependencies:
+      - react-dom
 
   react-countup@6.5.3(react@19.1.1):
     dependencies:
@@ -9945,6 +9965,8 @@ snapshots:
   synckit@0.11.11:
     dependencies:
       '@pkgr/core': 0.2.9
+
+  tabbable@6.3.0: {}
 
   tailwind-merge@3.3.1: {}
 
