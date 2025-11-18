@@ -130,7 +130,7 @@
     "typescript": "5.9.2"
   },
   "optionalDependencies": {
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.5"
   },
   "engines": {
     "node": ">=22.x"
