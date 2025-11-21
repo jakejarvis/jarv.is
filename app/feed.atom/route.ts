@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { buildFeed } from "@/lib/build-feed";
 
-export const dynamic = "force-static";
-
 export const GET = async () => {
   const feed = await buildFeed();
 

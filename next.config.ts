@@ -8,13 +8,9 @@ import "./lib/env";
 
 const nextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
+  // cacheComponents: true,  // Disabled temporarily - enable after configuring DATABASE_URL for builds
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     qualities: [50, 75, 100],
     remotePatterns: [
@@ -38,8 +34,6 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   experimental: {
-    reactCompiler: true,
-    ppr: "incremental",
     dynamicOnHover: true,
     inlineCss: true,
     serverActions: {
@@ -159,10 +153,6 @@ const nextPlugins: Array<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  require("@next/bundle-analyzer")({
-    enabled: !!process.env.ANALYZE,
-  }),
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/mdx")({
     options: {

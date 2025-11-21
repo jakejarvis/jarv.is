@@ -1,9 +1,16 @@
+"use client";
+
+import { Suspense } from "react";
 import { env } from "@/lib/env";
 import { HeartIcon } from "lucide-react";
 import Link from "@/components/link";
 import { NextjsIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
+
+const CurrentYear = () => {
+  return <>{new Date().getUTCFullYear()}</>;
+};
 
 const Footer = ({ className, ...rest }: React.ComponentProps<"footer">) => {
   return (
@@ -20,7 +27,11 @@ const Footer = ({ className, ...rest }: React.ComponentProps<"footer">) => {
         <Link href="/previously" title="Previously on..." className="text-foreground/85 hover:no-underline">
           {siteConfig.copyrightYearStart}
         </Link>{" "}
-        – {new Date().getUTCFullYear()}.
+        –{" "}
+        <Suspense fallback={siteConfig.copyrightYearStart}>
+          <CurrentYear />
+        </Suspense>
+        .
       </div>
 
       <div>

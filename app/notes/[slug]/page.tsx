@@ -16,12 +16,6 @@ import { getCommentCounts } from "@/lib/server/comments";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
 
-// https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
-export const dynamicParams = false;
-
-// https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
-export const experimental_ppr = true;
-
 export const generateStaticParams = async () => {
   const slugs = await getSlugs();
 

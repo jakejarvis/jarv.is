@@ -8,8 +8,6 @@ import authorConfig from "@/lib/config/author";
 import { getViewCounts } from "@/lib/views";
 import { getCommentCounts } from "@/lib/server/comments";
 
-export const revalidate = 300; // 5 minutes
-
 export const metadata = createMetadata({
   title: "Notes",
   description: `Recent posts by ${authorConfig.name}.`,
