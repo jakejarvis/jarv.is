@@ -77,6 +77,9 @@ Promise<any> => {
     );
   } catch (error) {
     console.error("[server/views] fatal error:", error);
-    throw new Error("Failed to get views");
+    // Return sensible defaults instead of throwing during prerendering
+    if (typeof slug === "string") return 0;
+    if (Array.isArray(slug)) return Object.fromEntries(slug.map((s: string) => [s, 0]));
+    return {};
   }
 };

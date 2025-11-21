@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect } from "react";
 import { useLocalStorage, useMedia } from "react-use";
 
 export const ThemeContext = createContext<{
@@ -21,16 +21,11 @@ export const ThemeContext = createContext<{
 export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
   // keep track of if/when the user has set their theme *on this site*
   const [preferredTheme, setPreferredTheme] = useLocalStorage<string>("theme", undefined, { raw: true });
-  // keep track of changes to the user's OS/browser dark mode setting
-  const [systemTheme, setSystemTheme] = useState("");
-  // hook into system `prefers-dark-mode` setting
+  // hook into system `prefers-color-scheme` setting
   // https://web.dev/prefers-color-scheme/#the-prefers-color-scheme-media-query
   const isSystemDark = useMedia("(prefers-color-scheme: dark)", false);
-
-  // listen for changes in OS preference, but don't save it as a website preference to local storage
-  useEffect(() => {
-    setSystemTheme(isSystemDark ? "dark" : "light");
-  }, [isSystemDark]);
+  // Derive system theme directly from media query to avoid setState in effect
+  const systemTheme = isSystemDark ? "dark" : "light";
 
   // actual DOM updates must be done in useEffect
   useEffect(() => {

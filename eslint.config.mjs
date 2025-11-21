@@ -1,7 +1,8 @@
-/* eslint-disable import/no-anonymous-default-export */
-
+import { defineConfig, globalIgnores } from "eslint/config";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintCustomConfig from "@jakejarvis/eslint-config";
@@ -12,23 +13,19 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-  {
-    ignores: ["README.md", "next-env.d.ts", ".next", ".vercel", "node_modules", "lib/db/migrations"],
-  },
+const eslintConfig = defineConfig([
+  // Next.js core-web-vitals and TypeScript configs
+  ...nextVitals,
+  ...nextTs,
+  // Other plugins via compat
   ...compat.config({
     plugins: ["react-compiler", "css-modules"],
-    extends: [
-      "eslint:recommended",
-      "next/core-web-vitals",
-      "next/typescript",
-      "plugin:css-modules/recommended",
-      "plugin:drizzle/recommended",
-    ],
+    extends: ["plugin:css-modules/recommended", "plugin:drizzle/recommended"],
   }),
+  // Custom configs
   ...eslintCustomConfig,
   eslintPluginPrettierRecommended,
+  // Custom rules
   {
     rules: {
       camelcase: [
@@ -54,6 +51,7 @@ export default [
       "react-compiler/react-compiler": "error",
     },
   },
+  // MDX support
   {
     ...eslintPluginMdx.flat,
     processor: eslintPluginMdx.createRemarkProcessor({
@@ -64,6 +62,19 @@ export default [
       "mdx/code-blocks": "off",
       "react/jsx-no-undef": "off", // components are injected automatically from mdx-components.ts
       "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-unused-vars": "off", // MDX files often import components that are used implicitly
     },
   },
-];
+  // Ignores (override Next.js defaults)
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    ".vercel/**",
+    "next-env.d.ts",
+    "node_modules/**",
+    "lib/db/migrations/**",
+  ]),
+]);
+
+export default eslintConfig;

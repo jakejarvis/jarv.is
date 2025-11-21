@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { eq, desc, inArray, sql } from "drizzle-orm";
 import { checkBotId } from "botid/server";
 import { db } from "@/lib/db";
@@ -33,7 +33,8 @@ export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> 
     }));
   } catch (error) {
     console.error("[server/comments] error fetching comments:", error);
-    throw new Error("Failed to fetch comments");
+    // Return empty array instead of throwing during prerendering
+    return [];
   }
 };
 
@@ -102,7 +103,10 @@ Promise<any> => {
     return map;
   } catch (error) {
     console.error("[server/comments] error fetching comment counts:", error);
-    throw new Error("Failed to fetch comment counts");
+    // Return sensible defaults instead of throwing during prerendering
+    if (typeof slug === "string") return 0;
+    if (Array.isArray(slug)) return Object.fromEntries(slug.map((s: string) => [s, 0]));
+    return {};
   }
 };
 
@@ -131,7 +135,9 @@ export const createComment = async (data: { content: string; pageSlug: string; p
       userId: session.user.id,
     });
 
-    // Revalidate the page to show the new comment
+    // Revalidate caches and paths
+    revalidateTag("comments", "max");
+    revalidateTag(`comments-${data.pageSlug}`, "max");
     revalidatePath(`/${data.pageSlug}`);
     // Also revalidate the notes listing to update comment count badges
     revalidatePath("/notes");
@@ -183,7 +189,9 @@ export const updateComment = async (commentId: string, content: string) => {
       })
       .where(eq(schema.comment.id, commentId));
 
-    // Revalidate the page to show the updated comment
+    // Revalidate caches and paths
+    revalidateTag("comments", "max");
+    revalidateTag(`comments-${comment.pageSlug}`, "max");
     revalidatePath(`/${comment.pageSlug}`);
     // Also revalidate the notes listing to update comment count badges
     // TODO: make this more generic in case we want to add comments to non-note pages
@@ -230,7 +238,9 @@ export const deleteComment = async (commentId: string) => {
     // Delete the comment
     await db.delete(schema.comment).where(eq(schema.comment.id, commentId));
 
-    // Revalidate the page to update the comments list
+    // Revalidate caches and paths
+    revalidateTag("comments", "max");
+    revalidateTag(`comments-${comment.pageSlug}`, "max");
     revalidatePath(`/${comment.pageSlug}`);
     // Also revalidate the notes listing to update comment count badges
     // TODO: make this more generic in case we want to add comments to non-note pages
