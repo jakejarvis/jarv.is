@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
-import { unstable_cache as cache } from "next/cache";
-import { getViewCounts as _getViewCounts } from "@/lib/views";
-
-const getViewCounts = cache(_getViewCounts, undefined, {
-  revalidate: 300, // 5 minutes
-  tags: ["hits"],
-});
+import { getViewCounts } from "@/lib/views";
 
 export const GET = async (): Promise<
   NextResponse<{

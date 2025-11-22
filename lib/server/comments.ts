@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { revalidatePath, revalidateTag, unstable_cache } from "next/cache";
+import { revalidatePath, revalidateTag, cacheTag } from "next/cache";
 import { eq, desc, inArray, sql } from "drizzle-orm";
 import { checkBotId } from "botid/server";
 import { db } from "@/lib/db";
@@ -12,7 +12,10 @@ export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
 };
 
-const getCommentsRaw = async (pageSlug: string): Promise<CommentWithUser[]> => {
+export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
+  "use cache";
+  cacheTag("comments", `comments-${pageSlug}`);
+
   try {
     // Fetch all comments for the page with user details
     const commentsWithUsers = await db
@@ -38,17 +41,27 @@ const getCommentsRaw = async (pageSlug: string): Promise<CommentWithUser[]> => {
   }
 };
 
-export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
-  return unstable_cache(async () => getCommentsRaw(pageSlug), [`comments-${pageSlug}`], {
-    tags: ["comments", `comments-${pageSlug}`],
-  })();
-};
-
-const getCommentCountsRaw = async (
+export const getCommentCounts: {
+  /**
+   * Retrieves the number of comments for a given slug
+   */
+  (slug: string): Promise<number>;
+  /**
+   * Retrieves the numbers of comments for an array of slugs
+   */
+  (slug: string[]): Promise<Record<string, number>>;
+  /**
+   * Retrieves the numbers of comments for ALL slugs
+   */
+  (): Promise<Record<string, number>>;
+} = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   slug?: any
 ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
 Promise<any> => {
+  "use cache";
+  cacheTag("comments");
+
   try {
     // return one page
     if (typeof slug === "string") {
@@ -101,37 +114,6 @@ Promise<any> => {
     if (Array.isArray(slug)) return Object.fromEntries(slug.map((s: string) => [s, 0]));
     return {};
   }
-};
-
-export const getCommentCounts: {
-  /**
-   * Retrieves the number of comments for a given slug
-   */
-  (slug: string): Promise<number>;
-  /**
-   * Retrieves the numbers of comments for an array of slugs
-   */
-  (slug: string[]): Promise<Record<string, number>>;
-  /**
-   * Retrieves the numbers of comments for ALL slugs
-   */
-  (): Promise<Record<string, number>>;
-} = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  slug?: any
-): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-Promise<any> => {
-  // Create a cache key based on the input
-  const cacheKey =
-    typeof slug === "string"
-      ? `comment-count-${slug}`
-      : Array.isArray(slug)
-        ? `comment-counts-${slug.join(",")}`
-        : "comment-counts-all";
-
-  return unstable_cache(async () => getCommentCountsRaw(slug), [cacheKey], {
-    tags: ["comments"],
-  })();
 };
 
 export const createComment = async (data: { content: string; pageSlug: string; parentId?: string }) => {

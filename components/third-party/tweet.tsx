@@ -1,14 +1,17 @@
-import { unstable_cache as cache } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import Image from "next/image";
 import type { Tweet as TweetType } from "react-tweet/api";
 import { EmbeddedTweet, TweetNotFound } from "react-tweet";
 import { fetchTweet as _fetchTweet } from "react-tweet/api";
 import { cn } from "@/lib/utils";
 
-const fetchTweet = cache(_fetchTweet, undefined, {
-  revalidate: false, // cache indefinitely
-  tags: ["tweet"],
-});
+const fetchTweet = async (id: string) => {
+  "use cache";
+  cacheLife("max"); // cache indefinitely
+  cacheTag("tweet", `tweet-${id}`);
+
+  return _fetchTweet(id);
+};
 
 const TweetContent = ({ data, className }: { data: TweetType; className?: string }) => {
   return (

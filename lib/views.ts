@@ -1,27 +1,9 @@
 import "server-only";
 
-import { eq, inArray, sql } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
+import { cacheTag } from "next/cache";
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
-
-export const incrementViews = async (slug: string): Promise<number> => {
-  try {
-    // Atomic upsert: insert new row with views=1, or increment existing row
-    const [result] = await db
-      .insert(page)
-      .values({ slug, views: 1 })
-      .onConflictDoUpdate({
-        target: page.slug,
-        set: { views: sql`${page.views} + 1` },
-      })
-      .returning({ views: page.views });
-
-    return result.views;
-  } catch (error) {
-    console.error("[view-counter] fatal error:", error);
-    throw new Error("Failed to increment views");
-  }
-};
 
 export const getViewCounts: {
   /**
@@ -41,6 +23,9 @@ export const getViewCounts: {
   slug?: any
 ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
 Promise<any> => {
+  "use cache";
+  cacheTag("views");
+
   try {
     // return one page
     if (typeof slug === "string") {

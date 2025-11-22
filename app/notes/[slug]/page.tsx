@@ -141,13 +141,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
           <EyeIcon className="inline size-4 shrink-0" />
-          <Suspense
-            // when this loads, the component will count up from zero to the actual number of hits, so we can simply
-            // show a zero here as a "loading indicator"
-            fallback={<span className="motion-safe:animate-pulse">0</span>}
-          >
-            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-          </Suspense>
+          <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </div>
       </div>
 

@@ -1,5 +1,4 @@
 import { env } from "@/lib/env";
-import { Suspense } from "react";
 import { cacheLife } from "next/cache";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import Link from "@/components/link";
@@ -9,7 +8,6 @@ import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
 import { getViewCounts } from "@/lib/views";
 import { getCommentCounts } from "@/lib/server/comments";
-import Skeleton from "@/components/ui/skeleton";
 
 export const metadata = createMetadata({
   title: "Notes",
@@ -48,16 +46,35 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
   );
 };
 
+// Cached helper to format dates for posts - needed for Cache Components compatibility
+const getFormattedPostDates = async (posts: FrontMatter[]) => {
+  "use cache";
+  cacheLife("max");
+
+  return posts.map((post) => {
+    const year = new Date(post.date).getUTCFullYear();
+    return {
+      ...post,
+      year,
+      dateISO: formatDateISO(post.date),
+      dateTitle: formatDate(post.date, "MMM d, y, h:mm a O"),
+      dateDisplay: formatDate(post.date, "MMM d"),
+    };
+  });
+};
+
 // Async component that fetches all stats once and renders the full page
 const PostsList = async () => {
-  "use cache";
-  cacheLife("minutes");
-
   // Fetch posts and stats in parallel (only once per page load)
+  // These functions are cached with "use cache", so they can complete during prerendering
   const [posts, views, comments] = await Promise.all([getFrontMatter(), getViewCounts(), getCommentCounts()]);
+
+  // Format dates in a cached function to avoid date-fns using new Date() during render
+  const formattedPosts = await getFormattedPostDates(posts);
 
   const postsByYear: {
     [year: string]: (FrontMatter & {
+      year: number;
       dateISO: string;
       dateTitle: string;
       dateDisplay: string;
@@ -66,14 +83,9 @@ const PostsList = async () => {
     })[];
   } = {};
 
-  posts.forEach((post) => {
-    const year = new Date(post.date).getUTCFullYear();
-    (postsByYear[year] || (postsByYear[year] = [])).push({
+  formattedPosts.forEach((post) => {
+    (postsByYear[post.year] || (postsByYear[post.year] = [])).push({
       ...post,
-      // Pre-compute formatted dates to avoid date-fns calling new Date() during render
-      dateISO: formatDateISO(post.date),
-      dateTitle: formatDate(post.date, "MMM d, y, h:mm a O"),
-      dateDisplay: formatDate(post.date, "MMM d"),
       // Include pre-fetched stats
       views: views[`${POSTS_DIR}/${post.slug}`] || 0,
       comments: comments[`${POSTS_DIR}/${post.slug}`] || 0,
@@ -116,35 +128,8 @@ const PostsList = async () => {
   return <>{sections.reverse()}</>;
 };
 
-// Skeleton loader that matches the posts list structure
-const PostsListSkeleton = () => {
-  return (
-    <section className="my-8 first-of-type:mt-6 last-of-type:mb-6">
-      {/* Year heading skeleton */}
-      <Skeleton className="mb-4 h-10 w-24 md:h-12" />
-      {/* Post items skeletons */}
-      <ul className="space-y-4">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <li className="flex text-base leading-relaxed" key={i}>
-            <span className="text-muted-foreground w-18 shrink-0 md:w-22">
-              <Skeleton className="h-6 w-14" />
-            </span>
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-6 w-full max-w-md" />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
-
-const Page = () => {
-  return (
-    <Suspense fallback={<PostsListSkeleton />}>
-      <PostsList />
-    </Suspense>
-  );
+const Page = async () => {
+  return <PostsList />;
 };
 
 export default Page;
