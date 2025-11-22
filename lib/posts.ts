@@ -54,11 +54,7 @@ export const getFrontMatter: {
    * Parses and returns the front matter of a given slug, or undefined if the slug does not exist
    */
   (slug: string): Promise<FrontMatter | undefined>;
-} = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  slug?: any
-): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-Promise<any> => {
+} = (async (slug?: string) => {
   "use cache";
 
   if (typeof slug === "string") {
@@ -102,16 +98,17 @@ Promise<any> => {
   if (!slug) {
     // concurrently fetch the front matter of each post
     const slugs = await getSlugs();
-    const posts = await Promise.all(slugs.map(getFrontMatter));
+    const allPosts = await Promise.all(slugs.map(getFrontMatter));
+
+    // filter out any undefined entries from failed imports
+    const posts = allPosts.filter((p): p is FrontMatter => !!p);
 
     // sort the results reverse chronologically and return
-    return posts.sort(
-      (post1, post2) => new Date(post2!.date).getTime() - new Date(post1!.date).getTime()
-    ) as FrontMatter[];
+    return posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
   }
 
   throw new Error("getFrontMatter() called with invalid argument.");
-};
+}) as typeof getFrontMatter;
 
 /** Returns the content of a post with very limited processing to include in RSS feeds */
 export const getContent = async (slug: string): Promise<string | undefined> => {

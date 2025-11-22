@@ -18,11 +18,7 @@ export const getViewCounts: {
    * Retrieves the numbers of views for ALL slugs
    */
   (): Promise<Record<string, number>>;
-} = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  slug?: any
-): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-Promise<any> => {
+} = (async (slug?: string | string[]) => {
   "use cache";
   cacheTag("views");
 
@@ -36,7 +32,7 @@ Promise<any> => {
     // return multiple pages
     if (Array.isArray(slug)) {
       const pages = await db.select().from(page).where(inArray(page.slug, slug));
-      const viewMap: Record<string, number> = Object.fromEntries(slug.map((s: string) => [s, 0]));
+      const viewMap: Record<string, number> = Object.fromEntries(slug.map((s) => [s, 0]));
       for (const p of pages) {
         viewMap[p.slug] = p.views;
       }
@@ -56,7 +52,7 @@ Promise<any> => {
     console.error("[server/views] fatal error:", error);
     // Return sensible defaults instead of throwing during prerendering
     if (typeof slug === "string") return 0;
-    if (Array.isArray(slug)) return Object.fromEntries(slug.map((s: string) => [s, 0]));
+    if (Array.isArray(slug)) return Object.fromEntries(slug.map((s) => [s, 0]));
     return {};
   }
-};
+}) as typeof getViewCounts;
