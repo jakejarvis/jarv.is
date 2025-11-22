@@ -31,13 +31,13 @@ export const incrementViews = async (slug: string): Promise<number> => {
 
 export const getViewCounts: {
   /**
-   * Retrieves the number of views for a given slug, or null if the slug does not exist
+   * Retrieves the number of views for a given slug, or 0 if the slug does not exist or on error
    */
-  (slug: string): Promise<number | null>;
+  (slug: string): Promise<number>;
   /**
-   * Retrieves the numbers of views for an array of slugs
+   * Retrieves the numbers of views for an array of slugs, returning 0 for any that don't exist
    */
-  (slug: string[]): Promise<Record<string, number | null>>;
+  (slug: string[]): Promise<Record<string, number>>;
   /**
    * Retrieves the numbers of views for ALL slugs
    */
@@ -51,19 +51,17 @@ Promise<any> => {
     // return one page
     if (typeof slug === "string") {
       const pages = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
-      return pages[0].views;
+      return pages[0]?.views ?? 0; // Return 0 if no row found
     }
 
     // return multiple pages
     if (Array.isArray(slug)) {
       const pages = await db.select().from(page).where(inArray(page.slug, slug));
-      return pages.reduce(
-        (acc, page, index) => {
-          acc[slug[index]] = page.views;
-          return acc;
-        },
-        {} as Record<string, number | null>
-      );
+      const viewMap: Record<string, number> = Object.fromEntries(slug.map((s: string) => [s, 0]));
+      for (const p of pages) {
+        viewMap[p.slug] = p.views;
+      }
+      return viewMap;
     }
 
     // return ALL pages
