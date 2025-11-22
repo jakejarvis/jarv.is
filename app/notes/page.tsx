@@ -15,6 +15,9 @@ export const metadata = createMetadata({
   canonical: `/${POSTS_DIR}`,
 });
 
+// Hoist number formatter to avoid re-creating on every render
+const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
+
 // Non-async component for displaying stats (receives data as props)
 const PostStats = ({ views, comments, slug }: { views: number; comments: number; slug: string }) => {
   return (
@@ -22,23 +25,19 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
       {views > 0 && (
         <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
           <EyeIcon className="inline-block size-4 shrink-0" />
-          <span className="inline-block leading-none">
-            {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(views)}
-          </span>
+          <span className="inline-block leading-none">{numberFormatter.format(views)}</span>
         </span>
       )}
 
       {comments > 0 && (
         <Link
           href={`/${POSTS_DIR}/${slug}#comments`}
-          title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(comments)} ${comments === 1 ? "comment" : "comments"}`}
+          title={`${numberFormatter.format(comments)} ${comments === 1 ? "comment" : "comments"}`}
           className="inline-flex hover:no-underline"
         >
           <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
             <MessagesSquareIcon className="inline-block size-3 shrink-0" />
-            <span className="inline-block leading-none">
-              {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(comments)}
-            </span>
+            <span className="inline-block leading-none">{numberFormatter.format(comments)}</span>
           </span>
         </Link>
       )}
@@ -109,6 +108,7 @@ const PostsList = async () => {
                 </time>
               </span>
               <div className="space-x-2.5">
+                {/* htmlTitle is sanitized by rehypeSanitize in lib/posts.ts with strict allowlist: only code, em, strong tags */}
                 <Link href={`/${POSTS_DIR}/${slug}`} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
 
                 <PostStats slug={slug} views={views} comments={comments} />
