@@ -10,15 +10,7 @@ const fetchTweet = cache(_fetchTweet, undefined, {
   tags: ["tweet"],
 });
 
-const TweetContent = ({ data, className }: { data: TweetType | undefined; className?: string }) => {
-  if (!data) {
-    return (
-      <div className={cn("my-6 min-h-30", className)}>
-        <TweetNotFound />
-      </div>
-    );
-  }
-
+const TweetContent = ({ data, className }: { data: TweetType; className?: string }) => {
   return (
     <div
       className={cn(
