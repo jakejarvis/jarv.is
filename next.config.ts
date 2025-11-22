@@ -7,6 +7,7 @@ import type { NextConfig } from "next";
 import "./lib/env";
 
 const nextConfig = {
+  cacheComponents: true,
   reactStrictMode: true,
   reactCompiler: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],

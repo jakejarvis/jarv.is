@@ -1,6 +1,7 @@
 import "server-only";
 
 import { env } from "@/lib/env";
+import { cacheLife } from "next/cache";
 import * as cheerio from "cheerio";
 import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
@@ -12,17 +13,15 @@ export const getContributions = async (): Promise<
     level: number;
   }>
 > => {
+  "use cache";
+  cacheLife("minutes");
+
   // thanks @grubersjoe! :) https://github.com/grubersjoe/github-contributions-api/blob/main/src/scrape.ts
   try {
     const response = await fetch(`https://github.com/users/${env.NEXT_PUBLIC_GITHUB_USERNAME}/contributions`, {
       headers: {
         referer: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
         "x-requested-with": "XMLHttpRequest",
-      },
-      cache: "force-cache",
-      next: {
-        revalidate: 900, // 15 minutes
-        tags: ["github-contributions"],
       },
     });
 
@@ -78,6 +77,9 @@ export const getContributions = async (): Promise<
 };
 
 export const getRepos = async (): Promise<Repository[] | undefined> => {
+  "use cache";
+  cacheLife("minutes");
+
   try {
     // https://docs.github.com/en/graphql/reference/objects#repository
     const { user } = await graphql<{ user: User }>(
@@ -117,20 +119,6 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
         headers: {
           accept: "application/vnd.github.v3+json",
           authorization: `token ${env.GITHUB_TOKEN}`,
-        },
-        request: {
-          // override fetch() to use next's extension to cache the response
-          // https://nextjs.org/docs/app/api-reference/functions/fetch#fetchurl-options
-          fetch: (url: string | URL | Request, options?: RequestInit) => {
-            return fetch(url, {
-              ...options,
-              cache: "force-cache",
-              next: {
-                revalidate: 900, // 15 minutes
-                tags: ["github-repos"],
-              },
-            });
-          },
         },
       }
     );

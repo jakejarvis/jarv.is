@@ -1,5 +1,6 @@
 import { env } from "@/lib/env";
 import { Suspense } from "react";
+import { cacheLife } from "next/cache";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import Link from "@/components/link";
 import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
@@ -49,6 +50,9 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
 
 // Async component that fetches all stats once and renders the full page
 const PostsList = async () => {
+  "use cache";
+  cacheLife("minutes");
+
   // Fetch posts and stats in parallel (only once per page load)
   const [posts, views, comments] = await Promise.all([getFrontMatter(), getViewCounts(), getCommentCounts()]);
 

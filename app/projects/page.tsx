@@ -101,9 +101,11 @@ const Page = async () => {
               )}
 
               <div className="text-muted-foreground whitespace-nowrap">
-                <span>
-                  Updated <RelativeTime date={repo!.pushedAt} />
-                </span>
+                <Suspense fallback={<span>Updated recently</span>}>
+                  <span>
+                    Updated <RelativeTime date={repo!.pushedAt} />
+                  </span>
+                </Suspense>
               </div>
             </div>
           </div>
