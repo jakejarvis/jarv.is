@@ -58,7 +58,8 @@ const eslintConfig = defineConfig([
       lintCodeBlocks: false,
     }),
     rules: {
-      "mdx/remark": "warn",
+      ...eslintPluginMdx.flat.rules,
+      "mdx/remark": "warn", // keep as warn (matches default)
       "mdx/code-blocks": "off",
       "react/jsx-no-undef": "off", // components are injected automatically from mdx-components.ts
       "react/no-unescaped-entities": "off",
