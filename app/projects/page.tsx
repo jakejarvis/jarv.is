@@ -42,9 +42,13 @@ const Page = async () => {
       </h2>
 
       <Suspense fallback={<p>Failed to generate activity calendar.</p>}>
-        <div className={cn("mx-auto mt-4 mb-8")}>
-          <ActivityCalendar data={contributions} noun="contribution" />
-        </div>
+        {contributions.length > 0 ? (
+          <div className={cn("mx-auto mt-4 mb-8")}>
+            <ActivityCalendar data={contributions} noun="contribution" />
+          </div>
+        ) : (
+          <p className="text-muted-foreground my-4 text-center">Unable to load contribution data at this time.</p>
+        )}
       </Suspense>
 
       <h2 className="my-3.5 text-xl font-medium">
@@ -56,61 +60,65 @@ const Page = async () => {
         </Link>
       </h2>
 
-      <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
-        {repos?.map((repo) => (
-          <div key={repo!.name} className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
-            <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
-              {repo!.name}
-            </Link>
+      {repos && repos.length > 0 ? (
+        <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
+          {repos.map((repo) => (
+            <div key={repo!.name} className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
+              <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
+                {repo!.name}
+              </Link>
 
-            {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
+              {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
 
-            <div className="flex flex-wrap gap-x-4 text-[0.825rem] leading-loose whitespace-nowrap">
-              {repo!.primaryLanguage && (
-                <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-2">
-                  {repo!.primaryLanguage.color && (
-                    <span
-                      className="inline-block size-4 rounded-full bg-[var(--language-color)]"
-                      style={{ ["--language-color" as string]: repo!.primaryLanguage.color }}
-                    />
-                  )}
-                  <span>{repo!.primaryLanguage.name}</span>
+              <div className="flex flex-wrap gap-x-4 text-[0.825rem] leading-loose whitespace-nowrap">
+                {repo!.primaryLanguage && (
+                  <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-2">
+                    {repo!.primaryLanguage.color && (
+                      <span
+                        className="inline-block size-4 rounded-full bg-[var(--language-color)]"
+                        style={{ ["--language-color" as string]: repo!.primaryLanguage.color }}
+                      />
+                    )}
+                    <span>{repo!.primaryLanguage.name}</span>
+                  </div>
+                )}
+
+                {repo!.stargazerCount > 0 && (
+                  <Link
+                    href={`${repo!.url}/stargazers`}
+                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
+                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
+                  >
+                    <StarIcon className="inline-block size-4 shrink-0" />
+                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
+                  </Link>
+                )}
+
+                {repo!.forkCount > 0 && (
+                  <Link
+                    href={`${repo!.url}/network/members`}
+                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
+                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
+                  >
+                    <GitForkIcon className="inline-block size-4" />
+                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
+                  </Link>
+                )}
+
+                <div className="text-muted-foreground whitespace-nowrap">
+                  <Suspense fallback={<span>Updated recently</span>}>
+                    <span>
+                      Updated <RelativeTime date={repo!.pushedAt} />
+                    </span>
+                  </Suspense>
                 </div>
-              )}
-
-              {repo!.stargazerCount > 0 && (
-                <Link
-                  href={`${repo!.url}/stargazers`}
-                  title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
-                  className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
-                >
-                  <StarIcon className="inline-block size-4 shrink-0" />
-                  <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
-                </Link>
-              )}
-
-              {repo!.forkCount > 0 && (
-                <Link
-                  href={`${repo!.url}/network/members`}
-                  title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
-                  className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
-                >
-                  <GitForkIcon className="inline-block size-4" />
-                  <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
-                </Link>
-              )}
-
-              <div className="text-muted-foreground whitespace-nowrap">
-                <Suspense fallback={<span>Updated recently</span>}>
-                  <span>
-                    Updated <RelativeTime date={repo!.pushedAt} />
-                  </span>
-                </Suspense>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-muted-foreground my-4 text-center">Unable to load repository data at this time.</p>
+      )}
 
       <p className="mt-6 mb-0 text-center text-base font-medium">
         <Link href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`} className="hover:no-underline">
