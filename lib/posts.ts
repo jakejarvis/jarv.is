@@ -1,5 +1,4 @@
 import { env } from "@/lib/env";
-import { cache } from "react";
 import path from "path";
 import fs from "fs/promises";
 import glob from "fast-glob";
@@ -31,7 +30,9 @@ export type FrontMatter = {
 export const POSTS_DIR = "notes" as const;
 
 /** Use filesystem to get a simple list of all post slugs */
-export const getSlugs = cache(async (): Promise<string[]> => {
+export const getSlugs = async (): Promise<string[]> => {
+  "use cache";
+
   // list all .mdx files in POSTS_DIR
   const mdxFiles = await glob("*/index.mdx", {
     cwd: path.join(process.cwd(), POSTS_DIR),
@@ -42,7 +43,7 @@ export const getSlugs = cache(async (): Promise<string[]> => {
   const slugs = mdxFiles.map((fileName) => fileName.replace(/\/index\.mdx$/, ""));
 
   return slugs;
-});
+};
 
 export const getFrontMatter: {
   /**
@@ -53,67 +54,66 @@ export const getFrontMatter: {
    * Parses and returns the front matter of a given slug, or undefined if the slug does not exist
    */
   (slug: string): Promise<FrontMatter | undefined>;
-} = cache(
-  async (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    slug?: any
-  ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Promise<any> => {
-    if (typeof slug === "string") {
-      try {
-        const { frontmatter } = await import(`../${POSTS_DIR}/${slug}/index.mdx`);
+} = (async (slug?: string) => {
+  "use cache";
 
-        // process markdown title to html...
-        const htmlTitle = await unified()
-          .use(remarkParse)
-          .use(remarkSmartypants)
-          .use(remarkRehype)
-          .use(rehypeSanitize, {
-            // allow *very* limited markdown to be used in post titles
-            tagNames: ["code", "em", "strong"],
-          })
-          .use(rehypeStringify)
-          .process(frontmatter.title)
-          .then((result) => result.toString().trim());
+  if (typeof slug === "string") {
+    try {
+      const { frontmatter } = await import(`../${POSTS_DIR}/${slug}/index.mdx`);
 
-        // ...and then (sketchily) remove said html for a plaintext version:
-        // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
-        const title = decode(htmlTitle.replace(/<[^>]*>/g, ""));
+      // process markdown title to html...
+      const htmlTitle = await unified()
+        .use(remarkParse)
+        .use(remarkSmartypants)
+        .use(remarkRehype)
+        .use(rehypeSanitize, {
+          // allow *very* limited markdown to be used in post titles
+          tagNames: ["code", "em", "strong"],
+        })
+        .use(rehypeStringify)
+        .process(frontmatter.title)
+        .then((result) => result.toString().trim());
 
-        return {
-          ...(frontmatter as Partial<FrontMatter>),
-          // plain title without html or markdown syntax:
-          title,
-          // stylized title with limited html tags:
-          htmlTitle,
-          slug,
-          // validate/normalize the date string provided from front matter
-          date: new Date(frontmatter.date).toISOString(),
-          permalink: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
-        } as FrontMatter;
-      } catch (error) {
-        console.error(`Failed to load front matter for post with slug "${slug}":`, error);
-        return undefined;
-      }
+      // ...and then (sketchily) remove said html for a plaintext version:
+      // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
+      const title = decode(htmlTitle.replace(/<[^>]*>/g, ""));
+
+      return {
+        ...(frontmatter as Partial<FrontMatter>),
+        // plain title without html or markdown syntax:
+        title,
+        // stylized title with limited html tags:
+        htmlTitle,
+        slug,
+        // validate/normalize the date string provided from front matter
+        date: new Date(frontmatter.date).toISOString(),
+        permalink: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
+      } as FrontMatter;
+    } catch (error) {
+      console.error(`Failed to load front matter for post with slug "${slug}":`, error);
+      return undefined;
     }
-
-    if (!slug) {
-      // concurrently fetch the front matter of each post
-      const slugs = await getSlugs();
-      const posts = await Promise.all(slugs.map(getFrontMatter));
-
-      // sort the results reverse chronologically and return
-      return posts.sort(
-        (post1, post2) => new Date(post2!.date).getTime() - new Date(post1!.date).getTime()
-      ) as FrontMatter[];
-    }
-
-    throw new Error("getFrontMatter() called with invalid argument.");
   }
-);
+
+  if (!slug) {
+    // concurrently fetch the front matter of each post
+    const slugs = await getSlugs();
+    const allPosts = await Promise.all(slugs.map(getFrontMatter));
+
+    // filter out any undefined entries from failed imports
+    const posts = allPosts.filter((p): p is FrontMatter => !!p);
+
+    // sort the results reverse chronologically and return
+    return posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
+  }
+
+  throw new Error("getFrontMatter() called with invalid argument.");
+}) as typeof getFrontMatter;
 
 /** Returns the content of a post with very limited processing to include in RSS feeds */
-export const getContent = cache(async (slug: string): Promise<string | undefined> => {
+export const getContent = async (slug: string): Promise<string | undefined> => {
+  "use cache";
+
   try {
     const content = await unified()
       .use(remarkParse)
@@ -153,4 +153,4 @@ export const getContent = cache(async (slug: string): Promise<string | undefined
     console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
     return undefined;
   }
-});
+};

@@ -1,5 +1,6 @@
 import { env } from "@/lib/env";
 import { Suspense } from "react";
+import { cacheLife } from "next/cache";
 import { JsonLd } from "react-schemaorg";
 import { formatDate, formatDateISO } from "@/lib/date";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon, MessagesSquareIcon } from "lucide-react";
@@ -15,12 +16,6 @@ import { size as ogImageSize } from "./opengraph-image";
 import { getCommentCounts } from "@/lib/server/comments";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
-
-// https://nextjs.org/docs/app/api-reference/functions/generate-static-params#disable-rendering-for-unspecified-paths
-export const dynamicParams = false;
-
-// https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering
-export const experimental_ppr = true;
 
 export const generateStaticParams = async () => {
   const slugs = await getSlugs();
@@ -52,10 +47,23 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   });
 };
 
+// Cached helper to format dates - needed for Cache Components compatibility
+const getFormattedDates = async (date: string) => {
+  "use cache";
+  cacheLife("max");
+
+  return {
+    dateISO: formatDateISO(date),
+    dateTitle: formatDate(date, "MMM d, y, h:mm a O"),
+    dateDisplay: formatDate(date, "MMMM d, y"),
+  };
+};
+
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
   const commentCount = await getCommentCounts(`${POSTS_DIR}/${slug}`);
+  const formattedDates = await getFormattedDates(frontmatter!.date);
 
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
@@ -92,8 +100,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
           <CalendarDaysIcon className="inline size-4 shrink-0" />
-          <time dateTime={formatDateISO(frontmatter!.date)} title={formatDate(frontmatter!.date, "MMM d, y, h:mm a O")}>
-            {formatDate(frontmatter!.date, "MMMM d, y")}
+          <time dateTime={formattedDates.dateISO} title={formattedDates.dateTitle}>
+            {formattedDates.dateDisplay}
           </time>
         </Link>
 
@@ -133,13 +141,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
           <EyeIcon className="inline size-4 shrink-0" />
-          <Suspense
-            // when this loads, the component will count up from zero to the actual number of hits, so we can simply
-            // show a zero here as a "loading indicator"
-            fallback={<span className="motion-safe:animate-pulse">0</span>}
-          >
-            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-          </Suspense>
+          <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </div>
       </div>
 

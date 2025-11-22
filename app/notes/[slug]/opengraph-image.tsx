@@ -13,9 +13,6 @@ export const size = {
   height: 630,
 };
 
-// generate and cache these images at build-time for each slug, since doing this on-demand is mega slow...
-export const dynamicParams = false;
-
 export const generateStaticParams = async () => {
   const slugs = await getSlugs();
 

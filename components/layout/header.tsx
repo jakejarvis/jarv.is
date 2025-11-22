@@ -10,7 +10,6 @@ const Header = ({ className, ...rest }: React.ComponentProps<"header">) => {
   return (
     <header className={cn("flex items-center justify-between", className)} {...rest}>
       <Link
-        dynamicOnHover
         href="/"
         rel="author"
         aria-label={siteConfig.name}

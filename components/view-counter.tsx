@@ -1,26 +1,39 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { env } from "@/lib/env";
-import { connection } from "next/server";
 import CountUp from "@/components/count-up";
-import { incrementViews } from "@/lib/views";
+import { incrementViews } from "@/lib/server/views";
 
-const ViewCounter = async ({ slug }: { slug: string }) => {
-  // ensure this component isn't triggered by prerenders and/or preloads
-  await connection();
+const ViewCounter = ({ slug }: { slug: string }) => {
+  const [views, setViews] = useState<number | null>(null);
+  const [error, setError] = useState(false);
 
-  try {
-    const hits = await incrementViews(slug);
+  useEffect(() => {
+    // Increment views on client mount (outside of render phase)
+    incrementViews(slug)
+      .then((hits) => {
+        setViews(hits);
+      })
+      .catch((error) => {
+        console.error("[view-counter] error:", error);
+        setError(true);
+      });
+  }, [slug]);
 
-    // we have data!
-    return (
-      <span title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(hits)} ${hits === 1 ? "view" : "views"}`}>
-        <CountUp start={0} end={hits} delay={0} duration={1.5} />
-      </span>
-    );
-  } catch (error) {
-    console.error("[view-counter] fatal error:", error);
-
+  if (error) {
     return <span title="Error getting views! :(">?</span>;
   }
+
+  if (views === null) {
+    return <span className="motion-safe:animate-pulse">0</span>;
+  }
+
+  return (
+    <span title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(views)} ${views === 1 ? "view" : "views"}`}>
+      <CountUp start={0} end={views} delay={0} duration={1.5} />
+    </span>
+  );
 };
 
 export default ViewCounter;

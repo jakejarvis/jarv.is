@@ -20,7 +20,7 @@ const Footer = ({ className, ...rest }: React.ComponentProps<"footer">) => {
         <Link href="/previously" title="Previously on..." className="text-foreground/85 hover:no-underline">
           {siteConfig.copyrightYearStart}
         </Link>{" "}
-        – {new Date().getUTCFullYear()}.
+        – 2025.
       </div>
 
       <div>

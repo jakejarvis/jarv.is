@@ -1,5 +1,3 @@
-import * as remarkPlugins from "./lib/remark";
-import * as rehypePlugins from "./lib/rehype";
 import type { NextConfig } from "next";
 
 // check environment variables at build time
@@ -7,14 +5,10 @@ import type { NextConfig } from "next";
 import "./lib/env";
 
 const nextConfig = {
+  cacheComponents: true,
   reactStrictMode: true,
+  reactCompiler: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     qualities: [50, 75, 100],
     remotePatterns: [
@@ -38,9 +32,6 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   experimental: {
-    reactCompiler: true,
-    ppr: "incremental",
-    dynamicOnHover: true,
     inlineCss: true,
     serverActions: {
       // fix CSRF errors from tor reverse proxy
@@ -160,29 +151,20 @@ const nextPlugins: Array<
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  require("@next/bundle-analyzer")({
-    enabled: !!process.env.ANALYZE,
-  }),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/mdx")({
     options: {
-      remarkPlugins: [
-        remarkPlugins.remarkFrontmatter,
-        remarkPlugins.remarkMdxFrontmatter,
-        remarkPlugins.remarkGfm,
-        remarkPlugins.remarkSmartypants,
-      ],
+      remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter", "remark-gfm", "remark-smartypants"],
       rehypePlugins: [
-        rehypePlugins.rehypeUnwrapImages,
-        rehypePlugins.rehypeSlug,
+        "rehype-unwrap-images",
+        "rehype-slug",
         [
-          rehypePlugins.rehypeWrapper,
+          "rehype-wrapper",
           {
             className: "text-[0.925rem] leading-relaxed first:mt-0 last:mb-0 md:text-base [&_p]:my-5",
           },
         ],
-        rehypePlugins.rehypeMdxCodeProps,
-        rehypePlugins.rehypeMdxImportMedia,
+        "rehype-mdx-code-props",
+        "rehype-mdx-import-media",
       ],
     },
   }),
