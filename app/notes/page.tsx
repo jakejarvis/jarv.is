@@ -15,34 +15,29 @@ export const metadata = createMetadata({
   canonical: `/${POSTS_DIR}`,
 });
 
-// Component for dynamic stats (views/comments)
-const PostStats = async ({ slug }: { slug: string }) => {
-  const [views, comments] = await Promise.all([getViewCounts(), getCommentCounts()]);
-
-  const postViews = views[`${POSTS_DIR}/${slug}`] || 0;
-  const postComments = comments[`${POSTS_DIR}/${slug}`] || 0;
-
+// Non-async component for displaying stats (receives data as props)
+const PostStats = ({ views, comments, slug }: { views: number; comments: number; slug: string }) => {
   return (
     <>
-      {postViews > 0 && (
+      {views > 0 && (
         <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
           <EyeIcon className="inline-block size-4 shrink-0" />
           <span className="inline-block leading-none">
-            {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(postViews)}
+            {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(views)}
           </span>
         </span>
       )}
 
-      {postComments > 0 && (
+      {comments > 0 && (
         <Link
           href={`/${POSTS_DIR}/${slug}#comments`}
-          title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(postComments)} ${postComments === 1 ? "comment" : "comments"}`}
+          title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(comments)} ${comments === 1 ? "comment" : "comments"}`}
           className="inline-flex hover:no-underline"
         >
           <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
             <MessagesSquareIcon className="inline-block size-3 shrink-0" />
             <span className="inline-block leading-none">
-              {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(postComments)}
+              {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(comments)}
             </span>
           </span>
         </Link>
@@ -51,12 +46,19 @@ const PostStats = async ({ slug }: { slug: string }) => {
   );
 };
 
-const Page = async () => {
-  // Only fetch the posts, not the dynamic stats
-  const posts = await getFrontMatter();
+// Async component that fetches all stats once and renders the full page
+const PostsList = async () => {
+  // Fetch posts and stats in parallel (only once per page load)
+  const [posts, views, comments] = await Promise.all([getFrontMatter(), getViewCounts(), getCommentCounts()]);
 
   const postsByYear: {
-    [year: string]: (FrontMatter & { dateISO: string; dateTitle: string; dateDisplay: string })[];
+    [year: string]: (FrontMatter & {
+      dateISO: string;
+      dateTitle: string;
+      dateDisplay: string;
+      views: number;
+      comments: number;
+    })[];
   } = {};
 
   posts.forEach((post) => {
@@ -67,6 +69,9 @@ const Page = async () => {
       dateISO: formatDateISO(post.date),
       dateTitle: formatDate(post.date, "MMM d, y, h:mm a O"),
       dateDisplay: formatDate(post.date, "MMM d"),
+      // Include pre-fetched stats
+      views: views[`${POSTS_DIR}/${post.slug}`] || 0,
+      comments: comments[`${POSTS_DIR}/${post.slug}`] || 0,
     });
   });
 
@@ -79,7 +84,7 @@ const Page = async () => {
           {year}
         </h2>
         <ul className="space-y-4">
-          {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
+          {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle, views, comments }) => (
             <li className="flex text-base leading-relaxed" key={slug}>
               <span className="text-muted-foreground w-18 shrink-0 md:w-22">
                 <time dateTime={dateISO} title={dateTitle}>
@@ -93,9 +98,7 @@ const Page = async () => {
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                 />
 
-                <Suspense fallback={null}>
-                  <PostStats slug={slug} />
-                </Suspense>
+                <PostStats slug={slug} views={views} comments={comments} />
               </div>
             </li>
           ))}
@@ -105,9 +108,15 @@ const Page = async () => {
   });
 
   // grouped posts enter this component ordered chronologically -- we want reverse chronological
-  const reversed = sections.reverse();
+  return <>{sections.reverse()}</>;
+};
 
-  return <>{reversed}</>;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PostsList />
+    </Suspense>
+  );
 };
 
 export default Page;
