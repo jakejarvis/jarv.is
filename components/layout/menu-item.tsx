@@ -31,7 +31,6 @@ const MenuItem = ({
   if (href) {
     return (
       <Link
-        dynamicOnHover
         href={href}
         aria-label={text}
         data-current={current || undefined}

@@ -10,8 +10,8 @@
     "url": "https://github.com/jakejarvis"
   },
   "scripts": {
-    "dev": "next dev --webpack -H 0.0.0.0",
-    "build": "next build --webpack",
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

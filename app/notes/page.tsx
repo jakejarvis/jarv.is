@@ -109,11 +109,7 @@ const PostsList = async () => {
                 </time>
               </span>
               <div className="space-x-2.5">
-                <Link
-                  dynamicOnHover
-                  href={`/${POSTS_DIR}/${slug}`}
-                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                />
+                <Link href={`/${POSTS_DIR}/${slug}`} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
 
                 <PostStats slug={slug} views={views} comments={comments} />
               </div>
