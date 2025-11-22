@@ -8,6 +8,7 @@ import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
 import { getViewCounts } from "@/lib/views";
 import { getCommentCounts } from "@/lib/server/comments";
+import Skeleton from "@/components/ui/skeleton";
 
 export const metadata = createMetadata({
   title: "Notes",
@@ -111,9 +112,32 @@ const PostsList = async () => {
   return <>{sections.reverse()}</>;
 };
 
+// Skeleton loader that matches the posts list structure
+const PostsListSkeleton = () => {
+  return (
+    <section className="my-8 first-of-type:mt-6 last-of-type:mb-6">
+      {/* Year heading skeleton */}
+      <Skeleton className="mb-4 h-10 w-24 md:h-12" />
+      {/* Post items skeletons */}
+      <ul className="space-y-4">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <li className="flex text-base leading-relaxed" key={i}>
+            <span className="text-muted-foreground w-18 shrink-0 md:w-22">
+              <Skeleton className="h-6 w-14" />
+            </span>
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-6 w-full max-w-md" />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
+
 const Page = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PostsListSkeleton />}>
       <PostsList />
     </Suspense>
   );
