@@ -5,9 +5,7 @@ import { cn } from "@/lib/utils";
 import reactToText from "react-to-text";
 import { codeToHtml } from "shiki";
 
-interface CodeBlockProps {
-  children?: React.ReactNode;
-  className?: string;
+interface CodeBlockProps extends React.ComponentProps<"pre"> {
   showLineNumbers?: boolean;
   showCopyButton?: boolean;
 }
