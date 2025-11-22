@@ -1,28 +1,22 @@
 import "server-only";
 
-import { eq, inArray } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
 
 export const incrementViews = async (slug: string): Promise<number> => {
   try {
-    // First, try to find the existing record
-    const existingPage = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
+    // Atomic upsert: insert new row with views=1, or increment existing row
+    const [result] = await db
+      .insert(page)
+      .values({ slug, views: 1 })
+      .onConflictDoUpdate({
+        target: page.slug,
+        set: { views: sql`${page.views} + 1` },
+      })
+      .returning({ views: page.views });
 
-    if (existingPage.length === 0) {
-      // Create new record if it doesn't exist
-      await db.insert(page).values({ slug, views: 1 }).execute();
-
-      return 1; // New record starts with 1 hit
-    } else {
-      // Calculate new hit count
-      const newViewCount = existingPage[0].views + 1;
-
-      // Update existing record by incrementing hits
-      await db.update(page).set({ views: newViewCount }).where(eq(page.slug, slug)).execute();
-
-      return newViewCount;
-    }
+    return result.views;
   } catch (error) {
     console.error("[view-counter] fatal error:", error);
     throw new Error("Failed to increment views");
