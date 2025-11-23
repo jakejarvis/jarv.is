@@ -2,6 +2,7 @@ import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { GitForkIcon, StarIcon } from "lucide-react";
+import Skeleton from "@/components/ui/skeleton";
 import PageTitle from "@/components/layout/page-title";
 import Link from "@/components/link";
 import RelativeTime from "@/components/relative-time";
@@ -41,7 +42,7 @@ const Page = async () => {
         </Link>
       </h2>
 
-      <Suspense fallback={<p>Failed to generate activity calendar.</p>}>
+      <Suspense fallback={<Skeleton className="h-40 w-full" />}>
         {contributions.length > 0 ? (
           <div className={cn("mx-auto mt-4 mb-8")}>
             <ActivityCalendar data={contributions} noun="contribution" />
@@ -106,7 +107,7 @@ const Page = async () => {
                 )}
 
                 <div className="text-muted-foreground whitespace-nowrap">
-                  <Suspense fallback={<span>Updated recently</span>}>
+                  <Suspense fallback={null}>
                     <span>
                       Updated <RelativeTime date={repo!.pushedAt} />
                     </span>

@@ -170,4 +170,9 @@
 
 @layer components {
   @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
+  /* styles for wrapper around generated markdown content */
+  .generated {
+    @apply text-[0.925rem] leading-relaxed first:mt-0 last:mb-0 md:text-base [&_p]:my-5;
+  }
 }

@@ -157,12 +157,7 @@ const nextPlugins: Array<
       rehypePlugins: [
         "rehype-unwrap-images",
         "rehype-slug",
-        [
-          "rehype-wrapper",
-          {
-            className: "text-[0.925rem] leading-relaxed first:mt-0 last:mb-0 md:text-base [&_p]:my-5",
-          },
-        ],
+        ["rehype-wrapper", { className: "generated" }],
         "rehype-mdx-code-props",
         "rehype-mdx-import-media",
       ],
