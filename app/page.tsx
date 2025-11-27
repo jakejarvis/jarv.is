@@ -93,6 +93,7 @@ const Page = () => {
         I fell in love with{" "}
         <Link
           href="/previously"
+          prefetch={false}
           title="My Terrible, Horrible, No Good, Very Bad First Websites"
           className="[--primary:#4169e1] dark:[--primary:#8ca9ff]"
         >
@@ -101,6 +102,7 @@ const Page = () => {
         and{" "}
         <Link
           href="/notes/my-first-code"
+          prefetch={false}
           title="Jake's Bulletin Board, circa 2003"
           className="[--primary:#9932cc] dark:[--primary:#d588fb]"
         >
@@ -109,6 +111,7 @@ const Page = () => {
         when my only source of income was{" "}
         <Link
           href="/birthday"
+          prefetch={false}
           title="🎉 Cranky Birthday Boy on VHS Tape 📼"
           className="[--primary:#e40088] dark:[--primary:#fd40b1]"
           style={{
@@ -132,6 +135,7 @@ const Page = () => {
         , an AI-powered bedtime story generator. Over the years, some of my other side projects{" "}
         <Link
           href="/leo"
+          prefetch={false}
           title="Powncer segment on The Lab with Leo Laporte (G4techTV)"
           className="[--primary:#ff1b1b] dark:[--primary:#f06060]"
         >
@@ -196,7 +200,12 @@ const Page = () => {
           LinkedIn
         </Link>
         . I&rsquo;m always available to connect over{" "}
-        <Link href="/contact" title="Send an email" className="[--primary:#de0c0c] dark:[--primary:#ff5050]">
+        <Link
+          href="/contact"
+          prefetch={false}
+          title="Send an email"
+          className="[--primary:#de0c0c] dark:[--primary:#ff5050]"
+        >
           email
         </Link>{" "}
         <sup className="mr-0.5 text-[0.6rem]">

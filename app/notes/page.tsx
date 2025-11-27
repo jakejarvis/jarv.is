@@ -32,6 +32,7 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
       {comments > 0 && (
         <Link
           href={`/${POSTS_DIR}/${slug}#comments`}
+          prefetch={false}
           title={`${numberFormatter.format(comments)} ${comments === 1 ? "comment" : "comments"}`}
           className="inline-flex hover:no-underline"
         >
@@ -109,7 +110,11 @@ const PostsList = async () => {
               </span>
               <div className="space-x-2.5">
                 {/* htmlTitle is sanitized by rehypeSanitize in lib/posts.ts with strict allowlist: only code, em, strong tags */}
-                <Link href={`/${POSTS_DIR}/${slug}`} dangerouslySetInnerHTML={{ __html: htmlTitle || title }} />
+                <Link
+                  href={`/${POSTS_DIR}/${slug}`}
+                  prefetch={false}
+                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                />
 
                 <PostStats slug={slug} views={views} comments={comments} />
               </div>

@@ -32,6 +32,7 @@ const MenuItem = ({
     return (
       <Link
         href={href}
+        prefetch={false}
         aria-label={text}
         data-current={current || undefined}
         className="text-foreground/85 hover:border-b-ring/80 data-current:border-b-primary/60 inline-flex items-center hover:no-underline"

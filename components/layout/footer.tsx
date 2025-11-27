@@ -13,11 +13,16 @@ const Footer = ({ className, ...rest }: React.ComponentProps<"footer">) => {
     >
       <div>
         Content{" "}
-        <Link href="/license" className="text-foreground/85 hover:no-underline">
+        <Link href="/license" prefetch={false} className="text-foreground/85 hover:no-underline">
           licensed under {siteConfig.license}
         </Link>
         ,{" "}
-        <Link href="/previously" title="Previously on..." className="text-foreground/85 hover:no-underline">
+        <Link
+          href="/previously"
+          prefetch={false}
+          title="Previously on..."
+          className="text-foreground/85 hover:no-underline"
+        >
           {siteConfig.copyrightYearStart}
         </Link>{" "}
         – 2025.
