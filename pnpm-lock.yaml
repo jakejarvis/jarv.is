@@ -135,8 +135,8 @@ importers:
         specifier: 19.2.1
         version: 19.2.1(react@19.2.1)
       react-lite-youtube-embed:
-        specifier: ^3.3.2
-        version: 3.3.2(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        specifier: ^3.3.3
+        version: 3.3.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.7)(react@19.2.1)
@@ -3886,6 +3886,7 @@ packages:
   next@16.0.3:
     resolution: {integrity: sha512-Ka0/iNBblPFcIubTA1Jjh6gvwqfjrGq1Y2MTI5lbjeLIAfmC+p5bQmojpRZqgHHVu5cG4+qdIiwXiBSm/8lZ3w==}
     engines: {node: '>=20.9.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/CVE-2025-66478 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -4226,8 +4227,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-lite-youtube-embed@3.3.2:
-    resolution: {integrity: sha512-54+Q19NCdLFmidg06USaHR/yQ7q8izNjSxNehOVipxhvXMbjqCTWTOROJyIwTnL62VmtTxLpUW15rPI6pry9gw==}
+  react-lite-youtube-embed@3.3.3:
+    resolution: {integrity: sha512-RGrRpVu4cUKnIlS0/mZoWdS4rwdL0xAWpinbnzW+RsVrzh28URzTLl5zdOazlDbm6C0UM4ssnChbgcmEflr35Q==}
     peerDependencies:
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
@@ -9337,7 +9338,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-lite-youtube-embed@3.3.2(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+  react-lite-youtube-embed@3.3.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
