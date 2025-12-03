@@ -9,7 +9,6 @@
     {
       "matchPackageNames": ["next", "@next/*", "eslint-config-next"],
       "groupName": "next.js",
-      "followTag": "canary",
       "rangeStrategy": "pin"
     },
     {
