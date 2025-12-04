@@ -107,7 +107,7 @@
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "cross-env": "^10.1.0",
     "dotenv": "^17.2.3",
-    "drizzle-kit": "^0.31.7",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.7",
     "eslint-config-prettier": "^10.1.8",
