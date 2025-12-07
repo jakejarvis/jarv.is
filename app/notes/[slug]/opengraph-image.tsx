@@ -65,174 +65,172 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
 
     // template is HEAVILY inspired by https://og-new.clerkstage.dev/
     return new ImageResponse(
-      (
+      <div
+        style={{
+          ...size,
+          display: "flex",
+          flexDirection: "column",
+          background: "linear-gradient(to top right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
+        }}
+      >
         <div
           style={{
-            ...size,
+            height: "100%",
+            width: "100%",
+            position: "absolute",
+            inset: 0,
+            filter: "brightness(100%) contrast(150%)",
+            opacity: "0.1",
+            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500"><filter id="noise" x="0" y="0"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feBlend mode="screen"/></filter><rect width="500" height="500" filter="url(#noise)" opacity="1"/></svg>')`,
+            backgroundRepeat: "repeat",
+          }}
+        ></div>
+
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+            position: "absolute",
+            opacity: "0.4",
+            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill-rule="evenodd" fill="#6b7280" fill-opacity="0.4"><g><path opacity="0.5" d="M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z"/><path d="M6 5V0H5v5H0v1h5v94h1V6h94V5H6z"/></g></g></svg>')`,
+            maskImage: "radial-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%)",
+          }}
+        ></div>
+
+        <div
+          style={{
             display: "flex",
-            flexDirection: "column",
-            background: "linear-gradient(to top right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
+            width: "100%",
+            gap: "1.5rem",
+            paddingLeft: "2rem",
           }}
         >
           <div
             style={{
-              height: "100%",
-              width: "100%",
-              position: "absolute",
-              inset: 0,
-              filter: "brightness(100%) contrast(150%)",
-              opacity: "0.1",
-              backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500"><filter id="noise" x="0" y="0"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feBlend mode="screen"/></filter><rect width="500" height="500" filter="url(#noise)" opacity="1"/></svg>')`,
-              backgroundRepeat: "repeat",
-            }}
-          ></div>
-
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-              position: "absolute",
-              opacity: "0.4",
-              backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill-rule="evenodd" fill="#6b7280" fill-opacity="0.4"><g><path opacity="0.5" d="M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z"/><path d="M6 5V0H5v5H0v1h5v94h1V6h94V5H6z"/></g></g></svg>')`,
-              maskImage: "radial-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%)",
-            }}
-          ></div>
-
-          <div
-            style={{
               display: "flex",
-              width: "100%",
-              gap: "1.5rem",
-              paddingLeft: "2rem",
+              flexDirection: "column",
+              rowGap: "1.5rem",
+              flexShrink: 0,
+              paddingTop: "2rem",
+              // don't wrap the title text if there's no image to leave room for
+              width: postImg ? "35%" : "100%",
+              marginRight: "0.75rem",
             }}
           >
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
-                rowGap: "1.5rem",
-                flexShrink: 0,
-                paddingTop: "2rem",
-                // don't wrap the title text if there's no image to leave room for
-                width: postImg ? "35%" : "100%",
-                marginRight: "0.75rem",
+                marginBottom: "0.75rem",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {avatarImg && (
-                  <img
-                    // @ts-expect-error
-                    src={avatarImg}
-                    alt=""
-                    style={{
-                      width: "3rem",
-                      height: "3rem",
-                      borderRadius: "50%",
-                    }}
-                  />
-                )}
-                <span
-                  style={{
-                    fontSize: "1.825rem",
-                    fontFamily: "Geist-SemiBold",
-                    fontWeight: 700,
-                    lineHeight: "3rem",
-                    letterSpacing: "-0.015em",
-                    marginLeft: "0.75rem",
-                  }}
-                >
-                  {siteConfig.name}
-                </span>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexGrow: 0,
-                  fontFamily: "Geist-SemiBold",
-                  fontWeight: 700,
-                  fontSize: "48px",
-                  color: "#030712",
-                  letterSpacing: "-0.025em",
-                  lineHeight: "1.2",
-                }}
-              >
-                {frontmatter!.title}
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexGrow: 0,
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "Geist-Regular",
-                    fontWeight: 400,
-                    fontSize: "20px",
-                    color: "#030712",
-                    border: "solid",
-                    borderRadius: "100",
-                    borderWidth: "2px",
-                    paddingRight: "16px",
-                    paddingLeft: "16px",
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  {POSTS_DIR.charAt(0).toUpperCase() + POSTS_DIR.slice(1)}
-                </span>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexGrow: 0,
-                  fontFamily: "Geist-Regular",
-                  fontWeight: 400,
-                  fontSize: "24px",
-                  color: "#030712",
-                  letterSpacing: "-0.025em",
-                  lineHeight: "1.2",
-                }}
-              >
-                {new Date(frontmatter!.date).toLocaleDateString(env.NEXT_PUBLIC_SITE_LOCALE, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </div>
-            </div>
-
-            {postImg && (
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%", // less than half in reality, but this gives the image the overflow look
-                  flexGrow: 0,
-                }}
-              >
+              {avatarImg && (
                 <img
                   // @ts-expect-error
-                  src={postImg}
+                  src={avatarImg}
                   alt=""
                   style={{
-                    maxHeight: "100%",
-                    minHeight: 630,
-                    width: "auto",
+                    width: "3rem",
+                    height: "3rem",
+                    borderRadius: "50%",
                   }}
                 />
-              </div>
-            )}
+              )}
+              <span
+                style={{
+                  fontSize: "1.825rem",
+                  fontFamily: "Geist-SemiBold",
+                  fontWeight: 700,
+                  lineHeight: "3rem",
+                  letterSpacing: "-0.015em",
+                  marginLeft: "0.75rem",
+                }}
+              >
+                {siteConfig.name}
+              </span>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexGrow: 0,
+                fontFamily: "Geist-SemiBold",
+                fontWeight: 700,
+                fontSize: "48px",
+                color: "#030712",
+                letterSpacing: "-0.025em",
+                lineHeight: "1.2",
+              }}
+            >
+              {frontmatter!.title}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexGrow: 0,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "Geist-Regular",
+                  fontWeight: 400,
+                  fontSize: "20px",
+                  color: "#030712",
+                  border: "solid",
+                  borderRadius: "100",
+                  borderWidth: "2px",
+                  paddingRight: "16px",
+                  paddingLeft: "16px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                {POSTS_DIR.charAt(0).toUpperCase() + POSTS_DIR.slice(1)}
+              </span>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexGrow: 0,
+                fontFamily: "Geist-Regular",
+                fontWeight: 400,
+                fontSize: "24px",
+                color: "#030712",
+                letterSpacing: "-0.025em",
+                lineHeight: "1.2",
+              }}
+            >
+              {new Date(frontmatter!.date).toLocaleDateString(env.NEXT_PUBLIC_SITE_LOCALE, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </div>
           </div>
+
+          {postImg && (
+            <div
+              style={{
+                display: "flex",
+                width: "100%", // less than half in reality, but this gives the image the overflow look
+                flexGrow: 0,
+              }}
+            >
+              <img
+                // @ts-expect-error
+                src={postImg}
+                alt=""
+                style={{
+                  maxHeight: "100%",
+                  minHeight: 630,
+                  width: "auto",
+                }}
+              />
+            </div>
+          )}
         </div>
-      ),
+      </div>,
       {
         ...size,
         fonts: [
