@@ -51,7 +51,7 @@
     "clsx": "^2.1.1",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^4.1.0",
-    "drizzle-orm": "^0.45.0",
+    "drizzle-orm": "^0.45.1",
     "fast-glob": "^3.3.3",
     "feed": "^5.1.0",
     "geist": "^1.5.1",
