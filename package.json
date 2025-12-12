@@ -57,7 +57,7 @@
     "geist": "^1.5.1",
     "html-entities": "^2.6.0",
     "lucide-react": "0.556.0",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "react": "19.2.3",
     "react-activity-calendar": "^3.0.1",
     "react-countup": "^6.5.3",
