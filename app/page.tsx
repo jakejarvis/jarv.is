@@ -126,9 +126,17 @@ const Page = () => {
       <p className="my-3 text-base leading-relaxed md:text-[0.975rem]">
         I&rsquo;m currently building{" "}
         <Link
+          href="https://domainstack.io"
+          title="Domainstack: Domain intelligence made easy"
+          className="font-medium [--primary:#a054d0] dark:[--primary:#dd9fff]"
+        >
+          Domainstack
+        </Link>
+        , a beautiful all-in-one domain name intelligence tool, and{" "}
+        <Link
           href="https://snoozle.ai"
           title="Snoozle: AI-powered bedtime stories for children"
-          className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text font-semibold text-transparent [--primary:#a855f7] dark:from-purple-400 dark:to-pink-400 dark:[--primary:#c084fc]"
+          className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text font-medium text-transparent [--primary:#a855f7] dark:from-purple-400 dark:to-pink-400 dark:[--primary:#c084fc]"
         >
           Snoozle
         </Link>
