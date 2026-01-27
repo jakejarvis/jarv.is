@@ -145,7 +145,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
       </div>
 
-      <h1 className="mt-2 mb-3 text-3xl/10 font-bold md:text-4xl/12">
+      <h1 className="mt-4 mb-5 text-4xl font-semibold tracking-tight sm:text-3xl">
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}

@@ -1,59 +1,52 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import * as React from "react";
 import copy from "copy-to-clipboard";
-import { ClipboardIcon, CheckIcon } from "lucide-react";
+import { CheckIcon, CopyIcon } from "lucide-react";
+import Button from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-const CopyButton = ({
-  source,
-  timeout = 2000,
+function CopyButton({
+  value,
   className,
-  ...rest
-}: React.ComponentProps<"button"> & {
-  source: string;
-  timeout?: number;
-}) => {
-  const [copied, setCopied] = useState(false);
+  variant = "ghost",
+  tooltip = "Copy to Clipboard",
+  ...props
+}: React.ComponentProps<typeof Button> & {
+  value: string;
+  tooltip?: string;
+}) {
+  const [hasCopied, setHasCopied] = React.useState(false);
 
-  const handleCopy: React.MouseEventHandler<React.ComponentRef<"button">> = (e) => {
-    // prevent unintentional double-clicks by unfocusing button
-    e.currentTarget.blur();
-
-    // send plaintext to the clipboard
-    const didCopy = copy(source);
-
-    // indicate success
-    setCopied(didCopy);
-  };
-
-  useEffect(() => {
-    if (!copied) {
-      return;
-    }
-
-    // reset to original icon after given ms (defaults to 2 seconds)
-    const reset = setTimeout(() => {
-      setCopied(false);
-    }, timeout);
-
-    // cancel timeout to avoid memory leaks if unmounted in the middle of this
-    return () => {
-      clearTimeout(reset);
-    };
-  }, [timeout, copied]);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 2000);
+  }, []);
 
   return (
-    <button
-      onClick={handleCopy}
-      disabled={copied}
-      className={cn("cursor-pointer disabled:cursor-default", className)}
-      {...rest}
-    >
-      {copied ? <CheckIcon className="stroke-success" /> : <ClipboardIcon />}
-      <span className="sr-only">{copied ? "Copied" : "Copy to clipboard"}</span>
-    </button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          data-slot="copy-button"
+          data-copied={hasCopied}
+          size="icon"
+          variant={variant}
+          className={cn(
+            "bg-code absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
+            className
+          )}
+          onClick={() => copy(value)}
+          {...props}
+        >
+          <span className="sr-only">Copy</span>
+          {hasCopied ? <CheckIcon /> : <CopyIcon />}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
+    </Tooltip>
   );
-};
+}
 
 export default CopyButton;

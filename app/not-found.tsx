@@ -1,3 +1,4 @@
+import Button from "@/components/ui/button";
 import Video from "@/components/video";
 import Link from "@/components/link";
 import type { Metadata } from "next";
@@ -23,9 +24,9 @@ const Page = () => {
       <div className="mt-6 text-center">
         <h1 className="my-2 text-2xl font-semibold md:text-3xl">Page Not Found</h1>
 
-        <p className="mt-4 mb-0 text-lg font-medium md:text-xl">
+        <Button className="mt-4 mb-0 text-[15px] leading-none" size="lg" asChild>
           <Link href="/">Go home?</Link>
-        </p>
+        </Button>
       </div>
     </>
   );

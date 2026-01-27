@@ -96,8 +96,8 @@ const PostsList = async () => {
 
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
-      <section className="my-8 first-of-type:mt-6 last-of-type:mb-6" key={year}>
-        <h2 id={year} className="mt-0 mb-4 text-3xl font-bold md:text-4xl">
+      <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
+        <h2 id={year} className="mt-0 mb-4 text-4xl font-semibold tracking-tight sm:text-3xl">
           {year}
         </h2>
         <ul className="space-y-4">
@@ -114,6 +114,7 @@ const PostsList = async () => {
                   href={`/${POSTS_DIR}/${slug}`}
                   prefetch={false}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                  className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
                 />
 
                 <PostStats slug={slug} views={views} comments={comments} />

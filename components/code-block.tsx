@@ -70,7 +70,7 @@ const CodeBlock = async (props: CodeBlockProps) => {
       )}
       {showCopyButton && (
         <CopyButton
-          source={codeString}
+          value={codeString}
           className="text-foreground/75 hover:text-primary bg-muted/40 absolute top-0 right-0 z-10 size-10 rounded-tr-md rounded-bl-lg border-b-2 border-l-2 p-0 backdrop-blur-sm select-none [&_svg]:my-auto [&_svg]:inline-block [&_svg]:size-4.5 [&_svg]:align-text-bottom"
         />
       )}
