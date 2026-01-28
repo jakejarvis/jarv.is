@@ -163,15 +163,6 @@ const nextPlugins: Array<
             className: "prose prose-sm prose-neutral dark:prose-invert max-w-none",
           },
         ],
-        [
-          "@shikijs/rehype",
-          {
-            themes: {
-              light: "github-light",
-              dark: "github-dark",
-            },
-          } satisfies import("@shikijs/rehype").RehypeShikiOptions,
-        ],
         "rehype-mdx-code-props",
         "rehype-mdx-import-media",
       ],

@@ -1,7 +1,6 @@
 import NextImage from "next/image";
 import Link from "@/components/link";
-import CopyButton from "@/components/copy-button";
-import reactToText from "react-to-text";
+import CodeBlock from "@/components/code-block";
 import Video from "@/components/video";
 import ImageDiff from "@/components/image-diff";
 import Tweet from "@/components/third-party/tweet";
@@ -15,6 +14,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
   return {
     ...components,
     a: Link,
+    pre: CodeBlock,
     img: ({ src, className, ...rest }) => (
       <NextImage
         src={src}
@@ -27,43 +27,8 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
         {...rest}
       />
     ),
-    pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
-      return (
-        <pre
-          className={cn(
-            "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0",
-            className
-          )}
-          {...props}
-        >
-          {children}
-        </pre>
-      );
-    },
-    code: ({ className, ...props }: React.ComponentProps<"code">) => {
-      // Inline Code.
-      if (typeof props.children === "string") {
-        return (
-          <code
-            className={cn(
-              "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
-              className
-            )}
-            {...props}
-          />
-        );
-      }
 
-      // Default codeblock.
-      return (
-        <>
-          <CopyButton value={reactToText(props.children)} />
-          <code {...props} />
-        </>
-      );
-    },
-
-    // react components and embeds:
+    // React components and embeds:
     Video,
     ImageDiff,
     Tweet,
