@@ -114,7 +114,7 @@ const PostsList = async () => {
                   href={`/${POSTS_DIR}/${slug}`}
                   prefetch={false}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                  className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
+                  className="text-lg font-medium underline-offset-4 hover:underline md:text-base"
                 />
 
                 <PostStats slug={slug} views={views} comments={comments} />
