@@ -62,19 +62,19 @@ const PostStats = ({ slug }: { slug: string }) => {
   return (
     <>
       {viewCount > 0 && (
-        <Badge variant="secondary" className="tabular-nums">
-          <EyeIcon className="text-foreground/85" aria-hidden="true" />
+        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums">
+          <EyeIcon className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
         </Badge>
       )}
 
       {commentCount > 0 && (
-        <Badge variant="secondary" className="tabular-nums" asChild>
+        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums" asChild>
           <Link
             href={`/${slug}#comments`}
             title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
           >
-            <MessagesSquareIcon className="text-foreground/85" aria-hidden="true" />
+            <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
             {numberFormatter.format(commentCount)}
           </Link>
         </Badge>

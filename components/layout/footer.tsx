@@ -5,20 +5,21 @@ import siteConfig from "@/lib/config/site";
 const Footer = () => {
   return (
     <footer className="text-muted-foreground mt-8 w-full py-6 text-center text-[13px] leading-loose">
-      Content <Link href="/license">licensed under {siteConfig.license}</Link>,{" "}
-      <Link href="/previously" title="Previously on...">
-        {siteConfig.copyrightYearStart}
-      </Link>{" "}
-      – 2026.{" "}
+      All content is licensed under{" "}
+      <Link href="/license" className="underline underline-offset-4">
+        {siteConfig.license}
+      </Link>
+      . Code is{" "}
       <a
         href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}`}
         target="_blank"
         rel="noopener noreferrer"
         title="View Source on GitHub"
-        className="font-medium underline underline-offset-4"
+        className="underline underline-offset-4"
       >
-        View source.
+        open source
       </a>
+      .
     </footer>
   );
 };

@@ -147,6 +147,9 @@ importers:
         specifier: 19.2.4
         version: 19.2.4
       react-activity-calendar:
+        specifier: ^3.1.1
+        version: 3.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react-compare-slider:
         specifier: ^3.1.0
         version: 3.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react-countup:
@@ -240,7 +243,7 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
       use-debounce:
-        specifier: ^10.0.4
+        specifier: ^10.1.0
         version: 10.1.0(react@19.2.4)
       zod:
         specifier: ^4.3.6
@@ -4375,10 +4378,17 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-activity-calendar@3.1.0:
-    resolution: {integrity: sha512-KUkzV9Jz60ueKiIDVkWaDO5HqyMyWUrKtPJ1bS8DfOOlQ4maZDSreGN6A+jHl1z1R2JrBn7O/VJtiQ/aT30KHw==}
+  react-activity-calendar@3.1.1:
+    resolution: {integrity: sha512-YvHNS4anlW3Xy0fxOU2ZTWrJkOt0ALxX8IfgDRg6jr/vgYsbh//4djf2c7CPhYNROh+5oYZzR0EJaPbrFUj2tA==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
+
+  react-compare-slider@3.1.0:
+    resolution: {integrity: sha512-TQVbZYmYyTIeKRmQciVXCmUwHjTThQTON7GfWfzMAOInRRG9tCiQnVXnCUd5DJ5l3Hngh4IEzOb9TG82gjoEhQ==}
+    engines: {node: '>=16.9.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   react-countup@6.5.3:
     resolution: {integrity: sha512-udnqVQitxC7QWADSPDOxVWULkLvKUWrDapn5i53HE4DPRVgs+Y5rr4bo25qEl8jSh+0l2cToJgGMx+clxPM3+w==}
@@ -9427,13 +9437,18 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-activity-calendar@3.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  react-activity-calendar@3.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       '@floating-ui/react': 0.27.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       date-fns: 4.1.0
       react: 19.2.4
     transitivePeerDependencies:
       - react-dom
+
+  react-compare-slider@3.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
 
   react-countup@6.5.3(react@19.2.4):
     dependencies:

@@ -4,7 +4,6 @@ const siteConfig = {
   description:
     "Hi there! I'm a frontend web developer based in Boston, Massachusetts specializing in TypeScript, React, Next.js, and other JavaScript frameworks.",
   license: "CC-BY-4.0",
-  copyrightYearStart: 2001,
 } as const;
 
 export default siteConfig;
