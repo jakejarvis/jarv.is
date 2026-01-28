@@ -1,11 +1,11 @@
 "use client";
 
-import { ThemeProvider } from "@/components/theme/theme-context";
+import { ThemeProvider } from "next-themes";
 import { ProgressProvider } from "@bprogress/next/app";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <ProgressProvider
         height="calc(var(--spacing) * 1)"
         color="var(--primary)"

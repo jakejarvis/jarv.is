@@ -3,7 +3,7 @@
 @plugin "@tailwindcss/typography";
 @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
-@custom-variant dark (&:where([data-theme=dark] *));
+@custom-variant dark (&:where(.dark *));
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
@@ -103,7 +103,7 @@
   --selection-foreground: oklch(1 0 0);
 }
 
-[data-theme="dark"] {
+.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

@@ -1,7 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import Providers from "@/components/providers";
-import { ThemeScript } from "@/components/theme/theme-script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Toaster from "@/components/ui/sonner";
@@ -24,8 +23,6 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
       suppressHydrationWarning
     >
       <head>
-        <ThemeScript />
-
         <JsonLd<Person>
           item={{
             "@context": "https://schema.org",

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "@/components/link";
 import Button from "@/components/ui/button";
@@ -8,14 +9,13 @@ import Separator from "@/components/ui/separator";
 import Menu from "@/components/layout/menu";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
-import { ThemeContext } from "@/components/theme/theme-context";
 import { MoonIcon, SunIcon } from "lucide-react";
 
 import avatarImg from "@/app/avatar.jpg";
 
 const Header = ({ className }: { className?: string }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
