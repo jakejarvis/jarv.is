@@ -96,25 +96,25 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 -mt-1 flex flex-wrap justify-items-start gap-x-4 text-[0.8rem] leading-9 tracking-wide md:text-[0.85rem]">
+      <div className="text-foreground/70 flex flex-wrap justify-items-start gap-4 text-[13px] tracking-wide">
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
-          className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
+          className={"text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"}
         >
-          <CalendarDaysIcon className="inline size-4 shrink-0" aria-hidden="true" />
+          <CalendarDaysIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <time dateTime={formattedDates.dateISO} title={formattedDates.dateTitle}>
             {formattedDates.dateDisplay}
           </time>
         </Link>
 
         {frontmatter!.tags && (
-          <div className="flex flex-wrap items-center gap-x-2 whitespace-nowrap">
-            <TagIcon className="inline size-4 shrink-0" aria-hidden="true" />
+          <div className="flex flex-wrap items-center gap-1.5">
+            <TagIcon className="inline size-3 shrink-0" aria-hidden="true" />
             {frontmatter!.tags.map((tag) => (
               <span
                 key={tag}
                 title={tag}
-                className="before:text-foreground/40 lowercase before:pr-0.5 before:content-['\0023'] last-of-type:mr-0"
+                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['\0023'] first-of-type:ml-0 last-of-type:mr-0"
                 aria-label={`Tagged with ${tag}`}
               >
                 {tag}
@@ -126,28 +126,28 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <Link
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter!.slug}/index.mdx`}
           title={`Edit "${frontmatter!.title}" on GitHub`}
-          className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
+          className={"text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"}
         >
-          <SquarePenIcon className="inline size-4 shrink-0" aria-hidden="true" />
+          <SquarePenIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
         </Link>
 
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}#comments`}
           title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)} ${commentCount === 1 ? "comment" : "comments"}`}
-          className="text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"
+          className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
         >
-          <MessagesSquareIcon className="inline size-4 shrink-0" aria-hidden="true" />
+          <MessagesSquareIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)}</span>
         </Link>
 
-        <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
-          <EyeIcon className="inline size-4 shrink-0" aria-hidden="true" />
+        <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
+          <EyeIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </div>
       </div>
 
-      <h1 className="mt-4 mb-5 text-4xl font-semibold tracking-tight sm:text-3xl">
+      <h1 className="my-5 text-4xl font-semibold tracking-tight sm:text-3xl">
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}

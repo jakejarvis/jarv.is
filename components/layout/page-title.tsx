@@ -16,7 +16,7 @@ const PageTitle = ({
     >
       <Link
         href={canonical}
-        className="before:text-muted-foreground before:-mr-0.5 before:tracking-widest before:content-['\002E\002F'] hover:no-underline"
+        className="before:text-muted-foreground no-underline before:-mr-1 before:tracking-wider before:content-['\002E\002F']"
       >
         {children}
       </Link>

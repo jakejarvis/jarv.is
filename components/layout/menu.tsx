@@ -1,8 +1,15 @@
 "use client";
 
 import { useSelectedLayoutSegment } from "next/navigation";
+import { ChevronDownIcon } from "lucide-react";
 import Button from "@/components/ui/button";
 import Link from "@/components/link";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const menuItems = [
   {
@@ -22,20 +29,73 @@ const menuItems = [
 const Menu = () => {
   const segment = useSelectedLayoutSegment() || "";
 
-  return (
-    <div className="flex items-center gap-2">
-      {menuItems.map((item, index) => {
-        const isCurrent = item.href?.split("/")[1] === segment;
+  const currentItem = menuItems.find((item) => item.href?.split("/")[1] === segment);
+  const currentLabel = segment === "" ? "Home" : currentItem?.text || "Menu";
 
-        return (
-          <Button key={index} variant="ghost" size="sm" asChild>
-            <Link href={item.href} prefetch={false} aria-label={item.text} data-current={isCurrent}>
-              {item.text}
-            </Link>
+  return (
+    <nav data-slot="navigation-menu">
+      {/* Desktop: Show all buttons */}
+      <div className="hidden items-center gap-1.5 sm:flex">
+        {menuItems.map((item, index) => {
+          const isCurrent = item.href?.split("/")[1] === segment;
+
+          return (
+            <Button
+              asChild
+              key={index}
+              variant="ghost"
+              size="sm"
+              aria-label={item.text}
+              data-current={isCurrent || undefined}
+              className="data-current:bg-accent/60 data-current:text-accent-foreground"
+            >
+              <Link href={item.href} prefetch={false}>
+                {item.text}
+              </Link>
+            </Button>
+          );
+        })}
+      </div>
+
+      {/* Mobile: Show dropdown menu */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm" className="flex sm:hidden">
+            {currentLabel}
+            <ChevronDownIcon className="size-3.5 opacity-60 transition-transform duration-200 data-[state=open]:rotate-180" />
           </Button>
-        );
-      })}
-    </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="min-w-[140px]">
+          <DropdownMenuItem asChild>
+            <Link
+              href="/"
+              prefetch={false}
+              data-current={segment === ""}
+              aria-current={segment === "" ? "page" : undefined}
+            >
+              Home
+            </Link>
+          </DropdownMenuItem>
+          {menuItems.map((item, index) => {
+            const isCurrent = item.href?.split("/")[1] === segment;
+
+            return (
+              <DropdownMenuItem
+                asChild
+                key={index}
+                className="data-current:bg-accent/40 data-current:text-accent-foreground data-current:font-medium"
+                data-current={isCurrent || undefined}
+                aria-current={isCurrent ? "page" : undefined}
+              >
+                <Link href={item.href} prefetch={false}>
+                  {item.text}
+                </Link>
+              </DropdownMenuItem>
+            );
+          })}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </nav>
   );
 };
 

@@ -1,7 +1,8 @@
 import { codeToHtml } from "shiki";
 import { cacheLife } from "next/cache";
-import CopyButton from "@/components/copy-button";
 import reactToText from "react-to-text";
+import CopyButton from "@/components/copy-button";
+import { cn } from "@/lib/utils";
 
 interface CodeBlockProps extends React.ComponentProps<"pre"> {
   showLineNumbers?: boolean;
@@ -43,7 +44,15 @@ const CodeBlock = async ({ children, className, showLineNumbers = true, ...props
         data-slot="code-block"
         data-lang={lang}
         data-line-numbers={showLineNumbers || undefined}
-        className={className}
+        className={cn(
+          "bg-code text-code-foreground overflow-x-auto overflow-y-hidden rounded-xl text-[13px] leading-normal outline-none",
+          "[&_span]:!bg-transparent [&_span[style*='color']]:dark:!text-(--shiki-dark)",
+          "[&_pre]:m-0 [&_pre]:rounded-xl [&_pre]:!bg-transparent",
+          "[&_code]:white-space-pre [&_code]:grid [&_code]:min-w-full [&_code]:px-4 [&_code]:py-3.5 [&_code]:[counter-reset:line]",
+          "[&_.line]:min-h-1lh [&_.line]:inline-block [&_.line]:w-full [&_.line]:py-0.5",
+          "data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
+          className
+        )}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

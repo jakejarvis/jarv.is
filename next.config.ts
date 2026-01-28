@@ -160,7 +160,14 @@ const nextPlugins: Array<
         [
           "rehype-wrapper",
           {
-            className: "prose prose-sm prose-neutral dark:prose-invert max-w-none",
+            className: [
+              "prose prose-sm prose-neutral dark:prose-invert",
+              "prose-headings:font-semibold prose-headings:tracking-tight",
+              "prose-h2:border-b prose-h2:pb-2",
+              "prose-a:underline-offset-4",
+              "prose-blockquote:**:before:content-none prose-blockquote:**:after:content-none prose-blockquote:text-(--tw-prose-body)",
+              "max-w-none",
+            ].join(" "),
           },
         ],
         "rehype-mdx-code-props",
