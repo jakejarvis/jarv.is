@@ -7,7 +7,9 @@ import Link from "@/components/link";
 import Button from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import Menu from "@/components/layout/menu";
+import { GitHubIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 import { MoonIcon, SunIcon } from "lucide-react";
 
@@ -64,16 +66,23 @@ const Header = ({ className }: { className?: string }) => {
           <Menu />
         </div>
 
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          aria-label="Toggle theme"
-          className="group"
-        >
-          <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
-          <MoonIcon className="not-dark:hidden group-hover:stroke-yellow-400" aria-hidden="true" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
+            <Link href={`https://github.com/${authorConfig.social.github}`}>
+              <GitHubIcon />
+            </Link>
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label="Toggle theme"
+            className="group"
+          >
+            <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
+            <MoonIcon className="not-dark:hidden group-hover:stroke-yellow-400" aria-hidden="true" />
+          </Button>
+        </div>
       </header>
     </div>
   );
