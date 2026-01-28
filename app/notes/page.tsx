@@ -24,8 +24,8 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
     <>
       {views > 0 && (
         <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-          <EyeIcon className="inline-block size-4 shrink-0" />
-          <span className="inline-block leading-none">{numberFormatter.format(views)}</span>
+          <EyeIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
+          <span className="inline-block leading-none tabular-nums">{numberFormatter.format(views)}</span>
         </span>
       )}
 
@@ -37,8 +37,8 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
           className="inline-flex hover:no-underline"
         >
           <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-            <MessagesSquareIcon className="inline-block size-3 shrink-0" />
-            <span className="inline-block leading-none">{numberFormatter.format(comments)}</span>
+            <MessagesSquareIcon className="inline-block size-3 shrink-0" aria-hidden="true" />
+            <span className="inline-block leading-none tabular-nums">{numberFormatter.format(comments)}</span>
           </span>
         </Link>
       )}

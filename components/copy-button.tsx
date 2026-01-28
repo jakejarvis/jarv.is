@@ -44,10 +44,10 @@ function CopyButton({
             className
           )}
           onClick={handleCopy}
+          aria-label={hasCopied ? "Copied" : tooltip}
           {...props}
         >
-          <span className="sr-only">Copy</span>
-          {hasCopied ? <CheckIcon /> : <CopyIcon />}
+          {hasCopied ? <CheckIcon aria-hidden="true" /> : <CopyIcon aria-hidden="true" />}
         </Button>
       </TooltipTrigger>
       <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>

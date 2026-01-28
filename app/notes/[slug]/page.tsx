@@ -99,7 +99,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
-          <CalendarDaysIcon className="inline size-4 shrink-0" />
+          <CalendarDaysIcon className="inline size-4 shrink-0" aria-hidden="true" />
           <time dateTime={formattedDates.dateISO} title={formattedDates.dateTitle}>
             {formattedDates.dateDisplay}
           </time>
@@ -107,7 +107,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         {frontmatter!.tags && (
           <div className="flex flex-wrap items-center gap-x-2 whitespace-nowrap">
-            <TagIcon className="inline size-4 shrink-0" />
+            <TagIcon className="inline size-4 shrink-0" aria-hidden="true" />
             {frontmatter!.tags.map((tag) => (
               <span
                 key={tag}
@@ -126,7 +126,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           title={`Edit "${frontmatter!.title}" on GitHub`}
           className={"text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"}
         >
-          <SquarePenIcon className="inline size-4 shrink-0" />
+          <SquarePenIcon className="inline size-4 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
         </Link>
 
@@ -135,12 +135,12 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)} ${commentCount === 1 ? "comment" : "comments"}`}
           className="text-foreground/70 flex flex-nowrap items-center gap-x-2 whitespace-nowrap hover:no-underline"
         >
-          <MessagesSquareIcon className="inline size-4 shrink-0" />
+          <MessagesSquareIcon className="inline size-4 shrink-0" aria-hidden="true" />
           <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)}</span>
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-x-2 whitespace-nowrap">
-          <EyeIcon className="inline size-4 shrink-0" />
+          <EyeIcon className="inline size-4 shrink-0" aria-hidden="true" />
           <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </div>
       </div>

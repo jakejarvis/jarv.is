@@ -15,18 +15,27 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     ...components,
     a: Link,
     pre: CodeBlock,
-    img: ({ src, className, ...rest }) => (
-      <NextImage
-        src={src}
-        width={typeof src === "object" && "width" in src && src.width > 896 ? 896 : undefined} // => var(--container-4xl)
-        className={cn(
-          "mx-auto my-8 block h-auto max-w-full rounded-sm",
-          "[&+em]:text-muted-foreground [&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:text-[0.875em] [&+em]:leading-normal [&+em]:font-medium [&+em]:not-italic",
-          className
-        )}
-        {...rest}
-      />
-    ),
+    img: ({ src, className, ...rest }) => {
+      const imageWidth = typeof src === "object" && "width" in src && src.width > 896 ? 896 : undefined;
+      const imageHeight =
+        imageWidth && typeof src === "object" && "width" in src && "height" in src
+          ? Math.round((src.height / src.width) * imageWidth)
+          : undefined;
+
+      return (
+        <NextImage
+          src={src}
+          width={imageWidth}
+          height={imageHeight}
+          className={cn(
+            "mx-auto my-8 block h-auto max-w-full rounded-sm",
+            "[&+em]:text-muted-foreground [&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:text-[0.875em] [&+em]:leading-normal [&+em]:font-medium [&+em]:not-italic",
+            className
+          )}
+          {...rest}
+        />
+      );
+    },
 
     // React components and embeds:
     Video,

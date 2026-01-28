@@ -72,9 +72,8 @@ const Header = ({ className }: { className?: string }) => {
           aria-label="Toggle theme"
           className="group"
         >
-          <SunIcon className="group-hover:stroke-orange-600 dark:hidden" />
-          <MoonIcon className="not-dark:hidden group-hover:stroke-yellow-400" />
-          <span className="sr-only">Toggle theme</span>
+          <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
+          <MoonIcon className="not-dark:hidden group-hover:stroke-yellow-400" aria-hidden="true" />
         </Button>
       </header>
     </div>
