@@ -47,7 +47,7 @@ const Menu = () => {
               size="sm"
               aria-label={item.text}
               data-current={isCurrent || undefined}
-              className="data-current:bg-accent/60 data-current:text-accent-foreground"
+              className="data-current:bg-accent/60 data-current:text-accent-foreground text-[15px] leading-none"
             >
               <Link href={item.href}>{item.text}</Link>
             </Button>
@@ -58,9 +58,13 @@ const Menu = () => {
       {/* Mobile: Show dropdown menu */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="flex sm:hidden">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="flex gap-2 text-[17.5px] sm:hidden data-[state=open]:[&_svg]:rotate-180"
+          >
             {currentLabel}
-            <ChevronDownIcon className="size-3.5 opacity-60 transition-transform duration-200 data-[state=open]:rotate-180" />
+            <ChevronDownIcon className="size-3.5 opacity-60 transition-transform duration-200" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="min-w-[140px]">
