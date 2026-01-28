@@ -1,7 +1,8 @@
 import { env } from "@/lib/env";
+import { Suspense } from "react";
 import { cacheLife } from "next/cache";
+import Link from "next/link";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
-import Link from "@/components/link";
 import PageTitle from "@/components/layout/page-title";
 import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
@@ -19,8 +20,10 @@ export const metadata = createMetadata({
 // Hoist number formatter to avoid re-creating on every render
 const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
 
-// Non-async component for displaying stats (receives data as props)
-const PostStats = ({ views, comments, slug }: { views: number; comments: number; slug: string }) => {
+// Async component that fetches and displays stats for a single post
+const PostStats = async ({ slug }: { slug: string }) => {
+  const [views, comments] = await Promise.all([getViewCounts(slug), getCommentCounts(slug)]);
+
   return (
     <>
       {views > 0 && (
@@ -32,8 +35,7 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
 
       {comments > 0 && (
         <Link
-          href={`/${POSTS_DIR}/${slug}#comments`}
-          prefetch={false}
+          href={`/${slug}#comments`}
           title={`${numberFormatter.format(comments)} ${comments === 1 ? "comment" : "comments"}`}
           className="inline-flex hover:no-underline"
         >
@@ -64,11 +66,9 @@ const getFormattedPostDates = async (posts: FrontMatter[]) => {
   });
 };
 
-// Async component that fetches all stats once and renders the full page
+// Renders the posts list with static content, deferring stats to runtime via Suspense
 const PostsList = async () => {
-  // Fetch posts and stats in parallel (only once per page load)
-  // These functions are cached with "use cache", so they can complete during prerendering
-  const [posts, views, comments] = await Promise.all([getFrontMatter(), getViewCounts(), getCommentCounts()]);
+  const posts = await getFrontMatter();
 
   // Format dates in a cached function to avoid date-fns using new Date() during render
   const formattedPosts = await getFormattedPostDates(posts);
@@ -79,18 +79,11 @@ const PostsList = async () => {
       dateISO: string;
       dateTitle: string;
       dateDisplay: string;
-      views: number;
-      comments: number;
     })[];
   } = {};
 
   formattedPosts.forEach((post) => {
-    (postsByYear[post.year] || (postsByYear[post.year] = [])).push({
-      ...post,
-      // Include pre-fetched stats
-      views: views[`${POSTS_DIR}/${post.slug}`] || 0,
-      comments: comments[`${POSTS_DIR}/${post.slug}`] || 0,
-    });
+    (postsByYear[post.year] || (postsByYear[post.year] = [])).push(post);
   });
 
   const sections: React.ReactNode[] = [];
@@ -102,7 +95,7 @@ const PostsList = async () => {
           {year}
         </h2>
         <ul className="space-y-4">
-          {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle, views, comments }) => (
+          {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
             <li className="flex text-base leading-relaxed" key={slug}>
               <span className="text-muted-foreground w-18 shrink-0 md:w-22">
                 <time dateTime={dateISO} title={dateTitle}>
@@ -113,13 +106,14 @@ const PostsList = async () => {
                 {/* htmlTitle is sanitized by rehypeSanitize in lib/posts.ts with strict allowlist: only code, em, strong tags */}
                 <Link
                   href={`/${POSTS_DIR}/${slug}`}
-                  prefetch={false}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                   className="underline-offset-4 hover:underline"
                   style={{ viewTransitionName: `note-title-${slug}` }}
                 />
 
-                <PostStats slug={slug} views={views} comments={comments} />
+                <Suspense>
+                  <PostStats slug={`${POSTS_DIR}/${slug}`} />
+                </Suspense>
               </div>
             </li>
           ))}

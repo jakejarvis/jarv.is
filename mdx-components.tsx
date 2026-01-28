@@ -1,5 +1,5 @@
-import NextImage from "next/image";
-import Link from "@/components/link";
+import Image from "next/image";
+import Link from "next/link";
 import CodeBlock from "@/components/code-block";
 import Video from "@/components/video";
 import ImageDiff from "@/components/image-diff";
@@ -13,9 +13,15 @@ import type { MDXComponents } from "mdx/types";
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {
   return {
     ...components,
-    a: Link,
+    a: ({ href, rel, target, ...rest }: React.ComponentProps<typeof Link>) => {
+      const isExternal = typeof href === "string" && !["/", "#"].includes(href[0]);
+      if (isExternal) {
+        return <a href={href} rel={rel || "noopener noreferrer"} target={target || "_blank"} {...rest} />;
+      }
+      return <Link href={href} rel={rel} target={target} {...rest} />;
+    },
     pre: CodeBlock,
-    img: ({ src, className, ...rest }) => {
+    img: ({ src, alt, className, ...rest }: React.ComponentProps<typeof Image>) => {
       const imageWidth = typeof src === "object" && "width" in src && src.width > 896 ? 896 : undefined;
       const imageHeight =
         imageWidth && typeof src === "object" && "width" in src && "height" in src
@@ -23,8 +29,9 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
           : undefined;
 
       return (
-        <NextImage
+        <Image
           src={src}
+          alt={alt}
           width={imageWidth}
           height={imageHeight}
           className={cn(

@@ -1,11 +1,12 @@
 import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { cacheLife } from "next/cache";
+import Link from "next/link";
 import { JsonLd } from "react-schemaorg";
 import { formatDate, formatDateISO } from "@/lib/date";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon, MessagesSquareIcon } from "lucide-react";
-import Link from "@/components/link";
 import ViewCounter from "@/components/view-counter";
+import CommentCount from "@/components/comment-count";
 import Comments from "@/components/comments/comments";
 import CommentsSkeleton from "@/components/comments/comments-skeleton";
 import { getSlugs, getFrontMatter, POSTS_DIR } from "@/lib/posts";
@@ -13,7 +14,6 @@ import { createMetadata } from "@/lib/metadata";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import { size as ogImageSize } from "./opengraph-image";
-import { getCommentCounts } from "@/lib/server/comments";
 import type { Metadata } from "next";
 import type { BlogPosting } from "schema-dts";
 
@@ -61,10 +61,7 @@ const getFormattedDates = async (date: string) => {
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const [frontmatter, commentCount] = await Promise.all([
-    getFrontMatter(slug),
-    getCommentCounts(`${POSTS_DIR}/${slug}`),
-  ]);
+  const frontmatter = await getFrontMatter(slug);
   const formattedDates = await getFormattedDates(frontmatter!.date);
 
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
@@ -134,16 +131,19 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}#comments`}
-          title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)} ${commentCount === 1 ? "comment" : "comments"}`}
           className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
         >
           <MessagesSquareIcon className="inline size-3 shrink-0" aria-hidden="true" />
-          <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(commentCount || 0)}</span>
+          <Suspense fallback={<span className="motion-safe:animate-pulse">0</span>}>
+            <CommentCount slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+          </Suspense>
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
           <EyeIcon className="inline size-3 shrink-0" aria-hidden="true" />
-          <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+          <Suspense fallback={<span className="motion-safe:animate-pulse">0</span>}>
+            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
+          </Suspense>
         </div>
       </div>
 

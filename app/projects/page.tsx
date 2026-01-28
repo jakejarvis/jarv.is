@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { GitForkIcon, StarIcon } from "lucide-react";
 import Skeleton from "@/components/ui/skeleton";
 import PageTitle from "@/components/layout/page-title";
-import Link from "@/components/link";
 import RelativeTime from "@/components/relative-time";
 import ActivityCalendar from "@/components/activity-calendar";
 import { GitHubIcon } from "@/components/icons";
@@ -35,12 +34,14 @@ const Page = async () => {
       <PageTitle canonical="/projects">Projects</PageTitle>
 
       <h2 className="my-3.5 text-xl font-medium">
-        <Link
+        <a
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-secondary-foreground hover:no-underline"
         >
           Contribution activity
-        </Link>
+        </a>
       </h2>
 
       <Suspense fallback={<Skeleton className="h-40 w-full" />}>
@@ -54,21 +55,28 @@ const Page = async () => {
       </Suspense>
 
       <h2 className="my-3.5 text-xl font-medium">
-        <Link
+        <a
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-secondary-foreground hover:no-underline"
         >
           Popular repositories
-        </Link>
+        </a>
       </h2>
 
       {repos && repos.length > 0 ? (
         <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
           {repos.map((repo) => (
             <div key={repo!.name} className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
-              <Link href={repo!.url} className="inline-block text-base leading-relaxed font-semibold">
+              <a
+                href={repo!.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-base leading-relaxed font-semibold"
+              >
                 {repo!.name}
-              </Link>
+              </a>
 
               {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
 
@@ -86,25 +94,29 @@ const Page = async () => {
                 )}
 
                 {repo!.stargazerCount > 0 && (
-                  <Link
+                  <a
                     href={`${repo!.url}/stargazers`}
                     title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                   >
                     <StarIcon className="inline-block size-4 shrink-0" />
                     <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
-                  </Link>
+                  </a>
                 )}
 
                 {repo!.forkCount > 0 && (
-                  <Link
+                  <a
                     href={`${repo!.url}/network/members`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                   >
                     <GitForkIcon className="inline-block size-4" />
                     <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
-                  </Link>
+                  </a>
                 )}
 
                 <div className="text-muted-foreground whitespace-nowrap">
@@ -124,12 +136,14 @@ const Page = async () => {
 
       <p className="mt-6 mb-0 text-center text-base font-medium">
         <Button variant="secondary" asChild>
-          <Link
+          <a
             href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <GitHubIcon />
             <span className="leading-none">Show All…</span>
-          </Link>
+          </a>
         </Button>
       </p>
     </>

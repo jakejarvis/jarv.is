@@ -4,7 +4,6 @@ import { useActionState, useState } from "react";
 import { useDebounce } from "react-use";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Form from "next/form";
-import Link from "@/components/link";
 import Input from "@/components/ui/input";
 import Textarea from "@/components/ui/textarea";
 import Button from "@/components/ui/button";
@@ -113,13 +112,19 @@ const ContactForm = () => {
 
         <div className="text-foreground/85 my-2 text-[0.8rem] leading-relaxed">
           <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" /> Basic{" "}
-          <Link href="https://commonmark.org/help/" title="Markdown reference sheet" className="font-semibold">
+          <a
+            href="https://commonmark.org/help/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Markdown reference sheet"
+            className="font-semibold"
+          >
             Markdown syntax
-          </Link>{" "}
+          </a>{" "}
           is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-          <Link href="https://jarv.is" className="hover:no-underline">
+          <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
             links
-          </Link>
+          </a>
           ](https://jarv.is), and <code>`code`</code>.
         </div>
       </div>
@@ -145,7 +150,7 @@ const ContactForm = () => {
           <div
             className={cn(
               "space-x-0.5 text-[0.9rem] font-semibold",
-              formState.success ? "text-success" : "text-destructive"
+              formState.success ? "text-green-600 dark:text-green-400" : "text-destructive"
             )}
           >
             {formState.success ? <CheckIcon className="inline size-4" /> : <XIcon className="inline size-4" />}{" "}

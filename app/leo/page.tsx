@@ -1,7 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import PageTitle from "@/components/layout/page-title";
-import Link from "@/components/link";
 import Video from "@/components/video";
 import { createMetadata } from "@/lib/metadata";
 import type { VideoObject } from "schema-dts";
@@ -52,13 +51,18 @@ const Page = () => {
 
       <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
         Video is property of{" "}
-        <Link href="https://web.archive.org/web/20070511004304/www.g4techtv.ca" className="font-bold">
+        <a
+          href="https://web.archive.org/web/20070511004304/www.g4techtv.ca"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold"
+        >
           G4techTV Canada
-        </Link>{" "}
+        </a>{" "}
         &amp;{" "}
-        <Link href="https://leo.fm/" className="font-bold">
+        <a href="https://leo.fm/" target="_blank" rel="noopener noreferrer" className="font-bold">
           Leo Laporte
-        </Link>
+        </a>
         . &copy; 2007 G4 Media, Inc.
       </p>
     </>

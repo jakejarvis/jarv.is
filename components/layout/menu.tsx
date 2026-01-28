@@ -3,7 +3,7 @@
 import { useSelectedLayoutSegment } from "next/navigation";
 import { ChevronDownIcon } from "lucide-react";
 import Button from "@/components/ui/button";
-import Link from "@/components/link";
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -49,9 +49,7 @@ const Menu = () => {
               data-current={isCurrent || undefined}
               className="data-current:bg-accent/60 data-current:text-accent-foreground"
             >
-              <Link href={item.href} prefetch={false}>
-                {item.text}
-              </Link>
+              <Link href={item.href}>{item.text}</Link>
             </Button>
           );
         })}
@@ -66,15 +64,8 @@ const Menu = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="min-w-[140px]">
-          <DropdownMenuItem asChild>
-            <Link
-              href="/"
-              prefetch={false}
-              data-current={segment === ""}
-              aria-current={segment === "" ? "page" : undefined}
-            >
-              Home
-            </Link>
+          <DropdownMenuItem asChild data-current={segment === ""} aria-current={segment === "" ? "page" : undefined}>
+            <Link href="/">Home</Link>
           </DropdownMenuItem>
           {menuItems.map((item, index) => {
             const isCurrent = item.href?.split("/")[1] === segment;
@@ -83,13 +74,10 @@ const Menu = () => {
               <DropdownMenuItem
                 asChild
                 key={index}
-                className="data-current:bg-accent/40 data-current:text-accent-foreground data-current:font-medium"
                 data-current={isCurrent || undefined}
                 aria-current={isCurrent ? "page" : undefined}
               >
-                <Link href={item.href} prefetch={false}>
-                  {item.text}
-                </Link>
+                <Link href={item.href}>{item.text}</Link>
               </DropdownMenuItem>
             );
           })}

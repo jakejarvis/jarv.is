@@ -1,4 +1,4 @@
-import Link from "@/components/link";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const PageTitle = ({

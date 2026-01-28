@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import Link from "@/components/link";
+import Link from "next/link";
 import Button from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import Menu from "@/components/layout/menu";
@@ -60,7 +60,9 @@ const Header = ({ className }: { className?: string }) => {
               quality={75}
               priority
             />
-            <span className="text-[17px] font-medium whitespace-nowrap max-md:sr-only">{siteConfig.name}</span>
+            <span className="text-[17.5px] font-medium tracking-tight whitespace-nowrap max-md:sr-only">
+              {siteConfig.name}
+            </span>
           </Link>
           <Separator orientation="vertical" className="!h-6" />
           <Menu />
@@ -68,9 +70,9 @@ const Header = ({ className }: { className?: string }) => {
 
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
-            <Link href={`https://github.com/${authorConfig.social.github}`}>
+            <a href={`https://github.com/${authorConfig.social.github}`} target="_blank" rel="noopener noreferrer">
               <GitHubIcon />
-            </Link>
+            </a>
           </Button>
           <Button
             variant="ghost"

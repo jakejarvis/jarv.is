@@ -1,7 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import PageTitle from "@/components/layout/page-title";
-import Link from "@/components/link";
 import Video from "@/components/video";
 import { createMetadata } from "@/lib/metadata";
 import type { VideoObject } from "schema-dts";
@@ -53,17 +52,17 @@ const Page = () => {
 
       <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
         Video is property of{" "}
-        <Link href="https://www.hillaryclinton.com/" className="font-bold">
+        <a href="https://www.hillaryclinton.com/" target="_blank" rel="noopener noreferrer" className="font-bold">
           Hillary for America
-        </Link>
+        </a>
         , the{" "}
-        <Link href="https://democrats.org/" className="font-bold">
+        <a href="https://democrats.org/" target="_blank" rel="noopener noreferrer" className="font-bold">
           Democratic National Committee
-        </Link>
+        </a>
         , and{" "}
-        <Link href="https://cnnpressroom.blogs.cnn.com/" className="font-bold">
+        <a href="https://cnnpressroom.blogs.cnn.com/" target="_blank" rel="noopener noreferrer" className="font-bold">
           CNN / WarnerMedia
-        </Link>
+        </a>
         . &copy; 2016.
       </p>
     </>

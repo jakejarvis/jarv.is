@@ -1,7 +1,7 @@
 import { getImageProps } from "next/image";
+import Link from "next/link";
 import Markdown from "react-markdown";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Link from "@/components/link";
 import RelativeTime from "@/components/relative-time";
 import Actions from "./comment-actions";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
@@ -35,9 +35,14 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
 
         <div className="min-w-0 flex-1">
           <div className="mb-1 flex items-center gap-2">
-            <Link href={`https://github.com/${comment.user.name}`} className="font-medium hover:no-underline">
+            <a
+              href={`https://github.com/${comment.user.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium hover:no-underline"
+            >
               @{comment.user.name}
-            </Link>
+            </a>
             <Link href={`#${divId}`} className="text-muted-foreground text-xs leading-none hover:no-underline">
               <RelativeTime date={comment.createdAt} />
             </Link>

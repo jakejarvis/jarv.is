@@ -1,4 +1,3 @@
-import Link from "@/components/link";
 import { cn } from "@/lib/utils";
 
 const Gist = async ({
@@ -24,7 +23,13 @@ const Gist = async ({
     return (
       <p className="text-center">
         Failed to load gist.{" "}
-        <Link href={`https://gist.github.com/${id}${file ? `?file=${file}` : ""}`}>Try opening it manually?</Link>
+        <a
+          href={`https://gist.github.com/${id}${file ? `?file=${file}` : ""}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Try opening it manually?
+        </a>
       </p>
     );
   }

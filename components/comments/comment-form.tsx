@@ -7,7 +7,6 @@ import { InfoIcon, Loader2Icon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Button from "@/components/ui/button";
 import Textarea from "@/components/ui/textarea";
-import Link from "@/components/link";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { MarkdownIcon } from "@/components/icons";
 import { useSession } from "@/lib/auth-client";
@@ -132,9 +131,9 @@ const CommentForm = ({
                         </li>
                         <li>
                           [
-                          <Link href="https://jarv.is" className="hover:no-underline">
+                          <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
                             links
-                          </Link>
+                          </a>
                           ](https://jarv.is)
                         </li>
                         <li>
@@ -148,9 +147,13 @@ const CommentForm = ({
                       </ul>
 
                       <p className="text-sm leading-loose">
-                        <Link href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">
+                        <a
+                          href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Learn more.
-                        </Link>
+                        </a>
                       </p>
                     </PopoverContent>
                   </Popover>

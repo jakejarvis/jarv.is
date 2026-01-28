@@ -1,6 +1,6 @@
 import Button from "@/components/ui/button";
 import Video from "@/components/video";
-import Link from "@/components/link";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
