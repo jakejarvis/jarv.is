@@ -3,7 +3,7 @@ import { LockIcon } from "lucide-react";
 
 const Page = () => {
   return (
-    <div className="prose prose-sm prose-neutral dark:prose-invert prose-headings:mt-0 prose-headings:mb-3 prose-p:my-3 max-w-none">
+    <div className="prose prose-sm prose-neutral dark:prose-invert prose-headings:mt-0 prose-headings:mb-3 prose-p:my-3 prose-p:leading-[1.75] md:prose-p:leading-relaxed max-w-none">
       <h1 className="text-2xl font-medium">
         Hi there! I&rsquo;m Jake.{" "}
         <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-2xl">👋</span>
@@ -93,15 +93,17 @@ const Page = () => {
         <Link href="/contact" prefetch={false} title="Send an email">
           email
         </Link>{" "}
-        <sup className="text-[10px]">
+        <sup className="">
           <Link
             href="https://jrvs.io/pgp"
             rel="pgpkey"
-            title="3BC6 E577 6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39"
+            title="Download my PGP key"
             className="not-prose text-muted-foreground hover:text-primary space-x-1 px-0.5 text-nowrap no-underline hover:no-underline"
           >
             <LockIcon className="inline size-2.5" aria-hidden="true" />
-            <code className="leading-none tracking-wider text-wrap [word-spacing:-3px]">2B0C 9CF2 51E6 9A39</code>
+            <code className="text-[9px] leading-none tracking-wider text-wrap [word-spacing:-3px]">
+              2B0C 9CF2 51E6 9A39
+            </code>
           </Link>
         </sup>{" "}
         as well.

@@ -13,7 +13,7 @@ const Footer = () => {
       <Link href="/previously" prefetch={false} title="Previously on...">
         {siteConfig.copyrightYearStart}
       </Link>{" "}
-      – 2025.{" "}
+      – 2026.{" "}
       <Link
         href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}`}
         title="View Source on GitHub"
