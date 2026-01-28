@@ -1,6 +1,6 @@
 import Link from "next/link";
-import PageTitle from "@/components/layout/page-title";
-import PostStats from "@/components/post-stats";
+import { PageTitle } from "@/components/layout/page-title";
+import { PostStats, PostStatsProvider } from "@/components/post-stats";
 import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import authorConfig from "@/lib/config/author";
@@ -61,12 +61,12 @@ const PostsList = async () => {
                   {dateDisplay}
                 </time>
               </span>
-              <div className="space-x-2.5">
+              <div className="space-x-2">
                 {/* htmlTitle is sanitized by rehypeSanitize in lib/posts.ts with strict allowlist: only code, em, strong tags */}
                 <Link
                   href={`/${POSTS_DIR}/${slug}`}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                  className="underline-offset-4 hover:underline"
+                  className="mr-2.5 underline-offset-4 hover:underline"
                   style={{ viewTransitionName: `note-title-${slug}` }}
                 />
 
@@ -87,7 +87,9 @@ const Page = async () => {
   return (
     <>
       <PageTitle canonical="/notes">Notes</PageTitle>
-      <PostsList />
+      <PostStatsProvider>
+        <PostsList />
+      </PostStatsProvider>
     </>
   );
 };

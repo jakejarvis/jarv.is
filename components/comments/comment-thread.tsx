@@ -1,4 +1,4 @@
-import Single from "./comment-single";
+import { CommentSingle } from "./comment-single";
 import { cn } from "@/lib/utils";
 import type { CommentWithUser } from "@/lib/server/comments";
 
@@ -18,7 +18,7 @@ const CommentThread = ({
 
   return (
     <>
-      <Single comment={comment} />
+      <CommentSingle comment={comment} />
 
       {replies.length > 0 && (
         <div className={cn("mt-6 space-y-6", level < maxLevel && "ml-6 border-l-2 pl-6")}>
@@ -37,4 +37,4 @@ const CommentThread = ({
   );
 };
 
-export default CommentThread;
+export { CommentThread };

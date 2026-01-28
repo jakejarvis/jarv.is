@@ -23,4 +23,4 @@ const CommentsSkeleton = () => {
   );
 };
 
-export default CommentsSkeleton;
+export { CommentsSkeleton };

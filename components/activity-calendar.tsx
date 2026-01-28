@@ -1,10 +1,10 @@
 "use client";
 
-import { ActivityCalendar, type Activity } from "react-activity-calendar";
+import { ActivityCalendar as ActivityCalendarPrimitive, type Activity } from "react-activity-calendar";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-const Calendar = ({
+const ActivityCalendar = ({
   data,
   noun = "thing",
   className,
@@ -24,7 +24,7 @@ const Calendar = ({
       )}
       {...rest}
     >
-      <ActivityCalendar
+      <ActivityCalendarPrimitive
         data={data}
         colorScheme="dark"
         theme={{
@@ -55,4 +55,4 @@ const Calendar = ({
   );
 };
 
-export default Calendar;
+export { ActivityCalendar };

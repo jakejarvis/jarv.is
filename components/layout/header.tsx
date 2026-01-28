@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import Menu from "@/components/layout/menu";
+import { Menu } from "@/components/layout/menu";
 import { GitHubIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import authorConfig from "@/lib/config/author";
@@ -90,4 +90,4 @@ const Header = ({ className }: { className?: string }) => {
   );
 };
 
-export default Header;
+export { Header };

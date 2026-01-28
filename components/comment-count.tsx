@@ -36,4 +36,4 @@ const CommentCount = ({ slug }: { slug: string }) => {
   );
 };
 
-export default CommentCount;
+export { CommentCount };

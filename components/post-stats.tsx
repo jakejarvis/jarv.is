@@ -1,55 +1,86 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import { env } from "@/lib/env";
-import { getViewCount } from "@/lib/server/views";
-import { getCommentCount } from "@/lib/server/comments";
+import { getAllViewCounts } from "@/lib/server/views";
+import { getAllCommentCounts } from "@/lib/server/comments";
 
 const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
 
-const PostStats = ({ slug }: { slug: string }) => {
-  const [stats, setStats] = useState<{ views: number; comments: number } | null>(null);
+type Stats = {
+  views: Record<string, number>;
+  comments: Record<string, number>;
+  loaded: boolean;
+};
+
+const StatsContext = createContext<Stats>({ views: {}, comments: {}, loaded: false });
+
+/**
+ * Provider that fetches ALL post stats in a single batch (2 requests total).
+ * Wrap this around any component tree that contains PostStats components.
+ */
+export const PostStatsProvider = ({ children }: { children: ReactNode }) => {
+  const [stats, setStats] = useState<Stats>({ views: {}, comments: {}, loaded: false });
 
   useEffect(() => {
-    Promise.all([getViewCount(slug), getCommentCount(slug)])
+    Promise.all([getAllViewCounts(), getAllCommentCounts()])
       .then(([views, comments]) => {
-        setStats({ views, comments });
+        setStats({ views, comments, loaded: true });
       })
       .catch((err) => {
-        console.error("[post-stats] error:", err);
-        // Silently fail - just don't show stats
+        console.error("[post-stats] error fetching stats:", err);
+        setStats({ views: {}, comments: {}, loaded: true });
       });
-  }, [slug]);
+  }, []);
 
-  if (!stats) {
-    return null; // No loading state - badges just appear when ready
+  return <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>;
+};
+
+/**
+ * Displays view/comment badges for a single post.
+ * Must be used within a PostStatsProvider.
+ */
+const PostStats = ({ slug }: { slug: string }) => {
+  const { views, comments, loaded } = useContext(StatsContext);
+
+  if (!loaded) {
+    return (
+      <>
+        <Skeleton className="inline-block h-5 w-12 rounded-full align-text-top" />
+        <Skeleton className="inline-block h-5 w-8 rounded-full align-text-top" />
+      </>
+    );
   }
+
+  const viewCount = views[slug] ?? 0;
+  const commentCount = comments[slug] ?? 0;
 
   return (
     <>
-      {stats.views > 0 && (
-        <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-          <EyeIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
-          <span className="inline-block leading-none tabular-nums">{numberFormatter.format(stats.views)}</span>
-        </span>
+      {viewCount > 0 && (
+        <Badge variant="secondary" className="tabular-nums">
+          <EyeIcon className="text-foreground/85" aria-hidden="true" />
+          {numberFormatter.format(viewCount)}
+        </Badge>
       )}
 
-      {stats.comments > 0 && (
-        <Link
-          href={`/${slug}#comments`}
-          title={`${numberFormatter.format(stats.comments)} ${stats.comments === 1 ? "comment" : "comments"}`}
-          className="inline-flex hover:no-underline"
-        >
-          <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-            <MessagesSquareIcon className="inline-block size-3 shrink-0" aria-hidden="true" />
-            <span className="inline-block leading-none tabular-nums">{numberFormatter.format(stats.comments)}</span>
-          </span>
-        </Link>
+      {commentCount > 0 && (
+        <Badge variant="secondary" className="tabular-nums" asChild>
+          <Link
+            href={`/${slug}#comments`}
+            title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
+          >
+            <MessagesSquareIcon className="text-foreground/85" aria-hidden="true" />
+            {numberFormatter.format(commentCount)}
+          </Link>
+        </Badge>
       )}
     </>
   );
 };
 
-export default PostStats;
+export { PostStats };

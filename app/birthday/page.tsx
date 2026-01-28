@@ -1,7 +1,7 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import PageTitle from "@/components/layout/page-title";
-import Video from "@/components/video";
+import { PageTitle } from "@/components/layout/page-title";
+import { Video } from "@/components/video";
 import { createMetadata } from "@/lib/metadata";
 import type { VideoObject } from "schema-dts";
 

@@ -6,7 +6,6 @@ import "./lib/env";
 
 const nextConfig = {
   cacheComponents: true,
-  reactStrictMode: true,
   reactCompiler: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
@@ -45,30 +44,6 @@ const nextConfig = {
     },
   },
   headers: async () => [
-    {
-      // matches any path
-      source: "/(.*)",
-      headers: [
-        {
-          key: "strict-transport-security",
-          value: "max-age=63072000",
-        },
-        {
-          // 🥛 debugging
-          key: "x-got-milk",
-          value: "2%",
-        },
-      ],
-    },
-    {
-      source: "/api/auth/(.*)",
-      headers: [
-        {
-          key: "cache-control",
-          value: "private, max-age=0",
-        },
-      ],
-    },
     // https://community.torproject.org/onion-services/advanced/onion-location/
     ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
       ? [
@@ -92,9 +67,12 @@ const nextConfig = {
       source: "/tweets/:path*",
       destination: "https://tweets-khaki.vercel.app/:path*",
     },
+    {
+      source: "/y2k/:path*",
+      destination: "https://y2k.pages.dev/:path*",
+    },
   ],
   redirects: async () => [
-    { source: "/y2k", destination: "https://y2k.pages.dev", permanent: false },
     {
       source: "/pubkey.asc",
       destination:

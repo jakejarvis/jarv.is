@@ -57,4 +57,4 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
   return <TweetContent data={data} className={className} />;
 };
 
-export default Tweet;
+export { Tweet };

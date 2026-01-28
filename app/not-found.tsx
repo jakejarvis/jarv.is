@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import Video from "@/components/video";
+import { Video } from "@/components/video";
 import Link from "next/link";
 import type { Metadata } from "next";
 

@@ -87,4 +87,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export { Menu };

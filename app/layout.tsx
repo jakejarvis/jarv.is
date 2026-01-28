@@ -1,11 +1,11 @@
 import { ViewTransition } from "react";
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
-import Providers from "@/components/providers";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+import { Providers } from "@/components/providers";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/sonner";
-import Analytics from "@/app/analytics";
+import { Analytics } from "@/app/analytics";
 import { defaultMetadata } from "@/lib/metadata";
 import { GeistSans, GeistMono } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";

@@ -2,8 +2,8 @@ import { getImageProps } from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import RelativeTime from "@/components/relative-time";
-import Actions from "./comment-actions";
+import { RelativeTime } from "@/components/relative-time";
+import { CommentActions } from "./comment-actions";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import { rehypeExternalLinks } from "@/lib/rehype";
 import { cn } from "@/lib/utils";
@@ -66,11 +66,11 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
             </Markdown>
           </div>
 
-          <Actions comment={comment} />
+          <CommentActions comment={comment} />
         </div>
       </div>
     </div>
   );
 };
 
-export default CommentSingle;
+export { CommentSingle };

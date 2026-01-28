@@ -52,4 +52,4 @@ const Gist = async ({
   );
 };
 
-export default Gist;
+export { Gist };

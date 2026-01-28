@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
-import Form from "./comment-form";
-import Thread from "./comment-thread";
-import SignIn from "./sign-in";
+import { CommentForm } from "./comment-form";
+import { CommentThread } from "./comment-thread";
+import { SignIn } from "./sign-in";
 import { auth } from "@/lib/auth";
 import { getComments, type CommentWithUser } from "@/lib/server/comments";
 
@@ -29,7 +29,7 @@ const Comments = async ({ slug }: { slug: string }) => {
   return (
     <>
       {session ? (
-        <Form slug={slug} />
+        <CommentForm slug={slug} />
       ) : (
         <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
           <p className="text-center font-medium">Join the discussion by signing in:</p>
@@ -40,7 +40,7 @@ const Comments = async ({ slug }: { slug: string }) => {
       {rootComments.length > 0 ? (
         <div className="space-y-6">
           {rootComments.map((comment: CommentWithUser) => (
-            <Thread
+            <CommentThread
               key={comment.id}
               comment={comment}
               replies={commentsByParentId[comment.id] || []}
@@ -57,4 +57,4 @@ const Comments = async ({ slug }: { slug: string }) => {
   );
 };
 
-export default Comments;
+export { Comments };

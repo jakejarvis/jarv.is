@@ -1,5 +1,5 @@
-import PageTitle from "@/components/layout/page-title";
-import ContactForm from "@/components/contact-form";
+import { PageTitle } from "@/components/layout/page-title";
+import { ContactForm } from "@/components/contact-form";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({

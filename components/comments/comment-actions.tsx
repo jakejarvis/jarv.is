@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import Form from "./comment-form";
+import { CommentForm } from "./comment-form";
 import { useSession } from "@/lib/auth-client";
 import { deleteComment, type CommentWithUser } from "@/lib/server/comments";
 
@@ -42,7 +42,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
   return (
     <div className="mt-4">
       {isEditing ? (
-        <Form
+        <CommentForm
           slug={comment.pageSlug}
           initialContent={comment.content}
           commentId={comment.id}
@@ -81,7 +81,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
 
       {isReplying && (
         <div className="mt-4">
-          <Form
+          <CommentForm
             slug={comment.pageSlug}
             parentId={comment.id}
             onCancel={() => setIsReplying(false)}
@@ -93,4 +93,4 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
   );
 };
 
-export default CommentActions;
+export { CommentActions };

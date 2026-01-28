@@ -18,4 +18,4 @@ const HeadingAnchor = ({ id, title, className }: { id: string; title: string; cl
   );
 };
 
-export default HeadingAnchor;
+export { HeadingAnchor };

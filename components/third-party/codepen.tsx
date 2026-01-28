@@ -28,4 +28,4 @@ const CodePen = ({
   );
 };
 
-export default CodePen;
+export { CodePen };

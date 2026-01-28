@@ -17,4 +17,4 @@ const RelativeTime = ({ ...rest }: React.ComponentProps<typeof TimeAgo>) => {
   );
 };
 
-export default RelativeTime;
+export { RelativeTime };

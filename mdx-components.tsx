@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import CodeBlock from "@/components/code-block";
-import Video from "@/components/video";
-import ImageDiff from "@/components/image-diff";
-import Tweet from "@/components/third-party/tweet";
-import YouTube from "@/components/third-party/youtube";
-import Gist from "@/components/third-party/gist";
-import CodePen from "@/components/third-party/codepen";
+import { CodeBlock } from "@/components/code-block";
+import { Video } from "@/components/video";
+import { ImageDiff } from "@/components/image-diff";
+import { Tweet } from "@/components/third-party/tweet";
+import { YouTube } from "@/components/third-party/youtube";
+import { Gist } from "@/components/third-party/gist";
+import { CodePen } from "@/components/third-party/codepen";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 

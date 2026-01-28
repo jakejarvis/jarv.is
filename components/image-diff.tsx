@@ -127,4 +127,4 @@ const ImageDiff = ({ children, className }: { children: React.ReactElement[]; cl
   );
 };
 
-export default ImageDiff;
+export { ImageDiff };

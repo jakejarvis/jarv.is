@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { env } from "@/lib/env";
-import CountUp from "@/components/count-up";
+import { CountUp } from "@/components/count-up";
 import { incrementViews } from "@/lib/server/views";
 
 const ViewCounter = ({ slug }: { slug: string }) => {
@@ -36,4 +36,4 @@ const ViewCounter = ({ slug }: { slug: string }) => {
   );
 };
 
-export default ViewCounter;
+export { ViewCounter };

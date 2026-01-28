@@ -10,4 +10,4 @@ const Analytics = () => {
   );
 };
 
-export default Analytics;
+export { Analytics };

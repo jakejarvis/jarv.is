@@ -1,6 +1,6 @@
 import { codeToHtml } from "shiki";
 import { cacheLife } from "next/cache";
-import CopyButton from "@/components/copy-button";
+import { CopyButton } from "@/components/copy-button";
 import { cn } from "@/lib/utils";
 
 /**
@@ -72,4 +72,4 @@ const CodeBlock = async ({ children, className, showLineNumbers = true, ...props
   );
 };
 
-export default CodeBlock;
+export { CodeBlock };

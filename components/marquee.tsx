@@ -24,4 +24,4 @@ const Marquee = ({
   );
 };
 
-export default Marquee;
+export { Marquee };

@@ -34,4 +34,4 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
   );
 };
 
-export default SignIn;
+export { SignIn };

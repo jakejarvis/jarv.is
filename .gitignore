@@ -35,3 +35,6 @@ yarn.lock
 # vercel
 .vercel
 .env*.local
+
+# next-agents-md
+.next-docs/

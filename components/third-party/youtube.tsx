@@ -8,4 +8,4 @@ const YouTube = ({ ...rest }: Omit<React.ComponentProps<typeof YouTubeEmbed>, "t
   return <YouTubeEmbed cookie={false} containerElement="div" title="" {...rest} />;
 };
 
-export default YouTube;
+export { YouTube };

@@ -193,9 +193,10 @@
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+  /* https://ui.shadcn.com/docs/components/button#cursor */
   button:not(:disabled),
   [role="button"]:not(:disabled) {
-    @apply cursor-pointer;
+    cursor: pointer;
   }
 }
 
