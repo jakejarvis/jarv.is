@@ -31,7 +31,7 @@
   - Next.js
   - Vercel
   - Tailwind CSS
-  - Neon Postgres
+  - Planetscale Postgres
   - Drizzle ORM
   - Better Auth
   - Resend

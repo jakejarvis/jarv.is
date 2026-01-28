@@ -21,7 +21,7 @@ For a likely excessive level of privacy and security, this website is also mirro
 
 ## Analytics
 
-A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e. `hits = hits + 1`) in a [Neon Postgres](https://neon.tech/) database. Individual views and identifying (or non-identifying) details are **never stored or logged**.
+A very simple hit counter on each blog post tallies an aggregate number of pageviews (i.e. `hits = hits + 1`) in a [Planetscale Postgres](https://planetscale.com/) database. Individual views and identifying (or non-identifying) details are **never stored or logged**.
 
 The [server component](https://github.com/jakejarvis/jarv.is/blob/main/components/view-counter.tsx) and [API endpoint](https://github.com/jakejarvis/jarv.is/blob/main/app/api/hits/route.ts) are open source, and [snapshots of the database](https://github.com/jakejarvis/website-stats) are public.
 

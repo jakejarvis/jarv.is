@@ -155,7 +155,7 @@ notes/            # MDX blog content files
 
 - **Next.js 15+** with App Router and React 19
 - **Tailwind CSS v4** with shadcn/ui components
-- **Drizzle ORM** with Neon PostgreSQL
+- **Drizzle ORM** with Planetscale Postgres
 - **Better Auth** for GitHub OAuth authentication
 - **Zod** for schema validation
 - **MDX** for blog content with remark/rehype plugins

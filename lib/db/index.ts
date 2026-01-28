@@ -1,7 +1,22 @@
 import { env } from "@/lib/env";
-import { drizzle } from "drizzle-orm/neon-http";
-import { neon } from "@neondatabase/serverless";
+import * as schema from "@/lib/db/schema";
+import { attachDatabasePool } from "@vercel/functions";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 
-const sql = neon(env.DATABASE_URL);
+// Create explicit pool instance for better connection management
+const pool = new Pool({
+  connectionString: env.DATABASE_URL,
+});
 
-export const db = drizzle({ client: sql });
+// Attach to Vercel's pool management to ensure idle connections are properly
+// released before fluid compute functions suspend:
+// https://vercel.com/guides/connection-pooling-with-functions
+try {
+  attachDatabasePool(pool);
+} catch {
+  // ignore
+}
+
+// Pass pool to Drizzle with schema
+export const db = drizzle(pool, { schema });

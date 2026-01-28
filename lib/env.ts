@@ -25,12 +25,9 @@ export const env = createEnv({
     AUTH_GITHUB_CLIENT_SECRET: z.string().min(1),
 
     /**
-     * Required. Database connection string for a Postgres database. May be set automatically by Vercel's Neon
-     * integration.
-     *
-     * @see https://vercel.com/integrations/neon
+     * Required. Database connection string for a Postgres database.
      */
-    DATABASE_URL: z.string().startsWith("postgres://"),
+    DATABASE_URL: z.string().startsWith("postgresql://"),
 
     /**
      * Required. GitHub API token used for [/projects](../app/projects/page.tsx) grid. Only needs the `public_repo`
