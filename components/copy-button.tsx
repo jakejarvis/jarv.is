@@ -18,17 +18,24 @@ function CopyButton({
   tooltip?: string;
 }) {
   const [hasCopied, setHasCopied] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
   React.useEffect(() => {
-    if (hasCopied) {
-      const timeout = setTimeout(() => setHasCopied(false), 2000);
-      return () => clearTimeout(timeout);
-    }
-  }, [hasCopied]);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleCopy = () => {
     copy(value);
     setHasCopied(true);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => setHasCopied(false), 2000);
   };
 
   return (

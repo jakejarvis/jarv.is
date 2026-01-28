@@ -61,8 +61,10 @@ const getFormattedDates = async (date: string) => {
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const frontmatter = await getFrontMatter(slug);
-  const commentCount = await getCommentCounts(`${POSTS_DIR}/${slug}`);
+  const [frontmatter, commentCount] = await Promise.all([
+    getFrontMatter(slug),
+    getCommentCounts(`${POSTS_DIR}/${slug}`),
+  ]);
   const formattedDates = await getFormattedDates(frontmatter!.date);
 
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);

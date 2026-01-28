@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import Link from "@/components/link";
 import Button from "@/components/ui/button";
@@ -8,7 +8,6 @@ import Separator from "@/components/ui/separator";
 import Menu from "@/components/layout/menu";
 import { cn } from "@/lib/utils";
 import siteConfig from "@/lib/config/site";
-import { useContext } from "react";
 import { ThemeContext } from "@/components/theme/theme-context";
 import { MoonIcon, SunIcon } from "lucide-react";
 
