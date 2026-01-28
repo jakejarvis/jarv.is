@@ -2,6 +2,7 @@ import { env } from "@/lib/env";
 import { cacheLife } from "next/cache";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import Link from "@/components/link";
+import PageTitle from "@/components/layout/page-title";
 import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate, formatDateISO } from "@/lib/date";
@@ -97,7 +98,7 @@ const PostsList = async () => {
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
       <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
-        <h2 id={year} className="mt-0 mb-4 text-4xl font-semibold tracking-tight sm:text-3xl">
+        <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">
           {year}
         </h2>
         <ul className="space-y-4">
@@ -115,6 +116,7 @@ const PostsList = async () => {
                   prefetch={false}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                   className="underline-offset-4 hover:underline"
+                  style={{ viewTransitionName: `note-title-${slug}` }}
                 />
 
                 <PostStats slug={slug} views={views} comments={comments} />
@@ -131,7 +133,12 @@ const PostsList = async () => {
 };
 
 const Page = async () => {
-  return <PostsList />;
+  return (
+    <>
+      <PageTitle canonical="/notes">Notes</PageTitle>
+      <PostsList />
+    </>
+  );
 };
 
 export default Page;

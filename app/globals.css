@@ -195,7 +195,7 @@
   }
 }
 
-/* View Transitions */
+/* View Transitions - uses tw-animate-css's `enter` and `exit` keyframes */
 @layer base {
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-group(*),
@@ -205,33 +205,31 @@
     }
   }
 
+  ::view-transition-group(*) {
+    animation-duration: 250ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  ::view-transition-old(*) {
+    --tw-exit-opacity: 0;
+    animation: 150ms ease-in both exit;
+  }
+  ::view-transition-new(*) {
+    --tw-enter-opacity: 0;
+    animation: 200ms ease-out both enter;
+  }
+
+  /* Main content: fade + slide */
   main {
     view-transition-name: main-content;
   }
-
   ::view-transition-old(main-content) {
-    animation: fade-out 120ms ease-out;
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-y: -8px;
+    animation: 150ms ease-in forwards exit;
   }
-
   ::view-transition-new(main-content) {
-    animation: fade-in 120ms ease-in 40ms;
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-y: 12px;
+    animation: 200ms ease-out forwards enter;
   }
 }

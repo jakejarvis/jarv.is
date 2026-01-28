@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import Providers from "@/components/providers";
@@ -64,7 +65,9 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         <Providers>
           <Header />
           <div className="mx-auto mt-4 w-full max-w-4xl px-5">
-            <main>{children}</main>
+            <main>
+              <ViewTransition>{children}</ViewTransition>
+            </main>
           </div>
           <Footer />
 

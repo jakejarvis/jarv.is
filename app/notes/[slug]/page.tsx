@@ -147,7 +147,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
       </div>
 
-      <h1 className="my-5 text-4xl font-semibold tracking-tight sm:text-3xl">
+      <h1
+        className="my-5 text-3xl font-semibold tracking-tight"
+        style={{ viewTransitionName: `note-title-${frontmatter!.slug}` }}
+      >
         <Link
           href={`/${POSTS_DIR}/${frontmatter!.slug}`}
           dangerouslySetInnerHTML={{ __html: frontmatter!.htmlTitle || frontmatter!.title }}
