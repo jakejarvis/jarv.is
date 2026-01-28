@@ -34,7 +34,7 @@ const CodeBlock = async ({ children, className, showLineNumbers = true, ...props
   const html = await renderCode(codeString, lang);
 
   return (
-    <div className="group relative">
+    <div className="group not-prose relative">
       <CopyButton
         value={codeString}
         className="absolute top-2 right-2 z-10 opacity-0 transition-opacity group-hover:opacity-100"

@@ -214,13 +214,14 @@
   [data-slot="code-block"] {
     @apply bg-code text-code-foreground overflow-x-auto overflow-y-hidden rounded-xl text-sm outline-none;
 
-    /* Dark mode token colors */
-    & pre > code > span > * {
-      @apply dark:!text-(--shiki-dark);
+    /* Override shiki inline styles */
+    & pre {
+      @apply m-0 rounded-xl !bg-transparent;
     }
 
-    & pre {
-      @apply m-0 rounded-xl bg-transparent;
+    /* Dark mode token colors - override shiki inline color styles */
+    & span[style*="color"] {
+      @apply dark:![color:var(--shiki-dark)];
     }
 
     & code {
