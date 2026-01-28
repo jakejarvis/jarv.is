@@ -126,8 +126,8 @@ importers:
         specifier: 19.2.4
         version: 19.2.4
       react-activity-calendar:
-        specifier: ^3.0.5
-        version: 3.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: ^3.0.6
+        version: 3.0.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react-countup:
         specifier: ^6.5.3
         version: 6.5.3(react@19.2.4)
@@ -4233,8 +4233,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-activity-calendar@3.0.5:
-    resolution: {integrity: sha512-OwySecGFNRq5uuIenBOHGyzFXiHbwD/hHobX0HTJt3G60/FZWKDd+v7uchS/62GznVrXoiY47vAXOxJrAcnW8A==}
+  react-activity-calendar@3.0.6:
+    resolution: {integrity: sha512-apMWdhCuK5LBjKJdWdSrKL7xU1+KsO5PCTIu0SmuAzpN5qTFfoHUu3846eVofj8ook40gRm2gIcsSspjbaSgjw==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
@@ -9244,7 +9244,7 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-activity-calendar@3.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  react-activity-calendar@3.0.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       '@floating-ui/react': 0.27.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       date-fns: 4.1.0
