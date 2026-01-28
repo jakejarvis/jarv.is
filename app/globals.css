@@ -216,7 +216,7 @@
 
     /* Dark mode token colors */
     & pre > code > span > * {
-      @apply dark:text-(--shiki-dark);
+      @apply dark:!text-(--shiki-dark);
     }
 
     & pre {
