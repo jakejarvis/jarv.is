@@ -1,7 +1,21 @@
 import { codeToHtml } from "shiki";
 import { cacheLife } from "next/cache";
 import CopyButton from "@/components/copy-button";
-import { cn, getTextContent } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+
+/**
+ * Recursively extracts plain text content from React nodes.
+ * Replacement for the `react-to-text` package.
+ */
+const getTextContent = (node: React.ReactNode): string => {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(getTextContent).join("");
+  if (typeof node === "object" && "props" in node) {
+    return getTextContent((node as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  }
+  return "";
+};
 
 interface CodeBlockProps extends React.ComponentProps<"pre"> {
   showLineNumbers?: boolean;

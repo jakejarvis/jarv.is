@@ -3,7 +3,7 @@
 import * as React from "react";
 import copy from "copy-to-clipboard";
 import { CheckIcon, ClipboardCheckIcon, CopyIcon } from "lucide-react";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 

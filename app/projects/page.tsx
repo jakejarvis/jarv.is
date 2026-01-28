@@ -2,7 +2,7 @@ import { env } from "@/lib/env";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { GitForkIcon, StarIcon } from "lucide-react";
-import Skeleton from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 import PageTitle from "@/components/layout/page-title";
 import RelativeTime from "@/components/relative-time";
 import ActivityCalendar from "@/components/activity-calendar";
@@ -10,7 +10,7 @@ import { GitHubIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { createMetadata } from "@/lib/metadata";
 import { getContributions, getRepos } from "./github";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export const metadata = createMetadata({
   title: "Projects",

@@ -4,7 +4,7 @@ import { env } from "@/lib/env";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2Icon } from "lucide-react";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { GitHubIcon } from "@/components/icons";
 import { signIn } from "@/lib/auth-client";
 
