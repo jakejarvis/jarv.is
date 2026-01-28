@@ -216,7 +216,7 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
       use-debounce:
-        specifier: ^10.0.4
+        specifier: ^10.1.0
         version: 10.1.0(react@19.2.4)
       zod:
         specifier: ^4.3.6
