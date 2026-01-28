@@ -1,8 +1,7 @@
 import { codeToHtml } from "shiki";
 import { cacheLife } from "next/cache";
-import reactToText from "react-to-text";
 import CopyButton from "@/components/copy-button";
-import { cn } from "@/lib/utils";
+import { cn, getTextContent } from "@/lib/utils";
 
 interface CodeBlockProps extends React.ComponentProps<"pre"> {
   showLineNumbers?: boolean;
@@ -29,7 +28,7 @@ const CodeBlock = async ({ children, className, showLineNumbers = true, ...props
   }
 
   const codeProps = children.props as React.ComponentProps<"code">;
-  const codeString = reactToText(codeProps.children).trim();
+  const codeString = getTextContent(codeProps.children).trim();
   const lang = codeProps.className?.split("language-")[1] ?? "text";
 
   const html = await renderCode(codeString, lang);

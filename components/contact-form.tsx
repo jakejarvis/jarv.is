@@ -1,7 +1,7 @@
 "use client";
 
-import { useActionState, useState } from "react";
-import { useDebounce } from "react-use";
+import { useActionState, useState, useEffect } from "react";
+import { useDebouncedCallback } from "use-debounce";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
 import Form from "next/form";
 import Input from "@/components/ui/input";
@@ -35,14 +35,14 @@ const ContactForm = () => {
   // client-side validation using shared schema
   const [clientErrors, setClientErrors] = useState<Partial<Record<keyof ContactInput, string[]>>>({});
 
-  useDebounce(
-    () => {
-      const result = ContactSchema.safeParse(formFields);
-      setClientErrors(result.success ? {} : result.error.flatten().fieldErrors);
-    },
-    150,
-    [formFields]
-  );
+  const debouncedValidate = useDebouncedCallback(() => {
+    const result = ContactSchema.safeParse(formFields);
+    setClientErrors(result.success ? {} : result.error.flatten().fieldErrors);
+  }, 150);
+
+  useEffect(() => {
+    debouncedValidate();
+  }, [formFields, debouncedValidate]);
 
   const hasClientErrors = Object.values(clientErrors).some((errs) => (errs?.length || 0) > 0);
 
@@ -59,7 +59,7 @@ const ContactForm = () => {
 
   return (
     <Form action={formAction} className="my-6 space-y-4">
-      <div>
+      <div className="not-prose">
         <Input
           type="text"
           name="name"
@@ -111,7 +111,8 @@ const ContactForm = () => {
         {messageError && <span className="text-destructive text-[0.8rem] font-semibold">{messageError}</span>}
 
         <div className="text-foreground/85 my-2 text-[0.8rem] leading-relaxed">
-          <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" /> Basic{" "}
+          <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
+          Basic{" "}
           <a
             href="https://commonmark.org/help/"
             target="_blank"

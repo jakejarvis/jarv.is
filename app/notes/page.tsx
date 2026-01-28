@@ -1,15 +1,9 @@
-import { env } from "@/lib/env";
-import { Suspense } from "react";
-import { cacheLife } from "next/cache";
 import Link from "next/link";
-import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import PageTitle from "@/components/layout/page-title";
+import PostStats from "@/components/post-stats";
 import { getFrontMatter, POSTS_DIR, type FrontMatter } from "@/lib/posts";
 import { createMetadata } from "@/lib/metadata";
-import { formatDate, formatDateISO } from "@/lib/date";
 import authorConfig from "@/lib/config/author";
-import { getViewCounts } from "@/lib/views";
-import { getCommentCounts } from "@/lib/server/comments";
 
 export const metadata = createMetadata({
   title: "Notes",
@@ -17,61 +11,26 @@ export const metadata = createMetadata({
   canonical: `/${POSTS_DIR}`,
 });
 
-// Hoist number formatter to avoid re-creating on every render
-const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
-
-// Async component that fetches and displays stats for a single post
-const PostStats = async ({ slug }: { slug: string }) => {
-  const [views, comments] = await Promise.all([getViewCounts(slug), getCommentCounts(slug)]);
-
-  return (
-    <>
-      {views > 0 && (
-        <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-          <EyeIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
-          <span className="inline-block leading-none tabular-nums">{numberFormatter.format(views)}</span>
-        </span>
-      )}
-
-      {comments > 0 && (
-        <Link
-          href={`/${slug}#comments`}
-          title={`${numberFormatter.format(comments)} ${comments === 1 ? "comment" : "comments"}`}
-          className="inline-flex hover:no-underline"
-        >
-          <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-            <MessagesSquareIcon className="inline-block size-3 shrink-0" aria-hidden="true" />
-            <span className="inline-block leading-none tabular-nums">{numberFormatter.format(comments)}</span>
-          </span>
-        </Link>
-      )}
-    </>
-  );
-};
-
-// Cached helper to format dates for posts - needed for Cache Components compatibility
-const getFormattedPostDates = async (posts: FrontMatter[]) => {
-  "use cache";
-  cacheLife("max");
-
-  return posts.map((post) => {
-    const year = new Date(post.date).getUTCFullYear();
-    return {
-      ...post,
-      year,
-      dateISO: formatDateISO(post.date),
-      dateTitle: formatDate(post.date, "MMM d, y, h:mm a O"),
-      dateDisplay: formatDate(post.date, "MMM d"),
-    };
-  });
-};
-
-// Renders the posts list with static content, deferring stats to runtime via Suspense
 const PostsList = async () => {
   const posts = await getFrontMatter();
 
-  // Format dates in a cached function to avoid date-fns using new Date() during render
-  const formattedPosts = await getFormattedPostDates(posts);
+  const formattedPosts = posts.map((post) => {
+    const d = new Date(post.date);
+    return {
+      ...post,
+      year: d.getUTCFullYear(),
+      dateISO: d.toISOString(),
+      dateTitle: d.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short",
+      }),
+      dateDisplay: d.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+    };
+  });
 
   const postsByYear: {
     [year: string]: (FrontMatter & {
@@ -98,7 +57,7 @@ const PostsList = async () => {
           {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
             <li className="flex text-base leading-relaxed" key={slug}>
               <span className="text-muted-foreground w-18 shrink-0 md:w-22">
-                <time dateTime={dateISO} title={dateTitle}>
+                <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
                   {dateDisplay}
                 </time>
               </span>
@@ -111,9 +70,7 @@ const PostsList = async () => {
                   style={{ viewTransitionName: `note-title-${slug}` }}
                 />
 
-                <Suspense>
-                  <PostStats slug={`${POSTS_DIR}/${slug}`} />
-                </Suspense>
+                <PostStats slug={`${POSTS_DIR}/${slug}`} />
               </div>
             </li>
           ))}

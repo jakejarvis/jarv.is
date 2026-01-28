@@ -1,9 +1,7 @@
 import { env } from "@/lib/env";
 import { Suspense } from "react";
-import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { JsonLd } from "react-schemaorg";
-import { formatDate, formatDateISO } from "@/lib/date";
 import { CalendarDaysIcon, TagIcon, SquarePenIcon, EyeIcon, MessagesSquareIcon } from "lucide-react";
 import ViewCounter from "@/components/view-counter";
 import CommentCount from "@/components/comment-count";
@@ -47,22 +45,23 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   });
 };
 
-// Cached helper to format dates - needed for Cache Components compatibility
-const getFormattedDates = async (date: string) => {
-  "use cache";
-  cacheLife("max");
-
-  return {
-    dateISO: formatDateISO(date),
-    dateTitle: formatDate(date, "MMM d, y, h:mm a O"),
-    dateDisplay: formatDate(date, "MMMM d, y"),
-  };
-};
-
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const frontmatter = await getFrontMatter(slug);
-  const formattedDates = await getFormattedDates(frontmatter!.date);
+  const d = new Date(frontmatter!.date);
+
+  const formattedDates = {
+    dateISO: d.toISOString(),
+    dateTitle: d.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZoneName: "short",
+    }),
+    dateDisplay: d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+  };
 
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
@@ -99,7 +98,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           className={"text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"}
         >
           <CalendarDaysIcon className="inline size-3 shrink-0" aria-hidden="true" />
-          <time dateTime={formattedDates.dateISO} title={formattedDates.dateTitle}>
+          <time dateTime={formattedDates.dateISO} title={formattedDates.dateTitle} suppressHydrationWarning>
             {formattedDates.dateDisplay}
           </time>
         </Link>
@@ -134,16 +133,12 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
         >
           <MessagesSquareIcon className="inline size-3 shrink-0" aria-hidden="true" />
-          <Suspense fallback={<span className="motion-safe:animate-pulse">0</span>}>
-            <CommentCount slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-          </Suspense>
+          <CommentCount slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
           <EyeIcon className="inline size-3 shrink-0" aria-hidden="true" />
-          <Suspense fallback={<span className="motion-safe:animate-pulse">0</span>}>
-            <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
-          </Suspense>
+          <ViewCounter slug={`${POSTS_DIR}/${frontmatter!.slug}`} />
         </div>
       </div>
 

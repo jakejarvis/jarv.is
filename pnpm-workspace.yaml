@@ -1,9 +1,0 @@
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - unrs-resolver
-
-peerDependencyRules:
-  allowAny:
-    - react
-    - react-dom

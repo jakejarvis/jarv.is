@@ -128,14 +128,6 @@ export const env = createEnv({
      * @see https://www.loc.gov/standards/iso639-2/php/code_list.php
      */
     NEXT_PUBLIC_SITE_LOCALE: z.string().default("en-US"),
-
-    /**
-     * Optional. Consistent timezone for the site. Doesn't really matter what it is, as long as it's the same everywhere
-     * to avoid hydration complaints. Defaults to `America/New_York`.
-     *
-     * @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-     */
-    NEXT_PUBLIC_SITE_TZ: z.string().default("America/New_York"),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -144,7 +136,6 @@ export const env = createEnv({
     NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
     NEXT_PUBLIC_ONION_DOMAIN: process.env.NEXT_PUBLIC_ONION_DOMAIN,
     NEXT_PUBLIC_SITE_LOCALE: process.env.NEXT_PUBLIC_SITE_LOCALE,
-    NEXT_PUBLIC_SITE_TZ: process.env.NEXT_PUBLIC_SITE_TZ,
   },
   emptyStringAsUndefined: true,
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

@@ -1,4 +1,3 @@
-import reactToText from "react-to-text";
 import { LinkIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +13,7 @@ const HeadingAnchor = ({ id, title, className }: { id: string; title: string; cl
       tabIndex={-1}
     >
       <LinkIcon className="inline-block size-[0.75em] align-baseline" />
-      <span className="sr-only">Permalink to &ldquo;{reactToText(title)}&rdquo;</span>
+      <span className="sr-only">Permalink to &ldquo;{title}&rdquo;</span>
     </a>
   );
 };

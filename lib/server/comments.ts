@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { revalidatePath, revalidateTag, cacheTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { eq, desc, inArray, sql } from "drizzle-orm";
 import { checkBotId } from "botid/server";
 import { db } from "@/lib/db";
@@ -13,9 +13,6 @@ export type CommentWithUser = typeof schema.comment.$inferSelect & {
 };
 
 export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
-  "use cache";
-  cacheTag("comments", `comments-${pageSlug}`);
-
   try {
     // Fetch all comments for the page with user details
     const commentsWithUsers = await db
@@ -41,59 +38,55 @@ export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> 
   }
 };
 
-export const getCommentCounts: {
-  /**
-   * Retrieves the number of comments for a given slug
-   */
-  (slug: string): Promise<number>;
-  /**
-   * Retrieves the numbers of comments for an array of slugs
-   */
-  (slug: string[]): Promise<Record<string, number>>;
-  /**
-   * Retrieves the numbers of comments for ALL slugs
-   */
-  (): Promise<Record<string, number>>;
-} = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  slug?: any
-): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-Promise<any> => {
-  "use cache";
-  cacheTag("comments");
-
+/**
+ * Retrieves the number of comments for a given slug
+ */
+export const getCommentCount = async (slug: string): Promise<number> => {
   try {
-    // return one page
-    if (typeof slug === "string") {
-      const result = await db
-        .select({
-          count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-        })
-        .from(schema.comment)
-        .where(eq(schema.comment.pageSlug, slug));
+    const result = await db
+      .select({
+        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+      })
+      .from(schema.comment)
+      .where(eq(schema.comment.pageSlug, slug));
 
-      return Number(result[0]?.count ?? 0);
+    return Number(result[0]?.count ?? 0);
+  } catch (error) {
+    console.error("[server/comments] error fetching comment count:", error);
+    return 0;
+  }
+};
+
+/**
+ * Retrieves the numbers of comments for an array of slugs
+ */
+export const getCommentCountsForSlugs = async (slugs: string[]): Promise<Record<string, number>> => {
+  try {
+    const rows = await db
+      .select({
+        pageSlug: schema.comment.pageSlug,
+        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+      })
+      .from(schema.comment)
+      .where(inArray(schema.comment.pageSlug, slugs))
+      .groupBy(schema.comment.pageSlug);
+
+    const map: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
+    for (const row of rows) {
+      map[row.pageSlug] = Number(row.count ?? 0);
     }
+    return map;
+  } catch (error) {
+    console.error("[server/comments] error fetching comment counts:", error);
+    return Object.fromEntries(slugs.map((s) => [s, 0]));
+  }
+};
 
-    // return multiple pages
-    if (Array.isArray(slug)) {
-      const rows = await db
-        .select({
-          pageSlug: schema.comment.pageSlug,
-          count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-        })
-        .from(schema.comment)
-        .where(inArray(schema.comment.pageSlug, slug))
-        .groupBy(schema.comment.pageSlug);
-
-      const map: Record<string, number> = Object.fromEntries(slug.map((s: string) => [s, 0]));
-      for (const row of rows) {
-        map[row.pageSlug] = Number(row.count ?? 0);
-      }
-      return map;
-    }
-
-    // return ALL pages
+/**
+ * Retrieves the numbers of comments for ALL slugs
+ */
+export const getAllCommentCounts = async (): Promise<Record<string, number>> => {
+  try {
     const rows = await db
       .select({
         pageSlug: schema.comment.pageSlug,
@@ -109,9 +102,6 @@ Promise<any> => {
     return map;
   } catch (error) {
     console.error("[server/comments] error fetching comment counts:", error);
-    // Return sensible defaults instead of throwing during prerendering
-    if (typeof slug === "string") return 0;
-    if (Array.isArray(slug)) return Object.fromEntries(slug.map((s: string) => [s, 0]));
     return {};
   }
 };
@@ -141,12 +131,8 @@ export const createComment = async (data: { content: string; pageSlug: string; p
       userId: session.user.id,
     });
 
-    // Revalidate caches and paths
-    revalidateTag("comments", "max");
-    revalidateTag(`comments-${data.pageSlug}`, "max");
+    // Revalidate page
     revalidatePath(`/${data.pageSlug}`);
-    // Also revalidate the notes listing to update comment count badges
-    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment");
@@ -195,13 +181,8 @@ export const updateComment = async (commentId: string, content: string) => {
       })
       .where(eq(schema.comment.id, commentId));
 
-    // Revalidate caches and paths
-    revalidateTag("comments", "max");
-    revalidateTag(`comments-${comment.pageSlug}`, "max");
+    // Revalidate page
     revalidatePath(`/${comment.pageSlug}`);
-    // Also revalidate the notes listing to update comment count badges
-    // TODO: make this more generic in case we want to add comments to non-note pages
-    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error updating comment:", error);
     throw new Error("Failed to update comment");
@@ -244,13 +225,8 @@ export const deleteComment = async (commentId: string) => {
     // Delete the comment
     await db.delete(schema.comment).where(eq(schema.comment.id, commentId));
 
-    // Revalidate caches and paths
-    revalidateTag("comments", "max");
-    revalidateTag(`comments-${comment.pageSlug}`, "max");
+    // Revalidate page
     revalidatePath(`/${comment.pageSlug}`);
-    // Also revalidate the notes listing to update comment count badges
-    // TODO: make this more generic in case we want to add comments to non-note pages
-    revalidatePath("/notes");
   } catch (error) {
     console.error("[server/comments] error deleting comment:", error);
     throw new Error("Failed to delete comment");
