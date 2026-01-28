@@ -11,6 +11,7 @@ import { GitHubIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { createMetadata } from "@/lib/metadata";
 import { getContributions, getRepos } from "./github";
+import Button from "@/components/ui/button";
 
 export const metadata = createMetadata({
   title: "Projects",
@@ -122,9 +123,14 @@ const Page = async () => {
       )}
 
       <p className="mt-6 mb-0 text-center text-base font-medium">
-        <Link href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`} className="hover:no-underline">
-          View more on <GitHubIcon className="fill-foreground/80 mx-0.5 inline size-5 align-text-top" /> GitHub.
-        </Link>
+        <Button variant="secondary" asChild>
+          <Link
+            href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
+          >
+            <GitHubIcon />
+            <span className="leading-none">Show All…</span>
+          </Link>
+        </Button>
       </p>
     </>
   );

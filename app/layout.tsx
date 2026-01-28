@@ -1,7 +1,6 @@
 import { env } from "@/lib/env";
 import { JsonLd } from "react-schemaorg";
 import Providers from "@/components/providers";
-import { ThemeScript } from "@/components/theme/theme-script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Toaster from "@/components/ui/sonner";
@@ -24,8 +23,6 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
       suppressHydrationWarning
     >
       <head>
-        <ThemeScript />
-
         <JsonLd<Person>
           item={{
             "@context": "https://schema.org",
@@ -65,13 +62,11 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
       <body className="bg-background text-foreground font-sans antialiased">
         <Providers>
-          <div className="mx-auto w-full max-w-4xl px-5 py-1">
-            <Header className="mt-4 mb-6 w-full" />
-
+          <Header />
+          <div className="mx-auto mt-4 w-full max-w-4xl px-5">
             <main>{children}</main>
-
-            <Footer className="my-6 w-full" />
           </div>
+          <Footer />
 
           <Toaster position="bottom-center" hotkey={[]} />
           <Analytics />

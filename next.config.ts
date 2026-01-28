@@ -32,6 +32,7 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   experimental: {
+    viewTransition: true,
     serverActions: {
       // fix CSRF errors from tor reverse proxy
       allowedOrigins: [
@@ -156,7 +157,12 @@ const nextPlugins: Array<
       rehypePlugins: [
         "rehype-unwrap-images",
         "rehype-slug",
-        ["rehype-wrapper", { className: "generated" }],
+        [
+          "rehype-wrapper",
+          {
+            className: "prose prose-sm prose-neutral dark:prose-invert max-w-none",
+          },
+        ],
         "rehype-mdx-code-props",
         "rehype-mdx-import-media",
       ],

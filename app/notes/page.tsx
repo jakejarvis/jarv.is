@@ -24,8 +24,8 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
     <>
       {views > 0 && (
         <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-          <EyeIcon className="inline-block size-4 shrink-0" />
-          <span className="inline-block leading-none">{numberFormatter.format(views)}</span>
+          <EyeIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
+          <span className="inline-block leading-none tabular-nums">{numberFormatter.format(views)}</span>
         </span>
       )}
 
@@ -37,8 +37,8 @@ const PostStats = ({ views, comments, slug }: { views: number; comments: number;
           className="inline-flex hover:no-underline"
         >
           <span className="bg-muted text-foreground/65 inline-flex h-5 flex-nowrap items-center gap-1 rounded-md px-1.5 align-text-top text-xs font-semibold text-nowrap shadow select-none">
-            <MessagesSquareIcon className="inline-block size-3 shrink-0" />
-            <span className="inline-block leading-none">{numberFormatter.format(comments)}</span>
+            <MessagesSquareIcon className="inline-block size-3 shrink-0" aria-hidden="true" />
+            <span className="inline-block leading-none tabular-nums">{numberFormatter.format(comments)}</span>
           </span>
         </Link>
       )}
@@ -96,8 +96,8 @@ const PostsList = async () => {
 
   Object.entries(postsByYear).forEach(([year, posts]) => {
     sections.push(
-      <section className="my-8 first-of-type:mt-6 last-of-type:mb-6" key={year}>
-        <h2 id={year} className="mt-0 mb-4 text-3xl font-bold md:text-4xl">
+      <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
+        <h2 id={year} className="mt-0 mb-4 text-4xl font-semibold tracking-tight sm:text-3xl">
           {year}
         </h2>
         <ul className="space-y-4">
@@ -114,6 +114,7 @@ const PostsList = async () => {
                   href={`/${POSTS_DIR}/${slug}`}
                   prefetch={false}
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                  className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
                 />
 
                 <PostStats slug={slug} views={views} comments={comments} />
