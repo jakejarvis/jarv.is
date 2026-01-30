@@ -119,7 +119,7 @@ const Page = () => {
         </Link>{" "}
         <sup className="">
           <a
-            href="https://jrvs.io/pgp"
+            href="https://keyoxide.org/hkp/3bc6e5776bf379d36f6714802b0c9cf251e69a39"
             target="_blank"
             rel="noopener pgpkey"
             title="Download my PGP key"

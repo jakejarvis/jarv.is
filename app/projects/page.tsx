@@ -73,7 +73,7 @@ const Page = async () => {
                 href={repo!.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-base leading-relaxed font-semibold"
+                className="inline-block text-base leading-relaxed font-semibold text-[#0969da] hover:underline dark:text-[#4493f8]"
               >
                 {repo!.name}
               </a>

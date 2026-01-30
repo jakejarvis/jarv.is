@@ -1,165 +1,200 @@
 "use client";
 
-import { useActionState, useState, useEffect } from "react";
-import { useDebouncedCallback } from "use-debounce";
+import { useState } from "react";
+import { useForm } from "@tanstack/react-form";
 import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
-import Form from "next/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
 import { MarkdownIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { send, type ContactState } from "@/lib/server/contact";
-import { ContactSchema, type ContactInput } from "@/lib/schemas/contact";
+import { sendContactForm, type ContactResult } from "@/lib/server/contact";
+import { ContactSchema } from "@/lib/schemas/contact";
 
 const ContactForm = () => {
-  const [formState, formAction, pending] = useActionState<ContactState, FormData>(send, {
-    success: false,
-    message: "",
+  const [result, setResult] = useState<ContactResult | null>(null);
+
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    validators: {
+      onBlur: ContactSchema,
+    },
+    onSubmit: async ({ value }) => {
+      try {
+        const formData = new FormData();
+        formData.append("name", value.name);
+        formData.append("email", value.email);
+        formData.append("message", value.message);
+
+        const response = await sendContactForm(formData);
+        setResult(response);
+
+        if (response.success) {
+          form.reset();
+        }
+      } catch (error) {
+        console.error("[contact-form] error:", error);
+        setResult({
+          success: false,
+          message: "Something went wrong. Please try again.",
+        });
+      }
+    },
   });
-
-  // keep track of input so we can repopulate the fields if the form fails
-  const [formFields, setFormFields] = useState<ContactInput>({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  // keep track of which fields have been touched
-  const [touched, setTouched] = useState<Record<keyof ContactInput, boolean>>({
-    name: false,
-    email: false,
-    message: false,
-  });
-
-  // client-side validation using shared schema
-  const [clientErrors, setClientErrors] = useState<Partial<Record<keyof ContactInput, string[]>>>({});
-
-  const debouncedValidate = useDebouncedCallback(() => {
-    const result = ContactSchema.safeParse(formFields);
-    setClientErrors(result.success ? {} : result.error.flatten().fieldErrors);
-  }, 150);
-
-  useEffect(() => {
-    debouncedValidate();
-  }, [formFields, debouncedValidate]);
-
-  const hasClientErrors = Object.values(clientErrors).some((errs) => (errs?.length || 0) > 0);
-
-  const getErrorForField = (field: keyof ContactInput): string | undefined => {
-    if (touched[field]) {
-      return clientErrors[field]?.[0];
-    }
-    return formState.errors?.[field]?.[0];
-  };
-
-  const nameError = getErrorForField("name");
-  const emailError = getErrorForField("email");
-  const messageError = getErrorForField("message");
 
   return (
-    <Form action={formAction} className="my-6 space-y-4">
-      <div className="not-prose">
-        <Input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formFields.name}
-          onChange={(e) => {
-            setFormFields({ ...formFields, name: e.target.value });
-            setTouched((t) => ({ ...t, name: true }));
-          }}
-          onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-          disabled={pending || formState.success}
-          aria-invalid={nameError ? "true" : undefined}
-        />
-        {nameError && <span className="text-destructive text-[0.8rem] font-semibold">{nameError}</span>}
-      </div>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        form.handleSubmit();
+      }}
+      className="my-5 space-y-4"
+    >
+      <form.Subscribe selector={(state) => state.isSubmitting || result?.success}>
+        {(isDisabled) => (
+          <>
+            <form.Field name="name">
+              {(field) => {
+                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                return (
+                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                    <FieldLabel htmlFor="name">Name</FieldLabel>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Microsoft Bob"
+                      autoComplete="name"
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      disabled={!!isDisabled}
+                      aria-invalid={isInvalid || undefined}
+                    />
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                  </Field>
+                );
+              }}
+            </form.Field>
 
-      <div>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          inputMode="email"
-          value={formFields.email}
-          onChange={(e) => {
-            setFormFields({ ...formFields, email: e.target.value });
-            setTouched((t) => ({ ...t, email: true }));
-          }}
-          onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-          disabled={pending || formState.success}
-          aria-invalid={emailError ? "true" : undefined}
-        />
-        {emailError && <span className="text-destructive text-[0.8rem] font-semibold">{emailError}</span>}
-      </div>
+            <form.Field name="email">
+              {(field) => {
+                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                return (
+                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                    <FieldLabel htmlFor="email">Email</FieldLabel>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      inputMode="email"
+                      placeholder="robert@hotmail.com"
+                      autoComplete="email"
+                      spellCheck={false}
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      disabled={!!isDisabled}
+                      aria-invalid={isInvalid || undefined}
+                    />
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                  </Field>
+                );
+              }}
+            </form.Field>
 
-      <div>
-        <Textarea
-          name="message"
-          placeholder="Write something..."
-          value={formFields.message}
-          onChange={(e) => {
-            setFormFields({ ...formFields, message: e.target.value });
-            setTouched((t) => ({ ...t, message: true }));
-          }}
-          onBlur={() => setTouched((t) => ({ ...t, message: true }))}
-          disabled={pending || formState.success}
-          aria-invalid={messageError ? "true" : undefined}
-          className="min-h-[6lh] resize-y"
-        />
-        {messageError && <span className="text-destructive text-[0.8rem] font-semibold">{messageError}</span>}
+            <form.Field name="message">
+              {(field) => {
+                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                return (
+                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                    <FieldLabel htmlFor="message">Message</FieldLabel>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Write something…"
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      disabled={!!isDisabled}
+                      aria-invalid={isInvalid || undefined}
+                      className="min-h-[6lh] resize-y"
+                    />
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
 
-        <div className="text-foreground/85 my-2 text-[0.8rem] leading-relaxed">
-          <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
-          Basic{" "}
-          <a
-            href="https://commonmark.org/help/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Markdown reference sheet"
-            className="font-semibold"
-          >
-            Markdown syntax
-          </a>{" "}
-          is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-          <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
-            links
-          </a>
-          ](https://jarv.is), and <code>`code`</code>.
-        </div>
-      </div>
+                    <p className="text-foreground/85 mt-1.5 text-[0.8rem] leading-relaxed">
+                      <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
+                      Basic{" "}
+                      <a
+                        href="https://commonmark.org/help/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Markdown reference sheet"
+                        className="font-semibold"
+                      >
+                        Markdown syntax
+                      </a>{" "}
+                      is allowed, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
+                      <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
+                        links
+                      </a>
+                      ](https://jarv.is), and <code>`code`</code>.
+                    </p>
+                  </Field>
+                );
+              }}
+            </form.Field>
+          </>
+        )}
+      </form.Subscribe>
 
       <div className="flex min-h-16 items-center space-x-4">
-        {!formState.success && (
-          <Button type="submit" size="lg" disabled={pending || hasClientErrors}>
-            {pending ? (
-              <>
-                <Loader2Icon className="animate-spin" />
-                Sending...
-              </>
-            ) : (
-              <>
-                <SendIcon />
-                Send
-              </>
-            )}
-          </Button>
-        )}
+        <form.Subscribe selector={(state) => [, state.isSubmitting]}>
+          {([isSubmitting]) => (
+            <>
+              {!result?.success && (
+                <Button type="submit" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2Icon className="animate-spin" aria-hidden="true" />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      <SendIcon aria-hidden="true" />
+                      Send
+                    </>
+                  )}
+                </Button>
+              )}
 
-        {!pending && formState.message && (
-          <div
-            className={cn(
-              "space-x-0.5 text-[0.9rem] font-semibold",
-              formState.success ? "text-green-600 dark:text-green-400" : "text-destructive"
-            )}
-          >
-            {formState.success ? <CheckIcon className="inline size-4" /> : <XIcon className="inline size-4" />}{" "}
-            <span>{formState.message}</span>
-          </div>
-        )}
+              {!isSubmitting && result?.message && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className={cn(
+                    "space-x-0.5 text-[0.9rem] font-semibold",
+                    result.success ? "text-green-600 dark:text-green-400" : "text-destructive"
+                  )}
+                >
+                  {result.success ? (
+                    <CheckIcon className="inline size-4" aria-hidden="true" />
+                  ) : (
+                    <XIcon className="inline size-4" aria-hidden="true" />
+                  )}{" "}
+                  <span>{result.message}</span>
+                </div>
+              )}
+            </>
+          )}
+        </form.Subscribe>
       </div>
-    </Form>
+    </form>
   );
 };
 
