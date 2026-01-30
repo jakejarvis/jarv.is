@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { CommentForm } from "./comment-form";
+import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";
 import { SignIn } from "./sign-in";
 import { auth } from "@/lib/auth";
@@ -29,7 +29,7 @@ const Comments = async ({ slug }: { slug: string }) => {
   return (
     <>
       {session ? (
-        <CommentForm slug={slug} />
+        <NewCommentForm slug={slug} />
       ) : (
         <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
           <p className="text-center font-medium">Join the discussion by signing in:</p>

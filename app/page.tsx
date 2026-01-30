@@ -1,9 +1,19 @@
 import Link from "next/link";
 import { LockIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Page = () => {
   return (
-    <div className="prose prose-sm prose-neutral dark:prose-invert prose-headings:mt-0 prose-headings:mb-3 prose-p:my-3 prose-p:leading-[1.75] md:prose-p:leading-relaxed max-w-none">
+    <div
+      className={cn(
+        "prose prose-neutral dark:prose-invert prose-sm max-w-none",
+        "prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight prose-headings:mt-0 prose-headings:mb-3",
+        "prose-p:text-foreground/90 prose-p:my-3 prose-p:leading-[1.75] md:prose-p:leading-relaxed prose-strong:text-primary prose-li:text-foreground/80",
+        "prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4",
+        "prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none",
+        "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]"
+      )}
+    >
       <h1 className="text-2xl font-medium">
         Hi there! I&rsquo;m Jake.{" "}
         <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-2xl">👋</span>

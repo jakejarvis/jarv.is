@@ -1,8 +1,7 @@
-import { getImageProps } from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RelativeTime } from "@/components/relative-time";
+import { CommentAvatar } from "./comment-avatar";
 import { CommentActions } from "./comment-actions";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import { rehypeExternalLinks } from "@/lib/rehype";
@@ -16,21 +15,7 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
     <div className="group scroll-mt-4" id={divId}>
       <div className="flex gap-4">
         <div className="shrink-0">
-          <Avatar className="size-8 md:size-10">
-            {comment.user.image && (
-              <AvatarImage
-                {...getImageProps({
-                  src: comment.user.image,
-                  alt: `@${comment.user.name}'s avatar`,
-                  width: 40,
-                  height: 40,
-                }).props}
-                width={undefined}
-                height={undefined}
-              />
-            )}
-            <AvatarFallback>{comment.user.name.charAt(0).toUpperCase()}</AvatarFallback>
-          </Avatar>
+          <CommentAvatar name={comment.user.name} image={comment.user.image} className="size-8 md:size-10" />
         </div>
 
         <div className="min-w-0 flex-1">
