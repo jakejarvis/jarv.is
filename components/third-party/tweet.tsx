@@ -2,18 +2,31 @@ import { cacheLife, cacheTag } from "next/cache";
 import Image from "next/image";
 import type { Tweet as TweetType } from "react-tweet/api";
 import { EmbeddedTweet, TweetNotFound } from "react-tweet";
-import { fetchTweet as _fetchTweet } from "react-tweet/api";
+import { fetchTweet } from "react-tweet/api";
 import { cn } from "@/lib/utils";
 
-const fetchTweet = async (id: string) => {
+const Tweet = async ({ id, className }: { id: string; className?: string }) => {
   "use cache";
-  cacheLife("max"); // cache indefinitely
+  cacheLife("max");
   cacheTag("tweet", `tweet-${id}`);
 
-  return _fetchTweet(id);
-};
+  let data: TweetType | undefined;
 
-const TweetContent = ({ data, className }: { data: TweetType; className?: string }) => {
+  try {
+    const result = await fetchTweet(id);
+    data = result?.data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  if (!data) {
+    return (
+      <div className={cn("my-6 min-h-30 *:mx-auto! *:font-sans!", className)}>
+        <TweetNotFound />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
@@ -34,27 +47,6 @@ const TweetContent = ({ data, className }: { data: TweetType; className?: string
       />
     </div>
   );
-};
-
-const Tweet = async ({ id, className }: { id: string; className?: string }) => {
-  let data: TweetType | undefined;
-
-  try {
-    const result = await fetchTweet(id);
-    data = result?.data;
-  } catch (error) {
-    console.error(error);
-  }
-
-  if (!data) {
-    return (
-      <div className={cn("my-6 min-h-30 *:mx-auto! *:font-sans!", className)}>
-        <TweetNotFound />
-      </div>
-    );
-  }
-
-  return <TweetContent data={data} className={className} />;
 };
 
 export { Tweet };

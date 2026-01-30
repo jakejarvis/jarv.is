@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from "next/cache";
 import { cn } from "@/lib/utils";
 
 const Gist = async ({
@@ -6,16 +7,14 @@ const Gist = async ({
   className,
   ...rest
 }: { id: string; file?: string } & React.ComponentProps<"iframe">) => {
+  "use cache";
+  cacheLife("max");
+  cacheTag("gist", `gist-${id}${file ? `-${file}` : ""}`);
+
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
-  const scriptResponse = await fetch(scriptUrl, {
-    cache: "force-cache",
-    next: {
-      revalidate: false, // cache indefinitely in data store
-      tags: ["gist"],
-    },
-  });
+  const scriptResponse = await fetch(scriptUrl);
 
   if (!scriptResponse.ok) {
     console.warn(`[gist] failed to fetch js:`, scriptResponse.statusText);
