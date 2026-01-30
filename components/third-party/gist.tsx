@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils";
 const Gist = async ({
   id,
   file,
+  title,
   className,
   ...rest
-}: { id: string; file?: string } & React.ComponentProps<"iframe">) => {
+}: { id: string; file?: string; title?: string } & React.ComponentProps<"iframe">) => {
   "use cache";
   cacheLife("max");
   cacheTag("gist", `gist-${id}${file ? `-${file}` : ""}`);
@@ -44,6 +45,7 @@ const Gist = async ({
       scrolling="no"
       id={iframeId}
       srcDoc={iframeHtml}
+      title={title || `GitHub Gist ${id}${file ? ` - ${file}` : ""}`}
       className={cn("overflow-hidden border-none", className)}
       {...rest}
       suppressHydrationWarning

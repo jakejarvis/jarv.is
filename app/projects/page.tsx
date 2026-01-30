@@ -101,7 +101,7 @@ const Page = async () => {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                   >
-                    <StarIcon className="inline-block size-4 shrink-0" />
+                    <StarIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
                     <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
                   </a>
                 )}
@@ -114,7 +114,7 @@ const Page = async () => {
                     title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
                   >
-                    <GitForkIcon className="inline-block size-4" />
+                    <GitForkIcon className="inline-block size-4" aria-hidden="true" />
                     <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
                   </a>
                 )}

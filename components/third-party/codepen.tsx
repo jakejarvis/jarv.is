@@ -6,6 +6,7 @@ const CodePen = ({
   defaultTab = "html",
   preview = true,
   editable = false,
+  title = "CodePen embed",
   className,
   ...rest
 }: {
@@ -14,6 +15,7 @@ const CodePen = ({
   defaultTab?: string;
   preview?: boolean;
   editable?: boolean;
+  title?: string;
 } & React.ComponentProps<"iframe">) => {
   return (
     <iframe
@@ -22,6 +24,7 @@ const CodePen = ({
         preview: `${!!preview}`,
         editable: `${!!editable}`,
       })}`}
+      title={title}
       className={cn("h-[500px] w-full overflow-hidden border-none", className)}
       {...rest}
     />

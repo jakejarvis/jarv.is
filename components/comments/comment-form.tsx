@@ -73,16 +73,19 @@ const CommentTextarea = ({
   setContent,
   isPending,
   placeholder,
+  ariaLabel,
 }: {
   content: string;
   setContent: (value: string) => void;
   isPending: boolean;
   placeholder: string;
+  ariaLabel: string;
 }) => (
   <Textarea
     value={content}
     onChange={(e) => setContent(e.target.value)}
     placeholder={placeholder}
+    aria-label={ariaLabel}
     className="min-h-[4lh] w-full"
     disabled={isPending}
   />
@@ -131,11 +134,14 @@ const MarkdownHelp = () => (
     <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
-      <PopoverTrigger>
-        <span className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline">
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline"
+        >
           <span>Markdown</span>
           <span className="max-md:hidden">&nbsp;syntax</span>
-        </span>
+        </button>
       </PopoverTrigger>
       <PopoverContent align="start">
         <p className="text-sm leading-loose">
@@ -216,7 +222,8 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
             content={content}
             setContent={setContent}
             isPending={isPending}
-            placeholder="Write your thoughts..."
+            placeholder="Write your thoughts…"
+            ariaLabel="Write a comment"
           />
 
           <div className="flex justify-between gap-4">
@@ -277,7 +284,8 @@ const ReplyForm = ({
             content={content}
             setContent={setContent}
             isPending={isPending}
-            placeholder="Reply to this comment..."
+            placeholder="Reply to this comment…"
+            ariaLabel="Write a reply"
           />
 
           <div className="flex justify-end gap-2">
@@ -338,7 +346,8 @@ const EditCommentForm = ({
           content={content}
           setContent={setContent}
           isPending={isPending}
-          placeholder="Edit your comment..."
+          placeholder="Edit your comment…"
+          ariaLabel="Edit your comment"
         />
 
         <div className="flex justify-end gap-2">
