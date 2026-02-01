@@ -143,7 +143,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       </div>
 
       <h1
-        className="my-5 text-3xl font-semibold tracking-tight"
+        className="my-5 text-3xl font-medium tracking-tight"
         style={{ viewTransitionName: `note-title-${frontmatter!.slug}` }}
       >
         <Link
