@@ -60,7 +60,7 @@
     "drizzle-orm": "^0.45.1",
     "fast-glob": "^3.3.3",
     "feed": "^5.2.0",
-    "geist": "^1.5.1",
+    "geist": "^1.7.0",
     "html-entities": "^2.6.0",
     "lucide-react": "0.563.0",
     "next": "16.1.6",
