@@ -111,7 +111,7 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.1.0",
     "@types/pg": "^8.16.0",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "cross-env": "^10.1.0",
