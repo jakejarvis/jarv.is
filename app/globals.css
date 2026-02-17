@@ -210,17 +210,10 @@
     }
   }
 
-  ::view-transition-group(*) {
-    animation-duration: 250ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  ::view-transition-old(*) {
-    --tw-exit-opacity: 0;
-    animation: 150ms ease-in both exit;
-  }
-  ::view-transition-new(*) {
-    --tw-enter-opacity: 0;
-    animation: 200ms ease-out both enter;
+  /* Disable the default cross-fade on root (header/footer/chrome stay static) */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 
   /* Main content: fade + slide */
