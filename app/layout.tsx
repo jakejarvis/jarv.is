@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@/app/analytics";
 import { defaultMetadata } from "@/lib/metadata";
-import { GeistSans, GeistMono } from "@/lib/fonts";
+import { Inter, JetBrainsMono } from "@/lib/fonts";
 import siteConfig from "@/lib/config/site";
 import authorConfig from "@/lib/config/author";
 import type { Person, WebSite } from "schema-dts";
@@ -20,7 +20,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html
       lang={env.NEXT_PUBLIC_SITE_LOCALE}
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${Inter.variable} ${JetBrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

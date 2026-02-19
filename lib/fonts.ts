@@ -2,22 +2,22 @@
 // https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#reusing-fonts
 
 import {
-  Geist as GeistSansLoader,
-  Geist_Mono as GeistMonoLoader,
+  Inter as InterLoader,
+  JetBrains_Mono as JetBrainsMonoLoader,
   Comic_Neue as ComicNeueLoader,
 } from "next/font/google";
 
-export const GeistSans = GeistSansLoader({
+export const Inter = InterLoader({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   preload: true,
 });
 
-export const GeistMono = GeistMonoLoader({
+export const JetBrainsMono = JetBrainsMonoLoader({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist-mono",
+  variable: "--font-jetbrains-mono",
   preload: true,
 });
 

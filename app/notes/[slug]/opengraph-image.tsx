@@ -5,6 +5,7 @@ import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
 import { getSlugs, getFrontMatter, POSTS_DIR } from "@/lib/posts";
 import siteConfig from "@/lib/config/site";
+import { loadGoogleFont } from "@/lib/og-utils";
 
 export const contentType = "image/png";
 export const size = {
@@ -53,15 +54,13 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
     // get the post's title and image filename from its frontmatter
     const frontmatter = await getFrontMatter(slug);
 
-    const [postImg, avatarImg, fontRegular, fontSemiBold] = await Promise.all([
+    // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
+    const [postImg, avatarImg] = await Promise.all([
       frontmatter!.image ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter!.image}`) : null,
-
-      // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
       getLocalImage("app/avatar.jpg"),
-      // load the Geist font directly from its npm package
-      fs.promises.readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf")),
-      fs.promises.readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf")),
     ]);
+
+    const [fontRegular, fontSemibold] = await Promise.all([loadGoogleFont("Inter", 400), loadGoogleFont("Inter", 600)]);
 
     // template is HEAVILY inspired by https://og-new.clerkstage.dev/
     return new ImageResponse(
@@ -138,8 +137,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               <span
                 style={{
                   fontSize: "1.825rem",
-                  fontFamily: "Geist-SemiBold",
-                  fontWeight: 700,
+                  fontWeight: 600,
                   lineHeight: "3rem",
                   letterSpacing: "-0.015em",
                   marginLeft: "0.75rem",
@@ -153,8 +151,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               style={{
                 display: "flex",
                 flexGrow: 0,
-                fontFamily: "Geist-SemiBold",
-                fontWeight: 700,
+                fontWeight: 600,
                 fontSize: "48px",
                 color: "#030712",
                 letterSpacing: "-0.025em",
@@ -172,7 +169,6 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
             >
               <span
                 style={{
-                  fontFamily: "Geist-Regular",
                   fontWeight: 400,
                   fontSize: "20px",
                   color: "#030712",
@@ -193,7 +189,6 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               style={{
                 display: "flex",
                 flexGrow: 0,
-                fontFamily: "Geist-Regular",
                 fontWeight: 400,
                 fontSize: "24px",
                 color: "#030712",
@@ -235,16 +230,16 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
         ...size,
         fonts: [
           {
-            name: "Geist-Regular",
+            name: "Inter",
             data: fontRegular,
             style: "normal",
             weight: 400,
           },
           {
-            name: "Geist-SemiBold",
-            data: fontSemiBold,
+            name: "Inter",
+            data: fontSemibold,
             style: "normal",
-            weight: 700,
+            weight: 600,
           },
         ],
       }
