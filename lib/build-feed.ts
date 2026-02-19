@@ -2,7 +2,7 @@ import { Feed, type Item as FeedItem } from "feed";
 import ogImage from "@/app/opengraph-image.jpg";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
+
 import { getContent, getFrontMatter } from "@/lib/posts";
 
 /**
@@ -11,20 +11,20 @@ import { getContent, getFrontMatter } from "@/lib/posts";
  */
 export const buildFeed = async (): Promise<Feed> => {
   const feed = new Feed({
-    id: `${env.NEXT_PUBLIC_BASE_URL}`,
-    link: `${env.NEXT_PUBLIC_BASE_URL}`,
+    id: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+    link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     title: siteConfig.name,
     description: siteConfig.description,
     copyright: `https://spdx.org/licenses/${siteConfig.license}.html`,
     updated: new Date(),
-    image: `${env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
+    image: `${process.env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
     feedLinks: {
-      rss: `${env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
-      atom: `${env.NEXT_PUBLIC_BASE_URL}/feed.atom`,
+      rss: `${process.env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
+      atom: `${process.env.NEXT_PUBLIC_BASE_URL}/feed.atom`,
     },
     author: {
       name: authorConfig.name,
-      link: env.NEXT_PUBLIC_BASE_URL,
+      link: process.env.NEXT_PUBLIC_BASE_URL,
       email: authorConfig.email,
     },
   });
@@ -40,7 +40,7 @@ export const buildFeed = async (): Promise<Feed> => {
       author: [
         {
           name: authorConfig.name,
-          link: `${env.NEXT_PUBLIC_BASE_URL}`,
+          link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
         },
       ],
       date: new Date(post.date),

@@ -3,7 +3,7 @@
 import { checkBotId } from "botid/server";
 import { Resend } from "resend";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
+
 import { ContactSchema } from "@/lib/schemas/contact";
 
 export type ContactResult = {
@@ -39,18 +39,19 @@ export const sendContactForm = async (
   }
 
   try {
-    if (env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
+    if (process.env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
       // https://resend.com/docs/api-reference/emails/send-email
       console.warn(
         "[server/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.",
       );
     }
 
-    const resend = new Resend(env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: `${parsed.data.name} <${env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
+      from: `${parsed.data.name} <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
       replyTo: `${parsed.data.name} <${parsed.data.email}>`,
-      to: [env.RESEND_TO_EMAIL],
+      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+      to: [process.env.RESEND_TO_EMAIL!],
       subject: `[${siteConfig.name}] Contact Form Submission`,
       text: parsed.data.message,
     });

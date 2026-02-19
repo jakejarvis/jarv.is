@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-// check environment variables at build time
-// https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
-import "./lib/env";
-
 const nextConfig = {
   cacheComponents: true,
   reactCompiler: true,

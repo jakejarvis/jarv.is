@@ -3,7 +3,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
+
 import { loadGoogleFont } from "@/lib/og-utils";
 import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 
@@ -214,7 +214,7 @@ const OpenGraphImage = async ({
               }}
             >
               {new Date(frontmatter.date).toLocaleDateString(
-                env.NEXT_PUBLIC_SITE_LOCALE,
+                process.env.NEXT_PUBLIC_SITE_LOCALE,
                 {
                   year: "numeric",
                   month: "long",

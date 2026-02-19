@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { signIn } from "@/lib/auth-client";
-import { env } from "@/lib/env";
 
 const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +16,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: `${env.NEXT_PUBLIC_BASE_URL}${callbackPath ? callbackPath : "/"}`,
+        callbackURL: `${process.env.NEXT_PUBLIC_BASE_URL}${callbackPath ? callbackPath : "/"}`,
       });
     } catch (error) {
       console.error("Error signing in:", error);

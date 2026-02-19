@@ -2,7 +2,7 @@ import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
 import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
-import { env } from "@/lib/env";
+
 import { createMetadata } from "@/lib/metadata";
 
 import thumbnail from "./thumbnail.png";
@@ -32,8 +32,8 @@ const Page = () => (
         description: metadata.description as string,
         contentUrl:
           "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/convention-ZTUBLwMcmOE8EJ4tNAhpCli4NAHKcG.webm",
-        thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
-        embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/hillary`,
+        thumbnailUrl: `${process.env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
+        embedUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/hillary`,
         uploadDate: "2016-07-25T00:00:00Z",
         duration: "PT1M51S",
       }}

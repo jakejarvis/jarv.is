@@ -4,7 +4,6 @@ import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
 import * as cheerio from "cheerio";
 import { cacheLife } from "next/cache";
-import { env } from "@/lib/env";
 
 export const getContributions = async (): Promise<
   Array<{
@@ -19,10 +18,10 @@ export const getContributions = async (): Promise<
   // thanks @grubersjoe! :) https://github.com/grubersjoe/github-contributions-api/blob/main/src/scrape.ts
   try {
     const response = await fetch(
-      `https://github.com/users/${env.NEXT_PUBLIC_GITHUB_USERNAME}/contributions`,
+      `https://github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/contributions`,
       {
         headers: {
-          referer: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+          referer: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
           "x-requested-with": "XMLHttpRequest",
         },
       },
@@ -116,12 +115,12 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
         }
       `,
       {
-        username: env.NEXT_PUBLIC_GITHUB_USERNAME,
+        username: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
         sort: "STARGAZERS",
         limit: 12,
         headers: {
           accept: "application/vnd.github.v3+json",
-          authorization: `token ${env.GITHUB_TOKEN}`,
+          authorization: `token ${process.env.GITHUB_TOKEN}`,
         },
       },
     );

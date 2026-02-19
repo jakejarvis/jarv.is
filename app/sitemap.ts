@@ -1,7 +1,7 @@
 import path from "node:path";
 import glob from "fast-glob";
 import type { MetadataRoute } from "next";
-import { env } from "@/lib/env";
+
 import { getFrontMatter } from "@/lib/posts";
 
 // routes in /app (in other words, directories containing a page.tsx/mdx file) are automatically included; add a route
@@ -19,12 +19,13 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: env.NEXT_PUBLIC_BASE_URL,
+      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+      url: process.env.NEXT_PUBLIC_BASE_URL!,
       priority: 1.0,
       lastModified: new Date(),
     },
-    { url: `${env.NEXT_PUBLIC_BASE_URL}/tweets` },
-    { url: `${env.NEXT_PUBLIC_BASE_URL}/y2k` },
+    { url: `${process.env.NEXT_PUBLIC_BASE_URL}/tweets` },
+    { url: `${process.env.NEXT_PUBLIC_BASE_URL}/y2k` },
   ];
 
   const [staticRoutes, frontmatter] = await Promise.all([
@@ -46,7 +47,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   staticRoutes.forEach((route) => {
     routes.push({
       // remove matching page.(tsx|mdx) file and make all URLs absolute
-      url: `${env.NEXT_PUBLIC_BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
     });
   });
 

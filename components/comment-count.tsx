@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { env } from "@/lib/env";
+
 import { getCommentCount } from "@/lib/server/comments";
 
 const CommentCount = ({ slug }: { slug: string }) => {
@@ -29,9 +29,9 @@ const CommentCount = ({ slug }: { slug: string }) => {
 
   return (
     <span
-      title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(count)} ${count === 1 ? "comment" : "comments"}`}
+      title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(count)} ${count === 1 ? "comment" : "comments"}`}
     >
-      {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(count)}
+      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(count)}
     </span>
   );
 };

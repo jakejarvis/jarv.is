@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
+  // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: {
     template: `%s – ${siteConfig.name}`,
     default: `${siteConfig.name} – ${siteConfig.tagline}`,
@@ -17,7 +17,7 @@ export const defaultMetadata: Metadata = {
       default: `${siteConfig.name} – ${siteConfig.tagline}`,
     },
     url: "/",
-    locale: env.NEXT_PUBLIC_SITE_LOCALE.replace("-", "_"),
+    locale: process.env.NEXT_PUBLIC_SITE_LOCALE?.replace("-", "_"),
     type: "website",
   },
   twitter: {

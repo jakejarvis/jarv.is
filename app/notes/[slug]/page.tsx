@@ -17,7 +17,7 @@ import { CommentsSkeleton } from "@/components/comments/comments-skeleton";
 import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
+
 import { createMetadata } from "@/lib/metadata";
 import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 import { size as ogImageSize } from "./opengraph-image";
@@ -94,18 +94,18 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           url: frontmatter?.permalink,
           image: {
             "@type": "ImageObject",
-            contentUrl: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${frontmatter?.slug}/opengraph-image`,
+            contentUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${frontmatter?.slug}/opengraph-image`,
             width: `${ogImageSize.width}`,
             height: `${ogImageSize.height}`,
           },
           keywords: frontmatter?.tags?.join(", "),
           datePublished: frontmatter?.date,
           dateModified: frontmatter?.date,
-          inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
+          inLanguage: process.env.NEXT_PUBLIC_SITE_LOCALE,
           license: `https://spdx.org/licenses/${siteConfig.license}.html`,
           author: {
             // defined in app/layout.tsx
-            "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
+            "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#person`,
           },
         }}
       />
@@ -146,7 +146,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         )}
 
         <Link
-          href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter?.slug}/index.mdx`}
+          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter?.slug}/index.mdx`}
           title={`Edit "${frontmatter?.title}" on GitHub`}
           className={
             "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-foreground/70 hover:no-underline"

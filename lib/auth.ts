@@ -3,10 +3,9 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
-import { env } from "@/lib/env";
 
 export const auth = betterAuth({
-  baseURL: env.NEXT_PUBLIC_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   database: drizzleAdapter(db, {
     provider: "pg",
     schema,
@@ -14,8 +13,10 @@ export const auth = betterAuth({
   plugins: [nextCookies()],
   socialProviders: {
     github: {
-      clientId: env.AUTH_GITHUB_CLIENT_ID,
-      clientSecret: env.AUTH_GITHUB_CLIENT_SECRET,
+      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+      clientId: process.env.AUTH_GITHUB_CLIENT_ID!,
+      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+      clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET!,
       mapProfileToUser: (profile) => ({
         name: profile.login,
         email: profile.email,

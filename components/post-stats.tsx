@@ -11,11 +11,13 @@ import {
 } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { env } from "@/lib/env";
+
 import { getAllCommentCounts } from "@/lib/server/comments";
 import { getAllViewCounts } from "@/lib/server/views";
 
-const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
+const numberFormatter = new Intl.NumberFormat(
+  process.env.NEXT_PUBLIC_SITE_LOCALE,
+);
 
 type Stats = {
   views: Record<string, number>;

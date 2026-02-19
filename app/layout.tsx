@@ -8,7 +8,7 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { env } from "@/lib/env";
+
 import { Inter, JetBrainsMono } from "@/lib/fonts";
 import { defaultMetadata } from "@/lib/metadata";
 
@@ -18,7 +18,7 @@ export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html
-    lang={env.NEXT_PUBLIC_SITE_LOCALE}
+    lang={process.env.NEXT_PUBLIC_SITE_LOCALE}
     className={`${Inter.variable} ${JetBrainsMono.variable}`}
     suppressHydrationWarning
   >
@@ -27,12 +27,14 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
         item={{
           "@context": "https://schema.org",
           "@type": "Person",
-          "@id": `${env.NEXT_PUBLIC_BASE_URL}/#person`,
+          "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#person`,
           name: authorConfig.name,
-          url: env.NEXT_PUBLIC_BASE_URL,
-          image: [`${env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
+          // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+          url: process.env.NEXT_PUBLIC_BASE_URL!,
+          image: [`${process.env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
           sameAs: [
-            env.NEXT_PUBLIC_BASE_URL,
+            // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
+            process.env.NEXT_PUBLIC_BASE_URL!,
             `https://${authorConfig.social?.mastodon}`,
             `https://github.com/${authorConfig.social?.github}`,
             `https://bsky.app/profile/${authorConfig.social?.bluesky}`,
@@ -49,12 +51,12 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
         item={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "@id": `${env.NEXT_PUBLIC_BASE_URL}/#website`,
+          "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#website`,
           name: siteConfig.name,
-          url: env.NEXT_PUBLIC_BASE_URL,
+          url: process.env.NEXT_PUBLIC_BASE_URL,
           author: authorConfig.name,
           description: siteConfig.description,
-          inLanguage: env.NEXT_PUBLIC_SITE_LOCALE,
+          inLanguage: process.env.NEXT_PUBLIC_SITE_LOCALE,
           license: `https://spdx.org/licenses/${siteConfig.license}.html`,
         }}
       />

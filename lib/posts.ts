@@ -3,7 +3,7 @@ import path from "node:path";
 import glob from "fast-glob";
 import { decode } from "html-entities";
 import { unified } from "unified";
-import { env } from "@/lib/env";
+
 import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
 import {
   remarkFrontmatter,
@@ -89,7 +89,7 @@ export const getFrontMatter: {
         slug,
         // validate/normalize the date string provided from front matter
         date: new Date(frontmatter.date).toISOString(),
-        permalink: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
+        permalink: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
       } as FrontMatter;
     } catch (error) {
       console.error(

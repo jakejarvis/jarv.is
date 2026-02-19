@@ -2,7 +2,7 @@ import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
 import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
-import { env } from "@/lib/env";
+
 import { createMetadata } from "@/lib/metadata";
 
 import thumbnail from "./thumbnail.png";
@@ -31,8 +31,8 @@ const Page = () => (
         description: metadata.description as string,
         contentUrl:
           "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/birthday-pavk1LBK4H6xF8ZWeR0oTcaabGuQ8T.webm",
-        thumbnailUrl: `${env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
-        embedUrl: `${env.NEXT_PUBLIC_BASE_URL}/birthday`,
+        thumbnailUrl: `${process.env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
+        embedUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/birthday`,
         uploadDate: "1996-02-06T00:00:00Z",
         duration: "PT6M10S",
       }}
