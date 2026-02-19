@@ -1,8 +1,7 @@
-import { GitForkIcon, StarIcon } from "lucide-react";
+import { ExternalLinkIcon, GitForkIcon, StarIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ActivityCalendar } from "@/components/activity-calendar";
-import { GitHubIcon } from "@/components/icons";
 import { PageTitle } from "@/components/layout/page-title";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
@@ -83,23 +82,23 @@ const Page = async () => {
                 href={repo?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block font-semibold text-[#0969da] text-base leading-relaxed hover:underline dark:text-[#4493f8]"
+                className="inline-block font-semibold text-[#0969da] text-base leading-relaxed hover:underline dark:text-[#76affa]"
               >
                 {repo?.name}
               </a>
 
               {repo?.description && (
-                <p className="text-foreground/85 text-sm leading-relaxed">
+                <p className="text-[13px] text-foreground/85 leading-relaxed">
                   {repo?.description}
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-x-4 whitespace-nowrap text-[0.825rem] leading-loose">
+              <div className="flex flex-wrap gap-x-4 whitespace-nowrap text-xs leading-loose">
                 {repo?.primaryLanguage && (
-                  <div className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground">
+                  <div className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground">
                     {repo?.primaryLanguage.color && (
                       <span
-                        className="inline-block size-4 rounded-full bg-[var(--language-color)]"
+                        className="inline-block size-3 rounded-full bg-[var(--language-color)]"
                         style={{
                           ["--language-color" as string]:
                             repo?.primaryLanguage.color,
@@ -116,10 +115,10 @@ const Page = async () => {
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground hover:text-primary hover:no-underline"
+                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <StarIcon
-                      className="inline-block size-4 shrink-0"
+                      className="inline-block size-3.5 shrink-0"
                       aria-hidden="true"
                     />
                     <span>
@@ -136,10 +135,10 @@ const Page = async () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
-                    className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground hover:text-primary hover:no-underline"
+                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <GitForkIcon
-                      className="inline-block size-4"
+                      className="inline-block size-3.5 shrink-0"
                       aria-hidden="true"
                     />
                     <span>
@@ -168,14 +167,17 @@ const Page = async () => {
       )}
 
       <p className="mt-6 mb-0 text-center font-medium text-base">
-        <Button variant="secondary" asChild>
+        <Button variant="link" asChild>
           <a
             href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon />
-            <span className="leading-none">Show All…</span>
+            View all
+            <ExternalLinkIcon
+              className="inline-block size-3.5 shrink-0"
+              aria-hidden="true"
+            />
           </a>
         </Button>
       </p>

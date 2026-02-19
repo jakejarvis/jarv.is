@@ -37,7 +37,7 @@ const Menu = () => {
   return (
     <nav data-slot="navigation-menu">
       {/* Desktop: Show all buttons */}
-      <div className="hidden items-center gap-1.5 sm:flex">
+      <div className="hidden items-center gap-2 sm:flex">
         {menuItems.map((item) => {
           const isCurrent = item.href?.split("/")[1] === segment;
 

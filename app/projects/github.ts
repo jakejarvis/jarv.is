@@ -117,7 +117,7 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
       {
         username: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
         sort: "STARGAZERS",
-        limit: 12,
+        limit: 24,
         headers: {
           accept: "application/vnd.github.v3+json",
           authorization: `token ${process.env.GITHUB_TOKEN}`,
