@@ -1,15 +1,19 @@
 "use client";
 
+import { InfoIcon, Loader2Icon } from "lucide-react";
 import { createContext, useContext, useState, useTransition } from "react";
 import { toast } from "sonner";
-import { InfoIcon, Loader2Icon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { MarkdownIcon } from "@/components/icons";
-import { CommentAvatar } from "./comment-avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/lib/auth-client";
 import { createComment, updateComment } from "@/lib/server/comments";
+import { CommentAvatar } from "./comment-avatar";
 
 // Context for lifting form state to parent components
 type CommentFormContextValue = {
@@ -33,7 +37,9 @@ const CommentFormProvider = ({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <CommentFormContext.Provider value={{ content, setContent, isPending, startTransition }}>
+    <CommentFormContext.Provider
+      value={{ content, setContent, isPending, startTransition }}
+    >
       {children}
     </CommentFormContext.Provider>
   );
@@ -130,14 +136,14 @@ const SubmitButton = ({
 
 // Markdown help popover (only shown for new comments)
 const MarkdownHelp = () => (
-  <p className="text-muted-foreground text-[0.8rem] leading-relaxed">
+  <p className="text-[0.8rem] text-muted-foreground leading-relaxed">
     <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
-          className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline"
+          className="cursor-pointer font-semibold text-primary no-underline decoration-2 decoration-primary/40 underline-offset-4 hover:underline"
         >
           <span>Markdown</span>
           <span className="max-md:hidden">&nbsp;syntax</span>
@@ -149,7 +155,7 @@ const MarkdownHelp = () => (
           Examples:
         </p>
 
-        <ul className="[&>li::marker]:text-muted-foreground my-2 list-inside list-disc pl-1 text-sm [&>li]:my-1.5 [&>li]:pl-1 [&>li]:text-nowrap [&>li::marker]:font-normal">
+        <ul className="my-2 list-inside list-disc pl-1 text-sm [&>li::marker]:font-normal [&>li::marker]:text-muted-foreground [&>li]:my-1.5 [&>li]:text-nowrap [&>li]:pl-1">
           <li>
             <span className="font-bold">**bold**</span>
           </li>
@@ -158,13 +164,20 @@ const MarkdownHelp = () => (
           </li>
           <li>
             [
-            <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
+            <a
+              href="https://jarv.is"
+              target="_blank"
+              rel="noopener"
+              className="hover:no-underline"
+            >
               links
             </a>
             ](https://jarv.is)
           </li>
           <li>
-            <span className="bg-muted rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium">`code`</span>
+            <span className="rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-medium font-mono text-sm">
+              `code`
+            </span>
           </li>
           <li>
             ~~<span className="line-through">strikethrough</span>~~
@@ -190,7 +203,8 @@ const MarkdownHelp = () => (
 
 // New comment form - for creating top-level comments
 const NewCommentForm = ({ slug }: { slug: string }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState();
+  const { content, setContent, isPending, startTransition } =
+    useCommentFormState();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -229,7 +243,11 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
           <div className="flex justify-between gap-4">
             <MarkdownHelp />
 
-            <SubmitButton isPending={isPending} disabled={!content.trim()} pendingLabel="Posting...">
+            <SubmitButton
+              isPending={isPending}
+              disabled={!content.trim()}
+              pendingLabel="Posting..."
+            >
               Comment
             </SubmitButton>
           </div>
@@ -251,7 +269,8 @@ const ReplyForm = ({
   onCancel: () => void;
   onSuccess?: () => void;
 }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState();
+  const { content, setContent, isPending, startTransition } =
+    useCommentFormState();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -289,11 +308,20 @@ const ReplyForm = ({
           />
 
           <div className="flex justify-end gap-2">
-            <Button type="button" variant="outline" onClick={onCancel} disabled={isPending}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onCancel}
+              disabled={isPending}
+            >
               Cancel
             </Button>
 
-            <SubmitButton isPending={isPending} disabled={!content.trim()} pendingLabel="Posting...">
+            <SubmitButton
+              isPending={isPending}
+              disabled={!content.trim()}
+              pendingLabel="Posting..."
+            >
               Reply
             </SubmitButton>
           </div>
@@ -317,7 +345,8 @@ const EditCommentForm = ({
   onCancel: () => void;
   onSuccess?: () => void;
 }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState(initialContent);
+  const { content, setContent, isPending, startTransition } =
+    useCommentFormState(initialContent);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -340,7 +369,12 @@ const EditCommentForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" data-intent="edit" data-slug={slug}>
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4"
+      data-intent="edit"
+      data-slug={slug}
+    >
       <div className="min-w-0 flex-1 space-y-4">
         <CommentTextarea
           content={content}
@@ -351,11 +385,20 @@ const EditCommentForm = ({
         />
 
         <div className="flex justify-end gap-2">
-          <Button type="button" variant="outline" onClick={onCancel} disabled={isPending}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onCancel}
+            disabled={isPending}
+          >
             Cancel
           </Button>
 
-          <SubmitButton isPending={isPending} disabled={!content.trim()} pendingLabel="Updating...">
+          <SubmitButton
+            isPending={isPending}
+            disabled={!content.trim()}
+            pendingLabel="Updating..."
+          >
             Edit
           </SubmitButton>
         </div>
@@ -364,4 +407,10 @@ const EditCommentForm = ({
   );
 };
 
-export { NewCommentForm, ReplyForm, EditCommentForm, CommentFormProvider, useCommentForm };
+export {
+  NewCommentForm,
+  ReplyForm,
+  EditCommentForm,
+  CommentFormProvider,
+  useCommentForm,
+};

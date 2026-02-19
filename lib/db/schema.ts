@@ -1,4 +1,12 @@
-import { pgTable, text, timestamp, boolean, integer, uuid, type AnyPgColumn } from "drizzle-orm/pg-core";
+import {
+  type AnyPgColumn,
+  boolean,
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -61,7 +69,9 @@ export const comment = pgTable("comment", {
   pageSlug: text("page_slug")
     .notNull()
     .references(() => page.slug),
-  parentId: uuid("parent_id").references((): AnyPgColumn => comment.id, { onDelete: "cascade" }),
+  parentId: uuid("parent_id").references((): AnyPgColumn => comment.id, {
+    onDelete: "cascade",
+  }),
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),

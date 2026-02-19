@@ -1,19 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import avatarImg from "@/app/avatar.jpg";
+import { GitHubIcon } from "@/components/icons";
+import { Menu } from "@/components/layout/menu";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Menu } from "@/components/layout/menu";
-import { GitHubIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { MoonIcon, SunIcon } from "lucide-react";
-
-import avatarImg from "@/app/avatar.jpg";
+import { cn } from "@/lib/utils";
 
 const Header = ({ className }: { className?: string }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,7 +39,7 @@ const Header = ({ className }: { className?: string }) => {
         "bg-background/0 backdrop-blur-none",
         "data-[scrolled=true]:bg-background/80 data-[scrolled=true]:backdrop-blur-md",
         "data-[scrolled=true]:border-border/50 data-[scrolled=true]:border-b",
-        className
+        className,
       )}
     >
       <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-5 py-4">
@@ -49,18 +48,18 @@ const Header = ({ className }: { className?: string }) => {
             href="/"
             rel="author"
             aria-label={siteConfig.name}
-            className="hover:text-foreground/85 flex shrink-0 items-center gap-2.5 pr-2 hover:no-underline"
+            className="flex shrink-0 items-center gap-2.5 pr-2 hover:text-foreground/85 hover:no-underline"
           >
             <Image
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
-              className="border-ring/30 size-[40px] rounded-full border md:size-[32px]"
+              className="size-[40px] rounded-full border border-ring/30 md:size-[32px]"
               width={40}
               height={40}
               quality={75}
               priority
             />
-            <span className="text-[17.5px] font-medium tracking-tight whitespace-nowrap max-md:sr-only">
+            <span className="whitespace-nowrap font-medium text-[17.5px] tracking-tight max-md:sr-only">
               {siteConfig.name}
             </span>
           </Link>
@@ -69,8 +68,17 @@ const Header = ({ className }: { className?: string }) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
-            <a href={`https://github.com/${authorConfig.social.github}`} target="_blank" rel="noopener noreferrer">
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label="Open GitHub profile"
+            asChild
+          >
+            <a
+              href={`https://github.com/${authorConfig.social.github}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GitHubIcon />
             </a>
           </Button>
@@ -81,8 +89,14 @@ const Header = ({ className }: { className?: string }) => {
             aria-label="Toggle theme"
             className="group"
           >
-            <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
-            <MoonIcon className="not-dark:hidden group-hover:stroke-yellow-400" aria-hidden="true" />
+            <SunIcon
+              className="group-hover:stroke-orange-600 dark:hidden"
+              aria-hidden="true"
+            />
+            <MoonIcon
+              className="not-dark:hidden group-hover:stroke-yellow-400"
+              aria-hidden="true"
+            />
           </Button>
         </div>
       </header>

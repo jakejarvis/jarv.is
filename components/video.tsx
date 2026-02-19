@@ -36,7 +36,16 @@ const Video = ({
           const extension = file.split(".").pop();
 
           if (extension === "vtt") {
-            return <track key={file} kind="subtitles" src={file} srcLang="en" label="English" default />;
+            return (
+              <track
+                key={file}
+                kind="subtitles"
+                src={file}
+                srcLang="en"
+                label="English"
+                default
+              />
+            );
           } else {
             return <source key={file} src={file} type={`video/${extension}`} />;
           }

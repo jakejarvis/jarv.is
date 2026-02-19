@@ -1,16 +1,36 @@
 {
-	"editor.tabSize": 2,
-	"editor.rulers": [
-			120
-	],
-	"files.associations": {
-			"*.css": "tailwindcss",
-			"*.mdx": "markdown"
-	},
-	"javascript.updateImportsOnFileMove.enabled": "always",
-	"typescript.preferences.importModuleSpecifierEnding": "minimal",
-	"typescript.surveys.enabled": false,
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"typescript.tsserver.log": "off",
-	"typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "emmet.showExpandedAbbreviation": "never",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.mdx": "markdown"
+  }
 }

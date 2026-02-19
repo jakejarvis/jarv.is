@@ -13,11 +13,11 @@
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "biome check",
+    "format": "biome format --write",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "prepare": "test -d node_modules/husky && husky || echo \"skipping husky\""
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -101,9 +101,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
-    "@eslint/js": "^9.39.2",
-    "@jakejarvis/eslint-config": "^4.0.7",
+    "@biomejs/biome": "2.4.2",
     "@tailwindcss/postcss": "^4.2.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/hast": "^3.0.4",
@@ -116,22 +114,7 @@
     "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "drizzle-kit": "^0.31.9",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "16.1.6",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-css-modules": "^2.12.0",
-    "eslint-plugin-drizzle": "^0.2.3",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-mdx": "^3.6.2",
-    "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "postcss": "^8.5.6",
-    "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "schema-dts": "^1.1.5",
     "tw-animate-css": "^1.4.0",
@@ -145,11 +128,6 @@
     "node_modules",
     ".next/cache"
   ],
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": [
-      "eslint"
-    ]
-  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",

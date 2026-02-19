@@ -9,12 +9,10 @@ const intlFormatter = makeIntlFormatter({
   numeric: "auto",
 });
 
-const RelativeTime = ({ ...rest }: React.ComponentProps<typeof TimeAgo>) => {
-  return (
-    <span suppressHydrationWarning>
-      <TimeAgo formatter={intlFormatter} {...rest} />
-    </span>
-  );
-};
+const RelativeTime = ({ ...rest }: React.ComponentProps<typeof TimeAgo>) => (
+  <span suppressHydrationWarning>
+    <TimeAgo formatter={intlFormatter} {...rest} />
+  </span>
+);
 
 export { RelativeTime };

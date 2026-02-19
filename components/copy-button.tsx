@@ -1,11 +1,11 @@
 "use client";
 
-import * as React from "react";
 import copy from "copy-to-clipboard";
 import { CheckIcon, ClipboardCheckIcon, CopyIcon } from "lucide-react";
+import * as React from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { toast } from "sonner";
 
 function CopyButton({
   value,
@@ -18,13 +18,14 @@ function CopyButton({
   const [hasCopied, setHasCopied] = React.useState(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
-  React.useEffect(() => {
-    return () => {
+  React.useEffect(
+    () => () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-    };
-  }, []);
+    },
+    [],
+  );
 
   const handleCopy = () => {
     if (hasCopied) return;
@@ -32,7 +33,12 @@ function CopyButton({
     copy(value);
     setHasCopied(true);
     toast.success("Copied!", {
-      icon: <ClipboardCheckIcon className="text-foreground/85 size-4" aria-hidden="true" />,
+      icon: (
+        <ClipboardCheckIcon
+          className="size-4 text-foreground/85"
+          aria-hidden="true"
+        />
+      ),
       duration: 2000,
       id: "copy-button-toast-success",
     });
@@ -50,16 +56,19 @@ function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "bg-code hover:bg-accent dark:hover:bg-accent absolute top-3 right-2 z-10 size-7.5 hover:opacity-100 focus-visible:opacity-100",
+        "absolute top-3 right-2 z-10 size-7.5 bg-code hover:bg-accent hover:opacity-100 focus-visible:opacity-100 dark:hover:bg-accent",
         hasCopied ? "cursor-default" : "cursor-pointer",
-        className
+        className,
       )}
       onClick={handleCopy}
       aria-label={hasCopied ? "Copied" : "Copy to clipboard"}
       {...props}
     >
       {hasCopied ? (
-        <CheckIcon className="text-green-600 dark:text-green-400" aria-hidden="true" />
+        <CheckIcon
+          className="text-green-600 dark:text-green-400"
+          aria-hidden="true"
+        />
       ) : (
         <CopyIcon aria-hidden="true" />
       )}

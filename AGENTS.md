@@ -18,14 +18,14 @@ No test suite exists. Validate changes via `pnpm typecheck` and `pnpm lint`.
 
 ## Code Style
 
-### Formatting (Prettier)
+### Formatting (Biome)
 
-- **Line width:** 120 characters
+- **Line width:** 80 characters
 - **Indentation:** 2 spaces (no tabs)
 - **Quotes:** Double quotes, no JSX single quotes
 - **Trailing commas:** ES5 style
 - **Semicolons:** Required
-- **Tailwind:** Classes auto-sorted via `prettier-plugin-tailwindcss`
+- **Tailwind:** Classes auto-sorted via `biome --write --unsafe`
 
 ### Import Organization
 
@@ -124,15 +124,6 @@ export const getData = async (slug: string) => {
   cacheTag("data", `data-${slug}`);
   return db.select().from(schema.table).where(eq(schema.table.slug, slug));
 };
-```
-
-### Environment Variables
-
-Type-checked in `lib/env.ts` using `@t3-oss/env-nextjs`. Never access `process.env` directly:
-
-```typescript
-import { env } from "@/lib/env";
-const apiKey = env.RESEND_API_KEY;
 ```
 
 ## Project Structure

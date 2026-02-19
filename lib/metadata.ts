@@ -1,7 +1,7 @@
-import { env } from "@/lib/env";
-import siteConfig from "@/lib/config/site";
-import authorConfig from "@/lib/config/author";
 import type { Metadata } from "next";
+import authorConfig from "@/lib/config/author";
+import siteConfig from "@/lib/config/site";
+import { env } from "@/lib/env";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
@@ -49,29 +49,31 @@ export const defaultMetadata: Metadata = {
  * Helper function to deep merge a page's metadata into the default site metadata
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
  */
-export const createMetadata = (metadata: Metadata & { canonical: string }): Metadata => {
-  return {
-    ...defaultMetadata,
-    ...metadata,
-    openGraph: {
-      ...defaultMetadata.openGraph,
-      title: metadata.title!,
-      description: metadata.description!,
-      url: metadata.canonical,
-      ...metadata.openGraph,
-    },
-    twitter: {
-      ...defaultMetadata.twitter,
-      ...metadata.twitter,
-    },
-    alternates: {
-      ...defaultMetadata.alternates,
-      canonical: metadata.canonical,
-      ...metadata.alternates,
-    },
-    other: {
-      ...defaultMetadata.other,
-      ...metadata.other,
-    },
-  };
-};
+export const createMetadata = (
+  metadata: Metadata & { canonical: string },
+): Metadata => ({
+  ...defaultMetadata,
+  ...metadata,
+  openGraph: {
+    ...defaultMetadata.openGraph,
+    // biome-ignore lint/style/noNonNullAssertion: title is always provided by callers
+    title: metadata.title!,
+    // biome-ignore lint/style/noNonNullAssertion: description is always provided by callers
+    description: metadata.description!,
+    url: metadata.canonical,
+    ...metadata.openGraph,
+  },
+  twitter: {
+    ...defaultMetadata.twitter,
+    ...metadata.twitter,
+  },
+  alternates: {
+    ...defaultMetadata.alternates,
+    canonical: metadata.canonical,
+    ...metadata.alternates,
+  },
+  other: {
+    ...defaultMetadata.other,
+    ...metadata.other,
+  },
+});

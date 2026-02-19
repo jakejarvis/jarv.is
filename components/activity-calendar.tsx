@@ -1,7 +1,14 @@
 "use client";
 
-import { ActivityCalendar as ActivityCalendarPrimitive, type Activity } from "react-activity-calendar";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import {
+  type Activity,
+  ActivityCalendar as ActivityCalendarPrimitive,
+} from "react-activity-calendar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 const ActivityCalendar = ({
@@ -20,7 +27,7 @@ const ActivityCalendar = ({
         String.raw`**:[.react-activity-calendar\_\_count,.react-activity-calendar\_\_legend-month,.react-activity-calendar\_\_legend-colors]:text-muted-foreground`,
         "[--activity-0:#ebedf0] [--activity-1:#9be9a8] [--activity-2:#40c463] [--activity-3:#30a14e] [--activity-4:#216e39]",
         "dark:[--activity-0:#252525] dark:[--activity-1:#033a16] dark:[--activity-2:#196c2e] dark:[--activity-3:#2ea043] dark:[--activity-4:#56d364]",
-        className
+        className,
       )}
       {...rest}
     >
@@ -45,7 +52,7 @@ const ActivityCalendar = ({
           <Tooltip>
             <TooltipTrigger asChild>{block}</TooltipTrigger>
             <TooltipContent>
-              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
+              <span className="font-medium text-[0.825rem]">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
             </TooltipContent>
           </Tooltip>
         )}

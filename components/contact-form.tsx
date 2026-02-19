@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
-import { SendIcon, Loader2Icon, CheckIcon, XIcon } from "lucide-react";
+import { CheckIcon, Loader2Icon, SendIcon, XIcon } from "lucide-react";
+import { useState } from "react";
+import { MarkdownIcon } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { MarkdownIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
-import { sendContactForm, type ContactResult } from "@/lib/server/contact";
 import { ContactSchema } from "@/lib/schemas/contact";
+import { type ContactResult, sendContactForm } from "@/lib/server/contact";
+import { cn } from "@/lib/utils";
 
 const ContactForm = () => {
   const [result, setResult] = useState<ContactResult | null>(null);
@@ -55,14 +55,21 @@ const ContactForm = () => {
       }}
       className="my-5 space-y-4"
     >
-      <form.Subscribe selector={(state) => state.isSubmitting || result?.success}>
+      <form.Subscribe
+        selector={(state) => state.isSubmitting || result?.success}
+      >
         {(isDisabled) => (
           <>
             <form.Field name="name">
               {(field) => {
-                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                const isInvalid =
+                  field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0;
                 return (
-                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                  <Field
+                    data-invalid={isInvalid || undefined}
+                    className="gap-1.5"
+                  >
                     <FieldLabel htmlFor="name">Name</FieldLabel>
                     <Input
                       id="name"
@@ -76,7 +83,9 @@ const ContactForm = () => {
                       disabled={!!isDisabled}
                       aria-invalid={isInvalid || undefined}
                     />
-                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                    {isInvalid && (
+                      <FieldError errors={field.state.meta.errors} />
+                    )}
                   </Field>
                 );
               }}
@@ -84,9 +93,14 @@ const ContactForm = () => {
 
             <form.Field name="email">
               {(field) => {
-                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                const isInvalid =
+                  field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0;
                 return (
-                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                  <Field
+                    data-invalid={isInvalid || undefined}
+                    className="gap-1.5"
+                  >
                     <FieldLabel htmlFor="email">Email</FieldLabel>
                     <Input
                       id="email"
@@ -102,7 +116,9 @@ const ContactForm = () => {
                       disabled={!!isDisabled}
                       aria-invalid={isInvalid || undefined}
                     />
-                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                    {isInvalid && (
+                      <FieldError errors={field.state.meta.errors} />
+                    )}
                   </Field>
                 );
               }}
@@ -110,9 +126,14 @@ const ContactForm = () => {
 
             <form.Field name="message">
               {(field) => {
-                const isInvalid = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+                const isInvalid =
+                  field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0;
                 return (
-                  <Field data-invalid={isInvalid || undefined} className="gap-1.5">
+                  <Field
+                    data-invalid={isInvalid || undefined}
+                    className="gap-1.5"
+                  >
                     <FieldLabel htmlFor="message">Message</FieldLabel>
                     <Textarea
                       id="message"
@@ -125,9 +146,11 @@ const ContactForm = () => {
                       aria-invalid={isInvalid || undefined}
                       className="min-h-[6lh] resize-y"
                     />
-                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                    {isInvalid && (
+                      <FieldError errors={field.state.meta.errors} />
+                    )}
 
-                    <p className="text-foreground/85 mt-1.5 text-[0.8rem] leading-relaxed">
+                    <p className="mt-1.5 text-[0.8rem] text-foreground/85 leading-relaxed">
                       <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
                       Basic{" "}
                       <a
@@ -139,8 +162,14 @@ const ContactForm = () => {
                       >
                         Markdown syntax
                       </a>{" "}
-                      is allowed, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
-                      <a href="https://jarv.is" target="_blank" rel="noopener" className="hover:no-underline">
+                      is allowed, e.g.: <strong>**bold**</strong>,{" "}
+                      <em>_italics_</em>, [
+                      <a
+                        href="https://jarv.is"
+                        target="_blank"
+                        rel="noopener"
+                        className="hover:no-underline"
+                      >
                         links
                       </a>
                       ](https://jarv.is), and <code>`code`</code>.
@@ -154,14 +183,17 @@ const ContactForm = () => {
       </form.Subscribe>
 
       <div className="flex min-h-16 items-center space-x-4">
-        <form.Subscribe selector={(state) => [, state.isSubmitting]}>
+        <form.Subscribe selector={(state) => [undefined, state.isSubmitting]}>
           {([isSubmitting]) => (
             <>
               {!result?.success && (
                 <Button type="submit" size="lg" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
-                      <Loader2Icon className="animate-spin" aria-hidden="true" />
+                      <Loader2Icon
+                        className="animate-spin"
+                        aria-hidden="true"
+                      />
                       Sending…
                     </>
                   ) : (
@@ -178,8 +210,10 @@ const ContactForm = () => {
                   role="status"
                   aria-live="polite"
                   className={cn(
-                    "space-x-0.5 text-[0.9rem] font-semibold",
-                    result.success ? "text-green-600 dark:text-green-400" : "text-destructive"
+                    "space-x-0.5 font-semibold text-[0.9rem]",
+                    result.success
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-destructive",
                   )}
                 >
                   {result.success ? (

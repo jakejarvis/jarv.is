@@ -1,16 +1,16 @@
-import { env } from "@/lib/env";
-import { Suspense } from "react";
-import { notFound } from "next/navigation";
 import { GitForkIcon, StarIcon } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { PageTitle } from "@/components/layout/page-title";
-import { RelativeTime } from "@/components/relative-time";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { GitHubIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
-import { createMetadata } from "@/lib/metadata";
-import { getContributions, getRepos } from "./github";
+import { PageTitle } from "@/components/layout/page-title";
+import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { env } from "@/lib/env";
+import { createMetadata } from "@/lib/metadata";
+import { cn } from "@/lib/utils";
+import { getContributions, getRepos } from "./github";
 
 export const metadata = createMetadata({
   title: "Projects",
@@ -22,18 +22,23 @@ const Page = async () => {
   // don't fail the entire site build if the required config for this page is missing, just return a 404 since this page
   // would be mostly blank anyways.
   if (!env.GITHUB_TOKEN) {
-    console.error("[/projects] I can't fetch anything from GitHub without 'GITHUB_TOKEN' set!");
+    console.error(
+      "[/projects] I can't fetch anything from GitHub without 'GITHUB_TOKEN' set!",
+    );
     notFound();
   }
 
   // fetch the repos and contributions in parallel
-  const [contributions, repos] = await Promise.all([getContributions(), getRepos()]);
+  const [contributions, repos] = await Promise.all([
+    getContributions(),
+    getRepos(),
+  ]);
 
   return (
     <>
       <PageTitle canonical="/projects">Projects</PageTitle>
 
-      <h2 className="my-3.5 text-xl font-medium">
+      <h2 className="my-3.5 font-medium text-xl">
         <a
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`}
           target="_blank"
@@ -50,11 +55,13 @@ const Page = async () => {
             <ActivityCalendar data={contributions} noun="contribution" />
           </div>
         ) : (
-          <p className="text-muted-foreground my-4 text-center">Unable to load contribution data at this time.</p>
+          <p className="my-4 text-center text-muted-foreground">
+            Unable to load contribution data at this time.
+          </p>
         )}
       </Suspense>
 
-      <h2 className="my-3.5 text-xl font-medium">
+      <h2 className="my-3.5 font-medium text-xl">
         <a
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
           target="_blank"
@@ -68,61 +75,85 @@ const Page = async () => {
       {repos && repos.length > 0 ? (
         <div className="row-auto grid w-full grid-cols-none gap-4 md:grid-cols-2">
           {repos.map((repo) => (
-            <div key={repo!.name} className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs">
+            <div
+              key={repo?.name}
+              className="h-fit space-y-1.5 rounded-2xl border-1 border-ring/30 px-4 py-3 shadow-xs"
+            >
               <a
-                href={repo!.url}
+                href={repo?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-base leading-relaxed font-semibold text-[#0969da] hover:underline dark:text-[#4493f8]"
+                className="inline-block font-semibold text-[#0969da] text-base leading-relaxed hover:underline dark:text-[#4493f8]"
               >
-                {repo!.name}
+                {repo?.name}
               </a>
 
-              {repo!.description && <p className="text-foreground/85 text-sm leading-relaxed">{repo!.description}</p>}
+              {repo?.description && (
+                <p className="text-foreground/85 text-sm leading-relaxed">
+                  {repo?.description}
+                </p>
+              )}
 
-              <div className="flex flex-wrap gap-x-4 text-[0.825rem] leading-loose whitespace-nowrap">
-                {repo!.primaryLanguage && (
-                  <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-2">
-                    {repo!.primaryLanguage.color && (
+              <div className="flex flex-wrap gap-x-4 whitespace-nowrap text-[0.825rem] leading-loose">
+                {repo?.primaryLanguage && (
+                  <div className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground">
+                    {repo?.primaryLanguage.color && (
                       <span
                         className="inline-block size-4 rounded-full bg-[var(--language-color)]"
-                        style={{ ["--language-color" as string]: repo!.primaryLanguage.color }}
+                        style={{
+                          ["--language-color" as string]:
+                            repo?.primaryLanguage.color,
+                        }}
                       />
                     )}
-                    <span>{repo!.primaryLanguage.name}</span>
+                    <span>{repo?.primaryLanguage.name}</span>
                   </div>
                 )}
 
-                {repo!.stargazerCount > 0 && (
+                {repo?.stargazerCount > 0 && (
                   <a
-                    href={`${repo!.url}/stargazers`}
-                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)} ${repo!.stargazerCount === 1 ? "star" : "stars"}`}
+                    href={`${repo?.url}/stargazers`}
+                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
+                    className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground hover:text-primary hover:no-underline"
                   >
-                    <StarIcon className="inline-block size-4 shrink-0" aria-hidden="true" />
-                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.stargazerCount)}</span>
+                    <StarIcon
+                      className="inline-block size-4 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>
+                      {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(
+                        repo?.stargazerCount,
+                      )}
+                    </span>
                   </a>
                 )}
 
-                {repo!.forkCount > 0 && (
+                {repo?.forkCount > 0 && (
                   <a
-                    href={`${repo!.url}/network/members`}
+                    href={`${repo?.url}/network/members`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)} ${repo!.forkCount === 1 ? "fork" : "forks"}`}
-                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-2 hover:no-underline"
+                    title={`${Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
+                    className="inline-flex flex-nowrap items-center gap-2 text-muted-foreground hover:text-primary hover:no-underline"
                   >
-                    <GitForkIcon className="inline-block size-4" aria-hidden="true" />
-                    <span>{Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(repo!.forkCount)}</span>
+                    <GitForkIcon
+                      className="inline-block size-4"
+                      aria-hidden="true"
+                    />
+                    <span>
+                      {Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE).format(
+                        repo?.forkCount,
+                      )}
+                    </span>
                   </a>
                 )}
 
-                <div className="text-muted-foreground whitespace-nowrap">
+                <div className="whitespace-nowrap text-muted-foreground">
                   <Suspense fallback={null}>
                     <span>
-                      Updated <RelativeTime date={repo!.pushedAt} />
+                      Updated <RelativeTime date={repo?.pushedAt} />
                     </span>
                   </Suspense>
                 </div>
@@ -131,10 +162,12 @@ const Page = async () => {
           ))}
         </div>
       ) : (
-        <p className="text-muted-foreground my-4 text-center">Unable to load repository data at this time.</p>
+        <p className="my-4 text-center text-muted-foreground">
+          Unable to load repository data at this time.
+        </p>
       )}
 
-      <p className="mt-6 mb-0 text-center text-base font-medium">
+      <p className="mt-6 mb-0 text-center font-medium text-base">
         <Button variant="secondary" asChild>
           <a
             href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}

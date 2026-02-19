@@ -8,24 +8,22 @@ type CommentAvatarProps = {
   className?: string;
 };
 
-const CommentAvatar = ({ name, image, className }: CommentAvatarProps) => {
-  return (
-    <Avatar className={cn("size-10", className)}>
-      {image && (
-        <AvatarImage
-          {...getImageProps({
-            src: image,
-            alt: `@${name}'s avatar`,
-            width: 40,
-            height: 40,
-          }).props}
-          width={undefined}
-          height={undefined}
-        />
-      )}
-      <AvatarFallback>{name.charAt(0).toUpperCase()}</AvatarFallback>
-    </Avatar>
-  );
-};
+const CommentAvatar = ({ name, image, className }: CommentAvatarProps) => (
+  <Avatar className={cn("size-10", className)}>
+    {image && (
+      <AvatarImage
+        {...getImageProps({
+          src: image,
+          alt: `@${name}'s avatar`,
+          width: 40,
+          height: 40,
+        }).props}
+        width={undefined}
+        height={undefined}
+      />
+    )}
+    <AvatarFallback>{name.charAt(0).toUpperCase()}</AvatarFallback>
+  </Avatar>
+);
 
 export { CommentAvatar };

@@ -1,7 +1,7 @@
 import { cacheLife, cacheTag } from "next/cache";
 import Image from "next/image";
-import type { Tweet as TweetType } from "react-tweet/api";
 import { EmbeddedTweet, TweetNotFound } from "react-tweet";
+import type { Tweet as TweetType } from "react-tweet/api";
 import { fetchTweet } from "react-tweet/api";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,7 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
       className={cn(
         "my-6 min-h-30",
         "*:[--tweet-body-font-size:var(--text-base)]! *:[--tweet-body-line-height:var(--leading-normal)]! *:[--tweet-container-margin:0_auto]! *:[--tweet-font-family:var(--font-sans)]! *:[--tweet-info-font-size:var(--text-sm)]! *:[--tweet-info-line-height:var(--leading-normal)]!",
-        className
+        className,
       )}
     >
       <EmbeddedTweet

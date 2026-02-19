@@ -2,9 +2,9 @@
 // https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#reusing-fonts
 
 import {
+  Comic_Neue as ComicNeueLoader,
   Inter as InterLoader,
   JetBrains_Mono as JetBrainsMonoLoader,
-  Comic_Neue as ComicNeueLoader,
 } from "next/font/google";
 
 export const Inter = InterLoader({

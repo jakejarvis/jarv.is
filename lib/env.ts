@@ -89,7 +89,7 @@ export const env = createEnv({
                   ? `${process.env.DEPLOY_URL}`
                   : undefined
             : undefined) ||
-          `http://localhost:${process.env.PORT || 3000}`)()
+          `http://localhost:${process.env.PORT || 3000}`)(),
       ),
 
     /**
@@ -102,7 +102,7 @@ export const env = createEnv({
           (process.env.VERCEL && process.env.VERCEL_ENV === "production") ||
           (process.env.NETLIFY && process.env.CONTEXT === "production")
             ? "production"
-            : "development")()
+            : "development")(),
       ),
 
     /** Required. GitHub repository for the site in the format of `{username}/{repo}`. */

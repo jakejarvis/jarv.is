@@ -7,7 +7,11 @@ const Gist = async ({
   title,
   className,
   ...rest
-}: { id: string; file?: string; title?: string } & React.ComponentProps<"iframe">) => {
+}: {
+  id: string;
+  file?: string;
+  title?: string;
+} & React.ComponentProps<"iframe">) => {
   "use cache";
   cacheLife("max");
   cacheTag("gist", `gist-${id}${file ? `-${file}` : ""}`);

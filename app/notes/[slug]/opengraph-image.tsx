@@ -1,11 +1,11 @@
-import { env } from "@/lib/env";
-import path from "path";
-import fs from "fs";
-import { ImageResponse } from "next/og";
+import fs from "node:fs";
+import path from "node:path";
 import { notFound } from "next/navigation";
-import { getSlugs, getFrontMatter, POSTS_DIR } from "@/lib/posts";
+import { ImageResponse } from "next/og";
 import siteConfig from "@/lib/config/site";
+import { env } from "@/lib/env";
 import { loadGoogleFont } from "@/lib/og-utils";
+import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 
 export const contentType = "image/png";
 export const size = {
@@ -31,7 +31,9 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
 
   try {
     if (!fs.existsSync(imagePath)) {
-      console.error(`[/notes/[slug]/opengraph-image] couldn't find an image file located at "${imagePath}"`);
+      console.error(
+        `[/notes/[slug]/opengraph-image] couldn't find an image file located at "${imagePath}"`,
+      );
 
       // return a 1x1 transparent gif if the image doesn't exist instead of crashing
       return NO_IMAGE;
@@ -40,27 +42,40 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
     // return the raw image data as a buffer
     return Uint8Array.from(await fs.promises.readFile(imagePath)).buffer;
   } catch (error) {
-    console.error(`[/notes/[slug]/opengraph-image] found "${imagePath}" but couldn't read it:`, error);
+    console.error(
+      `[/notes/[slug]/opengraph-image] found "${imagePath}" but couldn't read it:`,
+      error,
+    );
 
     // fail silently and return a 1x1 transparent gif instead of crashing
     return NO_IMAGE;
   }
 };
 
-const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const OpenGraphImage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   try {
     const { slug } = await params;
 
     // get the post's title and image filename from its frontmatter
     const frontmatter = await getFrontMatter(slug);
+    if (!frontmatter) notFound();
 
     // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
     const [postImg, avatarImg] = await Promise.all([
-      frontmatter!.image ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter!.image}`) : null,
+      frontmatter.image
+        ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter.image}`)
+        : null,
       getLocalImage("app/avatar.jpg"),
     ]);
 
-    const [fontRegular, fontSemibold] = await Promise.all([loadGoogleFont("Inter", 400), loadGoogleFont("Inter", 600)]);
+    const [fontRegular, fontSemibold] = await Promise.all([
+      loadGoogleFont("Inter", 400),
+      loadGoogleFont("Inter", 600),
+    ]);
 
     // template is HEAVILY inspired by https://og-new.clerkstage.dev/
     return new ImageResponse(
@@ -69,7 +84,8 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
           ...size,
           display: "flex",
           flexDirection: "column",
-          background: "linear-gradient(to top right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
+          background:
+            "linear-gradient(to top right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
         }}
       >
         <div
@@ -123,6 +139,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               }}
             >
               {avatarImg && (
+                // biome-ignore lint/performance/noImgElement: Satori/ImageResponse requires raw <img> tags
                 <img
                   // @ts-expect-error
                   src={avatarImg}
@@ -158,7 +175,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                 lineHeight: "1.2",
               }}
             >
-              {frontmatter!.title}
+              {frontmatter.title}
             </div>
 
             <div
@@ -196,11 +213,14 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                 lineHeight: "1.2",
               }}
             >
-              {new Date(frontmatter!.date).toLocaleDateString(env.NEXT_PUBLIC_SITE_LOCALE, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              {new Date(frontmatter.date).toLocaleDateString(
+                env.NEXT_PUBLIC_SITE_LOCALE,
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                },
+              )}
             </div>
           </div>
 
@@ -212,6 +232,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
                 flexGrow: 0,
               }}
             >
+              {/* biome-ignore lint/performance/noImgElement: Satori/ImageResponse requires raw <img> tags */}
               <img
                 // @ts-expect-error
                 src={postImg}
@@ -242,10 +263,13 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
             weight: 600,
           },
         ],
-      }
+      },
     );
   } catch (error) {
-    console.error("[/notes/[slug]/opengraph-image] error generating open graph image:", error);
+    console.error(
+      "[/notes/[slug]/opengraph-image] error generating open graph image:",
+      error,
+    );
     notFound();
   }
 };

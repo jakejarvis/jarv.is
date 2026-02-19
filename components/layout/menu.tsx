@@ -1,14 +1,14 @@
 "use client";
 
-import { useSelectedLayoutSegment } from "next/navigation";
 import { ChevronDownIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 const menuItems = [
@@ -29,25 +29,27 @@ const menuItems = [
 const Menu = () => {
   const segment = useSelectedLayoutSegment() || "";
 
-  const currentItem = menuItems.find((item) => item.href?.split("/")[1] === segment);
+  const currentItem = menuItems.find(
+    (item) => item.href?.split("/")[1] === segment,
+  );
   const currentLabel = segment === "" ? "Home" : currentItem?.text || "Menu";
 
   return (
     <nav data-slot="navigation-menu">
       {/* Desktop: Show all buttons */}
       <div className="hidden items-center gap-1.5 sm:flex">
-        {menuItems.map((item, index) => {
+        {menuItems.map((item) => {
           const isCurrent = item.href?.split("/")[1] === segment;
 
           return (
             <Button
               asChild
-              key={index}
+              key={item.href}
               variant="ghost"
               size="sm"
               aria-label={item.text}
               data-current={isCurrent || undefined}
-              className="data-current:bg-accent/60 data-current:text-accent-foreground text-[15px] leading-none"
+              className="text-[15px] leading-none data-current:bg-accent/60 data-current:text-accent-foreground"
             >
               <Link href={item.href}>{item.text}</Link>
             </Button>
@@ -68,16 +70,20 @@ const Menu = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="min-w-[140px]">
-          <DropdownMenuItem asChild data-current={segment === ""} aria-current={segment === "" ? "page" : undefined}>
+          <DropdownMenuItem
+            asChild
+            data-current={segment === ""}
+            aria-current={segment === "" ? "page" : undefined}
+          >
             <Link href="/">Home</Link>
           </DropdownMenuItem>
-          {menuItems.map((item, index) => {
+          {menuItems.map((item) => {
             const isCurrent = item.href?.split("/")[1] === segment;
 
             return (
               <DropdownMenuItem
                 asChild
-                key={index}
+                key={item.href}
                 data-current={isCurrent || undefined}
                 aria-current={isCurrent ? "page" : undefined}
               >

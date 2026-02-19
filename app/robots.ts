@@ -1,5 +1,5 @@
-import { env } from "@/lib/env";
 import type { MetadataRoute } from "next";
+import { env } from "@/lib/env";
 
 const robots = (): MetadataRoute.Robots => ({
   rules: [

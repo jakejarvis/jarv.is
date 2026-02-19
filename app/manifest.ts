@@ -1,6 +1,6 @@
-import { env } from "@/lib/env";
-import siteConfig from "@/lib/config/site";
 import type { MetadataRoute } from "next";
+import siteConfig from "@/lib/config/site";
+import { env } from "@/lib/env";
 
 const manifest = (): MetadataRoute.Manifest => {
   return {

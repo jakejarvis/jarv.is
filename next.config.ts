@@ -22,7 +22,10 @@ const nextConfig = {
     ],
   },
   outputFileTracingIncludes: {
-    "/notes/[slug]/opengraph-image": ["./notes/**/*", "./app/opengraph-image.jpg"],
+    "/notes/[slug]/opengraph-image": [
+      "./notes/**/*",
+      "./app/opengraph-image.jpg",
+    ],
   },
   productionBrowserSourceMaps: true,
   experimental: {
@@ -31,7 +34,9 @@ const nextConfig = {
       // fix CSRF errors from tor reverse proxy
       allowedOrigins: [
         "jarv.is",
-        ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
+        ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
+          ? [process.env.NEXT_PUBLIC_ONION_DOMAIN]
+          : []),
       ],
     },
     staleTimes: {
@@ -77,7 +82,11 @@ const nextConfig = {
 
     // NOTE: don't remove this, it ensures de-AMPing the site hasn't offended our google overlords too badly!
     // https://developers.google.com/search/docs/advanced/experience/remove-amp#remove-only-amp
-    { source: "/notes/:slug/amp.html", destination: "/notes/:slug", permanent: true },
+    {
+      source: "/notes/:slug/amp.html",
+      destination: "/notes/:slug",
+      permanent: true,
+    },
 
     // mastodon via subdomain:
     // https://docs.joinmastodon.org/admin/config/#web_domain
@@ -120,13 +129,17 @@ const nextConfig = {
 
 // my own macgyvered version of next-compose-plugins (RIP)
 const nextPlugins: Array<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: plugin options tuple is intentionally untyped
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("@next/mdx")({
     options: {
-      remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter", "remark-gfm", "remark-smartypants"],
+      remarkPlugins: [
+        "remark-frontmatter",
+        "remark-mdx-frontmatter",
+        "remark-gfm",
+        "remark-smartypants",
+      ],
       rehypePlugins: [
         "rehype-unwrap-images",
         "rehype-slug",
@@ -149,10 +162,12 @@ const nextPlugins: Array<
       ],
     },
   }),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("botid/next/config").withBotId,
 ];
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (): NextConfig =>
-  nextPlugins.reduce((acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)), nextConfig);
+  nextPlugins.reduce(
+    (acc, plugin) =>
+      Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc),
+    nextConfig,
+  );

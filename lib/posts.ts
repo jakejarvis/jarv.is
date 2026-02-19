@@ -1,18 +1,18 @@
-import { env } from "@/lib/env";
-import path from "path";
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 import glob from "fast-glob";
-import { unified } from "unified";
 import { decode } from "html-entities";
+import { unified } from "unified";
+import { env } from "@/lib/env";
+import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
 import {
-  remarkParse,
-  remarkSmartypants,
   remarkFrontmatter,
-  remarkRehype,
   remarkMdx,
+  remarkParse,
+  remarkRehype,
+  remarkSmartypants,
   remarkStripMdxImportsExports,
 } from "@/lib/remark";
-import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
 
 export type FrontMatter = {
   slug: string;
@@ -40,7 +40,9 @@ export const getSlugs = async (): Promise<string[]> => {
   });
 
   // strip the .mdx extensions from filenames
-  const slugs = mdxFiles.map((fileName) => fileName.replace(/\/index\.mdx$/, ""));
+  const slugs = mdxFiles.map((fileName) =>
+    fileName.replace(/\/index\.mdx$/, ""),
+  );
 
   return slugs;
 };
@@ -90,7 +92,10 @@ export const getFrontMatter: {
         permalink: `${env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
       } as FrontMatter;
     } catch (error) {
-      console.error(`Failed to load front matter for post with slug "${slug}":`, error);
+      console.error(
+        `Failed to load front matter for post with slug "${slug}":`,
+        error,
+      );
       return undefined;
     }
   }
@@ -104,7 +109,10 @@ export const getFrontMatter: {
     const posts = allPosts.filter((p): p is FrontMatter => !!p);
 
     // sort the results reverse chronologically and return
-    return posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
+    return posts.sort(
+      (post1, post2) =>
+        new Date(post2.date).getTime() - new Date(post1.date).getTime(),
+    );
   }
 
   throw new Error("getFrontMatter() called with invalid argument.");
@@ -145,12 +153,23 @@ export const getContent = async (slug: string): Promise<string | undefined> => {
         ],
       })
       .use(rehypeStringify)
-      .process(await fs.readFile(path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
+      .process(
+        await fs.readFile(
+          path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`),
+        ),
+      );
 
     // convert the parsed content to a string with "safe" HTML
-    return content.toString().replaceAll("/* prettier-ignore */", "").replaceAll("<p></p>", "").trim();
+    return content
+      .toString()
+      .replaceAll("/* prettier-ignore */", "")
+      .replaceAll("<p></p>", "")
+      .trim();
   } catch (error) {
-    console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
+    console.error(
+      `Failed to load/parse content for post with slug "${slug}":`,
+      error,
+    );
     return undefined;
   }
 };

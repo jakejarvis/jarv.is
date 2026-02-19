@@ -1,13 +1,19 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import Link from "next/link";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
+import Link from "next/link";
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { env } from "@/lib/env";
-import { getAllViewCounts } from "@/lib/server/views";
 import { getAllCommentCounts } from "@/lib/server/comments";
+import { getAllViewCounts } from "@/lib/server/views";
 
 const numberFormatter = new Intl.NumberFormat(env.NEXT_PUBLIC_SITE_LOCALE);
 
@@ -17,14 +23,22 @@ type Stats = {
   loaded: boolean;
 };
 
-const StatsContext = createContext<Stats>({ views: {}, comments: {}, loaded: false });
+const StatsContext = createContext<Stats>({
+  views: {},
+  comments: {},
+  loaded: false,
+});
 
 /**
  * Provider that fetches ALL post stats in a single batch (2 requests total).
  * Wrap this around any component tree that contains PostStats components.
  */
 export const PostStatsProvider = ({ children }: { children: ReactNode }) => {
-  const [stats, setStats] = useState<Stats>({ views: {}, comments: {}, loaded: false });
+  const [stats, setStats] = useState<Stats>({
+    views: {},
+    comments: {},
+    loaded: false,
+  });
 
   useEffect(() => {
     Promise.all([getAllViewCounts(), getAllCommentCounts()])
@@ -37,7 +51,9 @@ export const PostStatsProvider = ({ children }: { children: ReactNode }) => {
       });
   }, []);
 
-  return <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>;
+  return (
+    <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>
+  );
 };
 
 /**
@@ -62,19 +78,29 @@ const PostStats = ({ slug }: { slug: string }) => {
   return (
     <>
       {viewCount > 0 && (
-        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums">
+        <Badge
+          variant="secondary"
+          className="gap-[5px] text-foreground/80 tabular-nums"
+        >
           <EyeIcon className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
         </Badge>
       )}
 
       {commentCount > 0 && (
-        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums" asChild>
+        <Badge
+          variant="secondary"
+          className="gap-[5px] text-foreground/80 tabular-nums"
+          asChild
+        >
           <Link
             href={`/${slug}#comments`}
             title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
           >
-            <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
+            <MessagesSquareIcon
+              className="text-foreground/65"
+              aria-hidden="true"
+            />
             {numberFormatter.format(commentCount)}
           </Link>
         </Badge>

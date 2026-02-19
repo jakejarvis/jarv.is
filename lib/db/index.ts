@@ -1,8 +1,8 @@
-import { env } from "@/lib/env";
-import * as schema from "@/lib/db/schema";
 import { attachDatabasePool } from "@vercel/functions";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
+import * as schema from "@/lib/db/schema";
+import { env } from "@/lib/env";
 
 // Create explicit pool instance for better connection management
 const pool = new Pool({

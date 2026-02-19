@@ -1,10 +1,10 @@
 import "server-only";
 
-import { env } from "@/lib/env";
-import { cacheLife } from "next/cache";
-import * as cheerio from "cheerio";
 import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
+import * as cheerio from "cheerio";
+import { cacheLife } from "next/cache";
+import { env } from "@/lib/env";
 
 export const getContributions = async (): Promise<
   Array<{
@@ -18,12 +18,15 @@ export const getContributions = async (): Promise<
 
   // thanks @grubersjoe! :) https://github.com/grubersjoe/github-contributions-api/blob/main/src/scrape.ts
   try {
-    const response = await fetch(`https://github.com/users/${env.NEXT_PUBLIC_GITHUB_USERNAME}/contributions`, {
-      headers: {
-        referer: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
-        "x-requested-with": "XMLHttpRequest",
+    const response = await fetch(
+      `https://github.com/users/${env.NEXT_PUBLIC_GITHUB_USERNAME}/contributions`,
+      {
+        headers: {
+          referer: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+          "x-requested-with": "XMLHttpRequest",
+        },
       },
-    });
+    );
 
     const $ = cheerio.load(await response.text());
 
@@ -38,15 +41,15 @@ export const getContributions = async (): Promise<
 
     const dayTooltips = $(".js-calendar-graph tool-tip")
       .toArray()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // biome-ignore lint/suspicious/noExplicitAny: cheerio DOM element map
       .reduce<Record<string, any>>((map, elem) => {
-        map[elem.attribs["for"]] = elem;
+        map[elem.attribs.for] = elem;
         return map;
       }, {});
 
     return days.map((day) => {
       const attr = {
-        id: day.attribs["id"],
+        id: day.attribs.id,
         date: day.attribs["data-date"],
         level: day.attribs["data-level"],
       };
@@ -57,12 +60,12 @@ export const getContributions = async (): Promise<
         if (text) {
           const countMatch = text.data.trim().match(/^\d+/);
           if (countMatch) {
-            count = parseInt(countMatch[0]);
+            count = parseInt(countMatch[0], 10);
           }
         }
       }
 
-      const level = parseInt(attr.level);
+      const level = parseInt(attr.level, 10);
 
       return {
         date: attr.date,
@@ -120,10 +123,10 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
           accept: "application/vnd.github.v3+json",
           authorization: `token ${env.GITHUB_TOKEN}`,
         },
-      }
+      },
     );
 
-    return user.repositories.edges?.map((edge) => edge!.node as Repository);
+    return user.repositories.edges?.map((edge) => edge?.node as Repository);
   } catch (error) {
     console.error("[server/github] Failed to fetch repositories:", error);
     return [];

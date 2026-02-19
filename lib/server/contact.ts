@@ -1,10 +1,10 @@
 "use server";
 
-import { env } from "@/lib/env";
-import { Resend } from "resend";
-import { ContactSchema } from "@/lib/schemas/contact";
-import siteConfig from "@/lib/config/site";
 import { checkBotId } from "botid/server";
+import { Resend } from "resend";
+import siteConfig from "@/lib/config/site";
+import { env } from "@/lib/env";
+import { ContactSchema } from "@/lib/schemas/contact";
 
 export type ContactResult = {
   success: boolean;
@@ -12,7 +12,9 @@ export type ContactResult = {
   errors?: Record<string, string[]>;
 };
 
-export const sendContactForm = async (formData: FormData): Promise<ContactResult> => {
+export const sendContactForm = async (
+  formData: FormData,
+): Promise<ContactResult> => {
   // TODO: remove after debugging why automated spam entries are causing 500 errors
   console.debug("[server/contact] received payload:", formData);
 
@@ -39,7 +41,9 @@ export const sendContactForm = async (formData: FormData): Promise<ContactResult
   try {
     if (env.RESEND_FROM_EMAIL === "onboarding@resend.dev") {
       // https://resend.com/docs/api-reference/emails/send-email
-      console.warn("[server/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.");
+      console.warn(
+        "[server/contact] 'RESEND_FROM_EMAIL' is not set, falling back to onboarding@resend.dev.",
+      );
     }
 
     const resend = new Resend(env.RESEND_API_KEY);
@@ -57,7 +61,8 @@ export const sendContactForm = async (formData: FormData): Promise<ContactResult
 
     return {
       success: false,
-      message: "Internal server error. Please try again later or shoot me an email.",
+      message:
+        "Internal server error. Please try again later or shoot me an email.",
     };
   }
 };

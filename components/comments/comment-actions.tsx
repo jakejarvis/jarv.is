@@ -1,8 +1,14 @@
 "use client";
 
+import {
+  EditIcon,
+  EllipsisIcon,
+  Loader2Icon,
+  ReplyIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ReplyIcon, EditIcon, Trash2Icon, EllipsisIcon, Loader2Icon } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,12 +23,12 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EditCommentForm, ReplyForm } from "./comment-form";
 import { useSession } from "@/lib/auth-client";
-import { deleteComment, type CommentWithUser } from "@/lib/server/comments";
+import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
+import { EditCommentForm, ReplyForm } from "./comment-form";
 
 type ActionMode =
   | { type: "idle" }
@@ -69,7 +75,13 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setMode(mode.type === "replying" ? { type: "idle" } : { type: "replying" })}
+            onClick={() =>
+              setMode(
+                mode.type === "replying"
+                  ? { type: "idle" }
+                  : { type: "replying" },
+              )
+            }
           >
             <ReplyIcon />
             Reply
@@ -93,7 +105,11 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
                   disabled={isDeleting}
                   variant="destructive"
                 >
-                  {isDeleting ? <Loader2Icon className="animate-spin" /> : <Trash2Icon />}
+                  {isDeleting ? (
+                    <Loader2Icon className="animate-spin" />
+                  ) : (
+                    <Trash2Icon />
+                  )}
                   Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -113,11 +129,16 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
         </div>
       )}
 
-      <AlertDialog open={mode.type === "confirming-delete"} onOpenChange={(open) => !open && setMode({ type: "idle" })}>
+      <AlertDialog
+        open={mode.type === "confirming-delete"}
+        onOpenChange={(open) => !open && setMode({ type: "idle" })}
+      >
         <AlertDialogContent size="sm">
           <AlertDialogHeader>
             <AlertDialogTitle>Delete comment?</AlertDialogTitle>
-            <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+            <AlertDialogDescription>
+              This action cannot be undone.
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

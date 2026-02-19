@@ -1,18 +1,20 @@
 "use server";
 
-import { headers } from "next/headers";
-import { revalidatePath } from "next/cache";
-import { eq, desc, inArray, sql } from "drizzle-orm";
 import { checkBotId } from "botid/server";
+import { desc, eq, inArray, sql } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
-import { auth } from "@/lib/auth";
 
 export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
 };
 
-export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
+export const getComments = async (
+  pageSlug: string,
+): Promise<CommentWithUser[]> => {
   try {
     // Fetch all comments for the page with user details
     const commentsWithUsers = await db
@@ -60,7 +62,9 @@ export const getCommentCount = async (slug: string): Promise<number> => {
 /**
  * Retrieves the numbers of comments for an array of slugs
  */
-export const getCommentCountsForSlugs = async (slugs: string[]): Promise<Record<string, number>> => {
+export const getCommentCountsForSlugs = async (
+  slugs: string[],
+): Promise<Record<string, number>> => {
   try {
     const rows = await db
       .select({
@@ -71,7 +75,9 @@ export const getCommentCountsForSlugs = async (slugs: string[]): Promise<Record<
       .where(inArray(schema.comment.pageSlug, slugs))
       .groupBy(schema.comment.pageSlug);
 
-    const map: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
+    const map: Record<string, number> = Object.fromEntries(
+      slugs.map((s) => [s, 0]),
+    );
     for (const row of rows) {
       map[row.pageSlug] = Number(row.count ?? 0);
     }
@@ -85,7 +91,9 @@ export const getCommentCountsForSlugs = async (slugs: string[]): Promise<Record<
 /**
  * Retrieves the numbers of comments for ALL slugs
  */
-export const getAllCommentCounts = async (): Promise<Record<string, number>> => {
+export const getAllCommentCounts = async (): Promise<
+  Record<string, number>
+> => {
   try {
     const rows = await db
       .select({
@@ -106,7 +114,11 @@ export const getAllCommentCounts = async (): Promise<Record<string, number>> => 
   }
 };
 
-export const createComment = async (data: { content: string; pageSlug: string; parentId?: string }) => {
+export const createComment = async (data: {
+  content: string;
+  pageSlug: string;
+  parentId?: string;
+}) => {
   // BotID server-side verification
   const verification = await checkBotId();
   if (verification.isBot) {
@@ -158,7 +170,10 @@ export const updateComment = async (commentId: string, content: string) => {
   try {
     // Get the comment to verify ownership
     const comment = await db
-      .select({ userId: schema.comment.userId, pageSlug: schema.comment.pageSlug })
+      .select({
+        userId: schema.comment.userId,
+        pageSlug: schema.comment.pageSlug,
+      })
       .from(schema.comment)
       .where(eq(schema.comment.id, commentId))
       .then((results) => results[0]);
@@ -208,7 +223,10 @@ export const deleteComment = async (commentId: string) => {
   try {
     // Get the comment to verify ownership and get the page_slug for revalidation
     const comment = await db
-      .select({ userId: schema.comment.userId, pageSlug: schema.comment.pageSlug })
+      .select({
+        userId: schema.comment.userId,
+        pageSlug: schema.comment.pageSlug,
+      })
       .from(schema.comment)
       .where(eq(schema.comment.id, commentId))
       .then((results) => results[0]);
