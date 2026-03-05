@@ -177,8 +177,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       rehype-mdx-import-media:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.4.0
+        version: 1.4.0
       rehype-sanitize:
         specifier: ^6.0.0
         version: 6.0.0
@@ -3011,8 +3011,8 @@ packages:
   rehype-mdx-code-props@3.0.1:
     resolution: {integrity: sha512-BWWKn0N6r7/qd7lbLgv5J8of7imz1l1PyCNoY7BH0AOR9JdJlQIfA9cKqTZVEb2h2GPKh473qrBajF0i01fq3A==}
 
-  rehype-mdx-import-media@1.2.0:
-    resolution: {integrity: sha512-rf+2qnPv3LTqLtCr8GjhHUja2TEbmwWtD1o4jigrmGWbVDggOMxyNeqJhGpC4E3vtH+sY+a+u9WPSEaskEWPFA==}
+  rehype-mdx-import-media@1.4.0:
+    resolution: {integrity: sha512-O2Q/yFj8lj0IXK7iwfHFowYrn0c5wA4/RCoS8J30HVioMmMzr+fF82PbxV3YPf6IpmbaRrVPvRfae1LhM8hXmQ==}
 
   rehype-recma@1.0.0:
     resolution: {integrity: sha512-lqA4rGUf1JmacCNWWZx0Wv1dHqMwxzsDWYMTowuplHF3xH0N/MmrZ/G3BDZnzAkRmxDadujCjaKM2hqYdCBOGw==}
@@ -6018,7 +6018,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  rehype-mdx-import-media@1.2.0:
+  rehype-mdx-import-media@1.4.0:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-properties-to-mdx-jsx-attributes: 1.0.1
