@@ -163,7 +163,7 @@ importers:
         version: 10.1.0(@types/react@19.2.14)(react@19.2.4)
       react-schemaorg:
         specifier: ^2.0.0
-        version: 2.0.0(react@19.2.4)(schema-dts@1.1.5)(typescript@5.9.3)
+        version: 2.0.0(react@19.2.4)(schema-dts@2.0.0(typescript@5.9.3))(typescript@5.9.3)
       react-timeago:
         specifier: ^8.3.0
         version: 8.3.0(react@19.2.4)
@@ -289,8 +289,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(prettier@3.8.1)
       schema-dts:
-        specifier: ^1.1.5
-        version: 1.1.5
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.9.3)
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
@@ -3104,8 +3104,14 @@ packages:
   scheduler@0.27.0:
     resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
 
-  schema-dts@1.1.5:
-    resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
+  schema-dts-lib@1.0.0:
+    resolution: {integrity: sha512-9MEO5vpQH9JdBioUupqluzxSYxPLjhmqRUudk15adUl/ypnRsM2/M1kN3AmVJQeG7nZqcL68H8JlGqQQT6vy9A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+
+  schema-dts@2.0.0:
+    resolution: {integrity: sha512-t7NoCy3Rn5GHGx6p7s1qIYK/AeIb8ZxJNR9WUNFkwMv2CiiGZBmqqYWc2FlZVm5ZbiHMY4OvBWhj7QtyrFO2Jw==}
 
   semver@7.7.3:
     resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
@@ -5930,10 +5936,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-schemaorg@2.0.0(react@19.2.4)(schema-dts@1.1.5)(typescript@5.9.3):
+  react-schemaorg@2.0.0(react@19.2.4)(schema-dts@2.0.0(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
       react: 19.2.4
-      schema-dts: 1.1.5
+      schema-dts: 2.0.0(typescript@5.9.3)
       typescript: 5.9.3
 
   react-style-singleton@2.2.3(@types/react@19.2.14)(react@19.2.4):
@@ -6178,7 +6184,15 @@ snapshots:
 
   scheduler@0.27.0: {}
 
-  schema-dts@1.1.5: {}
+  schema-dts-lib@1.0.0(typescript@5.9.3):
+    dependencies:
+      typescript: 5.9.3
+
+  schema-dts@2.0.0(typescript@5.9.3):
+    dependencies:
+      schema-dts-lib: 1.0.0(typescript@5.9.3)
+    transitivePeerDependencies:
+      - typescript
 
   semver@7.7.3:
     optional: true
