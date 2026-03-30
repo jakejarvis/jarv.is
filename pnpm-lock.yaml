@@ -219,8 +219,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       resend:
-        specifier: ^6.9.2
-        version: 6.9.2
+        specifier: ^6.10.0
+        version: 6.10.0
       server-only:
         specifier: 0.0.1
         version: 0.0.1
@@ -2798,8 +2798,8 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  postal-mime@2.7.3:
-    resolution: {integrity: sha512-MjhXadAJaWgYzevi46+3kLak8y6gbg0ku14O1gO/LNOuay8dO+1PtcSGvAdgDR0DoIsSaiIA8y/Ddw6MnrO0Tw==}
+  postal-mime@2.7.4:
+    resolution: {integrity: sha512-0WdnFQYUrPGGTFu1uOqD2s7omwua8xaeYGdO6rb88oD5yJ/4pPHDA4sdWqfD8wQVfCny563n/HQS7zTFft+f/g==}
 
   postcss-selector-parser@6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
@@ -3060,8 +3060,8 @@ packages:
   remark-strip-mdx-imports-exports@1.0.1:
     resolution: {integrity: sha512-N6YR9Tnib79WUg6Xjy1YRQ3q5/3SLsl8jCyyFSLRbERdL8KHLnWiWhLEzfKw5z/037iWs9sBr9UK7YDgagzzeA==}
 
-  resend@6.9.2:
-    resolution: {integrity: sha512-uIM6CQ08tS+hTCRuKBFbOBvHIGaEhqZe8s4FOgqsVXSbQLAhmNWpmUhG3UAtRnmcwTWFUqnHa/+Vux8YGPyDBA==}
+  resend@6.10.0:
+    resolution: {integrity: sha512-i7CwZpYj4Oho1RxsTpLcCUkO08+HiL4NXrm6jLJ2WzJ89UGI8eROSieLONJA3hnUrf1OYnCyfq5F6POnHUMv1Q==}
     engines: {node: '>=20'}
     peerDependencies:
       '@react-email/render': '*'
@@ -3186,8 +3186,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  svix@1.84.1:
-    resolution: {integrity: sha512-K8DPPSZaW/XqXiz1kEyzSHYgmGLnhB43nQCMeKjWGCUpLIpAMMM8kx3rVVOSm6Bo6EHyK1RQLPT4R06skM/MlQ==}
+  svix@1.88.0:
+    resolution: {integrity: sha512-vm/JrrUd3bVyBE+3L33TIyVSs8gS5fYx7lrISvKlDJXTYX1ACH4REX8P1tHxsSKoZi/rvifM1t0XRc5Vc45THw==}
 
   swr@2.3.8:
     resolution: {integrity: sha512-gaCPRVoMq8WGDcWj9p4YWzCMPHzE0WNl6W8ADIx9c3JBEIdMkJGMzW+uzXvxHMltwcYACr9jP+32H8/hgwMR7w==}
@@ -5826,7 +5826,7 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  postal-mime@2.7.3: {}
+  postal-mime@2.7.4: {}
 
   postcss-selector-parser@6.0.10:
     dependencies:
@@ -6132,10 +6132,10 @@ snapshots:
 
   remark-strip-mdx-imports-exports@1.0.1: {}
 
-  resend@6.9.2:
+  resend@6.10.0:
     dependencies:
-      postal-mime: 2.7.3
-      svix: 1.84.1
+      postal-mime: 2.7.4
+      svix: 1.88.0
 
   resolve-pkg-maps@1.0.0: {}
 
@@ -6279,7 +6279,7 @@ snapshots:
       client-only: 0.0.1
       react: 19.2.4
 
-  svix@1.84.1:
+  svix@1.88.0:
     dependencies:
       standardwebhooks: 1.0.0
       uuid: 10.0.0
