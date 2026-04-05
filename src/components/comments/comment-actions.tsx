@@ -21,7 +21,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
 
 import { EditCommentForm, ReplyForm } from "./comment-form";
@@ -36,7 +36,7 @@ type ActionMode =
 const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
   const [mode, setMode] = useState<ActionMode>({ type: "idle" });
 
-  const { data: session } = useSession();
+  const { data: session } = authClient.useSession();
 
   if (!session) return null;
 

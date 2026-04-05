@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { type CommentWithUser, getComments } from "@/lib/server/comments";
 
 import { NewCommentForm } from "./comment-form";
@@ -11,7 +11,7 @@ import { CommentsSkeleton } from "./comments-skeleton";
 import { SignIn } from "./sign-in";
 
 const Comments = ({ slug }: { slug: string }) => {
-  const { data: session } = useSession();
+  const { data: session } = authClient.useSession();
   const [comments, setComments] = useState<CommentWithUser[] | null>(null);
 
   const fetchComments = () => {

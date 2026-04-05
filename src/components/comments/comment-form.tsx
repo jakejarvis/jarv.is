@@ -8,7 +8,7 @@ import { MarkdownIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { createComment, updateComment } from "@/lib/server/comments";
 
 import { CommentAvatar } from "./comment-avatar";
@@ -95,7 +95,7 @@ const CommentTextarea = ({
 
 // Current user's avatar (uses session)
 const CurrentUserAvatar = () => {
-  const { data: session } = useSession();
+  const { data: session } = authClient.useSession();
 
   if (!session?.user) return null;
 

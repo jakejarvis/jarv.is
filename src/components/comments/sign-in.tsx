@@ -6,7 +6,7 @@ import { toast } from "sonner";
 
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { signIn } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +15,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
     setIsLoading(true);
 
     try {
-      await signIn.social({
+      await authClient.signIn.social({
         provider: "github",
         callbackURL: `${import.meta.env.VITE_BASE_URL}${callbackPath ? callbackPath : "/"}`,
       });
