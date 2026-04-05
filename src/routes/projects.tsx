@@ -2,11 +2,11 @@ import type { Repository } from "@octokit/graphql-schema";
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLinkIcon, GitForkIcon, StarIcon } from "lucide-react";
 
-import { getContributions, getRepos } from "@/app/projects/github";
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PageTitle } from "@/components/layout/page-title";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
+import { getContributions, getRepos } from "@/lib/github";
 import { createHead } from "@/lib/head";
 import { cn } from "@/lib/utils";
 

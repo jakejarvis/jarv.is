@@ -53,42 +53,42 @@ function NotesPage() {
       <PageTitle canonical="/notes">Notes</PageTitle>
 
       <PostStatsProvider>
-      {Object.entries(postsByYear)
-        .reverse()
-        .map(([year, posts]) => (
-          <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
-            <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">
-              {year}
-            </h2>
-            <ul className="space-y-4">
-              {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
-                <li className="flex text-base leading-relaxed" key={slug}>
-                  <span className="text-muted-foreground w-18 shrink-0 md:w-22">
-                    <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
-                      {dateDisplay}
-                    </time>
-                  </span>
-                  <div className="space-x-2">
-                    <Link
-                      to="/notes/$slug"
-                      params={{ slug }}
-                      // biome-ignore lint/security/noDangerouslySetInnerHtml: htmlTitle is sanitized by rehypeSanitize
-                      dangerouslySetInnerHTML={{
-                        __html: htmlTitle || title,
-                      }}
-                      className="mr-2.5 underline-offset-4 hover:underline"
-                      style={{
-                        viewTransitionName: `note-title-${slug}`,
-                      }}
-                    />
+        {Object.entries(postsByYear)
+          .reverse()
+          .map(([year, posts]) => (
+            <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
+              <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">
+                {year}
+              </h2>
+              <ul className="space-y-4">
+                {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
+                  <li className="flex text-base leading-relaxed" key={slug}>
+                    <span className="text-muted-foreground w-18 shrink-0 md:w-22">
+                      <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
+                        {dateDisplay}
+                      </time>
+                    </span>
+                    <div className="space-x-2">
+                      <Link
+                        to="/notes/$slug"
+                        params={{ slug }}
+                        // biome-ignore lint/security/noDangerouslySetInnerHtml: htmlTitle is sanitized by rehypeSanitize
+                        dangerouslySetInnerHTML={{
+                          __html: htmlTitle || title,
+                        }}
+                        className="mr-2.5 underline-offset-4 hover:underline"
+                        style={{
+                          viewTransitionName: `note-title-${slug}`,
+                        }}
+                      />
 
-                    <PostStats slug={`notes/${slug}`} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+                      <PostStats slug={`notes/${slug}`} />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
       </PostStatsProvider>
     </>
   );

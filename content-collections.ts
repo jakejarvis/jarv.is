@@ -1,13 +1,8 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
-import { compileMDX } from "@content-collections/mdx";
-import rehypeShiki from "@shikijs/rehype";
 import { decode } from "html-entities";
 import rehypeSanitize from "rehype-sanitize";
-import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
-import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkFrontmatter from "remark-frontmatter";
-import remarkGfm from "remark-gfm";
 import remarkMdx from "remark-mdx";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -20,7 +15,6 @@ const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
 
 /**
  * Process a markdown title string into limited HTML (code, em, strong only).
- * Replicates the pipeline from lib/posts.ts
  */
 const processTitle = async (rawTitle: string): Promise<{ title: string; htmlTitle: string }> => {
   const htmlTitle = await unified()
@@ -41,7 +35,6 @@ const processTitle = async (rawTitle: string): Promise<{ title: string; htmlTitl
 
 /**
  * Generate sanitized HTML from raw MDX content for RSS feeds.
- * Replicates getContent() from lib/posts.ts
  */
 const generateRssHtml = async (rawContent: string): Promise<string> => {
   const content = await unified()
@@ -96,25 +89,8 @@ const posts = defineCollection({
     image: z.string().optional(),
     noComments: z.boolean().optional(),
   }),
-  transform: async (doc, ctx) => {
+  transform: async (doc) => {
     const slug = doc._meta.directory;
-    const projectRoot = process.cwd();
-
-    // Compile MDX with the full remark/rehype plugin chain
-    const mdx = await compileMDX(ctx, doc, {
-      cwd: projectRoot,
-      remarkPlugins: [remarkGfm, remarkSmartypants],
-      rehypePlugins: [
-        rehypeUnwrapImages,
-        rehypeSlug,
-        [
-          rehypeShiki,
-          {
-            themes: { light: "github-light", dark: "github-dark" },
-          },
-        ],
-      ],
-    });
 
     // Process title to html and plaintext versions
     const { title, htmlTitle } = await processTitle(doc.title);
@@ -129,7 +105,6 @@ const posts = defineCollection({
       slug,
       date: new Date(doc.date).toISOString(),
       permalink: `${BASE_URL}/notes/${slug}`,
-      mdx,
       rssContent,
     };
   },

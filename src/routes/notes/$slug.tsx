@@ -1,4 +1,3 @@
-import { MDXContent } from "@content-collections/mdx/react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { allPosts } from "content-collections";
 import {
@@ -8,6 +7,7 @@ import {
   SquarePenIcon,
   TagIcon,
 } from "lucide-react";
+
 import { CommentCount } from "@/components/comment-count";
 import { Comments } from "@/components/comments/comments";
 import { ImageDiff } from "@/components/image-diff";
@@ -22,6 +22,22 @@ import { createHead } from "@/lib/head";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
 const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO || "jakejarvis/jarv.is";
+
+// Eagerly import all MDX files at build time via Vite.
+// @mdx-js/rollup compiles each .mdx to a real ES module (pure jsx() calls,
+// no eval/new Function), so this is fully SSR-compatible in workerd.
+const mdxModules = import.meta.glob<{
+  default: React.ComponentType<{ components?: Record<string, unknown> }>;
+}>("../../../notes/*/index.mdx", { eager: true });
+
+const mdxComponents = {
+  Video,
+  ImageDiff,
+  Tweet,
+  YouTube,
+  Gist,
+  CodePen,
+};
 
 export const Route = createFileRoute("/notes/$slug")({
   loader: ({ params }) => {
@@ -77,6 +93,11 @@ function PostPage() {
       year: "numeric",
     }),
   };
+
+  // Look up the pre-compiled MDX module from the eager glob
+  const mdxPath = `../../../notes/${post.slug}/index.mdx`;
+  const mdxModule = mdxModules[mdxPath];
+  const MDXContent = mdxModule?.default;
 
   return (
     <>
@@ -154,17 +175,7 @@ function PostPage() {
       </h1>
 
       <article className="prose prose-neutral dark:prose-invert prose-sm max-w-none">
-        <MDXContent
-          code={post.mdx}
-          components={{
-            Video,
-            ImageDiff,
-            Tweet,
-            YouTube,
-            Gist,
-            CodePen,
-          }}
-        />
+        {MDXContent && <MDXContent components={mdxComponents} />}
       </article>
 
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">

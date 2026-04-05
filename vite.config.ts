@@ -1,10 +1,16 @@
 import { cloudflare } from "@cloudflare/vite-plugin";
 import contentCollections from "@content-collections/vite";
+import mdx from "@mdx-js/rollup";
 import babel from "@rolldown/plugin-babel";
+import rehypeShiki from "@shikijs/rehype";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import rehypeSlug from "rehype-slug";
+import rehypeUnwrapImages from "rehype-unwrap-images";
+import remarkGfm from "remark-gfm";
+import remarkSmartypants from "remark-smartypants";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
@@ -95,6 +101,20 @@ export default defineConfig({
     }),
     tailwindcss(),
     tanstackStart(),
+    mdx({
+      providerImportSource: "@mdx-js/react",
+      remarkPlugins: [remarkGfm, remarkSmartypants],
+      rehypePlugins: [
+        rehypeUnwrapImages,
+        rehypeSlug,
+        [
+          rehypeShiki,
+          {
+            themes: { light: "github-light", dark: "github-dark" },
+          },
+        ],
+      ],
+    }),
     react(),
     babel({
       presets: [reactCompilerPreset()],
