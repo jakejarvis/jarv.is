@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { CountUp } from "@/components/count-up";
 import { incrementViews } from "@/lib/server/views";
 
 const ViewCounter = ({ slug }: { slug: string }) => {
@@ -30,7 +29,7 @@ const ViewCounter = ({ slug }: { slug: string }) => {
 
   return (
     <span title={`${Intl.NumberFormat("en-US").format(views)} ${views === 1 ? "view" : "views"}`}>
-      <CountUp start={0} end={views} delay={0} duration={1.5} />
+      {Intl.NumberFormat("en-US").format(views)}
     </span>
   );
 };

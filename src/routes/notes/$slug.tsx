@@ -1,16 +1,23 @@
 import { MDXContent } from "@content-collections/mdx/react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { allPosts } from "content-collections";
-import { CalendarDaysIcon, SquarePenIcon, TagIcon } from "lucide-react";
-
+import {
+  CalendarDaysIcon,
+  EyeIcon,
+  MessagesSquareIcon,
+  SquarePenIcon,
+  TagIcon,
+} from "lucide-react";
+import { CommentCount } from "@/components/comment-count";
+import { Comments } from "@/components/comments/comments";
 import { ImageDiff } from "@/components/image-diff";
 import { CodePen } from "@/components/third-party/codepen";
 import { Gist } from "@/components/third-party/gist";
 import { Tweet } from "@/components/third-party/tweet";
 import { YouTube } from "@/components/third-party/youtube";
 import { Video } from "@/components/video";
+import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
-import siteConfig from "@/lib/config/site";
 import { createHead } from "@/lib/head";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
@@ -114,6 +121,21 @@ function PostPage() {
           <SquarePenIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
         </a>
+
+        <Link
+          to="/notes/$slug"
+          params={{ slug: post.slug }}
+          hash="comments"
+          className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
+        >
+          <MessagesSquareIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <CommentCount slug={`notes/${post.slug}`} />
+        </Link>
+
+        <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
+          <EyeIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <ViewCounter slug={`notes/${post.slug}`} />
+        </div>
       </div>
 
       <h1
@@ -152,9 +174,7 @@ function PostPage() {
               <p className="text-center text-lg font-medium">Comments are closed.</p>
             </div>
           ) : (
-            <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
-              <p className="text-muted-foreground text-center">Comments coming soon.</p>
-            </div>
+            <Comments slug={`notes/${post.slug}`} />
           )}
         </div>
       </section>

@@ -2,6 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { allPosts } from "content-collections";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { PostStats, PostStatsProvider } from "@/components/post-stats";
 import authorConfig from "@/lib/config/author";
 import { createHead } from "@/lib/head";
 
@@ -51,6 +52,7 @@ function NotesPage() {
     <>
       <PageTitle canonical="/notes">Notes</PageTitle>
 
+      <PostStatsProvider>
       {Object.entries(postsByYear)
         .reverse()
         .map(([year, posts]) => (
@@ -79,12 +81,15 @@ function NotesPage() {
                         viewTransitionName: `note-title-${slug}`,
                       }}
                     />
+
+                    <PostStats slug={`notes/${slug}`} />
                   </div>
                 </li>
               ))}
             </ul>
           </section>
         ))}
+      </PostStatsProvider>
     </>
   );
 }
