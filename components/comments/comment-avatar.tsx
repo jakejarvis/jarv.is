@@ -1,4 +1,3 @@
-import { getImageProps } from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
@@ -12,14 +11,9 @@ const CommentAvatar = ({ name, image, className }: CommentAvatarProps) => (
   <Avatar className={cn("size-10", className)}>
     {image && (
       <AvatarImage
-        {...getImageProps({
-          src: image,
-          alt: `@${name}'s avatar`,
-          width: 40,
-          height: 40,
-        }).props}
-        width={undefined}
-        height={undefined}
+        src={image}
+        alt={`@${name}'s avatar`}
+        loading="lazy"
       />
     )}
     <AvatarFallback>{name.charAt(0).toUpperCase()}</AvatarFallback>

@@ -48,7 +48,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
     setMode({ type: "deleting" });
 
     try {
-      await deleteComment(comment.id);
+      await deleteComment({ data: { commentId: comment.id } });
       toast.success("Your comment has been deleted successfully.");
       setMode({ type: "idle" });
     } catch (error) {

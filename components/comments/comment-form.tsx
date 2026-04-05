@@ -202,7 +202,10 @@ const MarkdownHelp = () => (
 );
 
 // New comment form - for creating top-level comments
-const NewCommentForm = ({ slug }: { slug: string }) => {
+const NewCommentForm = ({
+  slug,
+  onCommentPosted,
+}: { slug: string; onCommentPosted?: () => void }) => {
   const { content, setContent, isPending, startTransition } =
     useCommentFormState();
 
@@ -216,9 +219,10 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
 
     startTransition(async () => {
       try {
-        await createComment({ content, pageSlug: slug });
+        await createComment({ data: { content, pageSlug: slug } });
         toast.success("Comment posted!");
         setContent("");
+        onCommentPosted?.();
       } catch (error) {
         console.error("Error submitting comment:", error);
         toast.error("Failed to submit comment. Please try again.");
@@ -282,7 +286,7 @@ const ReplyForm = ({
 
     startTransition(async () => {
       try {
-        await createComment({ content, parentId, pageSlug: slug });
+        await createComment({ data: { content, parentId, pageSlug: slug } });
         toast.success("Comment posted!");
         setContent("");
         onSuccess?.();
@@ -358,7 +362,7 @@ const EditCommentForm = ({
 
     startTransition(async () => {
       try {
-        await updateComment(commentId, content);
+        await updateComment({ data: { commentId, content } });
         toast.success("Comment updated!");
         onSuccess?.();
       } catch (error) {

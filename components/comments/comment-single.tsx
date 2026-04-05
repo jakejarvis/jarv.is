@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Markdown from "react-markdown";
 import { RelativeTime } from "@/components/relative-time";
 import { rehypeExternalLinks } from "@/lib/rehype";
@@ -32,12 +31,12 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
             >
               @{comment.user.name}
             </a>
-            <Link
+            <a
               href={`#${divId}`}
               className="text-muted-foreground text-xs leading-none hover:no-underline"
             >
               <RelativeTime date={comment.createdAt} />
-            </Link>
+            </a>
           </div>
 
           <div

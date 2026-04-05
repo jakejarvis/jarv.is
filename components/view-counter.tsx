@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { CountUp } from "@/components/count-up";
-
 import { incrementViews } from "@/lib/server/views";
 
 const ViewCounter = ({ slug }: { slug: string }) => {
@@ -10,13 +9,12 @@ const ViewCounter = ({ slug }: { slug: string }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Increment views on client mount (outside of render phase)
-    incrementViews(slug)
+    incrementViews({ data: { slug } })
       .then((hits) => {
         setViews(hits);
       })
-      .catch((error) => {
-        console.error("[view-counter] error:", error);
+      .catch((err) => {
+        console.error("[view-counter] error:", err);
         setError(true);
       });
   }, [slug]);
@@ -31,7 +29,7 @@ const ViewCounter = ({ slug }: { slug: string }) => {
 
   return (
     <span
-      title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(views)} ${views === 1 ? "view" : "views"}`}
+      title={`${Intl.NumberFormat("en-US").format(views)} ${views === 1 ? "view" : "views"}`}
     >
       <CountUp start={0} end={views} delay={0} duration={1.5} />
     </span>

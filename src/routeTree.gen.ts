@@ -23,6 +23,8 @@ import { Route as BirthdayRouteImport } from './routes/birthday.tsx'
 import { Route as IndexRouteImport } from './routes/index.tsx'
 import { Route as NotesIndexRouteImport } from './routes/notes/index.tsx'
 import { Route as NotesSlugRouteImport } from './routes/notes/$slug.tsx'
+import { Route as ApiHitsRouteImport } from './routes/api/hits.ts'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$.ts'
 
 const ZipRoute = ZipRouteImport.update({
   id: '/zip',
@@ -94,6 +96,16 @@ const NotesSlugRoute = NotesSlugRouteImport.update({
   path: '/notes/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHitsRoute = ApiHitsRouteImport.update({
+  id: '/api/hits',
+  path: '/api/hits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -108,8 +120,10 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -124,8 +138,10 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -141,8 +157,10 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -159,8 +177,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes/'
+    | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -175,8 +195,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes'
+    | '/api/auth/$'
   id:
     | '__root__'
     | '/'
@@ -191,8 +213,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes/'
+    | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -208,8 +232,10 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
+  ApiHitsRoute: typeof ApiHitsRoute
   NotesSlugRoute: typeof NotesSlugRoute
   NotesIndexRoute: typeof NotesIndexRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -312,6 +338,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/hits': {
+      id: '/api/hits'
+      path: '/api/hits'
+      fullPath: '/api/hits'
+      preLoaderRoute: typeof ApiHitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -328,8 +368,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
+  ApiHitsRoute: ApiHitsRoute,
   NotesSlugRoute: NotesSlugRoute,
   NotesIndexRoute: NotesIndexRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,7 +1,6 @@
 "use client";
 
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
-import Link from "next/link";
 import {
   createContext,
   type ReactNode,
@@ -15,9 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getAllCommentCounts } from "@/lib/server/comments";
 import { getAllViewCounts } from "@/lib/server/views";
 
-const numberFormatter = new Intl.NumberFormat(
-  process.env.NEXT_PUBLIC_SITE_LOCALE,
-);
+const numberFormatter = new Intl.NumberFormat("en-US");
 
 type Stats = {
   views: Record<string, number>;
@@ -95,7 +92,7 @@ const PostStats = ({ slug }: { slug: string }) => {
           className="gap-[5px] text-foreground/80 tabular-nums"
           asChild
         >
-          <Link
+          <a
             href={`/${slug}#comments`}
             title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
           >
@@ -104,7 +101,7 @@ const PostStats = ({ slug }: { slug: string }) => {
               aria-hidden="true"
             />
             {numberFormatter.format(commentCount)}
-          </Link>
+          </a>
         </Badge>
       )}
     </>

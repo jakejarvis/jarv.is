@@ -1,16 +1,38 @@
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
-import { type CommentWithUser, getComments } from "@/lib/server/comments";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useSession } from "@/lib/auth-client";
+import {
+  type CommentWithUser,
+  getComments,
+} from "@/lib/server/comments";
+import { CommentsSkeleton } from "./comments-skeleton";
 import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";
 import { SignIn } from "./sign-in";
 
-const Comments = async ({ slug }: { slug: string }) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+const Comments = ({ slug }: { slug: string }) => {
+  const { data: session } = useSession();
+  const [comments, setComments] = useState<CommentWithUser[] | null>(
+    null,
+  );
 
-  const comments = await getComments(slug);
+  const fetchComments = () => {
+    getComments({ data: { pageSlug: slug } })
+      .then(setComments)
+      .catch((err) => {
+        console.error("[comments] error fetching:", err);
+        setComments([]);
+      });
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [slug]);
+
+  if (comments === null) {
+    return <CommentsSkeleton />;
+  }
 
   const commentsByParentId = comments.reduce(
     (acc, comment) => {
@@ -29,7 +51,7 @@ const Comments = async ({ slug }: { slug: string }) => {
   return (
     <>
       {session ? (
-        <NewCommentForm slug={slug} />
+        <NewCommentForm slug={slug} onCommentPosted={fetchComments} />
       ) : (
         <div className="flex flex-col items-center justify-center gap-y-4 rounded-lg bg-muted/40 p-6">
           <p className="text-center font-medium">

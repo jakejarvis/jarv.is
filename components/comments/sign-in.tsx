@@ -16,7 +16,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: `${process.env.NEXT_PUBLIC_BASE_URL}${callbackPath ? callbackPath : "/"}`,
+        callbackURL: `${import.meta.env.VITE_BASE_URL}${callbackPath ? callbackPath : "/"}`,
       });
     } catch (error) {
       console.error("Error signing in:", error);
