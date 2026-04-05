@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import desktopImg from "@/app/uses/desktop.png";
+import { Image } from "@/components/image";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
+
+import desktopImg from "../public/images/uses/desktop.png";
 
 export const Route = createFileRoute("/uses")({
   head: () =>
@@ -32,8 +34,7 @@ function UsesPage() {
           .
         </p>
 
-        {/* biome-ignore lint/performance/noImgElement: not using Next.js Image */}
-        <img src={desktopImg} alt="My mess of a desktop." />
+        <Image src={desktopImg} alt="My mess of a desktop." layout="fullWidth" />
 
         <h2>Daily Drivers</h2>
 

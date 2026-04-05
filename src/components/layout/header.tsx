@@ -5,8 +5,8 @@ import { AtSignIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import avatarImg from "@/app/avatar.jpg";
 import { GitHubIcon } from "@/components/icons";
+import { Image } from "@/components/image";
 import { Menu } from "@/components/layout/menu";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -50,10 +50,14 @@ const Header = ({ className }: { className?: string }) => {
             aria-label={siteConfig.name}
             className="hover:text-foreground/85 flex shrink-0 items-center gap-2.5 pr-2 hover:no-underline"
           >
-            <img
-              src={avatarImg}
+            <Image
+              src="/avatar.jpg"
               alt={`Photo of ${siteConfig.name}`}
-              className="border-ring/30 size-8 rounded-full border"
+              width={32}
+              height={32}
+              layout="fixed"
+              priority
+              className="border-ring/30 rounded-full border"
             />
             <span className="text-base font-medium tracking-tight whitespace-nowrap max-md:sr-only">
               {siteConfig.name}

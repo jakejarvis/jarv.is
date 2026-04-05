@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import screenshotImg from "@/app/cli/screenshot.png";
+import { Image } from "@/components/image";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
+
+import screenshotImg from "../public/images/cli/screenshot.png";
 
 export const Route = createFileRoute("/cli")({
   head: () =>
@@ -29,7 +31,7 @@ function CliPage() {
           </p>
         </blockquote>
 
-        <img src={screenshotImg} alt="Terminal Screenshot" />
+        <Image src={screenshotImg} alt="Terminal Screenshot" layout="fullWidth" />
 
         <h2>Usage</h2>
         <pre>
