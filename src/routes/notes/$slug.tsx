@@ -73,11 +73,11 @@ function PostPage() {
 
   return (
     <>
-      <div className="flex flex-wrap justify-items-start gap-4 text-[13px] text-foreground/70 tracking-wide">
+      <div className="text-foreground/70 flex flex-wrap justify-items-start gap-4 text-[13px] tracking-wide">
         <Link
           to="/notes/$slug"
           params={{ slug: post.slug }}
-          className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-foreground/70 hover:no-underline"
+          className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
         >
           <CalendarDaysIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <time
@@ -96,7 +96,7 @@ function PostPage() {
               <span
                 key={tag}
                 title={tag}
-                className="mx-px lowercase before:pr-0.5 before:text-foreground/40 before:content-['\0023'] first-of-type:ml-0 last-of-type:mr-0"
+                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['\0023'] first-of-type:ml-0 last-of-type:mr-0"
               >
                 {tag}
               </span>
@@ -109,7 +109,7 @@ function PostPage() {
           title={`Edit "${post.title}" on GitHub`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-foreground/70 hover:no-underline"
+          className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
         >
           <SquarePenIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
@@ -117,7 +117,7 @@ function PostPage() {
       </div>
 
       <h1
-        className="my-5 font-medium text-3xl tracking-tight"
+        className="my-5 text-3xl font-medium tracking-tight"
         style={{ viewTransitionName: `note-title-${post.slug}` }}
       >
         <Link
@@ -146,12 +146,12 @@ function PostPage() {
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">
           {post.noComments ? (
-            <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-              <p className="text-center font-medium text-lg">Comments are closed.</p>
+            <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
+              <p className="text-center text-lg font-medium">Comments are closed.</p>
             </div>
           ) : (
-            <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-              <p className="text-center text-muted-foreground">Comments coming soon.</p>
+            <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
+              <p className="text-muted-foreground text-center">Comments coming soon.</p>
             </div>
           )}
         </div>

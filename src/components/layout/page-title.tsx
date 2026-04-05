@@ -12,14 +12,14 @@ const PageTitle = ({
 }) => (
   <h1
     className={cn(
-      "not-prose mt-0 mb-6 text-left font-medium text-3xl lowercase tracking-tight",
+      "not-prose mt-0 mb-6 text-left text-3xl font-medium tracking-tight lowercase",
       className,
     )}
     {...rest}
   >
     <Link
       to={canonical}
-      className="text-foreground no-underline before:text-muted-foreground before:tracking-wider before:content-['\002E\002F']"
+      className="text-foreground before:text-muted-foreground no-underline before:tracking-wider before:content-['\002E\002F']"
     >
       {children}
     </Link>

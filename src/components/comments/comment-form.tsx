@@ -132,14 +132,14 @@ const SubmitButton = ({
 
 // Markdown help popover (only shown for new comments)
 const MarkdownHelp = () => (
-  <p className="text-[0.8rem] text-muted-foreground leading-relaxed">
+  <p className="text-muted-foreground text-[0.8rem] leading-relaxed">
     <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
-          className="cursor-pointer font-semibold text-primary no-underline decoration-2 decoration-primary/40 underline-offset-4 hover:underline"
+          className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline"
         >
           <span>Markdown</span>
           <span className="max-md:hidden">&nbsp;syntax</span>
@@ -151,7 +151,7 @@ const MarkdownHelp = () => (
           Examples:
         </p>
 
-        <ul className="my-2 list-inside list-disc pl-1 text-sm [&>li::marker]:font-normal [&>li::marker]:text-muted-foreground [&>li]:my-1.5 [&>li]:text-nowrap [&>li]:pl-1">
+        <ul className="[&>li::marker]:text-muted-foreground my-2 list-inside list-disc pl-1 text-sm [&>li]:my-1.5 [&>li]:pl-1 [&>li]:text-nowrap [&>li::marker]:font-normal">
           <li>
             <span className="font-bold">**bold**</span>
           </li>
@@ -166,7 +166,7 @@ const MarkdownHelp = () => (
             ](https://jarv.is)
           </li>
           <li>
-            <span className="rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-medium font-mono text-sm">
+            <span className="bg-muted rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium">
               `code`
             </span>
           </li>

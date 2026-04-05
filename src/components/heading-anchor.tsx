@@ -14,7 +14,7 @@ const HeadingAnchor = ({
   <a
     href={`#${id}`}
     className={cn(
-      "ml-2 inline-block px-2 align-baseline text-muted-foreground hover:text-primary hover:no-underline",
+      "text-muted-foreground hover:text-primary ml-2 inline-block px-2 align-baseline hover:no-underline",
       className,
     )}
     aria-hidden="true"

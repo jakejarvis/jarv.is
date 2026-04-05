@@ -17,8 +17,8 @@ function ProjectsPage() {
   return (
     <>
       <PageTitle canonical="/projects">Projects</PageTitle>
-      <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-        <p className="text-center text-muted-foreground">
+      <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
+        <p className="text-muted-foreground text-center">
           Projects page coming soon — needs server function migration for GitHub API.
         </p>
       </div>

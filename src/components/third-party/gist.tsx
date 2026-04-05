@@ -52,7 +52,7 @@ const Gist = ({
   }
 
   if (!html) {
-    return <div className="my-6 h-32 animate-pulse rounded-lg bg-muted" />;
+    return <div className="bg-muted my-6 h-32 animate-pulse rounded-lg" />;
   }
 
   return (

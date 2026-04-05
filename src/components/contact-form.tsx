@@ -128,7 +128,7 @@ const ContactForm = () => {
                     />
                     {isInvalid && <FieldError errors={field.state.meta.errors} />}
 
-                    <p className="mt-1.5 text-[0.8rem] text-foreground/85 leading-relaxed">
+                    <p className="text-foreground/85 mt-1.5 text-[0.8rem] leading-relaxed">
                       <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
                       Basic{" "}
                       <a
@@ -184,7 +184,7 @@ const ContactForm = () => {
                   role="status"
                   aria-live="polite"
                   className={cn(
-                    "space-x-0.5 font-semibold text-[0.9rem]",
+                    "space-x-0.5 text-[0.9rem] font-semibold",
                     result.success ? "text-green-600 dark:text-green-400" : "text-destructive",
                   )}
                 >

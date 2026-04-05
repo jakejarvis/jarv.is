@@ -47,11 +47,11 @@ const CodeBlock = ({ children, className, showLineNumbers = true, ...props }: Co
       <pre
         data-line-numbers={showLineNumbers || undefined}
         className={cn(
-          "overflow-x-auto overflow-y-hidden rounded-xl bg-code text-[13px] text-code-foreground leading-normal outline-none",
+          "bg-code text-code-foreground overflow-x-auto overflow-y-hidden rounded-xl text-[13px] leading-normal outline-none",
           "[&_span]:!bg-transparent [&_span[style*='color']]:dark:!text-(--shiki-dark)",
           "[&_code]:white-space-pre [&_code]:grid [&_code]:min-w-full [&_code]:px-4 [&_code]:py-3.5 [&_code]:[counter-reset:line]",
-          "[&_.line]:inline-block [&_.line]:min-h-1lh [&_.line]:w-full [&_.line]:py-0.5",
-          "data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
+          "[&_.line]:min-h-1lh [&_.line]:inline-block [&_.line]:w-full [&_.line]:py-0.5",
+          "data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
           className,
         )}
         {...props}

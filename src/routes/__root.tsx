@@ -57,8 +57,8 @@ function NotFoundComponent() {
   return (
     <RootDocument>
       <div className="flex flex-col items-center justify-center py-20">
-        <h1 className="font-medium text-4xl">404</h1>
-        <p className="mt-2 text-muted-foreground">Page not found.</p>
+        <h1 className="text-4xl font-medium">404</h1>
+        <p className="text-muted-foreground mt-2">Page not found.</p>
       </div>
     </RootDocument>
   );
@@ -70,7 +70,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-background font-sans text-foreground antialiased">
+      <body className="bg-background text-foreground font-sans antialiased">
         <Providers>
           <Header />
           <div className="mx-auto mt-4 w-full max-w-4xl px-5">

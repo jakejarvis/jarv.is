@@ -48,16 +48,16 @@ const Header = ({ className }: { className?: string }) => {
             to="/"
             rel="author"
             aria-label={siteConfig.name}
-            className="flex shrink-0 items-center gap-2.5 pr-2 hover:text-foreground/85 hover:no-underline"
+            className="hover:text-foreground/85 flex shrink-0 items-center gap-2.5 pr-2 hover:no-underline"
           >
             <img
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
-              className="size-[40px] rounded-full border border-ring/30 md:size-[32px]"
+              className="border-ring/30 size-[40px] rounded-full border md:size-[32px]"
               width={40}
               height={40}
             />
-            <span className="whitespace-nowrap font-medium text-base tracking-tight max-md:sr-only">
+            <span className="text-base font-medium tracking-tight whitespace-nowrap max-md:sr-only">
               {siteConfig.name}
             </span>
           </Link>

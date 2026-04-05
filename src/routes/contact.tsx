@@ -39,7 +39,7 @@ function ContactPage() {
               target="_blank"
               rel="noopener"
               title="3BC6 E577 6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39"
-              className="relative rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-medium font-mono text-sm tracking-wider [word-spacing:-0.25em]"
+              className="bg-muted relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium tracking-wider [word-spacing:-0.25em]"
             >
               2B0C 9CF2 51E6 9A39
             </a>
@@ -47,7 +47,7 @@ function ContactPage() {
           </p>
         </div>
 
-        <p className="mt-8 text-center text-muted-foreground">Contact form coming soon.</p>
+        <p className="text-muted-foreground mt-8 text-center">Contact form coming soon.</p>
       </div>
     </>
   );

@@ -24,9 +24,9 @@ function HomePage() {
         "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]",
       )}
     >
-      <h1 className="font-medium text-2xl">
+      <h1 className="text-2xl font-medium">
         Hi there! I&rsquo;m Jake.{" "}
-        <span className="ml-0.5 inline-block origin-[65%_80%] text-2xl motion-safe:animate-wave">
+        <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-2xl">
           👋
         </span>
       </h1>
@@ -148,10 +148,10 @@ function HomePage() {
             target="_blank"
             rel="noopener pgpkey"
             title="Download my PGP key"
-            className="not-prose space-x-1 text-nowrap px-0.5 text-muted-foreground no-underline hover:text-primary hover:no-underline"
+            className="not-prose text-muted-foreground hover:text-primary space-x-1 px-0.5 text-nowrap no-underline hover:no-underline"
           >
             <LockIcon className="inline size-2.5" aria-hidden="true" />
-            <code className="text-wrap text-[9px] leading-none tracking-wider [word-spacing:-3px]">
+            <code className="text-[9px] leading-none tracking-wider text-wrap [word-spacing:-3px]">
               2B0C 9CF2 51E6 9A39
             </code>
           </a>

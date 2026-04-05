@@ -51,7 +51,7 @@ function LeoPage() {
         poster={thumbnail}
       />
 
-      <p className="mx-4 mt-5 mb-0 text-center text-muted-foreground text-sm leading-relaxed">
+      <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
         Video is property of{" "}
         <a
           href="https://web.archive.org/web/20070511004304/www.g4techtv.ca"

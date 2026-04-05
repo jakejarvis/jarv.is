@@ -55,13 +55,13 @@ function NotesPage() {
         .reverse()
         .map(([year, posts]) => (
           <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
-            <h2 id={year} className="mt-0 mb-4 font-semibold text-2xl tracking-tight">
+            <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">
               {year}
             </h2>
             <ul className="space-y-4">
               {posts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
                 <li className="flex text-base leading-relaxed" key={slug}>
-                  <span className="w-18 shrink-0 text-muted-foreground md:w-22">
+                  <span className="text-muted-foreground w-18 shrink-0 md:w-22">
                     <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
                       {dateDisplay}
                     </time>

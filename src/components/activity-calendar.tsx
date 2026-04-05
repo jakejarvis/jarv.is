@@ -49,7 +49,7 @@ const ActivityCalendar = ({
           <Tooltip>
             <TooltipTrigger asChild>{block}</TooltipTrigger>
             <TooltipContent>
-              <span className="font-medium text-[0.825rem]">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
+              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
             </TooltipContent>
           </Tooltip>
         )}

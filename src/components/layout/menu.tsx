@@ -49,7 +49,7 @@ const Menu = () => {
               size="sm"
               aria-label={item.text}
               data-current={isCurrent || undefined}
-              className="hover:!bg-transparent text-foreground/70 text-sm leading-none data-current:text-foreground/90"
+              className="text-foreground/70 data-current:text-foreground/90 text-sm leading-none hover:!bg-transparent"
             >
               <Link to={item.to}>{item.text}</Link>
             </Button>
