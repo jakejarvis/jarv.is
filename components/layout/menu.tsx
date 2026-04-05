@@ -1,8 +1,7 @@
 "use client";
 
 import { ChevronDownIcon } from "lucide-react";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,44 +13,46 @@ import {
 const menuItems = [
   {
     text: "Notes",
-    href: "/notes",
+    to: "/notes",
   },
   {
     text: "Projects",
-    href: "/projects",
+    to: "/projects",
   },
   {
     text: "Contact",
-    href: "/contact",
+    to: "/contact",
   },
 ] as const;
 
 const Menu = () => {
-  const segment = useSelectedLayoutSegment() || "";
+  const routerState = useRouterState();
+  const pathname = routerState.location.pathname;
+  const segment = pathname.split("/")[1] || "";
 
   const currentItem = menuItems.find(
-    (item) => item.href?.split("/")[1] === segment,
+    (item) => item.to.split("/")[1] === segment,
   );
   const currentLabel = segment === "" ? "Home" : currentItem?.text || "Menu";
 
   return (
     <nav data-slot="navigation-menu">
       {/* Desktop: Show all buttons */}
-      <div className="hidden items-center gap-2 sm:flex">
+      <div className="hidden items-center gap-1 sm:flex">
         {menuItems.map((item) => {
-          const isCurrent = item.href?.split("/")[1] === segment;
+          const isCurrent = item.to.split("/")[1] === segment;
 
           return (
             <Button
               asChild
-              key={item.href}
+              key={item.to}
               variant="ghost"
               size="sm"
               aria-label={item.text}
               data-current={isCurrent || undefined}
-              className="text-[15px] leading-none data-current:bg-accent/60 data-current:text-accent-foreground"
+              className="hover:!bg-transparent text-foreground/70 text-sm leading-none data-current:text-foreground/90"
             >
-              <Link href={item.href}>{item.text}</Link>
+              <Link to={item.to}>{item.text}</Link>
             </Button>
           );
         })}
@@ -63,7 +64,7 @@ const Menu = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="flex gap-2 text-[17.5px] sm:hidden data-[state=open]:[&_svg]:rotate-180"
+            className="flex gap-2 text-[15px] sm:hidden data-[state=open]:[&_svg]:rotate-180"
           >
             {currentLabel}
             <ChevronDownIcon className="size-3.5 opacity-60 transition-transform duration-200" />
@@ -75,19 +76,19 @@ const Menu = () => {
             data-current={segment === ""}
             aria-current={segment === "" ? "page" : undefined}
           >
-            <Link href="/">Home</Link>
+            <Link to="/">Home</Link>
           </DropdownMenuItem>
           {menuItems.map((item) => {
-            const isCurrent = item.href?.split("/")[1] === segment;
+            const isCurrent = item.to.split("/")[1] === segment;
 
             return (
               <DropdownMenuItem
                 asChild
-                key={item.href}
+                key={item.to}
                 data-current={isCurrent || undefined}
                 aria-current={isCurrent ? "page" : undefined}
               >
-                <Link href={item.href}>{item.text}</Link>
+                <Link to={item.to}>{item.text}</Link>
               </DropdownMenuItem>
             );
           })}

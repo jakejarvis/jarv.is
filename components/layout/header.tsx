@@ -1,8 +1,7 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import avatarImg from "@/app/avatar.jpg";
@@ -45,21 +44,19 @@ const Header = ({ className }: { className?: string }) => {
       <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-5 py-4">
         <div className="flex items-center gap-3">
           <Link
-            href="/"
+            to="/"
             rel="author"
             aria-label={siteConfig.name}
             className="flex shrink-0 items-center gap-2.5 pr-2 hover:text-foreground/85 hover:no-underline"
           >
-            <Image
+            <img
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
               className="size-[40px] rounded-full border border-ring/30 md:size-[32px]"
               width={40}
               height={40}
-              quality={75}
-              priority
             />
-            <span className="whitespace-nowrap font-medium text-[17.5px] tracking-tight max-md:sr-only">
+            <span className="whitespace-nowrap font-medium text-base tracking-tight max-md:sr-only">
               {siteConfig.name}
             </span>
           </Link>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 
 const PageTitle = ({
@@ -17,7 +17,7 @@ const PageTitle = ({
     {...rest}
   >
     <Link
-      href={canonical}
+      to={canonical}
       className="text-foreground no-underline before:text-muted-foreground before:tracking-wider before:content-['\002E\002F']"
     >
       {children}

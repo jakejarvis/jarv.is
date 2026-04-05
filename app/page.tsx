@@ -6,9 +6,9 @@ const Page = () => (
   <div
     className={cn(
       "prose prose-neutral dark:prose-invert prose-sm max-w-none",
-      "prose-headings:mt-0 prose-headings:mb-3 prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight",
-      "prose-p:my-3 prose-li:text-foreground/80 prose-p:text-foreground/90 prose-strong:text-primary prose-p:leading-[1.75] md:prose-p:leading-relaxed",
-      "prose-a:font-medium prose-a:text-primary prose-a:underline prose-a:underline-offset-4",
+      "prose-headings:mt-0 prose-headings:mb-3 prose-headings:font-semibold prose-headings:text-foreground/90 prose-headings:tracking-tight",
+      "prose-p:my-3 prose-li:text-foreground/80 prose-p:text-foreground/85 prose-strong:text-foreground/90 prose-p:leading-[1.75] md:prose-p:leading-relaxed",
+      "prose-a:font-medium prose-a:text-foreground/85 prose-a:underline prose-a:underline-offset-4 prose-a:hover:text-foreground/95",
       "prose-code:rounded-sm prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none",
       "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]",
     )}

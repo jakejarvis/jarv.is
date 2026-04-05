@@ -1,5 +1,12 @@
-# next.js
+# build output
 /.next/
+.output/
+
+# content-collections
+.content-collections/
+
+# tanstack start generated
+.tanstack/
 
 # node/npm/pnpm/yarn
 node_modules/
