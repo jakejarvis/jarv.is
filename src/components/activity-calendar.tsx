@@ -47,7 +47,7 @@ const ActivityCalendar = ({
         maxLevel={4}
         renderBlock={(block, activity) => (
           <Tooltip>
-            <TooltipTrigger asChild>{block}</TooltipTrigger>
+            <TooltipTrigger render={block} />
             <TooltipContent>
               <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
             </TooltipContent>

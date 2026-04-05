@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@tanstack/react-router";
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
@@ -76,14 +77,20 @@ const PostStats = ({ slug }: { slug: string }) => {
       )}
 
       {commentCount > 0 && (
-        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums" asChild>
-          <a
-            href={`/${slug}#comments`}
-            title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
-          >
-            <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
-            {numberFormatter.format(commentCount)}
-          </a>
+        <Badge
+          variant="secondary"
+          className="text-foreground/80 gap-[5px] tabular-nums"
+          render={
+            <Link
+              to="/notes/$slug"
+              params={{ slug: slug.replace("/notes/", "") }}
+              hash="comments"
+              title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
+            />
+          }
+        >
+          <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
+          {numberFormatter.format(commentCount)}
         </Badge>
       )}
     </>

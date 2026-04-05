@@ -7,6 +7,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import rehypeMdxCodeProps from "rehype-mdx-code-props";
+import rehypeMdxImportMedia from "rehype-mdx-import-media";
 import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkGfm from "remark-gfm";
@@ -113,6 +115,8 @@ export default defineConfig({
             themes: { light: "github-light", dark: "github-dark" },
           },
         ],
+        rehypeMdxCodeProps,
+        rehypeMdxImportMedia,
       ],
     }),
     react(),

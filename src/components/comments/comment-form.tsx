@@ -137,14 +137,16 @@ const MarkdownHelp = () => (
     <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline"
-        >
-          <span>Markdown</span>
-          <span className="max-md:hidden">&nbsp;syntax</span>
-        </button>
+      <PopoverTrigger
+        render={
+          <button
+            type="button"
+            className="text-primary decoration-primary/40 cursor-pointer font-semibold no-underline decoration-2 underline-offset-4 hover:underline"
+          />
+        }
+      >
+        <span>Markdown</span>
+        <span className="max-md:hidden">&nbsp;syntax</span>
       </PopoverTrigger>
       <PopoverContent align="start">
         <p className="text-sm leading-loose">

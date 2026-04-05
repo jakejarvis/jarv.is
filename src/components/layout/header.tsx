@@ -64,19 +64,27 @@ const Header = ({ className }: { className?: string }) => {
         </div>
 
         <div className="flex items-center gap-2.5">
-          <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
-            <a href={`mailto:${authorConfig.email}`}>
-              <AtSignIcon />
-            </a>
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label="Send email"
+            render={<a href={`mailto:${authorConfig.email}`} />}
+          >
+            <AtSignIcon />
           </Button>
-          <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
-            <a
-              href={`https://github.com/${authorConfig.social.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon />
-            </a>
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label="Open GitHub profile"
+            render={
+              <a
+                href={`https://github.com/${authorConfig.social.github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
+          >
+            <GitHubIcon />
           </Button>
           <Button
             variant="ghost"

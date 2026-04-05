@@ -1,11 +1,12 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { ThemeProvider } from "next-themes";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import siteConfig from "@/lib/config/site";
 
 import appCss from "@/styles.css?url";
@@ -97,14 +98,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="bg-background text-foreground font-sans antialiased">
-        <Providers>
-          <Header />
-          <div className="mx-auto mt-4 w-full max-w-[720px] px-5">
-            <main>{children}</main>
-          </div>
-          <Footer />
-          <Toaster position="bottom-center" hotkey={[]} />
-        </Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <Header />
+            <div className="mx-auto mt-4 w-full max-w-[720px] px-5">
+              <main>{children}</main>
+            </div>
+            <Footer />
+            <Toaster position="bottom-center" hotkey={[]} />
+          </TooltipProvider>
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",

@@ -8,6 +8,7 @@ import {
   TagIcon,
 } from "lucide-react";
 
+import { CodeBlock } from "@/components/code-block";
 import { CommentCount } from "@/components/comment-count";
 import { Comments } from "@/components/comments/comments";
 import { ImageDiff } from "@/components/image-diff";
@@ -19,6 +20,7 @@ import { Video } from "@/components/video";
 import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
 import { createHead } from "@/lib/head";
+import { cn } from "@/lib/utils";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
 const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO || "jakejarvis/jarv.is";
@@ -31,6 +33,26 @@ const mdxModules = import.meta.glob<{
 }>("../../../notes/*/index.mdx", { eager: true });
 
 const mdxComponents = {
+  a: ({ href, rel, target, ...rest }: React.ComponentProps<"a">) => {
+    const isExternal = typeof href === "string" && !["/", "#"].includes(href[0]);
+    if (isExternal) {
+      return <a href={href} rel={rel || "noopener noreferrer"} target={target || "_blank"} {...rest} />;
+    }
+    return <Link to={href!} rel={rel} target={target} {...rest} />;
+  },
+  pre: CodeBlock,
+  img: ({ src, alt, className, ...rest }: React.ComponentProps<"img">) => (
+    <img
+      src={src}
+      alt={alt}
+      className={cn(
+        "mx-auto my-8 block h-auto max-w-full rounded-sm",
+        "[&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:font-medium [&+em]:text-[0.875em] [&+em]:text-muted-foreground [&+em]:not-italic [&+em]:leading-normal",
+        className,
+      )}
+      {...rest}
+    />
+  ),
   Video,
   ImageDiff,
   Tweet,
@@ -175,7 +197,17 @@ function PostPage() {
         />
       </h1>
 
-      <article className="prose prose-neutral dark:prose-invert prose-sm max-w-none">
+      <article
+        className={cn(
+          "prose prose-neutral dark:prose-invert prose-sm max-w-none",
+          "prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight",
+          "prose-p:text-foreground/90 prose-strong:text-primary prose-li:text-foreground/80",
+          "prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4",
+          "prose-blockquote:[&_p]:text-foreground/75 prose-blockquote:*:before:content-none prose-blockquote:*:after:content-none",
+          "prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none",
+          "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]",
+        )}
+      >
         {MDXContent && <MDXContent components={mdxComponents} />}
       </article>
 

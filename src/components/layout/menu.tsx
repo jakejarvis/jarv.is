@@ -27,15 +27,15 @@ const Menu = () => {
 
         return (
           <Button
-            asChild
             key={item.to}
             variant="ghost"
             size="sm"
             aria-label={item.text}
             data-current={isCurrent || undefined}
             className="text-foreground/70 data-current:text-foreground/90 text-sm leading-none hover:!bg-transparent"
+            render={<Link to={item.to} />}
           >
-            <Link to={item.to}>{item.text}</Link>
+            {item.text}
           </Button>
         );
       })}

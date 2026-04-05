@@ -81,11 +81,9 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
 
           {session.user.id === comment.user.id && (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  <EllipsisIcon />
-                  <span className="sr-only">Actions Menu</span>
-                </Button>
+              <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
+                <EllipsisIcon />
+                <span className="sr-only">Actions Menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem onClick={() => setMode({ type: "editing" })}>
