@@ -4,7 +4,8 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxlint": "explicit"
+    "source.fixAll.oxlint": "explicit",
+    "source.fixAll.oxc": "explicit"
   },
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
@@ -40,5 +41,7 @@
   "files.associations": {
     "*.css": "tailwindcss",
     "*.mdx": "markdown"
-  }
+  },
+  "oxc.fmt.configPath": "./vite.config.ts",
+  "editor.formatOnSaveMode": "file"
 }

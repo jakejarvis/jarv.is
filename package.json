@@ -11,13 +11,13 @@
   "repository": "jakejarvis/jarv.is",
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "dev": "vp dev",
+    "build": "vp build",
     "start": "node .output/server/index.mjs",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
+    "lint": "vp lint",
+    "lint:fix": "vp lint --fix",
+    "fmt": "vp fmt",
+    "fmt:check": "vp fmt --check",
     "check-types": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate"
@@ -123,11 +123,10 @@
     "cross-env": "^10.1.0",
     "dotenv": "^17.4.0",
     "drizzle-kit": "^0.31.10",
-    "oxfmt": "^0.43.0",
-    "oxlint": "^1.58.0",
     "schema-dts": "^2.0.0",
     "typescript": "6.0.2",
-    "vite": "^8.0.3"
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest"
   },
   "engines": {
     "node": ">=24.x"
@@ -138,6 +137,10 @@
       "esbuild",
       "sharp",
       "unrs-resolver"
-    ]
+    ],
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }

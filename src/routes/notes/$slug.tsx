@@ -96,7 +96,7 @@ function PostPage() {
               <span
                 key={tag}
                 title={tag}
-                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['\0023'] first-of-type:ml-0 last-of-type:mr-0"
+                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['\\0023'] first-of-type:ml-0 last-of-type:mr-0"
               >
                 {tag}
               </span>
@@ -131,17 +131,19 @@ function PostPage() {
         />
       </h1>
 
-      <MDXContent
-        code={post.mdx}
-        components={{
-          Video,
-          ImageDiff,
-          Tweet,
-          YouTube,
-          Gist,
-          CodePen,
-        }}
-      />
+      <article className="prose prose-neutral dark:prose-invert prose-sm max-w-none">
+        <MDXContent
+          code={post.mdx}
+          components={{
+            Video,
+            ImageDiff,
+            Tweet,
+            YouTube,
+            Gist,
+            CodePen,
+          }}
+        />
+      </article>
 
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">

@@ -8,28 +8,27 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root.tsx'
-import { Route as ZipRouteImport } from './routes/zip.tsx'
-import { Route as UsesRouteImport } from './routes/uses.tsx'
-import { Route as ProjectsRouteImport } from './routes/projects.tsx'
-import { Route as PrivacyRouteImport } from './routes/privacy.tsx'
-import { Route as PreviouslyRouteImport } from './routes/previously.tsx'
-import { Route as LicenseRouteImport } from './routes/license.tsx'
-import { Route as LeoRouteImport } from './routes/leo.tsx'
-import { Route as HillaryRouteImport } from './routes/hillary.tsx'
-import { Route as ContactRouteImport } from './routes/contact.tsx'
-import { Route as CliRouteImport } from './routes/cli.tsx'
-import { Route as BirthdayRouteImport } from './routes/birthday.tsx'
-import { Route as IndexRouteImport } from './routes/index.tsx'
-import { Route as NotesIndexRouteImport } from './routes/notes/index.tsx'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml.ts'
-import { Route as RobotsTxtRouteImport } from './routes/robots.txt.ts'
-import { Route as NotesSlugRouteImport } from './routes/notes/$slug.tsx'
-import { Route as ManifestWebmanifestRouteImport } from './routes/manifest.webmanifest.ts'
-import { Route as FeedXmlRouteImport } from './routes/feed.xml.ts'
-import { Route as FeedAtomRouteImport } from './routes/feed.atom.ts'
-import { Route as ApiHitsRouteImport } from './routes/api/hits.ts'
-import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$.ts'
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZipRouteImport } from './routes/zip'
+import { Route as UsesRouteImport } from './routes/uses'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PreviouslyRouteImport } from './routes/previously'
+import { Route as LicenseRouteImport } from './routes/license'
+import { Route as LeoRouteImport } from './routes/leo'
+import { Route as HillaryRouteImport } from './routes/hillary'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CliRouteImport } from './routes/cli'
+import { Route as BirthdayRouteImport } from './routes/birthday'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as NotesIndexRouteImport } from './routes/notes/index'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
+import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
+import { Route as NotesSlugRouteImport } from './routes/notes/$slug'
+import { Route as FeedXmlRouteImport } from './routes/feed.xml'
+import { Route as FeedAtomRouteImport } from './routes/feed.atom'
+import { Route as ApiHitsRouteImport } from './routes/api/hits'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const ZipRoute = ZipRouteImport.update({
   id: '/zip',
@@ -111,11 +110,6 @@ const NotesSlugRoute = NotesSlugRouteImport.update({
   path: '/notes/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ManifestWebmanifestRoute = ManifestWebmanifestRouteImport.update({
-  id: '/manifest/webmanifest',
-  path: '/manifest/webmanifest',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const FeedXmlRoute = FeedXmlRouteImport.update({
   id: '/feed/xml',
   path: '/feed/xml',
@@ -153,7 +147,6 @@ export interface FileRoutesByFullPath {
   '/api/hits': typeof ApiHitsRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
-  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
@@ -176,7 +169,6 @@ export interface FileRoutesByTo {
   '/api/hits': typeof ApiHitsRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
-  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
@@ -200,7 +192,6 @@ export interface FileRoutesById {
   '/api/hits': typeof ApiHitsRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
-  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
@@ -225,7 +216,6 @@ export interface FileRouteTypes {
     | '/api/hits'
     | '/feed/atom'
     | '/feed/xml'
-    | '/manifest/webmanifest'
     | '/notes/$slug'
     | '/robots/txt'
     | '/sitemap/xml'
@@ -248,7 +238,6 @@ export interface FileRouteTypes {
     | '/api/hits'
     | '/feed/atom'
     | '/feed/xml'
-    | '/manifest/webmanifest'
     | '/notes/$slug'
     | '/robots/txt'
     | '/sitemap/xml'
@@ -271,7 +260,6 @@ export interface FileRouteTypes {
     | '/api/hits'
     | '/feed/atom'
     | '/feed/xml'
-    | '/manifest/webmanifest'
     | '/notes/$slug'
     | '/robots/txt'
     | '/sitemap/xml'
@@ -295,7 +283,6 @@ export interface RootRouteChildren {
   ApiHitsRoute: typeof ApiHitsRoute
   FeedAtomRoute: typeof FeedAtomRoute
   FeedXmlRoute: typeof FeedXmlRoute
-  ManifestWebmanifestRoute: typeof ManifestWebmanifestRoute
   NotesSlugRoute: typeof NotesSlugRoute
   RobotsTxtRoute: typeof RobotsTxtRoute
   SitemapXmlRoute: typeof SitemapXmlRoute
@@ -417,13 +404,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/manifest/webmanifest': {
-      id: '/manifest/webmanifest'
-      path: '/manifest/webmanifest'
-      fullPath: '/manifest/webmanifest'
-      preLoaderRoute: typeof ManifestWebmanifestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/feed/xml': {
       id: '/feed/xml'
       path: '/feed/xml'
@@ -471,7 +451,6 @@ const rootRouteChildren: RootRouteChildren = {
   ApiHitsRoute: ApiHitsRoute,
   FeedAtomRoute: FeedAtomRoute,
   FeedXmlRoute: FeedXmlRoute,
-  ManifestWebmanifestRoute: ManifestWebmanifestRoute,
   NotesSlugRoute: NotesSlugRoute,
   RobotsTxtRoute: RobotsTxtRoute,
   SitemapXmlRoute: SitemapXmlRoute,

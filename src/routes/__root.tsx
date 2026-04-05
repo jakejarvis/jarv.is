@@ -8,7 +8,7 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import siteConfig from "@/lib/config/site";
 
-import "@/styles.css?url";
+import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -27,6 +27,10 @@ export const Route = createRootRoute({
       },
     ],
     links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
       {
         rel: "alternate",
         type: "application/rss+xml",
@@ -79,6 +83,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Footer />
           <Toaster position="bottom-center" hotkey={[]} />
         </Providers>
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <Scripts />
       </body>
     </html>
