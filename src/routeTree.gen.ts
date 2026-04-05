@@ -26,6 +26,7 @@ import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
 import { Route as NotesSlugRouteImport } from './routes/notes/$slug'
 import { Route as FeedXmlRouteImport } from './routes/feed.xml'
 import { Route as FeedAtomRouteImport } from './routes/feed.atom'
+import { Route as ApiOgRouteImport } from './routes/api/og'
 import { Route as ApiHitsRouteImport } from './routes/api/hits'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
@@ -114,6 +115,11 @@ const FeedAtomRoute = FeedAtomRouteImport.update({
   path: '/feed/atom',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOgRoute = ApiOgRouteImport.update({
+  id: '/api/og',
+  path: '/api/og',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiHitsRoute = ApiHitsRouteImport.update({
   id: '/api/hits',
   path: '/api/hits',
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/api/og': typeof ApiOgRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/api/og': typeof ApiOgRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/api/og': typeof ApiOgRoute
   '/feed/atom': typeof FeedAtomRoute
   '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/api/og'
     | '/feed/atom'
     | '/feed/xml'
     | '/notes/$slug'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/api/og'
     | '/feed/atom'
     | '/feed/xml'
     | '/notes/$slug'
@@ -246,6 +257,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/api/og'
     | '/feed/atom'
     | '/feed/xml'
     | '/notes/$slug'
@@ -268,6 +280,7 @@ export interface RootRouteChildren {
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
   ApiHitsRoute: typeof ApiHitsRoute
+  ApiOgRoute: typeof ApiOgRoute
   FeedAtomRoute: typeof FeedAtomRoute
   FeedXmlRoute: typeof FeedXmlRoute
   NotesSlugRoute: typeof NotesSlugRoute
@@ -398,6 +411,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeedAtomRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/og': {
+      id: '/api/og'
+      path: '/api/og'
+      fullPath: '/api/og'
+      preLoaderRoute: typeof ApiOgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/hits': {
       id: '/api/hits'
       path: '/api/hits'
@@ -428,6 +448,7 @@ const rootRouteChildren: RootRouteChildren = {
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
   ApiHitsRoute: ApiHitsRoute,
+  ApiOgRoute: ApiOgRoute,
   FeedAtomRoute: FeedAtomRoute,
   FeedXmlRoute: FeedXmlRoute,
   NotesSlugRoute: NotesSlugRoute,

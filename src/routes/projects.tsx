@@ -1,7 +1,8 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
 import type { Repository } from "@octokit/graphql-schema";
+import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLinkIcon, GitForkIcon, StarIcon } from "lucide-react";
 
+import { getContributions, getRepos } from "@/app/projects/github";
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PageTitle } from "@/components/layout/page-title";
 import { RelativeTime } from "@/components/relative-time";
@@ -9,17 +10,12 @@ import { Button } from "@/components/ui/button";
 import { createHead } from "@/lib/head";
 import { cn } from "@/lib/utils";
 
-import { getContributions, getRepos } from "@/app/projects/github";
-
 const GITHUB_USERNAME = "jakejarvis";
 const numberFormatter = new Intl.NumberFormat("en-US");
 
 export const Route = createFileRoute("/projects")({
   loader: async () => {
-    const [contributions, repos] = await Promise.all([
-      getContributions(),
-      getRepos(),
-    ]);
+    const [contributions, repos] = await Promise.all([getContributions(), getRepos()]);
     return { contributions, repos };
   },
   head: () =>
@@ -51,10 +47,7 @@ function ProjectsPage() {
 
       {contributions.length > 0 ? (
         <div className={cn("mx-auto mt-4 mb-8")}>
-          <ActivityCalendar
-            data={contributions}
-            noun="contribution"
-          />
+          <ActivityCalendar data={contributions} noun="contribution" />
         </div>
       ) : (
         <p className="text-muted-foreground my-4 text-center">
@@ -78,32 +71,31 @@ function ProjectsPage() {
           {repos.map((repo: Repository) => (
             <div
               key={repo?.name}
-              className="h-fit space-y-1.5 rounded-2xl border border-ring/30 px-4 py-3 shadow-xs"
+              className="border-ring/30 h-fit space-y-1.5 rounded-2xl border px-4 py-3 shadow-xs"
             >
               <a
                 href={repo?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-base font-semibold leading-relaxed text-[#0969da] hover:underline dark:text-[#76affa]"
+                className="inline-block text-base leading-relaxed font-semibold text-[#0969da] hover:underline dark:text-[#76affa]"
               >
                 {repo?.name}
               </a>
 
               {repo?.description && (
-                <p className="text-[13px] leading-relaxed text-foreground/85">
+                <p className="text-foreground/85 text-[13px] leading-relaxed">
                   {repo?.description}
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-x-4 whitespace-nowrap text-xs leading-loose">
+              <div className="flex flex-wrap gap-x-4 text-xs leading-loose whitespace-nowrap">
                 {repo?.primaryLanguage && (
                   <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-1.5">
                     {repo?.primaryLanguage.color && (
                       <span
                         className="inline-block size-3 rounded-full bg-[var(--language-color)]"
                         style={{
-                          ["--language-color" as string]:
-                            repo?.primaryLanguage.color,
+                          ["--language-color" as string]: repo?.primaryLanguage.color,
                         }}
                       />
                     )}
@@ -119,13 +111,8 @@ function ProjectsPage() {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <StarIcon
-                      className="inline-block size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span>
-                      {numberFormatter.format(repo?.stargazerCount)}
-                    </span>
+                    <StarIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+                    <span>{numberFormatter.format(repo?.stargazerCount)}</span>
                   </a>
                 )}
 
@@ -137,20 +124,14 @@ function ProjectsPage() {
                     title={`${numberFormatter.format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <GitForkIcon
-                      className="inline-block size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span>
-                      {numberFormatter.format(repo?.forkCount)}
-                    </span>
+                    <GitForkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+                    <span>{numberFormatter.format(repo?.forkCount)}</span>
                   </a>
                 )}
 
                 <div className="text-muted-foreground whitespace-nowrap">
                   <span>
-                    Updated{" "}
-                    <RelativeTime date={repo?.pushedAt} />
+                    Updated <RelativeTime date={repo?.pushedAt} />
                   </span>
                 </div>
               </div>
@@ -171,10 +152,7 @@ function ProjectsPage() {
             rel="noopener noreferrer"
           >
             View all
-            <ExternalLinkIcon
-              className="inline-block size-3.5 shrink-0"
-              aria-hidden="true"
-            />
+            <ExternalLinkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
           </a>
         </Button>
       </p>

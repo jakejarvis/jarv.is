@@ -36,7 +36,7 @@ export const Route = createFileRoute("/notes/$slug")({
         modifiedTime: post.date,
         images: [
           {
-            url: `${BASE_URL}/notes/${post.slug}/opengraph-image`,
+            url: `${BASE_URL}/api/og?slug=${post.slug}`,
             width: 1200,
             height: 630,
           },

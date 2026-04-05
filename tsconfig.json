@@ -15,7 +15,7 @@
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"]
     },
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client", "./worker-configuration.d.ts"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".content-collections", "dist", "dist-ssr"]

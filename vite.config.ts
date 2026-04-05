@@ -1,3 +1,4 @@
+import { cloudflare } from "@cloudflare/vite-plugin";
 import contentCollections from "@content-collections/vite";
 import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
@@ -33,7 +34,14 @@ export default defineConfig({
         },
       },
     ],
-    ignorePatterns: ["dist", "node_modules", "pnpm-lock.yaml", "**/routeTree.gen.ts", "drizzle"],
+    ignorePatterns: [
+      "dist",
+      "node_modules",
+      "pnpm-lock.yaml",
+      "**/routeTree.gen.ts",
+      "worker-configuration.d.ts",
+      "drizzle",
+    ],
   },
   lint: {
     plugins: ["oxc", "eslint", "typescript", "react", "import", "unicorn"],
@@ -59,7 +67,13 @@ export default defineConfig({
       "unicorn/no-array-sort": "off",
       "unicorn/no-null": "off",
     },
-    ignorePatterns: ["dist", "node_modules", "**/routeTree.gen.ts", "drizzle"],
+    ignorePatterns: [
+      "dist",
+      "node_modules",
+      "**/routeTree.gen.ts",
+      "worker-configuration.d.ts",
+      "drizzle",
+    ],
     options: {
       typeAware: true,
       typeCheck: true,
@@ -74,7 +88,11 @@ export default defineConfig({
   },
   plugins: [
     devtools(),
-    // cloudflare({ viteEnvironment: { name: "ssr" } }),
+    cloudflare({
+      viteEnvironment: {
+        name: "ssr",
+      },
+    }),
     tailwindcss(),
     tanstackStart(),
     react(),

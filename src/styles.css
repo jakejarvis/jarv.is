@@ -1,17 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+@import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
 @import "@fontsource/comic-neue";
 @import "@fontsource/jetbrains-mono";
+@import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans--font-feature-settings: "rlig" 1, "calt" 0;
-  --font-mono: var(--font-jetbrains-mono);
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
   --font-mono--font-feature-settings: "liga" 0;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -64,8 +65,8 @@
 
 :root {
   --radius: 0.625rem;
-  --font-inter: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -104,8 +105,6 @@
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
@@ -202,37 +201,5 @@
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
-  }
-}
-
-/* View Transitions - uses tw-animate-css's `enter` and `exit` keyframes */
-@layer base {
-  @media (prefers-reduced-motion: reduce) {
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-      animation: none !important;
-    }
-  }
-
-  /* Disable the default cross-fade on root (header/footer/chrome stay static) */
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
-
-  /* Main content: fade + slide */
-  main {
-    view-transition-name: main-content;
-  }
-  ::view-transition-old(main-content) {
-    --tw-exit-opacity: 0;
-    --tw-exit-translate-y: -8px;
-    animation: 150ms ease-in forwards exit;
-  }
-  ::view-transition-new(main-content) {
-    --tw-enter-opacity: 0;
-    --tw-enter-translate-y: 12px;
-    animation: 200ms ease-out forwards enter;
   }
 }
