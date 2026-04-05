@@ -1,6 +1,9 @@
 import contentCollections from "@content-collections/vite";
+import babel from "@rolldown/plugin-babel";
+import tailwindcss from "@tailwindcss/vite";
+import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import viteReact from "@vitejs/plugin-react";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -12,12 +15,14 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
-    tanstackStart({
-      router: {
-        addExtensions: true,
-      },
+    devtools(),
+    // cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tailwindcss(),
+    tanstackStart(),
+    react(),
+    babel({
+      presets: [reactCompilerPreset()],
     }),
-    viteReact(),
     contentCollections(),
   ],
 });

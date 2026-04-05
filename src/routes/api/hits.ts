@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { getAllViewCounts } from "@/lib/server/views";
 
 export const Route = createFileRoute("/api/hits")({
@@ -8,10 +9,7 @@ export const Route = createFileRoute("/api/hits")({
         const views = await getAllViewCounts();
 
         const total = {
-          hits: Object.values(views).reduce(
-            (acc, curr) => acc + curr,
-            0,
-          ),
+          hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
         };
         const pages = Object.entries(views).map(([slug, views]) => ({
           slug,

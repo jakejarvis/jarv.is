@@ -21,11 +21,7 @@
         "typescript.tsserver.log": "off",
         "typescript.updateImportsOnFileMove.enabled": "always"
       },
-      "extensions": [
-        "biomejs.biome",
-        "bradlc.vscode-tailwindcss",
-        "unifiedjs.vscode-mdx"
-      ]
+      "extensions": ["biomejs.biome", "bradlc.vscode-tailwindcss", "unifiedjs.vscode-mdx"]
     }
   },
   "tasks": {

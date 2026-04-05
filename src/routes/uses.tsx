@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import desktopImg from "@/app/uses/desktop.png";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
@@ -20,19 +21,12 @@ function UsesPage() {
 
       <div className="prose prose-neutral dark:prose-invert prose-sm max-w-none">
         <p>
-          <del>
-            I regularly get messages asking about which tools I use to work.
-          </del>
+          <del>I regularly get messages asking about which tools I use to work.</del>
         </p>
         <p>
-          Nobody has asked me what I use. Ever. But here&apos;s a list of my
-          daily drivers and necessities anyways, mostly revolving around my
-          Apple sheepy-ness. Inspired by{" "}
-          <a
-            href="https://uses.tech/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          Nobody has asked me what I use. Ever. But here&apos;s a list of my daily drivers and
+          necessities anyways, mostly revolving around my Apple sheepy-ness. Inspired by{" "}
+          <a href="https://uses.tech/" target="_blank" rel="noopener noreferrer">
             many, many others
           </a>
           .
@@ -64,11 +58,7 @@ function UsesPage() {
             <ul>
               <li>512 GB in Natural Titanium</li>
               <li>
-                <a
-                  href="https://a.co/d/75zuyyY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://a.co/d/75zuyyY" target="_blank" rel="noopener noreferrer">
                   Anker MagGo Matte case
                 </a>{" "}
                 (surprisingly nice!)
@@ -242,8 +232,7 @@ function UsesPage() {
                 >
                   <strong>Proxmox VE</strong>
                 </a>{" "}
-                with various VMs and LXC containers spread between the two,
-                including:
+                with various VMs and LXC containers spread between the two, including:
                 <ul>
                   <li>
                     <a
@@ -255,72 +244,40 @@ function UsesPage() {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://homebridge.io/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://homebridge.io/" target="_blank" rel="noopener noreferrer">
                       Homebridge
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://www.scrypted.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://www.scrypted.app/" target="_blank" rel="noopener noreferrer">
                       Scrypted
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://gethomepage.dev/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://gethomepage.dev/" target="_blank" rel="noopener noreferrer">
                       Homepage
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://about.gitea.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://about.gitea.com/" target="_blank" rel="noopener noreferrer">
                       Gitea
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://immich.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://immich.app/" target="_blank" rel="noopener noreferrer">
                       Immich
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://sonarr.tv/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://sonarr.tv/" target="_blank" rel="noopener noreferrer">
                       Sonarr
                     </a>
                     ,{" "}
-                    <a
-                      href="https://radarr.video/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://radarr.video/" target="_blank" rel="noopener noreferrer">
                       Radarr
                     </a>
                     ,{" "}
-                    <a
-                      href="https://www.bazarr.media/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://www.bazarr.media/" target="_blank" rel="noopener noreferrer">
                       Bazarr
                     </a>
                     ,{" "}
@@ -343,29 +300,17 @@ function UsesPage() {
                     (web client)
                   </li>
                   <li>
-                    <a
-                      href="https://tautulli.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://tautulli.com/" target="_blank" rel="noopener noreferrer">
                       Tautulli
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://traefik.io/traefik/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://traefik.io/traefik/" target="_blank" rel="noopener noreferrer">
                       Traefik
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://www.authelia.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://www.authelia.com/" target="_blank" rel="noopener noreferrer">
                       Authelia
                     </a>
                   </li>
@@ -380,11 +325,7 @@ function UsesPage() {
 
         <ul>
           <li>
-            <a
-              href="https://iterm2.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://iterm2.com/" target="_blank" rel="noopener noreferrer">
               <strong>iTerm 2</strong>
             </a>
             <ul>
@@ -415,11 +356,7 @@ function UsesPage() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://ohmyz.sh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">
                   Oh My ZSH
                 </a>
                 <ul>
@@ -446,11 +383,7 @@ function UsesPage() {
             </ul>
           </li>
           <li>
-            <a
-              href="https://code.visualstudio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
               <strong>Visual Studio Code</strong>
             </a>
             <ul>
@@ -566,11 +499,7 @@ function UsesPage() {
             </ul>
           </li>
           <li>
-            <a
-              href="https://brew.sh/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">
               <strong>Homebrew</strong>
             </a>
             <ul>
@@ -587,11 +516,7 @@ function UsesPage() {
             </ul>
           </li>
           <li>
-            <a
-              href="https://developer.apple.com/xcode/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener noreferrer">
               <strong>Xcode</strong>
             </a>
           </li>
@@ -614,8 +539,7 @@ function UsesPage() {
             </a>
             <ul>
               <li>
-                Switched from VMware Fusion when Parallels beat them to the
-                punch with{" "}
+                Switched from VMware Fusion when Parallels beat them to the punch with{" "}
                 <a
                   href="https://www.parallels.com/blogs/parallels-desktop-m1/"
                   target="_blank"
@@ -628,11 +552,7 @@ function UsesPage() {
             </ul>
           </li>
           <li>
-            <a
-              href="https://www.sketch.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.sketch.com/" target="_blank" rel="noopener noreferrer">
               <strong>Sketch</strong>
             </a>
           </li>
@@ -654,82 +574,50 @@ function UsesPage() {
                 >
                   Student Plan
                 </a>
-                , somehow. Will need to re-evaulate once I&apos;m kicked off;
-                it&apos;s hard to justify spending almost 3x that...
+                , somehow. Will need to re-evaulate once I&apos;m kicked off; it&apos;s hard to
+                justify spending almost 3x that...
               </li>
             </ul>
           </li>
           <li>
-            <a
-              href="https://panic.com/transmit/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://panic.com/transmit/" target="_blank" rel="noopener noreferrer">
               <strong>Transmit</strong>
             </a>
           </li>
           <li>
             <del>
-              <a
-                href="https://www.sequelpro.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.sequelpro.com/" target="_blank" rel="noopener noreferrer">
                 Sequel Pro
               </a>
             </del>{" "}
             &rarr;{" "}
-            <a
-              href="https://tableplus.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://tableplus.com/" target="_blank" rel="noopener noreferrer">
               <strong>TablePlus</strong>
             </a>
           </li>
           <li>
             <del>
-              <a
-                href="https://robomongo.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://robomongo.org/" target="_blank" rel="noopener noreferrer">
                 Robo 3T
               </a>
             </del>{" "}
             &rarr;{" "}
-            <a
-              href="https://tableplus.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://tableplus.com/" target="_blank" rel="noopener noreferrer">
               <strong>TablePlus</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://imageoptim.com/mac"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://imageoptim.com/mac" target="_blank" rel="noopener noreferrer">
               <strong>ImageOptim</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://sipapp.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://sipapp.io/" target="_blank" rel="noopener noreferrer">
               <strong>Sip</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://localwp.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://localwp.com/" target="_blank" rel="noopener noreferrer">
               <strong>Local</strong>
             </a>{" "}
             for WordPress development.
@@ -806,11 +694,7 @@ function UsesPage() {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://raindrop.io/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href="https://raindrop.io/" target="_blank" rel="noopener noreferrer">
                       Raindrop.io
                     </a>
                   </li>
@@ -833,11 +717,7 @@ function UsesPage() {
 
         <ul>
           <li>
-            <a
-              href="https://1password.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://1password.com/" target="_blank" rel="noopener noreferrer">
               <strong>1Password</strong>
             </a>
           </li>
@@ -851,20 +731,12 @@ function UsesPage() {
             </a>
           </li>
           <li>
-            <a
-              href="https://bjango.com/mac/istatmenus/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://bjango.com/mac/istatmenus/" target="_blank" rel="noopener noreferrer">
               <strong>iStat Menus</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://www.backblaze.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.backblaze.com/" target="_blank" rel="noopener noreferrer">
               <strong>Backblaze</strong>
             </a>{" "}
             (
@@ -878,57 +750,33 @@ function UsesPage() {
             )
           </li>
           <li>
-            <a
-              href="https://raindrop.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://raindrop.io/" target="_blank" rel="noopener noreferrer">
               <strong>Raindrop.io</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://www.corecode.io/macupdater/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.corecode.io/macupdater/" target="_blank" rel="noopener noreferrer">
               <strong>MacUpdater</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://freemacsoft.net/appcleaner/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://freemacsoft.net/appcleaner/" target="_blank" rel="noopener noreferrer">
               <strong>AppCleaner</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://gpgtools.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://gpgtools.org/" target="_blank" rel="noopener noreferrer">
               <strong>GPG Suite</strong>
             </a>
           </li>
           <li>
             <del>VLC</del> &rarr;{" "}
-            <a
-              href="https://iina.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://iina.io/" target="_blank" rel="noopener noreferrer">
               <strong>IINA</strong>
             </a>
           </li>
           <li>
-            <a
-              href="https://transmissionbt.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://transmissionbt.com/" target="_blank" rel="noopener noreferrer">
               <strong>Transmission</strong>
             </a>
           </li>
@@ -951,11 +799,7 @@ function UsesPage() {
             </a>
           </li>
           <li>
-            <a
-              href="https://www.keka.io/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.keka.io/en/" target="_blank" rel="noopener noreferrer">
               <strong>Keka</strong>
             </a>
           </li>
@@ -964,8 +808,8 @@ function UsesPage() {
         <h2>iOS</h2>
 
         <p>
-          I have far too many apps to count, but here the essentials that have
-          earned a spot on my home screen:
+          I have far too many apps to count, but here the essentials that have earned a spot on my
+          home screen:
         </p>
 
         <ul>
@@ -1045,26 +889,18 @@ function UsesPage() {
         <h2>Cloud</h2>
 
         <p>
-          I&apos;ve been making recent efforts to <a href="/zip">de-Google</a>{" "}
-          my life, with mixed results...
+          I&apos;ve been making recent efforts to <a href="/zip">de-Google</a> my life, with mixed
+          results...
         </p>
 
         <ul>
           <li>
             <del>Gmail</del> &rarr;{" "}
-            <a
-              href="https://www.fastmail.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.fastmail.com/" target="_blank" rel="noopener noreferrer">
               <strong>Fastmail</strong>
             </a>{" "}
             (
-            <a
-              href="https://ref.fm/u20274504"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://ref.fm/u20274504" target="_blank" rel="noopener noreferrer">
               referral link
             </a>
             ) &amp;{" "}
@@ -1078,11 +914,7 @@ function UsesPage() {
           </li>
           <li>
             <del>Google Drive</del> &rarr; <del>Dropbox</del> &rarr;{" "}
-            <a
-              href="https://www.icloud.com/iclouddrive"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.icloud.com/iclouddrive" target="_blank" rel="noopener noreferrer">
               <strong>iCloud Drive</strong>
             </a>
             <ul>
@@ -1104,48 +936,28 @@ function UsesPage() {
           </li>
           <li>
             <del>Google Photos</del> &rarr;{" "}
-            <a
-              href="https://www.icloud.com/photos/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.icloud.com/photos/" target="_blank" rel="noopener noreferrer">
               <strong>iCloud Photos</strong>
             </a>{" "}
             and{" "}
-            <a
-              href="https://immich.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://immich.app/" target="_blank" rel="noopener noreferrer">
               <strong>Immich</strong>
             </a>
           </li>
           <li>
             <del>Google Analytics</del> &rarr;{" "}
-            <a
-              href="https://usefathom.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://usefathom.com/" target="_blank" rel="noopener noreferrer">
               <strong>Fathom Analytics</strong>
             </a>{" "}
             (
-            <a
-              href="https://usefathom.com/ref/ZEYG0O"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://usefathom.com/ref/ZEYG0O" target="_blank" rel="noopener noreferrer">
               referral link
             </a>
             )
           </li>
           <li>
             <del>Google Public DNS</del> &rarr;{" "}
-            <a
-              href="https://1.1.1.1/dns/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://1.1.1.1/dns/" target="_blank" rel="noopener noreferrer">
               <strong>Cloudflare&apos;s 1.1.1.1</strong>
             </a>{" "}
             on my home network.
@@ -1160,11 +972,7 @@ function UsesPage() {
               <strong>Cloudflare Registrar</strong>
             </a>{" "}
             (and{" "}
-            <a
-              href="https://isnic.is/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://isnic.is/en/" target="_blank" rel="noopener noreferrer">
               <strong>ISNIC</strong>
             </a>{" "}
             for this domain, of course)
@@ -1175,45 +983,25 @@ function UsesPage() {
 
         <ul>
           <li>
-            <a
-              href="https://vercel.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
               <strong>Vercel</strong>
             </a>{" "}
             and{" "}
-            <a
-              href="https://www.netlify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">
               <strong>Netlify</strong>
             </a>{" "}
             for &quot;serverless&quot; sites.
           </li>
           <li>
-            <a
-              href="https://www.digitalocean.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.digitalocean.com/" target="_blank" rel="noopener noreferrer">
               <strong>DigitalOcean</strong>
             </a>{" "}
             (
-            <a
-              href="https://m.do.co/c/afcf288a7dac"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://m.do.co/c/afcf288a7dac" target="_blank" rel="noopener noreferrer">
               referral link
             </a>
             ) and{" "}
-            <a
-              href="https://www.linode.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.linode.com/" target="_blank" rel="noopener noreferrer">
               <strong>Linode</strong>
             </a>{" "}
             (
@@ -1227,11 +1015,7 @@ function UsesPage() {
             ) for virtual Linux servers.
           </li>
           <li>
-            <a
-              href="https://dnsimple.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://dnsimple.com/" target="_blank" rel="noopener noreferrer">
               <strong>DNSimple</strong>
             </a>{" "}
             (
@@ -1243,21 +1027,13 @@ function UsesPage() {
               referral link
             </a>
             ) and{" "}
-            <a
-              href="https://www.cloudflare.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">
               <strong>Cloudflare</strong>
             </a>{" "}
             for domain DNS.
           </li>
           <li>
-            <a
-              href="https://www.backblaze.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.backblaze.com/" target="_blank" rel="noopener noreferrer">
               <strong>Backblaze</strong>
             </a>{" "}
             (
@@ -1271,29 +1047,17 @@ function UsesPage() {
             ) for off-site Mac backups.
           </li>
           <li>
-            <a
-              href="https://gitea.io/en-us/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://gitea.io/en-us/" target="_blank" rel="noopener noreferrer">
               <strong>Gitea</strong>
             </a>{" "}
             as a{" "}
-            <a
-              href="https://git.jrvs.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://git.jrvs.io/" target="_blank" rel="noopener noreferrer">
               self-hosted
             </a>{" "}
             Git backup/mirror.
           </li>
           <li>
-            <a
-              href="https://tailscale.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://tailscale.com/" target="_blank" rel="noopener noreferrer">
               <strong>Tailscale</strong>
             </a>{" "}
             to access my home network and VPSes from anywhere.
@@ -1306,11 +1070,7 @@ function UsesPage() {
 
         <ul>
           <li>
-            <a
-              href="https://www2.meethue.com/en-us"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www2.meethue.com/en-us" target="_blank" rel="noopener noreferrer">
               <strong>Philips Hue</strong>
             </a>{" "}
             color bulbs, dimmer switches, etc.
@@ -1338,11 +1098,7 @@ function UsesPage() {
           </li>
           <li>
             2x{" "}
-            <a
-              href="https://www.apple.com/apple-tv-4k/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.apple.com/apple-tv-4k/" target="_blank" rel="noopener noreferrer">
               <strong>Apple TV 4K</strong> (2021)
             </a>
           </li>

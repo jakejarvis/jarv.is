@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { buildFeed } from "@/lib/build-feed";
 
 export const Route = createFileRoute("/feed/atom")({
@@ -9,8 +10,7 @@ export const Route = createFileRoute("/feed/atom")({
 
         return new Response(feed.atom1(), {
           headers: {
-            "content-type":
-              "application/atom+xml; charset=utf-8",
+            "content-type": "application/atom+xml; charset=utf-8",
           },
         });
       },

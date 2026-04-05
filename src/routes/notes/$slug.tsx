@@ -1,24 +1,20 @@
-import {
-  CalendarDaysIcon,
-  SquarePenIcon,
-  TagIcon,
-} from "lucide-react";
-import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { MDXContent } from "@content-collections/mdx/react";
+import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { allPosts } from "content-collections";
+import { CalendarDaysIcon, SquarePenIcon, TagIcon } from "lucide-react";
+
 import { ImageDiff } from "@/components/image-diff";
 import { CodePen } from "@/components/third-party/codepen";
 import { Gist } from "@/components/third-party/gist";
 import { Tweet } from "@/components/third-party/tweet";
 import { YouTube } from "@/components/third-party/youtube";
 import { Video } from "@/components/video";
-import { createHead } from "@/lib/head";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
+import { createHead } from "@/lib/head";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
-const GITHUB_REPO =
-  import.meta.env.VITE_GITHUB_REPO || "jakejarvis/jarv.is";
+const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO || "jakejarvis/jarv.is";
 
 export const Route = createFileRoute("/notes/$slug")({
   loader: ({ params }) => {
@@ -83,10 +79,7 @@ function PostPage() {
           params={{ slug: post.slug }}
           className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-foreground/70 hover:no-underline"
         >
-          <CalendarDaysIcon
-            className="inline size-3 shrink-0"
-            aria-hidden="true"
-          />
+          <CalendarDaysIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <time
             dateTime={formattedDates.dateISO}
             title={formattedDates.dateTitle}
@@ -98,10 +91,7 @@ function PostPage() {
 
         {post.tags && (
           <div className="flex flex-wrap items-center gap-1.5">
-            <TagIcon
-              className="inline size-3 shrink-0"
-              aria-hidden="true"
-            />
+            <TagIcon className="inline size-3 shrink-0" aria-hidden="true" />
             {post.tags.map((tag) => (
               <span
                 key={tag}
@@ -121,10 +111,7 @@ function PostPage() {
           rel="noopener noreferrer"
           className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-foreground/70 hover:no-underline"
         >
-          <SquarePenIcon
-            className="inline size-3 shrink-0"
-            aria-hidden="true"
-          />
+          <SquarePenIcon className="inline size-3 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
         </a>
       </div>
@@ -156,22 +143,15 @@ function PostPage() {
         }}
       />
 
-      <section
-        id="comments"
-        className="isolate my-8 w-full border-t-2 pt-8"
-      >
+      <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">
           {post.noComments ? (
             <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-              <p className="text-center font-medium text-lg">
-                Comments are closed.
-              </p>
+              <p className="text-center font-medium text-lg">Comments are closed.</p>
             </div>
           ) : (
             <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-              <p className="text-center text-muted-foreground">
-                Comments coming soon.
-              </p>
+              <p className="text-center text-muted-foreground">Comments coming soon.</p>
             </div>
           )}
         </div>

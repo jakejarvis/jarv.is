@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
 
@@ -6,8 +7,7 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     createHead({
       title: "Contact Me",
-      description:
-        "Fill out this quick form and I'll get back to you as soon as I can.",
+      description: "Fill out this quick form and I'll get back to you as soon as I can.",
       canonical: "/contact",
     }),
   component: ContactPage,
@@ -21,23 +21,13 @@ function ContactPage() {
       <div className="mx-auto w-full max-w-2xl">
         <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
           <p>
-            Fill out this quick form and I&rsquo;ll get back to you as soon
-            as I can! You can also{" "}
-            <a href="mailto:jake@jarv.is">email me directly</a> or send me
-            a direct message on{" "}
-            <a
-              href="https://bsky.app/profile/jarv.is"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            Fill out this quick form and I&rsquo;ll get back to you as soon as I can! You can also{" "}
+            <a href="mailto:jake@jarv.is">email me directly</a> or send me a direct message on{" "}
+            <a href="https://bsky.app/profile/jarv.is" target="_blank" rel="noopener noreferrer">
               Bluesky
             </a>{" "}
             or{" "}
-            <a
-              href="https://fediverse.jarv.is/@jake"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://fediverse.jarv.is/@jake" target="_blank" rel="noopener noreferrer">
               Mastodon
             </a>
             .
@@ -57,9 +47,7 @@ function ContactPage() {
           </p>
         </div>
 
-        <p className="mt-8 text-center text-muted-foreground">
-          Contact form coming soon.
-        </p>
+        <p className="mt-8 text-center text-muted-foreground">Contact form coming soon.</p>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import siteConfig from "@/lib/config/site";
 
 export const Route = createFileRoute("/manifest/webmanifest")({
@@ -23,8 +24,7 @@ export const Route = createFileRoute("/manifest/webmanifest")({
 
         return Response.json(manifest, {
           headers: {
-            "content-type":
-              "application/manifest+json; charset=utf-8",
+            "content-type": "application/manifest+json; charset=utf-8",
           },
         });
       },

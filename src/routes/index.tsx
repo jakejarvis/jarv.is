@@ -1,5 +1,6 @@
-import { LockIcon } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { LockIcon } from "lucide-react";
+
 import { createHead } from "@/lib/head";
 import { cn } from "@/lib/utils";
 
@@ -44,8 +45,8 @@ function HomePage() {
       </h2>
 
       <p>
-        I specialize in using TypeScript, React, and Next.js to make
-        lightweight frontends with dynamic and powerful backends.
+        I specialize in using TypeScript, React, and Next.js to make lightweight frontends with
+        dynamic and powerful backends.
       </p>
 
       <p>
@@ -72,10 +73,7 @@ function HomePage() {
 
       <p>
         I fell in love with{" "}
-        <Link
-          to="/previously"
-          title="My Terrible, Horrible, No Good, Very Bad First Websites"
-        >
+        <Link to="/previously" title="My Terrible, Horrible, No Good, Very Bad First Websites">
           frontend web design
         </Link>{" "}
         and{" "}
@@ -129,11 +127,7 @@ function HomePage() {
 
       <p className="mt-2 mb-0 text-sm leading-normal">
         You can find my work on{" "}
-        <a
-          href="https://github.com/jakejarvis"
-          target="_blank"
-          rel="noopener noreferrer me"
-        >
+        <a href="https://github.com/jakejarvis" target="_blank" rel="noopener noreferrer me">
           GitHub
         </a>{" "}
         and{" "}

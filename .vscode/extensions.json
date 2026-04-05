@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "biomejs.biome",
-    "bradlc.vscode-tailwindcss",
-    "unifiedjs.vscode-mdx"
-  ]
+  "recommendations": ["bradlc.vscode-tailwindcss", "oxc.oxc-vscode", "unifiedjs.vscode-mdx"]
 }

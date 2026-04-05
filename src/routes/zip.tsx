@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageTitle } from "@/components/layout/page-title";
-import { createHead } from "@/lib/head";
 
 import backgroundImg from "@/app/zip/sundar.jpg";
+import { PageTitle } from "@/components/layout/page-title";
+import { createHead } from "@/lib/head";
 
 export const Route = createFileRoute("/zip")({
   head: () =>
@@ -23,8 +23,7 @@ const Terminal = () => (
   >
     <code className="border-ring block rounded-lg border border-solid bg-black/60 p-4 text-sm break-all text-white/90 backdrop-blur-sm backdrop-saturate-150">
       <span style={{ color: "#f95757" }}>sundar</span>@
-      <span style={{ color: "#3b9dd2" }}>google</span>:
-      <span style={{ color: "#78df55" }}>~</span>${" "}
+      <span style={{ color: "#3b9dd2" }}>google</span>:<span style={{ color: "#78df55" }}>~</span>${" "}
       <span style={{ color: "#d588fb" }}>mv</span> /root
       <a
         href="https://killedbygoogle.com/"
@@ -36,25 +35,22 @@ const Terminal = () => (
       googledomains.zip /tmp/
       <br />
       <span style={{ color: "#f95757" }}>sundar</span>@
-      <span style={{ color: "#3b9dd2" }}>google</span>:
-      <span style={{ color: "#78df55" }}>~</span>${" "}
-      <span style={{ color: "#d588fb" }}>crontab</span>{" "}
-      <span style={{ color: "#fd992a" }}>-l</span>
+      <span style={{ color: "#3b9dd2" }}>google</span>:<span style={{ color: "#78df55" }}>~</span>${" "}
+      <span style={{ color: "#d588fb" }}>crontab</span> <span style={{ color: "#fd992a" }}>-l</span>
       <br />
       <br />
       <span style={{ color: "#929292" }}>
-        # TODO(someone else): make super duper sure this only deletes actual
-        zip files and *NOT* the sketchy domains ending with file extensions
-        released by us &amp; purchased on our registrar (which i just yeeted
-        btw cuz i&apos;m &amp; also my evil superpowers are fueled by my
-        reckless disregard for the greater good of the internet). - xoxo
-        sundar <span style={{ color: "#f95757" }}>&lt;3</span>
+        # TODO(someone else): make super duper sure this only deletes actual zip files and *NOT* the
+        sketchy domains ending with file extensions released by us &amp; purchased on our registrar
+        (which i just yeeted btw cuz i&apos;m &amp; also my evil superpowers are fueled by my
+        reckless disregard for the greater good of the internet). - xoxo sundar{" "}
+        <span style={{ color: "#f95757" }}>&lt;3</span>
       </span>
       <br />
       <span style={{ color: "#78df55" }}>@monthly</span>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <span style={{ color: "#d588fb" }}>rm</span>{" "}
-      <span style={{ color: "#fd992a" }}>-f</span> /tmp/
+      <span style={{ color: "#d588fb" }}>rm</span> <span style={{ color: "#fd992a" }}>-f</span>{" "}
+      /tmp/
       <a
         href="https://fuckyougoogle.zip/"
         style={{ color: "inherit" }}
@@ -65,8 +61,7 @@ const Terminal = () => (
       <br />
       <br />
       <span style={{ color: "#f95757" }}>sundar</span>@
-      <span style={{ color: "#3b9dd2" }}>google</span>:
-      <span style={{ color: "#78df55" }}>~</span>${" "}
+      <span style={{ color: "#3b9dd2" }}>google</span>:<span style={{ color: "#78df55" }}>~</span>${" "}
       <span style={{ color: "#d588fb" }}>reboot</span> 0
     </code>
   </div>
@@ -75,9 +70,7 @@ const Terminal = () => (
 function ZipPage() {
   return (
     <>
-      <PageTitle canonical="https://fuckyougoogle.zip">
-        fuckyougoogle.zip 🖕
-      </PageTitle>
+      <PageTitle canonical="https://fuckyougoogle.zip">fuckyougoogle.zip 🖕</PageTitle>
 
       <div className="prose prose-neutral dark:prose-invert prose-sm max-w-none">
         <Terminal />
@@ -95,8 +88,7 @@ function ZipPage() {
           >
             multiple
           </a>{" "}
-          TLDs with coincidentally matching binary file extentions onto the
-          web and then abruptly{" "}
+          TLDs with coincidentally matching binary file extentions onto the web and then abruptly{" "}
           <a
             href="https://newsroom.squarespace.com/blog/squarespace-domains-updates"
             target="_blank"
@@ -145,8 +137,7 @@ function ZipPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Google pushes .zip and .mov domains onto the Internet, and the
-              Internet pushes back
+              Google pushes .zip and .mov domains onto the Internet, and the Internet pushes back
             </a>
           </li>
           <li>
@@ -196,8 +187,7 @@ function ZipPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Broken zippers: Detecting deception with Google&rsquo;s new
-              ZIP domains
+              Broken zippers: Detecting deception with Google&rsquo;s new ZIP domains
             </a>
           </li>
           <li>
@@ -217,8 +207,7 @@ function ZipPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              New Top Level Domains .zip and .mov open the door for new
-              attacks
+              New Top Level Domains .zip and .mov open the door for new attacks
             </a>
           </li>
           <li>

@@ -2,13 +2,12 @@ import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
 import rehypeShiki from "@shikijs/rehype";
 import { decode } from "html-entities";
-import rehypeSlug from "rehype-slug";
 import rehypeSanitize from "rehype-sanitize";
+import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import rehypeUnwrapImages from "rehype-unwrap-images";
-import rehypeWrapper from "rehype-wrapper";
-import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 import remarkMdx from "remark-mdx";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -19,24 +18,11 @@ import { z } from "zod";
 
 const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
 
-/** Tailwind prose classes applied to blog post content (matches next.config.ts) */
-const PROSE_CLASSES = [
-  "prose prose-neutral dark:prose-invert prose-sm max-w-none",
-  "prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight",
-  "prose-p:text-foreground/90 prose-strong:text-primary prose-li:text-foreground/80",
-  "prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4",
-  "prose-blockquote:[&_p]:text-foreground/75 prose-blockquote:*:before:content-none prose-blockquote:*:after:content-none",
-  "prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none",
-  "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]",
-].join(" ");
-
 /**
  * Process a markdown title string into limited HTML (code, em, strong only).
  * Replicates the pipeline from lib/posts.ts
  */
-const processTitle = async (
-  rawTitle: string,
-): Promise<{ title: string; htmlTitle: string }> => {
+const processTitle = async (rawTitle: string): Promise<{ title: string; htmlTitle: string }> => {
   const htmlTitle = await unified()
     .use(remarkParse)
     .use(remarkSmartypants)
@@ -121,7 +107,6 @@ const posts = defineCollection({
       rehypePlugins: [
         rehypeUnwrapImages,
         rehypeSlug,
-        [rehypeWrapper, { className: PROSE_CLASSES }],
         [
           rehypeShiki,
           {

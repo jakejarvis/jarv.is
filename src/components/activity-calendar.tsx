@@ -1,0 +1,62 @@
+"use client";
+
+import {
+  type Activity,
+  ActivityCalendar as ActivityCalendarPrimitive,
+} from "react-activity-calendar";
+
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+
+const ActivityCalendar = ({
+  data,
+  noun = "thing",
+  className,
+  ...rest
+}: React.ComponentProps<"div"> & {
+  data: Activity[];
+  noun?: string;
+}) => {
+  // heavily inspired by https://github.com/grubersjoe/react-github-calendar
+  return (
+    <div
+      className={cn(
+        String.raw`**:[.react-activity-calendar\_\_count,.react-activity-calendar\_\_legend-month,.react-activity-calendar\_\_legend-colors]:text-muted-foreground`,
+        "[--activity-0:#ebedf0] [--activity-1:#9be9a8] [--activity-2:#40c463] [--activity-3:#30a14e] [--activity-4:#216e39]",
+        "dark:[--activity-0:#252525] dark:[--activity-1:#033a16] dark:[--activity-2:#196c2e] dark:[--activity-3:#2ea043] dark:[--activity-4:#56d364]",
+        className,
+      )}
+      {...rest}
+    >
+      <ActivityCalendarPrimitive
+        data={data}
+        colorScheme="dark"
+        theme={{
+          // this isn't actually locked to dark mode, we just take over theming using CSS like everywhere else
+          dark: [
+            "var(--activity-0)",
+            "var(--activity-1)",
+            "var(--activity-2)",
+            "var(--activity-3)",
+            "var(--activity-4)",
+          ],
+        }}
+        labels={{
+          totalCount: `{{count}} ${noun}s in the last year`,
+        }}
+        maxLevel={4}
+        renderBlock={(block, activity) => (
+          <Tooltip>
+            <TooltipTrigger asChild>{block}</TooltipTrigger>
+            <TooltipContent>
+              <span className="font-medium text-[0.825rem]">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
+            </TooltipContent>
+          </Tooltip>
+        )}
+        fontSize={13}
+      />
+    </div>
+  );
+};
+
+export { ActivityCalendar };

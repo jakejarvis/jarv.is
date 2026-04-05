@@ -1,18 +1,14 @@
-import {
-  HeadContent,
-  Outlet,
-  Scripts,
-  createRootRoute,
-} from "@tanstack/react-router";
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import siteConfig from "@/lib/config/site";
 
-import "@fontsource-variable/inter";
-import "@fontsource/jetbrains-mono";
-import "@/app/globals.css";
+import "@/styles.css?url";
 
 export const Route = createRootRoute({
   head: () => ({

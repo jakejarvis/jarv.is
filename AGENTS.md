@@ -99,7 +99,11 @@ export const submitForm = async (state: ActionState, payload: FormData): Promise
   try {
     const data = Schema.safeParse(Object.fromEntries(payload));
     if (!data.success) {
-      return { success: false, message: "Validation failed", errors: data.error.flatten().fieldErrors };
+      return {
+        success: false,
+        message: "Validation failed",
+        errors: data.error.flatten().fieldErrors,
+      };
     }
     // Perform action...
     return { success: true, message: "Success!" };

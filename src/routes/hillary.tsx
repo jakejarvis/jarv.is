@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
+
+import thumbnail from "@/app/hillary/thumbnail.png";
 import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
 import { createHead } from "@/lib/head";
-
-import thumbnail from "@/app/hillary/thumbnail.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
 

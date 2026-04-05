@@ -47,8 +47,7 @@ export const Route = createFileRoute("/sitemap/xml")({
 
         // Blog posts
         const sortedPosts = [...allPosts].sort(
-          (a, b) =>
-            new Date(b.date).getTime() - new Date(a.date).getTime(),
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         );
         for (const post of sortedPosts) {
           urls.push({
