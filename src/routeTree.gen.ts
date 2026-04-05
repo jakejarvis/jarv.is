@@ -11,21 +11,21 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZipRouteImport } from './routes/zip'
 import { Route as UsesRouteImport } from './routes/uses'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PreviouslyRouteImport } from './routes/previously'
 import { Route as LicenseRouteImport } from './routes/license'
 import { Route as LeoRouteImport } from './routes/leo'
 import { Route as HillaryRouteImport } from './routes/hillary'
+import { Route as FeedDotxmlRouteImport } from './routes/feed[.]xml'
+import { Route as FeedDotatomRouteImport } from './routes/feed[.]atom'
 import { Route as CliRouteImport } from './routes/cli'
 import { Route as BirthdayRouteImport } from './routes/birthday'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as NotesIndexRouteImport } from './routes/notes/index'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
-import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
 import { Route as NotesSlugRouteImport } from './routes/notes/$slug'
-import { Route as FeedXmlRouteImport } from './routes/feed.xml'
-import { Route as FeedAtomRouteImport } from './routes/feed.atom'
 import { Route as ApiOgRouteImport } from './routes/api/og'
 import { Route as ApiHitsRouteImport } from './routes/api/hits'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
@@ -38,6 +38,16 @@ const ZipRoute = ZipRouteImport.update({
 const UsesRoute = UsesRouteImport.update({
   id: '/uses',
   path: '/uses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -70,6 +80,16 @@ const HillaryRoute = HillaryRouteImport.update({
   path: '/hillary',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeedDotxmlRoute = FeedDotxmlRouteImport.update({
+  id: '/feed.xml',
+  path: '/feed.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedDotatomRoute = FeedDotatomRouteImport.update({
+  id: '/feed.atom',
+  path: '/feed.atom',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CliRoute = CliRouteImport.update({
   id: '/cli',
   path: '/cli',
@@ -90,29 +110,9 @@ const NotesIndexRoute = NotesIndexRouteImport.update({
   path: '/notes/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsTxtRoute = RobotsTxtRouteImport.update({
-  id: '/robots/txt',
-  path: '/robots/txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const NotesSlugRoute = NotesSlugRouteImport.update({
   id: '/notes/$slug',
   path: '/notes/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeedXmlRoute = FeedXmlRouteImport.update({
-  id: '/feed/xml',
-  path: '/feed/xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeedAtomRoute = FeedAtomRouteImport.update({
-  id: '/feed/atom',
-  path: '/feed/atom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiOgRoute = ApiOgRouteImport.update({
@@ -135,21 +135,21 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
   '/api/og': typeof ApiOgRoute
-  '/feed/atom': typeof FeedAtomRoute
-  '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes/': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -157,21 +157,21 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
   '/api/og': typeof ApiOgRoute
-  '/feed/atom': typeof FeedAtomRoute
-  '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -180,21 +180,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
   '/api/og': typeof ApiOgRoute
-  '/feed/atom': typeof FeedAtomRoute
-  '/feed/xml': typeof FeedXmlRoute
   '/notes/$slug': typeof NotesSlugRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes/': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -204,21 +204,21 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/hillary'
     | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
     | '/api/og'
-    | '/feed/atom'
-    | '/feed/xml'
     | '/notes/$slug'
-    | '/robots/txt'
-    | '/sitemap/xml'
     | '/notes/'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
@@ -226,21 +226,21 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/hillary'
     | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
     | '/api/og'
-    | '/feed/atom'
-    | '/feed/xml'
     | '/notes/$slug'
-    | '/robots/txt'
-    | '/sitemap/xml'
     | '/notes'
     | '/api/auth/$'
   id:
@@ -248,21 +248,21 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/hillary'
     | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
     | '/api/og'
-    | '/feed/atom'
-    | '/feed/xml'
     | '/notes/$slug'
-    | '/robots/txt'
-    | '/sitemap/xml'
     | '/notes/'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -271,21 +271,21 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BirthdayRoute: typeof BirthdayRoute
   CliRoute: typeof CliRoute
+  FeedDotatomRoute: typeof FeedDotatomRoute
+  FeedDotxmlRoute: typeof FeedDotxmlRoute
   HillaryRoute: typeof HillaryRoute
   LeoRoute: typeof LeoRoute
   LicenseRoute: typeof LicenseRoute
   PreviouslyRoute: typeof PreviouslyRoute
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
   ApiHitsRoute: typeof ApiHitsRoute
   ApiOgRoute: typeof ApiOgRoute
-  FeedAtomRoute: typeof FeedAtomRoute
-  FeedXmlRoute: typeof FeedXmlRoute
   NotesSlugRoute: typeof NotesSlugRoute
-  RobotsTxtRoute: typeof RobotsTxtRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
   NotesIndexRoute: typeof NotesIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -304,6 +304,20 @@ declare module '@tanstack/react-router' {
       path: '/uses'
       fullPath: '/uses'
       preLoaderRoute: typeof UsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -348,6 +362,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HillaryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feed.xml': {
+      id: '/feed.xml'
+      path: '/feed.xml'
+      fullPath: '/feed.xml'
+      preLoaderRoute: typeof FeedDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed.atom': {
+      id: '/feed.atom'
+      path: '/feed.atom'
+      fullPath: '/feed.atom'
+      preLoaderRoute: typeof FeedDotatomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cli': {
       id: '/cli'
       path: '/cli'
@@ -376,39 +404,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots/txt': {
-      id: '/robots/txt'
-      path: '/robots/txt'
-      fullPath: '/robots/txt'
-      preLoaderRoute: typeof RobotsTxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/notes/$slug': {
       id: '/notes/$slug'
       path: '/notes/$slug'
       fullPath: '/notes/$slug'
       preLoaderRoute: typeof NotesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/feed/xml': {
-      id: '/feed/xml'
-      path: '/feed/xml'
-      fullPath: '/feed/xml'
-      preLoaderRoute: typeof FeedXmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/feed/atom': {
-      id: '/feed/atom'
-      path: '/feed/atom'
-      fullPath: '/feed/atom'
-      preLoaderRoute: typeof FeedAtomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/og': {
@@ -439,21 +439,21 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BirthdayRoute: BirthdayRoute,
   CliRoute: CliRoute,
+  FeedDotatomRoute: FeedDotatomRoute,
+  FeedDotxmlRoute: FeedDotxmlRoute,
   HillaryRoute: HillaryRoute,
   LeoRoute: LeoRoute,
   LicenseRoute: LicenseRoute,
   PreviouslyRoute: PreviouslyRoute,
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
   ApiHitsRoute: ApiHitsRoute,
   ApiOgRoute: ApiOgRoute,
-  FeedAtomRoute: FeedAtomRoute,
-  FeedXmlRoute: FeedXmlRoute,
   NotesSlugRoute: NotesSlugRoute,
-  RobotsTxtRoute: RobotsTxtRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
   NotesIndexRoute: NotesIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

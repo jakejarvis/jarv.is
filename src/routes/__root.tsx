@@ -32,6 +32,28 @@ export const Route = createRootRoute({
         href: appCss,
       },
       {
+        rel: "manifest",
+        href: "/manifest.webmanifest",
+      },
+      {
+        rel: "icon",
+        href: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "48x48",
+      },
+      {
+        rel: "icon",
+        href: "/icon.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        rel: "apple-touch-icon",
+        href: "/apple-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+      {
         rel: "alternate",
         type: "application/rss+xml",
         title: `${siteConfig.name} (RSS)`,
@@ -77,7 +99,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="bg-background text-foreground font-sans antialiased">
         <Providers>
           <Header />
-          <div className="mx-auto mt-4 w-full max-w-4xl px-5">
+          <div className="mx-auto mt-4 w-full max-w-[720px] px-5">
             <main>{children}</main>
           </div>
           <Footer />

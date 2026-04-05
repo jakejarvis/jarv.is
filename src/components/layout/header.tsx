@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@tanstack/react-router";
-import { MoonIcon, SunIcon } from "lucide-react";
+import { AtSignIcon, MailIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -42,7 +42,7 @@ const Header = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-5 py-4">
+      <header className="mx-auto mt-2 flex w-full max-w-[720px] items-center justify-between px-5 py-4">
         <div className="flex items-center gap-3">
           <Link
             to="/"
@@ -53,9 +53,7 @@ const Header = ({ className }: { className?: string }) => {
             <img
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
-              className="border-ring/30 size-[40px] rounded-full border md:size-[32px]"
-              width={40}
-              height={40}
+              className="border-ring/30 size-8 rounded-full border"
             />
             <span className="text-base font-medium tracking-tight whitespace-nowrap max-md:sr-only">
               {siteConfig.name}
@@ -66,6 +64,11 @@ const Header = ({ className }: { className?: string }) => {
         </div>
 
         <div className="flex items-center gap-2.5">
+          <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
+            <a href={`mailto:${authorConfig.email}`}>
+              <AtSignIcon />
+            </a>
+          </Button>
           <Button variant="ghost" size="sm" aria-label="Open GitHub profile" asChild>
             <a
               href={`https://github.com/${authorConfig.social.github}`}

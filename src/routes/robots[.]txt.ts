@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
 
-export const Route = createFileRoute("/robots/txt")({
+export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
       GET: async () => {

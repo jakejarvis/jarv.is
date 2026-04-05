@@ -1,9 +1,0 @@
-{
-  "name": "Jake Jarvis",
-  "short_name": "Jake Jarvis",
-  "description": "Hi there! I'm a frontend web developer based in Boston, Massachusetts specializing in TypeScript, React, Next.js, and other JavaScript frameworks.",
-  "lang": "en-US",
-  "icons": [{ "src": "/icon.png", "sizes": "any", "type": "image/png" }],
-  "display": "browser",
-  "start_url": "/"
-}

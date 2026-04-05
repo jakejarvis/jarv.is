@@ -20,10 +20,6 @@ const menuItems = [
     text: "Projects",
     to: "/projects",
   },
-  {
-    text: "Contact",
-    to: "/",
-  },
 ] as const;
 
 const Menu = () => {
@@ -31,68 +27,25 @@ const Menu = () => {
   const pathname = routerState.location.pathname;
   const segment = pathname.split("/")[1] || "";
 
-  const currentItem = menuItems.find((item) => item.to.split("/")[1] === segment);
-  const currentLabel = segment === "" ? "Home" : currentItem?.text || "Menu";
-
   return (
-    <nav data-slot="navigation-menu">
-      {/* Desktop: Show all buttons */}
-      <div className="hidden items-center gap-1 sm:flex">
-        {menuItems.map((item) => {
-          const isCurrent = item.to.split("/")[1] === segment;
+    <nav data-slot="navigation-menu" className="flex items-center gap-1">
+      {menuItems.map((item) => {
+        const isCurrent = item.to.split("/")[1] === segment;
 
-          return (
-            <Button
-              asChild
-              key={item.to}
-              variant="ghost"
-              size="sm"
-              aria-label={item.text}
-              data-current={isCurrent || undefined}
-              className="text-foreground/70 data-current:text-foreground/90 text-sm leading-none hover:!bg-transparent"
-            >
-              <Link to={item.to}>{item.text}</Link>
-            </Button>
-          );
-        })}
-      </div>
-
-      {/* Mobile: Show dropdown menu */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        return (
           <Button
+            asChild
+            key={item.to}
             variant="ghost"
             size="sm"
-            className="flex gap-2 text-[15px] sm:hidden data-[state=open]:[&_svg]:rotate-180"
+            aria-label={item.text}
+            data-current={isCurrent || undefined}
+            className="text-foreground/70 data-current:text-foreground/90 text-sm leading-none hover:!bg-transparent"
           >
-            {currentLabel}
-            <ChevronDownIcon className="size-3.5 opacity-60 transition-transform duration-200" />
+            <Link to={item.to}>{item.text}</Link>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="min-w-[140px]">
-          <DropdownMenuItem
-            asChild
-            data-current={segment === ""}
-            aria-current={segment === "" ? "page" : undefined}
-          >
-            <Link to="/">Home</Link>
-          </DropdownMenuItem>
-          {menuItems.map((item) => {
-            const isCurrent = item.to.split("/")[1] === segment;
-
-            return (
-              <DropdownMenuItem
-                asChild
-                key={item.to}
-                data-current={isCurrent || undefined}
-                aria-current={isCurrent ? "page" : undefined}
-              >
-                <Link to={item.to}>{item.text}</Link>
-              </DropdownMenuItem>
-            );
-          })}
-        </DropdownMenuContent>
-      </DropdownMenu>
+        );
+      })}
     </nav>
   );
 };

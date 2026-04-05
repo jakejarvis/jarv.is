@@ -2,15 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { buildFeed } from "@/lib/build-feed";
 
-export const Route = createFileRoute("/feed/atom")({
+export const Route = createFileRoute("/feed.xml")({
   server: {
     handlers: {
       GET: async () => {
         const feed = buildFeed();
 
-        return new Response(feed.atom1(), {
+        return new Response(feed.rss2(), {
           headers: {
-            "content-type": "application/atom+xml; charset=utf-8",
+            "content-type": "application/rss+xml; charset=utf-8",
           },
         });
       },

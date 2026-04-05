@@ -124,7 +124,7 @@ function PostPage() {
               <span
                 key={tag}
                 title={tag}
-                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['\\0023'] first-of-type:ml-0 last-of-type:mr-0"
+                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['#'] first-of-type:ml-0 last-of-type:mr-0"
               >
                 {tag}
               </span>
