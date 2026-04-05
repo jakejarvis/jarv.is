@@ -1,15 +1,13 @@
-import { cacheLife } from "next/cache";
-import { codeToHtml } from "shiki";
 import { CopyButton } from "@/components/copy-button";
 import { cn } from "@/lib/utils";
 
 /**
  * Recursively extracts plain text content from React nodes.
- * Replacement for the `react-to-text` package.
  */
 const getTextContent = (node: React.ReactNode): string => {
   if (node == null || typeof node === "boolean") return "";
-  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (typeof node === "string" || typeof node === "number")
+    return String(node);
   if (Array.isArray(node)) return node.map(getTextContent).join("");
   if (typeof node === "object" && "props" in node) {
     return getTextContent(
@@ -24,17 +22,12 @@ interface CodeBlockProps extends React.ComponentProps<"pre"> {
   showLineNumbers?: boolean;
 }
 
-const renderCode = async (code: string, lang: string): Promise<string> => {
-  "use cache";
-  cacheLife("max");
-
-  return codeToHtml(code, {
-    lang,
-    themes: { light: "github-light", dark: "github-dark" },
-  });
-};
-
-const CodeBlock = async ({
+/**
+ * CodeBlock wrapper for pre-highlighted HTML from Shiki (build-time).
+ * In the content-collections setup, Shiki runs at build time via @shikijs/rehype,
+ * so this component just wraps the pre-rendered output with copy functionality.
+ */
+const CodeBlock = ({
   children,
   className,
   showLineNumbers = true,
@@ -51,9 +44,6 @@ const CodeBlock = async ({
 
   const codeProps = children.props as React.ComponentProps<"code">;
   const codeString = getTextContent(codeProps.children).trim();
-  const lang = codeProps.className?.split("language-")[1] ?? "text";
-
-  const html = await renderCode(codeString, lang);
 
   return (
     <div className="group not-prose relative">
@@ -61,22 +51,20 @@ const CodeBlock = async ({
         value={codeString}
         className="absolute top-2 right-2 z-10 opacity-0 transition-opacity group-hover:opacity-100"
       />
-      <div
-        data-slot="code-block"
-        data-lang={lang}
+      <pre
         data-line-numbers={showLineNumbers || undefined}
         className={cn(
           "overflow-x-auto overflow-y-hidden rounded-xl bg-code text-[13px] text-code-foreground leading-normal outline-none",
           "[&_span]:!bg-transparent [&_span[style*='color']]:dark:!text-(--shiki-dark)",
-          "[&_pre]:!bg-transparent [&_pre]:m-0 [&_pre]:rounded-xl",
           "[&_code]:white-space-pre [&_code]:grid [&_code]:min-w-full [&_code]:px-4 [&_code]:py-3.5 [&_code]:[counter-reset:line]",
           "[&_.line]:inline-block [&_.line]:min-h-1lh [&_.line]:w-full [&_.line]:py-0.5",
           "data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
           className,
         )}
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted Shiki-generated syntax-highlighted HTML
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+        {...props}
+      >
+        {children}
+      </pre>
     </div>
   );
 };

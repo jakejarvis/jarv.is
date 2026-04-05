@@ -1,6 +1,5 @@
 "use client";
 
-import { getImageProps } from "next/image";
 import { Children } from "react";
 import {
   ReactCompareSlider,
@@ -15,7 +14,6 @@ const ImageDiff = ({
   children: React.ReactElement[];
   className?: string;
 }) => {
-  // Extract the two image children
   const childrenArray = Children.toArray(children);
   if (childrenArray.length !== 2) {
     console.error(
@@ -24,21 +22,26 @@ const ImageDiff = ({
     return null;
   }
 
-  // Get the original image source to extract dimensions for aspect ratio
-  const firstChildProps = children[0].props as Parameters<
-    typeof getImageProps
-  >[0];
+  const firstChildProps = children[0].props as {
+    src: string | { width: number; height: number; src: string };
+    alt?: string;
+  };
+  const secondChildProps = children[1].props as {
+    src: string | { width: number; height: number; src: string };
+    alt?: string;
+  };
+
   const imageSrc = firstChildProps.src;
   const aspectRatio =
-    typeof imageSrc === "object" && "width" in imageSrc && "height" in imageSrc
+    typeof imageSrc === "object" &&
+    "width" in imageSrc &&
+    "height" in imageSrc
       ? imageSrc.width / imageSrc.height
       : 16 / 9;
 
-  // Extract image props, stripping out MDX className (margins, etc.) that would break slider layout
-  const beforeImageProps = getImageProps(firstChildProps).props;
-  const afterImageProps = getImageProps(
-    children[1].props as Parameters<typeof getImageProps>[0],
-  ).props;
+  const getSrc = (
+    src: string | { src: string },
+  ): string => (typeof src === "object" ? src.src : src);
 
   return (
     <ReactCompareSlider
@@ -49,13 +52,15 @@ const ImageDiff = ({
       style={{ aspectRatio }}
       itemOne={
         <ReactCompareSliderImage
-          {...beforeImageProps}
+          src={getSrc(firstChildProps.src)}
+          alt={firstChildProps.alt || "Before"}
           className="size-full object-cover"
         />
       }
       itemTwo={
         <ReactCompareSliderImage
-          {...afterImageProps}
+          src={getSrc(secondChildProps.src)}
+          alt={secondChildProps.alt || "After"}
           className="size-full object-cover"
         />
       }

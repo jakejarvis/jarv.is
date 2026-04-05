@@ -6,6 +6,12 @@ import {
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPosts } from "content-collections";
+import { ImageDiff } from "@/components/image-diff";
+import { CodePen } from "@/components/third-party/codepen";
+import { Gist } from "@/components/third-party/gist";
+import { Tweet } from "@/components/third-party/tweet";
+import { YouTube } from "@/components/third-party/youtube";
+import { Video } from "@/components/video";
 import { createHead } from "@/lib/head";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
@@ -138,7 +144,17 @@ function PostPage() {
         />
       </h1>
 
-      <MDXContent code={post.mdx} />
+      <MDXContent
+        code={post.mdx}
+        components={{
+          Video,
+          ImageDiff,
+          Tweet,
+          YouTube,
+          Gist,
+          CodePen,
+        }}
+      />
 
       <section
         id="comments"
