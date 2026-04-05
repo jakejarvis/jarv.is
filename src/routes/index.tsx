@@ -139,7 +139,7 @@ function HomePage() {
           LinkedIn
         </a>
         . I&rsquo;m always available to connect over{" "}
-        <Link to="/contact" title="Send an email">
+        <Link to="/" title="Send an email">
           email
         </Link>{" "}
         <sup>

@@ -17,7 +17,6 @@ import { Route as PreviouslyRouteImport } from './routes/previously'
 import { Route as LicenseRouteImport } from './routes/license'
 import { Route as LeoRouteImport } from './routes/leo'
 import { Route as HillaryRouteImport } from './routes/hillary'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CliRouteImport } from './routes/cli'
 import { Route as BirthdayRouteImport } from './routes/birthday'
 import { Route as IndexRouteImport } from './routes/index'
@@ -68,11 +67,6 @@ const LeoRoute = LeoRouteImport.update({
 const HillaryRoute = HillaryRouteImport.update({
   id: '/hillary',
   path: '/hillary',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CliRoute = CliRouteImport.update({
@@ -135,7 +129,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
-  '/contact': typeof ContactRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
@@ -157,7 +150,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
-  '/contact': typeof ContactRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
@@ -180,7 +172,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/birthday': typeof BirthdayRoute
   '/cli': typeof CliRoute
-  '/contact': typeof ContactRoute
   '/hillary': typeof HillaryRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
@@ -204,7 +195,6 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
-    | '/contact'
     | '/hillary'
     | '/leo'
     | '/license'
@@ -226,7 +216,6 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
-    | '/contact'
     | '/hillary'
     | '/leo'
     | '/license'
@@ -248,7 +237,6 @@ export interface FileRouteTypes {
     | '/'
     | '/birthday'
     | '/cli'
-    | '/contact'
     | '/hillary'
     | '/leo'
     | '/license'
@@ -271,7 +259,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BirthdayRoute: typeof BirthdayRoute
   CliRoute: typeof CliRoute
-  ContactRoute: typeof ContactRoute
   HillaryRoute: typeof HillaryRoute
   LeoRoute: typeof LeoRoute
   LicenseRoute: typeof LicenseRoute
@@ -346,13 +333,6 @@ declare module '@tanstack/react-router' {
       path: '/hillary'
       fullPath: '/hillary'
       preLoaderRoute: typeof HillaryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cli': {
@@ -439,7 +419,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BirthdayRoute: BirthdayRoute,
   CliRoute: CliRoute,
-  ContactRoute: ContactRoute,
   HillaryRoute: HillaryRoute,
   LeoRoute: LeoRoute,
   LicenseRoute: LicenseRoute,

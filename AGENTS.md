@@ -12,7 +12,7 @@ vp dev              # Development server (0.0.0.0:3000)
 vp build            # Production build → .output/
 vp check            # Run fmt + lint + typecheck in one pass
 vp lint             # Lint only (oxlint, type-aware)
-vp lint src/routes/contact.tsx  # Lint a single file
+vp lint src/routes/projects.tsx  # Lint a single file
 vp fmt              # Format only (oxfmt)
 vp run check-types    # TypeScript type checking only (tsc --noEmit)
 vp run db:generate    # Generate Drizzle migration files
@@ -92,8 +92,8 @@ Configured in `vite.config.ts` under `fmt` and `lint` keys — not separate conf
 
 | Element          | Convention               | Example                      |
 | ---------------- | ------------------------ | ---------------------------- |
-| Files            | kebab-case               | `contact-form.tsx`           |
-| Components       | PascalCase               | `ContactForm`                |
+| Files            | kebab-case               | `copy-button.tsx`            |
+| Components       | PascalCase               | `CopyButton`                 |
 | Functions/Vars   | camelCase                | `getComments`, `isPending`   |
 | Types/Interfaces | PascalCase               | `CommentWithUser`            |
 | Constants        | camelCase or UPPER_SNAKE | `siteConfig`, `DATABASE_URL` |

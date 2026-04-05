@@ -22,7 +22,7 @@ const menuItems = [
   },
   {
     text: "Contact",
-    to: "/contact",
+    to: "/",
   },
 ] as const;
 

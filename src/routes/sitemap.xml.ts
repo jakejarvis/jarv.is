@@ -7,7 +7,6 @@ const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
 const staticRoutes = [
   "/",
   "/notes",
-  "/contact",
   "/projects",
   "/birthday",
   "/hillary",
