@@ -9,9 +9,8 @@ const getTextContent = (node: React.ReactNode): string => {
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(getTextContent).join("");
   if (typeof node === "object" && "props" in node) {
-    return getTextContent(
-      (node as React.ReactElement<{ children?: React.ReactNode }>).props.children,
-    );
+    const element = node as React.ReactElement<{ children?: React.ReactNode }>; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
+    return getTextContent(element.props.children);
   }
   return "";
 };
@@ -35,7 +34,7 @@ const CodeBlock = ({ children, className, showLineNumbers = true, ...props }: Co
     );
   }
 
-  const codeProps = children.props as React.ComponentProps<"code">;
+  const codeProps = children.props as React.ComponentProps<"code">; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
   const codeString = getTextContent(codeProps.children).trim();
 
   return (

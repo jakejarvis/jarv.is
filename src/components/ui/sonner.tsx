@@ -12,10 +12,11 @@ import { Toaster as Sonner, type ToasterProps } from "sonner";
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme();
+  const sonnerTheme = theme === "light" || theme === "dark" ? theme : "system";
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={sonnerTheme}
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,
@@ -25,6 +26,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         loading: <Loader2Icon className="size-4 animate-spin" />,
       }}
       style={
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         {
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",

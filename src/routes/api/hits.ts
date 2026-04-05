@@ -11,9 +11,9 @@ export const Route = createFileRoute("/api/hits")({
         const total = {
           hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
         };
-        const pages = Object.entries(views).map(([slug, views]) => ({
+        const pages = Object.entries(views).map(([slug, hitCount]) => ({
           slug,
-          hits: views,
+          hits: hitCount,
         }));
 
         pages.sort((a, b) => b.hits - a.hits);

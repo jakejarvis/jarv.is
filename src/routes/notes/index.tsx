@@ -19,6 +19,7 @@ export const Route = createFileRoute("/notes/")({
 function NotesPage() {
   const formattedPosts = allPosts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    // eslint-disable-next-line oxc/no-map-spread -- content-collections objects shouldn't be mutated
     .map((post) => {
       const d = new Date(post.date);
       return {
@@ -54,7 +55,7 @@ function NotesPage() {
 
       <PostStatsProvider>
         {Object.entries(postsByYear)
-          .reverse()
+          .toReversed()
           .map(([year, posts]) => (
             <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
               <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">

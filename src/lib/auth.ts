@@ -13,10 +13,8 @@ export const auth = betterAuth({
   }),
   socialProviders: {
     github: {
-      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
-      clientId: process.env.AUTH_GITHUB_CLIENT_ID!,
-      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
-      clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET!,
+      clientId: process.env.AUTH_GITHUB_CLIENT_ID,
+      clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET,
       mapProfileToUser: (profile) => ({
         name: profile.login,
         email: profile.email,

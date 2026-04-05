@@ -74,6 +74,7 @@ function PreviouslyPage() {
         </p>
 
         <iframe
+          sandbox="allow-scripts allow-popups"
           src="https://jakejarvis.github.io/my-first-website/"
           title="My Terrible, Horrible, No Good, Very Bad First Website"
           className="border-ring h-[500px] w-full border-2"

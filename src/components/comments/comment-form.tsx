@@ -1,7 +1,7 @@
 "use client";
 
 import { InfoIcon, Loader2Icon } from "lucide-react";
-import { createContext, useContext, useState, useTransition } from "react";
+import { createContext, useContext, useMemo, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 import { MarkdownIcon } from "@/components/icons";
@@ -34,11 +34,12 @@ const CommentFormProvider = ({
   const [content, setContent] = useState(initialContent);
   const [isPending, startTransition] = useTransition();
 
-  return (
-    <CommentFormContext.Provider value={{ content, setContent, isPending, startTransition }}>
-      {children}
-    </CommentFormContext.Provider>
+  const contextValue = useMemo(
+    () => ({ content, setContent, isPending, startTransition }),
+    [content, setContent, isPending, startTransition],
   );
+
+  return <CommentFormContext.Provider value={contextValue}>{children}</CommentFormContext.Provider>;
 };
 
 // Hook to access form state from context (for sibling components like preview panels)

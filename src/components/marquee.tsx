@@ -19,7 +19,7 @@ const Marquee = ({
       .fill(0)
       .map((_, i) => (
         <div
-          // biome-ignore lint/suspicious/noArrayIndexKey: identical clones for animation; no natural unique key exists
+          // eslint-disable-next-line react/no-array-index-key -- identical clones for animation; no natural unique key exists
           key={i}
           className="motion-safe:animate-marquee flex shrink-0 flex-row justify-around [gap:var(--gap)]"
         >

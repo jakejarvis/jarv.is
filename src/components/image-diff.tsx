@@ -18,10 +18,12 @@ const ImageDiff = ({
     return null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- React children props aren't strongly typed
   const firstChildProps = children[0].props as {
     src: string | { width: number; height: number; src: string };
     alt?: string;
   };
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- React children props aren't strongly typed
   const secondChildProps = children[1].props as {
     src: string | { width: number; height: number; src: string };
     alt?: string;

@@ -18,6 +18,7 @@ const CodePen = ({
   title?: string;
 } & React.ComponentProps<"iframe">) => (
   <iframe
+    sandbox="allow-scripts allow-popups"
     src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
       "default-tab": `${defaultTab},result`,
       preview: `${!!preview}`,

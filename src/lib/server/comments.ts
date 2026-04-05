@@ -22,14 +22,15 @@ export const getComments = createServerFn()
         .where(eq(schema.comment.pageSlug, data.pageSlug))
         .orderBy(desc(schema.comment.createdAt));
 
-      return commentsWithUsers.map(({ comment, user }) => ({
-        ...comment,
-        user: {
-          id: user.id,
-          name: user.name,
-          image: user.image,
-        },
-      }));
+      return commentsWithUsers.map(({ comment, user }) =>
+        Object.assign(comment, {
+          user: {
+            id: user.id,
+            name: user.name,
+            image: user.image,
+          },
+        }),
+      );
     } catch (error) {
       console.error("[server/comments] error fetching comments:", error);
       return [];
@@ -112,7 +113,7 @@ export const createComment = createServerFn({ method: "POST" })
       });
     } catch (error) {
       console.error("[server/comments] error creating comment:", error);
-      throw new Error("Failed to create comment");
+      throw new Error("Failed to create comment", { cause: error });
     }
   });
 
@@ -153,7 +154,7 @@ export const updateComment = createServerFn({ method: "POST" })
         .where(eq(schema.comment.id, data.commentId));
     } catch (error) {
       console.error("[server/comments] error updating comment:", error);
-      throw new Error("Failed to update comment");
+      throw new Error("Failed to update comment", { cause: error });
     }
   });
 
@@ -183,6 +184,6 @@ export const deleteComment = createServerFn({ method: "POST" })
       await db.delete(schema.comment).where(eq(schema.comment.id, data.commentId));
     } catch (error) {
       console.error("[server/comments] error deleting comment:", error);
-      throw new Error("Failed to delete comment");
+      throw new Error("Failed to delete comment", { cause: error });
     }
   });

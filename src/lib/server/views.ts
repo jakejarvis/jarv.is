@@ -58,6 +58,6 @@ export const incrementViews = createServerFn({ method: "POST" })
       return result.views;
     } catch (error) {
       console.error("[server/views] error incrementing views:", error);
-      throw new Error("Failed to increment views");
+      throw new Error("Failed to increment views", { cause: error });
     }
   });

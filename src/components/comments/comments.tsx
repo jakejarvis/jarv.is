@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { authClient } from "@/lib/auth-client";
 import { type CommentWithUser, getComments } from "@/lib/server/comments";
@@ -14,18 +14,18 @@ const Comments = ({ slug }: { slug: string }) => {
   const { data: session } = authClient.useSession();
   const [comments, setComments] = useState<CommentWithUser[] | null>(null);
 
-  const fetchComments = () => {
+  const fetchComments = useCallback(() => {
     getComments({ data: { pageSlug: slug } })
       .then(setComments)
       .catch((err) => {
         console.error("[comments] error fetching:", err);
         setComments([]);
       });
-  };
+  }, [slug]);
 
   useEffect(() => {
     fetchComments();
-  }, [slug]);
+  }, [fetchComments]);
 
   if (comments === null) {
     return <CommentsSkeleton />;

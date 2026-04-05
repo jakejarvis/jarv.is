@@ -87,7 +87,7 @@ export const Route = createFileRoute("/api/og")({
                 <div tw="flex mb-3 items-center">
                   {avatarImg && (
                     <img
-                      src={avatarImg as unknown as string}
+                      src={avatarImg as unknown as string} // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
                       alt=""
                       width={48}
                       height={48}
@@ -154,7 +154,7 @@ export const Route = createFileRoute("/api/og")({
               {postImg && (
                 <div tw="flex w-full" style={{ flexGrow: 0 }}>
                   <img
-                    src={postImg as unknown as string}
+                    src={postImg as unknown as string} // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
                     alt=""
                     style={{
                       maxHeight: "100%",

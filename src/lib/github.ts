@@ -111,7 +111,7 @@ export const getRepos = createServerFn().handler(async (): Promise<Repository[] 
       },
     );
 
-    return user.repositories.edges?.map((edge) => edge?.node as Repository);
+    return user.repositories.edges?.flatMap((edge) => (edge?.node ? [edge.node] : []));
   } catch (error) {
     console.error("[server/github] Failed to fetch repositories:", error);
     return [];

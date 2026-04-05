@@ -46,6 +46,7 @@ export const Route = createFileRoute("/notes/$slug")({
     return { post };
   },
   head: ({ loaderData }) => {
+    if (!loaderData) return {};
     const { post } = loaderData;
     return createHead({
       title: post.title,

@@ -57,6 +57,7 @@ const Gist = ({
 
   return (
     <iframe
+      sandbox="allow-scripts allow-popups"
       ref={iframeRef}
       width="100%"
       scrolling="no"
