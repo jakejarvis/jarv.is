@@ -1,6 +1,8 @@
 # build output
 /.next/
 .output/
+dist/
+dist-ssr/
 
 # content-collections
 .content-collections/
@@ -42,6 +44,3 @@ yarn.lock
 # vercel
 .vercel
 .env*.local
-
-# next-agents-md
-.next-docs/

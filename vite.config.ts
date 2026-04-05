@@ -8,48 +8,41 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   fmt: {
-    "sortImports": {
-      "groups": [
+    sortImports: {
+      groups: [
         "builtin",
         "external",
         ["internal", "subpath"],
         ["parent", "sibling", "index"],
         "style",
-        "unknown"
+        "unknown",
       ],
-      "internalPattern": ["@/"],
-      "newlinesBetween": true,
-      "order": "asc"
+      internalPattern: ["@/"],
+      newlinesBetween: true,
+      order: "asc",
     },
-    "sortTailwindcss": {
-      "attributes": ["className"],
-      "functions": ["cn", "clsx", "cva"]
+    sortTailwindcss: {
+      attributes: ["className"],
+      functions: ["cn", "clsx", "cva"],
     },
-    "overrides": [
+    overrides: [
       {
-        "files": ["**/*.json", "**/*.jsonc"],
-        "options": {
-          "trailingComma": "none"
-        }
-      }
+        files: ["**/*.json", "**/*.jsonc"],
+        options: {
+          trailingComma: "none",
+        },
+      },
     ],
-    "ignorePatterns": ["dist", "node_modules", "pnpm-lock.yaml", "**/routeTree.gen.ts", "drizzle"]
+    ignorePatterns: ["dist", "node_modules", "pnpm-lock.yaml", "**/routeTree.gen.ts", "drizzle"],
   },
   lint: {
-    "plugins": [
-      "oxc",
-      "eslint",
-      "typescript",
-      "react",
-      "import",
-      "unicorn"
-    ],
-    "categories": {
-      "correctness": "error",
-      "suspicious": "warn",
-      "perf": "warn"
+    plugins: ["oxc", "eslint", "typescript", "react", "import", "unicorn"],
+    categories: {
+      correctness: "error",
+      suspicious: "warn",
+      perf: "warn",
     },
-    "rules": {
+    rules: {
       "import/no-named-as-default-member": "off",
       "import/no-unassigned-import": "off",
       "no-await-in-loop": "off",
@@ -64,18 +57,13 @@ export default defineConfig({
       "unicorn/consistent-function-scoping": "off",
       "unicorn/filename-case": "off",
       "unicorn/no-array-sort": "off",
-      "unicorn/no-null": "off"
+      "unicorn/no-null": "off",
     },
-    "ignorePatterns": [
-      "dist",
-      "node_modules",
-      "**/routeTree.gen.ts",
-      "drizzle"
-    ],
-    "options": {
-      "typeAware": true,
-      "typeCheck": true
-    }
+    ignorePatterns: ["dist", "node_modules", "**/routeTree.gen.ts", "drizzle"],
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
   },
   server: {
     host: "0.0.0.0",
