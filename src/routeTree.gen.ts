@@ -22,7 +22,12 @@ import { Route as CliRouteImport } from './routes/cli.tsx'
 import { Route as BirthdayRouteImport } from './routes/birthday.tsx'
 import { Route as IndexRouteImport } from './routes/index.tsx'
 import { Route as NotesIndexRouteImport } from './routes/notes/index.tsx'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml.ts'
+import { Route as RobotsTxtRouteImport } from './routes/robots.txt.ts'
 import { Route as NotesSlugRouteImport } from './routes/notes/$slug.tsx'
+import { Route as ManifestWebmanifestRouteImport } from './routes/manifest.webmanifest.ts'
+import { Route as FeedXmlRouteImport } from './routes/feed.xml.ts'
+import { Route as FeedAtomRouteImport } from './routes/feed.atom.ts'
 import { Route as ApiHitsRouteImport } from './routes/api/hits.ts'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$.ts'
 
@@ -91,9 +96,34 @@ const NotesIndexRoute = NotesIndexRouteImport.update({
   path: '/notes/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapXmlRoute = SitemapXmlRouteImport.update({
+  id: '/sitemap/xml',
+  path: '/sitemap/xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsTxtRoute = RobotsTxtRouteImport.update({
+  id: '/robots/txt',
+  path: '/robots/txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotesSlugRoute = NotesSlugRouteImport.update({
   id: '/notes/$slug',
   path: '/notes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManifestWebmanifestRoute = ManifestWebmanifestRouteImport.update({
+  id: '/manifest/webmanifest',
+  path: '/manifest/webmanifest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedXmlRoute = FeedXmlRouteImport.update({
+  id: '/feed/xml',
+  path: '/feed/xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedAtomRoute = FeedAtomRouteImport.update({
+  id: '/feed/atom',
+  path: '/feed/atom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiHitsRoute = ApiHitsRouteImport.update({
@@ -121,7 +151,12 @@ export interface FileRoutesByFullPath {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/feed/atom': typeof FeedAtomRoute
+  '/feed/xml': typeof FeedXmlRoute
+  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes/': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -139,7 +174,12 @@ export interface FileRoutesByTo {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/feed/atom': typeof FeedAtomRoute
+  '/feed/xml': typeof FeedXmlRoute
+  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -158,7 +198,12 @@ export interface FileRoutesById {
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
+  '/feed/atom': typeof FeedAtomRoute
+  '/feed/xml': typeof FeedXmlRoute
+  '/manifest/webmanifest': typeof ManifestWebmanifestRoute
   '/notes/$slug': typeof NotesSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/notes/': typeof NotesIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -178,7 +223,12 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/feed/atom'
+    | '/feed/xml'
+    | '/manifest/webmanifest'
     | '/notes/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/notes/'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
@@ -196,7 +246,12 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/feed/atom'
+    | '/feed/xml'
+    | '/manifest/webmanifest'
     | '/notes/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/notes'
     | '/api/auth/$'
   id:
@@ -214,7 +269,12 @@ export interface FileRouteTypes {
     | '/uses'
     | '/zip'
     | '/api/hits'
+    | '/feed/atom'
+    | '/feed/xml'
+    | '/manifest/webmanifest'
     | '/notes/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/notes/'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -233,7 +293,12 @@ export interface RootRouteChildren {
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
   ApiHitsRoute: typeof ApiHitsRoute
+  FeedAtomRoute: typeof FeedAtomRoute
+  FeedXmlRoute: typeof FeedXmlRoute
+  ManifestWebmanifestRoute: typeof ManifestWebmanifestRoute
   NotesSlugRoute: typeof NotesSlugRoute
+  RobotsTxtRoute: typeof RobotsTxtRoute
+  SitemapXmlRoute: typeof SitemapXmlRoute
   NotesIndexRoute: typeof NotesIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -331,11 +396,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap/xml': {
+      id: '/sitemap/xml'
+      path: '/sitemap/xml'
+      fullPath: '/sitemap/xml'
+      preLoaderRoute: typeof SitemapXmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots/txt': {
+      id: '/robots/txt'
+      path: '/robots/txt'
+      fullPath: '/robots/txt'
+      preLoaderRoute: typeof RobotsTxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notes/$slug': {
       id: '/notes/$slug'
       path: '/notes/$slug'
       fullPath: '/notes/$slug'
       preLoaderRoute: typeof NotesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manifest/webmanifest': {
+      id: '/manifest/webmanifest'
+      path: '/manifest/webmanifest'
+      fullPath: '/manifest/webmanifest'
+      preLoaderRoute: typeof ManifestWebmanifestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed/xml': {
+      id: '/feed/xml'
+      path: '/feed/xml'
+      fullPath: '/feed/xml'
+      preLoaderRoute: typeof FeedXmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed/atom': {
+      id: '/feed/atom'
+      path: '/feed/atom'
+      fullPath: '/feed/atom'
+      preLoaderRoute: typeof FeedAtomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/hits': {
@@ -369,7 +469,12 @@ const rootRouteChildren: RootRouteChildren = {
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
   ApiHitsRoute: ApiHitsRoute,
+  FeedAtomRoute: FeedAtomRoute,
+  FeedXmlRoute: FeedXmlRoute,
+  ManifestWebmanifestRoute: ManifestWebmanifestRoute,
   NotesSlugRoute: NotesSlugRoute,
+  RobotsTxtRoute: RobotsTxtRoute,
+  SitemapXmlRoute: SitemapXmlRoute,
   NotesIndexRoute: NotesIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

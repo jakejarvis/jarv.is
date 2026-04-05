@@ -3,5 +3,108 @@
     "env": {
       "ENABLE_EXPERIMENTAL_COREPACK": "1"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/robots.txt",
+      "destination": "/robots/txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap/xml"
+    },
+    {
+      "source": "/feed.xml",
+      "destination": "/feed/xml"
+    },
+    {
+      "source": "/feed.atom",
+      "destination": "/feed/atom"
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "destination": "/manifest/webmanifest"
+    },
+    {
+      "source": "/tweets/:path*",
+      "destination": "https://tweets-khaki.vercel.app/:path*"
+    },
+    {
+      "source": "/y2k/:path*",
+      "destination": "https://y2k.pages.dev/:path*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/pubkey.asc",
+      "destination": "https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x3bc6e5776bf379d36f6714802b0c9cf251e69a39",
+      "statusCode": 302
+    },
+    {
+      "source": "/notes/:slug/amp.html",
+      "destination": "/notes/:slug",
+      "statusCode": 301
+    },
+    {
+      "source": "/.well-known/:path(host-meta|webfinger|nodeinfo)",
+      "destination": "https://fediverse.jarv.is/.well-known/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/@jake:path(/?|/.*)",
+      "destination": "https://fediverse.jarv.is/@jake:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.xml",
+      "destination": "/feed.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed",
+      "destination": "/feed.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/rss",
+      "destination": "/feed.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/(.*)",
+      "destination": "/notes",
+      "statusCode": 301
+    },
+    {
+      "source": "/archives/(.*)",
+      "destination": "/notes",
+      "statusCode": 301
+    },
+    {
+      "source": "/2016/02/28/millenial-with-hillary-clinton",
+      "destination": "/notes/millenial-with-hillary-clinton",
+      "statusCode": 301
+    },
+    {
+      "source": "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware",
+      "destination": "/notes/how-to-shrink-linux-virtual-disk-vmware",
+      "statusCode": 301
+    },
+    {
+      "source": "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles",
+      "destination": "/notes/cool-bash-tricks-for-your-terminal-dotfiles",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path([^._]*)",
+      "headers": [
+        {
+          "key": "onion-location",
+          "value": "http://$VITE_ONION_DOMAIN/:path"
+        }
+      ]
+    }
+  ]
 }
