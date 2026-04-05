@@ -12,7 +12,11 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
-    tanstackStart(),
+    tanstackStart({
+      router: {
+        addExtensions: true,
+      },
+    }),
     viteReact(),
     contentCollections(),
   ],

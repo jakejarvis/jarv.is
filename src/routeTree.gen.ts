@@ -8,11 +8,77 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as NotesIndexRouteImport } from './routes/notes/index'
-import { Route as NotesSlugRouteImport } from './routes/notes/$slug'
+import { Route as rootRouteImport } from './routes/__root.tsx'
+import { Route as ZipRouteImport } from './routes/zip.tsx'
+import { Route as UsesRouteImport } from './routes/uses.tsx'
+import { Route as ProjectsRouteImport } from './routes/projects.tsx'
+import { Route as PrivacyRouteImport } from './routes/privacy.tsx'
+import { Route as PreviouslyRouteImport } from './routes/previously.tsx'
+import { Route as LicenseRouteImport } from './routes/license.tsx'
+import { Route as LeoRouteImport } from './routes/leo.tsx'
+import { Route as HillaryRouteImport } from './routes/hillary.tsx'
+import { Route as ContactRouteImport } from './routes/contact.tsx'
+import { Route as CliRouteImport } from './routes/cli.tsx'
+import { Route as BirthdayRouteImport } from './routes/birthday.tsx'
+import { Route as IndexRouteImport } from './routes/index.tsx'
+import { Route as NotesIndexRouteImport } from './routes/notes/index.tsx'
+import { Route as NotesSlugRouteImport } from './routes/notes/$slug.tsx'
 
+const ZipRoute = ZipRouteImport.update({
+  id: '/zip',
+  path: '/zip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsesRoute = UsesRouteImport.update({
+  id: '/uses',
+  path: '/uses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreviouslyRoute = PreviouslyRouteImport.update({
+  id: '/previously',
+  path: '/previously',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LicenseRoute = LicenseRouteImport.update({
+  id: '/license',
+  path: '/license',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeoRoute = LeoRouteImport.update({
+  id: '/leo',
+  path: '/leo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HillaryRoute = HillaryRouteImport.update({
+  id: '/hillary',
+  path: '/hillary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CliRoute = CliRouteImport.update({
+  id: '/cli',
+  path: '/cli',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BirthdayRoute = BirthdayRouteImport.update({
+  id: '/birthday',
+  path: '/birthday',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +97,200 @@ const NotesSlugRoute = NotesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/birthday': typeof BirthdayRoute
+  '/cli': typeof CliRoute
+  '/contact': typeof ContactRoute
+  '/hillary': typeof HillaryRoute
+  '/leo': typeof LeoRoute
+  '/license': typeof LicenseRoute
+  '/previously': typeof PreviouslyRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/uses': typeof UsesRoute
+  '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/birthday': typeof BirthdayRoute
+  '/cli': typeof CliRoute
+  '/contact': typeof ContactRoute
+  '/hillary': typeof HillaryRoute
+  '/leo': typeof LeoRoute
+  '/license': typeof LicenseRoute
+  '/previously': typeof PreviouslyRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/uses': typeof UsesRoute
+  '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes': typeof NotesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/birthday': typeof BirthdayRoute
+  '/cli': typeof CliRoute
+  '/contact': typeof ContactRoute
+  '/hillary': typeof HillaryRoute
+  '/leo': typeof LeoRoute
+  '/license': typeof LicenseRoute
+  '/previously': typeof PreviouslyRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/uses': typeof UsesRoute
+  '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/notes/$slug' | '/notes/'
+  fullPaths:
+    | '/'
+    | '/birthday'
+    | '/cli'
+    | '/contact'
+    | '/hillary'
+    | '/leo'
+    | '/license'
+    | '/previously'
+    | '/privacy'
+    | '/projects'
+    | '/uses'
+    | '/zip'
+    | '/notes/$slug'
+    | '/notes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/notes/$slug' | '/notes'
-  id: '__root__' | '/' | '/notes/$slug' | '/notes/'
+  to:
+    | '/'
+    | '/birthday'
+    | '/cli'
+    | '/contact'
+    | '/hillary'
+    | '/leo'
+    | '/license'
+    | '/previously'
+    | '/privacy'
+    | '/projects'
+    | '/uses'
+    | '/zip'
+    | '/notes/$slug'
+    | '/notes'
+  id:
+    | '__root__'
+    | '/'
+    | '/birthday'
+    | '/cli'
+    | '/contact'
+    | '/hillary'
+    | '/leo'
+    | '/license'
+    | '/previously'
+    | '/privacy'
+    | '/projects'
+    | '/uses'
+    | '/zip'
+    | '/notes/$slug'
+    | '/notes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BirthdayRoute: typeof BirthdayRoute
+  CliRoute: typeof CliRoute
+  ContactRoute: typeof ContactRoute
+  HillaryRoute: typeof HillaryRoute
+  LeoRoute: typeof LeoRoute
+  LicenseRoute: typeof LicenseRoute
+  PreviouslyRoute: typeof PreviouslyRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRoute
+  UsesRoute: typeof UsesRoute
+  ZipRoute: typeof ZipRoute
   NotesSlugRoute: typeof NotesSlugRoute
   NotesIndexRoute: typeof NotesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zip': {
+      id: '/zip'
+      path: '/zip'
+      fullPath: '/zip'
+      preLoaderRoute: typeof ZipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uses': {
+      id: '/uses'
+      path: '/uses'
+      fullPath: '/uses'
+      preLoaderRoute: typeof UsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/previously': {
+      id: '/previously'
+      path: '/previously'
+      fullPath: '/previously'
+      preLoaderRoute: typeof PreviouslyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/license': {
+      id: '/license'
+      path: '/license'
+      fullPath: '/license'
+      preLoaderRoute: typeof LicenseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leo': {
+      id: '/leo'
+      path: '/leo'
+      fullPath: '/leo'
+      preLoaderRoute: typeof LeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hillary': {
+      id: '/hillary'
+      path: '/hillary'
+      fullPath: '/hillary'
+      preLoaderRoute: typeof HillaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cli': {
+      id: '/cli'
+      path: '/cli'
+      fullPath: '/cli'
+      preLoaderRoute: typeof CliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/birthday': {
+      id: '/birthday'
+      path: '/birthday'
+      fullPath: '/birthday'
+      preLoaderRoute: typeof BirthdayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +317,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BirthdayRoute: BirthdayRoute,
+  CliRoute: CliRoute,
+  ContactRoute: ContactRoute,
+  HillaryRoute: HillaryRoute,
+  LeoRoute: LeoRoute,
+  LicenseRoute: LicenseRoute,
+  PreviouslyRoute: PreviouslyRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRoute,
+  UsesRoute: UsesRoute,
+  ZipRoute: ZipRoute,
   NotesSlugRoute: NotesSlugRoute,
   NotesIndexRoute: NotesIndexRoute,
 }
