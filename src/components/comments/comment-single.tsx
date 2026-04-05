@@ -1,8 +1,9 @@
 import Markdown from "react-markdown";
+import rehypeExternalLinks from "rehype-external-links";
+import remarkGfm from "remark-gfm";
+import remarkSmartypants from "remark-smartypants";
 
 import { RelativeTime } from "@/components/relative-time";
-import { rehypeExternalLinks } from "@/lib/rehype";
-import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import type { CommentWithUser } from "@/lib/server/comments";
 import { cn } from "@/lib/utils";
 
