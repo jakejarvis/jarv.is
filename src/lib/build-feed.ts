@@ -1,10 +1,11 @@
+import { env } from "cloudflare:workers";
 import { allPosts } from "content-collections";
 import { Feed } from "feed";
 
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 
-const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
+const BASE_URL = env.VITE_BASE_URL || "https://jarv.is";
 
 /**
  * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.

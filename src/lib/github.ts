@@ -2,6 +2,7 @@ import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
 import { createServerFn } from "@tanstack/react-start";
 import * as cheerio from "cheerio";
+import { env } from "cloudflare:workers";
 
 const GITHUB_USERNAME = "jakejarvis";
 
@@ -106,7 +107,7 @@ export const getRepos = createServerFn().handler(async (): Promise<Repository[] 
         limit: 24,
         headers: {
           accept: "application/vnd.github.v3+json",
-          authorization: `token ${process.env.GITHUB_TOKEN}`,
+          authorization: `token ${env.GITHUB_TOKEN}`,
         },
       },
     );

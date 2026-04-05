@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
+import { env } from "cloudflare:workers";
 
 export const Route = createFileRoute("/robots.txt")({
   server: {
@@ -12,7 +11,7 @@ export const Route = createFileRoute("/robots.txt")({
           "Disallow: /404",
           "Disallow: /500",
           "",
-          `Sitemap: ${BASE_URL}/sitemap.xml`,
+          `Sitemap: ${env.VITE_BASE_URL || "https://jarv.is"}/sitemap.xml`,
         ].join("\n");
 
         return new Response(content, {

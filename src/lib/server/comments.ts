@@ -3,8 +3,8 @@ import { getRequest } from "@tanstack/react-start/server";
 import { desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
-import { auth } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { getAuth } from "@/lib/auth";
+import { getDb } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
 
 export type CommentWithUser = typeof schema.comment.$inferSelect & {
@@ -15,7 +15,7 @@ export const getComments = createServerFn()
   .inputValidator(z.object({ pageSlug: z.string() }))
   .handler(async ({ data }): Promise<CommentWithUser[]> => {
     try {
-      const commentsWithUsers = await db
+      const commentsWithUsers = await getDb()
         .select()
         .from(schema.comment)
         .innerJoin(schema.user, eq(schema.comment.userId, schema.user.id))
@@ -44,9 +44,9 @@ export const getCommentCount = createServerFn()
   .inputValidator(z.object({ slug: z.string() }))
   .handler(async ({ data }) => {
     try {
-      const result = await db
+      const result = await getDb()
         .select({
-          count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+          count: sql<number>`count(${schema.comment.id})`,
         })
         .from(schema.comment)
         .where(eq(schema.comment.pageSlug, data.slug));
@@ -63,10 +63,10 @@ export const getCommentCount = createServerFn()
  */
 export const getAllCommentCounts = createServerFn().handler(async () => {
   try {
-    const rows = await db
+    const rows = await getDb()
       .select({
         pageSlug: schema.comment.pageSlug,
-        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
+        count: sql<number>`count(${schema.comment.id})`,
       })
       .from(schema.comment)
       .groupBy(schema.comment.pageSlug);
@@ -84,7 +84,7 @@ export const getAllCommentCounts = createServerFn().handler(async () => {
 
 const getSession = async () => {
   const request = getRequest();
-  const session = await auth.api.getSession({
+  const session = await getAuth().api.getSession({
     headers: request.headers,
   });
   if (!session?.user) {
@@ -105,12 +105,14 @@ export const createComment = createServerFn({ method: "POST" })
     const session = await getSession();
 
     try {
-      await db.insert(schema.comment).values({
-        content: data.content,
-        pageSlug: data.pageSlug,
-        parentId: data.parentId || null,
-        userId: session.user.id,
-      });
+      await getDb()
+        .insert(schema.comment)
+        .values({
+          content: data.content,
+          pageSlug: data.pageSlug,
+          parentId: data.parentId || null,
+          userId: session.user.id,
+        });
     } catch (error) {
       console.error("[server/comments] error creating comment:", error);
       throw new Error("Failed to create comment", { cause: error });
@@ -128,7 +130,7 @@ export const updateComment = createServerFn({ method: "POST" })
     const session = await getSession();
 
     try {
-      const comment = await db
+      const comment = await getDb()
         .select({
           userId: schema.comment.userId,
           pageSlug: schema.comment.pageSlug,
@@ -145,7 +147,7 @@ export const updateComment = createServerFn({ method: "POST" })
         throw new Error("You can only edit your own comments");
       }
 
-      await db
+      await getDb()
         .update(schema.comment)
         .set({
           content: data.content,
@@ -164,7 +166,7 @@ export const deleteComment = createServerFn({ method: "POST" })
     const session = await getSession();
 
     try {
-      const comment = await db
+      const comment = await getDb()
         .select({
           userId: schema.comment.userId,
           pageSlug: schema.comment.pageSlug,
@@ -181,7 +183,7 @@ export const deleteComment = createServerFn({ method: "POST" })
         throw new Error("You can only delete your own comments");
       }
 
-      await db.delete(schema.comment).where(eq(schema.comment.id, data.commentId));
+      await getDb().delete(schema.comment).where(eq(schema.comment.id, data.commentId));
     } catch (error) {
       console.error("[server/comments] error deleting comment:", error);
       throw new Error("Failed to delete comment", { cause: error });

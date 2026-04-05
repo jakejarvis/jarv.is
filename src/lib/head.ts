@@ -1,10 +1,7 @@
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 
-const BASE_URL =
-  typeof import.meta !== "undefined" && import.meta.env?.VITE_BASE_URL
-    ? import.meta.env.VITE_BASE_URL
-    : (process.env.VITE_BASE_URL ?? "https://jarv.is");
+const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
 
 type MetaTag = Record<string, string>;
 

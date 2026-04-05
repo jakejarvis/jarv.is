@@ -7,11 +7,12 @@
   },
   "main": "@tanstack/react-start/server-entry",
   "compatibility_flags": ["nodejs_compat"],
-  "hyperdrive": [
+  "d1_databases": [
     {
-      "binding": "HYPERDRIVE",
-      "id": "2917121e01d74cbbbc1d992332fd5206",
-      "localConnectionString": "postgres://postgres:postgres@localhost:5432/jarv-is"
+      "binding": "DB",
+      "database_name": "jarv-is",
+      "database_id": "9d082d89-b62e-4149-93ba-07c12f5745bd",
+      "migrations_dir": "./drizzle"
     }
   ]
 }

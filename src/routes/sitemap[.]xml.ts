@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { env } from "cloudflare:workers";
 import { allPosts } from "content-collections";
 
-const BASE_URL = process.env.VITE_BASE_URL || "https://jarv.is";
+const BASE_URL = env.VITE_BASE_URL || "https://jarv.is";
 
 // Static routes to include in the sitemap
 const staticRoutes = [
