@@ -1,9 +1,9 @@
 "use server";
 
-import { checkBotId } from "botid/server";
 import { desc, eq, inArray, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
@@ -12,9 +12,7 @@ export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
 };
 
-export const getComments = async (
-  pageSlug: string,
-): Promise<CommentWithUser[]> => {
+export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
   try {
     // Fetch all comments for the page with user details
     const commentsWithUsers = await db
@@ -24,15 +22,16 @@ export const getComments = async (
       .where(eq(schema.comment.pageSlug, pageSlug))
       .orderBy(desc(schema.comment.createdAt));
 
-    return commentsWithUsers.map(({ comment, user }) => ({
-      ...comment,
-      user: {
-        // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
-        id: user.id,
-        name: user.name,
-        image: user.image,
-      },
-    }));
+    return commentsWithUsers.map(({ comment, user }) =>
+      Object.assign(comment, {
+        user: {
+          // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
+          id: user.id,
+          name: user.name,
+          image: user.image,
+        },
+      }),
+    );
   } catch (error) {
     console.error("[server/comments] error fetching comments:", error);
     // Return empty array instead of throwing during prerendering
@@ -75,9 +74,7 @@ export const getCommentCountsForSlugs = async (
       .where(inArray(schema.comment.pageSlug, slugs))
       .groupBy(schema.comment.pageSlug);
 
-    const map: Record<string, number> = Object.fromEntries(
-      slugs.map((s) => [s, 0]),
-    );
+    const map: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
     for (const row of rows) {
       map[row.pageSlug] = Number(row.count ?? 0);
     }
@@ -91,9 +88,7 @@ export const getCommentCountsForSlugs = async (
 /**
  * Retrieves the numbers of comments for ALL slugs
  */
-export const getAllCommentCounts = async (): Promise<
-  Record<string, number>
-> => {
+export const getAllCommentCounts = async (): Promise<Record<string, number>> => {
   try {
     const rows = await db
       .select({
@@ -119,13 +114,6 @@ export const createComment = async (data: {
   pageSlug: string;
   parentId?: string;
 }) => {
-  // BotID server-side verification
-  const verification = await checkBotId();
-  if (verification.isBot) {
-    console.warn("[server/comments] botid verification failed:", verification);
-    throw new Error("Bot check failed 🤖");
-  }
-
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -147,18 +135,11 @@ export const createComment = async (data: {
     revalidatePath(`/${data.pageSlug}`);
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
-    throw new Error("Failed to create comment");
+    throw new Error("Failed to create comment", { cause: error });
   }
 };
 
 export const updateComment = async (commentId: string, content: string) => {
-  // BotID server-side verification
-  const verification = await checkBotId();
-  if (verification.isBot) {
-    console.warn("[server/comments] botid verification failed:", verification);
-    throw new Error("Bot check failed 🤖");
-  }
-
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -200,18 +181,11 @@ export const updateComment = async (commentId: string, content: string) => {
     revalidatePath(`/${comment.pageSlug}`);
   } catch (error) {
     console.error("[server/comments] error updating comment:", error);
-    throw new Error("Failed to update comment");
+    throw new Error("Failed to update comment", { cause: error });
   }
 };
 
 export const deleteComment = async (commentId: string) => {
-  // BotID server-side verification
-  const verification = await checkBotId();
-  if (verification.isBot) {
-    console.warn("[server/comments] botid verification failed:", verification);
-    throw new Error("Bot check failed 🤖");
-  }
-
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -247,6 +221,6 @@ export const deleteComment = async (commentId: string) => {
     revalidatePath(`/${comment.pageSlug}`);
   } catch (error) {
     console.error("[server/comments] error deleting comment:", error);
-    throw new Error("Failed to delete comment");
+    throw new Error("Failed to delete comment", { cause: error });
   }
 };

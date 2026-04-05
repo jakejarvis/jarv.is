@@ -1,8 +1,8 @@
 import { Feed, type Item as FeedItem } from "feed";
+
 import ogImage from "@/app/opengraph-image.jpg";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-
 import { getContent, getFrontMatter } from "@/lib/posts";
 
 /**
@@ -52,10 +52,7 @@ export const buildFeed = async (): Promise<Feed> => {
   );
 
   // sort posts reverse chronologically in case the promises resolved out of order
-  posts.sort(
-    (post1, post2) =>
-      new Date(post2.date).getTime() - new Date(post1.date).getTime(),
-  );
+  posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
 
   // officially add each post to the feed
   posts.forEach((post) => {

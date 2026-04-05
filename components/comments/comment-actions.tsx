@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  EditIcon,
-  EllipsisIcon,
-  Loader2Icon,
-  ReplyIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { EditIcon, EllipsisIcon, Loader2Icon, ReplyIcon, Trash2Icon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSession } from "@/lib/auth-client";
 import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
+
 import { EditCommentForm, ReplyForm } from "./comment-form";
 
 type ActionMode =
@@ -76,11 +72,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
             variant="outline"
             size="sm"
             onClick={() =>
-              setMode(
-                mode.type === "replying"
-                  ? { type: "idle" }
-                  : { type: "replying" },
-              )
+              setMode(mode.type === "replying" ? { type: "idle" } : { type: "replying" })
             }
           >
             <ReplyIcon />
@@ -89,11 +81,9 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
 
           {session.user.id === comment.user.id && (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  <EllipsisIcon />
-                  <span className="sr-only">Actions Menu</span>
-                </Button>
+              <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
+                <EllipsisIcon />
+                <span className="sr-only">Actions Menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem onClick={() => setMode({ type: "editing" })}>
@@ -105,11 +95,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
                   disabled={isDeleting}
                   variant="destructive"
                 >
-                  {isDeleting ? (
-                    <Loader2Icon className="animate-spin" />
-                  ) : (
-                    <Trash2Icon />
-                  )}
+                  {isDeleting ? <Loader2Icon className="animate-spin" /> : <Trash2Icon />}
                   Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -136,9 +122,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
         <AlertDialogContent size="sm">
           <AlertDialogHeader>
             <AlertDialogTitle>Delete comment?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone.
-            </AlertDialogDescription>
+            <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

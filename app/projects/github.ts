@@ -1,5 +1,4 @@
 import "server-only";
-
 import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
 import * as cheerio from "cheerio";
@@ -40,7 +39,6 @@ export const getContributions = async (): Promise<
 
     const dayTooltips = $(".js-calendar-graph tool-tip")
       .toArray()
-      // biome-ignore lint/suspicious/noExplicitAny: cheerio DOM element map
       .reduce<Record<string, any>>((map, elem) => {
         map[elem.attribs.for] = elem;
         return map;

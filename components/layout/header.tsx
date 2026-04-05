@@ -1,10 +1,11 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "lucide-react";
+import { AtSignIcon, MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
 import avatarImg from "@/app/avatar.jpg";
 import { GitHubIcon } from "@/components/icons";
 import { Menu } from "@/components/layout/menu";
@@ -42,24 +43,24 @@ const Header = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-5 py-4">
+      <header className="mx-auto mt-2 flex w-full max-w-[720px] items-center justify-between px-5 py-4">
         <div className="flex items-center gap-3">
           <Link
             href="/"
             rel="author"
             aria-label={siteConfig.name}
-            className="flex shrink-0 items-center gap-2.5 pr-2 hover:text-foreground/85 hover:no-underline"
+            className="hover:text-foreground/85 flex shrink-0 items-center gap-2.5 pr-2 hover:no-underline"
           >
             <Image
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
-              className="size-[40px] rounded-full border border-ring/30 md:size-[32px]"
+              className="border-ring/30 size-7 rounded-full border"
               width={40}
               height={40}
               quality={75}
               priority
             />
-            <span className="whitespace-nowrap font-medium text-[17.5px] tracking-tight max-md:sr-only">
+            <span className="text-[17.5px] font-medium tracking-tight whitespace-nowrap max-md:sr-only">
               {siteConfig.name}
             </span>
           </Link>
@@ -71,16 +72,26 @@ const Header = ({ className }: { className?: string }) => {
           <Button
             variant="ghost"
             size="sm"
-            aria-label="Open GitHub profile"
-            asChild
+            nativeButton={false}
+            aria-label="Email Me"
+            render={<a href={`mailto:${authorConfig.email}`} />}
           >
-            <a
-              href={`https://github.com/${authorConfig.social.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon />
-            </a>
+            <AtSignIcon />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            nativeButton={false}
+            aria-label="Open GitHub profile"
+            render={
+              <a
+                href={`https://github.com/${authorConfig.social.github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
+          >
+            <GitHubIcon />
           </Button>
           <Button
             variant="ghost"
@@ -89,10 +100,7 @@ const Header = ({ className }: { className?: string }) => {
             aria-label="Toggle theme"
             className="group"
           >
-            <SunIcon
-              className="group-hover:stroke-orange-600 dark:hidden"
-              aria-hidden="true"
-            />
+            <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
             <MoonIcon
               className="not-dark:hidden group-hover:stroke-yellow-400"
               aria-hidden="true"

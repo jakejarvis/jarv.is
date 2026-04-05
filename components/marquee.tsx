@@ -12,19 +12,15 @@ const Marquee = ({
   repeat?: number;
 }) => (
   <div
-    className={cn(
-      "group flex flex-row overflow-hidden [--gap:2rem] [gap:var(--gap)]",
-      className,
-    )}
+    className={cn("group flex flex-row [gap:var(--gap)] overflow-hidden [--gap:2rem]", className)}
     {...rest}
   >
     {Array(repeat)
       .fill(0)
       .map((_, i) => (
         <div
-          // biome-ignore lint/suspicious/noArrayIndexKey: identical clones for animation; no natural unique key exists
           key={i}
-          className="flex shrink-0 flex-row justify-around [gap:var(--gap)] motion-safe:animate-marquee"
+          className="motion-safe:animate-marquee flex shrink-0 flex-row justify-around [gap:var(--gap)]"
         >
           {children}
         </div>

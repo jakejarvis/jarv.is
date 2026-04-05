@@ -1,14 +1,15 @@
 import { ExternalLinkIcon, GitForkIcon, StarIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PageTitle } from "@/components/layout/page-title";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-
 import { createMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
+
 import { getContributions, getRepos } from "./github";
 
 export const metadata = createMetadata({
@@ -21,23 +22,18 @@ const Page = async () => {
   // don't fail the entire site build if the required config for this page is missing, just return a 404 since this page
   // would be mostly blank anyways.
   if (!process.env.GITHUB_TOKEN) {
-    console.error(
-      "[/projects] I can't fetch anything from GitHub without 'GITHUB_TOKEN' set!",
-    );
+    console.error("[/projects] I can't fetch anything from GitHub without 'GITHUB_TOKEN' set!");
     notFound();
   }
 
   // fetch the repos and contributions in parallel
-  const [contributions, repos] = await Promise.all([
-    getContributions(),
-    getRepos(),
-  ]);
+  const [contributions, repos] = await Promise.all([getContributions(), getRepos()]);
 
   return (
     <>
       <PageTitle canonical="/projects">Projects</PageTitle>
 
-      <h2 className="my-3.5 font-medium text-xl">
+      <h2 className="my-3.5 text-xl font-medium">
         <a
           href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`}
           target="_blank"
@@ -54,13 +50,13 @@ const Page = async () => {
             <ActivityCalendar data={contributions} noun="contribution" />
           </div>
         ) : (
-          <p className="my-4 text-center text-muted-foreground">
+          <p className="text-muted-foreground my-4 text-center">
             Unable to load contribution data at this time.
           </p>
         )}
       </Suspense>
 
-      <h2 className="my-3.5 font-medium text-xl">
+      <h2 className="my-3.5 text-xl font-medium">
         <a
           href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
           target="_blank"
@@ -76,32 +72,31 @@ const Page = async () => {
           {repos.map((repo) => (
             <div
               key={repo?.name}
-              className="h-fit space-y-1.5 rounded-2xl border-1 border-ring/30 px-4 py-3 shadow-xs"
+              className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs"
             >
               <a
                 href={repo?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block font-semibold text-[#0969da] text-base leading-relaxed hover:underline dark:text-[#76affa]"
+                className="inline-block text-base leading-relaxed font-semibold text-[#0969da] hover:underline dark:text-[#76affa]"
               >
                 {repo?.name}
               </a>
 
               {repo?.description && (
-                <p className="text-[13px] text-foreground/85 leading-relaxed">
+                <p className="text-foreground/85 text-[13px] leading-relaxed">
                   {repo?.description}
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-x-4 whitespace-nowrap text-xs leading-loose">
+              <div className="flex flex-wrap gap-x-4 text-xs leading-loose whitespace-nowrap">
                 {repo?.primaryLanguage && (
-                  <div className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground">
+                  <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-1.5">
                     {repo?.primaryLanguage.color && (
                       <span
                         className="inline-block size-3 rounded-full bg-[var(--language-color)]"
                         style={{
-                          ["--language-color" as string]:
-                            repo?.primaryLanguage.color,
+                          ["--language-color" as string]: repo?.primaryLanguage.color,
                         }}
                       />
                     )}
@@ -115,16 +110,13 @@ const Page = async () => {
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
+                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <StarIcon
-                      className="inline-block size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
+                    <StarIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
-                      {Intl.NumberFormat(
-                        process.env.NEXT_PUBLIC_SITE_LOCALE,
-                      ).format(repo?.stargazerCount)}
+                      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
+                        repo?.stargazerCount,
+                      )}
                     </span>
                   </a>
                 )}
@@ -135,21 +127,18 @@ const Page = async () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
-                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
+                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <GitForkIcon
-                      className="inline-block size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
+                    <GitForkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
-                      {Intl.NumberFormat(
-                        process.env.NEXT_PUBLIC_SITE_LOCALE,
-                      ).format(repo?.forkCount)}
+                      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
+                        repo?.forkCount,
+                      )}
                     </span>
                   </a>
                 )}
 
-                <div className="whitespace-nowrap text-muted-foreground">
+                <div className="text-muted-foreground whitespace-nowrap">
                   <Suspense fallback={null}>
                     <span>
                       Updated <RelativeTime date={repo?.pushedAt} />
@@ -161,24 +150,25 @@ const Page = async () => {
           ))}
         </div>
       ) : (
-        <p className="my-4 text-center text-muted-foreground">
+        <p className="text-muted-foreground my-4 text-center">
           Unable to load repository data at this time.
         </p>
       )}
 
-      <p className="mt-6 mb-0 text-center font-medium text-base">
-        <Button variant="link" asChild>
-          <a
-            href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View all
-            <ExternalLinkIcon
-              className="inline-block size-3.5 shrink-0"
-              aria-hidden="true"
+      <p className="mt-6 mb-0 text-center text-base font-medium">
+        <Button
+          variant="link"
+          nativeButton={false}
+          render={
+            <a
+              href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
+              target="_blank"
+              rel="noopener noreferrer"
             />
-          </a>
+          }
+        >
+          View all
+          <ExternalLinkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
         </Button>
       </p>
     </>

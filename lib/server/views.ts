@@ -2,6 +2,7 @@
 
 import { eq, inArray, sql } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
+
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
 
@@ -10,11 +11,7 @@ import { page } from "@/lib/db/schema";
  */
 export const getViewCount = async (slug: string): Promise<number> => {
   try {
-    const pages = await db
-      .select()
-      .from(page)
-      .where(eq(page.slug, slug))
-      .limit(1);
+    const pages = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
     return pages[0]?.views ?? 0;
   } catch (error) {
     console.error("[server/views] fatal error:", error);
@@ -25,14 +22,10 @@ export const getViewCount = async (slug: string): Promise<number> => {
 /**
  * Retrieves the numbers of views for an array of slugs, returning 0 for any that don't exist
  */
-export const getViewCountsForSlugs = async (
-  slugs: string[],
-): Promise<Record<string, number>> => {
+export const getViewCountsForSlugs = async (slugs: string[]): Promise<Record<string, number>> => {
   try {
     const pages = await db.select().from(page).where(inArray(page.slug, slugs));
-    const viewMap: Record<string, number> = Object.fromEntries(
-      slugs.map((s) => [s, 0]),
-    );
+    const viewMap: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
     for (const p of pages) {
       viewMap[p.slug] = p.views;
     }
@@ -83,6 +76,6 @@ export const incrementViews = async (slug: string): Promise<number> => {
     return result.views;
   } catch (error) {
     console.error("[server/views] error incrementing views:", error);
-    throw new Error("Failed to increment views");
+    throw new Error("Failed to increment views", { cause: error });
   }
 };

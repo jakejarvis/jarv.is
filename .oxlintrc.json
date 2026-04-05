@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["oxc", "eslint", "typescript", "react", "import", "unicorn", "nextjs", "jsx-a11y"],
+  "env": {
+    "builtin": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "import/no-named-as-default-member": "off",
+    "import/no-unassigned-import": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/iframe-has-title": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "no-await-in-loop": "off",
+    "no-new": "off",
+    "oxc/no-barrel-file": ["warn", { "threshold": 0 }],
+    "react/jsx-no-useless-fragment": "error",
+    "react/no-array-index-key": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/rules-of-hooks": "error",
+    "react/style-prop-object": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-sort": "off"
+  },
+  "ignorePatterns": ["node_modules", ".next", ".vercel", "drizzle"]
+}

@@ -1,6 +1,8 @@
 import { headers } from "next/headers";
+
 import { auth } from "@/lib/auth";
 import { type CommentWithUser, getComments } from "@/lib/server/comments";
+
 import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";
 import { SignIn } from "./sign-in";
@@ -31,10 +33,8 @@ const Comments = async ({ slug }: { slug: string }) => {
       {session ? (
         <NewCommentForm slug={slug} />
       ) : (
-        <div className="flex flex-col items-center justify-center gap-y-4 rounded-lg bg-muted/40 p-6">
-          <p className="text-center font-medium">
-            Join the discussion by signing in:
-          </p>
+        <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
+          <p className="text-center font-medium">Join the discussion by signing in:</p>
           <SignIn callbackPath={`/${slug}#comments`} />
         </div>
       )}
@@ -51,7 +51,7 @@ const Comments = async ({ slug }: { slug: string }) => {
           ))}
         </div>
       ) : (
-        <div className="py-8 text-center font-medium text-foreground/80 text-lg tracking-tight">
+        <div className="text-foreground/80 py-8 text-center text-lg font-medium tracking-tight">
           Be the first to comment!
         </div>
       )}

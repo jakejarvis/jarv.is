@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
+@import "shadcn/tailwind.css";
 @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 @custom-variant dark (&:where(.dark *));
@@ -61,6 +61,8 @@
 
 :root {
   --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -78,11 +80,11 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -99,12 +101,10 @@
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -123,11 +123,11 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -185,18 +185,170 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
+
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+
   /* https://ui.shadcn.com/docs/components/button#cursor */
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  .prose {
+    @apply text-foreground/90 max-w-none text-sm leading-7;
+
+    /* Headings */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply text-primary scroll-m-20 font-semibold tracking-tight;
+    }
+    h1 {
+      @apply mt-8 mb-4 text-2xl leading-tight;
+    }
+    h2 {
+      @apply mt-8 mb-4 border-b pb-2 text-xl leading-tight;
+    }
+    h3 {
+      @apply mt-6 mb-3 text-lg leading-snug;
+    }
+    h4 {
+      @apply mt-6 mb-2 text-base leading-snug;
+    }
+    h5 {
+      @apply mt-4 mb-2 text-base leading-snug;
+    }
+    h6 {
+      @apply mt-4 mb-2 text-sm leading-snug;
+    }
+
+    /* Text blocks */
+    p {
+      @apply text-foreground/90 my-4;
+    }
+    strong {
+      @apply text-primary font-semibold;
+    }
+    em {
+      @apply italic;
+    }
+
+    /* Separators */
+    hr {
+      @apply my-8 border-0 border-t;
+      border-color: var(--border);
+    }
+
+    /* Links */
+    a {
+      @apply text-primary font-medium underline underline-offset-4 transition-colors;
+    }
+    a:hover {
+      @apply opacity-80;
+    }
+
+    /* Lists */
+    ul {
+      @apply my-4 ml-6 list-disc;
+    }
+    ol {
+      @apply my-4 ml-6 list-decimal;
+    }
+    li {
+      @apply text-foreground/80;
+    }
+    li + li {
+      @apply mt-1;
+    }
+    li > ul,
+    li > ol {
+      @apply my-2;
+    }
+
+    /* Blockquotes */
+    blockquote {
+      @apply my-6 border-l-4 pl-4 italic;
+      border-color: var(--border);
+    }
+    blockquote p {
+      @apply text-foreground/75;
+    }
+    blockquote *::before,
+    blockquote *::after {
+      content: none;
+    }
+
+    /* Inline code */
+    :not(pre) > code {
+      @apply bg-muted text-foreground rounded-sm px-1 py-0.5 text-[0.9em];
+    }
+    :not(pre) > code::before,
+    :not(pre) > code::after {
+      content: none;
+    }
+
+    /* Code blocks */
+    pre {
+      @apply bg-muted my-6 overflow-x-auto rounded-lg p-4 text-sm leading-6;
+    }
+    pre code {
+      @apply bg-transparent p-0 text-inherit;
+    }
+    pre code::before,
+    pre code::after {
+      content: none;
+    }
+
+    /* Tables */
+    table {
+      @apply my-6 w-full border-collapse text-sm;
+    }
+    thead {
+      @apply border-b;
+    }
+    tr {
+      @apply border-b;
+    }
+    th {
+      @apply text-primary px-3 py-2 text-left align-middle font-semibold;
+    }
+    td {
+      @apply text-foreground/90 px-3 py-2 align-middle;
+    }
+
+    /* Images / media */
+    img {
+      @apply my-6 rounded-lg border;
+    }
+    video {
+      @apply my-6 rounded-lg;
+    }
+
+    /* Misc */
+    kbd {
+      @apply bg-muted rounded border px-1.5 py-0.5 text-xs;
+    }
+    mark {
+      @apply bg-muted rounded px-1;
+    }
+
+    /* First/last child spacing cleanup */
+    > :first-child {
+      @apply mt-0;
+    }
+    > :last-child {
+      @apply mb-0;
+    }
   }
 }
 

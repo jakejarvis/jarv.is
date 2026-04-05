@@ -1,5 +1,6 @@
 import type { CommentWithUser } from "@/lib/server/comments";
 import { cn } from "@/lib/utils";
+
 import { CommentSingle } from "./comment-single";
 
 /** Maximum nesting depth for comment threads (0-indexed, so 2 = 3 levels deep) */
@@ -20,12 +21,7 @@ const CommentThread = ({
     <CommentSingle comment={comment} />
 
     {replies.length > 0 && (
-      <div
-        className={cn(
-          "mt-6 space-y-6",
-          level < MAX_NESTING_LEVEL && "ml-6 border-l-2 pl-6",
-        )}
-      >
+      <div className={cn("mt-6 space-y-6", level < MAX_NESTING_LEVEL && "ml-6 border-l-2 pl-6")}>
         {replies.map((reply) => (
           <CommentThread
             key={reply.id}

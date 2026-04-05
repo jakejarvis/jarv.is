@@ -1,6 +1,7 @@
 import { ViewTransition } from "react";
 import { JsonLd } from "react-schemaorg";
 import type { Person, WebSite } from "schema-dts";
+
 import { Analytics } from "@/app/analytics";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -8,18 +9,18 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-
 import { Inter, JetBrainsMono } from "@/lib/fonts";
-import { defaultMetadata } from "@/lib/metadata";
 
 import "./globals.css";
+import { defaultMetadata } from "@/lib/metadata";
+import { cn } from "@/lib/utils";
 
 export const metadata = defaultMetadata;
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html
     lang={process.env.NEXT_PUBLIC_SITE_LOCALE}
-    className={`${Inter.variable} ${JetBrainsMono.variable}`}
+    className={cn(Inter.variable, JetBrainsMono.variable)}
     suppressHydrationWarning
   >
     <head>
@@ -29,11 +30,9 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
           "@type": "Person",
           "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#person`,
           name: authorConfig.name,
-          // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
           url: process.env.NEXT_PUBLIC_BASE_URL!,
           image: [`${process.env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
           sameAs: [
-            // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
             process.env.NEXT_PUBLIC_BASE_URL!,
             `https://${authorConfig.social?.mastodon}`,
             `https://github.com/${authorConfig.social?.github}`,
@@ -62,19 +61,16 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
       />
     </head>
 
-    <body className="bg-background font-sans text-foreground antialiased">
+    <body className="bg-background text-foreground font-sans antialiased">
       <Providers>
         <Header />
-        <div className="mx-auto mt-4 w-full max-w-4xl px-5">
-          <main>
-            <ViewTransition>{children}</ViewTransition>
-          </main>
-        </div>
+        <main className="mx-auto mt-4 w-full max-w-[720px] px-5">
+          <ViewTransition>{children}</ViewTransition>
+        </main>
         <Footer />
-
         <Toaster position="bottom-center" hotkey={[]} />
-        <Analytics />
       </Providers>
+      <Analytics />
     </body>
   </html>
 );

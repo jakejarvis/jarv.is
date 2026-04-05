@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+
 import { cn } from "@/lib/utils";
 
 const Gist = async ({
@@ -17,6 +18,8 @@ const Gist = async ({
   cacheTag("gist", `gist-${id}${file ? `-${file}` : ""}`);
 
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
+
+  const iframeTitle = title ?? `GitHub Gist ${id}${file ? ` - ${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
   const scriptResponse = await fetch(scriptUrl);
@@ -49,7 +52,8 @@ const Gist = async ({
       scrolling="no"
       id={iframeId}
       srcDoc={iframeHtml}
-      title={title || `GitHub Gist ${id}${file ? ` - ${file}` : ""}`}
+      title={iframeTitle}
+      sandbox="allow-scripts"
       className={cn("overflow-hidden border-none", className)}
       {...rest}
       suppressHydrationWarning

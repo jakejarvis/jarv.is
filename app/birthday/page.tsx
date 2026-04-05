@@ -1,8 +1,8 @@
 import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
+
 import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
-
 import { createMetadata } from "@/lib/metadata";
 
 import thumbnail from "./thumbnail.png";

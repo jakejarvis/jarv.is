@@ -1,4 +1,5 @@
 import { getImageProps } from "next/image";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 

@@ -24,6 +24,7 @@ const CodePen = ({
       editable: `${!!editable}`,
     })}`}
     title={title}
+    sandbox="allow-scripts allow-popups allow-forms"
     className={cn("h-[500px] w-full overflow-hidden border-none", className)}
     {...rest}
   />

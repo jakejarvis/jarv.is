@@ -1,9 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
-import siteConfig from "@/lib/config/site";
 
+import siteConfig from "@/lib/config/site";
 import { loadGoogleFont } from "@/lib/og-utils";
 import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 
@@ -52,11 +53,7 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
   }
 };
 
-const OpenGraphImage = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
+const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   try {
     const { slug } = await params;
 
@@ -66,9 +63,7 @@ const OpenGraphImage = async ({
 
     // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
     const [postImg, avatarImg] = await Promise.all([
-      frontmatter.image
-        ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter.image}`)
-        : null,
+      frontmatter.image ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter.image}`) : null,
       getLocalImage("app/avatar.jpg"),
     ]);
 
@@ -139,7 +134,7 @@ const OpenGraphImage = async ({
               }}
             >
               {avatarImg && (
-                // biome-ignore lint/performance/noImgElement: Satori/ImageResponse requires raw <img> tags
+                // oxlint-disable-next-line nextjs/no-img-element - Satori/ImageResponse requires raw <img> tags
                 <img
                   // @ts-expect-error
                   src={avatarImg}
@@ -213,14 +208,11 @@ const OpenGraphImage = async ({
                 lineHeight: "1.2",
               }}
             >
-              {new Date(frontmatter.date).toLocaleDateString(
-                process.env.NEXT_PUBLIC_SITE_LOCALE,
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                },
-              )}
+              {new Date(frontmatter.date).toLocaleDateString(process.env.NEXT_PUBLIC_SITE_LOCALE, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </div>
           </div>
 
@@ -232,7 +224,7 @@ const OpenGraphImage = async ({
                 flexGrow: 0,
               }}
             >
-              {/* biome-ignore lint/performance/noImgElement: Satori/ImageResponse requires raw <img> tags */}
+              {/* oxlint-disable-next-line nextjs/no-img-element - Satori/ImageResponse requires raw <img> tags */}
               <img
                 // @ts-expect-error
                 src={postImg}
@@ -266,10 +258,7 @@ const OpenGraphImage = async ({
       },
     );
   } catch (error) {
-    console.error(
-      "[/notes/[slug]/opengraph-image] error generating open graph image:",
-      error,
-    );
+    console.error("[/notes/[slug]/opengraph-image] error generating open graph image:", error);
     notFound();
   }
 };

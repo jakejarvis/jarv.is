@@ -2,22 +2,14 @@
 
 import { EyeIcon, MessagesSquareIcon } from "lucide-react";
 import Link from "next/link";
-import {
-  createContext,
-  type ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
+
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-
 import { getAllCommentCounts } from "@/lib/server/comments";
 import { getAllViewCounts } from "@/lib/server/views";
 
-const numberFormatter = new Intl.NumberFormat(
-  process.env.NEXT_PUBLIC_SITE_LOCALE,
-);
+const numberFormatter = new Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE);
 
 type Stats = {
   views: Record<string, number>;
@@ -53,9 +45,7 @@ export const PostStatsProvider = ({ children }: { children: ReactNode }) => {
       });
   }, []);
 
-  return (
-    <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>
-  );
+  return <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>;
 };
 
 /**
@@ -80,10 +70,7 @@ const PostStats = ({ slug }: { slug: string }) => {
   return (
     <>
       {viewCount > 0 && (
-        <Badge
-          variant="secondary"
-          className="gap-[5px] text-foreground/80 tabular-nums"
-        >
+        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums">
           <EyeIcon className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
         </Badge>
@@ -92,19 +79,16 @@ const PostStats = ({ slug }: { slug: string }) => {
       {commentCount > 0 && (
         <Badge
           variant="secondary"
-          className="gap-[5px] text-foreground/80 tabular-nums"
-          asChild
-        >
-          <Link
-            href={`/${slug}#comments`}
-            title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
-          >
-            <MessagesSquareIcon
-              className="text-foreground/65"
-              aria-hidden="true"
+          className="text-foreground/80 gap-[5px] tabular-nums"
+          render={
+            <Link
+              href={`/${slug}#comments`}
+              title={`${numberFormatter.format(commentCount)} ${commentCount === 1 ? "comment" : "comments"}`}
             />
-            {numberFormatter.format(commentCount)}
-          </Link>
+          }
+        >
+          <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
+          {numberFormatter.format(commentCount)}
         </Badge>
       )}
     </>

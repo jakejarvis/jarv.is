@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 
 export const defaultMetadata: Metadata = {
-  // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: {
     template: `%s – ${siteConfig.name}`,
@@ -49,16 +49,12 @@ export const defaultMetadata: Metadata = {
  * Helper function to deep merge a page's metadata into the default site metadata
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
  */
-export const createMetadata = (
-  metadata: Metadata & { canonical: string },
-): Metadata => ({
+export const createMetadata = (metadata: Metadata & { canonical: string }): Metadata => ({
   ...defaultMetadata,
   ...metadata,
   openGraph: {
     ...defaultMetadata.openGraph,
-    // biome-ignore lint/style/noNonNullAssertion: title is always provided by callers
     title: metadata.title!,
-    // biome-ignore lint/style/noNonNullAssertion: description is always provided by callers
     description: metadata.description!,
     url: metadata.canonical,
     ...metadata.openGraph,

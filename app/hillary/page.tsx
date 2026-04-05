@@ -1,8 +1,8 @@
 import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
+
 import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
-
 import { createMetadata } from "@/lib/metadata";
 
 import thumbnail from "./thumbnail.png";
@@ -50,7 +50,7 @@ const Page = () => (
       poster={thumbnail.src}
     />
 
-    <p className="mx-4 mt-5 mb-0 text-center text-muted-foreground text-sm leading-relaxed">
+    <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
       Video is property of{" "}
       <a
         href="https://www.hillaryclinton.com/"

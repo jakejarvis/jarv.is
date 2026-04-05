@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "sortImports": {
+    "groups": [
+      "builtin",
+      "external",
+      ["internal", "subpath"],
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ],
+    "internalPattern": ["@/"],
+    "newlinesBetween": true,
+    "order": "asc"
+  },
+  "sortTailwindcss": {
+    "attributes": ["className"],
+    "functions": ["cn", "clsx", "cva"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.json", "**/*.jsonc"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ],
+  "ignorePatterns": ["node_modules", ".next", ".vercel", "drizzle"]
+}

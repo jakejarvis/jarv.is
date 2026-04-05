@@ -18,10 +18,7 @@ const nextConfig = {
     ],
   },
   outputFileTracingIncludes: {
-    "/notes/[slug]/opengraph-image": [
-      "./notes/**/*",
-      "./app/opengraph-image.jpg",
-    ],
+    "/notes/[slug]/opengraph-image": ["./notes/**/*", "./app/opengraph-image.jpg"],
   },
   productionBrowserSourceMaps: true,
   experimental: {
@@ -30,9 +27,7 @@ const nextConfig = {
       // fix CSRF errors from tor reverse proxy
       allowedOrigins: [
         "jarv.is",
-        ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
-          ? [process.env.NEXT_PUBLIC_ONION_DOMAIN]
-          : []),
+        ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
       ],
     },
     staleTimes: {
@@ -41,6 +36,7 @@ const nextConfig = {
   },
   headers: async () => [
     // https://community.torproject.org/onion-services/advanced/onion-location/
+    // oxlint-disable-next-line unicorn/no-useless-spread
     ...(process.env.NEXT_PUBLIC_ONION_DOMAIN
       ? [
           {
@@ -125,7 +121,6 @@ const nextConfig = {
 
 // my own macgyvered version of next-compose-plugins (RIP)
 const nextPlugins: Array<
-  // biome-ignore lint/suspicious/noExplicitAny: plugin options tuple is intentionally untyped
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
   require("@next/mdx")({
@@ -139,31 +134,15 @@ const nextPlugins: Array<
       rehypePlugins: [
         "rehype-unwrap-images",
         "rehype-slug",
-        [
-          "rehype-wrapper",
-          {
-            className: [
-              "prose prose-neutral dark:prose-invert prose-sm max-w-none",
-              "prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight",
-              "prose-p:text-foreground/90 prose-strong:text-primary prose-li:text-foreground/80",
-              "prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4",
-              "prose-blockquote:[&_p]:text-foreground/75 prose-blockquote:*:before:content-none prose-blockquote:*:after:content-none",
-              "prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none",
-              "[&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]",
-            ].join(" "),
-          },
-        ],
         "rehype-mdx-code-props",
         "rehype-mdx-import-media",
       ],
     },
   }),
-  require("botid/next/config").withBotId,
 ];
 
 export default (): NextConfig =>
   nextPlugins.reduce(
-    (acc, plugin) =>
-      Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc),
+    (acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)),
     nextConfig,
   );

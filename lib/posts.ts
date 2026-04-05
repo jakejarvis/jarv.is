@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+
 import glob from "fast-glob";
 import { decode } from "html-entities";
 import { unified } from "unified";
@@ -40,9 +41,7 @@ export const getSlugs = async (): Promise<string[]> => {
   });
 
   // strip the .mdx extensions from filenames
-  const slugs = mdxFiles.map((fileName) =>
-    fileName.replace(/\/index\.mdx$/, ""),
-  );
+  const slugs = mdxFiles.map((fileName) => fileName.replace(/\/index\.mdx$/, ""));
 
   return slugs;
 };
@@ -92,10 +91,7 @@ export const getFrontMatter: {
         permalink: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
       } as FrontMatter;
     } catch (error) {
-      console.error(
-        `Failed to load front matter for post with slug "${slug}":`,
-        error,
-      );
+      console.error(`Failed to load front matter for post with slug "${slug}":`, error);
       return undefined;
     }
   }
@@ -110,8 +106,7 @@ export const getFrontMatter: {
 
     // sort the results reverse chronologically and return
     return posts.sort(
-      (post1, post2) =>
-        new Date(post2.date).getTime() - new Date(post1.date).getTime(),
+      (post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime(),
     );
   }
 
@@ -153,11 +148,7 @@ export const getContent = async (slug: string): Promise<string | undefined> => {
         ],
       })
       .use(rehypeStringify)
-      .process(
-        await fs.readFile(
-          path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`),
-        ),
-      );
+      .process(await fs.readFile(path.join(process.cwd(), `${POSTS_DIR}/${slug}/index.mdx`)));
 
     // convert the parsed content to a string with "safe" HTML
     return content
@@ -166,10 +157,7 @@ export const getContent = async (slug: string): Promise<string | undefined> => {
       .replaceAll("<p></p>", "")
       .trim();
   } catch (error) {
-    console.error(
-      `Failed to load/parse content for post with slug "${slug}":`,
-      error,
-    );
+    console.error(`Failed to load/parse content for post with slug "${slug}":`, error);
     return undefined;
   }
 };

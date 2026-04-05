@@ -3,6 +3,7 @@ import Image from "next/image";
 import { EmbeddedTweet, TweetNotFound } from "react-tweet";
 import type { Tweet as TweetType } from "react-tweet/api";
 import { fetchTweet } from "react-tweet/api";
+
 import { cn } from "@/lib/utils";
 
 const Tweet = async ({ id, className }: { id: string; className?: string }) => {

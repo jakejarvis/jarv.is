@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CountUp } from "@/components/count-up";
 
+import { CountUp } from "@/components/count-up";
 import { incrementViews } from "@/lib/server/views";
 
 const ViewCounter = ({ slug }: { slug: string }) => {
@@ -15,8 +15,8 @@ const ViewCounter = ({ slug }: { slug: string }) => {
       .then((hits) => {
         setViews(hits);
       })
-      .catch((error) => {
-        console.error("[view-counter] error:", error);
+      .catch((err) => {
+        console.error("[view-counter] error:", err);
         setError(true);
       });
   }, [slug]);

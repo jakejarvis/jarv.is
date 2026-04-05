@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Markdown from "react-markdown";
+
 import { RelativeTime } from "@/components/relative-time";
 import { rehypeExternalLinks } from "@/lib/rehype";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import type { CommentWithUser } from "@/lib/server/comments";
 import { cn } from "@/lib/utils";
+
 import { CommentActions } from "./comment-actions";
 import { CommentAvatar } from "./comment-avatar";
 
@@ -44,29 +46,17 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
             className={cn(
               "isolate max-w-none text-[0.875rem] leading-relaxed",
               "[&_p]:my-5 [&_p]:first:mt-0 [&_p]:last:mb-0",
-              "[&_a]:text-primary [&_a]:no-underline [&_a]:decoration-2 [&_a]:decoration-primary/40 [&_a]:underline-offset-4 [&_a]:hover:underline",
-              "[&_code]:rounded-sm [&_code]:bg-muted [&_code]:px-[0.3rem] [&_code]:py-[0.2rem] [&_code]:font-medium",
+              "[&_a]:text-primary [&_a]:decoration-primary/40 [&_a]:no-underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_a]:hover:underline",
+              "[&_code]:bg-muted [&_code]:rounded-sm [&_code]:px-[0.3rem] [&_code]:py-[0.2rem] [&_code]:font-medium",
               "group-has-data-[intent=edit]:hidden", // hides the rendered comment when its own edit form is active
             )}
           >
             <Markdown
               remarkPlugins={[remarkGfm, remarkSmartypants]}
               rehypePlugins={[
-                [
-                  rehypeExternalLinks,
-                  { target: "_blank", rel: "noopener noreferrer nofollow" },
-                ],
+                [rehypeExternalLinks, { target: "_blank", rel: "noopener noreferrer nofollow" }],
               ]}
-              allowedElements={[
-                "p",
-                "a",
-                "em",
-                "strong",
-                "code",
-                "pre",
-                "blockquote",
-                "del",
-              ]}
+              allowedElements={["p", "a", "em", "strong", "code", "pre", "blockquote", "del"]}
             >
               {comment.content}
             </Markdown>

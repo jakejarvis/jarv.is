@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { getAllViewCounts } from "@/lib/server/views";
 
 export const GET = async (): Promise<
@@ -18,9 +19,9 @@ export const GET = async (): Promise<
   const total = {
     hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),
   };
-  const pages = Object.entries(views).map(([slug, views]) => ({
+  const pages = Object.entries(views).map(([slug, count]) => ({
     slug,
-    hits: views,
+    hits: count,
   }));
 
   pages.sort((a, b) => b.hits - a.hits);

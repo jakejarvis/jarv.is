@@ -37,14 +37,7 @@ const Video = ({
 
           if (extension === "vtt") {
             return (
-              <track
-                key={file}
-                kind="subtitles"
-                src={file}
-                srcLang="en"
-                label="English"
-                default
-              />
+              <track key={file} kind="subtitles" src={file} srcLang="en" label="English" default />
             );
           } else {
             return <source key={file} src={file} type={`video/${extension}`} />;

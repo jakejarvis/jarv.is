@@ -34,7 +34,6 @@
   - Planetscale Postgres
   - Drizzle ORM
   - Better Auth
-  - Resend
   - ...and more: https://jarv.is/uses
 
 # VIEW SOURCE

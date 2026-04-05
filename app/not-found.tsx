@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Video } from "@/components/video";
 
@@ -21,12 +22,15 @@ const Page = () => (
     />
 
     <div className="mt-6 text-center">
-      <h1 className="my-2 font-semibold text-2xl md:text-3xl">
-        Page Not Found
-      </h1>
+      <h1 className="my-2 text-2xl font-semibold md:text-3xl">Page Not Found</h1>
 
-      <Button className="mt-4 mb-0 text-[15px] leading-none" size="lg" asChild>
-        <Link href="/">Go home?</Link>
+      <Button
+        className="mt-4 mb-0 text-[15px] leading-none"
+        size="lg"
+        nativeButton={false}
+        render={<Link href="/" />}
+      >
+        Go home?
       </Button>
     </div>
   </>

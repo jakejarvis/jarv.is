@@ -5,7 +5,6 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "editor.rulers": [120],
         "extensions.ignoreRecommendations": true,
         "git.allowForcePush": true,
         "git.autofetch": true,
@@ -21,15 +20,8 @@
         "typescript.tsserver.log": "off",
         "typescript.updateImportsOnFileMove.enabled": "always"
       },
-      "extensions": [
-        "biomejs.biome",
-        "bradlc.vscode-tailwindcss",
-        "unifiedjs.vscode-mdx"
-      ]
+      "extensions": ["bradlc.vscode-tailwindcss", "oxc.oxc-vscode", "unifiedjs.vscode-mdx"]
     }
-  },
-  "tasks": {
-    "build": "pnpm install --frozen-lockfile && pnpm build"
   },
   "forwardPorts": [3000],
   "containerEnv": {

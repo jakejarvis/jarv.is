@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { buildFeed } from "@/lib/build-feed";
 
 export const GET = async () => {

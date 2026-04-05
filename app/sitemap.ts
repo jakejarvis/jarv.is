@@ -1,4 +1,5 @@
 import path from "node:path";
+
 import glob from "fast-glob";
 import type { MetadataRoute } from "next";
 
@@ -19,7 +20,6 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      // biome-ignore lint/style/noNonNullAssertion: expected to be set in env
       url: process.env.NEXT_PUBLIC_BASE_URL!,
       priority: 1.0,
       lastModified: new Date(),
