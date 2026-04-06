@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
 
-import backgroundImg from "../public/images/zip/sundar.jpg";
+import backgroundImg from "../../public/images/zip/sundar.jpg";
 
 export const Route = createFileRoute("/zip")({
   head: () =>

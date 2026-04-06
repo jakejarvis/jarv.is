@@ -11,6 +11,7 @@ import rehypeMdxCodeProps from "rehype-mdx-code-props";
 import rehypeMdxImportMedia from "rehype-mdx-import-media";
 import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
+import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import { defineConfig } from "vite-plus";
@@ -105,7 +106,7 @@ export default defineConfig({
     tanstackStart(),
     mdx({
       providerImportSource: "@mdx-js/react",
-      remarkPlugins: [remarkGfm, remarkSmartypants],
+      remarkPlugins: [remarkFrontmatter, remarkGfm, remarkSmartypants],
       rehypePlugins: [
         rehypeUnwrapImages,
         rehypeSlug,

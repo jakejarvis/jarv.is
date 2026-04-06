@@ -6,7 +6,7 @@ import { PageTitle } from "@/components/layout/page-title";
 import { Video } from "@/components/video";
 import { createHead } from "@/lib/head";
 
-import thumbnail from "../public/images/birthday/thumbnail.png";
+import thumbnail from "../../public/images/birthday/thumbnail.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://jarv.is";
 

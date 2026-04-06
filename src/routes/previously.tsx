@@ -7,20 +7,20 @@ import { PageTitle } from "@/components/layout/page-title";
 import { Marquee } from "@/components/marquee";
 import { createHead } from "@/lib/head";
 
-import img2002_02 from "../public/images/previously/images/2002_02.png";
-import img2002_10 from "../public/images/previously/images/2002_10.png";
-import img2003_08 from "../public/images/previously/images/2003_08.png";
-import img2004_11 from "../public/images/previously/images/2004_11.png";
-import img2006_04 from "../public/images/previously/images/2006_04.png";
-import img2006_05 from "../public/images/previously/images/2006_05.png";
-import img2007_01 from "../public/images/previously/images/2007_01.png";
-import img2007_04 from "../public/images/previously/images/2007_04.png";
-import img2007_05 from "../public/images/previously/images/2007_05.png";
-import img2009_07 from "../public/images/previously/images/2009_07.png";
-import img2012_09 from "../public/images/previously/images/2012_09.png";
-import img2018_04 from "../public/images/previously/images/2018_04.png";
-import img2020_03 from "../public/images/previously/images/2020_03.png";
-import waybackImg from "../public/images/previously/images/wayback.png";
+import img2002_02 from "../../public/images/previously/images/2002_02.png";
+import img2002_10 from "../../public/images/previously/images/2002_10.png";
+import img2003_08 from "../../public/images/previously/images/2003_08.png";
+import img2004_11 from "../../public/images/previously/images/2004_11.png";
+import img2006_04 from "../../public/images/previously/images/2006_04.png";
+import img2006_05 from "../../public/images/previously/images/2006_05.png";
+import img2007_01 from "../../public/images/previously/images/2007_01.png";
+import img2007_04 from "../../public/images/previously/images/2007_04.png";
+import img2007_05 from "../../public/images/previously/images/2007_05.png";
+import img2009_07 from "../../public/images/previously/images/2009_07.png";
+import img2012_09 from "../../public/images/previously/images/2012_09.png";
+import img2018_04 from "../../public/images/previously/images/2018_04.png";
+import img2020_03 from "../../public/images/previously/images/2020_03.png";
+import waybackImg from "../../public/images/previously/images/wayback.png";
 
 export const Route = createFileRoute("/previously")({
   head: () =>

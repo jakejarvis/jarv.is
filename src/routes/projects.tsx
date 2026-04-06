@@ -147,6 +147,7 @@ function ProjectsPage() {
       <p className="mt-6 mb-0 text-center text-base font-medium">
         <Button
           variant="link"
+          nativeButton={false}
           render={
             <a
               href={`https://github.com/${GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}

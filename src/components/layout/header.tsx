@@ -72,6 +72,7 @@ const Header = ({ className }: { className?: string }) => {
             variant="ghost"
             size="sm"
             aria-label="Send email"
+            nativeButton={false}
             render={<a href={`mailto:${authorConfig.email}`} />}
           >
             <AtSignIcon />
@@ -80,6 +81,7 @@ const Header = ({ className }: { className?: string }) => {
             variant="ghost"
             size="sm"
             aria-label="Open GitHub profile"
+            nativeButton={false}
             render={
               <a
                 href={`https://github.com/${authorConfig.social.github}`}

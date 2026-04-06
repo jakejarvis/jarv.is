@@ -4,7 +4,7 @@ import { Image } from "@/components/image";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
 
-import desktopImg from "../public/images/uses/desktop.png";
+import desktopImg from "../../public/images/uses/desktop.png";
 
 export const Route = createFileRoute("/uses")({
   head: () =>

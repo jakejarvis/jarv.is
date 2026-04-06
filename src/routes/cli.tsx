@@ -4,7 +4,7 @@ import { Image } from "@/components/image";
 import { PageTitle } from "@/components/layout/page-title";
 import { createHead } from "@/lib/head";
 
-import screenshotImg from "../public/images/cli/screenshot.png";
+import screenshotImg from "../../public/images/cli/screenshot.png";
 
 export const Route = createFileRoute("/cli")({
   head: () =>
