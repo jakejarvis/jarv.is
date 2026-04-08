@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark *));
 
@@ -201,159 +202,7 @@
     cursor: pointer;
   }
 
-  .prose {
-    @apply text-foreground/90 max-w-none text-sm leading-7;
-
-    /* Headings */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      @apply text-primary scroll-m-20 font-semibold tracking-tight;
-    }
-    h1 {
-      @apply mt-8 mb-4 text-2xl leading-tight;
-    }
-    h2 {
-      @apply mt-8 mb-4 border-b pb-2 text-xl leading-tight;
-    }
-    h3 {
-      @apply mt-6 mb-3 text-lg leading-snug;
-    }
-    h4 {
-      @apply mt-6 mb-2 text-base leading-snug;
-    }
-    h5 {
-      @apply mt-4 mb-2 text-base leading-snug;
-    }
-    h6 {
-      @apply mt-4 mb-2 text-sm leading-snug;
-    }
-
-    /* Text blocks */
-    p {
-      @apply text-foreground/90 my-4;
-    }
-    strong {
-      @apply text-primary font-semibold;
-    }
-    em {
-      @apply italic;
-    }
-
-    /* Separators */
-    hr {
-      @apply my-8 border-0 border-t;
-      border-color: var(--border);
-    }
-
-    /* Links */
-    a {
-      @apply text-primary font-medium underline underline-offset-4 transition-colors;
-    }
-    a:hover {
-      @apply opacity-80;
-    }
-
-    /* Lists */
-    ul {
-      @apply my-4 ml-6 list-disc;
-    }
-    ol {
-      @apply my-4 ml-6 list-decimal;
-    }
-    li {
-      @apply text-foreground/80;
-    }
-    li + li {
-      @apply mt-1;
-    }
-    li > ul,
-    li > ol {
-      @apply my-2;
-    }
-
-    /* Blockquotes */
-    blockquote {
-      @apply my-6 border-l-4 pl-4 italic;
-      border-color: var(--border);
-    }
-    blockquote p {
-      @apply text-foreground/75;
-    }
-    blockquote *::before,
-    blockquote *::after {
-      content: none;
-    }
-
-    /* Inline code */
-    :not(pre) > code {
-      @apply bg-muted text-foreground rounded-sm px-1 py-0.5 text-[0.9em];
-    }
-    :not(pre) > code::before,
-    :not(pre) > code::after {
-      content: none;
-    }
-
-    /* Code blocks */
-    pre {
-      @apply bg-muted my-6 overflow-x-auto rounded-lg p-4 text-sm leading-6;
-    }
-    pre code {
-      @apply bg-transparent p-0 text-inherit;
-    }
-    pre code::before,
-    pre code::after {
-      content: none;
-    }
-
-    /* Tables */
-    table {
-      @apply my-6 w-full border-collapse text-sm;
-    }
-    thead {
-      @apply border-b;
-    }
-    tr {
-      @apply border-b;
-    }
-    th {
-      @apply text-primary px-3 py-2 text-left align-middle font-semibold;
-    }
-    td {
-      @apply text-foreground/90 px-3 py-2 align-middle;
-    }
-
-    /* Images / media */
-    img {
-      @apply my-6 rounded-lg border;
-    }
-    video {
-      @apply my-6 rounded-lg;
-    }
-
-    /* Misc */
-    kbd {
-      @apply bg-muted rounded border px-1.5 py-0.5 text-xs;
-    }
-    mark {
-      @apply bg-muted rounded px-1;
-    }
-
-    /* First/last child spacing cleanup */
-    > :first-child {
-      @apply mt-0;
-    }
-    > :last-child {
-      @apply mb-0;
-    }
-  }
-}
-
-/* View Transitions - uses tw-animate-css's `enter` and `exit` keyframes */
-@layer base {
+  /* View Transitions - uses tw-animate-css's `enter` and `exit` keyframes */
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-group(*),
     ::view-transition-old(*),
@@ -382,4 +231,9 @@
     --tw-enter-translate-y: 12px;
     animation: 200ms ease-out forwards enter;
   }
+}
+
+/* Prose */
+.markdown {
+  @apply prose prose-neutral dark:prose-invert prose-sm prose-hr:border-foreground/20 prose-headings:font-semibold prose-headings:text-primary prose-headings:tracking-tight prose-p:text-foreground/90 prose-strong:text-primary prose-li:text-foreground/80 prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4 prose-blockquote:[&_p]:text-foreground/75 prose-blockquote:*:before:content-none prose-blockquote:*:after:content-none prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none max-w-none [&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)];
 }

@@ -78,18 +78,18 @@ const Page = async () => {
                 href={repo?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-base leading-relaxed font-semibold text-[#0969da] hover:underline dark:text-[#76affa]"
+                className="inline-block text-[15px] font-semibold text-[#0969da] hover:underline dark:text-[#76affa]"
               >
                 {repo?.name}
               </a>
 
               {repo?.description && (
-                <p className="text-foreground/85 text-[13px] leading-relaxed">
+                <p className="text-foreground/85 text-xs leading-relaxed text-pretty">
                   {repo?.description}
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-x-4 text-xs leading-loose whitespace-nowrap">
+              <div className="flex flex-wrap gap-x-4 text-[11px] leading-loose whitespace-nowrap">
                 {repo?.primaryLanguage && (
                   <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-1.5">
                     {repo?.primaryLanguage.color && (

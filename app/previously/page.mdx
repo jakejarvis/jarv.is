@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export const WarningMarquee = () => (
   <Marquee>
-    <span className="leading-none">
+    <span className="leading-none text-foreground">
       🚨 Trigger warning: excessive marquees, animated GIFs, Comic Sans, popups,{" "}
       <code className="text-[0.9rem] font-normal">
         color: <span className="text-[#32cd32]">limegreen</span>
@@ -36,7 +36,8 @@ _Previously on the [Cringey Chronicles&trade;](https://web.archive.org/web/20010
 
 <WarningMarquee />
 
-[<Win95Icon className="inline size-4 align-text-top" /> Click here for the _full_ experience (at your own risk).](https://y2k.pages.dev)
+<Win95Icon className="inline size-4 align-text-top" /> [Click here for the _full_ experience (at
+your own risk).](https://y2k.pages.dev)
 
 <iframe
   src="https://jakejarvis.github.io/my-first-website/"

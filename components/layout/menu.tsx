@@ -32,7 +32,7 @@ const Menu = () => {
             nativeButton={false}
             aria-label={item.text}
             data-current={isCurrent || undefined}
-            className="data-current:bg-accent/60 data-current:text-accent-foreground text-[15px] leading-none"
+            className="data-current:bg-accent/60 data-current:text-accent-foreground text-sm leading-none"
             render={<Link href={item.href} />}
           >
             {item.text}

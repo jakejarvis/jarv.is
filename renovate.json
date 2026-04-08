@@ -5,18 +5,6 @@
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "rangeStrategy": "bump",
-  "packageRules": [
-    {
-      "matchPackageNames": ["node"],
-      "matchDepTypes": ["engines"],
-      "enabled": false
-    },
-    {
-      "matchPackageNames": ["node"],
-      "matchManagers": ["nvm"],
-      "rangeStrategy": "pin"
-    }
-  ],
   "postUpdateOptions": ["pnpmDedupe"],
   "ignoreDeps": ["@types/node", "lucide-react"]
 }

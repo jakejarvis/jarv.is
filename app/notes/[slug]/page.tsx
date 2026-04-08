@@ -179,7 +179,9 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         />
       </h1>
 
-      <MDXContent />
+      <article className="markdown">
+        <MDXContent />
+      </article>
 
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">

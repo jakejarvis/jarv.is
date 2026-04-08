@@ -3,7 +3,7 @@ import Link from "next/link";
 import siteConfig from "@/lib/config/site";
 
 const Footer = () => (
-  <footer className="text-muted-foreground mt-8 w-full py-6 text-center text-[13px] leading-loose">
+  <footer className="text-muted-foreground border-border mt-8 w-full border-t py-6 text-xs leading-loose">
     All content is licensed under{" "}
     <Link href="/license" className="underline underline-offset-4">
       {siteConfig.license}

@@ -39,11 +39,11 @@ const Header = ({ className }: { className?: string }) => {
         "motion-safe:transition-[background-color,backdrop-filter,border-color] motion-safe:duration-200",
         "bg-background/0 backdrop-blur-none",
         "data-[scrolled=true]:bg-background/80 data-[scrolled=true]:backdrop-blur-md",
-        "data-[scrolled=true]:border-border/50 data-[scrolled=true]:border-b",
+        "data-[scrolled=true]:border-border/70 data-[scrolled=true]:border-b",
         className,
       )}
     >
-      <header className="mx-auto mt-2 flex w-full max-w-[720px] items-center justify-between px-5 py-4">
+      <header className="mt-2 flex w-full items-center justify-between py-4">
         <div className="flex items-center gap-3">
           <Link
             href="/"
@@ -64,14 +64,14 @@ const Header = ({ className }: { className?: string }) => {
               {siteConfig.name}
             </span>
           </Link>
-          <Separator orientation="vertical" className="!h-6" />
+          <Separator orientation="vertical" className="!h-7" />
           <Menu />
         </div>
 
         <div className="flex items-center gap-2.5">
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             nativeButton={false}
             aria-label="Email Me"
             render={<a href={`mailto:${authorConfig.email}`} />}
@@ -80,7 +80,7 @@ const Header = ({ className }: { className?: string }) => {
           </Button>
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             nativeButton={false}
             aria-label="Open GitHub profile"
             render={
@@ -95,7 +95,7 @@ const Header = ({ className }: { className?: string }) => {
           </Button>
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             aria-label="Toggle theme"
             className="group"

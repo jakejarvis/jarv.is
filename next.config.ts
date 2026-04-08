@@ -134,6 +134,12 @@ const nextPlugins: Array<
       rehypePlugins: [
         "rehype-unwrap-images",
         "rehype-slug",
+        [
+          "rehype-wrapper",
+          {
+            className: "markdown",
+          },
+        ],
         "rehype-mdx-code-props",
         "rehype-mdx-import-media",
       ],

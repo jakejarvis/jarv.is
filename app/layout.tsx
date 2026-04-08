@@ -63,11 +63,13 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
 
     <body className="bg-background text-foreground font-sans antialiased">
       <Providers>
-        <Header />
-        <main className="mx-auto mt-4 w-full max-w-[720px] px-5">
-          <ViewTransition>{children}</ViewTransition>
-        </main>
-        <Footer />
+        <div className="mx-auto w-full max-w-[720px] px-5">
+          <Header />
+          <main className="mt-4 w-full">
+            <ViewTransition>{children}</ViewTransition>
+          </main>
+          <Footer />
+        </div>
         <Toaster position="bottom-center" hotkey={[]} />
       </Providers>
       <Analytics />
