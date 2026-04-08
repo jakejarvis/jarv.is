@@ -18,7 +18,12 @@ const nextConfig = {
     ],
   },
   outputFileTracingIncludes: {
-    "/notes/[slug]/opengraph-image": ["./notes/**/*", "./app/opengraph-image.jpg"],
+    "/notes/[slug]/opengraph-image": [
+      "./notes/**/*",
+      "./app/opengraph-image.jpg",
+      "./node_modules/**/@fontsource/inter/files/inter-latin-400-normal.woff",
+      "./node_modules/**/@fontsource/inter/files/inter-latin-600-normal.woff",
+    ],
   },
   productionBrowserSourceMaps: true,
   experimental: {
