@@ -81,8 +81,8 @@ importers:
         specifier: 19.2.5
         version: 19.2.5
       react-activity-calendar:
-        specifier: ^3.1.1
-        version: 3.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: ^3.1.2
+        version: 3.1.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-compare-slider:
         specifier: ^4.0.0
         version: 4.0.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -3513,8 +3513,8 @@ packages:
     resolution: {integrity: sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==}
     engines: {node: '>= 0.10'}
 
-  react-activity-calendar@3.1.1:
-    resolution: {integrity: sha512-YvHNS4anlW3Xy0fxOU2ZTWrJkOt0ALxX8IfgDRg6jr/vgYsbh//4djf2c7CPhYNROh+5oYZzR0EJaPbrFUj2tA==}
+  react-activity-calendar@3.1.2:
+    resolution: {integrity: sha512-tKJZ4aU+WVp4exBKmeji+umiElnvfiZc39Tq3c9SI9j+Qzplri5hIAedMjBRFMkwUSL7BrsG4gUx9n/o1EtMzQ==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
@@ -7265,7 +7265,7 @@ snapshots:
       iconv-lite: 0.7.2
       unpipe: 1.0.0
 
-  react-activity-calendar@3.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-activity-calendar@3.1.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
       '@floating-ui/react': 0.27.19(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       date-fns: 4.1.0
