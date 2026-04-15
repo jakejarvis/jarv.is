@@ -5,6 +5,7 @@ import Link from "next/link";
 import domainstackIcon from "./icons/domainstack.png";
 import snoozleIcon from "./icons/snoozle.png";
 import sofaIcon from "./icons/sofa.png";
+import uiIcon from "./icons/ui.png";
 import versioneerIcon from "./icons/versioneer.png";
 
 type Project = {
@@ -38,6 +39,12 @@ const projects: readonly Project[] = [
     url: "https://snoozle.ai",
     tagline: "AI-powered bedtime stories for kids",
     icon: snoozleIcon,
+  },
+  {
+    name: "jarvis-ui",
+    url: "https://ui.jarv.is",
+    tagline: "An intentionally minimal React component library",
+    icon: uiIcon,
   },
 ] as const;
 
