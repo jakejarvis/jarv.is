@@ -22,7 +22,7 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "@base-ui/react": "^1.4.0",
+    "@base-ui/react": "^1.4.1",
     "@fontsource/inter": "^5.2.8",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
