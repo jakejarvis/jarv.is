@@ -32,7 +32,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/functions": "^3.4.3",
     "@vercel/speed-insights": "^2.0.0",
-    "better-auth": "^1.6.4",
+    "better-auth": "^1.6.9",
     "cheerio": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
