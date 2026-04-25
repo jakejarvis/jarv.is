@@ -36,7 +36,7 @@
     "cheerio": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "copy-to-clipboard": "^3.3.3",
+    "copy-to-clipboard": "^4.0.2",
     "drizzle-orm": "^0.45.2",
     "fast-glob": "^3.3.3",
     "feed": "^5.2.0",
