@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { ViewTransition } from "react";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { DirectionalTransition } from "@/components/page-transition";
 import { PostStats, PostStatsProvider } from "@/components/post-stats";
 import authorConfig from "@/lib/config/author";
 import { createMetadata } from "@/lib/metadata";
@@ -56,24 +58,26 @@ const PostsList = async () => {
   Object.entries(postsByYear).forEach(([year, yearPosts]) => {
     sections.push(
       <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
-        <h2 id={year} className="mt-0 mb-4 text-2xl font-semibold tracking-tight">
+        <h2 id={year} className="mt-0 mb-4 text-xl font-semibold tracking-tight">
           {year}
         </h2>
         <ul className="space-y-4">
           {yearPosts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
-            <li className="flex text-base leading-relaxed" key={slug}>
+            <li className="flex text-sm leading-relaxed" key={slug}>
               <span className="text-muted-foreground w-18 shrink-0 md:w-22">
                 <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
                   {dateDisplay}
                 </time>
               </span>
               <div className="space-x-2">
-                <Link
-                  href={`/${POSTS_DIR}/${slug}`}
-                  dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
-                  className="mr-2.5 underline-offset-4 hover:underline"
-                  style={{ viewTransitionName: `note-title-${slug}` }}
-                />
+                <ViewTransition name={`note-title-${slug}`} share="text-morph" default="none">
+                  <Link
+                    href={`/${POSTS_DIR}/${slug}`}
+                    transitionTypes={["nav-forward"]}
+                    dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
+                    className="mr-2.5 underline-offset-4 hover:underline"
+                  />
+                </ViewTransition>
 
                 <PostStats slug={`${POSTS_DIR}/${slug}`} />
               </div>
@@ -89,12 +93,12 @@ const PostsList = async () => {
 };
 
 const Page = async () => (
-  <>
+  <DirectionalTransition>
     <PageTitle canonical="/notes">Notes</PageTitle>
     <PostStatsProvider>
       <PostsList />
     </PostStatsProvider>
-  </>
+  </DirectionalTransition>
 );
 
 export default Page;

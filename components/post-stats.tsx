@@ -58,8 +58,8 @@ const PostStats = ({ slug }: { slug: string }) => {
   if (!loaded) {
     return (
       <>
-        <Skeleton className="inline-block h-5 w-12 rounded-full align-text-top" />
-        <Skeleton className="inline-block h-5 w-8 rounded-full align-text-top" />
+        <Skeleton className="inline-block h-5 w-16 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
+        <Skeleton className="inline-block h-5 w-12 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
       </>
     );
   }
@@ -70,7 +70,10 @@ const PostStats = ({ slug }: { slug: string }) => {
   return (
     <>
       {viewCount > 0 && (
-        <Badge variant="secondary" className="text-foreground/80 gap-[5px] tabular-nums">
+        <Badge
+          variant="secondary"
+          className="text-foreground/80 gap-[5px] text-[11px] tabular-nums"
+        >
           <EyeIcon className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
         </Badge>
@@ -79,7 +82,7 @@ const PostStats = ({ slug }: { slug: string }) => {
       {commentCount > 0 && (
         <Badge
           variant="secondary"
-          className="text-foreground/80 gap-[5px] tabular-nums"
+          className="text-foreground/80 gap-[5px] text-[11px] tabular-nums"
           render={
             <Link
               href={`/${slug}#comments`}

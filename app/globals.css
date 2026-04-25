@@ -62,6 +62,9 @@
 
 :root {
   --radius: 0.625rem;
+  --duration-exit: 150ms;
+  --duration-enter: 210ms;
+  --duration-move: 400ms;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -102,6 +105,12 @@
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
+}
+
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
 }
 
 .dark {
@@ -202,34 +211,131 @@
     cursor: pointer;
   }
 
-  /* View Transitions - uses tw-animate-css's `enter` and `exit` keyframes */
-  @media (prefers-reduced-motion: reduce) {
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-      animation: none !important;
-    }
-  }
-
   /* Disable the default cross-fade on root (header/footer/chrome stay static) */
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none;
   }
 
-  /* Main content: fade + slide */
-  main {
-    view-transition-name: main-content;
-  }
-  ::view-transition-old(main-content) {
+  ::view-transition-old(.fade-out) {
+    --tw-exit-blur: 3px;
     --tw-exit-opacity: 0;
-    --tw-exit-translate-y: -8px;
-    animation: 150ms ease-in forwards exit;
+    animation: var(--duration-exit) ease-in forwards exit;
   }
-  ::view-transition-new(main-content) {
+  ::view-transition-new(.fade-in) {
+    --tw-enter-blur: 3px;
     --tw-enter-opacity: 0;
-    --tw-enter-translate-y: 12px;
-    animation: 200ms ease-out forwards enter;
+    animation: var(--duration-enter) ease-out var(--duration-exit) both enter;
+  }
+
+  ::view-transition-old(.slide-down) {
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-y: 10px;
+    animation: var(--duration-exit) ease-out both exit;
+  }
+  ::view-transition-new(.slide-up) {
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-y: 10px;
+    animation: var(--duration-enter) ease-in var(--duration-exit) both enter;
+  }
+
+  ::view-transition-new(.slide-from-right) {
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-x: 60px;
+    animation: var(--duration-move) ease-in-out both enter;
+  }
+  ::view-transition-old(.slide-to-left) {
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-x: -60px;
+    animation: var(--duration-exit) ease-in both exit;
+  }
+
+  ::view-transition-new(.slide-from-left) {
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-x: -60px;
+    animation: var(--duration-move) ease-in-out both enter;
+  }
+  ::view-transition-old(.slide-to-right) {
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-x: 60px;
+    animation: var(--duration-exit) ease-in both exit;
+  }
+
+  ::view-transition-old(.nav-forward) {
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-x: -60px;
+    animation: var(--duration-exit) ease-in both exit;
+  }
+  ::view-transition-new(.nav-forward) {
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-x: 60px;
+    animation: var(--duration-move) ease-in-out both enter;
+  }
+
+  ::view-transition-old(.nav-back) {
+    --tw-exit-opacity: 0;
+    --tw-exit-translate-x: 60px;
+    animation: var(--duration-exit) ease-in both exit;
+  }
+  ::view-transition-new(.nav-back) {
+    --tw-enter-opacity: 0;
+    --tw-enter-translate-x: -60px;
+    animation: var(--duration-move) ease-in-out both enter;
+  }
+
+  ::view-transition-group(.morph) {
+    animation-duration: var(--duration-move);
+  }
+
+  ::view-transition-image-pair(.morph) {
+    animation-name: via-blur;
+  }
+
+  ::view-transition-group(.text-morph) {
+    animation-duration: var(--duration-move);
+  }
+  ::view-transition-old(.text-morph) {
+    display: none;
+  }
+  ::view-transition-new(.text-morph) {
+    animation: none;
+    object-fit: none;
+    object-position: left top;
+  }
+
+  ::view-transition-old(.scale-out) {
+    --tw-exit-opacity: 0;
+    --tw-exit-scale: 85%;
+    animation: var(--duration-exit) ease-in exit;
+  }
+  ::view-transition-new(.scale-in) {
+    --tw-enter-opacity: 0;
+    --tw-enter-scale: 85%;
+    animation: var(--duration-enter) ease-out var(--duration-exit) both enter;
+  }
+
+  ::view-transition-group(persistent-nav),
+  ::view-transition-group(persistent-footer) {
+    animation: none;
+    z-index: 100;
+  }
+
+  ::view-transition-old(persistent-nav) {
+    display: none;
+  }
+  ::view-transition-new(persistent-nav),
+  ::view-transition-old(persistent-footer),
+  ::view-transition-new(persistent-footer) {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(*),
+    ::view-transition-new(*),
+    ::view-transition-group(*) {
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+    }
   }
 }
 

@@ -8,13 +8,14 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, ViewTransition } from "react";
 import { JsonLd } from "react-schemaorg";
 import type { BlogPosting } from "schema-dts";
 
 import { CommentCount } from "@/components/comment-count";
 import { Comments } from "@/components/comments/comments";
 import { CommentsSkeleton } from "@/components/comments/comments-skeleton";
+import { DirectionalTransition } from "@/components/page-transition";
 import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
@@ -83,7 +84,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { default: MDXContent } = await import(`../../../${POSTS_DIR}/${slug}/index.mdx`);
 
   return (
-    <>
+    <DirectionalTransition>
       <JsonLd<BlogPosting>
         item={{
           "@context": "https://schema.org",
@@ -109,7 +110,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 flex flex-wrap justify-items-start gap-4 text-[13px] tracking-wide">
+      <div className="text-foreground/70 flex flex-wrap justify-items-start space-y-2.5 space-x-4 text-[13px] tracking-wide">
         <Link
           href={`/${POSTS_DIR}/${frontmatter?.slug}`}
           className={
@@ -166,18 +167,17 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
       </div>
 
-      <h1
-        className="my-5 text-3xl font-medium tracking-tight"
-        style={{ viewTransitionName: `note-title-${frontmatter?.slug}` }}
-      >
-        <Link
-          href={`/${POSTS_DIR}/${frontmatter?.slug}`}
-          dangerouslySetInnerHTML={{
-            __html: frontmatter.htmlTitle || frontmatter.title,
-          }}
-          className="text-foreground hover:no-underline"
-        />
-      </h1>
+      <ViewTransition name={`note-title-${frontmatter.slug}`} share="text-morph" default="none">
+        <h1 className="my-5 text-2xl font-medium tracking-tight">
+          <Link
+            href={`/${POSTS_DIR}/${frontmatter.slug}`}
+            dangerouslySetInnerHTML={{
+              __html: frontmatter.htmlTitle || frontmatter.title,
+            }}
+            className="text-foreground hover:no-underline"
+          />
+        </h1>
+      </ViewTransition>
 
       <article className="markdown">
         <MDXContent />
@@ -190,13 +190,21 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               <p className="text-center text-lg font-medium">Comments are closed.</p>
             </div>
           ) : (
-            <Suspense fallback={<CommentsSkeleton />}>
-              <Comments slug={`${POSTS_DIR}/${frontmatter?.slug}`} />
+            <Suspense
+              fallback={
+                <ViewTransition exit="slide-down">
+                  <CommentsSkeleton />
+                </ViewTransition>
+              }
+            >
+              <ViewTransition enter="slide-up" default="none">
+                <Comments slug={`${POSTS_DIR}/${frontmatter.slug}`} />
+              </ViewTransition>
             </Suspense>
           )}
         </div>
       </section>
-    </>
+    </DirectionalTransition>
   );
 };
 

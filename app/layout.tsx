@@ -1,4 +1,3 @@
-import { ViewTransition } from "react";
 import { JsonLd } from "react-schemaorg";
 import type { Person, WebSite } from "schema-dts";
 
@@ -65,9 +64,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
       <Providers>
         <div className="mx-auto w-full max-w-[720px] px-5">
           <Header />
-          <main className="mt-4 w-full">
-            <ViewTransition>{children}</ViewTransition>
-          </main>
+          <main className="mt-4 w-full">{children}</main>
           <Footer />
         </div>
         <Toaster position="bottom-center" hotkey={[]} />

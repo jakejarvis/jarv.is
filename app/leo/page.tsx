@@ -2,6 +2,7 @@ import { JsonLd } from "react-schemaorg";
 import type { VideoObject } from "schema-dts";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { FadeTransition } from "@/components/page-transition";
 import { Video } from "@/components/video";
 import { createMetadata } from "@/lib/metadata";
 
@@ -22,7 +23,7 @@ export const metadata = createMetadata({
 });
 
 const Page = () => (
-  <>
+  <FadeTransition>
     <JsonLd<VideoObject>
       item={{
         "@context": "https://schema.org",
@@ -65,7 +66,7 @@ const Page = () => (
       </a>
       . &copy; 2007 G4 Media, Inc.
     </p>
-  </>
+  </FadeTransition>
 );
 
 export default Page;

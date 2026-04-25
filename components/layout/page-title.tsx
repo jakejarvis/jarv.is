@@ -12,7 +12,7 @@ const PageTitle = ({
 }) => (
   <h1
     className={cn(
-      "not-prose mt-0 mb-6 text-left text-3xl font-medium tracking-tight lowercase",
+      "not-prose mt-0 mb-6 text-left text-2xl font-medium tracking-tight lowercase",
       className,
     )}
     {...rest}

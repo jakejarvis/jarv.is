@@ -2,6 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
+import { FadeTransition } from "@/components/page-transition";
+
 import domainstackIcon from "./icons/domainstack.png";
 import snoozleIcon from "./icons/snoozle.png";
 import sofaIcon from "./icons/sofa.png";
@@ -49,8 +51,8 @@ const projects: readonly Project[] = [
 ] as const;
 
 const Page = () => (
-  <>
-    <h1 className="text-lg font-medium">
+  <FadeTransition>
+    <h1 className="text-lg font-medium tracking-tight">
       Hi there! I&rsquo;m Jake.{" "}
       <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-[1.2rem]">
         👋
@@ -58,7 +60,7 @@ const Page = () => (
     </h1>
 
     <div className="markdown">
-      <p className="text-sm leading-normal">
+      <p className="text-sm leading-normal tracking-[-0.0125em]">
         I&rsquo;m a developer based in the{" "}
         <Link
           href="https://www.youtube-nocookie.com/embed/rLwbzGyC6t4?hl=en&amp;fs=1&amp;showinfo=1&amp;rel=0&amp;iv_load_policy=3"
@@ -89,7 +91,7 @@ const Page = () => (
                   decoding="async"
                   className="ring-border size-6 shrink-0 rounded-[26%] ring-1"
                 />
-                <span className="text-primary text-sm font-medium group-hover:underline group-hover:underline-offset-4">
+                <span className="text-primary text-sm font-medium tracking-[-0.0125em] group-hover:underline group-hover:underline-offset-4">
                   {project.name}
                 </span>
               </div>
@@ -105,7 +107,7 @@ const Page = () => (
         ))}
       </ul>
     </section>
-  </>
+  </FadeTransition>
 );
 
 export default Page;

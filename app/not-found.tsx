@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeTransition } from "@/components/page-transition";
 import { Button } from "@/components/ui/button";
 import { Video } from "@/components/video";
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const Page = () => (
-  <>
+  <FadeTransition>
     <Video
       src="https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/not-found-SAtLyNyc7gVhveYxr6o1ITd9CSXo5X.mp4"
       autoPlay
@@ -33,7 +34,7 @@ const Page = () => (
         Go home?
       </Button>
     </div>
-  </>
+  </FadeTransition>
 );
 
 export default Page;

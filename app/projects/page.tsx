@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PageTitle } from "@/components/layout/page-title";
+import { FadeTransition } from "@/components/page-transition";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -30,10 +31,10 @@ const Page = async () => {
   const [contributions, repos] = await Promise.all([getContributions(), getRepos()]);
 
   return (
-    <>
+    <FadeTransition>
       <PageTitle canonical="/projects">Projects</PageTitle>
 
-      <h2 className="my-3.5 text-xl font-medium">
+      <h2 className="my-3.5 text-lg font-medium">
         <a
           href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`}
           target="_blank"
@@ -56,7 +57,7 @@ const Page = async () => {
         )}
       </Suspense>
 
-      <h2 className="my-3.5 text-xl font-medium">
+      <h2 className="my-3.5 text-lg font-medium">
         <a
           href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
           target="_blank"
@@ -171,7 +172,7 @@ const Page = async () => {
           <ExternalLinkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
         </Button>
       </p>
-    </>
+    </FadeTransition>
   );
 };
 
