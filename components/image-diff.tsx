@@ -40,6 +40,7 @@ const ImageDiff = ({
       style={{ aspectRatio }}
       itemOne={<ReactCompareSliderImage {...beforeImageProps} className="size-full object-cover" />}
       itemTwo={<ReactCompareSliderImage {...afterImageProps} className="size-full object-cover" />}
+      suppressHydrationWarning
     />
   );
 };

@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, GitForkIcon, StarIcon } from "lucide-react";
+import { IconExternalLink, IconGitFork, IconStar } from "@tabler/icons-react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -113,7 +113,7 @@ const Page = async () => {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <StarIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+                    <IconStar className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
                       {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
                         repo?.stargazerCount,
@@ -130,7 +130,7 @@ const Page = async () => {
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
                     className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
                   >
-                    <GitForkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+                    <IconGitFork className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
                       {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
                         repo?.forkCount,
@@ -169,7 +169,7 @@ const Page = async () => {
           }
         >
           View all
-          <ExternalLinkIcon className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+          <IconExternalLink className="inline-block size-3.5 shrink-0" aria-hidden="true" />
         </Button>
       </p>
     </FadeTransition>

@@ -1,6 +1,6 @@
 "use client";
 
-import { EditIcon, EllipsisIcon, Loader2Icon, ReplyIcon, Trash2Icon } from "lucide-react";
+import { IconDots, IconEdit, IconMessageReply, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -21,6 +21,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Spinner } from "@/components/ui/spinner";
 import { useSession } from "@/lib/auth-client";
 import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
 
@@ -75,19 +76,19 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
               setMode(mode.type === "replying" ? { type: "idle" } : { type: "replying" })
             }
           >
-            <ReplyIcon />
+            <IconMessageReply />
             Reply
           </Button>
 
           {session.user.id === comment.user.id && (
             <DropdownMenu>
               <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
-                <EllipsisIcon />
+                <IconDots />
                 <span className="sr-only">Actions Menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem onClick={() => setMode({ type: "editing" })}>
-                  <EditIcon />
+                  <IconEdit />
                   Edit
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -95,7 +96,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
                   disabled={isDeleting}
                   variant="destructive"
                 >
-                  {isDeleting ? <Loader2Icon className="animate-spin" /> : <Trash2Icon />}
+                  {isDeleting ? <Spinner /> : <IconTrash />}
                   Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>

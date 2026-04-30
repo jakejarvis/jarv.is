@@ -1,5 +1,6 @@
 "use client";
 
+import NumberFlow from "@number-flow/react";
 import { useEffect, useState } from "react";
 
 import { getCommentCount } from "@/lib/server/comments";
@@ -28,11 +29,11 @@ const CommentCount = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <span
-      title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(count)} ${count === 1 ? "comment" : "comments"}`}
-    >
-      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(count)}
-    </span>
+    <NumberFlow
+      className={count === null ? "motion-safe:animate-pulse" : undefined}
+      locales={process.env.NEXT_PUBLIC_SITE_LOCALE}
+      value={count}
+    />
   );
 };
 

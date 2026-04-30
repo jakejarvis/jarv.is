@@ -1,10 +1,4 @@
-import {
-  CalendarDaysIcon,
-  EyeIcon,
-  MessagesSquareIcon,
-  SquarePenIcon,
-  TagIcon,
-} from "lucide-react";
+import { IconCalendarEvent, IconEdit, IconEye, IconMessages, IconTag } from "@tabler/icons-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -110,14 +104,14 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 flex flex-wrap justify-items-start space-y-2.5 space-x-4 text-[13px] tracking-wide">
+      <div className="text-foreground/70 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide">
         <Link
           href={`/${POSTS_DIR}/${frontmatter?.slug}`}
           className={
-            "text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
+            "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
           }
         >
-          <CalendarDaysIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <IconCalendarEvent className="inline size-3.5 shrink-0" aria-hidden="true" />
           <time
             dateTime={formattedDates.dateISO}
             title={formattedDates.dateTitle}
@@ -129,7 +123,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         {frontmatter?.tags && (
           <div className="flex flex-wrap items-center gap-1.5">
-            <TagIcon className="inline size-3 shrink-0" aria-hidden="true" />
+            <IconTag className="inline size-3.5 shrink-0" aria-hidden="true" />
             {frontmatter?.tags.map((tag) => (
               <span
                 key={tag}
@@ -146,23 +140,23 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter?.slug}/index.mdx`}
           title={`Edit "${frontmatter?.title}" on GitHub`}
           className={
-            "text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
+            "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
           }
         >
-          <SquarePenIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <IconEdit className="inline size-3.5 shrink-0" aria-hidden="true" />
           <span>Improve This Post</span>
         </Link>
 
         <Link
           href={`/${POSTS_DIR}/${frontmatter?.slug}#comments`}
-          className="text-foreground/70 flex flex-nowrap items-center gap-1.5 whitespace-nowrap hover:no-underline"
+          className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
         >
-          <MessagesSquareIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
           <CommentCount slug={`${POSTS_DIR}/${frontmatter?.slug}`} />
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
-          <EyeIcon className="inline size-3 shrink-0" aria-hidden="true" />
+          <IconEye className="inline size-3.5 shrink-0" aria-hidden="true" />
           <ViewCounter slug={`${POSTS_DIR}/${frontmatter?.slug}`} />
         </div>
       </div>

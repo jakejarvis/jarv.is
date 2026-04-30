@@ -1,12 +1,12 @@
 "use client";
 
-import { InfoIcon, Loader2Icon } from "lucide-react";
+import { IconInfoCircle, IconMarkdown } from "@tabler/icons-react";
 import { createContext, useContext, useMemo, useState, useTransition } from "react";
 import { toast } from "sonner";
 
-import { MarkdownIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/lib/auth-client";
 import { createComment, updateComment } from "@/lib/server/comments";
@@ -122,7 +122,7 @@ const SubmitButton = ({
   <Button type="submit" disabled={isPending || disabled}>
     {isPending ? (
       <>
-        <Loader2Icon className="animate-spin" />
+        <Spinner />
         {pendingLabel}
       </>
     ) : (
@@ -134,7 +134,7 @@ const SubmitButton = ({
 // Markdown help popover (only shown for new comments)
 const MarkdownHelp = () => (
   <p className="text-muted-foreground text-[0.8rem] leading-relaxed">
-    <MarkdownIcon className="mr-1.5 inline-block size-4 align-text-top" />
+    <IconMarkdown className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
       <PopoverTrigger
@@ -150,7 +150,7 @@ const MarkdownHelp = () => (
       </PopoverTrigger>
       <PopoverContent align="start">
         <p className="text-sm leading-loose">
-          <InfoIcon className="mr-1.5 inline size-4.5 align-text-top" />
+          <IconInfoCircle className="mr-1.5 inline size-4.5 align-text-top" />
           Examples:
         </p>
 

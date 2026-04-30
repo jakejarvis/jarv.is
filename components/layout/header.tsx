@@ -1,6 +1,6 @@
 "use client";
 
-import { AtSignIcon, ExternalLinkIcon, MoonIcon, SunIcon } from "lucide-react";
+import { IconAt, IconExternalLink, IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -228,15 +228,15 @@ const ContactPopover = () => (
       delay={0}
       render={<Button variant="ghost" size="icon" aria-label="Open contact links" />}
     >
-      <AtSignIcon aria-hidden="true" />
+      <IconAt aria-hidden="true" />
     </PopoverTrigger>
-    <PopoverContent align="end" className="max-h-(--available-height) overflow-y-auto">
+    <PopoverContent align="end" className="max-h-(--available-height) gap-2 overflow-y-auto p-2">
       <PopoverHeader className="mt-1 px-1">
         <PopoverTitle>Get in touch:</PopoverTitle>
         <PopoverDescription className="sr-only">Email and social links.</PopoverDescription>
       </PopoverHeader>
 
-      <nav aria-label="Contact links" className="flex flex-col gap-1">
+      <nav aria-label="Contact links" className="flex flex-col gap-0.5">
         {contactLinks.map((link) => (
           <a
             key={link.href}
@@ -255,7 +255,7 @@ const ContactPopover = () => (
               {link.value}
             </span>
             {link.external ? (
-              <ExternalLinkIcon className="text-muted-foreground/70 size-3.5" aria-hidden="true" />
+              <IconExternalLink className="text-muted-foreground/70 size-3.5" aria-hidden="true" />
             ) : null}
           </a>
         ))}
@@ -339,8 +339,8 @@ const Header = ({ className }: { className?: string }) => {
             aria-label="Toggle theme"
             className="group"
           >
-            <SunIcon className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
-            <MoonIcon
+            <IconSun className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
+            <IconMoon
               className="not-dark:hidden group-hover:stroke-yellow-400"
               aria-hidden="true"
             />

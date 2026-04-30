@@ -48,8 +48,8 @@ const ActivityCalendar = ({
         renderBlock={(block, activity) => (
           <Tooltip>
             <TooltipTrigger render={block} />
-            <TooltipContent>
-              <span className="text-[0.825rem] font-medium">{`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}</span>
+            <TooltipContent sideOffset={8}>
+              {`${activity.count === 0 ? "No" : activity.count} ${noun}${activity.count === 1 ? "" : "s"} on ${new Date(activity.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}
             </TooltipContent>
           </Tooltip>
         )}

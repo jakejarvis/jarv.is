@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeIcon, MessagesSquareIcon } from "lucide-react";
+import { IconEye, IconMessages } from "@tabler/icons-react";
 import Link from "next/link";
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
@@ -74,7 +74,7 @@ const PostStats = ({ slug }: { slug: string }) => {
           variant="secondary"
           className="text-foreground/80 gap-[5px] text-[11px] tabular-nums"
         >
-          <EyeIcon className="text-foreground/65" aria-hidden="true" />
+          <IconEye className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
         </Badge>
       )}
@@ -90,7 +90,7 @@ const PostStats = ({ slug }: { slug: string }) => {
             />
           }
         >
-          <MessagesSquareIcon className="text-foreground/65" aria-hidden="true" />
+          <IconMessages className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(commentCount)}
         </Badge>
       )}

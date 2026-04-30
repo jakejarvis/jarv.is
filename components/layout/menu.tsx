@@ -39,7 +39,7 @@ const Menu = () => {
             nativeButton={false}
             aria-label={item.text}
             data-current={isCurrent || undefined}
-            className="data-current:bg-accent/60 data-current:text-accent-foreground text-sm leading-none"
+            className="data-current:bg-accent/60 data-current:text-accent-foreground px-2.5 py-3.5 text-sm leading-none"
             render={<Link href={item.href} transitionTypes={transitionTypes} />}
           >
             {item.text}

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -97,7 +97,7 @@ const Page = () => (
               </div>
               <span className="text-muted-foreground ml-9 text-xs text-pretty sm:ml-auto">
                 {project.tagline}
-                <ArrowUpRight
+                <IconArrowUpRight
                   className="group-hover:text-primary ml-1 inline size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />

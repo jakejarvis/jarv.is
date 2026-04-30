@@ -1,11 +1,11 @@
 "use client";
 
-import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { signIn } from "@/lib/auth-client";
 
 const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
@@ -28,7 +28,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
 
   return (
     <Button onClick={handleSignIn} disabled={isLoading} size="lg" variant="outline">
-      {isLoading ? <Loader2Icon className="animate-spin" /> : <GitHubIcon />}
+      {isLoading ? <Spinner /> : <GitHubIcon />}
       Sign in with GitHub
     </Button>
   );

@@ -1,7 +1,7 @@
 "use client";
 
+import { IconCheck, IconClipboardCheck, IconCopy } from "@tabler/icons-react";
 import copy from "copy-to-clipboard";
-import { CheckIcon, ClipboardCheckIcon, CopyIcon } from "lucide-react";
 import * as React from "react";
 import { toast } from "sonner";
 
@@ -34,7 +34,7 @@ function CopyButton({
     copy(value);
     setHasCopied(true);
     toast.success("Copied!", {
-      icon: <ClipboardCheckIcon className="text-foreground/85 size-4" aria-hidden="true" />,
+      icon: <IconClipboardCheck className="text-foreground/85 size-4" aria-hidden="true" />,
       duration: 2000,
       id: "copy-button-toast-success",
     });
@@ -52,7 +52,7 @@ function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "bg-code hover:bg-accent dark:hover:bg-accent absolute top-3 right-2 z-10 size-7.5 hover:opacity-100 focus-visible:opacity-100",
+        "text-muted-foreground bg-code hover:bg-accent dark:hover:bg-accent absolute top-3 right-2 z-10 size-7.5 hover:opacity-100 focus-visible:opacity-100",
         hasCopied ? "cursor-default" : "cursor-pointer",
         className,
       )}
@@ -61,9 +61,9 @@ function CopyButton({
       {...props}
     >
       {hasCopied ? (
-        <CheckIcon className="text-green-600 dark:text-green-400" aria-hidden="true" />
+        <IconCheck className="text-green-600 dark:text-green-400" aria-hidden="true" />
       ) : (
-        <CopyIcon aria-hidden="true" />
+        <IconCopy aria-hidden="true" />
       )}
     </Button>
   );
