@@ -30,7 +30,7 @@
     "@number-flow/react": "^0.6.0",
     "@octokit/graphql": "^9.0.3",
     "@octokit/graphql-schema": "^15.26.1",
-    "@tabler/icons-react": "^3.41.1",
+    "@tabler/icons-react": "^3.44.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/functions": "^3.4.6",
     "@vercel/speed-insights": "^2.0.0",
