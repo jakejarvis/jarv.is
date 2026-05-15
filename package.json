@@ -90,7 +90,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "dotenv": "^17.4.2",
     "drizzle-kit": "^0.31.10",
-    "oxfmt": "^0.47.0",
+    "oxfmt": "^0.50.0",
     "oxlint": "^1.62.0",
     "postcss": "^8.5.12",
     "schema-dts": "^2.0.0",
