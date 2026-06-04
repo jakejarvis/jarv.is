@@ -40,9 +40,9 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
         tweet={data}
         components={{
           // https://react-tweet.vercel.app/twitter-theme/api-reference#custom-tweet-components
-          // eslint-disable-next-line jsx-a11y/alt-text
+          // oxlint-disable-next-line jsx-a11y/alt-text, react/no-unstable-nested-components
           AvatarImg: (props) => <Image {...props} unoptimized />,
-          // eslint-disable-next-line jsx-a11y/alt-text
+          // oxlint-disable-next-line jsx-a11y/alt-text, react/no-unstable-nested-components
           MediaImg: (props) => <Image {...props} fill unoptimized />,
         }}
       />

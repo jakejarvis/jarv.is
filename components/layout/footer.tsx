@@ -8,7 +8,7 @@ const Footer = () => (
     className="text-muted-foreground border-border mt-8 w-full border-t py-6 text-xs leading-loose"
   >
     All content is licensed under{" "}
-    <Link href="/license" className="underline underline-offset-4">
+    <Link href="/license" className="underline underline-offset-2">
       {siteConfig.license}
     </Link>
     . View source on{" "}
@@ -16,7 +16,7 @@ const Footer = () => (
       href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="underline underline-offset-4"
+      className="underline underline-offset-2"
     >
       GitHub
     </a>

@@ -165,12 +165,13 @@ const Page = async () => {
               href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
               target="_blank"
               rel="noopener noreferrer"
-            />
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              View all
+              <IconExternalLink className="inline-block size-3.5 shrink-0" aria-hidden="true" />
+            </a>
           }
-        >
-          View all
-          <IconExternalLink className="inline-block size-3.5 shrink-0" aria-hidden="true" />
-        </Button>
+        />
       </p>
     </FadeTransition>
   );
