@@ -1,0 +1,28 @@
+pnpm-workspace.yaml
+  h_20c7074546ac58 1-7
+package.json
+  h_20c7074546ac58 25,29,33,35,37,46,48-49,52,57,75-76,78,80,83,86,88,93-95,97,104
+app/projects/page.tsx
+  h_20c7074546ac58 168,171-172,174
+components/comments/comment-form.tsx
+  h_20c7074546ac58 145-148,150
+components/ui/field.tsx
+  h_20c7074546ac58 76
+components/third-party/tweet.tsx
+  h_20c7074546ac58 43,45
+components/ui/spinner.tsx
+  h_20c7074546ac58 8
+components/layout/footer.tsx
+  h_20c7074546ac58 11,19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c2bf0c610e5d21ef024fa0e73a0af4b50233484f",
+  "prompts": {},
+  "humans": {
+    "h_20c7074546ac58": {
+      "author": "Jake Jarvis <jake@jarv.is>"
+    }
+  }
+}
