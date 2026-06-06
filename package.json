@@ -82,7 +82,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/mdx": "^2.0.13",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^25.9.1",
     "@types/pg": "^8.20.0",
     "@types/react": "19.2.16",
