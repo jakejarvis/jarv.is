@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.9.1",
     "@types/pg": "^8.20.0",
