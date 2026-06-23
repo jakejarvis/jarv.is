@@ -101,7 +101,7 @@
   "engines": {
     "node": ">=24.x"
   },
-  "packageManager": "pnpm@11.5.1",
+  "packageManager": "pnpm@11.9.0",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"
