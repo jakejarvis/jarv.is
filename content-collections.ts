@@ -16,16 +16,6 @@ import {
 
 const POSTS_DIR = "notes" as const;
 
-const getBaseUrl = (): string => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-  if (!baseUrl) {
-    throw new Error("NEXT_PUBLIC_BASE_URL must be set to build post permalinks.");
-  }
-
-  return baseUrl;
-};
-
 const parseableDate = z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
   message: "Invalid date string",
 });
@@ -55,7 +45,6 @@ const contentToFeedHtml = async (content: string): Promise<string> => {
       tagNames: [
         "p",
         "a",
-        "img",
         "em",
         "strong",
         "code",
@@ -108,7 +97,7 @@ const posts = defineCollection({
       htmlTitle,
       slug,
       date: new Date(post.date).toISOString(),
-      permalink: `${getBaseUrl()}/${POSTS_DIR}/${slug}`,
+      permalink: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/${POSTS_DIR}/${slug}`,
     };
   },
 });

@@ -56,9 +56,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) notFound();
-  const frontmatter = post;
-  const d = new Date(frontmatter.date);
 
+  const d = new Date(post.date);
   const formattedDates = {
     dateISO: d.toISOString(),
     dateTitle: d.toLocaleString("en-US", {
@@ -84,18 +83,18 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         item={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: frontmatter?.title,
-          description: frontmatter?.description,
-          url: frontmatter?.permalink,
+          headline: post.title,
+          description: post.description,
+          url: post.permalink,
           image: {
             "@type": "ImageObject",
-            contentUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${frontmatter?.slug}/opengraph-image`,
+            contentUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${post.slug}/opengraph-image`,
             width: `${ogImageSize.width}`,
             height: `${ogImageSize.height}`,
           },
-          keywords: frontmatter?.tags?.join(", "),
-          datePublished: frontmatter?.date,
-          dateModified: frontmatter?.date,
+          keywords: post.tags?.join(", "),
+          datePublished: post.date,
+          dateModified: post.date,
           inLanguage: process.env.NEXT_PUBLIC_SITE_LOCALE,
           license: `https://spdx.org/licenses/${siteConfig.license}.html`,
           author: {
@@ -107,7 +106,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <div className="text-foreground/70 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide">
         <Link
-          href={`/${POSTS_DIR}/${frontmatter?.slug}`}
+          href={`/${POSTS_DIR}/${post.slug}`}
           className={
             "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
           }
@@ -122,10 +121,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </time>
         </Link>
 
-        {frontmatter?.tags && (
+        {post.tags && (
           <div className="flex flex-wrap items-center gap-1.5">
             <IconTag className="inline size-3.5 shrink-0" aria-hidden="true" />
-            {frontmatter?.tags.map((tag) => (
+            {post.tags.map((tag) => (
               <span
                 key={tag}
                 title={tag}
@@ -138,8 +137,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         )}
 
         <Link
-          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${frontmatter?.slug}/index.mdx`}
-          title={`Edit "${frontmatter?.title}" on GitHub`}
+          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${post.slug}/index.mdx`}
+          title={`Edit "${post.title}" on GitHub`}
           className={
             "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
           }
@@ -149,25 +148,25 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </Link>
 
         <Link
-          href={`/${POSTS_DIR}/${frontmatter?.slug}#comments`}
+          href={`/${POSTS_DIR}/${post.slug}#comments`}
           className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
         >
           <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <CommentCount slug={`${POSTS_DIR}/${frontmatter?.slug}`} />
+          <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
         </Link>
 
         <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
           <IconEye className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <ViewCounter slug={`${POSTS_DIR}/${frontmatter?.slug}`} />
+          <ViewCounter slug={`${POSTS_DIR}/${post.slug}`} />
         </div>
       </div>
 
-      <ViewTransition name={`note-title-${frontmatter.slug}`} share="text-morph" default="none">
+      <ViewTransition name={`note-title-${post.slug}`} share="text-morph" default="none">
         <h1 className="my-5 text-2xl font-medium tracking-tight">
           <Link
-            href={`/${POSTS_DIR}/${frontmatter.slug}`}
+            href={`/${POSTS_DIR}/${post.slug}`}
             dangerouslySetInnerHTML={{
-              __html: frontmatter.htmlTitle || frontmatter.title,
+              __html: post.htmlTitle || post.title,
             }}
             className="text-foreground hover:no-underline"
           />
@@ -180,7 +179,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">
-          {frontmatter?.noComments ? (
+          {post.noComments ? (
             <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
               <p className="text-center text-lg font-medium">Comments are closed.</p>
             </div>
@@ -193,7 +192,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               }
             >
               <ViewTransition enter="slide-up" default="none">
-                <Comments slug={`${POSTS_DIR}/${frontmatter.slug}`} />
+                <Comments slug={`${POSTS_DIR}/${post.slug}`} />
               </ViewTransition>
             </Suspense>
           )}

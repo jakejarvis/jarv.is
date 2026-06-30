@@ -1,4 +1,3 @@
-import { withContentCollections } from "@content-collections/next";
 import type { NextConfig } from "next";
 
 const nextConfig = {
@@ -125,7 +124,6 @@ const nextConfig = {
   ],
 } satisfies NextConfig;
 
-// my own macgyvered version of next-compose-plugins (RIP)
 const nextPlugins: Array<
   (config: NextConfig) => NextConfig | [(config: NextConfig) => NextConfig, any]
 > = [
@@ -151,11 +149,12 @@ const nextPlugins: Array<
       ],
     },
   }),
+  // content-collections must be last; see https://www.content-collections.dev/docs/adapter/next#installation
+  require("@content-collections/next").withContentCollections,
 ];
 
-const config = nextPlugins.reduce(
-  (acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)),
-  nextConfig,
-);
-
-export default withContentCollections(config);
+export default (): NextConfig =>
+  nextPlugins.reduce(
+    (acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)),
+    nextConfig,
+  );

@@ -3,7 +3,5 @@ allowBuilds:
   msw: true
   sharp: true
   unrs-resolver: true
-minimumReleaseAgeExclude:
-  - react-tweet@3.3.1
 overrides:
   kysely: ^0.28.17
