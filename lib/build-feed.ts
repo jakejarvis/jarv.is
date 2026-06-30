@@ -10,13 +10,15 @@ import { getContent, getFrontMatter } from "@/lib/posts";
  * @see https://github.com/jpmonette/feed#example
  */
 export const buildFeed = async (): Promise<Feed> => {
+  const frontmatter = await getFrontMatter();
+
   const feed = new Feed({
     id: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     title: siteConfig.name,
     description: siteConfig.description,
     copyright: `https://spdx.org/licenses/${siteConfig.license}.html`,
-    updated: new Date(),
+    updated: frontmatter[0] ? new Date(frontmatter[0].date) : undefined,
     image: `${process.env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
     feedLinks: {
       rss: `${process.env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
@@ -30,7 +32,6 @@ export const buildFeed = async (): Promise<Feed> => {
   });
 
   // parse posts into feed items
-  const frontmatter = await getFrontMatter();
   const posts: FeedItem[] = await Promise.all(
     frontmatter.map(async (post) => ({
       guid: post.permalink,

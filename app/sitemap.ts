@@ -9,7 +9,7 @@ import { getFrontMatter } from "@/lib/posts";
 // here to exclude it.
 const excludedRoutes = [
   // homepage is already included manually
-  "./",
+  "./(home)",
   // other excluded pages
   // "./license",
   // "./privacy",

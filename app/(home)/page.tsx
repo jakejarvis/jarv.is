@@ -7,6 +7,7 @@ import { FadeTransition } from "@/components/page-transition";
 import domainstackIcon from "./icons/domainstack.png";
 import snoozleIcon from "./icons/snoozle.png";
 import sofaIcon from "./icons/sofa.png";
+import stanzaIcon from "./icons/stanza.png";
 import uiIcon from "./icons/ui.png";
 import versioneerIcon from "./icons/versioneer.png";
 
@@ -23,6 +24,12 @@ const projects: readonly Project[] = [
     url: "https://domainstack.io",
     tagline: "Domain intelligence made easy",
     icon: domainstackIcon,
+  },
+  {
+    name: "Stanza",
+    url: "https://stanza.tools",
+    tagline: "shadcn/ui for infrastructure",
+    icon: stanzaIcon,
   },
   {
     name: "Sofa",
@@ -45,7 +52,7 @@ const projects: readonly Project[] = [
   {
     name: "jarvis-ui",
     url: "https://ui.jarv.is",
-    tagline: "An intentionally minimal React component library",
+    tagline: "Intentionally random React component library",
     icon: uiIcon,
   },
 ] as const;

@@ -38,3 +38,6 @@ yarn.lock
 
 # next-agents-md
 .next-docs/
+
+# content-collections
+.content-collections/
