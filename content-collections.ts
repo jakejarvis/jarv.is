@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { decode } from "html-entities";
 import { unified } from "unified";
@@ -14,6 +15,20 @@ import {
 } from "@/lib/remark";
 
 const POSTS_DIR = "notes" as const;
+
+const getBaseUrl = (): string => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("NEXT_PUBLIC_BASE_URL must be set to build post permalinks.");
+  }
+
+  return baseUrl;
+};
+
+const parseableDate = z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
+  message: "Invalid date string",
+});
 
 const titleToHtml = async (title: string): Promise<string> => {
   return unified()
@@ -40,6 +55,7 @@ const contentToFeedHtml = async (content: string): Promise<string> => {
       tagNames: [
         "p",
         "a",
+        "img",
         "em",
         "strong",
         "code",
@@ -74,7 +90,7 @@ const posts = defineCollection({
   include: "*/index.mdx",
   schema: z.object({
     content: z.string(),
-    date: z.string(),
+    date: parseableDate,
     title: z.string(),
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
@@ -92,7 +108,7 @@ const posts = defineCollection({
       htmlTitle,
       slug,
       date: new Date(post.date).toISOString(),
-      permalink: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${slug}`,
+      permalink: `${getBaseUrl()}/${POSTS_DIR}/${slug}`,
     };
   },
 });
