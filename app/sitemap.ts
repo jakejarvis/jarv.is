@@ -5,22 +5,12 @@ import type { MetadataRoute } from "next";
 
 import { getFrontMatter } from "@/lib/posts";
 
-// routes in /app (in other words, directories containing a page.tsx/mdx file) are automatically included; add a route
-// here to exclude it.
-const excludedRoutes = [
-  // homepage is already included manually
-  "./(home)",
-  // other excluded pages
-  // "./license",
-  // "./privacy",
-];
-
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   // start with manual routes
   const routes: MetadataRoute.Sitemap = [
     {
       // homepage
-      url: process.env.NEXT_PUBLIC_BASE_URL!,
+      url: process.env.NEXT_PUBLIC_BASE_URL ?? "/",
       priority: 1.0,
       lastModified: new Date(),
     },
@@ -33,9 +23,8 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     glob("**/page.{tsx,mdx}", {
       cwd: path.join(process.cwd(), "app"),
       ignore: [
-        ...excludedRoutes.map((route) => `${route}/page.{tsx,mdx}`),
-        // don't include dynamic routes
-        "**/\\[*\\]/page.{tsx,mdx}",
+        // don't include dynamic routes or route groups
+        "**/{\\[*\\],\\(*\\)}/page.{tsx,mdx}",
       ],
     }),
 
@@ -43,18 +32,23 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     getFrontMatter(),
   ]);
 
-  // add each directory in the app folder as a route (excluding special routes)
+  // normalize static routes and blog slugs to be absolute URLs
   staticRoutes.forEach((route) => {
+    const routePath = route
+      .replace(/(^|\/)page\.(tsx|mdx)$/, "")
+      .split("/")
+      .filter((segment) => !/^\(.+\)$/.test(segment))
+      .join("/");
+
     routes.push({
-      // remove matching page.(tsx|mdx) file and make all URLs absolute
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${route.replace(/\/page\.(tsx|mdx)$/, "")}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routePath}`,
     });
   });
 
+  // enrich blog entries with frontmatter dates
   frontmatter.forEach((post) => {
     routes.push({
       url: post.permalink,
-      // pull lastModified from front matter date
       lastModified: new Date(post.date),
     });
   });
