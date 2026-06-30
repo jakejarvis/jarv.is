@@ -1,3 +1,4 @@
+import { withContentCollections } from "@content-collections/next";
 import type { NextConfig } from "next";
 
 const nextConfig = {
@@ -152,8 +153,9 @@ const nextPlugins: Array<
   }),
 ];
 
-export default (): NextConfig =>
-  nextPlugins.reduce(
-    (acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)),
-    nextConfig,
-  );
+const config = nextPlugins.reduce(
+  (acc, plugin) => (Array.isArray(plugin) ? plugin[0](acc, plugin[1]) : plugin(acc)),
+  nextConfig,
+);
+
+export default withContentCollections(config);

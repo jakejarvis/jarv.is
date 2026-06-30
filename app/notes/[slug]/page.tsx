@@ -14,7 +14,7 @@ import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 import { createMetadata } from "@/lib/metadata";
-import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
+import { getFrontMatter, getPost, getSlugs, POSTS_DIR } from "@/lib/posts";
 
 import { size as ogImageSize } from "./opengraph-image";
 
@@ -54,8 +54,9 @@ export const generateMetadata = async ({
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const frontmatter = await getFrontMatter(slug);
-  if (!frontmatter) notFound();
+  const post = await getPost(slug);
+  if (!post) notFound();
+  const frontmatter = post;
   const d = new Date(frontmatter.date);
 
   const formattedDates = {

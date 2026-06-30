@@ -80,6 +80,9 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@content-collections/cli": "^0.1.9",
+    "@content-collections/core": "^0.15.2",
+    "@content-collections/next": "^0.2.11",
     "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/mdx": "^2.0.13",
