@@ -72,7 +72,7 @@ const PostStats = ({ slug }: { slug: string }) => {
       {viewCount > 0 && (
         <Badge
           variant="secondary"
-          className="text-foreground/80 gap-[5px] text-[11px] tabular-nums"
+          className="gap-[5px] text-[11px] text-foreground/80 tabular-nums"
         >
           <IconEye className="text-foreground/65" aria-hidden="true" />
           {numberFormatter.format(viewCount)}
@@ -82,7 +82,7 @@ const PostStats = ({ slug }: { slug: string }) => {
       {commentCount > 0 && (
         <Badge
           variant="secondary"
-          className="text-foreground/80 gap-[5px] text-[11px] tabular-nums"
+          className="gap-[5px] text-[11px] text-foreground/80 tabular-nums"
           render={
             <Link
               href={`/${slug}#comments`}

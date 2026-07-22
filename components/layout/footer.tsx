@@ -5,7 +5,7 @@ import siteConfig from "@/lib/config/site";
 const Footer = () => (
   <footer
     style={{ viewTransitionName: "persistent-footer" }}
-    className="text-muted-foreground border-border mt-8 w-full border-t py-6 text-xs leading-loose"
+    className="mt-8 w-full border-t border-border py-6 text-xs leading-loose text-muted-foreground"
   >
     All content is licensed under{" "}
     <Link href="/license" className="underline underline-offset-2">

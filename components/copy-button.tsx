@@ -1,7 +1,6 @@
 "use client";
 
 import { IconCheck, IconClipboardCheck, IconCopy } from "@tabler/icons-react";
-import copy from "copy-to-clipboard";
 import * as React from "react";
 import { toast } from "sonner";
 
@@ -28,21 +27,27 @@ function CopyButton({
     [],
   );
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (hasCopied) return;
 
-    copy(value);
-    setHasCopied(true);
-    toast.success("Copied!", {
-      icon: <IconClipboardCheck className="text-foreground/85 size-4" aria-hidden="true" />,
-      duration: 2000,
-      id: "copy-button-toast-success",
-    });
+    try {
+      await navigator.clipboard.writeText(value);
+      setHasCopied(true);
 
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+      toast.success("Copied!", {
+        icon: <IconClipboardCheck className="size-4 text-foreground/85" aria-hidden="true" />,
+        duration: 2000,
+        id: "copy-button-toast-success",
+      });
+    } catch (error) {
+      console.error("failed to copy:", error);
+    } finally {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      timeoutRef.current = setTimeout(() => setHasCopied(false), 2000);
     }
-    timeoutRef.current = setTimeout(() => setHasCopied(false), 2000);
   };
 
   return (
@@ -52,7 +57,7 @@ function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "text-muted-foreground bg-code hover:bg-accent dark:hover:bg-accent absolute top-3 right-2 z-10 size-7.5 hover:opacity-100 focus-visible:opacity-100",
+        "absolute top-3 right-2 z-10 size-7.5 bg-code text-muted-foreground hover:bg-accent hover:opacity-100 focus-visible:opacity-100 dark:hover:bg-accent",
         hasCopied ? "cursor-default" : "cursor-pointer",
         className,
       )}

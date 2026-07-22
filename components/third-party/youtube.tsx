@@ -7,8 +7,8 @@ import YouTubeEmbed from "react-lite-youtube-embed";
 const YouTube = ({
   title = "YouTube video",
   ...rest
-}: React.ComponentProps<typeof YouTubeEmbed>) => (
-  <YouTubeEmbed cookie={false} containerElement="div" title={title} {...rest} />
-);
+}: Omit<React.ComponentProps<typeof YouTubeEmbed>, "title"> & {
+  title?: string;
+}) => <YouTubeEmbed cookie={false} containerElement="div" title={title} {...rest} />;
 
 export { YouTube };

@@ -1,4 +1,5 @@
 import { cacheLife } from "next/cache";
+import { isValidElement } from "react";
 import { codeToHtml } from "shiki";
 
 import { CopyButton } from "@/components/copy-button";
@@ -12,10 +13,8 @@ const getTextContent = (node: React.ReactNode): string => {
   if (node == null || typeof node === "boolean") return "";
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(getTextContent).join("");
-  if (typeof node === "object" && "props" in node) {
-    return getTextContent(
-      (node as React.ReactElement<{ children?: React.ReactNode }>).props.children,
-    );
+  if (isValidElement<{ children?: React.ReactNode }>(node)) {
+    return getTextContent(node.props.children);
   }
   return "";
 };
@@ -41,7 +40,7 @@ const CodeBlock = async ({
   ...props
 }: CodeBlockProps) => {
   // Escape hatch for non-code pre blocks
-  if (!children || typeof children !== "object" || !("props" in children)) {
+  if (!isValidElement<{ children?: React.ReactNode; className?: string }>(children)) {
     return (
       <pre className={className} {...props}>
         {children}
@@ -49,9 +48,8 @@ const CodeBlock = async ({
     );
   }
 
-  const codeProps = children.props as React.ComponentProps<"code">;
-  const codeString = getTextContent(codeProps.children).trim();
-  const lang = codeProps.className?.split("language-")[1] ?? "text";
+  const codeString = getTextContent(children.props.children).trim();
+  const lang = children.props.className?.split("language-")[1] ?? "text";
 
   const html = await renderCode(codeString, lang);
 
@@ -66,12 +64,12 @@ const CodeBlock = async ({
         data-lang={lang}
         data-line-numbers={showLineNumbers || undefined}
         className={cn(
-          "bg-code text-code-foreground overflow-x-auto overflow-y-hidden rounded-xl text-[13px] leading-normal outline-none",
+          "overflow-x-auto overflow-y-hidden rounded-xl bg-code text-[13px] leading-normal text-code-foreground outline-none",
           "[&_span]:!bg-transparent [&_span[style*='color']]:dark:!text-(--shiki-dark)",
           "[&_pre]:m-0 [&_pre]:rounded-xl [&_pre]:!bg-transparent",
           "[&_code]:white-space-pre [&_code]:grid [&_code]:min-w-full [&_code]:px-4 [&_code]:py-3.5 [&_code]:[counter-reset:line]",
           "[&_.line]:min-h-1lh [&_.line]:inline-block [&_.line]:w-full [&_.line]:py-0.5",
-          "data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
+          "data-[line-numbers]:[&_.line]:before:mr-6 data-[line-numbers]:[&_.line]:before:inline-block data-[line-numbers]:[&_.line]:before:w-5 data-[line-numbers]:[&_.line]:before:text-right data-[line-numbers]:[&_.line]:before:text-code-number data-[line-numbers]:[&_.line]:before:content-[counter(line)] data-[line-numbers]:[&_.line]:before:[counter-increment:line]",
           className,
         )}
         dangerouslySetInnerHTML={{ __html: html }}

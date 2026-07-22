@@ -20,7 +20,7 @@ const Marquee = ({
       .map((_, i) => (
         <div
           key={i}
-          className="motion-safe:animate-marquee flex shrink-0 flex-row justify-around [gap:var(--gap)]"
+          className="flex shrink-0 flex-row justify-around [gap:var(--gap)] motion-safe:animate-marquee"
         >
           {children}
         </div>

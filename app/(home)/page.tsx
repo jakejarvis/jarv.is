@@ -1,6 +1,5 @@
 import { IconArrowUpRight } from "@tabler/icons-react";
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
 
 import { FadeTransition } from "@/components/page-transition";
 
@@ -61,21 +60,14 @@ const Page = () => (
   <FadeTransition>
     <h1 className="text-lg font-medium tracking-tight">
       Hi there! I&rsquo;m Jake.{" "}
-      <span className="motion-safe:animate-wave ml-0.5 inline-block origin-[65%_80%] text-[1.2rem]">
+      <span className="ml-0.5 inline-block origin-[65%_80%] text-[1.2rem] motion-safe:animate-wave">
         👋
       </span>
     </h1>
 
     <div className="markdown">
       <p className="text-sm leading-normal tracking-[-0.0125em]">
-        I&rsquo;m a developer based in the{" "}
-        <Link
-          href="https://www.youtube-nocookie.com/embed/rLwbzGyC6t4?hl=en&amp;fs=1&amp;showinfo=1&amp;rel=0&amp;iv_load_policy=3"
-          title='"Boston Accent Trailer - Late Night with Seth Meyers" on YouTube'
-        >
-          Boston
-        </Link>{" "}
-        area working on some cool stuff:
+        I&rsquo;m a developer based in the Boston area working on some cool stuff:
       </p>
     </div>
 
@@ -96,16 +88,16 @@ const Page = () => (
                   width={64}
                   height={64}
                   decoding="async"
-                  className="ring-border size-6 shrink-0 rounded-[26%] ring-1"
+                  className="size-6 shrink-0 rounded-[26%] ring-1 ring-border"
                 />
-                <span className="text-primary text-sm font-medium tracking-[-0.0125em] group-hover:underline group-hover:underline-offset-4">
+                <span className="text-sm font-medium tracking-[-0.0125em] text-primary group-hover:underline group-hover:underline-offset-4">
                   {project.name}
                 </span>
               </div>
-              <span className="text-muted-foreground ml-9 text-xs text-pretty sm:ml-auto">
+              <span className="ml-9 text-xs text-pretty text-muted-foreground sm:ml-auto">
                 {project.tagline}
                 <IconArrowUpRight
-                  className="group-hover:text-primary ml-1 inline size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="ml-1 inline size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
                   aria-hidden="true"
                 />
               </span>

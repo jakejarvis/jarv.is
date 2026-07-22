@@ -20,8 +20,8 @@ const CodePen = ({
   <iframe
     src={`https://codepen.io/${username}/embed/${id}/?${new URLSearchParams({
       "default-tab": `${defaultTab},result`,
-      preview: `${!!preview}`,
-      editable: `${!!editable}`,
+      preview: `${preview}`,
+      editable: `${editable}`,
     })}`}
     title={title}
     sandbox="allow-scripts allow-popups allow-forms"

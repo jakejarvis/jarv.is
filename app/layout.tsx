@@ -60,7 +60,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
       />
     </head>
 
-    <body className="bg-background text-foreground font-sans antialiased">
+    <body className="bg-background font-sans text-foreground antialiased">
       <Providers>
         <div className="mx-auto w-full max-w-[720px] px-5">
           <Header />

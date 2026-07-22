@@ -33,7 +33,7 @@ const Comments = async ({ slug }: { slug: string }) => {
       {session ? (
         <NewCommentForm slug={slug} />
       ) : (
-        <div className="bg-muted/40 flex flex-col items-center justify-center gap-y-4 rounded-lg p-6">
+        <div className="flex flex-col items-center justify-center gap-y-4 rounded-lg bg-muted/40 p-6">
           <p className="text-center font-medium">Join the discussion by signing in:</p>
           <SignIn callbackPath={`/${slug}#comments`} />
         </div>
@@ -51,7 +51,7 @@ const Comments = async ({ slug }: { slug: string }) => {
           ))}
         </div>
       ) : (
-        <div className="text-foreground/80 py-8 text-center text-lg font-medium tracking-tight">
+        <div className="py-8 text-center text-lg font-medium tracking-tight text-foreground/80">
           Be the first to comment!
         </div>
       )}

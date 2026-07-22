@@ -4,6 +4,10 @@
   "env": {
     "builtin": true
   },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
   "categories": {
     "correctness": "error",
     "suspicious": "warn",

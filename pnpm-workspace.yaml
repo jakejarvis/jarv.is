@@ -3,5 +3,7 @@ allowBuilds:
   msw: true
   sharp: true
   unrs-resolver: true
-overrides:
-  kysely: ^0.28.17
+
+peerDependencyRules:
+  allowAny:
+    - "drizzle-orm"

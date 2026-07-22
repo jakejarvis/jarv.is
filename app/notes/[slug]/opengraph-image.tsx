@@ -271,7 +271,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
     );
   } catch (error) {
     console.error("[/notes/[slug]/opengraph-image] error generating open graph image:", error);
-    notFound();
+    return notFound();
   }
 };
 

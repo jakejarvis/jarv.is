@@ -243,7 +243,7 @@ const ContactPopover = () => (
             href={link.href}
             target={link.external ? "_blank" : undefined}
             rel={`me${link.external ? " noopener noreferrer" : ""}`}
-            className="hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 flex items-center gap-2 rounded-md px-1.5 py-1.5 no-underline transition-colors outline-none focus-visible:ring-3"
+            className="flex items-center gap-2 rounded-md px-1.5 py-1.5 no-underline transition-colors outline-none hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <Tooltip disableHoverablePopup>
               <TooltipTrigger>
@@ -255,7 +255,7 @@ const ContactPopover = () => (
               {link.value}
             </span>
             {link.external ? (
-              <IconExternalLink className="text-muted-foreground/70 size-3.5" aria-hidden="true" />
+              <IconExternalLink className="size-3.5 text-muted-foreground/70" aria-hidden="true" />
             ) : null}
           </a>
         ))}
@@ -292,7 +292,7 @@ const Header = ({ className }: { className?: string }) => {
         "bg-background/0 backdrop-blur-none",
         "data-[scrolled=true]:bg-background/80",
         "data-[scrolled=true]:backdrop-blur-md",
-        "data-[scrolled=true]:border-border/70 data-[scrolled=true]:border-b",
+        "data-[scrolled=true]:border-b data-[scrolled=true]:border-border/70",
         className,
       )}
     >
@@ -304,14 +304,14 @@ const Header = ({ className }: { className?: string }) => {
             transitionTypes={pathname === "/" ? undefined : ["nav-lateral"]}
             aria-label={siteConfig.name}
             className={cn(
-              "hover:text-foreground/85 flex shrink-0 items-center",
+              "flex shrink-0 items-center hover:text-foreground/85",
               "gap-2.5 pr-2 hover:no-underline",
             )}
           >
             <Image
               src={avatarImg}
               alt={`Photo of ${siteConfig.name}`}
-              className="border-ring/30 size-7 rounded-full border"
+              className="size-7 rounded-full border border-ring/30"
               width={40}
               height={40}
               quality={75}
