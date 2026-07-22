@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@fontsource/inter": "^5.2.8",
+    "@fontsource/inter": "^5.3.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "16.2.9",
