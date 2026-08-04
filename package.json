@@ -28,7 +28,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "16.2.9",
     "@number-flow/react": "^0.6.1",
-    "@octokit/graphql": "^9.0.3",
+    "@octokit/graphql": "^9.0.4",
     "@octokit/graphql-schema": "^15.26.1",
     "@tabler/icons-react": "^3.44.0",
     "@vercel/analytics": "^2.0.1",
