@@ -2,7 +2,6 @@
 
 import { IconDots, IconEdit, IconMessageReply, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
-import { toast } from "sonner";
 
 import {
   AlertDialog,
@@ -22,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Spinner } from "@/components/ui/spinner";
+import { toast } from "@/components/ui/toast";
 import { useSession } from "@/lib/auth-client";
 import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
 
@@ -46,11 +46,17 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
 
     try {
       await deleteComment(comment.id);
-      toast.success("Your comment has been deleted successfully.");
+      toast.add({
+        title: "Your comment has been deleted successfully.",
+        type: "success",
+      });
       setMode({ type: "idle" });
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.error("Failed to delete comment. Please try again.");
+      toast.add({
+        title: "Failed to delete comment. Please try again.",
+        type: "error",
+      });
       setMode({ type: "idle" });
     }
   };

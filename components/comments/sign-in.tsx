@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
 
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { toast } from "@/components/ui/toast";
 import { signIn } from "@/lib/auth-client";
 
 const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
@@ -21,7 +21,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
       });
     } catch (error) {
       console.error("Error signing in:", error);
-      toast.error("There was a problem signing in.");
+      toast.add({ title: "There was a problem signing in.", type: "error" });
       setIsLoading(false);
     }
   };

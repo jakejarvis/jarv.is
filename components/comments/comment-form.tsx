@@ -2,12 +2,12 @@
 
 import { IconInfoCircle, IconMarkdown } from "@tabler/icons-react";
 import { createContext, useContext, useMemo, useState, useTransition } from "react";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/toast";
 import { useSession } from "@/lib/auth-client";
 import { createComment, updateComment } from "@/lib/server/comments";
 
@@ -203,18 +203,21 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
     e.preventDefault();
 
     if (!content.trim()) {
-      toast.error("Comment cannot be empty.");
+      toast.add({ title: "Comment cannot be empty.", type: "error" });
       return;
     }
 
     startTransition(async () => {
       try {
         await createComment({ content, pageSlug: slug });
-        toast.success("Comment posted!");
+        toast.add({ title: "Comment posted!", type: "success" });
         setContent("");
       } catch (error) {
         console.error("Error submitting comment:", error);
-        toast.error("Failed to submit comment. Please try again.");
+        toast.add({
+          title: "Failed to submit comment. Please try again.",
+          type: "error",
+        });
       }
     });
   };
@@ -268,19 +271,22 @@ const ReplyForm = ({
     e.preventDefault();
 
     if (!content.trim()) {
-      toast.error("Comment cannot be empty.");
+      toast.add({ title: "Comment cannot be empty.", type: "error" });
       return;
     }
 
     startTransition(async () => {
       try {
         await createComment({ content, parentId, pageSlug: slug });
-        toast.success("Comment posted!");
+        toast.add({ title: "Comment posted!", type: "success" });
         setContent("");
         onSuccess?.();
       } catch (error) {
         console.error("Error submitting comment:", error);
-        toast.error("Failed to submit comment. Please try again.");
+        toast.add({
+          title: "Failed to submit comment. Please try again.",
+          type: "error",
+        });
       }
     });
   };
@@ -338,18 +344,21 @@ const EditCommentForm = ({
     e.preventDefault();
 
     if (!content.trim()) {
-      toast.error("Comment cannot be empty.");
+      toast.add({ title: "Comment cannot be empty.", type: "error" });
       return;
     }
 
     startTransition(async () => {
       try {
         await updateComment(commentId, content);
-        toast.success("Comment updated!");
+        toast.add({ title: "Comment updated!", type: "success" });
         onSuccess?.();
       } catch (error) {
         console.error("Error updating comment:", error);
-        toast.error("Failed to update comment. Please try again.");
+        toast.add({
+          title: "Failed to update comment. Please try again.",
+          type: "error",
+        });
       }
     });
   };

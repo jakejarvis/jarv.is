@@ -114,7 +114,7 @@ export const submitForm = async (state: ActionState, payload: FormData): Promise
 };
 ```
 
-**Client-side:** Use `toast` from sonner for feedback, `useTransition` for pending states.
+**Client-side:** Use `toast` from `@/components/ui/toast` for feedback, `useTransition` for pending states.
 
 ### Database (Drizzle ORM)
 

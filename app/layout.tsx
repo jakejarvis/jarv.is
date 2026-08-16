@@ -1,18 +1,18 @@
+import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "react-schemaorg";
 import type { Person, WebSite } from "schema-dts";
 
-import { Analytics } from "@/app/analytics";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Providers } from "@/components/providers";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toast";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 import { Inter, JetBrainsMono } from "@/lib/fonts";
-
-import "./globals.css";
 import { defaultMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
+
+import "./globals.css";
 
 export const metadata = defaultMetadata;
 
@@ -67,7 +67,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
           <main className="mt-4 w-full">{children}</main>
           <Footer />
         </div>
-        <Toaster position="bottom-center" hotkey={[]} />
+        <Toaster />
       </Providers>
       <Analytics />
     </body>

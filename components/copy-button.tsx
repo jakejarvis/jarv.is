@@ -1,10 +1,10 @@
 "use client";
 
-import { IconCheck, IconClipboardCheck, IconCopy } from "@tabler/icons-react";
+import { IconCheck, IconCopy } from "@tabler/icons-react";
 import * as React from "react";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 function CopyButton({
@@ -34,13 +34,20 @@ function CopyButton({
       await navigator.clipboard.writeText(value);
       setHasCopied(true);
 
-      toast.success("Copied!", {
-        icon: <IconClipboardCheck className="size-4 text-foreground/85" aria-hidden="true" />,
-        duration: 2000,
+      toast.add({
+        title: "Copied!",
+        type: "success",
+        timeout: 2000,
         id: "copy-button-toast-success",
       });
     } catch (error) {
-      console.error("failed to copy:", error);
+      console.error("Failed to copy:", error);
+
+      toast.add({
+        title: "Failed to copy; see console for details.",
+        type: "error",
+        id: "copy-button-toast-error",
+      });
     } finally {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
