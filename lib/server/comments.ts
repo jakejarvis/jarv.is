@@ -51,7 +51,7 @@ export const getCommentCount = async (slug: string): Promise<number> => {
       .from(schema.comment)
       .where(eq(schema.comment.pageSlug, slug));
 
-    return Number(result[0]?.count ?? 0);
+    return result[0]?.count ?? 0;
   } catch (error) {
     console.error("[server/comments] error fetching comment count:", error);
     return 0;
@@ -76,7 +76,7 @@ export const getCommentCountsForSlugs = async (
 
     const map: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
     for (const row of rows) {
-      map[row.pageSlug] = Number(row.count ?? 0);
+      map[row.pageSlug] = row.count ?? 0;
     }
     return map;
   } catch (error) {
@@ -100,7 +100,7 @@ export const getAllCommentCounts = async (): Promise<Record<string, number>> => 
 
     const map: Record<string, number> = {};
     for (const row of rows) {
-      map[row.pageSlug] = Number(row.count ?? 0);
+      map[row.pageSlug] = row.count ?? 0;
     }
     return map;
   } catch (error) {

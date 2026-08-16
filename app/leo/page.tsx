@@ -28,8 +28,8 @@ const Page = () => (
       item={{
         "@context": "https://schema.org",
         "@type": "VideoObject",
-        name: metadata.title as string,
-        description: metadata.description as string,
+        name: 'Facebook App on "The Lab with Leo Laporte"',
+        description: "Powncer app featured in Leo Laporte's TechTV show.",
         contentUrl:
           "https://ijyxfbpcm3itvdly.public.blob.vercel-storage.com/leo-uoCXHS9gViyRnQhr8CEGXFvj4VGh5Y.webm",
         thumbnailUrl: `${process.env.NEXT_PUBLIC_BASE_URL}${thumbnail.src}`,
@@ -50,7 +50,7 @@ const Page = () => (
       poster={thumbnail.src}
     />
 
-    <p className="text-muted-foreground mx-4 mt-5 mb-0 text-center text-sm leading-relaxed">
+    <p className="mx-4 mt-5 mb-0 text-center text-sm leading-relaxed text-muted-foreground">
       Video is property of{" "}
       <a
         href="https://web.archive.org/web/20070511004304/www.g4techtv.ca"

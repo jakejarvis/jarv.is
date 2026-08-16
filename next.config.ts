@@ -27,7 +27,6 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   experimental: {
-    viewTransition: true,
     serverActions: {
       // fix CSRF errors from tor reverse proxy
       allowedOrigins: [

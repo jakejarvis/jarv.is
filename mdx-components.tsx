@@ -46,7 +46,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
           height={imageHeight}
           className={cn(
             "mx-auto my-8 block h-auto max-w-full rounded-sm",
-            "[&+em]:text-muted-foreground [&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:text-[0.875em] [&+em]:leading-normal [&+em]:font-medium [&+em]:not-italic",
+            "[&+em]:-mt-4 [&+em]:block [&+em]:text-center [&+em]:text-[0.875em] [&+em]:leading-normal [&+em]:font-medium [&+em]:text-muted-foreground [&+em]:not-italic",
             className,
           )}
           {...rest}

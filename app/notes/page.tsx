@@ -64,7 +64,7 @@ const PostsList = async () => {
         <ul className="space-y-4">
           {yearPosts.map(({ slug, dateISO, dateTitle, dateDisplay, title, htmlTitle }) => (
             <li className="flex text-sm leading-relaxed" key={slug}>
-              <span className="text-muted-foreground w-18 shrink-0 md:w-22">
+              <span className="w-18 shrink-0 text-muted-foreground md:w-22">
                 <time dateTime={dateISO} title={dateTitle} suppressHydrationWarning>
                   {dateDisplay}
                 </time>

@@ -104,7 +104,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         }}
       />
 
-      <div className="text-foreground/70 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide text-foreground/70">
         <Link
           href={`/${POSTS_DIR}/${post.slug}`}
           className={
@@ -128,7 +128,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               <span
                 key={tag}
                 title={tag}
-                className="before:text-foreground/40 mx-px lowercase before:pr-0.5 before:content-['#'] first-of-type:ml-0 last-of-type:mr-0"
+                className="mx-px lowercase before:pr-0.5 before:text-foreground/40 before:content-['#'] first-of-type:ml-0 last-of-type:mr-0"
               >
                 {tag}
               </span>
@@ -180,7 +180,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
         <div className="mx-auto w-full max-w-3xl space-y-6">
           {post.noComments ? (
-            <div className="bg-muted/40 flex justify-center rounded-lg px-6 py-12">
+            <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
               <p className="text-center text-lg font-medium">Comments are closed.</p>
             </div>
           ) : (

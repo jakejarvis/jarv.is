@@ -14,6 +14,7 @@
     "order": "asc"
   },
   "sortTailwindcss": {
+    "stylesheet": "app/globals.css",
     "attributes": ["className"],
     "functions": ["cn", "clsx", "cva"]
   },

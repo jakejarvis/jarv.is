@@ -123,7 +123,9 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
       },
     );
 
-    return user.repositories.edges?.map((edge) => edge?.node as Repository);
+    return user.repositories.edges
+      ?.map((edge) => edge?.node)
+      .filter((node): node is Repository => node != null);
   } catch (error) {
     console.error("[server/github] Failed to fetch repositories:", error);
     return [];

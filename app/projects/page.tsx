@@ -51,7 +51,7 @@ const Page = async () => {
             <ActivityCalendar data={contributions} noun="contribution" />
           </div>
         ) : (
-          <p className="text-muted-foreground my-4 text-center">
+          <p className="my-4 text-center text-muted-foreground">
             Unable to load contribution data at this time.
           </p>
         )}
@@ -73,7 +73,7 @@ const Page = async () => {
           {repos.map((repo) => (
             <div
               key={repo?.name}
-              className="border-ring/30 h-fit space-y-1.5 rounded-2xl border-1 px-4 py-3 shadow-xs"
+              className="h-fit space-y-1.5 rounded-2xl border-1 border-ring/30 px-4 py-3 shadow-xs"
             >
               <a
                 href={repo?.url}
@@ -85,14 +85,14 @@ const Page = async () => {
               </a>
 
               {repo?.description && (
-                <p className="text-foreground/85 text-xs leading-relaxed text-pretty">
+                <p className="text-xs leading-relaxed text-pretty text-foreground/85">
                   {repo?.description}
                 </p>
               )}
 
               <div className="flex flex-wrap gap-x-4 text-[11px] leading-loose whitespace-nowrap">
                 {repo?.primaryLanguage && (
-                  <div className="text-muted-foreground inline-flex flex-nowrap items-center gap-1.5">
+                  <div className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground">
                     {repo?.primaryLanguage.color && (
                       <span
                         className="inline-block size-3 rounded-full bg-[var(--language-color)]"
@@ -111,7 +111,7 @@ const Page = async () => {
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
+                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <IconStar className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
@@ -128,7 +128,7 @@ const Page = async () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
-                    className="text-muted-foreground hover:text-primary inline-flex flex-nowrap items-center gap-1.5 hover:no-underline"
+                    className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <IconGitFork className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
@@ -139,7 +139,7 @@ const Page = async () => {
                   </a>
                 )}
 
-                <div className="text-muted-foreground whitespace-nowrap">
+                <div className="whitespace-nowrap text-muted-foreground">
                   <Suspense fallback={null}>
                     <span>
                       Updated <RelativeTime date={repo?.pushedAt} />
@@ -151,7 +151,7 @@ const Page = async () => {
           ))}
         </div>
       ) : (
-        <p className="text-muted-foreground my-4 text-center">
+        <p className="my-4 text-center text-muted-foreground">
           Unable to load repository data at this time.
         </p>
       )}

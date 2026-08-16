@@ -36,16 +36,17 @@ export const getPost = async (slug: string): Promise<Post | undefined> => {
   return allPosts.find((post) => post.slug === slug);
 };
 
-export const getFrontMatter: {
-  /**
-   * Returns the front matter of ALL posts, sorted reverse chronologically.
-   */
-  (): Promise<FrontMatter[]>;
-  /**
-   * Returns the front matter of a given slug, or undefined if the slug does not exist.
-   */
-  (slug: string): Promise<FrontMatter | undefined>;
-} = (async (slug?: string) => {
+/**
+ * Returns the front matter of ALL posts, sorted reverse chronologically.
+ */
+export async function getFrontMatter(): Promise<FrontMatter[]>;
+/**
+ * Returns the front matter of a given slug, or undefined if the slug does not exist.
+ */
+export async function getFrontMatter(slug: string): Promise<FrontMatter | undefined>;
+export async function getFrontMatter(
+  slug?: string,
+): Promise<FrontMatter[] | FrontMatter | undefined> {
   "use cache";
 
   const toFrontMatter = (post: Post): FrontMatter => ({
@@ -70,7 +71,7 @@ export const getFrontMatter: {
   }
 
   throw new Error("getFrontMatter() called with invalid argument.");
-}) as typeof getFrontMatter;
+}
 
 /** Returns the sanitized HTML content of a post for RSS feeds. */
 export const getContent = async (slug: string): Promise<string | undefined> => {

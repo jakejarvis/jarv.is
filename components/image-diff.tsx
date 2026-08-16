@@ -6,11 +6,13 @@ import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slide
 
 import { cn } from "@/lib/utils";
 
+type ImageChildProps = Parameters<typeof getImageProps>[0];
+
 const ImageDiff = ({
   children,
   className,
 }: {
-  children: React.ReactElement[];
+  children: React.ReactElement<ImageChildProps>[];
   className?: string;
 }) => {
   // Extract the two image children
@@ -20,19 +22,18 @@ const ImageDiff = ({
     return null;
   }
 
+  const [before, after] = children;
+
   // Get the original image source to extract dimensions for aspect ratio
-  const firstChildProps = children[0].props as Parameters<typeof getImageProps>[0];
-  const imageSrc = firstChildProps.src;
+  const imageSrc = before.props.src;
   const aspectRatio =
     typeof imageSrc === "object" && "width" in imageSrc && "height" in imageSrc
       ? imageSrc.width / imageSrc.height
       : 16 / 9;
 
   // Extract image props, stripping out MDX className (margins, etc.) that would break slider layout
-  const beforeImageProps = getImageProps(firstChildProps).props;
-  const afterImageProps = getImageProps(
-    children[1].props as Parameters<typeof getImageProps>[0],
-  ).props;
+  const beforeImageProps = getImageProps(before.props).props;
+  const afterImageProps = getImageProps(after.props).props;
 
   return (
     <ReactCompareSlider
