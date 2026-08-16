@@ -21,7 +21,7 @@ const parseableDate = z.string().refine((value) => !Number.isNaN(Date.parse(valu
 });
 
 const titleToHtml = async (title: string): Promise<string> => {
-  return unified()
+  const parsedTitle = await unified()
     .use(remarkParse)
     .use(remarkSmartypants)
     .use(remarkRehype)
@@ -29,8 +29,9 @@ const titleToHtml = async (title: string): Promise<string> => {
       tagNames: ["code", "em", "strong"],
     })
     .use(rehypeStringify)
-    .process(title)
-    .then((result) => result.toString().trim());
+    .process(title);
+
+  return parsedTitle.toString().trim();
 };
 
 const contentToFeedHtml = async (content: string): Promise<string> => {

@@ -14,8 +14,8 @@ export const metadata = createMetadata({
   canonical: `/${POSTS_DIR}`,
 });
 
-const PostsList = async () => {
-  const posts = await getFrontMatter();
+const PostsList = () => {
+  const posts = getFrontMatter();
 
   const formattedPosts = posts.map((post) => {
     const d = new Date(post.date);
@@ -92,7 +92,7 @@ const PostsList = async () => {
   return <>{sections.toReversed()}</>;
 };
 
-const Page = async () => (
+const Page = () => (
   <DirectionalTransition>
     <PageTitle canonical="/notes">Notes</PageTitle>
     <PostStatsProvider>

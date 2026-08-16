@@ -3,14 +3,14 @@ import { Feed, type Item as FeedItem } from "feed";
 import ogImage from "@/app/opengraph-image.jpg";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { getContent, getFrontMatter } from "@/lib/posts";
+import { getPost, getFrontMatter } from "@/lib/posts";
 
 /**
  * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.
  * @see https://github.com/jpmonette/feed#example
  */
-export const buildFeed = async (): Promise<Feed> => {
-  const frontmatter = await getFrontMatter();
+export const buildFeed = (): Feed => {
+  const frontmatter = getFrontMatter();
 
   const feed = new Feed({
     id: `${process.env.NEXT_PUBLIC_BASE_URL}`,
@@ -32,25 +32,23 @@ export const buildFeed = async (): Promise<Feed> => {
   });
 
   // parse posts into feed items
-  const posts: FeedItem[] = await Promise.all(
-    frontmatter.map(async (post) => ({
-      guid: post.permalink,
-      link: post.permalink,
-      title: post.title,
-      description: post.description,
-      author: [
-        {
-          name: authorConfig.name,
-          link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-        },
-      ],
-      date: new Date(post.date),
-      content: `
-        ${await getContent(post.slug)}
+  const posts: FeedItem[] = frontmatter.map((post) => ({
+    guid: post.permalink,
+    link: post.permalink,
+    title: post.title,
+    description: post.description,
+    author: [
+      {
+        name: authorConfig.name,
+        link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+      },
+    ],
+    date: new Date(post.date),
+    content: `
+        ${getPost(post.slug)?.feedHtml}
         <p><a href="${post.permalink}"><strong>Continue reading...</strong></a></p>
       `.trim(),
-    })),
-  );
+  }));
 
   // sort posts reverse chronologically in case the promises resolved out of order
   posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());

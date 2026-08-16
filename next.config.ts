@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig = {
   cacheComponents: true,
+  partialPrefetching: true,
   reactCompiler: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
@@ -16,6 +17,12 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
     ],
+  },
+  compiler: {
+    defineServer: {
+      // frozen timestamp to make things like the sitemap prerender/cache-friendly
+      "process.env.BUILD_TIME": new Date().toISOString(),
+    },
   },
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [

@@ -18,8 +18,8 @@ import { getFrontMatter, getPost, getSlugs, POSTS_DIR } from "@/lib/posts";
 
 import { size as ogImageSize } from "./opengraph-image";
 
-export const generateStaticParams = async () => {
-  const slugs = await getSlugs();
+export const generateStaticParams = () => {
+  const slugs = getSlugs();
 
   // map slugs into a static paths object required by next.js
   return slugs.map((slug) => ({
@@ -33,7 +33,7 @@ export const generateMetadata = async ({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
   const { slug } = await params;
-  const frontmatter = await getFrontMatter(slug);
+  const frontmatter = getFrontMatter(slug);
 
   return createMetadata({
     title: frontmatter?.title,
@@ -54,7 +54,7 @@ export const generateMetadata = async ({
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const post = getPost(slug);
   if (!post) notFound();
 
   const d = new Date(post.date);

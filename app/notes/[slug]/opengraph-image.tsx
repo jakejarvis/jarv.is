@@ -7,13 +7,9 @@ import { ImageResponse } from "next/og";
 import siteConfig from "@/lib/config/site";
 import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 
-// Reading Inter fonts from the local @fontsource/inter package (instead of
-// fetching Google Fonts at build time) avoids flaky network timeouts on
-// Vercel's build infra that caused OG image generation to fail intermittently.
-// Satori supports .woff but not .woff2. The two file paths are listed explicitly
-// in next.config.ts under `outputFileTracingIncludes` so NFT ships them with
-// the function output.
 const loadInterFont = async (weight: 400 | 600): Promise<ArrayBuffer> => {
+  "use cache";
+
   const fontPath = path.join(
     /* turbopackIgnore: true */ process.cwd(),
     "node_modules/@fontsource/inter/files",
@@ -23,23 +19,9 @@ const loadInterFont = async (weight: 400 | 600): Promise<ArrayBuffer> => {
   return Uint8Array.from(buffer).buffer;
 };
 
-export const contentType = "image/png";
-export const size = {
-  // https://developers.facebook.com/docs/sharing/webmasters/images/
-  width: 1200,
-  height: 630,
-};
-
-export const generateStaticParams = async () => {
-  const slugs = await getSlugs();
-
-  // map slugs into a static paths object required by next.js
-  return slugs.map((slug) => ({
-    slug,
-  }));
-};
-
 const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
+  "use cache";
+
   // https://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src/14115340#14115340
   const NO_IMAGE = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 
@@ -68,12 +50,28 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
   }
 };
 
+export const contentType = "image/png";
+export const size = {
+  // https://developers.facebook.com/docs/sharing/webmasters/images/
+  width: 1200,
+  height: 630,
+};
+
+export const generateStaticParams = () => {
+  const slugs = getSlugs();
+
+  // map slugs into a static paths object required by next.js
+  return slugs.map((slug) => ({
+    slug,
+  }));
+};
+
 const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   try {
     const { slug } = await params;
 
     // get the post's title and image filename from its frontmatter
-    const frontmatter = await getFrontMatter(slug);
+    const frontmatter = getFrontMatter(slug);
     if (!frontmatter) notFound();
 
     // IMPORTANT: include these exact paths in next.config.ts under "outputFileTracingIncludes"
@@ -160,10 +158,10 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> })
               )}
               <span
                 style={{
-                  fontSize: "1.825rem",
-                  fontWeight: 600,
+                  fontSize: "1.925rem",
+                  fontWeight: 400,
                   lineHeight: "3rem",
-                  letterSpacing: "-0.015em",
+                  letterSpacing: "-0.025em",
                   marginLeft: "0.75rem",
                 }}
               >
