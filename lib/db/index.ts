@@ -2,7 +2,7 @@ import { attachDatabasePool } from "@vercel/functions";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-import { authRelations } from "./schema";
+import { authRelations, relations } from "./schema";
 
 // Create explicit pool instance for better connection management
 const pool = new Pool({
@@ -20,5 +20,7 @@ try {
 
 export const db = drizzle({
   client: pool,
-  relations: { ...authRelations },
+  // Main `defineRelations` first, then `defineRelationsPart`s.
+  // https://orm.drizzle.team/docs/relations-v2#relations-parts
+  relations: { ...relations, ...authRelations },
 });

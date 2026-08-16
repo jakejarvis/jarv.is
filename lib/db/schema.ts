@@ -1,4 +1,4 @@
-import { defineRelationsPart } from "drizzle-orm";
+import { defineRelations, defineRelationsPart } from "drizzle-orm";
 import {
   type AnyPgColumn,
   boolean,
@@ -126,4 +126,13 @@ export const comment = pgTable("comment", {
     .references(() => user.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const relations = defineRelations({
+  user,
+  session,
+  account,
+  verification,
+  page,
+  comment,
 });
