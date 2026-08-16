@@ -17,6 +17,12 @@ const nextConfig = {
       },
     ],
   },
+  compiler: {
+    defineServer: {
+      // Inlined at `next build`; `new Date()` here is config-time, not prerender I/O.
+      "process.env.BUILD_TIME": new Date().toISOString(),
+    },
+  },
   outputFileTracingIncludes: {
     "/notes/[slug]/opengraph-image": [
       "./notes/**/*",

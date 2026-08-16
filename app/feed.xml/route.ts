@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 import { buildFeed } from "@/lib/build-feed";
 
-export const GET = async () => {
-  const feed = await buildFeed();
+export const GET = () => {
+  const feed = buildFeed();
 
   return new NextResponse(feed.rss2(), {
     headers: {

@@ -1,9 +1,22 @@
 import path from "node:path";
 
-import glob from "fast-glob";
 import type { MetadataRoute } from "next";
+import { glob } from "tinyglobby";
 
 import { getFrontMatter } from "@/lib/posts";
+
+const getStaticRoutes = async (): Promise<string[]> => {
+  "use cache";
+
+  return glob("**/page.{tsx,mdx}", {
+    cwd: path.join(process.cwd(), "app"),
+    expandDirectories: false,
+    ignore: [
+      // don't include dynamic routes or route groups
+      "**/{\\[*\\],\\(*\\)}/page.{tsx,mdx}",
+    ],
+  });
+};
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   // start with manual routes
@@ -12,25 +25,14 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       // homepage
       url: process.env.NEXT_PUBLIC_BASE_URL ?? "/",
       priority: 1.0,
-      lastModified: new Date(),
+      lastModified: new Date(process.env.BUILD_TIME ?? 0),
     },
     { url: `${process.env.NEXT_PUBLIC_BASE_URL}/tweets` },
     { url: `${process.env.NEXT_PUBLIC_BASE_URL}/y2k` },
   ];
 
-  const [staticRoutes, frontmatter] = await Promise.all([
-    // static routes in app directory
-    glob("**/page.{tsx,mdx}", {
-      cwd: path.join(process.cwd(), "app"),
-      ignore: [
-        // don't include dynamic routes or route groups
-        "**/{\\[*\\],\\(*\\)}/page.{tsx,mdx}",
-      ],
-    }),
-
-    // blog posts
-    getFrontMatter(),
-  ]);
+  const staticRoutes = await getStaticRoutes();
+  const frontmatter = getFrontMatter();
 
   // normalize static routes and blog slugs to be absolute URLs
   staticRoutes.forEach((route) => {
@@ -53,7 +55,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     });
   });
 
-  // sort alphabetically by URL, sometimes fast-glob returns results in a different order
+  // sort alphabetically by URL, sometimes glob returns results in a different order
   routes.sort((a, b) => (a.url < b.url ? -1 : 1));
 
   return routes;
