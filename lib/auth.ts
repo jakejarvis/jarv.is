@@ -11,7 +11,6 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
-  experimental: { joins: true },
   plugins: [nextCookies()],
   socialProviders: {
     github: {
