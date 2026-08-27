@@ -88,7 +88,7 @@
     "@types/node": "^26.2.0",
     "@types/pg": "^8.21.0",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
+    "@types/react-dom": "19.2.5",
     "babel-plugin-react-compiler": "1.0.0",
     "dotenv": "^17.4.2",
     "drizzle-kit": "1.0.0-rc.5-ab785fc",
