@@ -76,7 +76,7 @@
     "tailwind-merge": "^3.6.0",
     "tinyglobby": "^0.2.17",
     "unified": "^11.0.5",
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@content-collections/cli": "^0.1.9",
