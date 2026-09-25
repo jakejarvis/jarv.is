@@ -90,7 +90,7 @@
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "babel-plugin-react-compiler": "1.0.0",
-    "dotenv": "^17.4.2",
+    "dotenv": "^18.0.3",
     "drizzle-kit": "1.0.0-rc.5-ab785fc",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
