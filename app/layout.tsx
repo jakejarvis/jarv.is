@@ -8,7 +8,7 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toast";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { Inter, JetBrainsMono } from "@/lib/fonts";
+import { SchibstedGrotesk, JetBrainsMono } from "@/lib/fonts";
 import { defaultMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export const metadata = defaultMetadata;
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html
     lang={process.env.NEXT_PUBLIC_SITE_LOCALE}
-    className={cn(Inter.variable, JetBrainsMono.variable)}
+    className={cn(SchibstedGrotesk.variable, JetBrainsMono.variable)}
     suppressHydrationWarning
   >
     <head>
@@ -33,7 +33,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
           image: [`${process.env.NEXT_PUBLIC_BASE_URL}/opengraph-image.jpg`],
           sameAs: [
             process.env.NEXT_PUBLIC_BASE_URL!,
-            `https://${authorConfig.social?.mastodon}`,
+            authorConfig.social?.mastodon?.replace(/^@([^@]+)@(.+)$/, "https://$2/@$1"),
             `https://github.com/${authorConfig.social?.github}`,
             `https://bsky.app/profile/${authorConfig.social?.bluesky}`,
             `https://twitter.com/${authorConfig.social?.twitter}`,

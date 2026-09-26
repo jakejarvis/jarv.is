@@ -3,14 +3,14 @@
 
 import {
   Comic_Neue as ComicNeueLoader,
-  Inter as InterLoader,
   JetBrains_Mono as JetBrainsMonoLoader,
+  Schibsted_Grotesk as SchibstedGroteskLoader,
 } from "next/font/google";
 
-export const Inter = InterLoader({
+export const SchibstedGrotesk = SchibstedGroteskLoader({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-schibsted-grotesk",
   preload: true,
 });
 

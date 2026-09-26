@@ -8,7 +8,7 @@ const authorConfig = {
     medium: "jakejarvis",
     linkedin: "jakejarvis",
     instagram: "jakejarvis",
-    mastodon: "fediverse.jarv.is/@jake",
+    mastodon: "@jakejarvis@mastodon.social",
     bluesky: "jarv.is",
   },
 } as const;

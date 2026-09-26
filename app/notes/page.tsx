@@ -58,7 +58,7 @@ const PostsList = () => {
   Object.entries(postsByYear).forEach(([year, yearPosts]) => {
     sections.push(
       <section className="my-8 first-of-type:mt-0 last-of-type:mb-0" key={year}>
-        <h2 id={year} className="mt-0 mb-4 text-xl font-semibold tracking-tight">
+        <h2 id={year} className="mt-0 mb-4 text-xl font-semibold">
           {year}
         </h2>
         <ul className="space-y-4">

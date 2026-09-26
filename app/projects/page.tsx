@@ -90,7 +90,7 @@ const Page = async () => {
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-x-4 text-[11px] leading-loose whitespace-nowrap">
+              <div className="flex flex-wrap gap-x-4 text-[0.7rem] leading-loose whitespace-nowrap">
                 {repo?.primaryLanguage && (
                   <div className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground">
                     {repo?.primaryLanguage.color && (

@@ -93,7 +93,7 @@ const contactLinks = [
   {
     label: "Mastodon",
     value: authorConfig.social.mastodon,
-    href: `https://${authorConfig.social.mastodon}`,
+    href: authorConfig.social.mastodon.replace(/^@([^@]+)@(.+)$/, "https://$2/@$1"),
     Icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -317,12 +317,7 @@ const Header = ({ className }: { className?: string }) => {
               quality={75}
               priority
             />
-            <span
-              className={cn(
-                "text-[17.5px] font-medium tracking-[-0.0375em] whitespace-nowrap",
-                "max-md:sr-only",
-              )}
-            >
+            <span className={cn("text-[17.5px] font-medium whitespace-nowrap", "max-md:sr-only")}>
               {siteConfig.name}
             </span>
           </Link>

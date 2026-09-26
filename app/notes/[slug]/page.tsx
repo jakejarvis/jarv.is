@@ -18,6 +18,8 @@ import { getFrontMatter, getPost, getSlugs, POSTS_DIR } from "@/lib/posts";
 
 import { size as ogImageSize } from "./opengraph-image";
 
+export const instant = false;
+
 export const generateStaticParams = () => {
   const slugs = getSlugs();
 

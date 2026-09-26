@@ -7,8 +7,7 @@
 @custom-variant dark (&:where(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-sans--font-feature-settings: "rlig" 1, "calt" 0;
+  --font-sans: var(--font-schibsted-grotesk);
   --font-mono: var(--font-jetbrains-mono);
   --font-mono--font-feature-settings: "liga" 0;
   --radius-sm: calc(var(--radius) - 4px);

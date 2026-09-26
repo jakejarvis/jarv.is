@@ -11,10 +11,7 @@ const PageTitle = ({
   canonical: string;
 }) => (
   <h1
-    className={cn(
-      "not-prose mt-0 mb-6 text-left text-2xl font-medium tracking-tight lowercase",
-      className,
-    )}
+    className={cn("not-prose mt-0 mb-6 text-left text-2xl font-medium lowercase", className)}
     {...rest}
   >
     <Link

@@ -25,16 +25,16 @@ const projects: readonly Project[] = [
     icon: domainstackIcon,
   },
   {
-    name: "Stanza",
-    url: "https://stanza.tools",
-    tagline: "shadcn/ui for infrastructure",
-    icon: stanzaIcon,
-  },
-  {
     name: "Sofa",
     url: "https://sofa.watch",
     tagline: "Self-hosted movie & TV show tracker",
     icon: sofaIcon,
+  },
+  {
+    name: "Stanza",
+    url: "https://stanza.tools",
+    tagline: "shadcn/ui for infrastructure",
+    icon: stanzaIcon,
   },
   {
     name: "Versioneer",
@@ -58,7 +58,7 @@ const projects: readonly Project[] = [
 
 const Page = () => (
   <FadeTransition>
-    <h1 className="text-lg font-medium tracking-tight">
+    <h1 className="text-lg font-medium">
       Hi there! I&rsquo;m Jake.{" "}
       <span className="ml-0.5 inline-block origin-[65%_80%] text-[1.2rem] motion-safe:animate-wave">
         👋
@@ -66,7 +66,7 @@ const Page = () => (
     </h1>
 
     <div className="markdown">
-      <p className="text-sm leading-normal tracking-[-0.0125em]">
+      <p className="text-sm leading-normal">
         I&rsquo;m a developer based in the Boston area working on some cool stuff:
       </p>
     </div>

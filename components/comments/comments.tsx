@@ -51,7 +51,7 @@ const Comments = async ({ slug }: { slug: string }) => {
           ))}
         </div>
       ) : (
-        <div className="py-8 text-center text-lg font-medium tracking-tight text-foreground/80">
+        <div className="py-8 text-center text-lg font-medium text-foreground/80">
           Be the first to comment!
         </div>
       )}
