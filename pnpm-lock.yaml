@@ -208,12 +208,12 @@ importers:
       cheerio:
         specifier: ^1.2.0
         version: 1.2.0
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
       cn:
         specifier: ^0.4.0
         version: 0.4.0
+      cva:
+        specifier: ^1.0.0-beta.12
+        version: 1.0.0-beta.12(typescript@7.0.2)
       drizzle-orm:
         specifier: 1.0.0-rc.5-5935859
         version: 1.0.0-rc.5-5935859(@types/pg@8.23.1)(pg@8.23.0)(zod@4.6.5)
@@ -2087,9 +2087,6 @@ packages:
     resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
     engines: {node: '>= 20.19.0'}
 
-  class-variance-authority@0.7.1:
-    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
-
   cli-cursor@5.0.0:
     resolution: {integrity: sha512-aCj4O5wKyszjMmDT4tZj93kxyydN/K5zPWSCe6/0AV/AA1pqe5ZBIw0a2ZfPQV7lL5/yb5HsUreJ6UFAF1tEQw==}
     engines: {node: '>=18'}
@@ -2194,6 +2191,14 @@ packages:
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  cva@1.0.0-beta.12:
+    resolution: {integrity: sha512-Xn85p3Jyr4oVh5t69/9uOyKlEazrYdolpXXPB1bpr5apy1MS76lde5ET/WLRk3TZNldsXnj/e4Dpyh1NXFSgUg==}
+    peerDependencies:
+      typescript: '>= 6.0.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   date-fns@4.4.0:
     resolution: {integrity: sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w==}
@@ -5615,10 +5620,6 @@ snapshots:
     dependencies:
       readdirp: 5.1.1
 
-  class-variance-authority@0.7.1:
-    dependencies:
-      clsx: 2.1.1
-
   cli-cursor@5.0.0:
     dependencies:
       restore-cursor: 5.1.0
@@ -5703,6 +5704,12 @@ snapshots:
   cssesc@3.0.0: {}
 
   csstype@3.2.3: {}
+
+  cva@1.0.0-beta.12(typescript@7.0.2):
+    dependencies:
+      clsx: 2.1.1
+    optionalDependencies:
+      typescript: 7.0.2
 
   date-fns@4.4.0: {}
 
