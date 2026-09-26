@@ -1,6 +1,6 @@
 "use server";
 
-import { eq, inArray, sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 
 import { db } from "@/lib/db";
@@ -16,23 +16,6 @@ export const getViewCount = async (slug: string): Promise<number> => {
   } catch (error) {
     console.error("[server/views] fatal error:", error);
     return 0;
-  }
-};
-
-/**
- * Retrieves the numbers of views for an array of slugs, returning 0 for any that don't exist
- */
-export const getViewCountsForSlugs = async (slugs: string[]): Promise<Record<string, number>> => {
-  try {
-    const pages = await db.select().from(page).where(inArray(page.slug, slugs));
-    const viewMap: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
-    for (const p of pages) {
-      viewMap[p.slug] = p.views;
-    }
-    return viewMap;
-  } catch (error) {
-    console.error("[server/views] fatal error:", error);
-    return Object.fromEntries(slugs.map((s) => [s, 0]));
   }
 };
 

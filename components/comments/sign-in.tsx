@@ -22,6 +22,7 @@ const SignIn = ({ callbackPath }: { callbackPath?: string }) => {
     } catch (error) {
       console.error("Error signing in:", error);
       toast.add({ title: "There was a problem signing in.", type: "error" });
+    } finally {
       setIsLoading(false);
     }
   };

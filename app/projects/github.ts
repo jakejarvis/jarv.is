@@ -26,6 +26,10 @@ export const getContributions = async (): Promise<
       },
     );
 
+    if (!response.ok) {
+      throw new Error(`GitHub request failed: ${response.status}`);
+    }
+
     const $ = cheerio.load(await response.text());
 
     const days = $(".js-calendar-graph-table .ContributionCalendar-day")

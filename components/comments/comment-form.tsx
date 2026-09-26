@@ -133,7 +133,7 @@ const SubmitButton = ({
 
 // Markdown help popover (only shown for new comments)
 const MarkdownHelp = () => (
-  <p className="text-[0.8rem] leading-relaxed text-muted-foreground">
+  <div className="text-[0.8rem] leading-relaxed text-muted-foreground">
     <IconMarkdown className="mr-1.5 inline-block size-4 align-text-top" />
     <span className="max-md:hidden">Basic&nbsp;</span>
     <Popover>
@@ -192,7 +192,7 @@ const MarkdownHelp = () => (
     <span>&nbsp;is supported</span>
     <span className="max-md:hidden">&nbsp;here</span>
     <span>.</span>
-  </p>
+  </div>
 );
 
 // New comment form - for creating top-level comments

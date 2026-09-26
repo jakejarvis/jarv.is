@@ -1,6 +1,6 @@
 "use server";
 
-import { desc, eq, inArray, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
@@ -55,33 +55,6 @@ export const getCommentCount = async (slug: string): Promise<number> => {
   } catch (error) {
     console.error("[server/comments] error fetching comment count:", error);
     return 0;
-  }
-};
-
-/**
- * Retrieves the numbers of comments for an array of slugs
- */
-export const getCommentCountsForSlugs = async (
-  slugs: string[],
-): Promise<Record<string, number>> => {
-  try {
-    const rows = await db
-      .select({
-        pageSlug: schema.comment.pageSlug,
-        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-      })
-      .from(schema.comment)
-      .where(inArray(schema.comment.pageSlug, slugs))
-      .groupBy(schema.comment.pageSlug);
-
-    const map: Record<string, number> = Object.fromEntries(slugs.map((s) => [s, 0]));
-    for (const row of rows) {
-      map[row.pageSlug] = row.count ?? 0;
-    }
-    return map;
-  } catch (error) {
-    console.error("[server/comments] error fetching comment counts:", error);
-    return Object.fromEntries(slugs.map((s) => [s, 0]));
   }
 };
 
