@@ -85,9 +85,7 @@ const Page = async () => {
               </a>
 
               {repo?.description && (
-                <p className="text-xs leading-relaxed text-pretty text-foreground/85">
-                  {repo?.description}
-                </p>
+                <p className="text-xs leading-relaxed text-foreground/85">{repo?.description}</p>
               )}
 
               <div className="flex flex-wrap gap-x-4 text-[0.7rem] leading-loose whitespace-nowrap">

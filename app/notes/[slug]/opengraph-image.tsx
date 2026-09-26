@@ -4,19 +4,29 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 
-import siteConfig from "@/lib/config/site";
+import authorConfig from "@/lib/config/author";
 import { getFrontMatter, getSlugs, POSTS_DIR } from "@/lib/posts";
 
-const loadInterFont = async (weight: 400 | 600): Promise<ArrayBuffer> => {
-  "use cache";
+const loadGoogleFont = async (font: string, weight: number): Promise<ArrayBuffer> => {
+  const url = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}`;
+  const cache = { next: { revalidate: 31_536_000 } };
+  const cssResponse = await fetch(url, cache);
 
-  const fontPath = path.join(
-    /* turbopackIgnore: true */ process.cwd(),
-    "node_modules/@fontsource/inter/files",
-    `inter-latin-${weight}-normal.woff`,
-  );
-  const buffer = await fs.promises.readFile(fontPath);
-  return Uint8Array.from(buffer).buffer;
+  if (!cssResponse.ok) {
+    throw new Error(`Failed to load font: ${font} ${weight}`);
+  }
+
+  const css = await cssResponse.text();
+  const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/);
+
+  if (resource) {
+    const fontResponse = await fetch(resource[1], cache);
+    if (fontResponse.ok) {
+      return fontResponse.arrayBuffer();
+    }
+  }
+
+  throw new Error(`Failed to load font: ${font} ${weight}`);
 };
 
 const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
@@ -32,20 +42,15 @@ const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
       console.error(
         `[/notes/[slug]/opengraph-image] couldn't find an image file located at "${imagePath}"`,
       );
-
-      // return a 1x1 transparent gif if the image doesn't exist instead of crashing
       return NO_IMAGE;
     }
 
-    // return the raw image data as a buffer
     return Uint8Array.from(await fs.promises.readFile(imagePath)).buffer;
   } catch (error) {
     console.error(
       `[/notes/[slug]/opengraph-image] found "${imagePath}" but couldn't read it:`,
       error,
     );
-
-    // fail silently and return a 1x1 transparent gif instead of crashing
     return NO_IMAGE;
   }
 };
@@ -57,211 +62,204 @@ export const size = {
   height: 630,
 };
 
-export const generateStaticParams = () => {
-  const slugs = getSlugs();
-
-  // map slugs into a static paths object required by next.js
-  return slugs.map((slug) => ({
+export const generateStaticParams = () =>
+  getSlugs().map((slug) => ({
     slug,
   }));
-};
 
 const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-
-  // get the post's title and image filename from its frontmatter
   const frontmatter = getFrontMatter(slug);
   if (!frontmatter) notFound();
 
-  // IMPORTANT: include these exact image paths in next.config.ts under "outputFileTracingIncludes"
-  const [postImg, avatarImg, fontRegular, fontSemibold] = await Promise.all([
+  const [postImage, avatarImage, sansRegular, sansMedium, monoRegular] = await Promise.all([
     frontmatter.image ? getLocalImage(`${POSTS_DIR}/${slug}/${frontmatter.image}`) : null,
     getLocalImage("app/avatar.jpg"),
-    loadInterFont(400),
-    loadInterFont(600),
+    loadGoogleFont("Schibsted Grotesk", 400),
+    loadGoogleFont("Schibsted Grotesk", 500),
+    loadGoogleFont("JetBrains Mono", 400),
   ]);
 
-  // template is HEAVILY inspired by https://og-new.clerkstage.dev/
+  const hasImage = Boolean(postImage);
+  const titleLength = frontmatter.title.length;
+  const titleSize = hasImage
+    ? titleLength > 76
+      ? 38
+      : titleLength > 52
+        ? 46
+        : 58
+    : titleLength > 88
+      ? 54
+      : titleLength > 60
+        ? 64
+        : 72;
+  const publishedAt = new Date(frontmatter.date).toLocaleDateString(
+    process.env.NEXT_PUBLIC_SITE_LOCALE,
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
+
   return new ImageResponse(
     <div
       style={{
         ...size,
         display: "flex",
         flexDirection: "column",
-        background:
-          "linear-gradient(to top right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
+        padding: "52px 64px 46px",
+        backgroundColor: "#ffffff",
+        color: "#171717",
+        fontFamily: "Schibsted Grotesk",
       }}
     >
       <div
         style={{
-          height: "100%",
-          width: "100%",
-          position: "absolute",
-          inset: 0,
-          filter: "brightness(100%) contrast(150%)",
-          opacity: "0.1",
-          backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500"><filter id="noise" x="0" y="0"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feBlend mode="screen"/></filter><rect width="500" height="500" filter="url(#noise)" opacity="1"/></svg>')`,
-          backgroundRepeat: "repeat",
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          paddingBottom: 24,
+          borderBottom: "2px solid #171717",
         }}
-      ></div>
-
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          position: "absolute",
-          opacity: "0.4",
-          backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill-rule="evenodd" fill="#6b7280" fill-opacity="0.4"><g><path opacity="0.5" d="M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z"/><path d="M6 5V0H5v5H0v1h5v94h1V6h94V5H6z"/></g></g></svg>')`,
-          maskImage: "radial-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%)",
-        }}
-      ></div>
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          {/* oxlint-disable-next-line nextjs/no-img-element - Satori requires a raw img. */}
+          <img
+            // @ts-expect-error -- ImageResponse accepts ArrayBuffer image sources.
+            src={avatarImage}
+            alt=""
+            width={48}
+            height={48}
+            style={{ borderRadius: "50%" }}
+          />
+          <span
+            style={{
+              fontSize: 32,
+              fontWeight: 500,
+              letterSpacing: "-0.035em",
+            }}
+          >
+            {authorConfig.name}
+          </span>
+        </div>
+      </div>
 
       <div
         style={{
           display: "flex",
-          width: "100%",
-          gap: "1.5rem",
-          paddingLeft: "2rem",
+          flex: 1,
+          alignItems: "center",
+          gap: 44,
+          padding: "34px 0",
         }}
       >
         <div
           style={{
             display: "flex",
+            flex: 1,
             flexDirection: "column",
-            rowGap: "1.5rem",
-            flexShrink: 0,
-            paddingTop: "2rem",
-            // don't wrap the title text if there's no image to leave room for
-            width: postImg ? "35%" : "100%",
-            marginRight: "0.75rem",
+            justifyContent: "center",
+            minWidth: 0,
           }}
         >
           <div
             style={{
-              display: "flex",
-              marginBottom: "0.75rem",
-            }}
-          >
-            {avatarImg && (
-              // oxlint-disable-next-line nextjs/no-img-element - Satori/ImageResponse requires raw <img> tags
-              <img
-                // @ts-expect-error
-                src={avatarImg}
-                alt=""
-                style={{
-                  width: "3rem",
-                  height: "3rem",
-                  borderRadius: "50%",
-                }}
-              />
-            )}
-            <span
-              style={{
-                fontSize: "1.925rem",
-                fontWeight: 400,
-                lineHeight: "3rem",
-                letterSpacing: "-0.025em",
-                marginLeft: "0.75rem",
-              }}
-            >
-              {siteConfig.name}
-            </span>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexGrow: 0,
-              fontWeight: 600,
-              fontSize: "48px",
-              color: "#030712",
-              letterSpacing: "-0.025em",
-              lineHeight: "1.2",
+              display: "block",
+              fontSize: titleSize,
+              fontWeight: 500,
+              letterSpacing: "-0.045em",
+              lineHeight: 1.04,
+              textWrap: "balance",
+              lineClamp: 5,
             }}
           >
             {frontmatter.title}
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexGrow: 0,
-            }}
-          >
-            <span
-              style={{
-                fontWeight: 400,
-                fontSize: "20px",
-                color: "#030712",
-                border: "solid",
-                borderRadius: "100",
-                borderWidth: "2px",
-                paddingRight: "16px",
-                paddingLeft: "16px",
-                paddingTop: "5px",
-                paddingBottom: "5px",
-              }}
-            >
-              {POSTS_DIR.charAt(0).toUpperCase() + POSTS_DIR.slice(1)}
-            </span>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexGrow: 0,
-              fontWeight: 400,
-              fontSize: "24px",
-              color: "#030712",
-              letterSpacing: "-0.025em",
-              lineHeight: "1.2",
-            }}
-          >
-            {new Date(frontmatter.date).toLocaleDateString(process.env.NEXT_PUBLIC_SITE_LOCALE, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </div>
         </div>
 
-        {postImg && (
+        {postImage && (
           <div
             style={{
               display: "flex",
-              width: "100%", // less than half in reality, but this gives the image the overflow look
-              flexGrow: 0,
+              width: 420,
+              height: 350,
+              flexShrink: 0,
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 10,
             }}
           >
-            {/* oxlint-disable-next-line nextjs/no-img-element - Satori/ImageResponse requires raw <img> tags */}
+            {/* oxlint-disable-next-line nextjs/no-img-element - Satori requires a raw img. */}
             <img
-              // @ts-expect-error
-              src={postImg}
+              // @ts-expect-error -- ImageResponse accepts ArrayBuffer image sources.
+              src={postImage}
               alt=""
+              width={420}
+              height={350}
               style={{
-                maxHeight: "100%",
-                minHeight: 630,
-                width: "auto",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
               }}
             />
           </div>
         )}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingTop: 20,
+          borderTop: "1px solid #e5e5e5",
+          fontSize: 18,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "JetBrains Mono",
+            fontSize: 15,
+            color: "#737373",
+            letterSpacing: "-0.025em",
+          }}
+        >
+          jarv.is/{POSTS_DIR}/{slug}
+        </span>
+        <span
+          style={{
+            fontFamily: "JetBrains Mono",
+            fontSize: 15,
+            color: "#737373",
+            letterSpacing: "-0.025em",
+          }}
+        >
+          {publishedAt}
+        </span>
       </div>
     </div>,
     {
       ...size,
       fonts: [
         {
-          name: "Inter",
-          data: fontRegular,
+          name: "Schibsted Grotesk",
+          data: sansRegular,
           style: "normal",
           weight: 400,
         },
         {
-          name: "Inter",
-          data: fontSemibold,
+          name: "Schibsted Grotesk",
+          data: sansMedium,
           style: "normal",
-          weight: 600,
+          weight: 500,
+        },
+        {
+          name: "JetBrains Mono",
+          data: monoRegular,
+          style: "normal",
+          weight: 400,
         },
       ],
     },

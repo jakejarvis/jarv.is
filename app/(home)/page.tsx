@@ -94,7 +94,7 @@ const Page = () => (
                   {project.name}
                 </span>
               </div>
-              <span className="ml-9 text-xs text-pretty text-muted-foreground sm:ml-auto">
+              <span className="ml-9 text-xs text-muted-foreground sm:ml-auto">
                 {project.tagline}
                 <IconArrowUpRight
                   className="ml-1 inline size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
