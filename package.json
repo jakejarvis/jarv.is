@@ -38,7 +38,7 @@
     "cheerio": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
-    "drizzle-orm": "1.0.0-rc.5-5935859",
+    "drizzle-orm": "1.0.0-rc.5-ab785fc",
     "feed": "^6.0.0",
     "html-entities": "^2.6.0",
     "next": "16.3.6",
