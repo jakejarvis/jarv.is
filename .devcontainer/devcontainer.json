@@ -5,28 +5,14 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "extensions.ignoreRecommendations": true,
-        "git.allowForcePush": true,
-        "git.autofetch": true,
-        "git.autoStash": true,
-        "git.enableCommitSigning": true,
-        "git.fetchOnPull": true,
-        "git.rebaseWhenSync": true,
-        "telemetry.telemetryLevel": "off",
-        "javascript.updateImportsOnFileMove.enabled": "always",
-        "typescript.preferences.importModuleSpecifierEnding": "minimal",
-        "typescript.surveys.enabled": false,
-        "typescript.tsdk": "node_modules/typescript/lib",
-        "typescript.tsserver.log": "off",
-        "typescript.updateImportsOnFileMove.enabled": "always"
+        "js/ts.experimental.useTsgo": true,
+        "js/ts.tsdk.path": "node_modules/typescript"
       },
       "extensions": ["bradlc.vscode-tailwindcss", "oxc.oxc-vscode", "unifiedjs.vscode-mdx"]
     }
   },
   "forwardPorts": [3000],
   "containerEnv": {
-    "CHECKPOINT_DISABLE": "1",
-    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
-    "NEXT_TELEMETRY_DISABLED": "1"
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
   }
 }

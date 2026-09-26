@@ -7,14 +7,13 @@ Guidelines for AI coding agents working in this repository.
 ```bash
 pnpm dev            # Development server (binds to 0.0.0.0)
 pnpm build          # Production build
-pnpm check-types   # Type checking
-pnpm lint           # Lint entire codebase
+pnpm lint           # Lint and type-check the entire codebase
 pnpm lint path/to/file.tsx  # Lint a single file
 pnpm db:generate    # Generate migration files
 pnpm db:migrate     # Apply migrations
 ```
 
-No test suite exists. Validate changes via `pnpm typecheck` and `pnpm lint`.
+No test suite exists. Validate changes via `pnpm lint` and `pnpm build`.
 
 ## Code Style
 

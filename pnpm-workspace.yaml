@@ -3,7 +3,3 @@ allowBuilds:
   msw: true
   sharp: true
   unrs-resolver: true
-
-peerDependencyRules:
-  allowAny:
-    - "drizzle-orm"
