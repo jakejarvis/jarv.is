@@ -16,7 +16,7 @@ import "./globals.css";
 
 export const metadata = defaultMetadata;
 
-const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
+const RootLayout = ({ children }: LayoutProps<"/">) => (
   <html
     lang={process.env.NEXT_PUBLIC_SITE_LOCALE}
     className={cn(SchibstedGrotesk.variable, JetBrainsMono.variable)}

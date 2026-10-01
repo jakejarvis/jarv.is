@@ -31,9 +31,7 @@ export const generateStaticParams = () => {
 
 export const generateMetadata = async ({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> => {
+}: PageProps<"/notes/[slug]">): Promise<Metadata> => {
   const { slug } = await params;
   const frontmatter = getFrontMatter(slug);
 
@@ -54,7 +52,7 @@ export const generateMetadata = async ({
   });
 };
 
-const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const Page = async ({ params }: PageProps<"/notes/[slug]">) => {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();

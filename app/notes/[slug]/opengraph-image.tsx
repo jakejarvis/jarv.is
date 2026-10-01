@@ -67,7 +67,7 @@ export const generateStaticParams = () =>
     slug,
   }));
 
-const OpenGraphImage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const OpenGraphImage = async ({ params }: PageProps<"/notes/[slug]">) => {
   const { slug } = await params;
   const frontmatter = getFrontMatter(slug);
   if (!frontmatter) notFound();

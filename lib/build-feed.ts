@@ -1,4 +1,5 @@
 import { Feed, type Item as FeedItem } from "feed";
+import { NextResponse, type NextRequest } from "next/server";
 
 import ogImage from "@/app/opengraph-image.jpg";
 import authorConfig from "@/lib/config/author";
@@ -9,7 +10,7 @@ import { getPost, getFrontMatter } from "@/lib/posts";
  * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.
  * @see https://github.com/jpmonette/feed#example
  */
-export const buildFeed = (): Feed => {
+const buildFeed = (): Feed => {
   const frontmatter = getFrontMatter();
 
   const feed = new Feed({
@@ -59,4 +60,22 @@ export const buildFeed = (): Feed => {
   });
 
   return feed;
+};
+
+export const createFeedHandler = (
+  feedType: "rss" | "atom" | "json",
+): { GET: (request: NextRequest) => Promise<Response> } => {
+  return {
+    GET: async () => {
+      const feed = buildFeed();
+      return new NextResponse(
+        feed[feedType === "rss" ? "rss2" : feedType === "atom" ? "atom1" : "json1"](),
+        {
+          headers: {
+            "content-type": `application/${feedType}+xml; charset=utf-8`,
+          },
+        },
+      );
+    },
+  };
 };
