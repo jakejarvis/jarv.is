@@ -79,125 +79,120 @@ const Page = async ({ params }: PageProps<"/notes/[slug]">) => {
 
   return (
     <DirectionalTransition>
-      <JsonLd<BlogPosting>
-        item={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.description,
-          url: post.permalink,
-          image: {
-            "@type": "ImageObject",
-            contentUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${post.slug}/opengraph-image`,
-            width: `${ogImageSize.width}`,
-            height: `${ogImageSize.height}`,
-          },
-          keywords: post.tags?.join(", "),
-          datePublished: post.date,
-          dateModified: post.date,
-          inLanguage: process.env.NEXT_PUBLIC_SITE_LOCALE,
-          license: `https://spdx.org/licenses/${siteConfig.license}.html`,
-          author: {
-            // defined in app/layout.tsx
-            "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#person`,
-          },
-        }}
-      />
+      {/* crossfades post-to-post links, which stay on this route and carry no transition type */}
+      <ViewTransition key={post.slug} name="note-content" share="auto" default="none">
+        <JsonLd<BlogPosting>
+          item={{
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.description,
+            url: post.permalink,
+            image: {
+              "@type": "ImageObject",
+              contentUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${POSTS_DIR}/${post.slug}/opengraph-image`,
+              width: `${ogImageSize.width}`,
+              height: `${ogImageSize.height}`,
+            },
+            keywords: post.tags?.join(", "),
+            datePublished: post.date,
+            dateModified: post.date,
+            inLanguage: process.env.NEXT_PUBLIC_SITE_LOCALE,
+            license: `https://spdx.org/licenses/${siteConfig.license}.html`,
+            author: {
+              // defined in app/layout.tsx
+              "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#person`,
+            },
+          }}
+        />
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide text-foreground/70">
-        <Link
-          href={`/${POSTS_DIR}/${post.slug}`}
-          className={
-            "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
-          }
-        >
-          <IconCalendarEvent className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <time
-            dateTime={formattedDates.dateISO}
-            title={formattedDates.dateTitle}
-            suppressHydrationWarning
-          >
-            {formattedDates.dateDisplay}
-          </time>
-        </Link>
-
-        {post.tags && (
-          <div className="flex flex-wrap items-center gap-1.5">
-            <IconTag className="inline size-3.5 shrink-0" aria-hidden="true" />
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                title={tag}
-                className="mx-px lowercase before:pr-0.5 before:text-foreground/40 before:content-['#'] first-of-type:ml-0 last-of-type:mr-0"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        <Link
-          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${post.slug}/index.mdx`}
-          title={`Edit "${post.title}" on GitHub`}
-          className={
-            "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
-          }
-        >
-          <IconEdit className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <span>Improve This Post</span>
-        </Link>
-
-        <Link
-          href={`/${POSTS_DIR}/${post.slug}#comments`}
-          className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
-        >
-          <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
-        </Link>
-
-        <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
-          <IconEye className="inline size-3.5 shrink-0" aria-hidden="true" />
-          <ViewCounter slug={`${POSTS_DIR}/${post.slug}`} />
-        </div>
-      </div>
-
-      <ViewTransition name={`note-title-${post.slug}`} share="text-morph" default="none">
-        <h1 className="my-5 text-2xl font-medium tracking-tight">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide text-foreground/70">
           <Link
             href={`/${POSTS_DIR}/${post.slug}`}
-            dangerouslySetInnerHTML={{
-              __html: post.htmlTitle || post.title,
-            }}
-            className="text-foreground hover:no-underline"
-          />
-        </h1>
-      </ViewTransition>
-
-      <article className="markdown">
-        <MDXContent />
-      </article>
-
-      <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
-        <div className="mx-auto w-full max-w-3xl space-y-6">
-          {post.noComments ? (
-            <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
-              <p className="text-center text-lg font-medium">Comments are closed.</p>
-            </div>
-          ) : (
-            <Suspense
-              fallback={
-                <ViewTransition exit="slide-down">
-                  <CommentsSkeleton />
-                </ViewTransition>
-              }
+            className={
+              "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
+            }
+          >
+            <IconCalendarEvent className="inline size-3.5 shrink-0" aria-hidden="true" />
+            <time
+              dateTime={formattedDates.dateISO}
+              title={formattedDates.dateTitle}
+              suppressHydrationWarning
             >
-              <ViewTransition enter="slide-up" default="none">
-                <Comments slug={`${POSTS_DIR}/${post.slug}`} />
-              </ViewTransition>
-            </Suspense>
+              {formattedDates.dateDisplay}
+            </time>
+          </Link>
+
+          {post.tags && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <IconTag className="inline size-3.5 shrink-0" aria-hidden="true" />
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  title={tag}
+                  className="mx-px lowercase before:pr-0.5 before:text-foreground/40 before:content-['#'] first-of-type:ml-0 last-of-type:mr-0"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           )}
+
+          <Link
+            href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}/blob/main/${POSTS_DIR}/${post.slug}/index.mdx`}
+            title={`Edit "${post.title}" on GitHub`}
+            className={
+              "flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
+            }
+          >
+            <IconEdit className="inline size-3.5 shrink-0" aria-hidden="true" />
+            <span>Improve This Post</span>
+          </Link>
+
+          <Link
+            href={`/${POSTS_DIR}/${post.slug}#comments`}
+            className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
+          >
+            <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
+            <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
+          </Link>
+
+          <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
+            <IconEye className="inline size-3.5 shrink-0" aria-hidden="true" />
+            <ViewCounter slug={`${POSTS_DIR}/${post.slug}`} />
+          </div>
         </div>
-      </section>
+
+        <ViewTransition name={`note-title-${post.slug}`} share="text-morph" default="none">
+          <h1 className="my-5 text-2xl font-medium tracking-tight">
+            <Link
+              href={`/${POSTS_DIR}/${post.slug}`}
+              dangerouslySetInnerHTML={{
+                __html: post.htmlTitle || post.title,
+              }}
+              className="text-foreground hover:no-underline"
+            />
+          </h1>
+        </ViewTransition>
+
+        <article className="markdown">
+          <MDXContent />
+        </article>
+
+        <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
+          <div className="mx-auto w-full max-w-3xl space-y-6">
+            {post.noComments ? (
+              <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
+                <p className="text-center text-lg font-medium">Comments are closed.</p>
+              </div>
+            ) : (
+              <Suspense fallback={<CommentsSkeleton />}>
+                <Comments slug={`${POSTS_DIR}/${post.slug}`} />
+              </Suspense>
+            )}
+          </div>
+        </section>
+      </ViewTransition>
     </DirectionalTransition>
   );
 };

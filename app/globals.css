@@ -210,8 +210,14 @@
     cursor: pointer;
   }
 
-  /* Disable the default cross-fade on root (header/footer/chrome stay static) */
-  ::view-transition-old(root),
+  /*
+   * Live root: hide the frozen old snapshot and show the new one un-animated, so unnamed content
+   * swaps instantly instead of stacking both snapshots at full opacity (they blend with
+   * plus-lighter) while page-level groups animate above it.
+   */
+  ::view-transition-old(root) {
+    display: none;
+  }
   ::view-transition-new(root) {
     animation: none;
   }
@@ -225,17 +231,6 @@
     --tw-enter-blur: 3px;
     --tw-enter-opacity: 0;
     animation: var(--duration-enter) ease-out var(--duration-exit) both enter;
-  }
-
-  ::view-transition-old(.slide-down) {
-    --tw-exit-opacity: 0;
-    --tw-exit-translate-y: 10px;
-    animation: var(--duration-exit) ease-out both exit;
-  }
-  ::view-transition-new(.slide-up) {
-    --tw-enter-opacity: 0;
-    --tw-enter-translate-y: 10px;
-    animation: var(--duration-enter) ease-in var(--duration-exit) both enter;
   }
 
   ::view-transition-new(.slide-from-right) {
@@ -319,11 +314,11 @@
     z-index: 100;
   }
 
-  ::view-transition-old(persistent-nav) {
+  ::view-transition-old(persistent-nav),
+  ::view-transition-old(persistent-footer) {
     display: none;
   }
   ::view-transition-new(persistent-nav),
-  ::view-transition-old(persistent-footer),
   ::view-transition-new(persistent-footer) {
     animation: none;
   }
