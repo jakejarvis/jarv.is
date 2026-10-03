@@ -14,7 +14,6 @@ const Gist = async ({
   title?: string;
 } & React.ComponentProps<"iframe">) => {
   "use cache";
-  cacheLife("max");
   cacheTag("gist", `gist-${id}${file ? `-${file}` : ""}`);
 
   const iframeId = `gist-${id}${file ? `-${file}` : ""}`;
@@ -22,10 +21,21 @@ const Gist = async ({
   const iframeTitle = title ?? `GitHub Gist ${id}${file ? ` - ${file}` : ""}`;
 
   const scriptUrl = `https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`;
-  const scriptResponse = await fetch(scriptUrl);
+  let script: string | null = null;
+  try {
+    const scriptResponse = await fetch(scriptUrl);
+    if (scriptResponse.ok) {
+      script = await scriptResponse.text();
+    } else {
+      console.warn(`[gist] failed to fetch js:`, scriptResponse.statusText);
+    }
+  } catch (error) {
+    console.warn(`[gist] failed to fetch js:`, error);
+  }
 
-  if (!scriptResponse.ok) {
-    console.warn(`[gist] failed to fetch js:`, scriptResponse.statusText);
+  if (script === null) {
+    // don't pin a (possibly transient) fetch failure into the page for 30 days -- retry soon
+    cacheLife("hours");
 
     return (
       <p className="text-center">
@@ -41,7 +51,7 @@ const Gist = async ({
     );
   }
 
-  const script = await scriptResponse.text();
+  cacheLife("max");
 
   // https://github.com/tleunen/react-gist/blob/master/src/index.js#L29
   const iframeHtml = `<html><head><base target="_parent"></head><body onload="parent.document.getElementById('${iframeId}').style.height=document.body.scrollHeight + 'px'" style="margin:0"><script>${script}</script></body></html>`;

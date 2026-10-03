@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 
 const Tweet = async ({ id, className }: { id: string; className?: string }) => {
   "use cache";
-  cacheLife("max");
   cacheTag("tweet", `tweet-${id}`);
 
   let data: TweetType | undefined;
@@ -21,12 +20,17 @@ const Tweet = async ({ id, className }: { id: string; className?: string }) => {
   }
 
   if (!data) {
+    // don't pin a (possibly transient) fetch failure into the page for 30 days -- retry soon
+    cacheLife("hours");
+
     return (
       <div className={cn("my-6 min-h-30 *:mx-auto! *:font-sans!", className)}>
         <TweetNotFound />
       </div>
     );
   }
+
+  cacheLife("max");
 
   return (
     <div
