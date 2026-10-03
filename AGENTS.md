@@ -8,23 +8,26 @@ Guidelines for AI coding agents working in this repository.
 pnpm dev            # Development server (binds to 0.0.0.0)
 pnpm build          # Production build
 pnpm lint           # Lint and type-check the entire codebase
+pnpm lint:fix       # Lint with autofixes
 pnpm lint path/to/file.tsx  # Lint a single file
+pnpm fmt            # Format with oxfmt
+pnpm fmt:check      # Check formatting (no writes)
 pnpm db:generate    # Generate migration files
 pnpm db:migrate     # Apply migrations
 ```
 
-No test suite exists. Validate changes via `pnpm lint` and `pnpm build`.
+No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pnpm build`.
+
+`pnpm build` needs `NEXT_PUBLIC_BASE_URL` set (copy `.env.example` to `.env.local`); database, auth and GitHub secrets are optional for a build.
 
 ## Code Style
 
-### Formatting (Biome)
+### Formatting & Linting
 
-- **Line width:** 80 characters
-- **Indentation:** 2 spaces (no tabs)
-- **Quotes:** Double quotes, no JSX single quotes
-- **Trailing commas:** ES5 style
-- **Semicolons:** Required
-- **Tailwind:** Classes auto-sorted via `biome --write --unsafe`
+- Formatter is **oxfmt** (`pnpm fmt` to write, `pnpm fmt:check` to verify), configured in `.oxfmtrc.json`. It sorts imports (groups: builtin → external → `@/` internal → relative, blank line between groups) and Tailwind classes (in `className` and `cn`/`clsx`/`cva` calls). Don't hand-sort; run `pnpm fmt`.
+- Indentation is 2 spaces (no tabs), with double quotes, semicolons and trailing commas.
+- Linter is **oxlint** with type-aware checks; `pnpm lint` runs `next typegen` then `oxlint` and also type-checks. `pnpm lint:fix` applies autofixes.
+- Never run `biome`, `eslint` or `prettier`; they are not part of this repo.
 
 ### Import Organization
 
@@ -37,7 +40,7 @@ import { eq, desc } from "drizzle-orm";
 
 // 3. Internal modules using @/ alias
 import { db } from "@/lib/db";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 ```
 
 - Always use `@/` path aliases (never relative `../../`)
@@ -47,7 +50,7 @@ import Button from "@/components/ui/button";
 
 - **Strict mode** enabled - no implicit any, strict null checks
 - **Explicit return types** for API routes and server actions
-- **Zod** for runtime validation - share schemas between client and server
+- **Zod** (v4) for runtime validation of untrusted input (server-action arguments, content frontmatter in content-collections.ts)
 - Avoid `any` - use `unknown` with type guards when necessary
 - Use `as const` for immutable config objects
 
@@ -55,8 +58,8 @@ import Button from "@/components/ui/button";
 
 | Element             | Convention               | Example                      |
 | ------------------- | ------------------------ | ---------------------------- |
-| Files               | kebab-case               | `contact-form.tsx`           |
-| Components          | PascalCase               | `ContactForm`                |
+| Files               | kebab-case               | `comment-form.tsx`           |
+| Components          | PascalCase               | `CommentForm`                |
 | Functions/Variables | camelCase                | `getComments`, `isPending`   |
 | Types/Interfaces    | PascalCase               | `CommentWithUser`            |
 | Constants           | camelCase or UPPER_SNAKE | `siteConfig`, `DATABASE_URL` |
@@ -71,7 +74,7 @@ import Button from "@/components/ui/button";
 
 **Component structure:**
 
-- Arrow function components with default exports
+- Arrow function components, **named exports** gathered at the end of the file (`export { Button, buttonVariants };`). Default exports only where Next.js requires them (`page.tsx`, `layout.tsx`, route files) and for config objects in `lib/config/`.
 - Props destructured in parameters
 - Use `cn()` from `@/lib/utils` for className merging
 - Follow shadcn/ui patterns for UI components
@@ -84,31 +87,43 @@ const Button = ({
 }: React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>) => {
   return <button className={cn(buttonVariants({ variant, className }))} {...rest} />;
 };
-export default Button;
+
+export { Button };
 ```
 
 ### Server Actions & Error Handling
 
+- Server actions live in `lib/server/*.ts` files starting with `"use server"`. Every export of such a file is a public endpoint callable by anyone, so authenticate (`auth.api.getSession({ headers: await headers() })`) and validate all arguments inside the action, and only export async functions (types are fine).
+- Actions take typed arguments (not `FormData`) and throw `Error` on failure: do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[server/<file>]` prefix and rethrows with `{ cause }`. Call `revalidatePath()` / `revalidateTag()` after mutations.
+
 ```typescript
 "use server";
 
-export type ActionState = { success: boolean; message: string; errors?: Record<string, string[]> };
+export const createComment = async (data: {
+  content: string;
+  pageSlug: string;
+  parentId?: string;
+}) => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-export const submitForm = async (state: ActionState, payload: FormData): Promise<ActionState> => {
+  if (!session || !session.user) {
+    throw new Error("You must be logged in to comment");
+  }
+
   try {
-    const data = Schema.safeParse(Object.fromEntries(payload));
-    if (!data.success) {
-      return {
-        success: false,
-        message: "Validation failed",
-        errors: data.error.flatten().fieldErrors,
-      };
-    }
-    // Perform action...
-    return { success: true, message: "Success!" };
+    await db.insert(schema.comment).values({
+      content: data.content,
+      pageSlug: data.pageSlug,
+      parentId: data.parentId || null,
+      userId: session.user.id,
+    });
+
+    revalidatePath(`/${data.pageSlug}`);
   } catch (error) {
-    console.error("[server/action] error:", error);
-    return { success: false, message: "Internal server error" };
+    console.error("[server/comments] error creating comment:", error);
+    throw new Error("Failed to create comment", { cause: error });
   }
 };
 ```
@@ -117,13 +132,14 @@ export const submitForm = async (state: ActionState, payload: FormData): Promise
 
 ### Database (Drizzle ORM)
 
-- Schema in `lib/db/schema.ts`
-- Use `"use cache"` directive with `cacheTag()` for cached queries
-- Use `revalidatePath()` and `revalidateTag()` after mutations
+- Schema in `lib/db/schema.ts`; migrations are generated into `drizzle/` with `pnpm db:generate` and applied with `pnpm db:migrate`. Drizzle ORM is a pinned `1.0.0-rc` prerelease, so check its docs for v1 APIs (e.g. `defineRelations`).
+- `cacheComponents` is enabled. Cache expensive or remote reads with `"use cache"` and an explicit `cacheLife(...)` (add `cacheTag(...)` when something needs to invalidate it). Examples: `app/projects/github.ts`, `components/third-party/tweet.tsx`.
+- After mutations, call `revalidatePath()` / `revalidateTag()`, and only revalidate tags that some `cacheTag()` actually sets.
 
 ```typescript
 export const getData = async (slug: string) => {
   "use cache";
+  cacheLife("minutes");
   cacheTag("data", `data-${slug}`);
   return db.select().from(schema.table).where(eq(schema.table.slug, slug));
 };
@@ -132,24 +148,29 @@ export const getData = async (slug: string) => {
 ## Project Structure
 
 ```
-app/              # Next.js App Router pages and API routes
-components/       # React components organized by feature
-  ui/             # shadcn/ui base components
-  layout/         # Header, footer, page layout
-  comments/       # Comment system components
-lib/              # Core utilities and configuration
-  db/             # Drizzle schema and database client
-  server/         # Server actions (contact, comments, views)
-  config/         # Site and author configuration
-  schemas/        # Shared Zod validation schemas
-notes/            # MDX blog content files
+app/                  # Next.js App Router pages, route handlers (app/api/*), feeds, sitemap
+components/           # React components
+  ui/                 # shadcn-style primitives on @base-ui/react
+  layout/             # Header, footer, menu, page title
+  comments/           # Comment system components
+  third-party/        # Embeds (tweet, gist, youtube, codepen)
+lib/                  # Core utilities and configuration
+  db/                 # Drizzle schema and database client
+  server/             # Server actions ("use server"): comments, views
+  config/             # Site and author configuration
+  auth.ts             # Better Auth server config (GitHub OAuth)
+  auth-client.ts      # Better Auth React client
+  posts.ts            # Helpers over the content-collections posts
+notes/<slug>/index.mdx  # Blog posts (MDX), collected by content-collections.ts
+drizzle/              # Generated SQL migrations (do not hand-edit)
 ```
 
 ## Key Dependencies
 
-- **Next.js 15+** with App Router and React 19
+- **Next.js 16** (App Router, Cache Components, Partial Prefetching) with React 19 and React Compiler
 - **Tailwind CSS v4** with shadcn/ui components
 - **Drizzle ORM** with Planetscale Postgres
 - **Better Auth** for GitHub OAuth authentication
 - **Zod** for schema validation
 - **MDX** for blog content with remark/rehype plugins
+- **content-collections** for loading and validating MDX notes
