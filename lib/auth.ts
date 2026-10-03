@@ -15,6 +15,8 @@ export const auth = betterAuth({
     schema,
   }),
   plugins: [dash(), nextCookies()],
+  // names and avatars come from GitHub at sign-up; don't let users rename themselves (e.g. to impersonate someone)
+  disabledPaths: ["/update-user"],
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID!,
