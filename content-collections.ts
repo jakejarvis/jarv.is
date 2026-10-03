@@ -1,5 +1,5 @@
-import "dotenv/config";
 import { defineCollection, defineConfig } from "@content-collections/core";
+import nextEnv from "@next/env";
 import { decode } from "html-entities";
 import { unified } from "unified";
 import { z } from "zod";
@@ -13,6 +13,8 @@ import {
   remarkSmartypants,
   remarkStripMdxImportsExports,
 } from "@/lib/remark";
+
+nextEnv.loadEnvConfig(process.cwd());
 
 const POSTS_DIR = "notes" as const;
 
