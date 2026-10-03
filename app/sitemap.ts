@@ -1,12 +1,14 @@
 import path from "node:path";
 
 import type { MetadataRoute } from "next";
+import { cacheLife } from "next/cache";
 import { glob } from "tinyglobby";
 
 import { getFrontMatter } from "@/lib/posts";
 
 const getStaticRoutes = async (): Promise<string[]> => {
   "use cache";
+  cacheLife("max");
 
   return glob("**/page.{tsx,mdx}", {
     cwd: path.join(process.cwd(), "app"),

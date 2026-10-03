@@ -137,7 +137,7 @@ export const createComment = async (data: {
 - Schema in `lib/db/schema.ts`; migrations are generated into `drizzle/` with `pnpm db:generate` and applied with `pnpm db:migrate`. Drizzle ORM is a pinned `1.0.0-rc` prerelease, so check its docs for v1 APIs (e.g. `defineRelations`).
 - `cacheComponents` is enabled. Cache expensive or remote reads with `"use cache"` and an explicit `cacheLife(...)` (add `cacheTag(...)` when something needs to invalidate it). Examples: `app/projects/github.ts`, `components/third-party/tweet.tsx`.
 - Use `"use cache: remote"` for reads that run at request time (inside a dynamic hole, e.g. after `headers()`/`connection()`) so the entry is shared across server instances; plain `"use cache"` is fine for anything that ends up in a prerendered shell. Example: `lib/data/comments.ts`.
-- Don't catch-and-return-a-fallback inside a cached function, or the failure gets cached; let it throw and catch in an uncached wrapper.
+- A throw inside a `"use cache"` function fails the build if it happens during prerender, even when a caller catches it. For data read at build time (`app/projects/github.ts`, `lib/data/stats.ts`), catch inside the cached function and return a fallback; to avoid pinning a failure for long, call a shorter `cacheLife()` on the failure path (see `components/third-party/tweet.tsx`). Only request-time reads (`lib/data/comments.ts`) may throw from the cached function and catch in an uncached wrapper, which keeps errors out of the cache entirely.
 - After mutations, call `updateTag()` (server actions) or `revalidateTag()` (route handlers), and only expire tags that some `cacheTag()` actually sets.
 
 ```typescript

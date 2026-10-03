@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 
@@ -31,6 +32,7 @@ const loadGoogleFont = async (font: string, weight: number): Promise<ArrayBuffer
 
 const getLocalImage = async (src: string): Promise<ArrayBuffer | string> => {
   "use cache";
+  cacheLife("max");
 
   // https://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src/14115340#14115340
   const NO_IMAGE = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";

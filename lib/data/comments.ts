@@ -17,7 +17,8 @@ export const commentsTag = (pageSlug: string) => `comments-${pageSlug}`;
 
 /**
  * Shared across server instances since it's read at request time (inside dynamic holes), not at prerender. Throws on
- * failure so an error is never cached.
+ * failure so an error is never cached -- only safe because it never runs during prerender, where a throw inside
+ * "use cache" fails the build even if caught.
  */
 const getCachedComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
   "use cache: remote";
