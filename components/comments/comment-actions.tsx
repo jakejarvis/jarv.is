@@ -23,7 +23,8 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { toast } from "@/components/ui/toast";
 import { useSession } from "@/lib/auth-client";
-import { type CommentWithUser, deleteComment } from "@/lib/server/comments";
+import type { CommentWithUser } from "@/lib/data/comments";
+import { deleteComment } from "@/lib/server/comments";
 
 import { EditCommentForm, ReplyForm } from "./comment-form";
 

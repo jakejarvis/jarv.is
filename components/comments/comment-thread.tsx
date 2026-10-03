@@ -1,4 +1,4 @@
-import type { CommentWithUser } from "@/lib/server/comments";
+import type { CommentWithUser } from "@/lib/data/comments";
 import { cn } from "@/lib/utils";
 
 import { CommentSingle } from "./comment-single";

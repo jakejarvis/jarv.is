@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getAllViewCounts } from "@/lib/server/views";
+import { getAllViewCounts } from "@/lib/data/views";
 
 export const GET = async (): Promise<
   NextResponse<{

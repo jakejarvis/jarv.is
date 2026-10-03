@@ -1,43 +1,11 @@
 "use server";
 
-import { eq, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
 import { getPostByPageSlug } from "@/lib/posts";
-
-/**
- * Retrieves the number of views for a given slug, or 0 if the slug does not exist or on error
- */
-export const getViewCount = async (slug: string): Promise<number> => {
-  try {
-    const pages = await db.select().from(page).where(eq(page.slug, slug)).limit(1);
-    return pages[0]?.views ?? 0;
-  } catch (error) {
-    console.error("[server/views] fatal error:", error);
-    return 0;
-  }
-};
-
-/**
- * Retrieves the numbers of views for ALL slugs
- */
-export const getAllViewCounts = async (): Promise<Record<string, number>> => {
-  try {
-    const pages = await db.select().from(page);
-    return pages.reduce(
-      (acc, p) => {
-        acc[p.slug] = p.views;
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
-  } catch (error) {
-    console.error("[server/views] fatal error:", error);
-    return {};
-  }
-};
 
 /**
  * Increments the view count for a given slug (upserts if doesn't exist)
@@ -59,7 +27,7 @@ export const incrementViews = async (slug: string): Promise<number> => {
       })
       .returning({ views: page.views });
 
-    // Invalidate the views cache so getViewCount returns fresh data
+    // Mark the cached post stats (lib/data/stats.ts) stale so lists pick up the new count
     revalidateTag("views", "max");
 
     return result.views;

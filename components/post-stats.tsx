@@ -1,68 +1,28 @@
-"use client";
-
 import { IconEye, IconMessages } from "@tabler/icons-react";
 import Link from "next/link";
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllCommentCounts } from "@/lib/server/comments";
-import { getAllViewCounts } from "@/lib/server/views";
+import { getPostStats } from "@/lib/data/stats";
 
 const numberFormatter = new Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE);
 
-type Stats = {
-  views: Record<string, number>;
-  comments: Record<string, number>;
-  loaded: boolean;
-};
-
-const StatsContext = createContext<Stats>({
-  views: {},
-  comments: {},
-  loaded: false,
-});
-
 /**
- * Provider that fetches ALL post stats in a single batch (2 requests total).
- * Wrap this around any component tree that contains PostStats components.
+ * Placeholder shown while the stats for a post are loading.
  */
-export const PostStatsProvider = ({ children }: { children: ReactNode }) => {
-  const [stats, setStats] = useState<Stats>({
-    views: {},
-    comments: {},
-    loaded: false,
-  });
-
-  useEffect(() => {
-    Promise.all([getAllViewCounts(), getAllCommentCounts()])
-      .then(([views, comments]) => {
-        setStats({ views, comments, loaded: true });
-      })
-      .catch((err) => {
-        console.error("[post-stats] error fetching stats:", err);
-        setStats({ views: {}, comments: {}, loaded: true });
-      });
-  }, []);
-
-  return <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>;
-};
+const PostStatsSkeleton = () => (
+  <>
+    <Skeleton className="inline-block h-5 w-16 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
+    <Skeleton className="inline-block h-5 w-12 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
+  </>
+);
 
 /**
  * Displays view/comment badges for a single post.
- * Must be used within a PostStatsProvider.
+ * Every instance shares one cached getPostStats() result.
  */
-const PostStats = ({ slug }: { slug: string }) => {
-  const { views, comments, loaded } = useContext(StatsContext);
-
-  if (!loaded) {
-    return (
-      <>
-        <Skeleton className="inline-block h-5 w-16 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
-        <Skeleton className="inline-block h-5 w-12 translate-y-[-2px] rounded-4xl border border-transparent align-middle" />
-      </>
-    );
-  }
+const PostStats = async ({ slug }: { slug: string }) => {
+  const { views, comments } = await getPostStats();
 
   const viewCount = views[slug] ?? 0;
   const commentCount = comments[slug] ?? 0;
@@ -98,4 +58,4 @@ const PostStats = ({ slug }: { slug: string }) => {
   );
 };
 
-export { PostStats };
+export { PostStats, PostStatsSkeleton };

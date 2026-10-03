@@ -1,7 +1,7 @@
 "use server";
 
-import { desc, eq, sql } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { eq } from "drizzle-orm";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { headers } from "next/headers";
 import { z } from "zod";
 
@@ -18,80 +18,6 @@ const createCommentSchema = z.object({
   pageSlug: z.string(),
   parentId: commentIdSchema.optional(),
 });
-
-export type CommentWithUser = typeof schema.comment.$inferSelect & {
-  user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
-};
-
-export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
-  try {
-    // Fetch all comments for the page with user details
-    const commentsWithUsers = await db
-      .select()
-      .from(schema.comment)
-      .innerJoin(schema.user, eq(schema.comment.userId, schema.user.id))
-      .where(eq(schema.comment.pageSlug, pageSlug))
-      .orderBy(desc(schema.comment.createdAt));
-
-    return commentsWithUsers.map(({ comment, user }) =>
-      Object.assign(comment, {
-        user: {
-          // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
-          id: user.id,
-          name: user.name,
-          image: user.image,
-        },
-      }),
-    );
-  } catch (error) {
-    console.error("[server/comments] error fetching comments:", error);
-    // Return empty array instead of throwing during prerendering
-    return [];
-  }
-};
-
-/**
- * Retrieves the number of comments for a given slug
- */
-export const getCommentCount = async (slug: string): Promise<number> => {
-  try {
-    const result = await db
-      .select({
-        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-      })
-      .from(schema.comment)
-      .where(eq(schema.comment.pageSlug, slug));
-
-    return result[0]?.count ?? 0;
-  } catch (error) {
-    console.error("[server/comments] error fetching comment count:", error);
-    return 0;
-  }
-};
-
-/**
- * Retrieves the numbers of comments for ALL slugs
- */
-export const getAllCommentCounts = async (): Promise<Record<string, number>> => {
-  try {
-    const rows = await db
-      .select({
-        pageSlug: schema.comment.pageSlug,
-        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-      })
-      .from(schema.comment)
-      .groupBy(schema.comment.pageSlug);
-
-    const map: Record<string, number> = {};
-    for (const row of rows) {
-      map[row.pageSlug] = row.count ?? 0;
-    }
-    return map;
-  } catch (error) {
-    console.error("[server/comments] error fetching comment counts:", error);
-    return {};
-  }
-};
 
 export const createComment = async (data: {
   content: string;
@@ -140,8 +66,9 @@ export const createComment = async (data: {
       userId: session.user.id,
     });
 
-    // Revalidate page
+    // Revalidate page and the cached comment counts
     revalidatePath(`/${pageSlug}`);
+    revalidateTag("comments", "max");
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment", { cause: error });
@@ -236,8 +163,9 @@ export const deleteComment = async (commentId: string) => {
     // Delete the comment
     await db.delete(schema.comment).where(eq(schema.comment.id, commentId));
 
-    // Revalidate page
+    // Revalidate page and the cached comment counts
     revalidatePath(`/${comment.pageSlug}`);
+    revalidateTag("comments", "max");
   } catch (error) {
     console.error("[server/comments] error deleting comment:", error);
     throw new Error("Failed to delete comment", { cause: error });

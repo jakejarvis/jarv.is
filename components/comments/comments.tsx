@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 
 import { auth } from "@/lib/auth";
-import { type CommentWithUser, getComments } from "@/lib/server/comments";
+import { type CommentWithUser, getComments } from "@/lib/data/comments";
 
 import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";

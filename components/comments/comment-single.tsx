@@ -2,9 +2,9 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 
 import { RelativeTime } from "@/components/relative-time";
+import type { CommentWithUser } from "@/lib/data/comments";
 import { rehypeExternalLinks } from "@/lib/rehype";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
-import type { CommentWithUser } from "@/lib/server/comments";
 import { cn } from "@/lib/utils";
 
 import { CommentActions } from "./comment-actions";

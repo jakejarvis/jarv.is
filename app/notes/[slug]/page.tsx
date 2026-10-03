@@ -154,7 +154,9 @@ const Page = async ({ params }: PageProps<"/notes/[slug]">) => {
             className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
           >
             <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
-            <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
+            <Suspense fallback={<span className="motion-safe:animate-pulse">0</span>}>
+              <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
+            </Suspense>
           </Link>
 
           <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">

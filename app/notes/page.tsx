@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ViewTransition } from "react";
+import { Suspense, ViewTransition } from "react";
 
 import { PageTitle } from "@/components/layout/page-title";
 import { DirectionalTransition } from "@/components/page-transition";
-import { PostStats, PostStatsProvider } from "@/components/post-stats";
+import { PostStats, PostStatsSkeleton } from "@/components/post-stats";
 import authorConfig from "@/lib/config/author";
 import { createMetadata } from "@/lib/metadata";
 import { type FrontMatter, getFrontMatter, POSTS_DIR } from "@/lib/posts";
@@ -79,7 +79,9 @@ const PostsList = () => {
                   />
                 </ViewTransition>
 
-                <PostStats slug={`${POSTS_DIR}/${slug}`} />
+                <Suspense fallback={<PostStatsSkeleton />}>
+                  <PostStats slug={`${POSTS_DIR}/${slug}`} />
+                </Suspense>
               </div>
             </li>
           ))}
@@ -95,9 +97,7 @@ const PostsList = () => {
 const Page = () => (
   <DirectionalTransition>
     <PageTitle canonical="/notes">Notes</PageTitle>
-    <PostStatsProvider>
-      <PostsList />
-    </PostStatsProvider>
+    <PostsList />
   </DirectionalTransition>
 );
 
