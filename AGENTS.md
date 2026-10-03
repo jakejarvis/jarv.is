@@ -95,6 +95,7 @@ export { Button };
 
 - Server actions live in `lib/server/*.ts` files starting with `"use server"`. Every export of such a file is a public endpoint callable by anyone, so authenticate (`auth.api.getSession({ headers: await headers() })`) and validate all arguments inside the action, and only export async functions (types are fine).
 - Actions take typed arguments (not `FormData`) and throw `Error` on failure: do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[server/<file>]` prefix and rethrows with `{ cause }`. Call `revalidatePath()` / `revalidateTag()` after mutations.
+- Don't put read queries in a `"use server"` file (that makes them public endpoints); put them in `lib/data/` with `import "server-only"` and call them from server components.
 
 ```typescript
 "use server";
@@ -156,7 +157,8 @@ components/           # React components
   third-party/        # Embeds (tweet, gist, youtube, codepen)
 lib/                  # Core utilities and configuration
   db/                 # Drizzle schema and database client
-  server/             # Server actions ("use server"): comments, views
+  data/               # Server-only reads (import "server-only"): comments, views, cached post stats
+  server/             # Server actions ("use server") -- mutations only: comments, views
   config/             # Site and author configuration
   auth.ts             # Better Auth server config (GitHub OAuth)
   auth-client.ts      # Better Auth React client
