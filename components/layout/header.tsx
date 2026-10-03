@@ -266,7 +266,7 @@ const ContactPopover = () => (
 
 const Header = ({ className }: { className?: string }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -330,7 +330,7 @@ const Header = ({ className }: { className?: string }) => {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
             className="group"
           >
