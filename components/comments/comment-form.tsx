@@ -1,7 +1,7 @@
 "use client";
 
 import { IconInfoCircle, IconMarkdown } from "@tabler/icons-react";
-import { createContext, useContext, useMemo, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -13,61 +13,12 @@ import { createComment, updateComment } from "@/lib/server/comments";
 
 import { CommentAvatar } from "./comment-avatar";
 
-// Context for lifting form state to parent components
-type CommentFormContextValue = {
-  content: string;
-  setContent: (value: string) => void;
-  isPending: boolean;
-  startTransition: React.TransitionStartFunction;
-};
-
-const CommentFormContext = createContext<CommentFormContextValue | null>(null);
-
-// Provider for sharing form state with sibling components (preview, character counter, etc.)
-const CommentFormProvider = ({
-  children,
-  initialContent = "",
-}: {
-  children: React.ReactNode;
-  initialContent?: string;
-}) => {
+// Local form state shared by the create/reply/edit forms
+const useCommentFormState = (initialContent: string = "") => {
   const [content, setContent] = useState(initialContent);
   const [isPending, startTransition] = useTransition();
 
-  const contextValue = useMemo(
-    () => ({ content, setContent, isPending, startTransition }),
-    [content, setContent, isPending, startTransition],
-  );
-
-  return <CommentFormContext.Provider value={contextValue}>{children}</CommentFormContext.Provider>;
-};
-
-// Hook to access form state from context (for sibling components like preview panels)
-const useCommentForm = () => {
-  const context = useContext(CommentFormContext);
-  if (!context) {
-    throw new Error("useCommentForm must be used within a CommentFormProvider");
-  }
-  return context;
-};
-
-// Internal hook - uses context if available, otherwise creates local state
-const useCommentFormState = (initialContent: string = "") => {
-  const context = useContext(CommentFormContext);
-  const [localContent, setLocalContent] = useState(initialContent);
-  const [localIsPending, localStartTransition] = useTransition();
-
-  // If wrapped in provider, use context; otherwise use local state
-  if (context) {
-    return context;
-  }
-
-  return {
-    content: localContent,
-    setContent: setLocalContent,
-    isPending: localIsPending,
-    startTransition: localStartTransition,
-  };
+  return { content, setContent, isPending, startTransition };
 };
 
 // Shared textarea component
@@ -384,4 +335,4 @@ const EditCommentForm = ({
   );
 };
 
-export { NewCommentForm, ReplyForm, EditCommentForm, CommentFormProvider, useCommentForm };
+export { NewCommentForm, ReplyForm, EditCommentForm };

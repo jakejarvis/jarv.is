@@ -1,18 +1,20 @@
 import { allPosts } from "content-collections";
 
-export type FrontMatter = {
-  slug: string;
-  permalink: string;
-  date: string;
-  title: string;
-  htmlTitle?: string;
-  description?: string;
-  tags?: string[];
-  image?: string;
-  noComments?: boolean;
-};
-
 export type Post = (typeof allPosts)[number];
+
+/** The subset of a post's fields used for listings, metadata and the OG image (everything except the body). */
+export type FrontMatter = Pick<
+  Post,
+  | "slug"
+  | "permalink"
+  | "date"
+  | "title"
+  | "htmlTitle"
+  | "description"
+  | "tags"
+  | "image"
+  | "noComments"
+>;
 
 /** Path to directory with .mdx files, relative to project root. */
 export const POSTS_DIR = "notes" as const;
@@ -36,6 +38,12 @@ export const getPostByPageSlug = (pageSlug: string): Post | undefined => {
   if (!pageSlug.startsWith(prefix)) return undefined;
   return getPost(pageSlug.slice(prefix.length));
 };
+
+/** Returns ALL posts, sorted reverse chronologically. */
+export const getPosts = (): Post[] =>
+  allPosts.toSorted(
+    (post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime(),
+  );
 
 /**
  * Returns the front matter of ALL posts, sorted reverse chronologically.
@@ -64,9 +72,7 @@ export function getFrontMatter(slug?: string): FrontMatter[] | FrontMatter | und
   }
 
   if (!slug) {
-    return allPosts
-      .toSorted((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime())
-      .map(toFrontMatter);
+    return getPosts().map(toFrontMatter);
   }
 
   throw new Error("getFrontMatter() called with invalid argument.");

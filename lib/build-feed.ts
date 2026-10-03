@@ -1,17 +1,17 @@
-import { Feed, type Item as FeedItem } from "feed";
+import { Feed } from "feed";
 import { NextResponse, type NextRequest } from "next/server";
 
 import ogImage from "@/app/opengraph-image.jpg";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
-import { getPost, getFrontMatter } from "@/lib/posts";
+import { getPosts } from "@/lib/posts";
 
 /**
- * Returns a `Feed` object, which can then be processed with `feed.rss2()`, `feed.atom1()`, or `feed.json1()`.
+ * Returns a `Feed` object, which can then be processed with `feed.rss2()` or `feed.atom1()`.
  * @see https://github.com/jpmonette/feed#example
  */
 const buildFeed = (): Feed => {
-  const frontmatter = getFrontMatter();
+  const posts = getPosts();
 
   const feed = new Feed({
     id: `${process.env.NEXT_PUBLIC_BASE_URL}`,
@@ -19,7 +19,7 @@ const buildFeed = (): Feed => {
     title: siteConfig.name,
     description: siteConfig.description,
     copyright: `https://spdx.org/licenses/${siteConfig.license}.html`,
-    updated: frontmatter[0] ? new Date(frontmatter[0].date) : undefined,
+    updated: posts[0] ? new Date(posts[0].date) : undefined,
     image: `${process.env.NEXT_PUBLIC_BASE_URL}${ogImage.src}`,
     feedLinks: {
       rss: `${process.env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
@@ -32,50 +32,41 @@ const buildFeed = (): Feed => {
     },
   });
 
-  // parse posts into feed items
-  const posts: FeedItem[] = frontmatter.map((post) => ({
-    guid: post.permalink,
-    link: post.permalink,
-    title: post.title,
-    description: post.description,
-    author: [
-      {
-        name: authorConfig.name,
-        link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-      },
-    ],
-    date: new Date(post.date),
-    content: `
-        ${getPost(post.slug)?.feedHtml}
+  // posts are already sorted reverse chronologically
+  for (const post of posts) {
+    feed.addItem({
+      guid: post.permalink,
+      link: post.permalink,
+      title: post.title,
+      description: post.description,
+      author: [
+        {
+          name: authorConfig.name,
+          link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+        },
+      ],
+      date: new Date(post.date),
+      content: `
+        ${post.feedHtml}
         <p><a href="${post.permalink}"><strong>Continue reading...</strong></a></p>
       `.trim(),
-  }));
-
-  // sort posts reverse chronologically in case the promises resolved out of order
-  posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
-
-  // officially add each post to the feed
-  posts.forEach((post) => {
-    feed.addItem(post);
-  });
+    });
+  }
 
   return feed;
 };
 
 export const createFeedHandler = (
-  feedType: "rss" | "atom" | "json",
+  feedType: "rss" | "atom",
 ): { GET: (request: NextRequest) => Promise<Response> } => {
   return {
     GET: async () => {
       const feed = buildFeed();
-      return new NextResponse(
-        feed[feedType === "rss" ? "rss2" : feedType === "atom" ? "atom1" : "json1"](),
-        {
-          headers: {
-            "content-type": `application/${feedType}+xml; charset=utf-8`,
-          },
+      return new NextResponse(feedType === "rss" ? feed.rss2() : feed.atom1(), {
+        headers: {
+          "content-type": `application/${feedType}+xml; charset=utf-8`,
         },
-      );
+      });
     },
   };
 };
