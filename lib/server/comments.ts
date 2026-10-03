@@ -3,10 +3,21 @@
 import { desc, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import { z } from "zod";
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
+import { getPostByPageSlug } from "@/lib/posts";
+
+const commentContentSchema = z.string().trim().min(1).max(10_000);
+const commentIdSchema = z.uuid();
+
+const createCommentSchema = z.object({
+  content: commentContentSchema,
+  pageSlug: z.string(),
+  parentId: commentIdSchema.optional(),
+});
 
 export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
@@ -95,17 +106,42 @@ export const createComment = async (data: {
     throw new Error("You must be logged in to comment");
   }
 
+  const parsed = createCommentSchema.safeParse(data);
+  if (!parsed.success) {
+    throw new Error("Invalid comment");
+  }
+  const { content, pageSlug, parentId } = parsed.data;
+
+  // only allow comments on existing posts that haven't disabled them
+  const post = getPostByPageSlug(pageSlug);
+  if (!post || post.noComments) {
+    throw new Error("Comments are closed for this page");
+  }
+
   try {
+    // Replies must point at an existing comment on the same page
+    if (parentId) {
+      const parent = await db
+        .select({ pageSlug: schema.comment.pageSlug })
+        .from(schema.comment)
+        .where(eq(schema.comment.id, parentId))
+        .then((results) => results[0]);
+
+      if (!parent || parent.pageSlug !== pageSlug) {
+        throw new Error("Parent comment not found");
+      }
+    }
+
     // Insert the comment
     await db.insert(schema.comment).values({
-      content: data.content,
-      pageSlug: data.pageSlug,
-      parentId: data.parentId || null,
+      content,
+      pageSlug,
+      parentId: parentId ?? null,
       userId: session.user.id,
     });
 
     // Revalidate page
-    revalidatePath(`/${data.pageSlug}`);
+    revalidatePath(`/${pageSlug}`);
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment", { cause: error });
@@ -119,6 +155,12 @@ export const updateComment = async (commentId: string, content: string) => {
 
   if (!session || !session.user) {
     throw new Error("You must be logged in to update a comment");
+  }
+
+  const parsedId = commentIdSchema.safeParse(commentId);
+  const parsedContent = commentContentSchema.safeParse(content);
+  if (!parsedId.success || !parsedContent.success) {
+    throw new Error("Invalid comment");
   }
 
   try {
@@ -145,7 +187,7 @@ export const updateComment = async (commentId: string, content: string) => {
     await db
       .update(schema.comment)
       .set({
-        content,
+        content: parsedContent.data,
         updatedAt: new Date(),
       })
       .where(eq(schema.comment.id, commentId));
@@ -165,6 +207,10 @@ export const deleteComment = async (commentId: string) => {
 
   if (!session || !session.user) {
     throw new Error("You must be logged in to delete a comment");
+  }
+
+  if (!commentIdSchema.safeParse(commentId).success) {
+    throw new Error("Invalid comment ID");
   }
 
   try {

@@ -5,6 +5,7 @@ import { revalidateTag } from "next/cache";
 
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
+import { getPostByPageSlug } from "@/lib/posts";
 
 /**
  * Retrieves the number of views for a given slug, or 0 if the slug does not exist or on error
@@ -42,6 +43,11 @@ export const getAllViewCounts = async (): Promise<Record<string, number>> => {
  * Increments the view count for a given slug (upserts if doesn't exist)
  */
 export const incrementViews = async (slug: string): Promise<number> => {
+  // this is a public endpoint: only count views for posts that actually exist
+  if (typeof slug !== "string" || !getPostByPageSlug(slug)) {
+    throw new Error("Invalid slug");
+  }
+
   try {
     // Atomic upsert: insert new row with views=1, or increment existing row
     const [result] = await db

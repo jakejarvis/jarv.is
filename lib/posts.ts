@@ -28,6 +28,16 @@ export const getPost = (slug: string): Post | undefined => {
 };
 
 /**
+ * Returns the post for a page slug in the "notes/<slug>" format used by the `page` and `comment` tables
+ * (e.g. "notes/dark-mode"), or undefined if it isn't an existing post.
+ */
+export const getPostByPageSlug = (pageSlug: string): Post | undefined => {
+  const prefix = `${POSTS_DIR}/`;
+  if (!pageSlug.startsWith(prefix)) return undefined;
+  return getPost(pageSlug.slice(prefix.length));
+};
+
+/**
  * Returns the front matter of ALL posts, sorted reverse chronologically.
  */
 export function getFrontMatter(): FrontMatter[];
