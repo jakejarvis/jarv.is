@@ -14,7 +14,12 @@ My humble abode on the World Wide Web, created with [Next.js](https://nextjs.org
 
 I highly recommend spinning up a [Codespace](https://github.com/features/codespaces) with the button above to start inside of a preconfigured and tested environment.
 
-**Be sure to populate the required environment variables!**
+Or, to run it locally (Node 24+ with Corepack enabled):
+
+1. `cp .env.example .env.local` and fill in the values. Only the "required to build" ones are needed to run the site; the rest enable views, comments, sign-in and `/projects`.
+2. `pnpm install`
+3. `pnpm db:migrate` (needs `DATABASE_URL`)
+4. `pnpm dev`
 
 ## Related
 
