@@ -1,14 +1,11 @@
-"use client";
-
-import { IconAt, IconExternalLink, IconMoon, IconSun } from "@tabler/icons-react";
-import { useTheme } from "next-themes";
+import { IconAt, IconExternalLink } from "@tabler/icons-react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import avatarImg from "@/app/avatar.jpg";
+import { HeaderShell } from "@/components/layout/header-shell";
+import { HomeLink } from "@/components/layout/home-link";
 import { Menu } from "@/components/layout/menu";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -264,86 +261,34 @@ const ContactPopover = () => (
   </Popover>
 );
 
-const Header = ({ className }: { className?: string }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const pathname = usePathname();
+const Header = ({ className }: { className?: string }) => (
+  <HeaderShell className={className}>
+    <header className="mt-2 flex w-full items-center justify-between py-4">
+      <div className="flex items-center gap-3">
+        <HomeLink>
+          <Image
+            src={avatarImg}
+            alt={`Photo of ${siteConfig.name}`}
+            className="size-7 rounded-full border border-ring/30"
+            width={40}
+            height={40}
+            quality={75}
+            priority
+          />
+          <span className={cn("text-[17.5px] font-medium whitespace-nowrap", "max-md:sr-only")}>
+            {siteConfig.name}
+          </span>
+        </HomeLink>
+        <Separator orientation="vertical" className="!h-7" />
+        <Menu />
+      </div>
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    // Check initial scroll position
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <div
-      data-scrolled={isScrolled}
-      style={{ viewTransitionName: "persistent-nav" }}
-      className={cn(
-        "sticky top-0 z-50 w-full",
-        "motion-safe:transition-[background-color,backdrop-filter,border-color]",
-        "motion-safe:duration-200",
-        "bg-background/0 backdrop-blur-none",
-        "data-[scrolled=true]:bg-background/80",
-        "data-[scrolled=true]:backdrop-blur-md",
-        "data-[scrolled=true]:border-b data-[scrolled=true]:border-border/70",
-        className,
-      )}
-    >
-      <header className="mt-2 flex w-full items-center justify-between py-4">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            rel="author"
-            transitionTypes={pathname === "/" ? undefined : ["nav-lateral"]}
-            aria-label={siteConfig.name}
-            className={cn(
-              "flex shrink-0 items-center hover:text-foreground/85",
-              "gap-2.5 pr-2 hover:no-underline",
-            )}
-          >
-            <Image
-              src={avatarImg}
-              alt={`Photo of ${siteConfig.name}`}
-              className="size-7 rounded-full border border-ring/30"
-              width={40}
-              height={40}
-              quality={75}
-              priority
-            />
-            <span className={cn("text-[17.5px] font-medium whitespace-nowrap", "max-md:sr-only")}>
-              {siteConfig.name}
-            </span>
-          </Link>
-          <Separator orientation="vertical" className="!h-7" />
-          <Menu />
-        </div>
-
-        <div className="flex items-center gap-2.5">
-          <ContactPopover />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-            className="group"
-          >
-            <IconSun className="group-hover:stroke-orange-600 dark:hidden" aria-hidden="true" />
-            <IconMoon
-              className="not-dark:hidden group-hover:stroke-yellow-400"
-              aria-hidden="true"
-            />
-          </Button>
-        </div>
-      </header>
-    </div>
-  );
-};
+      <div className="flex items-center gap-2.5">
+        <ContactPopover />
+        <ThemeToggle />
+      </div>
+    </header>
+  </HeaderShell>
+);
 
 export { Header };
