@@ -11,7 +11,7 @@ export const getContributions = async (): Promise<
     level: number;
   }>
 > => {
-  "use cache";
+  "use cache: remote";
   cacheLife("minutes");
 
   // thanks @grubersjoe! :) https://github.com/grubersjoe/github-contributions-api/blob/main/src/scrape.ts
@@ -81,7 +81,7 @@ export const getContributions = async (): Promise<
 };
 
 export const getRepos = async (): Promise<Repository[] | undefined> => {
-  "use cache";
+  "use cache: remote";
   cacheLife("minutes");
 
   try {

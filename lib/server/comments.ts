@@ -1,11 +1,12 @@
 "use server";
 
 import { eq } from "drizzle-orm";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { refresh, updateTag } from "next/cache";
 import { headers } from "next/headers";
 import { z } from "zod";
 
 import { auth } from "@/lib/auth";
+import { commentsTag } from "@/lib/data/comments";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
 import { getPostByPageSlug } from "@/lib/posts";
@@ -66,9 +67,10 @@ export const createComment = async (data: {
       userId: session.user.id,
     });
 
-    // Revalidate page and the cached comment counts
-    revalidatePath(`/${pageSlug}`);
-    revalidateTag("comments", "max");
+    // Expire this page's cached comments and the post stats, then refresh the commenter's view
+    updateTag(commentsTag(pageSlug));
+    updateTag("comments");
+    refresh();
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment", { cause: error });
@@ -119,8 +121,9 @@ export const updateComment = async (commentId: string, content: string) => {
       })
       .where(eq(schema.comment.id, commentId));
 
-    // Revalidate page
-    revalidatePath(`/${comment.pageSlug}`);
+    // Expire this page's cached comments, then refresh the commenter's view
+    updateTag(commentsTag(comment.pageSlug));
+    refresh();
   } catch (error) {
     console.error("[server/comments] error updating comment:", error);
     throw new Error("Failed to update comment", { cause: error });
@@ -163,9 +166,10 @@ export const deleteComment = async (commentId: string) => {
     // Delete the comment
     await db.delete(schema.comment).where(eq(schema.comment.id, commentId));
 
-    // Revalidate page and the cached comment counts
-    revalidatePath(`/${comment.pageSlug}`);
-    revalidateTag("comments", "max");
+    // Expire this page's cached comments and the post stats, then refresh the commenter's view
+    updateTag(commentsTag(comment.pageSlug));
+    updateTag("comments");
+    refresh();
   } catch (error) {
     console.error("[server/comments] error deleting comment:", error);
     throw new Error("Failed to delete comment", { cause: error });

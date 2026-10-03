@@ -7,7 +7,6 @@ import { PageTitle } from "@/components/layout/page-title";
 import { FadeTransition } from "@/components/page-transition";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { createMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
@@ -45,17 +44,15 @@ const Page = async () => {
         </a>
       </h2>
 
-      <Suspense fallback={<Skeleton className="h-40 w-full" />}>
-        {contributions.length > 0 ? (
-          <div className={cn("mx-auto mt-4 mb-8")}>
-            <ActivityCalendar data={contributions} noun="contribution" />
-          </div>
-        ) : (
-          <p className="my-4 text-center text-muted-foreground">
-            Unable to load contribution data at this time.
-          </p>
-        )}
-      </Suspense>
+      {contributions.length > 0 ? (
+        <div className={cn("mx-auto mt-4 mb-8")}>
+          <ActivityCalendar data={contributions} noun="contribution" />
+        </div>
+      ) : (
+        <p className="my-4 text-center text-muted-foreground">
+          Unable to load contribution data at this time.
+        </p>
+      )}
 
       <h2 className="my-3.5 text-lg font-medium">
         <a

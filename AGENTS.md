@@ -94,7 +94,7 @@ export { Button };
 ### Server Actions & Error Handling
 
 - Server actions live in `lib/server/*.ts` files starting with `"use server"`. Every export of such a file is a public endpoint callable by anyone, so authenticate (`auth.api.getSession({ headers: await headers() })`) and validate all arguments inside the action, and only export async functions (types are fine).
-- Actions take typed arguments (not `FormData`) and throw `Error` on failure: do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[server/<file>]` prefix and rethrows with `{ cause }`. Call `revalidatePath()` / `revalidateTag()` after mutations.
+- Actions take typed arguments (not `FormData`) and throw `Error` on failure: do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[server/<file>]` prefix and rethrows with `{ cause }`. After mutations, call `updateTag()` for each cache tag the write affects (read-your-writes) and `refresh()` to re-render the caller's page; reserve `revalidatePath()` for when prerendered output itself changed.
 - Don't put read queries in a `"use server"` file (that makes them public endpoints); put them in `lib/data/` with `import "server-only"` and call them from server components.
 
 ```typescript
@@ -121,7 +121,8 @@ export const createComment = async (data: {
       userId: session.user.id,
     });
 
-    revalidatePath(`/${data.pageSlug}`);
+    updateTag(commentsTag(data.pageSlug));
+    refresh();
   } catch (error) {
     console.error("[server/comments] error creating comment:", error);
     throw new Error("Failed to create comment", { cause: error });
@@ -135,7 +136,9 @@ export const createComment = async (data: {
 
 - Schema in `lib/db/schema.ts`; migrations are generated into `drizzle/` with `pnpm db:generate` and applied with `pnpm db:migrate`. Drizzle ORM is a pinned `1.0.0-rc` prerelease, so check its docs for v1 APIs (e.g. `defineRelations`).
 - `cacheComponents` is enabled. Cache expensive or remote reads with `"use cache"` and an explicit `cacheLife(...)` (add `cacheTag(...)` when something needs to invalidate it). Examples: `app/projects/github.ts`, `components/third-party/tweet.tsx`.
-- After mutations, call `revalidatePath()` / `revalidateTag()`, and only revalidate tags that some `cacheTag()` actually sets.
+- Use `"use cache: remote"` for reads that run at request time (inside a dynamic hole, e.g. after `headers()`/`connection()`) so the entry is shared across server instances; plain `"use cache"` is fine for anything that ends up in a prerendered shell. Example: `lib/data/comments.ts`.
+- Don't catch-and-return-a-fallback inside a cached function, or the failure gets cached; let it throw and catch in an uncached wrapper.
+- After mutations, call `updateTag()` (server actions) or `revalidateTag()` (route handlers), and only expire tags that some `cacheTag()` actually sets.
 
 ```typescript
 export const getData = async (slug: string) => {
@@ -157,7 +160,7 @@ components/           # React components
   third-party/        # Embeds (tweet, gist, youtube, codepen)
 lib/                  # Core utilities and configuration
   db/                 # Drizzle schema and database client
-  data/               # Server-only reads (import "server-only"): comments, views, cached post stats
+  data/               # Server-only reads (import "server-only"): comments, cached post stats
   server/             # Server actions ("use server") -- mutations only: comments, views
   config/             # Site and author configuration
   auth.ts             # Better Auth server config (GitHub OAuth)

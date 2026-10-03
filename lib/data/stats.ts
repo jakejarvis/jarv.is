@@ -12,12 +12,12 @@ export type PostStatsData = {
 
 /**
  * View and comment counts for ALL pages, keyed by slug (e.g. "notes/dark-mode").
- * Cached briefly; invalidated by `revalidateTag("views")` / `revalidateTag("comments")`.
+ * Cached briefly (views can lag by a minute or so); comment changes expire it via `updateTag("comments")`.
  */
 export const getPostStats = async (): Promise<PostStatsData> => {
-  "use cache";
+  "use cache: remote";
   cacheLife("minutes");
-  cacheTag("views", "comments");
+  cacheTag("comments");
 
   try {
     const [pageRows, commentRows] = await Promise.all([

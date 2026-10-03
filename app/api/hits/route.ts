@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getAllViewCounts } from "@/lib/data/views";
+import { getPostStats } from "@/lib/data/stats";
 
 export const GET = async (): Promise<
   NextResponse<{
@@ -14,7 +14,7 @@ export const GET = async (): Promise<
   }>
 > => {
   // note: while hits have been renamed to views in most places, this API shouldn't change due to it being snapshotted
-  const views = await getAllViewCounts();
+  const { views } = await getPostStats();
 
   const total = {
     hits: Object.values(views).reduce((acc, curr) => acc + curr, 0),

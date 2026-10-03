@@ -1,5 +1,6 @@
 import "server-only";
-import { desc, eq, sql } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import { cacheLife, cacheTag } from "next/cache";
 
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
@@ -11,51 +12,54 @@ export type CommentWithUser = typeof schema.comment.$inferSelect & {
   user: CommentUser;
 };
 
+/** Cache tag for a single page's comments; expired by the actions in lib/server/comments.ts */
+export const commentsTag = (pageSlug: string) => `comments-${pageSlug}`;
+
+/**
+ * Shared across server instances since it's read at request time (inside dynamic holes), not at prerender. Throws on
+ * failure so an error is never cached.
+ */
+const getCachedComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
+  "use cache: remote";
+  cacheLife("hours");
+  cacheTag(commentsTag(pageSlug));
+
+  // Fetch all comments for the page with user details
+  const commentsWithUsers = await db
+    .select()
+    .from(schema.comment)
+    .innerJoin(schema.user, eq(schema.comment.userId, schema.user.id))
+    .where(eq(schema.comment.pageSlug, pageSlug))
+    .orderBy(desc(schema.comment.createdAt));
+
+  return commentsWithUsers.map(({ comment, user }) =>
+    Object.assign(comment, {
+      user: {
+        // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
+        id: user.id,
+        name: user.name,
+        image: user.image,
+      },
+    }),
+  );
+};
+
 /**
  * Retrieves all comments for a given slug, newest first, with each author's public profile fields
  */
 export const getComments = async (pageSlug: string): Promise<CommentWithUser[]> => {
   try {
-    // Fetch all comments for the page with user details
-    const commentsWithUsers = await db
-      .select()
-      .from(schema.comment)
-      .innerJoin(schema.user, eq(schema.comment.userId, schema.user.id))
-      .where(eq(schema.comment.pageSlug, pageSlug))
-      .orderBy(desc(schema.comment.createdAt));
-
-    return commentsWithUsers.map(({ comment, user }) =>
-      Object.assign(comment, {
-        user: {
-          // we're namely worried about keeping the user's email private here, but nothing sensitive is stored in the db
-          id: user.id,
-          name: user.name,
-          image: user.image,
-        },
-      }),
-    );
+    return await getCachedComments(pageSlug);
   } catch (error) {
     console.error("[data/comments] error fetching comments:", error);
-    // Return empty array instead of throwing during prerendering
     return [];
   }
 };
 
 /**
- * Retrieves the number of comments for a given slug (uncached -- call from inside a <Suspense> boundary)
+ * Retrieves the number of comments for a given slug (shares getComments' cache entry)
  */
-export const getCommentCount = async (slug: string): Promise<number> => {
-  try {
-    const result = await db
-      .select({
-        count: sql<number>`cast(count(${schema.comment.id}) as int)`,
-      })
-      .from(schema.comment)
-      .where(eq(schema.comment.pageSlug, slug));
-
-    return result[0]?.count ?? 0;
-  } catch (error) {
-    console.error("[data/comments] error fetching comment count:", error);
-    return 0;
-  }
+export const getCommentCount = async (pageSlug: string): Promise<number> => {
+  const comments = await getComments(pageSlug);
+  return comments.length;
 };

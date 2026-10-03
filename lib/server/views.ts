@@ -1,7 +1,6 @@
 "use server";
 
 import { sql } from "drizzle-orm";
-import { revalidateTag } from "next/cache";
 
 import { db } from "@/lib/db";
 import { page } from "@/lib/db/schema";
@@ -26,9 +25,6 @@ export const incrementViews = async (slug: string): Promise<number> => {
         set: { views: sql`${page.views} + 1` },
       })
       .returning({ views: page.views });
-
-    // Mark the cached post stats (lib/data/stats.ts) stale so lists pick up the new count
-    revalidateTag("views", "max");
 
     return result.views;
   } catch (error) {

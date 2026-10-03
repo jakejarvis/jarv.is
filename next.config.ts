@@ -36,9 +36,6 @@ const nextConfig = {
         ...(process.env.NEXT_PUBLIC_ONION_DOMAIN ? [process.env.NEXT_PUBLIC_ONION_DOMAIN] : []),
       ],
     },
-    staleTimes: {
-      dynamic: 0, // disable client-side router cache for dynamic pages
-    },
   },
   headers: async () => [
     // https://community.torproject.org/onion-services/advanced/onion-location/
