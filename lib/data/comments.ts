@@ -4,8 +4,11 @@ import { desc, eq, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
 
+/** The public profile fields of a commenter (also used for the signed-in user in comment UI) */
+export type CommentUser = Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
+
 export type CommentWithUser = typeof schema.comment.$inferSelect & {
-  user: Pick<typeof schema.user.$inferSelect, "id" | "name" | "image">;
+  user: CommentUser;
 };
 
 /**

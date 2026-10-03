@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
-import { useSession } from "@/lib/auth-client";
+import type { CommentUser } from "@/lib/data/comments";
 import { createComment, updateComment } from "@/lib/server/comments";
 
 import { CommentAvatar } from "./comment-avatar";
@@ -94,18 +94,12 @@ const CommentTextarea = ({
   />
 );
 
-// Current user's avatar (uses session)
-const CurrentUserAvatar = () => {
-  const { data: session } = useSession();
-
-  if (!session?.user) return null;
-
-  return (
-    <div className="shrink-0">
-      <CommentAvatar name={session.user.name} image={session.user.image} />
-    </div>
-  );
-};
+// Current user's avatar
+const CurrentUserAvatar = ({ user }: { user: CommentUser }) => (
+  <div className="shrink-0">
+    <CommentAvatar name={user.name} image={user.image} />
+  </div>
+);
 
 // Submit button with pending state
 const SubmitButton = ({
@@ -196,7 +190,7 @@ const MarkdownHelp = () => (
 );
 
 // New comment form - for creating top-level comments
-const NewCommentForm = ({ slug }: { slug: string }) => {
+const NewCommentForm = ({ slug, currentUser }: { slug: string; currentUser: CommentUser }) => {
   const { content, setContent, isPending, startTransition } = useCommentFormState();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -225,7 +219,7 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4" data-intent="create">
       <div className="flex gap-4">
-        <CurrentUserAvatar />
+        <CurrentUserAvatar user={currentUser} />
 
         <div className="min-w-0 flex-1 space-y-4">
           <CommentTextarea
@@ -257,11 +251,13 @@ const NewCommentForm = ({ slug }: { slug: string }) => {
 const ReplyForm = ({
   slug,
   parentId,
+  currentUser,
   onCancel,
   onSuccess,
 }: {
   slug: string;
   parentId: string;
+  currentUser: CommentUser;
   onCancel: () => void;
   onSuccess?: () => void;
 }) => {
@@ -294,7 +290,7 @@ const ReplyForm = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-4" data-intent="create">
       <div className="flex gap-4">
-        <CurrentUserAvatar />
+        <CurrentUserAvatar user={currentUser} />
 
         <div className="min-w-0 flex-1 space-y-4">
           <CommentTextarea

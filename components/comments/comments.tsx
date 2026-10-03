@@ -1,18 +1,25 @@
 import { headers } from "next/headers";
 
 import { auth } from "@/lib/auth";
-import { type CommentWithUser, getComments } from "@/lib/data/comments";
+import { type CommentUser, type CommentWithUser, getComments } from "@/lib/data/comments";
 
 import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";
 import { SignIn } from "./sign-in";
 
 const Comments = async ({ slug }: { slug: string }) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  // independent queries -- run them in parallel
+  const [session, comments] = await Promise.all([
+    auth.api.getSession({
+      headers: await headers(),
+    }),
+    getComments(slug),
+  ]);
 
-  const comments = await getComments(slug);
+  // only pass the public fields down to client components
+  const currentUser: CommentUser | null = session
+    ? { id: session.user.id, name: session.user.name, image: session.user.image ?? null }
+    : null;
 
   const commentsByParentId = comments.reduce(
     (acc, comment) => {
@@ -30,8 +37,8 @@ const Comments = async ({ slug }: { slug: string }) => {
 
   return (
     <>
-      {session ? (
-        <NewCommentForm slug={slug} />
+      {currentUser ? (
+        <NewCommentForm slug={slug} currentUser={currentUser} />
       ) : (
         <div className="flex flex-col items-center justify-center gap-y-4 rounded-lg bg-muted/40 p-6">
           <p className="text-center font-medium">Join the discussion by signing in:</p>
@@ -47,6 +54,7 @@ const Comments = async ({ slug }: { slug: string }) => {
               comment={comment}
               replies={commentsByParentId[comment.id] || []}
               allComments={commentsByParentId}
+              currentUser={currentUser}
             />
           ))}
         </div>

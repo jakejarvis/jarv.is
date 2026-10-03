@@ -22,8 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Spinner } from "@/components/ui/spinner";
 import { toast } from "@/components/ui/toast";
-import { useSession } from "@/lib/auth-client";
-import type { CommentWithUser } from "@/lib/data/comments";
+import type { CommentUser, CommentWithUser } from "@/lib/data/comments";
 import { deleteComment } from "@/lib/server/comments";
 
 import { EditCommentForm, ReplyForm } from "./comment-form";
@@ -35,12 +34,16 @@ type ActionMode =
   | { type: "confirming-delete" }
   | { type: "deleting" };
 
-const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
+const CommentActions = ({
+  comment,
+  currentUser,
+}: {
+  comment: CommentWithUser;
+  currentUser: CommentUser | null;
+}) => {
   const [mode, setMode] = useState<ActionMode>({ type: "idle" });
 
-  const { data: session } = useSession();
-
-  if (!session) return null;
+  if (!currentUser) return null;
 
   const handleDelete = async () => {
     setMode({ type: "deleting" });
@@ -87,7 +90,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
             Reply
           </Button>
 
-          {session.user.id === comment.user.id && (
+          {currentUser.id === comment.user.id && (
             <DropdownMenu>
               <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
                 <IconDots />
@@ -117,6 +120,7 @@ const CommentActions = ({ comment }: { comment: CommentWithUser }) => {
           <ReplyForm
             slug={comment.pageSlug}
             parentId={comment.id}
+            currentUser={currentUser}
             onCancel={() => setMode({ type: "idle" })}
             onSuccess={() => setMode({ type: "idle" })}
           />

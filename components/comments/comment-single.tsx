@@ -2,7 +2,7 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 
 import { RelativeTime } from "@/components/relative-time";
-import type { CommentWithUser } from "@/lib/data/comments";
+import type { CommentUser, CommentWithUser } from "@/lib/data/comments";
 import { rehypeExternalLinks } from "@/lib/rehype";
 import { remarkGfm, remarkSmartypants } from "@/lib/remark";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,13 @@ import { cn } from "@/lib/utils";
 import { CommentActions } from "./comment-actions";
 import { CommentAvatar } from "./comment-avatar";
 
-const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
+const CommentSingle = ({
+  comment,
+  currentUser,
+}: {
+  comment: CommentWithUser;
+  currentUser: CommentUser | null;
+}) => {
   const divId = `comment-${comment.id.substring(0, 8)}`;
 
   return (
@@ -62,7 +68,7 @@ const CommentSingle = ({ comment }: { comment: CommentWithUser }) => {
             </Markdown>
           </div>
 
-          <CommentActions comment={comment} />
+          <CommentActions comment={comment} currentUser={currentUser} />
         </div>
       </div>
     </div>
