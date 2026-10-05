@@ -252,7 +252,7 @@ importers:
         version: 10.1.0(@types/react@19.3.0)(react@19.3.0)
       react-schemaorg:
         specifier: ^2.0.1
-        version: 2.0.1(react@19.3.0)(schema-dts@2.0.0(typescript@7.0.2))(typescript@7.0.2)
+        version: 2.0.1(react@19.3.0)(schema-dts@2.1.0)(typescript@7.0.2)
       react-timeago:
         specifier: ^8.3.0
         version: 8.3.0(react@19.3.0)
@@ -378,8 +378,8 @@ importers:
         specifier: ^8.5.28
         version: 8.5.28
       schema-dts:
-        specifier: ^2.0.0
-        version: 2.0.0(typescript@7.0.2)
+        specifier: ^2.1.0
+        version: 2.1.0
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -3866,14 +3866,12 @@ packages:
   scheduler@0.28.0:
     resolution: {integrity: sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==}
 
-  schema-dts-lib@1.0.0:
-    resolution: {integrity: sha512-9MEO5vpQH9JdBioUupqluzxSYxPLjhmqRUudk15adUl/ypnRsM2/M1kN3AmVJQeG7nZqcL68H8JlGqQQT6vy9A==}
+  schema-dts-lib@1.1.0:
+    resolution: {integrity: sha512-Nx00FDPHDimSENMznVpADeYUJDsqlMiO9wcs2S+giggNTm5+ruNkM4m9z9qCk6xUJT+ThDM3NxxpwfHfFk1G+Q==}
     engines: {node: '>=14.0.0'}
-    peerDependencies:
-      typescript: '>=4.9.5'
 
-  schema-dts@2.0.0:
-    resolution: {integrity: sha512-t7NoCy3Rn5GHGx6p7s1qIYK/AeIb8ZxJNR9WUNFkwMv2CiiGZBmqqYWc2FlZVm5ZbiHMY4OvBWhj7QtyrFO2Jw==}
+  schema-dts@2.1.0:
+    resolution: {integrity: sha512-Y/NvOvuJUZwrm+EmNqJF3M+bRufERJs1h5GJPLilUuK5D5b53ttU+XZgIjEFaAVRToh+ib+cQawFmxKC5Jt9ow==}
 
   section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
@@ -7446,10 +7444,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-schemaorg@2.0.1(react@19.3.0)(schema-dts@2.0.0(typescript@7.0.2))(typescript@7.0.2):
+  react-schemaorg@2.0.1(react@19.3.0)(schema-dts@2.1.0)(typescript@7.0.2):
     dependencies:
       react: 19.3.0
-      schema-dts: 2.0.0(typescript@7.0.2)
+      schema-dts: 2.1.0
       typescript: 7.0.2
 
   react-timeago@8.3.0(react@19.3.0):
@@ -7714,15 +7712,11 @@ snapshots:
 
   scheduler@0.28.0: {}
 
-  schema-dts-lib@1.0.0(typescript@7.0.2):
-    dependencies:
-      typescript: 7.0.2
+  schema-dts-lib@1.1.0: {}
 
-  schema-dts@2.0.0(typescript@7.0.2):
+  schema-dts@2.1.0:
     dependencies:
-      schema-dts-lib: 1.0.0(typescript@7.0.2)
-    transitivePeerDependencies:
-      - typescript
+      schema-dts-lib: 1.1.0
 
   section-matter@1.0.0:
     dependencies:
