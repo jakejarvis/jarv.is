@@ -33,7 +33,7 @@
     "@octokit/graphql-schema": "^15.26.1",
     "@tabler/icons-react": "^3.48.0",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/functions": "^3.9.9",
+    "@vercel/functions": "^3.9.11",
     "better-auth": "^1.7.7",
     "cheerio": "^1.2.0",
     "cn": "^0.4.0",
