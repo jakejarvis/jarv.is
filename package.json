@@ -102,7 +102,7 @@
   "engines": {
     "node": ">=24.x"
   },
-  "packageManager": "pnpm@12.8.1",
+  "packageManager": "pnpm@12.10.1",
   "cacheDirectories": [
     "node_modules",
     ".next/cache"
