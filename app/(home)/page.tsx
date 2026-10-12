@@ -3,6 +3,7 @@ import Image, { type StaticImageData } from "next/image";
 
 import { FadeTransition } from "@/components/page-transition";
 
+import clickerIcon from "./icons/clicker.png";
 import domainstackIcon from "./icons/domainstack.png";
 import snoozleIcon from "./icons/snoozle.png";
 import sofaIcon from "./icons/sofa.png";
@@ -29,6 +30,12 @@ const projects: readonly Project[] = [
     url: "https://sofa.watch",
     tagline: "Self-hosted movie & TV show tracker",
     icon: sofaIcon,
+  },
+  {
+    name: "Clicker",
+    url: "https://clicker.jarv.is",
+    tagline: "The missing Apple TV remote for macOS",
+    icon: clickerIcon,
   },
   {
     name: "Stanza",
