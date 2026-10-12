@@ -31,18 +31,6 @@ No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pn
 
 ### Import Organization
 
-```typescript
-// 1. React/Next.js core
-import { useState } from "react";
-
-// 2. External libraries
-import { eq, desc } from "drizzle-orm";
-
-// 3. Internal modules using @/ alias
-import { db } from "@/lib/db";
-import { Button } from "@/components/ui/button";
-```
-
 - Always use `@/` path aliases (never relative `../../`)
 - Use `type` keyword for type-only imports: `import type { Foo } from "bar"`
 
