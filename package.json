@@ -22,7 +22,7 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "@base-ui/react": "^1.8.0",
+    "@base-ui/react": "^1.9.0",
     "@better-auth/drizzle-adapter": "^1.7.7",
     "@better-auth/infra": "^0.4.13",
     "@mdx-js/loader": "^3.1.1",
