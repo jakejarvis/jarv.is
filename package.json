@@ -36,7 +36,7 @@
     "@vercel/functions": "^3.9.11",
     "better-auth": "^1.7.7",
     "cheerio": "^1.2.0",
-    "cn": "^0.4.0",
+    "cn": "^0.5.0",
     "cva": "^1.0.0-beta.12",
     "drizzle-orm": "1.0.0-rc.5-5935859",
     "feed": "^6.0.0",
