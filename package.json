@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@better-auth/drizzle-adapter": "^1.7.7",
+    "@better-auth/drizzle-adapter": "^1.7.12",
     "@better-auth/infra": "^0.4.17",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
@@ -34,7 +34,7 @@
     "@tabler/icons-react": "^3.49.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/functions": "^3.9.11",
-    "better-auth": "^1.7.7",
+    "better-auth": "^1.7.12",
     "cheerio": "^1.2.0",
     "cn": "^0.4.0",
     "cva": "^1.0.0-beta.12",
