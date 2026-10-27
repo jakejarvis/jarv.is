@@ -6,6 +6,7 @@ export const staticPaths = [
   "/",
   "/notes",
   "/cli",
+  "/leo",
   "/license",
   "/previously",
   "/privacy",

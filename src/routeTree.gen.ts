@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CliRouteImport } from './routes/cli'
+import { Route as LeoRouteImport } from './routes/leo'
 import { Route as LicenseRouteImport } from './routes/license'
 import { Route as PreviouslyRouteImport } from './routes/previously'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const CliRoute = CliRouteImport.update({
   id: '/cli',
   path: '/cli',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeoRoute = LeoRouteImport.update({
+  id: '/leo',
+  path: '/leo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LicenseRoute = LicenseRouteImport.update({
@@ -75,6 +81,7 @@ const NotesSlugOpengraphImageDotpngRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cli'
+    | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cli'
+    | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cli'
+    | '/leo'
     | '/license'
     | '/previously'
     | '/privacy'
@@ -151,6 +163,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CliRoute: typeof CliRoute
+  LeoRoute: typeof LeoRoute
   LicenseRoute: typeof LicenseRoute
   PreviouslyRoute: typeof PreviouslyRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/cli'
       fullPath: '/cli'
       preLoaderRoute: typeof CliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leo': {
+      id: '/leo'
+      path: '/leo'
+      fullPath: '/leo'
+      preLoaderRoute: typeof LeoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/license': {
@@ -239,6 +259,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CliRoute: CliRoute,
+  LeoRoute: LeoRoute,
   LicenseRoute: LicenseRoute,
   PreviouslyRoute: PreviouslyRoute,
   PrivacyRoute: PrivacyRoute,

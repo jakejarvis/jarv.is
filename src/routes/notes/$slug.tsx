@@ -35,13 +35,12 @@ export const Route = createFileRoute("/notes/$slug")({
       image: { url: ogImage, ...OG_IMAGE_SIZE, type: "image/png" },
       openGraph: {
         type: "article",
-        authors: [authorConfig.name],
-        tags: post.tags,
+        author: authorConfig.name,
         publishedTime: post.date,
         modifiedTime: post.date,
       },
       twitterCard: "summary_large_image",
-      scripts: [
+      jsonLd: [
         jsonLd<BlogPosting>({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
@@ -93,6 +92,11 @@ function Page() {
 
   return (
     <>
+      {/* repeated tags can't go through head() (it keeps one meta per property); React hoists these into <head> */}
+      {post.tags?.map((tag) => (
+        <meta key={tag} property="article:tag" content={tag} />
+      ))}
+
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[13px] tracking-wide text-foreground/70">
         <Link
           to="/notes/$slug"

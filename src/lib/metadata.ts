@@ -3,14 +3,17 @@ import type { Thing, WithContext } from "schema-dts";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
 
-type MetaTag = React.ComponentProps<"meta"> | { title: string };
-type LinkTag = React.ComponentProps<"link">;
-type ScriptTag = React.ComponentProps<"script">;
+type MetaTag = React.JSX.IntrinsicElements["meta"];
+type LinkTag = React.JSX.IntrinsicElements["link"];
+/**
+ * A JSON-LD object, which TanStack Router renders (HTML-escaped) as a `<script type="application/ld+json">`. Typed
+ * as a meta tag because that's where TanStack Router expects it.
+ */
+type JsonLdTag = MetaTag & { "script:ld+json": WithContext<Thing> };
 
 export type Head = {
   meta?: MetaTag[];
   links?: LinkTag[];
-  scripts?: ScriptTag[];
 };
 
 type OpenGraphImage = {
@@ -32,31 +35,63 @@ const DEFAULT_IMAGE: OpenGraphImage = {
   type: "image/jpeg",
 };
 
-const absoluteUrl = (url: string) => (url.startsWith("/") ? `${BASE_URL}${url}` : url);
+/** Absolute URL for a root-relative path (the homepage is the bare origin, without a trailing slash). */
+const absoluteUrl = (url: string) =>
+  url === "/" ? BASE_URL : url.startsWith("/") ? `${BASE_URL}${url}` : url;
 
-const imageMeta = (image: OpenGraphImage): MetaTag[] => [
-  { property: "og:image", content: absoluteUrl(image.url) },
-  { property: "og:image:width", content: `${image.width}` },
-  { property: "og:image:height", content: `${image.height}` },
-  ...(image.type ? [{ property: "og:image:type", content: image.type }] : []),
+/** og:title and its Twitter twin. */
+const titleMeta = (title: string): MetaTag[] => [
+  { property: "og:title", content: title },
+  { name: "twitter:title", content: title },
 ];
 
-/** Returns a `head()` script entry for a JSON-LD object. */
-export const jsonLd = <T extends Thing>(item: WithContext<T>): ScriptTag => ({
-  type: "application/ld+json",
-  children: JSON.stringify(item),
+const descriptionMeta = (description: string): MetaTag[] => [
+  { name: "description", content: description },
+  { property: "og:description", content: description },
+  { name: "twitter:description", content: description },
+];
+
+const imageMeta = ({ url, width, height, type }: OpenGraphImage): MetaTag[] => [
+  // Open Graph tags are `property`s, Twitter's are `name`s
+  { property: "og:image", content: absoluteUrl(url) },
+  { property: "og:image:width", content: `${width}` },
+  { property: "og:image:height", content: `${height}` },
+  { name: "twitter:image", content: absoluteUrl(url) },
+  { name: "twitter:image:width", content: `${width}` },
+  { name: "twitter:image:height", content: `${height}` },
+  ...(type
+    ? [
+        { property: "og:image:type", content: type },
+        { name: "twitter:image:type", content: type },
+      ]
+    : []),
+];
+
+/** Returns a `head().meta` entry for a JSON-LD object. */
+export const jsonLd = <T extends Thing>(item: WithContext<T>): JsonLdTag => ({
+  "script:ld+json": item,
 });
 
+const baseMeta: MetaTag[] = [
+  { charSet: "utf-8" },
+  { name: "viewport", content: "width=device-width, initial-scale=1" },
+];
+
+const iconLinks: LinkTag[] = [
+  { rel: "icon", href: "/favicon.ico", type: "image/x-icon", sizes: "48x48" },
+  { rel: "icon", href: "/icon.png", type: "image/png", sizes: "192x192" },
+  { rel: "apple-touch-icon", href: "/apple-icon.png", type: "image/png", sizes: "180x180" },
+  { rel: "manifest", href: "/manifest.webmanifest" },
+];
+
 /** Site-wide defaults, set by the root route. Pages override individual tags with `createHead()`. */
-export const defaultHead: Required<Pick<Head, "meta" | "links">> = {
+export const defaultHead: Required<Head> = {
   meta: [
-    { charSet: "utf-8" },
-    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    ...baseMeta,
     { title: DEFAULT_TITLE },
-    { name: "description", content: siteConfig.description },
+    ...descriptionMeta(siteConfig.description),
+    ...titleMeta(DEFAULT_TITLE),
     { property: "og:site_name", content: siteConfig.name },
-    { property: "og:title", content: DEFAULT_TITLE },
-    { property: "og:description", content: siteConfig.description },
     { property: "og:locale", content: import.meta.env.VITE_SITE_LOCALE.replace("-", "_") },
     { property: "og:type", content: "website" },
     ...imageMeta(DEFAULT_IMAGE),
@@ -65,10 +100,7 @@ export const defaultHead: Required<Pick<Head, "meta" | "links">> = {
     { name: "humans", content: "/humans.txt" },
   ],
   links: [
-    { rel: "icon", href: "/favicon.ico", sizes: "any" },
-    { rel: "icon", href: "/icon.png", type: "image/png", sizes: "192x192" },
-    { rel: "apple-touch-icon", href: "/apple-icon.png", type: "image/png", sizes: "180x180" },
-    { rel: "manifest", href: "/manifest.webmanifest" },
+    ...iconLinks,
     {
       rel: "alternate",
       type: "application/rss+xml",
@@ -84,9 +116,25 @@ export const defaultHead: Required<Pick<Head, "meta" | "links">> = {
   ],
 };
 
+/** Replaces `defaultHead` (rather than layering on it) when the root route renders its not-found page. */
+export const notFoundHead: Required<Head> = {
+  meta: [
+    ...baseMeta,
+    { title: `Page Not Found – ${siteConfig.name}` },
+    ...titleMeta(`Page Not Found – ${siteConfig.name}`),
+    { name: "robots", content: "noindex" },
+    ...imageMeta(DEFAULT_IMAGE),
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:creator", content: `@${authorConfig.social.twitter}` },
+    { name: "humans", content: "/humans.txt" },
+  ],
+  links: iconLinks,
+};
+
 /**
  * Builds a page's `head()`, layered over the root route's `defaultHead` (TanStack Router keeps the last `title` and
- * the last `meta` with a given name/property).
+ * the last `meta` with a given name/property, so tags that repeat, like `article:tag`, have to be rendered in the
+ * page's component instead).
  */
 export const createHead = ({
   title,
@@ -95,7 +143,7 @@ export const createHead = ({
   image,
   openGraph,
   twitterCard,
-  scripts,
+  jsonLd: jsonLdItems = [],
 }: {
   /** Page title, without the site name (it's appended here). */
   title?: string;
@@ -107,22 +155,15 @@ export const createHead = ({
     type?: "website" | "article";
     publishedTime?: string;
     modifiedTime?: string;
-    authors?: string[];
-    tags?: string[];
+    author?: string;
+    video?: { url: string; type: string };
   };
   twitterCard?: "summary" | "summary_large_image";
-  scripts?: ScriptTag[];
+  jsonLd?: JsonLdTag[];
 }): Head => ({
   meta: [
-    ...(title
-      ? [{ title: `${title} – ${siteConfig.name}` }, { property: "og:title", content: title }]
-      : []),
-    ...(description
-      ? [
-          { name: "description", content: description },
-          { property: "og:description", content: description },
-        ]
-      : []),
+    ...(title ? [{ title: `${title} – ${siteConfig.name}` }, ...titleMeta(title)] : []),
+    ...(description ? descriptionMeta(description) : []),
     { property: "og:url", content: absoluteUrl(canonical) },
     ...(image ? imageMeta(image) : []),
     ...(openGraph?.type ? [{ property: "og:type", content: openGraph.type }] : []),
@@ -132,13 +173,15 @@ export const createHead = ({
     ...(openGraph?.modifiedTime
       ? [{ property: "article:modified_time", content: openGraph.modifiedTime }]
       : []),
-    ...(openGraph?.authors ?? []).map((author) => ({
-      property: "article:author",
-      content: author,
-    })),
-    ...(openGraph?.tags ?? []).map((tag) => ({ property: "article:tag", content: tag })),
+    ...(openGraph?.author ? [{ property: "article:author", content: openGraph.author }] : []),
+    ...(openGraph?.video
+      ? [
+          { property: "og:video", content: openGraph.video.url },
+          { property: "og:video:type", content: openGraph.video.type },
+        ]
+      : []),
     ...(twitterCard ? [{ name: "twitter:card", content: twitterCard }] : []),
+    ...jsonLdItems,
   ],
   links: [{ rel: "canonical", href: absoluteUrl(canonical) }],
-  scripts,
 });
