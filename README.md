@@ -1,12 +1,12 @@
 # 🏡&nbsp;&nbsp;[jarv.is](https://jarv.is/)
 
 [![Vercel deployment](https://img.shields.io/github/deployments/jakejarvis/jarv.is/production?label=vercel&logo=vercel&logoColor=white)](https://vercel.com/deployments/jarv.is)
-[![Next.js version](https://img.shields.io/github/package-json/dependency-version/jakejarvis/jarv.is/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![TanStack Start version](https://img.shields.io/github/package-json/dependency-version/jakejarvis/jarv.is/@tanstack/react-start/main?color=ff4088&label=tanstack%20start&logo=react&logoColor=white)](https://tanstack.com/start)
 [![Licensed under CC-BY-4.0](https://img.shields.io/badge/license-CC--BY--4.0-fb7828?logo=creative-commons&logoColor=white)](LICENSE)
 [![GitHub repo size](https://img.shields.io/github/repo-size/jakejarvis/jarv.is?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/jakejarvis/jarv.is)
 [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fjarv.is%2Fapi%2Fhits&query=%24.total.hits&logo=googleanalytics&logoColor=white&label=hits&color=salmon&cacheSeconds=1800)](https://jarv.is/api/hits)
 
-My humble abode on the World Wide Web, created with [Next.js](https://nextjs.org/), [Tailwind CSS](https://github.com/user-attachments/assets/dfe99976-c73d-46f1-8a50-f26338463ad8), [Planetscale Postgres](https://planetscale.com/), [Drizzle](https://orm.drizzle.team/), [Better Auth](https://www.better-auth.com/), [and more](https://jarv.is/humans.txt).
+My humble abode on the World Wide Web, created with [TanStack Start](https://tanstack.com/start), [Tailwind CSS](https://github.com/user-attachments/assets/dfe99976-c73d-46f1-8a50-f26338463ad8), [Planetscale Postgres](https://planetscale.com/), [Drizzle](https://orm.drizzle.team/), [Better Auth](https://www.better-auth.com/), [and more](https://jarv.is/humans.txt).
 
 ## Development
 
@@ -19,14 +19,14 @@ Or, to run it locally (Node 24+ with Corepack enabled):
 1. `cp .env.example .env.local` and fill in the values. Only the "required to build" ones are needed to run the site; the rest enable views, comments, sign-in and `/projects`.
 2. `pnpm install`
 3. `pnpm db:migrate` (needs `DATABASE_URL`)
-4. `pnpm dev`
+4. `pnpm dev` (or `pnpm build && pnpm start` to try the production build)
 
 ## Related
 
 - [💻 /uses](https://jarv.is/uses) – Things and stuff I use.
 - [🕰️ /previously](https://jarv.is/previously) – An embarrassing trip down this site's memory lane.
 - [🧅 Tor (.onion) mirror](http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/) – For an excessive level of privacy and security.
-- [🧮 jakejarvis/website-stats](https://github.com/jakejarvis/website-stats) – Daily raw snapshots of the [hit counter](app/api/hits/route.ts) database.
+- [🧮 jakejarvis/website-stats](https://github.com/jakejarvis/website-stats) – Daily raw snapshots of the [hit counter](src/routes/api/hits.ts) database.
 
 ## License
 

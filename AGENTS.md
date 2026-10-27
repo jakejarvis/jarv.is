@@ -5,20 +5,27 @@ Guidelines for AI coding agents working in this repository.
 ## Build & Development Commands
 
 ```bash
-pnpm dev            # Development server (binds to 0.0.0.0)
-pnpm build          # Production build
-pnpm lint           # Lint and type-check the entire codebase
+pnpm dev            # Vite dev server on port 3000 (binds to 0.0.0.0)
+pnpm build          # Production build (Vite + TanStack Start + Nitro), including prerendering
+pnpm start          # Serve the production build locally (node .output/server/index.mjs)
+pnpm lint           # Build content-collections, then lint and type-check the entire codebase
 pnpm lint:fix       # Lint with autofixes
-pnpm lint path/to/file.tsx  # Lint a single file
 pnpm fmt            # Format with oxfmt
 pnpm fmt:check      # Check formatting (no writes)
 pnpm db:generate    # Generate migration files
 pnpm db:migrate     # Apply migrations
 ```
 
-No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pnpm build`.
+No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pnpm build`, and check behavior against the production build (`pnpm build && pnpm start`), not just `pnpm dev`.
 
-`pnpm build` needs `NEXT_PUBLIC_BASE_URL` set (copy `.env.example` to `.env.local`); database, auth and GitHub secrets are optional for a build.
+`pnpm build` needs `VITE_BASE_URL` set (copy `.env.example` to `.env.local`); database, auth and GitHub secrets are optional for a build. Server-side env vars aren't loaded from `.env.local` by `pnpm start`, so export them first (e.g. `set -a; . ./.env.local; set +a`).
+
+## Stack & Architecture
+
+- **TanStack Start** (React 19, React Compiler) on **Vite 8**, deployed to Vercel through **Nitro**. File-based routes live in `src/routes/`; `src/routeTree.gen.ts` is generated (committed, never edited by hand).
+- **React Server Components** (experimental TanStack Start feature, via `@vitejs/plugin-rsc`) render content only: post bodies, the MDX pages and `/projects`. A GET server function calls `renderServerComponent()` and the route's loader returns the result; the route component just renders it. Everything else is ordinary isomorphic React.
+- **Prerendering:** every content page, plus the feeds, sitemap, robots.txt and manifest, is prerendered at build time (see `prerender` in `vite.config.ts` and the lists in `src/lib/config/pages.ts`; posts are discovered by crawling `/notes`). New static pages must be added to `staticPaths`.
+- **Dynamic data** (comments, views, post stats, the session) is loaded in the browser after hydration with **TanStack Query** (`src/lib/queries.ts`), so prerendered HTML holds skeletons. There is no server-side data cache: caching is HTTP/CDN headers only.
 
 ## Code Style
 
@@ -26,19 +33,19 @@ No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pn
 
 - Formatter is **oxfmt** (`pnpm fmt` to write, `pnpm fmt:check` to verify), configured in `.oxfmtrc.json`. It sorts imports (groups: builtin → external → `@/` internal → relative, blank line between groups) and Tailwind classes (in `className` and `cn`/`clsx`/`cva` calls). Don't hand-sort; run `pnpm fmt`.
 - Indentation is 2 spaces (no tabs), with double quotes, semicolons and trailing commas.
-- Linter is **oxlint** with type-aware checks; `pnpm lint` runs `next typegen` then `oxlint` and also type-checks. `pnpm lint:fix` applies autofixes.
+- Linter is **oxlint** with type-aware checks; `pnpm lint` also type-checks. `pnpm lint:fix` applies autofixes.
 - Never run `biome`, `eslint` or `prettier`; they are not part of this repo.
 
 ### Import Organization
 
-- Always use `@/` path aliases (never relative `../../`)
+- Always use `@/` path aliases (→ `src/`, never relative `../../`), including inside `.mdx` files
 - Use `type` keyword for type-only imports: `import type { Foo } from "bar"`
 
 ### TypeScript
 
 - **Strict mode** enabled - no implicit any, strict null checks
-- **Explicit return types** for API routes and server actions
-- **Zod** (v4) for runtime validation of untrusted input (server-action arguments, content frontmatter in content-collections.ts)
+- **Explicit return types** for server functions and server route handlers
+- **Zod** (v4) for runtime validation of untrusted input (server-function inputs via `.validator()`, content frontmatter in content-collections.ts)
 - Avoid `any` - use `unknown` with type guards when necessary
 - Use `as const` for immutable config objects
 
@@ -52,118 +59,98 @@ No test suite exists. Validate changes via `pnpm lint`, `pnpm fmt:check` and `pn
 | Types/Interfaces    | PascalCase               | `CommentWithUser`            |
 | Constants           | camelCase or UPPER_SNAKE | `siteConfig`, `DATABASE_URL` |
 
+Route files follow TanStack Router's conventions: `$param` for path params, `[.]` to escape dots (`feed[.]xml.ts`), `_` suffix to un-nest (`$slug_.opengraph-image[.]png.tsx`).
+
 ### Component Patterns
 
-**Prefer Server Components** - Only add `"use client"` when necessary for:
-
-- Event handlers (onClick, onChange, onSubmit)
-- React hooks (useState, useEffect, useTransition)
-- Browser-only APIs
-
-**Component structure:**
-
-- Arrow function components, **named exports** gathered at the end of the file (`export { Button, buttonVariants };`). Default exports only where Next.js requires them (`page.tsx`, `layout.tsx`, route files) and for config objects in `lib/config/`.
+- Arrow function components, **named exports** gathered at the end of the file (`export { Button, buttonVariants };`). Route files export `Route` (and use a `function` component below it); config objects in `lib/config/` use default exports.
 - Props destructured in parameters
 - Use `cn()` from `@/lib/utils` for className merging
-- Follow shadcn/ui patterns for UI components
+- Follow shadcn/ui patterns for UI components (`components.json`)
+- **`"use client"` matters** because RSC is enabled: anything using hooks, event handlers or browser APIs that's imported by a server component (MDX components, `src/components/github-projects.tsx`) needs it. Server components can be `async` and fetch data; they can't use hooks or context.
+- Images: use `Image` from `@/components/image` (Vercel image optimizer in production, the raw file elsewhere; widths must be in `images.sizes` in `vite.config.ts`). There is no `next/image`-style static import object: an imported image is a URL string.
 
-```typescript
-const Button = ({
-  className,
-  variant,
-  ...rest
-}: React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>) => {
-  return <button className={cn(buttonVariants({ variant, className }))} {...rest} />;
-};
+### Head & Metadata
 
-export { Button };
-```
+- Set page metadata with a route's `head()` using `createHead()` from `@/lib/metadata` (defaults live in `defaultHead`, set by `src/routes/__root.tsx`). JSON-LD goes through `jsonLd()` into `head().meta`.
+- TanStack Router keeps only the last `meta` per `name`/`property`, so tags that repeat (e.g. `article:tag`) are rendered as `<meta>` elements in the page component instead (React hoists them into `<head>`).
 
-### Server Actions & Error Handling
+### Server Functions & Error Handling
 
-- Server actions live in `lib/server/*.ts` files starting with `"use server"`. Every export of such a file is a public endpoint callable by anyone, so authenticate (`auth.api.getSession({ headers: await headers() })`) and validate all arguments inside the action, and only export async functions (types are fine).
-- Actions take typed arguments (not `FormData`) and throw `Error` on failure: do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[server/<file>]` prefix and rethrows with `{ cause }`. After mutations, call `updateTag()` for each cache tag the write affects (read-your-writes) and `refresh()` to re-render the caller's page; reserve `revalidatePath()` for when prerendered output itself changed.
-- Don't put read queries in a `"use server"` file (that makes them public endpoints); put them in `lib/data/` with `import "server-only"` and call them from server components.
-
-```typescript
-"use server";
-
-export const createComment = async (data: {
-  content: string;
-  pageSlug: string;
-  parentId?: string;
-}) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session || !session.user) {
-    throw new Error("You must be logged in to comment");
-  }
-
-  try {
-    await db.insert(schema.comment).values({
-      content: data.content,
-      pageSlug: data.pageSlug,
-      parentId: data.parentId || null,
-      userId: session.user.id,
-    });
-
-    updateTag(commentsTag(data.pageSlug));
-    refresh();
-  } catch (error) {
-    console.error("[server/comments] error creating comment:", error);
-    throw new Error("Failed to create comment", { cause: error });
-  }
-};
-```
+- Server functions live in `src/lib/functions/*.ts`, created with `createServerFn({ method }).validator(zodSchema).handler(...)`. Every one is a public endpoint callable by anyone, so authenticate (`auth.api.getSession({ headers: getRequestHeaders() })`) and validate all input inside it.
+- Mutations are POST server functions (there is no `"use server"`): do the auth check before the `try`, then do the DB work inside a `try/catch` that logs with a `[functions/<file>]` prefix and rethrows with `{ cause }`. On the client, call them from event handlers (with `useTransition` for pending state) and then invalidate the affected queries (e.g. `invalidateComments()` in `src/lib/queries.ts`).
+- Public GET server functions set CDN caching explicitly with `setResponseHeaders()` (`Vercel-CDN-Cache-Control`, browsers `max-age=0`). Vercel's CDN cache is per deployment.
+- Server-only modules (DB access, secrets, heavy server libraries) are named `*.server.ts(x)` and start with `import "@tanstack/react-start/server-only"`; import protection keeps them out of client bundles. Server functions and server route handlers may import them.
+- Read secrets from `process.env` inside handlers; public values come from `import.meta.env.VITE_*` (see `src/env.d.ts`).
 
 **Client-side:** Use `toast` from `@/components/ui/toast` for feedback, `useTransition` for pending states.
 
+```typescript
+export const createComment = createServerFn({ method: "POST" })
+  .validator(z.object({ content: z.string().trim().min(1), pageSlug: z.string() }))
+  .handler(async ({ data: { content, pageSlug } }): Promise<void> => {
+    const session = await auth.api.getSession({ headers: getRequestHeaders() });
+
+    if (!session || !session.user) {
+      throw new Error("You must be logged in to comment");
+    }
+
+    try {
+      await db.insert(schema.comment).values({ content, pageSlug, userId: session.user.id });
+    } catch (error) {
+      console.error("[functions/comments] error creating comment:", error);
+      throw new Error("Failed to create comment", { cause: error });
+    }
+  });
+```
+
 ### Database (Drizzle ORM)
 
-- Schema in `lib/db/schema.ts`; migrations are generated into `drizzle/` with `pnpm db:generate` and applied with `pnpm db:migrate`. Drizzle ORM is a pinned `1.0.0-rc` prerelease, so check its docs for v1 APIs (e.g. `defineRelations`).
-- `cacheComponents` is enabled. Cache expensive or remote reads with `"use cache"` and an explicit `cacheLife(...)` (add `cacheTag(...)` when something needs to invalidate it). Examples: `app/projects/github.ts`, `components/third-party/tweet.tsx`.
-- Use `"use cache: remote"` for reads that run at request time (inside a dynamic hole, e.g. after `headers()`/`connection()`) so the entry is shared across server instances; plain `"use cache"` is fine for anything that ends up in a prerendered shell. Example: `lib/data/comments.ts`.
-- A throw inside a `"use cache"` function fails the build if it happens during prerender, even when a caller catches it. For data read at build time (`app/projects/github.ts`, `lib/data/stats.ts`), catch inside the cached function and return a fallback; to avoid pinning a failure for long, call a shorter `cacheLife()` on the failure path (see `components/third-party/tweet.tsx`). Only request-time reads (`lib/data/comments.ts`) may throw from the cached function and catch in an uncached wrapper, which keeps errors out of the cache entirely.
-- After mutations, call `updateTag()` (server actions) or `revalidateTag()` (route handlers), and only expire tags that some `cacheTag()` actually sets.
+- Schema in `src/lib/db/schema.ts`; migrations are generated into `drizzle/` with `pnpm db:generate` and applied with `pnpm db:migrate`. Drizzle ORM is a pinned `1.0.0-rc` prerelease, so check its docs for v1 APIs (e.g. `defineRelations`).
+- Only server functions, server routes and `*.server.ts` modules may import `@/lib/db`.
 
-```typescript
-export const getData = async (slug: string) => {
-  "use cache";
-  cacheLife("minutes");
-  cacheTag("data", `data-${slug}`);
-  return db.select().from(schema.table).where(eq(schema.table.slug, slug));
-};
-```
+### Content
+
+- Posts are `notes/<slug>/index.mdx` (co-located images); standalone pages are `src/content/pages/<name>/index.mdx` with a thin route in `src/routes/<name>.tsx`. Both are compiled by `@mdx-js/rollup` and rendered as server components with the map in `src/components/mdx-components.tsx` (passed as a prop; there's no MDX provider).
+- `content-collections.ts` builds post metadata (`posts`, safe to import anywhere via `@/lib/posts`) and feed HTML (`feeds`, only for the feed routes).
+- Syntax highlighting is Shiki, run by the async `CodeBlock` server component.
+
+### Hosting config
+
+- Redirects and rewrites live in `vercel.json`; the Vercel image optimizer and per-file content types are set through `nitro({ vercel: { config } })` in `vite.config.ts`.
 
 ## Project Structure
 
 ```
-app/                  # Next.js App Router pages, route handlers (app/api/*), feeds, sitemap
-components/           # React components
-  ui/                 # shadcn-style primitives on @base-ui/react
-  layout/             # Header, footer, menu, page title
-  comments/           # Comment system components
-  third-party/        # Embeds (tweet, gist, youtube, codepen)
-lib/                  # Core utilities and configuration
-  db/                 # Drizzle schema and database client
-  data/               # Server-only reads (import "server-only"): comments, cached post stats
-  server/             # Server actions ("use server") -- mutations only: comments, views
-  config/             # Site and author configuration
-  auth.ts             # Better Auth server config (GitHub OAuth)
-  auth-client.ts      # Better Auth React client
-  posts.ts            # Helpers over the content-collections posts
-notes/<slug>/index.mdx  # Blog posts (MDX), collected by content-collections.ts
+src/
+  routes/             # File-based routes: pages, server routes (feeds, sitemap, OG images, api/*)
+  router.tsx          # Router + TanStack Query client
+  components/         # React components (ui/ = shadcn-style primitives on @base-ui/react)
+  content/pages/      # Standalone MDX pages (/cli, /uses, …)
+  lib/
+    functions/        # Server functions (createServerFn): content, comments, stats, views
+    data/             # Server-only DB reads (*.server.ts)
+    content/          # RSC rendering of MDX and /projects (render.server.tsx)
+    db/               # Drizzle schema and database client
+    config/           # Site, author and page-list configuration
+    auth.server.ts    # Better Auth server config (GitHub OAuth)
+    auth-client.ts    # Better Auth React client
+    metadata.ts       # head() helpers
+    posts.ts          # Helpers over the content-collections posts
+    queries.ts        # TanStack Query options for client-side data
+  styles/globals.css  # Tailwind entry point
+notes/<slug>/index.mdx  # Blog posts (MDX)
+public/               # Static files served as-is (icons, OG images, .well-known)
 drizzle/              # Generated SQL migrations (do not hand-edit)
 ```
 
 ## Key Dependencies
 
-- **Next.js 16** (App Router, Cache Components, Partial Prefetching) with React 19 and React Compiler
+- **TanStack Start** with experimental React Server Components, TanStack Router and TanStack Query; React 19 and React Compiler
+- **Vite 8** and **Nitro** (Vercel preset)
 - **Tailwind CSS v4** with shadcn/ui components
 - **Drizzle ORM** with Planetscale Postgres
 - **Better Auth** for GitHub OAuth authentication
 - **Zod** for schema validation
-- **MDX** for blog content with remark/rehype plugins
-- **content-collections** for loading and validating MDX notes
+- **MDX** (`@mdx-js/rollup`) with remark/rehype plugins, **content-collections** for post metadata
+- **takumi** for generated OG images

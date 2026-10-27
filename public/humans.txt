@@ -28,7 +28,7 @@
 
 # TECHNOLOGY
 
-  - Next.js
+  - TanStack Start
   - Vercel
   - Tailwind CSS
   - Planetscale Postgres
