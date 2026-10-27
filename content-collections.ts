@@ -4,7 +4,14 @@ import { unified } from "unified";
 import { z } from "zod";
 
 import { rehypeSanitize, rehypeStringify } from "@/lib/rehype";
-import { remarkParse, remarkRehype, remarkSmartypants } from "@/lib/remark";
+import {
+  remarkFrontmatter,
+  remarkMdx,
+  remarkParse,
+  remarkRehype,
+  remarkSmartypants,
+  remarkStripMdxImportsExports,
+} from "@/lib/remark";
 
 const POSTS_DIR = "notes" as const;
 
@@ -24,6 +31,46 @@ const titleToHtml = async (title: string): Promise<string> => {
     .process(title);
 
   return parsedTitle.toString().trim();
+};
+
+const contentToFeedHtml = async (content: string): Promise<string> => {
+  const parsedContent = await unified()
+    .use(remarkParse)
+    .use(remarkMdx)
+    .use(remarkStripMdxImportsExports)
+    .use(remarkFrontmatter)
+    .use(remarkSmartypants)
+    .use(remarkRehype)
+    .use(rehypeSanitize, {
+      tagNames: [
+        "p",
+        "a",
+        "em",
+        "strong",
+        "code",
+        "pre",
+        "blockquote",
+        "del",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "ul",
+        "ol",
+        "li",
+        "hr",
+      ],
+    })
+    .use(rehypeStringify)
+    .process(content);
+
+  return parsedContent
+    .toString()
+    .replaceAll("/* prettier-ignore */", "")
+    .replaceAll("<p></p>", "")
+    .trim();
 };
 
 const posts = defineCollection({
@@ -55,6 +102,23 @@ const posts = defineCollection({
   },
 });
 
+/**
+ * Each post's body as simplified, sanitized HTML for the RSS/Atom feeds. Kept out of `posts` so that collection stays
+ * small enough to import anywhere; only the (prerendered) feed routes import this one.
+ */
+const feeds = defineCollection({
+  name: "feeds",
+  directory: POSTS_DIR,
+  include: "*/index.mdx",
+  schema: z.object({
+    content: z.string(),
+  }),
+  transform: async ({ content, _meta }) => ({
+    slug: _meta.directory.replace(`${POSTS_DIR}/`, ""),
+    feedHtml: await contentToFeedHtml(content),
+  }),
+});
+
 export default defineConfig({
-  content: [posts],
+  content: [posts, feeds],
 });

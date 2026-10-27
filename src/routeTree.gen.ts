@@ -11,11 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CliRouteImport } from './routes/cli'
+import { Route as FeedDotatomRouteImport } from './routes/feed[.]atom'
+import { Route as FeedDotxmlRouteImport } from './routes/feed[.]xml'
 import { Route as LeoRouteImport } from './routes/leo'
 import { Route as LicenseRouteImport } from './routes/license'
+import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as PreviouslyRouteImport } from './routes/previously'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UsesRouteImport } from './routes/uses'
 import { Route as ZipRouteImport } from './routes/zip'
 import { Route as ApiHitsRouteImport } from './routes/api/hits'
@@ -34,6 +39,16 @@ const CliRoute = CliRouteImport.update({
   path: '/cli',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeedDotatomRoute = FeedDotatomRouteImport.update({
+  id: '/feed.atom',
+  path: '/feed.atom',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedDotxmlRoute = FeedDotxmlRouteImport.update({
+  id: '/feed.xml',
+  path: '/feed.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeoRoute = LeoRouteImport.update({
   id: '/leo',
   path: '/leo',
@@ -42,6 +57,11 @@ const LeoRoute = LeoRouteImport.update({
 const LicenseRoute = LicenseRouteImport.update({
   id: '/license',
   path: '/license',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
+  id: '/manifest.webmanifest',
+  path: '/manifest.webmanifest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PreviouslyRoute = PreviouslyRouteImport.update({
@@ -57,6 +77,16 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UsesRoute = UsesRouteImport.update({
@@ -99,11 +129,16 @@ const NotesSlugOpengraphImageDotpngRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
@@ -115,11 +150,16 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
@@ -132,11 +172,16 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cli': typeof CliRoute
+  '/feed.atom': typeof FeedDotatomRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/leo': typeof LeoRoute
   '/license': typeof LicenseRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/api/hits': typeof ApiHitsRoute
@@ -150,11 +195,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/leo'
     | '/license'
+    | '/manifest.webmanifest'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
@@ -166,11 +216,16 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/leo'
     | '/license'
+    | '/manifest.webmanifest'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
@@ -182,11 +237,16 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cli'
+    | '/feed.atom'
+    | '/feed.xml'
     | '/leo'
     | '/license'
+    | '/manifest.webmanifest'
     | '/previously'
     | '/privacy'
     | '/projects'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/uses'
     | '/zip'
     | '/api/hits'
@@ -199,11 +259,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CliRoute: typeof CliRoute
+  FeedDotatomRoute: typeof FeedDotatomRoute
+  FeedDotxmlRoute: typeof FeedDotxmlRoute
   LeoRoute: typeof LeoRoute
   LicenseRoute: typeof LicenseRoute
+  ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   PreviouslyRoute: typeof PreviouslyRoute
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
   ApiHitsRoute: typeof ApiHitsRoute
@@ -229,6 +294,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CliRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feed.atom': {
+      id: '/feed.atom'
+      path: '/feed.atom'
+      fullPath: '/feed.atom'
+      preLoaderRoute: typeof FeedDotatomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed.xml': {
+      id: '/feed.xml'
+      path: '/feed.xml'
+      fullPath: '/feed.xml'
+      preLoaderRoute: typeof FeedDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leo': {
       id: '/leo'
       path: '/leo'
@@ -241,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/license'
       fullPath: '/license'
       preLoaderRoute: typeof LicenseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manifest.webmanifest': {
+      id: '/manifest.webmanifest'
+      path: '/manifest.webmanifest'
+      fullPath: '/manifest.webmanifest'
+      preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/previously': {
@@ -262,6 +348,20 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/uses': {
@@ -319,11 +419,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CliRoute: CliRoute,
+  FeedDotatomRoute: FeedDotatomRoute,
+  FeedDotxmlRoute: FeedDotxmlRoute,
   LeoRoute: LeoRoute,
   LicenseRoute: LicenseRoute,
+  ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   PreviouslyRoute: PreviouslyRoute,
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
   ApiHitsRoute: ApiHitsRoute,

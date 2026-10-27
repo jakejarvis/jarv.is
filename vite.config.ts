@@ -10,7 +10,7 @@ import rsc from "@vitejs/plugin-rsc";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
-import { staticPaths } from "./src/lib/config/pages";
+import { staticFiles, staticPaths } from "./src/lib/config/pages";
 import {
   rehypeMdxCodeProps,
   rehypeMdxImportMedia,
@@ -115,10 +115,10 @@ export default defineConfig({
         failOnError: true,
         // only crawl into known pages and posts (posts link to some long-dead URLs, e.g. /contact)
         filter: ({ path: pagePath }) =>
-          (staticPaths as readonly string[]).includes(pagePath) ||
+          ([...staticPaths, ...staticFiles] as readonly string[]).includes(pagePath) ||
           /^\/notes\/[^/?#]+$/.test(pagePath),
       },
-      pages: staticPaths.map((pagePath) => ({ path: pagePath })),
+      pages: [...staticPaths, ...staticFiles].map((pagePath) => ({ path: pagePath })),
     }),
     rsc(),
     viteReact({ include: /\.(mdx|[jt]sx?)$/ }),
@@ -128,6 +128,11 @@ export default defineConfig({
         config: {
           version: 3,
           images: vercelImages,
+          // prerendered feeds are static files, which Vercel would otherwise type from the extension alone
+          overrides: {
+            "feed.xml": { contentType: "application/rss+xml; charset=utf-8" },
+            "feed.atom": { contentType: "application/atom+xml; charset=utf-8" },
+          },
         },
       },
     }),
