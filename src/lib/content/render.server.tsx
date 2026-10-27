@@ -3,6 +3,7 @@ import { notFound } from "@tanstack/react-router";
 import { renderServerComponent } from "@tanstack/react-start/rsc";
 import type { MDXContent } from "mdx/types";
 
+import { GitHubProjects } from "@/components/github-projects";
 import { mdxComponents } from "@/components/mdx-components";
 
 type MdxModule = {
@@ -43,3 +44,8 @@ export const renderPage = async (name: string) => {
   if (!load) throw notFound();
   return render(load);
 };
+
+/** Renders the /projects page body (live GitHub data) as a React Server Component. */
+export const renderProjects = async () => ({
+  Body: await renderServerComponent(<GitHubProjects />),
+});

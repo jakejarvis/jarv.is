@@ -1,41 +1,28 @@
 import { IconExternalLink, IconGitFork, IconStar } from "@tabler/icons-react";
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PageTitle } from "@/components/layout/page-title";
-import { FadeTransition } from "@/components/page-transition";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
-import { createMetadata } from "@/lib/metadata";
+import { getContributions, getRepos } from "@/lib/github.server";
 import { cn } from "@/lib/utils";
 
-import { getContributions, getRepos } from "./github";
-
-export const metadata = createMetadata({
-  title: "Projects",
-  description: `Most-starred repositories by @${process.env.NEXT_PUBLIC_GITHUB_USERNAME} on GitHub`,
-  canonical: "/projects",
-});
-
-const Page = async () => {
-  // don't fail the entire site build if the required config for this page is missing, just return a 404 since this page
-  // would be mostly blank anyways.
-  if (!process.env.GITHUB_TOKEN) {
-    console.error("[/projects] I can't fetch anything from GitHub without 'GITHUB_TOKEN' set!");
-    notFound();
-  }
-
+/**
+ * Async server component: GitHub is queried (and cheerio/octokit run) on the server only. Rendered by the `getProjects`
+ * server function (src/lib/functions/content.ts).
+ */
+const GitHubProjects = async () => {
   // fetch the repos and contributions in parallel
   const [contributions, repos] = await Promise.all([getContributions(), getRepos()]);
 
   return (
-    <FadeTransition>
+    <>
       <PageTitle canonical="/projects">Projects</PageTitle>
 
       <h2 className="my-3.5 text-lg font-medium">
         <a
-          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`}
+          href={`https://github.com/${import.meta.env.VITE_GITHUB_USERNAME}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-secondary-foreground hover:no-underline"
@@ -56,7 +43,7 @@ const Page = async () => {
 
       <h2 className="my-3.5 text-lg font-medium">
         <a
-          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
+          href={`https://github.com/${import.meta.env.VITE_GITHUB_USERNAME}?tab=repositories&sort=stargazers`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-secondary-foreground hover:no-underline"
@@ -103,14 +90,14 @@ const Page = async () => {
                 {repo?.stargazerCount > 0 && (
                   <a
                     href={`${repo?.url}/stargazers`}
-                    title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
+                    title={`${Intl.NumberFormat(import.meta.env.VITE_SITE_LOCALE).format(repo?.stargazerCount)} ${repo?.stargazerCount === 1 ? "star" : "stars"}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <IconStar className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
-                      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
+                      {Intl.NumberFormat(import.meta.env.VITE_SITE_LOCALE).format(
                         repo?.stargazerCount,
                       )}
                     </span>
@@ -122,14 +109,12 @@ const Page = async () => {
                     href={`${repo?.url}/network/members`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={`${Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
+                    title={`${Intl.NumberFormat(import.meta.env.VITE_SITE_LOCALE).format(repo?.forkCount)} ${repo?.forkCount === 1 ? "fork" : "forks"}`}
                     className="inline-flex flex-nowrap items-center gap-1.5 text-muted-foreground hover:text-primary hover:no-underline"
                   >
                     <IconGitFork className="inline-block size-3.5 shrink-0" aria-hidden="true" />
                     <span>
-                      {Intl.NumberFormat(process.env.NEXT_PUBLIC_SITE_LOCALE).format(
-                        repo?.forkCount,
-                      )}
+                      {Intl.NumberFormat(import.meta.env.VITE_SITE_LOCALE).format(repo?.forkCount)}
                     </span>
                   </a>
                 )}
@@ -157,7 +142,7 @@ const Page = async () => {
           nativeButton={false}
           render={
             <a
-              href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
+              href={`https://github.com/${import.meta.env.VITE_GITHUB_USERNAME}?tab=repositories&type=source&sort=stargazers`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline-offset-4 hover:underline"
@@ -168,8 +153,8 @@ const Page = async () => {
           }
         />
       </p>
-    </FadeTransition>
+    </>
   );
 };
 
-export default Page;
+export { GitHubProjects };

@@ -15,6 +15,7 @@ import { Route as LeoRouteImport } from './routes/leo'
 import { Route as LicenseRouteImport } from './routes/license'
 import { Route as PreviouslyRouteImport } from './routes/previously'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as UsesRouteImport } from './routes/uses'
 import { Route as ZipRouteImport } from './routes/zip'
 import { Route as NotesIndexRouteImport } from './routes/notes/index'
@@ -51,6 +52,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UsesRoute = UsesRouteImport.update({
   id: '/uses',
   path: '/uses',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/license': typeof LicenseRoute
   '/previously': typeof PreviouslyRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
   '/notes/$slug': typeof NotesSlugRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/previously'
     | '/privacy'
+    | '/projects'
     | '/uses'
     | '/zip'
     | '/notes/$slug'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/previously'
     | '/privacy'
+    | '/projects'
     | '/uses'
     | '/zip'
     | '/notes/$slug'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/previously'
     | '/privacy'
+    | '/projects'
     | '/uses'
     | '/zip'
     | '/notes/$slug'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   LicenseRoute: typeof LicenseRoute
   PreviouslyRoute: typeof PreviouslyRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRoute
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
   NotesSlugRoute: typeof NotesSlugRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/uses': {
       id: '/uses'
       path: '/uses'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   LicenseRoute: LicenseRoute,
   PreviouslyRoute: PreviouslyRoute,
   PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRoute,
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
   NotesSlugRoute: NotesSlugRoute,

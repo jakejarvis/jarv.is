@@ -1,8 +1,7 @@
-import "server-only";
+import "@tanstack/react-start/server-only";
 import { graphql } from "@octokit/graphql";
 import type { Repository, User } from "@octokit/graphql-schema";
 import * as cheerio from "cheerio";
-import { cacheLife } from "next/cache";
 
 export const getContributions = async (): Promise<
   Array<{
@@ -11,9 +10,6 @@ export const getContributions = async (): Promise<
     level: number;
   }>
 > => {
-  "use cache: remote";
-  cacheLife("minutes");
-
   // thanks @grubersjoe! :) https://github.com/grubersjoe/github-contributions-api/blob/main/src/scrape.ts
   try {
     const response = await fetch(
@@ -75,15 +71,12 @@ export const getContributions = async (): Promise<
       };
     });
   } catch (error) {
-    console.error("[server/github] Failed to fetch contributions:", error);
+    console.error("[github] Failed to fetch contributions:", error);
     return [];
   }
 };
 
 export const getRepos = async (): Promise<Repository[] | undefined> => {
-  "use cache: remote";
-  cacheLife("minutes");
-
   try {
     // https://docs.github.com/en/graphql/reference/objects#repository
     const { user } = await graphql<{ user: User }>(
@@ -131,7 +124,7 @@ export const getRepos = async (): Promise<Repository[] | undefined> => {
       ?.map((edge) => edge?.node)
       .filter((node): node is Repository => node != null);
   } catch (error) {
-    console.error("[server/github] Failed to fetch repositories:", error);
+    console.error("[github] Failed to fetch repositories:", error);
     return [];
   }
 };
