@@ -1,8 +1,9 @@
+import "@tanstack/react-start/server-only";
 import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
 import { dash } from "@better-auth/infra";
 import { waitUntil } from "@vercel/functions";
 import { type BetterAuthOptions, betterAuth } from "better-auth/minimal";
-import { nextCookies } from "better-auth/next-js";
+import { tanstackStartCookies } from "better-auth/tanstack-start";
 
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
@@ -14,7 +15,8 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
-  plugins: [dash(), nextCookies()],
+  // tanstackStartCookies() must be last
+  plugins: [dash(), tanstackStartCookies()],
   // names and avatars come from GitHub at sign-up; don't let users rename themselves (e.g. to impersonate someone)
   disabledPaths: ["/update-user"],
   socialProviders: {

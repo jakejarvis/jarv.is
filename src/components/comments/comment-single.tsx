@@ -1,10 +1,5 @@
-import Link from "next/link";
-import Markdown from "react-markdown";
-
 import { RelativeTime } from "@/components/relative-time";
-import type { CommentUser, CommentWithUser } from "@/lib/data/comments";
-import { rehypeExternalLinks } from "@/lib/rehype";
-import { remarkGfm, remarkSmartypants } from "@/lib/remark";
+import type { CommentUser, CommentWithUser } from "@/lib/comments";
 import { cn } from "@/lib/utils";
 
 import { CommentActions } from "./comment-actions";
@@ -40,12 +35,12 @@ const CommentSingle = ({
             >
               @{comment.user.name}
             </a>
-            <Link
+            <a
               href={`#${divId}`}
               className="text-xs leading-none text-muted-foreground hover:no-underline"
             >
               <RelativeTime date={comment.createdAt} />
-            </Link>
+            </a>
           </div>
 
           <div
@@ -56,17 +51,9 @@ const CommentSingle = ({
               "[&_code]:rounded-sm [&_code]:bg-muted [&_code]:px-[0.3rem] [&_code]:py-[0.2rem] [&_code]:font-medium",
               "group-has-data-[intent=edit]:hidden", // hides the rendered comment when its own edit form is active
             )}
-          >
-            <Markdown
-              remarkPlugins={[remarkGfm, remarkSmartypants]}
-              rehypePlugins={[
-                [rehypeExternalLinks, { target: "_blank", rel: "noopener noreferrer nofollow" }],
-              ]}
-              allowedElements={["p", "a", "em", "strong", "code", "pre", "blockquote", "del"]}
-            >
-              {comment.content}
-            </Markdown>
-          </div>
+            // rendered and sanitized on the server (src/lib/data/comments.server.ts)
+            dangerouslySetInnerHTML={{ __html: comment.contentHtml }}
+          />
 
           <CommentActions comment={comment} currentUser={currentUser} />
         </div>

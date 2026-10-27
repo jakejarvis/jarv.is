@@ -1,6 +1,7 @@
 "use client";
 
 import { IconDots, IconEdit, IconMessageReply, IconTrash } from "@tabler/icons-react";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 import {
@@ -22,8 +23,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Spinner } from "@/components/ui/spinner";
 import { toast } from "@/components/ui/toast";
-import type { CommentUser, CommentWithUser } from "@/lib/data/comments";
-import { deleteComment } from "@/lib/server/comments";
+import type { CommentUser, CommentWithUser } from "@/lib/comments";
+import { deleteComment } from "@/lib/functions/comments";
+import { invalidateComments } from "@/lib/queries";
 
 import { EditCommentForm, ReplyForm } from "./comment-form";
 
@@ -42,6 +44,7 @@ const CommentActions = ({
   currentUser: CommentUser | null;
 }) => {
   const [mode, setMode] = useState<ActionMode>({ type: "idle" });
+  const queryClient = useQueryClient();
 
   if (!currentUser) return null;
 
@@ -49,7 +52,8 @@ const CommentActions = ({
     setMode({ type: "deleting" });
 
     try {
-      await deleteComment(comment.id);
+      await deleteComment({ data: comment.id });
+      await invalidateComments(queryClient, comment.pageSlug);
       toast.add({
         title: "Your comment has been deleted successfully.",
         type: "success",

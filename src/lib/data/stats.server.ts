@@ -1,6 +1,5 @@
-import "server-only";
+import "@tanstack/react-start/server-only";
 import { sql } from "drizzle-orm";
-import { cacheLife, cacheTag } from "next/cache";
 
 import { db } from "@/lib/db";
 import { comment, page } from "@/lib/db/schema";
@@ -11,14 +10,9 @@ export type PostStatsData = {
 };
 
 /**
- * View and comment counts for ALL pages, keyed by slug (e.g. "notes/dark-mode").
- * Cached briefly (views can lag by a minute or so); comment changes expire it via `updateTag("comments")`.
+ * View and comment counts for ALL pages, keyed by slug (e.g. "notes/dark-mode"). Returns empty counts on failure.
  */
 export const getPostStats = async (): Promise<PostStatsData> => {
-  "use cache: remote";
-  cacheLife("minutes");
-  cacheTag("comments");
-
   try {
     const [pageRows, commentRows] = await Promise.all([
       db.select({ slug: page.slug, views: page.views }).from(page),

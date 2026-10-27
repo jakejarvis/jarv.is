@@ -1,14 +1,24 @@
+"use client";
+
 import NumberFlow from "@number-flow/react";
-import { connection } from "next/server";
+import { useQuery } from "@tanstack/react-query";
 
-import { getCommentCount } from "@/lib/data/comments";
+import { commentsQueryOptions } from "@/lib/queries";
 
-const CommentCount = async ({ slug }: { slug: string }) => {
-  // render per-request (as a dynamic hole) so the post's static shell keeps its long cache lifetime
-  await connection();
-  const count = await getCommentCount(slug);
+/** Shares the comments section's query, so it costs no extra request. */
+const CommentCount = ({ slug }: { slug: string }) => {
+  const { data: count } = useQuery({
+    ...commentsQueryOptions(slug),
+    select: (comments) => comments.length,
+  });
 
-  return <NumberFlow locales={import.meta.env.VITE_SITE_LOCALE} value={count} />;
+  return (
+    <NumberFlow
+      className={count === undefined ? "motion-safe:animate-pulse" : undefined}
+      locales={import.meta.env.VITE_SITE_LOCALE}
+      value={count ?? 0}
+    />
+  );
 };
 
 export { CommentCount };

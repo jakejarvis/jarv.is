@@ -116,7 +116,7 @@ export default defineConfig({
         // only crawl into known pages and posts (posts link to some long-dead URLs, e.g. /contact)
         filter: ({ path: pagePath }) =>
           (staticPaths as readonly string[]).includes(pagePath) ||
-          /^\/notes\/[^/]+$/.test(pagePath),
+          /^\/notes\/[^/?#]+$/.test(pagePath),
       },
       pages: staticPaths.map((pagePath) => ({ path: pagePath })),
     }),

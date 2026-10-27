@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { PostStats } from "@/components/post-stats";
 import authorConfig from "@/lib/config/author";
 import { createHead } from "@/lib/metadata";
 import { type FrontMatter, getFrontMatter } from "@/lib/posts";
@@ -67,6 +68,8 @@ const PostsList = () => {
                   dangerouslySetInnerHTML={{ __html: htmlTitle || title }}
                   className="mr-2.5 underline-offset-4 hover:underline"
                 />
+
+                <PostStats slug={`notes/${slug}`} />
               </div>
             </li>
           ))}

@@ -18,8 +18,10 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as UsesRouteImport } from './routes/uses'
 import { Route as ZipRouteImport } from './routes/zip'
+import { Route as ApiHitsRouteImport } from './routes/api/hits'
 import { Route as NotesIndexRouteImport } from './routes/notes/index'
 import { Route as NotesSlugRouteImport } from './routes/notes/$slug'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as NotesSlugOpengraphImageDotpngRouteImport } from './routes/notes/$slug_.opengraph-image[.]png'
 
 const IndexRoute = IndexRouteImport.update({
@@ -67,6 +69,11 @@ const ZipRoute = ZipRouteImport.update({
   path: '/zip',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHitsRoute = ApiHitsRouteImport.update({
+  id: '/api/hits',
+  path: '/api/hits',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotesIndexRoute = NotesIndexRouteImport.update({
   id: '/notes/',
   path: '/notes/',
@@ -75,6 +82,11 @@ const NotesIndexRoute = NotesIndexRouteImport.update({
 const NotesSlugRoute = NotesSlugRouteImport.update({
   id: '/notes/$slug',
   path: '/notes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotesSlugOpengraphImageDotpngRoute =
@@ -94,8 +106,10 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/notes/$slug/opengraph-image.png': typeof NotesSlugOpengraphImageDotpngRoute
 }
 export interface FileRoutesByTo {
@@ -108,8 +122,10 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/notes/$slug/opengraph-image.png': typeof NotesSlugOpengraphImageDotpngRoute
 }
 export interface FileRoutesById {
@@ -123,8 +139,10 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/uses': typeof UsesRoute
   '/zip': typeof ZipRoute
+  '/api/hits': typeof ApiHitsRoute
   '/notes/$slug': typeof NotesSlugRoute
   '/notes/': typeof NotesIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/notes/$slug_/opengraph-image.png': typeof NotesSlugOpengraphImageDotpngRoute
 }
 export interface FileRouteTypes {
@@ -139,8 +157,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes/'
+    | '/api/auth/$'
     | '/notes/$slug/opengraph-image.png'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -153,8 +173,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes'
+    | '/api/auth/$'
     | '/notes/$slug/opengraph-image.png'
   id:
     | '__root__'
@@ -167,8 +189,10 @@ export interface FileRouteTypes {
     | '/projects'
     | '/uses'
     | '/zip'
+    | '/api/hits'
     | '/notes/$slug'
     | '/notes/'
+    | '/api/auth/$'
     | '/notes/$slug_/opengraph-image.png'
   fileRoutesById: FileRoutesById
 }
@@ -182,8 +206,10 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   UsesRoute: typeof UsesRoute
   ZipRoute: typeof ZipRoute
+  ApiHitsRoute: typeof ApiHitsRoute
   NotesSlugRoute: typeof NotesSlugRoute
   NotesIndexRoute: typeof NotesIndexRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   NotesSlugOpengraphImageDotpngRoute: typeof NotesSlugOpengraphImageDotpngRoute
 }
 
@@ -252,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZipRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/hits': {
+      id: '/api/hits'
+      path: '/api/hits'
+      fullPath: '/api/hits'
+      preLoaderRoute: typeof ApiHitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notes/': {
       id: '/notes/'
       path: '/notes'
@@ -264,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/notes/$slug'
       fullPath: '/notes/$slug'
       preLoaderRoute: typeof NotesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notes/$slug_/opengraph-image.png': {
@@ -286,8 +326,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   UsesRoute: UsesRoute,
   ZipRoute: ZipRoute,
+  ApiHitsRoute: ApiHitsRoute,
   NotesSlugRoute: NotesSlugRoute,
   NotesIndexRoute: NotesIndexRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
   NotesSlugOpengraphImageDotpngRoute: NotesSlugOpengraphImageDotpngRoute,
 }
 export const routeTree = rootRouteImport

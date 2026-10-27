@@ -1,27 +1,40 @@
-import { headers } from "next/headers";
+"use client";
 
-import { auth } from "@/lib/auth";
-import { type CommentUser, type CommentWithUser, getComments } from "@/lib/data/comments";
+import { useQuery } from "@tanstack/react-query";
+
+import { useSession } from "@/lib/auth-client";
+import type { CommentUser, CommentWithUser } from "@/lib/comments";
+import { commentsQueryOptions } from "@/lib/queries";
 
 import { NewCommentForm } from "./comment-form";
 import { CommentThread } from "./comment-thread";
+import { CommentsSkeleton } from "./comments-skeleton";
 import { SignIn } from "./sign-in";
 
-const Comments = async ({ slug }: { slug: string }) => {
-  // independent queries -- run them in parallel
-  const [session, comments] = await Promise.all([
-    auth.api.getSession({
-      headers: await headers(),
-    }),
-    getComments(slug),
-  ]);
+/** Loaded in the browser after hydration (posts are prerendered, so their HTML holds the skeleton). */
+const Comments = ({ slug }: { slug: string }) => {
+  const session = useSession();
+  const comments = useQuery(commentsQueryOptions(slug));
 
-  // only pass the public fields down to client components
-  const currentUser: CommentUser | null = session
-    ? { id: session.user.id, name: session.user.name, image: session.user.image ?? null }
+  if (comments.isPending || session.isPending) {
+    return <CommentsSkeleton />;
+  }
+
+  if (comments.isError) {
+    return (
+      <div className="py-8 text-center text-lg font-medium text-foreground/80">
+        Comments couldn&rsquo;t be loaded. Please try again later.
+      </div>
+    );
+  }
+
+  // only pass the public fields down
+  const user = session.data?.user;
+  const currentUser: CommentUser | null = user
+    ? { id: user.id, name: user.name, image: user.image ?? null }
     : null;
 
-  const commentsByParentId = comments.reduce(
+  const commentsByParentId = comments.data.reduce(
     (acc, comment) => {
       const parentId = comment.parentId || "root";
       if (!acc[parentId]) {

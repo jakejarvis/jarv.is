@@ -1,7 +1,9 @@
-import { IconCalendarEvent, IconEdit, IconEye, IconTag } from "@tabler/icons-react";
+import { IconCalendarEvent, IconEdit, IconEye, IconMessages, IconTag } from "@tabler/icons-react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { BlogPosting } from "schema-dts";
 
+import { CommentCount } from "@/components/comment-count";
+import { Comments } from "@/components/comments/comments";
 import { ViewCounter } from "@/components/view-counter";
 import authorConfig from "@/lib/config/author";
 import siteConfig from "@/lib/config/site";
@@ -137,6 +139,16 @@ function Page() {
           <span>Improve This Post</span>
         </a>
 
+        <Link
+          to="/notes/$slug"
+          params={{ slug: post.slug }}
+          hash="comments"
+          className="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-inherit hover:no-underline"
+        >
+          <IconMessages className="inline size-3.5 shrink-0" aria-hidden="true" />
+          <CommentCount slug={`${POSTS_DIR}/${post.slug}`} />
+        </Link>
+
         <div className="flex min-w-14 flex-nowrap items-center gap-1.5 whitespace-nowrap">
           <IconEye className="inline size-3.5 shrink-0" aria-hidden="true" />
           <ViewCounter slug={`${POSTS_DIR}/${post.slug}`} />
@@ -155,6 +167,18 @@ function Page() {
       </h1>
 
       <article className="markdown">{Body}</article>
+
+      <section id="comments" className="isolate my-8 w-full border-t-2 pt-8">
+        <div className="mx-auto w-full max-w-3xl space-y-6">
+          {post.noComments ? (
+            <div className="flex justify-center rounded-lg bg-muted/40 px-6 py-12">
+              <p className="text-center text-lg font-medium">Comments are closed.</p>
+            </div>
+          ) : (
+            <Comments slug={`${POSTS_DIR}/${post.slug}`} />
+          )}
+        </div>
+      </section>
     </>
   );
 }

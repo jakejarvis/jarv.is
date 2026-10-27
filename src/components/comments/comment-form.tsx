@@ -1,6 +1,7 @@
 "use client";
 
 import { IconInfoCircle, IconMarkdown } from "@tabler/icons-react";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,8 +9,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
-import type { CommentUser } from "@/lib/data/comments";
-import { createComment, updateComment } from "@/lib/server/comments";
+import type { CommentUser } from "@/lib/comments";
+import { createComment, updateComment } from "@/lib/functions/comments";
+import { invalidateComments } from "@/lib/queries";
 
 import { CommentAvatar } from "./comment-avatar";
 
@@ -17,8 +19,9 @@ import { CommentAvatar } from "./comment-avatar";
 const useCommentFormState = (initialContent: string = "") => {
   const [content, setContent] = useState(initialContent);
   const [isPending, startTransition] = useTransition();
+  const queryClient = useQueryClient();
 
-  return { content, setContent, isPending, startTransition };
+  return { content, setContent, isPending, startTransition, queryClient };
 };
 
 // Shared textarea component
@@ -142,7 +145,7 @@ const MarkdownHelp = () => (
 
 // New comment form - for creating top-level comments
 const NewCommentForm = ({ slug, currentUser }: { slug: string; currentUser: CommentUser }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState();
+  const { content, setContent, isPending, startTransition, queryClient } = useCommentFormState();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -154,7 +157,8 @@ const NewCommentForm = ({ slug, currentUser }: { slug: string; currentUser: Comm
 
     startTransition(async () => {
       try {
-        await createComment({ content, pageSlug: slug });
+        await createComment({ data: { content, pageSlug: slug } });
+        await invalidateComments(queryClient, slug);
         toast.add({ title: "Comment posted!", type: "success" });
         setContent("");
       } catch (error) {
@@ -212,7 +216,7 @@ const ReplyForm = ({
   onCancel: () => void;
   onSuccess?: () => void;
 }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState();
+  const { content, setContent, isPending, startTransition, queryClient } = useCommentFormState();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -224,7 +228,8 @@ const ReplyForm = ({
 
     startTransition(async () => {
       try {
-        await createComment({ content, parentId, pageSlug: slug });
+        await createComment({ data: { content, parentId, pageSlug: slug } });
+        await invalidateComments(queryClient, slug);
         toast.add({ title: "Comment posted!", type: "success" });
         setContent("");
         onSuccess?.();
@@ -285,7 +290,8 @@ const EditCommentForm = ({
   onCancel: () => void;
   onSuccess?: () => void;
 }) => {
-  const { content, setContent, isPending, startTransition } = useCommentFormState(initialContent);
+  const { content, setContent, isPending, startTransition, queryClient } =
+    useCommentFormState(initialContent);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -297,7 +303,8 @@ const EditCommentForm = ({
 
     startTransition(async () => {
       try {
-        await updateComment(commentId, content);
+        await updateComment({ data: { commentId, content } });
+        await invalidateComments(queryClient, slug);
         toast.add({ title: "Comment updated!", type: "success" });
         onSuccess?.();
       } catch (error) {
