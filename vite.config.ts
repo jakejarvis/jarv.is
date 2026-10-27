@@ -26,13 +26,6 @@ import {
   remarkSmartypants,
 } from "./src/lib/remark";
 
-// TODO(migration): remove once the Vercel project has VITE_* env vars (until then, reuse the Next.js-era ones)
-for (const key of ["BASE_URL", "SITE_LOCALE", "GITHUB_REPO", "GITHUB_USERNAME"]) {
-  const legacyValue = process.env[`NEXT_PUBLIC_${key}`];
-  // (assigning `undefined` to process.env would store the string "undefined")
-  if (legacyValue && !process.env[`VITE_${key}`]) process.env[`VITE_${key}`] = legacyValue;
-}
-
 const serverExternals = ["takumi-js", "@takumi-rs/core"];
 
 /**
