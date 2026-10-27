@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["oxc", "eslint", "typescript", "react", "import", "unicorn", "nextjs", "jsx-a11y"],
+  "plugins": ["oxc", "eslint", "typescript", "react", "import", "unicorn", "jsx-a11y"],
   "env": {
     "builtin": true
   },
@@ -21,7 +21,12 @@
     "jsx-a11y/media-has-caption": "off",
     "no-await-in-loop": "off",
     "no-new": "off",
-    "oxc/no-barrel-file": ["warn", { "threshold": 0 }],
+    "oxc/no-barrel-file": [
+      "warn",
+      {
+        "threshold": 0
+      }
+    ],
     "react/jsx-no-useless-fragment": "error",
     "react/no-array-index-key": "off",
     "react/react-in-jsx-scope": "off",
@@ -30,5 +35,15 @@
     "unicorn/consistent-function-scoping": "off",
     "unicorn/no-array-sort": "off"
   },
-  "ignorePatterns": ["node_modules", ".next", ".vercel", "drizzle"]
+  "ignorePatterns": [
+    "node_modules",
+    ".vercel",
+    ".output",
+    ".nitro",
+    ".tanstack",
+    ".content-collections",
+    "src/routeTree.gen.ts",
+    "drizzle",
+    "app"
+  ]
 }

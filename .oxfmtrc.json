@@ -14,7 +14,7 @@
     "order": "asc"
   },
   "sortTailwindcss": {
-    "stylesheet": "app/globals.css",
+    "stylesheet": "src/styles/globals.css",
     "attributes": ["className"],
     "functions": ["cn", "clsx", "cva"]
   },
@@ -26,5 +26,14 @@
       }
     }
   ],
-  "ignorePatterns": ["node_modules", ".next", ".vercel", "drizzle"]
+  "ignorePatterns": [
+    "node_modules",
+    ".vercel",
+    ".output",
+    ".nitro",
+    ".tanstack",
+    ".content-collections",
+    "src/routeTree.gen.ts",
+    "drizzle"
+  ]
 }

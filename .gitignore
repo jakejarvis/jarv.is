@@ -1,5 +1,7 @@
-# next.js
-/.next/
+# vite / nitro / tanstack start build output
+/.output/
+/.nitro/
+/.tanstack/
 
 # node/npm/pnpm/yarn
 node_modules/
@@ -36,8 +38,6 @@ yarn.lock
 .vercel
 .env*.local
 
-# next-agents-md
-.next-docs/
 
 # content-collections
 .content-collections/
