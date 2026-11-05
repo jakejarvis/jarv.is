@@ -56,9 +56,9 @@ const projects: readonly Project[] = [
     icon: snoozleIcon,
   },
   {
-    name: "jarvis-ui",
+    name: "Jarvis UI",
     url: "https://ui.jarv.is",
-    tagline: "Intentionally random React component library",
+    tagline: "An obsessively pixel-perfect component library",
     icon: uiIcon,
   },
 ] as const;
