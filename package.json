@@ -92,7 +92,7 @@
     "drizzle-kit": "1.0.0-rc.5",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
-    "oxlint-tsgolint": "^7.0.2005",
+    "oxlint-tsgolint": "^7.0.2006",
     "postcss": "^8.5.32",
     "schema-dts": "^2.1.0",
     "tailwindcss": "^4.3.3",
