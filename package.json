@@ -90,7 +90,7 @@
     "@types/react-dom": "19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
     "drizzle-kit": "1.0.0-rc.5",
-    "oxfmt": "^0.75.0",
+    "oxfmt": "^0.78.0",
     "oxlint": "^1.90.0",
     "oxlint-tsgolint": "^7.0.2005",
     "postcss": "^8.5.32",
