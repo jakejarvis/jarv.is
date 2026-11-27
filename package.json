@@ -91,7 +91,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "drizzle-kit": "1.0.0-rc.6",
     "oxfmt": "^0.79.0",
-    "oxlint": "^1.94.0",
+    "oxlint": "^1.95.0",
     "oxlint-tsgolint": "^7.0.2008",
     "postcss": "^8.5.33",
     "schema-dts": "^2.1.0",
