@@ -86,7 +86,7 @@
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.6",
     "@types/pg": "^8.23.1",
-    "@types/react": "19.3.0",
+    "@types/react": "19.3.2",
     "@types/react-dom": "19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
     "drizzle-kit": "1.0.0-rc.6",
